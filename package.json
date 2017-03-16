@@ -1,0 +1,17 @@
+{
+  "name": "radical-ui",
+  "version": "1.0.0",
+  "description": "Radical React Components",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "react",
+    "ui",
+    "accessible",
+    "bootstrap"
+  ],
+  "author": "",
+  "license": "MIT"
+}
