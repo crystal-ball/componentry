@@ -1,8 +1,12 @@
 {
-  "name": "radical-ui",
+  "name": "componentry",
   "version": "1.0.0",
   "description": "Radical React Components",
   "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/crystal-ball/componentry"
+  },
   "scripts": {
     "dev": "webpack-dev-server --hot",
     "sass": "node-sass src/styles/styles.scss dist/build/radical-ui.css",
@@ -10,11 +14,13 @@
   },
   "keywords": [
     "react",
+    "components",
     "ui",
+    "508",
     "accessible",
     "bootstrap"
   ],
-  "author": "",
+  "author": "Dan Hedgecock <hedgecock.d@gmail.com>",
   "license": "MIT",
   "devDependencies": {
     "@dhedgecock/eloquence": "1.0.1",
