@@ -1,0 +1,16 @@
+// Buttons use Bootstrap classes: btn, btn-link, btn-<BRAND>
+
+.btn {
+  cursor: pointer;
+}
+
+.btn.btn-unstyled {
+  -webkit-appearance: none; // Remove Chrome native button styling
+  white-space: normal;
+  line-height: $line-height-base;
+  vertical-align: baseline;
+  user-select: auto;
+  border: none;
+  padding: 0;
+  font-family: $font-family-sans-serif;
+}

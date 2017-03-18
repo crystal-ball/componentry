@@ -4,7 +4,9 @@
   "description": "Radical React Components",
   "main": "index.js",
   "scripts": {
-    "dev": "webpack-dev-server --hot"
+    "dev": "webpack-dev-server --hot",
+    "sass": "node-sass src/styles/styles.scss dist/build/radical-ui.css",
+    "test": "BABEL_ENV=test mocha src/test/setup.js src/**/*.spec.js"
   },
   "keywords": [
     "react",
@@ -21,14 +23,22 @@
     "babel-eslint": "^7.1.1",
     "babel-loader": "^6.4.1",
     "babel-polyfill": "^6.23.0",
-    "babel-preset-es2015": "^6.24.0",
+    "babel-preset-latest": "^6.24.0",
     "babel-preset-react": "^6.23.0",
     "babel-preset-stage-0": "^6.22.0",
+    "babel-register": "^6.24.0",
+    "chai": "^3.5.0",
+    "enzyme": "^2.7.1",
     "eslint": "^3.17.1",
     "eslint-plugin-react": "^6.10.0",
+    "jsdom": "^9.12.0",
+    "mocha": "^3.2.0",
+    "node-sass": "^4.5.0",
     "react": "^15.4.2",
+    "react-addons-test-utils": "^15.4.2",
     "react-dom": "^15.4.2",
     "react-hot-loader": "next",
+    "sinon": "^2.0.0",
     "webpack": "^2.2.1",
     "webpack-dev-server": "^2.4.2"
   }
