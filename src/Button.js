@@ -25,13 +25,16 @@ const suppressFocusOnClick = evt => {
 
 /**
  * The `Button` component is the base for any interactable element in the library.
+ *
+ * To Document:
+ * - Link buttons
+ * - Mousedown handler for outlines
  * @param {?Function} [onMouseDown]
  * @param {string} [className='']
  * @param {string} [color='']
  * @param {string} [type='button']
  * @param {Object} [children]
  * @param {boolean} [link]
- * @param {Object} [other]
  */
 export const Button = ({
     onMouseDown,

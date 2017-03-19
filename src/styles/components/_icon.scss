@@ -1,0 +1,14 @@
+.icon {
+  width: 1em; // width + height of 1em makes icons font-sized by default
+  height: 1em;
+  display: inline;
+  position: relative; // for bottom
+  bottom: -0.2em; // match svg baseline to match font baseline
+  fill: currentColor;
+
+  &.b0 {
+    bottom: 0;
+  }
+
+  // TODO: icon sizes
+}
