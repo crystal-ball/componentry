@@ -23,3 +23,7 @@ $brand-inverse:             $gray-dark !default;
 // ---------------------------------------------------------------------------
 $font-family-sans-serif: -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif !default;
 $line-height-base: 1.5 !default;
+
+// Components
+// ---------------------------------------------------------------------------
+$transition-fade:        opacity .3s linear !default;

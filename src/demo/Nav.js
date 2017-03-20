@@ -8,6 +8,9 @@ export default function FourOhFour() {
         <Link to='/'>Home</Link>
       </div>
       <div>
+        <Link to='/alerts'>Alerts</Link>
+      </div>
+      <div>
         <Link to='/buttons'>Buttons</Link>
       </div>
       <div>

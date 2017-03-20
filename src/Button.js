@@ -46,9 +46,10 @@ export const Button = ({
     ...other
   }) => {
   let _onMouseDown;
-  className = className ? `${className} btn` : 'btn'; // Attach btn class for styling
-  className += link ? ' btn-link btn-unstyled' : ''; // Attach link class for link buttons
-  className += color ? ` btn-${color}`: ''; // Attach color type classes
+  let _className = 'btn';
+  _className += className ? ` ${className}` : '';
+  _className += link ? ' btn-link btn-unstyled' : ''; // Attach link class for link buttons
+  _className += color ? ` btn-${color}`: ''; // Attach color type classes
 
   // If an onMouseDown was passed in, call it, then call our blur handler
   if (onMouseDown) {
@@ -62,7 +63,7 @@ export const Button = ({
   }
 
   return(
-    <button className={className} onMouseDown={_onMouseDown} type={type} {...other}>
+    <button className={_className} onMouseDown={_onMouseDown} type={type} {...other}>
       {children}
     </button>
   );

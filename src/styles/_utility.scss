@@ -1,0 +1,21 @@
+// Use aria-hidden for A++ Accessible show/hide, b/c selector is weak and we included
+// this partial first, hidden has !important.
+*[aria-hidden="true"] {
+  display: none !important;
+  pointer-events: none !important;
+  visibility: hidden !important;
+}
+// Use initial values for visibility
+*[aria-hidden="false"] {
+  display: unset;
+  pointer-events: auto;
+  visibility: visible;
+}
+// When an element should be hidden from screen readers (aria-hidden) but still visible
+// in DOM b/c it is for presentational use, the role presentation can be used to
+// keep element visible and screen readers will pick up the aria-hidden state
+*[role="presentation"] {
+  display: initial;
+  pointer-events: auto;
+  visibility: visible;
+}

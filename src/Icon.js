@@ -19,11 +19,12 @@ export const Icon = ({
   icon='',
   ...other
   }) => {
-  className = className ? `icon ${className}` : 'icon';
-  className = font ? className : `${className} b0`; // bottom 0 class if not font icon
+  let _className = `icon ${icon}`;
+  _className += className ? ` ${className}` : '';
+  _className += font ? ' b0' : ''; // bottom 0 class if not font icon
 
   return (
-    <svg className={className} {...other}>
+    <svg className={_className} {...other}>
       <title>{icon}</title>
       <use href={`${filePath}#${icon}`} />
     </svg>
