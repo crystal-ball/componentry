@@ -9,6 +9,9 @@ import { VISIBILITY_TRANSITION_LENGTH } from './utils/constants';
  * - Internal fallback _hidden method, onDismiss preferred
  * - Internal fade and hidden states
  * - onDismiss and dismissable configurations
+ * - alerts only have info classes, not primary or secondary, b/c they are intended
+ *   to be used as an actual alert with context, denoted by role=alert. For non-alert
+ *   information blocks a card with primary or secondary colors can be used.
  */
 export class Alert extends Component {
 
@@ -62,7 +65,7 @@ export class Alert extends Component {
 
     return dismissable ?
       (<Button link onClick={onDismiss} className='close' aria-label='close'>
-        <Icon icon='close' font={false} />
+        <Icon icon='close' />
       </Button>)
       : null;
   }

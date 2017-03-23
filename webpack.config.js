@@ -1,6 +1,5 @@
 'use strict';
 const path = require('path');
-const webpack = require('webpack');
 
 module.exports = {
   // This makes the bundle appear split into separate modules in the devtools.
@@ -31,6 +30,7 @@ module.exports = {
     contentBase: path.join(__dirname, 'dist'),
     compress: true, // enable gzip compression
     historyApiFallback: true, // true for index.html upon 404, object for multiple paths
+    port: 3000,
     hot: true, // hot module replacement. Depends on HotModuleReplacementPlugin
     https: false, // true for self-signed, object for cert authority
     noInfo: true // only errors & warns on hot reload

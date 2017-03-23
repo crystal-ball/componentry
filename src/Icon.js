@@ -21,7 +21,7 @@ export const Icon = ({
   }) => {
   let _className = `icon ${icon}`;
   _className += className ? ` ${className}` : '';
-  _className += font ? ' b0' : ''; // bottom 0 class if not font icon
+  _className += font ? '' : ' b0'; // bottom 0 class if not font icon
 
   return (
     <svg className={_className} {...other}>
