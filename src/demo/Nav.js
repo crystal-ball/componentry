@@ -14,6 +14,9 @@ export default function FourOhFour() {
         <Link to='/buttons'>Buttons</Link>
       </div>
       <div>
+        <Link to='/cards'>Cards</Link>
+      </div>
+      <div>
         <Link to='/icons'>Icons</Link>
       </div>
     </nav>
