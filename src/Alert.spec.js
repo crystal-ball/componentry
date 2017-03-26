@@ -3,7 +3,7 @@ import { mount, shallow } from 'enzyme';
 import { assert } from 'chai';
 import sinon from 'sinon';
 
-import { Alert } from './Alert';
+import Alert from './Alert';
 
 describe('<Alert/>', () => {
   it('should render an alert with a close button by default', () => {

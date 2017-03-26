@@ -1,7 +1,7 @@
 import React, { Component, PropTypes } from 'react';
 import classNames from 'classnames';
 
-import { ListGroupItem } from './ListGroupItem';
+import ListGroupItem from './ListGroupItem';
 
 /**
  * To Document:
@@ -10,7 +10,7 @@ import { ListGroupItem } from './ListGroupItem';
  * - Only the first child is checked for an href or onClick for perf. If it is variable,
  *   (which is probably not good in the first place), pass a specific tagName.
  */
-export const ListGroup = class ListGroup extends Component {
+export default class ListGroup extends Component {
 
   static Item = ListGroupItem
 
@@ -53,4 +53,4 @@ export const ListGroup = class ListGroup extends Component {
       </TagName>
     );
   }
-};
+}

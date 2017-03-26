@@ -12,8 +12,9 @@
   },
   "scripts": {
     "dev": "webpack-dev-server --hot",
-    "sass": "node-sass src/styles/styles.scss dist/build/radical-ui.css",
-    "svg": "svg-sprite --defs --defs-dest=dist/assets --defs-sprite=svg-defs.svg dist/assets/svgs/*.svg",
+    "sass": "node-sass styles/componentry-build.scss dist/componentry.css --include-path=node_modules/bootstrap/scss",
+    "svg:demo": "svg-sprite --defs --defs-dest=demo/dist/assets --defs-sprite=svg-defs.svg assets/svgs/*.svg",
+    "svg:dist": "svg-sprite --defs --defs-dest=dist/assets --defs-sprite=svg-defs.svg assets/svgs/*.svg",
     "test": "BABEL_ENV=test mocha src/test/setup.js src/**/*.spec.js"
   },
   "keywords": [
@@ -37,7 +38,9 @@
     "babel-preset-react": "^6.23.0",
     "babel-preset-stage-0": "^6.22.0",
     "babel-register": "^6.24.0",
+    "bootstrap": "4.0.0-alpha.6",
     "chai": "^3.5.0",
+    "css-loader": "^0.28.0",
     "enzyme": "^2.7.1",
     "eslint": "^3.17.1",
     "eslint-plugin-react": "^6.10.0",
@@ -50,7 +53,9 @@
     "react-hot-loader": "next",
     "react-router": "^4.0.0",
     "react-router-dom": "^4.0.0",
+    "sass-loader": "^6.0.3",
     "sinon": "^2.0.0",
+    "style-loader": "^0.16.1",
     "svg-sprite": "^1.3.6",
     "webpack": "^2.2.1",
     "webpack-dev-server": "^2.4.2"

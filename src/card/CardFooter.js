@@ -1,11 +1,12 @@
 import React, { PropTypes } from 'react';
+import classnames from 'classnames';
 
-export const CardFooter = ({
+const CardFooter = ({
   className,
   children,
   ...other
 }) => {
-  let _className = className ? `card-footer ${className}` : 'card-footer';
+  let _className = classnames('card-footer', className);
 
   return (
     <div className={_className} {...other}>
@@ -23,3 +24,5 @@ CardFooter.defaultProps = {
   children: null,
   className: ''
 };
+
+export default CardFooter;

@@ -2,7 +2,7 @@ import React from 'react';
 import { shallow } from 'enzyme';
 import { expect } from 'chai';
 
-import { Icon } from './Icon';
+import Icon from './Icon';
 
 describe('<Icon/>', function () {
   it('should render an SVG element by default', function () {

@@ -1,7 +1,8 @@
 import React, { Component, PropTypes } from 'react';
-import { Button } from './Button';
-import { Icon } from './Icon';
-import { VISIBILITY_TRANSITION_LENGTH } from './utils/constants';
+import classnames from 'classnames';
+
+import { Button, Icon } from '../index';
+import { visibilityTransitionLength } from './utils/configurations';
 
 /**
  * Alerts provide contextual feedback.
@@ -13,14 +14,19 @@ import { VISIBILITY_TRANSITION_LENGTH } from './utils/constants';
  *   to be used as an actual alert with context, denoted by role=alert. For non-alert
  *   information blocks a card with primary or secondary colors can be used.
  */
-export class Alert extends Component {
+export default class Alert extends Component {
 
   static propTypes = {
     children: PropTypes.node,
     className: PropTypes.string,
     color: PropTypes.string,
     dismissable: PropTypes.bool,
-    onDismiss: PropTypes.func
+    onDismiss: PropTypes.func,
+    visibilityTransitionLength: PropTypes.number
+  }
+
+  static contextTypes = {
+    visibilityTransitionLength: PropTypes.number
   }
 
   static defaultProps = {
@@ -28,7 +34,8 @@ export class Alert extends Component {
     className: '',
     color: '',
     dismissable: true,
-    onDismiss: null
+    onDismiss: null,
+    visibilityTransitionLength: null
   }
 
   // Fade controls visibility status and hidden controls DOM position status
@@ -43,12 +50,18 @@ export class Alert extends Component {
    * application state to dismiss an alert is preferred.
    */
   _dismiss = () => {
+    // props has precedence to allow for single instance overrides, context can be
+    // used for app wide configs, fall back to defaults
+    const timer = this.props.visibilityTransitionLength
+      || this.context.visibilityTransitionLength
+      || visibilityTransitionLength;
+
     // Will immediately set BS 'fade' class to transition opacity to 0
     this.setState({ fade: true });
     // Roughly when transition is finished, add aria-hidden to element to remove display
     setTimeout(() => {
       this.setState({ hidden: true });
-    }, VISIBILITY_TRANSITION_LENGTH);
+    }, timer);
   }
 
   // Render
@@ -71,22 +84,22 @@ export class Alert extends Component {
   }
 
   render() {
+    // declare dismissable, onDismiss to keep ...other spread render safe
     let {
       children,
       className='',
       color='',
       dismissable, // eslint-disable-line
       onDismiss, // eslint-disable-line
+      visibilityTransitionLength, // eslint-disable-line
       ...other
     } = this.props;
-    // declare dismissable, onDismiss to keep ...other spread render safe
     let { fade, hidden } = this.state;
-
-    let _className = 'alert';
-    _className += color ? ` alert-${color}` : '';
-    _className += className ? ` ${className}` : '';
-    _className += fade ? ' fade' : '';
     let ariaHidden = hidden ? 'true' : 'false';
+    let _className = classnames('alert', className, {
+      [`alert-${color}`]: color,
+      fade: fade
+    });
 
     let close = this.renderClose();
 

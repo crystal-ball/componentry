@@ -22,6 +22,9 @@ export default function FourOhFour() {
       <div>
         <Link to='/list-groups'>List Groups</Link>
       </div>
+      <div>
+        <Link to='/clear'>Clear Theme</Link>
+      </div>
     </nav>
   );
 }

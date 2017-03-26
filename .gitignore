@@ -6,6 +6,10 @@ node_modules
 #################################
 *.log
 
-# Build Assets
+# Distributed
 #################################
-dist/build
+/dist
+
+# Demo Assets
+#################################
+demo/dist/build

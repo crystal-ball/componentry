@@ -1,0 +1,99 @@
+// ========================================================
+// Componentry 'Clear' Theme
+// Used by Componentry Demo App
+// ========================================================
+
+// Colors
+// ---------------------------------------------------------------------------
+// Create grayscale
+$gray-dark:            #292b2c;
+$gray:                 #464a4c;
+$gray-light:           #636c72;
+$gray-lighter:         #eceeef;
+$gray-lightest:        #f7f7f9;
+
+// Reassign color vars to semantic color scheme
+$brand-primary:             #374d68;
+$brand-success:             #92c14d;
+$brand-info:                #5bc0de;
+$brand-warning:             #f0ad4e;
+$brand-danger:              #d9534f;
+$brand-inverse:             $gray-dark;
+
+// Fonts
+// ---------------------------------------------------------------------------
+$font-family-sans-serif: 'Libre Franklin', Arial, sans-serif;
+
+$font-size-base: 0.875rem; // 14px base assuming 1 rem = 16px
+$font-size-lg:   $font-size-base * 1.25;
+$font-size-sm:   $font-size-base * 0.875;
+
+$line-height-base: 1.5;
+
+$font-size-h1: 48px;
+$font-size-h2: 30px;
+$font-size-h3: 24px;
+$font-size-h4: 18px;
+
+$headings-font-weight: 300;
+$headings-color: $gray;
+
+$small-font-size: 90%;
+
+// Components
+// ---------------------------------------------------------------------------
+$transition-fade: opacity .3s linear;
+
+// Buttons
+// ---------------------------------------------------------------------------
+// Disable wonky Bootstrap box-shadow on button focus
+$btn-active-box-shadow: none;
+$btn-focus-box-shadow: none;
+
+// Code
+// ---------------------------------------------------------------------------
+$code-bg: #f9f2f4;
+
+// ========================================================
+// Theme Styles
+// ========================================================
+small, .small { color: $gray-light; }
+p { max-width: 800px; }
+
+
+// ========================================================
+// Libre Franklin Font - Weights 300 and 400
+// ========================================================
+
+/* latin-ext */
+@font-face {
+  font-family: 'Libre Franklin';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Libre Franklin'), local('LibreFranklin-Regular'), url(https://fonts.gstatic.com/s/librefranklin/v1/PFwjf3aDdAQPvNKUrT3U7xHoxYlEhdfxgPTmEO-jGTc.woff2) format('woff2');
+  unicode-range: U+0100-024F, U+1E00-1EFF, U+20A0-20AB, U+20AD-20CF, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'Libre Franklin';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Libre Franklin'), local('LibreFranklin-Regular'), url(https://fonts.gstatic.com/s/librefranklin/v1/PFwjf3aDdAQPvNKUrT3U77v_weys7n7jZxU_6MdmmbI.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2212, U+2215, U+E0FF, U+EFFD, U+F000;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'Libre Franklin';
+  font-style: normal;
+  font-weight: 300;
+  src: local('Libre Franklin Light'), local('LibreFranklin-Light'), url(https://fonts.gstatic.com/s/librefranklin/v1/1_DGDtljMiPWFs5rl_p0yMq-pbAjJt28asgHno7W9sM.woff2) format('woff2');
+  unicode-range: U+0100-024F, U+1E00-1EFF, U+20A0-20AB, U+20AD-20CF, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'Libre Franklin';
+  font-style: normal;
+  font-weight: 300;
+  src: local('Libre Franklin Light'), local('LibreFranklin-Light'), url(https://fonts.gstatic.com/s/librefranklin/v1/1_DGDtljMiPWFs5rl_p0yGISN6_59ECOhaitw-i87uk.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2212, U+2215, U+E0FF, U+EFFD, U+F000;
+}

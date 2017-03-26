@@ -1,0 +1,27 @@
+// ========================================================
+// Demo Styles - Componentry 'Clear' Theme + Boostrap v4
+// ========================================================
+
+// This demo app is an example of how you can theme Componentry
+// using a set of Bootstrap variables. The theme 'Clear' sets
+// colors, font sizes, font family, padding, etc. These variables
+// are then used by the Bootstrap AND Componentry libraries
+// stylesheets to create a set of themed components matching
+// your app styles perfectly.
+
+// Componentry 'Simple' Theme
+// ---------------------------------------------------------------------------
+@import '../styles/theme-clear';
+
+
+// Bootstrap
+// ---------------------------------------------------------------------------
+@import 'bootstrap';
+
+
+// Componentry Library Styles
+// Note that you should import componentry after importing Boostrap so that
+// any Boostrap variables you don't declare in your theme will still be
+// available from the Bootstrap variables.
+// ---------------------------------------------------------------------------
+@import '../styles/componentry';

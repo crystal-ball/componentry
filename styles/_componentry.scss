@@ -1,9 +1,11 @@
 // ========================================================
-// Radical UI Component Styles
+// Componentry Styles
+// Including componentry library styles and utility classes
+// only. Can be imported with theme `theme-clear` or any
+// other set of Bootstrap variables
 // ========================================================
 
-@import 'variables';
-// Visibility classes
+@import 'componentry-variables';
 @import 'utility';
 
 @import 'components/alert';

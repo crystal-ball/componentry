@@ -1,4 +1,5 @@
 import React, { PropTypes } from 'react';
+import classnames from 'classnames';
 
 /**
  * Render an SVG icon using an external definition set.
@@ -12,16 +13,14 @@ import React, { PropTypes } from 'react';
  * @param {Boolean} [font=true]
  * @param {string} icon
  */
-export const Icon = ({
+const Icon = ({
   className='',
   filePath='',
   font=true,
   icon='',
   ...other
-  }) => {
-  let _className = `icon ${icon}`;
-  _className += className ? ` ${className}` : '';
-  _className += font ? '' : ' b0'; // bottom 0 class if not font icon
+}) => {
+  let _className = classnames('icon', icon, className, { b0: !font });
 
   return (
     <svg className={_className} {...other}>
@@ -43,3 +42,5 @@ Icon.defaultProps = {
   filePath: '/assets/svg-defs.svg',
   font: true
 };
+
+export default Icon;

@@ -1,11 +1,12 @@
 import React, { PropTypes } from 'react';
+import classnames from 'classnames';
 
-export const CardBlock = ({
+const CardHeader = ({
   className,
   children,
   ...other
 }) => {
-  let _className = className ? `card-block ${className}` : 'card-block';
+  let _className = classnames('card-header', className);
 
   return (
     <div className={_className} {...other}>
@@ -14,12 +15,14 @@ export const CardBlock = ({
   );
 };
 
-CardBlock.propTypes = {
+CardHeader.propTypes = {
   children: PropTypes.node,
   className: PropTypes.string
 };
 
-CardBlock.defaultProps = {
+CardHeader.defaultProps = {
   children: null,
   className: ''
 };
+
+export default CardHeader;

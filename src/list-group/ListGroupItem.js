@@ -1,9 +1,9 @@
 import React, { PropTypes } from 'react';
 import classNames from 'classnames';
 
-import { Button } from '../components';
+import { Button } from '../../index';
 
-export const ListGroupItem = ({
+const ListGroupItem = ({
   children,
   className,
   href,
@@ -54,3 +54,5 @@ ListGroupItem.defaultProps = {
   onClick: null,
   tagName: ''
 };
+
+export default ListGroupItem;

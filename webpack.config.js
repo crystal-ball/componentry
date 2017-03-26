@@ -11,23 +11,36 @@ module.exports = {
   entry: [
     'babel-polyfill',
     'react-hot-loader/patch',
-    './src/index'
+    './demo/index'
   ],
 
   output: {
-    path: path.join(__dirname, 'dist', 'build'),
+    path: path.join(__dirname, 'demo', 'dist', 'build'),
     filename: 'bundle.js',
     publicPath: '/build/'
   },
 
   module: {
     rules: [
-      { test: /\.js$/, exclude: /node_modules/, loader: 'babel-loader' }
+      { test: /\.js$/, exclude: /node_modules/, loader: 'babel-loader' },
+      {
+        test: /\.scss/,
+        use: [
+          { loader: 'style-loader' },
+          { loader: 'css-loader' },
+          {
+            loader: 'sass-loader',
+            options: {
+              includePaths: ['node_modules/bootstrap/scss']
+            }
+          }
+        ]
+      }
     ]
   },
 
   devServer: {
-    contentBase: path.join(__dirname, 'dist'),
+    contentBase: path.join(__dirname, 'demo', 'dist'),
     compress: true, // enable gzip compression
     historyApiFallback: true, // true for index.html upon 404, object for multiple paths
     port: 3000,

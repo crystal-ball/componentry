@@ -1,8 +1,9 @@
 import React, { Component, PropTypes } from 'react';
+import classnames from 'classnames';
 
-import { CardBlock } from './CardBlock';
-import { CardHeader } from './CardHeader';
-import { CardFooter } from './CardFooter';
+import CardBlock from './CardBlock';
+import CardHeader from './CardHeader';
+import CardFooter from './CardFooter';
 
 /**
  * Card component is a simple wrapper for creating markup for card elements. Includes:
@@ -11,7 +12,7 @@ import { CardFooter } from './CardFooter';
  * - `Card.Footer`
  * @type {[type]}
  */
-export const Card = class Card extends Component {
+export default class Card extends Component {
 
   static Block = CardBlock
   static Header = CardHeader
@@ -23,7 +24,7 @@ export const Card = class Card extends Component {
       children,
       ...other
     } = this.props;
-    let _className = className ? `card ${className}` : 'card';
+    let _className = classnames('card', className);
 
     return (
       <div className={_className} {...other}>
@@ -31,7 +32,7 @@ export const Card = class Card extends Component {
       </div>
     );
   }
-};
+}
 
 Card.propTypes = {
   children: PropTypes.node,

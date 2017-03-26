@@ -3,7 +3,7 @@ import { shallow } from 'enzyme';
 import { expect } from 'chai';
 import sinon from 'sinon';
 
-import { Button } from './Button';
+import Button from './Button';
 
 describe('<Button/>', function () {
   it('should render a button element default', function () {
@@ -11,6 +11,28 @@ describe('<Button/>', function () {
     expect(wrapper.find('button')).to.have.length(1);
     expect(wrapper.find('.btn')).to.have.length(1);
     expect(wrapper.find('button[type="button"]')).to.have.length(1);
+  });
+
+  it('should render any brand classes for prop color', function () {
+    const wrapper = shallow(<Button color='info' />);
+    expect(wrapper.find('.btn.btn-info')).to.have.length(1);
+  });
+
+  it('should render outline class for prop outline', function () {
+    const wrapper = shallow(<Button color='primary' outline />);
+    // Even though color is passed, primary flag should override
+    expect(wrapper.find('.btn.btn-primary')).to.have.length(0);
+    expect(wrapper.find('.btn.btn-outline-primary')).to.have.length(1);
+  });
+
+  it('should render class for small button', function () {
+    const wrapper = shallow(<Button small />);
+    expect(wrapper.find('.btn.btn-sm')).to.have.length(1);
+  });
+
+  it('should render class for large button', function () {
+    const wrapper = shallow(<Button large />);
+    expect(wrapper.find('.btn.btn-lg')).to.have.length(1);
   });
 
   it('should render any passed className', function () {
@@ -61,7 +83,7 @@ describe('<Button/>', function () {
     // suppressClickOutline handler
     wrapper.find('button').simulate('mousedown', {
       target: {
-        style: { outline: ''},
+        style: { outline: '' },
         addEventListener: () => {},
         removeEventListener: () => {}
       }
