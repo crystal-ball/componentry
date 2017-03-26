@@ -2,7 +2,7 @@
 # yarn lockfile v1
 
 
-"@dhedgecock/eloquence@1.0.1":
+"@dhedgecock/eloquence@^1.0.1":
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/@dhedgecock/eloquence/-/eloquence-1.0.1.tgz#27c5877d0226fcdf21744e53e2e09e198c3c0cdf"
 
@@ -1214,6 +1214,10 @@ clap@^1.0.9:
   resolved "https://registry.yarnpkg.com/clap/-/clap-1.1.3.tgz#b3bd36e93dd4cbfb395a3c26896352445265c05b"
   dependencies:
     chalk "^1.1.3"
+
+classnames@^2.2.5:
+  version "2.2.5"
+  resolved "https://registry.yarnpkg.com/classnames/-/classnames-2.2.5.tgz#fb3801d453467649ef3603c7d61a02bd129bde6d"
 
 cli-cursor@^1.0.1:
   version "1.0.2"

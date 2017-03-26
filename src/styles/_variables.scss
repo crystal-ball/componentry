@@ -26,4 +26,10 @@ $line-height-base: 1.5 !default;
 
 // Components
 // ---------------------------------------------------------------------------
-$transition-fade:        opacity .3s linear !default;
+$transition-fade: opacity .3s linear !default;
+
+// Buttons
+// ---------------------------------------------------------------------------
+// Disable wonky Bootstrap box-shadow on button focus
+$btn-active-box-shadow: none;
+$btn-focus-box-shadow: none;

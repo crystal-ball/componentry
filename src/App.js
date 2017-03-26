@@ -11,6 +11,7 @@ import Alerts from './demo/Alerts';
 import Buttons from './demo/Buttons';
 import Cards from './demo/Cards';
 import Icons from './demo/Icons';
+import ListGroups from './demo/ListGroups';
 import FourOhFour from './demo/FourOhFour';
 
 export default function App() {
@@ -23,6 +24,7 @@ export default function App() {
           <Route path='/buttons' exact component={Buttons} />
           <Route path='/cards' exact component={Cards} />
           <Route path='/icons' exact component={Icons} />
+          <Route path='/list-groups' exact component={ListGroups} />
           <Route component={FourOhFour} />
         </Switch>
         <Nav />

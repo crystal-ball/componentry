@@ -19,6 +19,9 @@ export default function FourOhFour() {
       <div>
         <Link to='/icons'>Icons</Link>
       </div>
+      <div>
+        <Link to='/list-groups'>List Groups</Link>
+      </div>
     </nav>
   );
 }

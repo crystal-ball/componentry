@@ -27,7 +27,7 @@
   "author": "Dan Hedgecock <hedgecock.d@gmail.com>",
   "license": "MIT",
   "devDependencies": {
-    "@dhedgecock/eloquence": "1.0.1",
+    "@dhedgecock/eloquence": "^1.0.1",
     "babel": "^6.23.0",
     "babel-core": "^6.24.0",
     "babel-eslint": "^7.1.1",
@@ -54,5 +54,8 @@
     "svg-sprite": "^1.3.6",
     "webpack": "^2.2.1",
     "webpack-dev-server": "^2.4.2"
+  },
+  "dependencies": {
+    "classnames": "^2.2.5"
   }
 }
