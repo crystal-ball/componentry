@@ -50,6 +50,10 @@ $transition-fade: opacity .3s linear;
 $btn-active-box-shadow: none;
 $btn-focus-box-shadow: none;
 
+// Dropdowns
+// ---------------------------------------------------------------------------
+$dropdown-padding-y: 0;
+
 // Code
 // ---------------------------------------------------------------------------
 $code-bg: #f9f2f4;
@@ -57,8 +61,21 @@ $code-bg: #f9f2f4;
 // ========================================================
 // Theme Styles
 // ========================================================
+// Small text in theme is intended for less important information. Convey this with
+// size AND a lighter gray font color
 small, .small { color: $gray-light; }
+
+// Default constraint for paragraphs helps with readability, can be overridden
+// where needed with `mw-100`
 p { max-width: 800px; }
+
+// With smaller font-size, the dropdown menu items look compressed. There is only a
+// variable for item x-padding from Bootstrap. Use .dropdown-menu to gain specificity
+// to override BS styles declared later
+.dropdown-menu .dropdown-item {
+  padding-top: 8px;
+  padding-bottom: 8px;
+}
 
 
 // ========================================================
