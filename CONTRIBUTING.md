@@ -9,6 +9,9 @@ structure and conventions.
 Any miscellaneous knowledge that is difficult to document in place or is generally
 applicable to the library can be documented here.
 
+## Dependency Notes
+- `cash-dom`: Used to replace jQuery `.closest()` for filtering click events.
+
 #### Testing
 - Our Mocha setup requires the `.babelrc` file to specify that we are using ES6
   modules, but for some reason Mocha does not recognize presets in array form like

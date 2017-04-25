@@ -23,6 +23,9 @@ export default class Dropdown extends Component {
 
   constructor(props) {
     super(props);
+    // Create a unique id for component that can be passed to trigger and menu for
+    // binding aria attrs
+    // NOTE: this won't work in server rendered apps 😣
     this.guid = 'dropdown-' + count++;
   }
 
@@ -30,7 +33,7 @@ export default class Dropdown extends Component {
     active: false
   }
 
-  _listenerHandler = e => {
+  _clickHandler = e => {
     // Check if the click was inside the dropdown
     let clickInDropdown = $(e.target).closest(`#${this.guid}-container`).length ? true : false;
 
@@ -40,19 +43,29 @@ export default class Dropdown extends Component {
     }
   }
 
+  _keyHandler = e => {
+    // Escape key is which 27, when escape key is hit, toggle state
+    if (e.which === 27) {
+      this.toggleActive();
+    }
+  }
+
   toggleActive = () => {
-    const active = this.state.active;
+    const { active } = this.state;
 
     if (!active) {
-      // If the dropdown is closed, it's opening, setup click event listener
-      $('body').on('mouseup', this._listenerHandler);
-      $('body').on('touchend', this._listenerHandler);
+      // If the dropdown is closed, it's now opening, so setup event listeners
+      document.addEventListener('mouseup', this._clickHandler);
+      document.addEventListener('touchend', this._clickHandler);
+      document.addEventListener('keydown', this._keyHandler);
     } else {
-      $('body').off('mouseup', this._listenerHandler);
-      $('body').off('touchend', this._listenerHandler);
+      // If the dropdown is open, it's now closing, so remove event listeners
+      document.removeEventListener('mouseup', this._clickHandler);
+      document.removeEventListener('touchend', this._clickHandler);
+      document.removeEventListener('keydown', this._keyHandler);
     }
 
-    this.setState({ active: !this.state.active });
+    this.setState({ active: !active });
   }
 
   render() {
