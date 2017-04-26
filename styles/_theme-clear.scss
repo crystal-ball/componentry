@@ -12,13 +12,21 @@ $gray-light:           #636c72;
 $gray-lighter:         #eceeef;
 $gray-lightest:        #f7f7f9;
 
-// Reassign color vars to semantic color scheme
-$brand-primary:             #374d68;
+// Gotta have those blues
+$aegean:    #39608e;
+$denim:     #374d68;
+$cerulean:  #5bc0de;
+
+$brand-primary:             $denim;
 $brand-success:             #92c14d;
-$brand-info:                #5bc0de;
+$brand-info:                $cerulean;
 $brand-warning:             #f0ad4e;
 $brand-danger:              #d9534f;
 $brand-inverse:             $gray-dark;
+
+// Links
+// ---------------------------------------------------------------------------
+$link-color: $aegean;
 
 // Fonts
 // ---------------------------------------------------------------------------

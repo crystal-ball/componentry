@@ -7,18 +7,35 @@ import Trigger from './Trigger';
 
 let count = 0;
 
+/**
+ * The `<Dropdown>` element creates a menu.
+ *
+ * ## Controlled and Uncontrolled
+ * Dropdown functions as an uncontrolled element by default.
+ *
+ * TODO:
+ * - Default focus on open first item
+ * - Keydown listener for arrows to navigate through menu items
+ * - Why does dropdown render twice on close when using controlled active state?
+ */
 export default class Dropdown extends Component {
   static Trigger = Trigger
   static Menu = Menu
 
   static propTypes = {
+    active: PropTypes.bool,
     children: PropTypes.node,
-    className: PropTypes.string
+    className: PropTypes.string,
+    onActivate: PropTypes.func,
+    onDeactivate: PropTypes.func
   }
 
   static defaultProps = {
+    active: undefined,
     children: null,
-    className: ''
+    className: '',
+    onActivate: () => {},
+    onDeactivate: () => {}
   }
 
   constructor(props) {
@@ -29,9 +46,14 @@ export default class Dropdown extends Component {
     this.guid = 'dropdown-' + count++;
   }
 
+  // If active is not passed as a prop, internal state is used for uncontrolled
+  // dropdown
   state = {
     active: false
   }
+
+  // Methods
+  // ---------------------------------------------------------------------------
 
   _clickHandler = e => {
     // Check if the click was inside the dropdown
@@ -50,34 +72,50 @@ export default class Dropdown extends Component {
     }
   }
 
-  toggleActive = () => {
-    const { active } = this.state;
+  toggleActive = e => {
+    let { active } = this.props;
+    if (active === undefined) {
+      active = this.state.active;
+    }
 
     if (!active) {
       // If the dropdown is closed, it's now opening, so setup event listeners
+      this.props.onActivate(this, e); // Consumer hooks
       document.addEventListener('mouseup', this._clickHandler);
       document.addEventListener('touchend', this._clickHandler);
       document.addEventListener('keydown', this._keyHandler);
     } else {
       // If the dropdown is open, it's now closing, so remove event listeners
+      this.props.onDeactivate(this, e); // Consumer hooks
       document.removeEventListener('mouseup', this._clickHandler);
       document.removeEventListener('touchend', this._clickHandler);
       document.removeEventListener('keydown', this._keyHandler);
     }
 
-    this.setState({ active: !active });
+    if (this.props.active === undefined) {
+      // State is not controlled, update internal state
+      this.setState({ active: !active });
+    }
   }
 
+  // Render
+  // ---------------------------------------------------------------------------
   render() {
     const {
       children,
       className
     } = this.props;
-    const { active } = this.state;
-    let _children;
+    // Default active to controlled prop, if undefined element is being used as
+    // uncontrolled and we fall back to internal state tracking
     let _className = classnames('dropdown', className);
 
-    _children = Children.map(children, child => {
+    let { active } = this.props;
+    if (active === undefined) {
+      active = this.state.active;
+    }
+
+    // Find TRIGGER and MENU children and clone with needed props
+    let _children = Children.map(children, child => {
       if (child.type.ROLE === 'TRIGGER') {
         return cloneElement(child, {
           active,
