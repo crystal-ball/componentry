@@ -1,4 +1,5 @@
-import React, { Component, PropTypes } from 'react';
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import classNames from 'classnames';
 
 import ListGroupItem from './ListGroupItem';
@@ -17,13 +18,13 @@ export default class ListGroup extends Component {
   static propTypes = {
     children: PropTypes.node,
     className: PropTypes.string,
-    tagName: PropTypes.string
+    tagName: PropTypes.string,
   }
 
   static defaultProps = {
     children: null,
     className: '',
-    tagName: ''
+    tagName: '',
   }
 
   render() {

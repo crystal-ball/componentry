@@ -9,6 +9,7 @@ node_modules
 # Distributed
 #################################
 /dist
+/es
 
 # Demo Assets
 #################################

@@ -1,4 +1,5 @@
-import React, { PropTypes } from 'react';
+import React from 'react';
+import PropTypes from 'prop-types';
 import classnames from 'classnames';
 
 /**
@@ -34,13 +35,13 @@ Icon.propTypes = {
   className: PropTypes.string,
   filePath: PropTypes.string,
   font: PropTypes.bool,
-  icon: PropTypes.string.isRequired
+  icon: PropTypes.string.isRequired,
 };
 
 Icon.defaultProps = {
   className: '',
-  filePath: '/assets/svg-defs.svg',
-  font: true
+  filePath: '/assets/icons.svg',
+  font: true,
 };
 
 export default Icon;

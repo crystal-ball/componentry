@@ -1,4 +1,5 @@
-import React, { PropTypes } from 'react';
+import React from 'react';
+import PropTypes from 'prop-types';
 import classnames from 'classnames';
 
 /**
@@ -73,7 +74,7 @@ const Button = ({
     'btn-unstyled': link,
     [`btn-outline-${color}`]: outline && color,
     'btn-lg': large,
-    'btn-sm': small
+    'btn-sm': small,
   });
 
   // If an onMouseDown was passed in, call it, then call our blur handler
@@ -103,7 +104,7 @@ Button.propTypes = {
   onMouseDown: PropTypes.func,
   outline: PropTypes.bool,
   small: PropTypes.bool,
-  type: PropTypes.string
+  type: PropTypes.string,
 };
 
 Button.defaultProps = {
@@ -115,7 +116,7 @@ Button.defaultProps = {
   onMouseDown: null,
   outline: false,
   small: false,
-  type: 'button'
+  type: 'button',
 };
 
 export default Button;

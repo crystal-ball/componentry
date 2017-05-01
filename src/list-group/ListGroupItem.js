@@ -1,4 +1,5 @@
-import React, { PropTypes } from 'react';
+import React from 'react';
+import PropTypes from 'prop-types';
 import classNames from 'classnames';
 
 import { Button } from '../../index';
@@ -25,7 +26,7 @@ const ListGroupItem = ({
   }
 
   _className = classNames('list-group-item', className, {
-    'list-group-item-action': actionable
+    'list-group-item-action': actionable,
   });
 
   return (
@@ -44,7 +45,7 @@ ListGroupItem.propTypes = {
   className: PropTypes.string,
   href: PropTypes.string,
   onClick: PropTypes.func,
-  tagName: PropTypes.string
+  tagName: PropTypes.string,
 };
 
 ListGroupItem.defaultProps = {
@@ -52,7 +53,7 @@ ListGroupItem.defaultProps = {
   className: '',
   href: '',
   onClick: null,
-  tagName: ''
+  tagName: '',
 };
 
 export default ListGroupItem;

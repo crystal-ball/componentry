@@ -4,7 +4,7 @@ import { Button, Dropdown } from '../index';
 export default class Dropdowns extends Component {
 
   state = {
-    controlledActive: false
+    controlledActive: false,
   }
 
   logActivate() { console.log('on activate called'); }

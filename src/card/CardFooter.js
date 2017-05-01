@@ -1,4 +1,5 @@
-import React, { PropTypes } from 'react';
+import React from 'react';
+import PropTypes from 'prop-types';
 import classnames from 'classnames';
 
 const CardFooter = ({
@@ -17,12 +18,12 @@ const CardFooter = ({
 
 CardFooter.propTypes = {
   children: PropTypes.node,
-  className: PropTypes.string
+  className: PropTypes.string,
 };
 
 CardFooter.defaultProps = {
   children: null,
-  className: ''
+  className: '',
 };
 
 export default CardFooter;

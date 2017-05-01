@@ -1,8 +1,9 @@
-import React, { Component, PropTypes } from 'react';
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import {
   BrowserRouter as Router,
   Switch,
-  Route
+  Route,
 } from 'react-router-dom';
 
 import Home from './Home';
@@ -20,12 +21,12 @@ export default class App extends Component {
 
   // Example app configuration using context, TODO: docs
   static childContextTypes = {
-    visibilityTransitionLength: PropTypes.number
+    visibilityTransitionLength: PropTypes.number,
   };
 
   getChildContext() {
     return {
-      visibilityTransitionLength: 350
+      visibilityTransitionLength: 350,
     };
   }
 

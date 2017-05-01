@@ -1,4 +1,5 @@
-import React, { PropTypes } from 'react';
+import React from 'react';
+import PropTypes from 'prop-types';
 import classnames from 'classnames';
 import Button from '../Button';
 
@@ -31,7 +32,7 @@ Target.propTypes = {
   children: PropTypes.node,
   className: PropTypes.string,
   guid: PropTypes.string,
-  toggleActive: PropTypes.func
+  toggleActive: PropTypes.func,
 };
 
 Target.defaultProps = {
@@ -39,7 +40,7 @@ Target.defaultProps = {
   children: null,
   className: '',
   guid: '',
-  toggleActive: () => {}
+  toggleActive: () => {},
 };
 
 Target.ROLE = 'TRIGGER';

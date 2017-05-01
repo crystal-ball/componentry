@@ -1,7 +1,8 @@
-import React, { Component, PropTypes } from 'react';
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import classnames from 'classnames';
 
-import { Button, Icon } from '../index';
+import { Button, Close } from '../index';
 import { visibilityTransitionLength } from './utils/configurations';
 
 /**
@@ -22,11 +23,11 @@ export default class Alert extends Component {
     color: PropTypes.string,
     dismissable: PropTypes.bool,
     onDismiss: PropTypes.func,
-    visibilityTransitionLength: PropTypes.number
+    visibilityTransitionLength: PropTypes.number,
   }
 
   static contextTypes = {
-    visibilityTransitionLength: PropTypes.number
+    visibilityTransitionLength: PropTypes.number,
   }
 
   static defaultProps = {
@@ -35,13 +36,13 @@ export default class Alert extends Component {
     color: '',
     dismissable: true,
     onDismiss: null,
-    visibilityTransitionLength: null
+    visibilityTransitionLength: null,
   }
 
   // Fade controls visibility status and hidden controls DOM position status
   state = {
     fade: false,
-    hidden: false
+    hidden: false,
   }
 
   /**
@@ -78,7 +79,7 @@ export default class Alert extends Component {
 
     return dismissable ?
       (<Button link onClick={onDismiss} className='close' aria-label='close'>
-        <Icon icon='close' />
+        <Close />
       </Button>)
       : null;
   }
@@ -98,7 +99,7 @@ export default class Alert extends Component {
     let ariaHidden = hidden ? 'true' : 'false';
     let _className = classnames('alert', className, {
       [`alert-${color}`]: color,
-      fade: fade
+      fade: fade,
     });
 
     let close = this.renderClose();

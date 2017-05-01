@@ -23,7 +23,7 @@ describe('<Icon/>', function () {
 
   it('should use icon and default filePath to build svg href', function() {
     const wrapper = shallow(<Icon icon='close' />);
-    expect(wrapper.find('use[href="/assets/svg-defs.svg#close"]')).to.have.length(1);
+    expect(wrapper.find('use[href="/assets/icons.svg#close"]')).to.have.length(1);
   });
 
   it('should use icon and explicit filePath to build svg href', function() {

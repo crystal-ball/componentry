@@ -1,6 +1,8 @@
-import React, { Component, PropTypes, Children, cloneElement } from 'react';
+import React, { Component, Children, cloneElement } from 'react';
+import PropTypes from 'prop-types';
 import classnames from 'classnames';
-import $ from 'cash-dom';
+
+import { closest } from '../utils/dom';
 
 import Menu from './Menu';
 import Trigger from './Trigger';
@@ -27,7 +29,7 @@ export default class Dropdown extends Component {
     children: PropTypes.node,
     className: PropTypes.string,
     onActivate: PropTypes.func,
-    onDeactivate: PropTypes.func
+    onDeactivate: PropTypes.func,
   }
 
   static defaultProps = {
@@ -35,7 +37,7 @@ export default class Dropdown extends Component {
     children: null,
     className: '',
     onActivate: () => {},
-    onDeactivate: () => {}
+    onDeactivate: () => {},
   }
 
   constructor(props) {
@@ -49,7 +51,7 @@ export default class Dropdown extends Component {
   // If active is not passed as a prop, internal state is used for uncontrolled
   // dropdown
   state = {
-    active: false
+    active: false,
   }
 
   // Methods
@@ -57,7 +59,7 @@ export default class Dropdown extends Component {
 
   _clickHandler = e => {
     // Check if the click was inside the dropdown
-    let clickInDropdown = $(e.target).closest(`#${this.guid}-container`).length ? true : false;
+    let clickInDropdown = closest(e.target, `${this.guid}-container`) ? true : false;
 
     // If the click was ouside dropdown, close the dropdown and then cleanup the listener
     if (!clickInDropdown) {
@@ -103,11 +105,11 @@ export default class Dropdown extends Component {
   render() {
     const {
       children,
-      className
+      className,
     } = this.props;
     // Default active to controlled prop, if undefined element is being used as
     // uncontrolled and we fall back to internal state tracking
-    let _className = classnames('dropdown', className);
+    let _className = classnames('dropdown', `${this.guid}-container`, className);
 
     let { active } = this.props;
     if (active === undefined) {
@@ -120,7 +122,7 @@ export default class Dropdown extends Component {
         return cloneElement(child, {
           active,
           guid: this.guid,
-          toggleActive: this.toggleActive
+          toggleActive: this.toggleActive,
         });
       } else if (child.type.ROLE === 'MENU') {
         return cloneElement(child, { active, guid: this.guid });
@@ -130,7 +132,7 @@ export default class Dropdown extends Component {
     });
 
     return (
-      <div className={_className} id={`${this.guid}-container`}>
+      <div className={_className}>
         {_children}
       </div>
     );

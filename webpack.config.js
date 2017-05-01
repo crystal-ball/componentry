@@ -1,51 +1,13 @@
 'use strict';
-const path = require('path');
+const { resolve } = require('path');
+const configs = require('@inspire-script/webpack-configs');
 
-module.exports = {
-  // This makes the bundle appear split into separate modules in the devtools.
-  // We don't use source maps here because they can be confusing:
-  // https://github.com/facebookincubator/create-react-app/issues/343#issuecomment-237241875
-  // You may want 'cheap-module-source-map' instead if you prefer source maps.
-  devtool: 'eval',
-
-  entry: [
-    'babel-polyfill',
-    'react-hot-loader/patch',
-    './demo/index'
-  ],
-
-  output: {
-    path: path.join(__dirname, 'demo', 'dist', 'build'),
-    filename: 'bundle.js',
-    publicPath: '/build/'
-  },
-
-  module: {
-    rules: [
-      { test: /\.js$/, exclude: /node_modules/, loader: 'babel-loader' },
-      {
-        test: /\.scss/,
-        use: [
-          { loader: 'style-loader' },
-          { loader: 'css-loader' },
-          {
-            loader: 'sass-loader',
-            options: {
-              includePaths: ['node_modules/bootstrap/scss']
-            }
-          }
-        ]
-      }
-    ]
-  },
-
-  devServer: {
-    contentBase: path.join(__dirname, 'demo', 'dist'),
-    compress: true, // enable gzip compression
-    historyApiFallback: true, // true for index.html upon 404, object for multiple paths
-    port: 3000,
-    hot: true, // hot module replacement. Depends on HotModuleReplacementPlugin
-    https: false, // true for self-signed, object for cert authority
-    noInfo: true // only errors & warns on hot reload
-  }
+module.exports = env => {
+  return configs({
+    env,
+    paths: {
+      appIndexJs: resolve('demo/index.js'),
+      babelLoaderInclude: [resolve('src'), resolve('demo')],
+    },
+  });
 };

@@ -1,4 +1,5 @@
-import React, { PropTypes } from 'react';
+import React from 'react';
+import PropTypes from 'prop-types';
 import classnames from 'classnames';
 
 const CardHeader = ({
@@ -17,12 +18,12 @@ const CardHeader = ({
 
 CardHeader.propTypes = {
   children: PropTypes.node,
-  className: PropTypes.string
+  className: PropTypes.string,
 };
 
 CardHeader.defaultProps = {
   children: null,
-  className: ''
+  className: '',
 };
 
 export default CardHeader;

@@ -1,4 +1,5 @@
-import React, { PropTypes } from 'react';
+import React from 'react';
+import PropTypes from 'prop-types';
 import classnames from 'classnames';
 
 const Menu = ({
@@ -26,14 +27,14 @@ Menu.propTypes = {
   active: PropTypes. bool,
   children: PropTypes.node,
   className: PropTypes.string,
-  guid: PropTypes.string
+  guid: PropTypes.string,
 };
 
 Menu.defaultProps = {
   active: false,
   children: null,
   className: '',
-  guid: ''
+  guid: '',
 };
 
 Menu.ROLE = 'MENU';
