@@ -3,8 +3,9 @@ import PropTypes from 'prop-types';
 import classnames from 'classnames';
 
 /**
- * Function component factory for elements with simple properties. Eg:
+ * Function component factory for elements with class names only. Eg:
  * ```javascript
+ * const Header = generateNamed({ name: 'card-header'});
  * export default base({ className: 'card-block' });
  * ```
  *
@@ -12,41 +13,40 @@ import classnames from 'classnames';
  * bindings needed for a simple element
  * @method base
  * @param {string} [className] Optional base class name
- * @param {string} [tagName]   Optional wrapping tag element
+ * @param {string} [As]        Override wrapping tag element
  * @return {function} Functional React component
  */
 const base = ({
-  className: _passedClassName,
-  tagName='div',
+  name='',
 }) => {
-  const component = ({
+  const Named = ({
+    As='div',
     className,
     children,
     ...other
   }) => {
-    let _className = classnames(_passedClassName, className);
-    let TagName = tagName;
-
-    console.log('class: ', _className);
+    let _className = classnames(name, className);
 
     return (
-      <TagName className={_className} {...other}>
+      <As className={_className} {...other}>
         {children}
-      </TagName>
+      </As>
     );
   };
 
-  component.propTypes = {
+  Named.propTypes = {
+    As: PropTypes.any,
     children: PropTypes.node,
     className: PropTypes.string,
   };
 
-  component.defaultProps = {
+  Named.defaultProps = {
+    As: 'div',
     children: null,
     className: '',
   };
 
-  return component;
+  return Named;
 };
 
 export default base;

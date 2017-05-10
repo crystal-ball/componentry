@@ -11,6 +11,7 @@ import Nav from './Nav';
 import Alerts from './Alerts';
 import Buttons from './Buttons';
 import Cards from './Cards';
+import Drawers from './Drawers';
 import Dropdowns from './Dropdowns';
 import Icons from './Icons';
 import ListGroups from './ListGroups';
@@ -39,6 +40,7 @@ export default class App extends Component {
             <Route path='/alerts' exact component={Alerts} />
             <Route path='/buttons' exact component={Buttons} />
             <Route path='/cards' exact component={Cards} />
+            <Route path='/drawers' exact component={Drawers} />
             <Route path='/dropdowns' exact component={Dropdowns} />
             <Route path='/icons' exact component={Icons} />
             <Route path='/list-groups' exact component={ListGroups} />

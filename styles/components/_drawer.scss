@@ -1,0 +1,18 @@
+.drawer {
+  .drawer-trigger {
+    display: block;
+    width: 100%;
+    text-align: left;
+  }
+
+  // Drawer content is default styled like a card with a single div
+  .drawer-content {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    background-color: $card-bg;
+    border: $card-border-width solid $card-border-color;
+    padding: $card-spacer-x;
+    @include border-radius($card-border-radius);
+  }
+}

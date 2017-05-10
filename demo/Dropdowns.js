@@ -29,11 +29,14 @@ export default class Dropdowns extends Component {
               onDeactivate={this.logDeactivate}
             >
               <Dropdown.Trigger color='primary'>Dropdown</Dropdown.Trigger>
-              <Dropdown.Menu>
+              <Dropdown.Content>
+                <h6 className='dropdown-header'>Available actions</h6>
                 <Button className='dropdown-item'>Item 1</Button>
                 <Button className='dropdown-item'>Item 2</Button>
                 <Button className='dropdown-item'>Item 3</Button>
-              </Dropdown.Menu>
+                <div className='dropdown-divider' />
+                <Button className='dropdown-item'>Item 4</Button>
+              </Dropdown.Content>
             </Dropdown>
           </div>
           <div className='col-6'>
@@ -44,11 +47,11 @@ export default class Dropdowns extends Component {
               onDeactivate={this.toggleActive}
             >
               <Dropdown.Trigger color='primary'>Dropdown</Dropdown.Trigger>
-              <Dropdown.Menu>
+              <Dropdown.Content>
                 <Button className='dropdown-item'>Item 1</Button>
                 <Button className='dropdown-item'>Item 2</Button>
                 <Button className='dropdown-item'>Item 3</Button>
-              </Dropdown.Menu>
+              </Dropdown.Content>
             </Dropdown>
           </div>
         </div>
