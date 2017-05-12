@@ -14,7 +14,7 @@ const Content = ({
 }) => {
   let _className = classnames(className, {
     [`${element}-menu`]: element === 'dropdown',
-    [`${element}-content`]: element === 'drawer',
+    [`${element}-content`]: element !== 'dropdown',
   });
 
   return (
@@ -23,8 +23,10 @@ const Content = ({
       aria-labelledby={arias.labelledby ? guid : null}
       className={_className}
       id={arias.id ? guid : null}
+      role={arias.role ? arias.role : null}
       {...other}
     >
+      {element === 'tooltip' ? <div className='tip' /> : null}
       {children}
     </As>
   );

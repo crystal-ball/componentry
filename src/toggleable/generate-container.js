@@ -79,7 +79,11 @@ export default function generateContainer(element='') {
         ...other
       } = this.props;
       const { guid, toggleActive, contentArias, triggerArias } = this;
-      const _className = classnames(element, `${this.guid}-container`, className);
+      const _className = classnames(className, {
+        [element]: element === 'dropdown',
+        [`${this.guid}-container`]: element === 'dropdown',
+        [`${element}-container`]: element !== 'dropdown',
+      });
 
       // Default active to controlled prop, if undefined then element is being used as
       // uncontrolled and we fall back to internal state tracking

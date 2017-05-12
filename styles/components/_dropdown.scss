@@ -1,3 +1,14 @@
+// ========================================================
+// Dropdown
+// ========================================================
+
+
 .dropdown-menu {
   display: block;
+}
+
+// Note that item padding-y is an addition to BS by Componentry, it is defaulted to
+// 3px to match hard coded BS value.
+.dropdown-item {
+  padding: $dropdown-item-padding-y $dropdown-item-padding-x;
 }

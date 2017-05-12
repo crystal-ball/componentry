@@ -8,3 +8,4 @@ export { default as Drawer } from './src/Drawer';
 export { default as Dropdown } from './src/Dropdown';
 export { default as Icon } from './src/Icon';
 export * from './src/list-group';
+export { default as Tooltip } from './src/Tooltip';

@@ -20,19 +20,30 @@ const Trigger = ({
     [`${element}-trigger`]: element !== 'dropdown',
     [`${element}-toggle`]: element === 'dropdown',
   });
+  let mouseEnter = null;
+  let mouseLeave = null;
 
   // If link was not specified, then it is default true for drawers only
   if (link === null) {
-    link = element === 'drawer' ? true : false;
+    link = element === 'drawer' || element === 'tooltip' ? true : false;
+  }
+
+  // Tooltip element toggles on click and mouse events
+  if (element === 'tooltip') {
+    mouseEnter = toggleActive;
+    mouseLeave = toggleActive;
   }
 
   return (
     <As
       aria-controls={arias.controls ? guid : null}
+      aria-describedby={arias.describedby ? guid : null}
       aria-expanded={arias.expanded ? expanded : null}
       aria-haspopup={arias.haspopup ? 'true' : null}
       className={_className}
       id={arias.id ? guid : null}
+      onMouseEnter={mouseEnter}
+      onMouseLeave={mouseLeave}
       onClick={toggleActive}
       link={link}
       {...other}

@@ -14,3 +14,21 @@ export function closest(target, className) {
     return null;
   }
 }
+
+/**
+ * Uses canvas.measureText to compute and return the width of the given text of given
+ * font in pixels. Kudos to:
+ * http://stackoverflow.com/questions/118241/calculate-text-width-with-javascript/21015393#21015393
+ *
+ * @param {String} text The text to be rendered.
+ * @param {String} font The css font descriptor that text is to be rendered with (e.g. "bold 14px verdana").
+ * @return {string} The width of the text in a px string format, eg: `'467px'`
+ */
+export function getTextWidth(text, font) {
+  // re-use canvas object for better performance
+  const canvas = getTextWidth.canvas || (getTextWidth.canvas = document.createElement('canvas'));
+  let context = canvas.getContext('2d');
+  context.font = font;
+  const metrics = context.measureText(text);
+  return metrics.width;
+}

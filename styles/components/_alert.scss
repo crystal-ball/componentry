@@ -1,14 +1,21 @@
+// ========================================================
+// Alerts
+// ========================================================
+
+// Assumed class names:
+// .alert, .alert-<COLOR>
+
 .alert {
   display: flex;
   justify-content: space-between;
 
   // Close button inherits color from the alert, and animates to full opacity
   .close {
-    float: none; // BS override
     color: inherit;
+    float: none; // BS override
+    font-size: 1em;
     opacity: 0.6;
     transition: $transition-fade;
-    font-size: 1em;
 
     &:hover,
     &:focus {

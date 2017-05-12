@@ -1,0 +1,53 @@
+// ========================================================
+// Tooltips
+// ========================================================
+
+// Tooltip container is inline block and positioned relative
+// to contain absolute positioned content
+
+// Container Element
+.tooltip-container {
+  display: inline-block;
+  position: relative;
+}
+
+// Content
+.tooltip-content {
+  background-color: $tooltip-bg;
+  color: $tooltip-color;
+  font-size: $font-size-sm;
+  left: 0;
+  margin-top: $tooltip-arrow-width;
+  max-width: $tooltip-max-width;
+  padding: $tooltip-padding-y $tooltip-padding-x;
+  position: absolute;
+  text-align: left;
+  top: 100%;
+  word-wrap: break-word;// Allow breaking very long words so they don't overflow the tooltip's bounds
+  z-index: $zindex-tooltip;
+  @include reset-text();
+  @include border-radius($border-radius);
+
+  // Content Triangle Tip
+  .tip {
+    height: $tooltip-arrow-width * 2;
+    left: 0.5rem;
+    overflow: hidden;
+    pointer-events: none; // Prevents mouseenter of tip that slightly overlaps trigger
+    position: absolute;
+    top: $tooltip-arrow-width * -2;
+    width: $tooltip-arrow-width * 2;
+
+    &:after {
+      background: $tooltip-bg;
+      box-shadow: -1px -1px 6px rgba(0, 0, 0, 0.15);
+      content: "";
+      height: $tooltip-arrow-width;
+      left: $tooltip-arrow-width / 2;
+      position: absolute;
+      top: $tooltip-arrow-width * 1.5;
+      transform: rotate(45deg);
+      width: $tooltip-arrow-width;
+    }
+  }
+}

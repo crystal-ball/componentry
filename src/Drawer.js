@@ -3,7 +3,7 @@ import generateContainer from './toggleable/generate-container';
 const Container = generateContainer('drawer');
 
 /**
- * The `<Drawer>` component creates an expandable content drawer.
+ * The Drawer component creates an expandable content drawer.
  *
  * @class Drawer
  * @constructor
