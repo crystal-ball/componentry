@@ -29,7 +29,7 @@ const Trigger = ({
   }
 
   // Tooltip element toggles on click and mouse events
-  if (element === 'tooltip') {
+  if (element === 'tooltip' || element === 'popover') {
     mouseEnter = toggleActive;
     mouseLeave = toggleActive;
   }

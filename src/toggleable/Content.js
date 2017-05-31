@@ -12,10 +12,19 @@ const Content = ({
   guid='',
   ...other
 }) => {
+  let hasTip;
   let _className = classnames(className, {
     [`${element}-menu`]: element === 'dropdown',
     [`${element}-content`]: element !== 'dropdown',
   });
+
+  if (element === 'tooltip') {
+    hasTip = <div className='tip' />;
+  }
+
+  if (element === 'popover') {
+    hasTip = <div className='tip-container'><div className='tip' /></div>;
+  }
 
   return (
     <As
@@ -26,7 +35,7 @@ const Content = ({
       role={arias.role ? arias.role : null}
       {...other}
     >
-      {element === 'tooltip' ? <div className='tip' /> : null}
+      {hasTip ? hasTip : null}
       {children}
     </As>
   );

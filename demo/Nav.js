@@ -29,6 +29,9 @@ export default function FourOhFour() {
         <Link to='/list-groups'>List Groups</Link>
       </div>
       <div>
+        <Link to='/popovers'>Popovers</Link>
+      </div>
+      <div>
         <Link to='/tooltips'>Tooltips</Link>
       </div>
       <div>

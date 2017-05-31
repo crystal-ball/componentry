@@ -1,6 +1,30 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import classnames from 'classnames';
+import { bool, func, node, string } from 'prop-types';
+
+Button.propTypes = {
+  children: node,
+  className: string,
+  color: string,
+  large: bool,
+  link: bool,
+  onMouseDown: func,
+  outline: bool,
+  small: bool,
+  type: string,
+};
+
+Button.defaultProps = {
+  children: null,
+  className: null,
+  color: '',
+  large: false,
+  link: false,
+  onMouseDown: null,
+  outline: false,
+  small: false,
+  type: 'button',
+};
 
 /**
  * Function to handle removing default Bootstrap box-shadow focus style only on click
@@ -55,7 +79,7 @@ const suppressBoxShadowOnClick = evt => {
  * @param {string} [type='button']  Pass a type to override button `type` attribute
  * @return {Component}
  */
-const Button = ({
+function Button({
   children=null,
   className='',
   color='',
@@ -66,7 +90,7 @@ const Button = ({
   type='button',
   onMouseDown,
   ...other
-}) => {
+}) {
   let _onMouseDown;
   let _className = classnames('btn', className, {
     [`btn-${color}`]: color && !outline,
@@ -93,30 +117,6 @@ const Button = ({
       {children}
     </button>
   );
-};
-
-Button.propTypes = {
-  children: PropTypes.node,
-  className: PropTypes.string,
-  color: PropTypes.string,
-  large: PropTypes.bool,
-  link: PropTypes.bool,
-  onMouseDown: PropTypes.func,
-  outline: PropTypes.bool,
-  small: PropTypes.bool,
-  type: PropTypes.string,
-};
-
-Button.defaultProps = {
-  children: null,
-  className: null,
-  color: '',
-  large: false,
-  link: false,
-  onMouseDown: null,
-  outline: false,
-  small: false,
-  type: 'button',
-};
+}
 
 export default Button;

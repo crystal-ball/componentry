@@ -1,0 +1,113 @@
+// ========================================================
+// Popovers
+// ========================================================
+
+// Popover container is inline flex and positioned relative
+// to contain absolute positioned content
+
+// Container Element
+.popover-container {
+  display: inline-flex;
+  position: relative;
+  align-items: center;
+  justify-content: center;
+}
+
+.popover-content {
+  position: absolute;
+  z-index: $zindex-popover;
+  display: block;
+  max-width: $popover-max-width;
+  padding: $popover-inner-padding;
+  font-size: $font-size-sm;
+  word-wrap: break-word; // Allow breaking very long words so they don't overflow the popover's bounds
+  background-color: $popover-bg;
+  background-clip: padding-box;
+  box-shadow: rgba(0, 0, 0, 0.3) 0px 2px 6px;
+  @include reset-text();
+  @include border-radius($border-radius-lg);
+  @include box-shadow($popover-box-shadow);
+
+  .tip-container {
+    display: flex;
+    position: absolute;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    pointer-events: none; // Prevents mouseenter of tip that slightly overlaps trigger
+  }
+
+  .tip {
+    height: $popover-arrow-width * 2;
+    overflow: hidden;
+    pointer-events: none; // Prevents mouseenter of tip that slightly overlaps trigger
+    width: $popover-arrow-width * 2;
+
+    &:after {
+      background: $popover-bg;
+      box-shadow: -1px -1px 6px rgba(0, 0, 0, 0.15);
+      content: "";
+      height: $popover-arrow-width;
+      position: absolute;
+      width: $popover-arrow-width;
+      transform: rotate(45deg);
+    }
+  }
+
+  // ========================================================
+  // Position Rules
+  // ========================================================
+
+  &.bottom {
+    top: 100%;
+    margin-top: $popover-arrow-width;
+
+    .tip-container {
+      width: 100%;
+      bottom: 100%;
+      left: 0;
+    }
+
+    .tip:after { top: $popover-arrow-width * 1.5; }
+  }
+
+  &.top {
+    bottom: 100%;
+    margin-bottom: $popover-arrow-width;
+
+    .tip-container {
+      width: 100%;
+      top: 100%;
+      left: 0;
+    }
+
+    .tip:after { bottom: $popover-arrow-width * 1.5; }
+  }
+
+  &.right {
+    left: 100%;
+    margin-left: $popover-arrow-width;
+
+    .tip-container {
+      height: 100%;
+      top: 0;
+      left: -$popover-arrow-width * 2;
+    }
+
+    .tip:after { left: $popover-arrow-width * 1.5; }
+  }
+
+  &.left {
+    right: 100%;
+    margin-right: $popover-arrow-width;
+
+    .tip-container {
+      height: 100%;
+      top: 0;
+      right: -$popover-arrow-width * 2;
+    }
+
+    .tip:after { right: $popover-arrow-width * 1.5; }
+  }
+}
+

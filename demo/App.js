@@ -15,6 +15,7 @@ import Drawers from './Drawers';
 import Dropdowns from './Dropdowns';
 import Icons from './Icons';
 import ListGroups from './ListGroups';
+import Popovers from './Popovers';
 import Tooltips from './Tooltips';
 import FourOhFour from './FourOhFour';
 import Clear from './Clear';
@@ -45,6 +46,7 @@ export default class App extends Component {
             <Route path='/dropdowns' exact component={Dropdowns} />
             <Route path='/icons' exact component={Icons} />
             <Route path='/list-groups' exact component={ListGroups} />
+            <Route path='/popovers' exact component={Popovers} />
             <Route path='/tooltips' exact component={Tooltips} />
             <Route path='/clear' exact component={Clear} />
             <Route component={FourOhFour} />
