@@ -2,11 +2,8 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import classnames from 'classnames';
 
-// Create Named Components
-import generateNamed from './generate-named';
-const Block = generateNamed({ name: 'card-block' });
-const Footer = generateNamed({ name: 'card-footer' });
-const Header = generateNamed({ name: 'card-header' });
+import Content from './Content';
+import ClassNamed from './ClassNamed';
 
 /**
  * Card component is a simple wrapper for creating markup for card elements. Includes:
@@ -15,9 +12,22 @@ const Header = generateNamed({ name: 'card-header' });
  * - `Card.Footer`
  */
 export default class Card extends Component {
-  static Block = Block
-  static Header = Header
-  static Footer = Footer
+  static Block = ClassNamed(Content, { className: 'card-block' })
+  static Footer = ClassNamed(Content, { className: 'card-footer' })
+  static Header = ClassNamed(Content, { className: 'card-header' })
+  static Title = ClassNamed(Content, { className: 'card-title', As: 'h4' })
+
+  static propTypes = {
+    As: PropTypes.any,
+    children: PropTypes.node,
+    className: PropTypes.string,
+  };
+
+  static defaultProps = {
+    As: 'div',
+    children: null,
+    className: '',
+  };
 
   render() {
     const {
@@ -35,15 +45,3 @@ export default class Card extends Component {
     );
   }
 }
-
-Card.propTypes = {
-  As: PropTypes.any,
-  children: PropTypes.node,
-  className: PropTypes.string,
-};
-
-Card.defaultProps = {
-  As: 'div',
-  children: null,
-  className: '',
-};

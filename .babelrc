@@ -9,9 +9,11 @@
         "node": "current"
       }
     }],
-    "react",
+    "react"
   ],
   "plugins": [
+    // decorators
+    "transform-decorators-legacy",
     // Static Properties
     "transform-class-properties",
     // export * as
@@ -27,11 +29,12 @@
       // minification
       "presets": ["babili"],
       // only include helpers once
-      "plugins": ["external-helpers"],
+      "plugins": ["external-helpers"]
     },
     "test": {
       "presets": ["env", "react"],
       "plugins": [
+        "transform-decorators-legacy",
         "transform-class-properties",
         "transform-object-rest-spread"
       ]

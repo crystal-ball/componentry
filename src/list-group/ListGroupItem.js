@@ -4,14 +4,30 @@ import classNames from 'classnames';
 
 import { Button } from '../../index';
 
-const ListGroupItem = ({
+ListGroupItem.propTypes = {
+  children: PropTypes.node,
+  className: PropTypes.string,
+  href: PropTypes.string,
+  onClick: PropTypes.func,
+  tagName: PropTypes.string,
+};
+
+ListGroupItem.defaultProps = {
+  children: null,
+  className: '',
+  href: '',
+  onClick: null,
+  tagName: '',
+};
+
+function ListGroupItem ({
   children,
   className,
   href,
   onClick,
   tagName,
   ...other
-}) => {
+}) {
   let TagName, actionable, _className;
   if (tagName) {
     TagName = tagName;
@@ -38,22 +54,6 @@ const ListGroupItem = ({
       {children}
     </TagName>
   );
-};
-
-ListGroupItem.propTypes = {
-  children: PropTypes.node,
-  className: PropTypes.string,
-  href: PropTypes.string,
-  onClick: PropTypes.func,
-  tagName: PropTypes.string,
-};
-
-ListGroupItem.defaultProps = {
-  children: null,
-  className: '',
-  href: '',
-  onClick: null,
-  tagName: '',
-};
+}
 
 export default ListGroupItem;
