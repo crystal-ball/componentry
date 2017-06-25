@@ -1,6 +1,9 @@
-/* eslint-disable  react/prop-types */
-import generateContainer from './toggleable/generate-container';
-const Container = generateContainer('drawer');
+/* eslint-disable react/prop-types */
+import { Component } from 'react';
+
+import toggleable from './HOCs/toggleableHOC';
+import ToggleContent from './ToggleContent';
+import ToggleTrigger from './ToggleTrigger';
 
 /**
  * The Drawer component creates an expandable content drawer.
@@ -9,32 +12,36 @@ const Container = generateContainer('drawer');
  * @constructor
  * @extends React.Component
  */
-export default class Drawer extends Container {
-  // Control arias used by subcomponents
-  contentArias = { id: true }
-  triggerArias = { controls: true, expanded: true }
+@toggleable({
+  contentArias: { id: true, hidden: true },
+  element: 'drawer',
+  triggerArias: { controls: true, expanded: true },
+})
+export default class Drawer extends Component {
+  static Content = ToggleContent
+  static Trigger = ToggleTrigger
 
   toggleActive = e => {
-    let { active } = this.props;
-    if (active === undefined) {
-      active = this.state.active;
-    }
+    let { active, onActivate, onActivated, onDeactivate, onDeactivated } = this.props;
+    // Handle uncontrolled drawer
+    if (active === undefined) { active = this.state.active; }
 
     if (!active) {
-      this.props.onActivate(this, e);
+      onActivate(this, e);
     } else {
-      this.props.onDeactivate(this, e);
+      onDeactivate(this, e);
     }
 
     if (this.props.active === undefined) {
-      // State is not controlled, update internal state
+      // Drawer is uncontrolled, update internal state
+      // TODO: use callback version of setState for activated/deactivated
       this.setState({ active: !active });
     }
 
     if (!active) {
-      this.props.onActivated(this, e);
+      onActivated(this, e);
     } else {
-      this.props.onDeactivated(this, e);
+      onDeactivated(this, e);
     }
   }
 }

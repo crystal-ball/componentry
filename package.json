@@ -18,7 +18,7 @@
     "sass": "node-sass styles/componentry-build.scss dist/componentry.css --include-path=node_modules/bootstrap/scss",
     "svg:demo": "svg-sprite --defs --defs-dest=public/assets --defs-sprite=icons.svg assets/svgs/*.svg",
     "svg:dist": "svg-sprite --defs --defs-dest=dist/assets --defs-sprite=icons.svg assets/svgs/*.svg",
-    "test": "BABEL_ENV=test mocha src/test/setup.js src/**/*.spec.js"
+    "test": "BABEL_ENV=test mocha src/test/setup.js $(find src -name '*.spec.js')"
   },
   "keywords": [
     "react",

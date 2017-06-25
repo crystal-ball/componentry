@@ -1,6 +1,9 @@
-/* eslint-disable  react/prop-types */
-import generateContainer from './toggleable/generate-container';
-const Container = generateContainer('tooltip');
+/* eslint-disable react/prop-types */
+import { Component } from 'react';
+
+import toggleable from './HOCs/toggleableHOC';
+import ToggleContent from './ToggleContent';
+import ToggleTrigger from './ToggleTrigger';
 
 import { getTextWidth } from './utils/dom';
 
@@ -13,10 +16,14 @@ import { getTextWidth } from './utils/dom';
  * @constructor
  * @extends React.Component
  */
-export default class Tooltip extends Container {
-  // Control arias used by subcomponents
-  contentArias = { id: true, role: 'tooltip' }
-  triggerArias = { describedby: true }
+@toggleable({
+  contentArias: { id: true, role: 'tooltip', hidden: true },
+  element: 'tooltip',
+  triggerArias: { describedby: true },
+})
+export default class Tooltip extends Component {
+  static Content = ToggleContent
+  static Trigger = ToggleTrigger
 
   /**
    * Internal cache for width of tooltip content. Set after calculating content
@@ -34,13 +41,13 @@ export default class Tooltip extends Container {
    * controlled.
    */
   toggleActive = e => {
-    let { active } = this.props;
+    let { active, onActivate, onActivated, onDeactivate, onDeactivated } = this.props;
     // Handle uncontrolled tooltip with internal state
     if (active === undefined) { active = this.state.active; }
 
     if (!active) {
       // Tooltip is not active, so it is transitioning to shown
-      this.props.onActivate(this, e);
+      onActivate(this, e);
 
       // Position absolute tooltip is constrained by the parent width. Set tooltip
       // width to content width to overflow parent bounds
@@ -66,7 +73,7 @@ export default class Tooltip extends Container {
       }
     } else {
       // Tooltip is active, so it is transitioning to hidden
-      this.props.onDeactivate(this, e);
+      onDeactivate(this, e);
     }
 
     if (this.props.active === undefined) {
@@ -75,9 +82,9 @@ export default class Tooltip extends Container {
     }
 
     if (!active) {
-      this.props.onActivated(this, e);
+      onActivated(this, e);
     } else {
-      this.props.onDeactivated(this, e);
+      onDeactivated(this, e);
     }
   }
 }

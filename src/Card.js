@@ -2,8 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import classnames from 'classnames';
 
-import Content from './Content';
-import ClassNamed from './ClassNamed';
+import pureElementFactory from './factories/pure-element-factory';
 
 /**
  * Card component is a simple wrapper for creating markup for card elements. Includes:
@@ -12,10 +11,10 @@ import ClassNamed from './ClassNamed';
  * - `Card.Footer`
  */
 export default class Card extends Component {
-  static Block = ClassNamed(Content, { className: 'card-block' })
-  static Footer = ClassNamed(Content, { className: 'card-footer' })
-  static Header = ClassNamed(Content, { className: 'card-header' })
-  static Title = ClassNamed(Content, { className: 'card-title', As: 'h4' })
+  static Block = pureElementFactory({ className: 'card-block' })
+  static Footer = pureElementFactory({ className: 'card-footer' })
+  static Header = pureElementFactory({ className: 'card-header' })
+  static Title = pureElementFactory({ className: 'card-title', As: 'h4' })
 
   static propTypes = {
     As: PropTypes.any,

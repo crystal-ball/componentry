@@ -5,64 +5,64 @@ import sinon from 'sinon';
 
 import Button from './Button';
 
-describe('<Button/>', function () {
-  it('should render a button element default', function () {
+describe('<Button/>', () => {
+  it('should render a button element default', () => {
     const wrapper = shallow(<Button />);
     expect(wrapper.find('button')).to.have.length(1);
     expect(wrapper.find('.btn')).to.have.length(1);
     expect(wrapper.find('button[type="button"]')).to.have.length(1);
   });
 
-  it('should render any brand classes for prop color', function () {
+  it('should render any brand classes for prop color', () => {
     const wrapper = shallow(<Button color='info' />);
     expect(wrapper.find('.btn.btn-info')).to.have.length(1);
   });
 
-  it('should render outline class for prop outline', function () {
+  it('should render outline class for prop outline', () => {
     const wrapper = shallow(<Button color='primary' outline />);
     // Even though color is passed, primary flag should override
     expect(wrapper.find('.btn.btn-primary')).to.have.length(0);
     expect(wrapper.find('.btn.btn-outline-primary')).to.have.length(1);
   });
 
-  it('should render class for small button', function () {
+  it('should render class for small button', () => {
     const wrapper = shallow(<Button small />);
     expect(wrapper.find('.btn.btn-sm')).to.have.length(1);
   });
 
-  it('should render class for large button', function () {
+  it('should render class for large button', () => {
     const wrapper = shallow(<Button large />);
     expect(wrapper.find('.btn.btn-lg')).to.have.length(1);
   });
 
-  it('should render any passed className', function () {
+  it('should render any passed className', () => {
     const wrapper = shallow(<Button className='special classes' />);
     expect(wrapper.find('.btn.special.classes')).to.have.length(1);
   });
 
-  it('should render any other passed attributes', function () {
+  it('should render any other passed attributes', () => {
     const wrapper = shallow(<Button data-test='totally-rad' />);
     expect(wrapper.find('[data-test="totally-rad"]')).to.have.length(1);
   });
 
-  it('should not render class btn-link without passed prop', function () {
+  it('should not render class btn-link without passed prop', () => {
     const wrapper = shallow(<Button />);
     expect(wrapper.find('button.btn-link')).to.have.length(0);
     expect(wrapper.find('button.btn-unstyled')).to.have.length(0);
   });
 
-  it('should render class btn-link when passed prop', function () {
+  it('should render class btn-link when passed prop', () => {
     const wrapper = shallow(<Button link />);
     expect(wrapper.find('button.btn-link')).to.have.length(1);
     expect(wrapper.find('button.btn-unstyled')).to.have.length(1);
   });
 
-  it('should render a passed type', function () {
+  it('should render a passed type', () => {
     const wrapper = shallow(<Button type='reset' />);
     expect(wrapper.find('button[type="reset"]')).to.have.length(1);
   });
 
-  it('should render children', function () {
+  it('should render children', () => {
     const wrapper = shallow(<Button><span>Rad</span></Button>);
     expect(wrapper.find('span')).to.have.length(1);
   });

@@ -1,7 +1,10 @@
-/* eslint-disable  react/prop-types */
+/* eslint-disable react/prop-types */
+import { Component } from 'react';
+
+import toggleable from './HOCs/toggleableHOC';
+import ToggleContent from './ToggleContent';
+import ToggleTrigger from './ToggleTrigger';
 import { closest } from './utils/dom';
-import generateContainer from './toggleable/generate-container';
-const Container = generateContainer('dropdown');
 
 /**
  * The `<Dropdown>` element creates a menu.
@@ -11,10 +14,14 @@ const Container = generateContainer('dropdown');
  * - Default focus on open first item
  * - Keydown listener for arrows to navigate through menu items
  */
-export default class Dropdown extends Container {
-  // Control arias used by subcomponents
-  contentArias = { labelledby: true }
-  triggerArias = { expanded: true, haspopup: true, id: true }
+@toggleable({
+  contentArias: { labelledby: true, hidden: true },
+  element: 'dropdown',
+  triggerArias: { expanded: true, haspopup: true, id: true },
+})
+export default class Dropdown extends Component {
+  static Content = ToggleContent
+  static Trigger = ToggleTrigger
 
   _clickHandler = e => {
     // Check if the click was inside the dropdown
@@ -34,20 +41,20 @@ export default class Dropdown extends Container {
   }
 
   toggleActive = e => {
-    let { active } = this.props;
+    let { active, onActivate, onActivated, onDeactivate, onDeactivated } = this.props;
     if (active === undefined) {
       active = this.state.active;
     }
 
     if (!active) {
       // If the dropdown is closed, it's now opening, so setup event listeners
-      this.props.onActivate(this, e); // Consumer hooks
+      onActivate(this, e); // Consumer hooks
       document.addEventListener('mouseup', this._clickHandler);
       document.addEventListener('touchend', this._clickHandler);
       document.addEventListener('keydown', this._keyHandler);
     } else {
       // If the dropdown is open, it's now closing, so remove event listeners
-      this.props.onDeactivate(this, e); // Consumer hooks
+      onDeactivate(this, e); // Consumer hooks
       document.removeEventListener('mouseup', this._clickHandler);
       document.removeEventListener('touchend', this._clickHandler);
       document.removeEventListener('keydown', this._keyHandler);
@@ -60,10 +67,10 @@ export default class Dropdown extends Container {
 
     if (!active) {
       // If the dropdown is closed, it's now opening, so setup event listeners
-      this.props.onActivated(this, e); // Consumer hooks
+      onActivated(this, e); // Consumer hooks
     } else {
       // If the dropdown is open, it's now closing, so remove event listeners
-      this.props.onDeactivated(this, e); // Consumer hooks
+      onDeactivated(this, e); // Consumer hooks
     }
   }
 }
