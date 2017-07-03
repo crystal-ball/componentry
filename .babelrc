@@ -12,27 +12,25 @@
     "react"
   ],
   "plugins": [
-    // decorators
-    "transform-decorators-legacy",
-    // Static Properties
-    "transform-class-properties",
-    // export * as
-    "transform-export-extensions",
-    // spread operator
-    "transform-object-rest-spread"
+    "transform-decorators-legacy", // decorators
+    "transform-class-properties", // class static Properties
+    "transform-export-extensions", // export * as
+    "transform-object-rest-spread" // spread operator
   ],
   "env": {
     "development": {
       "plugins": ["react-hot-loader/babel"]
     },
     "production": {
-      // minification
-      "presets": ["babili"],
-      // only include helpers once
-      "plugins": ["external-helpers"]
+      "presets": ["babili"], // minification
+      "plugins": [
+        "transform-react-remove-prop-types", // Strip propTypes declarations
+        "transform-runtime" // Library babel-helpers import statements
+      ]
     },
     "test": {
       "presets": ["env", "react"],
+      // TODO: why do these plugins have to be declared again for test env???
       "plugins": [
         "transform-decorators-legacy",
         "transform-class-properties",

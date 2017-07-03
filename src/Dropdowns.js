@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Button, Dropdown } from '../index';
+import { Button, Dropdown } from '../es';
 
 export default class Dropdowns extends Component {
 

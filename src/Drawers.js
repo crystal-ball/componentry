@@ -1,5 +1,5 @@
 import React from 'react';
-import { Drawer } from '../index';
+import { Drawer } from '../es';
 
 export default function Drawers() {
   return (
