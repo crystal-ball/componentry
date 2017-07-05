@@ -47,3 +47,9 @@ documentation should explain why the convention has been overridden.
 - Component files should export the component as the default export. Components are
   exported as named exports in the package's `index.js`.
 - Alphabetize component passed properties.
+
+## Library Publishing
+Componentry `prepublish` script creates:
+- AMD consumable for `package.main`
+- ESM consumable for `package.module`
+

@@ -14,7 +14,6 @@
   "plugins": [
     "transform-decorators-legacy", // decorators
     "transform-class-properties", // class static Properties
-    "transform-export-extensions", // export * as
     "transform-object-rest-spread" // spread operator
   ],
   "env": {

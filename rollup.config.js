@@ -32,6 +32,7 @@ export default {
     }),
     babel({
       exclude: 'node_modules/**', // only transpile our source code
+      runtimeHelpers: true,
     }),
   ],
   targets: [
