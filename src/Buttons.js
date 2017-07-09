@@ -1,5 +1,5 @@
 import React from 'react';
-import { Button } from '../es';
+import { Button } from '../lib';
 
 export default function Buttons() {
   return (
@@ -36,7 +36,7 @@ export default function Buttons() {
         </div>
         <div className='col-6'>
           <h4>A++ Acessibility</h4>
-          <p>Text with a 508 accessible button that triggers some <Button link>action</Button></p>
+          <p>Text with a 508 accessible button that triggers some application <Button link>action</Button></p>
         </div>
       </div>
     </div>

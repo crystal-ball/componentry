@@ -2,13 +2,19 @@
 // Popovers
 // ========================================================
 
-// Popover container is inline flex and positioned relative
-// to contain absolute positioned content
+/* Bootstrap popovers are inserted into the DOM at the end of the body on hover and
+ * the location is assigned with transforms. Componentry instead sets the popover
+ * parent container to position relative so that the absolute positioned content
+ * displays relative to parent. This means that Componentry has custom popover styles
+ * instead of using Bootstrap's
+ */
 
 // Container Element
 .popover-container {
-  display: inline-flex;
+  display: inline-flex; // flex instead of block for easier center alignment of content
   position: relative;
+  // Default align content to dead center of trigger, the specific content styles can
+  // then easily move to top/left/right/bottom where needed
   align-items: center;
   justify-content: center;
 }
@@ -19,11 +25,10 @@
   display: block;
   max-width: $popover-max-width;
   padding: $popover-inner-padding;
-  font-size: $font-size-sm;
+  font-size: $popover-font-size;
   word-wrap: break-word; // Allow breaking very long words so they don't overflow the popover's bounds
   background-color: $popover-bg;
   background-clip: padding-box;
-  box-shadow: rgba(0, 0, 0, 0.3) 0px 2px 6px;
   @include reset-text();
   @include border-radius($border-radius-lg);
   @include box-shadow($popover-box-shadow);
@@ -45,7 +50,8 @@
 
     &:after {
       background: $popover-bg;
-      box-shadow: -1px -1px 6px rgba(0, 0, 0, 0.15);
+      @include box-shadow($popover-box-shadow);
+
       content: "";
       height: $popover-arrow-width;
       position: absolute;

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Button, Card } from '../es';
+import { Button, Card } from '../lib';
 
 export default function Buttons() {
   return (
@@ -9,7 +9,7 @@ export default function Buttons() {
         <div className='col-6'>
           <Card>
             <Card.Header>
-              Featured
+              Card Header
             </Card.Header>
             <Card.Block>
               <Card.Title>Card title</Card.Title>

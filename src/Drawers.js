@@ -1,5 +1,5 @@
 import React from 'react';
-import { Drawer } from '../es';
+import { Drawer, Icon } from '../lib';
 
 export default function Drawers() {
   return (
@@ -11,7 +11,7 @@ export default function Drawers() {
         <div className='col-6'>
           <h4>Subcomponents</h4>
           <Drawer>
-            <Drawer.Trigger>Toggle Drawer</Drawer.Trigger>
+            <Drawer.Trigger><Icon icon='chevron' /> Toggle Drawer</Drawer.Trigger>
             <Drawer.Content>
               The Motion Picture Academy refused to nominate Tron (1982) for a special-effects award because, according to director Steven Lisberger, “The Academy thought we cheated by using computers”
             </Drawer.Content>

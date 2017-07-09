@@ -2,8 +2,12 @@
 // Tooltips
 // ========================================================
 
-// Tooltip container is inline block and positioned relative
-// to contain absolute positioned content
+/* Bootstrap tooltips are inserted into the DOM at the end of the body on hover and
+ * the location is assigned with transforms. Componentry instead sets the tooltip
+ * parent container to position relative so that the absolute positioned content
+ * displays relative to parent. This means that Componentry has custom tooltip styles
+ * instead of using Bootstrap's
+ */
 
 // Container Element
 .tooltip-container {
@@ -15,7 +19,7 @@
 .tooltip-content {
   background-color: $tooltip-bg;
   color: $tooltip-color;
-  font-size: $font-size-sm;
+  font-size: $tooltip-font-size;
   left: 0;
   margin-top: $tooltip-arrow-width;
   max-width: $tooltip-max-width;
@@ -23,10 +27,10 @@
   position: absolute;
   text-align: left;
   top: 100%;
-  word-wrap: break-word;// Allow breaking very long words so they don't overflow the tooltip's bounds
+  word-wrap: break-word; // Allow breaking very long words so they don't overflow the popover's bounds
   z-index: $zindex-tooltip;
-  @include reset-text();
-  @include border-radius($border-radius);
+  @include reset-text(); // BS utility - Resets most font attrs
+  @include border-radius($border-radius); // Adds border radius
 
   // Content Triangle Tip
   .tip {
@@ -40,7 +44,6 @@
 
     &:after {
       background: $tooltip-bg;
-      box-shadow: -1px -1px 6px rgba(0, 0, 0, 0.15);
       content: "";
       height: $tooltip-arrow-width;
       left: $tooltip-arrow-width / 2;

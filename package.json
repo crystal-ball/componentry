@@ -12,7 +12,7 @@
     "url": "https://github.com/crystal-ball/componentry"
   },
   "scripts": {
-    "start": "webpack-dev-server",
+    "start": "webpack-dev-server --env=development",
     "test": "BABEL_ENV=test mocha lib/test/setup.js $(find lib -name '*.spec.js')",
     "prepublish": "npm run styles && npm run js && npm run svg",
     "js": "npm run js:esmodules && npm run js:amdmodule",
@@ -39,18 +39,14 @@
   "license": "MIT",
   "devDependencies": {
     "@crystal-ball/eslint-config-eloquence": "^1.0.0",
-    "@inspire-script/webpack-configs": "1.1.0",
+    "@inspire-script/webpack-configs": "2.0.0",
     "babel-cli": "^6.24.1",
-    "babel-eslint": "^7.2.3",
-    "babel-plugin-external-helpers": "^6.22.0",
     "babel-plugin-transform-class-properties": "^6.24.1",
     "babel-plugin-transform-decorators-legacy": "^1.3.4",
     "babel-plugin-transform-object-rest-spread": "^6.23.0",
     "babel-plugin-transform-react-remove-prop-types": "^0.4.6",
     "babel-plugin-transform-runtime": "^6.23.0",
-    "babel-preset-babili": "^0.0.12",
     "babel-register": "^6.24.1",
-    "bootstrap": "4.0.0-alpha.6",
     "chai": "^3.5.0",
     "classnames": "^2.2.5",
     "clean-css-cli": "^4.1.6",
@@ -69,11 +65,11 @@
     "rollup-plugin-commonjs": "^8.0.2",
     "rollup-plugin-node-resolve": "^3.0.0",
     "sinon": "^2.0.0",
-    "svg-sprite": "^1.3.6",
-    "webpack": "^2.2.1",
-    "webpack-dev-server": "^2.4.2"
+    "svg-sprite": "^1.3.6"
   },
   "dependencies": {
-    "babel-runtime": "^6.23.0"
+    "babel-runtime": "^6.23.0",
+    "bootstrap": "4.0.0-alpha.6",
+    "rollup-plugin-babili": "^3.1.0"
   }
 }

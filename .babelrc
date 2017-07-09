@@ -1,13 +1,9 @@
 {
   "presets": [
+    // Autoprefixer transpile for only last 2 browser versions
     ["env", {
       "modules": false,
-      "debug": false,
-      "targets": {
-        "browsers": ["last 2 versions"],
-        "ie": ["11"],
-        "node": "current"
-      }
+      "targets": { "browsers": "last 2 versions" }
     }],
     "react"
   ],
@@ -18,18 +14,19 @@
   ],
   "env": {
     "development": {
-      "plugins": ["react-hot-loader/babel"]
-    },
-    "production": {
-      "presets": ["babili"], // minification
       "plugins": [
-        "transform-react-remove-prop-types", // Strip propTypes declarations
-        "transform-runtime" // Library babel-helpers import statements
+        "react-hot-loader/babel"
       ]
     },
+    "production": {
+      "plugins": [
+        "transform-react-remove-prop-types", // Strip propTypes declarations
+        "transform-runtime" // Library babel-helpers with import statements
+      ]
+    },
+    // The plugins list is overwritten for some reason when declaring presets 😣
     "test": {
       "presets": ["env", "react"],
-      // TODO: why do these plugins have to be declared again for test env???
       "plugins": [
         "transform-decorators-legacy",
         "transform-class-properties",

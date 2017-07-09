@@ -1,5 +1,5 @@
 import React from 'react';
-import { ListGroup } from '../es';
+import { ListGroup } from '../lib';
 
 function testClick() {
   console.log('click');

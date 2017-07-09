@@ -1,5 +1,5 @@
 import React from 'react';
-import { Popover } from '../es';
+import { Popover } from '../lib';
 
 export default function Drawers() {
   return (

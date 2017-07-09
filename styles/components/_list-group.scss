@@ -2,7 +2,6 @@
 // List Group
 // ========================================================
 
-.list-group-item {
-  border-radius: inherit;
-  line-height: inherit; // Reset .btn style
+button.list-group-item {
+  cursor: pointer;
 }

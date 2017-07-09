@@ -1,5 +1,5 @@
 import React from 'react';
-import { Alert } from '../es';
+import { Alert } from '../lib';
 
 export default function Alerts() {
 

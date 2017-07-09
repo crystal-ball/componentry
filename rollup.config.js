@@ -1,6 +1,7 @@
 import commonjs from 'rollup-plugin-commonjs';
 import resolve from 'rollup-plugin-node-resolve';
 import babel from 'rollup-plugin-babel';
+import babili from 'rollup-plugin-babili';
 
 export default {
   entry: './lib/index.js',
@@ -33,6 +34,10 @@ export default {
     babel({
       exclude: 'node_modules/**', // only transpile our source code
       runtimeHelpers: true,
+    }),
+    babili({
+      comments: false,
+      sourceMap: true,
     }),
   ],
   targets: [

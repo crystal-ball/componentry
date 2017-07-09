@@ -1,5 +1,5 @@
 import React from 'react';
-import { Tooltip } from '../es';
+import { Tooltip } from '../lib';
 
 export default function Drawers() {
   return (

@@ -5,6 +5,8 @@
 // Assumed class names:
 // .alert, .alert-<COLOR>
 
+// Alert overrides make wrapper a flex element and removes the float from the close
+// button.
 .alert {
   display: flex;
   justify-content: space-between;
