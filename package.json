@@ -38,8 +38,8 @@
   "author": "Dan Hedgecock <hedgecock.d@gmail.com>",
   "license": "MIT",
   "devDependencies": {
-    "@crystal-ball/eslint-config-eloquence": "^1.0.0",
-    "@inspire-script/webpack-configs": "2.0.0",
+    "@crystal-ball/eslint-config-eloquence": "^1.1.0",
+    "@inspire-script/webpack-configs": "~2.0.0",
     "babel-cli": "^6.24.1",
     "babel-plugin-transform-class-properties": "^6.24.1",
     "babel-plugin-transform-decorators-legacy": "^1.3.4",
