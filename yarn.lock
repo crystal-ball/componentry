@@ -1437,10 +1437,6 @@ clap@^1.0.9:
   dependencies:
     chalk "^1.1.3"
 
-classnames@^2.2.5:
-  version "2.2.5"
-  resolved "https://registry.yarnpkg.com/classnames/-/classnames-2.2.5.tgz#fb3801d453467649ef3603c7d61a02bd129bde6d"
-
 clean-css-cli@^4.1.6:
   version "4.1.6"
   resolved "https://registry.yarnpkg.com/clean-css-cli/-/clean-css-cli-4.1.6.tgz#3ef2a2746b074f55ee0539228710a70db7a78389"
