@@ -26,8 +26,10 @@ Hooks should be called with the component as the first parameter and the event a
 second parameter.
 
 #### Render as
-Each component should accept an as so that an element can have the HTML tag or a
-React component specified as the base.
+Each component should accept an `As` prop that can be used to specify what a
+component should be rendered as. Using an upper case `As` for the prop allows us to
+directly use the prop in the template without needing another variable (b/c JSX
+component must be upper case).
 
 #### Shortcut Properties
 Allow any subcomponent to be passed as a paremeter to the parent component for simple
