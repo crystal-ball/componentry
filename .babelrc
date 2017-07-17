@@ -1,37 +1,42 @@
 {
-  "presets": [
-    // Autoprefixer transpile for only last 2 browser versions
-    ["env", {
-      "modules": false,
-      "targets": { "browsers": "last 2 versions" }
-    }],
-    "react"
-  ],
   "plugins": [
-    "transform-decorators-legacy", // decorators
-    "transform-class-properties", // class static Properties
     "transform-object-rest-spread" // spread operator
   ],
   "env": {
+    // Local Dev
+    // ---------------------------------------------------------------------------
     "development": {
+      "presets": [
+        // Autoprefixer transpile for only last 2 browser versions
+        ["env", { "modules": false, "targets": { "browsers": "Chrome 55" } }],
+        "react"
+      ],
       "plugins": [
         "react-hot-loader/babel"
       ]
     },
+    // Production - Bundling for ES5 AMD module and ES modules
+    // ---------------------------------------------------------------------------
     "production": {
+      "presets": [
+        ["env", { "modules": false }],
+        "react"
+      ],
       "plugins": [
         "transform-react-remove-prop-types", // Strip propTypes declarations
         "transform-runtime" // Library babel-helpers with import statements
       ]
     },
-    // The plugins list is overwritten for some reason when declaring presets 😣
+    // Next - Transpiled to Stage 4 package.esnext
+    // ---------------------------------------------------------------------------
+    "jsnext": {
+      "presets": ["react"],
+      "plugins": ["transform-runtime"]
+    },
+    // Test - Mocha setup cannot use esmodules
+    // ---------------------------------------------------------------------------
     "test": {
-      "presets": ["env", "react"],
-      "plugins": [
-        "transform-decorators-legacy",
-        "transform-class-properties",
-        "transform-object-rest-spread"
-      ]
+      "presets": ["env", "react"]
     }
   }
 }

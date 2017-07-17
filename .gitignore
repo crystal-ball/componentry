@@ -8,5 +8,7 @@ node_modules
 
 # Distributed
 #################################
-es
 dist
+es
+esnext
+

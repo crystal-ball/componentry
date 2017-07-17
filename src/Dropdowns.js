@@ -3,14 +3,16 @@ import { Button, Dropdown } from '../lib';
 
 export default class Dropdowns extends Component {
 
-  state = {
-    controlledActive: false,
+  constructor(props) {
+    super(props);
+    this.state = { controlledActive: false };
+    this.toggleActive = this.toggleActive.bind(this);
   }
 
   logActivate() { console.log('on activate called'); }
   logDeactivate() { console.log('on deactivate called'); }
 
-  toggleActive = () => {
+  toggleActive() {
     const { controlledActive } = this.state;
     this.setState({ controlledActive: !controlledActive });
   }

@@ -22,11 +22,6 @@ import Clear from './Clear';
 
 export default class App extends Component {
 
-  // Example app configuration using context, TODO: docs
-  static childContextTypes = {
-    visibilityTransitionLength: PropTypes.number,
-  };
-
   getChildContext() {
     return {
       visibilityTransitionLength: 350,
@@ -57,3 +52,8 @@ export default class App extends Component {
     );
   }
 }
+
+// Example app configuration using context, TODO: docs
+App.childContextTypes = {
+  visibilityTransitionLength: PropTypes.number,
+};

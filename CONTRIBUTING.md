@@ -3,23 +3,42 @@
 Contributions are welcome! This guide is a resource for navigating the package
 structure and conventions.
 
-## Architecture
-
-## Miscellaneous Knowledge
 Any miscellaneous knowledge that is difficult to document in place or is generally
 applicable to the library can be documented here.
 
+## Architecture
+This library's architecture is driven by two primary goals:
+- Maintain as light of a footprint as possible
+- Make consumption of library as simple as possible
+
+There are _lots_ of React component libraries available, and we don't want to add
+noise to the community. This library is useful because it's small, simple and
+compatible with Boostrap v4.
+
+#### Experimental JS Features
+Library source code should not use experimental JS features beyond Stage-4. This lets
+us deliver an untranspiled version of the library as `package.esnext`. Features like
+class statics and decorators would make some of the code terser, but would then
+require transpilation to maintain Stage-4 status.
+
 ## Dependency Notes
-- `cash-dom`: Used to replace jQuery `.closest()` for filtering click events.
+Componentry's only external dependency is `babel-runtime`, which provides the required
+Babel helpers from transpiling in module format. Bootstrap v4 is included as a
+dependency to allow importing the SCSS without requiring install.
 
-#### Testing
-- Our Mocha setup requires the `.babelrc` file to specify that we are using ES6
-  modules, but for some reason Mocha does not recognize presets in array form like
-  we have: `["latest", { "es2015": { "loose": true, "modules": false } }],`.
+Jed Watson's [classnames](https://github.com/JedWatson/classnames) is recreated in
+repo as an ES module.
 
-  So we have added an environment specific preset in `.babelrc` with the string only
-  latest preset. This is triggered by our npm test script which includes a Babel
-  env: `BABEL_ENV=test mocha src/test/setup.js src/**/*.spec.js`
+## Testing
+Testing uses Mocha with Enzyme. The `.babelrc` configs have a test environment to
+configure Babel to compile ESM for Mocha, this is triggered by the `BABEL_ENV` in the
+package test script.
+
+Test setup is required for Mocha+Enzyme, it is located in the `lib/test/setup.js`
+file which is imported in the package test script.
+
+NOTE: Tests should only validate expected component *behavior*, and not internal
+implementation of those behaviors.
 
 ## Component Expectations
 One of the primary goals of Componentry is a simple, consistent API for all
@@ -49,7 +68,14 @@ documentation should explain why the convention has been overridden.
 - Alphabetize component passed properties.
 
 ## Library Publishing
-Componentry `prepublish` script creates:
-- AMD consumable for `package.main`
-- ESM consumable for `package.module`
+Three versions of the library source code are created by the `prepublish` script:
+- `package.main` ES5 AMD version: This version can be used in any environment
+- `package.module` ES5 ESM version: This version is transpiled to ES5 syntax in ES6 modules. This will
+  be the version picked up by Webpack.
+- `package.esnext` ES Stage 4 version: Untranspiled source version using only Stage-4 features. This
+  version can be used to by consuming projects configured to create their own
+  targeted compile configurations.
+
+The different versions are created using Babel configs triggered by the `BABEL_ENV`,
+see the `.babelrc` file for more info.
 

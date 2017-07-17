@@ -5,24 +5,25 @@
 
 // Colors
 // ---------------------------------------------------------------------------
-// Create grayscale
-$gray-dark:            #292b2c;
-$gray:                 #464a4c;
-$gray-light:           #636c72;
-$gray-lighter:         #eceeef;
-$gray-lightest:        #f7f7f9;
+// Theme grayscale
+$coal:             #292b2c;
+$pebble:           #464a4c;
+$slate:            #636c72;
+$wolf:             rgba(149, 165, 175, 0.3);
+$smoke:            #eceeef;
+$ash:              #f7f7f9;
 
 // Gotta have those blues
-$aegean:    #39608e;
-$denim:     #374d68;
-$cerulean:  #5bc0de;
+$aegean:           #39608e;
+$denim:            #374d68;
+$cerulean:         #5bc0de;
 
-$brand-primary:             $denim;
-$brand-success:             #92c14d;
-$brand-info:                $cerulean;
-$brand-warning:             #f0ad4e;
-$brand-danger:              #d9534f;
-$brand-inverse:             $gray-dark;
+$brand-primary:    $denim;
+$brand-success:    #92c14d;
+$brand-info:       $cerulean;
+$brand-warning:    #f0ad4e;
+$brand-danger:     #d9534f;
+$brand-inverse:    $coal;
 
 // Global Opts
 // ---------------------------------------------------------------------------
@@ -49,7 +50,7 @@ $font-size-h3: 24px;
 $font-size-h4: 18px;
 
 $headings-font-weight: 300;
-$headings-color: $gray;
+$headings-color: $pebble;
 
 $small-font-size: 90%;
 
@@ -71,7 +72,7 @@ $dropdown-item-padding-y: 0.375rem;
 // Tooltips
 // ---------------------------------------------------------------------------
 $tooltip-font-size: $font-size-sm;
-$tooltip-bg: $gray;
+$tooltip-bg: $pebble;
 $tooltip-padding-y: 5px;
 $tooltip-padding-x: 8px;
 $tooltip-arrow-width: 8px;
@@ -96,7 +97,7 @@ $icon-bottom: -0.2em;
 // ========================================================
 // Small text in theme is intended for less important information. Convey this with
 // size AND a lighter gray font color
-small, .small { color: $gray-light; }
+small, .small { color: $slate; }
 
 // Default constraint for paragraphs helps with readability, can be overridden
 // where needed with `mw-100`
