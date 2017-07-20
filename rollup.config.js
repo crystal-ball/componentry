@@ -5,10 +5,7 @@ import babili from 'rollup-plugin-babili';
 
 export default {
   entry: './lib/index.js',
-  external: [
-    'react',
-    'prop-types',
-  ],
+  external: ['react', 'prop-types'],
   plugins: [
     resolve({
       // use "jsnext:main" if possible
@@ -21,14 +18,16 @@ export default {
       main: true,
     }),
     commonjs({
-      include: [
-        'node_modules/**',
-      ],
-      exclude: [
-        'node_modules/process-es6/**',
-      ],
+      include: ['node_modules/**'],
+      exclude: ['node_modules/process-es6/**'],
       namedExports: {
-        'node_modules/react/react.js': ['Children', 'Component', 'PropTypes', 'createElement', 'cloneElement'],
+        'node_modules/react/react.js': [
+          'Children',
+          'Component',
+          'PropTypes',
+          'createElement',
+          'cloneElement',
+        ],
       },
     }),
     babel({
