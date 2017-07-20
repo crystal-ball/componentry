@@ -7,8 +7,15 @@
     // ---------------------------------------------------------------------------
     "development": {
       "presets": [
-        // Autoprefixer transpile for only last 2 browser versions
-        ["env", { "modules": false, "targets": { "browsers": "Chrome 55" } }],
+        [
+          "env",
+          {
+            "modules": false,
+            "targets": {
+              "Chrome": "59"
+            }
+          }
+        ],
         "react"
       ],
       "plugins": [
@@ -19,7 +26,12 @@
     // ---------------------------------------------------------------------------
     "production": {
       "presets": [
-        ["env", { "modules": false }],
+        [
+          "env",
+          {
+            "modules": false
+          }
+        ],
         "react"
       ],
       "plugins": [
@@ -27,16 +39,23 @@
         "transform-runtime" // Library babel-helpers with import statements
       ]
     },
-    // Next - Transpiled to Stage 4 package.esnext
+    // Next - Transpiled to stage 4 for package.esnext
     // ---------------------------------------------------------------------------
     "jsnext": {
-      "presets": ["react"],
-      "plugins": ["transform-runtime"]
+      "presets": [
+        "react"
+      ],
+      "plugins": [
+        "transform-runtime"
+      ]
     },
     // Test - Mocha setup cannot use esmodules
     // ---------------------------------------------------------------------------
     "test": {
-      "presets": ["env", "react"]
+      "presets": [
+        "env",
+        "react"
+      ]
     }
   }
 }

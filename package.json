@@ -13,7 +13,7 @@
     "url": "https://github.com/crystal-ball/componentry"
   },
   "scripts": {
-    "start": "webpack-dev-server --env=development",
+    "start": "NODE_ENV=development webpack-dev-server --env=development",
     "test": "BABEL_ENV=test mocha lib/test/setup.js $(find lib -name '*.spec.js')",
     "prepublish": "npm run styles && npm run js && npm run svg",
     "js": "npm run js:esmodules && npm run js:amdmodule",
