@@ -1,7 +1,7 @@
 import React from 'react';
 import { Tooltip } from '../lib';
 
-export default function Drawers() {
+export default function Tooltips() {
   return (
     <div>
       <div className="row">

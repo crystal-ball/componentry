@@ -1,7 +1,7 @@
 import React from 'react';
 import { Button, Card } from '../lib';
 
-export default function Buttons() {
+export default function Cards() {
   return (
     <div>
       <h2>Cards</h2>

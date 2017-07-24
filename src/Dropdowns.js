@@ -2,11 +2,9 @@ import React, { Component } from 'react';
 import { Button, Dropdown } from '../lib';
 
 export default class Dropdowns extends Component {
-  constructor(props) {
-    super(props);
-    this.state = { controlledActive: false };
-    this.toggleActive = this.toggleActive.bind(this);
-  }
+  state = {
+    controlledActive: false,
+  };
 
   logActivate() {
     console.log('on activate called');
@@ -15,10 +13,11 @@ export default class Dropdowns extends Component {
     console.log('on deactivate called');
   }
 
-  toggleActive() {
+  toggleActive = () => {
+    console.log(this);
     const { controlledActive } = this.state;
     this.setState({ controlledActive: !controlledActive });
-  }
+  };
 
   render() {
     return (

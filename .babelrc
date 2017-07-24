@@ -19,7 +19,8 @@
         "react"
       ],
       "plugins": [
-        "react-hot-loader/babel"
+        "react-hot-loader/babel",
+        "transform-class-properties" // Demo app only
       ]
     },
     // Production - Bundling for ES5 AMD module and ES modules

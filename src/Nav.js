@@ -29,6 +29,9 @@ export default function Nav() {
         <Link to="/list-groups">List Groups</Link>
       </div>
       <div>
+        <Link to="/modals">Modals</Link>
+      </div>
+      <div>
         <Link to="/popovers">Popovers</Link>
       </div>
       <div>

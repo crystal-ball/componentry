@@ -1,6 +1,6 @@
 import React from 'react';
 
-export default function Buttons() {
+export default function Clear() {
   return (
     <div>
       <div className="row">

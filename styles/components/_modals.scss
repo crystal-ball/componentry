@@ -1,0 +1,20 @@
+// ========================================================
+// Modals
+// ========================================================
+
+.modal-backdrop[aria-hidden="false"] {
+  opacity: $modal-backdrop-opacity;
+}
+
+.modal[aria-hidden="false"] {
+  display: block;
+  opacity: 1;
+
+  .modal-dialog {
+    transform: translate(0, 0);
+  }
+}
+
+.modal-header .close {
+  float: none;
+}

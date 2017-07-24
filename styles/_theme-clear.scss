@@ -9,6 +9,7 @@
 $coal:             #292b2c;
 $pebble:           #464a4c;
 $slate:            #636c72;
+$aluminum:         #a1aeb7;
 $wolf:             rgba(149, 165, 175, 0.3);
 $smoke:            #eceeef;
 $ash:              #f7f7f9;
@@ -56,6 +57,7 @@ $small-font-size: 90%;
 
 // Components
 // ---------------------------------------------------------------------------
+$border-width: 1px !default;
 $transition-fade: opacity .3s linear;
 
 // Buttons
@@ -83,6 +85,14 @@ $tooltip-max-width: 350px;
 $popover-font-size: $font-size-sm;
 $popover-box-shadow: 0px 1px 5px rgba(0, 0, 0, 0.2);
 $popover-inner-padding: 15px;
+
+// Modals
+// ---------------------------------------------------------------------------
+$modal-content-border-width:     0 !default;
+$modal-header-border-width:      $border-width !default;
+$modal-footer-border-width:      $border-width !default;
+$modal-content-xs-box-shadow:    0 3px 9px rgba(149, 165, 175, 0.7) !default;
+$modal-content-sm-up-box-shadow: 0 5px 15px rgba(149, 165, 175, 0.7) !default;
 
 // Code
 // ---------------------------------------------------------------------------

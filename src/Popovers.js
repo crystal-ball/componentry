@@ -1,7 +1,7 @@
 import React from 'react';
 import { Popover } from '../lib';
 
-export default function Drawers() {
+export default function Popovers() {
   return (
     <div>
       <div className="row">
