@@ -11,40 +11,6 @@ import getDisplayName from '../utils/getDisplayName';
  * @returns {React.Component}
  */
 export default function ariasHOC(WrappedComponent) {
-  WithArias.displayName = `HOC(${getDisplayName(WrappedComponent)})`;
-  WithArias.ROLE = WrappedComponent.ROLE;
-
-  WithArias.propTypes = {
-    active: bool,
-    arias: shape({
-      controls: bool,
-      describedby: bool,
-      expanded: bool,
-      haspopup: bool,
-      hidden: bool,
-      id: bool,
-      labelledby: bool,
-      role: string,
-    }),
-    guid: string,
-  };
-
-  // guid && active cannot be marked as required b/c the original component never has it set?
-  WithArias.defaultProps = {
-    active: undefined,
-    arias: {
-      controls: false,
-      describedby: false,
-      expanded: false,
-      haspopup: false,
-      hidden: false,
-      id: false,
-      labelledby: false,
-      role: null,
-    },
-    guid: undefined,
-  };
-
   function WithArias({
     active,
     arias: {
@@ -55,7 +21,7 @@ export default function ariasHOC(WrappedComponent) {
       hidden,
       id,
       labelledby,
-      role,
+      role
     },
     guid,
     ...other
@@ -74,6 +40,40 @@ export default function ariasHOC(WrappedComponent) {
       />
     );
   }
+
+  WithArias.displayName = `ariasHOC(${getDisplayName(WrappedComponent)})`;
+  WithArias.ROLE = WrappedComponent.ROLE;
+
+  WithArias.propTypes = {
+    active: bool,
+    arias: shape({
+      controls: bool,
+      describedby: bool,
+      expanded: bool,
+      haspopup: bool,
+      hidden: bool,
+      id: bool,
+      labelledby: bool,
+      role: string
+    }),
+    guid: string
+  };
+
+  // guid && active cannot be marked as required b/c the original component never has it set?
+  WithArias.defaultProps = {
+    active: undefined,
+    arias: {
+      controls: false,
+      describedby: false,
+      expanded: false,
+      haspopup: false,
+      hidden: false,
+      id: false,
+      labelledby: false,
+      role: null
+    },
+    guid: undefined
+  };
 
   return WithArias;
 }

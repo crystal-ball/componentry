@@ -89,8 +89,8 @@ describe('<Button/>', () => {
       target: {
         style: { outline: '' },
         addEventListener: () => {},
-        removeEventListener: () => {},
-      },
+        removeEventListener: () => {}
+      }
     });
 
     expect(onMouseDown.calledOnce).to.equal(true);

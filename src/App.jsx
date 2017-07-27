@@ -20,7 +20,7 @@ import Clear from './Clear';
 export default class App extends Component {
   getChildContext() {
     return {
-      visibilityTransitionLength: 350,
+      visibilityTransitionLength: 350
     };
   }
 
@@ -52,5 +52,5 @@ export default class App extends Component {
 
 // Example app configuration using context, TODO: docs
 App.childContextTypes = {
-  visibilityTransitionLength: PropTypes.number,
+  visibilityTransitionLength: PropTypes.number
 };

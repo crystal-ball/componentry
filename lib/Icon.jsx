@@ -3,19 +3,6 @@ import { bool, string } from 'prop-types';
 
 import classNames from './utils/classnames';
 
-Icon.propTypes = {
-  className: string,
-  filePath: string,
-  font: bool,
-  icon: string.isRequired,
-};
-
-Icon.defaultProps = {
-  className: '',
-  filePath: '/assets/icons.svg',
-  font: true,
-};
-
 /**
  * Render an SVG icon using an external definition set.
  *
@@ -28,7 +15,7 @@ Icon.defaultProps = {
  * @param {Boolean} [font=true]
  * @param {string} icon
  */
-export default function Icon({ className, filePath, font, icon, ...other }) {
+function Icon({ className, filePath, font, icon, ...other }) {
   className = classNames('icon', icon, className, { b0: !font });
 
   return (
@@ -40,3 +27,18 @@ export default function Icon({ className, filePath, font, icon, ...other }) {
     </svg>
   );
 }
+
+Icon.propTypes = {
+  className: string,
+  filePath: string,
+  font: bool,
+  icon: string.isRequired
+};
+
+Icon.defaultProps = {
+  className: '',
+  filePath: '/assets/icons.svg',
+  font: true
+};
+
+export default Icon;

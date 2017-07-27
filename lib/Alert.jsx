@@ -23,10 +23,10 @@ export default class Alert extends Component {
     // Fade controls visibility status and hidden controls DOM position status
     this.state = {
       fade: false,
-      hidden: false,
+      hidden: false
     };
 
-    this._dismiss = this._dismiss.bind(this);
+    this.handleDismiss = this.handleDismiss.bind(this);
     this.renderClose = this.renderClose.bind(this);
   }
 
@@ -35,7 +35,7 @@ export default class Alert extends Component {
    * this is just a convenience method. Passing an `onDismiss` that handles updating
    * application state to dismiss an alert is preferred.
    */
-  _dismiss() {
+  handleDismiss() {
     // props has precedence to allow for single instance overrides, context can be
     // used for app wide configs, fall back to defaults
     const timer =
@@ -58,10 +58,11 @@ export default class Alert extends Component {
    * @return {Component|null}
    */
   renderClose() {
-    let { dismissable, onDismiss } = this.props;
+    const { dismissable } = this.props;
+    let { onDismiss } = this.props;
     // If alert is dismissable, but an onDismiss wasn't passed, use our internal
     // fade out
-    onDismiss = onDismiss || this._dismiss;
+    onDismiss = onDismiss || this.handleDismiss;
 
     return dismissable
       ? <Button link onClick={onDismiss} className="close" aria-label="close">
@@ -71,17 +72,19 @@ export default class Alert extends Component {
   }
 
   render() {
-    let { children, className, color, ...other } = this.props;
-    let { fade, hidden } = this.state;
-    let { ...dom } = cleanProps(other, [
+    const { children, color, ...other } = this.props;
+    let { className } = this.props;
+    const { fade, hidden } = this.state;
+    const { ...dom } = cleanProps(other, [
+      'className',
       'dismissable',
       'onDismiss',
-      'visibilityTransitionLength',
+      'visibilityTransitionLength'
     ]);
 
     className = classNames('alert', className, {
       [`alert-${color}`]: color,
-      fade: fade,
+      fade
     });
 
     return (
@@ -102,7 +105,7 @@ export default class Alert extends Component {
 }
 
 Alert.contextTypes = {
-  visibilityTransitionLength: PropTypes.number,
+  visibilityTransitionLength: PropTypes.number
 };
 
 Alert.propTypes = {
@@ -111,7 +114,7 @@ Alert.propTypes = {
   color: PropTypes.string,
   dismissable: PropTypes.bool,
   onDismiss: PropTypes.func,
-  visibilityTransitionLength: PropTypes.number,
+  visibilityTransitionLength: PropTypes.number
 };
 
 Alert.defaultProps = {
@@ -120,5 +123,5 @@ Alert.defaultProps = {
   color: '',
   dismissable: true,
   onDismiss: null,
-  visibilityTransitionLength: null,
+  visibilityTransitionLength: null
 };

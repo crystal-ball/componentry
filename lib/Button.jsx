@@ -3,30 +3,6 @@ import { bool, func, node, string } from 'prop-types';
 
 import classNames from './utils/classnames';
 
-Button.propTypes = {
-  children: node,
-  className: string,
-  color: string,
-  large: bool,
-  link: bool,
-  onMouseDown: func,
-  outline: bool,
-  small: bool,
-  type: string,
-};
-
-Button.defaultProps = {
-  children: null,
-  className: '',
-  color: '',
-  large: false,
-  link: false,
-  onMouseDown: null,
-  outline: false,
-  small: false,
-  type: 'button',
-};
-
 /**
  * Function to handle removing default Bootstrap box-shadow focus style only on click
  * of button by attaching function to the `onMouseDown` event (which is only
@@ -82,7 +58,7 @@ const suppressBoxShadowOnClick = evt => {
  * @param {string} [type='button']  Pass a type to override button `type` attribute
  * @return {Component}
  */
-export default function Button({
+function Button({
   children,
   className,
   color,
@@ -93,7 +69,7 @@ export default function Button({
   onMouseDown,
   ...other
 }) {
-  let _onMouseDown;
+  let mouseDown;
 
   className = classNames(className, 'btn', {
     [`btn-${color}`]: color && !outline,
@@ -101,23 +77,49 @@ export default function Button({
     'btn-unstyled': link,
     [`btn-outline-${color}`]: outline && color,
     'btn-lg': large,
-    'btn-sm': small,
+    'btn-sm': small
   });
 
   // If an onMouseDown was passed in, call it, then call our blur handler
   if (onMouseDown) {
-    _onMouseDown = function(evt) {
+    mouseDown = function mouseDownHandler(evt) {
       onMouseDown.call(this, evt);
       suppressBoxShadowOnClick(evt);
     };
     // Otherwise just attach our blur handler
   } else {
-    _onMouseDown = suppressBoxShadowOnClick;
+    mouseDown = suppressBoxShadowOnClick;
   }
 
   return (
-    <button className={className} onMouseDown={_onMouseDown} {...other}>
+    <button className={className} onMouseDown={mouseDown} {...other}>
       {children}
     </button>
   );
 }
+
+Button.propTypes = {
+  children: node,
+  className: string,
+  color: string,
+  large: bool,
+  link: bool,
+  onMouseDown: func,
+  outline: bool,
+  small: bool,
+  type: string
+};
+
+Button.defaultProps = {
+  children: null,
+  className: '',
+  color: '',
+  large: false,
+  link: false,
+  onMouseDown: null,
+  outline: false,
+  small: false,
+  type: 'button'
+};
+
+export default Button;

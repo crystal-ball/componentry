@@ -1,20 +1,19 @@
 import React, { Component } from 'react';
 import { Button, Dropdown } from '../lib';
 
+function logActivate() {
+  console.log('on activate called');
+}
+function logDeactivate() {
+  console.log('on deactivate called');
+}
+
 export default class Dropdowns extends Component {
   state = {
-    controlledActive: false,
+    controlledActive: false
   };
 
-  logActivate() {
-    console.log('on activate called');
-  }
-  logDeactivate() {
-    console.log('on deactivate called');
-  }
-
   toggleActive = () => {
-    console.log(this);
     const { controlledActive } = this.state;
     this.setState({ controlledActive: !controlledActive });
   };
@@ -28,10 +27,7 @@ export default class Dropdowns extends Component {
           </div>
           <div className="col-6">
             <h4>Uncontrolled Example</h4>
-            <Dropdown
-              onActivate={this.logActivate}
-              onDeactivate={this.logDeactivate}
-            >
+            <Dropdown onActivate={logActivate} onDeactivate={logDeactivate}>
               <Dropdown.Trigger color="primary">Dropdown</Dropdown.Trigger>
               <Dropdown.Content>
                 <h6 className="dropdown-header">Available actions</h6>

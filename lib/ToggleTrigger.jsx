@@ -1,5 +1,5 @@
 import React from 'react';
-import { any, bool, func, node, string } from 'prop-types';
+import { bool, element, func, node, oneOfType, string } from 'prop-types';
 
 import Button from './Button';
 import arias from './HOCs/ariasHOC';
@@ -11,11 +11,11 @@ import classNames from './utils/classnames';
  * @class Trigger
  * @extends {Component}
  */
-let Trigger = function Trigger({
+function Trigger({
   As,
   children,
   className,
-  element,
+  elementType,
   link,
   toggleActive,
   ...other
@@ -24,17 +24,17 @@ let Trigger = function Trigger({
   let mouseLeave = null;
 
   className = classNames(className, {
-    [`${element}-trigger`]: element !== 'dropdown',
-    [`${element}-toggle`]: element === 'dropdown',
+    [`${elementType}-trigger`]: elementType !== 'dropdown',
+    [`${elementType}-toggle`]: elementType === 'dropdown'
   });
 
   // Set link defaults if it was not specified
   if (link === null) {
-    link = element === 'drawer' || element === 'tooltip' ? true : false;
+    link = !!(elementType === 'drawer' || elementType === 'tooltip');
   }
 
   // Events for triggers that active on mouse enter/exit
-  if (element === 'tooltip' || element === 'popover') {
+  if (elementType === 'tooltip' || elementType === 'popover') {
     mouseEnter = toggleActive;
     mouseLeave = toggleActive;
   }
@@ -51,28 +51,28 @@ let Trigger = function Trigger({
       {children}
     </As>
   );
-};
+}
 
 Trigger.ROLE = 'TRIGGER';
 
 Trigger.propTypes = {
-  As: any,
+  As: oneOfType([element, func, node]),
   children: node,
   className: string,
-  element: string,
+  elementType: string,
   link: bool,
-  toggleActive: func,
+  toggleActive: func
 };
 
 Trigger.defaultProps = {
   As: Button,
   children: null,
   className: '',
-  element: '',
+  elementType: '',
   link: null,
-  toggleActive: () => {},
+  toggleActive: () => {}
 };
 
-Trigger = arias(Trigger);
+const ariasTrigger = arias(Trigger);
 
-export default Trigger;
+export default ariasTrigger;

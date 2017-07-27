@@ -1,5 +1,5 @@
 import React from 'react';
-import { any, node, string } from 'prop-types';
+import { node, string } from 'prop-types';
 
 import classNames from '../utils/classnames';
 
@@ -13,18 +13,6 @@ import classNames from '../utils/classnames';
  * @returns {Component} React functional stateless component with base classes.
  */
 export default function({ baseClasses, tagName = 'div', id } = {}) {
-  PureElement.propTypes = {
-    As: any,
-    children: node,
-    className: string,
-  };
-
-  PureElement.defaultProps = {
-    As: null,
-    children: null,
-    className: '',
-  };
-
   function PureElement({ As, children, className, ...other }) {
     As = As || tagName;
     className = classNames(baseClasses, className);
@@ -35,6 +23,18 @@ export default function({ baseClasses, tagName = 'div', id } = {}) {
       </As>
     );
   }
+
+  PureElement.propTypes = {
+    As: node,
+    children: node,
+    className: string
+  };
+
+  PureElement.defaultProps = {
+    As: null,
+    children: null,
+    className: ''
+  };
 
   return PureElement;
 }

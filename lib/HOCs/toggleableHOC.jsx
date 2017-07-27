@@ -1,5 +1,5 @@
 import React, { Children, cloneElement } from 'react';
-import { any, bool, func, node, string } from 'prop-types';
+import { bool, element, func, node, oneOfType, string } from 'prop-types';
 
 import ToggleContent from '../ToggleContent';
 import ToggleTrigger from '../ToggleTrigger';
@@ -14,11 +14,11 @@ let count = 0;
  * with a `toggleActive` method that can be called on `active` change.
  *
  * @export
- * @param {any} [{ contentArias, element, triggerArias }={}]
+ * @param {any} [{ contentArias, elementType, triggerArias }={}]
  * @returns {Component} Toggle-able element
  */
 export default function ToggleableHOCFactory(
-  { contentArias, element, triggerArias } = {}
+  { contentArias, elementType, triggerArias } = {}
 ) {
   return function ToggleableHOC(WrappedComponent) {
     class Container extends WrappedComponent {
@@ -27,7 +27,7 @@ export default function ToggleableHOCFactory(
         // Create a unique id for component that can be passed to trigger and menu
         // for binding aria attrs
         // NOTE: this won't work in server rendered apps 😣
-        this.guid = `${element}-${count++}`;
+        this.guid = `${elementType}-${(count += 1)}`;
 
         // If active is not passed as a prop, internal state is used for uncontrolled
         // drawer
@@ -44,45 +44,40 @@ export default function ToggleableHOCFactory(
             return cloneElement(child, {
               active,
               arias: triggerArias,
-              element,
+              elementType,
               guid,
-              toggleActive,
+              toggleActive
             });
           } else if (child.type && child.type.ROLE === 'CONTENT') {
             return cloneElement(child, {
               active,
               arias: contentArias,
-              element,
-              guid,
+              elementType,
+              guid
             });
-          } else {
-            return child;
           }
+
+          return child;
         });
       }
 
       render() {
-        let {
-          As = 'div',
-          Content,
-          Trigger,
-          active,
-          children,
-          className,
-          ...other
-        } = this.props;
+        const { As = 'div', Content, Trigger, children, ...other } = this.props;
+        let { active, className } = this.props;
         const { guid, toggleActive } = this;
         const { ...dom } = cleanProps(other, [
+          'active',
+          'className',
           'onActivate',
           'onActivated',
           'onDeactivate',
-          'onDeactivated',
+          'onDeactivated'
         ]);
 
         className = classNames(className, {
-          [element]: element === 'dropdown',
-          [`${this.guid}-container`]: element === 'dropdown',
-          [`${element}-container`]: element !== 'dropdown',
+          [elementType]: elementType === 'dropdown',
+          [`${this.guid}-container`]: elementType === 'dropdown',
+          [`${elementType}-container`]: elementType !== 'dropdown'
         });
 
         // Default active to controlled prop, if undefined then element is being used as
@@ -97,7 +92,7 @@ export default function ToggleableHOCFactory(
               <ToggleTrigger
                 active={active}
                 arias={triggerArias}
-                element={element}
+                elementType={elementType}
                 guid={guid}
                 toggleActive={toggleActive}
               >
@@ -108,7 +103,7 @@ export default function ToggleableHOCFactory(
               <ToggleContent
                 active={active}
                 arias={contentArias}
-                element={element}
+                elementType={elementType}
                 guid={guid}
               >
                 {Content}
@@ -118,10 +113,10 @@ export default function ToggleableHOCFactory(
       }
     }
 
-    Container.displayName = `HOC(${getDisplayName(WrappedComponent)})`;
+    Container.displayName = `toggleableHOC(${getDisplayName(WrappedComponent)})`;
 
     Container.propTypes = {
-      As: any,
+      As: oneOfType([element, func, node]),
       Content: string,
       Trigger: string,
       active: bool,
@@ -130,7 +125,7 @@ export default function ToggleableHOCFactory(
       onActivate: func,
       onActivated: func,
       onDeactivate: func,
-      onDeactivated: func,
+      onDeactivated: func
     };
 
     Container.defaultProps = {
@@ -143,7 +138,7 @@ export default function ToggleableHOCFactory(
       onActivate() {},
       onActivated() {},
       onDeactivate() {},
-      onDeactivated() {},
+      onDeactivated() {}
     };
 
     return Container;

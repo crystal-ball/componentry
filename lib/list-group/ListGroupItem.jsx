@@ -1,35 +1,12 @@
 import React from 'react';
-import { any, func, node, string } from 'prop-types';
+import { func, node, string } from 'prop-types';
 
 import Button from '../Button';
 import classNames from '../utils/classnames';
 
-ListGroupItem.propTypes = {
-  As: any,
-  children: node,
-  className: string,
-  href: string,
-  onClick: func,
-};
-
-ListGroupItem.defaultProps = {
-  As: null,
-  children: null,
-  className: '',
-  href: null,
-  onClick: null,
-};
-
-export default function ListGroupItem({
-  As,
-  children,
-  className,
-  href,
-  onClick,
-  ...other
-}) {
+function ListGroupItem({ As, children, className, href, onClick, ...other }) {
   className = classNames('list-group-item', className, {
-    'list-group-item-action': href || onClick,
+    'list-group-item-action': href || onClick
   });
 
   if (!As && (href || onClick)) {
@@ -46,3 +23,21 @@ export default function ListGroupItem({
     </As>
   );
 }
+
+ListGroupItem.propTypes = {
+  As: node,
+  children: node,
+  className: string,
+  href: string,
+  onClick: func
+};
+
+ListGroupItem.defaultProps = {
+  As: null,
+  children: null,
+  className: '',
+  href: null,
+  onClick: null
+};
+
+export default ListGroupItem;

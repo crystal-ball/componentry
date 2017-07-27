@@ -3,7 +3,7 @@ import { Button, Icon, Modal } from '../lib';
 
 export default class Modals extends Component {
   state = {
-    modalActive: false,
+    modalActive: false
   };
 
   toggleModal = () => {

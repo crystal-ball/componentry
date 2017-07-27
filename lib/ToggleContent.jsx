@@ -1,19 +1,19 @@
 import React from 'react';
-import { any, node, string } from 'prop-types';
+import { node, string } from 'prop-types';
 
 import arias from './HOCs/ariasHOC';
 import classNames from './utils/classnames';
 
-function renderTip(element) {
-  if (element === 'tooltip' || element === 'popover') {
+function renderTip(elementType) {
+  if (elementType === 'tooltip' || elementType === 'popover') {
     return (
       <div className="tip-container">
         <div className="tip" />
       </div>
     );
-  } else {
-    return null;
   }
+
+  return null;
 }
 
 /**
@@ -22,38 +22,38 @@ function renderTip(element) {
  * @class Content
  * @extends {Component}
  */
-let Content = function Content({ As, children, className, element, ...other }) {
+function Content({ As, children, className, elementType, ...other }) {
   // Bootstrap dropdowns content must be wrapped in an `dropdown-menu` class, other
   // toggled elements use <ELEMENT>-content
   className = classNames(className, {
-    [`${element}-menu`]: element === 'dropdown',
-    [`${element}-content`]: element !== 'dropdown',
+    [`${elementType}-menu`]: elementType === 'dropdown',
+    [`${elementType}-content`]: elementType !== 'dropdown'
   });
 
   return (
     <As className={className} {...other}>
-      {renderTip(element)}
+      {renderTip(elementType)}
       {children}
     </As>
   );
-};
+}
 
 Content.ROLE = 'CONTENT';
 
 Content.propTypes = {
-  As: any,
+  As: node,
   children: node,
   className: string,
-  element: string,
+  elementType: string
 };
 
 Content.defaultProps = {
   As: 'div',
   children: null,
   className: '',
-  element: '',
+  elementType: ''
 };
 
-Content = arias(Content);
+const ariasContent = arias(Content);
 
-export default Content;
+export default ariasContent;
