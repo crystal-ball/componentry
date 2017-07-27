@@ -15,7 +15,7 @@
   "scripts": {
     "start": "NODE_ENV=development webpack-dev-server --env=development",
     "test": "BABEL_ENV=test mocha lib/test/setup.js $(find lib -name '*.spec.jsx')",
-    "prepublish": "npm run styles && npm run js && npm run svg && npm run clean",
+    "prepublish": "npm run styles && npm run js && npm run svg",
     "js": "npm run js:esmodules && npm run js:amdmodule",
     "styles": "npm run styles:sass && npm run styles:minify && npm run styles:copy",
     "svg": "npm run svg:dist",

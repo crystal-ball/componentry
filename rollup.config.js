@@ -16,6 +16,9 @@ export default {
       // (needs to be converted from CommonJS to ES6
       // – see https://github.com/rollup/rollup-plugin-commonjs
       main: true,
+
+      // Ability to automatically resolve .jsx files
+      extensions: ['.js', '.jsx']
     }),
     commonjs({
       include: ['node_modules/**'],
@@ -26,24 +29,24 @@ export default {
           'Component',
           'PropTypes',
           'createElement',
-          'cloneElement',
-        ],
-      },
+          'cloneElement'
+        ]
+      }
     }),
     babel({
       exclude: 'node_modules/**', // only transpile our source code
-      runtimeHelpers: true,
+      runtimeHelpers: true
     }),
     babili({
       comments: false,
-      sourceMap: true,
-    }),
+      sourceMap: true
+    })
   ],
   targets: [
     {
       dest: 'dist/componentry.js',
       format: 'umd',
-      moduleName: 'componentry',
-    },
-  ],
+      moduleName: 'componentry'
+    }
+  ]
 };
