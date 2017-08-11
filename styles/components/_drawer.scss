@@ -3,6 +3,10 @@
 // ========================================================
 
 .drawer-trigger {
+  // Bs doesn't have real drawers, the 'Collapse' styles can be used to create
+  // them, but b/c they don't include any structural styles they are not
+  // convenient for creating standard drawers with minimal markup. Add display and
+  // margin for standard drawers that could be easily extended/overriden
   display: block; // Prevent drawer content from starting at drawer button boundary
   margin-bottom: $spacer * .5; // mb-2
 }

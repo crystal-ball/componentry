@@ -1,4 +1,9 @@
 // ========================================================
 // Componentry Variables
 // ========================================================
-$dropdown-item-padding-y: 3px !default; // Hard coded in BS
+
+// Any variables used in the Componentry library that are not originally Bootstrap
+// variables are declared here. Note that additional variables should only be
+// created to allow for additional customization not provided in the Bs library.
+
+$dropdown-item-padding-y: 3px !default; // Hard coded in Bs

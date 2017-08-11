@@ -59,7 +59,7 @@ export default class Alert extends Component {
       this.context.visibilityTransitionLength ||
       visibilityTransitionLength;
 
-    // Will immediately set BS 'fade' class to transition opacity to 0
+    // Will immediately set Bs 'fade' class to transition opacity to 0
     this.setState({ fade: true });
     // Roughly when transition is finished, add aria-hidden to element to remove display
     setTimeout(() => {

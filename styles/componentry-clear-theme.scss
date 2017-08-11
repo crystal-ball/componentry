@@ -1,12 +1,11 @@
 // ========================================================
-// Componentry 'Simple' Theme for Bootstrap v4
-// Including Componentry Component Styles
 // Compile Target for Distributed Stylesheet
+// Includes Clear theme + Bootstrap + Componentry
 // ========================================================
 
 // Set Theme 'Clear' Variables
 // ---------------------------------------------------------------------------
-@import 'theme-clear';
+@import 'themes/clear';
 
 // Import Bootstrap v4
 // ---------------------------------------------------------------------------

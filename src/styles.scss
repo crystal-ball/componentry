@@ -11,13 +11,11 @@
 
 // Componentry 'Simple' Theme
 // ---------------------------------------------------------------------------
-@import '../styles/theme-clear';
-
+@import '../styles/themes/clear';
 
 // Bootstrap
 // ---------------------------------------------------------------------------
 @import '~bootstrap/scss/bootstrap';
-
 
 // Componentry Library Styles
 // Note that you should import componentry after importing Boostrap so that

@@ -3,12 +3,12 @@
 // ========================================================
 
 .dropdown-menu {
-  // In Bootstrap this is applied by adding .show class
+  // In Bs this is applied by adding .show class
   display: block;
 }
 
-// Note that item padding-y is an addition to BS by Componentry, it is defaulted to
-// 3px to match hard coded BS value.
+// Note that dropdown items padding-y is an addition to Bs by Componentry (it is
+// defaulted to 3px to match hard coded Bs value)
 .dropdown-item {
   padding: $dropdown-item-padding-y $dropdown-item-padding-x;
 }

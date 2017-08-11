@@ -11,35 +11,35 @@
 
 // Container Element
 .popover-container {
-  display: inline-flex; // flex instead of block for easier center alignment of content
-  position: relative;
   // Default align content to dead center of trigger, the specific content styles can
   // then easily move to top/left/right/bottom where needed
   align-items: center;
+  display: inline-flex; // flex instead of block for easier center alignment of content
   justify-content: center;
+  position: relative;
 }
 
 .popover-content {
-  position: absolute;
-  z-index: $zindex-popover;
+  background-clip: padding-box;
+  background-color: $popover-bg;
   display: block;
+  font-size: $popover-font-size;
   max-width: $popover-max-width;
   padding: $popover-inner-padding;
-  font-size: $popover-font-size;
+  position: absolute;
   word-wrap: break-word; // Allow breaking very long words so they don't overflow the popover's bounds
-  background-color: $popover-bg;
-  background-clip: padding-box;
-  @include reset-text();
+  z-index: $zindex-popover;
   @include border-radius($border-radius-lg);
   @include box-shadow($popover-box-shadow);
+  @include reset-text();
 
   .tip-container {
-    display: flex;
-    position: absolute;
-    justify-content: center;
     align-items: center;
+    display: flex;
+    justify-content: center;
     overflow: hidden;
     pointer-events: none; // Prevents mouseenter of tip that slightly overlaps trigger
+    position: absolute;
   }
 
   .tip {
@@ -55,8 +55,8 @@
       content: "";
       height: $popover-arrow-width;
       position: absolute;
-      width: $popover-arrow-width;
       transform: rotate(45deg);
+      width: $popover-arrow-width;
     }
   }
 
@@ -65,16 +65,18 @@
   // ========================================================
 
   &.bottom {
-    top: 100%;
     margin-top: $popover-arrow-width;
+    top: 100%;
 
     .tip-container {
-      width: 100%;
       bottom: 100%;
       left: 0;
+      width: 100%;
     }
 
-    .tip:after { top: $popover-arrow-width * 1.5; }
+    .tip:after {
+      top: $popover-arrow-width * 1.5;
+    }
   }
 
   &.top {
@@ -82,12 +84,14 @@
     margin-bottom: $popover-arrow-width;
 
     .tip-container {
-      width: 100%;
-      top: 100%;
       left: 0;
+      top: 100%;
+      width: 100%;
     }
 
-    .tip:after { bottom: $popover-arrow-width * 1.5; }
+    .tip:after {
+      bottom: $popover-arrow-width * 1.5;
+    }
   }
 
   &.right {
@@ -100,20 +104,23 @@
       left: -$popover-arrow-width * 2;
     }
 
-    .tip:after { left: $popover-arrow-width * 1.5; }
+    .tip:after {
+      left: $popover-arrow-width * 1.5;
+    }
   }
 
   &.left {
-    right: 100%;
     margin-right: $popover-arrow-width;
+    right: 100%;
 
     .tip-container {
       height: 100%;
-      top: 0;
       right: -$popover-arrow-width * 2;
+      top: 0;
     }
 
-    .tip:after { right: $popover-arrow-width * 1.5; }
+    .tip:after {
+      right: $popover-arrow-width * 1.5;
+    }
   }
 }
-

@@ -2,7 +2,8 @@
 // Tooltips
 // ========================================================
 
-/* Bootstrap tooltips are inserted into the DOM at the end of the body on hover and
+/*
+ * Bootstrap tooltips are inserted into the DOM at the end of the body on hover and
  * the location is assigned with transforms. Componentry instead sets the tooltip
  * parent container to position relative so that the absolute positioned content
  * displays relative to parent. This means that Componentry has custom tooltip styles
@@ -29,7 +30,7 @@
   top: 100%;
   word-wrap: break-word; // Allow breaking very long words so they don't overflow the popover's bounds
   z-index: $zindex-tooltip;
-  @include reset-text(); // BS utility - Resets most font attrs
+  @include reset-text(); // Bs utility - Resets most font attrs
   @include border-radius($border-radius); // Adds border radius
 
   // Content Triangle Tip

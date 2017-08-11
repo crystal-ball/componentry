@@ -1,9 +1,9 @@
 // ========================================================
 // Componentry Styles
-// Including componentry library styles and utility classes
-// only. Can be imported with theme `theme-clear` or any
-// other set of Bootstrap variables
 // ========================================================
+
+// Primary entry into Componentry styles. Includes library specific variables,
+// utility styles, and component styles.
 
 @import 'componentry-variables';
 @import 'utility';

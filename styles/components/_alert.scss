@@ -14,7 +14,7 @@
   // Close button inherits color from the alert, and animates to full opacity
   .close {
     color: inherit;
-    float: none; // BS override
+    float: none; // Bs override
     font-size: 1em;
     opacity: 0.6;
     transition: $transition-fade;
