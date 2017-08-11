@@ -1,20 +1,8 @@
 import React from 'react';
 import { node, string } from 'prop-types';
 
-import arias from './HOCs/ariasHOC';
+import arias from './ariasHOC';
 import classNames from './utils/classnames';
-
-function renderTip(elementType) {
-  if (elementType === 'tooltip' || elementType === 'popover') {
-    return (
-      <div className="tip-container">
-        <div className="tip" />
-      </div>
-    );
-  }
-
-  return null;
-}
 
 /**
  * Toggleable elements Content component.
@@ -32,7 +20,12 @@ function Content({ As, children, className, elementType, ...other }) {
 
   return (
     <As className={className} {...other}>
-      {renderTip(elementType)}
+      {/* Render a content arrow/tip only for tooltips && popovers */}
+      {elementType === 'tooltip' || elementType === 'popover'
+        ? <div className="tip-container">
+            <div className="tip" />
+          </div>
+        : null}
       {children}
     </As>
   );
@@ -54,6 +47,4 @@ Content.defaultProps = {
   elementType: ''
 };
 
-const ariasContent = arias(Content);
-
-export default ariasContent;
+export default arias(Content);

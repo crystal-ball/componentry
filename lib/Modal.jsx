@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import { bool, node } from 'prop-types';
+import { bool, func, node } from 'prop-types';
 
-import pureElementFactory from './factories/pure-element-factory';
+import SimpleElement from './factories/SimpleElement';
 import classNames from './utils/classnames';
 
 let count = 0;
@@ -12,70 +12,67 @@ let count = 0;
  * - Close button auto-wiring in header
  * - Close on escape** - All toggle items!
  * - Aria attrs
- * - Auto focus
- * - Animations
+ * - Auto focus on open
+ * - Animations on open
  *
  * @class Modal
  * @extends {Component}
  */
-class Modal extends Component {
-  constructor(props) {
-    super(props);
-    // Create a unique id for component that can be passed to trigger and menu
-    // for binding aria attrs
-    // NOTE: this won't work in server rendered apps 😣
-    this.guid = `modal-${(count += 1)}`;
-  }
+export default class Modal extends Component {
+  static Header = SimpleElement({
+    baseClasses: 'modal-header',
+    id: `modal-${count}`
+  });
+  static Body = SimpleElement({ baseClasses: 'modal-body' });
+  static Footer = SimpleElement({ baseClasses: 'modal-footer' });
+
+  static propTypes = {
+    active: bool.isRequired,
+    children: node,
+    large: bool,
+    onDeactivate: func,
+    small: bool
+  };
+
+  static defaultProps = {
+    children: null,
+    large: false,
+    onDeactivate: () => {},
+    small: false
+  };
+
+  // Create a unique id for component that can be passed to trigger and menu
+  // for binding aria attrs
+  // NOTE: this won't work in server rendered apps 😣
+  guid = `modal-${(count += 1)}`;
 
   render() {
-    const { active, children, large, small } = this.props;
+    const { active, children, large, small, onDeactivate } = this.props;
     const modalDialogClassNames = classNames('modal-dialog', {
       'modal-lg': large,
       'modal-sm': small
     });
 
     return (
-      <div>
+      <div
+        aria-hidden={active ? 'false' : 'true'}
+        aria-labelledby={this.guid}
+        className="modal fade"
+        role="dialog"
+        tabIndex="-1"
+      >
         <div
+          aria-hidden={active ? 'false' : 'true'}
           className="modal-backdrop fade"
-          aria-hidden={active ? 'false' : 'true'}
+          onClick={onDeactivate}
+          role="presentation"
         />
-        <div
-          className="modal fade"
-          aria-hidden={active ? 'false' : 'true'}
-          role="dialog"
-          tabIndex="-1"
-          aria-labelledby={this.guid}
-        >
-          <div className={modalDialogClassNames} role="document">
-            <div className="modal-content">
-              {children}
-            </div>
+        <div className={modalDialogClassNames} role="document">
+          <div className="modal-content">
+            {children}
           </div>
         </div>
       </div>
     );
   }
 }
-
-Modal.Header = pureElementFactory({
-  baseClasses: 'modal-header',
-  id: `modal-${count}`
-});
-Modal.Body = pureElementFactory({ baseClasses: 'modal-body' });
-Modal.Footer = pureElementFactory({ baseClasses: 'modal-footer' });
-
-Modal.propTypes = {
-  active: bool.isRequired,
-  children: node,
-  large: bool,
-  small: bool
-};
-
-Modal.defaultProps = {
-  children: null,
-  large: false,
-  small: false
-};
-
-export default Modal;

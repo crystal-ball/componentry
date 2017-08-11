@@ -19,7 +19,7 @@ import classNames from './utils/classnames';
  * shown. This provides A++ Accessibility for keyboard users._
  * @param {Object} evt React synthetic event
  */
-const suppressBoxShadowOnClick = evt => {
+function suppressBoxShadowOnClick(evt) {
   function blurHandler(event) {
     // Remove box-shadow override to enable possibility of keyboard focus
     event.target.style.boxShadow = '';
@@ -31,7 +31,7 @@ const suppressBoxShadowOnClick = evt => {
   evt.target.style.boxShadow = 'none';
   evt.target.style.outline = 'none';
   evt.target.addEventListener('blur', blurHandler);
-};
+}
 
 /**
  * The `Button` component is the base component for any element that has a user
@@ -58,7 +58,7 @@ const suppressBoxShadowOnClick = evt => {
  * @param {string} [type='button']  Pass a type to override button `type` attribute
  * @return {Component}
  */
-function Button({
+export default function Button({
   children,
   className,
   color,
@@ -121,5 +121,3 @@ Button.defaultProps = {
   small: false,
   type: 'button'
 };
-
-export default Button;

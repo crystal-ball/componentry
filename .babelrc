@@ -1,7 +1,4 @@
 {
-  "plugins": [
-    "transform-object-rest-spread" // spread operator
-  ],
   "env": {
     // Local Dev
     // ---------------------------------------------------------------------------
@@ -20,7 +17,8 @@
       ],
       "plugins": [
         "react-hot-loader/babel",
-        "transform-class-properties" // Demo app only
+        "transform-class-properties",
+        "transform-object-rest-spread"
       ]
     },
     // Production - Bundling for ES5 AMD module and ES modules
@@ -36,17 +34,21 @@
         "react"
       ],
       "plugins": [
+        "transform-class-properties",
+        "transform-object-rest-spread",
         "transform-react-remove-prop-types", // Strip propTypes declarations
         "transform-runtime" // Library babel-helpers with import statements
       ]
     },
     // Next - Transpiled to stage 4 for package.esnext
     // ---------------------------------------------------------------------------
-    "jsnext": {
+    "esnext": {
       "presets": [
         "react"
       ],
       "plugins": [
+        "transform-class-properties",
+        "transform-object-rest-spread",
         "transform-runtime"
       ]
     },
@@ -56,6 +58,10 @@
       "presets": [
         "env",
         "react"
+      ],
+      "plugins": [
+        "transform-class-properties",
+        "transform-object-rest-spread"
       ]
     }
   }

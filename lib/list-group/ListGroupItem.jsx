@@ -4,7 +4,14 @@ import { func, node, string } from 'prop-types';
 import Button from '../Button';
 import classNames from '../utils/classnames';
 
-function ListGroupItem({ As, children, className, href, onClick, ...other }) {
+export default function ListGroupItem({
+  As,
+  children,
+  className,
+  href,
+  onClick,
+  ...other
+}) {
   className = classNames('list-group-item', className, {
     'list-group-item-action': href || onClick
   });
@@ -39,5 +46,3 @@ ListGroupItem.defaultProps = {
   href: null,
   onClick: null
 };
-
-export default ListGroupItem;

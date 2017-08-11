@@ -11,7 +11,7 @@ import classNames from '../utils/classnames';
  * - Only the first child is checked for an href or onClick for perf. If it is variable,
  *   (which is probably not good in the first place), pass a specific As.
  */
-function ListGroup({ As, children, className, ...other }) {
+export default function ListGroup({ As, children, className, ...other }) {
   className = classNames('list-group', className);
 
   // If As has been configured, use it regardless
@@ -44,5 +44,3 @@ ListGroup.defaultProps = {
   children: null,
   className: ''
 };
-
-export default ListGroup;

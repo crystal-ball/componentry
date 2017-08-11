@@ -20,9 +20,9 @@
     eslint-plugin-react "^7.1.0"
     prettier "^1.5.3"
 
-"@inspire-script/webpack-configs@^2.3.0":
-  version "2.3.0"
-  resolved "https://registry.yarnpkg.com/@inspire-script/webpack-configs/-/webpack-configs-2.3.0.tgz#8d9bfece2bc1a7daf99a38b6dd0346a4d51aca1f"
+"@inspire-script/webpack-configs@^2.3.1":
+  version "2.3.1"
+  resolved "https://registry.yarnpkg.com/@inspire-script/webpack-configs/-/webpack-configs-2.3.1.tgz#6284dcb7429a44fee5f3b2ff97a6c80f8c7bc3a9"
   dependencies:
     babel-core "~6.25.0"
     babel-loader "~7.1.1"

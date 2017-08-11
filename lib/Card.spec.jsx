@@ -48,7 +48,7 @@ describe('<Card />', () => {
     expect(wrapper.find('.card-block')).to.have.length(1);
     expect(wrapper.find('.card-title')).to.have.length(1);
     expect(wrapper.find('.card-footer')).to.have.length(1);
-    // Contextual card components are pureElementFactory() components, addl testing
-    // found in pure-element-factory.spec.js
+    // Contextual card components are SimpleElement components, addl testing
+    // found in SimpleElement.spec.js
   });
 });

@@ -23,7 +23,7 @@
     "format": "prettier --single-quote --print-width=84 --write \"{lib,src}/**/*.{js,jsx}\"",
     "documentation": "npm run svg:docs && webpack -p --env=production",
     "clean": "rm -rf dist es esnext",
-    "js:esnext": "BABEL_ENV=jsnext babel lib --out-dir esnext",
+    "js:esnext": "BABEL_ENV=esnext babel lib --out-dir esnext",
     "js:esmodules": "BABEL_ENV=production babel lib --out-dir es",
     "js:amdmodule": "BABEL_ENV=production rollup -c",
     "styles:sass": "node-sass styles/componentry-clear-theme.scss dist/componentry.css --include-path=node_modules/bootstrap/scss",
@@ -45,7 +45,7 @@
   },
   "devDependencies": {
     "@crystal-ball/eslint-config-eloquence": "^2.0.2",
-    "@inspire-script/webpack-configs": "^2.3.0",
+    "@inspire-script/webpack-configs": "^2.3.1",
     "babel-cli": "^6.24.1",
     "babel-plugin-transform-class-properties": "^6.24.1",
     "babel-plugin-transform-object-rest-spread": "^6.23.0",

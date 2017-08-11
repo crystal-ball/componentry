@@ -1,7 +1,7 @@
 import React from 'react';
 import { node, string } from 'prop-types';
 
-import pureElementFactory from './factories/pure-element-factory';
+import SimpleElement from './factories/SimpleElement';
 import classNames from './utils/classnames';
 
 /**
@@ -10,7 +10,7 @@ import classNames from './utils/classnames';
  * - `Card.Header`
  * - `Card.Footer`
  */
-function Card({ As, className, children, ...other }) {
+export default function Card({ As, className, children, ...other }) {
   className = classNames('card', className);
 
   return (
@@ -20,10 +20,10 @@ function Card({ As, className, children, ...other }) {
   );
 }
 
-Card.Block = pureElementFactory({ baseClasses: 'card-block' });
-Card.Footer = pureElementFactory({ baseClasses: 'card-footer' });
-Card.Header = pureElementFactory({ baseClasses: 'card-header' });
-Card.Title = pureElementFactory({ baseClasses: 'card-title', As: 'h4' });
+Card.Block = SimpleElement({ baseClasses: 'card-block' });
+Card.Footer = SimpleElement({ baseClasses: 'card-footer' });
+Card.Header = SimpleElement({ baseClasses: 'card-header' });
+Card.Title = SimpleElement({ baseClasses: 'card-title', As: 'h4' });
 
 Card.propTypes = {
   As: node,
@@ -36,5 +36,3 @@ Card.defaultProps = {
   children: null,
   className: ''
 };
-
-export default Card;

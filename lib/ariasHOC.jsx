@@ -1,7 +1,7 @@
 import React from 'react';
 import { bool, shape, string } from 'prop-types';
 
-import getDisplayName from '../utils/getDisplayName';
+import getDisplayName from './utils/getDisplayName';
 
 /**
  * Decorator for including aria attributes with components. Decorated components must

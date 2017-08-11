@@ -15,7 +15,7 @@ import classNames from './utils/classnames';
  * @param {Boolean} [font=true]
  * @param {string} icon
  */
-function Icon({ className, filePath, font, icon, ...other }) {
+export default function Icon({ className, filePath, font, icon, ...other }) {
   className = classNames('icon', icon, className, { b0: !font });
 
   return (
@@ -40,5 +40,3 @@ Icon.defaultProps = {
   filePath: '/assets/icons.svg',
   font: true
 };
-
-export default Icon;

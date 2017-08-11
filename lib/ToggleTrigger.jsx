@@ -2,7 +2,7 @@ import React from 'react';
 import { bool, element, func, node, oneOfType, string } from 'prop-types';
 
 import Button from './Button';
-import arias from './HOCs/ariasHOC';
+import arias from './ariasHOC';
 import classNames from './utils/classnames';
 
 /**
@@ -73,6 +73,4 @@ Trigger.defaultProps = {
   toggleActive: () => {}
 };
 
-const ariasTrigger = arias(Trigger);
-
-export default ariasTrigger;
+export default arias(Trigger);

@@ -18,7 +18,7 @@ export default class Modals extends Component {
           Toggle Modal
         </Button>
 
-        <Modal active={this.state.modalActive}>
+        <Modal active={this.state.modalActive} onDeactivate={this.toggleModal}>
           <Modal.Header>
             <h3 className="modal-title">This is the header</h3>
             <Button link onClick={this.toggleModal}>
@@ -27,7 +27,9 @@ export default class Modals extends Component {
           </Modal.Header>
           <Modal.Body>This is a modal</Modal.Body>
           <Modal.Footer>
-            <Button color="secondary">Close</Button>
+            <Button color="secondary" onClick={this.toggleModal}>
+              Close
+            </Button>
             <Button color="primary">Save Changes</Button>
           </Modal.Footer>
         </Modal>
