@@ -7,7 +7,6 @@ module.exports = {
     mocha: true
   },
   rules: {
-    'no-param-reassign': 0, // Very useful for extending/overwriting Component props
-    'react/jsx-indent': 0 // Prettier ternary not disabled
+    'no-param-reassign': 0 // Very useful for extending/overwriting Component props
   }
 };

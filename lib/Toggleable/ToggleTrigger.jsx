@@ -1,9 +1,9 @@
 import React from 'react';
 import { bool, element, func, node, oneOfType, string } from 'prop-types';
 
-import Button from './Button';
-import arias from './ariasHOC';
-import classNames from './utils/classnames';
+import Button from '../Button';
+import aria from '../AriaHOC';
+import classNames from '../utils/classnames';
 
 /**
  * Toggleable elements Trigger component.
@@ -73,4 +73,4 @@ Trigger.defaultProps = {
   toggleActive: () => {}
 };
 
-export default arias(Trigger);
+export default aria(Trigger);

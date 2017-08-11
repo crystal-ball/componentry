@@ -20,10 +20,10 @@ export default function Card({ As, className, children, ...other }) {
   );
 }
 
-Card.Block = SimpleElement({ baseClasses: 'card-block' });
+Card.Body = SimpleElement({ baseClasses: 'card-body' });
 Card.Footer = SimpleElement({ baseClasses: 'card-footer' });
 Card.Header = SimpleElement({ baseClasses: 'card-header' });
-Card.Title = SimpleElement({ baseClasses: 'card-title', As: 'h4' });
+Card.Title = SimpleElement({ baseClasses: 'card-title', tagName: 'h4' });
 
 Card.propTypes = {
   As: node,

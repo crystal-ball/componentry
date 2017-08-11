@@ -1,11 +1,9 @@
 import React, { Component } from 'react';
-import PropTypes from 'prop-types';
+import { bool, func, number, node, string } from 'prop-types';
 
 import Button from './Button';
-import Close from './Close';
 import classNames from './utils/classnames';
 import cleanProps from './utils/clean-props';
-import { visibilityTransitionLength } from './utils/configurations';
 
 /**
  * Alerts provide contextual feedback.
@@ -19,16 +17,16 @@ import { visibilityTransitionLength } from './utils/configurations';
  */
 export default class Alert extends Component {
   static contextTypes = {
-    visibilityTransitionLength: PropTypes.number
+    visibilityTransitionLength: number
   };
 
   static propTypes = {
-    children: PropTypes.node,
-    className: PropTypes.string,
-    color: PropTypes.string,
-    dismissable: PropTypes.bool,
-    onDismiss: PropTypes.func,
-    visibilityTransitionLength: PropTypes.number
+    children: node,
+    className: string,
+    color: string,
+    dismissable: bool,
+    onDismiss: func,
+    visibilityTransitionLength: number
   };
 
   static defaultProps = {
@@ -57,7 +55,7 @@ export default class Alert extends Component {
     const timer =
       this.props.visibilityTransitionLength ||
       this.context.visibilityTransitionLength ||
-      visibilityTransitionLength;
+      300;
 
     // Will immediately set Bs 'fade' class to transition opacity to 0
     this.setState({ fade: true });
@@ -73,7 +71,7 @@ export default class Alert extends Component {
    * If the alert is dismissable create a close button, otherwise return null
    * @return {Component|null}
    */
-  renderClose = () => {
+  renderClose = color => {
     const { dismissable } = this.props;
     let { onDismiss } = this.props;
     // If alert is dismissable, but an onDismiss wasn't passed, use our internal
@@ -81,8 +79,13 @@ export default class Alert extends Component {
     onDismiss = onDismiss || this.handleDismiss;
 
     return dismissable
-      ? <Button link onClick={onDismiss} className="close" aria-label="close">
-          <Close />
+      ? <Button
+          link
+          onClick={onDismiss}
+          className="close-button"
+          aria-label="close"
+        >
+          <span className={`close-icon ${color}`} />
         </Button>
       : null;
   };
@@ -114,7 +117,7 @@ export default class Alert extends Component {
           {children}
         </div>
         {/* Render a close button or null depending on configs */}
-        {this.renderClose()}
+        {this.renderClose(color)}
       </div>
     );
   }

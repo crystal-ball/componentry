@@ -23,3 +23,23 @@
 // available from the Bootstrap variables.
 // ---------------------------------------------------------------------------
 @import '../styles/componentry';
+
+// Application Global Styles
+// Final import of application level style rules or updates to Bootstrap and
+// Componentry base styles.
+// ---------------------------------------------------------------------------
+
+// ... custom app styles ...
+
+// TODO: Move to Jetpacked
+.fullscreen-row {
+  width: 100vw;
+  position: relative;
+  margin-left: -50vw;
+  left: 50%;
+}
+
+// Normally set this through theme custom variables, override for demo app
+.icon.font {
+  bottom: -0.05em;
+}

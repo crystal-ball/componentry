@@ -1,5 +1,5 @@
 import React from 'react';
-import { Button } from '../lib';
+import { Button } from '../../lib';
 
 export default function Buttons() {
   return (
@@ -9,6 +9,7 @@ export default function Buttons() {
           <h2>Buttons</h2>
           <div>
             <Button color="primary">Primary</Button>
+            <Button color="secondary">Secondary</Button>
             <Button color="success">Success</Button>
             <Button color="info">Info</Button>
             <Button color="warning">Warning</Button>

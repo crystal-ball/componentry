@@ -1,5 +1,5 @@
 import React from 'react';
-import { Popover } from '../lib';
+import { Popover } from '../../lib';
 
 export default function Popovers() {
   return (

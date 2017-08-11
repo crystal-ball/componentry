@@ -1,5 +1,5 @@
 import React from 'react';
-import { Tooltip } from '../lib';
+import { Tooltip } from '../../lib';
 
 export default function Tooltips() {
   return (

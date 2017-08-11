@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Button, Icon, Modal } from '../lib';
+import { Button, Modal } from '../../lib';
 
 export default class Modals extends Component {
   state = {
@@ -21,13 +21,13 @@ export default class Modals extends Component {
         <Modal active={this.state.modalActive} onDeactivate={this.toggleModal}>
           <Modal.Header>
             <h3 className="modal-title">This is the header</h3>
-            <Button link onClick={this.toggleModal}>
-              <Icon icon="close" font={false} />
+            <Button className="close-button" link onClick={this.toggleModal}>
+              <span className="close-icon" />
             </Button>
           </Modal.Header>
           <Modal.Body>This is a modal</Modal.Body>
           <Modal.Footer>
-            <Button color="secondary" onClick={this.toggleModal}>
+            <Button color="dark" outline onClick={this.toggleModal}>
               Close
             </Button>
             <Button color="primary">Save Changes</Button>

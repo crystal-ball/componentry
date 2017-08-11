@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Button, Dropdown } from '../lib';
+import { Button, Dropdown } from '../../lib';
 
 function logActivate() {
   console.log('on activate called');

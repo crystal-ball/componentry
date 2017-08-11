@@ -9,4 +9,17 @@
   // margin for standard drawers that could be easily extended/overriden
   display: block; // Prevent drawer content from starting at drawer button boundary
   margin-bottom: $spacer * .5; // mb-2
+
+  // The chevron icon can be included with the drawer and open/close will
+  // automatically be animated
+  .chevron-icon {
+    transition: transform 500ms;
+    transform: rotate(-0.25turn);
+  }
+
+  &[aria-expanded='true'] {
+    .chevron-icon {
+      transform: rotate(0);
+    }
+  }
 }

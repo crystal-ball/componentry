@@ -27,8 +27,3 @@
     transform: translate(0, 0);
   }
 }
-
-.modal-header .close {
-  // Header uses flex instead of floats for close X
-  float: none;
-}

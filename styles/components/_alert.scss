@@ -5,24 +5,9 @@
 // Assumed class names:
 // .alert, .alert-<COLOR>
 
-// Alert overrides make wrapper a flex element and removes the float from the close
-// button.
+// Alert overrides make wrapper a flex element
 .alert {
+  align-items: flex-start;
   display: flex;
   justify-content: space-between;
-
-  // Close button inherits color from the alert, and animates to full opacity
-  .close {
-    color: inherit;
-    float: none; // Bs override
-    font-size: 1em;
-    opacity: 0.6;
-    transition: $transition-fade;
-
-    &:hover,
-    &:focus {
-      color: inherit;
-      opacity: 1;
-    }
-  }
 }

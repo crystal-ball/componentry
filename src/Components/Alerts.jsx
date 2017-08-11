@@ -1,5 +1,5 @@
 import React from 'react';
-import { Alert } from '../lib';
+import { Alert } from '../../lib';
 
 export default function Alerts() {
   function logDismiss() {

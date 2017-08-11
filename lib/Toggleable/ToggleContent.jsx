@@ -1,8 +1,8 @@
 import React from 'react';
 import { node, string } from 'prop-types';
 
-import arias from './ariasHOC';
-import classNames from './utils/classnames';
+import aria from '../AriaHOC';
+import classNames from '../utils/classnames';
 
 /**
  * Toggleable elements Content component.
@@ -47,4 +47,4 @@ Content.defaultProps = {
   elementType: ''
 };
 
-export default arias(Content);
+export default aria(Content);

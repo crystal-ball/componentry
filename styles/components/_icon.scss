@@ -2,11 +2,10 @@
 // Icons
 // ========================================================
 
-// The icon class is intended for use with SVGs to create font icons
+// NOTE: The icon class is intended for use with SVGs to create font icons
 
 .icon {
-  bottom: $icon-bottom; // match svg baseline to match font baseline
-  display: inline;
+  display: inline-flex;
   fill: currentColor;
   height: 1em;
   position: relative; // for bottom
@@ -16,7 +15,7 @@
   // adjustment provided by the `bottom` rule to match the font baseline. If the
   // icon is not a font icon, the `b0` class will be added so that any other
   // alignment classes used work properly
-  &.b0 {
-    bottom: 0;
+  &.font {
+    bottom: $icon-bottom; // match svg baseline to match font baseline
   }
 }

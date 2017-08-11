@@ -1,5 +1,5 @@
 import React from 'react';
-import { Drawer, Icon } from '../lib';
+import { Drawer } from '../../lib';
 
 export default function Drawers() {
   return (
@@ -12,7 +12,7 @@ export default function Drawers() {
           <h4>Subcomponents</h4>
           <Drawer>
             <Drawer.Trigger>
-              <Icon icon="chevron" /> Toggle Drawer
+              <span className="chevron-icon" /> Toggle Drawer
             </Drawer.Trigger>
             <Drawer.Content>
               The Motion Picture Academy refused to nominate Tron (1982) for a

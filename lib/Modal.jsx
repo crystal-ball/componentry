@@ -14,6 +14,7 @@ let count = 0;
  * - Aria attrs
  * - Auto focus on open
  * - Animations on open
+ * - Docs on passing flex align-items-center/start to header for close icon alignment
  *
  * @class Modal
  * @extends {Component}
