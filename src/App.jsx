@@ -7,7 +7,7 @@ import Installation from './Installation';
 import Components from './Components';
 import FourOhFour from './FourOhFour';
 
-const urlBase = process.env.NODE_ENV === true ? '/componentry/' : '/';
+const urlBase = process.env.NODE_ENV === 'production' ? '/componentry/' : '/';
 
 // Componentry configuration defaults can be updated using the ThemeProvider
 // component and passing a theme configuration object
