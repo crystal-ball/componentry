@@ -7,6 +7,7 @@ module.exports = env =>
   configs(env, {
     paths: {
       babelLoaderInclude: [resolve('src'), resolve('lib')],
-      appIndexJs: resolve('src/index.jsx')
+      appIndexJs: resolve('src/index.jsx'),
+      publicPath: env === 'production' ? '/componentry/' : '/'
     }
   });

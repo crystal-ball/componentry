@@ -10,7 +10,7 @@ export default function Alerts() {
     <div>
       <div className="row">
         <div className="col-12">
-          <h2>Alerts</h2>
+          <p className="lead">Alert component motivation...</p>
           <Alert color="success" onDismiss={logDismiss}>
             <strong>Well done!</strong> You successfully read this important alert
             message.
@@ -27,6 +27,37 @@ export default function Alerts() {
             <strong>Oh snap!</strong> Change a few things up and try submitting
             again.
           </Alert>
+        </div>
+      </div>
+      <div className="row my-5">
+        <div className="col">
+          <h2>Props</h2>
+          <table className="table">
+            <thead>
+              <tr>
+                <th>Prop</th>
+                <th>Default</th>
+                <th />
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>className</td>
+                <td />
+                <td />
+              </tr>
+              <tr>
+                <td>color</td>
+                <td />
+                <td />
+              </tr>
+              <tr>
+                <td>dismissable</td>
+                <td />
+                <td />
+              </tr>
+            </tbody>
+          </table>
         </div>
       </div>
     </div>

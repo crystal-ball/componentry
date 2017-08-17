@@ -15,22 +15,19 @@
   "scripts": {
     "start": "NODE_ENV=development webpack-dev-server --env=development",
     "test": "BABEL_ENV=test mocha lib/utils-test/setup.js $(find lib -name '*.spec.jsx')",
-    "prepublish": "npm run styles && npm run js && npm run svg",
+    "prepublish": "npm run styles && npm run js",
     "js": "npm run js:esmodules && npm run js:amdmodule",
     "styles": "npm run styles:sass && npm run styles:minify && npm run styles:copy",
-    "svg": "npm run svg:dist",
     "eslint": "eslint --ext .js --ext .jsx src lib",
     "format": "prettier --single-quote --print-width=84 --write \"{lib,src}/**/*.{js,jsx}\"",
-    "documentation": "npm run svg:docs && webpack -p --env=production",
+    "documentation": "NODE_ENV=production webpack --env=production",
     "clean": "rm -rf dist es esnext",
     "js:esnext": "BABEL_ENV=esnext babel lib --out-dir esnext",
     "js:esmodules": "BABEL_ENV=production babel lib --out-dir es",
     "js:amdmodule": "BABEL_ENV=production rollup -c",
     "styles:sass": "node-sass styles/componentry-clear-theme.scss dist/componentry.css --include-path=node_modules/bootstrap/scss",
     "styles:minify": "cleancss -o dist/componentry.min.css dist/componentry.css",
-    "styles:copy": "cp -r styles/* dist",
-    "svg:docs": "svg-sprite --defs --defs-dest=public/assets --defs-sprite=icons.svg assets/svgs/*.svg",
-    "svg:dist": "svg-sprite --defs --defs-dest=dist/assets --defs-sprite=icons.svg assets/svgs/*.svg"
+    "styles:copy": "cp -r styles/* dist"
   },
   "keywords": ["react", "components", "ui", "508", "accessible", "bootstrap"],
   "author": "Dan Hedgecock <hedgecock.d@gmail.com>",
@@ -45,7 +42,7 @@
   },
   "devDependencies": {
     "@crystal-ball/eslint-config-eloquence": "2.2.0",
-    "@inspire-script/webpack-configs": "^2.3.1",
+    "@inspire-script/webpack-configs": "^2.5.0",
     "babel-cli": "^6.24.1",
     "babel-plugin-transform-class-properties": "^6.24.1",
     "babel-plugin-transform-object-rest-spread": "^6.23.0",
@@ -70,7 +67,6 @@
     "rollup-plugin-babili": "^3.1.0",
     "rollup-plugin-commonjs": "^8.0.2",
     "rollup-plugin-node-resolve": "^3.0.0",
-    "sinon": "^2.0.0",
-    "svg-sprite": "^1.3.6"
+    "sinon": "^2.0.0"
   }
 }

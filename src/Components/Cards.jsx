@@ -4,8 +4,10 @@ import { Button, Card } from '../../lib';
 export default function Cards() {
   return (
     <div>
-      <h2>Cards</h2>
       <div className="row justify-content-center">
+        <div className="col-12">
+          <p className="lead">Card component motivation...</p>
+        </div>
         <div className="col-6">
           <Card>
             <Card.Header>Card Header</Card.Header>
@@ -19,6 +21,47 @@ export default function Cards() {
             </Card.Body>
             <Card.Footer>2 days ago</Card.Footer>
           </Card>
+        </div>
+      </div>
+      <div className="row my-5">
+        <div className="col">
+          <h2>Props</h2>
+          <table className="table">
+            <thead>
+              <tr>
+                <th>Prop</th>
+                <th>Default</th>
+                <th />
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Card.Header</td>
+                <td />
+                <td />
+              </tr>
+              <tr>
+                <td>Card.Body</td>
+                <td />
+                <td />
+              </tr>
+              <tr>
+                <td>Card.Footer</td>
+                <td />
+                <td />
+              </tr>
+              <tr>
+                <td>Card.Title</td>
+                <td />
+                <td />
+              </tr>
+              <tr>
+                <td>className</td>
+                <td />
+                <td />
+              </tr>
+            </tbody>
+          </table>
         </div>
       </div>
     </div>
