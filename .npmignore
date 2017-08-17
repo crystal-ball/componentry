@@ -1,8 +1,0 @@
-# Non Distributed Assets
-#################################
-build
-node_modules
-lib
-public
-src
-styles
