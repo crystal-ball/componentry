@@ -1,7 +1,6 @@
-import React from 'react';
-import { bool, func, node, string } from 'prop-types';
-
-import classNames from './utils/classnames';
+import React from 'react'
+import { bool, func, node, shape, string } from 'prop-types'
+import classNames from 'classnames'
 
 /**
  * Function to handle removing default Bootstrap box-shadow focus style only on click
@@ -22,15 +21,45 @@ import classNames from './utils/classnames';
 function suppressBoxShadowOnClick(evt) {
   function blurHandler(event) {
     // Remove box-shadow override to enable possibility of keyboard focus
-    event.target.style.boxShadow = '';
-    event.target.style.outline = '';
+    event.target.style.boxShadow = ''
+    event.target.style.outline = ''
     // Remove this blur listener
-    event.target.removeEventListener('blur', blurHandler);
+    event.target.removeEventListener('blur', blurHandler)
   }
 
-  evt.target.style.boxShadow = 'none';
-  evt.target.style.outline = 'none';
-  evt.target.addEventListener('blur', blurHandler);
+  evt.target.style.boxShadow = 'none'
+  evt.target.style.outline = 'none'
+  evt.target.addEventListener('blur', blurHandler)
+}
+
+Button.propTypes = {
+  children: node,
+  className: string,
+  color: string,
+  large: bool,
+  link: bool,
+  onMouseDown: func,
+  outline: bool,
+  small: bool,
+  type: string
+}
+
+Button.defaultProps = {
+  children: null,
+  className: '',
+  color: '',
+  large: false,
+  link: false,
+  onMouseDown: null,
+  outline: false,
+  small: false,
+  type: 'button'
+}
+
+Button.contextTypes = {
+  COMPONENTRY_THEME: shape({
+    defaultButtonColor: string
+  })
 }
 
 /**
@@ -58,66 +87,46 @@ function suppressBoxShadowOnClick(evt) {
  * @param {string} [type='button']  Pass a type to override button `type` attribute
  * @return {Component}
  */
-export default function Button({
-  children,
-  className,
-  color,
-  large,
-  link,
-  outline,
-  small,
-  onMouseDown,
-  ...other
-}) {
-  let mouseDown;
+export default function Button(
+  {
+    children,
+    className,
+    color,
+    large,
+    link,
+    outline,
+    small,
+    onMouseDown,
+    ...other
+  },
+  { COMPONENTRY_THEME: { defaultButtonColor } }
+) {
+  let mouseDown
+  color = color || defaultButtonColor || 'primary'
 
   className = classNames(className, 'btn', {
-    [`btn-${color}`]: color && !outline,
+    [`btn-${color}`]: !outline,
     'btn-link': link,
     'btn-unstyled': link,
-    [`btn-outline-${color}`]: outline && color,
+    [`btn-outline-${color}`]: outline,
     'btn-lg': large,
     'btn-sm': small
-  });
+  })
 
   // If an onMouseDown was passed in, call it, then call our blur handler
   if (onMouseDown) {
     mouseDown = function mouseDownHandler(evt) {
-      onMouseDown.call(this, evt);
-      suppressBoxShadowOnClick(evt);
-    };
+      onMouseDown.call(this, evt)
+      suppressBoxShadowOnClick(evt)
+    }
     // Otherwise just attach our blur handler
   } else {
-    mouseDown = suppressBoxShadowOnClick;
+    mouseDown = suppressBoxShadowOnClick
   }
 
   return (
     <button className={className} onMouseDown={mouseDown} {...other}>
       {children}
     </button>
-  );
+  )
 }
-
-Button.propTypes = {
-  children: node,
-  className: string,
-  color: string,
-  large: bool,
-  link: bool,
-  onMouseDown: func,
-  outline: bool,
-  small: bool,
-  type: string
-};
-
-Button.defaultProps = {
-  children: null,
-  className: '',
-  color: '',
-  large: false,
-  link: false,
-  onMouseDown: null,
-  outline: false,
-  small: false,
-  type: 'button'
-};

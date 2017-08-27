@@ -1,10 +1,10 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React from 'react'
+import { Link } from 'react-router-dom'
 
-import accessibleSVG from './accessibility.svg';
-import bundleSVG from './bundle.svg';
-import mergeSVG from './merge.svg';
-import reactLogo from './react.svg';
+import accessibleSVG from './accessibility.svg'
+import bundleSVG from './bundle.svg'
+import mergeSVG from './merge.svg'
+import reactLogo from './react.svg'
 
 export default function Home() {
   return (
@@ -99,5 +99,5 @@ export default function Home() {
         </div>
       </div>
     </div>
-  );
+  )
 }

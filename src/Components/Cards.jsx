@@ -1,5 +1,5 @@
-import React from 'react';
-import { Button, Card } from '../../lib';
+import React from 'react'
+import { Button, Card } from '../../lib'
 
 export default function Cards() {
   return (
@@ -65,5 +65,5 @@ export default function Cards() {
         </div>
       </div>
     </div>
-  );
+  )
 }

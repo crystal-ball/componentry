@@ -9,3 +9,8 @@ npm test
 
 Unit testing is run with [Mocha](https://mochajs.org/) and
 [Enzyme](http://airbnb.io/enzyme/).
+
+
+TODO:
+- SimpleElement: baseClasses => baseClassName
+- Use oneOf wherever possible

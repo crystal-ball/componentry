@@ -1,63 +1,69 @@
-import React, { Component } from 'react';
-import { bool, func, node } from 'prop-types';
+import React, { Component } from 'react'
+import { bool, func, oneOf, shape, string, node } from 'prop-types'
+import classNames from 'classnames'
+import nanoid from 'nanoid'
 
-import SimpleElement from './factories/SimpleElement';
-import classNames from './utils/classnames';
-
-let count = 0;
+import withArias from './withArias'
+import SimpleElement from './factories/SimpleElement'
 
 /**
  * TODO:
- * - User hooks
- * - Close button auto-wiring in header
+ * - Close button auto-wiring of aria-label=close && onDeactivate
  * - Close on escape** - All toggle items!
- * - Aria attrs
  * - Auto focus on open
- * - Animations on open
+ * - Animated open/close
  * - Docs on passing flex align-items-center/start to header for close icon alignment
+ * - Design on close button for modals using an `ariaTitle`?
  *
+ * ## Notes:
+ * See MDN [Using the dialog role](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/ARIA_Techniques/Using_the_dialog_role)
  * @class Modal
  * @extends {Component}
  */
 export default class Modal extends Component {
-  static Header = SimpleElement({
-    baseClasses: 'modal-header',
-    id: `modal-${count}`
-  });
-  static Body = SimpleElement({ baseClasses: 'modal-body' });
-  static Footer = SimpleElement({ baseClasses: 'modal-footer' });
+  static Header = SimpleElement({ baseClasses: 'modal-header', ROLE: 'HEADER' })
+  static Body = SimpleElement({ baseClasses: 'modal-body' })
+  static Footer = SimpleElement({ baseClasses: 'modal-footer' })
+  static Title = withArias(
+    SimpleElement({
+      baseClasses: 'modal-title',
+      tagName: 'h3',
+      arias: { id: true }
+    })
+  )
 
   static propTypes = {
     active: bool.isRequired,
-    children: node,
-    large: bool,
+    ariaTitle: string,
+    children: node.isRequired,
     onDeactivate: func,
-    small: bool
-  };
+    size: oneOf(['small', 'large', ''])
+  }
 
   static defaultProps = {
-    children: null,
-    large: false,
+    ariaTitle: '',
     onDeactivate: () => {},
-    small: false
-  };
+    size: ''
+  }
 
-  // Create a unique id for component that can be passed to trigger and menu
-  // for binding aria attrs
-  // NOTE: this won't work in server rendered apps 😣
-  guid = `modal-${(count += 1)}`;
+  static childContextTypes = { componentryArias: shape({ guid: string }) }
+
+  getChildContext = () => ({ componentryArias: { guid: this.guid } })
+  /**
+   * Guid instance property will be uniquely assigned once for each modal instance,
+   * this unique id is then passed to all children through context where it can be
+   * used to wire together title aria attributes
+   */
+  guid = nanoid()
 
   render() {
-    const { active, children, large, small, onDeactivate } = this.props;
-    const modalDialogClassNames = classNames('modal-dialog', {
-      'modal-lg': large,
-      'modal-sm': small
-    });
+    const { active, ariaTitle, children, onDeactivate, size } = this.props
+    const dialogClassNames = classNames('modal-dialog', { [`modal-${size}`]: size })
 
     return (
       <div
         aria-hidden={active ? 'false' : 'true'}
-        aria-labelledby={this.guid}
+        aria-labelledby={`${this.guid}`}
         className="modal fade"
         role="dialog"
         tabIndex="-1"
@@ -68,12 +74,18 @@ export default class Modal extends Component {
           onClick={onDeactivate}
           role="presentation"
         />
-        <div className={modalDialogClassNames} role="document">
+        <div className={dialogClassNames} role="document">
           <div className="modal-content">
+            {/* A++ Accessibility title for modals without visual title */}
+            {ariaTitle
+              ? <div id={this.guid} className="sr-only">
+                  {ariaTitle}
+                </div>
+              : null}
             {children}
           </div>
         </div>
       </div>
-    );
+    )
   }
 }

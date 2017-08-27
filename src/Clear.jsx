@@ -1,4 +1,4 @@
-import React from 'react';
+import React from 'react'
 
 export default function Clear() {
   return (
@@ -27,5 +27,5 @@ export default function Clear() {
         </div>
       </div>
     </div>
-  );
+  )
 }

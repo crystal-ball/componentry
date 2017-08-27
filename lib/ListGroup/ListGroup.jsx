@@ -1,8 +1,8 @@
-import React, { Children } from 'react';
-import { node, string } from 'prop-types';
+import React, { Children } from 'react'
+import { node, string } from 'prop-types'
+import classNames from 'classnames'
 
-import ListGroupItem from './ListGroupItem';
-import classNames from '../utils/classnames';
+import ListGroupItem from './ListGroupItem'
 
 /**
  * To Document:
@@ -12,35 +12,40 @@ import classNames from '../utils/classnames';
  *   (which is probably not good in the first place), pass a specific As.
  */
 export default function ListGroup({ As, children, className, ...other }) {
-  className = classNames('list-group', className);
+  className = classNames('list-group', className)
 
   // If As has been configured, use it regardless
   if (!As && children) {
-    const { href, onClick } = Children.toArray(children)[0].props;
-    // If children have an href or onClick, we need a div wrapper b/c children will
-    // be either <button> or <a> elements and not <li> elements
-    As = href || onClick ? 'div' : 'ul';
+    children = Children.toArray(children)
+    if (children.length) {
+      const { href, onClick } = children[0].props
+      // If children have an href or onClick, we need a div wrapper b/c children will
+      // be either <button> or <a> elements and not <li> elements
+      As = href || onClick ? 'div' : 'ul'
+    } else {
+      As = 'div'
+    }
   } else {
-    As = As || 'ul';
+    As = As || 'ul'
   }
 
   return (
     <As className={className} {...other}>
       {children}
     </As>
-  );
+  )
 }
 
-ListGroup.Item = ListGroupItem;
+ListGroup.Item = ListGroupItem
 
 ListGroup.propTypes = {
   As: node,
   children: node,
   className: string
-};
+}
 
 ListGroup.defaultProps = {
   As: null,
   children: null,
   className: ''
-};
+}

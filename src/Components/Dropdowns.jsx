@@ -1,22 +1,22 @@
-import React, { Component } from 'react';
-import { Button, Dropdown } from '../../lib';
+import React, { Component } from 'react'
+import { Button, Dropdown } from '../../lib'
 
 function logActivate() {
-  console.log('on activate called');
+  console.log('on activate called')
 }
 function logDeactivate() {
-  console.log('on deactivate called');
+  console.log('on deactivate called')
 }
 
 export default class Dropdowns extends Component {
   state = {
     controlledActive: false
-  };
+  }
 
   toggleActive = () => {
-    const { controlledActive } = this.state;
-    this.setState({ controlledActive: !controlledActive });
-  };
+    const { controlledActive } = this.state
+    this.setState({ controlledActive: !controlledActive })
+  }
 
   render() {
     return (
@@ -56,6 +56,6 @@ export default class Dropdowns extends Component {
           </div>
         </div>
       </div>
-    );
+    )
   }
 }

@@ -1,9 +1,9 @@
-import React from 'react';
-import { bool, element, func, node, oneOfType, string } from 'prop-types';
+import React from 'react'
+import { bool, element, func, node, oneOfType, string } from 'prop-types'
+import classNames from 'classnames'
 
-import Button from '../Button';
-import aria from '../AriaHOC';
-import classNames from '../utils/classnames';
+import Button from '../Button'
+import aria from '../AriaHOC'
 
 /**
  * Toggleable elements Trigger component.
@@ -20,23 +20,23 @@ function Trigger({
   toggleActive,
   ...other
 }) {
-  let mouseEnter = null;
-  let mouseLeave = null;
+  let mouseEnter = null
+  let mouseLeave = null
 
   className = classNames(className, {
     [`${elementType}-trigger`]: elementType !== 'dropdown',
     [`${elementType}-toggle`]: elementType === 'dropdown'
-  });
+  })
 
   // Set link defaults if it was not specified
   if (link === null) {
-    link = !!(elementType === 'drawer' || elementType === 'tooltip');
+    link = !!(elementType === 'drawer' || elementType === 'tooltip')
   }
 
   // Events for triggers that active on mouse enter/exit
   if (elementType === 'tooltip' || elementType === 'popover') {
-    mouseEnter = toggleActive;
-    mouseLeave = toggleActive;
+    mouseEnter = toggleActive
+    mouseLeave = toggleActive
   }
 
   return (
@@ -50,10 +50,10 @@ function Trigger({
     >
       {children}
     </As>
-  );
+  )
 }
 
-Trigger.ROLE = 'TRIGGER';
+Trigger.ROLE = 'TRIGGER'
 
 Trigger.propTypes = {
   As: oneOfType([element, func, node]),
@@ -62,7 +62,7 @@ Trigger.propTypes = {
   elementType: string,
   link: bool,
   toggleActive: func
-};
+}
 
 Trigger.defaultProps = {
   As: Button,
@@ -71,6 +71,6 @@ Trigger.defaultProps = {
   elementType: '',
   link: null,
   toggleActive: () => {}
-};
+}
 
-export default aria(Trigger);
+export default aria(Trigger)

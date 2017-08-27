@@ -1,5 +1,5 @@
-import React from 'react';
-import { Popover } from '../../lib';
+import React from 'react'
+import { Popover } from '../../lib'
 
 export default function Popovers() {
   return (
@@ -52,5 +52,5 @@ export default function Popovers() {
         </div>
       </div>
     </div>
-  );
+  )
 }

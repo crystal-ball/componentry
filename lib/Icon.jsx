@@ -1,9 +1,7 @@
-import React from 'react';
-import { bool, string } from 'prop-types';
-
-import classNames from './utils/classnames';
-
-let count = 0;
+import React, { Component } from 'react'
+import { bool, shape, string } from 'prop-types'
+import classNames from 'classnames'
+import nanoid from 'nanoid'
 
 /**
  * Render an SVG icon using an external definition set.
@@ -30,50 +28,47 @@ let count = 0;
  * intent of the element. For example, an umbrella icon that shows the weather when
  * clicked should have a title like: 'See current weather', instead of a title like
  * 'Umbrella icon'.
- *
- * To Document:
- * - Default filePath configs using context
- * @param {string} [className='']
- * @param {string} [filePath='/assets/svg-defs.svg']
- * @param {Boolean} [font=true]
- * @param {string} icon
  */
-export default function Icon(
-  { className, filePath, font, icon, title, ...other },
-  context
-) {
-  className = classNames('icon', { font }, icon, className);
-  filePath =
-    filePath || context.componentry_svgDefinitionsFilePath || '/assets/icons.svg';
-  title = title || icon;
-  count += 1;
-  const ariaId = `${icon}-${count}`;
+export default class Icon extends Component {
+  static contextTypes = {
+    COMPONENTRY_THEME: shape({
+      svgDefinitionsFilePath: string
+    })
+  }
 
-  return (
-    <svg className={className} {...other} role="img" aria-labelledby={ariaId}>
-      <title id={ariaId}>
-        {title}
-      </title>
-      <use href={`${filePath}#${icon}`} />
-    </svg>
-  );
+  static propTypes = {
+    className: string,
+    filePath: string,
+    font: bool,
+    icon: string.isRequired,
+    title: string
+  }
+
+  static defaultProps = {
+    className: '',
+    filePath: '',
+    font: true,
+    title: ''
+  }
+
+  guid = nanoid()
+
+  render() {
+    let { className, filePath, font, icon, title, ...other } = this.props //eslint-disable-line
+    const {
+      COMPONENTRY_THEME: { svgDefinitionsFilePath = '/assets/icons.svg' } = {}
+    } = this.context
+    className = classNames('icon', { font }, icon, className)
+    filePath = filePath || svgDefinitionsFilePath
+    title = title || icon
+
+    return (
+      <svg className={className} {...other} role="img" aria-labelledby={this.guid}>
+        <title id={this.guid}>
+          {title}
+        </title>
+        <use href={`${filePath}#${icon}`} />
+      </svg>
+    )
+  }
 }
-
-Icon.contextTypes = {
-  componentry_svgDefinitionsFilePath: string
-};
-
-Icon.propTypes = {
-  className: string,
-  filePath: string,
-  font: bool,
-  icon: string.isRequired,
-  title: string
-};
-
-Icon.defaultProps = {
-  className: '',
-  filePath: '',
-  font: true,
-  title: ''
-};

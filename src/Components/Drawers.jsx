@@ -1,5 +1,5 @@
-import React from 'react';
-import { Drawer } from '../../lib';
+import React from 'react'
+import { Drawer } from '../../lib'
 
 export default function Drawers() {
   return (
@@ -27,5 +27,5 @@ export default function Drawers() {
         </div>
       </div>
     </div>
-  );
+  )
 }

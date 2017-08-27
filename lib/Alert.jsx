@@ -1,9 +1,9 @@
-import React, { Component } from 'react';
-import { bool, func, number, node, string } from 'prop-types';
+import React, { Component } from 'react'
+import { bool, func, number, node, shape, string } from 'prop-types'
+import classNames from 'classnames'
 
-import Button from './Button';
-import classNames from './utils/classnames';
-import cleanProps from './utils/clean-props';
+import Button from './Button'
+import cleanProps from './utils/clean-props'
 
 /**
  * Alerts provide contextual feedback.
@@ -17,8 +17,10 @@ import cleanProps from './utils/clean-props';
  */
 export default class Alert extends Component {
   static contextTypes = {
-    visibilityTransitionLength: number
-  };
+    COMPONENTRY_THEME: shape({
+      visibilityTransitionLength: number
+    })
+  }
 
   static propTypes = {
     children: node,
@@ -27,7 +29,7 @@ export default class Alert extends Component {
     dismissable: bool,
     onDismiss: func,
     visibilityTransitionLength: number
-  };
+  }
 
   static defaultProps = {
     children: null,
@@ -36,13 +38,13 @@ export default class Alert extends Component {
     dismissable: true,
     onDismiss: null,
     visibilityTransitionLength: null
-  };
+  }
 
   // Fade controls visibility status and hidden controls DOM position status
   state = {
     fade: false,
     hidden: false
-  };
+  }
 
   /**
    * Backup onDismiss for dismissable alerts without a passed onDismiss. Note that
@@ -50,20 +52,21 @@ export default class Alert extends Component {
    * application state to dismiss an alert is preferred.
    */
   handleDismiss = () => {
+    const {
+      COMPONENTRY_THEME: { visibilityTransitionLength = 300 } = {}
+    } = this.context
     // props has precedence to allow for single instance overrides, context can be
     // used for app wide configs, fall back to defaults
     const timer =
-      this.props.visibilityTransitionLength ||
-      this.context.visibilityTransitionLength ||
-      300;
+      this.props.visibilityTransitionLength || visibilityTransitionLength
 
     // Will immediately set Bs 'fade' class to transition opacity to 0
-    this.setState({ fade: true });
+    this.setState({ fade: true })
     // Roughly when transition is finished, add aria-hidden to element to remove display
     setTimeout(() => {
-      this.setState({ hidden: true });
-    }, timer);
-  };
+      this.setState({ hidden: true })
+    }, timer)
+  }
 
   // Render
   // ---------------------------------------------------------------------------
@@ -72,11 +75,11 @@ export default class Alert extends Component {
    * @return {Component|null}
    */
   renderClose = color => {
-    const { dismissable } = this.props;
-    let { onDismiss } = this.props;
+    const { dismissable } = this.props
+    let { onDismiss } = this.props
     // If alert is dismissable, but an onDismiss wasn't passed, use our internal
     // fade out
-    onDismiss = onDismiss || this.handleDismiss;
+    onDismiss = onDismiss || this.handleDismiss
 
     return dismissable
       ? <Button
@@ -87,24 +90,24 @@ export default class Alert extends Component {
         >
           <span className={`close-icon ${color}`} />
         </Button>
-      : null;
-  };
+      : null
+  }
 
   render() {
-    const { children, color, ...other } = this.props;
-    let { className } = this.props;
-    const { fade, hidden } = this.state;
+    const { children, color, ...other } = this.props
+    let { className } = this.props
+    const { fade, hidden } = this.state
     const { ...dom } = cleanProps(other, [
       'className',
       'dismissable',
       'onDismiss',
       'visibilityTransitionLength'
-    ]);
+    ])
 
     className = classNames('alert', className, {
       [`alert-${color}`]: color,
       fade
-    });
+    })
 
     return (
       <div
@@ -119,6 +122,6 @@ export default class Alert extends Component {
         {/* Render a close button or null depending on configs */}
         {this.renderClose(color)}
       </div>
-    );
+    )
   }
 }

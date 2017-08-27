@@ -20,7 +20,7 @@
     "js": "npm run js:esmodules && npm run js:amdmodule",
     "styles": "npm run styles:sass && npm run styles:minify && npm run styles:copy",
     "eslint": "eslint --ext .js --ext .jsx src lib",
-    "format": "prettier --single-quote --print-width=84 --write \"{lib,src}/**/*.{js,jsx}\"",
+    "format": "prettier --single-quote --no-semi --print-width=84 --write \"{lib,src}/**/*.{js,jsx}\"",
     "documentation": "NODE_ENV=production webpack --env=production",
     "clean": "rm -rf dist es esnext",
     "js:esnext": "BABEL_ENV=esnext babel lib --out-dir esnext",
@@ -39,10 +39,12 @@
   },
   "dependencies": {
     "babel-runtime": "^6.23.0",
-    "bootstrap": "v4.0.0-beta"
+    "bootstrap": "v4.0.0-beta",
+    "classnames": "^2.2.5",
+    "nanoid": "^0.2.0"
   },
   "devDependencies": {
-    "@crystal-ball/eslint-config-eloquence": "2.2.0",
+    "@crystal-ball/eslint-config-eloquence": "^3.1.0",
     "@inspire-script/webpack-configs": "^2.5.0",
     "babel-cli": "^6.24.1",
     "babel-plugin-transform-class-properties": "^6.24.1",

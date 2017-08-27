@@ -1,7 +1,7 @@
-import React from 'react';
-import { bool, shape, string } from 'prop-types';
+import React from 'react'
+import { bool, shape, string } from 'prop-types'
 
-import getDisplayName from './utils/getDisplayName';
+import getDisplayName from './utils/getDisplayName'
 
 /**
  * Decorator for including aria attributes with components. Decorated components must
@@ -38,11 +38,11 @@ export default function ariasHOC(WrappedComponent) {
         id={id ? guid : null}
         role={role}
       />
-    );
+    )
   }
 
-  WithArias.displayName = `ariasHOC(${getDisplayName(WrappedComponent)})`;
-  WithArias.ROLE = WrappedComponent.ROLE;
+  WithArias.displayName = `ariasHOC(${getDisplayName(WrappedComponent)})`
+  WithArias.ROLE = WrappedComponent.ROLE
 
   WithArias.propTypes = {
     active: bool,
@@ -57,7 +57,7 @@ export default function ariasHOC(WrappedComponent) {
       role: string
     }),
     guid: string
-  };
+  }
 
   // guid && active cannot be marked as required b/c the original component never has it set?
   WithArias.defaultProps = {
@@ -73,7 +73,7 @@ export default function ariasHOC(WrappedComponent) {
       role: null
     },
     guid: undefined
-  };
+  }
 
-  return WithArias;
+  return WithArias
 }

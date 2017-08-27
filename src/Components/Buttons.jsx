@@ -1,5 +1,5 @@
-import React from 'react';
-import { Button } from '../../lib';
+import React from 'react'
+import { Button } from '../../lib'
 
 export default function Buttons() {
   return (
@@ -57,6 +57,11 @@ export default function Buttons() {
             Text with a 508 accessible button that triggers some application{' '}
             <Button link>action</Button>
           </p>
+        </div>
+        <div className="col-6">
+          Set a default theme color for buttons using the library ThemeProvider to
+          shorthand creating default buttons:
+          <Button>Default Theme Color</Button>
         </div>
       </div>
       <div className="row my-5">
@@ -116,5 +121,5 @@ export default function Buttons() {
         </div>
       </div>
     </div>
-  );
+  )
 }

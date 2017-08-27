@@ -1,8 +1,8 @@
-import React from 'react';
-import { string } from 'prop-types';
+import React from 'react'
+import { string } from 'prop-types'
 
 export default function Header({ title }) {
-  title = title.charAt(0).toUpperCase() + title.slice(1);
+  title = title.charAt(0).toUpperCase() + title.slice(1)
 
   return (
     <div className="jumbotron jumbotron-fluid bg-primary">
@@ -12,13 +12,13 @@ export default function Header({ title }) {
         </h1>
       </div>
     </div>
-  );
+  )
 }
 
 Header.propTypes = {
   title: string
-};
+}
 
 Header.defaultProps = {
   title: 'Components'
-};
+}

@@ -1,8 +1,8 @@
-import React from 'react';
-import { ListGroup } from '../../lib';
+import React from 'react'
+import { ListGroup } from '../../lib'
 
 function testClick() {
-  console.log('click');
+  console.log('click')
 }
 
 export default function ListGroups() {
@@ -33,8 +33,11 @@ export default function ListGroups() {
               Link Two
             </ListGroup.Item>
           </ListGroup>
+
+          {/* Test passing null children to component */}
+          <ListGroup />
         </div>
       </div>
     </div>
-  );
+  )
 }

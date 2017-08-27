@@ -1,5 +1,5 @@
-import React from 'react';
-import { Icon } from '../../lib';
+import React from 'react'
+import { Icon } from '../../lib'
 
 const devicons = [
   'react',
@@ -22,7 +22,7 @@ const devicons = [
   'mitlicence',
   'terminal',
   'code'
-];
+]
 
 export default function Icons() {
   return (
@@ -75,5 +75,5 @@ export default function Icons() {
         </div>
       </div>
     </div>
-  );
+  )
 }

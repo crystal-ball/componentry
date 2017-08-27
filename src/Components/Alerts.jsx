@@ -1,9 +1,9 @@
-import React from 'react';
-import { Alert } from '../../lib';
+import React from 'react'
+import { Alert } from '../../lib'
 
 export default function Alerts() {
   function logDismiss() {
-    console.log('dismiss');
+    console.log('dismiss')
   }
 
   return (
@@ -61,5 +61,5 @@ export default function Alerts() {
         </div>
       </div>
     </div>
-  );
+  )
 }

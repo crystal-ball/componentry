@@ -1,8 +1,8 @@
-import React from 'react';
-import { node, string } from 'prop-types';
+import React from 'react'
+import { node, string } from 'prop-types'
+import classNames from 'classnames'
 
-import aria from '../AriaHOC';
-import classNames from '../utils/classnames';
+import aria from '../AriaHOC'
 
 /**
  * Toggleable elements Content component.
@@ -16,7 +16,7 @@ function Content({ As, children, className, elementType, ...other }) {
   className = classNames(className, {
     [`${elementType}-menu`]: elementType === 'dropdown',
     [`${elementType}-content`]: elementType !== 'dropdown'
-  });
+  })
 
   return (
     <As className={className} {...other}>
@@ -28,23 +28,23 @@ function Content({ As, children, className, elementType, ...other }) {
         : null}
       {children}
     </As>
-  );
+  )
 }
 
-Content.ROLE = 'CONTENT';
+Content.ROLE = 'CONTENT'
 
 Content.propTypes = {
   As: node,
   children: node,
   className: string,
   elementType: string
-};
+}
 
 Content.defaultProps = {
   As: 'div',
   children: null,
   className: '',
   elementType: ''
-};
+}
 
-export default aria(Content);
+export default aria(Content)

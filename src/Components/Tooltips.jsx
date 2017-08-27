@@ -1,5 +1,5 @@
-import React from 'react';
-import { Tooltip } from '../../lib';
+import React from 'react'
+import { Tooltip } from '../../lib'
 
 export default function Tooltips() {
   return (
@@ -27,5 +27,5 @@ export default function Tooltips() {
         </div>
       </div>
     </div>
-  );
+  )
 }
