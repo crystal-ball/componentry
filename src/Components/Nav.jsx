@@ -5,6 +5,11 @@ export default function Nav() {
   return (
     <nav>
       <div>
+        <NavLink to="/components/state" activeClassName="active">
+          State
+        </NavLink>
+      </div>
+      <div>
         <NavLink to="/components/alerts" activeClassName="active">
           Alerts
         </NavLink>

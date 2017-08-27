@@ -3,7 +3,7 @@ import { bool, func, oneOf, shape, string, node } from 'prop-types'
 import classNames from 'classnames'
 import nanoid from 'nanoid'
 
-import withArias from './withArias'
+import withActive from './withActive'
 import SimpleElement from './factories/SimpleElement'
 
 /**
@@ -24,12 +24,8 @@ export default class Modal extends Component {
   static Header = SimpleElement({ baseClasses: 'modal-header', ROLE: 'HEADER' })
   static Body = SimpleElement({ baseClasses: 'modal-body' })
   static Footer = SimpleElement({ baseClasses: 'modal-footer' })
-  static Title = withArias(
-    SimpleElement({
-      baseClasses: 'modal-title',
-      tagName: 'h3',
-      arias: { id: true }
-    })
+  static Title = withActive({ id: true })(
+    SimpleElement({ baseClasses: 'modal-title', tagName: 'h3' })
   )
 
   static propTypes = {
@@ -77,11 +73,10 @@ export default class Modal extends Component {
         <div className={dialogClassNames} role="document">
           <div className="modal-content">
             {/* A++ Accessibility title for modals without visual title */}
-            {ariaTitle
-              ? <div id={this.guid} className="sr-only">
-                  {ariaTitle}
-                </div>
-              : null}
+            {ariaTitle &&
+              <div id={this.guid} className="sr-only">
+                {ariaTitle}
+              </div>}
             {children}
           </div>
         </div>

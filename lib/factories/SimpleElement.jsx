@@ -9,24 +9,24 @@ import classNames from 'classnames'
  * @param {config} [{ baseClasses, tagName='div' }={}]
  * @returns {Component} React functional stateless component with base classes.
  */
-export default function({ baseClasses, tagName = 'div', arias } = {}) {
+export default function elementFactory({ baseClasses = '', tagName = 'div' } = {}) {
   SimpleElement.propTypes = {
     As: node,
-    children: node,
+    children: node.isRequired,
     className: string
   }
 
   SimpleElement.defaultProps = {
     As: null,
-    children: null,
     className: ''
   }
 
-  if (arias) SimpleElement.ARIAS = arias
-
+  // By default use tagName for component element
   function SimpleElement({ As, children, className, ...rest }) {
+    // props have precedence
     As = As || tagName
-    className = classNames(baseClasses, className)
+    // Or null prevents empty `class` for elements without base or passed classes
+    className = classNames(baseClasses, className) || null
 
     return (
       <As className={className} {...rest}>
