@@ -1,4 +1,40 @@
 // ========================================================
+// Icons
+// ========================================================
+
+// NOTE: The icon class is intended for use with SVGs to create font icons
+
+.icon {
+  display: inline-flex;
+  fill: currentColor;
+  height: 1em;
+  position: relative; // for bottom
+  width: 1em; // width + height of 1em makes icons font-sized by default
+
+  // Icons are styled as font icons by default, meaning they need a baseline
+  // adjustment provided by the `bottom` rule to match the font baseline. If the
+  // icon is not a font icon, the `b0` class will be added so that any other
+  // alignment classes used work properly
+  &.font {
+    bottom: $icon-bottom; // match svg baseline to match font baseline
+  }
+}
+
+// ========================================================
+// Chevron Icon
+// ========================================================
+
+// Bundled chevron icon can be used with toggle elements for more visual display
+// of toggled state
+
+.chevron-icon {
+  background-image: url($chevron-icon);
+  display: inline-block;
+  width: 0.8em; // TODO: configurable
+  height: 0.8em; // TODO: configurable
+}
+
+// ========================================================
 // Close Icon
 // ========================================================
 

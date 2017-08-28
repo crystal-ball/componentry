@@ -28,7 +28,7 @@ export default class Dropdowns extends Component {
           <div className="col-6">
             <h4>Uncontrolled Example</h4>
             <Dropdown onActivate={logActivate} onDeactivate={logDeactivate}>
-              <Dropdown.Trigger color="primary">Dropdown</Dropdown.Trigger>
+              <Dropdown.Toggle color="primary">Dropdown</Dropdown.Toggle>
               <Dropdown.Content>
                 <h6 className="dropdown-header">Available actions</h6>
                 <Button className="dropdown-item">Item 1</Button>
@@ -46,7 +46,7 @@ export default class Dropdowns extends Component {
               onActivate={this.toggleActive}
               onDeactivate={this.toggleActive}
             >
-              <Dropdown.Trigger color="primary">Dropdown</Dropdown.Trigger>
+              <Dropdown.Toggle color="primary">Dropdown</Dropdown.Toggle>
               <Dropdown.Content>
                 <Button className="dropdown-item">Item 1</Button>
                 <Button className="dropdown-item">Item 2</Button>

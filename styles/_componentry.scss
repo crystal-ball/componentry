@@ -8,14 +8,12 @@
 @import 'componentry-variables';
 @import 'utility';
 
-@import 'components/alert';
-@import 'components/button';
-@import 'components/chevron';
-@import 'components/close';
-@import 'components/drawer';
-@import 'components/dropdown';
-@import 'components/icon';
-@import 'components/list-group';
-@import 'components/modals';
-@import 'components/popover';
-@import 'components/tooltip';
+@import '../lib/Alert/alert';
+@import '../lib/Button/button';
+@import '../lib/Drawer/drawer';
+@import '../lib/Dropdown/dropdown';
+@import '../lib/Icon/icon';
+@import '../lib/ListGroup/list-group';
+@import '../lib/Modal/modals';
+@import '../lib/Popover/popover';
+@import '../lib/Tooltip/tooltip';

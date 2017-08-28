@@ -2,8 +2,8 @@ import React, { Component } from 'react'
 import { bool, func, number, node, shape, string } from 'prop-types'
 import classNames from 'classnames'
 
-import Button from './Button'
-import cleanProps from './utils/clean-props'
+import Button from '../Button'
+import cleanProps from '../utils/clean-props'
 
 /**
  * Alerts provide contextual feedback.

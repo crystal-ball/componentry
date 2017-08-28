@@ -5,4 +5,9 @@
 .dropdown-menu {
   // In Bs this is applied by adding .show class
   display: block;
+
+  // This is the only theme color style not automatically suppressed by BS
+  .dropdown-item {
+    box-shadow: none;
+  }
 }

@@ -11,9 +11,9 @@ export default function Drawers() {
         <div className="col-6">
           <h4>Subcomponents</h4>
           <Drawer>
-            <Drawer.Trigger>
+            <Drawer.Toggle>
               <span className="chevron-icon" /> Toggle Drawer
-            </Drawer.Trigger>
+            </Drawer.Toggle>
             <Drawer.Content>
               The Motion Picture Academy refused to nominate Tron (1982) for a
               special-effects award because, according to director Steven Lisberger,
@@ -23,7 +23,7 @@ export default function Drawers() {
         </div>
         <div className="col-6">
           <h4>Parameter Values</h4>
-          <Drawer Trigger="Toggle Drawer" Content="Short hand syntax" />
+          {/* <Drawer Trigger="Toggle Drawer" Content="Short hand syntax" /> */}
         </div>
       </div>
     </div>

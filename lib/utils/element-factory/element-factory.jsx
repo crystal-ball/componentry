@@ -10,19 +10,19 @@ import classNames from 'classnames'
  * @returns {Component} React functional stateless component with base classes.
  */
 export default function elementFactory({ baseClasses = '', tagName = 'div' } = {}) {
-  SimpleElement.propTypes = {
+  Element.propTypes = {
     As: node,
     children: node.isRequired,
     className: string
   }
 
-  SimpleElement.defaultProps = {
+  Element.defaultProps = {
     As: null,
     className: ''
   }
 
   // By default use tagName for component element
-  function SimpleElement({ As, children, className, ...rest }) {
+  function Element({ As, children, className, ...rest }) {
     // props have precedence
     As = As || tagName
     // Or null prevents empty `class` for elements without base or passed classes
@@ -35,5 +35,5 @@ export default function elementFactory({ baseClasses = '', tagName = 'div' } = {
     )
   }
 
-  return SimpleElement
+  return Element
 }

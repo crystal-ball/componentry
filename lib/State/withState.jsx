@@ -16,8 +16,8 @@ class ActiveStateHandler {
     this.subscriptions.forEach(subscription => subscription(active))
   }
 
+  // TODO: Handle unsubscribe
   subscribe = subscription => {
-    console.log('subscribing') // eslint-disable-line
     this.subscriptions.push(subscription)
   }
 }
@@ -25,9 +25,19 @@ class ActiveStateHandler {
 /**
  * @param {Object} stateConfigs
  */
-export default ({ active = false, mouseEvents, type, tip } = {}) => Wrapped =>
+export default ({ active = false, type } = {}) => Wrapped =>
   class WithState extends Component {
     static displayName = `withState${getDisplayName(Wrapped)}`
+    /**
+     * Class statics are not copied to `WithState`. See 'Static Methods Must Be
+     * Copied Over: https://facebook.github.io/react/docs/higher-order-components.html
+     * The package `hoist-non-react-statics` is a solution for automatically copying
+     * all class statics, but unless it becomes commonplace to use the library HOCs
+     * with external components, this seems unnecessary. For now, we know that
+     * statics that are required and manually transfer them
+     */
+    static Content = Wrapped.Content
+    static Toggle = Wrapped.Toggle
 
     constructor(props) {
       super(props)
@@ -36,29 +46,17 @@ export default ({ active = false, mouseEvents, type, tip } = {}) => Wrapped =>
 
     static childContextTypes = {
       componentry_state: shape({
-        active,
-        bool,
+        activate: func,
+        active: bool,
+        deactivate: func,
         guid: string,
-        mouseEvents: bool,
         subscribe: func,
-        tip: bool,
+        toggle: func,
         type: string
       })
     }
 
-    getChildContext = () => ({
-      componentry_state: {
-        activate: this.activate,
-        active: this.activeStateHandler.active,
-        deactivate: this.deactivate,
-        guid: this.guid,
-        mouseEvents,
-        subscribe: this.activeStateHandler.subscribe,
-        tip,
-        toggle: this.toggle,
-        type: type || 'state'
-      }
-    })
+    getChildContext = () => ({ componentry_state: this.getComponentryState() })
     /**
      * Guid instance property will be uniquely assigned once for each modal instance,
      * this unique id is then passed to all children through context where it can be
@@ -66,29 +64,27 @@ export default ({ active = false, mouseEvents, type, tip } = {}) => Wrapped =>
      */
     guid = nanoid()
 
+    getComponentryState = () => ({
+      activate: this.activate,
+      active: this.activeStateHandler.active,
+      deactivate: this.deactivate,
+      guid: this.guid,
+      subscribe: this.activeStateHandler.subscribe,
+      toggle: this.toggle,
+      type: type || 'state'
+    })
+
     activate = () => {
-      console.log('activate!') // eslint-disable-line
       this.activeStateHandler.setActive(true)
     }
     deactivate = () => {
-      console.log('deactivate') // eslint-disable-line
       this.activeStateHandler.setActive(false)
     }
     toggle = () => {
-      console.log('toggle') // eslint-disable-line
-      if (this.activeStateHandler.active) {
-        this.deactivate()
-      } else {
-        this.activate()
-      }
+      this.activeStateHandler.active ? this.deactivate() : this.activate() // eslint-disable-line
     }
 
     render() {
-      return <Wrapped {...this.props} />
+      return <Wrapped state={this.getComponentryState()} {...this.props} />
     }
   }
-
-// update theme whenever needed. This propagate changes to subscribed components
-// componentWillReceiveProps(next) {
-//   this.contextActive.setActive(next.active)
-// }

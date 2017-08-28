@@ -3,8 +3,8 @@ import { bool, func, oneOf, shape, string, node } from 'prop-types'
 import classNames from 'classnames'
 import nanoid from 'nanoid'
 
-import withActive from './withActive'
-import SimpleElement from './factories/SimpleElement'
+import { withActive } from '../State'
+import elementFactory from '../utils/element-factory'
 
 /**
  * TODO:
@@ -21,11 +21,11 @@ import SimpleElement from './factories/SimpleElement'
  * @extends {Component}
  */
 export default class Modal extends Component {
-  static Header = SimpleElement({ baseClasses: 'modal-header', ROLE: 'HEADER' })
-  static Body = SimpleElement({ baseClasses: 'modal-body' })
-  static Footer = SimpleElement({ baseClasses: 'modal-footer' })
+  static Header = elementFactory({ baseClasses: 'modal-header' })
+  static Body = elementFactory({ baseClasses: 'modal-body' })
+  static Footer = elementFactory({ baseClasses: 'modal-footer' })
   static Title = withActive({ id: true })(
-    SimpleElement({ baseClasses: 'modal-title', tagName: 'h3' })
+    elementFactory({ baseClasses: 'modal-title', tagName: 'h3' })
   )
 
   static propTypes = {

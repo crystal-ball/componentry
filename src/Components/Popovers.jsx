@@ -10,9 +10,9 @@ export default function Popovers() {
         </div>
         <div className="col-12">
           <Popover>
-            <Popover.Trigger color="primary" outline>
+            <Popover.Toggle color="primary" outline>
               Popover Trigger
-            </Popover.Trigger>
+            </Popover.Toggle>
             <Popover.Content className="top">
               The new Texas Instrument calculators have ABC keyboards because if
               they had QWERTY keyboards, they would be considered computers and
@@ -20,9 +20,9 @@ export default function Popovers() {
             </Popover.Content>
           </Popover>
           <Popover>
-            <Popover.Trigger color="primary" outline>
+            <Popover.Toggle color="primary" outline>
               Popover Trigger
-            </Popover.Trigger>
+            </Popover.Toggle>
             <Popover.Content className="bottom">
               The new Texas Instrument calculators have ABC keyboards because if
               they had QWERTY keyboards, they would be considered computers and
@@ -30,9 +30,9 @@ export default function Popovers() {
             </Popover.Content>
           </Popover>
           <Popover>
-            <Popover.Trigger color="primary" outline>
+            <Popover.Toggle color="primary" outline>
               Popover Trigger
-            </Popover.Trigger>
+            </Popover.Toggle>
             <Popover.Content className="right">
               The new Texas Instrument calculators have ABC keyboards because if
               they had QWERTY keyboards, they would be considered computers and
@@ -40,9 +40,9 @@ export default function Popovers() {
             </Popover.Content>
           </Popover>
           <Popover>
-            <Popover.Trigger color="primary" outline>
+            <Popover.Toggle color="primary" outline>
               Popover Trigger
-            </Popover.Trigger>
+            </Popover.Toggle>
             <Popover.Content className="left">
               The new Texas Instrument calculators have ABC keyboards because if
               they had QWERTY keyboards, they would be considered computers and
