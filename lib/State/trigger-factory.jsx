@@ -14,7 +14,7 @@ import Button from '../Button'
  */
 // TODO: use context type?
 export default function triggerFactory(
-  { trigger = 'Toggle', link = true, mouseEvents } = {}
+  { trigger = 'toggle', link: baseLink = true, mouseEvents } = {}
 ) {
   Trigger.propTypes = {
     As: oneOfType([element, func, node]),
@@ -30,32 +30,19 @@ export default function triggerFactory(
   }
 
   Trigger.defaultProps = {
-    As: null,
+    As: Button,
     children: null,
-    link: null,
+    link: baseLink,
     className: ''
   }
 
-  // Specify displayName for better HOC name debugging
-  Trigger.displayName = trigger
-  trigger = trigger.toLowerCase()
-  function Trigger({ As, children, className, link: _link, state, ...rest }) {
-    const mouseEnter = mouseEvents ? state.activate : null
-    const mouseLeave = mouseEvents ? state.deactivate : null
-    const { type } = state
-
-    As = As || Button
-    link = _link || link
-    className = classNames(className, {
-      [`${type}-trigger`]: type !== 'dropdown',
-      [`${type}-toggle`]: type === 'dropdown'
-    })
+  function Trigger({ As, children, className, link, state, ...rest }) {
     return (
       <As
-        className={className}
+        className={classNames(`${state.type}-toggle`, className)}
         link={link}
-        onMouseEnter={mouseEnter}
-        onMouseLeave={mouseLeave}
+        onMouseEnter={mouseEvents ? state.activate : null}
+        onMouseLeave={mouseEvents ? state.deactivate : null}
         onClick={state[trigger]}
         {...rest}
       >

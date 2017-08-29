@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { boolean, func, shape, string } from 'prop-types'
-import getDisplayName from './utils/getDisplayName'
+import getDisplayName from '../utils/getDisplayName'
 
 /**
  * HOC that passes in aria attributes computed from context guid and active state.

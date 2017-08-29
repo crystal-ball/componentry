@@ -1,5 +1,5 @@
 import React from 'react'
-import { State, Content, Toggle, Activate, Deactivate } from '../../lib'
+import { State } from '../../lib'
 
 export default function StateDemo() {
   return (
@@ -10,19 +10,19 @@ export default function StateDemo() {
         </div>
         <div className="col-6">
           <State>
-            <Toggle>State Toggle</Toggle>
-            <Content>
+            <State.Toggle>State Toggle</State.Toggle>
+            <State.Content>
               <p>
                 Content display toggled by the <code>Toggle</code> component.
               </p>
               <State>
-                <Activate>Open!</Activate>
-                <Deactivate>Close!</Deactivate>
-                <Content>
+                <State.Activate>Open!</State.Activate>
+                <State.Deactivate>Close!</State.Deactivate>
+                <State.Content>
                   Content display toggled by the <code>Toggle</code> component.
-                </Content>
+                </State.Content>
               </State>
-            </Content>
+            </State.Content>
           </State>
         </div>
       </div>

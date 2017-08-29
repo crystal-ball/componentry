@@ -1,58 +1,29 @@
 import React from 'react'
-import { bool, func, node, shape, string } from 'prop-types'
+import { bool, func, oneOf, shape, string } from 'prop-types'
 import classNames from 'classnames'
 
-/**
- * Function to handle removing default Bootstrap box-shadow focus style only on click
- * of button by attaching function to the `onMouseDown` event (which is only
- * fired for mouse events).
- *
- * Function overrides default browser outline css, then attaches a blur
- * listener to element that returns outline control to browser on blur and
- * self destructs listener. This allows the element to regain focus if the
- * user switches to keyboard.
- *
- * _Note that Bootstrap overrides the default browser **outline** to none for button
- * focus and replaces it with a box shadow. This targets that box shadow for click
- * events **only**. On keyboard focus, the default Bootstrap box shadow is still
- * shown. This provides A++ Accessibility for keyboard users._
- * @param {Object} evt React synthetic event
- */
-function suppressBoxShadowOnClick(evt) {
-  function blurHandler(event) {
-    // Remove box-shadow override to enable possibility of keyboard focus
-    event.target.style.boxShadow = ''
-    event.target.style.outline = ''
-    // Remove this blur listener
-    event.target.removeEventListener('blur', blurHandler)
-  }
+import elementFactory from '../utils/element-factory'
+import { suppressBoxShadowOnClick } from '../utils/dom'
 
-  evt.target.style.boxShadow = 'none'
-  evt.target.style.outline = 'none'
-  evt.target.addEventListener('blur', blurHandler)
-}
+const Container = elementFactory({ tagName: 'button', className: 'btn' })
 
 Button.propTypes = {
-  children: node,
   className: string,
   color: string,
-  large: bool,
   link: bool,
   onMouseDown: func,
   outline: bool,
-  small: bool,
+  size: oneOf(['large', 'small', '']),
   type: string
 }
 
 Button.defaultProps = {
-  children: null,
   className: '',
   color: '',
-  large: false,
   link: false,
-  onMouseDown: null,
+  onMouseDown() {},
   outline: false,
-  small: false,
+  size: '',
   type: 'button'
 }
 
@@ -77,56 +48,34 @@ Button.contextTypes = {
  * @param {Object} [children]
  * @param {string} [className='']
  * @param {string} [color='']       Pass a color for a contextualized button using color
- * @param {boolean} [large=false]   Pass true to render a size large button
  * @param {boolean} [link=false]    Pass true to render a button that looks like an
  *                                  anchor element (use for A++ Accessibility)
  * @param {?Function} [onMouseDown] Any function passed will be called on mousedown
  *                                  event
  * @param {boolean} [outline=false] Pass true to render an outline style button
- * @param {boolean} [small=false]   Pass true to render a size small button
+ * @param {boolean} [size='']   Pass true to render a size small button
  * @param {string} [type='button']  Pass a type to override button `type` attribute
  * @return {Component}
  */
 export default function Button(
-  {
-    children,
-    className,
-    color,
-    large,
-    link,
-    outline,
-    small,
-    onMouseDown,
-    ...other
-  },
-  { COMPONENTRY_THEME: { defaultButtonColor } }
+  { className, color, link, outline, size, onMouseDown, ...rest },
+  { COMPONENTRY_THEME: { defaultButtonColor = 'primary' } }
 ) {
-  let mouseDown
-  color = color || defaultButtonColor || 'primary'
+  const mouseDown = evt => {
+    // Call passed mouse down event and then handle blur
+    onMouseDown.call(this, evt)
+    suppressBoxShadowOnClick(evt)
+  }
+  color = color || defaultButtonColor
 
-  className = classNames(className, 'btn', {
+  className = classNames(className, {
     [`btn-${color}`]: !outline,
     'btn-link': link,
     'btn-unstyled': link,
     [`btn-outline-${color}`]: outline,
-    'btn-lg': large,
-    'btn-sm': small
+    'btn-lg': size === 'large',
+    'btn-sm': size === 'small'
   })
 
-  // If an onMouseDown was passed in, call it, then call our blur handler
-  if (onMouseDown) {
-    mouseDown = function mouseDownHandler(evt) {
-      onMouseDown.call(this, evt)
-      suppressBoxShadowOnClick(evt)
-    }
-    // Otherwise just attach our blur handler
-  } else {
-    mouseDown = suppressBoxShadowOnClick
-  }
-
-  return (
-    <button className={className} onMouseDown={mouseDown} {...other}>
-      {children}
-    </button>
-  )
+  return <Container className={className} onMouseDown={mouseDown} {...rest} />
 }

@@ -9,7 +9,7 @@ export default function Cards() {
           <p className="lead">Card component motivation...</p>
         </div>
         <div className="col-6">
-          <Card>
+          <Card className="special-card">
             <Card.Header>Card Header</Card.Header>
             <Card.Body>
               <Card.Title>Card title</Card.Title>
@@ -17,7 +17,7 @@ export default function Cards() {
                 Some quick example text to build on the card title and make up the
                 bulk of the card&apos;s content.
               </p>
-              <Button color="primary">Go somewhere</Button>
+              <Button>Go somewhere</Button>
             </Card.Body>
             <Card.Footer>2 days ago</Card.Footer>
           </Card>

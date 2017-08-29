@@ -43,12 +43,8 @@ export default function Buttons() {
         </div>
         <div className="col-6">
           <div>
-            <Button color="primary" large>
-              Large
-            </Button>
-            <Button color="primary" small>
-              Small
-            </Button>
+            <Button size="large">Large</Button>
+            <Button size="small">Small</Button>
           </div>
         </div>
         <div className="col-6">

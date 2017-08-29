@@ -12,11 +12,9 @@ Unit testing is run with [Mocha](https://mochajs.org/) and
 
 
 TODO:
-- SimpleElement: baseClasses => baseClassName
-- Use oneOf wherever possible
-- Shared template for State components (see Drawer render)
-- Make hidden default true for Content
+- How to propTypes `As`?
+- Use oneOf wherever possible, color, size, etc.
 - Rename `type` to `element`
 - Rename `state`
-- Figure out if `dropdown` can use the same class format as other elements?
 - Use withState with modal?
+- Can element-factory return just JSX?

@@ -21,23 +21,24 @@ import elementFactory from '../utils/element-factory'
  * @extends {Component}
  */
 export default class Modal extends Component {
-  static Header = elementFactory({ baseClasses: 'modal-header' })
-  static Body = elementFactory({ baseClasses: 'modal-body' })
-  static Footer = elementFactory({ baseClasses: 'modal-footer' })
+  static Header = elementFactory({ className: 'modal-header' })
+  static Body = elementFactory({ className: 'modal-body' })
+  static Footer = elementFactory({ className: 'modal-footer' })
   static Title = withActive({ id: true })(
-    elementFactory({ baseClasses: 'modal-title', tagName: 'h3' })
+    elementFactory({ className: 'modal-title', tagName: 'h3' })
   )
 
   static propTypes = {
     active: bool.isRequired,
     ariaTitle: string,
-    children: node.isRequired,
+    children: node,
     onDeactivate: func,
     size: oneOf(['small', 'large', ''])
   }
 
   static defaultProps = {
     ariaTitle: '',
+    children: null,
     onDeactivate: () => {},
     size: ''
   }
