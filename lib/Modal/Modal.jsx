@@ -21,11 +21,11 @@ import elementFactory from '../utils/element-factory'
  * @extends {Component}
  */
 export default class Modal extends Component {
-  static Header = elementFactory({ className: 'modal-header' })
-  static Body = elementFactory({ className: 'modal-body' })
-  static Footer = elementFactory({ className: 'modal-footer' })
+  static Header = elementFactory({ classes: 'modal-header' })
+  static Body = elementFactory({ classes: 'modal-body' })
+  static Footer = elementFactory({ classes: 'modal-footer' })
   static Title = withActive({ id: true })(
-    elementFactory({ className: 'modal-title', tagName: 'h3' })
+    elementFactory({ classes: 'modal-title', tag: 'h3' })
   )
 
   static propTypes = {

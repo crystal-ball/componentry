@@ -18,14 +18,14 @@ describe('SimpleElement', () => {
     expect(wrapper.find('div.test.class')).to.have.length(1)
   })
 
-  it('should accept a tagName', () => {
-    const Test = elementFactory({ tagName: 'h4' })
+  it('should accept a tag', () => {
+    const Test = elementFactory({ tag: 'h4' })
     const wrapper = shallow(<Test>Children</Test>)
     expect(wrapper.find('h4')).to.have.length(1)
   })
 
   it('should prioritize and combine component invocation params', () => {
-    const Test = elementFactory({ tagName: 'h4', className: 'factory' })
+    const Test = elementFactory({ tag: 'h4', className: 'factory' })
     const wrapper = shallow(
       <Test As="span" className="invocation">
         Children

@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Button, Dropdown } from '../../lib'
+import { Dropdown } from '../../lib'
 
 function logActivate() {
   console.log('on activate called')
@@ -31,11 +31,11 @@ export default class Dropdowns extends Component {
               <Dropdown.Toggle color="primary">Dropdown</Dropdown.Toggle>
               <Dropdown.Content>
                 <h6 className="dropdown-header">Available actions</h6>
-                <Button className="dropdown-item">Item 1</Button>
-                <Button className="dropdown-item">Item 2</Button>
-                <Button className="dropdown-item">Item 3</Button>
+                <Dropdown.Item>Item 1</Dropdown.Item>
+                <Dropdown.Item>Item 2</Dropdown.Item>
+                <Dropdown.Item>Item 3</Dropdown.Item>
                 <div className="dropdown-divider" />
-                <Button className="dropdown-item">Item 4</Button>
+                <Dropdown.Item>Item 4</Dropdown.Item>
               </Dropdown.Content>
             </Dropdown>
           </div>
@@ -48,9 +48,9 @@ export default class Dropdowns extends Component {
             >
               <Dropdown.Toggle color="primary">Dropdown</Dropdown.Toggle>
               <Dropdown.Content>
-                <Button className="dropdown-item">Item 1</Button>
-                <Button className="dropdown-item">Item 2</Button>
-                <Button className="dropdown-item">Item 3</Button>
+                <Dropdown.Item>Item 1</Dropdown.Item>
+                <Dropdown.Item>Item 2</Dropdown.Item>
+                <Dropdown.Item>Item 3</Dropdown.Item>
               </Dropdown.Content>
             </Dropdown>
           </div>

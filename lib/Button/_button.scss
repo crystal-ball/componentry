@@ -11,11 +11,14 @@
 }
 
 // Bootstrap has a 'link' button with the font styles of an anchor AND all of the
-// whitespace. The `btn-unstyled` class when used with `btn-link` creates a button
+// padding of a button. For A++ Accessibility we want to have buttons that look
+// exactly like links for in application triggers, `btn-anchor` creates a button
 // styled exactly like an anchor. This should be used for application actions that
 // are not route navigations.
-.btn-unstyled {
-  -webkit-appearance: none; // Remove Chrome native button styling
+.btn-anchor {
+  @extend .btn-link; // Extend link styles for font styling
+  // Remove additional button styles for anchor appearance
+  -webkit-appearance: none !important; // Remove Chrome native button styling
   border: none;
   font-family: $font-family-sans-serif;
   line-height: $line-height-base;

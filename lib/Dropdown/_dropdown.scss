@@ -5,19 +5,10 @@
 // BS dropdowns expect a containing .dropdown and .dropdown-menu class, but for
 // simplicity we use a wrapping `<TYPE>-container` and `<TYPE>-content` on all
 // elements, and extend the original dropdown here
-.dropdown-container {
-  @extend .dropdown;
-}
+// BS dropdowns use class `.dropdown-menu, but all content containers in Componentry
+// use `TYPE-content`
 .dropdown-content {
   @extend .dropdown-menu;
-}
-
-.dropdown-content {
   // In Bs this is applied by adding .show class
   display: block;
-
-  // This is the only theme color style not automatically suppressed by BS
-  .dropdown-item {
-    box-shadow: none;
-  }
 }

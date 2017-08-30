@@ -39,6 +39,7 @@ export default ({ active = false, type } = {}) => Wrapped =>
      */
     static Content = Wrapped.Content
     static Toggle = Wrapped.Toggle
+    static Item = Wrapped.Item
 
     static propTypes = {
       onActivate: func,

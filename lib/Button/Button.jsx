@@ -5,25 +5,44 @@ import classNames from 'classnames'
 import elementFactory from '../utils/element-factory'
 import { suppressBoxShadowOnClick } from '../utils/dom'
 
-const Container = elementFactory({ tagName: 'button', className: 'btn' })
+const Container = elementFactory({ tag: 'button' })
 
 Button.propTypes = {
+  /** Additional CSS classes */
   className: string,
+  /**
+   * Theme color for button, used to create themed buttons and themed outline
+   * buttons. A default value for color is passed from the `ThemeProvider` as
+   * `defaultButtonColor` and is used with any button that is not a `link` button.
+   * Because sometimes it's desirable to have a button that is not a `link` and ALSO
+   * not a themed button, it's possible to pass `null` for color and the default
+   * theme value will not be used. See the `Dropdown.Item` for an example of this.
+   */
   color: string,
+  /**
+   * A++ Accessibility: Creates a button that looks exactly like an anchor. This
+   * should be used for any action trigger in an application that is not a routing
+   * event.
+   */
   link: bool,
+  // This is checked in props to handle merging with internal mouse down handler,
+  // but usage should be invisible to consumers
   onMouseDown: func,
+  /** Creates outline style button, uses `color` for outline theme. */
   outline: bool,
-  size: oneOf(['large', 'small', '']),
+  /** Create a small or large style button */
+  size: oneOf(['large', 'small']),
+  /** Buttons have `type="button"` by default, pass a type to override. */
   type: string
 }
 
 Button.defaultProps = {
-  className: '',
-  color: '',
+  className: null,
+  color: '', // Do not default to null! null means do not use theme color at all
   link: false,
   onMouseDown() {},
   outline: false,
-  size: '',
+  size: null,
   type: 'button'
 }
 
@@ -41,20 +60,13 @@ Button.contextTypes = {
  * but the target is causes an in page change, the `Button` component should be used
  * and passed the `link` property.
  *
+ * TODO: Document that a default theme color is used for every button that is not a
+ * link button, this can be suppressed by passing `color={null}` to component.
+ *
  * _NOTE: internally component will call function `suppressBoxShadowOnClick` on the
  * mousedown event, which is only triggered by clicks. This will suppress the default
  * Bootstrap box shadow applied to buttons only on click. Keyboard users will still
  * benefit from the box shadow focus styles.
- * @param {Object} [children]
- * @param {string} [className='']
- * @param {string} [color='']       Pass a color for a contextualized button using color
- * @param {boolean} [link=false]    Pass true to render a button that looks like an
- *                                  anchor element (use for A++ Accessibility)
- * @param {?Function} [onMouseDown] Any function passed will be called on mousedown
- *                                  event
- * @param {boolean} [outline=false] Pass true to render an outline style button
- * @param {boolean} [size='']   Pass true to render a size small button
- * @param {string} [type='button']  Pass a type to override button `type` attribute
  * @return {Component}
  */
 export default function Button(
@@ -66,12 +78,16 @@ export default function Button(
     onMouseDown.call(this, evt)
     suppressBoxShadowOnClick(evt)
   }
-  color = color || defaultButtonColor
 
-  className = classNames(className, {
-    [`btn-${color}`]: !outline,
-    'btn-link': link,
-    'btn-unstyled': link,
+  // Pass null to suppress output of any theme color classes
+  color = color || color === null ? color : defaultButtonColor
+
+  // Always include class 'btn' and passed className
+  // btn-color for non link, non outline buttons that have a theme color (color can be
+  // suppressed by passing color=null)
+  className = classNames('btn', className, {
+    [`btn-${color}`]: color && !link && !outline,
+    'btn-anchor': link, // Will create a button that looks just like an anchor
     [`btn-outline-${color}`]: outline,
     'btn-lg': size === 'large',
     'btn-sm': size === 'small'

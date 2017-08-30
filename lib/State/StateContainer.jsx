@@ -20,9 +20,7 @@ export default class State extends Component {
   }
 
   render() {
-    let { className, state, ...rest } = this.props // eslint-disable-line
-    className = classNames(`${state.type}-container`, className)
-
+    const { className, state, ...rest } = this.props
     // Remove user passed props that are not DOM attrs
     const dom = cleanProps(rest, [
       'active',
@@ -32,7 +30,7 @@ export default class State extends Component {
       'onDeactivated'
     ])
 
-    return <Container className={className} {...dom} />
+    return <Container className={classNames(state.type, className)} {...dom} />
   }
 }
 

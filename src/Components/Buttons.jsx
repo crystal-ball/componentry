@@ -16,7 +16,7 @@ export default function Buttons() {
             <Button color="info">Info</Button>
             <Button color="warning">Warning</Button>
             <Button color="danger">Danger</Button>
-            <Button className="btn-link">Link</Button>
+            <Button color="link">Link</Button>
           </div>
         </div>
         <div className="col-6">
@@ -35,9 +35,6 @@ export default function Buttons() {
             </Button>
             <Button color="danger" outline>
               Danger
-            </Button>
-            <Button className="btn-link" outline>
-              Link
             </Button>
           </div>
         </div>

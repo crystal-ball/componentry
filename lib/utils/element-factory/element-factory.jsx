@@ -5,13 +5,13 @@ import classNames from 'classnames'
 /**
  * Factory function returns a FSC with the specified DOM element and base classes.
  * This should be used to create static subcomponents with defaulted class names.
+ *
+ * The `attrs` param is an escape hatch to pass any non-standard values.
  * @export
- * @param {config} [{ className, tagName='div' }={}]
+ * @param {config} [{ classes, tag='div', attrs }={}]
  * @returns {Component} React functional stateless component with base classes.
  */
-export default function elementFactory(
-  { className: baseClassName = '', tagName = 'div' } = {}
-) {
+export default function elementFactory({ classes, tag = 'div', attrs = {} } = {}) {
   Element.propTypes = {
     As: node,
     children: node,
@@ -21,18 +21,15 @@ export default function elementFactory(
   Element.defaultProps = {
     As: null,
     children: null,
-    className: ''
+    className: null
   }
 
-  // By default use tagName for component element
-  function Element({ As = tagName, children, className, ...rest }) {
-    // props have precedence
-    As = As || tagName
-    // Or null prevents empty `class` for elements without base or passed classes
-    className = classNames(baseClassName, className) || null
+  function Element({ As, children, className, ...rest }) {
+    // Props have precedence, use factory tag as default
+    As = As || tag
 
     return (
-      <As className={className} {...rest}>
+      <As className={classNames(classes, className)} {...attrs} {...rest}>
         {children}
       </As>
     )

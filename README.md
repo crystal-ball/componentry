@@ -18,3 +18,5 @@ TODO:
 - Rename `state`
 - Use withState with modal?
 - Can element-factory return just JSX?
+- Remove BS `close` styles?
+- Use SVG for close and remove close color styles
