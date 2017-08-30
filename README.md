@@ -14,9 +14,8 @@ Unit testing is run with [Mocha](https://mochajs.org/) and
 TODO:
 - How to propTypes `As`?
 - Use oneOf wherever possible, color, size, etc.
-- Rename `type` to `element`
-- Rename `state`
-- Use withState with modal?
-- Can element-factory return just JSX?
+- Rename state `type` to `element`
+- Rename `state` to ???
+- Use withState with modal
 - Remove BS `close` styles?
-- Use SVG for close and remove close color styles
+- Use SVG for close and remove close color styles from alert

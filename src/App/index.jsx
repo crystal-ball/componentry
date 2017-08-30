@@ -1,11 +1,11 @@
 import React from 'react'
 import { BrowserRouter, Switch, Route } from 'react-router-dom'
-import { ThemeProvider } from '../lib'
+import { ThemeProvider } from '../../lib'
 
-import Home from './Home'
-import Installation from './Installation'
-import Components from './Components'
-import FourOhFour from './FourOhFour'
+import Home from '../Home'
+import Installation from '../Installation'
+import Components from '../Components'
+import FourOhFour from '../FourOhFour'
 
 const urlBase = process.env.NODE_ENV === 'production' ? '/componentry/' : '/'
 
