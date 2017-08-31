@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 
-import { Button, Modal } from '../../lib'
+import { Button, Close, Modal } from '../../lib'
 
 export default class Modals extends Component {
   state = {
@@ -27,13 +27,8 @@ export default class Modals extends Component {
           <Modal active={modalActive} onDeactivate={this.toggleModal}>
             <Modal.Header>
               <Modal.Title>This is the header</Modal.Title>
-              <Button
-                className="close-button"
-                aria-label="Close"
-                link
-                onClick={this.toggleModal}
-              >
-                <span className="close-icon" />
+              <Button link onClick={this.toggleModal}>
+                <Close />
               </Button>
             </Modal.Header>
             <Modal.Body>This is a modal</Modal.Body>
@@ -54,13 +49,8 @@ export default class Modals extends Component {
             ariaTitle="Dialog Accessibility Overview"
           >
             <Modal.Body>
-              <Button
-                className="close-button"
-                aria-label="Close"
-                link
-                onClick={this.toggleAriaModal}
-              >
-                <span className="close-icon" />
+              <Button link onClick={this.toggleAriaModal}>
+                <Close />
               </Button>
               <p>When your modal does not have an obvious title, use ariaTitle</p>
             </Modal.Body>

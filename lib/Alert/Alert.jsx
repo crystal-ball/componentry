@@ -3,7 +3,7 @@ import { bool, func, number, node, shape, string } from 'prop-types'
 import classNames from 'classnames'
 
 import Button from '../Button'
-import cleanProps from '../utils/clean-props'
+import { Close } from '../Icon'
 
 /**
  * Alerts provide contextual feedback.
@@ -70,39 +70,19 @@ export default class Alert extends Component {
 
   // Render
   // ---------------------------------------------------------------------------
-  /**
-   * If the alert is dismissable create a close button, otherwise return null
-   * @return {Component|null}
-   */
-  renderClose = color => {
-    const { dismissable } = this.props
-    let { onDismiss } = this.props
-    // If alert is dismissable, but an onDismiss wasn't passed, use our internal
-    // fade out
-    onDismiss = onDismiss || this.handleDismiss
-
-    return dismissable
-      ? <Button
-          link
-          onClick={onDismiss}
-          className="close-button"
-          aria-label="close"
-        >
-          <span className={`close-icon ${color}`} />
-        </Button>
-      : null
-  }
-
   render() {
-    const { children, color, ...other } = this.props
-    let { className } = this.props
+    /* eslint-disable prefer-const */
+    let {
+      children,
+      className,
+      color,
+      dismissable,
+      onDismiss,
+      visibilityTransitionLength,
+      ...rest
+    } = this.props
+    /* eslint-enable prefer const */
     const { fade, hidden } = this.state
-    const { ...dom } = cleanProps(other, [
-      'className',
-      'dismissable',
-      'onDismiss',
-      'visibilityTransitionLength'
-    ])
 
     className = classNames('alert', className, {
       [`alert-${color}`]: color,
@@ -114,13 +94,20 @@ export default class Alert extends Component {
         role="alert"
         className={className}
         aria-hidden={hidden ? 'true' : 'false'}
-        {...dom}
+        {...rest}
       >
         <div className="alert-content">
           {children}
         </div>
         {/* Render a close button or null depending on configs */}
-        {this.renderClose(color)}
+        {dismissable &&
+          <Button
+            link
+            onClick={onDismiss || this.handleDismiss}
+            className={`text-${color}`}
+          >
+            <Close />
+          </Button>}
       </div>
     )
   }

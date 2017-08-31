@@ -1,5 +1,5 @@
 import { Component } from 'react'
-import { element, number, shape, string } from 'prop-types'
+import { element, node, number, shape, string } from 'prop-types'
 
 /**
  * The `<ThemeProvider>` is a shorthand for setting context values that can be used
@@ -15,6 +15,8 @@ import { element, number, shape, string } from 'prop-types'
 export default class ThemeProvider extends Component {
   static childContextTypes = {
     COMPONENTRY_THEME: shape({
+      closeSVG: node,
+      chevronSVG: node,
       defaultButtonColor: string,
       svgDefinitionsFilePath: string,
       visibilityTransitionLength: number
@@ -24,6 +26,8 @@ export default class ThemeProvider extends Component {
   static propTypes = {
     children: element.isRequired,
     theme: shape({
+      closeSVG: node,
+      chevronSVG: node,
       defaultButtonColor: string, // Theme color to default to
       svgDefinitionsFilePath: string, // File path used in SVG use href
       visibilityTransitionLength: number // Duration of visibility transitions

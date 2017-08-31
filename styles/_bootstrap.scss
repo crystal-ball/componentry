@@ -5,6 +5,8 @@
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
  */
 
+// Import Bootstrap library except: Close, Popovers, Tooltips
+
 @import "bootstrap/functions";
 @import "bootstrap/variables";
 @import "bootstrap/mixins";
@@ -33,7 +35,6 @@
 @import "bootstrap/progress";
 @import "bootstrap/media";
 @import "bootstrap/list-group";
-@import "bootstrap/close";
 @import "bootstrap/modal";
 @import "bootstrap/carousel";
 @import "bootstrap/utilities";

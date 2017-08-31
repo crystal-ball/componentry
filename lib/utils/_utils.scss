@@ -1,0 +1,13 @@
+// ========================================================
+// Utility Classes
+// ========================================================
+
+// Animate close svg hover
+.close {
+  opacity: 0.6;
+  transition: $transition-fade;
+
+  @include hover-focus {
+    opacity: 1;
+  }
+}

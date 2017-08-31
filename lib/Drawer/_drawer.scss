@@ -12,13 +12,13 @@
 
   // The chevron icon can be included with the drawer and open/close will
   // automatically be animated
-  .chevron-icon {
+  .chevron.icon {
     transition: transform 500ms;
     transform: rotate(-0.25turn);
   }
 
   &[aria-expanded='true'] {
-    .chevron-icon {
+    .chevron.icon {
       transform: rotate(0);
     }
   }
