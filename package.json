@@ -14,20 +14,23 @@
   },
   "scripts": {
     "start": "NODE_ENV=development webpack-dev-server --env=development",
-    "test": "BABEL_ENV=test mocha lib/utils-test/setup.js $(find lib -name '*.spec.jsx')",
+    "test":
+      "BABEL_ENV=test mocha lib/utils-test/setup.js $(find lib -name '*.spec.jsx')",
     "prepublish": "npm run styles && npm run js",
     "deploy": "gh-pages -d build",
     "js": "npm run js:esmodules && npm run js:amdmodule",
     "styles": "npm run styles:sass && npm run styles:minify && npm run styles:copy",
     "eslint": "eslint --ext .js --ext .jsx src lib",
-    "format": "prettier --single-quote --no-semi --print-width=84 --write \"{lib,src}/**/*.{js,jsx}\"",
+    "format":
+      "prettier --single-quote --no-semi --print-width=84 --write \"{lib,src}/**/*.{js,jsx}\"",
     "documentation": "NODE_ENV=production webpack --env=production",
     "clean": "rm -rf dist es esnext",
     "js:esnext": "BABEL_ENV=esnext babel lib --out-dir esnext",
     "js:esmodules": "BABEL_ENV=production babel lib --out-dir es",
     "js:amdmodule": "BABEL_ENV=production rollup -c",
     "bootstrap:copy": "cp -a ./node_modules/bootstrap/scss/* ./styles/bootstrap",
-    "styles:sass": "node-sass styles/componentry-clear-theme.scss dist/componentry.css --include-path=node_modules/bootstrap/scss",
+    "styles:sass":
+      "node-sass styles/componentry-clear-theme.scss dist/componentry.css --include-path=node_modules/bootstrap/scss",
     "styles:minify": "cleancss -o dist/componentry.min.css dist/componentry.css",
     "styles:copy": "cp -r styles/* dist"
   },
@@ -44,8 +47,8 @@
     "nanoid": "^0.2.0"
   },
   "devDependencies": {
-    "@crystal-ball/eslint-config-eloquence": "^3.1.0",
-    "@inspire-script/webpack-configs": "^2.5.0",
+    "@crystal-ball/eslint-config-eloquence": "^3.2.0",
+    "@inspire-script/webpack-configs": "2.6.2",
     "babel-cli": "^6.24.1",
     "babel-plugin-transform-class-properties": "^6.24.1",
     "babel-plugin-transform-object-rest-spread": "^6.23.0",

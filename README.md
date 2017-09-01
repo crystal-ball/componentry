@@ -17,5 +17,3 @@ TODO:
 - Rename state `type` to `element`
 - Rename `state` to ???
 - Use withState with modal
-- Remove BS `close` styles?
-- Use SVG for close and remove close color styles from alert
