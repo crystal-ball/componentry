@@ -1,5 +1,5 @@
 import React from 'react'
-import { bool, element, func, node, oneOfType, shape, string } from 'prop-types'
+import { bool, func, node, oneOfType, shape, string } from 'prop-types'
 import classNames from 'classnames'
 
 import Button from '../Button'
@@ -17,7 +17,7 @@ export default function triggerFactory(
   { trigger = 'toggle', link: baseLink = true, mouseEvents } = {}
 ) {
   Trigger.propTypes = {
-    As: oneOfType([element, func, node]),
+    As: oneOfType([func, node]),
     children: node,
     className: string,
     link: bool,

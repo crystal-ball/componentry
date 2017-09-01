@@ -1,9 +1,10 @@
 import React, { Component } from 'react'
-import { bool, func, number, node, shape, string } from 'prop-types'
+import { bool, func, number, node, oneOf, shape, string } from 'prop-types'
 import classNames from 'classnames'
 
 import Button from '../Button'
 import { Close } from '../Icon'
+import { themeColorNames } from '../utils/theme'
 
 /**
  * Alerts provide contextual feedback.
@@ -25,7 +26,7 @@ export default class Alert extends Component {
   static propTypes = {
     children: node,
     className: string,
-    color: string,
+    color: oneOf(themeColorNames),
     dismissable: bool,
     onDismiss: func,
     visibilityTransitionLength: number
@@ -96,18 +97,17 @@ export default class Alert extends Component {
         aria-hidden={hidden ? 'true' : 'false'}
         {...rest}
       >
-        <div className="alert-content">
-          {children}
-        </div>
+        <div className="alert-content">{children}</div>
         {/* Render a close button or null depending on configs */}
-        {dismissable &&
+        {dismissable && (
           <Button
             link
             onClick={onDismiss || this.handleDismiss}
             className={`text-${color}`}
           >
             <Close />
-          </Button>}
+          </Button>
+        )}
       </div>
     )
   }

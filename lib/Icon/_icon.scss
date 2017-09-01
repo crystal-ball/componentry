@@ -23,6 +23,5 @@
 // Bundled SVGs may need a different bottom adjustment from an imported font library
 .close,
 .chevron {
-  font-size: 1.1em;
   bottom: $svgs-bottom;
 }

@@ -12,8 +12,6 @@ Unit testing is run with [Mocha](https://mochajs.org/) and
 
 
 TODO:
-- How to propTypes `As`?
-- Use oneOf wherever possible, color, size, etc.
 - Rename state `type` to `element`
 - Rename `state` to ???
 - Use withState with modal

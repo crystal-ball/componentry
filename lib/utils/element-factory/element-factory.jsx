@@ -1,6 +1,8 @@
 import React from 'react'
-import { node, string } from 'prop-types'
+import { func, node, string, oneOfType } from 'prop-types'
 import classNames from 'classnames'
+
+import cleanProps from '../clean-props'
 
 /**
  * Factory function returns a FSC with the specified DOM element and base classes.
@@ -13,7 +15,7 @@ import classNames from 'classnames'
  */
 export default function elementFactory({ classes, tag = 'div', attrs = {} } = {}) {
   Element.propTypes = {
-    As: node,
+    As: oneOfType([func, node]),
     children: node,
     className: string
   }
@@ -27,6 +29,8 @@ export default function elementFactory({ classes, tag = 'div', attrs = {} } = {}
   function Element({ As, children, className, ...rest }) {
     // Props have precedence, use factory tag as default
     As = As || tag
+    // Library wraps elemFactory in withState, which passes prop state
+    rest = cleanProps(rest, ['state'])
 
     return (
       <As className={classNames(classes, className)} {...attrs} {...rest}>

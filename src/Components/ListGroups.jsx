@@ -13,7 +13,7 @@ export default function ListGroups() {
           <h2>List Groups</h2>
           <h4 className="mt-3">Plain Text List</h4>
           <ListGroup>
-            <ListGroup.Item>Text Only One</ListGroup.Item>
+            <ListGroup.Item active>Text Only One</ListGroup.Item>
             <ListGroup.Item>Text Only Two</ListGroup.Item>
             <ListGroup.Item>Text Only Three</ListGroup.Item>
           </ListGroup>

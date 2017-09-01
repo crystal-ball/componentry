@@ -51,23 +51,21 @@ export default class Icon extends Component {
     title: ''
   }
 
+  // Unique id used to bind svg title and aria-labelledby together
+  // TODO: Is this still necessary with modern(ish) browsers?
   guid = nanoid()
 
   render() {
-    let { className, filePath, font, icon, title, ...other } = this.props //eslint-disable-line
+    let { className, filePath, font, icon, title, ...rest } = this.props //eslint-disable-line
     const {
       COMPONENTRY_THEME: { svgDefinitionsFilePath = '/assets/icons.svg' } = {}
     } = this.context
-    className = classNames('icon', { font }, icon, className)
-    filePath = filePath || svgDefinitionsFilePath
-    title = title || icon
+    className = classNames('icon', icon, className, { font })
 
     return (
-      <svg className={className} {...other} role="img" aria-labelledby={this.guid}>
-        <title id={this.guid}>
-          {title}
-        </title>
-        <use href={`${filePath}#${icon}`} />
+      <svg className={className} {...rest} role="img" aria-labelledby={this.guid}>
+        <title id={this.guid}>{title || icon}</title>
+        <use href={`${filePath || svgDefinitionsFilePath}#${icon}`} />
       </svg>
     )
   }

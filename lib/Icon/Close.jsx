@@ -9,17 +9,18 @@ Close.contextTypes = {
 
 export default function Close(props, { COMPONENTRY_THEME } = {}) {
   return (
-    COMPONENTRY_THEME.closeSVG ||
-    <svg
-      role="img"
-      aria-label="Close"
-      className="icon close"
-      width="24"
-      height="24"
-      viewBox="0 0 24 24"
-    >
-      <title>Close</title>
-      <path d="M18.984 6.422l-5.578 5.578 5.578 5.578-1.406 1.406-5.578-5.578-5.578 5.578-1.406-1.406 5.578-5.578-5.578-5.578 1.406-1.406 5.578 5.578 5.578-5.578z" />
-    </svg>
+    COMPONENTRY_THEME.closeSVG || (
+      <svg
+        role="img"
+        aria-label="Close"
+        className="icon close"
+        width="32"
+        height="32"
+        viewBox="0 0 32 32"
+      >
+        <title>Close</title>
+        <path d="M32,3.22,19.22,16,32,28.78,28.78,32,16,19.22,3.22,32,0,28.78,12.78,16,0,3.22,3.22,0,16,12.78,28.78,0Z" />
+      </svg>
+    )
   )
 }

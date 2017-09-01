@@ -24,7 +24,7 @@ export default class Modal extends Component {
   static Header = elementFactory({ classes: 'modal-header' })
   static Body = elementFactory({ classes: 'modal-body' })
   static Footer = elementFactory({ classes: 'modal-footer' })
-  static Title = withActive({ id: true })(
+  static Title = withActive({ id: true, subscribe: false })(
     elementFactory({ classes: 'modal-title', tag: 'h3' })
   )
 
@@ -43,9 +43,9 @@ export default class Modal extends Component {
     size: ''
   }
 
-  static childContextTypes = { componentryArias: shape({ guid: string }) }
+  static childContextTypes = { componentry_state: shape({ guid: string }) }
 
-  getChildContext = () => ({ componentryArias: { guid: this.guid } })
+  getChildContext = () => ({ componentry_state: { guid: this.guid } })
   /**
    * Guid instance property will be uniquely assigned once for each modal instance,
    * this unique id is then passed to all children through context where it can be
@@ -74,10 +74,11 @@ export default class Modal extends Component {
         <div className={dialogClassNames} role="document">
           <div className="modal-content">
             {/* A++ Accessibility title for modals without visual title */}
-            {ariaTitle &&
+            {ariaTitle && (
               <div id={this.guid} className="sr-only">
                 {ariaTitle}
-              </div>}
+              </div>
+            )}
             {children}
           </div>
         </div>

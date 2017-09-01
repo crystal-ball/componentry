@@ -40,7 +40,7 @@ Don't pass properties to children, expose them as part of the API. Then any prop
 can be passed to those components.
 
 #### Wrapping Containers
-Wrapping tags should use ...other to allow passing any data to components, this can
+Wrapping tags should use ...rest to allow passing any data to components, this can
 also be used with the render as feature to pass specific data to any component that
 is rendered for an element.
 

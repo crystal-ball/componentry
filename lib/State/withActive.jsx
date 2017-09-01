@@ -29,9 +29,16 @@ export default (ariaConfigs = {}) => Wrapped =>
     }
 
     state = { active: false }
-
+    /**
+     * When wrapped component needs to observe active and update on change, pass
+     * subscribe true to trigger component subscription
+     */
     componentDidMount() {
-      this.context.componentry_state.subscribe(active => this.setState({ active }))
+      if (ariaConfigs.subscribe !== false) {
+        this.context.componentry_state.subscribe(active =>
+          this.setState({ active })
+        )
+      }
     }
 
     // Guid for arias and active state will be passed through context, HOC needs to

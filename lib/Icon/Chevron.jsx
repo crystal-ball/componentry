@@ -9,17 +9,18 @@ Chevron.contextTypes = {
 
 export default function Chevron(props, { COMPONENTRY_THEME } = {}) {
   return (
-    COMPONENTRY_THEME.chevronSVG ||
-    <svg
-      role="img"
-      aria-label="Toggle"
-      className="icon chevron"
-      width="24"
-      height="24"
-      viewBox="0 0 24 24"
-    >
-      <title>Toggle</title>
-      <path d="M7.406 7.828l4.594 4.594 4.594-4.594 1.406 1.406-6 6-6-6z" />
-    </svg>
+    COMPONENTRY_THEME.chevronSVG || (
+      <svg
+        role="img"
+        aria-label="Toggle"
+        className="icon chevron"
+        width="32"
+        height="32"
+        viewBox="0 0 32 32"
+      >
+        <title>Toggle</title>
+        <path d="M6.71,8.51,16,17.8l9.29-9.29,2.84,2.84L16,23.49,3.86,11.35Z" />
+      </svg>
+    )
   )
 }

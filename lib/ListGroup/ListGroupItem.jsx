@@ -1,48 +1,36 @@
 import React from 'react'
-import { func, node, string } from 'prop-types'
+import { bool, func, node, string, oneOfType } from 'prop-types'
 import classNames from 'classnames'
 
 import Button from '../Button'
+import elementFactory from '../utils/element-factory'
 
-export default function ListGroupItem({
-  As,
-  children,
-  className,
-  href,
-  onClick,
-  ...other
-}) {
-  className = classNames('list-group-item', className, {
-    'list-group-item-action': href || onClick
-  })
-
-  if (!As && (href || onClick)) {
-    // If there isn't an As config and component has action, assign correct element
-    As = href ? 'a' : Button
-  } else {
-    // Fall back to configured As, or fallback fallback to <li>
-    As = As || 'li'
-  }
-
-  return (
-    <As className={className} href={href} onClick={onClick} {...other}>
-      {children}
-    </As>
-  )
-}
+// Default Container is li, override to a button or anchor when necessary
+const Container = elementFactory({ classes: 'list-group-item', tag: 'li' })
 
 ListGroupItem.propTypes = {
-  As: node,
-  children: node,
-  className: string,
-  href: string,
-  onClick: func
+  As: oneOfType([func, node]),
+  active: bool,
+  className: string
 }
 
 ListGroupItem.defaultProps = {
   As: null,
-  children: null,
-  className: '',
-  href: null,
-  onClick: null
+  active: false,
+  className: ''
+}
+
+/**
+ * List group item of `li`, `a` or `Button`.
+ */
+export default function ListGroupItem({ As, active, className, ...rest }) {
+  className = classNames(className, {
+    active,
+    'list-group-item-action': rest.href || rest.onClick
+  })
+
+  // If there isn't an As config and component has action, assign correct element
+  if (!As && (rest.href || rest.onClick)) As = rest.href ? 'a' : Button
+
+  return <Container As={As} className={className} {...rest} />
 }

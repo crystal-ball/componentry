@@ -4,6 +4,7 @@ import classNames from 'classnames'
 
 import elementFactory from '../utils/element-factory'
 import { suppressBoxShadowOnClick } from '../utils/dom'
+import { themeColorNames } from '../utils/theme'
 
 const Container = elementFactory({ tag: 'button' })
 
@@ -17,8 +18,11 @@ Button.propTypes = {
    * Because sometimes it's desirable to have a button that is not a `link` and ALSO
    * not a themed button, it's possible to pass `null` for color and the default
    * theme value will not be used. See the `Dropdown.Item` for an example of this.
+   *
+   * Empty string is a valid value b/c that is the default that tells the component
+   * to use the default theme color configured in the context.
    */
-  color: string,
+  color: oneOf([...themeColorNames, 'link', '']),
   /**
    * A++ Accessibility: Creates a button that looks exactly like an anchor. This
    * should be used for any action trigger in an application that is not a routing

@@ -48,10 +48,12 @@ export default class Modals extends Component {
             onDeactivate={this.toggleAriaModal}
             ariaTitle="Dialog Accessibility Overview"
           >
-            <Modal.Body>
+            <Modal.Header>
               <Button link onClick={this.toggleAriaModal}>
                 <Close />
               </Button>
+            </Modal.Header>
+            <Modal.Body>
               <p>When your modal does not have an obvious title, use ariaTitle</p>
             </Modal.Body>
           </Modal>
