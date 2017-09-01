@@ -72,7 +72,7 @@ export default ({ active = false, type } = {}) => Wrapped =>
       this.activeStateHandler = new ActiveStateHandler(active)
     }
 
-    getChildContext = () => ({ componentry_state: this.getComponentryState() })
+    getChildContext = () => ({ componentry_state: this.componentryState() })
     /**
      * Guid instance property will be uniquely assigned once for each modal instance,
      * this unique id is then passed to all children through context where it can be
@@ -95,7 +95,7 @@ export default ({ active = false, type } = {}) => Wrapped =>
     /**
      *
      */
-    getComponentryState = () => ({
+    componentryState = () => ({
       activate: this.activate,
       active: this.activeStateHandler.active,
       deactivate: this.deactivate,
@@ -193,6 +193,6 @@ export default ({ active = false, type } = {}) => Wrapped =>
     // Render
     // ---------------------------------------------------------------------------
     render() {
-      return <Wrapped state={this.getComponentryState()} {...this.props} />
+      return <Wrapped state={this.componentryState()} {...this.props} />
     }
   }

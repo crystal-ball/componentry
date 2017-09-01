@@ -7,9 +7,7 @@ export default function Header({ title }) {
   return (
     <div className="jumbotron jumbotron-fluid bg-primary">
       <div className="container">
-        <h1 className="display-3 text-light">
-          {title}
-        </h1>
+        <h1 className="display-3 text-light">{title}</h1>
       </div>
     </div>
   )
