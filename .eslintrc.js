@@ -2,11 +2,9 @@
 
 module.exports = {
   root: true,
-  extends: '@crystal-ball/eloquence',
+  extends: '@crystal-ball/eloquence/webpack',
+  env: { mocha: true },
   rules: {
-    'no-param-reassign': 0 // Very useful for extending/overwriting Component props
-  },
-  env: {
-    mocha: true
+    'no-param-reassign': 0 // Very useful for extending Component props
   }
 }
