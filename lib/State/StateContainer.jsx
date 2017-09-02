@@ -1,11 +1,9 @@
-import React, { Component } from 'react'
+import { Component } from 'react'
 import { shape, string } from 'prop-types'
 import classNames from 'classnames'
 
-import elementFactory from '../utils/element-factory'
+import { renderContainer } from '../utils/element-factory'
 import cleanProps from '../utils/clean-props'
-
-const Container = elementFactory()
 
 export default class State extends Component {
   static propTypes = {
@@ -30,7 +28,8 @@ export default class State extends Component {
       'onDeactivated'
     ])
 
-    return <Container className={classNames(state.type, className)} {...dom} />
+    return renderContainer({ className: classNames(state.type, className), ...dom })
+    // return <Container className={classNames(state.type, className)} {...dom} />
   }
 }
 

@@ -1,28 +1,28 @@
 import React from 'react'
-import { mount } from 'enzyme'
+import { mount, shallow } from 'enzyme'
 import { expect } from 'chai'
 
 import Card from './Card'
 
 describe('<Card />', () => {
   it('should render a container div with class card by default', () => {
-    const wrapper = mount(<Card />)
+    const wrapper = shallow(<Card />)
     expect(wrapper.find('div')).to.have.length(1)
     expect(wrapper.find('.card')).to.have.length(1)
   })
 
   it('should render any passed className', () => {
-    const wrapper = mount(<Card className="special classes" />)
+    const wrapper = shallow(<Card className="special classes" />)
     expect(wrapper.find('.card.special.classes')).to.have.length(1)
   })
 
   it('should render any other passed attributes', () => {
-    const wrapper = mount(<Card data-test="totally-rad" />)
+    const wrapper = shallow(<Card data-test="totally-rad" />)
     expect(wrapper.find('[data-test="totally-rad"]')).to.have.length(1)
   })
 
   it('should render children', () => {
-    const wrapper = mount(
+    const wrapper = shallow(
       <Card>
         <span>Rad</span>
       </Card>

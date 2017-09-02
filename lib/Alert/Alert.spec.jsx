@@ -1,5 +1,5 @@
 import React from 'react'
-import { mount } from 'enzyme'
+import { mount, shallow } from 'enzyme'
 import { assert } from 'chai'
 import sinon from 'sinon'
 
@@ -34,7 +34,7 @@ describe('<Alert/>', () => {
   })
 
   it('should render the appropriate contextual color class', () => {
-    const wrapper = mount(<Alert color="danger">Warning!</Alert>)
+    const wrapper = shallow(<Alert color="danger">Warning!</Alert>)
     assert.equal(
       wrapper.find('.alert.alert-danger').length,
       1,

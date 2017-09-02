@@ -1,10 +1,16 @@
-import React, { Children } from 'react'
+import { Children } from 'react'
 import { func, node, oneOfType } from 'prop-types'
 
 import ListGroupItem from './ListGroupItem'
-import elementFactory from '../utils/element-factory'
+import { renderContainer } from '../utils/element-factory'
 
-const Container = elementFactory({ classes: 'list-group' })
+/**
+ * To Document:
+ * - There are different wrappers for clickable vs non-clickable list groups. (this
+ *   seems less than ideal Bootstrap, can we always do a div?)
+ * - Only the first child is checked for an href or onClick for perf. If it is variable,
+ *   (which is probably not good in the first place), pass a specific As.
+ */
 
 ListGroup.Item = ListGroupItem
 
@@ -18,13 +24,6 @@ ListGroup.defaultProps = {
   children: null
 }
 
-/**
- * To Document:
- * - There are different wrappers for clickable vs non-clickable list groups. (this
- *   seems less than ideal Bootstrap, can we always do a div?)
- * - Only the first child is checked for an href or onClick for perf. If it is variable,
- *   (which is probably not good in the first place), pass a specific As.
- */
 export default function ListGroup({ As, ...rest }) {
   let children = rest.children
 
@@ -43,5 +42,5 @@ export default function ListGroup({ As, ...rest }) {
     As = As || 'ul'
   }
 
-  return <Container As={As} {...rest} />
+  return renderContainer({ As, className: 'list-group', ...rest })
 }

@@ -7,10 +7,10 @@ import elementFactory from '../utils/element-factory'
  * - `Card.Footer`
  * - `Card.Title`
  */
-const Card = elementFactory({ classes: 'card' })
-Card.Body = elementFactory({ classes: 'card-body' })
-Card.Footer = elementFactory({ classes: 'card-footer' })
-Card.Header = elementFactory({ classes: 'card-header' })
-Card.Title = elementFactory({ classes: 'card-title', tag: 'h4' })
+const Card = elementFactory({ classes: 'card', name: 'Card' })
+Card.Body = elementFactory({ classes: 'card-body', name: 'CardBody' })
+Card.Footer = elementFactory({ classes: 'card-footer', name: 'CardFooter' })
+Card.Header = elementFactory({ classes: 'card-header', name: 'CardHeader' })
+Card.Title = elementFactory({ classes: 'card-title', tag: 'h4', name: 'CardTitle' })
 
 export default Card

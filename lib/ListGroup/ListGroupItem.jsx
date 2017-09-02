@@ -1,12 +1,12 @@
-import React from 'react'
 import { bool, func, node, string, oneOfType } from 'prop-types'
 import classNames from 'classnames'
 
 import Button from '../Button'
-import elementFactory from '../utils/element-factory'
+import { renderContainer } from '../utils/element-factory'
 
-// Default Container is li, override to a button or anchor when necessary
-const Container = elementFactory({ classes: 'list-group-item', tag: 'li' })
+/**
+ * List group item of `li`, `a` or `Button`.
+ */
 
 ListGroupItem.propTypes = {
   As: oneOfType([func, node]),
@@ -20,17 +20,17 @@ ListGroupItem.defaultProps = {
   className: ''
 }
 
-/**
- * List group item of `li`, `a` or `Button`.
- */
 export default function ListGroupItem({ As, active, className, ...rest }) {
-  className = classNames(className, {
+  className = classNames('list-group-item', className, {
     active,
     'list-group-item-action': rest.href || rest.onClick
   })
 
   // If there isn't an As config and component has action, assign correct element
-  if (!As && (rest.href || rest.onClick)) As = rest.href ? 'a' : Button
+  if (!As) {
+    As = 'li' // Component is a li by default
+    if (rest.href || rest.onClick) As = rest.href ? 'a' : Button // override for action elements
+  }
 
-  return <Container As={As} className={className} {...rest} />
+  return renderContainer({ As, className, ...rest })
 }

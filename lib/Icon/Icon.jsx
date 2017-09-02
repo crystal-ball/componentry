@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React from 'react'
 import { bool, shape, string } from 'prop-types'
 import classNames from 'classnames'
 import nanoid from 'nanoid'
@@ -29,44 +29,42 @@ import nanoid from 'nanoid'
  * clicked should have a title like: 'See current weather', instead of a title like
  * 'Umbrella icon'.
  */
-export default class Icon extends Component {
-  static contextTypes = {
-    COMPONENTRY_THEME: shape({
-      svgDefinitionsFilePath: string
-    })
-  }
 
-  static propTypes = {
-    className: string,
-    filePath: string,
-    font: bool,
-    icon: string.isRequired,
-    title: string
-  }
+Icon.contextTypes = {
+  COMPONENTRY_THEME: shape({
+    svgDefinitionsFilePath: string
+  })
+}
 
-  static defaultProps = {
-    className: '',
-    filePath: '',
-    font: true,
-    title: ''
-  }
+Icon.propTypes = {
+  className: string,
+  filePath: string,
+  font: bool,
+  icon: string.isRequired,
+  title: string
+}
 
+Icon.defaultProps = {
+  className: '',
+  filePath: '',
+  font: true,
+  title: ''
+}
+
+export default function Icon(
+  { className, filePath, font, icon, title, ...rest },
+  { COMPONENTRY_THEME: { svgDefinitionsFilePath = '/assets/icons.svg' } = {} } = {}
+) {
   // Unique id used to bind svg title and aria-labelledby together
   // TODO: Is this still necessary with modern(ish) browsers?
-  guid = nanoid()
+  const guid = nanoid()
 
-  render() {
-    let { className, filePath, font, icon, title, ...rest } = this.props //eslint-disable-line
-    const {
-      COMPONENTRY_THEME: { svgDefinitionsFilePath = '/assets/icons.svg' } = {}
-    } = this.context
-    className = classNames('icon', icon, className, { font })
+  className = classNames('icon', icon, className, { font })
 
-    return (
-      <svg className={className} {...rest} role="img" aria-labelledby={this.guid}>
-        <title id={this.guid}>{title || icon}</title>
-        <use href={`${filePath || svgDefinitionsFilePath}#${icon}`} />
-      </svg>
-    )
-  }
+  return (
+    <svg className={className} {...rest} role="img" aria-labelledby={guid}>
+      <title id={guid}>{title || icon}</title>
+      <use href={`${filePath || svgDefinitionsFilePath}#${icon}`} />
+    </svg>
+  )
 }

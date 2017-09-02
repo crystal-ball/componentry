@@ -88,3 +88,7 @@ see the `.babelrc` file for more info.
   to render the Component and the inner `Element`, which is a bummer. Is there a way
   to handle element factory functionality without adding a component to the JSX
   output?
+- Provider better names for the withActive, withState components for using the React
+  Inspector
+- Theme configuration so that button shadow suppression on click can be configured
+- Shorthand props for withState so that subcomponents aren't required

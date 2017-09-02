@@ -18,3 +18,6 @@ TODO:
 - Update withState active when passed prop changes
 - Subcomponent shorthand
 - Styles build script for collecting files into a dist directory
+- Ability to disable outline suppress
+- Module concatenation for UMD
+- Better display names for withActive components

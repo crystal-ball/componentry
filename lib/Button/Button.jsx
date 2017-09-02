@@ -1,12 +1,27 @@
-import React from 'react'
 import { bool, func, oneOf, shape, string } from 'prop-types'
 import classNames from 'classnames'
 
-import elementFactory from '../utils/element-factory'
+import { renderContainer } from '../utils/element-factory'
 import { suppressBoxShadowOnClick } from '../utils/dom'
 import { themeColorNames } from '../utils/theme'
 
-const Container = elementFactory({ tag: 'button' })
+/**
+ * The `Button` component is the base component for any element that has a user
+ * interaction in the library. It is important to use either a button element or a
+ * valid href for any click target in order to support keyboard users _(See A++
+ * Accessibility Guide)_. In cases where a target that looks like a link is required,
+ * but the target is causes an in page change, the `Button` component should be used
+ * and passed the `link` property.
+ *
+ * TODO: Document that a default theme color is used for every button that is not a
+ * link button, this can be suppressed by passing `color={null}` to component.
+ *
+ * _NOTE: internally component will call function `suppressBoxShadowOnClick` on the
+ * mousedown event, which is only triggered by clicks. This will suppress the default
+ * Bootstrap box shadow applied to buttons only on click. Keyboard users will still
+ * benefit from the box shadow focus styles.
+ * @return {Component}
+ */
 
 Button.propTypes = {
   /** Additional CSS classes */
@@ -56,23 +71,6 @@ Button.contextTypes = {
   })
 }
 
-/**
- * The `Button` component is the base component for any element that has a user
- * interaction in the library. It is important to use either a button element or a
- * valid href for any click target in order to support keyboard users _(See A++
- * Accessibility Guide)_. In cases where a target that looks like a link is required,
- * but the target is causes an in page change, the `Button` component should be used
- * and passed the `link` property.
- *
- * TODO: Document that a default theme color is used for every button that is not a
- * link button, this can be suppressed by passing `color={null}` to component.
- *
- * _NOTE: internally component will call function `suppressBoxShadowOnClick` on the
- * mousedown event, which is only triggered by clicks. This will suppress the default
- * Bootstrap box shadow applied to buttons only on click. Keyboard users will still
- * benefit from the box shadow focus styles.
- * @return {Component}
- */
 export default function Button(
   { className, color, link, outline, size, onMouseDown, ...rest },
   { COMPONENTRY_THEME: { defaultButtonColor = 'primary' } = {} }
@@ -83,6 +81,8 @@ export default function Button(
     suppressBoxShadowOnClick(evt)
   }
 
+  // Populate default element type
+  rest.As = rest.As || 'button'
   // Pass null to suppress output of any theme color classes
   color = color || color === null ? color : defaultButtonColor
 
@@ -97,5 +97,5 @@ export default function Button(
     'btn-sm': size === 'small'
   })
 
-  return <Container className={className} onMouseDown={mouseDown} {...rest} />
+  return renderContainer({ className, onMouseDown: mouseDown, ...rest })
 }
