@@ -1,6 +1,7 @@
 /* eslint-disable import/no-extraneous-dependencies */
 'use strict' // eslint-disable-line
 const { resolve } = require('path')
+const { optimize } = require('webpack')
 const MinifyPlugin = require('babel-minify-webpack-plugin')
 
 /**
@@ -22,5 +23,6 @@ module.exports = {
   module: {
     rules: [{ test: /\.jsx?$/, exclude: /node_modules/, loader: 'babel-loader' }]
   },
-  plugins: [new MinifyPlugin()]
+  // MINIFY AND CONCATENATE ALL THEM MODULES!!!
+  plugins: [new MinifyPlugin(), new optimize.ModuleConcatenationPlugin()]
 }
