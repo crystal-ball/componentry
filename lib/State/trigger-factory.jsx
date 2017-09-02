@@ -21,11 +21,11 @@ export default function triggerFactory(
     children: node,
     className: string,
     link: bool,
-    state: shape({
+    activeContext: shape({
       activate: func.isRequired,
       deactivate: func.isRequired,
       toggle: func.isRequired,
-      type: string.isRequired
+      element: string.isRequired
     }).isRequired
   }
 
@@ -36,14 +36,14 @@ export default function triggerFactory(
     className: ''
   }
 
-  function Trigger({ As, children, className, link, state, ...rest }) {
+  function Trigger({ As, children, className, link, activeContext, ...rest }) {
     return (
       <As
-        className={classNames(`${state.type}-toggle`, className)}
+        className={classNames(`${activeContext.element}-toggle`, className)}
         link={link}
-        onMouseEnter={mouseEvents ? state.activate : null}
-        onMouseLeave={mouseEvents ? state.deactivate : null}
-        onClick={state[trigger]}
+        onMouseEnter={mouseEvents ? activeContext.activate : null}
+        onMouseLeave={mouseEvents ? activeContext.deactivate : null}
+        onClick={activeContext[trigger]}
         {...rest}
       >
         {children}

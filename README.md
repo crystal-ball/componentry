@@ -12,8 +12,6 @@ Unit testing is run with [Mocha](https://mochajs.org/) and
 
 
 TODO:
-- Rename state `type` to `element`
-- Rename `state` to ???
-- Use withState with modal
-- Update withState active when passed prop changes
+- Use withActiveState with modal
+- Update withActiveState active when passed prop changes
 - Styles build script for collecting files into a dist directory

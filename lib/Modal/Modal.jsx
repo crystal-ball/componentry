@@ -3,7 +3,7 @@ import { bool, func, oneOf, shape, string, node } from 'prop-types'
 import classNames from 'classnames'
 import nanoid from 'nanoid'
 
-import { withActive } from '../State'
+import { withActiveState } from '../State'
 import elementFactory from '../utils/element-factory'
 
 /**
@@ -24,7 +24,7 @@ export default class Modal extends Component {
   static Header = elementFactory({ classes: 'modal-header', name: 'ModalHeader' })
   static Body = elementFactory({ classes: 'modal-body', name: 'ModalBody' })
   static Footer = elementFactory({ classes: 'modal-footer', name: 'ModalFooter' })
-  static Title = withActive({ id: true, subscribe: false })(
+  static Title = withActiveState({ id: true, subscribe: false })(
     elementFactory({ classes: 'modal-title', tag: 'h3', name: 'ModalTitle' })
   )
 
@@ -43,9 +43,11 @@ export default class Modal extends Component {
     size: ''
   }
 
-  static childContextTypes = { componentry_state: shape({ guid: string }) }
+  // Context can never change! Namespace is a constant that allows reference to
+  // mutated properties
+  static childContextTypes = { COMPONENTRY_ACTIVE: shape({ guid: string }) }
 
-  getChildContext = () => ({ componentry_state: { guid: this.guid } })
+  getChildContext = () => ({ COMPONENTRY_ACTIVE: { guid: this.guid } })
   /**
    * Guid instance property will be uniquely assigned once for each modal instance,
    * this unique id is then passed to all children through context where it can be

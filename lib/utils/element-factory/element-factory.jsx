@@ -36,9 +36,9 @@ export default ({ attrs = {}, classes, name, tag } = {}) => {
   function Element({ As, children, className, ...rest }) {
     // Props have precedence, use factory tag as default
     As = As || tag || 'div'
-    // Modal HOCs Title using withState to get id w/ guid, but also passes in state
-    // and needs to be cleared
-    delete rest.state
+    // Modal HOCs Title using withActiveState to get id w/ guid, but also passes in
+    // activeContext and needs to be cleared
+    delete rest.activeContext
 
     return (
       <As className={classNames(classes, className)} {...attrs} {...rest}>

@@ -7,8 +7,8 @@ export default function contentFactory({ tip = false } = {}) {
     As: oneOfType([func, node]),
     children: node,
     className: string,
-    state: shape({
-      type: string.isRequired
+    activeContext: shape({
+      element: string.isRequired
     }).isRequired
   }
 
@@ -18,9 +18,12 @@ export default function contentFactory({ tip = false } = {}) {
     className: ''
   }
 
-  function Content({ As, children, className, state, ...rest }) {
+  function Content({ As, children, className, activeContext, ...rest }) {
     return (
-      <As className={classNames(`${state.type}-content`, className)} {...rest}>
+      <As
+        className={classNames(`${activeContext.element}-content`, className)}
+        {...rest}
+      >
         {tip && (
           <div className="tip-container">
             <div className="tip" />

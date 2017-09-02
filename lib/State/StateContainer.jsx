@@ -8,8 +8,8 @@ import cleanProps from '../utils/clean-props'
 export default class State extends Component {
   static propTypes = {
     className: string,
-    state: shape({
-      type: string.isRequired
+    activeContext: shape({
+      element: string.isRequired
     }).isRequired
   }
 
@@ -18,7 +18,7 @@ export default class State extends Component {
   }
 
   render() {
-    const { className, state, ...rest } = this.props
+    const { className, activeContext, ...rest } = this.props
     // Remove user passed props that are not DOM attrs
     const dom = cleanProps(rest, [
       'active',
@@ -28,8 +28,10 @@ export default class State extends Component {
       'onDeactivated'
     ])
 
-    return renderContainer({ className: classNames(state.type, className), ...dom })
-    // return <Container className={classNames(state.type, className)} {...dom} />
+    return renderContainer({
+      className: classNames(activeContext.element, className),
+      ...dom
+    })
   }
 }
 

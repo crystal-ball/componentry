@@ -1,78 +1,199 @@
 import React, { Component } from 'react'
-import { boolean, func, shape, string } from 'prop-types'
+import { bool, func, shape, string } from 'prop-types'
+import nanoid from 'nanoid'
+
 import getDisplayName from '../utils/getDisplayName'
+import { closest, getTextWidth } from '../utils/dom'
+
+class ActiveStateHandler {
+  constructor(active) {
+    this.active = active
+  }
+
+  subscriptions = []
+
+  setActive = active => {
+    this.active = active
+    this.subscriptions.forEach(subscription => subscription(active))
+  }
+
+  // TODO: Handle unsubscribe
+  subscribe = subscription => {
+    this.subscriptions.push(subscription)
+  }
+}
 
 /**
- * HOC that passes in aria attributes computed from context guid and active state.
- * ariaConfigs => Wrapped => Component w/ (state + arias)
- * 1. Required attrs are included as static attr on component at definition
- * 2. Guid and active are passed through context to instantiation of component at
- *    any place in tree.
- * 3. Computed arias passed as props to wrapped component.
- * TODO:
- * - Do arias need a prefix for mutliple ids?
- * - Document the need to spread state from props to prevent passing bad attrs!
+ * @param {Object} stateConfigs
  */
-export default (ariaConfigs = {}) => Wrapped =>
+export default ({ active = false, element } = {}) => Wrapped =>
   class WithActive extends Component {
     static displayName = `withActive${getDisplayName(Wrapped)}`
+    /**
+     * Class statics are not copied to `withActive`. See 'Static Methods Must Be
+     * Copied Over: https://facebook.github.io/react/docs/higher-order-components.html
+     * The package `hoist-non-react-statics` is a solution for automatically copying
+     * all class statics, but unless it becomes commonplace to use the library HOCs
+     * with external components, this seems unnecessary. For now, we know that
+     * statics that are required and manually transfer them
+     */
+    static Content = Wrapped.Content
+    static Toggle = Wrapped.Toggle
+    static Item = Wrapped.Item
 
-    static contextTypes = {
-      componentry_state: shape({
+    static propTypes = {
+      onActivate: func,
+      onActivated: func,
+      onDeactivate: func,
+      onDeactivated: func
+    }
+
+    static defaultProps = {
+      onActivate() {},
+      onActivated() {},
+      onDeactivate() {},
+      onDeactivated() {}
+    }
+
+    static childContextTypes = {
+      COMPONENTRY_ACTIVE: shape({
         activate: func,
-        active: boolean,
+        active: bool,
         deactivate: func,
         guid: string,
         subscribe: func,
-        toggle: func
+        toggle: func,
+        element: string
       })
     }
 
-    state = { active: false }
-    /**
-     * When wrapped component needs to observe active and update on change, pass
-     * subscribe true to trigger component subscription
-     */
-    componentDidMount() {
-      if (ariaConfigs.subscribe !== false) {
-        this.context.componentry_state.subscribe(active =>
-          this.setState({ active })
-        )
-      }
+    constructor(props) {
+      super(props)
+      this.activeStateHandler = new ActiveStateHandler(active)
     }
 
-    // Guid for arias and active state will be passed through context, HOC needs to
-    // handle calling setState when active changes and passing arias into Wrapped
-    render() {
-      const { componentry_state: { guid } } = this.context
-      const { active } = this.state
-      const {
-        controls,
-        describedby,
-        expanded,
-        haspopup,
-        hidden,
-        id,
-        labelledby,
-        role
-      } = ariaConfigs
-      const arias = {
-        'aria-controls': controls ? guid : null,
-        'aria-describedby': describedby ? guid : null,
-        'aria-expanded': expanded ? String(active) : null,
-        'aria-haspopup': haspopup ? 'true' : null,
-        'aria-hidden': hidden ? String(!active) : null,
-        'aria-labelledby': labelledby ? guid : null,
-        id: id ? guid : null,
-        role
+    getChildContext = () => ({ COMPONENTRY_ACTIVE: this.activeContext() })
+    /**
+     * Guid instance property will be uniquely assigned once for each modal instance,
+     * this unique id is then passed to all children through context where it can be
+     * used to wire together title aria attributes
+     */
+    guid = nanoid()
+    /**
+     * Internal cache for width of tooltip content. Set after calculating content
+     * width and reused on subsequent renders if content text has not changed.
+     */
+    contentWidth = null
+    /**
+     * Internal cache for tooltip content. Used to check if the content has changed
+     * between showings of tooltip.
+     */
+    content = null
+
+    // Methods
+    // ---------------------------------------------------------------------------
+    /**
+     *
+     */
+    activeContext = () => ({
+      activate: this.activate,
+      active: this.activeStateHandler.active,
+      deactivate: this.deactivate,
+      guid: this.guid,
+      subscribe: this.activeStateHandler.subscribe,
+      toggle: this.toggle,
+      element: element || 'state'
+    })
+    /**
+     *
+     */
+    clickHandler = e => {
+      // If the click was ouside dropdown, close the dropdown and then cleanup the listener
+      if (!closest(e.target, `${this.guid}-container`)) {
+        this.toggle()
+      }
+    }
+    /**
+     *
+     */
+    keyHandler = e => {
+      // Escape key is which 27, when escape key is hit, toggle state
+      if (e.which === 27) {
+        this.toggle()
+      }
+    }
+    /**
+     *
+     */
+    activate = e => {
+      const { onActivate, onActivated } = this.props
+      onActivate(this, e)
+      // Don't close drawers on `esc`
+      if (element !== 'drawer')
+        document.addEventListener('keydown', this.keyHandler)
+
+      // Add click outside container handlers for dropdowns only
+      if (element === 'dropdown') {
+        document.addEventListener('mouseup', this.clickHandler)
+        document.addEventListener('touchend', this.clickHandler)
       }
 
-      return (
-        <Wrapped
-          state={this.context.componentry_state}
-          {...arias}
-          {...this.props}
-        />
-      )
+      if (element === 'tooltip' || element === 'popover') {
+        // Position absolute tooltip is constrained by the parent width. Set tooltip
+        // width to content width to overflow parent bounds
+        const contentElement = document.getElementById(this.guid)
+        const content = contentElement.innerText
+        this.content = content
+
+        if (content === this.content && this.contentWidth) {
+          // If width has already been calculated and content has not changed, use
+          // cached width for performance
+          contentElement.style.width = `${this.contentWidth}px`
+        } else {
+          // Get all styles of content element, set width and cache
+          const styles = window.getComputedStyle(contentElement)
+          // Get padding, font size and font family of content
+          const width =
+            getTextWidth(content, `${styles.fontSize} ${styles.fontFamily}`) +
+            parseFloat(styles.paddingLeft) +
+            parseFloat(styles.paddingRight) +
+            1
+
+          contentElement.style.width = `${width}px`
+          this.contentWidth = width
+        }
+      }
+      this.activeStateHandler.setActive(true)
+      onActivated(this, e)
+    }
+    /**
+     *
+     */
+    deactivate = e => {
+      const { onDeactivate, onDeactivated } = this.props
+      onDeactivate(this, e)
+      this.activeStateHandler.setActive(false)
+
+      if (element !== 'drawer') {
+        document.removeEventListener('keydown', this.keyHandler)
+      }
+
+      if (element === 'dropdown') {
+        document.removeEventListener('mouseup', this.clickHandler)
+        document.removeEventListener('touchend', this.clickHandler)
+      }
+      onDeactivated(this, e)
+    }
+    /**
+     *
+     */
+    toggle = e => {
+      this.activeStateHandler.active ? this.deactivate(e) : this.activate(e) // eslint-disable-line
+    }
+
+    // Render
+    // ---------------------------------------------------------------------------
+    render() {
+      return <Wrapped activeContext={this.activeContext()} {...this.props} />
     }
   }
