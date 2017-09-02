@@ -16,8 +16,4 @@ const render = Component => {
 
 render(App)
 
-if (module.hot) {
-  module.hot.accept('./App', () => {
-    render(App)
-  })
-}
+if (module.hot) { module.hot.accept('./App', () => {render(App)})}

@@ -20,7 +20,7 @@
     "deploy": "gh-pages -d build",
     "js": "npm run js:esmodules && npm run js:amdmodule",
     "styles": "npm run styles:sass && npm run styles:minify && npm run styles:copy",
-    "lint": "eslint --ext .js --ext .jsx src lib",
+    "lint": "NODE_ENV=test eslint --ext .js --ext .jsx src lib",
     "test:mocha":
       "BABEL_ENV=test mocha lib/utils-test/setup.js $(find lib -name '*.spec.jsx')",
     "format": "prettier --write \"{lib,src}/**/*.{js,jsx}\"",
