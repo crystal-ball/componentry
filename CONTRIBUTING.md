@@ -26,19 +26,22 @@ Componentry's only external dependency is `babel-runtime`, which provides the re
 Babel helpers from transpiling in module format. Bootstrap v4 is included as a
 dependency to allow importing the SCSS without requiring install.
 
-Jed Watson's [classnames](https://github.com/JedWatson/classnames) is recreated in
-repo as an ES module.
-
 ## Testing
-Testing uses Mocha with Enzyme. The `.babelrc` configs have a test environment to
+Testing uses Mocha, Sinon and Enzyme. The `.babelrc` configs have a test environment to
 configure Babel to compile ESM for Mocha, this is triggered by the `BABEL_ENV` in the
 package test script.
 
-Test setup is required for Mocha+Enzyme, it is located in the `lib/test/setup.js`
-file which is imported in the package test script.
+The `/lib/utils-test/setup` file is required for the `jsdom` package which creates a
+browser-like environment for Node. THAT is required for Enzyme _specifically_ to use
+`mount`. See: http://airbnb.io/enzyme/docs/api/mount.html
 
-NOTE: Tests should only validate expected component *behavior*, and not internal
-implementation of those behaviors.
+Enzyme also requires the package `react-test-renderer`, and it has to be added
+explicitly because Enzyme has different test dependencies for different versions of
+React See:
+http://airbnb.io/enzyme/index.html#-installation-docs-installation-readme-md
+
+NOTE: _Tests should only validate expected component **behavior**, and not internal
+implementation of those behaviors._
 
 ## Component Expectations
 One of the primary goals of Componentry is a simple, consistent API for all
@@ -79,3 +82,9 @@ Three versions of the library source code are created by the `prepublish` script
 The different versions are created using Babel configs triggered by the `BABEL_ENV`,
 see the `.babelrc` file for more info.
 
+## Help Wanted/Todo
+- The `elementFactory` returns a component with defaults set for basic properties,
+  but because it's a component it means that most of the tests need to `mount`
+  to render the Component and the inner `Element`, which is a bummer. Is there a way
+  to handle element factory functionality without adding a component to the JSX
+  output?

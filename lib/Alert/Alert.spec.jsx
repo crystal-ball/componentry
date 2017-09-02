@@ -25,16 +25,16 @@ describe('<Alert/>', () => {
     )
 
     // Default close button
-    assert.equal(wrapper.find('button.close').length, 1, 'close button is rendered')
+    assert.equal(wrapper.find('button').length, 1, 'close button is rendered')
     assert.equal(
-      wrapper.find('button.close[aria-label="close"]').length,
+      wrapper.find('svg.close[aria-label="close"]').length,
       1,
       'close button has correct aria label'
     )
   })
 
   it('should render the appropriate contextual color class', () => {
-    const wrapper = shallow(<Alert color="danger">Warning!</Alert>)
+    const wrapper = mount(<Alert color="danger">Warning!</Alert>)
     assert.equal(
       wrapper.find('.alert.alert-danger').length,
       1,
@@ -43,13 +43,13 @@ describe('<Alert/>', () => {
   })
 
   it('should not render a close button if not dismissable', () => {
-    const wrapper = shallow(
+    const wrapper = mount(
       <Alert color="danger" dismissable={false}>
         Warning!
       </Alert>
     )
     assert.equal(
-      wrapper.find('button.close').length,
+      wrapper.find('button').length,
       0,
       'passing dismissable false suppresses the close button'
     )
@@ -75,10 +75,6 @@ describe('<Alert/>', () => {
       1,
       'alert is still default'
     )
-    assert.equal(
-      wrapper.find('button.close').length,
-      1,
-      'close button is still rendered'
-    )
+    assert.equal(wrapper.find('button').length, 1, 'close button is still rendered')
   })
 })

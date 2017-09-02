@@ -7,12 +7,12 @@ Chevron.contextTypes = {
   })
 }
 
-export default function Chevron(props, { COMPONENTRY_THEME } = {}) {
+export default function Chevron(props, { COMPONENTRY_THEME = {} } = {}) {
   return (
     COMPONENTRY_THEME.chevronSVG || (
       <svg
         role="img"
-        aria-label="Toggle"
+        aria-label="toggle"
         className="icon chevron"
         width="32"
         height="32"

@@ -4,7 +4,7 @@ import { expect } from 'chai'
 
 import elementFactory from './element-factory'
 
-describe('SimpleElement', () => {
+describe('elementFactory', () => {
   it('should return a component of: div with children', () => {
     const Test = elementFactory()
     const wrapper = shallow(<Test>Children</Test>)
@@ -13,7 +13,7 @@ describe('SimpleElement', () => {
   })
 
   it('should accept a className', () => {
-    const Test = elementFactory({ className: 'test class' })
+    const Test = elementFactory({ classes: 'test class' })
     const wrapper = shallow(<Test>Children</Test>)
     expect(wrapper.find('div.test.class')).to.have.length(1)
   })
@@ -25,7 +25,7 @@ describe('SimpleElement', () => {
   })
 
   it('should prioritize and combine component invocation params', () => {
-    const Test = elementFactory({ tag: 'h4', className: 'factory' })
+    const Test = elementFactory({ tag: 'h4', classes: 'factory' })
     const wrapper = shallow(
       <Test As="span" className="invocation">
         Children

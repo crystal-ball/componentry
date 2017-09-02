@@ -20,6 +20,9 @@
 }
 
 .popover-content {
+  @include border-radius($border-radius-lg);
+  @include box-shadow($popover-box-shadow);
+  @include reset-text();
   background-clip: padding-box;
   background-color: $popover-bg;
   display: block;
@@ -29,9 +32,6 @@
   position: absolute;
   word-wrap: break-word; // Allow breaking very long words so they don't overflow the popover's bounds
   z-index: $zindex-popover;
-  @include border-radius($border-radius-lg);
-  @include box-shadow($popover-box-shadow);
-  @include reset-text();
 
   .tip-container {
     align-items: center;
@@ -49,10 +49,9 @@
     width: $popover-arrow-width * 2;
 
     &:after {
-      background: $popover-bg;
       @include box-shadow($popover-box-shadow);
-
-      content: "";
+      background: $popover-bg;
+      content: '';
       height: $popover-arrow-width;
       position: absolute;
       transform: rotate(45deg);
@@ -64,14 +63,18 @@
   // Position Rules
   // ========================================================
 
+  &.bottom .tip-container,
+  &.top .tip-container {
+    left: 0;
+    width: 100%;
+  }
+
   &.bottom {
     margin-top: $popover-arrow-width;
     top: 100%;
 
     .tip-container {
       bottom: 100%;
-      left: 0;
-      width: 100%;
     }
 
     .tip:after {
@@ -84,9 +87,7 @@
     margin-bottom: $popover-arrow-width;
 
     .tip-container {
-      left: 0;
       top: 100%;
-      width: 100%;
     }
 
     .tip:after {
@@ -94,13 +95,17 @@
     }
   }
 
+  &.right .tip-container,
+  &.left .tip-container {
+    height: 100%;
+    top: 0.5em; // We want the tip to be 1/2 of line height from the top for perfect center
+  }
+
   &.right {
     left: 100%;
     margin-left: $popover-arrow-width;
 
     .tip-container {
-      height: 100%;
-      top: 0;
       left: -$popover-arrow-width * 2;
     }
 
@@ -114,9 +119,7 @@
     right: 100%;
 
     .tip-container {
-      height: 100%;
       right: -$popover-arrow-width * 2;
-      top: 0;
     }
 
     .tip:after {

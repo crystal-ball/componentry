@@ -1,28 +1,28 @@
 import React from 'react'
-import { mount, shallow } from 'enzyme'
+import { mount } from 'enzyme'
 import { expect } from 'chai'
 
 import Card from './Card'
 
 describe('<Card />', () => {
   it('should render a container div with class card by default', () => {
-    const wrapper = shallow(<Card />)
+    const wrapper = mount(<Card />)
     expect(wrapper.find('div')).to.have.length(1)
     expect(wrapper.find('.card')).to.have.length(1)
   })
 
   it('should render any passed className', () => {
-    const wrapper = shallow(<Card className="special classes" />)
+    const wrapper = mount(<Card className="special classes" />)
     expect(wrapper.find('.card.special.classes')).to.have.length(1)
   })
 
   it('should render any other passed attributes', () => {
-    const wrapper = shallow(<Card data-test="totally-rad" />)
+    const wrapper = mount(<Card data-test="totally-rad" />)
     expect(wrapper.find('[data-test="totally-rad"]')).to.have.length(1)
   })
 
   it('should render children', () => {
-    const wrapper = shallow(
+    const wrapper = mount(
       <Card>
         <span>Rad</span>
       </Card>
@@ -36,19 +36,19 @@ describe('<Card />', () => {
     const wrapper = mount(
       <Card>
         <Card.Header>Header</Card.Header>
-        <Card.Block>
+        <Card.Body>
           <Card.Title>Title</Card.Title>
           Body
-        </Card.Block>
+        </Card.Body>
         <Card.Footer>Footer</Card.Footer>
       </Card>
     )
 
     expect(wrapper.find('.card-header')).to.have.length(1)
-    expect(wrapper.find('.card-block')).to.have.length(1)
+    expect(wrapper.find('.card-body')).to.have.length(1)
     expect(wrapper.find('.card-title')).to.have.length(1)
     expect(wrapper.find('.card-footer')).to.have.length(1)
-    // Contextual card components are SimpleElement components, addl testing
-    // found in SimpleElement.spec.js
+    // Contextual card components are elementFactory components, addl testing
+    // found in element-factory.spec.js
   })
 })

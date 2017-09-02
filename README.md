@@ -15,3 +15,4 @@ TODO:
 - Rename state `type` to `element`
 - Rename `state` to ???
 - Use withState with modal
+- Subcomponent shorthand

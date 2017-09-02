@@ -75,7 +75,7 @@ Button.contextTypes = {
  */
 export default function Button(
   { className, color, link, outline, size, onMouseDown, ...rest },
-  { COMPONENTRY_THEME: { defaultButtonColor = 'primary' } }
+  { COMPONENTRY_THEME: { defaultButtonColor = 'primary' } = {} }
 ) {
   const mouseDown = evt => {
     // Call passed mouse down event and then handle blur

@@ -7,12 +7,12 @@ Close.contextTypes = {
   })
 }
 
-export default function Close(props, { COMPONENTRY_THEME } = {}) {
+export default function Close(props, { COMPONENTRY_THEME = {} } = {}) {
   return (
     COMPONENTRY_THEME.closeSVG || (
       <svg
         role="img"
-        aria-label="Close"
+        aria-label="close"
         className="icon close"
         width="32"
         height="32"
