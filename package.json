@@ -1,6 +1,6 @@
 {
   "name": "componentry",
-  "version": "1.5.0",
+  "version": "1.6.0",
   "description": "Radical React Components",
   "main": "dist/componentry.js",
   "module": "es/index.js",
