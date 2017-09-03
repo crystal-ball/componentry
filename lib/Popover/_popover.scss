@@ -38,14 +38,12 @@
     display: flex;
     justify-content: center;
     overflow: hidden;
-    pointer-events: none; // Prevents mouseenter of tip that slightly overlaps trigger
     position: absolute;
   }
 
   .tip {
     height: $popover-arrow-width * 2;
     overflow: hidden;
-    pointer-events: none; // Prevents mouseenter of tip that slightly overlaps trigger
     width: $popover-arrow-width * 2;
 
     &:after {

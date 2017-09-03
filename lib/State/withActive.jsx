@@ -5,28 +5,43 @@ import nanoid from 'nanoid'
 import getDisplayName from '../utils/getDisplayName'
 import { closest, getTextWidth } from '../utils/dom'
 
+/**
+ * Class used as an instance property to manage subscribers and state for wrapped
+ * component.
+ * Heavily borrowed from https://github.com/ReactTraining/react-broadcast
+ */
 class ActiveStateHandler {
-  constructor(active) {
+  subscriptions = []
+
+  constructor(active = false) {
     this.active = active
   }
 
-  subscriptions = []
-
+  /**
+   * Update active state property internally and notify all subscribers that a change
+   * has occurred.
+   */
   setActive = active => {
     this.active = active
     this.subscriptions.forEach(subscription => subscription(active))
   }
 
-  // TODO: Handle unsubscribe
   subscribe = subscription => {
     this.subscriptions.push(subscription)
+
+    // On subscription, return an unsubscribe method that will remove that subscriber
+    // from the active list when called
+    return () => {
+      this.subscriptions = this.subscriptions.filter(item => item !== subscription)
+    }
   }
 }
 
 /**
- * @param {Object} stateConfigs
+ * HOC adds active state to context accessible by subcomponents at any location in
+ * consuming application.
  */
-export default ({ active = false, element } = {}) => Wrapped =>
+export default ({ element, mouseEvents } = {}) => Wrapped =>
   class WithActive extends Component {
     static displayName = `withActive${getDisplayName(Wrapped)}`
     /**
@@ -42,6 +57,7 @@ export default ({ active = false, element } = {}) => Wrapped =>
     static Item = Wrapped.Item
 
     static propTypes = {
+      active: bool,
       onActivate: func,
       onActivated: func,
       onDeactivate: func,
@@ -49,6 +65,7 @@ export default ({ active = false, element } = {}) => Wrapped =>
     }
 
     static defaultProps = {
+      active: undefined,
       onActivate() {},
       onActivated() {},
       onDeactivate() {},
@@ -56,6 +73,8 @@ export default ({ active = false, element } = {}) => Wrapped =>
     }
 
     static childContextTypes = {
+      // Context cannot change! Passed context is a wrapper that should not change
+      // use caps to signify it is a constant, only the internal values can change
       COMPONENTRY_ACTIVE: shape({
         activate: func,
         active: bool,
@@ -66,13 +85,25 @@ export default ({ active = false, element } = {}) => Wrapped =>
         element: string
       })
     }
+    getChildContext = () => ({ COMPONENTRY_ACTIVE: this.activeContext() })
 
-    constructor(props) {
-      super(props)
-      this.activeStateHandler = new ActiveStateHandler(active)
+    // Hooks
+    // ---------------------------------------------------------------------------
+    /**
+     * Active is a prop and changed, this lets components be controlled by props
+     */
+    componentWillReceiveProps(nextProps) {
+      if (this.props.active !== nextProps.active)
+        this.activeStateHandler.setActive(nextProps.active)
     }
 
-    getChildContext = () => ({ COMPONENTRY_ACTIVE: this.activeContext() })
+    // Instance Properties
+    // ---------------------------------------------------------------------------
+    /**
+     * Each instance has a separate class handling the state. Context is scoped and
+     * only that class' state is passed.
+     */
+    activeStateHandler = new ActiveStateHandler(this.props.active)
     /**
      * Guid instance property will be uniquely assigned once for each modal instance,
      * this unique id is then passed to all children through context where it can be
@@ -93,7 +124,7 @@ export default ({ active = false, element } = {}) => Wrapped =>
     // Methods
     // ---------------------------------------------------------------------------
     /**
-     *
+     * Convenience method for getting contents of context.
      */
     activeContext = () => ({
       activate: this.activate,
@@ -108,8 +139,9 @@ export default ({ active = false, element } = {}) => Wrapped =>
      *
      */
     clickHandler = e => {
-      // If the click was ouside dropdown, close the dropdown and then cleanup the listener
-      if (!closest(e.target, `${this.guid}-container`)) {
+      // If the click was ouside dropdown, close the dropdown and then cleanup the
+      // listener
+      if (!closest(e.target, element)) {
         this.toggle()
       }
     }
@@ -117,7 +149,7 @@ export default ({ active = false, element } = {}) => Wrapped =>
      *
      */
     keyHandler = e => {
-      // Escape key is which 27, when escape key is hit, toggle state
+      // Escape key is which 27, when escape key is hit toggle state
       if (e.which === 27) {
         this.toggle()
       }
@@ -194,6 +226,13 @@ export default ({ active = false, element } = {}) => Wrapped =>
     // Render
     // ---------------------------------------------------------------------------
     render() {
-      return <Wrapped activeContext={this.activeContext()} {...this.props} />
+      return (
+        <Wrapped
+          activeContext={this.activeContext()}
+          onMouseEnter={mouseEvents ? this.activate : null}
+          onMouseLeave={mouseEvents ? this.deactivate : null}
+          {...this.props}
+        />
+      )
     }
   }

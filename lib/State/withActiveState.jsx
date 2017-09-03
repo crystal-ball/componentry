@@ -29,17 +29,32 @@ export default (ariaConfigs = {}) => Wrapped =>
       })
     }
 
-    state = { active: false }
+    state = { active: null }
+
+    // Hooks
+    // ---------------------------------------------------------------------------
+    /**
+     * Update initial state using context before mount
+     */
+    componentWillMount() {
+      this.setState({ active: this.context.COMPONENTRY_ACTIVE.active })
+    }
     /**
      * When wrapped component needs to observe active and update on change, pass
      * subscribe true to trigger component subscription
      */
     componentDidMount() {
       if (ariaConfigs.subscribe !== false) {
-        this.context.COMPONENTRY_ACTIVE.subscribe(active =>
+        this.unsubscribe = this.context.COMPONENTRY_ACTIVE.subscribe(active =>
           this.setState({ active })
         )
       }
+    }
+    /**
+     * Remove subscription on unmount!
+     * */
+    componentWillUnmount() {
+      if (ariaConfigs.subscribe !== false) this.unsubscribe()
     }
 
     // Guid for arias and active state will be passed through context, HOC needs to

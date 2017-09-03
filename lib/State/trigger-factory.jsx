@@ -1,8 +1,8 @@
-import React from 'react'
-import { bool, func, node, oneOfType, shape, string } from 'prop-types'
+import { func, shape, string } from 'prop-types'
 import classNames from 'classnames'
 
 import Button from '../Button'
+import { renderContainer } from '../utils/element-factory'
 
 /**
  * Individual triggers are defined for `<Activate />`, `<Deactivate />` and
@@ -12,15 +12,9 @@ import Button from '../Button'
  * @param {string} trigger The type of trigger, sets the `onClick` behavior of
  *                         returned component.
  */
-// TODO: use context type?
-export default function triggerFactory(
-  { trigger = 'toggle', link: baseLink = true, mouseEvents } = {}
-) {
+export default function triggerFactory({ trigger = 'toggle', link = true } = {}) {
   Trigger.propTypes = {
-    As: oneOfType([func, node]),
-    children: node,
     className: string,
-    link: bool,
     activeContext: shape({
       activate: func.isRequired,
       deactivate: func.isRequired,
@@ -30,25 +24,17 @@ export default function triggerFactory(
   }
 
   Trigger.defaultProps = {
-    As: Button,
-    children: null,
-    link: baseLink,
     className: ''
   }
 
-  function Trigger({ As, children, className, link, activeContext, ...rest }) {
-    return (
-      <As
-        className={classNames(`${activeContext.element}-toggle`, className)}
-        link={link}
-        onMouseEnter={mouseEvents ? activeContext.activate : null}
-        onMouseLeave={mouseEvents ? activeContext.deactivate : null}
-        onClick={activeContext[trigger]}
-        {...rest}
-      >
-        {children}
-      </As>
-    )
+  function Trigger({ className, activeContext, ...rest }) {
+    return renderContainer({
+      As: Button,
+      className: classNames(`${activeContext.element}-toggle`, className),
+      link,
+      onClick: activeContext[trigger],
+      ...rest
+    })
   }
 
   return Trigger
