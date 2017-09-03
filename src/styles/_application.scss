@@ -1,0 +1,19 @@
+// Demo App Custom Styles
+// ---------------------------------------------------------------------------
+
+p {
+  max-width: 700px;
+}
+
+// TODO: Move to Jetpacked
+.fullscreen-row {
+  width: 100vw;
+  position: relative;
+  margin-left: -50vw;
+  left: 50%;
+}
+
+// Normally set this through theme custom variables, override for demo app
+.icon.font {
+  bottom: -0.05em;
+}

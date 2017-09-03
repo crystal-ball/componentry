@@ -1,0 +1,200 @@
+/**
+ * prism.js Panda theme for JavaScript, CSS and HTML
+ * thanks to prism author: Lea Verou - https://github.com/PrismJS/prism
+ * thanks to panda author: siamak - https://github.com/siamak/atom-panda-syntax
+ *
+ * Styles for Prism highlighting with line-highlight,
+ */
+
+/** ORIGINAL PANDA COLORS FOR REFERENCE
+very-light-gray: #E6E6E6;
+lighter-gray   : darken(@very-light-gray, 10%);
+light-gray     : #757575;
+gray           : #373b41;
+
+dark-gray      : lighten(#292A2B, 2%);
+very-dark-gray : #292A2B;
+
+white          : #f3f3f3;
+light-midnight : #676B79;
+
+blue           : #45A9F9;
+light-blue     : #6FC1FF;
+purple         : #B084EB;
+green          : #19f9d8;
+red            : #FF2C6D;
+
+orange         : #FFB86C;
+light-orange   : lighten(@orange, 8%);
+
+pink           : #FF75B5;
+light-pink     : #FF9AC1;
+*/
+
+/* PRISM PANDA VARS */
+$background: #292a2b;
+$color: #e6e6e6;
+$token-keyword: #FF75B5;
+$token-string: #19f9d8;
+$token-operator: #FFB86C;
+$token-number: lighten(#FFB86C, 8%);
+$token-comment: #757575;
+$token-punctuation: #FF9AC1;
+$token-function: #6FC1FF;
+
+/* Prism Code */
+code[class*="language-"],
+pre[class*="language-"] {
+	color: $color;
+	background: none;
+	border: none;
+	font-family: 'Source Code Pro', monospace; /* Be sure to include font!!! <link href="https://fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet"> */
+  font-size: 13px;
+	text-align: left;
+	white-space: pre;
+	word-spacing: normal;
+	word-break: normal;
+	word-wrap: normal;
+	line-height: 1.5;
+	tab-size: 4;
+	hyphens: none;
+
+  &::-moz-selection,
+  & ::-moz-selection,
+  &::selection,
+  & ::selection {
+    text-shadow: none;
+  	background: #b3d4fc;
+  }
+}
+
+
+@media print {
+	code[class*="language-"],
+	pre[class*="language-"] {
+		text-shadow: none;
+	}
+}
+
+/* Code blocks */
+pre[class*="language-"] {
+	padding: 1em;
+	margin: .5em 0;
+	overflow: auto;
+}
+
+:not(pre) > code[class*="language-"],
+pre[class*="language-"] {
+	background: $background;
+}
+
+/* Inline code */
+:not(pre) > code[class*="language-"] {
+	padding: .1em;
+	border-radius: .3em;
+	white-space: normal;
+}
+
+/* Begin Color Assignments */
+.token.comment,
+.token.prolog,
+.token.doctype,
+.token.cdata {
+	color: $token-comment;
+}
+
+.token.punctuation {
+	color: $token-punctuation;
+}
+
+.namespace {
+	opacity: .7;
+}
+
+.token.property,
+.token.tag,
+.token.boolean,
+.token.number,
+.token.constant,
+.token.symbol,
+.token.deleted {
+	color: $token-number;
+}
+
+.token.selector,
+.token.attr-name,
+.token.string,
+.token.char,
+.token.builtin,
+.token.inserted {
+	color: $token-string;
+}
+
+.token.operator,
+.token.entity,
+.token.url,
+.language-css .token.string,
+.style .token.string {
+	color: $token-operator;
+}
+
+.token.atrule,
+.token.attr-value,
+.token.keyword {
+	color: $token-keyword;
+}
+
+.token.function {
+	color: $token-function;
+}
+
+.token.regex,
+.token.important,
+.token.variable {
+	color: #e90;
+}
+
+.token.important,
+.token.bold {
+	font-weight: bold;
+}
+.token.italic {
+	font-style: italic;
+}
+
+.token.entity {
+	cursor: help;
+}
+
+.token a {
+	color: inherit;
+}
+
+/* Show Language Plugin Styles */
+div.prism-show-language {
+	position: relative;
+}
+
+div.prism-show-language > div.prism-show-language-label {
+	color: $background;
+	background-color: $color;
+	display: inline-block;
+	position: absolute;
+	bottom: auto;
+	left: auto;
+	top: 0;
+	right: 0;
+	width: auto;
+	height: auto;
+	font-size: 0.9em;
+	border-radius: 0 0 0 5px;
+	padding: 0 0.5em;
+	text-shadow: none;
+	z-index: 1;
+	box-shadow: none;
+	-webkit-transform: none;
+	-moz-transform: none;
+	-ms-transform: none;
+	-o-transform: none;
+	transform: none;
+}
