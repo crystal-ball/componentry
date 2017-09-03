@@ -10,12 +10,14 @@ components and Bs elements is the same. Include them in your project like so:
 
 ```scss
 // 1. Theme Variables
-// Import custom variables to theme Bootstrap and Componentry
-@import 'theme/variables';
+// Import any customization variables to theme Bootstrap and Componentry, if you
+// don't load any the Bootstrap default variables will be used
+@import 'your-variables';
 
 // 2. Bootstrap Styles
-// Import the Bootstrap library to create base style ruleset
-@import '~bootstrap/scss/bootstrap';
+// Componentry includes the Bootstrap styles, and has a convenience entry import
+// The Bootstrap styles form the base style rule set for your application
+@import '~componentry/dist/bootstrap';
 
 // 3. Componentry Styles
 // Import Componentry styles on top of Bootstrap base ruleset
@@ -23,7 +25,7 @@ components and Bs elements is the same. Include them in your project like so:
 
 // 4. Application Styles
 // Import application styles as final ruleset
-@import 'application/styles';
+@import 'your-application/styles';
 ```
 
 ## Clear Theme
@@ -46,9 +48,9 @@ Componentry enhancements to Bootstrap include:
   accesibility, and instead of duplicating the aria status in a class name
   Componentry extends the Bs styles to trigger off the aria status.
 - Where possible floats have been replaced with flexbox rules.
-- The `btn-unstyled` rule is intended to be used with the `btn-link` rule to create
-  A++ accessible buttons styled to look exactly like anchors for any interactive
-  element that is not a link to a different page.
+- The `btn-anchor` rule is intended to be used to create A++ accessible buttons
+  styled to look exactly like anchors for any interactive element that is not a link
+  to a different page.
 - Included `icon` class adds base styles for font icons using SVGs.
 - Tooltips and Popovers use a relative positioned container with absolute positioned
   children for DOM placement instead of fixed position. This removes necessity of

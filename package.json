@@ -30,8 +30,7 @@
     "js:esmodules": "BABEL_ENV=production babel lib --out-dir es",
     "js:amdmodule": "NODE_ENV=production webpack --config webpack.config.umd.js",
     "bootstrap:copy": "cp -a ./node_modules/bootstrap/scss/* ./styles/bootstrap",
-    "styles:sass":
-      "node-sass styles/componentry-clear-theme.scss dist/componentry.css --include-path=node_modules/bootstrap/scss",
+    "styles:sass": "node-sass src/componentry-clear.scss dist/componentry.css",
     "styles:minify": "cleancss -o dist/componentry.min.css dist/componentry.css",
     "styles:copy": "cp -r styles/* dist"
   },
