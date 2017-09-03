@@ -3,7 +3,7 @@ import { shallow } from 'enzyme'
 import { expect } from 'chai'
 import sinon from 'sinon'
 
-import Button from './Button'
+import Button from './index'
 
 describe('<Button/>', () => {
   it('should render a button element default', () => {

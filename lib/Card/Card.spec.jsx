@@ -2,7 +2,7 @@ import React from 'react'
 import { mount, shallow } from 'enzyme'
 import { expect } from 'chai'
 
-import Card from './Card'
+import Card from './index'
 
 describe('<Card />', () => {
   it('should render a container div with class card by default', () => {

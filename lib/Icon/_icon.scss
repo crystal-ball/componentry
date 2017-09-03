@@ -25,3 +25,13 @@
 .chevron {
   bottom: $svgs-bottom;
 }
+
+// Animate close icon on hover
+.close {
+  opacity: 0.6;
+  transition: $transition-fade;
+
+  @include hover-focus {
+    opacity: 1;
+  }
+}
