@@ -1,0 +1,14 @@
+// ========================================================
+// Dropdowns
+// ========================================================
+
+// BS dropdowns expect a containing .dropdown and .dropdown-menu class, but for
+// simplicity we use a wrapping `<TYPE>-container` and `<TYPE>-content` on all
+// elements, and extend the original dropdown here
+// BS dropdowns use class `.dropdown-menu, but all content containers in Componentry
+// use `TYPE-content`
+.dropdown-content {
+  @extend .dropdown-menu;
+  // In Bs this is applied by adding .show class
+  display: block;
+}

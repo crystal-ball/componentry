@@ -2,6 +2,23 @@
 // Utility Styles
 // ========================================================
 
+// ========================================================
+// Componentry Variables
+// ========================================================
+
+// Any variables used in the Componentry library that are not originally Bootstrap
+// variables are declared here. Note that additional variables should only be
+// created to allow for additional customization not provided in the Bs library.
+
+// NOTE: these should be overrideable values, so they should all use !default
+
+$icon-bottom: -0.05em !default;
+$svgs-bottom: -0.1em !default;
+
+// ========================================================
+// Show/Hide w/ Aria Hidden
+// ========================================================
+
 // Use aria-hidden for A++ Accessible show/hide, b/c selector is weak and we included
 // this partial first, hidden has !important.
 *[aria-hidden="true"] {

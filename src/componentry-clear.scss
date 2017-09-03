@@ -1,0 +1,16 @@
+// ========================================================
+// Compile Target for Distributed Stylesheet
+// Includes Clear theme + Bootstrap + Componentry
+// ========================================================
+
+// Set Theme 'Clear' Variables
+// ---------------------------------------------------------------------------
+@import '../styles/themes/clear';
+
+// Import Bootstrap v4
+// ---------------------------------------------------------------------------
+@import '../styles/bootstrap';
+
+// Componentry Library Styles
+// ---------------------------------------------------------------------------
+@import '../styles/componentry';

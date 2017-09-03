@@ -1,5 +1,5 @@
-import React from 'react';
-import { Tooltip } from '../../lib';
+import React from 'react'
+import { Tooltip } from '../../lib'
 
 export default function Tooltips() {
   return (
@@ -11,7 +11,7 @@ export default function Tooltips() {
         <div className="col-6">
           <h4>Subcomponents</h4>
           <Tooltip>
-            <Tooltip.Trigger>Tooltip Trigger</Tooltip.Trigger>
+            <Tooltip.Toggle>Tooltip Trigger</Tooltip.Toggle>
             <Tooltip.Content>
               Only 8% of the world’s currency is physical money, the rest only
               exists on computers.
@@ -20,12 +20,12 @@ export default function Tooltips() {
         </div>
         <div className="col-6">
           <h4>Parameter Values</h4>
-          <Tooltip
+          {/* <Tooltip
             Trigger="Tooltip trigger"
             Content="Shorthand invocation method"
-          />
+          /> */}
         </div>
       </div>
     </div>
-  );
+  )
 }

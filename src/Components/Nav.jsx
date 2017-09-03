@@ -1,9 +1,14 @@
-import React from 'react';
-import { NavLink } from 'react-router-dom';
+import React from 'react'
+import { NavLink } from 'react-router-dom'
 
 export default function Nav() {
   return (
     <nav>
+      <div>
+        <NavLink to="/components/state" activeClassName="active">
+          State
+        </NavLink>
+      </div>
       <div>
         <NavLink to="/components/alerts" activeClassName="active">
           Alerts
@@ -55,5 +60,5 @@ export default function Nav() {
         </NavLink>
       </div>
     </nav>
-  );
+  )
 }

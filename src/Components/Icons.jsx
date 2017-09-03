@@ -1,5 +1,5 @@
-import React from 'react';
-import { Icon } from '../../lib';
+import React from 'react'
+import { Icon } from '../../lib'
 
 const devicons = [
   'react',
@@ -22,7 +22,7 @@ const devicons = [
   'mitlicence',
   'terminal',
   'code'
-];
+]
 
 export default function Icons() {
   return (
@@ -63,17 +63,15 @@ export default function Icons() {
             </code>
           </p>
           <div className="row">
-            {devicons.map(id =>
+            {devicons.map(id => (
               <div className="col-3 my-3 text-center" key={id}>
                 <Icon icon={id} font={false} className="display-2 text-muted" />
-                <div>
-                  {id}
-                </div>
+                <div>{id}</div>
               </div>
-            )}
+            ))}
           </div>
         </div>
       </div>
     </div>
-  );
+  )
 }

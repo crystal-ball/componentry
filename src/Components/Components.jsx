@@ -1,22 +1,23 @@
-import React from 'react';
-import { Route } from 'react-router-dom';
-import { object } from 'prop-types';
+import React from 'react'
+import { Route } from 'react-router-dom'
+import { object } from 'prop-types'
 
-import Nav from './Nav';
-import Header from './Header';
-import Alerts from './Alerts';
-import Buttons from './Buttons';
-import Cards from './Cards';
-import Drawers from './Drawers';
-import Dropdowns from './Dropdowns';
-import Icons from './Icons';
-import ListGroups from './ListGroups';
-import Modals from './Modals';
-import Popovers from './Popovers';
-import Tooltips from './Tooltips';
+import Nav from './Nav'
+import Header from './Header'
+import Alerts from './Alerts'
+import Buttons from './Buttons'
+import Cards from './Cards'
+import Drawers from './Drawers'
+import Dropdowns from './Dropdowns'
+import Icons from './Icons'
+import ListGroups from './ListGroups'
+import Modals from './Modals'
+import Popovers from './Popovers'
+import State from './State'
+import Tooltips from './Tooltips'
 
 export default function Components({ match }) {
-  const { component } = match.params;
+  const { component } = match.params
 
   return (
     <div>
@@ -26,6 +27,7 @@ export default function Components({ match }) {
 
       <div className="row">
         <div className="col-9">
+          <Route path="/components/state" component={State} />
           <Route path="/components/alerts" component={Alerts} />
           <Route path="/components/buttons" component={Buttons} />
           <Route path="/components/cards" component={Cards} />
@@ -42,9 +44,9 @@ export default function Components({ match }) {
         </div>
       </div>
     </div>
-  );
+  )
 }
 
 Components.propTypes = {
   match: object.isRequired // eslint-disable-line
-};
+}

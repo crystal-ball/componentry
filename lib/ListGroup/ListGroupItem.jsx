@@ -1,48 +1,28 @@
-import React from 'react';
-import { func, node, string } from 'prop-types';
+import { bool, string } from 'prop-types'
+import classNames from 'classnames'
 
-import Button from '../Button';
-import classNames from '../utils/classnames';
+import Button from '../Button'
+import { renderContainer } from '../utils/element-factory'
 
-export default function ListGroupItem({
-  As,
-  children,
-  className,
-  href,
-  onClick,
-  ...other
-}) {
-  className = classNames('list-group-item', className, {
-    'list-group-item-action': href || onClick
-  });
-
-  if (!As && (href || onClick)) {
-    // If there isn't an As config and component has action, assign correct element
-    As = href ? 'a' : Button;
-  } else {
-    // Fall back to configured As, or fallback fallback to <li>
-    As = As || 'li';
-  }
-
-  return (
-    <As className={className} href={href} onClick={onClick} {...other}>
-      {children}
-    </As>
-  );
-}
+/**
+ * List group item of `li`, `a` or `Button`.
+ */
 
 ListGroupItem.propTypes = {
-  As: node,
-  children: node,
-  className: string,
-  href: string,
-  onClick: func
-};
+  active: bool,
+  className: string
+}
 
-ListGroupItem.defaultProps = {
-  As: null,
-  children: null,
-  className: '',
-  href: null,
-  onClick: null
-};
+export default function ListGroupItem({ active, className, ...rest }) {
+  let As = 'li' // Component is a li by default
+  if (rest.href || rest.onClick) As = rest.href ? 'a' : Button // override for action elements
+
+  // Pass null to prevent `btn-primary` on Button items
+  const color = rest.onClick ? null : undefined
+  const classes = classNames('list-group-item', className, {
+    active,
+    'list-group-item-action': rest.href || rest.onClick
+  })
+
+  return renderContainer({ As, color, className: classes, ...rest })
+}

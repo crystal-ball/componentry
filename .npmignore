@@ -2,7 +2,9 @@
 #################################
 build
 node_modules
-lib
 public
 src
 styles
+.vscode
+
+# NOTE: Don't ignore /lib, the SCSS files need to be in bundle

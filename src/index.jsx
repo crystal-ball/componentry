@@ -1,9 +1,9 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import { AppContainer } from 'react-hot-loader';
+import React from 'react'
+import ReactDOM from 'react-dom'
+import { AppContainer } from 'react-hot-loader'
 
-import App from './App';
-import './styles.scss';
+import App from './App'
+import './styles.scss'
 
 const render = Component => {
   ReactDOM.render(
@@ -11,13 +11,13 @@ const render = Component => {
       <Component />
     </AppContainer>,
     document.getElementById('root')
-  );
-};
+  )
+}
 
-render(App);
+render(App)
 
 if (module.hot) {
   module.hot.accept('./App', () => {
-    render(App);
-  });
+    render(App)
+  })
 }

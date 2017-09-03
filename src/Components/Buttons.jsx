@@ -1,5 +1,5 @@
-import React from 'react';
-import { Button } from '../../lib';
+import React from 'react'
+import { Button } from '../../lib'
 
 export default function Buttons() {
   return (
@@ -9,47 +9,34 @@ export default function Buttons() {
           <p className="lead">Button component motivation...</p>
         </div>
         <div className="col-6">
-          <div>
-            <Button color="primary">Primary</Button>
-            <Button color="secondary">Secondary</Button>
-            <Button color="success">Success</Button>
-            <Button color="info">Info</Button>
-            <Button color="warning">Warning</Button>
-            <Button color="danger">Danger</Button>
-            <Button className="btn-link">Link</Button>
-          </div>
+          <Button color="primary">Primary</Button>
+          <Button color="secondary">Secondary</Button>
+          <Button color="success">Success</Button>
+          <Button color="info">Info</Button>
+          <Button color="warning">Warning</Button>
+          <Button color="danger">Danger</Button>
+          <Button color="link">Link</Button>
         </div>
         <div className="col-6">
-          <div>
-            <Button color="primary" outline>
-              Primary
-            </Button>
-            <Button color="success" outline>
-              Success
-            </Button>
-            <Button color="info" outline>
-              Info
-            </Button>
-            <Button color="warning" outline>
-              Warning
-            </Button>
-            <Button color="danger" outline>
-              Danger
-            </Button>
-            <Button className="btn-link" outline>
-              Link
-            </Button>
-          </div>
+          <Button color="primary" outline>
+            Primary
+          </Button>
+          <Button color="success" outline>
+            Success
+          </Button>
+          <Button color="info" outline>
+            Info
+          </Button>
+          <Button color="warning" outline>
+            Warning
+          </Button>
+          <Button color="danger" outline>
+            Danger
+          </Button>
         </div>
         <div className="col-6">
-          <div>
-            <Button color="primary" large>
-              Large
-            </Button>
-            <Button color="primary" small>
-              Small
-            </Button>
-          </div>
+          <Button size="large">Large</Button>
+          <Button size="small">Small</Button>
         </div>
         <div className="col-6">
           <h4>A++ Acessibility</h4>
@@ -57,6 +44,11 @@ export default function Buttons() {
             Text with a 508 accessible button that triggers some application{' '}
             <Button link>action</Button>
           </p>
+        </div>
+        <div className="col-6">
+          Set a default theme color for buttons using the library ThemeProvider to
+          shorthand creating default buttons:
+          <Button>Default Theme Color</Button>
         </div>
       </div>
       <div className="row my-5">
@@ -116,5 +108,5 @@ export default function Buttons() {
         </div>
       </div>
     </div>
-  );
+  )
 }

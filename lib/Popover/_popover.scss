@@ -1,0 +1,127 @@
+// ========================================================
+// Popovers
+// ========================================================
+
+/* Bootstrap popovers are inserted into the DOM at the end of the body on hover and
+ * the location is assigned with transforms. Componentry instead sets the popover
+ * parent container to position relative so that the absolute positioned content
+ * displays relative to parent. This means that Componentry has custom popover styles
+ * instead of using Bootstrap's
+ */
+
+// Container Element
+.popover {
+  // Default align content to dead center of trigger, the specific content styles can
+  // then easily move to top/left/right/bottom where needed
+  align-items: center;
+  display: inline-flex; // flex instead of block for easier center alignment of content
+  justify-content: center;
+  position: relative;
+}
+
+.popover-content {
+  @include border-radius($border-radius-lg);
+  @include box-shadow($popover-box-shadow);
+  @include reset-text();
+  background-clip: padding-box;
+  background-color: $popover-bg;
+  display: block;
+  font-size: $font-size-sm;
+  max-width: $popover-max-width;
+  padding: $popover-inner-padding;
+  position: absolute;
+  word-wrap: break-word; // Allow breaking very long words so they don't overflow the popover's bounds
+  z-index: $zindex-popover;
+
+  .tip-container {
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    overflow: hidden;
+    position: absolute;
+  }
+
+  .tip {
+    height: $popover-arrow-width * 2;
+    overflow: hidden;
+    width: $popover-arrow-width * 2;
+
+    &:after {
+      @include box-shadow($popover-box-shadow);
+      background: $popover-bg;
+      content: '';
+      height: $popover-arrow-width;
+      position: absolute;
+      transform: rotate(45deg);
+      width: $popover-arrow-width;
+    }
+  }
+
+  // ========================================================
+  // Position Rules
+  // ========================================================
+
+  &.bottom .tip-container,
+  &.top .tip-container {
+    left: 0;
+    width: 100%;
+  }
+
+  &.bottom {
+    margin-top: $popover-arrow-width;
+    top: 100%;
+
+    .tip-container {
+      bottom: 100%;
+    }
+
+    .tip:after {
+      top: $popover-arrow-width * 1.5;
+    }
+  }
+
+  &.top {
+    bottom: 100%;
+    margin-bottom: $popover-arrow-width;
+
+    .tip-container {
+      top: 100%;
+    }
+
+    .tip:after {
+      bottom: $popover-arrow-width * 1.5;
+    }
+  }
+
+  &.right .tip-container,
+  &.left .tip-container {
+    height: 100%;
+    top: 0.5em; // We want the tip to be 1/2 of line height from the top for perfect center
+  }
+
+  &.right {
+    left: 100%;
+    margin-left: $popover-arrow-width;
+
+    .tip-container {
+      left: -$popover-arrow-width * 2;
+    }
+
+    .tip:after {
+      left: $popover-arrow-width * 1.5;
+    }
+  }
+
+  &.left {
+    margin-right: $popover-arrow-width;
+    right: 100%;
+
+    .tip-container {
+      right: -$popover-arrow-width * 2;
+    }
+
+    .tip:after {
+      right: $popover-arrow-width * 1.5;
+    }
+  }
+}
