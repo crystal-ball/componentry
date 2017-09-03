@@ -27,3 +27,10 @@
   vertical-align: baseline;
   white-space: normal;
 }
+
+// TODO: Log a bug w/ Bootstrap on this. All outline buttons have text white used
+// on hover state, which works for every button except the 'light' color button b/c
+// the hover background is very light gray, and you can't see the white text.
+.btn-outline-light:hover {
+  color: #111;
+}

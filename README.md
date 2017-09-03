@@ -9,7 +9,3 @@ npm test
 
 Unit testing is run with [Mocha](https://mochajs.org/) and
 [Enzyme](http://airbnb.io/enzyme/).
-
-
-TODO:
-- Styles build script for collecting files into a dist directory

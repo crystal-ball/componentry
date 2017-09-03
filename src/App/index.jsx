@@ -1,9 +1,11 @@
 import React from 'react'
 import { BrowserRouter, Switch, Route } from 'react-router-dom'
-import { ThemeProvider } from '../../lib'
 
+import { AppNav } from 'shared/Navigations'
 import Home from '../Home'
+import { ThemeProvider } from '../../lib'
 import Installation from '../Installation'
+import Accessibility from '../Accessibility'
 import Components from '../Components'
 import FourOhFour from '../FourOhFour'
 
@@ -22,13 +24,17 @@ export default function App() {
   return (
     <BrowserRouter basename={urlBase}>
       <ThemeProvider theme={theme}>
-        <div className="container">
-          <Switch>
-            <Route path="/" exact component={Home} />
-            <Route path="/getting-started" component={Installation} />
-            <Route path="/components/:component?" component={Components} />
-            <Route component={FourOhFour} />
-          </Switch>
+        <div>
+          <Route path="/:path(accessibility|getting-started)" component={AppNav} />
+          <div className="container">
+            <Switch>
+              <Route path="/" exact component={Home} />
+              <Route path="/getting-started" component={Installation} />
+              <Route path="/accessibility" component={Accessibility} />
+              <Route path="/components/:component?" component={Components} />
+              <Route component={FourOhFour} />
+            </Switch>
+          </div>
         </div>
       </ThemeProvider>
     </BrowserRouter>
