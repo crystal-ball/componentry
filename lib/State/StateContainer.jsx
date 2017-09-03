@@ -13,10 +13,6 @@ export default class State extends Component {
     }).isRequired
   }
 
-  static defaultProps = {
-    className: ''
-  }
-
   render() {
     const { className, activeContext, ...rest } = this.props
     // Remove user passed props that are not DOM attrs

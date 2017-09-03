@@ -23,10 +23,6 @@ export default function triggerFactory({ trigger = 'toggle', link = true } = {})
     }).isRequired
   }
 
-  Trigger.defaultProps = {
-    className: ''
-  }
-
   function Trigger({ className, activeContext, ...rest }) {
     return renderContainer({
       As: Button,

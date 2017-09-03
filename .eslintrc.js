@@ -5,6 +5,7 @@ module.exports = {
   extends: '@crystal-ball/eloquence/webpack',
   env: { mocha: true },
   rules: {
-    'no-param-reassign': 0 // Very useful for extending Component props
+    // Much of the library props are valid as undefined, allow not setting defaults
+    'react/require-default-props': 'off'
   }
 }

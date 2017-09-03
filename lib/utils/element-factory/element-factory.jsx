@@ -1,9 +1,9 @@
+/* eslint-disable react/prop-types */
 import React from 'react'
 import { func, node, string, oneOfType } from 'prop-types'
 import classNames from 'classnames'
 
 /** Convenience export for rendering a Container element with children */
-// eslint-disable-next-line
 export const renderContainer = ({ As = 'div', children, ...rest }) => (
   <As {...rest}>{children}</As>
 )
@@ -26,24 +26,17 @@ export default ({ attrs = {}, classes, name, tag } = {}) => {
     className: string
   }
 
-  Element.defaultProps = {
-    As: null,
-    children: null,
-    className: null
-  }
-
   if (name) Element.displayName = name
-  function Element({ As, children, className, ...rest }) {
+  // Modal HOCs Title using withActiveState to get id w/ guid, but also passes in
+  // activeContext and needs to be cleared
+  function Element({ As, activeContext, children, className, ...rest }) {
     // Props have precedence, use factory tag as default
-    As = As || tag || 'div'
-    // Modal HOCs Title using withActiveState to get id w/ guid, but also passes in
-    // activeContext and needs to be cleared
-    delete rest.activeContext
+    const Component = As || tag || 'div'
 
     return (
-      <As className={classNames(classes, className)} {...attrs} {...rest}>
+      <Component className={classNames(classes, className)} {...attrs} {...rest}>
         {children}
-      </As>
+      </Component>
     )
   }
 

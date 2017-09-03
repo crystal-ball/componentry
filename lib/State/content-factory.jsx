@@ -13,9 +13,7 @@ export default function contentFactory({ tip = false } = {}) {
   }
 
   Content.defaultProps = {
-    As: 'div',
-    children: null,
-    className: ''
+    As: 'div'
   }
 
   function Content({ As, children, className, activeContext, ...rest }) {

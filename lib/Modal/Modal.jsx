@@ -17,8 +17,6 @@ import elementFactory from '../utils/element-factory'
  *
  * ## Notes:
  * See MDN [Using the dialog role](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/ARIA_Techniques/Using_the_dialog_role)
- * @class Modal
- * @extends {Component}
  */
 export default class Modal extends Component {
   static Header = elementFactory({ classes: 'modal-header', name: 'ModalHeader' })
@@ -33,21 +31,16 @@ export default class Modal extends Component {
     ariaTitle: string,
     children: node,
     onDeactivate: func,
-    size: oneOf(['small', 'large', ''])
-  }
-
-  static defaultProps = {
-    ariaTitle: '',
-    children: null,
-    onDeactivate: () => {},
-    size: ''
+    size: oneOf(['small', 'large'])
   }
 
   // Context can never change! Namespace is a constant that allows reference to
   // mutated properties
-  static childContextTypes = { COMPONENTRY_ACTIVE: shape({ guid: string }) }
-
+  static childContextTypes = {
+    COMPONENTRY_ACTIVE: shape({ guid: string })
+  }
   getChildContext = () => ({ COMPONENTRY_ACTIVE: { guid: this.guid } })
+
   /**
    * Guid instance property will be uniquely assigned once for each modal instance,
    * this unique id is then passed to all children through context where it can be
@@ -55,6 +48,8 @@ export default class Modal extends Component {
    */
   guid = nanoid()
 
+  // Render
+  // ---------------------------------------------------------------------------
   render() {
     const { active, ariaTitle, children, onDeactivate, size } = this.props
     const dialogClassNames = classNames('modal-dialog', { [`modal-${size}`]: size })

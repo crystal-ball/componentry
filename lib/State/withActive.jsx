@@ -25,12 +25,14 @@ class ActiveStateHandler {
     this.active = active
     this.subscriptions.forEach(subscription => subscription(active))
   }
-
+  /**
+   * Subcomponents call subscribe to be notified when active state has changed.
+   * Return a function subcomponent can call to unsubscribe on unMount
+   */
   subscribe = subscription => {
     this.subscriptions.push(subscription)
 
-    // On subscription, return an unsubscribe method that will remove that subscriber
-    // from the active list when called
+    // Method will remove the subscription from the active list when called
     return () => {
       this.subscriptions = this.subscriptions.filter(item => item !== subscription)
     }
@@ -62,14 +64,6 @@ export default ({ element, mouseEvents } = {}) => Wrapped =>
       onActivated: func,
       onDeactivate: func,
       onDeactivated: func
-    }
-
-    static defaultProps = {
-      active: undefined,
-      onActivate() {},
-      onActivated() {},
-      onDeactivate() {},
-      onDeactivated() {}
     }
 
     static childContextTypes = {
@@ -136,33 +130,28 @@ export default ({ element, mouseEvents } = {}) => Wrapped =>
       element: element || 'state'
     })
     /**
-     *
+     * Call toggle if click event was not inside the element
      */
     clickHandler = e => {
-      // If the click was ouside dropdown, close the dropdown and then cleanup the
-      // listener
-      if (!closest(e.target, element)) {
-        this.toggle()
-      }
+      if (!closest(e.target, element)) this.deactivate(e)
     }
     /**
-     *
+     * On keypress check if `esc` (27) was pressed and close
      */
     keyHandler = e => {
-      // Escape key is which 27, when escape key is hit toggle state
-      if (e.which === 27) {
-        this.toggle()
-      }
+      if (e.which === 27) this.deactivate(e)
     }
     /**
-     *
+     * Do the activation stuff
      */
     activate = e => {
       const { onActivate, onActivated } = this.props
-      onActivate(this, e)
+      if (onActivate) onActivate(this, e)
+
       // Don't close drawers on `esc`
-      if (element !== 'drawer')
+      if (element !== 'drawer') {
         document.addEventListener('keydown', this.keyHandler)
+      }
 
       // Add click outside container handlers for dropdowns only
       if (element === 'dropdown') {
@@ -195,15 +184,16 @@ export default ({ element, mouseEvents } = {}) => Wrapped =>
           this.contentWidth = width
         }
       }
+
       this.activeStateHandler.setActive(true)
-      onActivated(this, e)
+      if (onActivated) onActivated(this, e)
     }
     /**
-     *
+     * Do the deactivation stuff
      */
     deactivate = e => {
       const { onDeactivate, onDeactivated } = this.props
-      onDeactivate(this, e)
+      if (onDeactivate) onDeactivate(this, e)
       this.activeStateHandler.setActive(false)
 
       if (element !== 'drawer') {
@@ -214,13 +204,18 @@ export default ({ element, mouseEvents } = {}) => Wrapped =>
         document.removeEventListener('mouseup', this.clickHandler)
         document.removeEventListener('touchend', this.clickHandler)
       }
-      onDeactivated(this, e)
+
+      if (onDeactivated) onDeactivated(this, e)
     }
     /**
-     *
+     * For toggle components call activate/deactivate based on current active state
      */
     toggle = e => {
-      this.activeStateHandler.active ? this.deactivate(e) : this.activate(e) // eslint-disable-line
+      if (this.activeStateHandler.active) {
+        this.deactivate(e)
+      } else {
+        this.activate(e)
+      }
     }
 
     // Render
@@ -229,8 +224,8 @@ export default ({ element, mouseEvents } = {}) => Wrapped =>
       return (
         <Wrapped
           activeContext={this.activeContext()}
-          onMouseEnter={mouseEvents ? this.activate : null}
-          onMouseLeave={mouseEvents ? this.deactivate : null}
+          onMouseEnter={mouseEvents ? this.activate : undefined}
+          onMouseLeave={mouseEvents ? this.deactivate : undefined}
           {...this.props}
         />
       )

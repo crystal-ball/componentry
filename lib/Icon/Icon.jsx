@@ -45,10 +45,7 @@ Icon.propTypes = {
 }
 
 Icon.defaultProps = {
-  className: '',
-  filePath: '',
-  font: true,
-  title: ''
+  font: true
 }
 
 export default function Icon(
@@ -58,11 +55,10 @@ export default function Icon(
   // Unique id used to bind svg title and aria-labelledby together
   // TODO: Is this still necessary with modern(ish) browsers?
   const guid = nanoid()
-
-  className = classNames('icon', icon, className, { font })
+  const classes = classNames('icon', icon, className, { font })
 
   return (
-    <svg className={className} {...rest} role="img" aria-labelledby={guid}>
+    <svg className={classes} {...rest} role="img" aria-labelledby={guid}>
       <title id={guid}>{title || icon}</title>
       <use href={`${filePath || svgDefinitionsFilePath}#${icon}`} />
     </svg>

@@ -62,25 +62,15 @@ export default (ariaConfigs = {}) => Wrapped =>
     render() {
       const { COMPONENTRY_ACTIVE: { guid } } = this.context
       const { active } = this.state
-      const {
-        controls,
-        describedby,
-        expanded,
-        haspopup,
-        hidden,
-        id,
-        labelledby,
-        role
-      } = ariaConfigs
       const arias = {
-        'aria-controls': controls ? guid : null,
-        'aria-describedby': describedby ? guid : null,
-        'aria-expanded': expanded ? String(active) : null,
-        'aria-haspopup': haspopup ? 'true' : null,
-        'aria-hidden': hidden ? String(!active) : null,
-        'aria-labelledby': labelledby ? guid : null,
-        id: id ? guid : null,
-        role
+        'aria-controls': ariaConfigs.controls ? guid : null,
+        'aria-describedby': ariaConfigs.describedby ? guid : null,
+        'aria-expanded': ariaConfigs.expanded ? String(active) : null,
+        'aria-haspopup': ariaConfigs.haspopup ? 'true' : null,
+        'aria-hidden': ariaConfigs.hidden ? String(!active) : null,
+        'aria-labelledby': ariaConfigs.labelledby ? guid : null,
+        id: ariaConfigs.id ? guid : null,
+        role: ariaConfigs.role
       }
 
       return (

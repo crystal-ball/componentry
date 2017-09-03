@@ -1,5 +1,6 @@
 import { Children } from 'react'
-import { func, node, oneOfType } from 'prop-types'
+import { string } from 'prop-types'
+import classNames from 'classnames'
 
 import ListGroupItem from './ListGroupItem'
 import { renderContainer } from '../utils/element-factory'
@@ -15,32 +16,23 @@ import { renderContainer } from '../utils/element-factory'
 ListGroup.Item = ListGroupItem
 
 ListGroup.propTypes = {
-  As: oneOfType([func, node]),
-  children: node
+  className: string
 }
 
-ListGroup.defaultProps = {
-  As: null,
-  children: null
-}
+export default function ListGroup({ className, ...rest }) {
+  const children = Children.toArray(rest.children)
+  let As = 'ul'
 
-export default function ListGroup({ As, ...rest }) {
-  let children = rest.children
-
-  // If As has been configured, use it regardless
-  if (!As && children) {
-    children = Children.toArray(children)
-    if (children.length) {
-      const { href, onClick } = children[0].props
-      // If children have an href or onClick, we need a div wrapper b/c children will
-      // be either <button> or <a> elements and not <li> elements
-      As = href || onClick ? 'div' : 'ul'
-    } else {
-      As = 'div'
-    }
-  } else {
-    As = As || 'ul'
+  // If children have an href or onClick, we need a div wrapper b/c children will
+  // be either <button> or <a> elements and not <li> elements
+  if (children && children.length) {
+    const { href, onClick } = children[0].props
+    if (href || onClick) As = 'div'
   }
 
-  return renderContainer({ As, className: 'list-group', ...rest })
+  return renderContainer({
+    As,
+    className: classNames('list-group', className),
+    ...rest
+  })
 }

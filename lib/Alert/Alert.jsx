@@ -12,6 +12,7 @@ import { themeColorNames } from '../utils/theme'
  * - Internal fallback _hidden method, onDismiss preferred
  * - Internal fade and hidden states
  * - onDismiss and dismissable configurations
+ * - how to have a controlled alert?
  * - alerts only have info classes, not primary or secondary, b/c they are intended
  *   to be used as an actual alert with context, denoted by role=alert. For non-alert
  *   information blocks a card with primary or secondary colors can be used.
@@ -26,19 +27,14 @@ export default class Alert extends Component {
   static propTypes = {
     children: node,
     className: string,
-    color: oneOf(themeColorNames),
+    color: oneOf(themeColorNames).isRequired,
     dismissable: bool,
     onDismiss: func,
     visibilityTransitionLength: number
   }
 
   static defaultProps = {
-    children: null,
-    className: '',
-    color: '',
-    dismissable: true,
-    onDismiss: null,
-    visibilityTransitionLength: null
+    dismissable: true
   }
 
   // Fade controls visibility status and hidden controls DOM position status
@@ -62,38 +58,36 @@ export default class Alert extends Component {
       this.props.visibilityTransitionLength || visibilityTransitionLength
 
     // Will immediately set Bs 'fade' class to transition opacity to 0
-    this.setState({ fade: true })
-    // Roughly when transition is finished, add aria-hidden to element to remove display
-    setTimeout(() => {
-      this.setState({ hidden: true })
-    }, timer)
+    this.setState({ fade: true }, () => {
+      // Roughly when transition is finished, add aria-hidden to element to remove display
+      setTimeout(() => {
+        this.setState({ hidden: true })
+      }, timer)
+    })
   }
 
   // Render
   // ---------------------------------------------------------------------------
   render() {
-    /* eslint-disable prefer-const */
-    let {
+    const {
       children,
       className,
       color,
       dismissable,
       onDismiss,
-      visibilityTransitionLength,
       ...rest
     } = this.props
-    /* eslint-enable prefer const */
     const { fade, hidden } = this.state
-
-    className = classNames('alert', className, {
+    const classes = classNames('alert', className, {
       [`alert-${color}`]: color,
       fade
     })
+    delete rest.visibilityTransitionLength
 
     return (
       <div
         role="alert"
-        className={className}
+        className={classes}
         aria-hidden={hidden ? 'true' : 'false'}
         {...rest}
       >

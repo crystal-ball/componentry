@@ -12,5 +12,4 @@ Unit testing is run with [Mocha](https://mochajs.org/) and
 
 
 TODO:
-- Use withActiveState with modal
 - Styles build script for collecting files into a dist directory

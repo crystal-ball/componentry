@@ -20,7 +20,6 @@ import { themeColorNames } from '../utils/theme'
  * mousedown event, which is only triggered by clicks. This will suppress the default
  * Bootstrap box shadow applied to buttons only on click. Keyboard users will still
  * benefit from the box shadow focus styles.
- * @return {Component}
  */
 
 Button.propTypes = {
@@ -37,7 +36,7 @@ Button.propTypes = {
    * Empty string is a valid value b/c that is the default that tells the component
    * to use the default theme color configured in the context.
    */
-  color: oneOf([...themeColorNames, 'link', '']),
+  color: oneOf([...themeColorNames, 'link']),
   /**
    * A++ Accessibility: Creates a button that looks exactly like an anchor. This
    * should be used for any action trigger in an application that is not a routing
@@ -53,16 +52,6 @@ Button.propTypes = {
   size: oneOf(['large', 'small']),
   /** Buttons have `type="button"` by default, pass a type to override. */
   type: string
-}
-
-Button.defaultProps = {
-  className: null,
-  color: '', // Do not default to null! null means do not use theme color at all
-  link: false,
-  onMouseDown() {},
-  outline: false,
-  size: null,
-  type: 'button'
 }
 
 Button.contextTypes = {
@@ -81,21 +70,25 @@ export default function Button(
     suppressBoxShadowOnClick(evt)
   }
 
-  // Populate default element type
-  rest.As = rest.As || 'button'
   // Pass null to suppress output of any theme color classes
-  color = color || color === null ? color : defaultButtonColor
+  const renderColor = color || color === null ? color : defaultButtonColor
 
   // Always include class 'btn' and passed className
   // btn-color for non link, non outline buttons that have a theme color (color can be
   // suppressed by passing color=null)
-  className = classNames('btn', className, {
-    [`btn-${color}`]: color && !link && !outline,
+  const classes = classNames('btn', className, {
+    [`btn-${renderColor}`]: renderColor && !link && !outline,
     'btn-anchor': link, // Will create a button that looks just like an anchor
-    [`btn-outline-${color}`]: outline,
+    [`btn-outline-${renderColor}`]: outline,
     'btn-lg': size === 'large',
     'btn-sm': size === 'small'
   })
 
-  return renderContainer({ className, onMouseDown: mouseDown, ...rest })
+  return renderContainer({
+    As: 'button',
+    className: classes,
+    onMouseDown: onMouseDown ? mouseDown : undefined,
+    type: 'button',
+    ...rest
+  })
 }
