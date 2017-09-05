@@ -28,6 +28,11 @@ import nanoid from 'nanoid'
  * intent of the element. For example, an umbrella icon that shows the weather when
  * clicked should have a title like: 'See current weather', instead of a title like
  * 'Umbrella icon'.
+ *
+ * ## Fingerprinting
+ * We recommend providing the SVG filepath by importing the icons in your app index
+ * and passing the filepath through the `<ThemeProvider>`, if you're using Webpack
+ * this will ensure that your icons are fingerprinted.
  */
 
 Icon.contextTypes = {

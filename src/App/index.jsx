@@ -8,21 +8,20 @@ import Installation from '../Installation'
 import Accessibility from '../Accessibility'
 import Components from '../Components'
 import FourOhFour from '../FourOhFour'
-
-const urlBase = process.env.NODE_ENV === 'production' ? '/componentry/' : '/'
+import svgIconsPath from '../media/icons.svg'
 
 // Componentry configuration defaults can be updated using the ThemeProvider
 // component and passing a theme configuration object
 // TODO: Docs
 const theme = {
   defaultButtonColor: 'primary',
-  svgDefinitionsFilePath: `${urlBase}assets/icons.svg`,
+  svgDefinitionsFilePath: svgIconsPath,
   visibilityTransitionLength: 350
 }
 
 export default function App() {
   return (
-    <BrowserRouter basename={urlBase}>
+    <BrowserRouter basename={process.env.PUBLIC_PATH}>
       <ThemeProvider theme={theme}>
         <div>
           <Route path="/:path(accessibility|getting-started)" component={AppNav} />
