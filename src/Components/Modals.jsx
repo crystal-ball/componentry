@@ -1,6 +1,10 @@
 import React, { Component } from 'react'
+import Playground from 'component-playground'
 
 import { Button, Close, Modal } from '../../lib'
+
+/* eslint-disable import/no-webpack-loader-syntax */
+const componentExample = require('raw-loader!./examples/modal')
 
 export default class Modals extends Component {
   state = {
@@ -9,7 +13,10 @@ export default class Modals extends Component {
   }
 
   toggleModal = () => {
-    this.setState({ modalActive: !this.state.modalActive })
+    console.log('toggle me')
+    this.setState({ modalActive: !this.state.modalActive }, () => {
+      this.forceUpdate()
+    })
   }
 
   toggleAriaModal = () => {
@@ -17,46 +24,21 @@ export default class Modals extends Component {
   }
 
   render() {
-    const { ariaActive, modalActive } = this.state
+    const { modalActive } = this.state
+    const { toggleModal } = this
+
     return (
-      <div>
-        <h2>Modals</h2>
-        <div className="col-12">
-          A regular modal.
-          <Button onClick={this.toggleModal}>Toggle Modal</Button>
-          <Modal active={modalActive} onDeactivate={this.toggleModal}>
-            <Modal.Header>
-              <Modal.Title>This is the header</Modal.Title>
-              <Button link onClick={this.toggleModal}>
-                <Close />
-              </Button>
-            </Modal.Header>
-            <Modal.Body>This is a modal</Modal.Body>
-            <Modal.Footer>
-              <Button color="dark" outline onClick={this.toggleModal}>
-                Close
-              </Button>
-              <Button color="primary">Save Changes</Button>
-            </Modal.Footer>
-          </Modal>
-        </div>
-        <div className="col-12">
-          A modal with an <code>ariaHeader</code> for A++ Accessibility.
-          <Button onClick={this.toggleAriaModal}>Toggle Modal</Button>
-          <Modal
-            active={ariaActive}
-            onDeactivate={this.toggleAriaModal}
-            ariaTitle="Dialog Accessibility Overview"
-          >
-            <Modal.Header>
-              <Button link onClick={this.toggleAriaModal}>
-                <Close />
-              </Button>
-            </Modal.Header>
-            <Modal.Body>
-              <p>When your modal does not have an obvious title, use ariaTitle</p>
-            </Modal.Body>
-          </Modal>
+      <div className="mb-5">
+        <div className="row">
+          <div className="col-12">
+            <p className="lead">Modal component...</p>
+            <Playground
+              codeText={componentExample}
+              docClass={Modal}
+              scope={{ React, Button, Close, Modal, modalActive, toggleModal }}
+              theme="panda-syntax"
+            />
+          </div>
         </div>
       </div>
     )

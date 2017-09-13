@@ -42,16 +42,16 @@ describe('<Alert/>', () => {
     )
   })
 
-  it('should not render a close button if not dismissable', () => {
+  it('should not render a close button if not dismissible', () => {
     const wrapper = mount(
-      <Alert color="danger" dismissable={false}>
+      <Alert color="danger" dismissible={false}>
         Warning!
       </Alert>
     )
     assert.equal(
       wrapper.find('button').length,
       0,
-      'passing dismissable false suppresses the close button'
+      'passing dismissible false suppresses the close button'
     )
   })
 

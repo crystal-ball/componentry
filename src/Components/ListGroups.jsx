@@ -1,41 +1,27 @@
 import React from 'react'
+import Playground from 'component-playground'
+
 import { ListGroup } from '../../lib'
 
 function testClick() {
   console.log('click')
 }
 
+/* eslint-disable import/no-webpack-loader-syntax */
+const componentExample = require('raw-loader!./examples/list-group')
+
 export default function ListGroups() {
   return (
-    <div>
+    <div className="mb-5">
       <div className="row">
         <div className="col-12">
-          <h2>List Groups</h2>
-          <h4 className="mt-3">Plain Text List</h4>
-          <ListGroup>
-            <ListGroup.Item active>Text Only One</ListGroup.Item>
-            <ListGroup.Item>Text Only Two</ListGroup.Item>
-            <ListGroup.Item>Text Only Three</ListGroup.Item>
-          </ListGroup>
-
-          <h4 className="mt-3">Button List</h4>
-          <ListGroup>
-            <ListGroup.Item onClick={testClick}>Button One</ListGroup.Item>
-            <ListGroup.Item onClick={testClick}>Button Two</ListGroup.Item>
-          </ListGroup>
-
-          <h4 className="mt-3">Links List</h4>
-          <ListGroup>
-            <ListGroup.Item href="https://facebook.github.io/react/">
-              Link One
-            </ListGroup.Item>
-            <ListGroup.Item href="https://facebook.github.io/react/">
-              Link Two
-            </ListGroup.Item>
-          </ListGroup>
-
-          {/* Test passing null children to component */}
-          <ListGroup />
+          <p className="lead">ListGroup component...</p>
+          <Playground
+            codeText={componentExample}
+            docClass={ListGroup}
+            scope={{ React, ListGroup, testClick }}
+            theme="panda-syntax"
+          />
         </div>
       </div>
     </div>

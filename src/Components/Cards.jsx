@@ -1,67 +1,23 @@
 import React from 'react'
+import Playground from 'component-playground'
+
 import { Button, Card } from '../../lib'
+
+/* eslint-disable import/no-webpack-loader-syntax */
+const componentExample = require('raw-loader!./examples/card')
 
 export default function Cards() {
   return (
-    <div>
-      <div className="row justify-content-center">
+    <div className="mb-5">
+      <div className="row">
         <div className="col-12">
-          <p className="lead">Card component motivation...</p>
-        </div>
-        <div className="col-6">
-          <Card className="special-card">
-            <Card.Header>Card Header</Card.Header>
-            <Card.Body>
-              <Card.Title>Card title</Card.Title>
-              <p className="card-text">
-                Some quick example text to build on the card title and make up the
-                bulk of the card&apos;s content.
-              </p>
-              <Button>Go somewhere</Button>
-            </Card.Body>
-            <Card.Footer>2 days ago</Card.Footer>
-          </Card>
-        </div>
-      </div>
-      <div className="row my-5">
-        <div className="col">
-          <h2>Props</h2>
-          <table className="table">
-            <thead>
-              <tr>
-                <th>Prop</th>
-                <th>Default</th>
-                <th />
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>Card.Header</td>
-                <td />
-                <td />
-              </tr>
-              <tr>
-                <td>Card.Body</td>
-                <td />
-                <td />
-              </tr>
-              <tr>
-                <td>Card.Footer</td>
-                <td />
-                <td />
-              </tr>
-              <tr>
-                <td>Card.Title</td>
-                <td />
-                <td />
-              </tr>
-              <tr>
-                <td>className</td>
-                <td />
-                <td />
-              </tr>
-            </tbody>
-          </table>
+          <p className="lead">Card component...</p>
+          <Playground
+            codeText={componentExample}
+            docClass={Card}
+            scope={{ React, Button, Card }}
+            theme="panda-syntax"
+          />
         </div>
       </div>
     </div>

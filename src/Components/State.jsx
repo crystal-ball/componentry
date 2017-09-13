@@ -1,29 +1,23 @@
 import React from 'react'
+import Playground from 'component-playground'
+
 import { State } from '../../lib'
 
-export default function StateDemo() {
+/* eslint-disable import/no-webpack-loader-syntax */
+const componentExample = require('raw-loader!./examples/state')
+
+export default function States() {
   return (
-    <div>
+    <div className="mb-5">
       <div className="row">
         <div className="col-12">
-          <h2>State</h2>
-        </div>
-        <div className="col-6">
-          <State>
-            <State.Toggle>State Toggle</State.Toggle>
-            <State.Content>
-              <p>
-                Content display toggled by the <code>Toggle</code> component.
-              </p>
-              <State>
-                <State.Activate>Open!</State.Activate>
-                <State.Deactivate>Close!</State.Deactivate>
-                <State.Content>
-                  Content display toggled by the <code>Toggle</code> component.
-                </State.Content>
-              </State>
-            </State.Content>
-          </State>
+          <p className="lead">State component...</p>
+          <Playground
+            codeText={componentExample}
+            docClass={State}
+            scope={{ React, State }}
+            theme="panda-syntax"
+          />
         </div>
       </div>
     </div>

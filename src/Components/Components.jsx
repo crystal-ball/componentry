@@ -9,7 +9,6 @@ import Buttons from './Buttons'
 import Cards from './Cards'
 import Drawers from './Drawers'
 import Dropdowns from './Dropdowns'
-import Icons from './Icons'
 import ListGroups from './ListGroups'
 import Modals from './Modals'
 import Popovers from './Popovers'
@@ -37,7 +36,7 @@ export default function Components({ match }) {
           <Route path="/components/cards" component={Cards} />
           <Route path="/components/drawers" component={Drawers} />
           <Route path="/components/dropdowns" component={Dropdowns} />
-          <Route path="/components/icons" component={Icons} />
+          {/* <Route path="/components/icons" component={Icons} /> */}
           <Route path="/components/list-groups" component={ListGroups} />
           <Route path="/components/modals" component={Modals} />
           <Route path="/components/popovers" component={Popovers} />

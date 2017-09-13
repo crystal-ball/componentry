@@ -30,5 +30,13 @@
 // ---------------------------------------------------------------------------
 
 // ... custom app styles ...
+
+// Code Mirror
+@import 'styles/codemirror';
+@import 'styles/panda-codemirror';
+
+// Prism.js
 @import 'styles/panda';
-@import 'styles/application.scss'
+
+// Application
+@import 'styles/application'

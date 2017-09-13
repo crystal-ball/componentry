@@ -8,7 +8,9 @@ import cleanProps from '../utils/clean-props'
 export default class State extends Component {
   static propTypes = {
     className: string,
+    /** Active data from context */
     activeContext: shape({
+      /** The type of element */
       element: string.isRequired
     }).isRequired
   }

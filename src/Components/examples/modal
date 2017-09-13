@@ -1,0 +1,19 @@
+<div>
+  {(() => console.log('hello'))()}
+  <Button onClick={toggleModal}>Toggle Modal</Button>
+  <Modal active={modalActive} onDeactivate={toggleModal}>
+    <Modal.Header>
+      <Modal.Title>This is the header</Modal.Title>
+      <Button link onClick={toggleModal}>
+        <Close />
+      </Button>
+    </Modal.Header>
+    <Modal.Body>This is a modal</Modal.Body>
+    <Modal.Footer>
+      <Button color="dark" outline onClick={toggleModal}>
+        Close
+      </Button>
+      <Button color="primary">Save Changes</Button>
+    </Modal.Footer>
+  </Modal>
+</div>

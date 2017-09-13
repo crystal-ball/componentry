@@ -11,7 +11,7 @@ import { themeColorNames } from '../utils/theme'
  * To Document:
  * - Internal fallback _hidden method, onDismiss preferred
  * - Internal fade and hidden states
- * - onDismiss and dismissable configurations
+ * - onDismiss and dismissible configurations
  * - how to have a controlled alert?
  * - alerts only have info classes, not primary or secondary, b/c they are intended
  *   to be used as an actual alert with context, denoted by role=alert. For non-alert
@@ -28,13 +28,13 @@ export default class Alert extends Component {
     children: node,
     className: string,
     color: oneOf(themeColorNames).isRequired,
-    dismissable: bool,
+    dismissible: bool,
     onDismiss: func,
     visibilityTransitionLength: number
   }
 
   static defaultProps = {
-    dismissable: true
+    dismissible: true
   }
 
   // Fade controls visibility status and hidden controls DOM position status
@@ -44,7 +44,7 @@ export default class Alert extends Component {
   }
 
   /**
-   * Backup onDismiss for dismissable alerts without a passed onDismiss. Note that
+   * Backup onDismiss for dismissible alerts without a passed onDismiss. Note that
    * this is just a convenience method. Passing an `onDismiss` that handles updating
    * application state to dismiss an alert is preferred.
    */
@@ -73,7 +73,7 @@ export default class Alert extends Component {
       children,
       className,
       color,
-      dismissable,
+      dismissible,
       onDismiss,
       ...rest
     } = this.props
@@ -93,7 +93,7 @@ export default class Alert extends Component {
       >
         <div className="alert-content">{children}</div>
         {/* Render a close button or null depending on configs */}
-        {dismissable && (
+        {dismissible && (
           <Button
             link
             onClick={onDismiss || this.handleDismiss}

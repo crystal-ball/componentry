@@ -1,29 +1,23 @@
 import React from 'react'
+import Playground from 'component-playground'
+
 import { Tooltip } from '../../lib'
+
+/* eslint-disable import/no-webpack-loader-syntax */
+const componentExample = require('raw-loader!./examples/tooltip')
 
 export default function Tooltips() {
   return (
-    <div>
+    <div className="mb-5">
       <div className="row">
         <div className="col-12">
-          <h2>Tooltips</h2>
-        </div>
-        <div className="col-6">
-          <h4>Subcomponents</h4>
-          <Tooltip>
-            <Tooltip.Toggle>Tooltip Trigger</Tooltip.Toggle>
-            <Tooltip.Content>
-              Only 8% of the world’s currency is physical money, the rest only
-              exists on computers.
-            </Tooltip.Content>
-          </Tooltip>
-        </div>
-        <div className="col-6">
-          <h4>Parameter Values</h4>
-          {/* <Tooltip
-            Trigger="Tooltip trigger"
-            Content="Shorthand invocation method"
-          /> */}
+          <p className="lead">Tooltip component...</p>
+          <Playground
+            codeText={componentExample}
+            docClass={Tooltip}
+            scope={{ React, Tooltip }}
+            theme="panda-syntax"
+          />
         </div>
       </div>
     </div>

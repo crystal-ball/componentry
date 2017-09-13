@@ -8,7 +8,7 @@ export default [
   { name: 'Cards', path: '/components/cards' },
   { name: 'Drawers', path: '/components/drawers' },
   { name: 'Dropdowns', path: '/components/dropdowns' },
-  { name: 'Icons', path: '/components/icons' },
+  // { name: 'Icons', path: '/components/icons' },
   { name: 'List Groups', path: '/components/list-groups' },
   { name: 'Modals', path: '/components/modals' },
   { name: 'Popovers', path: '/components/popovers' },

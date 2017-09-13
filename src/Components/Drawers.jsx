@@ -1,29 +1,23 @@
 import React from 'react'
+import Playground from 'component-playground'
+
 import { Chevron, Drawer } from '../../lib'
+
+/* eslint-disable import/no-webpack-loader-syntax */
+const componentExample = require('raw-loader!./examples/drawer')
 
 export default function Drawers() {
   return (
-    <div>
+    <div className="mb-5">
       <div className="row">
         <div className="col-12">
-          <h2>Drawers</h2>
-        </div>
-        <div className="col-6">
-          <h4>Subcomponents</h4>
-          <Drawer>
-            <Drawer.Toggle>
-              <Chevron /> Toggle Drawer
-            </Drawer.Toggle>
-            <Drawer.Content>
-              The Motion Picture Academy refused to nominate Tron (1982) for a
-              special-effects award because, according to director Steven Lisberger,
-              “The Academy thought we cheated by using computers”
-            </Drawer.Content>
-          </Drawer>
-        </div>
-        <div className="col-6">
-          <h4>Parameter Values</h4>
-          {/* <Drawer Trigger="Toggle Drawer" Content="Short hand syntax" /> */}
+          <p className="lead">Drawer component...</p>
+          <Playground
+            codeText={componentExample}
+            docClass={Drawer}
+            scope={{ React, Chevron, Drawer }}
+            theme="panda-syntax"
+          />
         </div>
       </div>
     </div>

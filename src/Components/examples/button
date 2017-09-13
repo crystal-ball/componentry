@@ -1,0 +1,8 @@
+<Button
+  color="primary"
+  size={null}
+  link={false}
+  outline={false}
+>
+  Primary
+</Button>
