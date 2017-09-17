@@ -1,84 +1,82 @@
 import React from 'react'
 import { shallow } from 'enzyme'
-import { expect } from 'chai'
-import sinon from 'sinon'
 
 import Button from './index'
 
 describe('<Button/>', () => {
-  it('should render a button element default', () => {
+  test('should render a button element default', () => {
     const wrapper = shallow(<Button />)
-    expect(wrapper.find('button')).to.have.length(1)
-    expect(wrapper.find('.btn')).to.have.length(1)
-    expect(wrapper.find('button[type="button"]')).to.have.length(1)
+    expect(wrapper.find('button').length).toEqual(1)
+    expect(wrapper.find('.btn').length).toEqual(1)
+    expect(wrapper.find('button[type="button"]').length).toEqual(1)
   })
 
-  it('should render any brand classes for prop color', () => {
+  test('should render any brand classes for prop color', () => {
     const wrapper = shallow(<Button color="info" />)
-    expect(wrapper.find('.btn.btn-info')).to.have.length(1)
+    expect(wrapper.find('.btn.btn-info').length).toEqual(1)
   })
 
-  it('should render outline class for prop outline', () => {
+  test('should render outline class for prop outline', () => {
     const wrapper = shallow(<Button color="primary" outline />)
     // Even though color is passed, primary flag should override
-    expect(wrapper.find('.btn.btn-primary')).to.have.length(0)
-    expect(wrapper.find('.btn.btn-outline-primary')).to.have.length(1)
+    expect(wrapper.find('.btn.btn-primary').length).toEqual(0)
+    expect(wrapper.find('.btn.btn-outline-primary').length).toEqual(1)
   })
 
-  it('should render class for small button', () => {
+  test('should render class for small button', () => {
     const wrapper = shallow(<Button size="small" />)
-    expect(wrapper.find('.btn.btn-sm')).to.have.length(1)
+    expect(wrapper.find('.btn.btn-sm').length).toEqual(1)
   })
 
-  it('should render class for large button', () => {
+  test('should render class for large button', () => {
     const wrapper = shallow(<Button size="large" />)
-    expect(wrapper.find('.btn.btn-lg')).to.have.length(1)
+    expect(wrapper.find('.btn.btn-lg').length).toEqual(1)
   })
 
-  it('should render any passed className', () => {
+  test('should render any passed className', () => {
     const wrapper = shallow(<Button className="special classes" />)
-    expect(wrapper.find('.btn.special.classes')).to.have.length(1)
+    expect(wrapper.find('.btn.special.classes').length).toEqual(1)
   })
 
-  it('should render any other passed attributes', () => {
+  test('should render any other passed attributes', () => {
     const wrapper = shallow(<Button data-test="totally-rad" />)
-    expect(wrapper.find('[data-test="totally-rad"]')).to.have.length(1)
+    expect(wrapper.find('[data-test="totally-rad"]').length).toEqual(1)
   })
 
-  it('should not render class btn-anchor without passed prop', () => {
+  test('should not render class btn-anchor without passed prop', () => {
     const wrapper = shallow(<Button />)
-    expect(wrapper.find('button.btn-anchor')).to.have.length(0)
+    expect(wrapper.find('button.btn-anchor').length).toEqual(0)
   })
 
-  it('should render class btn-anchor when passed prop', () => {
+  test('should render class btn-anchor when passed prop', () => {
     const wrapper = shallow(<Button link />)
-    expect(wrapper.find('button.btn-anchor')).to.have.length(1)
+    expect(wrapper.find('button.btn-anchor').length).toEqual(1)
   })
 
-  it('should render a passed type', () => {
+  test('should render a passed type', () => {
     const wrapper = shallow(<Button type="reset" />)
-    expect(wrapper.find('button[type="reset"]')).to.have.length(1)
+    expect(wrapper.find('button[type="reset"]').length).toEqual(1)
   })
 
-  it('should render children', () => {
+  test('should render children', () => {
     const wrapper = shallow(
       <Button>
         <span>Rad</span>
       </Button>
     )
-    expect(wrapper.find('span')).to.have.length(1)
+    expect(wrapper.find('span').length).toEqual(1)
   })
 
-  it('simulates click events', () => {
-    const onButtonClick = sinon.spy()
+  test('simulates click events', () => {
+    const onButtonClick = jest.fn()
     const wrapper = shallow(<Button onClick={onButtonClick} />)
     wrapper.find('button').simulate('click')
-    expect(onButtonClick.calledOnce).to.equal(true)
+    expect(onButtonClick).toHaveBeenCalled()
   })
 
   // Check that outline blur handler doesn't interfere with passing `onMouseDown`
-  it('attaches onMouseDown events correctly', () => {
-    const onMouseDown = sinon.spy()
+  test('attaches onMouseDown events correctly', () => {
+    const onMouseDown = jest.fn()
     const wrapper = shallow(<Button onMouseDown={onMouseDown} />)
 
     // Pass a mocked `evt` object to `simulate` with required props for
@@ -91,6 +89,6 @@ describe('<Button/>', () => {
       }
     })
 
-    expect(onMouseDown.calledOnce).to.equal(true)
+    expect(onMouseDown).toHaveBeenCalled()
   })
 })

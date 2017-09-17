@@ -43,9 +43,7 @@
     // Next - Transpiled to stage 4 for package.esnext
     // ---------------------------------------------------------------------------
     "esnext": {
-      "presets": [
-        "react"
-      ],
+      "presets": ["react"],
       "plugins": [
         "transform-class-properties",
         "transform-object-rest-spread",
@@ -55,14 +53,8 @@
     // Test - Mocha setup cannot use esmodules
     // ---------------------------------------------------------------------------
     "test": {
-      "presets": [
-        "env",
-        "react"
-      ],
-      "plugins": [
-        "transform-class-properties",
-        "transform-object-rest-spread"
-      ]
+      "presets": ["env", "react"],
+      "plugins": ["transform-class-properties", "transform-object-rest-spread"]
     }
   }
 }

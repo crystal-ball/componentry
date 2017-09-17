@@ -21,6 +21,7 @@ const theme = {
 
 export default function App() {
   return (
+    /* global process */
     <BrowserRouter basename={process.env.PUBLIC_PATH}>
       <ThemeProvider theme={theme}>
         <div>
