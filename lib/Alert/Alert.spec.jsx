@@ -13,7 +13,7 @@ describe('<Alert/>', () => {
 
     // Default close button
     expect(wrapper.find('button').length).toEqual(1) // is rendered
-    expect(wrapper.find('svg.close[aria-label="close"]').length).toEqual(1) // correct aria label
+    expect(wrapper.find('svg.close[aria-label="Close"]').length).toEqual(1) // correct aria label
   })
 
   test('should render the appropriate contextual color class', () => {

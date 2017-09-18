@@ -20,6 +20,7 @@ import { themeColorNames } from '../utils/theme'
 export default class Alert extends Component {
   static contextTypes = {
     COMPONENTRY_THEME: shape({
+      closeSVG: node,
       visibilityTransitionLength: number
     })
   }
@@ -27,6 +28,7 @@ export default class Alert extends Component {
   static propTypes = {
     children: node,
     className: string,
+    closeSVG: node,
     color: oneOf(themeColorNames).isRequired,
     dismissible: bool,
     onDismiss: func,
@@ -66,15 +68,23 @@ export default class Alert extends Component {
     })
   }
 
+  renderClose() {
+    const { COMPONENTRY_THEME = {} } = this.context
+    const CloseSVG = this.props.closeSVG || COMPONENTRY_THEME.closeSVG || Close
+    return <CloseSVG />
+  }
+
   // Render
   // ---------------------------------------------------------------------------
   render() {
     const {
       children,
       className,
+      closeSVG, // prevent dom inclusion
       color,
       dismissible,
       onDismiss,
+      visibilityTransitionLength, // prevent dom inclusion
       ...rest
     } = this.props
     const { fade, hidden } = this.state
@@ -82,7 +92,6 @@ export default class Alert extends Component {
       [`alert-${color}`]: color,
       fade
     })
-    delete rest.visibilityTransitionLength
 
     return (
       <div
@@ -99,7 +108,7 @@ export default class Alert extends Component {
             onClick={onDismiss || this.handleDismiss}
             className={`text-${color}`}
           >
-            <Close />
+            {this.renderClose()}
           </Button>
         )}
       </div>

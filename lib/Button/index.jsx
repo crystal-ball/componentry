@@ -1,8 +1,7 @@
-import { bool, func, oneOf, shape, string } from 'prop-types'
+import { bool, oneOf, shape, string } from 'prop-types'
 import classNames from 'classnames'
 
 import { renderContainer } from '../utils/element-factory'
-import { suppressBoxShadowOnClick } from '../utils/dom'
 import { themeColorNames } from '../utils/theme'
 
 /**
@@ -15,11 +14,6 @@ import { themeColorNames } from '../utils/theme'
  *
  * TODO: Document that a default theme color is used for every button that is not a
  * link button, this can be suppressed by passing `color={null}` to component.
- *
- * _NOTE: internally component will call function `suppressBoxShadowOnClick` on the
- * mousedown event, which is only triggered by clicks. This will suppress the default
- * Bootstrap box shadow applied to buttons only on click. Keyboard users will still
- * benefit from the box shadow focus styles.
  */
 
 Button.propTypes = {
@@ -43,15 +37,10 @@ Button.propTypes = {
    * event.
    */
   link: bool,
-  // This is checked in props to handle merging with internal mouse down handler,
-  // but usage should be invisible to consumers
-  onMouseDown: func,
   /** Creates outline style button, uses `color` for outline theme. */
   outline: bool,
   /** Create a small or large style button */
-  size: oneOf(['large', 'small']),
-  /** Buttons have `type="button"` by default, pass a type to override. */
-  type: string
+  size: oneOf(['large', 'small'])
 }
 
 Button.contextTypes = {
@@ -61,15 +50,9 @@ Button.contextTypes = {
 }
 
 export default function Button(
-  { className, color, link, outline, size, onMouseDown, ...rest },
+  { className, color, link, outline, size, ...rest },
   { COMPONENTRY_THEME: { defaultButtonColor = 'primary' } = {} }
 ) {
-  const mouseDown = evt => {
-    // Call passed mouse down event and then handle blur
-    onMouseDown.call(this, evt)
-    suppressBoxShadowOnClick(evt)
-  }
-
   // Pass null to suppress output of any theme color classes
   const renderColor = color || color === null ? color : defaultButtonColor
 
@@ -87,7 +70,6 @@ export default function Button(
   return renderContainer({
     As: 'button',
     className: classes,
-    onMouseDown: onMouseDown ? mouseDown : undefined,
     type: 'button',
     ...rest
   })

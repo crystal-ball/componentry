@@ -1,5 +1,6 @@
 import React from 'react'
 import { shallow } from 'enzyme'
+import renderer from 'react-test-renderer'
 
 import Button from './index'
 
@@ -73,22 +74,41 @@ describe('<Button/>', () => {
     wrapper.find('button').simulate('click')
     expect(onButtonClick).toHaveBeenCalled()
   })
+})
 
-  // Check that outline blur handler doesn't interfere with passing `onMouseDown`
-  test('attaches onMouseDown events correctly', () => {
-    const onMouseDown = jest.fn()
-    const wrapper = shallow(<Button onMouseDown={onMouseDown} />)
-
-    // Pass a mocked `evt` object to `simulate` with required props for
-    // suppressClickOutline handler
-    wrapper.find('button').simulate('mousedown', {
-      target: {
-        style: { outline: '' },
-        addEventListener: () => {},
-        removeEventListener: () => {}
-      }
-    })
-
-    expect(onMouseDown).toHaveBeenCalled()
+// Snapshots
+// ---------------------------------------------------------------------------
+describe('<Button /> Snapshots', () => {
+  test('it renders defaults correctly', () => {
+    const tree = renderer.create(<Button color="primary">Facebook</Button>).toJSON()
+    expect(tree).toMatchSnapshot()
+  })
+  test('it renders brand color correctly', () => {
+    const tree = renderer.create(<Button color="success">Facebook</Button>).toJSON()
+    expect(tree).toMatchSnapshot()
+  })
+  test('it renders link style correctly', () => {
+    const tree = renderer.create(<Button link>Facebook</Button>).toJSON()
+    expect(tree).toMatchSnapshot()
+  })
+  test('it renders outline correctly', () => {
+    const tree = renderer
+      .create(
+        <Button color="success" outline>
+          Facebook
+        </Button>
+      )
+      .toJSON()
+    expect(tree).toMatchSnapshot()
+  })
+  test('it renders large outline correctly', () => {
+    const tree = renderer
+      .create(
+        <Button color="success" size="large" outline>
+          Facebook
+        </Button>
+      )
+      .toJSON()
+    expect(tree).toMatchSnapshot()
   })
 })
