@@ -33,9 +33,9 @@ export default function AppNav() {
       {/* Component dropdown navigation */}
       <div className="d-flex">
         <Dropdown As="nav">
-          <Dropdown.Toggle color="light" outline>
+          <Dropdown.Trigger color="light" outline>
             Components
-          </Dropdown.Toggle>
+          </Dropdown.Trigger>
           <Dropdown.Content>
             {componentRoutes.map(({ name, path }) => (
               <Dropdown.Item As={Link} to={path} key={name}>

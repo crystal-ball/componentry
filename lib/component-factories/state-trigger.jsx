@@ -1,4 +1,4 @@
-import { func, shape, string } from 'prop-types'
+import { bool, func, string } from 'prop-types'
 import classNames from 'classnames'
 
 import Button from '../Button'
@@ -12,26 +12,32 @@ import { renderContainer } from '../utils/element-factory'
  * @param {string} trigger The type of trigger, sets the `onClick` behavior of
  *                         returned component.
  */
-export default function triggerFactory({ trigger = 'toggle', link = true } = {}) {
+const triggerElementFactory = ({ element, link = true, trigger } = {}) => {
   Trigger.propTypes = {
+    active: bool.isRequired,
     className: string,
-    activeContext: shape({
-      activate: func.isRequired,
-      deactivate: func.isRequired,
-      toggle: func.isRequired,
-      element: string.isRequired
-    }).isRequired
+    activate: func.isRequired,
+    deactivate: func.isRequired
   }
 
-  function Trigger({ className, activeContext, ...rest }) {
+  function Trigger({ active, activate, className, deactivate, ...rest }) {
+    let onClick
+    if (trigger) {
+      onClick = trigger === 'activate' ? activate : deactivate
+    } else {
+      onClick = active ? deactivate : activate
+    }
+
     return renderContainer({
       As: Button,
-      className: classNames(`${activeContext.element}-toggle`, className),
+      className: classNames(`${element}-toggle`, className),
       link,
-      onClick: activeContext[trigger],
+      onClick,
       ...rest
     })
   }
 
   return Trigger
 }
+
+export default triggerElementFactory

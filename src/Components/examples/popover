@@ -1,7 +1,7 @@
 <Popover>
-  <Popover.Toggle color="primary" outline>
+  <Popover.Trigger color="primary" outline>
     Popover Trigger
-  </Popover.Toggle>
+  </Popover.Trigger>
   <Popover.Content className="right">
     The new Texas Instrument calculators have ABC keyboards because if
     they had QWERTY keyboards, they would be considered computers and

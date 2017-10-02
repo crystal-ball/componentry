@@ -3,7 +3,7 @@ import { bool, func, oneOf, shape, string, node } from 'prop-types'
 import classNames from 'classnames'
 import nanoid from 'nanoid'
 
-import { withActiveState } from '../State'
+import { withActive } from '../State'
 import elementFactory from '../utils/element-factory'
 
 /**
@@ -22,7 +22,7 @@ export default class Modal extends Component {
   static Header = elementFactory({ classes: 'modal-header', name: 'ModalHeader' })
   static Body = elementFactory({ classes: 'modal-body', name: 'ModalBody' })
   static Footer = elementFactory({ classes: 'modal-footer', name: 'ModalFooter' })
-  static Title = withActiveState({ id: true, subscribe: false })(
+  static Title = withActive({ id: true, subscribe: false })(
     elementFactory({ classes: 'modal-title', tag: 'h3', name: 'ModalTitle' })
   )
 

@@ -1,7 +1,7 @@
 <Drawer>
-  <Drawer.Toggle>
+  <Drawer.Trigger>
     <Chevron /> Toggle Drawer
-  </Drawer.Toggle>
+  </Drawer.Trigger>
   <Drawer.Content>
     The Motion Picture Academy refused to nominate Tron (1982) for a
     special-effects award because, according to director Steven Lisberger,

@@ -34,7 +34,14 @@
     "styles:minify": "cleancss -o dist/componentry.min.css dist/componentry.css",
     "styles:copy": "cp -r styles/* dist"
   },
-  "keywords": ["react", "components", "ui", "508", "accessible", "bootstrap"],
+  "keywords": [
+    "react",
+    "components",
+    "ui",
+    "508",
+    "accessible",
+    "bootstrap"
+  ],
   "author": "Dan Hedgecock <hedgecock.d@gmail.com>",
   "license": "MIT",
   "peerDependencies": {
@@ -47,7 +54,7 @@
     "nanoid": "^0.2.0"
   },
   "devDependencies": {
-    "@crystal-ball/eslint-config-eloquence": "^4.2.0",
+    "@crystal-ball/eslint-config-eloquence": "^4.3.0",
     "@inspire-script/webpack-configs": "^2.10.0",
     "babel-cli": "^6.24.1",
     "babel-jest": "^21.0.2",
