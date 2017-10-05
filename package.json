@@ -22,7 +22,7 @@
     "js": "npm run js:esmodules && npm run js:amdmodule",
     "styles": "npm run styles:sass && npm run styles:minify && npm run styles:copy",
     "lint": "NODE_ENV=test eslint --ext .js --ext .jsx src lib",
-    "test:jest": "BABEL_ENV=test jest",
+    "test:jest": "BABEL_ENV=test jest --env=jsdom",
     "format": "prettier --write \"{lib,src}/**/*.{js,jsx}\"",
     "documentation": "NODE_ENV=production webpack --env=production",
     "clean": "rm -rf dist es esnext build",
@@ -34,14 +34,7 @@
     "styles:minify": "cleancss -o dist/componentry.min.css dist/componentry.css",
     "styles:copy": "cp -r styles/* dist"
   },
-  "keywords": [
-    "react",
-    "components",
-    "ui",
-    "508",
-    "accessible",
-    "bootstrap"
-  ],
+  "keywords": ["react", "components", "ui", "508", "accessible", "bootstrap"],
   "author": "Dan Hedgecock <hedgecock.d@gmail.com>",
   "license": "MIT",
   "peerDependencies": {
@@ -51,32 +44,34 @@
   "dependencies": {
     "babel-runtime": "^6.23.0",
     "classnames": "^2.2.5",
-    "nanoid": "^0.2.0"
+    "nanoid": "^0.2.1"
   },
   "devDependencies": {
     "@crystal-ball/eslint-config-eloquence": "^4.3.0",
     "@inspire-script/webpack-configs": "^2.10.0",
     "babel-cli": "^6.24.1",
-    "babel-jest": "^21.0.2",
+    "babel-jest": "^21.2.0",
     "babel-plugin-transform-class-properties": "^6.24.1",
     "babel-plugin-transform-object-rest-spread": "^6.23.0",
     "babel-plugin-transform-react-remove-prop-types": "^0.4.6",
     "babel-plugin-transform-runtime": "^6.23.0",
     "bootstrap": "v4.0.0-beta",
-    "clean-css-cli": "^4.1.6",
-    "component-playground": "^2.0.0",
-    "enzyme": "^2.7.1",
+    "clean-css-cli": "^4.1.10",
+    "component-playground": "^3.0.0",
+    "enzyme": "^3.1.0",
+    "enzyme-adapter-react-16": "^1.0.1",
     "eslint-import-resolver-webpack": "^0.8.3",
     "gh-pages": "^1.0.0",
     "husky": "^0.14.3",
-    "jest": "^21.1.0",
+    "jest": "^21.2.1",
     "node-sass": "^4.5.3",
-    "prop-types": "^15.5.8",
+    "prop-types": "^15.6.0",
+    "raf": "^3.4.0",
     "raw-loader": "^0.5.1",
-    "react": "^15.5.4",
-    "react-dom": "^15.5.4",
+    "react": "^16.0.0",
+    "react-dom": "^16.0.0",
     "react-router": "^4.0.0",
     "react-router-dom": "^4.0.0",
-    "react-test-renderer": "^15.6.1"
+    "react-test-renderer": "^16.0.0"
   }
 }
