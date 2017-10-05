@@ -1,5 +1,5 @@
 <State>
-  <State.Toggle>State Toggle</State.Toggle>
+  <State.Trigger>State Toggle</State.Trigger>
   <State.Content>
     <p>
       Content display toggled by the <code>Toggle</code> component.

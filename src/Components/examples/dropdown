@@ -1,5 +1,5 @@
 <Dropdown onActivate={logActivate} onDeactivate={logDeactivate}>
-  <Dropdown.Toggle>Dropdown</Dropdown.Toggle>
+  <Dropdown.Trigger>Dropdown</Dropdown.Trigger>
   <Dropdown.Content>
     <h6 className="dropdown-header">Available actions</h6>
     <Dropdown.Item>Item 1</Dropdown.Item>
