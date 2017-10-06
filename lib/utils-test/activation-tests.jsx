@@ -1,5 +1,8 @@
 /* eslint-disable import/no-extraneous-dependencies */
+import React from 'react'
 import { mount } from 'enzyme'
+
+import dt from './dt'
 
 /**
  * This set of activation event tests should pass for every element with active
@@ -10,137 +13,158 @@ import { mount } from 'enzyme'
  * IMPORTANT NOTES
  * - `dt()` is a shorthand method for creating data-test strings. Using data-test
  *   strings lets us reuse shared tests across components
- * - Enzyme `find()` will find **EVERY** instance of a prop, for the trigger this
- *   means it will always find **TWO** triggers because each trigger is actually
- *   a trigger component wrapping a Button component. Use `first()` to select one
- *   for calling simulate.
+ * - Enzyme `find()` will find **EVERY** instance of a prop. Since we are passing
+ *   data-test attributes down here, it will always find more than one. Use
+ *   `.last()` to selecte final node.
  */
 
-/**
- * Test that the default uncontrolled state scenario works. The active state should
- * be managed internally if not overriden with props and clicking the trigger should
- * show/hide content.
- */
-export const testAriasWithInternalState = (
-  testComponent,
-  { dtContent, dtToggle }
-) => {
-  const wrapper = mount(testComponent)
+const findContent = wrapper => wrapper.find(dt('content')).last()
+const findTrigger = wrapper => wrapper.find(dt('trigger')).last()
 
-  // Content
-  const content = wrapper.find(dtContent)
-  const guid = content.prop('id')
-  expect(content.length).toEqual(1)
-  expect(content.prop('aria-hidden')).toEqual('true')
+export default TestComponent => {
+  /**
+   * Test that the default uncontrolled state scenario works. The active state should
+   * be managed internally if not overriden with props and clicking the trigger should
+   * show/hide content.
+   */
+  test('should update arias when trigger is activated', () => {
+    const wrapper = mount(
+      <TestComponent>
+        <TestComponent.Trigger data-test="trigger" />
+        <TestComponent.Content data-test="content" />
+      </TestComponent>
+    )
 
-  // Trigger
-  const trigger = wrapper.find(dtToggle).first()
-  expect(trigger.length).toEqual(1)
-  expect(trigger.prop('aria-controls')).toEqual(guid)
+    // Content
+    const content = findContent(wrapper)
+    const guid = content.prop('id')
+    expect(content.length).toEqual(1)
+    expect(content.prop('aria-hidden')).toEqual('true')
 
-  // Simulate a click, arias should update
-  trigger.simulate('click')
+    // Trigger
+    const trigger = findTrigger(wrapper)
+    expect(trigger.length).toEqual(1)
+    expect(trigger.prop('aria-controls')).toEqual(guid)
 
-  expect(wrapper.find(dtContent).prop('aria-hidden')).toEqual('false')
+    // Simulate a click, arias should update
+    trigger.simulate('click')
 
-  // Simulate a click, arias should update
-  trigger.simulate('click')
+    expect(findContent(wrapper).prop('aria-hidden')).toEqual('false')
 
-  expect(wrapper.find(dtContent).prop('aria-hidden')).toEqual('true')
-}
+    // Simulate a click, arias should update
+    trigger.simulate('click')
 
-/**
- * Test that all of the user hooks are being called on activation/deactivation.
- * TODO: update to check that event hooks are called with correct args.
- */
-export const testUserEventHooks = (
-  testComponent,
-  { dtToggle },
-  { onActivate, onActivated, onDeactivate, onDeactivated }
-) => {
-  const wrapper = mount(testComponent)
+    expect(findContent(wrapper).prop('aria-hidden')).toEqual('true')
+  })
 
-  const trigger = wrapper.find(dtToggle).first()
+  /**
+   * Test that all of the user hooks are being called on activation/deactivation.
+   * TODO: update to check that event hooks are called with correct args.
+   */
+  test('should call user event hooks', () => {
+    const onActivate = jest.fn()
+    const onActivated = jest.fn()
+    const onDeactivate = jest.fn()
+    const onDeactivated = jest.fn()
+    const wrapper = mount(
+      <TestComponent
+        onActivate={onActivate}
+        onActivated={onActivated}
+        onDeactivate={onDeactivate}
+        onDeactivated={onDeactivated}
+      >
+        <TestComponent.Trigger data-test="trigger" />
+        <TestComponent.Content data-test="content" />
+      </TestComponent>
+    )
 
-  trigger.simulate('click')
+    const trigger = findTrigger(wrapper)
 
-  expect(onActivate).toHaveBeenCalledTimes(1)
-  expect(onActivated).toHaveBeenCalledTimes(1)
-  expect(onDeactivate).toHaveBeenCalledTimes(0) // not yet!
-  expect(onDeactivated).toHaveBeenCalledTimes(0) // not yet!
+    trigger.simulate('click')
 
-  trigger.simulate('click')
+    expect(onActivate).toHaveBeenCalledTimes(1)
+    expect(onActivated).toHaveBeenCalledTimes(1)
+    expect(onDeactivate).toHaveBeenCalledTimes(0) // not yet!
+    expect(onDeactivated).toHaveBeenCalledTimes(0) // not yet!
 
-  expect(onActivate).toHaveBeenCalledTimes(1) // only once
-  expect(onActivated).toHaveBeenCalledTimes(1) // only once
-  expect(onDeactivate).toHaveBeenCalledTimes(1)
-  expect(onDeactivated).toHaveBeenCalledTimes(1)
-}
+    trigger.simulate('click')
 
-/**
- * Test controlled component for `active` prop. Passing active at any point in
- * component life should override current active state. Default activate/deactivate
- * methods should still update that state.
- */
-export const testPassedActiveProp = (testComponent, { dtContent, dtToggle }) => {
-  const wrapper = mount(testComponent)
+    expect(onActivate).toHaveBeenCalledTimes(1) // only once
+    expect(onActivated).toHaveBeenCalledTimes(1) // only once
+    expect(onDeactivate).toHaveBeenCalledTimes(1)
+    expect(onDeactivated).toHaveBeenCalledTimes(1)
+  })
 
-  expect(wrapper.find(dtContent).prop('aria-hidden')).toEqual('false')
+  /**
+   * Test controlled component for `active` prop. Passing active at any point in
+   * component life should override current active state. Default activate/deactivate
+   * methods should still update that state.
+   */
+  test('should use passed active prop instead of internal active', () => {
+    const wrapper = mount(
+      <TestComponent active>
+        <TestComponent.Trigger data-test="trigger" />
+        <TestComponent.Content data-test="content" />
+      </TestComponent>
+    )
 
-  // Should still be able to use default activate/deactivate hooks
-  wrapper
-    .find(dtToggle)
-    .first()
-    .simulate('click')
+    expect(findContent(wrapper).prop('aria-hidden')).toEqual('false')
 
-  expect(wrapper.find(dtContent).prop('aria-hidden')).toEqual('true')
+    // Should still be able to use default activate/deactivate hooks
+    findTrigger(wrapper).simulate('click')
 
-  // Passing active at any point should again override internal state
-  wrapper.setProps({ active: true })
+    expect(findContent(wrapper).prop('aria-hidden')).toEqual('true')
 
-  expect(wrapper.find(dtContent).prop('aria-hidden')).toEqual('false')
-}
+    // Passing active at any point should again override internal state
+    wrapper.setProps({ active: true })
 
-/**
- * Test controlled component for methods `activate` and `deactivate`. Passing these
- * should override internal activate/deactivate meaning that clicking the trigger
- * for an element should only call those passed props.
- */
-export const testPassedActivateDeactivateProps = (
-  testComponent,
-  { dtContent, dtToggle },
-  { activate, deactivate }
-) => {
-  const wrapper = mount(testComponent)
+    expect(findContent(wrapper).prop('aria-hidden')).toEqual('false')
+  })
 
-  const trigger = wrapper.find(dtToggle).first()
+  /**
+   * Test controlled component for methods `activate` and `deactivate`. Passing these
+   * should override internal activate/deactivate meaning that clicking the trigger
+   * for an element should only call those passed props.
+   */
+  test('should use passed activate and deactivate functions', () => {
+    const activate = jest.fn()
+    const deactivate = jest.fn()
+    const wrapper = mount(
+      <TestComponent active={false} activate={activate} deactivate={deactivate}>
+        <TestComponent.Trigger data-test="trigger" />
+        <TestComponent.Content data-test="content" />
+      </TestComponent>
+    )
 
-  trigger.simulate('click')
+    const trigger = findTrigger(wrapper)
 
-  // We have overridden the activate event so, dropdown should still be closed
-  // and clicking trigger should call activate again
+    trigger.simulate('click')
 
-  expect(activate).toHaveBeenCalledTimes(1)
-  expect(deactivate).toHaveBeenCalledTimes(0)
-  expect(wrapper.find(dtContent).prop('aria-hidden')).toEqual('true')
+    // We have overridden the activate event so, dropdown should still be closed
+    // and clicking trigger should call activate again
 
-  trigger.simulate('click')
+    expect(activate).toHaveBeenCalledTimes(1)
+    expect(deactivate).toHaveBeenCalledTimes(0)
+    expect(findContent(wrapper).prop('aria-hidden')).toEqual('true')
 
-  expect(activate).toHaveBeenCalledTimes(2)
-  expect(deactivate).toHaveBeenCalledTimes(0)
-  expect(wrapper.find(dtContent).prop('aria-hidden')).toEqual('true')
+    trigger.simulate('click')
 
-  // Mock controlled component being passed true, click should now ONLY call deactivate
-  wrapper.setProps({ active: true })
-  trigger.simulate('click')
+    expect(activate).toHaveBeenCalledTimes(2)
+    expect(deactivate).toHaveBeenCalledTimes(0)
+    expect(findContent(wrapper).prop('aria-hidden')).toEqual('true')
 
-  expect(activate).toHaveBeenCalledTimes(2)
-  expect(deactivate).toHaveBeenCalledTimes(1)
-  expect(wrapper.find(dtContent).prop('aria-hidden')).toEqual('false')
+    // Mock controlled component being passed true, click should now ONLY call deactivate
+    wrapper.setProps({ active: true })
+    trigger.simulate('click')
 
-  trigger.simulate('click')
+    expect(activate).toHaveBeenCalledTimes(2)
+    expect(deactivate).toHaveBeenCalledTimes(1)
+    expect(findContent(wrapper).prop('aria-hidden')).toEqual('false')
 
-  expect(activate).toHaveBeenCalledTimes(2)
-  expect(deactivate).toHaveBeenCalledTimes(2)
-  expect(wrapper.find(dtContent).prop('aria-hidden')).toEqual('false')
+    trigger.simulate('click')
+
+    expect(activate).toHaveBeenCalledTimes(2)
+    expect(deactivate).toHaveBeenCalledTimes(2)
+    expect(findContent(wrapper).prop('aria-hidden')).toEqual('false')
+  })
 }

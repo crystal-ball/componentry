@@ -1,15 +1,11 @@
 import React from 'react'
 import renderer from 'react-test-renderer'
 
-import State from './index'
-
+import Drawer from './index'
 import activationTestSuite from '../utils-test/activation-tests'
 
-// State Component Tests
-// ---------------------------------------------------------------------------
-
-describe('<State />', () => {
-  activationTestSuite(State)
+describe('<Drawer />', () => {
+  activationTestSuite(Drawer)
 })
 
 // Snapshots
@@ -17,10 +13,10 @@ describe('<State />', () => {
 it('renders correctly', () => {
   const tree = renderer
     .create(
-      <State>
-        <State.Trigger>Trigger</State.Trigger>
-        <State.Content>Content</State.Content>
-      </State>
+      <Drawer>
+        <Drawer.Trigger>Trigger</Drawer.Trigger>
+        <Drawer.Content>Content</Drawer.Content>
+      </Drawer>
     )
     .toJSON()
   expect(tree).toMatchSnapshot()

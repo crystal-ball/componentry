@@ -18,12 +18,14 @@ const triggerElementFactory = ({ element, link = true, trigger } = {}) => {
     active: bool.isRequired,
     children: node,
     className: string,
+    'data-test': string,
     activate: func.isRequired,
     deactivate: func.isRequired
   }
 
   Trigger.defaultProps = {
-    As: Button
+    As: Button,
+    'data-test': `${element}-toggle`
   }
 
   function Trigger({
@@ -35,7 +37,6 @@ const triggerElementFactory = ({ element, link = true, trigger } = {}) => {
     deactivate,
     ...rest
   }) {
-    const name = `${element}-toggle`
     let onClick
     if (trigger) {
       onClick = trigger === 'activate' ? activate : deactivate
@@ -45,10 +46,9 @@ const triggerElementFactory = ({ element, link = true, trigger } = {}) => {
 
     return (
       <As
-        className={classNames(name, className)}
+        className={classNames(`${element}-toggle`, className)}
         link={link}
         onClick={onClick}
-        data-test={name}
         {...rest}
       >
         {children}
