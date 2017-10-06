@@ -1,0 +1,52 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders correctly 1`] = `
+<div
+  className="dropdown"
+  data-test="dropdown-container"
+  onMouseEnter={undefined}
+  onMouseLeave={undefined}
+>
+  <button
+    aria-controls={null}
+    aria-describedby={null}
+    aria-expanded="false"
+    aria-haspopup="true"
+    aria-hidden={null}
+    aria-labelledby={null}
+    className="btn dropdown-toggle btn-primary"
+    data-test="dropdown-toggle"
+    id="guid"
+    onClick={[Function]}
+    role={undefined}
+    type="button"
+  >
+    Trigger
+  </button>
+  <div
+    aria-controls={null}
+    aria-describedby={null}
+    aria-expanded={null}
+    aria-haspopup={null}
+    aria-hidden="true"
+    aria-labelledby="guid"
+    className="dropdown-content"
+    data-test="dropdown-content"
+    id={null}
+    role={undefined}
+  >
+    <button
+      className="btn dropdown-item"
+      type="button"
+    >
+      Item 1
+    </button>
+    <button
+      className="btn dropdown-item"
+      type="button"
+    >
+      Item 2
+    </button>
+  </div>
+</div>
+`;

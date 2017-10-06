@@ -104,11 +104,13 @@ const withState = Wrapped =>
      */
     activeState = new ActiveState(this.props.active)
     /**
-     * Guid instance property will be uniquely assigned once for each modal instance,
-     * this unique id is then passed to all children through context where it can be
-     * used to wire together title aria attributes
+     * Guid instance property will be uniquely assigned once for each modal
+     * instance, this unique id is then passed to all children through context where
+     * it can be used to wire together title aria attributes.
+     *
+     * In testing re-use 'guid' for consistent snapshots
      */
-    guid = nanoid()
+    guid = process.env.NODE_ENV === 'test' ? 'guid' : nanoid()
 
     // Hooks
     // ---------------------------------------------------------------------------
@@ -167,7 +169,7 @@ const withState = Wrapped =>
      * @param {Object} nextProps
      */
     componentWillReceiveProps({ active }) {
-      if (this.props.active !== active) this.activeState.setActive(active)
+      if (this.activeState.active !== active) this.activeState.setActive(active)
     }
     /**
      * Subscribe to active handler on mount. We are rerendering entire element any

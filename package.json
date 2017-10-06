@@ -22,7 +22,7 @@
     "js": "npm run js:esmodules && npm run js:amdmodule",
     "styles": "npm run styles:sass && npm run styles:minify && npm run styles:copy",
     "lint": "NODE_ENV=test eslint --ext .js --ext .jsx src lib",
-    "test:jest": "BABEL_ENV=test jest --env=jsdom",
+    "test:jest": "BABEL_ENV=test NODE_ENV=test jest --env=jsdom",
     "format": "prettier --write \"{lib,src}/**/*.{js,jsx}\"",
     "documentation": "NODE_ENV=production webpack --env=production",
     "clean": "rm -rf dist es esnext build",

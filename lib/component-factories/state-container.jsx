@@ -12,6 +12,7 @@ const stateContainerFactory = ({ element, mouseEvents }) =>
       As: oneOfType([func, node]),
       children: node,
       className: string,
+      'data-test': string,
       // Active boolean + change handlers
       active: bool.isRequired,
       activate: func.isRequired,
@@ -25,7 +26,8 @@ const stateContainerFactory = ({ element, mouseEvents }) =>
     }
 
     static defaultProps = {
-      As: 'div'
+      As: 'div',
+      'data-test': `${element}-container`
     }
 
     /**

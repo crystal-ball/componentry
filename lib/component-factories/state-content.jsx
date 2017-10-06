@@ -12,11 +12,13 @@ const contentElementFactory = ({ element, tip = false } = {}) => {
   Content.propTypes = {
     As: oneOfType([func, node]),
     children: node,
+    'data-test': string,
     className: string
   }
 
   Content.defaultProps = {
-    As: 'div'
+    As: 'div',
+    'data-test': `${element}-content`
   }
 
   function Content({ As, children, className, ...rest }) {

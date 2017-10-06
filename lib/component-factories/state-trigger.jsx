@@ -1,8 +1,8 @@
-import { bool, func, string } from 'prop-types'
+import React from 'react'
+import { bool, func, node, oneOfType, string } from 'prop-types'
 import classNames from 'classnames'
 
 import Button from '../Button'
-import { renderContainer } from '../utils/element-factory'
 
 /**
  * Individual triggers are defined for `<Activate />`, `<Deactivate />` and
@@ -14,13 +14,29 @@ import { renderContainer } from '../utils/element-factory'
  */
 const triggerElementFactory = ({ element, link = true, trigger } = {}) => {
   Trigger.propTypes = {
+    As: oneOfType([func, node]),
     active: bool.isRequired,
+    children: node,
     className: string,
+    'data-test': string,
     activate: func.isRequired,
     deactivate: func.isRequired
   }
 
-  function Trigger({ active, activate, className, deactivate, ...rest }) {
+  Trigger.defaultProps = {
+    As: Button,
+    'data-test': `${element}-toggle`
+  }
+
+  function Trigger({
+    As,
+    active,
+    activate,
+    children,
+    className,
+    deactivate,
+    ...rest
+  }) {
     let onClick
     if (trigger) {
       onClick = trigger === 'activate' ? activate : deactivate
@@ -28,13 +44,16 @@ const triggerElementFactory = ({ element, link = true, trigger } = {}) => {
       onClick = active ? deactivate : activate
     }
 
-    return renderContainer({
-      As: Button,
-      className: classNames(`${element}-toggle`, className),
-      link,
-      onClick,
-      ...rest
-    })
+    return (
+      <As
+        className={classNames(`${element}-toggle`, className)}
+        link={link}
+        onClick={onClick}
+        {...rest}
+      >
+        {children}
+      </As>
+    )
   }
 
   return Trigger
