@@ -36,21 +36,11 @@ export default class Dropdowns extends Component {
   }
 
   render() {
-    const { controlledActive } = this.state
     return (
       <div className="mb-5">
         <div className="row">
           <div className="col-12">
             <p className="lead">Dropdown component...</p>
-            <Dropdown
-              active={controlledActive}
-              activate={this.activate}
-              deactivate={this.deactivate}
-            >
-              <Dropdown.Trigger>Toggle</Dropdown.Trigger>
-              <Dropdown.Content>Inner dropdown content</Dropdown.Content>
-            </Dropdown>
-
             <Playground
               codeText={componentExample}
               docClass={Dropdown}

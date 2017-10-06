@@ -1,13 +1,11 @@
-/* eslint-disable react/prop-types */
 import React, { Component } from 'react'
 import { bool, func, shape, string } from 'prop-types'
 import nanoid from 'nanoid'
 
 import getDisplayName from '../utils/getDisplayName'
-import cleanProps from '../utils/clean-props'
 
 /**
- * This class handles managing an `active` property and exposes a subscribe callback
+ * This class handles managing an `active` state and exposes a subscribe callback
  * for listening for changes to `active`. It is used as an instance property for
  * each `withState` HOC to create a scoped `active` boolean available through
  * context.
@@ -17,6 +15,10 @@ import cleanProps from '../utils/clean-props'
 class ActiveState {
   subscriptions = []
 
+  /**
+   * Set active in constructor to allow creating components with specific initial
+   * states
+   */
   constructor(active = false) {
     this.active = active
   }
@@ -38,18 +40,19 @@ class ActiveState {
    * Return a function subcomponent can call to unsubscribe on unMount
    */
   subscribe = subscription => {
-    this.subscriptions.push(subscription)
+    const { subscriptions } = this
+    subscriptions.push(subscription)
 
     // Method will remove the subscription from the active list when called
     return () => {
-      this.subscriptions = this.subscriptions.filter(item => item !== subscription)
+      this.subscriptions = subscriptions.filter(item => item !== subscription)
     }
   }
 }
 
 /**
- * The `withState` HOC is a Provider component and exposes an `active` state boolean
- * to any child component using context. This context should not be accessed
+ * The `withState` HOC is a Provider component that exposes an `active` state
+ * boolean to any child component using context. This context should not be accessed
  * directly. The `withActive` HOC is available for passing `active` and state change
  * handlers as props.
  *
@@ -60,8 +63,9 @@ class ActiveState {
  *
  * The wrapped components (eg Dropdown, Tooltip, etc.) handle adding/removing event
  * listeners separately based on when the `active` prop changes. These event
- * listeners will call the passed `activate`/`deactivate` which gives control over
- * when to change state.
+ * listeners will call the passed `activate`/`deactivate` props. This lets us
+ * auto-wire any event listeners for consumers, but still allow them to control when
+ * to change state.
  * @method withState
  * @param {Component} Wrapped Component to wrap with active state handling
  */
@@ -83,7 +87,11 @@ const withState = Wrapped =>
     static propTypes = {
       active: bool,
       activate: func,
-      deactivate: func
+      deactivate: func,
+      onActivate: func,
+      onActivated: func,
+      onDeactivate: func,
+      onDeactivated: func
     }
 
     static childContextTypes = {
@@ -97,6 +105,12 @@ const withState = Wrapped =>
         subscribe: func
       })
     }
+
+    /**
+     * Active state is only used to trigger renders, passed state should only come
+     * from context.
+     */
+    state = { active: null }
 
     /**
      * Each instance has a separate class handling the state. Context is scoped and
@@ -114,7 +128,6 @@ const withState = Wrapped =>
 
     // Hooks
     // ---------------------------------------------------------------------------
-
     getChildContext = () => ({
       COMPONENTRY_ACTIVE: {
         activate: this.handleActivate,
@@ -124,44 +137,6 @@ const withState = Wrapped =>
         subscribe: this.activeState.subscribe
       }
     })
-
-    // Methods
-    // ---------------------------------------------------------------------------
-    /**
-     * HOC handles calling `activate/deactivate` functions. The component can be
-     * controlled by passing as props, otherwise default to updating internal state
-     * on context.
-     *
-     * NOTE: this seems like the best place to call on* handlers, is that true?
-     */
-
-    handleActivate = e => {
-      const { onActivate, activate, onActivated } = this.props
-      if (onActivate) onActivate(e, this)
-
-      if (activate) {
-        activate(e, this)
-      } else {
-        this.activeState.setActive(true)
-      }
-
-      if (onActivated) onActivated(e, this)
-    }
-    handleDeactivate = e => {
-      const { onDeactivate, deactivate, onDeactivated } = this.props
-      if (onDeactivate) onDeactivate(e, this)
-
-      if (deactivate) {
-        deactivate(e, this)
-      } else {
-        this.activeState.setActive(false)
-      }
-
-      if (onDeactivated) onDeactivated(e, this)
-    }
-
-    // Hooks
-    // ---------------------------------------------------------------------------
     /**
      * For controlled components active can be passed as a prop. When this happens
      * we update the internal state handler, which then notifies children
@@ -177,8 +152,7 @@ const withState = Wrapped =>
      */
     componentDidMount() {
       this.unsubscribe = this.activeState.subscribe(active => {
-        // TODO: should we only do this when active isn't passed as a prop???
-        this.setState({ active })
+        if (this.state.active !== active) this.setState({ active })
       })
     }
     /**
@@ -188,23 +162,65 @@ const withState = Wrapped =>
       this.unsubscribe()
     }
 
+    // Methods
+    // ---------------------------------------------------------------------------
+    /**
+     * ## NOTE
+     * Internal `handle*` methods are _always_ passed as props, this ensures that we
+     * can always hook into events for internal needs. This is inside this HOC
+     * because we need to set the `activate` and `deactivate` methods on the context
+     * for child components, so it seems like the best option, but these handlers
+     * don't _feel_ like they should be here? Is there a better place or pattern for
+     * this?
+     */
+
+    /** Call activation hooks and `activate` function */
+    handleActivate = e => {
+      const { onActivate, activate, onActivated } = this.props
+      if (onActivate) onActivate(e, this)
+
+      if (activate) {
+        activate(e, this)
+      } else {
+        this.activeState.setActive(true)
+      }
+
+      if (onActivated) onActivated(e, this)
+    }
+    /** Call deactivation hooks and `deactivate` function */
+    handleDeactivate = e => {
+      const { onDeactivate, deactivate, onDeactivated } = this.props
+      if (onDeactivate) onDeactivate(e, this)
+
+      if (deactivate) {
+        deactivate(e, this)
+      } else {
+        this.activeState.setActive(false)
+      }
+
+      if (onDeactivated) onDeactivated(e, this)
+    }
+
     // Render
     // ---------------------------------------------------------------------------
     render() {
-      const dom = cleanProps(this.props, [
-        'onActivate',
-        'onActivated',
-        'onDeactivate',
-        'onDeactivated'
-      ])
+      // Don't pass user hooks through
+      const {
+        onActivate,
+        onActivated,
+        onDeactivate,
+        onDeactivated,
+        ...rest
+      } = this.props
 
       return (
+        // See note on ordering of passed props and active state handlers
         <Wrapped
+          guid={this.guid}
+          {...rest}
           active={this.activeState.getActive()}
           activate={this.handleActivate}
           deactivate={this.handleDeactivate}
-          guid={this.guid}
-          {...dom}
         />
       )
     }

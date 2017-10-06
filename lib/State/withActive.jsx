@@ -4,15 +4,10 @@ import { func, shape, string } from 'prop-types'
 import getDisplayName from '../utils/getDisplayName'
 
 /**
- * HOC that passes in aria attributes computed from context guid and active state.
- * ariaConfigs => Wrapped => Component w/ (active state + arias)
- * 1. Required attrs are included as static attr on component at definition
- * 2. Guid and active are passed through context to instantiation of component at
- *    any place in tree.
- * 3. Computed arias passed as props to wrapped component.
- * TODO:
- * - Do arias need a prefix for mutliple ids?
- * - Document the need to spread state from props to prevent passing bad attrs!
+ * HOC passes active state props along with computed aria attributes for the state.
+ * The `active`, `activate` and `deactivate` props are passed from active state
+ * provider through context.
+ * @param ariaConfigs Options object describes aria attributes to pass down
  */
 const withActive = (ariaConfigs = {}) => Wrapped =>
   class WithActive extends Component {
@@ -28,19 +23,25 @@ const withActive = (ariaConfigs = {}) => Wrapped =>
       })
     }
 
+    /**
+     * Active state is only used to trigger renders, passed state should only come
+     * from context.
+     */
     state = { active: null }
 
     // Hooks
     // ---------------------------------------------------------------------------
     /**
-     * When wrapped component needs to observe active and update on change, pass
-     * subscribe true to trigger component subscription
+     * Subscribe to active state updates on mount, trigger renders with setState
+     * when state changes. Typically this won't be needed b/c parent component will
+     * rerender on active state change. We still subscribe in case
+     * `shouldComponentUpdate` on an intermediate component returns false.
      */
     componentDidMount() {
       if (ariaConfigs.subscribe === false) return
 
       this.unsubscribe = this.context.COMPONENTRY_ACTIVE.subscribe(active => {
-        this.setState({ active })
+        if (active !== this.state.active) this.setState({ active })
       })
     }
     /**
@@ -50,16 +51,13 @@ const withActive = (ariaConfigs = {}) => Wrapped =>
       if (ariaConfigs.subscribe !== false) this.unsubscribe()
     }
 
-    // Guid for arias and active state will be passed through context, HOC needs to
-    // handle calling setState when active changes and passing arias into Wrapped
+    // Render
+    // ---------------------------------------------------------------------------
     render() {
-      const {
-        activate,
-        deactivate,
-        getActive,
-        guid
-      } = this.context.COMPONENTRY_ACTIVE
-      const active = getActive()
+      const { COMPONENTRY_ACTIVE } = this.context
+      const { guid } = COMPONENTRY_ACTIVE
+      const active = COMPONENTRY_ACTIVE.getActive()
+
       const arias = {
         'aria-controls': ariaConfigs.controls ? guid : null,
         'aria-describedby': ariaConfigs.describedby ? guid : null,
@@ -74,8 +72,8 @@ const withActive = (ariaConfigs = {}) => Wrapped =>
       return (
         <Wrapped
           active={active}
-          activate={activate}
-          deactivate={deactivate}
+          activate={COMPONENTRY_ACTIVE.activate}
+          deactivate={COMPONENTRY_ACTIVE.deactivate}
           {...arias}
           {...this.props}
         />
