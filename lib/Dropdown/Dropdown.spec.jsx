@@ -41,7 +41,6 @@ describe('<Dropdown />', () => {
     expect(wrapper.find('.btn.dropdown-toggle').prop('aria-expanded')).toEqual(
       'true'
     )
-    // expect(wrapper.find('.dropdown-toggle').length).toEqual(1)
     expect(wrapper.find('.dropdown-content').prop('aria-hidden')).toEqual('false')
   })
 
