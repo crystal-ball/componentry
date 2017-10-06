@@ -22,8 +22,9 @@ const contentElementFactory = ({ element, tip = false } = {}) => {
   function Content({ As, children, className, ...rest }) {
     // Remove context props
     const dom = cleanProps(rest, ['active', 'activate', 'deactivate'])
+    const name = `${element}-content`
     return (
-      <As className={classNames(`${element}-content`, className)} {...dom}>
+      <As className={classNames(name, className)} data-test={name} {...dom}>
         {tip && (
           <div className="tip-container">
             <div className="tip" />

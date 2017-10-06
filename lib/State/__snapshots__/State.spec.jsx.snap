@@ -3,6 +3,7 @@
 exports[`renders correctly 1`] = `
 <div
   className=""
+  data-test="state-container"
 >
   <button
     aria-controls="guid"
@@ -12,6 +13,7 @@ exports[`renders correctly 1`] = `
     aria-hidden={null}
     aria-labelledby={null}
     className="btn state-toggle btn-anchor"
+    data-test="state-toggle"
     id={null}
     onClick={[Function]}
     role={undefined}
@@ -27,6 +29,7 @@ exports[`renders correctly 1`] = `
     aria-hidden="true"
     aria-labelledby={null}
     className="state-content"
+    data-test="state-content"
     id="guid"
     role={undefined}
   >

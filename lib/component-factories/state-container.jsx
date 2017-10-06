@@ -139,6 +139,7 @@ const stateContainerFactory = ({ element, mouseEvents }) =>
           className={classNames(element, className)}
           onMouseEnter={mouseEvents ? activate : undefined}
           onMouseLeave={mouseEvents ? deactivate : undefined}
+          data-test={`${element}-container`}
           {...dom}
         >
           {children}

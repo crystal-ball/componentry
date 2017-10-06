@@ -3,6 +3,7 @@
 exports[`renders correctly 1`] = `
 <div
   className="dropdown"
+  data-test="dropdown-container"
   onMouseEnter={undefined}
   onMouseLeave={undefined}
 >
@@ -14,6 +15,7 @@ exports[`renders correctly 1`] = `
     aria-hidden={null}
     aria-labelledby={null}
     className="btn dropdown-toggle btn-primary"
+    data-test="dropdown-toggle"
     id="guid"
     onClick={[Function]}
     role={undefined}
@@ -29,6 +31,7 @@ exports[`renders correctly 1`] = `
     aria-hidden="true"
     aria-labelledby="guid"
     className="dropdown-content"
+    data-test="dropdown-content"
     id={null}
     role={undefined}
   >
