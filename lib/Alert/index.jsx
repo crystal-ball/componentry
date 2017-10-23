@@ -18,7 +18,7 @@ import { themeColorNames } from '../utils/theme'
  */
 export default class Alert extends Component {
   static contextTypes = {
-    COMPONENTRY_THEME: shape({ visibilityTransitionLength: number })
+    THEME: shape({ visibilityTransitionLength: number })
   }
 
   static propTypes = {
@@ -46,8 +46,7 @@ export default class Alert extends Component {
    * application state to dismiss an alert is preferred.
    */
   handleDismiss = () => {
-    const { visibilityTransitionLength = 300 } =
-      this.context.COMPONENTRY_THEME || {}
+    const { visibilityTransitionLength = 300 } = this.context.THEME || {}
     // props has precedence to allow for single instance overrides, context can be
     // used for app wide configs, fall back to defaults
     const timer =

@@ -44,14 +44,14 @@ Button.propTypes = {
 }
 
 Button.contextTypes = {
-  COMPONENTRY_THEME: shape({
+  THEME: shape({
     defaultButtonColor: string
   })
 }
 
 export default function Button(
   { className, color, link, outline, size, ...rest },
-  { COMPONENTRY_THEME: { defaultButtonColor = 'primary' } = {} }
+  { THEME: { defaultButtonColor = 'primary' } = {} }
 ) {
   // Pass null to suppress output of any theme color classes
   const renderColor = color || color === null ? color : defaultButtonColor
