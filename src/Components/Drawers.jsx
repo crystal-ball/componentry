@@ -1,7 +1,7 @@
 import React from 'react'
 import Playground from 'component-playground'
 
-import { Chevron, Drawer } from '../../lib'
+import { Drawer } from '../../lib'
 
 /* eslint-disable import/no-webpack-loader-syntax */
 const componentExample = require('raw-loader!./examples/drawer')
@@ -15,7 +15,7 @@ export default function Drawers() {
           <Playground
             codeText={componentExample}
             docClass={Drawer}
-            scope={{ React, Chevron, Drawer }}
+            scope={{ React, Drawer }}
             theme="panda-syntax"
           />
         </div>

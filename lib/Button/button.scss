@@ -6,7 +6,9 @@
 // .btn, .btn-link, .bnt-<COLOR>, .btn-outline-<COLOR>
 
 .btn {
-  // Bootstrap buttons don't have pointer styles ¯\_(ツ)_/¯
+  // Bootstrap purposely doesn't have pointer for button cursor, but it's standard
+  // expectation now so we'll add it back
+  // See: https://github.com/twbs/bootstrap/pull/21812
   cursor: pointer;
 }
 
@@ -26,11 +28,4 @@
   user-select: auto;
   vertical-align: baseline;
   white-space: normal;
-}
-
-// TODO: Log a bug w/ Bootstrap on this. All outline buttons have text white used
-// on hover state, which works for every button except the 'light' color button b/c
-// the hover background is very light gray, and you can't see the white text.
-.btn-outline-light:hover {
-  color: #111;
 }

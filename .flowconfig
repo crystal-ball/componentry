@@ -1,0 +1,23 @@
+# 📝 Setup details documented at: guides/tools/Flow
+[ignore]
+
+[include]
+
+[libs]
+
+[lints]
+
+[options]
+# 📝 Declare file extensions to handle webpack asset imports
+module.file_ext=.js
+module.file_ext=.json
+module.file_ext=.jsx
+module.file_ext=.scss
+# 📝 Module mappers export mock types for webpack assets
+module.name_mapper.extension='scss' -> '<PROJECT_ROOT>/__mock__/css-modules.flow.js'
+# 📝 Resolve directories for webpack module resolution
+module.system.node.resolve_dirname=node_modules
+module.system.node.resolve_dirname=src
+# 📝 Flow suppress comments
+suppress_comment= \\(.\\|\n\\)*\\$FlowFixMe
+suppress_comment= \\(.\\|\n\\)*\\$FlowIgnore

@@ -1,0 +1,43 @@
+// ========================================================
+// Icons
+// ========================================================
+
+// NOTE: The icon class is intended for use with SVGs to create font icons
+
+.icon {
+  display: inline-flex;
+  fill: currentColor;
+  height: 1em;
+  position: relative; // for bottom
+  width: 1em; // width + height of 1em makes icons font-sized by default
+
+  // Icons are styled as font icons by default, meaning they need a baseline
+  // adjustment provided by the `bottom` rule to match the font baseline. Do not
+  // include the `font` class
+  &.font {
+    bottom: $icon-bottom; // match svg baseline to match font baseline
+  }
+}
+
+// Animate close icon on hover
+.icon.close {
+  opacity: 0.6;
+  transition: $transition-fade;
+
+  @include hover-focus {
+    opacity: 1;
+  }
+}
+
+// By default Componentry provides a very simple set of icon classes with background
+// images, but this is not the recommended system. Consumers should set up an SVG
+// icon system and set $include-icons to false to use real SVGs for icons.
+@if $include-icons {
+  .icon.close {
+    background-image: str-replace(url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='#{$body-color}' viewBox='0 0 32 32'%3E%3Cpath d='M32,3.22,19.22,16,32,28.78,28.78,32,16,19.22,3.22,32,0,28.78,12.78,16,0,3.22,3.22,0,16,12.78,28.78,0Z'/%3E%3C/svg%3E"), "#", "%23");
+  }
+
+  .icon.chevron {
+    background-image: str-replace(url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='#{$link-color}' viewBox='0 0 32 32'%3E%3Cpath d='M6.71,8.51,16,17.8l9.29-9.29,2.84,2.84L16,23.49,3.86,11.35Z'/%3E%3C/svg%3E"), "#", "%23");
+  }
+}

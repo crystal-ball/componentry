@@ -1,21 +1,23 @@
 import React from 'react'
 import { BrowserRouter, Switch, Route } from 'react-router-dom'
 
-import { AppNav } from 'shared/Navigations'
+// Import SVG font icons used in application without a component instance
+import 'media/icons/close.svg'
+import 'media/icons/chevron.svg'
+
+import { AppNav } from 'universal/Navigations'
 import Home from '../Home'
 import { ThemeProvider } from '../../lib'
 import Installation from '../Installation'
 import Accessibility from '../Accessibility'
 import Components from '../Components'
 import FourOhFour from '../FourOhFour'
-import svgIconsPath from '../media/icons.svg'
 
 // Componentry configuration defaults can be updated using the ThemeProvider
 // component and passing a theme configuration object
 // TODO: Docs
 const theme = {
   defaultButtonColor: 'primary',
-  svgDefinitionsFilePath: svgIconsPath,
   visibilityTransitionLength: 350
 }
 

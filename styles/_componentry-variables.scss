@@ -1,0 +1,16 @@
+// ========================================================
+// Componentry Variables
+// ========================================================
+
+// Any variables used in the Componentry library that are not originally Bootstrap
+// variables are declared here. Note that additional variables should only be
+// created to allow for additional customization not provided in the Bs library.
+
+// NOTE: these should be overrideable values, so they should all use !default
+
+// This bottom adjustment is added to every font icon to account for svg baseline
+// render differences
+$icon-bottom: -0.125em !default;
+// When true this will include background-image rules for the close and chevron
+// icons, if you have an SVG system set-up this should be false to use real SVGs
+$include-icons: false !default;

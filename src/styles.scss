@@ -3,15 +3,15 @@
 // ========================================================
 
 // This demo app is an example of how you can theme Componentry
-// using a set of Bootstrap variables. The theme 'Clear' sets
+// using a set of Bootstrap variables. The theme variables set
 // colors, font sizes, font family, padding, etc. These variables
 // are then used by the Bootstrap AND Componentry libraries
 // stylesheets to create a set of themed components matching
 // your app styles perfectly.
 
-// Componentry 'Simple' Theme
+// Theme Variables
 // ---------------------------------------------------------------------------
-@import '../styles/themes/clear';
+@import './styles/theme';
 
 // Bootstrap
 // ---------------------------------------------------------------------------

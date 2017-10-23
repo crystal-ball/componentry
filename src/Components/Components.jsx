@@ -2,7 +2,7 @@ import React from 'react'
 import { Route } from 'react-router-dom'
 import { object } from 'prop-types'
 
-import { ComponentsNav } from 'shared/Navigations'
+import { ComponentsNav } from 'universal/Navigations'
 import Header from './Header'
 import Alerts from './Alerts'
 import Buttons from './Buttons'
@@ -36,7 +36,6 @@ export default function Components({ match }) {
           <Route path="/components/cards" component={Cards} />
           <Route path="/components/drawers" component={Drawers} />
           <Route path="/components/dropdowns" component={Dropdowns} />
-          {/* <Route path="/components/icons" component={Icons} /> */}
           <Route path="/components/list-groups" component={ListGroups} />
           <Route path="/components/modals" component={Modals} />
           <Route path="/components/popovers" component={Popovers} />

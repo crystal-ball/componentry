@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import Playground from 'component-playground'
 
-import { Button, Close, Modal } from '../../lib'
+import { Button, Modal } from '../../lib'
 
 /* eslint-disable import/no-webpack-loader-syntax */
 const componentExample = require('raw-loader!./examples/modal')
@@ -35,7 +35,7 @@ export default class Modals extends Component {
             <Playground
               codeText={componentExample}
               docClass={Modal}
-              scope={{ React, Button, Close, Modal, modalActive, toggleModal }}
+              scope={{ React, Button, Modal, modalActive, toggleModal }}
               theme="panda-syntax"
             />
           </div>

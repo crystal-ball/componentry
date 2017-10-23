@@ -1,6 +1,7 @@
 <Drawer>
   <Drawer.Trigger>
-    <Chevron /> Toggle Drawer
+    <svg role="img" className="icon chevron font"><use href="#chevron"/></svg>
+    Toggle Drawer
   </Drawer.Trigger>
   <Drawer.Content>
     The Motion Picture Academy refused to nominate Tron (1982) for a

@@ -5,7 +5,9 @@
     <Modal.Header>
       <Modal.Title>This is the header</Modal.Title>
       <Button link onClick={toggleModal}>
-        <Close />
+        <svg className="icon close font" role="img" aria-label="close">
+          <use href="#close" />
+        </svg>
       </Button>
     </Modal.Header>
     <Modal.Body>This is a modal</Modal.Body>

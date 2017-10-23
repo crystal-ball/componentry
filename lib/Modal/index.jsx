@@ -66,6 +66,7 @@ export default class Modal extends Component {
           aria-hidden={active ? 'false' : 'true'}
           className="modal-backdrop fade"
           onClick={onDeactivate}
+          onKeyPress={onDeactivate}
           role="presentation"
         />
         <div className={dialogClassNames} role="document">

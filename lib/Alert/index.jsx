@@ -3,7 +3,6 @@ import { bool, func, number, node, oneOf, shape, string } from 'prop-types'
 import classNames from 'classnames'
 
 import Button from '../Button'
-import { Close } from '../Icon'
 import { themeColorNames } from '../utils/theme'
 
 /**
@@ -19,16 +18,12 @@ import { themeColorNames } from '../utils/theme'
  */
 export default class Alert extends Component {
   static contextTypes = {
-    COMPONENTRY_THEME: shape({
-      closeSVG: node,
-      visibilityTransitionLength: number
-    })
+    COMPONENTRY_THEME: shape({ visibilityTransitionLength: number })
   }
 
   static propTypes = {
     children: node,
     className: string,
-    closeSVG: node,
     color: oneOf(themeColorNames).isRequired,
     dismissible: bool,
     onDismiss: func,
@@ -51,9 +46,8 @@ export default class Alert extends Component {
    * application state to dismiss an alert is preferred.
    */
   handleDismiss = () => {
-    const {
-      COMPONENTRY_THEME: { visibilityTransitionLength = 300 } = {}
-    } = this.context
+    const { visibilityTransitionLength = 300 } =
+      this.context.COMPONENTRY_THEME || {}
     // props has precedence to allow for single instance overrides, context can be
     // used for app wide configs, fall back to defaults
     const timer =
@@ -68,19 +62,12 @@ export default class Alert extends Component {
     })
   }
 
-  renderClose() {
-    const { COMPONENTRY_THEME = {} } = this.context
-    const CloseSVG = this.props.closeSVG || COMPONENTRY_THEME.closeSVG || Close
-    return <CloseSVG />
-  }
-
   // Render
   // ---------------------------------------------------------------------------
   render() {
     const {
       children,
       className,
-      closeSVG, // prevent dom inclusion
       color,
       dismissible,
       onDismiss,
@@ -108,7 +95,9 @@ export default class Alert extends Component {
             onClick={onDismiss || this.handleDismiss}
             className={`text-${color}`}
           >
-            {this.renderClose()}
+            <svg className="icon close font" role="img" aria-label="close">
+              <use href="#close" />
+            </svg>
           </Button>
         )}
       </div>

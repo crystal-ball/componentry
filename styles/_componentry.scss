@@ -4,13 +4,15 @@
 
 // Primary entry into Componentry styles. Includes library specific variables,
 // utility styles, and component styles.
+
+@import 'componentry-variables';
 @import 'utility';
+@import 'icons';
 
 @import '../lib/Alert/alert';
 @import '../lib/Button/button';
 @import '../lib/Drawer/drawer';
 @import '../lib/Dropdown/dropdown';
-@import '../lib/Icon/icon';
 @import '../lib/ListGroup/list-group';
 @import '../lib/Modal/modals';
 @import '../lib/Popover/popover';

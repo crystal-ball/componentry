@@ -14,6 +14,7 @@ import Button from '../Button'
  */
 const triggerElementFactory = ({ element, link = true, trigger } = {}) => {
   Trigger.propTypes = {
+    /* eslint-disable react/no-typos */
     As: oneOfType([func, node]),
     active: bool.isRequired,
     children: node,

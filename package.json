@@ -18,6 +18,7 @@
     "prepublishOnly": "npm run styles && npm run js",
     "postpublish": "npm run clean",
     "prepush": "npm run test",
+    "flow": "flow",
     "deploy": "gh-pages -d build",
     "js": "npm run js:esmodules && npm run js:amdmodule",
     "styles": "npm run styles:sass && npm run styles:minify && npm run styles:copy",
@@ -30,7 +31,7 @@
     "js:esmodules": "BABEL_ENV=production babel lib --out-dir es",
     "js:amdmodule": "NODE_ENV=production webpack --config webpack.config.umd.js",
     "bootstrap:copy": "cp -a ./node_modules/bootstrap/scss/* ./styles/bootstrap",
-    "styles:sass": "node-sass src/componentry-clear.scss dist/componentry.css",
+    "styles:sass": "node-sass ./componentry-clear.scss dist/componentry.css",
     "styles:minify": "cleancss -o dist/componentry.min.css dist/componentry.css",
     "styles:copy": "cp -r styles/* dist"
   },
@@ -47,8 +48,8 @@
     "nanoid": "^0.2.1"
   },
   "devDependencies": {
-    "@crystal-ball/eslint-config-eloquence": "^4.4.0",
-    "@inspire-script/webpack-configs": "^2.10.0",
+    "@crystal-ball/eslint-config-eloquence": "^6.0.1",
+    "@inspirescript/webpack-configs": "^2.19.0",
     "babel-cli": "^6.24.1",
     "babel-jest": "^21.2.0",
     "babel-plugin-transform-class-properties": "^6.24.1",
@@ -61,6 +62,7 @@
     "enzyme": "^3.1.0",
     "enzyme-adapter-react-16": "^1.0.1",
     "eslint-import-resolver-webpack": "^0.8.3",
+    "flow-bin": "^0.57.3",
     "gh-pages": "^1.0.0",
     "husky": "^0.14.3",
     "jest": "^21.2.1",
