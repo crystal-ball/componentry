@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import Playground from 'component-playground'
 
-import { Button, Modal } from '../../lib'
+import { Button, Modal } from '../../../lib'
 
 /* eslint-disable import/no-webpack-loader-syntax */
 const componentExample = require('raw-loader!./examples/modal')

@@ -2,4 +2,6 @@
 // Demo Styles - Theme Variables
 // ========================================================
 
-// Set the theme variables here for customized styles
+// Import Bootstrap variables for ability to import theme anywhere later
+@import '../../styles/bootstrap/_functions.scss';
+@import '../../styles/bootstrap/_variables.scss';

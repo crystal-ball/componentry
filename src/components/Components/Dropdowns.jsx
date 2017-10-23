@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import Playground from 'component-playground'
 
-import { Dropdown } from '../../lib'
+import { Dropdown } from '../../../lib'
 
 /* eslint-disable import/no-webpack-loader-syntax */
 const componentExample = require('raw-loader!./examples/dropdown')

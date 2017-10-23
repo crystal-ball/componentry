@@ -1,7 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 
-import { Dropdown } from '../../../lib'
+import { Dropdown } from '../../../../lib'
 import componentRoutes from './component-routes'
 import github from '../github'
 

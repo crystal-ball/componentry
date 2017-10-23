@@ -2,7 +2,7 @@ import React from 'react'
 import { Route } from 'react-router-dom'
 import { object } from 'prop-types'
 
-import { ComponentsNav } from 'universal/Navigations'
+import { ComponentsNav } from 'components/universal/Navigations'
 import Header from './Header'
 import Alerts from './Alerts'
 import Buttons from './Buttons'

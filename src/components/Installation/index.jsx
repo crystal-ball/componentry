@@ -1,6 +1,6 @@
 import React from 'react'
 
-import PrismHighlighter from 'universal/PrismHighlighter'
+import PrismHighlighter from 'components/universal/PrismHighlighter'
 
 const basicImport = `// Define any theme customization for Bootstrap and Componentry. They use the
 // same variables in order to create a seamless theme.

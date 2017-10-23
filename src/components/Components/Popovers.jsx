@@ -1,21 +1,21 @@
 import React from 'react'
 import Playground from 'component-playground'
 
-import { State } from '../../lib'
+import { Popover } from '../../../lib'
 
 /* eslint-disable import/no-webpack-loader-syntax */
-const componentExample = require('raw-loader!./examples/state')
+const componentExample = require('raw-loader!./examples/popover')
 
-export default function States() {
+export default function Popovers() {
   return (
     <div className="mb-5">
       <div className="row">
         <div className="col-12">
-          <p className="lead">State component...</p>
+          <p className="lead">Popover component...</p>
           <Playground
             codeText={componentExample}
-            docClass={State}
-            scope={{ React, State }}
+            docClass={Popover}
+            scope={{ React, Popover }}
             theme="panda-syntax"
           />
         </div>

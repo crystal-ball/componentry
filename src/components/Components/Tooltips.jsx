@@ -1,25 +1,21 @@
 import React from 'react'
 import Playground from 'component-playground'
 
-import { Alert } from '../../lib'
+import { Tooltip } from '../../../lib'
 
 /* eslint-disable import/no-webpack-loader-syntax */
-const componentExample = require('raw-loader!./examples/alert')
+const componentExample = require('raw-loader!./examples/tooltip')
 
-export default function Alerts() {
-  function logDismiss() {
-    console.log('dismiss')
-  }
-
+export default function Tooltips() {
   return (
     <div className="mb-5">
       <div className="row">
         <div className="col-12">
-          <p className="lead">Alert component...</p>
+          <p className="lead">Tooltip component...</p>
           <Playground
             codeText={componentExample}
-            docClass={Alert}
-            scope={{ React, Alert, logDismiss }}
+            docClass={Tooltip}
+            scope={{ React, Tooltip }}
             theme="panda-syntax"
           />
         </div>

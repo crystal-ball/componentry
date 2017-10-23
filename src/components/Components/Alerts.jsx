@@ -1,21 +1,25 @@
 import React from 'react'
 import Playground from 'component-playground'
 
-import { Button, Card } from '../../lib'
+import { Alert } from '../../../lib'
 
 /* eslint-disable import/no-webpack-loader-syntax */
-const componentExample = require('raw-loader!./examples/card')
+const componentExample = require('raw-loader!./examples/alert')
 
-export default function Cards() {
+export default function Alerts() {
+  function logDismiss() {
+    console.log('dismiss')
+  }
+
   return (
     <div className="mb-5">
       <div className="row">
         <div className="col-12">
-          <p className="lead">Card component...</p>
+          <p className="lead">Alert component...</p>
           <Playground
             codeText={componentExample}
-            docClass={Card}
-            scope={{ React, Button, Card }}
+            docClass={Alert}
+            scope={{ React, Alert, logDismiss }}
             theme="panda-syntax"
           />
         </div>

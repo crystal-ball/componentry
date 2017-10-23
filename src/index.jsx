@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom'
 import { AppContainer } from 'react-hot-loader'
 import './vendor/prism' // Prism uses a global on the window
 
-import App from './App'
+import App from './components/App'
 import './styles.scss'
 
 const render = Component => {
@@ -19,7 +19,7 @@ render(App)
 
 /* global module */
 if (module.hot) {
-  module.hot.accept('./App', () => {
+  module.hot.accept('./components/App', () => {
     render(App)
   })
 }
