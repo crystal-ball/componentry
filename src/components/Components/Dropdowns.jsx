@@ -1,21 +1,20 @@
+// @flow
 import React, { Component } from 'react'
 import Playground from 'component-playground'
 
 import { Dropdown } from '../../../lib'
+import componentExample from './examples/dropdown.txt'
 
-/* eslint-disable import/no-webpack-loader-syntax */
-const componentExample = require('raw-loader!./examples/dropdown')
-
-function logActivate() {
-  console.log('on activate called')
-}
-function logDeactivate() {
-  console.log('on deactivate called')
-}
+const logActivate = () => console.log('on activate called')
+const logDeactivate = () => console.log('on deactivate called')
 
 let count = 1
 
-export default class Dropdowns extends Component {
+type State = {
+  controlledActive: boolean
+}
+
+export default class Dropdowns extends Component<{}, State> {
   state = {
     controlledActive: true
   }
@@ -25,7 +24,6 @@ export default class Dropdowns extends Component {
   }
 
   activate = () => {
-    console.log('custom activate')
     if (count % 2 === 0) this.setState({ controlledActive: true })
     count += 1
   }

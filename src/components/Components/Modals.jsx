@@ -1,19 +1,22 @@
+// @flow
 import React, { Component } from 'react'
 import Playground from 'component-playground'
 
 import { Button, Modal } from '../../../lib'
+import componentExample from './examples/modal.txt'
 
-/* eslint-disable import/no-webpack-loader-syntax */
-const componentExample = require('raw-loader!./examples/modal')
+type State = {
+  ariaActive: boolean,
+  modalActive: boolean
+}
 
-export default class Modals extends Component {
+export default class Modals extends Component<{}, State> {
   state = {
     ariaActive: false,
     modalActive: false
   }
 
   toggleModal = () => {
-    console.log('toggle me')
     this.setState({ modalActive: !this.state.modalActive }, () => {
       this.forceUpdate()
     })

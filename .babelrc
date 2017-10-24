@@ -16,6 +16,7 @@
         "react"
       ],
       "plugins": [
+        "transform-react-stateless-component-name", // Give names to SFCs
         "react-hot-loader/babel",
         "transform-class-properties",
         "transform-object-rest-spread"

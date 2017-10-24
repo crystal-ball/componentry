@@ -1,11 +1,14 @@
+// @flow
 import React, { Component } from 'react'
-import { node, string } from 'prop-types'
+import type { Node } from 'react'
 
-export default class PrismHighlighter extends Component {
-  static propTypes = {
-    children: node,
-    language: string
-  }
+type Props = {
+  children: Node,
+  language: string
+}
+
+export default class PrismHighlighter extends Component<Props> {
+  pre: ?HTMLElement
 
   componentDidMount() {
     window.Prism.highlightElement(this.pre)

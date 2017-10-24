@@ -122,6 +122,24 @@ export default TestComponent => {
   })
 
   /**
+   * State checks if active prop value is different from internal state and updates
+   * if that's the case, but this should only happen when passed active is an actual
+   * value and not undefined. Check this with an instance with no value, and a
+   * forced rerender
+   */
+  test('should not use active prop when value is undefined', () => {
+    const wrapper = mount(
+      <TestComponent>
+        <TestComponent.Trigger data-test="trigger" />
+        <TestComponent.Content data-test="content" />
+      </TestComponent>
+    )
+    expect(findContent(wrapper).prop('aria-hidden')).toEqual('true')
+    wrapper.update()
+    expect(findContent(wrapper).prop('aria-hidden')).toEqual('true')
+  })
+
+  /**
    * Test controlled component for methods `activate` and `deactivate`. Passing these
    * should override internal activate/deactivate meaning that clicking the trigger
    * for an element should only call those passed props.

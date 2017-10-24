@@ -1,9 +1,8 @@
 import React from 'react'
 import { Route } from 'react-router-dom'
-import { object } from 'prop-types'
 
 import { ComponentsNav } from 'components/universal/Navigations'
-import Header from './Header'
+import Header from 'components/universal/Header'
 import Alerts from './Alerts'
 import Buttons from './Buttons'
 import Cards from './Cards'
@@ -15,11 +14,13 @@ import Popovers from './Popovers'
 import State from './State'
 import Tooltips from './Tooltips'
 
-Components.propTypes = {
-  match: object.isRequired // eslint-disable-line
+type Props = {
+  match: {
+    params: string
+  }
 }
 
-export default function Components({ match }) {
+export default ({ match }: Props) => {
   const { component } = match.params
 
   return (

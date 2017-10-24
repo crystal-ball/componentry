@@ -144,6 +144,9 @@ const withState = Wrapped =>
      * @param {Object} nextProps
      */
     componentWillReceiveProps({ active }) {
+      // If active is not explicitly passed, it will always be undefined, we only
+      // want to update state when a value is passed.
+      if (active === undefined) return
       if (this.activeState.active !== active) this.activeState.setActive(active)
     }
     /**

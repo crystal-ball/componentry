@@ -14,7 +14,9 @@ module.file_ext=.json
 module.file_ext=.jsx
 module.file_ext=.scss
 # 📝 Module mappers export mock types for webpack assets
-module.name_mapper.extension='scss' -> '<PROJECT_ROOT>/__mock__/css-modules.flow.js'
+module.name_mapper.extension='scss' -> '<PROJECT_ROOT>/__mocks__/css-modules.flow.js'
+module.name_mapper.extension='md' -> '<PROJECT_ROOT>/__mocks__/markdown.flow.js'
+module.name_mapper.extension='txt' -> '<PROJECT_ROOT>/__mocks__/txt.flow.js'
 # 📝 Resolve directories for webpack module resolution
 module.system.node.resolve_dirname=node_modules
 module.system.node.resolve_dirname=src

@@ -1,3 +1,4 @@
+// @flow
 import React from 'react'
 import { BrowserRouter, Switch, Route } from 'react-router-dom'
 
@@ -21,24 +22,21 @@ const theme = {
   visibilityTransitionLength: 350
 }
 
-export default function App() {
-  return (
-    /* global process */
-    <BrowserRouter basename={process.env.PUBLIC_PATH}>
-      <ThemeProvider theme={theme}>
-        <div>
-          <Route path="/:path(accessibility|getting-started)" component={AppNav} />
-          <div className="container">
-            <Switch>
-              <Route path="/" exact component={Home} />
-              <Route path="/getting-started" component={Installation} />
-              <Route path="/accessibility" component={Accessibility} />
-              <Route path="/components/:component?" component={Components} />
-              <Route component={FourOhFour} />
-            </Switch>
-          </div>
+export default () => (
+  <BrowserRouter basename={process.env.PUBLIC_PATH}>
+    <ThemeProvider theme={theme}>
+      <div>
+        <Route path="/:path(accessibility|getting-started)" component={AppNav} />
+        <div className="container">
+          <Switch>
+            <Route path="/" exact component={Home} />
+            <Route path="/getting-started" component={Installation} />
+            <Route path="/accessibility" component={Accessibility} />
+            <Route path="/components/:component?" component={Components} />
+            <Route component={FourOhFour} />
+          </Switch>
         </div>
-      </ThemeProvider>
-    </BrowserRouter>
-  )
-}
+      </div>
+    </ThemeProvider>
+  </BrowserRouter>
+)

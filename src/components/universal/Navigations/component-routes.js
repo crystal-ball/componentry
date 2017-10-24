@@ -1,3 +1,5 @@
+// @flow
+
 /**
  * Component routes stored here for use between navs.
  */

@@ -15,21 +15,19 @@ const basicImport = `// Define any theme customization for Bootstrap and Compone
 @import '~componentry/dist/componentry';
 `
 
-export default function Installation() {
-  return (
-    <div className="col-9">
-      <h2>Installation</h2>
-      <pre>
-        <code>npm install componentry</code>
-      </pre>
-      <h2 className="mt-3">Styles</h2>
-      <p>
-        Componentry is built for Bootstrap v4. To make getting started as easy as
-        possible, the latest v4 release is included in the package. You can
-        customize Bootstrap and Componentry using the SASS variables consumed by
-        Bootstrap. A typical import will look like this:
-      </p>
-      <PrismHighlighter language="sass">{basicImport}</PrismHighlighter>
-    </div>
-  )
-}
+export default () => (
+  <div className="col-9">
+    <h2>Installation</h2>
+    <pre>
+      <code>npm install componentry</code>
+    </pre>
+    <h2 className="mt-3">Styles</h2>
+    <p>
+      Componentry is built for Bootstrap v4. To make getting started as easy as
+      possible, the latest v4 release is included in the package. You can customize
+      Bootstrap and Componentry using the SASS variables consumed by Bootstrap. A
+      typical import will look like this:
+    </p>
+    <PrismHighlighter language="sass">{basicImport}</PrismHighlighter>
+  </div>
+)
