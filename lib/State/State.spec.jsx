@@ -4,12 +4,14 @@ import renderer from 'react-test-renderer'
 import State from './index'
 
 import activationTestSuite from '../utils-test/activation-tests'
-
-// State Component Tests
-// ---------------------------------------------------------------------------
+import elementTests from '../utils-test/element-tests'
+import setupActiveContext from '../utils-test/setup-active-context'
 
 describe('<State />', () => {
   activationTestSuite(State)
+  elementTests(State)
+  elementTests(State.Trigger, setupActiveContext())
+  elementTests(State.Content, setupActiveContext())
 })
 
 // Snapshots

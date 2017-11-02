@@ -83,6 +83,8 @@ The different versions are created using Babel configs triggered by the `BABEL_E
 see the `.babelrc` file for more info.
 
 ## Help Wanted/Todo
+- Fix activation test suite for popover and tooltip
+- Basic snapshot tests for *EVERYTHING!*
 - The `elementFactory` returns a component with defaults set for basic properties,
   but because it's a component it means that most of the tests need to `mount`
   to render the Component and the inner `Element`, which is a bummer. Is there a way

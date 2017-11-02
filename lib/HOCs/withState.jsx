@@ -1,5 +1,7 @@
+// @flow
 import React, { Component } from 'react'
-import { bool, func, shape, string } from 'prop-types'
+import type { ComponentType } from 'react'
+import { func, shape, string } from 'prop-types'
 import nanoid from 'nanoid'
 
 import getDisplayName from '../utils/getDisplayName'
@@ -13,13 +15,16 @@ import getDisplayName from '../utils/getDisplayName'
  * Design heavily borrowed from https://github.com/ReactTraining/react-broadcast
  */
 class ActiveState {
+  active: boolean
+  subscriptions: Array<Function>
+
   subscriptions = []
 
   /**
    * Set active in constructor to allow creating components with specific initial
    * states
    */
-  constructor(active = false) {
+  constructor(active: boolean = false) {
     this.active = active
   }
   /**
@@ -31,7 +36,7 @@ class ActiveState {
    * Update active state property internally and notify all subscribers that a change
    * has occurred.
    */
-  setActive = active => {
+  setActive = (active: boolean) => {
     this.active = active
     this.subscriptions.forEach(subscription => subscription(active))
   }
@@ -39,7 +44,7 @@ class ActiveState {
    * Subcomponents call subscribe to be notified when active state has changed.
    * Return a function subcomponent can call to unsubscribe on unMount
    */
-  subscribe = subscription => {
+  subscribe = (subscription: Function) => {
     const { subscriptions } = this
     subscriptions.push(subscription)
 
@@ -48,6 +53,20 @@ class ActiveState {
       this.subscriptions = subscriptions.filter(item => item !== subscription)
     }
   }
+}
+
+type Props = {
+  active: boolean,
+  activate: Function,
+  deactivate: Function,
+  onActivate: Function,
+  onActivated: Function,
+  onDeactivate: Function,
+  onDeactivated: Function
+}
+
+type State = {
+  active: boolean
 }
 
 /**
@@ -69,8 +88,11 @@ class ActiveState {
  * @method withState
  * @param {Component} Wrapped Component to wrap with active state handling
  */
-const withState = Wrapped =>
-  class WithState extends Component {
+export default (Wrapped: ComponentType<*>) =>
+  class WithState extends Component<Props, State> {
+    unsubscribe: Function
+
+    // $FlowFixMe
     static displayName = `withState${getDisplayName(Wrapped)}`
     /**
      * Class statics are not copied to `withActive`. See 'Static Methods Must Be
@@ -80,19 +102,12 @@ const withState = Wrapped =>
      * with external components, this seems unnecessary. For now, we know that
      * statics that are required and manually transfer them
      */
+    // $FlowFixMe
     static Content = Wrapped.Content
+    // $FlowFixMe
     static Trigger = Wrapped.Trigger
+    // $FlowFixMe
     static Item = Wrapped.Item
-
-    static propTypes = {
-      active: bool,
-      activate: func,
-      deactivate: func,
-      onActivate: func,
-      onActivated: func,
-      onDeactivate: func,
-      onDeactivated: func
-    }
 
     static childContextTypes = {
       // Context cannot change! Passed context is a wrapper that should not change
@@ -110,7 +125,7 @@ const withState = Wrapped =>
      * Active state is only used to trigger renders, passed state should only come
      * from context.
      */
-    state = { active: null }
+    state = { active: false }
 
     /**
      * Each instance has a separate class handling the state. Context is scoped and
@@ -138,12 +153,20 @@ const withState = Wrapped =>
       }
     })
     /**
+     * Ensure that state used for causing renders matches context state before first
+     * render
+     */
+    componentWillMount() {
+      const active = this.activeState.getActive()
+      if (this.state.active !== active) this.setState({ active })
+    }
+    /**
      * For controlled components active can be passed as a prop. When this happens
      * we update the internal state handler, which then notifies children
      * compoenents of the change.
      * @param {Object} nextProps
      */
-    componentWillReceiveProps({ active }) {
+    componentWillReceiveProps({ active }: { active: boolean }) {
       // If active is not explicitly passed, it will always be undefined, we only
       // want to update state when a value is passed.
       if (active === undefined) return
@@ -178,7 +201,7 @@ const withState = Wrapped =>
      */
 
     /** Call activation hooks and `activate` function */
-    handleActivate = e => {
+    handleActivate = (e: SyntheticEvent<HTMLButtonElement>) => {
       const { onActivate, activate, onActivated } = this.props
       if (onActivate) onActivate(e, this)
 
@@ -191,7 +214,7 @@ const withState = Wrapped =>
       if (onActivated) onActivated(e, this)
     }
     /** Call deactivation hooks and `deactivate` function */
-    handleDeactivate = e => {
+    handleDeactivate = (e: SyntheticEvent<HTMLButtonElement>) => {
       const { onDeactivate, deactivate, onDeactivated } = this.props
       if (onDeactivate) onDeactivate(e, this)
 
@@ -228,5 +251,3 @@ const withState = Wrapped =>
       )
     }
   }
-
-export default withState

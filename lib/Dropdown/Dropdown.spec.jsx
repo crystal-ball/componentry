@@ -5,6 +5,8 @@ import renderer from 'react-test-renderer'
 import Dropdown from './index'
 import dt from '../utils-test/dt'
 import activationTestSuite from '../utils-test/activation-tests'
+import elementTests from '../utils-test/element-tests'
+import setupActiveContext from '../utils-test/setup-active-context'
 
 const dtContent = dt('dropdown-content')
 const dtToggle = dt('dropdown-toggle')
@@ -14,6 +16,14 @@ const dtToggle = dt('dropdown-toggle')
  */
 
 describe('<Dropdown />', () => {
+  // Basic library activation test suite
+  activationTestSuite(Dropdown)
+  // Basic library element test suite
+  elementTests(Dropdown)
+  elementTests(Dropdown.Trigger, setupActiveContext())
+  elementTests(Dropdown.Content, setupActiveContext())
+  elementTests(Dropdown.Item, setupActiveContext())
+
   test('should render appropriate classes and arias by default', () => {
     const wrapper = mount(
       <Dropdown>
@@ -58,8 +68,6 @@ describe('<Dropdown />', () => {
         .prop('aria-hidden')
     ).toEqual('false')
   })
-
-  activationTestSuite(Dropdown)
 })
 
 // Snapshots

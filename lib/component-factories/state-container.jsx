@@ -1,32 +1,44 @@
-import React, { Component } from 'react'
-import { bool, func, node, string, oneOfType } from 'prop-types'
+// @flow
+import { Component, createElement } from 'react'
+import type { ComponentType, Node } from 'react'
 import classNames from 'classnames'
 
 import cleanProps from '../utils/clean-props'
 import { closest, getTextWidth } from '../utils/dom'
 
-const stateContainerFactory = ({ element, mouseEvents }) =>
-  class StateContainer extends Component {
-    static propTypes = {
-      // Component props
-      As: oneOfType([func, node]),
-      children: node,
-      className: string,
-      'data-test': string,
-      // Active boolean + change handlers
-      active: bool.isRequired,
-      activate: func.isRequired,
-      deactivate: func.isRequired,
-      guid: string.isRequired,
-      // Component Hooks
-      onActivate: func,
-      onActivated: func,
-      onDeactivate: func,
-      onDeactivated: func
-    }
+type Options = {
+  /**
+   * Name of element, used for classes and handler selection
+   */
+  element: string,
+  /**
+   * When tue the state container will register handlers for mouse events
+   */
+  mouseEvents?: boolean
+}
 
+type Props = {
+  // Component props
+  as?: ComponentType<any> | string,
+  children?: Node,
+  className?: string,
+  'data-test'?: string,
+  // Active boolean + change handlers
+  active: boolean,
+  activate: Function,
+  deactivate: Function,
+  guid: string,
+  // Component Hooks
+  onActivate?: Function,
+  onActivated?: Function,
+  onDeactivate?: Function,
+  onDeactivated?: Function
+}
+
+export default ({ element, mouseEvents }: Options) =>
+  class StateContainer extends Component<Props> {
     static defaultProps = {
-      As: 'div',
+      as: 'div',
       'data-test': `${element}-container`
     }
 
@@ -52,7 +64,7 @@ const stateContainerFactory = ({ element, mouseEvents }) =>
      * not to update state during these events
      * @param {Object} nextProps
      */
-    componentWillReceiveProps({ active }) {
+    componentWillReceiveProps({ active }: { active: boolean }) {
       if (this.props.active !== active) {
         if (active) this.handleActivated()
         if (!active) this.handleDeactivated()
@@ -64,13 +76,13 @@ const stateContainerFactory = ({ element, mouseEvents }) =>
     /**
      * Call deactivate if click event was not inside the element
      */
-    clickHandler = e => {
+    clickHandler = (e: SyntheticEvent<HTMLButtonElement>) => {
       if (!closest(e.target, element)) this.props.deactivate(e)
     }
     /**
      * Call deactivate on keypress if `esc` (27) was pressed
      */
-    keyHandler = e => {
+    keyHandler = (e: SyntheticKeyboardEvent<>) => {
       if (e.which === 27) this.props.deactivate(e)
     }
     /**
@@ -79,12 +91,15 @@ const stateContainerFactory = ({ element, mouseEvents }) =>
     handleActivated = () => {
       // Don't close drawers on `esc`
       if (element !== 'drawer') {
+        // $FlowFixMe
         document.addEventListener('keydown', this.keyHandler)
       }
 
       // Add click outside container handlers for dropdowns only
       if (element === 'dropdown') {
+        // $FlowFixMe
         document.addEventListener('mouseup', this.clickHandler)
+        // $FlowFixMe
         document.addEventListener('touchend', this.clickHandler)
       }
 
@@ -92,12 +107,14 @@ const stateContainerFactory = ({ element, mouseEvents }) =>
         // Position absolute tooltip is constrained by the parent width. Set tooltip
         // width to content width to overflow parent bounds
         const contentElement = document.getElementById(this.props.guid)
+        // $FlowFixMe
         const content = contentElement.innerText
         this.content = content
 
         if (content === this.content && this.contentWidth) {
           // If width has already been calculated and content has not changed, use
           // cached width for performance
+          // $FlowFixMe
           contentElement.style.width = `${this.contentWidth}px`
         } else {
           // Get all styles of content element, set width and cache
@@ -109,6 +126,7 @@ const stateContainerFactory = ({ element, mouseEvents }) =>
             parseFloat(styles.paddingRight) +
             1
 
+          // $FlowFixMe
           contentElement.style.width = `${width}px`
           this.contentWidth = width
         }
@@ -119,37 +137,40 @@ const stateContainerFactory = ({ element, mouseEvents }) =>
      */
     handleDeactivated = () => {
       if (element !== 'drawer') {
+        // $FlowFixMe
         document.removeEventListener('keydown', this.keyHandler)
       }
 
       if (element === 'dropdown') {
+        // $FlowFixMe
         document.removeEventListener('mouseup', this.clickHandler)
+        // $FlowFixMe
         document.removeEventListener('touchend', this.clickHandler)
       }
     }
 
     // Render
     // ---------------------------------------------------------------------------
+    // $FlowFixMe
     render() {
-      const { As, activate, deactivate, children, className, ...rest } = this.props
+      const { as, activate, deactivate, children, className, ...rest } = this.props
       const dom = cleanProps(rest, ['active', 'guid'])
 
       // For elements with mouse events we need to know when the mouse event occurs
       // on the parent element, not the trigger element
-      return (
-        <As
-          className={classNames(element, className)}
-          onMouseEnter={mouseEvents ? activate : undefined}
-          onMouseLeave={mouseEvents ? deactivate : undefined}
-          {...dom}
-        >
-          {children}
-        </As>
+      // $FlowFixMe
+      return createElement(
+        as,
+        {
+          className: classNames(element, className),
+          onMouseEnter: mouseEvents ? activate : undefined,
+          onMouseLeave: mouseEvents ? deactivate : undefined,
+          ...dom
+        },
+        children
       )
     }
   }
-
-export default stateContainerFactory
 
 /* <As className={className} {...dom}>
   {Trigger &&

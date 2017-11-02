@@ -775,7 +775,6 @@ if (Prism.languages.markup) {
 }
 
 Prism.languages.js = Prism.languages.javascript
-
 ;(function(Prism) {
   var javascript = Prism.util.clone(Prism.languages.javascript)
 
@@ -828,7 +827,6 @@ Prism.languages.js = Prism.languages.javascript
     Prism.languages.jsx.tag
   )
 })(Prism)
-
 ;(function(Prism) {
   Prism.languages.sass = Prism.languages.extend('css', {
     // Sass comments don't need to be closed, only indented

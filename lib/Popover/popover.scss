@@ -31,7 +31,6 @@
   display: block;
   font-size: $font-size-sm;
   max-width: $popover-max-width;
-  padding: $popover-inner-padding;
   position: absolute;
   // Allow breaking very long words so they don't overflow the popover's bounds
   word-wrap: break-word;

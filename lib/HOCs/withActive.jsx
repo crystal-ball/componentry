@@ -1,7 +1,25 @@
+// @flow
 import React, { Component } from 'react'
+import type { ComponentType } from 'react'
 import { func, shape, string } from 'prop-types'
 
 import getDisplayName from '../utils/getDisplayName'
+
+type State = {
+  active: boolean
+}
+
+type Options = {
+  subscribe?: boolean,
+  controls?: boolean,
+  describedby?: boolean,
+  expanded?: boolean,
+  haspopup?: boolean,
+  hidden?: boolean,
+  labelledby?: boolean,
+  id?: boolean,
+  role?: string
+}
 
 /**
  * HOC passes active state props along with computed aria attributes for the state.
@@ -9,8 +27,11 @@ import getDisplayName from '../utils/getDisplayName'
  * provider through context.
  * @param ariaConfigs Options object describes aria attributes to pass down
  */
-const withActive = (ariaConfigs = {}) => Wrapped =>
-  class WithActive extends Component {
+export default (ariaConfigs: Options = {}) => (Wrapped: ComponentType<*>) =>
+  class WithActive extends Component<{}, State> {
+    unsubscribe: Function
+
+    // $FlowFixMe
     static displayName = `withActive${getDisplayName(Wrapped)}`
 
     static contextTypes = {
@@ -27,10 +48,18 @@ const withActive = (ariaConfigs = {}) => Wrapped =>
      * Active state is only used to trigger renders, passed state should only come
      * from context.
      */
-    state = { active: null }
+    state = { active: false }
 
     // Hooks
     // ---------------------------------------------------------------------------
+    /**
+     * Ensure that state used for causing renders matches context state before first
+     * render
+     */
+    componentWillMount() {
+      const active = this.context.COMPONENTRY_ACTIVE.getActive()
+      if (this.state.active !== active) this.setState({ active })
+    }
     /**
      * Subscribe to active state updates on mount, trigger renders with setState
      * when state changes. Typically this won't be needed b/c parent component will
@@ -80,5 +109,3 @@ const withActive = (ariaConfigs = {}) => Wrapped =>
       )
     }
   }
-
-export default withActive

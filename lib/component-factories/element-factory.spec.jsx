@@ -1,7 +1,7 @@
 import React from 'react'
 import { shallow } from 'enzyme'
 
-import elementFactory from './index'
+import elementFactory from './element-factory'
 
 describe('elementFactory', () => {
   test('should return a component of: div with children', () => {
@@ -26,7 +26,7 @@ describe('elementFactory', () => {
   test('should prioritize and combine component invocation params', () => {
     const Test = elementFactory({ tag: 'h4', classes: 'factory' })
     const wrapper = shallow(
-      <Test As="span" className="invocation">
+      <Test as="span" className="invocation">
         Children
       </Test>
     )

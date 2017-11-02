@@ -36,13 +36,13 @@ exports[`renders correctly 1`] = `
     role={undefined}
   >
     <button
-      className="btn dropdown-item"
+      className="btn dropdown-item btn-primary"
       type="button"
     >
       Item 1
     </button>
     <button
-      className="btn dropdown-item"
+      className="btn dropdown-item btn-primary"
       type="button"
     >
       Item 2

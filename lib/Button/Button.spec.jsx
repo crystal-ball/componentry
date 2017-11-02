@@ -3,8 +3,12 @@ import { shallow } from 'enzyme'
 import renderer from 'react-test-renderer'
 
 import Button from './index'
+import elementTests from '../utils-test/element-tests'
 
 describe('<Button/>', () => {
+  // Basic library element test suite
+  elementTests(Button)
+
   test('should render a button element default', () => {
     const wrapper = shallow(<Button />)
     expect(wrapper.find('button').length).toEqual(1)
@@ -32,16 +36,6 @@ describe('<Button/>', () => {
   test('should render class for large button', () => {
     const wrapper = shallow(<Button size="large" />)
     expect(wrapper.find('.btn.btn-lg').length).toEqual(1)
-  })
-
-  test('should render any passed className', () => {
-    const wrapper = shallow(<Button className="special classes" />)
-    expect(wrapper.find('.btn.special.classes').length).toEqual(1)
-  })
-
-  test('should render any other passed attributes', () => {
-    const wrapper = shallow(<Button data-test="totally-rad" />)
-    expect(wrapper.find('[data-test="totally-rad"]').length).toEqual(1)
   })
 
   test('should not render class btn-anchor without passed prop', () => {

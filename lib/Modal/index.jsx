@@ -1,10 +1,39 @@
+// @flow
 import React, { Component } from 'react'
-import { bool, func, oneOf, shape, string, node } from 'prop-types'
+import type { Node } from 'react'
+import { shape, string } from 'prop-types'
 import classNames from 'classnames'
 import nanoid from 'nanoid'
 
 import { withActive } from '../State'
-import elementFactory from '../utils/element-factory'
+import elementFactory from '../component-factories/element-factory'
+import cleanProps from '../utils/clean-props'
+
+// TODO: This is here b/c we're using withActive, so the active props need to be
+// cleaned before spreading onto container element, and elementFactory doesn't need
+// that...
+type TitleProps = {
+  children: Node,
+  className: string
+}
+
+const ModalTitle = ({ children, className, ...rest }: TitleProps) => (
+  <h3
+    className={classNames('modal-title', className)}
+    {...cleanProps(rest, ['active', 'activate', 'deactivate', 'guid'])}
+  >
+    {children}
+  </h3>
+)
+ModalTitle.displayName = 'ModalTitle'
+
+type Props = {
+  active: boolean,
+  ariaTitle?: string,
+  children?: Node,
+  onDeactivate?: Function,
+  size?: 'small' | 'large'
+}
 
 /**
  * TODO:
@@ -18,21 +47,11 @@ import elementFactory from '../utils/element-factory'
  * ## Notes:
  * See MDN [Using the dialog role](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/ARIA_Techniques/Using_the_dialog_role)
  */
-export default class Modal extends Component {
+export default class Modal extends Component<Props> {
   static Header = elementFactory({ classes: 'modal-header', name: 'ModalHeader' })
   static Body = elementFactory({ classes: 'modal-body', name: 'ModalBody' })
   static Footer = elementFactory({ classes: 'modal-footer', name: 'ModalFooter' })
-  static Title = withActive({ id: true, subscribe: false })(
-    elementFactory({ classes: 'modal-title', tag: 'h3', name: 'ModalTitle' })
-  )
-
-  static propTypes = {
-    active: bool.isRequired,
-    ariaTitle: string,
-    children: node,
-    onDeactivate: func,
-    size: oneOf(['small', 'large'])
-  }
+  static Title = withActive({ id: true, subscribe: false })(ModalTitle)
 
   // Context can never change! Namespace is a constant that allows reference to
   // mutated properties
@@ -52,6 +71,7 @@ export default class Modal extends Component {
   // ---------------------------------------------------------------------------
   render() {
     const { active, ariaTitle, children, onDeactivate, size } = this.props
+    // $FlowFixMe
     const dialogClassNames = classNames('modal-dialog', { [`modal-${size}`]: size })
 
     return (

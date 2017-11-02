@@ -2,8 +2,12 @@ import React from 'react'
 import { mount, shallow } from 'enzyme'
 
 import Alert from './index'
+import elementTests from '../utils-test/element-tests'
 
 describe('<Alert/>', () => {
+  // Basic library element test suite
+  elementTests(Alert)
+
   test('should render an alert with a close button by default', () => {
     // Defaults
     const wrapper = mount(<Alert color="success">Warning!</Alert>)
