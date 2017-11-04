@@ -1,7 +1,4 @@
 // @flow
-/* flowlint
- *   sketchy-null:off
- */
 import { createElement } from 'react'
 import type { ComponentType, Node } from 'react'
 import { shape, string } from 'prop-types'

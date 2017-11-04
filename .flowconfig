@@ -4,13 +4,13 @@
 [include]
 
 [libs]
+flow-typed
 
 [lints]
-all=warn
 
 [options]
 # 📝 Show linter warnings
-include_warnings=true
+include_warnings=false
 # 📝 Declare file extensions to handle webpack asset imports
 module.file_ext=.js
 module.file_ext=.json

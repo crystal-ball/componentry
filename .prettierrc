@@ -1,5 +1,4 @@
 {
-  "parser": "flow",
   "printWidth": 84,
   "singleQuote": true,
   "semi": false
