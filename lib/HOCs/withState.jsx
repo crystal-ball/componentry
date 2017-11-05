@@ -112,7 +112,7 @@ export default (Wrapped: ComponentType<*>) =>
     static childContextTypes = {
       // Context cannot change! Passed context is a wrapper that should not change
       // use caps to signify it is a constant, only the internal values can change
-      COMPONENTRY_ACTIVE: shape({
+      C_ACTIVE: shape({
         activate: func,
         deactivate: func,
         getActive: func,
@@ -144,7 +144,7 @@ export default (Wrapped: ComponentType<*>) =>
     // Hooks
     // ---------------------------------------------------------------------------
     getChildContext = () => ({
-      COMPONENTRY_ACTIVE: {
+      C_ACTIVE: {
         activate: this.handleActivate,
         deactivate: this.handleDeactivate,
         getActive: this.activeState.getActive,

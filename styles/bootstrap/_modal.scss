@@ -88,11 +88,13 @@
   border-bottom: $modal-header-border-width solid $modal-header-border-color;
   @include border-top-radius($border-radius-lg);
 
-  .close {
-    padding: $modal-header-padding;
-    // auto on the left force icon to the right even when there is no .modal-title
-    margin: (-$modal-header-padding) (-$modal-header-padding) (-$modal-header-padding) auto;
-  }
+  // @COMPONENTRY: Rely on .modal-header flex positioning, rely on aria header when
+  // there is no .modal-title
+  // .close {
+  //   padding: $modal-header-padding;
+  //   // auto on the left force icon to the right even when there is no .modal-title
+  //   margin: (-$modal-header-padding) (-$modal-header-padding) (-$modal-header-padding) auto;
+  // }
 }
 
 // Title text within header

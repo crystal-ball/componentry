@@ -32,10 +32,19 @@ export default (ariaConfigs: Options = {}) => (Wrapped: ComponentType<*>) =>
     unsubscribe: Function
 
     // $FlowFixMe
+    static Header = Wrapped.Header
+    // $FlowFixMe
+    static Body = Wrapped.Body
+    // $FlowFixMe
+    static Footer = Wrapped.Footer
+    // $FlowFixMe
+    static Title = Wrapped.Title
+
+    // $FlowFixMe
     static displayName = `withActive${getDisplayName(Wrapped)}`
 
     static contextTypes = {
-      COMPONENTRY_ACTIVE: shape({
+      C_ACTIVE: shape({
         activate: func,
         deactivate: func,
         getActive: func,
@@ -57,7 +66,9 @@ export default (ariaConfigs: Options = {}) => (Wrapped: ComponentType<*>) =>
      * render
      */
     componentWillMount() {
-      const active = this.context.COMPONENTRY_ACTIVE.getActive()
+      const { C_ACTIVE } = this.context
+      if (!C_ACTIVE) return
+      const active = C_ACTIVE.getActive()
       if (this.state.active !== active) this.setState({ active })
     }
     /**
@@ -67,9 +78,10 @@ export default (ariaConfigs: Options = {}) => (Wrapped: ComponentType<*>) =>
      * `shouldComponentUpdate` on an intermediate component returns false.
      */
     componentDidMount() {
-      if (ariaConfigs.subscribe === false) return
+      const { C_ACTIVE } = this.context
+      if (ariaConfigs.subscribe === false || !C_ACTIVE) return
 
-      this.unsubscribe = this.context.COMPONENTRY_ACTIVE.subscribe(active => {
+      this.unsubscribe = C_ACTIVE.subscribe(active => {
         if (active !== this.state.active) this.setState({ active })
       })
     }
@@ -83,9 +95,9 @@ export default (ariaConfigs: Options = {}) => (Wrapped: ComponentType<*>) =>
     // Render
     // ---------------------------------------------------------------------------
     render() {
-      const { COMPONENTRY_ACTIVE } = this.context
-      const { guid } = COMPONENTRY_ACTIVE
-      const active = COMPONENTRY_ACTIVE.getActive()
+      const { C_ACTIVE } = this.context
+      const { activate, deactivate, guid, getActive } = C_ACTIVE || {}
+      const active = getActive ? getActive() : false
 
       const arias = {
         'aria-controls': ariaConfigs.controls ? guid : null,
@@ -101,8 +113,8 @@ export default (ariaConfigs: Options = {}) => (Wrapped: ComponentType<*>) =>
       return (
         <Wrapped
           active={active}
-          activate={COMPONENTRY_ACTIVE.activate}
-          deactivate={COMPONENTRY_ACTIVE.deactivate}
+          activate={activate}
+          deactivate={deactivate}
           {...arias}
           {...this.props}
         />

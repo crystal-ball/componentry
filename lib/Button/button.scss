@@ -5,12 +5,9 @@
 // Assumed class names:
 // .btn, .btn-link, .bnt-<COLOR>, .btn-outline-<COLOR>
 
-.btn {
-  // Bootstrap purposely doesn't have pointer for button cursor, but it's standard
-  // expectation now so we'll add it back
-  // See: https://github.com/twbs/bootstrap/pull/21812
-  cursor: pointer;
-}
+
+// NOTE: Bootstrap purposely doesn't have pointer for button cursor
+// See: https://github.com/twbs/bootstrap/pull/21812
 
 // Bootstrap has a 'link' button with the font styles of an anchor AND all of the
 // padding of a button. For A++ Accessibility we want to have buttons that look

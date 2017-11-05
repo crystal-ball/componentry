@@ -1,29 +1,34 @@
 // @flow
-import React from 'react'
-import type { Element } from 'react'
+import { createElement } from 'react'
+import type { ComponentType, Node } from 'react'
 import { string } from 'prop-types'
 import classNames from 'classnames'
 
 type Props = {
+  as?: ComponentType<any> | string,
   children: Node,
   className: string
 }
 
 type Context = {
-  C_GUID: string
+  guid: string
 }
 
-// Just need id
-const Title = (
-  { children, className, ...rest }: Props,
-  { C_GUID }: Context
-): Element<'h3'> => (
-  <h3 className={classNames('modal-title', className)} {...rest} id={C_GUID}>
-    {children}
-  </h3>
-)
+/**
+ * Modal title uses the modal guid as an id to refer to modal `labelledby`
+ */
+const Title = ({ as, children, className, ...rest }: Props, { guid }: Context) =>
+  createElement(
+    as || 'h4',
+    {
+      id: guid,
+      className: classNames('modal-title', className),
+      ...rest
+    },
+    children
+  )
 Title.contextTypes = {
-  C_GUID: string
+  guid: string
 }
 
 export default Title
