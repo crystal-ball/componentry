@@ -2,6 +2,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 
+import ComponentsNav from 'components/universal/Navigations/ComponentsNav'
 import accessibleSVG from './accessibility.svg'
 import bundleSVG from './bundle.svg'
 import mergeSVG from './merge.svg'
@@ -9,10 +10,10 @@ import reactLogo from './react.svg'
 
 export default () => (
   <div>
-    <div className="hero display-1 text-muted d-flex flex-column align-items-center">
+    <div className="hero display-1 d-flex flex-column align-items-center">
       <div>
         <span className="logo bootstrap-logo">B</span>
-        <span className="ml-3 mr-2">+</span>
+        <span className="ml-3 mr-2 text-muted">+</span>
         <img className="logo react-logo" src={reactLogo} alt="React" />
       </div>
       <h2 className="my-5 text-center w-75">
@@ -20,12 +21,12 @@ export default () => (
         v4
       </h2>
     </div>
-    <div className="home-nav border border-right-0 border-left-0 d-flex justify-content-center">
+    <div className="home-nav border border-right-0 border-left-0 d-flex justify-content-center align-items-center">
       <div className="m-3">
         <Link to="/getting-started">Get Started</Link>
       </div>
       <div className="m-3">
-        <Link to="/components">Components</Link>
+        <ComponentsNav color="link" outline={false} />
       </div>
       <div className="m-3">
         <a href="https://github.com/crystal-ball/componentry">Github</a>

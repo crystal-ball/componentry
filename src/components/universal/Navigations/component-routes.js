@@ -1,9 +1,9 @@
 // @flow
 
 /**
- * Component routes stored here for use between navs.
+ * Component routes defined here for reuse between navs.
  */
-export default [
+const componentRoutes: Array<{ name: string, path: string }> = [
   { name: 'State', path: '/components/state' },
   { name: 'Alerts', path: '/components/alerts' },
   { name: 'Buttons', path: '/components/buttons' },
@@ -15,3 +15,5 @@ export default [
   { name: 'Popovers', path: '/components/popovers' },
   { name: 'Tooltips', path: '/components/tooltips' }
 ]
+
+export default componentRoutes
