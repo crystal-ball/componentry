@@ -6,28 +6,28 @@ import classNames from 'classnames'
 import { closest, getTextWidth } from '../utils/dom'
 
 type Options = {
-  /**
-   * Name of element, used for classes and handler selection
-   */
+  /** Name of element, used for classes and handler selection */
   element: string,
-  /**
-   * When tue the state container will register handlers for mouse events
-   */
+  /** When tue the state container will register handlers for mouse events */
   mouseEvents?: boolean
 }
 
 type Props = {
   // Component props
   as?: ComponentType<any> | string,
-  children?: Node,
+  children?: Node | Function,
   className?: string,
-  // Active boolean + change handlers
-  active: boolean,
+  // Active boolean + change handlers from withState HOC
   activate: Function,
+  active: boolean,
   deactivate: Function,
   guid: string
 }
 
+/**
+ * Factory returns custom `<State />` components defined by the options.
+ * State components handle...
+ */
 export default ({ element, mouseEvents }: Options) =>
   class StateContainer extends Component<Props> {
     /**
@@ -141,15 +141,20 @@ export default ({ element, mouseEvents }: Options) =>
     // ---------------------------------------------------------------------------
     render() {
       const {
+        activate,
         active,
         as,
-        activate,
-        deactivate,
         children,
         className,
+        deactivate,
         guid,
         ...rest
       } = this.props
+
+      // When State is used with FaCC pattern, call func with state and change
+      // methods
+      if (typeof children === 'function')
+        return children({ active, activate, deactivate })
 
       // For elements with mouse events we need to know when the mouse event occurs
       // on the parent element, not the trigger element

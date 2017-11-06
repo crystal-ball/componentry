@@ -16,18 +16,20 @@ type Options = {
 }
 
 type Props = {
-  activate: Function,
-  active: boolean,
+  // Component props
   as?: ComponentType<any> | string,
   children?: Node,
   className?: string,
+  // Active boolean + change handlers from withActive HOC
+  activate: Function,
+  active: boolean,
   deactivate: Function,
   guid: string
 }
 
 /**
- * Rendering a content element
- * @param {*} param
+ * Factory returns custom `<Content />` components defined by the options.
+ * Content components handle...
  */
 export default ({ componentArias, element, tip = false }: Options = {}) => ({
   activate,

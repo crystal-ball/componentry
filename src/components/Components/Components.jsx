@@ -7,6 +7,7 @@ import componentRoutes from 'components/universal/Navigations/component-routes'
 import Header from 'components/universal/Header'
 
 // Component Screens
+import ActiveState from './ActiveState'
 import Alerts from './Alerts'
 import Buttons from './Buttons'
 import Cards from './Cards'
@@ -15,7 +16,6 @@ import Dropdowns from './Dropdowns'
 import ListGroups from './ListGroups'
 import Modals from './Modals'
 import Popovers from './Popovers'
-import State from './State'
 import Tooltips from './Tooltips'
 
 type Props = {
@@ -35,7 +35,7 @@ export default ({ match }: Props) => {
 
       <div className="row">
         <div className="col-10">
-          <Route path="/components/state" component={State} />
+          <Route path="/components/state" component={ActiveState} />
           <Route path="/components/alerts" component={Alerts} />
           <Route path="/components/buttons" component={Buttons} />
           <Route path="/components/cards" component={Cards} />

@@ -17,27 +17,25 @@ type Options = {
 }
 
 type Props = {
-  activate: Function,
-  active: boolean,
+  // Component props
   as?: ComponentType<any> | string,
   children?: Node,
   className?: string,
+  // Active boolean + change handlers from withActive HOC
+  activate: Function,
+  active: boolean,
   deactivate: Function,
   guid: string
 }
 
 /**
- * Individual triggers are defined for `<Activate />`, `<Deactivate />` and
- * `<Toggle />` for convenience specifying desired behavior in templates.
- *
- * Module is component factory for returning a trigger of specified type.
- * @param {string} trigger The type of trigger, sets the `onClick` behavior of
- *                         returned component.
+ * Factory returns custom `<Trigger />` components defined by the options.
+ * Trigger components handle...
  */
-export default ({ componentArias, element, link = true }: Options = {}) => ({
-  as,
-  active,
+export default ({ componentArias, element, link = false }: Options = {}) => ({
   activate,
+  active,
+  as,
   children,
   className,
   deactivate,

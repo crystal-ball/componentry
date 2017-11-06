@@ -92,8 +92,9 @@ see the `.babelrc` file for more info.
   output?
 - Provider better names for the withState, withState components for using the React
   Inspector
-- Theme configuration so that button shadow suppression on click can be configured
-- Shorthand props for withState so that subcomponents aren't required
-- Detail API for controlling components with passed props and active state.
+- Add shorthand props for state `Trigger` and `Content` so that subcomponents aren't
+  required
+- Document API and patterns for controlling components with passed props and active
+  state.
 - Figure out a way to use `withState` with the `<Alert />` and `<Modal />`
   components. It would remove the need for state tracking in those components
