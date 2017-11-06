@@ -185,4 +185,26 @@ export default TestComponent => {
     expect(deactivate).toHaveBeenCalledTimes(2)
     expect(findContent(wrapper).prop('aria-hidden')).toEqual('false')
   })
+
+  /**
+   * Test that any flavor of the `<State />` component exposes internal state and
+   * state change methods using the FaCC pattern
+   */
+  test('should expose internals using FaCC pattern', () => {
+    const wrapper = mount(
+      <TestComponent>
+        {({ active, activate, deactivate }) => (
+          <div>
+            <span data-test="active">{String(active)}</span>
+            <button onClick={activate} data-test="activate" />
+            <button onClick={deactivate} data-test="deactivate" />
+          </div>
+        )}
+      </TestComponent>
+    )
+
+    expect(wrapper.find(dt('active')).text()).toEqual('false')
+    wrapper.find(dt('activate')).simulate('click')
+    expect(wrapper.find(dt('active')).text()).toEqual('true')
+  })
 }
