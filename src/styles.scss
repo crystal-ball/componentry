@@ -24,6 +24,12 @@
 // ---------------------------------------------------------------------------
 @import '../styles/componentry';
 
+// Bootstrap Jetpacked
+// Great set of utility styles that use your app's Bootstrap variables
+// See: https://healthsparq.github.io/bootstrap-jetpacked/
+// ---------------------------------------------------------------------------
+@import '~bootstrap-jetpacked/jetpack';
+
 // Application Global Styles
 // Final import of application level style rules or updates to Bootstrap and
 // Componentry base styles.

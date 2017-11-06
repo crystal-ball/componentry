@@ -1,8 +1,12 @@
+// @flow
 import React from 'react'
 import { Route } from 'react-router-dom'
 
-import { ComponentsNav } from 'components/universal/Navigations'
+import GroupNav from 'components/universal/Navigations/GroupNav'
+import componentRoutes from 'components/universal/Navigations/component-routes'
 import Header from 'components/universal/Header'
+
+// Component Screens
 import Alerts from './Alerts'
 import Buttons from './Buttons'
 import Cards from './Cards'
@@ -16,7 +20,7 @@ import Tooltips from './Tooltips'
 
 type Props = {
   match: {
-    params: string
+    params: { component: string }
   }
 }
 
@@ -26,7 +30,7 @@ export default ({ match }: Props) => {
   return (
     <div>
       <div className="fullscreen-row">
-        <Header title={component} />
+        <Header title={component || 'Components'} />
       </div>
 
       <div className="row">
@@ -43,7 +47,7 @@ export default ({ match }: Props) => {
           <Route path="/components/tooltips" component={Tooltips} />
         </div>
         <div className="col-2">
-          <ComponentsNav />
+          <GroupNav routes={componentRoutes} />
         </div>
       </div>
     </div>

@@ -29,5 +29,7 @@ export default () => (
       typical import will look like this:
     </p>
     <PrismHighlighter language="sass">{basicImport}</PrismHighlighter>
+    {/* TODO: Include note about Componentry customization of Bootstrap SCSS */}
+    {/* TODO: Include note about importing Bootstrap functions and variables into your theme file so that you can import those same variables anywhere */}
   </div>
 )

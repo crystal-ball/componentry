@@ -4,12 +4,10 @@ type Props = {
   title: string
 }
 
-export default ({ title = 'Components' }: Props) => (
-  <div className="jumbotron jumbotron-fluid bg-secondary">
-    <div className="container">
-      <h1 className="display-3 text-light">
-        {title.charAt(0).toUpperCase() + title.slice(1)}
-      </h1>
-    </div>
+export default ({ title }: Props) => (
+  <div className="container mb-5 bb-secondary-1">
+    <h1 className="display-3 mb-5">
+      {title.charAt(0).toUpperCase() + title.slice(1)}
+    </h1>
   </div>
 )

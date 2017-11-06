@@ -6,11 +6,12 @@ import { BrowserRouter, Switch, Route } from 'react-router-dom'
 import 'media/icons/close.svg'
 import 'media/icons/chevron.svg'
 
-import { AppNav } from 'components/universal/Navigations'
+import AppNav from 'components/universal/Navigations/AppNav'
+import ScrollToTop from 'components/universal/ScrollToTop'
 import Home from '../Home'
 import { ThemeProvider } from '../../../lib'
 import Installation from '../Installation'
-import Accessibility from '../Accessibility'
+import Concepts from '../Concepts/Concepts'
 import Components from '../Components'
 import FourOhFour from '../FourOhFour'
 
@@ -25,13 +26,16 @@ const theme = {
 export default () => (
   <BrowserRouter basename={process.env.PUBLIC_PATH}>
     <ThemeProvider theme={theme}>
+      {/* Restores scroll position to page top on route change */}
+      <ScrollToTop />
       <div>
-        <Route path="/:path(accessibility|getting-started)" component={AppNav} />
+        {/* Show app navigation on every page but home page */}
+        <Route path="/:path" component={AppNav} />
         <div className="container">
           <Switch>
             <Route path="/" exact component={Home} />
             <Route path="/getting-started" component={Installation} />
-            <Route path="/accessibility" component={Accessibility} />
+            <Route path="/concepts/:concept?" component={Concepts} />
             <Route path="/components/:component?" component={Components} />
             <Route component={FourOhFour} />
           </Switch>
