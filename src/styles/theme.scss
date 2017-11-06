@@ -2,6 +2,9 @@
 // Demo Styles - Theme Variables
 // ========================================================
 
+// Import theme variables (Using Flatly from Bootswatch)
+@import 'flatly';
+
 // Import Bootstrap variables for ability to import theme anywhere later
 @import '../../styles/bootstrap/_functions.scss';
 @import '../../styles/bootstrap/_variables.scss';
