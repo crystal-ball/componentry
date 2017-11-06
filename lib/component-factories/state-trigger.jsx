@@ -1,35 +1,29 @@
 // @flow
 import { createElement } from 'react'
-import type { ComponentType, Element } from 'react'
+import type { ComponentType } from 'react'
 import classNames from 'classnames'
 
 import Button from '../Button'
+import arias from '../utils/arias'
+import type { ComponentArias } from '../utils/arias'
 
 type Options = {
-  /**
-   * Name of element, used for classes and handler selection
-   */
+  /** Arias to include for component */
+  componentArias: ComponentArias,
+  /** Name of element, used for classes and handler selection */
   element: string,
-  /**
-   * Specify if the trigger (which is a `<Button />`) should be a `link` style
-   * button.
-   */
-  link?: boolean,
-  /**
-   * Specify the trigger type to create a trigger that will fire only one type of
-   * activation event
-   */
-  trigger?: 'activate' | 'deactivate'
+  /** Specify if the trigger (which is a `<Button />`) should be anchor */
+  link?: boolean
 }
 
 type Props = {
-  as?: ComponentType<any> | string,
+  activate: Function,
   active: boolean,
+  as?: ComponentType<any> | string,
   children?: Node,
   className?: string,
-  'data-test'?: string,
-  activate: Function,
-  deactivate: Function
+  deactivate: Function,
+  guid: string
 }
 
 /**
@@ -40,41 +34,27 @@ type Props = {
  * @param {string} trigger The type of trigger, sets the `onClick` behavior of
  *                         returned component.
  */
-export default ({ element, link = true, trigger }: Options = {}): Element<*> => {
-  const Trigger = ({
-    as,
-    active,
-    activate,
-    children,
-    className,
-    deactivate,
-    ...rest
-  }: Props) => {
-    let onClick
-    if (trigger) {
-      onClick = trigger === 'activate' ? activate : deactivate
-    } else {
-      onClick = active ? deactivate : activate
-    }
-
-    // $FlowFixMe
-    return createElement(
-      as,
-      {
-        className: classNames(`${element}-toggle`, className),
-        link,
-        onClick,
-        ...rest
-      },
-      children
-    )
-  }
-
-  Trigger.defaultProps = {
-    as: Button,
-    'data-test': `${element}-toggle`
-  }
-
+export default ({ componentArias, element, link = true }: Options = {}) => ({
+  as,
+  active,
+  activate,
+  children,
+  className,
+  deactivate,
+  guid,
+  ...rest
+}: Props) =>
   // $FlowFixMe
-  return Trigger
-}
+  createElement(
+    as || Button,
+    {
+      'data-test': element ? `${element}-toggle` : null,
+      ...arias({ guid, active, ...componentArias }),
+      className: classNames(`${element}-toggle`, className),
+      link,
+      onClick: active ? deactivate : activate,
+      // DO NOT PASS STATE PROPS THROUGH (SEE DECONSTRUCTION)!
+      ...rest
+    },
+    children
+  )

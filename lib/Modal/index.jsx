@@ -85,5 +85,4 @@ class Modal extends Component<Props> {
   }
 }
 
-// $FlowFixMe
-export default withActive()(Modal)
+export default withActive(Modal)

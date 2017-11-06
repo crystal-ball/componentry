@@ -3,7 +3,6 @@ import { Component, createElement } from 'react'
 import type { ComponentType, Node } from 'react'
 import classNames from 'classnames'
 
-import cleanProps from '../utils/clean-props'
 import { closest, getTextWidth } from '../utils/dom'
 
 type Options = {
@@ -22,26 +21,15 @@ type Props = {
   as?: ComponentType<any> | string,
   children?: Node,
   className?: string,
-  'data-test'?: string,
   // Active boolean + change handlers
   active: boolean,
   activate: Function,
   deactivate: Function,
-  guid: string,
-  // Component Hooks
-  onActivate?: Function,
-  onActivated?: Function,
-  onDeactivate?: Function,
-  onDeactivated?: Function
+  guid: string
 }
 
 export default ({ element, mouseEvents }: Options) =>
   class StateContainer extends Component<Props> {
-    static defaultProps = {
-      as: 'div',
-      'data-test': `${element}-container`
-    }
-
     /**
      * Internal cache for width of tooltip content. Set after calculating content
      * width and reused on subsequent renders if content text has not changed.
@@ -151,21 +139,30 @@ export default ({ element, mouseEvents }: Options) =>
 
     // Render
     // ---------------------------------------------------------------------------
-    // $FlowFixMe
     render() {
-      const { as, activate, deactivate, children, className, ...rest } = this.props
-      const dom = cleanProps(rest, ['active', 'guid'])
+      const {
+        active,
+        as,
+        activate,
+        deactivate,
+        children,
+        className,
+        guid,
+        ...rest
+      } = this.props
 
       // For elements with mouse events we need to know when the mouse event occurs
       // on the parent element, not the trigger element
       // $FlowFixMe
       return createElement(
-        as,
+        as || 'div',
         {
+          'data-test': element ? `${element}-container` : null,
           className: classNames(element, className),
           onMouseEnter: mouseEvents ? activate : undefined,
           onMouseLeave: mouseEvents ? deactivate : undefined,
-          ...dom
+          // DO NOT PASS STATE PROPS THROUGH (SEE DECONSTRUCTION)!
+          ...rest
         },
         children
       )

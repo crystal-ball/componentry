@@ -9,25 +9,13 @@ type State = {
   active: boolean
 }
 
-type Options = {
-  subscribe?: boolean,
-  controls?: boolean,
-  describedby?: boolean,
-  expanded?: boolean,
-  haspopup?: boolean,
-  hidden?: boolean,
-  labelledby?: boolean,
-  id?: boolean,
-  role?: string
-}
-
 /**
  * HOC passes active state props along with computed aria attributes for the state.
  * The `active`, `activate` and `deactivate` props are passed from active state
  * provider through context.
  * @param ariaConfigs Options object describes aria attributes to pass down
  */
-export default (ariaConfigs: Options = {}) => (Wrapped: ComponentType<*>) =>
+export default (Wrapped: ComponentType<*>) =>
   class WithActive extends Component<{}, State> {
     unsubscribe: Function
 
@@ -44,7 +32,7 @@ export default (ariaConfigs: Options = {}) => (Wrapped: ComponentType<*>) =>
     static displayName = `withActive${getDisplayName(Wrapped)}`
 
     static contextTypes = {
-      C_ACTIVE: shape({
+      ACTIVE: shape({
         activate: func,
         deactivate: func,
         getActive: func,
@@ -59,6 +47,19 @@ export default (ariaConfigs: Options = {}) => (Wrapped: ComponentType<*>) =>
      */
     state = { active: false }
 
+    /**
+     * If this HOC is used outside the scope of a `withState` HOC, the ACTIVE
+     * context will not exist. This prop makes it easy to skip context operations in
+     * that case.
+     */
+    invalidContext: boolean = false
+
+    constructor(props: {}, context: { ACTIVE?: {} }) {
+      super(props)
+      // Update `invalidContext` flag if ACTIVE is not truthy
+      if (!context.ACTIVE) this.invalidContext = true
+    }
+
     // Hooks
     // ---------------------------------------------------------------------------
     /**
@@ -66,9 +67,9 @@ export default (ariaConfigs: Options = {}) => (Wrapped: ComponentType<*>) =>
      * render
      */
     componentWillMount() {
-      const { C_ACTIVE } = this.context
-      if (!C_ACTIVE) return
-      const active = C_ACTIVE.getActive()
+      if (this.invalidContext) return
+
+      const active = this.context.ACTIVE.getActive()
       if (this.state.active !== active) this.setState({ active })
     }
     /**
@@ -78,10 +79,9 @@ export default (ariaConfigs: Options = {}) => (Wrapped: ComponentType<*>) =>
      * `shouldComponentUpdate` on an intermediate component returns false.
      */
     componentDidMount() {
-      const { C_ACTIVE } = this.context
-      if (ariaConfigs.subscribe === false || !C_ACTIVE) return
+      if (this.invalidContext) return
 
-      this.unsubscribe = C_ACTIVE.subscribe(active => {
+      this.unsubscribe = this.context.ACTIVE.subscribe(active => {
         if (active !== this.state.active) this.setState({ active })
       })
     }
@@ -89,33 +89,22 @@ export default (ariaConfigs: Options = {}) => (Wrapped: ComponentType<*>) =>
      * Remove subscription on unmount!
      */
     componentWillUnmount() {
-      if (ariaConfigs.subscribe !== false) this.unsubscribe()
+      if (this.unsubscribe) this.unsubscribe()
     }
 
     // Render
     // ---------------------------------------------------------------------------
     render() {
-      const { C_ACTIVE } = this.context
-      const { activate, deactivate, guid, getActive } = C_ACTIVE || {}
-      const active = getActive ? getActive() : false
+      if (this.invalidContext) return <Wrapped {...this.props} />
 
-      const arias = {
-        'aria-controls': ariaConfigs.controls ? guid : null,
-        'aria-describedby': ariaConfigs.describedby ? guid : null,
-        'aria-expanded': ariaConfigs.expanded ? String(active) : null,
-        'aria-haspopup': ariaConfigs.haspopup ? 'true' : null,
-        'aria-hidden': ariaConfigs.hidden ? String(!active) : null,
-        'aria-labelledby': ariaConfigs.labelledby ? guid : null,
-        id: ariaConfigs.id ? guid : null,
-        role: ariaConfigs.role
-      }
+      const { activate, deactivate, guid, getActive } = this.context.ACTIVE
 
       return (
         <Wrapped
-          active={active}
+          guid={guid}
+          active={getActive()}
           activate={activate}
           deactivate={deactivate}
-          {...arias}
           {...this.props}
         />
       )
