@@ -7,36 +7,35 @@ import GroupNav from 'components/universal/Navigations/GroupNav'
 
 import Accessibility from './Accessibility'
 import Theming from './Theming'
+import Components from './Components'
 
 type Props = {
-  match: {
-    params: { concept: string }
+  location: {
+    state: { name: string }
   }
 }
 
 const conceptRoutes = [
   { name: 'A++ Accessibility', path: '/concepts/accessibility' },
-  { name: 'Theme Customization', path: '/concepts/theming' }
+  { name: 'Theme Customization', path: '/concepts/theming' },
+  { name: 'Component APIs', path: '/concepts/component-contract' }
 ]
 
-export default ({ match }: Props) => {
-  const { concept } = match.params
+export default ({ location }: Props) => (
+  <div>
+    <div className="fullscreen-row">
+      <Header title={location.state.name || 'Concepts'} />
+    </div>
 
-  return (
-    <div>
-      <div className="fullscreen-row">
-        <Header title={concept || 'Concepts'} />
+    <div className="row">
+      <div className="col-10">
+        <Route path="/concepts/accessibility" component={Accessibility} />
+        <Route path="/concepts/theming" component={Theming} />
+        <Route path="/concepts/component-contract" component={Components} />
       </div>
-
-      <div className="row">
-        <div className="col-10">
-          <Route path="/concepts/accessibility" component={Accessibility} />
-          <Route path="/concepts/theming" component={Theming} />
-        </div>
-        <div className="col-2">
-          <GroupNav routes={conceptRoutes} />
-        </div>
+      <div className="col-2">
+        <GroupNav routes={conceptRoutes} />
       </div>
     </div>
-  )
-}
+  </div>
+)

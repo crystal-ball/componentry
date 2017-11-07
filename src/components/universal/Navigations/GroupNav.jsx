@@ -13,7 +13,10 @@ export default ({ routes }: Props) => (
   <nav>
     {routes.map(({ name, path }) => (
       <div className="pb-1" key={name}>
-        <NavLink to={path} activeClassName="text-primary">
+        <NavLink
+          to={{ pathname: path, state: { name } }}
+          activeClassName="text-primary"
+        >
           {name}
         </NavLink>
       </div>

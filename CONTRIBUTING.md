@@ -83,6 +83,7 @@ The different versions are created using Babel configs triggered by the `BABEL_E
 see the `.babelrc` file for more info.
 
 ## Help Wanted/Todo
+- Update project README with getting started info
 - Fix activation test suite for popover and tooltip
 - Basic snapshot tests for *EVERYTHING!*
 - The `elementFactory` returns a component with defaults set for basic properties,
@@ -96,5 +97,6 @@ see the `.babelrc` file for more info.
   required
 - Document API and patterns for controlling components with passed props and active
   state.
+- Document types of component control: Automated, Observed and Controlled
 - Figure out a way to use `withState` with the `<Alert />` and `<Modal />`
   components. It would remove the need for state tracking in those components
