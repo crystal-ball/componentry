@@ -1,9 +1,10 @@
 // @flow
 import React from 'react'
-import { NavLink } from 'react-router-dom'
+
+import StatefulNameLink from './StatefulNameLink'
 
 type Props = {
-  routes: Array<{ name: string, path: string }>
+  routes: Array<{ name: string, path: string, id: string }>
 }
 
 /**
@@ -11,14 +12,9 @@ type Props = {
  */
 export default ({ routes }: Props) => (
   <nav>
-    {routes.map(({ name, path }) => (
-      <div className="pb-1" key={name}>
-        <NavLink
-          to={{ pathname: path, state: { name } }}
-          activeClassName="text-primary"
-        >
-          {name}
-        </NavLink>
+    {routes.map(({ name, path, id }) => (
+      <div className="pb-1" key={id}>
+        <StatefulNameLink {...{ name, path }} />
       </div>
     ))}
   </nav>

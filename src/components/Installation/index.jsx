@@ -1,10 +1,11 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 
 import PrismHighlighter from 'components/universal/PrismHighlighter'
 
 const basicImport = `// Define any theme customization for Bootstrap and Componentry. They use the
 // same variables in order to create a seamless theme.
-@import 'styles/your-custom-theme-variables';
+@import 'styles/theme';
 
 // Import Bootstrap styles from Componentry package. This creates the base set
 // of styles for your app.
@@ -21,7 +22,7 @@ export default () => (
     <pre>
       <code>npm install componentry</code>
     </pre>
-    <h2 className="mt-3">Styles</h2>
+    <h2 className="mt-4">Styles</h2>
     <p>
       Componentry is built for Bootstrap v4. To make getting started as easy as
       possible, the latest v4 release is included in the package. You can customize
@@ -29,7 +30,14 @@ export default () => (
       typical import will look like this:
     </p>
     <PrismHighlighter language="sass">{basicImport}</PrismHighlighter>
-    {/* TODO: Include note about Componentry customization of Bootstrap SCSS */}
-    {/* TODO: Include note about importing Bootstrap functions and variables into your theme file so that you can import those same variables anywhere */}
+    <h2 className="mt-4">Next Steps</h2>
+    <ul>
+      <li>
+        <Link to="/concepts">Concepts</Link> include guides on usage
+      </li>
+      <li>
+        <Link to="/components">Components</Link> document component APIs
+      </li>
+    </ul>
   </div>
 )

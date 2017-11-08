@@ -1,0 +1,12 @@
+
+
+:local(.component) {
+  // Match typography width constraint for better readability
+  .alert, pre {
+    max-width: 700px;
+  }
+
+  h2, h4 {
+    margin-top: 2em;
+  }
+}

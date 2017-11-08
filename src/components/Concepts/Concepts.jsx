@@ -8,6 +8,9 @@ import GroupNav from 'components/universal/Navigations/GroupNav'
 import Accessibility from './Accessibility'
 import Theming from './Theming'
 import Components from './Components'
+import Overview from './Overview'
+import conceptsRoutes from './concepts-routes'
+import { component } from './concepts.scss'
 
 type Props = {
   location: {
@@ -15,16 +18,10 @@ type Props = {
   }
 }
 
-const conceptRoutes = [
-  { name: 'A++ Accessibility', path: '/concepts/accessibility' },
-  { name: 'Theme Customization', path: '/concepts/theming' },
-  { name: 'Component APIs', path: '/concepts/component-contract' }
-]
-
-export default ({ location }: Props) => (
-  <div>
+export default ({ location: { state } }: Props) => (
+  <div className={component}>
     <div className="fullscreen-row">
-      <Header title={location.state.name || 'Concepts'} />
+      <Header title={state ? state.name : 'Concepts'} />
     </div>
 
     <div className="row">
@@ -32,9 +29,10 @@ export default ({ location }: Props) => (
         <Route path="/concepts/accessibility" component={Accessibility} />
         <Route path="/concepts/theming" component={Theming} />
         <Route path="/concepts/component-contract" component={Components} />
+        <Route path="/concepts" exact component={Overview} />
       </div>
       <div className="col-2">
-        <GroupNav routes={conceptRoutes} />
+        <GroupNav routes={conceptsRoutes} />
       </div>
     </div>
   </div>
