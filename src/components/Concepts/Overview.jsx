@@ -2,7 +2,7 @@
 import React from 'react'
 
 import StatefulNameLink from 'components/universal/Navigations/StatefulNameLink'
-import { conceptsRoutesMap } from './concepts-routes'
+import { conceptsRoutesMap } from 'utils/concepts-routes'
 
 export default () => (
   <div>

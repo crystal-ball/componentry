@@ -3,7 +3,7 @@ import React from 'react'
 import { Route } from 'react-router-dom'
 
 import GroupNav from 'components/universal/Navigations/GroupNav'
-import componentRoutes from 'components/universal/Navigations/component-routes'
+import componentRoutes from 'utils/component-routes'
 import Header from 'components/universal/Header'
 
 // Component Screens
@@ -15,6 +15,7 @@ import Drawers from './Drawers'
 import Dropdowns from './Dropdowns'
 import ListGroups from './ListGroups'
 import Modals from './Modals'
+import Navs from './Navs'
 import Popovers from './Popovers'
 import Tooltips from './Tooltips'
 
@@ -43,6 +44,7 @@ export default ({ match }: Props) => {
           <Route path="/components/dropdowns" component={Dropdowns} />
           <Route path="/components/list-groups" component={ListGroups} />
           <Route path="/components/modals" component={Modals} />
+          <Route path="/components/navs" component={Navs} />
           <Route path="/components/popovers" component={Popovers} />
           <Route path="/components/tooltips" component={Tooltips} />
         </div>

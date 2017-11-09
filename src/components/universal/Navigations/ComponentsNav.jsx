@@ -2,8 +2,8 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 
+import componentRoutes from 'utils/component-routes'
 import { Dropdown } from '../../../../lib'
-import componentRoutes from './component-routes'
 
 type Props = {
   color: string,

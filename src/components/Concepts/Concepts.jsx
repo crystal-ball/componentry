@@ -4,12 +4,12 @@ import { Route } from 'react-router-dom'
 
 import Header from 'components/universal/Header'
 import GroupNav from 'components/universal/Navigations/GroupNav'
+import conceptsRoutes from 'utils/concepts-routes'
 
 import Accessibility from './Accessibility'
 import Theming from './Theming'
 import Components from './Components'
 import Overview from './Overview'
-import conceptsRoutes from './concepts-routes'
 import { component } from './concepts.scss'
 
 type Props = {
