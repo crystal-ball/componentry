@@ -83,7 +83,12 @@ The different versions are created using Babel configs triggered by the `BABEL_E
 see the `.babelrc` file for more info.
 
 ## Help Wanted/Todo
+- Use `deepFreeze()` with tests to ensure props are not being mutated
+- Add a `.sr-only` div with alert type to alerts for screen reader context
+- Add a note about available `.alert-heading` class -> (Copy for aler-title?)
 - Update project README with getting started info
+- Document differences between 'heading' and 'title'. IE card and modal have both,
+  popovers and alerts have only heading, is there a way to standardize that?
 - Fix activation test suite for popover and tooltip
 - Basic snapshot tests for *EVERYTHING!*
 - The `elementFactory` returns a component with defaults set for basic properties,
