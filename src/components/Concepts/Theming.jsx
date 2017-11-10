@@ -54,8 +54,7 @@ export default () => (
         <code>Button</code> components.
       </li>
       <li>
-        <code>visibilityTransitionLength</code> - Sets the default fade out
-        duration.
+        <code>transitionDuration</code> - Sets the default length for transitions.
       </li>
     </ul>
     <PrismHighlighter language="jsx">{appExample}</PrismHighlighter>

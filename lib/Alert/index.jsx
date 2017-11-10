@@ -34,7 +34,7 @@ type Props = {
    * Length of opacity transition, defaults to 300ms or `THEME` value if set using
    * `ThemeProvider`.
    */
-  visibilityTransitionLength?: number
+  transitionDuration?: number
 }
 
 type State = {
@@ -57,7 +57,7 @@ type State = {
  */
 export default class Alert extends Component<Props, State> {
   static contextTypes = {
-    THEME: shape({ visibilityTransitionLength: number })
+    THEME: shape({ transitionDuration: number })
   }
 
   static defaultProps = {
@@ -76,11 +76,10 @@ export default class Alert extends Component<Props, State> {
    * application state to dismiss an alert is preferred.
    */
   handleDismiss = () => {
-    const { visibilityTransitionLength = 300 } = this.context.THEME || {}
+    const { transitionDuration = 300 } = this.context.THEME || {}
     // props has precedence to allow for single instance overrides, context can be
     // used for app wide configs, fall back to defaults
-    const timer: number =
-      this.props.visibilityTransitionLength || visibilityTransitionLength
+    const timer: number = this.props.transitionDuration || transitionDuration
 
     // Will immediately set Bs 'fade' class to transition opacity to 0
     this.setState({ fade: true }, () => {
@@ -101,7 +100,7 @@ export default class Alert extends Component<Props, State> {
       color,
       dismissible,
       deactivate,
-      visibilityTransitionLength, // prevent dom inclusion
+      transitionDuration, // prevent dom inclusion
       ...rest
     } = this.props
     const { fade, hidden } = this.state

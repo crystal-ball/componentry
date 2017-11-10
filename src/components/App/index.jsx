@@ -20,7 +20,7 @@ import FourOhFour from '../FourOhFour'
 // TODO: Docs
 const theme = {
   defaultButtonColor: 'primary',
-  visibilityTransitionLength: 350
+  transitionDuration: 350
 }
 
 export default () => (
