@@ -7,7 +7,9 @@ Any miscellaneous knowledge that is difficult to document in place or is general
 applicable to the library can be documented here.
 
 ## Architecture
+
 This library's architecture is driven by two primary goals:
+
 - Maintain as light of a footprint as possible
 - Make consumption of library as simple as possible
 
@@ -16,17 +18,20 @@ noise to the community. This library is useful because it's small, simple and
 compatible with Boostrap v4.
 
 #### Experimental JS Features
+
 Library source code should not use experimental JS features beyond Stage-4. This lets
 us deliver an untranspiled version of the library as `package.esnext`. Features like
 class statics and decorators would make some of the code terser, but would then
 require transpilation to maintain Stage-4 status.
 
 ## Dependency Notes
+
 Componentry's only external dependency is `babel-runtime`, which provides the required
 Babel helpers from transpiling in module format. Bootstrap v4 is included as a
 dependency to allow importing the SCSS without requiring install.
 
 ## Testing
+
 Testing uses Mocha, Sinon and Enzyme. The `.babelrc` configs have a test environment to
 configure Babel to compile ESM for Mocha, this is triggered by the `BABEL_ENV` in the
 package test script.
@@ -44,6 +49,7 @@ NOTE: _Tests should only validate expected component **behavior**, and not inter
 implementation of those behaviors._
 
 ## Component Expectations
+
 One of the primary goals of Componentry is a simple, consistent API for all
 components. The following expectations should be met for all components, and if not
 documentation should explain why the convention has been overridden.
@@ -53,8 +59,8 @@ documentation should explain why the convention has been overridden.
   property `hideCloseButton` where showing the close button requires passing false
   _(double negative: hideCloseButton={false})_. Instead, use the affirmative:
   `closeButton`, so that showing and hiding do not double negate:
-    - `closeButton={true}` _(include close button)_
-    - `closeButton={false}` _(do not include close button)_
+      - `closeButton={true}` _(include close button)_
+      - `closeButton={false}` _(do not include close button)_
 - Include sane defaults for properties whenever possible. For any component, whenever
   possible create a default value for each property reflecting the most common use
   case. For example, modals usually have close buttons, so a modal's property
@@ -66,23 +72,31 @@ documentation should explain why the convention has been overridden.
 - Tests for the component should cover the exposed component API.
 
 #### Code Conventions
+
 - Component files should export the component as the default export. Components are
   exported as named exports in the package's `index.js`.
 - Alphabetize component passed properties.
 
 ## Library Publishing
+
 Three versions of the library source code are created by the `prepublish` script:
+
 - `package.main` ES5 AMD version: This version can be used in any environment
-- `package.module` ES5 ESM version: This version is transpiled to ES5 syntax in ES6 modules. This will
-  be the version picked up by Webpack.
-- `package.esnext` ES Stage 4 version: Untranspiled source version using only Stage-4 features. This
-  version can be used to by consuming projects configured to create their own
-  targeted compile configurations.
+- `package.module` ES5 ESM version: This version is transpiled to ES5 syntax in ES6
+  modules. This will be the version picked up by Webpack.
+- `package.esnext` ES Stage 4 version: Untranspiled source version using only
+  Stage-4 features. This version can be used to by consuming projects configured to
+  create their own targeted compile configurations.
 
 The different versions are created using Babel configs triggered by the `BABEL_ENV`,
 see the `.babelrc` file for more info.
 
 ## Help Wanted/Todo
+
+- When developing the library components, hot load doesn't work and throws warnings
+  because any component needs to be extracted to its own variable. Check output size
+  to see if there's any difference when assigning subcomponents directly to a parent
+  or assigning to a variable and then assigning to parent... probably not.
 - Use `deepFreeze()` with tests to ensure props are not being mutated
 - Add a `.sr-only` div with alert type to alerts for screen reader context
 - Add a note about available `.alert-heading` class -> (Copy for aler-title?)

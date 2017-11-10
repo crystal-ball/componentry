@@ -17,6 +17,7 @@ import ListGroups from './ListGroups'
 import Modals from './Modals'
 import Navs from './Navs'
 import Popovers from './Popovers'
+import Tabs from './Tabs'
 import Tooltips from './Tooltips'
 
 type Props = {
@@ -46,6 +47,7 @@ export default ({ match }: Props) => {
           <Route path="/components/modals" component={Modals} />
           <Route path="/components/navs" component={Navs} />
           <Route path="/components/popovers" component={Popovers} />
+          <Route path="/components/tabs" component={Tabs} />
           <Route path="/components/tooltips" component={Tooltips} />
         </div>
         <div className="col-2">

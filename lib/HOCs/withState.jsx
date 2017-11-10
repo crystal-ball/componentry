@@ -9,34 +9,43 @@ import getDisplayName from '../utils/getDisplayName'
 /**
  * This class handles managing an `active` state and exposes a subscribe callback
  * for listening for changes to `active`. It is used as an instance property for
- * each `withState` HOC to create a scoped `active` boolean available through
+ * each `withState` HOC to create a scoped `active` value available through
  * context.
  *
  * Design heavily borrowed from https://github.com/ReactTraining/react-broadcast
  */
 class ActiveState {
-  active: boolean
+  active: boolean | string
   subscriptions: Array<Function>
 
+  /**
+   * Each element tracks any subscribers that are notified when the active state
+   * changes.
+   */
   subscriptions = []
 
   /**
    * Set active in constructor to allow creating components with specific initial
    * states
    */
-  constructor(active: boolean = false) {
+  constructor(active: boolean | string = false) {
+    /**
+     * The active state can be a string or a boolean. Booleans are used for elements
+     * with a singular show/hide, strings for elements that coordinate multiple
+     * show/hide elements
+     */
     this.active = active
   }
   /**
    * Use a method to get current state b/c state is a primitive and assigning it in
-   * `getContext` will copy value rather than pointing to instance value
-   * */
+   * `getContext` will copy the value rather than pointing to instance value
+   */
   getActive = () => this.active
   /**
-   * Update active state property internally and notify all subscribers that a change
-   * has occurred.
+   * Update active state property internally and notify all subscribers that a
+   * change has occurred.
    */
-  setActive = (active: boolean) => {
+  setActive = (active: boolean | string) => {
     this.active = active
     this.subscriptions.forEach(subscription => subscription(active))
   }
@@ -66,12 +75,12 @@ type Props = {
 }
 
 type State = {
-  active: boolean
+  active: boolean | string
 }
 
 /**
- * The `withState` HOC is a Provider component that exposes an `active` state
- * boolean to any child component using context. This context should not be accessed
+ * The `withState` HOC is a Provider component that exposes an `active` state value
+ * to any child component using context. This context should not be accessed
  * directly. The `withActive` HOC is available for passing `active` and state change
  * handlers as props.
  *
@@ -162,8 +171,8 @@ export default (Wrapped: ComponentType<*>) =>
     }
     /**
      * For controlled components active can be passed as a prop. When this happens
-     * we update the internal state handler, which then notifies children
-     * compoenents of the change.
+     * we update the internal state handler, which then notify children components
+     * of the change.
      * @param {Object} nextProps
      */
     componentWillReceiveProps({ active }: { active: boolean }) {
@@ -208,7 +217,10 @@ export default (Wrapped: ComponentType<*>) =>
       if (activate) {
         activate(e, this)
       } else {
-        this.activeState.setActive(true)
+        // Elements that track an active string id set the id as the target value,
+        // if it's present use it otherwise use boolean.
+        // $FlowFixMe
+        this.activeState.setActive(e.target.value || true)
       }
 
       if (onActivated) onActivated(e, this)

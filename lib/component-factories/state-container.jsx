@@ -7,7 +7,7 @@ import { closest, getTextWidth } from '../utils/dom'
 
 type Options = {
   /** Name of element, used for classes and handler selection */
-  element: string,
+  element?: string,
   /** When tue the state container will register handlers for mouse events */
   mouseEvents?: boolean
 }
@@ -17,6 +17,7 @@ type Props = {
   as?: ComponentType<any> | string,
   children?: Node | Function,
   className?: string,
+  defaultTab?: string,
   // Active boolean + change handlers from withState HOC
   activate: Function,
   active: boolean,
@@ -43,6 +44,17 @@ export default ({ element, mouseEvents }: Options) =>
 
     // Hooks
     // ---------------------------------------------------------------------------
+    /**
+     * For tab component, on mount if there is a default tab specified and no active
+     * value call parent setState with default.
+     */
+    componentWillMount() {
+      const { active, activate, defaultTab } = this.props
+
+      // Activate expects a click event with target.value for components with string
+      // active ids
+      if (defaultTab && !active) activate({ target: { value: defaultTab } })
+    }
     /**
      * The component will handle adding/removing event listeners for click/keypress
      * when the passed `active` state has changed. This lets us automatically add
@@ -147,6 +159,7 @@ export default ({ element, mouseEvents }: Options) =>
         children,
         className,
         deactivate,
+        defaultTab, // don't pass
         guid,
         ...rest
       } = this.props
@@ -163,7 +176,7 @@ export default ({ element, mouseEvents }: Options) =>
         as || 'div',
         {
           'data-test': element ? `${element}-container` : null,
-          className: classNames(element, className),
+          className: classNames(element, className) || null,
           onMouseEnter: mouseEvents ? activate : undefined,
           onMouseLeave: mouseEvents ? deactivate : undefined,
           // DO NOT PASS STATE PROPS THROUGH (SEE DECONSTRUCTION)!

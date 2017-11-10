@@ -14,6 +14,7 @@ const componentRoutes: Array<{ name: string, path: string }> = [
   { name: 'Modals', path: '/components/modals', id: 'Modals' },
   { name: 'Navs', path: '/components/navs', id: 'Navs' },
   { name: 'Popovers', path: '/components/popovers', id: 'Popovers' },
+  { name: 'Tabs', path: '/components/tabs', id: 'tabs' },
   { name: 'Tooltips', path: '/components/tooltips', id: 'Tooltips' }
 ]
 
