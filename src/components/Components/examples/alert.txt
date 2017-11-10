@@ -1,7 +1,0 @@
-<Alert
-  color="success"
-  onDismiss={logDismiss}
-  dismissible
->
-  <strong>Well done!</strong> You successfully read this important alert message.
-</Alert>

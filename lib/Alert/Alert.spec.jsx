@@ -37,21 +37,21 @@ describe('<Alert/>', () => {
     expect(wrapper.find('button').length).toEqual(0)
   })
 
-  test('should bind passed onDismiss to close button', () => {
-    const onDismiss = jest.fn()
+  test('should bind passed deactivate to close button', () => {
+    const deactivate = jest.fn()
     const wrapper = mount(
-      <Alert color="danger" onDismiss={onDismiss}>
+      <Alert color="danger" deactivate={deactivate}>
         Warning!
       </Alert>
     )
     wrapper.find('button').simulate('click')
-    expect(onDismiss).toHaveBeenCalled()
+    expect(deactivate).toHaveBeenCalled()
     // Alert visibility state change handler has been overridden, other than calling
-    // passed onDismiss Alert should still be visible & unchanved
+    // passed deactivate Alert should still be visible & unchanved
     expect(wrapper.find('.alert.alert-danger').length).toEqual(1)
     expect(wrapper.find('.alert[aria-hidden="false"]').length).toEqual(1)
     expect(wrapper.find('button').length).toEqual(1)
   })
 
-  // TODO: Test clicking button without passing onDismiss
+  // TODO: Test clicking button without passing deactivate
 })

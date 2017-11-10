@@ -24,12 +24,12 @@ type Props = {
    */
   dismissible?: boolean,
   /**
-   * When passed `onDismiss` will be called in place of internal dismiss hanlder.
+   * When passed `deactivate` will be called in place of internal dismiss hanlder.
    * Note that opacity transition and hiding of component must be handled externally
-   * when passing a custom `onDismiss` handler. _(Recommended to pass `aria-hidden`
+   * when passing a custom `deactivate` handler. _(Recommended to pass `aria-hidden`
    * to handle hiding when using as a controlled component)_
    */
-  onDismiss?: () => void,
+  deactivate?: () => void,
   /**
    * Length of opacity transition, defaults to 300ms or `THEME` value if set using
    * `ThemeProvider`.
@@ -71,8 +71,8 @@ export default class Alert extends Component<Props, State> {
   }
 
   /**
-   * Backup onDismiss for dismissible alerts without a passed onDismiss. Note that
-   * this is just a convenience method. Passing an `onDismiss` that handles updating
+   * Backup deactivate for dismissible alerts without a passed deactivate. Note that
+   * this is just a convenience method. Passing an `deactivate` that handles updating
    * application state to dismiss an alert is preferred.
    */
   handleDismiss = () => {
@@ -100,7 +100,7 @@ export default class Alert extends Component<Props, State> {
       className,
       color,
       dismissible,
-      onDismiss,
+      deactivate,
       visibilityTransitionLength, // prevent dom inclusion
       ...rest
     } = this.props
@@ -125,7 +125,7 @@ export default class Alert extends Component<Props, State> {
       dismissible && (
         <Button
           link
-          onClick={onDismiss || this.handleDismiss}
+          onClick={deactivate || this.handleDismiss}
           className={`text-${color}`}
         >
           <svg className="icon close font" role="img" aria-label="close">

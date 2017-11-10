@@ -14,6 +14,10 @@ export default class PrismHighlighter extends Component<Props> {
     window.Prism.highlightElement(this.pre)
   }
 
+  componentDidUpdate() {
+    window.Prism.highlightElement(this.pre)
+  }
+
   render() {
     const { children, language } = this.props
     return (
