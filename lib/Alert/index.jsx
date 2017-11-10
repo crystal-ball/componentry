@@ -4,8 +4,8 @@ import type { ComponentType, Node } from 'react'
 import { number, shape } from 'prop-types'
 import classNames from 'classnames'
 
-/* eslint-disable */
 import Button from '../Button'
+import withActive from '../HOCs/withActive'
 import type { ThemeColors } from '../utils/theme'
 
 type Props = {
@@ -24,24 +24,17 @@ type Props = {
    */
   dismissible?: boolean,
   /**
-   * When passed `deactivate` will be called in place of internal dismiss hanlder.
-   * Note that opacity transition and hiding of component must be handled externally
-   * when passing a custom `deactivate` handler. _(Recommended to pass `aria-hidden`
-   * to handle hiding when using as a controlled component)_
-   */
-  deactivate?: () => void,
-  /**
    * Length of opacity transition, defaults to 300ms or `THEME` value if set using
    * `ThemeProvider`.
    */
-  transitionDuration?: number
+  transitionDuration?: number,
+
+  activate?: Function,
+  active?: boolean,
+  deactivate: Function
 }
 
 type State = {
-  /**
-   * Fade controls opacity transition for alert on dismissal
-   */
-  fade: boolean,
   /**
    * Hidden controls DOM hidden after opacity transition on dismissal
    */
@@ -55,45 +48,47 @@ type State = {
  * context. For non alert information blocks a card with theme color primary or
  * secondary can be used.
  */
-export default class Alert extends Component<Props, State> {
+class Alert extends Component<Props, State> {
   static contextTypes = {
     THEME: shape({ transitionDuration: number })
   }
 
   static defaultProps = {
-    dismissible: true
+    active: true,
+    dismissible: false
   }
 
   // Fade controls visibility status and hidden controls DOM position status
   state = {
-    fade: false,
     hidden: false
   }
 
   /**
-   * Backup deactivate for dismissible alerts without a passed deactivate. Note that
-   * this is just a convenience method. Passing an `deactivate` that handles updating
-   * application state to dismiss an alert is preferred.
+   * Alert component needs to always call internal handleDismiss so that we can run
+   * the visibility transition. The `active` prop is used to control visibility and
+   * state `hidden` handles aria-hidden post transition.
    */
-  handleDismiss = () => {
+  handleDismiss = (e: SyntheticEvent<HTMLButtonElement>) => {
     const { transitionDuration = 300 } = this.context.THEME || {}
     // props has precedence to allow for single instance overrides, context can be
     // used for app wide configs, fall back to defaults
     const timer: number = this.props.transitionDuration || transitionDuration
 
-    // Will immediately set Bs 'fade' class to transition opacity to 0
-    this.setState({ fade: true }, () => {
-      // Roughly when transition is finished, add aria-hidden to element to remove display
-      setTimeout(() => {
-        this.setState({ hidden: true })
-      }, timer)
-    })
+    // Immediately deactivate the alert, this will begin the opacity fade
+    this.props.deactivate(e, this)
+
+    // Roughly when transition is finished, add aria-hidden to element to remove display
+    setTimeout(() => {
+      this.setState({ hidden: true })
+    }, timer)
   }
 
   // Render
   // ---------------------------------------------------------------------------
   render() {
     const {
+      activate, // prevent dom inclusion
+      active,
       as,
       children,
       className,
@@ -103,30 +98,26 @@ export default class Alert extends Component<Props, State> {
       transitionDuration, // prevent dom inclusion
       ...rest
     } = this.props
-    const { fade, hidden } = this.state
-    const classes: string = classNames('alert', className, {
-      [`alert-${color}`]: color,
-      fade
-    })
 
     return createElement(
       as || 'div',
       {
-        key: 'alert-container',
         role: 'alert',
-        className: classes,
-        'aria-hidden': hidden ? 'true' : 'false',
+        className: classNames('alert', className, {
+          [`alert-${color}`]: color,
+          // When not active add fade class to begin opacity transtion, element is
+          // hidden from DOM after transition length
+          fade: !active
+        }),
+        // hidden state is updated after active opacity transition
+        'aria-hidden': this.state.hidden ? 'true' : 'false',
         ...rest
       },
       // Alert contents:
       <div className="alert-content">{children}</div>,
       // Render a close button or null depending on configs
       dismissible && (
-        <Button
-          link
-          onClick={deactivate || this.handleDismiss}
-          className={`text-${color}`}
-        >
+        <Button link onClick={this.handleDismiss} className={`text-${color}`}>
           <svg className="icon close font" role="img" aria-label="close">
             <use href="#close" />
           </svg>
@@ -135,3 +126,7 @@ export default class Alert extends Component<Props, State> {
     )
   }
 }
+
+const withActiveAlert = withActive(Alert)
+
+export default withActiveAlert

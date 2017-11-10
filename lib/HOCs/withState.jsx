@@ -65,9 +65,10 @@ class ActiveState {
 }
 
 type Props = {
-  active: boolean,
+  active: boolean | string,
   activate: Function,
   deactivate: Function,
+  defaultActive: boolean | string,
   onActivate: Function,
   onActivated: Function,
   onDeactivate: Function,
@@ -138,9 +139,10 @@ export default (Wrapped: ComponentType<*>) =>
 
     /**
      * Each instance has a separate class handling the state. Context is scoped and
-     * only that class' state is passed.
+     * only that class' state is passed. Create new instance with passed
+     * defaultActive, (defaults to false)
      */
-    activeState = new ActiveState(this.props.active)
+    activeState = new ActiveState(this.props.defaultActive)
     /**
      * Guid instance property will be uniquely assigned once for each modal
      * instance, this unique id is then passed to all children through context where
@@ -163,7 +165,11 @@ export default (Wrapped: ComponentType<*>) =>
     })
     /**
      * Ensure that state used for causing renders matches context state before first
-     * render
+     * render.
+     *
+     * NOTE: activeState is constructed with passed `defaultActive`, so we don't
+     * need to check that activeState.getActive() is the `defaultActive` here, just
+     * that the state is correct
      */
     componentWillMount() {
       const active = this.activeState.getActive()
@@ -175,7 +181,7 @@ export default (Wrapped: ComponentType<*>) =>
      * of the change.
      * @param {Object} nextProps
      */
-    componentWillReceiveProps({ active }: { active: boolean }) {
+    componentWillReceiveProps({ active }: { active: boolean | string }) {
       // If active is not explicitly passed, it will always be undefined, we only
       // want to update state when a value is passed.
       if (active === undefined) return
@@ -242,8 +248,9 @@ export default (Wrapped: ComponentType<*>) =>
     // Render
     // ---------------------------------------------------------------------------
     render() {
-      // Don't pass user hooks through
+      // Don't pass user hooks or defaultActive falg through
       const {
+        defaultActive,
         onActivate,
         onActivated,
         onDeactivate,

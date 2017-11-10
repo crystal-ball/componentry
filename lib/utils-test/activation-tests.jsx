@@ -96,22 +96,31 @@ export default TestComponent => {
   })
 
   /**
-   * Test controlled component for `active` prop. Passing active at any point in
-   * component life should override current active state. Default activate/deactivate
-   * methods should still update that state.
+   * Test setting initial active state using defaultActive prop
    */
-  test('should use passed active prop instead of internal active', () => {
+  test('state should default to defaultActive when passed', () => {
     const wrapper = mount(
-      <TestComponent active>
+      <TestComponent defaultActive>
         <TestComponent.Trigger data-test="trigger" />
         <TestComponent.Content data-test="content" />
       </TestComponent>
     )
 
     expect(findContent(wrapper).prop('aria-hidden')).toEqual('false')
+  })
 
-    // Should still be able to use default activate/deactivate hooks
-    findTrigger(wrapper).simulate('click')
+  /**
+   * Test controlled component for `active` prop. Passing active at any point in
+   * component life should override current active state. Default activate/deactivate
+   * methods should still update that state.
+   */
+  test('should use passed active prop instead of internal active', () => {
+    const wrapper = mount(
+      <TestComponent>
+        <TestComponent.Trigger data-test="trigger" />
+        <TestComponent.Content data-test="content" />
+      </TestComponent>
+    )
 
     expect(findContent(wrapper).prop('aria-hidden')).toEqual('true')
 
@@ -119,6 +128,11 @@ export default TestComponent => {
     wrapper.setProps({ active: true })
 
     expect(findContent(wrapper).prop('aria-hidden')).toEqual('false')
+
+    // Should still be able to use default activate/deactivate hooks
+    findTrigger(wrapper).simulate('click')
+
+    expect(findContent(wrapper).prop('aria-hidden')).toEqual('true')
   })
 
   /**
@@ -148,7 +162,7 @@ export default TestComponent => {
     const activate = jest.fn()
     const deactivate = jest.fn()
     const wrapper = mount(
-      <TestComponent active={false} activate={activate} deactivate={deactivate}>
+      <TestComponent activate={activate} deactivate={deactivate}>
         <TestComponent.Trigger data-test="trigger" />
         <TestComponent.Content data-test="content" />
       </TestComponent>

@@ -17,7 +17,6 @@ type Props = {
   as?: ComponentType<any> | string,
   children?: Node | Function,
   className?: string,
-  defaultTab?: string,
   // Active boolean + change handlers from withState HOC
   activate: Function,
   active: boolean,
@@ -44,17 +43,6 @@ export default ({ element, mouseEvents }: Options) =>
 
     // Hooks
     // ---------------------------------------------------------------------------
-    /**
-     * For tab component, on mount if there is a default tab specified and no active
-     * value call parent setState with default.
-     */
-    componentWillMount() {
-      const { active, activate, defaultTab } = this.props
-
-      // Activate expects a click event with target.value for components with string
-      // active ids
-      if (defaultTab && !active) activate({ target: { value: defaultTab } })
-    }
     /**
      * The component will handle adding/removing event listeners for click/keypress
      * when the passed `active` state has changed. This lets us automatically add
@@ -159,7 +147,6 @@ export default ({ element, mouseEvents }: Options) =>
         children,
         className,
         deactivate,
-        defaultTab, // don't pass
         guid,
         ...rest
       } = this.props
