@@ -2,9 +2,9 @@
 import React, { Component } from 'react'
 
 import PrismHighlighter from 'components/universal/PrismHighlighter'
-import { Alert, Dropdown, Tab } from '../../../lib'
+import { Alert, Card, Dropdown, State, Tab } from '../../../lib'
 
-type State = {
+type ComponentState = {
   color: string,
   colorDropdown: boolean,
   dismissible: boolean
@@ -21,14 +21,22 @@ const colors = [
   'dark'
 ]
 
-export default class extends Component<{}, State> {
+/**
+ * TODO:
+ * Add popover descriptions for:
+ *   - Alert configurations
+ *   - Color
+ *   - Dismissible
+ */
+
+export default class extends Component<{}, ComponentState> {
   state = {
     color: 'success',
     colorDropdown: false,
     dismissible: true
   }
 
-  handleSelectColor = e => {
+  handleSelectColor = (e: { target: { value: string } }) => {
     this.setState({ color: e.target.value, colorDropdown: false })
   }
 
@@ -42,7 +50,14 @@ export default class extends Component<{}, State> {
   render() {
     const { color, colorDropdown, dismissible } = this.state
 
-    const code = `<Alert color="${color}"${dismissible ? ' dismissible' : ''}>
+    const code = dismissible
+      ? `<State defaultActive>
+  <Alert color="${color}" dismissible>
+    <strong>Well done!</strong> You successfully read this important
+    alert message.
+  </Alert>
+</State>`
+      : `<Alert color="${color}">
   <strong>Well done!</strong> You successfully read this important
   alert message.
 </Alert>`
@@ -50,19 +65,30 @@ export default class extends Component<{}, State> {
     return (
       <div className="mb-5">
         <div className="row">
-          <div className="col-10">
+          <div className="col-11">
             <p className="lead mb-5">
               Provide contextual feedback messages for typical user actions with the
               handful of available and flexible alert messages.
             </p>
+            <Alert color="info">
+              Dismissible Alerts require library active props. The component is
+              wrapped using <code>withActive</code> so disimissible Alerts can
+              either be a child of a <code>&lt;State /&gt;</code> component or props{' '}
+              <code>active</code> and <code>deactivate</code> can be passed.
+            </Alert>
             <div className="mb-5">
+              <h4>Alert configurations:</h4>
               {/* <h3 className="mb-4">Alert component</h3> */}
               <form className="form-inline mb-4">
+                Theme color:
                 <Dropdown
+                  className="ml-2"
                   active={colorDropdown}
                   activate={this.triggerColorDropdown}
                 >
-                  <Dropdown.Trigger>Theme color</Dropdown.Trigger>
+                  <div className="bb-success-1">
+                    <Dropdown.Trigger link>{color}</Dropdown.Trigger>
+                  </div>
                   <Dropdown.Content>
                     {colors.map(themeColor => (
                       <Dropdown.Item
@@ -77,156 +103,169 @@ export default class extends Component<{}, State> {
                 </Dropdown>
                 <div className="ml-3">
                   <label className="dismissible" htmlFor="dismissible">
+                    Dismissible:
                     <input
                       id="dismissible"
-                      className="form-check-input"
+                      className="form-check-input ml-2"
                       type="checkbox"
                       checked={dismissible}
                       onChange={this.toggleDismissible}
-                    />{' '}
-                    Dismissible
+                    />
                   </label>
                 </div>
               </form>
-              <Alert color={color} dismissible={dismissible}>
-                <strong>Well done!</strong> You successfully read this important
-                alert message.
-              </Alert>
-            </div>
-            <div className="mb-5">
-              <Tab defaultTab="code" className="row">
-                <div className="col-9">
-                  <Tab.ContentContainer>
-                    <Tab.Content tabId="code">
-                      <PrismHighlighter language="jsx">{code}</PrismHighlighter>
-                    </Tab.Content>
-                    <Tab.Content tabId="props">
-                      <table className="table">
-                        <tbody>
-                          <tr>
-                            <td>Color</td>
-                            <td>
-                              <code>{color}</code>
-                            </td>
-                          </tr>
-                          <tr>
-                            <td>Dismissible</td>
-                            <td>
-                              <code>{String(dismissible)}</code>
-                            </td>
-                          </tr>
-                        </tbody>
-                      </table>
-                    </Tab.Content>
-                  </Tab.ContentContainer>
-                </div>
-                <div className="col-3">
-                  <Tab.Nav vertical pills>
-                    <Tab.Trigger tabId="code">Code</Tab.Trigger>
-                    <Tab.Trigger tabId="props">Props</Tab.Trigger>
-                  </Tab.Nav>
-                </div>
-              </Tab>
+              <Card>
+                <Card.Body>
+                  {dismissible ? (
+                    <State defaultActive>
+                      <Alert color={color} dismissible>
+                        <strong>Well done!</strong> You successfully read this
+                        important alert message.
+                      </Alert>
+                    </State>
+                  ) : (
+                    <Alert color={color}>
+                      <strong>Well done!</strong> You successfully read this
+                      important alert message.
+                    </Alert>
+                  )}
+                </Card.Body>
+              </Card>
+              <PrismHighlighter language="jsx">{code}</PrismHighlighter>
             </div>
             <div className="mb-5">&nbsp;</div>
             <div>
               <div>
-                <h3 className="mb-4 text-right">Props</h3>
-                <table className="table">
-                  <thead>
-                    <tr>
-                      <th>Name</th>
-                      <th>Default</th>
-                      <th>Type</th>
-                      <th>Description</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr>
-                      <td>as</td>
-                      <td>
-                        <code>div</code>
-                      </td>
-                      <td>
-                        <code>
-                          ComponentType&lt;any&gt;<br /> | string
-                        </code>
-                      </td>
-                      <td>
-                        Element type to create, can be a component or an HTML tag
-                        name
-                      </td>
-                    </tr>
-                    <tr>
-                      <td>color</td>
-                      <td>
-                        <code>undefined</code>
-                      </td>
-                      <td>
-                        <code>enum</code>
-                      </td>
-                      <td>
-                        <div>Sets the theme color of alert</div>
-                        <div className="text-muted small d-flex">
-                          <div>Enums: </div>
-                          <div>
-                            <code>&quot;primary&quot;</code>,{' '}
-                            <code>&quot;secondary&quot;</code>,{' '}
-                            <code>&quot;success&quot;</code>,{' '}
-                            <code>&quot;danger&quot;</code>,{' '}
-                            <code>&quot;warning&quot;</code>,{' '}
-                            <code>&quot;info&quot;</code>,{' '}
-                            <code>&quot;light&quot;</code>,{' '}
-                            <code>&quot;dark&quot;</code>
-                          </div>
-                        </div>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td>dismissible</td>
-                      <td>
-                        <code>true</code>
-                      </td>
-                      <td>
-                        <code>boolean</code>
-                      </td>
-                      <td>
-                        Controls whether alert can be dismissed by user, pass{' '}
-                        <code>false</code> to prevent dismissal of an alert.
-                      </td>
-                    </tr>
-                    <tr>
-                      <td>deactivate</td>
-                      <td>
-                        <code>undefined</code>
-                      </td>
-                      <td>
-                        <code>Function</code>
-                      </td>
-                      <td>
-                        When passed, the <code>deactivate</code> will be called in
-                        place of internal state change handler. Note that the
-                        opacity transition and hiding of the component must be
-                        handled externally when passing a custom{' '}
-                        <code>deactivate</code> handler.
-                      </td>
-                    </tr>
-                    <tr>
-                      <td>visibilityTransitionLength</td>
-                      <td>
-                        <code>undefined</code>
-                      </td>
-                      <td>
-                        <code>number</code>
-                      </td>
-                      <td>
-                        Length of opacity transition, if not passed component will
-                        default to 300ms or <code>THEME</code> value if set using{' '}
-                        <code>ThemeProvider</code>.
-                      </td>
-                    </tr>
-                  </tbody>
-                </table>
+                <h3 className="mb-4 text-right" id="props">
+                  Props
+                </h3>
+                <Tab defaultActive="alert" className="row">
+                  <div className="col-9">
+                    <Tab.ContentContainer>
+                      <Tab.Content tabId="alert">
+                        <table className="table">
+                          <thead>
+                            <tr>
+                              <th>Name</th>
+                              <th>Description</th>
+                              <th>Type</th>
+                              <th>Default</th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            <tr>
+                              <td>color</td>
+                              <td>Sets the theme color of alert</td>
+                              <td>
+                                <div className="mb-2">
+                                  <code>enum</code>
+                                </div>
+                                {/* <div className="text-muted small d-flex"> */}
+                                <div className="text-muted small">Enums: [</div>
+                                <div className="text-muted small">
+                                  <code>&quot;primary&quot;</code>,<br />
+                                  <code>&quot;secondary&quot;</code>,<br />
+                                  <code>&quot;success&quot;</code>,<br />
+                                  <code>&quot;danger&quot;</code>,<br />
+                                  <code>&quot;warning&quot;</code>,<br />
+                                  <code>&quot;info&quot;</code>,<br />
+                                  <code>&quot;light&quot;</code>,<br />
+                                  <code>&quot;dark&quot;</code>
+                                  <br />
+                                  ]
+                                </div>
+                                {/* </div> */}
+                              </td>
+                              <td>
+                                <code>undefined</code>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>dismissible</td>
+                              <td>
+                                Controls whether alert can be dismissed by user,
+                                pass <code>false</code> to prevent dismissal of an
+                                alert.
+                              </td>
+                              <td>
+                                <code>boolean</code>
+                              </td>
+                              <td>
+                                <code>false</code>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>deactivate</td>
+                              <td>
+                                When passed, the <code>deactivate</code> will be
+                                called in place of internal state change handler.
+                                Note that the opacity transition and hiding of the
+                                component must be handled externally when passing a
+                                custom <code>deactivate</code> handler.
+                              </td>
+                              <td>
+                                <code>Function</code>
+                              </td>
+                              <td>
+                                <code>undefined</code>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>transitionDuration</td>
+                              <td>
+                                Length of opacity transition, if not passed
+                                component will default to 300ms or{' '}
+                                <code>THEME</code> value if set using{' '}
+                                <code>ThemeProvider</code>.
+                              </td>
+                              <td>
+                                <code>number</code>
+                              </td>
+                              <td>
+                                <code>undefined</code>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </Tab.Content>
+                      <Tab.Content tabId="element">
+                        <table className="table">
+                          <thead>
+                            <tr>
+                              <th>Name</th>
+                              <th>Description</th>
+                              <th>Type</th>
+                              <th>Default</th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            <tr>
+                              <td>as</td>
+                              <td>
+                                Element type to create, can be a component or an
+                                HTML tag name
+                              </td>
+                              <td>
+                                <code>
+                                  ComponentType&lt;any&gt;<br /> | string
+                                </code>
+                              </td>
+                              <td>
+                                <code>div</code>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </Tab.Content>
+                    </Tab.ContentContainer>
+                  </div>
+                  <div className="col-3">
+                    <Tab.Nav vertical pills>
+                      <Tab.Trigger tabId="alert">Alert props</Tab.Trigger>
+                      <Tab.Trigger tabId="element">Element props</Tab.Trigger>
+                    </Tab.Nav>
+                  </div>
+                </Tab>
               </div>
             </div>
           </div>
