@@ -3,7 +3,7 @@
 /**
  * Component routes defined here for reuse between navs.
  */
-const componentRoutes: Array<{ name: string, path: string }> = [
+const componentRoutes: Array<{ name: string, path: string, id: string }> = [
   { name: 'State', path: '/components/state', id: 'State' },
   { name: 'Alerts', path: '/components/alerts', id: 'Alerts' },
   { name: 'Buttons', path: '/components/buttons', id: 'Buttons' },

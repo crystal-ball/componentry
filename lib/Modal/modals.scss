@@ -2,17 +2,10 @@
 // Modals
 // ========================================================
 
-// Bootstrap uses class 'fade' with class 'show' and inline styles to handle modal
-// show/hide. Componentry overrides this to use aria-hidden attr
+// Bootstrap uses inline display styles to show/hide modal, Componentry uses aria
+// attrs
 .modal[aria-hidden="false"] {
   display: block;
-  opacity: 1;
-
-  .modal-dialog {
-    // Bootstrap has a short transition in from top of screen using translate,
-    // triggered by `modal.show`, replicated here with aria-hidden
-    transform: translate(0, 0);
-  }
 }
 
 .modal-backdrop {
@@ -21,10 +14,6 @@
   // filter clicks on the modal because the modal z-index is higher than backdrop
   // z-index so any click on the modal backdrop is actually on the `.modal` div 😔
   z-index: unset;
-
-  &[aria-hidden="false"] {
-    opacity: $modal-backdrop-opacity;
-  }
 }
 
 

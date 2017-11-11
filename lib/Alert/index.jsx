@@ -1,20 +1,15 @@
 // @flow
 import React, { Component, createElement } from 'react'
-import type { ComponentType, Node } from 'react'
-import { number, shape } from 'prop-types'
 import classNames from 'classnames'
 
 import Button from '../Button'
 import withActive from '../HOCs/withActive'
+
 import type { ThemeColors } from '../utils/theme'
+import type { ActiveProps } from '../HOCs/withActive'
+import type { ElementProps } from '../component-factories/element-factory'
 
 type Props = {
-  /**
-   * Render component as
-   */
-  as?: ComponentType<any> | string,
-  children?: Node,
-  className?: string,
   /**
    * Theme color for alert
    */
@@ -27,19 +22,9 @@ type Props = {
    * Length of opacity transition, defaults to 300ms or `THEME` value if set using
    * `ThemeProvider`.
    */
-  transitionDuration?: number,
-
-  activate?: Function,
-  active?: boolean,
-  deactivate: Function
-}
-
-type State = {
-  /**
-   * Hidden controls DOM hidden after opacity transition on dismissal
-   */
-  hidden: boolean
-}
+  transitionDuration?: number
+} & ActiveProps &
+  ElementProps
 
 /**
  * Alerts provide contextual feedback to users. Alerts are available in the info
@@ -48,39 +33,11 @@ type State = {
  * context. For non alert information blocks a card with theme color primary or
  * secondary can be used.
  */
-class Alert extends Component<Props, State> {
-  static contextTypes = {
-    THEME: shape({ transitionDuration: number })
-  }
-
+class Alert extends Component<Props> {
   static defaultProps = {
     active: true,
+    visible: true,
     dismissible: false
-  }
-
-  // Fade controls visibility status and hidden controls DOM position status
-  state = {
-    hidden: false
-  }
-
-  /**
-   * Alert component needs to always call internal handleDismiss so that we can run
-   * the visibility transition. The `active` prop is used to control visibility and
-   * state `hidden` handles aria-hidden post transition.
-   */
-  handleDismiss = (e: SyntheticEvent<HTMLButtonElement>) => {
-    const { transitionDuration = 300 } = this.context.THEME || {}
-    // props has precedence to allow for single instance overrides, context can be
-    // used for app wide configs, fall back to defaults
-    const timer: number = this.props.transitionDuration || transitionDuration
-
-    // Immediately deactivate the alert, this will begin the opacity fade
-    this.props.deactivate(e, this)
-
-    // Roughly when transition is finished, add aria-hidden to element to remove display
-    setTimeout(() => {
-      this.setState({ hidden: true })
-    }, timer)
   }
 
   // Render
@@ -95,7 +52,7 @@ class Alert extends Component<Props, State> {
       color,
       dismissible,
       deactivate,
-      transitionDuration, // prevent dom inclusion
+      visible,
       ...rest
     } = this.props
 
@@ -103,21 +60,19 @@ class Alert extends Component<Props, State> {
       as || 'div',
       {
         role: 'alert',
-        className: classNames('alert', className, {
+        className: classNames('alert', 'fade', className, {
           [`alert-${color}`]: color,
-          // When not active add fade class to begin opacity transtion, element is
-          // hidden from DOM after transition length
-          fade: !active
+          show: visible
         }),
         // hidden state is updated after active opacity transition
-        'aria-hidden': this.state.hidden ? 'true' : 'false',
+        'aria-hidden': active ? 'false' : 'true',
         ...rest
       },
       // Alert contents:
       <div className="alert-content">{children}</div>,
       // Render a close button or null depending on configs
       dismissible && (
-        <Button link onClick={this.handleDismiss} className={`text-${color}`}>
+        <Button link onClick={deactivate} className={`text-${color}`}>
           <svg className="icon close font" role="img" aria-label="close">
             <use href="#close" />
           </svg>
@@ -127,6 +82,6 @@ class Alert extends Component<Props, State> {
   }
 }
 
-const withActiveAlert = withActive(Alert)
+const withActiveAlert = withActive({ transitionState: true })(Alert)
 
 export default withActiveAlert

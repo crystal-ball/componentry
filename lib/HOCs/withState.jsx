@@ -64,6 +64,14 @@ class ActiveState {
   }
 }
 
+export type ContextActive = {
+  activate: Function,
+  deactivate: Function,
+  getActive: Function,
+  guid: string,
+  subscribe: Function
+}
+
 type Props = {
   active: boolean | string,
   activate: Function,

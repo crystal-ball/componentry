@@ -1,23 +1,51 @@
 // @flow
 import React, { Component } from 'react'
 import type { ComponentType } from 'react'
-import { func, shape, string } from 'prop-types'
+import { func, number, shape, string } from 'prop-types'
 
 import getDisplayName from '../utils/getDisplayName'
+import type { Theme } from '../ThemeProvider'
+import type { ContextActive } from './withState'
+
+export type ActiveProps = {
+  activate?: Function,
+  active?: boolean,
+  deactivate?: Function,
+  visible?: boolean
+}
+
+type Options = {
+  /**
+   * For active state components that should have a transition, eg Alerts and
+   * Modals. Setting this to true will provide visibility and active props to
+   * transition opacity before updating active state
+   */
+  transitionState: boolean
+}
+
+type Props = {
+  /**
+   * Override the default 300ms/ THEME duration for a specific component
+   */
+  transitionDuration?: number
+}
 
 type State = {
-  active: boolean
+  active: boolean,
+  visible: boolean
 }
 
 /**
- * HOC passes active state props along with computed aria attributes for the state.
- * The `active`, `activate` and `deactivate` props are passed from active state
- * provider through context.
- * @param ariaConfigs Options object describes aria attributes to pass down
+ * HOC passes active state props along with computed aria attributes. Component is
+ * responsible for passing ACTIVE context as props and handling state transitions
+ * when appropriate.
  */
-export default (Wrapped: ComponentType<*>) =>
-  class WithActive extends Component<{}, State> {
+export default ({ transitionState = false }: Options = {}) => (
+  Wrapped: ComponentType<*>
+) =>
+  class WithActive extends Component<Props, State> {
     unsubscribe: Function
+    transitionDuration: number
 
     // $FlowFixMe
     static Header = Wrapped.Header
@@ -38,14 +66,16 @@ export default (Wrapped: ComponentType<*>) =>
         getActive: func,
         guid: string,
         subscribe: func
+      }),
+      THEME: shape({
+        transitionDuration: number
       })
     }
 
-    /**
-     * Active state is only used to trigger renders, passed state should only come
-     * from context.
-     */
-    state = { active: false }
+    state = {
+      active: false,
+      visible: false
+    }
 
     /**
      * If this HOC is used outside the scope of a `withState` HOC, the ACTIVE
@@ -54,23 +84,28 @@ export default (Wrapped: ComponentType<*>) =>
      */
     invalidContext: boolean = false
 
-    constructor(props: {}, context: { ACTIVE?: {} }) {
+    constructor(props: Props, context: { ACTIVE?: ContextActive, THEME?: Theme }) {
       super(props)
-      // Update `invalidContext` flag if ACTIVE is not truthy
+      // Update bail out flag when context is not present
       if (!context.ACTIVE) this.invalidContext = true
+
+      const { transitionDuration = 300 } = context.THEME || {}
+
+      // props has precedence to allow for single instance overrides, context
+      // can be used for app wide configs, fall back to defaults
+      this.transitionDuration = this.props.transitionDuration || transitionDuration
     }
 
     // Hooks
     // ---------------------------------------------------------------------------
     /**
-     * Ensure that state used for causing renders matches context state before first
-     * render
+     * Ensure that state matches context before first render
      */
     componentWillMount() {
       if (this.invalidContext) return
 
       const active = this.context.ACTIVE.getActive()
-      if (this.state.active !== active) this.setState({ active })
+      if (this.state.active !== active) this.setState({ active, visible: active })
     }
     /**
      * Subscribe to active state updates on mount, trigger renders with setState
@@ -82,7 +117,39 @@ export default (Wrapped: ComponentType<*>) =>
       if (this.invalidContext) return
 
       this.unsubscribe = this.context.ACTIVE.subscribe(active => {
-        if (active !== this.state.active) this.setState({ active })
+        if (active !== this.state.active) {
+          /**
+           * Handle: transitionState and order of transitions:
+           *
+           * When transition state is true, the visible and active state is
+           * transitioned for opacity transitions:
+           *
+           * 1. When activating, set active true immediately for `display`, then
+           *    wait 15ms before starting visibility transition otherwise browsers
+           *    see the `display` and visibility transitions as the same event and
+           *    the CSS transitions don't happen
+           * 2. When deactivating, set visibility false to begin transition, after
+           *    the visibility transition completes set active false for `display`
+           *    changes
+           */
+          if (transitionState) {
+            if (active) {
+              this.setState({ active }, () => {
+                setTimeout(() => {
+                  this.setState({ visible: active })
+                }, 15)
+              })
+            } else {
+              this.setState({ visible: active }, () => {
+                setTimeout(() => {
+                  this.setState({ active })
+                }, this.transitionDuration)
+              })
+            }
+          } else {
+            this.setState({ active })
+          }
+        }
       })
     }
     /**
@@ -97,14 +164,16 @@ export default (Wrapped: ComponentType<*>) =>
     render() {
       if (this.invalidContext) return <Wrapped {...this.props} />
 
-      const { activate, deactivate, guid, getActive } = this.context.ACTIVE
+      const { activate, deactivate, guid } = this.context.ACTIVE
+      const { active, visible } = this.state
 
       return (
+        // Only pass visible state if the consuming component has state transitions
         <Wrapped
           guid={guid}
-          active={getActive()}
           activate={activate}
           deactivate={deactivate}
+          {...(transitionState ? { active, visible } : { active })}
           {...this.props}
         />
       )

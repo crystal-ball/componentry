@@ -22,7 +22,7 @@ type Options = {
   tag?: ComponentType<any> | string
 }
 
-type Props = {
+export type ElementProps = {
   /**
    * Component parent element render type, can be an HMTL tag or component type
    */
@@ -48,7 +48,7 @@ type Props = {
  * @returns {Component} React functional stateless component with base classes.
  */
 export default ({ attrs = {}, classes, displayName, tag }: Options = {}) => {
-  const Element = ({ as, children, className, ...rest }: Props) =>
+  const Element = ({ as, children, className, ...rest }: ElementProps) =>
     createElement(
       // Props have precedence, use factory tag as default
       as || tag || 'div',

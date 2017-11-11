@@ -1,4 +1,3 @@
-// @flow
 import React from 'react'
 
 import StatefulNameLink from 'components/universal/Navigations/StatefulNameLink'

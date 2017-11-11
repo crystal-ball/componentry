@@ -14,7 +14,8 @@ type Props = {
   ariaTitle?: string,
   children?: Node,
   deactivate?: Function,
-  size?: 'small' | 'large'
+  size?: 'small' | 'large',
+  visible?: boolean
 }
 
 /**
@@ -49,7 +50,7 @@ class Modal extends Component<Props> {
   // Render
   // ---------------------------------------------------------------------------
   render() {
-    const { active, ariaTitle, children, deactivate, size } = this.props
+    const { active, ariaTitle, children, deactivate, size, visible } = this.props
     // $FlowFixMe
     const dialogClassNames = classNames('modal-dialog', { [`modal-${size}`]: size })
 
@@ -57,13 +58,14 @@ class Modal extends Component<Props> {
       <div
         aria-hidden={active ? 'false' : 'true'}
         aria-labelledby={`${this.guid}`}
-        className="modal fade"
+        className={classNames('modal', 'fade', { show: visible })}
         role="dialog"
         tabIndex="-1"
       >
+        {/* See SCSS file for explanation on backdrop markdown order/position */}
         <div
           aria-hidden={active ? 'false' : 'true'}
-          className="modal-backdrop fade"
+          className={classNames('modal-backdrop', 'fade', { show: visible })}
           onClick={deactivate}
           onKeyPress={deactivate}
           role="presentation"
@@ -85,4 +87,4 @@ class Modal extends Component<Props> {
   }
 }
 
-export default withActive(Modal)
+export default withActive({ transitionState: true })(Modal)
