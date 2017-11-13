@@ -19,8 +19,11 @@ import FourOhFour from '../FourOhFour'
 // component and passing a theme configuration object
 // TODO: Docs
 const theme = {
-  defaultButtonColor: 'primary',
-  transitionDuration: 350
+  transitionDuration: 350,
+  Button: {
+    // Buttons for documentation site are primary theme color as default
+    color: 'primary'
+  }
 }
 
 export default () => (

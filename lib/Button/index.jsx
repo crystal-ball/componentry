@@ -1,7 +1,7 @@
 // @flow
 import { createElement } from 'react'
 import type { ComponentType, Node } from 'react'
-import { shape, string } from 'prop-types'
+import { object, shape } from 'prop-types'
 import classNames from 'classnames'
 
 import type { ThemeColors } from '../utils/theme'
@@ -48,7 +48,7 @@ type Props = {
 }
 
 type Context = {
-  THEME: { defaultButtonColor: string }
+  THEME: { Button: { [string]: any } }
 }
 
 /**
@@ -60,22 +60,33 @@ type Context = {
  * be used with the `link` prop.
  */
 const Button = (
-  { as, className, color, link, outline, size, children, ...rest }: Props,
-  { THEME: { defaultButtonColor = 'primary' } = {} }: Context
+  props: Props,
+  { THEME: { Button: buttonContext = {} } = {} }: Context
 ) => {
-  // If color isn't passed, use defaultButtonColor
-  const renderColor: string = color === undefined ? defaultButtonColor : color
+  // Compute props values with context defaults
+  const {
+    as,
+    className,
+    color,
+    link,
+    outline,
+    size,
+    children,
+    ...rest
+  } = Object.assign({}, buttonContext, props)
 
   return createElement(
     as || 'button',
     {
       type: 'button',
-      // Always include class 'btn' and passed className
-      // btn-color for non link, non outline buttons that have a theme color
-      className: classNames('btn', className, {
-        [`btn-${renderColor}`]: renderColor && !link && !outline,
+      // Always include class 'btn' and passed className, include buttonContext
+      // explicitly as it will be overriden in props compute
+      className: classNames('btn', className, buttonContext.className, {
+        // btn-<COLOR> class is only for regular themed buttons, suppress for other
+        // btn theme flavors
+        [`btn-${color}`]: color && !link && !outline,
         'btn-anchor': link, // Will create a button that looks just like an anchor
-        [`btn-outline-${renderColor}`]: outline,
+        [`btn-outline-${color}`]: outline,
         'btn-lg': size === 'large',
         'btn-sm': size === 'small'
       }),
@@ -85,8 +96,6 @@ const Button = (
   )
 }
 
-Button.contextTypes = {
-  THEME: shape({ defaultButtonColor: string })
-}
+Button.contextTypes = { THEME: shape({ Button: object }) }
 
 export default Button
