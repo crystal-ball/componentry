@@ -2,15 +2,15 @@
 
 exports[`renders correctly 1`] = `
 <div
-  className="state"
-  data-test="state-container"
+  className={undefined}
+  data-test={undefined}
   onMouseEnter={undefined}
   onMouseLeave={undefined}
 >
   <button
     aria-controls="guid"
-    className="btn state-toggle btn-primary"
-    data-test="state-toggle"
+    className="btn btn-primary"
+    data-test={undefined}
     onClick={[Function]}
     type="button"
   >
@@ -18,8 +18,8 @@ exports[`renders correctly 1`] = `
   </button>
   <div
     aria-hidden="true"
-    className="state-content"
-    data-test="state-content"
+    className={undefined}
+    data-test={undefined}
     id="guid"
   >
     Content

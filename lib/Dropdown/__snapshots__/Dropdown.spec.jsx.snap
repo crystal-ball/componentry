@@ -26,12 +26,16 @@ exports[`renders correctly 1`] = `
   >
     <button
       className="btn dropdown-item btn-primary"
+      data-test={undefined}
+      onClick={[Function]}
       type="button"
     >
       Item 1
     </button>
     <button
       className="btn dropdown-item btn-primary"
+      data-test={undefined}
+      onClick={[Function]}
       type="button"
     >
       Item 2

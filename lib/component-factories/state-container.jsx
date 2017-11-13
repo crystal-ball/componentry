@@ -165,8 +165,8 @@ export default ({ element, mouseEvents, name }: Options) =>
       return createElement(
         as || 'div',
         {
-          'data-test': element ? `${element}-container` : null,
-          className: classNames(element, className) || null,
+          'data-test': element ? `${element}-container` : undefined,
+          className: classNames(element, className) || undefined,
           onMouseEnter: mouseEvents ? activate : undefined,
           onMouseLeave: mouseEvents ? deactivate : undefined,
           // DO NOT PASS STATE PROPS THROUGH (SEE DECONSTRUCTION)!

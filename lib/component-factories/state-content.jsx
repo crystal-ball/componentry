@@ -52,7 +52,7 @@ export default (
     createElement(
       as || 'div',
       {
-        'data-test': element ? `${element}-content` : null,
+        'data-test': element ? `${element}-content` : undefined,
         ...arias({
           guid,
           active,
@@ -69,9 +69,10 @@ export default (
               }
             : {})
         }),
-        className: classNames(className, classes, {
-          [`${element}-content`]: element
-        }),
+        className:
+          classNames(className, classes, {
+            [`${element}-content`]: element
+          }) || undefined,
         // DO NOT PASS STATE PROPS THROUGH (SEE DECONSTRUCTION)!
         // Always pass ...rest last so that any instance props will override the
         // defaults or factory configurations

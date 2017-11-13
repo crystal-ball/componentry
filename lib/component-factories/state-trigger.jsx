@@ -53,7 +53,7 @@ export default (
     createElement(
       as || Button,
       {
-        'data-test': element ? `${element}-toggle` : null,
+        'data-test': element ? `${element}-toggle` : undefined,
         ...arias({
           guid,
           active,
