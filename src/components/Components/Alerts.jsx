@@ -6,7 +6,6 @@ import { Alert, Card, Dropdown, State, Tab } from '../../../lib'
 
 type ComponentState = {
   color: string,
-  colorDropdown: boolean,
   dismissible: boolean
 }
 
@@ -32,23 +31,19 @@ const colors = [
 export default class extends Component<{}, ComponentState> {
   state = {
     color: 'success',
-    colorDropdown: false,
     dismissible: true
   }
 
   handleSelectColor = (e: { target: { value: string } }) => {
-    this.setState({ color: e.target.value, colorDropdown: false })
+    this.setState({ color: e.target.value })
   }
 
-  triggerColorDropdown = () => {
-    this.setState({ colorDropdown: !this.state.colorDropdown })
-  }
   toggleDismissible = () => {
     this.setState({ dismissible: !this.state.dismissible })
   }
 
   render() {
-    const { color, colorDropdown, dismissible } = this.state
+    const { color, dismissible } = this.state
 
     const code = dismissible
       ? `<State defaultActive>
@@ -67,35 +62,18 @@ export default class extends Component<{}, ComponentState> {
         <div className="row">
           <div className="col-11">
             <p className="lead mb-5">
-              Provide contextual feedback messages for typical user actions with the
-              handful of available and flexible alert messages.
+              Alerts provide contextual feedback messages for typical user actions
+              with the handful of available and flexible alert messages.
             </p>
-            <Alert color="info">
-              Dismissible Alerts require library active props. The component is
-              wrapped using <code>withActive</code> so disimissible Alerts can
-              either be a child of a <code>&lt;State /&gt;</code> component or props{' '}
-              <code>active</code> and <code>deactivate</code> can be passed.
-            </Alert>
             <div className="mb-5">
               <h4>Alert configurations:</h4>
-              {/* <h3 className="mb-4">Alert component</h3> */}
               <form className="form-inline mb-4">
                 Theme color:
-                <Dropdown
-                  className="ml-2"
-                  active={colorDropdown}
-                  activate={this.triggerColorDropdown}
-                >
-                  <div className="bb-success-1">
-                    <Dropdown.Trigger link>{color}</Dropdown.Trigger>
-                  </div>
+                <Dropdown className="ml-2" onDeactivated={this.handleSelectColor}>
+                  <Dropdown.Trigger link>{color}</Dropdown.Trigger>
                   <Dropdown.Content>
                     {colors.map(themeColor => (
-                      <Dropdown.Item
-                        key={themeColor}
-                        onClick={this.handleSelectColor}
-                        value={themeColor}
-                      >
+                      <Dropdown.Item key={themeColor} value={themeColor}>
                         {themeColor}
                       </Dropdown.Item>
                     ))}
@@ -133,6 +111,12 @@ export default class extends Component<{}, ComponentState> {
               </Card>
               <PrismHighlighter language="jsx">{code}</PrismHighlighter>
             </div>
+            <Alert color="info">
+              Dismissible Alerts require library active props. The component is
+              wrapped using <code>withActive</code> so disimissible Alerts can
+              either be a child of a <code>&lt;State /&gt;</code> component or props{' '}
+              <code>active</code> and <code>deactivate</code> can be passed.
+            </Alert>
             <div className="mb-5">&nbsp;</div>
             <div>
               <div>

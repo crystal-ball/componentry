@@ -88,9 +88,10 @@
   }
 }
 
-.dropdown-menu.show {
-  display: block;
-}
+// @COMPONENTRY: use aria-hidden for show/hide
+// .dropdown-menu.show {
+//   display: block;
+// }
 
 // Dropdown section headers
 .dropdown-header {

@@ -9,7 +9,9 @@ type Options = {
   /** Name of element, used for classes and handler selection */
   element?: string,
   /** When tue the state container will register handlers for mouse events */
-  mouseEvents?: boolean
+  mouseEvents?: boolean,
+  /** The display name for the component, specified for better debugging */
+  name: string
 }
 
 type Props = {
@@ -28,8 +30,9 @@ type Props = {
  * Factory returns custom `<State />` components defined by the options.
  * State components handle...
  */
-export default ({ element, mouseEvents }: Options) =>
+export default ({ element, mouseEvents, name }: Options) =>
   class StateContainer extends Component<Props> {
+    static displayName = name
     /**
      * Internal cache for width of tooltip content. Set after calculating content
      * width and reused on subsequent renders if content text has not changed.
@@ -167,6 +170,8 @@ export default ({ element, mouseEvents }: Options) =>
           onMouseEnter: mouseEvents ? activate : undefined,
           onMouseLeave: mouseEvents ? deactivate : undefined,
           // DO NOT PASS STATE PROPS THROUGH (SEE DECONSTRUCTION)!
+          // Always pass ...rest last so that any instance props will override the
+          // defaults or factory configurations
           ...rest
         },
         children

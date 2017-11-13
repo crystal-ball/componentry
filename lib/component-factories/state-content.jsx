@@ -12,6 +12,8 @@ type Options = {
   componentArias: ComponentArias,
   /** Name of element, used for classes and handler selection */
   element?: string,
+  /** The display name for the component, specified for better debugging */
+  name: string,
   /** Flag to include the markup for a content tip element */
   tip?: boolean
 }
@@ -34,48 +36,55 @@ type Props = {
  * Content components handle setting correct aria attributes and markup
  */
 export default (
-  { classes = '', componentArias, element = '', tip = false }: Options = {}
-) => ({
-  activate,
-  active,
-  as,
-  children,
-  className,
-  deactivate,
-  guid,
-  tabId = '',
-  ...rest
-}: Props) =>
-  createElement(
-    as || 'div',
-    {
-      'data-test': element ? `${element}-content` : null,
-      ...arias({
-        guid,
-        active,
-        ...componentArias,
-        // Tabs have different arias to handle multiple show/hide elements. The
-        // passed id is used for trigger and content components, these arias will
-        // override the standard componentArias
-        ...(tabId
-          ? {
-              active: tabId === active,
-              id: `${tabId}-content`,
-              labelledby: `${tabId}-tab`,
-              hidden: true
-            }
-          : {})
-      }),
-      className: classNames(className, classes, {
-        [`${element}-content`]: element
-      }),
-      // DO NOT PASS STATE PROPS THROUGH (SEE DECONSTRUCTION)!
-      ...rest
-    },
-    tip && (
-      <div className="tip-container">
-        <div className="tip" />
-      </div>
-    ),
-    children
-  )
+  { classes = '', componentArias, element = '', name, tip = false }: Options = {}
+) => {
+  const Content = ({
+    activate,
+    active,
+    as,
+    children,
+    className,
+    deactivate,
+    guid,
+    tabId = '',
+    ...rest
+  }: Props) =>
+    createElement(
+      as || 'div',
+      {
+        'data-test': element ? `${element}-content` : null,
+        ...arias({
+          guid,
+          active,
+          ...componentArias,
+          // Tabs have different arias to handle multiple show/hide elements. The
+          // passed id is used for trigger and content components, these arias will
+          // override the standard componentArias
+          ...(tabId
+            ? {
+                active: tabId === active,
+                id: `${tabId}-content`,
+                labelledby: `${tabId}-tab`,
+                hidden: true
+              }
+            : {})
+        }),
+        className: classNames(className, classes, {
+          [`${element}-content`]: element
+        }),
+        // DO NOT PASS STATE PROPS THROUGH (SEE DECONSTRUCTION)!
+        // Always pass ...rest last so that any instance props will override the
+        // defaults or factory configurations
+        ...rest
+      },
+      tip && (
+        <div className="tip-container">
+          <div className="tip" />
+        </div>
+      ),
+      children
+    )
+
+  Content.displayName = name
+  return Content
+}

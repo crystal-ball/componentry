@@ -19,6 +19,7 @@
   // Remove additional button styles for anchor appearance
   -webkit-appearance: none !important; // Remove Chrome native button styling
   border: none;
+  border-radius: 0;
   font-family: $font-family-sans-serif;
   line-height: $line-height-base;
   padding: 0;

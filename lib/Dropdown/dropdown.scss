@@ -12,3 +12,14 @@
   // In Bs this is applied by adding .show class
   display: block;
 }
+
+// Add styles for inline dropdowns for a border bottom that matches the anchor color
+// Helps the dropdown to stand out, even when used inline style
+.dropdown-toggle.btn-anchor {
+  border-bottom: 1px solid $dropdown-trigger-border-color;
+
+  @include hover-focus {
+    border-bottom: 1px solid $dropdown-trigger-hover-border-color;
+    text-decoration: none; // Trigger border is the decoration
+  }
+}

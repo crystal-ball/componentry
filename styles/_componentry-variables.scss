@@ -14,3 +14,8 @@ $icon-bottom: -0.125em !default;
 // When true this will include background-image rules for the close and chevron
 // icons, if you have an SVG system set-up this should be false to use real SVGs
 $include-icons: false !default;
+
+// Dropdowns
+// Provide option to customize border below inline dropdown triggers
+$dropdown-trigger-border-color: $link-color !default;
+$dropdown-trigger-hover-border-color: $link-hover-color !default;

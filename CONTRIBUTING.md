@@ -93,6 +93,8 @@ see the `.babelrc` file for more info.
 
 ## Help Wanted/Todo
 
+- Add theme configs for default component configurations so that you could do
+  something like configure all drawers to use `link` by default
 - When developing the library components, hot load doesn't work and throws warnings
   because any component needs to be extracted to its own variable. Check output size
   to see if there's any difference when assigning subcomponents directly to a parent
