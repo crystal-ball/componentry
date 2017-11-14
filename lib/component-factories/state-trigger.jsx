@@ -23,6 +23,7 @@ type Props = {
   as?: ComponentType<any> | string,
   children?: Node,
   className?: string,
+  link?: boolean,
   tabId?: string,
   // Active boolean + change handlers from withActive HOC
   activate: Function,
@@ -53,7 +54,7 @@ export default (
       // YOU SHALL NOT PASS 🙅
       className,
       ...rest
-    } = { ...componentCtx, ...props }
+    }: Props = { ...componentCtx, ...props }
 
     return createElement(
       as || Button,

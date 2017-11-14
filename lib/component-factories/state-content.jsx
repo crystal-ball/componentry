@@ -19,7 +19,7 @@ type Options = {
   tip?: boolean
 }
 
-// TODO: why is props not being recognized as used in this component?
+// TODO: is this fixable?
 /* eslint-disable react/no-unused-prop-types */
 type Props = {
   // Component props
@@ -55,7 +55,7 @@ export default (
       className,
       deactivate,
       ...rest
-    } = { ...componentCtx, ...props }
+    }: Props = { ...componentCtx, ...props }
 
     return createElement(
       as || 'div',

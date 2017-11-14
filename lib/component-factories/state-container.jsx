@@ -1,5 +1,5 @@
 // @flow
-import { Component, createElement } from 'react'
+import React, { Component, createElement } from 'react'
 import type { ComponentType, Node } from 'react'
 import { object, shape } from 'prop-types'
 import classNames from 'classnames'
@@ -7,6 +7,10 @@ import classNames from 'classnames'
 import { closest, getTextWidth } from '../utils/dom'
 
 type Options = {
+  /** Component's `Content` subcomponent */
+  Content: ComponentType<any>,
+  /** Component's `Trigger` subcomponent */
+  Trigger: ComponentType<any>,
   /** Name of element, used for classes and handler selection */
   element?: string,
   /** When tue the state container will register handlers for mouse events */
@@ -15,9 +19,12 @@ type Options = {
   name: string
 }
 
-// TODO: why is props not being recognized as used in this component?
+// TODO: is this fixable?
 /* eslint-disable react/no-unused-prop-types */
 type Props = {
+  // Subcomponent shorthand props
+  Content?: string,
+  Trigger?: string,
   // Component props
   as?: ComponentType<any> | string,
   children?: Node | Function,
@@ -33,7 +40,7 @@ type Props = {
  * Factory returns custom `<State />` components defined by the options.
  * State components handle...
  */
-export default ({ element, mouseEvents, name }: Options) =>
+export default ({ element, mouseEvents, name, Content, Trigger }: Options) =>
   class StateContainer extends Component<Props> {
     static displayName = name
 
@@ -146,6 +153,8 @@ export default ({ element, mouseEvents, name }: Options) =>
       const THEME = this.context.THEME || {}
       const componentCtx = THEME[name] || {}
       const {
+        Content: ContentProp,
+        Trigger: TriggerProp,
         activate,
         active,
         as,
@@ -155,7 +164,7 @@ export default ({ element, mouseEvents, name }: Options) =>
         // YOU SHALL NOT PASS 🙅
         className,
         ...rest
-      } = { ...componentCtx, ...this.props }
+      }: Props = { ...componentCtx, ...this.props }
 
       // When `State` is used with FaCC pattern, call func with state and change
       // methods
@@ -175,30 +184,11 @@ export default ({ element, mouseEvents, name }: Options) =>
           onMouseLeave: mouseEvents ? deactivate : undefined,
           ...rest
         },
-        children
+        // If shorthand values for Trigger/Content were passed in props, render
+        // subcomponents with prop as children
+        TriggerProp && <Trigger>{TriggerProp}</Trigger>,
+        children || null,
+        ContentProp && <Content>{ContentProp}</Content>
       )
     }
   }
-
-/* <As className={className} {...dom}>
-  {Trigger &&
-    <ToggleTrigger
-      active={active}
-      arias={triggerArias}
-      elementType={elementType}
-      guid={guid}
-      toggleActive={toggleActive}
-    >
-      {Trigger}
-    </ToggleTrigger>}
-  {this.renderChildren(children, active)}
-  {Content &&
-    <ToggleContent
-      active={active}
-      arias={contentArias}
-      elementType={elementType}
-      guid={guid}
-    >
-      {Content}
-    </ToggleContent>}
-</As> */
