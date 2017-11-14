@@ -1,6 +1,7 @@
 // @flow
 import { Component, createElement } from 'react'
 import type { ComponentType, Node } from 'react'
+import { object, shape } from 'prop-types'
 import classNames from 'classnames'
 
 import { closest, getTextWidth } from '../utils/dom'
@@ -14,6 +15,8 @@ type Options = {
   name: string
 }
 
+// TODO: why is props not being recognized as used in this component?
+/* eslint-disable react/no-unused-prop-types */
 type Props = {
   // Component props
   as?: ComponentType<any> | string,
@@ -33,16 +36,19 @@ type Props = {
 export default ({ element, mouseEvents, name }: Options) =>
   class StateContainer extends Component<Props> {
     static displayName = name
+
+    static contextTypes = { THEME: shape({ [name]: object }) }
+
     /**
      * Internal cache for width of tooltip content. Set after calculating content
      * width and reused on subsequent renders if content text has not changed.
      */
-    contentWidth = null
+    contentWidth: ?number = null
     /**
      * Internal cache for tooltip content. Used to check if the content has changed
      * between showings of tooltip.
      */
-    content = null
+    content: ?string = null
 
     // Hooks
     // ---------------------------------------------------------------------------
@@ -55,7 +61,7 @@ export default ({ element, mouseEvents, name }: Options) =>
      * not to update state during these events
      * @param {Object} nextProps
      */
-    componentWillReceiveProps({ active }: { active: boolean }) {
+    componentWillReceiveProps({ active }: Props) {
       if (this.props.active !== active) {
         if (active) this.handleActivated()
         if (!active) this.handleDeactivated()
@@ -67,13 +73,13 @@ export default ({ element, mouseEvents, name }: Options) =>
     /**
      * Call deactivate if click event was not inside the element
      */
-    clickHandler = (e: SyntheticEvent<HTMLButtonElement>) => {
+    clickHandler: EventHandler = (e): void => {
       if (!closest(e.target, element)) this.props.deactivate(e)
     }
     /**
      * Call deactivate on keypress if `esc` (27) was pressed
      */
-    keyHandler = (e: SyntheticKeyboardEvent<>) => {
+    keyHandler: KeyboardEventHandler = (e): void => {
       if (e.which === 27) this.props.deactivate(e)
     }
     /**
@@ -82,30 +88,28 @@ export default ({ element, mouseEvents, name }: Options) =>
     handleActivated = () => {
       // Don't close drawers on `esc`
       if (element !== 'drawer') {
-        // $FlowFixMe
         document.addEventListener('keydown', this.keyHandler)
       }
 
       // Add click outside container handlers for dropdowns only
       if (element === 'dropdown') {
-        // $FlowFixMe
         document.addEventListener('mouseup', this.clickHandler)
-        // $FlowFixMe
         document.addEventListener('touchend', this.clickHandler)
       }
 
       if (element === 'tooltip' || element === 'popover') {
-        // Position absolute tooltip is constrained by the parent width. Set tooltip
-        // width to content width to overflow parent bounds
+        // Position absolute tooltip & popover is constrained by the parent width.
+        // Set tooltip width to content width to overflow parent bounds
         const contentElement = document.getElementById(this.props.guid)
-        // $FlowFixMe
+
+        if (!contentElement) return // Bail out just in case nothing is found
+
         const content = contentElement.innerText
         this.content = content
 
         if (content === this.content && this.contentWidth) {
           // If width has already been calculated and content has not changed, use
           // cached width for performance
-          // $FlowFixMe
           contentElement.style.width = `${this.contentWidth}px`
         } else {
           // Get all styles of content element, set width and cache
@@ -117,7 +121,6 @@ export default ({ element, mouseEvents, name }: Options) =>
             parseFloat(styles.paddingRight) +
             1
 
-          // $FlowFixMe
           contentElement.style.width = `${width}px`
           this.contentWidth = width
         }
@@ -128,14 +131,11 @@ export default ({ element, mouseEvents, name }: Options) =>
      */
     handleDeactivated = () => {
       if (element !== 'drawer') {
-        // $FlowFixMe
         document.removeEventListener('keydown', this.keyHandler)
       }
 
       if (element === 'dropdown') {
-        // $FlowFixMe
         document.removeEventListener('mouseup', this.clickHandler)
-        // $FlowFixMe
         document.removeEventListener('touchend', this.clickHandler)
       }
     }
@@ -143,35 +143,36 @@ export default ({ element, mouseEvents, name }: Options) =>
     // Render
     // ---------------------------------------------------------------------------
     render() {
+      const THEME = this.context.THEME || {}
+      const componentContext = THEME[name] || {}
       const {
         activate,
         active,
         as,
         children,
-        className,
         deactivate,
         guid,
+        // YOU SHALL NOT PASS 🙅
+        className,
         ...rest
-      } = this.props
+      } = { ...componentContext, ...this.props }
 
-      // When State is used with FaCC pattern, call func with state and change
+      // When `State` is used with FaCC pattern, call func with state and change
       // methods
       if (typeof children === 'function')
         return children({ active, activate, deactivate })
 
       // For elements with mouse events we need to know when the mouse event occurs
       // on the parent element, not the trigger element
-      // $FlowFixMe
       return createElement(
         as || 'div',
         {
           'data-test': element ? `${element}-container` : undefined,
-          className: classNames(element, className) || undefined,
+          className:
+            classNames(element, componentContext.className, this.props.className) ||
+            undefined,
           onMouseEnter: mouseEvents ? activate : undefined,
           onMouseLeave: mouseEvents ? deactivate : undefined,
-          // DO NOT PASS STATE PROPS THROUGH (SEE DECONSTRUCTION)!
-          // Always pass ...rest last so that any instance props will override the
-          // defaults or factory configurations
           ...rest
         },
         children

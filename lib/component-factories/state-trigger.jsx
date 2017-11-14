@@ -1,6 +1,6 @@
 // @flow
 import { createElement } from 'react'
-import type { ComponentType } from 'react'
+import type { ComponentType, Node } from 'react'
 import { object, shape } from 'prop-types'
 import classNames from 'classnames'
 
@@ -53,7 +53,7 @@ export default (
       // YOU SHALL NOT PASS 🙅
       className,
       ...rest
-    } = Object.assign({}, componentContext, props)
+    } = { ...componentContext, ...props }
 
     return createElement(
       as || Button,
@@ -75,12 +75,17 @@ export default (
               }
             : {})
         }),
-        className: classNames(classes, componentContext.className, props.clasName, {
-          // For tab triggers add active if the tab is selected
-          active: tabId && active === tabId,
-          [`${element}-toggle`]: element,
-          'inline-trigger': link
-        }),
+        className: classNames(
+          classes,
+          componentContext.className,
+          props.className,
+          {
+            // For tab triggers add active if the tab is selected
+            active: tabId && active === tabId,
+            [`${element}-toggle`]: element,
+            'inline-trigger': link
+          }
+        ),
         onClick: active ? deactivate : activate,
         link,
         // For tabs, the value is used in `withState` to handle changing the active

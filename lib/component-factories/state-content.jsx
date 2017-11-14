@@ -1,5 +1,4 @@
 // @flow
-/* eslint-disable react/no-unused-prop-types */
 import React, { createElement } from 'react'
 import type { Node, ComponentType } from 'react'
 import { object, shape } from 'prop-types'
@@ -20,6 +19,8 @@ type Options = {
   tip?: boolean
 }
 
+// TODO: why is props not being recognized as used in this component?
+/* eslint-disable react/no-unused-prop-types */
 type Props = {
   // Component props
   as?: ComponentType<any> | string,
@@ -54,7 +55,7 @@ export default (
       className,
       deactivate,
       ...rest
-    } = Object.assign({}, componentContext, props)
+    } = { ...componentContext, ...props }
 
     return createElement(
       as || 'div',
