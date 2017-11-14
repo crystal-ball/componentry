@@ -144,7 +144,7 @@ export default ({ element, mouseEvents, name }: Options) =>
     // ---------------------------------------------------------------------------
     render() {
       const THEME = this.context.THEME || {}
-      const componentContext = THEME[name] || {}
+      const componentCtx = THEME[name] || {}
       const {
         activate,
         active,
@@ -155,7 +155,7 @@ export default ({ element, mouseEvents, name }: Options) =>
         // YOU SHALL NOT PASS 🙅
         className,
         ...rest
-      } = { ...componentContext, ...this.props }
+      } = { ...componentCtx, ...this.props }
 
       // When `State` is used with FaCC pattern, call func with state and change
       // methods
@@ -169,7 +169,7 @@ export default ({ element, mouseEvents, name }: Options) =>
         {
           'data-test': element ? `${element}-container` : undefined,
           className:
-            classNames(element, componentContext.className, this.props.className) ||
+            classNames(element, componentCtx.className, this.props.className) ||
             undefined,
           onMouseEnter: mouseEvents ? activate : undefined,
           onMouseLeave: mouseEvents ? deactivate : undefined,

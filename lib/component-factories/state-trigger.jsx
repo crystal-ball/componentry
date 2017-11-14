@@ -40,7 +40,7 @@ export default (
   { classes = '', componentArias, element = '', name, ...optionsRest }: Options = {}
 ) => {
   const Trigger = (props: Props, { THEME = {} }: Context) => {
-    const componentContext = THEME[name] || {}
+    const componentCtx = THEME[name] || {}
     const {
       activate,
       active,
@@ -53,7 +53,7 @@ export default (
       // YOU SHALL NOT PASS 🙅
       className,
       ...rest
-    } = { ...componentContext, ...props }
+    } = { ...componentCtx, ...props }
 
     return createElement(
       as || Button,
@@ -75,17 +75,12 @@ export default (
               }
             : {})
         }),
-        className: classNames(
-          classes,
-          componentContext.className,
-          props.className,
-          {
-            // For tab triggers add active if the tab is selected
-            active: tabId && active === tabId,
-            [`${element}-toggle`]: element,
-            'inline-trigger': link
-          }
-        ),
+        className: classNames(classes, componentCtx.className, props.className, {
+          // For tab triggers add active if the tab is selected
+          active: tabId && active === tabId,
+          [`${element}-toggle`]: element,
+          'inline-trigger': link
+        }),
         onClick: active ? deactivate : activate,
         link,
         // For tabs, the value is used in `withState` to handle changing the active

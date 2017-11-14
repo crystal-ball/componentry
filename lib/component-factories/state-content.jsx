@@ -43,7 +43,7 @@ export default (
   { classes = '', componentArias, element = '', name, tip = false }: Options = {}
 ) => {
   const Content = (props: Props, { THEME = {} }: Context) => {
-    const componentContext = THEME[name] || {}
+    const componentCtx = THEME[name] || {}
     const {
       active,
       as,
@@ -55,7 +55,7 @@ export default (
       className,
       deactivate,
       ...rest
-    } = { ...componentContext, ...props }
+    } = { ...componentCtx, ...props }
 
     return createElement(
       as || 'div',
@@ -78,7 +78,7 @@ export default (
             : {})
         }),
         className:
-          classNames(classes, componentContext.className, props.className, {
+          classNames(classes, componentCtx.className, props.className, {
             [`${element}-content`]: element
           }) || undefined,
         ...rest
