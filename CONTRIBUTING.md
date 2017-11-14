@@ -17,6 +17,25 @@ There are _lots_ of React component libraries available, and we don't want to ad
 noise to the community. This library is useful because it's small, simple and
 compatible with Boostrap v4.
 
+#### Computing props
+
+Every library component can have default props configured using the `<ThemeProvider
+/>`. The default configurations are accessed by individual components using context,
+but these values are **defaults** and will be overriden by component instance props
+values. This computed props value is handled in each component by merging the
+context values and props values. Note that any values which are additive, such as
+`className` need to be accessed directly from props and context because merging the
+two can override or duplicate the values.
+
+#### Passing props
+
+All props that are not used by the library are passed through using rest syntax.
+This supports composition by allowing any root component to be used as a library
+element and any arbitrary props to be passed. It's important that the props rest is
+included **last** in the `createElement` call so that **any** library prop can be
+overriden _(Eg: passing activate/deactive methods override library props which
+enables controlled components)_.
+
 #### Experimental JS Features
 
 Library source code should not use experimental JS features beyond Stage-4. This lets

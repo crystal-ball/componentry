@@ -1,9 +1,7 @@
 // @flow
 import React, { Component } from 'react'
-import Playground from 'component-playground'
 
 import { Dropdown } from '../../../lib'
-import componentExample from './examples/dropdown.txt'
 
 const logActivate = () => console.log('on activate called')
 const logDeactivate = () => console.log('on deactivate called')
@@ -39,12 +37,16 @@ export default class Dropdowns extends Component<{}, State> {
         <div className="row">
           <div className="col-12">
             <p className="lead">Dropdown component...</p>
-            <Playground
-              codeText={componentExample}
-              docClass={Dropdown}
-              scope={{ React, Dropdown, logActivate, logDeactivate }}
-              theme="panda-syntax"
-            />
+            <Dropdown onActivate={logActivate} onDeactivate={logDeactivate}>
+              <Dropdown.Trigger>Dropdown</Dropdown.Trigger>
+              <Dropdown.Content>
+                <h6 className="dropdown-header">Available actions</h6>
+                <Dropdown.Item>Item 1</Dropdown.Item>
+                <Dropdown.Item>Item 2</Dropdown.Item>
+                <div className="dropdown-divider" />
+                <Dropdown.Item>Item 3</Dropdown.Item>
+              </Dropdown.Content>
+            </Dropdown>
           </div>
         </div>
       </div>

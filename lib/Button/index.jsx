@@ -52,26 +52,21 @@ type Context = {
 }
 
 /**
- * The `Button` component is the base component for any element that has a user
- * interaction in the library. It is important to use either a button element or a
- * valid href for any click target in order to support keyboard users _(See A++
- * Accessibility Guide)_. In cases where a target that looks like a link is
- * required, but the target causes an in page change, the `Button` component should
- * be used with the `link` prop.
+ * Button component
  */
 const Button = (
   props: Props,
   { THEME: { Button: buttonContext = {} } = {} }: Context
 ) => {
-  // Compute props values with context defaults
   const {
     as,
-    className,
     color,
     link,
     outline,
     size,
     children,
+    // YOU SHALL NOT PASS 🙅
+    className,
     ...rest
   } = Object.assign({}, buttonContext, props)
 
@@ -79,16 +74,16 @@ const Button = (
     as || 'button',
     {
       type: 'button',
-      // Always include class 'btn' and passed className, include buttonContext
-      // explicitly as it will be overriden in props compute
-      className: classNames('btn', className, buttonContext.className, {
+      // Use original className values, not computed className value. Any props
+      // className will overwrite a context className.
+      className: classNames('btn', buttonContext.className, props.className, {
+        'btn-anchor': link,
         // btn-<COLOR> class is only for regular themed buttons, suppress for other
         // btn theme flavors
         [`btn-${color}`]: color && !link && !outline,
-        'btn-anchor': link, // Will create a button that looks just like an anchor
         [`btn-outline-${color}`]: outline,
-        'btn-lg': size === 'large',
-        'btn-sm': size === 'small'
+        'btn-sm': size === 'small',
+        'btn-lg': size === 'large'
       }),
       ...rest
     },

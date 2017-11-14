@@ -1,6 +1,8 @@
 // @flow
+/* eslint-disable react/no-unused-prop-types */
 import React, { createElement } from 'react'
 import type { Node, ComponentType } from 'react'
+import { object, shape } from 'prop-types'
 import classNames from 'classnames'
 
 import arias from '../utils/arias'
@@ -31,25 +33,30 @@ type Props = {
   guid: string
 }
 
+type Context = { [string]: { [string]: any } }
+
 /**
  * Factory returns custom `<Content />` components defined by the options.
- * Content components handle setting correct aria attributes and markup
  */
 export default (
   { classes = '', componentArias, element = '', name, tip = false }: Options = {}
 ) => {
-  const Content = ({
-    activate,
-    active,
-    as,
-    children,
-    className,
-    deactivate,
-    guid,
-    tabId = '',
-    ...rest
-  }: Props) =>
-    createElement(
+  const Content = (props: Props, { THEME = {} }: Context) => {
+    const componentContext = THEME[name] || {}
+    const {
+      active,
+      as,
+      children,
+      guid,
+      tabId = '',
+      // YOU SHALL NOT PASS 🙅
+      activate,
+      className,
+      deactivate,
+      ...rest
+    } = Object.assign({}, componentContext, props)
+
+    return createElement(
       as || 'div',
       {
         'data-test': element ? `${element}-content` : undefined,
@@ -70,12 +77,9 @@ export default (
             : {})
         }),
         className:
-          classNames(className, classes, {
+          classNames(classes, componentContext.className, props.className, {
             [`${element}-content`]: element
           }) || undefined,
-        // DO NOT PASS STATE PROPS THROUGH (SEE DECONSTRUCTION)!
-        // Always pass ...rest last so that any instance props will override the
-        // defaults or factory configurations
         ...rest
       },
       tip && (
@@ -85,7 +89,9 @@ export default (
       ),
       children
     )
+  }
 
   Content.displayName = name
+  Content.contextTypes = { THEME: shape({ [name]: object }) }
   return Content
 }
