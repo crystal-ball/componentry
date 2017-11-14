@@ -1,6 +1,7 @@
 // @flow
 import { createElement } from 'react'
 import type { ComponentType } from 'react'
+import { object, shape } from 'prop-types'
 import classNames from 'classnames'
 
 import Button from '../Button'
@@ -30,27 +31,31 @@ type Props = {
   guid: string
 }
 
+type Context = { [string]: { [string]: any } }
+
 /**
  * Factory returns custom `<Trigger />` components defined by the options.
- * Trigger components handle setting aria attributes and calling passed state change
- * methods on click
  */
 export default (
   { classes = '', componentArias, element = '', name, ...optionsRest }: Options = {}
 ) => {
-  const Trigger = ({
-    activate,
-    active,
-    as,
-    children,
-    className,
-    deactivate,
-    guid,
-    tabId = '',
-    ...rest
-  }: Props) =>
-    // $FlowFixMe
-    createElement(
+  const Trigger = (props: Props, { THEME = {} }: Context) => {
+    const componentContext = THEME[name] || {}
+    const {
+      activate,
+      active,
+      as,
+      children,
+      deactivate,
+      guid,
+      link,
+      tabId = '',
+      // YOU SHALL NOT PASS 🙅
+      className,
+      ...rest
+    } = Object.assign({}, componentContext, props)
+
+    return createElement(
       as || Button,
       {
         'data-test': element ? `${element}-toggle` : undefined,
@@ -70,28 +75,27 @@ export default (
               }
             : {})
         }),
-        className: classNames(className, classes, {
+        className: classNames(classes, componentContext.className, props.clasName, {
           // For tab triggers add active if the tab is selected
           active: tabId && active === tabId,
           [`${element}-toggle`]: element,
-          // $FlowFixMe
-          'inline-trigger': rest.link
+          'inline-trigger': link
         }),
         onClick: active ? deactivate : activate,
+        link,
         // For tabs, the value is used in `withState` to handle changing the active
         // id. The trigger is always an activate trigger because any click will
         // activate that tab
         ...(tabId ? { value: tabId, onClick: activate } : {}),
         // Pass through any miscellaneous configurations from component factory
         ...optionsRest,
-        // DO NOT PASS STATE PROPS THROUGH (SEE DECONSTRUCTION)!
-        // Always pass ...rest last so that any instance props will override the
-        // defaults or factory configurations
         ...rest
       },
       children
     )
+  }
 
   Trigger.displayName = name
+  Trigger.contextTypes = { THEME: shape({ [name]: object }) }
   return Trigger
 }
