@@ -9,7 +9,7 @@ exports[`renders correctly 1`] = `
 >
   <button
     aria-describedby="guid"
-    className="btn popover-toggle btn-primary"
+    className="btn popover-toggle"
     data-test="popover-toggle"
     onClick={[Function]}
     type="button"

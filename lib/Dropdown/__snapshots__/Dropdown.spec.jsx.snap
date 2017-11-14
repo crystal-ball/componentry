@@ -10,7 +10,7 @@ exports[`renders correctly 1`] = `
   <button
     aria-expanded="false"
     aria-haspopup="true"
-    className="btn dropdown-toggle btn-primary"
+    className="btn dropdown-toggle"
     data-test="dropdown-toggle"
     id="guid"
     onClick={[Function]}
@@ -25,7 +25,7 @@ exports[`renders correctly 1`] = `
     data-test="dropdown-content"
   >
     <button
-      className="btn dropdown-item btn-primary"
+      className="btn dropdown-item"
       data-test={undefined}
       onClick={[Function]}
       type="button"
@@ -33,7 +33,7 @@ exports[`renders correctly 1`] = `
       Item 1
     </button>
     <button
-      className="btn dropdown-item btn-primary"
+      className="btn dropdown-item"
       data-test={undefined}
       onClick={[Function]}
       type="button"

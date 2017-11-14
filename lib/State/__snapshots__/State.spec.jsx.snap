@@ -9,7 +9,7 @@ exports[`renders correctly 1`] = `
 >
   <button
     aria-controls="guid"
-    className="btn btn-primary"
+    className="btn"
     data-test={undefined}
     onClick={[Function]}
     type="button"
