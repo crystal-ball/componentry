@@ -126,7 +126,7 @@ export default class extends Component<{}, ComponentState> {
                 <Tab defaultActive="alert" className="row">
                   <div className="col-9">
                     <Tab.ContentContainer>
-                      <Tab.Content tabId="alert">
+                      <Tab.Content activeId="alert">
                         <table className="table">
                           <thead>
                             <tr>
@@ -212,7 +212,7 @@ export default class extends Component<{}, ComponentState> {
                           </tbody>
                         </table>
                       </Tab.Content>
-                      <Tab.Content tabId="element">
+                      <Tab.Content activeId="element">
                         <table className="table">
                           <thead>
                             <tr>
@@ -245,8 +245,8 @@ export default class extends Component<{}, ComponentState> {
                   </div>
                   <div className="col-3">
                     <Tab.Nav vertical pills>
-                      <Tab.Trigger tabId="alert">Alert props</Tab.Trigger>
-                      <Tab.Trigger tabId="element">Element props</Tab.Trigger>
+                      <Tab.Trigger activeId="alert">Alert props</Tab.Trigger>
+                      <Tab.Trigger activeId="element">Element props</Tab.Trigger>
                     </Tab.Nav>
                   </div>
                 </Tab>

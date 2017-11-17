@@ -21,6 +21,13 @@ export default () => (
             “The Academy thought we cheated by using computers”
           </Drawer.Content>
         </Drawer>
+        {/* <h2>Accordion</h2> */}
+        {/* <Accordion>
+          <Accordion.Trigger activeId="one">Trigger One</Accordion.Trigger>
+          <Accordion.Content activeId="one">Content One</Accordion.Content>
+          <Accordion.Trigger activeId="two">Trigger Two</Accordion.Trigger>
+          <Accordion.Content activeId="two">Content Two</Accordion.Content>
+        </Accordion> */}
       </div>
     </div>
   </div>

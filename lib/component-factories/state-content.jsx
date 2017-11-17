@@ -26,7 +26,7 @@ type Props = {
   as?: ComponentType<any> | string,
   children?: Node,
   className?: string,
-  tabId?: string,
+  activeId?: string,
   // Active boolean + change handlers from withActive HOC
   activate: Function,
   active: boolean,
@@ -49,7 +49,7 @@ export default (
       as,
       children,
       guid,
-      tabId = '',
+      activeId = '',
       // YOU SHALL NOT PASS 🙅
       activate,
       className,
@@ -65,14 +65,14 @@ export default (
           guid,
           active,
           ...componentArias,
-          // Tabs have different arias to handle multiple show/hide elements. The
-          // passed id is used for trigger and content components, these arias will
-          // override the standard componentArias
-          ...(tabId
+          // Mutli-active elems have different arias to handle multiple show/hide
+          // elements. The passed id is used for trigger and content components,
+          // these arias will override the standard componentArias
+          ...(activeId
             ? {
-                active: tabId === active,
-                id: `${tabId}-content`,
-                labelledby: `${tabId}-tab`,
+                active: activeId === active,
+                id: `${activeId}-content`,
+                labelledby: `${activeId}-trigger`,
                 hidden: true
               }
             : {})
