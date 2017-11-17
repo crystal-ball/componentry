@@ -68,6 +68,8 @@ export default (
     let onClick
     if (triggerType) {
       onClick = triggerType === 'activate' ? activate : deactivate
+    } else if (activeId) {
+      onClick = activeId === active ? deactivate : activate
     } else {
       onClick = active ? deactivate : activate
     }

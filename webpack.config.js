@@ -13,10 +13,8 @@ module.exports = env => {
     }
   })
 
-  base.module.rules.push({
-    test: /\.txt$/,
-    use: 'raw-loader'
-  })
+  // https://github.com/webpack/webpack/issues/5931
+  base.devtool = 'none'
 
   return base
 }

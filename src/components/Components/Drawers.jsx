@@ -1,7 +1,7 @@
 // @flow
 import React from 'react'
 
-import { Drawer } from '../../../lib'
+import { Drawer, Accordion } from '../../../lib'
 
 export default () => (
   <div className="mb-5">
@@ -21,13 +21,13 @@ export default () => (
             “The Academy thought we cheated by using computers”
           </Drawer.Content>
         </Drawer>
-        {/* <h2>Accordion</h2> */}
-        {/* <Accordion>
+        <h2>Accordion</h2>
+        <Accordion>
           <Accordion.Trigger activeId="one">Trigger One</Accordion.Trigger>
           <Accordion.Content activeId="one">Content One</Accordion.Content>
           <Accordion.Trigger activeId="two">Trigger Two</Accordion.Trigger>
           <Accordion.Content activeId="two">Content Two</Accordion.Content>
-        </Accordion> */}
+        </Accordion>
       </div>
     </div>
   </div>

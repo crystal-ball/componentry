@@ -15,6 +15,7 @@ exports[`renders correctly 1`] = `
     id="guid"
     onClick={[Function]}
     type="button"
+    value={undefined}
   >
     Trigger
   </button>
@@ -29,6 +30,7 @@ exports[`renders correctly 1`] = `
       data-test={undefined}
       onClick={[Function]}
       type="button"
+      value={undefined}
     >
       Item 1
     </button>
@@ -37,6 +39,7 @@ exports[`renders correctly 1`] = `
       data-test={undefined}
       onClick={[Function]}
       type="button"
+      value={undefined}
     >
       Item 2
     </button>

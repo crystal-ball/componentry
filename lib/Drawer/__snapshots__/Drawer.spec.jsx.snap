@@ -14,6 +14,7 @@ exports[`renders correctly 1`] = `
     data-test="drawer-toggle"
     onClick={[Function]}
     type="button"
+    value={undefined}
   >
     Trigger
   </button>
