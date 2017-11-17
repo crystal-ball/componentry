@@ -1,7 +1,7 @@
 // @flow
 import { createElement } from 'react'
 import type { ComponentType, Node } from 'react'
-import { string } from 'prop-types'
+import { object, shape, string } from 'prop-types'
 import classNames from 'classnames'
 
 type Props = {
@@ -11,14 +11,20 @@ type Props = {
 }
 
 type Context = {
-  guid: string
+  guid: string,
+  THEME: {
+    ModalTitle: { [string]: any }
+  }
 }
 
 /**
  * Modal title uses the modal guid as an id to refer to modal `labelledby`
  */
-const Title = ({ as, children, className, ...rest }: Props, { guid }: Context) =>
-  createElement(
+const Title = (props: Props, { guid, THEME = { ModalTitle: {} } }: Context) => {
+  const componentCtx = THEME.ModalTitle || {}
+  const { as, children, className, ...rest } = { ...componentCtx, ...props }
+
+  return createElement(
     as || 'h4',
     {
       id: guid,
@@ -27,8 +33,10 @@ const Title = ({ as, children, className, ...rest }: Props, { guid }: Context) =
     },
     children
   )
+}
 Title.contextTypes = {
-  guid: string
+  guid: string,
+  THEME: shape({ ModalTitle: object })
 }
 
 export default Title

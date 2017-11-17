@@ -1,7 +1,7 @@
 // @flow
 import React, { Component } from 'react'
 import type { Node } from 'react'
-import { string } from 'prop-types'
+import { object, shape, string } from 'prop-types'
 import classNames from 'classnames'
 import nanoid from 'nanoid'
 
@@ -9,6 +9,7 @@ import Title from './Title'
 import withActive from '../HOCs/withActive'
 import elementFactory from '../component-factories/element-factory'
 
+/* eslint-disable react/no-unused-prop-types */
 type Props = {
   active: boolean,
   ariaTitle?: string,
@@ -36,6 +37,8 @@ class Modal extends Component<Props> {
   static Footer = elementFactory({ classes: 'modal-footer', name: 'ModalFooter' })
   static Title = Title
 
+  static contextTypes = { THEME: shape({ Alert: object }) }
+
   // Set modal guid on context for Title
   static childContextTypes = { guid: string }
   getChildContext = () => ({ guid: this.guid })
@@ -50,9 +53,12 @@ class Modal extends Component<Props> {
   // Render
   // ---------------------------------------------------------------------------
   render() {
-    const { active, ariaTitle, children, deactivate, size, visible } = this.props
-    // $FlowFixMe
-    const dialogClassNames = classNames('modal-dialog', { [`modal-${size}`]: size })
+    const THEME = this.context.THEME || {}
+    const componentCtx = THEME.Modal || {}
+    const { active, ariaTitle, children, deactivate, size, visible }: Props = {
+      ...componentCtx,
+      ...this.props
+    }
 
     return (
       <div
@@ -70,7 +76,10 @@ class Modal extends Component<Props> {
           onKeyPress={deactivate}
           role="presentation"
         />
-        <div className={dialogClassNames} role="document">
+        <div
+          className={classNames('modal-dialog', { [`modal-${size}`]: size })}
+          role="document"
+        >
           <div className="modal-content">
             {/* A++ Accessibility title for modals without visual title */}
             {ariaTitle && (

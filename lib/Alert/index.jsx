@@ -1,5 +1,6 @@
 // @flow
 import React, { Component, createElement } from 'react'
+import { object, shape } from 'prop-types'
 import classNames from 'classnames'
 
 import Button from '../Button'
@@ -40,9 +41,13 @@ class Alert extends Component<Props> {
     dismissible: false
   }
 
+  static contextTypes = { THEME: shape({ Alert: object }) }
+
   // Render
   // ---------------------------------------------------------------------------
   render() {
+    const THEME = this.context.THEME || {}
+    const componentCtx = THEME.Alert || {}
     const {
       activate, // prevent dom inclusion
       active,
@@ -54,7 +59,7 @@ class Alert extends Component<Props> {
       deactivate,
       visible,
       ...rest
-    } = this.props
+    } = { ...componentCtx, ...this.props }
 
     return createElement(
       as || 'div',
