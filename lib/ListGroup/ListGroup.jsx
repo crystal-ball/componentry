@@ -1,10 +1,9 @@
 // @flow
-/* eslint-disable no-param-reassign */
-import { Children, createElement } from 'react'
-import type { Node, Element } from 'react'
-import classNames from 'classnames'
+import { Children } from 'react'
 
 import ListGroupItem from './ListGroupItem'
+import elementFactory from '../component-factories/element-factory'
+import type { ElementProps } from '../component-factories/element-factory'
 
 /**
  * To Document:
@@ -14,28 +13,18 @@ import ListGroupItem from './ListGroupItem'
  *   (which is probably not good in the first place), pass a specific `as`.
  */
 
-type Props = {
-  as?: string,
-  children?: Node,
-  className?: string
-}
+export type Props = ElementProps
 
-const ListGroup = ({ as, className, children, ...rest }: Props): Element<any> => {
-  // If children have an href or onClick, we need a div wrapper b/c children will
-  // be either <button> or <a> elements and not <li> elements
-  if (as === undefined) {
-    const child = Children.toArray(children)[0]
-    if (child && (child.props.href || child.props.onClick)) as = 'div'
+const ListGroup = elementFactory({
+  name: 'ListGroup',
+  classes: 'list-group',
+  computedTag: props => {
+    const child = Children.toArray(props.children)[0]
+    return child && (child.props.href || child.props.onClick) ? 'div' : 'ul'
   }
+})
 
-  return createElement(
-    // Default to ul if not specified or not an action type list
-    as || 'ul',
-    { className: classNames('list-group', className), ...rest },
-    children
-  )
-}
-
+// $FlowFixMe
 ListGroup.Item = ListGroupItem
 
 export default ListGroup

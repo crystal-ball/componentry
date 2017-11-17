@@ -1,21 +1,32 @@
 // @flow
 import { createElement } from 'react'
 import type { ComponentType, Node } from 'react'
+import { object, shape } from 'prop-types'
 import classNames from 'classnames'
 
+import cleanProps from '../utils/clean-props'
+
 type Options = {
-  /**
-   * Wildcard object for spreading any additional attributes onto return component
-   */
-  attrs?: {},
   /**
    * Class names that will be merged with passed class names
    */
   classes?: string,
   /**
+   * Props to remove from object spread
+   */
+  clean?: Array<string>,
+  /**
+   * Function for computing component className
+   */
+  computedClassName?: Function,
+  /**
+   * Function for computing the tag to createElement with
+   */
+  computedTag?: Function,
+  /**
    * Custom display name assigned to return component for better debugging
    */
-  displayName?: string,
+  name: string,
   /**
    * HTML tag specifying container element
    */
@@ -37,6 +48,8 @@ export type ElementProps = {
   className?: string
 }
 
+type Context = { [string]: { [string]: any } }
+
 /**
  * This factory returns a FSC with the specified HTML element and base classes. It
  * can be used to create simple components with default class names and attributes.
@@ -47,19 +60,41 @@ export type ElementProps = {
  * @export
  * @returns {Component} React functional stateless component with base classes.
  */
-export default ({ attrs = {}, classes, displayName, tag }: Options = {}) => {
-  const Element = ({ as, children, className, ...rest }: ElementProps) =>
-    createElement(
+export default (
+  {
+    classes,
+    clean,
+    computedClassName,
+    computedTag,
+    name,
+    tag,
+    ...optionsRest
+  }: Options = {}
+) => {
+  const Element = (props: ElementProps, { THEME = {} }: Context) => {
+    const componentCtx = THEME[name] || {}
+    const { as, children, className, ...rest }: ElementProps = {
+      ...componentCtx,
+      ...props
+    }
+    const spread = clean ? cleanProps(rest, clean) : rest
+
+    return createElement(
+      // If the tag is computed call computed with props, else use default priority
       // Props have precedence, use factory tag as default
-      as || tag || 'div',
+      as || (computedTag ? computedTag(props) : tag || 'div'),
       {
-        className: classNames(classes, className),
-        ...attrs,
-        ...rest
+        className: computedClassName
+          ? computedClassName(componentCtx.className, props.className, rest)
+          : classNames(classes, className),
+        ...optionsRest,
+        ...spread
       },
       children
     )
-  Element.displayName = displayName || 'Element'
+  }
 
+  Element.displayName = name
+  Element.contextTypes = { THEME: shape({ [name]: object }) }
   return Element
 }

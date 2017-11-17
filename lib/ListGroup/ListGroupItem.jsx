@@ -1,37 +1,25 @@
 // @flow
-/* eslint-disable no-param-reassign */
-import { createElement } from 'react'
-import type { ComponentType, Node } from 'react'
 import classNames from 'classnames'
 
 import Button from '../Button'
+import elementFactory from '../component-factories/element-factory'
+import type { ElementProps } from '../component-factories/element-factory'
+
+export type Props = ElementProps
 
 /**
  * List group item of `li`, `a` or `Button`.
  */
-
-type Props = {
-  as?: ComponentType<any> | string,
-  active?: boolean,
-  children?: Node,
-  className?: string
-}
-
-export default ({ as, active, children, className, ...rest }: Props) => {
-  // $FlowFixMe
-  const { href, onClick } = rest
-  if (href || onClick) as = href ? 'a' : Button // override for action elements
-
-  return createElement(
+export default elementFactory({
+  name: 'ListGroup',
+  computedTag: props => {
+    if (props.href || props.onClick) return props.href ? 'a' : Button
     // Default to li if not specified or not an action type list
-    as || 'li',
-    {
-      className: classNames('list-group-item', className, {
-        active,
-        'list-group-item-action': href || onClick
-      }),
-      ...rest
-    },
-    children
-  )
-}
+    return 'li'
+  },
+  computedClassName: (ctxClassName, propsClassName, { active, href, onClick }) =>
+    classNames('list-group-item', ctxClassName, propsClassName, {
+      active,
+      'list-group-item-action': href || onClick
+    })
+})

@@ -1,50 +1,41 @@
 // @flow
-import { createElement } from 'react'
-import type { ComponentType, Node } from 'react'
 import classNames from 'classnames'
 
 import NavItem from './NavItem'
+import elementFactory from '../component-factories/element-factory'
+import type { ElementProps } from '../component-factories/element-factory'
 
-type Options = {
-  classes?: string,
-  misc?: {}
-}
-
-type Props = {
-  as?: ComponentType<any> | string,
-  className?: string,
-  children?: Node,
+export type Props = {
   pills?: boolean,
   vertical?: boolean
-}
-
-/**
- * Create customized Nav components with factory function
- */
-export const navFactory = ({ classes, misc = {} }: Options = {}) => ({
-  as,
-  className,
-  children,
-  pills,
-  vertical,
-  ...rest
-}: Props) =>
-  createElement(
-    as || 'nav',
-    {
-      className: classNames('nav', className, classes, {
-        'flex-column': vertical,
-        'nav-pills': pills
-      }),
-      ...misc,
-      ...rest
-    },
-    children
-  )
+} & ElementProps
 
 // Default Nav component, no special classes or attributes
-const Nav = navFactory()
+const Nav = elementFactory({
+  name: 'Nav',
+  tag: 'nav',
+  computedClassName: (ctxClassName, propsClassName, { pills, vertical }) =>
+    classNames('nav', ctxClassName, propsClassName, {
+      'flex-column': vertical,
+      'nav-pills': pills
+    }),
+  clean: ['pills', 'vertical']
+})
 
+const TabNav = elementFactory({
+  name: 'TabNav',
+  tag: 'nav',
+  role: 'tablist',
+  computedClassName: (ctxClassName, propsClassName, { pills, vertical }) =>
+    classNames('nav', 'nav-tabs', ctxClassName, propsClassName, {
+      'flex-column': vertical,
+      'nav-pills': pills
+    }),
+  clean: ['pills', 'vertical']
+})
+
+export { TabNav }
+
+// $FlowFixMe
 Nav.Item = NavItem
-
 export default Nav

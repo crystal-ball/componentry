@@ -157,6 +157,7 @@ export default ({ element, mouseEvents, name, Content, Trigger }: Options) =>
         Trigger: TriggerProp,
         activate,
         active,
+        // $FlowFixMe
         as,
         children,
         deactivate,

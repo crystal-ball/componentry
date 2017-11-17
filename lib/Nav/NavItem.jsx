@@ -1,16 +1,13 @@
-import { createElement } from 'react'
 import classNames from 'classnames'
 
 import Button from '../Button'
+import elementFactory from '../component-factories/element-factory'
 
-export default ({ as, className, children, ...rest }) =>
-  createElement(
-    as || rest.onClick ? Button : 'a',
-    {
-      className: classNames('nav-item', className, {
-        'nav-link': rest.href || rest.to
-      }),
-      ...rest
-    },
-    children
-  )
+export default elementFactory({
+  name: 'NavItem',
+  computedClassName: (ctxClassName, propsClassName, { href, to }) =>
+    classNames('nav-item', {
+      'nav-link': href || to
+    }),
+  computedTag: props => (props.onClick ? Button : 'a')
+})

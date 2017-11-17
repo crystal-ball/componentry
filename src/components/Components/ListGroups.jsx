@@ -1,9 +1,7 @@
 // @flow
 import React from 'react'
-import Playground from 'component-playground'
 
 import { ListGroup } from '../../../lib'
-import componentExample from './examples/list-group.txt'
 
 const testClick = () => console.log('click')
 
@@ -12,12 +10,23 @@ export default () => (
     <div className="row">
       <div className="col-12">
         <p className="lead">ListGroup component...</p>
-        <Playground
-          codeText={componentExample}
-          docClass={ListGroup}
-          scope={{ React, ListGroup, testClick }}
-          theme="panda-syntax"
-        />
+        <h3>Button list</h3>
+        <ListGroup className="w-50">
+          <ListGroup.Item onClick={testClick}>Button One</ListGroup.Item>
+          <ListGroup.Item onClick={testClick}>Button Two</ListGroup.Item>
+        </ListGroup>
+        <h3>Link list</h3>
+        <ListGroup className="w-50">
+          <ListGroup.Item href="#" active>
+            Link One
+          </ListGroup.Item>
+          <ListGroup.Item href="#">Link Two</ListGroup.Item>
+        </ListGroup>
+        <h3>Plain list</h3>
+        <ListGroup className="w-50">
+          <ListGroup.Item>Item One</ListGroup.Item>
+          <ListGroup.Item>Item Two</ListGroup.Item>
+        </ListGroup>
       </div>
     </div>
   </div>
