@@ -16,7 +16,13 @@ type Options = {
   /** When tue the state container will register handlers for mouse events */
   mouseEvents?: boolean,
   /** The display name for the component, specified for better debugging */
-  name: string
+  name: string,
+  /** When true call deactivate on `esc` keypress */
+  escHandler?: boolean,
+  /** When true call deactivate on click outside of element */
+  externalClickHandler?: boolean,
+  /** When true validate element width does not overflow page on activate */
+  widthValidationHandler?: boolean
 }
 
 // TODO: is this fixable?
@@ -40,7 +46,16 @@ type Props = {
  * Factory returns custom `<State />` components defined by the options.
  * State components handle...
  */
-export default ({ element, mouseEvents, name, Content, Trigger }: Options) =>
+export default ({
+  element,
+  mouseEvents,
+  name,
+  escHandler,
+  externalClickHandler,
+  widthValidationHandler,
+  Content,
+  Trigger
+}: Options) =>
   class StateContainer extends Component<Props> {
     static displayName = name
 
@@ -94,17 +109,17 @@ export default ({ element, mouseEvents, name, Content, Trigger }: Options) =>
      */
     handleActivated = () => {
       // Don't close drawers on `esc`
-      if (element !== 'drawer') {
+      if (escHandler) {
         document.addEventListener('keydown', this.keyHandler)
       }
 
       // Add click outside container handlers for dropdowns only
-      if (element === 'dropdown') {
+      if (externalClickHandler) {
         document.addEventListener('mouseup', this.clickHandler)
         document.addEventListener('touchend', this.clickHandler)
       }
 
-      if (element === 'tooltip' || element === 'popover') {
+      if (widthValidationHandler) {
         // Position absolute tooltip & popover is constrained by the parent width.
         // Set tooltip width to content width to overflow parent bounds
         const contentElement = document.getElementById(this.props.guid)
@@ -137,11 +152,11 @@ export default ({ element, mouseEvents, name, Content, Trigger }: Options) =>
      * Do the deactivation stuff
      */
     handleDeactivated = () => {
-      if (element !== 'drawer') {
+      if (escHandler) {
         document.removeEventListener('keydown', this.keyHandler)
       }
 
-      if (element === 'dropdown') {
+      if (externalClickHandler) {
         document.removeEventListener('mouseup', this.clickHandler)
         document.removeEventListener('touchend', this.clickHandler)
       }
