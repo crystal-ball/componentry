@@ -1,21 +1,21 @@
 // @flow
 import React from 'react'
-import Playground from 'component-playground'
 
-import { Button, Card } from '../../../lib'
-import componentExample from './examples/card.txt'
+import { Card } from '../../../lib'
 
 export default () => (
   <div className="mb-5">
     <div className="row">
       <div className="col-12">
         <p className="lead">Card component...</p>
-        <Playground
-          codeText={componentExample}
-          docClass={Card}
-          scope={{ React, Button, Card }}
-          theme="panda-syntax"
-        />
+        <Card className="w-50">
+          <Card.Header>Card Header</Card.Header>
+          <Card.Body>
+            <Card.Title>Card title</Card.Title>
+            <p className="card-text">Card Body Content.</p>
+          </Card.Body>
+          <Card.Footer>2 days ago</Card.Footer>
+        </Card>
       </div>
     </div>
   </div>

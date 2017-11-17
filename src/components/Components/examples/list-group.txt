@@ -1,4 +1,0 @@
-<ListGroup className="w-50">
-  <ListGroup.Item onClick={testClick}>Button One</ListGroup.Item>
-  <ListGroup.Item onClick={testClick}>Button Two</ListGroup.Item>
-</ListGroup>
