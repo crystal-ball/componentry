@@ -35,6 +35,7 @@ type Props = {
  * secondary can be used.
  */
 class Alert extends Component<Props> {
+  static displayName = 'Alert'
   static defaultProps = {
     active: true,
     visible: true,

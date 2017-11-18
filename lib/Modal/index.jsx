@@ -95,5 +95,6 @@ class Modal extends Component<Props> {
     )
   }
 }
+Modal.displayName = 'Modal'
 
 export default withActive({ transitionState: true })(Modal)

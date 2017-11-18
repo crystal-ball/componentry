@@ -34,6 +34,7 @@ const Title = (props: Props, { guid, THEME = { ModalTitle: {} } }: Context) => {
     children
   )
 }
+Title.displayName = 'ModalTitle'
 Title.contextTypes = {
   guid: string,
   THEME: shape({ ModalTitle: object })
