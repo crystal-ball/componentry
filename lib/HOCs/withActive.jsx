@@ -25,14 +25,21 @@ type Options = {
 
 type Props = {
   /**
+   * The active prop can be passed directly to `withActive` to create a controlled
+   * component. Note that typically the controlled active state should be passed
+   * to the parent State component, but some components (eg Modal, Alert) can be
+   * used as controlled components without a wrapping State component.
+   */
+  active?: boolean,
+  /**
    * Override the default 300ms/ THEME duration for a specific component
    */
   transitionDuration?: number
 }
 
 type State = {
-  active: boolean,
-  visible: boolean
+  active: boolean | string,
+  visible: boolean | string
 }
 
 /**
@@ -96,6 +103,46 @@ export default ({ transitionState = false }: Options = {}) => (
       this.transitionDuration = this.props.transitionDuration || transitionDuration
     }
 
+    // Methods
+    // ---------------------------------------------------------------------------
+    /**
+     * State updates are handled differently when transitionState is true, this
+     * method handles appropriately updating based on options config.
+     */
+    handleStateUpdate = (active: boolean | string) => {
+      /**
+       * Handle: transitionState and order of transitions:
+       *
+       * When transition state is true, the visible and active state is
+       * transitioned for opacity transitions:
+       *
+       * 1. When activating, set active true immediately for `display`, then
+       *    wait 15ms before starting visibility transition otherwise browsers
+       *    see the `display` and visibility transitions as the same event and
+       *    the CSS transitions don't happen
+       * 2. When deactivating, set visibility false to begin transition, after
+       *    the visibility transition completes set active false for `display`
+       *    changes
+       */
+      if (transitionState) {
+        if (active) {
+          this.setState({ active }, () => {
+            setTimeout(() => {
+              this.setState({ visible: active })
+            }, 15)
+          })
+        } else {
+          this.setState({ visible: active }, () => {
+            setTimeout(() => {
+              this.setState({ active })
+            }, this.transitionDuration)
+          })
+        }
+      } else {
+        this.setState({ active })
+      }
+    }
+
     // Hooks
     // ---------------------------------------------------------------------------
     /**
@@ -117,40 +164,16 @@ export default ({ transitionState = false }: Options = {}) => (
       if (this.invalidContext) return
 
       this.unsubscribe = this.context.ACTIVE.subscribe(active => {
-        if (active !== this.state.active) {
-          /**
-           * Handle: transitionState and order of transitions:
-           *
-           * When transition state is true, the visible and active state is
-           * transitioned for opacity transitions:
-           *
-           * 1. When activating, set active true immediately for `display`, then
-           *    wait 15ms before starting visibility transition otherwise browsers
-           *    see the `display` and visibility transitions as the same event and
-           *    the CSS transitions don't happen
-           * 2. When deactivating, set visibility false to begin transition, after
-           *    the visibility transition completes set active false for `display`
-           *    changes
-           */
-          if (transitionState) {
-            if (active) {
-              this.setState({ active }, () => {
-                setTimeout(() => {
-                  this.setState({ visible: active })
-                }, 15)
-              })
-            } else {
-              this.setState({ visible: active }, () => {
-                setTimeout(() => {
-                  this.setState({ active })
-                }, this.transitionDuration)
-              })
-            }
-          } else {
-            this.setState({ active })
-          }
-        }
+        if (active !== this.state.active) this.handleStateUpdate(active)
       })
+    }
+
+    componentWillReceiveProps({ active }: Props) {
+      // If active is not explicitly passed, it will always be undefined, we only
+      // want to update state when a value is passed. See note on props, this is
+      // not preferred, pass active to State container component
+      if (active === undefined) return
+      if (this.state.active !== active) this.handleStateUpdate(active)
     }
     /**
      * Remove subscription on unmount!
@@ -162,10 +185,14 @@ export default ({ transitionState = false }: Options = {}) => (
     // Render
     // ---------------------------------------------------------------------------
     render() {
-      if (this.invalidContext) return <Wrapped {...this.props} />
+      const { active, visible } = this.state
+      const passedState = transitionState ? { active, visible } : { active }
+
+      // ⚠️ NO CONTEXT RETURN
+      // If context doesn't exist return wrapped with passed props and state only
+      if (this.invalidContext) return <Wrapped {...this.props} {...passedState} />
 
       const { activate, deactivate, guid } = this.context.ACTIVE
-      const { active, visible } = this.state
 
       return (
         // Only pass visible state if the consuming component has state transitions
@@ -173,7 +200,7 @@ export default ({ transitionState = false }: Options = {}) => (
           guid={guid}
           activate={activate}
           deactivate={deactivate}
-          {...(transitionState ? { active, visible } : { active })}
+          {...passedState}
           {...this.props}
         />
       )
