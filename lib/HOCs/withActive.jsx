@@ -91,6 +91,10 @@ export default ({ transitionState = false }: Options = {}) => (
      */
     invalidContext: boolean = false
 
+    /**
+     * Set references to context and `transitionDuration` for simpler checks
+     * throughout component lifecycle
+     */
     constructor(props: Props, context: { ACTIVE?: ContextActive, THEME?: Theme }) {
       super(props)
       // Update bail out flag when context is not present
@@ -101,6 +105,51 @@ export default ({ transitionState = false }: Options = {}) => (
       // props has precedence to allow for single instance overrides, context
       // can be used for app wide configs, fall back to defaults
       this.transitionDuration = this.props.transitionDuration || transitionDuration
+    }
+
+    // Hooks
+    // ---------------------------------------------------------------------------
+    /**
+     * Ensure that state matches context before first render
+     */
+    componentWillMount() {
+      if (this.props.active === undefined && this.invalidContext) return
+
+      const active =
+        this.props.active !== undefined
+          ? this.props.active
+          : this.context.ACTIVE.getActive()
+
+      if (this.state.active !== active) this.setState({ active, visible: active })
+    }
+    /**
+     * Subscribe to active state updates on mount, trigger renders with setState
+     * when state changes. Typically this won't be needed b/c parent component will
+     * rerender on active state change. We still subscribe in case
+     * `shouldComponentUpdate` on an intermediate component returns false.
+     */
+    componentDidMount() {
+      if (this.invalidContext) return
+
+      this.unsubscribe = this.context.ACTIVE.subscribe(active => {
+        if (active !== this.state.active) this.handleStateUpdate(active)
+      })
+    }
+    /**
+     * Handle directly passed active prop
+     */
+    componentWillReceiveProps({ active }: Props) {
+      // If active is not explicitly passed, it will always be undefined, we only
+      // want to update state when a value is passed. See note on props, this is
+      // not preferred, pass active to State container component
+      if (active === undefined) return
+      if (this.state.active !== active) this.handleStateUpdate(active)
+    }
+    /**
+     * Remove subscription on unmount!
+     */
+    componentWillUnmount() {
+      if (this.unsubscribe) this.unsubscribe()
     }
 
     // Methods
@@ -141,45 +190,6 @@ export default ({ transitionState = false }: Options = {}) => (
       } else {
         this.setState({ active })
       }
-    }
-
-    // Hooks
-    // ---------------------------------------------------------------------------
-    /**
-     * Ensure that state matches context before first render
-     */
-    componentWillMount() {
-      if (this.invalidContext) return
-
-      const active = this.context.ACTIVE.getActive()
-      if (this.state.active !== active) this.setState({ active, visible: active })
-    }
-    /**
-     * Subscribe to active state updates on mount, trigger renders with setState
-     * when state changes. Typically this won't be needed b/c parent component will
-     * rerender on active state change. We still subscribe in case
-     * `shouldComponentUpdate` on an intermediate component returns false.
-     */
-    componentDidMount() {
-      if (this.invalidContext) return
-
-      this.unsubscribe = this.context.ACTIVE.subscribe(active => {
-        if (active !== this.state.active) this.handleStateUpdate(active)
-      })
-    }
-
-    componentWillReceiveProps({ active }: Props) {
-      // If active is not explicitly passed, it will always be undefined, we only
-      // want to update state when a value is passed. See note on props, this is
-      // not preferred, pass active to State container component
-      if (active === undefined) return
-      if (this.state.active !== active) this.handleStateUpdate(active)
-    }
-    /**
-     * Remove subscription on unmount!
-     */
-    componentWillUnmount() {
-      if (this.unsubscribe) this.unsubscribe()
     }
 
     // Render

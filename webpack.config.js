@@ -14,7 +14,7 @@ module.exports = env => {
   })
 
   // https://github.com/webpack/webpack/issues/5931
-  base.devtool = 'none'
+  if (env === 'production') base.devtool = 'none'
 
   return base
 }

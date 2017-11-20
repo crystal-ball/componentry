@@ -31,7 +31,7 @@ describe('<Alert/>', () => {
   test('should bind passed deactivate to close button', () => {
     const deactivate = jest.fn()
     const wrapper = mount(
-      <Alert color="danger" deactivate={deactivate} dismissible>
+      <Alert color="danger" deactivate={deactivate} dismissible active>
         Warning!
       </Alert>
     )
