@@ -89,6 +89,12 @@ export default ({
         if (!active) this.handleDeactivated()
       }
     }
+    /**
+     * Remove subscription on unmount!
+     */
+    componentWillUnmount() {
+      this.removeEventListeners()
+    }
 
     // Methods
     // ---------------------------------------------------------------------------
@@ -152,6 +158,12 @@ export default ({
      * Do the deactivation stuff
      */
     handleDeactivated = () => {
+      this.removeEventListeners()
+    }
+    /**
+     * Removes any event listeners that were attached
+     */
+    removeEventListeners = () => {
       if (escHandler) {
         document.removeEventListener('keydown', this.keyHandler)
       }
