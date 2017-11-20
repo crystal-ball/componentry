@@ -2,6 +2,7 @@
 'use strict' // eslint-disable-line
 const { resolve } = require('path')
 const configs = require('@inspirescript/webpack-configs')
+const WebpackMonitor = require('webpack-monitor')
 
 module.exports = env => {
   const base = configs({
@@ -13,8 +14,14 @@ module.exports = env => {
     }
   })
 
+  base.plugins.unshift(
+    new WebpackMonitor({
+      launch: true
+    })
+  )
+
   // https://github.com/webpack/webpack/issues/5931
-  if (env === 'production') base.devtool = 'none'
+  if (env === 'production') base.devtool = 'cheap-module-source-map'
 
   return base
 }

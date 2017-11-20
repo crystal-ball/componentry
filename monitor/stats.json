@@ -1,0 +1,962 @@
+[
+  {
+    "timeStamp": 1511152545138,
+    "time": 26012,
+    "hash": "a158822d613d009eae83",
+    "errors": [],
+    "size": 495217,
+    "assets": [
+      {
+        "name": "static/css/app.e1084fd9c2e41c673ebcb83881644a26.css",
+        "chunks": [
+          1
+        ],
+        "size": 171135
+      },
+      {
+        "name": "static/media/accessibility.1dcc04b5.svg",
+        "chunks": [],
+        "size": 591
+      },
+      {
+        "name": "static/media/merge.f8c0ab2c.svg",
+        "chunks": [],
+        "size": 285
+      },
+      {
+        "name": "static/media/react.ee61ca49.svg",
+        "chunks": [],
+        "size": 9149
+      },
+      {
+        "name": "static/js/vendor.80dbd969ab0f43752e30.js",
+        "chunks": [
+          0
+        ],
+        "size": 202426,
+        "minified": true
+      },
+      {
+        "name": "static/js/app.062aa160486ee5480340.js",
+        "chunks": [
+          1
+        ],
+        "size": 71574,
+        "minified": true
+      },
+      {
+        "name": "static/js/manifest.edd347feeaa533193054.js",
+        "chunks": [
+          2
+        ],
+        "size": 1503,
+        "minified": true
+      },
+      {
+        "name": "static/media/bundle.6e0c137e.svg",
+        "chunks": [],
+        "size": 834
+      },
+      {
+        "name": "static/js/vendor.80dbd969ab0f43752e30.js.map",
+        "chunks": [
+          0
+        ],
+        "size": 4419
+      },
+      {
+        "name": "static/js/app.062aa160486ee5480340.js.map",
+        "chunks": [
+          1
+        ],
+        "size": 25347
+      },
+      {
+        "name": "static/css/app.e1084fd9c2e41c673ebcb83881644a26.css.map",
+        "chunks": [
+          1
+        ],
+        "size": 123
+      },
+      {
+        "name": "static/js/manifest.edd347feeaa533193054.js.map",
+        "chunks": [
+          2
+        ],
+        "size": 5248
+      },
+      {
+        "name": "favicon.ico",
+        "chunks": [],
+        "size": 894
+      },
+      {
+        "name": "index.html",
+        "chunks": [],
+        "size": 1178
+      },
+      {
+        "name": "404.html",
+        "chunks": [],
+        "size": 511
+      }
+    ],
+    "chunks": [
+      {
+        "size": 355148,
+        "files": [
+          "static/js/vendor.80dbd969ab0f43752e30.js",
+          "static/js/vendor.80dbd969ab0f43752e30.js.map"
+        ],
+        "modules": [
+          {
+            "name": "./node_modules/react/index.js",
+            "size": 190,
+            "id": 0
+          },
+          {
+            "name": "./node_modules/prop-types/index.js",
+            "size": 956,
+            "id": 1
+          },
+          {
+            "name": "./node_modules/warning/browser.js",
+            "size": 1807,
+            "id": 2
+          },
+          {
+            "name": "./node_modules/core-js/library/modules/_core.js",
+            "size": 122,
+            "id": 3
+          },
+          {
+            "name": "./node_modules/invariant/browser.js",
+            "size": 1516,
+            "id": 4
+          },
+          {
+            "name": "./node_modules/babel-runtime/core-js/object/get-prototype-of.js",
+            "size": 104,
+            "id": 5
+          },
+          {
+            "name": "./node_modules/babel-runtime/helpers/createClass.js",
+            "size": 904,
+            "id": 6
+          },
+          {
+            "name": "./node_modules/babel-runtime/helpers/possibleConstructorReturn.js",
+            "size": 542,
+            "id": 7
+          },
+          {
+            "name": "./node_modules/babel-runtime/helpers/inherits.js",
+            "size": 1110,
+            "id": 8
+          },
+          {
+            "name": "./node_modules/babel-runtime/helpers/classCallCheck.js",
+            "size": 208,
+            "id": 9
+          },
+          {
+            "name": "./node_modules/classnames/index.js",
+            "size": 1102,
+            "id": 10
+          },
+          {
+            "name": "./node_modules/babel-runtime/helpers/extends.js",
+            "size": 544,
+            "id": 11
+          },
+          {
+            "name": "./node_modules/react-router-dom/es/index.js + 13 modules",
+            "size": 13770,
+            "id": 12
+          },
+          {
+            "name": "./node_modules/core-js/library/modules/_global.js",
+            "size": 369,
+            "id": 13
+          },
+          {
+            "name": "./node_modules/core-js/library/modules/_has.js",
+            "size": 120,
+            "id": 14
+          },
+          {
+            "name": "./node_modules/core-js/library/modules/_export.js",
+            "size": 2317,
+            "id": 15
+          },
+          {
+            "name": "./node_modules/core-js/library/modules/_object-dp.js",
+            "size": 600,
+            "id": 16
+          },
+          {
+            "name": "./node_modules/core-js/library/modules/_descriptors.js",
+            "size": 184,
+            "id": 17
+          },
+          {
+            "name": "./node_modules/babel-runtime/helpers/objectWithoutProperties.js",
+            "size": 280,
+            "id": 18
+          },
+          {
+            "name": "./node_modules/babel-runtime/helpers/defineProperty.js",
+            "size": 540,
+            "id": 19
+          },
+          {
+            "name": "./node_modules/core-js/library/modules/_to-iobject.js",
+            "size": 217,
+            "id": 20
+          },
+          {
+            "name": "./node_modules/core-js/library/modules/_hide.js",
+            "size": 286,
+            "id": 21
+          },
+          {
+            "name": "./node_modules/core-js/library/modules/_fails.js",
+            "size": 104,
+            "id": 22
+          },
+          {
+            "name": "./node_modules/core-js/library/modules/_wks.js",
+            "size": 358,
+            "id": 23
+          },
+          {
+            "name": "./node_modules/core-js/library/modules/_object-keys.js",
+            "size": 222,
+            "id": 24
+          },
+          {
+            "name": "./node_modules/core-js/library/modules/_an-object.js",
+            "size": 154,
+            "id": 25
+          },
+          {
+            "name": "./node_modules/core-js/library/modules/_is-object.js",
+            "size": 110,
+            "id": 26
+          },
+          {
+            "name": "./node_modules/history/PathUtils.js",
+            "size": 1768,
+            "id": 27
+          },
+          {
+            "name": "./node_modules/fbjs/lib/emptyFunction.js",
+            "size": 959,
+            "id": 28
+          },
+          {
+            "name": "./node_modules/core-js/library/modules/_to-object.js",
+            "size": 132,
+            "id": 29
+          },
+          {
+            "name": "./node_modules/core-js/library/modules/_uid.js",
+            "size": 162,
+            "id": 30
+          },
+          {
+            "name": "./node_modules/core-js/library/modules/_property-desc.js",
+            "size": 173,
+            "id": 31
+          },
+          {
+            "name": "./node_modules/react-router/es/Router.js",
+            "size": 3804,
+            "id": 32
+          },
+          {
+            "name": "./node_modules/react-router/es/matchPath.js",
+            "size": 2051,
+            "id": 33
+          },
+          {
+            "name": "./node_modules/core-js/library/modules/_object-pie.js",
+            "size": 37,
+            "id": 34
+          },
+          {
+            "name": "./node_modules/fbjs/lib/invariant.js",
+            "size": 1506,
+            "id": 35
+          },
+          {
+            "name": "(webpack)/buildin/global.js",
+            "size": 488,
+            "id": 36
+          },
+          {
+            "name": "./node_modules/core-js/library/modules/_defined.js",
+            "size": 162,
+            "id": 37
+          },
+          {
+            "name": "./node_modules/core-js/library/modules/_to-integer.js",
+            "size": 161,
+            "id": 38
+          },
+          {
+            "name": "./node_modules/core-js/library/modules/_shared-key.js",
+            "size": 159,
+            "id": 39
+          },
+          {
+            "name": "./node_modules/core-js/library/modules/_shared.js",
+            "size": 202,
+            "id": 40
+          },
+          {
+            "name": "./node_modules/core-js/library/modules/_enum-bug-keys.js",
+            "size": 160,
+            "id": 41
+          },
+          {
+            "name": "./node_modules/core-js/library/modules/_to-primitive.js",
+            "size": 655,
+            "id": 42
+          },
+          {
+            "name": "./node_modules/history/LocationUtils.js",
+            "size": 2647,
+            "id": 43
+          },
+          {
+            "name": "./node_modules/history/createTransitionManager.js",
+            "size": 2361,
+            "id": 44
+          },
+          {
+            "name": "./node_modules/react-router/es/Route.js",
+            "size": 6023,
+            "id": 45
+          },
+          {
+            "name": "./node_modules/core-js/library/modules/_object-gops.js",
+            "size": 42,
+            "id": 46
+          },
+          {
+            "name": "./node_modules/core-js/library/modules/_library.js",
+            "size": 23,
+            "id": 47
+          },
+          {
+            "name": "./node_modules/core-js/library/modules/_iterators.js",
+            "size": 21,
+            "id": 48
+          },
+          {
+            "name": "./node_modules/core-js/library/modules/_object-create.js",
+            "size": 1505,
+            "id": 49
+          },
+          {
+            "name": "./node_modules/core-js/library/modules/_set-to-string-tag.js",
+            "size": 262,
+            "id": 50
+          },
+          {
+            "name": "./node_modules/core-js/library/modules/_wks-ext.js",
+            "size": 31,
+            "id": 51
+          },
+          {
+            "name": "./node_modules/core-js/library/modules/_wks-define.js",
+            "size": 417,
+            "id": 52
+          },
+          {
+            "name": "./node_modules/object-assign/index.js",
+            "size": 2108,
+            "id": 53
+          },
+          {
+            "name": "./node_modules/fbjs/lib/emptyObject.js",
+            "size": 332,
+            "id": 54
+          },
+          {
+            "name": "./node_modules/core-js/library/modules/_object-keys-internal.js",
+            "size": 537,
+            "id": 55
+          },
+          {
+            "name": "./node_modules/core-js/library/modules/_iobject.js",
+            "size": 289,
+            "id": 56
+          },
+          {
+            "name": "./node_modules/core-js/library/modules/_cof.js",
+            "size": 106,
+            "id": 57
+          },
+          {
+            "name": "./node_modules/core-js/library/modules/_object-sap.js",
+            "size": 370,
+            "id": 58
+          },
+          {
+            "name": "./node_modules/core-js/library/modules/_ctx.js",
+            "size": 520,
+            "id": 59
+          },
+          {
+            "name": "./node_modules/core-js/library/modules/_ie8-dom-define.js",
+            "size": 199,
+            "id": 60
+          },
+          {
+            "name": "./node_modules/core-js/library/modules/_dom-create.js",
+            "size": 289,
+            "id": 61
+          },
+          {
+            "name": "./node_modules/resolve-pathname/index.js",
+            "size": 1797,
+            "id": 62
+          },
+          {
+            "name": "./node_modules/value-equal/index.js",
+            "size": 1136,
+            "id": 63
+          },
+          {
+            "name": "./node_modules/history/DOMUtils.js",
+            "size": 2491,
+            "id": 64
+          },
+          {
+            "name": "./node_modules/react-router/es/MemoryRouter.js",
+            "size": 2414,
+            "id": 65
+          },
+          {
+            "name": "./node_modules/react-router/es/Prompt.js",
+            "size": 2685,
+            "id": 66
+          },
+          {
+            "name": "./node_modules/react-router/es/Redirect.js + 8 modules",
+            "size": 35843,
+            "id": 67
+          },
+          {
+            "name": "./node_modules/react-router/es/StaticRouter.js",
+            "size": 6327,
+            "id": 68
+          },
+          {
+            "name": "./node_modules/react-router/es/Switch.js",
+            "size": 3290,
+            "id": 69
+          },
+          {
+            "name": "./node_modules/react-router/es/withRouter.js",
+            "size": 1400,
+            "id": 70
+          },
+          {
+            "name": "./node_modules/svg-baker-runtime/browser-symbol.js",
+            "size": 7478,
+            "id": 71
+          },
+          {
+            "name": "./node_modules/svg-sprite-loader/runtime/browser-sprite.build.js",
+            "size": 26752,
+            "id": 72
+          },
+          {
+            "name": "./node_modules/babel-runtime/core-js/object/assign.js",
+            "size": 94,
+            "id": 73
+          },
+          {
+            "name": "./node_modules/core-js/library/modules/_object-gpo.js",
+            "size": 493,
+            "id": 74
+          },
+          {
+            "name": "./node_modules/babel-runtime/core-js/object/define-property.js",
+            "size": 103,
+            "id": 75
+          },
+          {
+            "name": "./node_modules/babel-runtime/helpers/typeof.js",
+            "size": 1069,
+            "id": 76
+          },
+          {
+            "name": "./node_modules/core-js/library/modules/_iter-define.js",
+            "size": 2793,
+            "id": 77
+          },
+          {
+            "name": "./node_modules/core-js/library/modules/_redefine.js",
+            "size": 37,
+            "id": 78
+          },
+          {
+            "name": "./node_modules/core-js/library/modules/_object-gopn.js",
+            "size": 288,
+            "id": 79
+          },
+          {
+            "name": "./node_modules/core-js/library/modules/_object-gopd.js",
+            "size": 577,
+            "id": 80
+          },
+          {
+            "name": "./node_modules/nanoid/index.js",
+            "size": 648,
+            "id": 81
+          },
+          {
+            "name": "./node_modules/react/cjs/react.production.min.js",
+            "size": 5611,
+            "id": 84
+          },
+          {
+            "name": "./node_modules/react-dom/index.js",
+            "size": 1363,
+            "id": 85
+          },
+          {
+            "name": "./node_modules/react-dom/cjs/react-dom.production.min.js",
+            "size": 108200,
+            "id": 86
+          },
+          {
+            "name": "./node_modules/fbjs/lib/ExecutionEnvironment.js",
+            "size": 935,
+            "id": 87
+          },
+          {
+            "name": "./node_modules/fbjs/lib/EventListener.js",
+            "size": 2248,
+            "id": 88
+          },
+          {
+            "name": "./node_modules/fbjs/lib/shallowEqual.js",
+            "size": 1616,
+            "id": 89
+          },
+          {
+            "name": "./node_modules/fbjs/lib/containsNode.js",
+            "size": 923,
+            "id": 90
+          },
+          {
+            "name": "./node_modules/fbjs/lib/isTextNode.js",
+            "size": 479,
+            "id": 91
+          },
+          {
+            "name": "./node_modules/fbjs/lib/isNode.js",
+            "size": 702,
+            "id": 92
+          },
+          {
+            "name": "./node_modules/fbjs/lib/focusNode.js",
+            "size": 578,
+            "id": 93
+          },
+          {
+            "name": "./node_modules/fbjs/lib/getActiveElement.js",
+            "size": 912,
+            "id": 94
+          },
+          {
+            "name": "./node_modules/react-hot-loader/index.js",
+            "size": 40,
+            "id": 95
+          },
+          {
+            "name": "./node_modules/react-hot-loader/lib/index.js",
+            "size": 209,
+            "id": 96
+          },
+          {
+            "name": "./node_modules/react-hot-loader/lib/index.prod.js",
+            "size": 71,
+            "id": 97
+          },
+          {
+            "name": "./node_modules/react-hot-loader/lib/AppContainer.js",
+            "size": 223,
+            "id": 98
+          },
+          {
+            "name": "./node_modules/react-hot-loader/lib/AppContainer.prod.js",
+            "size": 2207,
+            "id": 99
+          },
+          {
+            "name": "(webpack)/buildin/harmony-module.js",
+            "size": 572,
+            "id": 101
+          },
+          {
+            "name": "./node_modules/babel-runtime/core-js/object/keys.js",
+            "size": 92,
+            "id": 102
+          },
+          {
+            "name": "./node_modules/core-js/library/fn/object/keys.js",
+            "size": 103,
+            "id": 103
+          },
+          {
+            "name": "./node_modules/core-js/library/modules/es6.object.keys.js",
+            "size": 225,
+            "id": 104
+          },
+          {
+            "name": "./node_modules/core-js/library/modules/_array-includes.js",
+            "size": 924,
+            "id": 105
+          },
+          {
+            "name": "./node_modules/core-js/library/modules/_to-length.js",
+            "size": 215,
+            "id": 106
+          },
+          {
+            "name": "./node_modules/core-js/library/modules/_to-absolute-index.js",
+            "size": 223,
+            "id": 107
+          },
+          {
+            "name": "./node_modules/core-js/library/modules/_a-function.js",
+            "size": 125,
+            "id": 108
+          },
+          {
+            "name": "./node_modules/babel-runtime/core-js/json/stringify.js",
+            "size": 95,
+            "id": 109
+          },
+          {
+            "name": "./node_modules/core-js/library/fn/json/stringify.js",
+            "size": 246,
+            "id": 110
+          },
+          {
+            "name": "./node_modules/prop-types/factoryWithThrowingShims.js",
+            "size": 1492,
+            "id": 111
+          },
+          {
+            "name": "./node_modules/prop-types/lib/ReactPropTypesSecret.js",
+            "size": 314,
+            "id": 112
+          },
+          {
+            "name": "./node_modules/history/createBrowserHistory.js",
+            "size": 9751,
+            "id": 113
+          },
+          {
+            "name": "./node_modules/history/createHashHistory.js",
+            "size": 10053,
+            "id": 114
+          },
+          {
+            "name": "./node_modules/history/createMemoryHistory.js",
+            "size": 5816,
+            "id": 115
+          },
+          {
+            "name": "./node_modules/path-to-regexp/index.js",
+            "size": 3328,
+            "id": 116
+          },
+          {
+            "name": "./node_modules/hoist-non-react-statics/index.js",
+            "size": 2001,
+            "id": 117
+          },
+          {
+            "name": "./node_modules/core-js/library/fn/object/assign.js",
+            "size": 107,
+            "id": 118
+          },
+          {
+            "name": "./node_modules/core-js/library/modules/es6.object.assign.js",
+            "size": 162,
+            "id": 119
+          },
+          {
+            "name": "./node_modules/core-js/library/modules/_object-assign.js",
+            "size": 1195,
+            "id": 120
+          },
+          {
+            "name": "./node_modules/core-js/library/fn/object/get-prototype-of.js",
+            "size": 125,
+            "id": 121
+          },
+          {
+            "name": "./node_modules/core-js/library/modules/es6.object.get-prototype-of.js",
+            "size": 273,
+            "id": 122
+          },
+          {
+            "name": "./node_modules/core-js/library/fn/object/define-property.js",
+            "size": 215,
+            "id": 123
+          },
+          {
+            "name": "./node_modules/core-js/library/modules/es6.object.define-property.js",
+            "size": 217,
+            "id": 124
+          },
+          {
+            "name": "./node_modules/babel-runtime/core-js/symbol/iterator.js",
+            "size": 96,
+            "id": 125
+          },
+          {
+            "name": "./node_modules/core-js/library/fn/symbol/iterator.js",
+            "size": 155,
+            "id": 126
+          },
+          {
+            "name": "./node_modules/core-js/library/modules/es6.string.iterator.js",
+            "size": 531,
+            "id": 127
+          },
+          {
+            "name": "./node_modules/core-js/library/modules/_string-at.js",
+            "size": 620,
+            "id": 128
+          },
+          {
+            "name": "./node_modules/core-js/library/modules/_iter-create.js",
+            "size": 526,
+            "id": 129
+          },
+          {
+            "name": "./node_modules/core-js/library/modules/_object-dps.js",
+            "size": 404,
+            "id": 130
+          },
+          {
+            "name": "./node_modules/core-js/library/modules/_html.js",
+            "size": 101,
+            "id": 131
+          },
+          {
+            "name": "./node_modules/core-js/library/modules/web.dom.iterable.js",
+            "size": 969,
+            "id": 132
+          },
+          {
+            "name": "./node_modules/core-js/library/modules/es6.array.iterator.js",
+            "size": 1116,
+            "id": 133
+          },
+          {
+            "name": "./node_modules/core-js/library/modules/_add-to-unscopables.js",
+            "size": 46,
+            "id": 134
+          },
+          {
+            "name": "./node_modules/core-js/library/modules/_iter-step.js",
+            "size": 86,
+            "id": 135
+          },
+          {
+            "name": "./node_modules/babel-runtime/core-js/symbol.js",
+            "size": 87,
+            "id": 136
+          },
+          {
+            "name": "./node_modules/core-js/library/fn/symbol/index.js",
+            "size": 240,
+            "id": 137
+          },
+          {
+            "name": "./node_modules/core-js/library/modules/es6.symbol.js",
+            "size": 8829,
+            "id": 138
+          },
+          {
+            "name": "./node_modules/core-js/library/modules/_meta.js",
+            "size": 1558,
+            "id": 139
+          },
+          {
+            "name": "./node_modules/core-js/library/modules/_enum-keys.js",
+            "size": 469,
+            "id": 140
+          },
+          {
+            "name": "./node_modules/core-js/library/modules/_is-array.js",
+            "size": 147,
+            "id": 141
+          },
+          {
+            "name": "./node_modules/core-js/library/modules/_object-gopn-ext.js",
+            "size": 604,
+            "id": 142
+          },
+          {
+            "name": "./node_modules/core-js/library/modules/es6.object.to-string.js",
+            "size": 0,
+            "id": 143
+          },
+          {
+            "name": "./node_modules/core-js/library/modules/es7.symbol.async-iterator.js",
+            "size": 43,
+            "id": 144
+          },
+          {
+            "name": "./node_modules/core-js/library/modules/es7.symbol.observable.js",
+            "size": 40,
+            "id": 145
+          },
+          {
+            "name": "./node_modules/babel-runtime/core-js/object/set-prototype-of.js",
+            "size": 104,
+            "id": 146
+          },
+          {
+            "name": "./node_modules/core-js/library/fn/object/set-prototype-of.js",
+            "size": 125,
+            "id": 147
+          },
+          {
+            "name": "./node_modules/core-js/library/modules/es6.object.set-prototype-of.js",
+            "size": 160,
+            "id": 148
+          },
+          {
+            "name": "./node_modules/core-js/library/modules/_set-proto.js",
+            "size": 906,
+            "id": 149
+          },
+          {
+            "name": "./node_modules/babel-runtime/core-js/object/create.js",
+            "size": 94,
+            "id": 150
+          },
+          {
+            "name": "./node_modules/core-js/library/fn/object/create.js",
+            "size": 172,
+            "id": 151
+          },
+          {
+            "name": "./node_modules/core-js/library/modules/es6.object.create.js",
+            "size": 162,
+            "id": 152
+          },
+          {
+            "name": "./node_modules/nanoid/random-browser.js",
+            "size": 140,
+            "id": 153
+          },
+          {
+            "name": "./node_modules/react-router/es/index.js",
+            "size": 637,
+            "id": 154
+          },
+          {
+            "name": "./node_modules/style-loader/lib/urls.js",
+            "size": 3008,
+            "id": 160
+          },
+          {
+            "name": "./node_modules/css-loader/lib/css-base.js",
+            "size": 2260,
+            "id": 163
+          },
+          {
+            "name": "./node_modules/style-loader/lib/addStyles.js",
+            "size": 9415,
+            "id": 164
+          }
+        ]
+      },
+      {
+        "size": 178318,
+        "files": [
+          "static/js/app.062aa160486ee5480340.js",
+          "static/css/app.e1084fd9c2e41c673ebcb83881644a26.css",
+          "static/js/app.062aa160486ee5480340.js.map",
+          "static/css/app.e1084fd9c2e41c673ebcb83881644a26.css.map"
+        ],
+        "modules": [
+          {
+            "name": "multi ./src/index.jsx",
+            "size": 28,
+            "id": 82
+          },
+          {
+            "name": "./src/index.jsx + 64 modules",
+            "size": 154358,
+            "id": 83
+          },
+          {
+            "name": "./src/vendor/prism.js",
+            "size": 23432,
+            "id": 100
+          },
+          {
+            "name": "./src/components/Home/accessibility.svg",
+            "size": 85,
+            "id": 155
+          },
+          {
+            "name": "./src/components/Home/bundle.svg",
+            "size": 78,
+            "id": 156
+          },
+          {
+            "name": "./src/components/Home/merge.svg",
+            "size": 77,
+            "id": 157
+          },
+          {
+            "name": "./src/components/Home/react.svg",
+            "size": 77,
+            "id": 158
+          },
+          {
+            "name": "./src/components/Home/home.scss",
+            "size": 41,
+            "id": 159
+          },
+          {
+            "name": "./src/components/Concepts/concepts.scss",
+            "size": 101,
+            "id": 161
+          },
+          {
+            "name": "./src/styles.scss",
+            "size": 41,
+            "id": 162
+          }
+        ]
+      },
+      {
+        "size": 0,
+        "files": [
+          "static/js/manifest.edd347feeaa533193054.js",
+          "static/js/manifest.edd347feeaa533193054.js.map"
+        ],
+        "modules": []
+      }
+    ],
+    "pureCssSize": 60645,
+    "unPureCssSize": 171135
+  }
+]
