@@ -1,7 +1,7 @@
 import React from 'react'
 import renderer from 'react-test-renderer'
 
-import State from './index'
+import State from './State'
 
 import activationTestSuite from '../utils-test/activation-tests'
 import elementTests from '../utils-test/element-tests'

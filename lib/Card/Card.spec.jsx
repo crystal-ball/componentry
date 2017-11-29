@@ -1,7 +1,7 @@
 import React from 'react'
 import { mount, shallow } from 'enzyme'
 
-import Card from './index'
+import Card from './Card'
 import elementTests from '../utils-test/element-tests'
 
 describe('<Card />', () => {

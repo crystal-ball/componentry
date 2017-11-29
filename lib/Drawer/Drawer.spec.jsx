@@ -1,7 +1,7 @@
 import React from 'react'
 import renderer from 'react-test-renderer'
 
-import { Drawer } from './index'
+import { Drawer } from './Drawer'
 import activationTestSuite from '../utils-test/activation-tests'
 import elementTests from '../utils-test/element-tests'
 import setupActiveContext from '../utils-test/setup-active-context'

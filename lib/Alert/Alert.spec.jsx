@@ -1,7 +1,7 @@
 import React from 'react'
 import { mount } from 'enzyme'
 
-import Alert from './index'
+import Alert from './Alert'
 import elementTests from '../utils-test/element-tests'
 
 describe('<Alert/>', () => {

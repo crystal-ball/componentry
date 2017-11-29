@@ -2,7 +2,7 @@ import React from 'react'
 import { shallow } from 'enzyme'
 import renderer from 'react-test-renderer'
 
-import Button from './index'
+import Button from './Button'
 import elementTests from '../utils-test/element-tests'
 
 describe('<Button/>', () => {

@@ -4,7 +4,7 @@ import type { ComponentType, Node } from 'react'
 import { object, shape } from 'prop-types'
 import classNames from 'classnames'
 
-import Button from '../Button'
+import Button from '../Button/Button'
 import arias from '../utils/arias'
 import type { ComponentArias } from '../utils/arias'
 

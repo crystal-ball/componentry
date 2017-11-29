@@ -2,7 +2,7 @@ import React from 'react'
 import { mount } from 'enzyme'
 import renderer from 'react-test-renderer'
 
-import Dropdown from './index'
+import Dropdown from './Dropdown'
 import dt from '../utils-test/dt'
 import activationTestSuite from '../utils-test/activation-tests'
 import elementTests from '../utils-test/element-tests'
