@@ -19,29 +19,29 @@ const subcomponents = `<Tooltip>
   </Tooltip.Content>
 </Tooltip>`
 
-const uncontrolled = `<State>
-  <State.Trigger>Toggle</State.Trigger>
-  <State.Content>I manage my own state.</State.Content>
-</State>`
+const uncontrolled = `<Active>
+  <Active.Trigger>Toggle</Active.Trigger>
+  <Active.Content>I manage my own state.</Active.Content>
+</Active>`
 
-const observed = `<State
+const observed = `<Active
   onActivate={this.doSomethingOnActivate}
   onActivated={this.doSomethingAfterActivation}
   onDeactivate={this.doSomethingOnDeactivate}
   onDeactivated={this.doSomethingAfterDeactivation}
 >
-  <State.Trigger>Toggle</State.Trigger>
-  <State.Content>I will let you know when my state changes.</State.Content>
+  <Active.Trigger>Toggle</Active.Trigger>
+  <Active.Content>I will let you know when my state changes.</Active.Content>
 </State>`
 
-const controlled = `<State
+const controlled = `<Active
   active={activeState}
   activate={this.handleActivationChangeEvents}
   deactivate={this.handleDeactivationChangeEvents}
 >
-  <State.Trigger>Toggle</State.Trigger>
-  <State.Content>I will follow the instructions you give me.</State.Content>
-</State>`
+  <Active.Trigger>Toggle</Active.Trigger>
+  <Active.Content>I will follow the instructions you give me.</Active.Content>
+</Active>`
 
 export default () => (
   <div>

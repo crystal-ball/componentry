@@ -201,7 +201,7 @@ export default TestComponent => {
   })
 
   /**
-   * Test that any flavor of the `<State />` component exposes internal state and
+   * Test that any flavor of the `<Active />` component exposes internal state and
    * state change methods using the FaCC pattern
    */
   test('should expose internals using FaCC pattern', () => {

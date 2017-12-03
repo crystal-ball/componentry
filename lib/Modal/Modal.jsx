@@ -6,7 +6,7 @@ import classNames from 'classnames'
 import nanoid from 'nanoid'
 
 import Title from './Title'
-import withActive from '../HOCs/withActive'
+import withActive from '../withActive/withActive'
 import elementFactory from '../component-factories/element-factory'
 
 /* eslint-disable react/no-unused-prop-types */

@@ -7,7 +7,7 @@ import componentRoutes from 'utils/component-routes'
 import Header from 'components/universal/Header'
 
 // Component Screens
-import StateScreen from './StateScreen'
+import ActiveScreen from './ActiveScreen'
 import AlertsScreen from './AlertsScreen'
 import ButtonsScreen from './ButtonsScreen'
 import CardsScreen from './CardsScreen'
@@ -37,7 +37,7 @@ export default ({ match }: Props) => {
 
       <div className="row">
         <div className="col-10">
-          <Route path="/components/state" component={StateScreen} />
+          <Route path="/components/active" component={ActiveScreen} />
           <Route path="/components/alerts" component={AlertsScreen} />
           <Route path="/components/buttons" component={ButtonsScreen} />
           <Route path="/components/cards" component={CardsScreen} />

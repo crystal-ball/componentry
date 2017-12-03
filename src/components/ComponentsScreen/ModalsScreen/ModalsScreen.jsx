@@ -1,7 +1,7 @@
 // @flow
 import React, { Component } from 'react'
 
-import { Button, Modal, State } from 'componentry-lib'
+import { Active, Button, Modal } from 'componentry-lib'
 
 type ComponentState = {
   controlledModal: boolean
@@ -29,12 +29,12 @@ export default class Modals extends Component<{}, ComponentState> {
               to align the close button to the middle of the header.
             </p>
             <div>
-              <State>
-                <State.Trigger link={false}>Toggle Modal</State.Trigger>
+              <Active>
+                <Active.Trigger link={false}>Toggle Modal</Active.Trigger>
                 <Modal>
                   <Modal.Header>
                     <Modal.Title>This is the header</Modal.Title>
-                    <State.Trigger link>
+                    <Active.Trigger link>
                       <svg
                         className="icon close text-dark"
                         role="img"
@@ -42,17 +42,17 @@ export default class Modals extends Component<{}, ComponentState> {
                       >
                         <use href="#close" />
                       </svg>
-                    </State.Trigger>
+                    </Active.Trigger>
                   </Modal.Header>
                   <Modal.Body>This is a modal</Modal.Body>
                   <Modal.Footer>
-                    <State.Trigger color="dark" outline>
+                    <Active.Trigger color="dark" outline>
                       Close
-                    </State.Trigger>
+                    </Active.Trigger>
                     <Button color="primary">Save Changes</Button>
                   </Modal.Footer>
                 </Modal>
-              </State>
+              </Active>
               <h4>Controlled Modal</h4>
               <Button onClick={this.toggleModal}>Toggle controlled modal</Button>
               <Modal

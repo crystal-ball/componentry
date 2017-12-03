@@ -1,17 +1,17 @@
 import React from 'react'
 import renderer from 'react-test-renderer'
 
-import State from './State'
+import Active from './Active'
 
 import activationTestSuite from '../utils-test/activation-tests'
 import elementTests from '../utils-test/element-tests'
 import setupActiveContext from '../utils-test/setup-active-context'
 
-describe('<State />', () => {
-  activationTestSuite(State)
-  elementTests(State)
-  elementTests(State.Trigger, setupActiveContext())
-  elementTests(State.Content, setupActiveContext())
+describe('<Active />', () => {
+  activationTestSuite(Active)
+  elementTests(Active)
+  elementTests(Active.Trigger, setupActiveContext())
+  elementTests(Active.Content, setupActiveContext())
 })
 
 // Snapshots
@@ -19,10 +19,10 @@ describe('<State />', () => {
 it('renders correctly', () => {
   const tree = renderer
     .create(
-      <State>
-        <State.Trigger>Trigger</State.Trigger>
-        <State.Content>Content</State.Content>
-      </State>
+      <Active>
+        <Active.Trigger>Trigger</Active.Trigger>
+        <Active.Content>Content</Active.Content>
+      </Active>
     )
     .toJSON()
   expect(tree).toMatchSnapshot()

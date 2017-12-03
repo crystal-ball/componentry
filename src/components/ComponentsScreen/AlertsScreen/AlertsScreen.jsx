@@ -2,7 +2,7 @@
 import React, { Component } from 'react'
 
 import PrismHighlighter from 'components/universal/PrismHighlighter'
-import { Alert, Card, Dropdown, State, Tab } from 'componentry-lib'
+import { Active, Alert, Card, Dropdown, Tab } from 'componentry-lib'
 
 type ComponentState = {
   color: string,
@@ -46,12 +46,12 @@ export default class extends Component<{}, ComponentState> {
     const { color, dismissible } = this.state
 
     const code = dismissible
-      ? `<State defaultActive>
+      ? `<Active defaultActive>
   <Alert color="${color}" dismissible>
     <strong>Well done!</strong> You successfully read this important
     alert message.
   </Alert>
-</State>`
+</Active>`
       : `<Alert color="${color}">
   <strong>Well done!</strong> You successfully read this important
   alert message.
@@ -95,12 +95,12 @@ export default class extends Component<{}, ComponentState> {
               <Card>
                 <Card.Body>
                   {dismissible ? (
-                    <State defaultActive>
+                    <Active defaultActive>
                       <Alert color={color} dismissible>
                         <strong>Well done!</strong> You successfully read this
                         important alert message.
                       </Alert>
-                    </State>
+                    </Active>
                   ) : (
                     <Alert color={color}>
                       <strong>Well done!</strong> You successfully read this

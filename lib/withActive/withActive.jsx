@@ -5,7 +5,6 @@ import { func, number, shape, string } from 'prop-types'
 
 import getDisplayName from '../utils/getDisplayName'
 import type { Theme } from '../ThemeProvider/ThemeProvider'
-import type { ContextActive } from './withState'
 
 export type ActiveProps = {
   activate?: Function,
@@ -42,28 +41,40 @@ type State = {
   visible: boolean | string
 }
 
+type ActiveContext = {
+  activate: Function,
+  deactivate: Function,
+  getActive: Function,
+  guid: string,
+  subscribe: Function
+}
+
+// TODO: this seems to fix Flow errors with hoisting class statics, but doesn't
+// actually provide the right typings???
+interface WrappedStatics {
+  Header?: ComponentType<*>;
+  Body?: ComponentType<*>;
+  Footer?: ComponentType<*>;
+  Title?: ComponentType<*>;
+}
+
 /**
  * HOC passes active state props along with computed aria attributes. Component is
  * responsible for passing ACTIVE context as props and handling state transitions
  * when appropriate.
  */
 export default ({ transitionState = false }: Options = {}) => (
-  Wrapped: ComponentType<*>
+  Wrapped: ComponentType<*> & WrappedStatics
 ) =>
   class WithActive extends Component<Props, State> {
     unsubscribe: Function
     transitionDuration: number
 
-    // $FlowFixMe
     static Header = Wrapped.Header
-    // $FlowFixMe
     static Body = Wrapped.Body
-    // $FlowFixMe
     static Footer = Wrapped.Footer
-    // $FlowFixMe
     static Title = Wrapped.Title
 
-    // $FlowFixMe
     static displayName = `withActive${getDisplayName(Wrapped)}`
 
     static contextTypes = {
@@ -95,7 +106,7 @@ export default ({ transitionState = false }: Options = {}) => (
      * Set references to context and `transitionDuration` for simpler checks
      * throughout component lifecycle
      */
-    constructor(props: Props, context: { ACTIVE?: ContextActive, THEME?: Theme }) {
+    constructor(props: Props, context: { ACTIVE?: ActiveContext, THEME?: Theme }) {
       super(props)
       // Update bail out flag when context is not present
       if (!context.ACTIVE) this.invalidContext = true

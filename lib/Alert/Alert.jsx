@@ -4,10 +4,10 @@ import { object, shape } from 'prop-types'
 import classNames from 'classnames'
 
 import Button from '../Button/Button'
-import withActive from '../HOCs/withActive'
+import withActive from '../withActive/withActive'
 
 import type { ThemeColors } from '../utils/theme'
-import type { ActiveProps } from '../HOCs/withActive'
+import type { ActiveProps } from '../withActive/withActive'
 import type { ElementProps } from '../component-factories/element-factory'
 
 type Props = {

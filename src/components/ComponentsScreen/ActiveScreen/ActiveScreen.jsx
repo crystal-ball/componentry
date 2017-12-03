@@ -1,13 +1,13 @@
 // @flow
 import React from 'react'
 
-import { State } from 'componentry-lib'
+import { Active } from 'componentry-lib'
 
 export default () => (
   <div className="mb-5">
     <div className="row">
       <div className="col-12">
-        <p className="lead">State component...</p>
+        <p className="lead">Active component...</p>
         <h3>FaCC pattern</h3>
         <p>
           Component accepts a function as children (FaCC pattern) that will be
@@ -22,28 +22,28 @@ export default () => (
           access the active state change methods and explicilty set the `onClick` of
           any element to only `activate` or `deactivate`
         </p>
-        <State>
-          <State.Trigger>State Toggle</State.Trigger>
-          <State.Content>
+        <Active>
+          <Active.Trigger>State Toggle</Active.Trigger>
+          <Active.Content>
             <p>
               Content display toggled by the <code>Toggle</code> component.
             </p>
-            <State>
+            <Active>
               {({ active, activate, deactivate }) => [
-                <State.Trigger onClick={activate} key="a">
+                <Active.Trigger onClick={activate} key="a">
                   Open only!
-                </State.Trigger>,
-                <State.Trigger onClick={deactivate} key="d">
+                </Active.Trigger>,
+                <Active.Trigger onClick={deactivate} key="d">
                   Close only!
-                </State.Trigger>,
+                </Active.Trigger>,
                 <p key="p">Current nested state: {String(active)}</p>,
-                <State.Content key="c">
+                <Active.Content key="c">
                   Content display toggled by the <code>Toggle</code> component.
-                </State.Content>
+                </Active.Content>
               ]}
-            </State>
-          </State.Content>
-        </State>
+            </Active>
+          </Active.Content>
+        </Active>
       </div>
     </div>
   </div>
