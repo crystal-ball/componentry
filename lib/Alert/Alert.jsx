@@ -88,6 +88,8 @@ class Alert extends Component<Props> {
   }
 }
 
-const withActiveAlert = withActive({ transitionState: true })(Alert)
+const withActiveAlert = withActive({ defaultActive: true, transitionState: true })(
+  Alert
+)
 
 export default withActiveAlert

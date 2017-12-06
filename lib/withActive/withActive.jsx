@@ -15,11 +15,15 @@ export type ActiveProps = {
 
 type Options = {
   /**
+   * Set the default state for active (and visible if transitionState is enabled).
+   */
+  defaultActive?: boolean,
+  /**
    * For active state components that should have a transition, eg Alerts and
    * Modals. Setting this to true will provide visibility and active props to
    * transition opacity before updating active state
    */
-  transitionState: boolean
+  transitionState?: boolean
 }
 
 type Props = {
@@ -63,9 +67,9 @@ interface WrappedStatics {
  * responsible for passing ACTIVE context as props and handling state transitions
  * when appropriate.
  */
-export default ({ transitionState = false }: Options = {}) => (
-  Wrapped: ComponentType<*> & WrappedStatics
-) =>
+export default (
+  { defaultActive = false, transitionState = false }: Options = {}
+) => (Wrapped: ComponentType<*> & WrappedStatics) =>
   class WithActive extends Component<Props, State> {
     unsubscribe: Function
     transitionDuration: number
@@ -91,8 +95,8 @@ export default ({ transitionState = false }: Options = {}) => (
     }
 
     state = {
-      active: false,
-      visible: false
+      active: defaultActive,
+      visible: defaultActive
     }
 
     /**
