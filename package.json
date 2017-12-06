@@ -1,6 +1,6 @@
 {
   "name": "componentry",
-  "version": "2.0.0-alpha.4",
+  "version": "2.0.0-beta",
   "description": "Radical React Components",
   "main": "dist/componentry.js",
   "module": "es/index.js",
@@ -35,14 +35,7 @@
     "styles:minify": "cleancss -o dist/componentry.min.css dist/componentry.css",
     "styles:copy": "cp -r styles/* dist"
   },
-  "keywords": [
-    "react",
-    "components",
-    "ui",
-    "508",
-    "accessible",
-    "bootstrap"
-  ],
+  "keywords": ["react", "components", "ui", "508", "accessible", "bootstrap"],
   "author": "Dan Hedgecock <hedgecock.d@gmail.com>",
   "license": "MIT",
   "peerDependencies": {
