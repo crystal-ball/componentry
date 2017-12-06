@@ -123,7 +123,7 @@ export default class extends Component<{}, ComponentState> {
                 <h3 className="mb-4 text-right" id="props">
                   Props
                 </h3>
-                <Tab defaultActive="alert" className="row">
+                <Tab defaultActive="alert" className="row props-tabs">
                   <div className="col-9">
                     <Tab.ContentContainer>
                       <Tab.Content activeId="alert">
