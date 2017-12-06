@@ -25,7 +25,9 @@ export default class Icon extends Component<Props> {
   constructor(props: Props) {
     super(props)
     // $FlowIgnore: Flow doesn't know about webpack magic comments for dynamic imports
-    import(/* webpackMode: "eager", webpackChunkName: "icons" */ `media/icons/${props.id}.svg`)
+    import(/* webpackMode: "eager", webpackChunkName: "icons" */ `media/icons/${
+      props.id
+    }.svg`)
   }
 
   render() {

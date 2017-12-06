@@ -55,9 +55,7 @@ export default () => (
     <Alert color="success">
       We&apos;re never done improving. Do you know how Componentry can be more
       accessible? Please{' '}
-      <a href="https://github.com/crystal-ball/componentry/issues">
-        file an issue
-      </a>{' '}
+      <a href="https://github.com/crystal-ball/componentry/issues">file an issue</a>{' '}
       letting us know, or better yet submit a pull request{' '}
       <span role="img" aria-label="huzzah">
         🎉
