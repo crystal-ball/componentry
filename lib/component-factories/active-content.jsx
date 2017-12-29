@@ -19,7 +19,7 @@ type Options = {
   /** Flag to include the markup for a content tip element */
   tip?: boolean,
   /** When true validate element width does not overflow page on activate */
-  widthValidation?: boolean
+  widthValidation?: boolean,
 }
 
 // TODO: is this fixable?
@@ -34,22 +34,20 @@ type Props = {
   activate: Function,
   active: boolean,
   deactivate: Function,
-  guid: string
+  guid: string,
 }
 
 /**
  * Factory returns custom `<Content />` components defined by the options.
  */
-export default (
-  {
-    classes = '',
-    componentArias,
-    element = '',
-    name,
-    tip = false,
-    widthValidation = false
-  }: Options = {}
-) =>
+export default ({
+  classes = '',
+  componentArias,
+  element = '',
+  name,
+  tip = false,
+  widthValidation = false,
+}: Options = {}) =>
   class Content extends Component<Props> {
     static displayName = name
     static contextTypes = { THEME: shape({ [name]: object }) }
@@ -139,22 +137,22 @@ export default (
                   active: activeId === active,
                   id: `${activeId}-content`,
                   labelledby: `${activeId}-trigger`,
-                  hidden: true
+                  hidden: true,
                 }
-              : {})
+              : {}),
           }),
           className:
             classNames(classes, componentCtx.className, this.props.className, {
-              [`${element}-content`]: element
+              [`${element}-content`]: element,
             }) || undefined,
-          ...rest
+          ...rest,
         },
         tip && (
           <div className="tip-container">
             <div className="tip" />
           </div>
         ),
-        children
+        children,
       )
     }
   }

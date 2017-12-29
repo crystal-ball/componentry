@@ -40,7 +40,7 @@ describe('<ListGroup />', () => {
     const wrapper = shallow(
       <ListGroupItem>
         <span>Rad</span>
-      </ListGroupItem>
+      </ListGroupItem>,
     )
     expect(wrapper.find('span').length).toEqual(1)
   })

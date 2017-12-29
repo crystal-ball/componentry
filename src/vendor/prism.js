@@ -72,7 +72,7 @@ var Prism = (function() {
         }
 
         return o
-      }
+      },
     },
 
     languages: {
@@ -87,14 +87,14 @@ var Prism = (function() {
       },
 
       /**
-		 * Insert a token before another token in a language literal
-		 * As this needs to recreate the object (we cannot actually insert before keys in object literals),
-		 * we cannot just provide an object, we need anobject and a key.
-		 * @param inside The key (or language id) of the parent
-		 * @param before The key to insert before. If not provided, the function appends instead.
-		 * @param insert Object with the key/value pairs to insert
-		 * @param root The object that contains `inside`. If equal to Prism.languages, it can be omitted.
-		 */
+       * Insert a token before another token in a language literal
+       * As this needs to recreate the object (we cannot actually insert before keys in object literals),
+       * we cannot just provide an object, we need anobject and a key.
+       * @param inside The key (or language id) of the parent
+       * @param before The key to insert before. If not provided, the function appends instead.
+       * @param insert Object with the key/value pairs to insert
+       * @param root The object that contains `inside`. If equal to Prism.languages, it can be omitted.
+       */
       insertBefore: function(inside, before, insert, root) {
         root = root || _.languages
         var grammar = root[inside]
@@ -156,7 +156,7 @@ var Prism = (function() {
             }
           }
         }
-      }
+      },
     },
     plugins: {},
 
@@ -164,7 +164,7 @@ var Prism = (function() {
       var env = {
         callback: callback,
         selector:
-          'code[class*="language-"], [class*="language-"] code, code[class*="lang-"], [class*="lang-"] code'
+          'code[class*="language-"], [class*="language-"] code, code[class*="lang-"], [class*="lang-"] code',
       }
 
       _.hooks.run('before-highlightall', env)
@@ -213,7 +213,7 @@ var Prism = (function() {
         element: element,
         language: language,
         grammar: grammar,
-        code: code
+        code: code,
       }
 
       _.hooks.run('before-sanity-check', env)
@@ -249,8 +249,8 @@ var Prism = (function() {
           JSON.stringify({
             language: env.language,
             code: env.code,
-            immediateClose: true
-          })
+            immediateClose: true,
+          }),
         )
       } else {
         env.highlightedCode = _.highlight(env.code, env.grammar, env.language)
@@ -278,7 +278,7 @@ var Prism = (function() {
       index,
       startPos,
       oneshot,
-      target
+      target,
     ) {
       var Token = _.Token
 
@@ -403,7 +403,7 @@ var Prism = (function() {
               inside ? _.tokenize(match, inside) : match,
               alias,
               match,
-              greedy
+              greedy,
             )
 
             args.push(wrapped)
@@ -462,8 +462,8 @@ var Prism = (function() {
         for (var i = 0, callback; (callback = callbacks[i++]); ) {
           callback(env)
         }
-      }
-    }
+      },
+    },
   })
 
   var Token = (_.Token = function(type, content, alias, matchedStr, greedy) {
@@ -495,7 +495,7 @@ var Prism = (function() {
       classes: ['token', o.type],
       attributes: {},
       language: language,
-      parent: parent
+      parent: parent,
     }
 
     if (env.type == 'comment') {
@@ -551,7 +551,7 @@ var Prism = (function() {
           _self.close()
         }
       },
-      false
+      false,
     )
 
     return _self.Prism
@@ -605,25 +605,25 @@ Prism.languages.markup = {
         pattern: /^<\/?[^\s>\/]+/i,
         inside: {
           punctuation: /^<\/?/,
-          namespace: /^[^\s>\/:]+:/
-        }
+          namespace: /^[^\s>\/:]+:/,
+        },
       },
       'attr-value': {
         pattern: /=(?:('|")[\s\S]*?(\1)|[^\s>]+)/i,
         inside: {
-          punctuation: /[=>"']/
-        }
+          punctuation: /[=>"']/,
+        },
       },
       punctuation: /\/?>/,
       'attr-name': {
         pattern: /[^\s>\/]+/,
         inside: {
-          namespace: /^[^\s>\/:]+:/
-        }
-      }
-    }
+          namespace: /^[^\s>\/:]+:/,
+        },
+      },
+    },
   },
-  entity: /&#?[\da-z]{1,8};/i
+  entity: /&#?[\da-z]{1,8};/i,
 }
 
 Prism.languages.markup['tag'].inside['attr-value'].inside['entity'] =
@@ -646,20 +646,20 @@ Prism.languages.css = {
   atrule: {
     pattern: /@[\w-]+?.*?(;|(?=\s*\{))/i,
     inside: {
-      rule: /@[\w-]+/
+      rule: /@[\w-]+/,
       // See rest below
-    }
+    },
   },
   url: /url\((?:(["'])(\\(?:\r\n|[\s\S])|(?!\1)[^\\\r\n])*\1|.*?)\)/i,
   selector: /[^\{\}\s][^\{\};]*?(?=\s*\{)/,
   string: {
     pattern: /("|')(\\(?:\r\n|[\s\S])|(?!\1)[^\\\r\n])*\1/,
-    greedy: true
+    greedy: true,
   },
   property: /(\b|\B)[\w-]+(?=\s*:)/i,
   important: /\B!important\b/i,
   function: /[-a-z0-9]+(?=\()/i,
-  punctuation: /[(){};:]/
+  punctuation: /[(){};:]/,
 }
 
 Prism.languages.css['atrule'].inside.rest = Prism.util.clone(Prism.languages.css)
@@ -670,8 +670,8 @@ if (Prism.languages.markup) {
       pattern: /(<style[\s\S]*?>)[\s\S]*?(?=<\/style>)/i,
       lookbehind: true,
       inside: Prism.languages.css,
-      alias: 'language-css'
-    }
+      alias: 'language-css',
+    },
   })
 
   Prism.languages.insertBefore(
@@ -683,48 +683,48 @@ if (Prism.languages.markup) {
         inside: {
           'attr-name': {
             pattern: /^\s*style/i,
-            inside: Prism.languages.markup.tag.inside
+            inside: Prism.languages.markup.tag.inside,
           },
           punctuation: /^\s*=\s*['"]|['"]\s*$/,
           'attr-value': {
             pattern: /.+/i,
-            inside: Prism.languages.css
-          }
+            inside: Prism.languages.css,
+          },
         },
-        alias: 'language-css'
-      }
+        alias: 'language-css',
+      },
     },
-    Prism.languages.markup.tag
+    Prism.languages.markup.tag,
   )
 }
 Prism.languages.clike = {
   comment: [
     {
       pattern: /(^|[^\\])\/\*[\s\S]*?\*\//,
-      lookbehind: true
+      lookbehind: true,
     },
     {
       pattern: /(^|[^\\:])\/\/.*/,
-      lookbehind: true
-    }
+      lookbehind: true,
+    },
   ],
   string: {
     pattern: /(["'])(\\(?:\r\n|[\s\S])|(?!\1)[^\\\r\n])*\1/,
-    greedy: true
+    greedy: true,
   },
   'class-name': {
     pattern: /((?:\b(?:class|interface|extends|implements|trait|instanceof|new)\s+)|(?:catch\s+\())[a-z0-9_\.\\]+/i,
     lookbehind: true,
     inside: {
-      punctuation: /(\.|\\)/
-    }
+      punctuation: /(\.|\\)/,
+    },
   },
   keyword: /\b(if|else|while|do|for|return|in|instanceof|function|new|try|throw|catch|finally|null|break|continue)\b/,
   boolean: /\b(true|false)\b/,
   function: /[a-z0-9_]+(?=\()/i,
   number: /\b-?(?:0x[\da-f]+|\d*\.?\d+(?:e[+-]?\d+)?)\b/i,
   operator: /--?|\+\+?|!=?=?|<=?|>=?|==?=?|&&?|\|\|?|\?|\*|\/|~|\^|%/,
-  punctuation: /[{}[\];(),.:]/
+  punctuation: /[{}[\];(),.:]/,
 }
 
 Prism.languages.javascript = Prism.languages.extend('clike', {
@@ -732,15 +732,15 @@ Prism.languages.javascript = Prism.languages.extend('clike', {
   number: /\b-?(0[xX][\dA-Fa-f]+|0[bB][01]+|0[oO][0-7]+|\d*\.?\d+([Ee][+-]?\d+)?|NaN|Infinity)\b/,
   // Allow for all non-ASCII characters (See http://stackoverflow.com/a/2008444)
   function: /[_$a-zA-Z\xA0-\uFFFF][_$a-zA-Z0-9\xA0-\uFFFF]*(?=\()/i,
-  operator: /-[-=]?|\+[+=]?|!=?=?|<<?=?|>>?>?=?|=(?:==?|>)?|&[&=]?|\|[|=]?|\*\*?=?|\/=?|~|\^=?|%=?|\?|\.{3}/
+  operator: /-[-=]?|\+[+=]?|!=?=?|<<?=?|>>?>?=?|=(?:==?|>)?|&[&=]?|\|[|=]?|\*\*?=?|\/=?|~|\^=?|%=?|\?|\.{3}/,
 })
 
 Prism.languages.insertBefore('javascript', 'keyword', {
   regex: {
     pattern: /(^|[^/])\/(?!\/)(\[[^\]\r\n]+]|\\.|[^/\\\[\r\n])+\/[gimyu]{0,5}(?=\s*($|[\r\n,.;})]))/,
     lookbehind: true,
-    greedy: true
-  }
+    greedy: true,
+  },
 })
 
 Prism.languages.insertBefore('javascript', 'string', {
@@ -753,14 +753,14 @@ Prism.languages.insertBefore('javascript', 'string', {
         inside: {
           'interpolation-punctuation': {
             pattern: /^\$\{|\}$/,
-            alias: 'punctuation'
+            alias: 'punctuation',
           },
-          rest: Prism.languages.javascript
-        }
+          rest: Prism.languages.javascript,
+        },
       },
-      string: /[\s\S]+/
-    }
-  }
+      string: /[\s\S]+/,
+    },
+  },
 })
 
 if (Prism.languages.markup) {
@@ -769,8 +769,8 @@ if (Prism.languages.markup) {
       pattern: /(<script[\s\S]*?>)[\s\S]*?(?=<\/script>)/i,
       lookbehind: true,
       inside: Prism.languages.javascript,
-      alias: 'language-javascript'
-    }
+      alias: 'language-javascript',
+    },
   })
 }
 
@@ -793,11 +793,11 @@ Prism.languages.js = Prism.languages.javascript
         pattern: /\{\.{3}\w+\}/,
         inside: {
           punctuation: /\{|\}|\./,
-          'attr-value': /\w+/
-        }
-      }
+          'attr-value': /\w+/,
+        },
+      },
     },
-    Prism.languages.jsx.tag
+    Prism.languages.jsx.tag,
   )
 
   var jsxExpression = Prism.util.clone(Prism.languages.jsx)
@@ -808,9 +808,9 @@ Prism.languages.js = Prism.languages.javascript
     'jsx',
     'operator',
     {
-      punctuation: /=(?={)|[{}[\];(),.:]/
+      punctuation: /=(?={)|[{}[\];(),.:]/,
     },
-    { jsx: jsxExpression }
+    { jsx: jsxExpression },
   )
 
   Prism.languages.insertBefore(
@@ -821,10 +821,10 @@ Prism.languages.js = Prism.languages.javascript
         // Allow for one level of nesting
         pattern: /=(\{(?:\{[^}]*\}|[^}])+\})/i,
         inside: jsxExpression,
-        alias: 'language-javascript'
-      }
+        alias: 'language-javascript',
+      },
     },
-    Prism.languages.jsx.tag
+    Prism.languages.jsx.tag,
   )
 })(Prism)
 ;(function(Prism) {
@@ -832,8 +832,8 @@ Prism.languages.js = Prism.languages.javascript
     // Sass comments don't need to be closed, only indented
     comment: {
       pattern: /^([ \t]*)\/[\/*].*(?:(?:\r?\n|\r)\1[ \t]+.+)*/m,
-      lookbehind: true
-    }
+      lookbehind: true,
+    },
   })
 
   Prism.languages.insertBefore('sass', 'atrule', {
@@ -842,9 +842,9 @@ Prism.languages.js = Prism.languages.javascript
       // Includes support for = and + shortcuts
       pattern: /^(?:[ \t]*)[@+=].+/m,
       inside: {
-        atrule: /(?:@[\w-]+|[+=])/m
-      }
-    }
+        atrule: /(?:@[\w-]+|[+=])/m,
+      },
+    },
   })
   delete Prism.languages.sass.atrule
 
@@ -853,8 +853,8 @@ Prism.languages.js = Prism.languages.javascript
     /[+*\/%]|[=!]=|<=?|>=?|\b(?:and|or|not)\b/,
     {
       pattern: /(\s+)-(?=\s)/,
-      lookbehind: true
-    }
+      lookbehind: true,
+    },
   ]
 
   Prism.languages.insertBefore('sass', 'property', {
@@ -864,8 +864,8 @@ Prism.languages.js = Prism.languages.javascript
       inside: {
         punctuation: /:/,
         variable: variable,
-        operator: operator
-      }
+        operator: operator,
+      },
     },
     // We want to consume the whole line
     'property-line': {
@@ -875,15 +875,15 @@ Prism.languages.js = Prism.languages.javascript
           /[^:\s]+(?=\s*:)/,
           {
             pattern: /(:)[^:\s]+/,
-            lookbehind: true
-          }
+            lookbehind: true,
+          },
         ],
         punctuation: /:/,
         variable: variable,
         operator: operator,
-        important: Prism.languages.sass.important
-      }
-    }
+        important: Prism.languages.sass.important,
+      },
+    },
   })
   delete Prism.languages.sass.property
   delete Prism.languages.sass.important
@@ -894,7 +894,7 @@ Prism.languages.js = Prism.languages.javascript
   Prism.languages.insertBefore('sass', 'punctuation', {
     selector: {
       pattern: /([ \t]*)\S(?:,?[^,\r\n]+)*(?:,(?:\r?\n|\r)\1[ \t]+\S(?:,?[^,\r\n]+)*)*/,
-      lookbehind: true
-    }
+      lookbehind: true,
+    },
   })
 })(Prism)

@@ -1,12 +1,12 @@
-
-
 :local(.component) {
   // Match typography width constraint for better readability
-  .alert, pre {
+  .alert,
+  pre {
     max-width: 700px;
   }
 
-  h2, h4 {
+  h2,
+  h4 {
     margin-top: 2em;
   }
 }

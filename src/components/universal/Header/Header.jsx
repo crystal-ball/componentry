@@ -1,7 +1,7 @@
 import React from 'react'
 
 type Props = {
-  title: string
+  title: string,
 }
 
 export default ({ title }: Props) => (

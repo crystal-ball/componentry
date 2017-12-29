@@ -17,7 +17,7 @@ type Options = {
   /** The display name for the component, specified for better debugging */
   name: string,
   /** If the trigger can act as a toggle vs activate only */
-  triggerType?: 'activate' | 'deactivate'
+  triggerType?: 'activate' | 'deactivate',
 }
 
 type Props = {
@@ -31,7 +31,7 @@ type Props = {
   activate: Function,
   active: boolean,
   deactivate: Function,
-  guid: string
+  guid: string,
 }
 
 type Context = { [string]: { [string]: any } }
@@ -39,16 +39,14 @@ type Context = { [string]: { [string]: any } }
 /**
  * Factory returns custom `<Trigger />` components defined by the options.
  */
-export default (
-  {
-    classes = '',
-    componentArias,
-    element = '',
-    name,
-    triggerType,
-    ...optionsRest
-  }: Options = {}
-) => {
+export default ({
+  classes = '',
+  componentArias,
+  element = '',
+  name,
+  triggerType,
+  ...optionsRest
+}: Options = {}) => {
   const Trigger = (props: Props, { THEME = {} }: Context) => {
     const componentCtx = THEME[name] || {}
     const {
@@ -90,15 +88,15 @@ export default (
                 active: activeId === active,
                 id: `${activeId}-tab`,
                 controls: `${activeId}-content`,
-                selected: true
+                selected: true,
               }
-            : {})
+            : {}),
         }),
         className: classNames(classes, componentCtx.className, props.className, {
           // For mutli-active triggers add active if the trigger is selected
           active: activeId && active === activeId,
           [`${element}-toggle`]: element,
-          'inline-trigger': link
+          'inline-trigger': link,
         }),
         onClick,
         link,
@@ -107,9 +105,9 @@ export default (
         value: activeId || undefined,
         // Pass through any miscellaneous configurations from component factory
         ...optionsRest,
-        ...rest
+        ...rest,
       },
-      children
+      children,
     )
   }
 

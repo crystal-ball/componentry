@@ -84,7 +84,7 @@ type Options = {
   /** When true call deactivate on `esc` keypress */
   escHandler?: boolean,
   /** When true call deactivate on click outside of element */
-  externalClickHandler?: boolean
+  externalClickHandler?: boolean,
 }
 
 // TODO: is this fixable?
@@ -106,7 +106,7 @@ type Props = {
   defaultActive: boolean | string,
   activate: Function,
   active: boolean,
-  deactivate: Function
+  deactivate: Function,
 }
 
 /**
@@ -131,7 +131,7 @@ export default ({
   escHandler,
   externalClickHandler,
   Content,
-  Trigger
+  Trigger,
 }: Options) =>
   class StateContainer extends Component<Props> {
     unsubscribe: Function
@@ -156,8 +156,8 @@ export default ({
         deactivate: func,
         getActive: func,
         guid: string,
-        subscribe: func
-      })
+        subscribe: func,
+      }),
     }
 
     /**
@@ -182,8 +182,8 @@ export default ({
         deactivate: this.handleDeactivate,
         getActive: this.activeState.getActive,
         guid: this.guid,
-        subscribe: this.activeState.subscribe
-      }
+        subscribe: this.activeState.subscribe,
+      },
     })
     /**
      * Subscribe to active changes on mount. When active changes setup or remove any
@@ -321,7 +321,7 @@ export default ({
           active: this.activeState.getActive(),
           activate: this.handleActivate,
           deactivate: this.handleDeactivate,
-          guid: this.guid
+          guid: this.guid,
         })
 
       // In component usage component will only render during initial mount, changes
@@ -337,13 +337,13 @@ export default ({
           // occurs on the parent element, not the trigger element
           onMouseEnter: mouseEvents ? this.handleActivate : undefined,
           onMouseLeave: mouseEvents ? this.handleDeactivate : undefined,
-          ...rest
+          ...rest,
         },
         // If shorthand values for Trigger/Content were passed in props, render
         // subcomponents with prop as children
         TriggerProp && <Trigger>{TriggerProp}</Trigger>,
         children || null,
-        ContentProp && <Content>{ContentProp}</Content>
+        ContentProp && <Content>{ContentProp}</Content>,
       )
     }
   }

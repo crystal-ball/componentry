@@ -21,7 +21,7 @@ it('renders correctly', () => {
       <Drawer>
         <Drawer.Trigger>Trigger</Drawer.Trigger>
         <Drawer.Content>Content</Drawer.Content>
-      </Drawer>
+      </Drawer>,
     )
     .toJSON()
   expect(tree).toMatchSnapshot()

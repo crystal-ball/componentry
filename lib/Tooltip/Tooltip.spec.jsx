@@ -24,7 +24,7 @@ it('renders correctly', () => {
       <Tooltip>
         <Tooltip.Trigger>Trigger</Tooltip.Trigger>
         <Tooltip.Content>Content</Tooltip.Content>
-      </Tooltip>
+      </Tooltip>,
     )
     .toJSON()
   expect(tree).toMatchSnapshot()

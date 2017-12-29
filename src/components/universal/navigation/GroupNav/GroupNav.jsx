@@ -4,7 +4,7 @@ import React from 'react'
 import StatefulNameLink from '../StatefulNameLink'
 
 type Props = {
-  routes: Array<{ name: string, path: string, id: string }>
+  routes: Array<{ name: string, path: string, id: string }>,
 }
 
 /**

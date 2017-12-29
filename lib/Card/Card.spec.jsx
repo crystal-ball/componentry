@@ -18,7 +18,7 @@ describe('<Card />', () => {
     const wrapper = shallow(
       <Card>
         <span>Rad</span>
-      </Card>
+      </Card>,
     )
     expect(wrapper.find('span').length).toEqual(1)
   })
@@ -34,7 +34,7 @@ describe('<Card />', () => {
           Body
         </Card.Body>
         <Card.Footer>Footer</Card.Footer>
-      </Card>
+      </Card>,
     )
 
     expect(wrapper.find('.card-header').length).toEqual(1)

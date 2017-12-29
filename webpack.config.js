@@ -9,8 +9,8 @@ module.exports = env => {
     paths: {
       context: resolve(__dirname),
       babelLoaderInclude: [resolve('src'), resolve('lib')],
-      publicPath: env === 'production' ? '/componentry/' : '/'
-    }
+      publicPath: env === 'production' ? '/componentry/' : '/',
+    },
   })
 
   // Add an alias to the /lib for use in the documentation application

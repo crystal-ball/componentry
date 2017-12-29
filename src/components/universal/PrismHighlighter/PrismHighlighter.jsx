@@ -4,7 +4,7 @@ import type { Node } from 'react'
 
 type Props = {
   children: Node,
-  language: string
+  language: string,
 }
 
 export default class PrismHighlighter extends Component<Props> {

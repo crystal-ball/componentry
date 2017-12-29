@@ -7,14 +7,14 @@ import classNames from 'classnames'
 type Props = {
   as?: ComponentType<any> | string,
   children: Node,
-  className: string
+  className: string,
 }
 
 type Context = {
   guid: string,
   THEME: {
-    ModalTitle: { [string]: any }
-  }
+    ModalTitle: { [string]: any },
+  },
 }
 
 /**
@@ -29,15 +29,15 @@ const Title = (props: Props, { guid, THEME = { ModalTitle: {} } }: Context) => {
     {
       id: guid,
       className: classNames('modal-title', className),
-      ...rest
+      ...rest,
     },
-    children
+    children,
   )
 }
 Title.displayName = 'ModalTitle'
 Title.contextTypes = {
   guid: string,
-  THEME: shape({ ModalTitle: object })
+  THEME: shape({ ModalTitle: object }),
 }
 
 export default Title

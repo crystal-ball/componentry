@@ -21,7 +21,7 @@ const ListGroup = elementFactory({
   computedTag: props => {
     const child = Children.toArray(props.children)[0]
     return child && (child.props.href || child.props.onClick) ? 'div' : 'ul'
-  }
+  },
 })
 
 // $FlowFixMe

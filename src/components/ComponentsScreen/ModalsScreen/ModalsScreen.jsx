@@ -4,12 +4,12 @@ import React, { Component } from 'react'
 import { Active, Button, Modal } from 'componentry-lib'
 
 type ComponentState = {
-  controlledModal: boolean
+  controlledModal: boolean,
 }
 
 export default class Modals extends Component<{}, ComponentState> {
   state = {
-    controlledModal: false
+    controlledModal: false,
   }
 
   toggleModal = () => {

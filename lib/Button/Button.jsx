@@ -31,7 +31,7 @@ export type Props = {
   /**
    * Create a small or large style button
    */
-  size?: 'small' | 'large'
+  size?: 'small' | 'large',
 } & ElementProps
 
 export default elementFactory({
@@ -42,7 +42,7 @@ export default elementFactory({
   computedClassName: (
     ctxClassName,
     propsClassName,
-    { link, color, outline, size }
+    { link, color, outline, size },
   ) =>
     classNames('btn', ctxClassName, propsClassName, {
       'btn-anchor': link,
@@ -51,6 +51,6 @@ export default elementFactory({
       [`btn-${color}`]: color && !link && !outline,
       [`btn-outline-${color}`]: outline,
       'btn-sm': size === 'small',
-      'btn-lg': size === 'large'
-    })
+      'btn-lg': size === 'large',
+    }),
 })

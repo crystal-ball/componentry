@@ -57,7 +57,7 @@ describe('<Button/>', () => {
     const wrapper = shallow(
       <Button>
         <span>Rad</span>
-      </Button>
+      </Button>,
     )
     expect(wrapper.find('span').length).toEqual(1)
   })
@@ -90,7 +90,7 @@ describe('<Button /> Snapshots', () => {
       .create(
         <Button color="success" outline>
           Facebook
-        </Button>
+        </Button>,
       )
       .toJSON()
     expect(tree).toMatchSnapshot()
@@ -100,7 +100,7 @@ describe('<Button /> Snapshots', () => {
       .create(
         <Button color="success" size="large" outline>
           Facebook
-        </Button>
+        </Button>,
       )
       .toJSON()
     expect(tree).toMatchSnapshot()

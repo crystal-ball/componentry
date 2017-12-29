@@ -7,7 +7,7 @@ import type { ElementProps } from '../component-factories/element-factory'
 
 export type Props = {
   pills?: boolean,
-  vertical?: boolean
+  vertical?: boolean,
 } & ElementProps
 
 // Default Nav component, no special classes or attributes
@@ -17,9 +17,9 @@ const Nav = elementFactory({
   computedClassName: (ctxClassName, propsClassName, { pills, vertical }) =>
     classNames('nav', ctxClassName, propsClassName, {
       'flex-column': vertical,
-      'nav-pills': pills
+      'nav-pills': pills,
     }),
-  clean: ['pills', 'vertical']
+  clean: ['pills', 'vertical'],
 })
 
 const TabNav = elementFactory({
@@ -29,9 +29,9 @@ const TabNav = elementFactory({
   computedClassName: (ctxClassName, propsClassName, { pills, vertical }) =>
     classNames('nav', 'nav-tabs', ctxClassName, propsClassName, {
       'flex-column': vertical,
-      'nav-pills': pills
+      'nav-pills': pills,
     }),
-  clean: ['pills', 'vertical']
+  clean: ['pills', 'vertical'],
 })
 
 export { TabNav }

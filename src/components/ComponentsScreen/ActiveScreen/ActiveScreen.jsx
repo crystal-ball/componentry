@@ -39,7 +39,7 @@ export default () => (
                 <p key="p">Current nested state: {String(active)}</p>,
                 <Active.Content key="c">
                   Content display toggled by the <code>Toggle</code> component.
-                </Active.Content>
+                </Active.Content>,
               ]}
             </Active>
           </Active.Content>

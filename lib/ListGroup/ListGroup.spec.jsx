@@ -18,7 +18,7 @@ describe('<ListGroup />', () => {
     const wrapper = shallow(
       <ListGroup>
         <ListGroup.Item onClick={() => {}} />
-      </ListGroup>
+      </ListGroup>,
     )
     expect(wrapper.find('ul').length).toBeFalsy()
     expect(wrapper.find('div').length).toBeTruthy()
@@ -28,7 +28,7 @@ describe('<ListGroup />', () => {
     const wrapper = shallow(
       <ListGroup>
         <ListGroup.Item href="test" />
-      </ListGroup>
+      </ListGroup>,
     )
     expect(wrapper.find('ul').length).toBeFalsy()
     expect(wrapper.find('div').length).toBeTruthy()
@@ -38,7 +38,7 @@ describe('<ListGroup />', () => {
     const wrapper = shallow(
       <ListGroup>
         <span>Rad</span>
-      </ListGroup>
+      </ListGroup>,
     )
     expect(wrapper.find('span').length).toEqual(1)
   })
@@ -49,7 +49,7 @@ describe('<ListGroup />', () => {
     const wrapper = mount(
       <ListGroup>
         <ListGroup.Item>Item 1</ListGroup.Item>
-      </ListGroup>
+      </ListGroup>,
     )
 
     expect(wrapper.find('.list-group').length).toEqual(1)
