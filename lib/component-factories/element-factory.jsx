@@ -30,7 +30,7 @@ type Options = {
   /**
    * HTML tag specifying container element
    */
-  tag?: ComponentType<any> | string
+  tag?: ComponentType<any> | string,
 }
 
 export type ElementProps = {
@@ -45,7 +45,7 @@ export type ElementProps = {
   /**
    * Component class names, handled with classnames
    */
-  className?: string
+  className?: string,
 }
 
 type Context = { [string]: { [string]: any } }
@@ -60,22 +60,20 @@ type Context = { [string]: { [string]: any } }
  * @export
  * @returns {Component} React functional stateless component with base classes.
  */
-export default (
-  {
-    classes,
-    clean,
-    computedClassName,
-    computedTag,
-    name,
-    tag,
-    ...optionsRest
-  }: Options = {}
-) => {
+export default ({
+  classes,
+  clean,
+  computedClassName,
+  computedTag,
+  name,
+  tag,
+  ...optionsRest
+}: Options = {}) => {
   const Element = (props: ElementProps, { THEME = {} }: Context) => {
     const componentCtx = THEME[name] || {}
     const { as, children, className, ...rest }: ElementProps = {
       ...componentCtx,
-      ...props
+      ...props,
     }
     const spread = clean ? cleanProps(rest, clean) : rest
 
@@ -88,9 +86,9 @@ export default (
           ? computedClassName(componentCtx.className, props.className, rest)
           : classNames(classes, className),
         ...optionsRest,
-        ...spread
+        ...spread,
       },
-      children
+      children,
     )
   }
 

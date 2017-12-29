@@ -6,7 +6,7 @@ import { Active, Alert, Card, Dropdown, Tab } from 'componentry-lib'
 
 type ComponentState = {
   color: string,
-  dismissible: boolean
+  dismissible: boolean,
 }
 
 const colors = [
@@ -17,7 +17,7 @@ const colors = [
   'warning',
   'info',
   'light',
-  'dark'
+  'dark',
 ]
 
 /**
@@ -31,7 +31,7 @@ const colors = [
 export default class extends Component<{}, ComponentState> {
   state = {
     color: 'success',
-    dismissible: true
+    dismissible: true,
   }
 
   handleSelectColor = (e: { target: { value: string } }) => {

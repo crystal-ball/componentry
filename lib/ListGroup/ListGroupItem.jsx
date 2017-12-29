@@ -20,6 +20,6 @@ export default elementFactory({
   computedClassName: (ctxClassName, propsClassName, { active, href, onClick }) =>
     classNames('list-group-item', ctxClassName, propsClassName, {
       active,
-      'list-group-item-action': href || onClick
-    })
+      'list-group-item-action': href || onClick,
+    }),
 })

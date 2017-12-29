@@ -15,8 +15,8 @@ import { component } from './concepts-screen.scss'
 
 type Props = {
   location: {
-    state: { name: string }
-  }
+    state: { name: string },
+  },
 }
 
 export default ({ location: { state } }: Props) => (

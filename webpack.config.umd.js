@@ -1,3 +1,4 @@
+/* eslint-env node */
 /* eslint-disable import/no-extraneous-dependencies */
 'use strict' // eslint-disable-line
 const { resolve } = require('path')
@@ -14,15 +15,15 @@ module.exports = {
     path: resolve(__dirname, 'dist'),
     filename: 'componentry.js',
     library: 'componentry',
-    libraryTarget: 'umd'
+    libraryTarget: 'umd',
   },
   externals: ['react', 'prop-types'],
   resolve: {
-    extensions: ['.js', '.jsx', '.json']
+    extensions: ['.js', '.jsx', '.json'],
   },
   module: {
-    rules: [{ test: /\.jsx?$/, exclude: /node_modules/, loader: 'babel-loader' }]
+    rules: [{ test: /\.jsx?$/, exclude: /node_modules/, loader: 'babel-loader' }],
   },
   // MINIFY AND CONCATENATE ALL THEM MODULES!!!
-  plugins: [new MinifyPlugin(), new optimize.ModuleConcatenationPlugin()]
+  plugins: [new MinifyPlugin(), new optimize.ModuleConcatenationPlugin()],
 }

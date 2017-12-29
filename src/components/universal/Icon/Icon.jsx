@@ -7,7 +7,7 @@ type Props = {
   font: ?boolean,
   id: string,
   title: ?string,
-  presentation: ?boolean
+  presentation: ?boolean,
 }
 
 /**
@@ -19,7 +19,7 @@ export default class Icon extends Component<Props> {
     className: '',
     font: true,
     presentation: false,
-    title: null
+    title: null,
   }
 
   constructor(props: Props) {

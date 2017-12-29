@@ -8,14 +8,14 @@ const possibleArias = [
   'aria-hidden',
   'id',
   'aria-labelledby',
-  'aria-selected'
+  'aria-selected',
 ]
 
 describe('arias()', () => {
   test('it does not return arias for undefined flags', () => {
     const attrs = {
       active: true,
-      guid: 'test'
+      guid: 'test',
     }
 
     const result = arias(attrs)
@@ -37,7 +37,7 @@ describe('arias()', () => {
       hidden: false,
       id: false,
       labelledby: false,
-      selected: false
+      selected: false,
     }
 
     const result = arias(attrs)
@@ -59,7 +59,7 @@ describe('arias()', () => {
       hidden: true,
       id: true,
       labelledby: true,
-      selected: true
+      selected: true,
     }
 
     // expect().toEqual({
@@ -83,7 +83,7 @@ describe('arias()', () => {
 
   test('it assigns passed role', () => {
     expect(arias({ active: true, guid: 'test', role: 'tab' })).toEqual({
-      role: 'tab'
+      role: 'tab',
     })
   })
 
@@ -95,7 +95,7 @@ describe('arias()', () => {
       describedby: true,
       haspopup: true,
       id: true,
-      labelledby: true
+      labelledby: true,
     }
 
     expect(arias(attrs)).toEqual({
@@ -103,7 +103,7 @@ describe('arias()', () => {
       'aria-describedby': 'test',
       'aria-haspopup': 'true',
       id: 'test',
-      'aria-labelledby': 'test'
+      'aria-labelledby': 'test',
     })
   })
 
@@ -113,13 +113,13 @@ describe('arias()', () => {
       guid: 'test',
       controls: 'id',
       id: 'id',
-      labelledby: 'id'
+      labelledby: 'id',
     }
 
     expect(arias(attrs)).toEqual({
       'aria-controls': 'id',
       id: 'id',
-      'aria-labelledby': 'id'
+      'aria-labelledby': 'id',
     })
   })
 
@@ -129,13 +129,13 @@ describe('arias()', () => {
       guid: 'test',
       expanded: true,
       hidden: true,
-      selected: true
+      selected: true,
     }
 
     expect(arias(attrs)).toEqual({
       'aria-expanded': 'true',
       'aria-hidden': 'false',
-      'aria-selected': 'true'
+      'aria-selected': 'true',
     })
   })
 
@@ -145,13 +145,13 @@ describe('arias()', () => {
       guid: 'test',
       expanded: true,
       hidden: true,
-      selected: true
+      selected: true,
     }
 
     expect(arias(attrs)).toEqual({
       'aria-expanded': 'false',
       'aria-hidden': 'true',
-      'aria-selected': 'false'
+      'aria-selected': 'false',
     })
   })
 })

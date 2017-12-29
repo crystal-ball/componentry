@@ -24,8 +24,8 @@ const theme = {
   transitionDuration: 350,
   Button: {
     // Buttons for documentation site are primary theme color as default
-    color: 'primary'
-  }
+    color: 'primary',
+  },
 }
 
 export default () => (

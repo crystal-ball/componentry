@@ -37,7 +37,7 @@ export default (TestComponent, enzymeOptions = {}) => {
   test('should pass through classnames and attributes', () => {
     const wrapper = mount(
       <TestComponent className="test-custom" data-test="test-custom" />,
-      enzymeOptions
+      enzymeOptions,
     )
     expect(wrapper.find('.test-custom').length).toBeTruthy()
     expect(wrapper.find(dt('test-custom')).length).toBeTruthy()

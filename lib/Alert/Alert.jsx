@@ -23,7 +23,7 @@ type Props = {
    * Length of opacity transition, defaults to 300ms or `THEME` value if set using
    * `ThemeProvider`.
    */
-  transitionDuration?: number
+  transitionDuration?: number,
 } & ActiveProps &
   ElementProps
 
@@ -57,11 +57,11 @@ const Alert = (props: Props, { THEME = {} }: Context) => {
       role: 'alert',
       className: classNames('alert', 'fade', className, {
         [`alert-${color}`]: color,
-        show: visible
+        show: visible,
       }),
       // hidden state is updated after active opacity transition
       'aria-hidden': active ? 'false' : 'true',
-      ...rest
+      ...rest,
     },
     // Alert contents:
     <div className="alert-content">{children}</div>,
@@ -72,7 +72,7 @@ const Alert = (props: Props, { THEME = {} }: Context) => {
           <use href="#close" />
         </svg>
       </Button>
-    )
+    ),
   )
 }
 
@@ -81,12 +81,12 @@ Alert.defaultProps = {
   /* eslint-disable react/default-props-match-prop-types */
   active: true,
   visible: true,
-  dismissible: false
+  dismissible: false,
 }
 Alert.contextTypes = { THEME: shape({ Alert: object }) }
 
 const withActiveAlert = withActive({ defaultActive: true, transitionState: true })(
-  Alert
+  Alert,
 )
 
 export default withActiveAlert

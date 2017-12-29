@@ -32,7 +32,7 @@ export default TestComponent => {
       <TestComponent>
         <TestComponent.Trigger data-test="trigger" />
         <TestComponent.Content data-test="content" />
-      </TestComponent>
+      </TestComponent>,
     )
 
     // Content
@@ -75,7 +75,7 @@ export default TestComponent => {
       >
         <TestComponent.Trigger data-test="trigger" />
         <TestComponent.Content data-test="content" />
-      </TestComponent>
+      </TestComponent>,
     )
 
     const trigger = findTrigger(wrapper)
@@ -103,7 +103,7 @@ export default TestComponent => {
       <TestComponent defaultActive>
         <TestComponent.Trigger data-test="trigger" />
         <TestComponent.Content data-test="content" />
-      </TestComponent>
+      </TestComponent>,
     )
 
     expect(findContent(wrapper).prop('aria-hidden')).toEqual('false')
@@ -119,7 +119,7 @@ export default TestComponent => {
       <TestComponent>
         <TestComponent.Trigger data-test="trigger" />
         <TestComponent.Content data-test="content" />
-      </TestComponent>
+      </TestComponent>,
     )
 
     expect(findContent(wrapper).prop('aria-hidden')).toEqual('true')
@@ -146,7 +146,7 @@ export default TestComponent => {
       <TestComponent>
         <TestComponent.Trigger data-test="trigger" />
         <TestComponent.Content data-test="content" />
-      </TestComponent>
+      </TestComponent>,
     )
     expect(findContent(wrapper).prop('aria-hidden')).toEqual('true')
     wrapper.update()
@@ -165,7 +165,7 @@ export default TestComponent => {
       <TestComponent activate={activate} deactivate={deactivate}>
         <TestComponent.Trigger data-test="trigger" />
         <TestComponent.Content data-test="content" />
-      </TestComponent>
+      </TestComponent>,
     )
 
     const trigger = findTrigger(wrapper)
@@ -214,7 +214,7 @@ export default TestComponent => {
             <button onClick={deactivate} data-test="deactivate" />
           </div>
         )}
-      </TestComponent>
+      </TestComponent>,
     )
 
     expect(wrapper.find(dt('active')).text()).toEqual('false')

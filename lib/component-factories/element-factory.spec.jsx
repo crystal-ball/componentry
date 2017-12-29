@@ -28,7 +28,7 @@ describe('elementFactory', () => {
     const wrapper = shallow(
       <Test as="span" className="invocation">
         Children
-      </Test>
+      </Test>,
     )
     expect(wrapper.find('span.factory.invocation').length).toEqual(1)
   })

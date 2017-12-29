@@ -22,8 +22,8 @@ import TooltipsScreen from './TooltipsScreen'
 
 type Props = {
   match: {
-    params: { component: string }
-  }
+    params: { component: string },
+  },
 }
 
 export default ({ match }: Props) => {

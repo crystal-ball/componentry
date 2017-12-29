@@ -7,7 +7,7 @@ export default elementFactory({
   name: 'NavItem',
   computedClassName: (ctxClassName, propsClassName, { href, to }) =>
     classNames('nav-item', {
-      'nav-link': href || to
+      'nav-link': href || to,
     }),
-  computedTag: props => (props.onClick ? Button : 'a')
+  computedTag: props => (props.onClick ? Button : 'a'),
 })

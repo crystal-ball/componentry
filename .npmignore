@@ -1,10 +1,32 @@
-# Non Distributed Assets
+
+# Don't Publish Me!
+#################################
+
+# Source
+#################################
+styles
+# NOTE: Don't ignore /lib, the SCSS files need to be in bundle
+
+# Output
 #################################
 build
-node_modules
-public
-src
-styles
-.vscode
 
-# NOTE: Don't ignore /lib, the SCSS files need to be in bundle
+# esmodules
+#################################
+.esm-cache
+
+# Config
+#################################
+.vscode
+.cz-config.js
+.eslintrc.js
+.prettierrc
+.prettierignore
+documentation.yml
+
+# Documentation
+#################################
+docs
+guides
+src
+public

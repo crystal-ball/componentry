@@ -26,7 +26,7 @@ it('renders correctly', () => {
       <Popover>
         <Popover.Trigger>Trigger</Popover.Trigger>
         <Popover.Content>Content</Popover.Content>
-      </Popover>
+      </Popover>,
     )
     .toJSON()
   expect(tree).toMatchSnapshot()

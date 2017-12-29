@@ -12,7 +12,8 @@
   padding: 0 4px;
 }
 
-.CodeMirror-gutter-filler, .CodeMirror-scrollbar-filler {
+.CodeMirror-gutter-filler,
+.CodeMirror-scrollbar-filler {
   background-color: #fff;
 }
 
@@ -144,7 +145,8 @@
   color: #f50;
 }
 
-.cm-s-default .cm-meta, .cm-s-default .cm-qualifier {
+.cm-s-default .cm-meta,
+.cm-s-default .cm-qualifier {
   color: #555;
 }
 
@@ -188,7 +190,8 @@
   color: #292;
 }
 
-.cm-header, .cm-strong {
+.cm-header,
+.cm-strong {
   font-weight: 700;
 }
 
@@ -204,7 +207,8 @@
   text-decoration: line-through;
 }
 
-.cm-invalidchar, .cm-s-default .cm-error {
+.cm-invalidchar,
+.cm-s-default .cm-error {
   color: red;
 }
 
@@ -249,7 +253,10 @@ div.CodeMirror span.CodeMirror-nonmatchingbracket {
   box-sizing: content-box;
 }
 
-.CodeMirror-gutter-filler, .CodeMirror-hscrollbar, .CodeMirror-scrollbar-filler, .CodeMirror-vscrollbar {
+.CodeMirror-gutter-filler,
+.CodeMirror-hscrollbar,
+.CodeMirror-scrollbar-filler,
+.CodeMirror-vscrollbar {
   position: absolute;
   z-index: 6;
   display: none;
@@ -416,7 +423,7 @@ div.CodeMirror-cursors {
 }
 
 .cm-force-border {
-  padding-right: .1px;
+  padding-right: 0.1px;
 }
 
 @media print {
@@ -448,7 +455,7 @@ span.CodeMirror-selectedtext {
 }
 
 .playgroundStage {
-  background: #292A2B;
+  background: #292a2b;
   max-height: 400px;
   margin-top: 37px;
 }
@@ -482,21 +489,19 @@ span.CodeMirror-selectedtext {
   font-size: 0.8rem;
 }
 
-
-
 .playgroundCode {
   position: relative;
 
   &:before {
-    content: "Component Demo";
+    content: 'Component Demo';
     position: absolute;
     bottom: 100%;
     left: 0;
     right: 0;
     background-color: #b7b4b3;
     font-size: 14px;
-    letter-spacing: .15em;
-    padding: .5rem;
+    letter-spacing: 0.15em;
+    padding: 0.5rem;
     text-align: center;
     text-transform: uppercase;
   }

@@ -9,12 +9,12 @@ const logDeactivate = () => console.log('on deactivate called')
 let count = 1
 
 type State = {
-  controlledActive: boolean
+  controlledActive: boolean,
 }
 
 export default class Dropdowns extends Component<{}, State> {
   state = {
-    controlledActive: true
+    controlledActive: true,
   }
 
   toggleActive = () => {

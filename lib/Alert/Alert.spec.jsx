@@ -33,7 +33,7 @@ describe('<Alert/>', () => {
     const wrapper = mount(
       <Alert color="danger" deactivate={deactivate} dismissible active>
         Warning!
-      </Alert>
+      </Alert>,
     )
     wrapper.find('button').simulate('click')
     expect(deactivate).toHaveBeenCalled()

@@ -10,7 +10,7 @@ export type ActiveProps = {
   activate?: Function,
   active?: boolean,
   deactivate?: Function,
-  visible?: boolean
+  visible?: boolean,
 }
 
 type Options = {
@@ -23,7 +23,7 @@ type Options = {
    * Modals. Setting this to true will provide visibility and active props to
    * transition opacity before updating active state
    */
-  transitionState?: boolean
+  transitionState?: boolean,
 }
 
 type Props = {
@@ -37,12 +37,12 @@ type Props = {
   /**
    * Override the default 300ms/ THEME duration for a specific component
    */
-  transitionDuration?: number
+  transitionDuration?: number,
 }
 
 type State = {
   active: boolean | string,
-  visible: boolean | string
+  visible: boolean | string,
 }
 
 type ActiveContext = {
@@ -50,7 +50,7 @@ type ActiveContext = {
   deactivate: Function,
   getActive: Function,
   guid: string,
-  subscribe: Function
+  subscribe: Function,
 }
 
 // TODO: this seems to fix Flow errors with hoisting class statics, but doesn't
@@ -67,9 +67,10 @@ interface WrappedStatics {
  * responsible for passing ACTIVE context as props and handling state transitions
  * when appropriate.
  */
-export default (
-  { defaultActive = false, transitionState = false }: Options = {}
-) => (Wrapped: ComponentType<*> & WrappedStatics) =>
+export default ({
+  defaultActive = false,
+  transitionState = false,
+}: Options = {}) => (Wrapped: ComponentType<*> & WrappedStatics) =>
   class WithActive extends Component<Props, State> {
     unsubscribe: Function
     transitionDuration: number
@@ -87,16 +88,16 @@ export default (
         deactivate: func,
         getActive: func,
         guid: string,
-        subscribe: func
+        subscribe: func,
       }),
       THEME: shape({
-        transitionDuration: number
-      })
+        transitionDuration: number,
+      }),
     }
 
     state = {
       active: defaultActive,
-      visible: defaultActive
+      visible: defaultActive,
     }
 
     /**

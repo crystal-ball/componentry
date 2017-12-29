@@ -16,7 +16,7 @@ type Props = {
   children?: Node,
   deactivate?: Function,
   size?: 'small' | 'large',
-  visible?: boolean
+  visible?: boolean,
 }
 
 /**
@@ -57,7 +57,7 @@ class Modal extends Component<Props> {
     const componentCtx = THEME.Modal || {}
     const { active, ariaTitle, children, deactivate, size, visible }: Props = {
       ...componentCtx,
-      ...this.props
+      ...this.props,
     }
 
     return (

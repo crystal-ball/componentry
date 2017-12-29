@@ -7,10 +7,14 @@ import { Dropdown } from 'componentry-lib'
 
 type Props = {
   color: string,
-  outline?: boolean
+  outline?: boolean,
 }
 
-export default ({ color, outline = true }: Props) => (
+const defaultProps = {
+  outline: true,
+}
+
+const ComponentsNav = ({ color, outline = true }: Props) => (
   <Dropdown as="nav">
     <Dropdown.Trigger color={color} outline={outline}>
       Components
@@ -24,3 +28,6 @@ export default ({ color, outline = true }: Props) => (
     </Dropdown.Content>
   </Dropdown>
 )
+
+ComponentsNav.defaultProps = defaultProps
+export default ComponentsNav

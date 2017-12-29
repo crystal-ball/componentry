@@ -22,7 +22,7 @@ it('renders correctly', () => {
       <Active>
         <Active.Trigger>Trigger</Active.Trigger>
         <Active.Content>Content</Active.Content>
-      </Active>
+      </Active>,
     )
     .toJSON()
   expect(tree).toMatchSnapshot()

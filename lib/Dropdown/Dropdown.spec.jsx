@@ -32,7 +32,7 @@ describe('<Dropdown />', () => {
           <Dropdown.Item>Item 1</Dropdown.Item>
           <Dropdown.Item>Item 2</Dropdown.Item>
         </Dropdown.Content>
-      </Dropdown>
+      </Dropdown>,
     )
 
     // Container
@@ -59,13 +59,13 @@ describe('<Dropdown />', () => {
       wrapper
         .find(dtToggle)
         .first()
-        .prop('aria-expanded')
+        .prop('aria-expanded'),
     ).toEqual('true')
     expect(
       wrapper
         .find(dtContent)
         .first()
-        .prop('aria-hidden')
+        .prop('aria-hidden'),
     ).toEqual('false')
   })
 })
@@ -81,7 +81,7 @@ it('renders correctly', () => {
           <Dropdown.Item>Item 1</Dropdown.Item>
           <Dropdown.Item>Item 2</Dropdown.Item>
         </Dropdown.Content>
-      </Dropdown>
+      </Dropdown>,
     )
     .toJSON()
   expect(tree).toMatchSnapshot()

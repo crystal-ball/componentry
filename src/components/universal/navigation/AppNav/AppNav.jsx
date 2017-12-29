@@ -14,7 +14,7 @@ export default () => (
       {[
         { name: 'Home', to: '/' },
         { name: 'Get Started', to: '/getting-started' },
-        { name: 'Concepts', to: '/concepts' }
+        { name: 'Concepts', to: '/concepts' },
       ].map(route => (
         <div className="pr-3 d-flex align-items-center" key={route.name}>
           <Link to={route.to} className="text-light">

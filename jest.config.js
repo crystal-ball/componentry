@@ -5,5 +5,5 @@ module.exports = {
   testEnvironment: 'node',
   testURL: 'http://localhost',
   setupFiles: ['raf/polyfill', './config/enzyme.js'],
-  moduleFileExtensions: ['js', 'jsx']
+  moduleFileExtensions: ['js', 'jsx'],
 }
