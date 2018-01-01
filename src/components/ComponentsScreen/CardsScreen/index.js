@@ -1,1 +1,1 @@
-export { default } from './CardsScreen'
+export { default } from './Cards.md'

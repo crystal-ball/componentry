@@ -17,9 +17,11 @@
       ],
       "plugins": [
         "transform-react-stateless-component-name", // Give names to SFCs
-        "react-hot-loader/babel",
-        "transform-class-properties",
-        "transform-object-rest-spread"
+        "react-hot-loader/babel", // 🔥
+        "syntax-dynamic-import", // Magic imports
+        "transform-object-rest-spread", // Spread operator inside objects
+        "transform-class-properties", // Class static and property initializers
+        "transform-runtime" // runtime needed for generators
       ]
     },
     // Production - Bundling for ES5 AMD module and ES modules
@@ -35,6 +37,7 @@
         "react"
       ],
       "plugins": [
+        "syntax-dynamic-import", // Magic imports
         "transform-class-properties",
         "transform-object-rest-spread",
         "transform-react-remove-prop-types", // Strip propTypes declarations

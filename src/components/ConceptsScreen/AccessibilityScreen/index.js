@@ -1,1 +1,1 @@
-export { default } from './AccessibilityScreen'
+export { default } from './Accessibility.md'

@@ -1,1 +1,1 @@
-export { default } from './PopoversScreen'
+export { default } from './Popovers.md'

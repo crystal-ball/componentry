@@ -1,1 +1,1 @@
-export { default } from './ComponentsScreen'
+export { default } from './Components.md'

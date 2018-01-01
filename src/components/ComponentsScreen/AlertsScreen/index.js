@@ -1,1 +1,1 @@
-export { default } from './AlertsScreen'
+export { default } from './content/Alerts.md'

@@ -1,1 +1,1 @@
-export { default } from './ActiveScreen'
+export { default } from './Active.md'

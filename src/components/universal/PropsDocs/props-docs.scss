@@ -1,0 +1,11 @@
+/* props-docs */
+
+:local(.component) {
+  // The tabs are the last element on each screen and having a min-height helps
+  // reduce jump when changing from a long tab to a short tab
+  min-height: 400px;
+
+  tbody {
+    font-size: 0.875rem;
+  }
+}

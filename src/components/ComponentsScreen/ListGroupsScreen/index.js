@@ -1,1 +1,1 @@
-export { default } from './ListGroupsScreen'
+export { default } from './ListGroups.md'

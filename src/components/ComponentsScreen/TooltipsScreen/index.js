@@ -1,1 +1,1 @@
-export { default } from './TooltipsScreen'
+export { default } from './Tooltips.md'

@@ -1,1 +1,1 @@
-export { default } from './ThemingScreen'
+export { default } from './Theming.md'

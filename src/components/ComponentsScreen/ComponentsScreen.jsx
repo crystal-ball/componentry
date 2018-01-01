@@ -37,18 +37,27 @@ export default ({ match }: Props) => {
 
       <div className="row">
         <div className="col-10">
-          <Route path="/components/active" component={ActiveScreen} />
-          <Route path="/components/alerts" component={AlertsScreen} />
-          <Route path="/components/buttons" component={ButtonsScreen} />
-          <Route path="/components/cards" component={CardsScreen} />
-          <Route path="/components/drawers" component={DrawersScreen} />
-          <Route path="/components/dropdowns" component={DropdownsScreen} />
-          <Route path="/components/list-groups" component={ListGroupsScreen} />
-          <Route path="/components/modals" component={ModalsScreen} />
-          <Route path="/components/navs" component={NavsScreen} />
-          <Route path="/components/popovers" component={PopoversScreen} />
-          <Route path="/components/tabs" component={TabsScreen} />
-          <Route path="/components/tooltips" component={TooltipsScreen} />
+          <div className="mb-5">
+            <div className="row">
+              <div className="col-12">
+                <Route path="/components/active" component={ActiveScreen} />
+                <Route path="/components/alerts" component={AlertsScreen} />
+                <Route path="/components/buttons" component={ButtonsScreen} />
+                <Route path="/components/cards" component={CardsScreen} />
+                <Route path="/components/drawers" component={DrawersScreen} />
+                <Route path="/components/dropdowns" component={DropdownsScreen} />
+                <Route
+                  path="/components/list-groups"
+                  component={ListGroupsScreen}
+                />
+                <Route path="/components/modals" component={ModalsScreen} />
+                <Route path="/components/navs" component={NavsScreen} />
+                <Route path="/components/popovers" component={PopoversScreen} />
+                <Route path="/components/tabs" component={TabsScreen} />
+                <Route path="/components/tooltips" component={TooltipsScreen} />
+              </div>
+            </div>
+          </div>
         </div>
         <div className="col-2">
           <GroupNav routes={componentRoutes} />

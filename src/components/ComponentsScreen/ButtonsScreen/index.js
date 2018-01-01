@@ -1,1 +1,1 @@
-export { default } from './ButtonsScreen'
+export { default } from './Buttons.md'

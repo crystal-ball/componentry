@@ -1,1 +1,1 @@
-export { default } from './ModalsScreen'
+export { default } from './Modals.md'

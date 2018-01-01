@@ -1,1 +1,1 @@
-export { default } from './OverviewScreen'
+export { default } from './Overview.md'

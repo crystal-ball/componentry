@@ -1,1 +1,1 @@
-export { default } from './DrawersScreen'
+export { default } from './Drawers.md'

@@ -1,0 +1,12 @@
+/* application/documentation-typography */
+
+// Constrain typography elements to 700px wide for better readability
+p,
+li {
+  max-width: 700px;
+}
+
+// Add margin-top to h2 for visual breaking of important headers
+h2 {
+  margin-top: map-get($map: $spacers, $key: 4);
+}

@@ -1,1 +1,1 @@
-export { default } from './NavsScreen'
+export { default } from './Navs.md'

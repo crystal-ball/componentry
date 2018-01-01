@@ -1,46 +1,62 @@
-// ========================================================
-// Demo Styles - Componentry 'Clear' Theme + Boostrap v4
-// ========================================================
-
-// This demo app is an example of how you can theme Componentry
-// using a set of Bootstrap variables. The theme variables set
-// colors, font sizes, font family, padding, etc. These variables
-// are then used by the Bootstrap AND Componentry libraries
-// stylesheets to create a set of themed components matching
-// your app styles perfectly.
-
-// Theme Variables
 // ---------------------------------------------------------------------------
+// Documentation App Styles
+// ---------------------------------------------------------------------------
+
+// This demo app is an example of how you can theme Componentry using a set of
+// Bootstrap variables. The theme variables set colors, font sizes, font family,
+// padding, etc. These variables are then used by the Bootstrap AND Componentry
+// libraries stylesheets to create a set of themed components matching your app
+// styles perfectly.
+
+// ========================================================
+// Theme Variables
+// ========================================================
+
 @import './styles/theme';
 
+// ========================================================
 // Bootstrap
-// ---------------------------------------------------------------------------
+// ========================================================
+
 @import '../styles/bootstrap';
 
+// ========================================================
 // Componentry Library Styles
+// ========================================================
+
 // Note that you should import componentry after importing Boostrap so that
 // any Boostrap variables you don't declare in your theme will still be
 // available from the Bootstrap variables.
-// ---------------------------------------------------------------------------
+
 @import '../styles/componentry';
 
+// ========================================================
 // Bootstrap Jetpacked
+// ========================================================
+
 // Great set of utility styles that use your app's Bootstrap variables
 // See: https://healthsparq.github.io/bootstrap-jetpacked/
-// ---------------------------------------------------------------------------
+
 @import '~bootstrap-jetpacked/jetpack';
 
+// ========================================================
 // Application Global Styles
-// Final import of application level style rules or updates to Bootstrap and
-// Componentry base styles.
-// ---------------------------------------------------------------------------
+// ========================================================
 
-// Code Mirror
-@import 'styles/vendor/codemirror';
-@import 'styles/vendor/panda-codemirror';
+// Final import of app level style rules or updates to Bootstrap and Componentry
+// base styles.
 
-// Prism.js
-@import 'styles/vendor/panda-prism';
+@import './styles/application/prism';
+@import './styles/application/documentation-typography';
 
-// Application
-@import 'styles/application';
+// ========================================================
+// 🔨 TODOS
+// ========================================================
+
+// TODO: Move to Jetpacked
+.fullscreen-row {
+  width: 100vw;
+  position: relative;
+  margin-left: -50vw;
+  left: 50%;
+}

@@ -1,1 +1,1 @@
-export { default } from './TabsScreen'
+export { default } from './Tabs.md'

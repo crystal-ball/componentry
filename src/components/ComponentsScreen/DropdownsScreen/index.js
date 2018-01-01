@@ -1,1 +1,1 @@
-export { default } from './DropdownsScreen'
+export { default } from './Dropdowns.md'
