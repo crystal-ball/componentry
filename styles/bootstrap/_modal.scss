@@ -4,9 +4,10 @@
 // .modal-content   - actual modal w/ bg and corners and stuff
 
 
-// Kill the scroll on the body
+// this doesn't currently work.  It only works when .modal-open is attached to <body>
 .modal-open {
   overflow: hidden;
+  height: 100vh;
 }
 
 // Container that the modal scrolls within
@@ -18,7 +19,7 @@
   left: 0;
   z-index: $zindex-modal;
   display: none;
-  overflow: hidden;
+  overflow: scroll;
   // Prevent Chrome on Windows from adding a focus outline. For details, see
   // https://github.com/twbs/bootstrap/pull/10951.
   outline: 0;
@@ -45,6 +46,7 @@
   margin: $modal-dialog-margin;
   // allow clicks to pass through for custom click handling to close modal
   pointer-events: none;
+  z-index: calc(#{$zindex-modal-backdrop} + 1);
 }
 
 // Actual modal
@@ -72,6 +74,8 @@
   left: 0;
   z-index: $zindex-modal-backdrop;
   background-color: $modal-backdrop-bg;
+  pointer-events: none;
+  overflow: hidden;
 
   // Fade for backdrop
   &.fade { opacity: 0; }

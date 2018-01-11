@@ -1,7 +1,7 @@
 // @flow
 import React, { Component } from 'react'
 
-import { Active, Button, Modal } from 'componentry-lib'
+import { Active, Button, Modal, Drawer } from 'componentry-lib'
 
 type ComponentState = {
   controlledModal: boolean
@@ -44,7 +44,85 @@ export default class Modals extends Component<{}, ComponentState> {
                       </svg>
                     </Active.Trigger>
                   </Modal.Header>
-                  <Modal.Body>This is a modal</Modal.Body>
+                  <Modal.Body>
+                    This is a modal
+                    <Drawer>
+                      <Drawer.Trigger link className="my-2">
+                        <svg role="img" className="icon chevron font">
+                          <use href="#chevron" />
+                        </svg>
+                        Reveal more content
+                      </Drawer.Trigger>
+                      <Drawer.Content>
+                        Esse nulla excepteur amet minim et sed dolor laborum laboris
+                        id laborum ad non laboris sunt in sed excepteur ut dolor in
+                        eu proident consequat in proident proident incididunt sunt
+                        sint ea in deserunt aliqua aute velit magna ut culpa nulla
+                        ut sint in dolore consequat ut velit sit non est incididunt
+                        amet ut amet amet magna consequat quis sed veniam ex cillum
+                        est commodo nostrud velit ut ut commodo laborum exercitation
+                        in eu qui irure aliquip nulla dolor eu magna nisi irure sint
+                        voluptate id incididunt reprehenderit occaecat duis nisi
+                        minim commodo ea aliquip tempor irure velit eu laborum
+                        veniam cupidatat mollit id esse laborum incididunt consequat
+                        quis non non quis ut mollit pariatur nisi ad laborum velit
+                        aliqua culpa officia dolore non nisi mollit non ea cupidatat
+                        do sed nostrud aute incididunt tempor aliqua eiusmod mollit
+                        nulla in in aute magna dolor nulla ad reprehenderit ut minim
+                        non labore velit enim duis nulla minim voluptate laboris ut
+                        laborum anim incididunt anim sint laboris non consequat
+                        culpa esse dolor sed sit ea sit occaecat consequat ut
+                        voluptate in dolore ad ea irure veniam in dolore dolor
+                        consequat qui pariatur sunt qui do nisi proident dolore est
+                        sit laboris adipisicing cillum veniam et reprehenderit do
+                        laboris magna id.This is a modalEsse nulla excepteur amet
+                        minim et sed dolor laborum laboris id laborum ad non laboris
+                        sunt in sed excepteur ut dolor in eu proident consequat in
+                        proident proident incididunt sunt sint ea in deserunt aliqua
+                        aute velit magna ut culpa nulla ut sint in dolore consequat
+                        ut velit sit non est incididunt amet ut amet amet magna
+                        consequat quis sed veniam ex cillum est commodo nostrud
+                        velit ut ut commodo laborum exercitation in eu qui irure
+                        aliquip nulla dolor eu magna nisi irure sint voluptate id
+                        incididunt reprehenderit occaecat duis nisi minim commodo ea
+                        aliquip tempor irure velit eu laborum veniam cupidatat
+                        mollit id esse laborum incididunt consequat quis non non
+                        quis ut mollit pariatur nisi ad laborum velit aliqua culpa
+                        officia dolore non nisi mollit non ea cupidatat do sed
+                        nostrud aute incididunt tempor aliqua eiusmod mollit nulla
+                        in in aute magna dolor nulla ad reprehenderit ut minim non
+                        labore velit enim duis nulla minim voluptate laboris ut
+                        laborum anim incididunt anim sint laboris non consequat
+                        culpa esse dolor sed sit ea sit occaecat consequat ut
+                        voluptate in dolore ad ea irure veniam in dolore dolor
+                        consequat qui pariatur sunt qui do nisi proident dolore est
+                        sit laboris adipisicing cillum veniam et reprehenderit do
+                        laboris magna id.This is a modalEsse nulla excepteur amet
+                        minim et sed dolor laborum laboris id laborum ad non laboris
+                        sunt in sed excepteur ut dolor in eu proident consequat in
+                        proident proident incididunt sunt sint ea in deserunt aliqua
+                        aute velit magna ut culpa nulla ut sint in dolore consequat
+                        ut velit sit non est incididunt amet ut amet amet magna
+                        consequat quis sed veniam ex cillum est commodo nostrud
+                        velit ut ut commodo laborum exercitation in eu qui irure
+                        aliquip nulla dolor eu magna nisi irure sint voluptate id
+                        incididunt reprehenderit occaecat duis nisi minim commodo ea
+                        aliquip tempor irure velit eu laborum veniam cupidatat
+                        mollit id esse laborum incididunt consequat quis non non
+                        quis ut mollit pariatur nisi ad laborum velit aliqua culpa
+                        officia dolore non nisi mollit non ea cupidatat do sed
+                        nostrud aute incididunt tempor aliqua eiusmod mollit nulla
+                        in in aute magna dolor nulla ad reprehenderit ut minim non
+                        labore velit enim duis nulla minim voluptate laboris ut
+                        laborum anim incididunt anim sint laboris non consequat
+                        culpa esse dolor sed sit ea sit occaecat consequat ut
+                        voluptate in dolore ad ea irure veniam in dolore dolor
+                        consequat qui pariatur sunt qui do nisi proident dolore est
+                        sit laboris adipisicing cillum veniam et reprehenderit do
+                        laboris magna id.
+                      </Drawer.Content>
+                    </Drawer>
+                  </Modal.Body>
                   <Modal.Footer>
                     <Active.Trigger color="dark" outline>
                       Close
