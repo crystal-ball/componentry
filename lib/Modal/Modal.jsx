@@ -19,18 +19,19 @@ type Props = {
   visible?: boolean,
 }
 
-/**
- * TODO:
- * - Close button auto-wiring of aria-label=close && deactivate
- * - Close on escape** - All toggle items!
- * - Auto focus on open
- * - Animated open/close
- * - Docs on passing flex align-items-center/start to header for close icon alignment
- * - Add close button when `ariaTitle is used
- *
- * ## Notes:
- * See MDN [Using the dialog role](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/ARIA_Techniques/Using_the_dialog_role)
- */
+// /**
+//  * TODO:
+//  * - Close button auto-wiring of aria-label=close && deactivate
+//  * - Close on escape** - All toggle items!
+//  * - Auto focus on open
+//  * - Animated open/close
+//  * - Docs on passing flex align-items-center/start to header for close icon alignment
+//  * - Add close button when `ariaTitle is used
+//  *
+//  * ## Notes:
+//  * See MDN [Using the dialog role](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/ARIA_Techniques/Using_the_dialog_role)
+//  */
+
 class Modal extends Component<Props> {
   static Header = elementFactory({ classes: 'modal-header', name: 'ModalHeader' })
   static Body = elementFactory({ classes: 'modal-body', name: 'ModalBody' })
@@ -49,6 +50,15 @@ class Modal extends Component<Props> {
    * used to wire together title aria attributes
    */
   guid = nanoid()
+
+  componentWillReceiveProps(nextProps) {
+    if (!this.props.active && nextProps.active) {
+      document.body.classList.add('modal-open')
+    }
+    if (this.props.active && !nextProps.active) {
+      document.body.classList.remove('modal-open')
+    }
+  }
 
   // Render
   // ---------------------------------------------------------------------------
@@ -69,13 +79,7 @@ class Modal extends Component<Props> {
         tabIndex="-1"
       >
         {/* See SCSS file for explanation on backdrop markdown order/position */}
-        <div
-          aria-hidden={active ? 'false' : 'true'}
-          className={classNames('modal-backdrop', 'fade', { show: visible })}
-          onClick={deactivate}
-          onKeyPress={deactivate}
-          role="presentation"
-        />
+
         <div
           className={classNames('modal-dialog', { [`modal-${size}`]: size })}
           role="document"
@@ -91,6 +95,13 @@ class Modal extends Component<Props> {
             {children}
           </div>
         </div>
+        <div
+          aria-hidden={active ? 'false' : 'true'}
+          className={classNames('modal-backdrop', 'fade', { show: visible })}
+          onClick={deactivate}
+          onKeyPress={deactivate}
+          role="presentation"
+        />
       </div>
     )
   }
