@@ -7,10 +7,13 @@ node_modules
 #################################
 *.log
 
-# Distributed
+# Published
 #################################
-build
 dist
 es
 esnext
 
+# Documentation
+#################################
+build
+monitor
