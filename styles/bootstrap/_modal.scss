@@ -3,11 +3,9 @@
 // .modal-dialog    - positioning shell for the actual modal
 // .modal-content   - actual modal w/ bg and corners and stuff
 
-
-// This only works when .modal-open is attached to <body>
+// Kill the scroll on the body
 .modal-open {
   overflow: hidden;
-  height: 100vh;
 }
 
 // Container that the modal scrolls within
@@ -19,7 +17,7 @@
   left: 0;
   z-index: $zindex-modal;
   display: none;
-  overflow: scroll;
+  overflow: hidden;
   // Prevent Chrome on Windows from adding a focus outline. For details, see
   // https://github.com/twbs/bootstrap/pull/10951.
   outline: 0;
@@ -27,16 +25,10 @@
   // gnarly iOS Safari bug: https://bugs.webkit.org/show_bug.cgi?id=158342
   // See also https://github.com/twbs/bootstrap/issues/17695
 
-  // When fading in the modal, animate it to slide down
-  &.fade .modal-dialog {
-    @include transition($modal-transition);
-    transform: translate(0, -25%);
+  .modal-open & {
+    overflow-x: hidden;
+    overflow-y: auto;
   }
-  &.show .modal-dialog { transform: translate(0, 0); }
-}
-.modal-open .modal {
-  overflow-x: hidden;
-  overflow-y: auto;
 }
 
 // Shell div to position the modal with bottom padding
@@ -46,7 +38,21 @@
   margin: $modal-dialog-margin;
   // allow clicks to pass through for custom click handling to close modal
   pointer-events: none;
-  z-index: calc(#{$zindex-modal-backdrop} + 1);
+
+  // When fading in the modal, animate it to slide down
+  .modal.fade & {
+    @include transition($modal-transition);
+    transform: translate(0, -25%);
+  }
+  .modal.show & {
+    transform: translate(0, 0);
+  }
+}
+
+.modal-dialog-centered {
+  display: flex;
+  align-items: center;
+  min-height: calc(100% - (#{$modal-dialog-margin} * 2));
 }
 
 // Actual modal
@@ -54,6 +60,7 @@
   position: relative;
   display: flex;
   flex-direction: column;
+  width: 100%; // Ensure `.modal-content` extends the full width of the parent `.modal-dialog`
   // counteract the pointer-events: none; in the .modal-dialog
   pointer-events: auto;
   background-color: $modal-content-bg;
@@ -74,11 +81,14 @@
   left: 0;
   z-index: $zindex-modal-backdrop;
   background-color: $modal-backdrop-bg;
-  overflow: hidden;
 
   // Fade for backdrop
-  &.fade { opacity: 0; }
-  &.show { opacity: $modal-backdrop-opacity; }
+  &.fade {
+    opacity: 0;
+  }
+  &.show {
+    opacity: $modal-backdrop-opacity;
+  }
 }
 
 // Modal header
@@ -125,8 +135,12 @@
   border-top: $modal-footer-border-width solid $modal-footer-border-color;
 
   // Easily place margin between footer elements
-  > :not(:first-child) { margin-left: .25rem; }
-  > :not(:last-child) { margin-right: .25rem; }
+  > :not(:first-child) {
+    margin-left: 0.25rem;
+  }
+  > :not(:last-child) {
+    margin-right: 0.25rem;
+  }
 }
 
 // Measure scrollbar width for padding body during modal show/hide
@@ -146,13 +160,21 @@
     margin: $modal-dialog-margin-y-sm-up auto;
   }
 
+  .modal-dialog-centered {
+    min-height: calc(100% - (#{$modal-dialog-margin-y-sm-up} * 2));
+  }
+
   .modal-content {
     @include box-shadow($modal-content-box-shadow-sm-up);
   }
 
-  .modal-sm { max-width: $modal-sm; }
+  .modal-sm {
+    max-width: $modal-sm;
+  }
 }
 
 @include media-breakpoint-up(lg) {
-  .modal-lg { max-width: $modal-lg; }
+  .modal-lg {
+    max-width: $modal-lg;
+  }
 }

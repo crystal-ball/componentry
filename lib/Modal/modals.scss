@@ -2,16 +2,16 @@
 // Modals
 // ========================================================
 
-// Bootstrap uses inline display styles to show/hide modal, Componentry uses aria
-// attrs
-.modal[aria-hidden='false'] {
+// In Bs show/hide is handled by adding a .show class, Componentry uses aria-hidden
+// to hide content
+.modal {
   display: block;
 }
 
-.modal-backdrop {
-  // Unset the modal backdrop z-index so that we can include it inside of the .modal
-  // container. This lets us click directly on the backdrop instead of having to
-  // filter clicks on the modal because the modal z-index is higher than backdrop
-  // z-index so any click on the modal backdrop is actually on the `.modal` div 😔
-  z-index: unset;
-}
+// .modal-backdrop {
+// Unset the modal backdrop z-index so that we can include it inside of the .modal
+// container. This lets us click directly on the backdrop instead of having to
+// filter clicks on the modal because the modal z-index is higher than backdrop
+// z-index so any click on the modal backdrop is actually on the `.modal` div 😔
+// z-index: unset;
+// }

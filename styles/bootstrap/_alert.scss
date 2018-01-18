@@ -21,13 +21,14 @@
   font-weight: $alert-link-font-weight;
 }
 
-
 // Dismissible alerts
 //
 // Expand the right padding and account for the close button's positioning.
 
-// @COMPONENTRY: We use flexbox to handle positiong the close button
+// @COMPONENTRY: We use flexbox to handle positioning the close button, see alert.scss
 // .alert-dismissible {
+//   padding-right: ($close-font-size + $alert-padding-x * 2);
+
 //   // Adjust close link position
 //   .close {
 //     position: absolute;
@@ -37,7 +38,6 @@
 //     color: inherit;
 //   }
 // }
-
 
 // Alternate styles
 //

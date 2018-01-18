@@ -10,6 +10,8 @@
 }
 
 // The dropdown menu
+// @COMPONENTRY: See note on class standardization in styles/README.md
+.dropdown-content,
 .dropdown-menu {
   position: absolute;
   top: 100%;
@@ -27,13 +29,15 @@
   background-color: $dropdown-bg;
   background-clip: padding-box;
   border: $dropdown-border-width solid $dropdown-border-color;
-  @include border-radius($border-radius);
+  @include border-radius($dropdown-border-radius);
   @include box-shadow($dropdown-box-shadow);
 }
 
 // Allow for dropdowns to go bottom up (aka, dropup-menu)
 // Just add .dropup after the standard .dropdown class and you're set.
 .dropup {
+  // @COMPONENTRY: See note on class standardization in styles/README.md
+  .dropdown-content,
   .dropdown-menu {
     margin-top: 0;
     margin-bottom: $dropdown-spacer;
@@ -41,6 +45,38 @@
 
   .dropdown-toggle {
     @include caret(up);
+  }
+}
+
+.dropright {
+  // @COMPONENTRY: See note on class standardization in styles/README.md
+  .dropdown-content,
+  .dropdown-menu {
+    margin-top: 0;
+    margin-left: $dropdown-spacer;
+  }
+
+  .dropdown-toggle {
+    @include caret(right);
+    &::after {
+      vertical-align: 0;
+    }
+  }
+}
+
+.dropleft {
+  // @COMPONENTRY: See note on class standardization in styles/README.md
+  .dropdown-content,
+  .dropdown-menu {
+    margin-top: 0;
+    margin-right: $dropdown-spacer;
+  }
+
+  .dropdown-toggle {
+    @include caret(left);
+    &::before {
+      vertical-align: 0;
+    }
   }
 }
 
@@ -61,7 +97,7 @@
   color: $dropdown-link-color;
   text-align: inherit; // For `<button>`s
   white-space: nowrap; // prevent links from randomly breaking onto new lines
-  background: none; // For `<button>`s
+  background-color: transparent; // For `<button>`s
   border: 0; // For `<button>`s
 
   @include hover-focus {
@@ -88,7 +124,7 @@
   }
 }
 
-// @COMPONENTRY: use aria-hidden for show/hide
+// @COMPONENTRY: use aria-hidden for show/hide of content
 // .dropdown-menu.show {
 //   display: block;
 // }
