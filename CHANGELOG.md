@@ -8,6 +8,20 @@ and this project adheres to
 
 #### [Unreleased]
 
+## [2.0.0-beta.3] - 2018-01-18
+
+### Changed
+
+* Bundled Bootstrap styles updated to Bootstrap v4 beta.3
+* Modal component updated to better align with Bootstrap
+
+### BREAKING CHANGES
+
+* Update of Bootstrap styles includes all breaking changes made in the Bootstrap
+  beta.3 update
+* The modal component uses the `<Fragment />` component with the modal and
+  modal-backdrop as siblings with no root. React with Fragments (^16.2) required
+
 ## [2.0.0-beta.2] - 2018-01-18
 
 ### Fixed
