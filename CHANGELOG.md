@@ -8,7 +8,13 @@ and this project adheres to
 
 #### [Unreleased]
 
-## [2.0.0-beta] - 2017-12--05
+## [2.0.0-beta.2] - 2018-01-18
+
+### Fixed
+
+* Body is now frozen on modal open allowing long modals to scroll.
+
+## [2.0.0-beta] - 2017-12-05
 
 ### Fixed
 
