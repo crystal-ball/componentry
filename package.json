@@ -16,7 +16,7 @@
     "commit": "git cz",
     "start": "NODE_ENV=development webpack-dev-server --env=development",
     "test": "npm run lint && npm run test:jest",
-    "prepublishOnly": "npm run styles && npm run js",
+    "prepublishOnly": "npm run js && npm run styles",
     "postpublish": "npm run clean",
     "prepush": "npm run test",
     "flow": "flow",
