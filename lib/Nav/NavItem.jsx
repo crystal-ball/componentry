@@ -6,7 +6,7 @@ import elementFactory from '../component-factories/element-factory'
 export default elementFactory({
   name: 'NavItem',
   computedClassName: (ctxClassName, propsClassName, { href, to }) =>
-    classNames('nav-item', {
+    classNames('nav-item', ctxClassName, propsClassName, {
       'nav-link': href || to,
     }),
   computedTag: props => (props.onClick ? Button : 'a'),
