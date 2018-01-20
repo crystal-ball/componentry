@@ -16,6 +16,12 @@
   position: relative;
 }
 
+// Content container overrides the width constraints for parent element
+.tooltip-content-container {
+  width: $tooltip-max-width;
+  position: absolute;
+}
+
 // Content
 .tooltip-content {
   @include border-radius($border-radius); // Adds border radius
@@ -23,13 +29,12 @@
   background-color: $tooltip-bg;
   color: $tooltip-color;
   font-size: $font-size-sm;
-  left: 0;
   margin-top: $tooltip-arrow-width;
   max-width: $tooltip-max-width;
   padding: $tooltip-padding-y $tooltip-padding-x;
-  position: absolute;
+  position: relative;
+  display: inline-block;
   text-align: left;
-  top: 100%;
   word-wrap: break-word; // Allow breaking very long words so they don't overflow the popover's bounds
   z-index: $zindex-tooltip;
 

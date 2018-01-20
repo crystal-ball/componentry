@@ -19,6 +19,33 @@
   position: relative;
 }
 
+// Content container overrides the width constraints for parent element
+.popover-content-container {
+  width: $popover-max-width;
+  position: absolute;
+  display: inline-flex;
+
+  &.top {
+    bottom: 100%;
+    justify-content: center;
+  }
+
+  &.right {
+    left: 100%;
+    align-items: center;
+  }
+
+  &.bottom {
+    top: 100%;
+    justify-content: center;
+  }
+
+  &.left {
+    right: 100%;
+    align-items: center;
+  }
+}
+
 // Content Element - The content element should be used to wrap a body/header element
 .popover-content {
   @include border-radius($border-radius-lg);
@@ -75,7 +102,6 @@
 
   &.bottom {
     margin-top: $popover-arrow-width;
-    top: 100%;
 
     .tip-container {
       bottom: 100%;
@@ -87,6 +113,8 @@
   }
 
   &.top {
+    // Top requires bumping bottom 100% again to compensate for container not having
+    // any height
     bottom: 100%;
     margin-bottom: $popover-arrow-width;
 
@@ -106,7 +134,6 @@
   }
 
   &.right {
-    left: 100%;
     margin-left: $popover-arrow-width;
 
     .tip-container {
@@ -120,7 +147,8 @@
 
   &.left {
     margin-right: $popover-arrow-width;
-    right: 100%;
+    // left requires right 0 to compensate for absolute positioning
+    right: 0;
 
     .tip-container {
       right: -$popover-arrow-width * 2;
