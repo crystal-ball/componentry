@@ -3,7 +3,6 @@ import React, { Component } from 'react'
 import type { ComponentType } from 'react'
 import { func, number, shape, string } from 'prop-types'
 
-import getDisplayName from '../utils/getDisplayName'
 import type { Theme } from '../ThemeProvider/ThemeProvider'
 
 export type ActiveProps = {
@@ -80,7 +79,7 @@ export default ({
     static Footer = Wrapped.Footer
     static Title = Wrapped.Title
 
-    static displayName = `withActive${getDisplayName(Wrapped)}`
+    static displayName = `withActive${Wrapped.displayName || Wrapped.name}`
 
     static contextTypes = {
       ACTIVE: shape({
