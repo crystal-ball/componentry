@@ -18,20 +18,24 @@ exports[`renders correctly 1`] = `
     Trigger
   </button>
   <div
-    aria-hidden="true"
-    className="popover-content"
-    data-test="popover-content"
-    id="guid"
-    role="tooltip"
+    className="popover-content-container"
   >
     <div
-      className="tip-container"
+      aria-hidden="true"
+      className="popover-content"
+      data-test="popover-content"
+      id="guid"
+      role="tooltip"
     >
       <div
-        className="tip"
-      />
+        className="tip-container"
+      >
+        <div
+          className="tip"
+        />
+      </div>
+      Content
     </div>
-    Content
   </div>
 </div>
 `;
