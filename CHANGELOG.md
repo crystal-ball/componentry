@@ -8,6 +8,18 @@ and this project adheres to
 
 #### [Unreleased]
 
+## [2.0.0-beta.4] - 2018-01-18
+
+### Changed
+
+* Poppers now use a content container to create a positioned ancestor with width
+  equal to popper max, this allows removal of hacky width calculations inside
+  the popper content component 🎉
+
+### Fixed
+
+* Props and context classNames passed through to `<NavItem />`
+
 ## [2.0.0-beta.3] - 2018-01-18
 
 ### Changed
