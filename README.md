@@ -10,6 +10,9 @@
   <a href="http://commitizen.github.io/cz-cli/">
     <img src="https://img.shields.io/badge/commitizen-friendly-brightgreen.svg" alt="Commitizen">
   </a>
+  <a href="https://www.npmjs.com/package/componentry">
+    <img src="https://img.shields.io/npm/v/componentry.svg?style=flat-square" alt="current version">
+  </a>
 </p>
 
 Componentry is a component library built for React and Bootstrap v4.
