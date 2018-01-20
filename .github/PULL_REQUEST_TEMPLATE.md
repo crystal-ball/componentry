@@ -15,7 +15,7 @@ EG. This PR fixes #XX by doing some important safety checking, etc etc...
 
 ## Requirements
 
-* [ ] PR is targeted against `develop` branch
+* [ ] PR is pointed to `develop` branch
 * [ ] Commit messages created with `commitizen` <!-- hint: npm run commit -->
 * [ ] Tests added for changes
 * [ ] All tests are _definitely_ passing <!-- hint: npm test -->

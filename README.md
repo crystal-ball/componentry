@@ -12,13 +12,30 @@
   </a>
 </p>
 
-## Testing
+Componentry is a component library built for React and Bootstrap v4.
 
-Use npm to execute tests:
+* Feather light footprint at 12.3KB gzipped
+* A++ accessibility built in to every component
+* Consistent APIs for easy usage
+* Designed for flexibility and component composition
 
-```bash
-npm test
-```
+The [Componentry documentation][documentation] covers component APIs, theme
+customization, library architecture and other advanced topics.
 
-Unit testing is run with [Mocha](https://mochajs.org/) and
-[Enzyme](http://airbnb.io/enzyme/).
+## Installation
+
+Getting started with Componentry can be as simple as `npm i componentry`. See
+the [Getting started guide][installation] for details on advanced setup.
+
+## Contributing
+
+Componentry is an open source project that welcomes and appreciates
+contributions from everyone 🎉. Please read the [Code of Conduct][coc] and
+[Contributing][] guidelines to get started.
+
+<!-- Links -->
+
+[documentation]: https://crystal-ball.github.io/componentry/
+[installation]: https://crystal-ball.github.io/componentry/getting-started
+[coc]: ./CODE_OF_CONDUCT.md
+[contributing]: ./.github/CONTRIBUTING.md
