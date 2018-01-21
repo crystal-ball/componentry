@@ -20,21 +20,17 @@ type Props = {
 }
 
 export default ({ location: { state } }: Props) => (
-  <div className={component}>
-    <div className="fullscreen-row">
+  <div className={`grid-container columns-page-layout m-5 ${component}`}>
+    <div>
       <Header title={state ? state.name : 'Concepts'} />
-    </div>
 
-    <div className="row">
-      <div className="col-10">
-        <Route path="/concepts/accessibility" component={AccessibilityScreen} />
-        <Route path="/concepts/theming" component={ThemingScreen} />
-        <Route path="/concepts/component-contract" component={ComponentsScreen} />
-        <Route path="/concepts" exact component={OverviewScreen} />
-      </div>
-      <div className="col-2">
-        <GroupNav routes={conceptsRoutes} />
-      </div>
+      <Route path="/concepts/accessibility" component={AccessibilityScreen} />
+      <Route path="/concepts/theming" component={ThemingScreen} />
+      <Route path="/concepts/component-contract" component={ComponentsScreen} />
+      <Route path="/concepts" exact component={OverviewScreen} />
+    </div>
+    <div>
+      <GroupNav routes={conceptsRoutes} />
     </div>
   </div>
 )

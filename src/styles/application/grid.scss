@@ -1,0 +1,10 @@
+/* application/grid */
+
+.grid-container {
+  display: grid;
+}
+
+// Creates a two column layout with CSS Grid
+.columns-page-layout {
+  grid-template-columns: 85% 15%;
+}

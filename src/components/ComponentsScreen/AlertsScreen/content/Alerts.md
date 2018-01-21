@@ -10,7 +10,7 @@ componentProps:
     defaultValue: "false"
   - name: deactivate
     description: When passed, the <code>deactivate</code> will be called in place of internal state change handler. Note that the opacity transition and hiding of the component must be handled externally when passing a custom <code>deactivate</code> handler.
-    type: Function
+    type: function
     defaultValue: undefined
   - name: transitionDuration
     description: Length of opacity transition, if not passed component will default to 300ms or <code>THEME</code> value if set using <code>ThemeProvider</code>.

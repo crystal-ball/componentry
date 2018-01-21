@@ -1,0 +1,19 @@
+:local(.component) {
+  table-layout: fixed;
+
+  .name {
+    width: 19%;
+  }
+
+  .type {
+    width: 22%;
+  }
+
+  .description {
+    width: 46%;
+  }
+
+  .default {
+    width: 13%;
+  }
+}

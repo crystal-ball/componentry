@@ -67,22 +67,17 @@ export default class App extends Component<{}> {
         <Componentry.ThemeProvider theme={theme}>
           {/* Restores scroll position to page top on route change */}
           <ScrollToTop />
-          <div>
-            {/* Show app navigation on every page but home page */}
-            <Route path="/:path" component={AppNav} />
-            <div className="container">
-              <Switch>
-                <Route path="/" exact component={HomeScreen} />
-                <Route path="/getting-started" component={GettingStartedScreen} />
-                <Route path="/concepts/:concept?" component={ConceptsScreen} />
-                <Route
-                  path="/components/:component?"
-                  component={ComponentsScreen}
-                />
-                <Route component={FourOhFourScreen} />
-              </Switch>
-            </div>
-          </div>
+
+          {/* Show app navigation on every page but home page */}
+          <Route path="/:path" component={AppNav} />
+
+          <Switch>
+            <Route path="/" exact component={HomeScreen} />
+            <Route path="/getting-started" component={GettingStartedScreen} />
+            <Route path="/concepts/:concept?" component={ConceptsScreen} />
+            <Route path="/components/:component?" component={ComponentsScreen} />
+            <Route component={FourOhFourScreen} />
+          </Switch>
         </Componentry.ThemeProvider>
       </BrowserRouter>
     )

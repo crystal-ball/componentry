@@ -1,40 +1,25 @@
 import React, { Fragment } from 'react'
 
-/* eslint-disable react/no-danger */
+import { component } from './props-docs-content.scss'
 
 type Props = {
   contentProps: Array,
 }
 
 export default ({ contentProps }: Props) => (
-  <table className="table">
+  <table className={`table ${component}`}>
     <thead>
       <tr>
-        <th>Name</th>
-        <th>Description</th>
-        <th>Type</th>
-        <th>Default</th>
+        <th className="name">Name</th>
+        <th className="type">Type</th>
+        <th className="description">Description</th>
+        <th className="default">Default</th>
       </tr>
     </thead>
     <tbody>
       {contentProps.map(({ name, description, type, defaultValue }) => (
         <tr key={name}>
-          <td>{name}</td>
-          <td dangerouslySetInnerHTML={{ __html: description }} />
-          {/* {Array.isArray(type) && (
-            <Fragment>
-              <div className="text-muted small">
-                Enums: [
-                {type.map((enumType, idx) => (
-                  <Fragment>
-                    {idx ? ', ' : ''}
-                    <code key={enumType}>{enumType}</code>
-                  </Fragment>
-                ))}
-                ]
-              </div>
-            </Fragment>
-          )} */}
+          <td className="text-info">{name}</td>
           <td>
             {Array.isArray(type) ? (
               <Fragment>
@@ -56,6 +41,8 @@ export default ({ contentProps }: Props) => (
               <code>{type}</code>
             )}
           </td>
+          {/* eslint-disable react/no-danger */}
+          <td dangerouslySetInnerHTML={{ __html: description }} />
           <td>
             <code>{defaultValue}</code>
           </td>

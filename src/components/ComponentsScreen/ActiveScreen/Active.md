@@ -35,3 +35,5 @@ only `activate` or `deactivate`
     </Active>
   </Active.Content>
 </Active>
+
+<PropsDocs activeComponent />

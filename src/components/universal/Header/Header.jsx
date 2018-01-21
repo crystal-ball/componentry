@@ -5,7 +5,7 @@ type Props = {
 }
 
 export default ({ title }: Props) => (
-  <div className="container mb-5 bb-secondary-1">
+  <div className="mb-5 bb-secondary-1">
     <h1 className="display-3 mb-5">
       {title.charAt(0).toUpperCase() + title.slice(1)}
     </h1>
