@@ -2,7 +2,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 
-import ComponentsNav from 'components/universal/navigation/ComponentsNav'
+import ComponentsNav from 'components/universal/ComponentsNav'
 
 import { component } from './home-screen.scss'
 

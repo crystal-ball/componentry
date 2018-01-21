@@ -2,7 +2,7 @@
 import React from 'react'
 import { Route } from 'react-router-dom'
 
-import GroupNav from 'components/universal/navigation/GroupNav'
+import GroupNav from 'components/universal/GroupNav'
 import componentRoutes from 'utils/component-routes'
 import Header from 'components/universal/Header'
 
