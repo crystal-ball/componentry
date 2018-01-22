@@ -1,7 +1,7 @@
 // @flow
 import React, { Component } from 'react'
 import { object } from 'prop-types'
-import * as Componentry from 'componentry-lib'
+import * as Componentry from 'componentry'
 import { BrowserRouter, Switch, Route, Link } from 'react-router-dom'
 
 // Import SVG font icons used in application without an Icon component instance

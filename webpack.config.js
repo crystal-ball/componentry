@@ -17,7 +17,7 @@ module.exports = env => {
   config.resolve.alias.UNIVERSAL = resolve('src', 'components', 'universal')
   config.resolve.alias.GUIDES = resolve('guides')
   // Add an alias to the /lib for use in the documentation application
-  config.resolve.alias['componentry-lib'] = resolve('lib')
+  config.resolve.alias.componentry = resolve('lib')
 
   /*
    * Make any changes to the base webpack configs for your application, eg:

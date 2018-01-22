@@ -1,5 +1,5 @@
 import React, { Fragment } from 'react'
-import { Tab } from 'componentry-lib'
+import { Tab } from 'componentry'
 
 import PropsTabsContent from './PropsDocsContent'
 import propsContent from './content/props'

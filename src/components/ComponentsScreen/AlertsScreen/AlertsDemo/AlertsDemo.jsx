@@ -1,5 +1,5 @@
 import React, { Component, Fragment } from 'react'
-import { Active, Alert, Card, Dropdown } from 'componentry-lib'
+import { Active, Alert, Card, Dropdown } from 'componentry'
 
 import DismissibleExample from './content/DismissibleExample.md'
 import NonDismissibleExample from './content/NonDismissibleExample.md'

@@ -1,5 +1,5 @@
 import React, { Component, Fragment } from 'react'
-import { Button, Card, Dropdown } from 'componentry-lib'
+import { Button, Card, Dropdown } from 'componentry'
 
 import PrismHighlighter from 'components/universal/PrismHighlighter'
 

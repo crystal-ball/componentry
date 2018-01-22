@@ -3,7 +3,7 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 
 import componentRoutes from 'utils/component-routes'
-import { Dropdown } from 'componentry-lib'
+import { Dropdown } from 'componentry'
 
 type Props = {
   color: string,

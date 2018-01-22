@@ -1,5 +1,5 @@
 import React, { Fragment } from 'react'
-import { Active } from 'componentry-lib'
+import { Active } from 'componentry'
 
 import { component } from './props-docs-content.scss'
 
