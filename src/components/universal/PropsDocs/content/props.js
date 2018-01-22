@@ -6,6 +6,28 @@ export default {
       type: 'Component | string',
       defaultValue: 'div',
     },
+    {
+      name: 'color',
+      description: 'Sets the theme color for the element.',
+      type: [
+        '"primary"',
+        '"secondary"',
+        '"success"',
+        '"danger"',
+        '"warning"',
+        '"info"',
+        '"light"',
+        '"dark"',
+        '"none"',
+      ],
+      defaultValue: 'undefined',
+    },
+    {
+      name: 'size',
+      description: 'Sets the size for the element.',
+      type: ['"small"', '"large"'],
+      defaultValue: 'undefined',
+    },
   ],
   activeProps: [
     {
@@ -13,6 +35,13 @@ export default {
       description:
         'Controls the active state of an element. Providing a value will create a controlled component.<br>ℹ️ For elements with multiple content containers pass an <code>activeId</code> to activate that content container.',
       type: 'boolean | string',
+      defaultValue: 'false',
+    },
+    {
+      name: 'defaultActive',
+      description:
+        '<em>Initializes</em> the active state to <code>true</code>.<br>ℹ️ Pass a truthy value when you want an active component to be initially rendered as active',
+      type: 'boolean',
       defaultValue: 'false',
     },
     {

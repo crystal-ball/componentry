@@ -8,11 +8,23 @@ import { component } from './props-docs.scss'
 type Props = {
   componentProps: Array,
   activeComponent: boolean,
+  size: boolean,
+  themeColors: boolean,
 }
 
-export default ({ componentProps = [], activeComponent = false }: Props) => {
+export default ({
+  componentProps = [],
+  activeComponent = false,
+  size = false,
+  themeColors = false,
+}: Props) => {
   const showComponentProps = !!componentProps.length
   const defaultActive = componentProps.length ? 'component' : 'element'
+  const elementProps = propsContent.elementProps.filter(prop => {
+    if (!themeColors && prop.name === 'color') return false
+    if (!size && prop.name === 'size') return false
+    return prop
+  })
 
   return (
     <Fragment>
@@ -27,7 +39,7 @@ export default ({ componentProps = [], activeComponent = false }: Props) => {
             </Tab.Content>
           )}
           <Tab.Content activeId="element">
-            <PropsTabsContent contentProps={propsContent.elementProps} />
+            <PropsTabsContent contentProps={elementProps} />
           </Tab.Content>
           {activeComponent && (
             <Tab.Content activeId="active">

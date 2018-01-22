@@ -1,9 +1,6 @@
 ---
 componentProps:
-  - name: color
-    description: Sets the theme color of alert
-    type: ["\"primary\"", "\"secodary\"", "\"success\"", "\"danger\"", "\"warning\"", "\"info\"", "\"light\"", "\"dark\""]
-    defaultValue: undefined
+  - color: true
   - name: dismissible
     description: Controls whether alert can be dismissed by user, pass <code>false</code> to prevent dismissal of an alert.
     type: boolean
@@ -26,7 +23,7 @@ componentProps:
 <Alert color="info">
   Dismissible Alerts require library active props. The component is wrapped
   using <code>withActive</code> so disimissible Alerts can either be a child
-  of a <code>{`<State />`}</code> component or props <code>active</code>
+  of a <code>{`<State />`}</code> component or props <code>active</code>{' '}
   and <code>deactivate</code> can be passed.
 </Alert>
 
@@ -34,4 +31,4 @@ componentProps:
 
 <AlertsDemo />
 
-<PropsDocs componentProps={componentProps} />
+<PropsDocs componentProps={componentProps} themeColors />

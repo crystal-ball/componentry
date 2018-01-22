@@ -1,12 +1,27 @@
-<p className="lead">Button component...</p>
+---
+componentProps:
+  - color: true
+  - name: link
+    description: Link buttons are styled to appear the same as <code>anchor</code> elements.
+    type: boolean
+    defaultValue: false
+  - name: outline
+    description: Outline buttons have a themed outline and white background appearance.
+    type: boolean
+    defaultValue: false
+  - size: true
+---
 
-The `Button` component is the base component for any element that has a user
-interaction in the library. It is important to use either a button element or a
-valid href for any click target in order to support keyboard users _(See A++
-Accessibility Guide)_. In cases where a target that looks like a link is
-required, but the target causes an in page change, the `Button` component should
-be used with the `link` prop.
+<p className="lead">The Button component is the base component for any element
+that has a user interaction in the library. Use Button components
+for actions in forms, dialogs and more.</p>
 
-Docs: color, link, outline, size
+See the <Link to="/concepts/accessibility">A++ accessibility guide</Link> for
+information on the importance of using a button element for any user interaction
+target that is not an anchor element.
 
-<Button>Primary</Button>
+#### Button configurations
+
+<ButtonsDemo />
+
+<PropsDocs componentProps={componentProps} themeColors size />
