@@ -28,7 +28,7 @@ module.exports = {
   scopes: [
     { name: 'components' },
     { name: 'styles' },
-    { name: 'example' },
+    { name: 'documentation' },
     { name: 'configs' },
   ],
 
