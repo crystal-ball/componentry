@@ -7,10 +7,10 @@ import Header from 'components/universal/Header'
 import conceptsRoutes from 'utils/concepts-routes'
 
 import ArchitectureScreen from 'GUIDES/Architecture.md'
-import AccessibilityScreen from './AccessibilityScreen'
-import ComponentsScreen from './ComponentsScreen'
+import AccessibilityScreen from 'GUIDES/Accessibility.md'
+import ComponentsScreen from 'GUIDES/Components.md'
+import ThemingScreen from 'GUIDES/Theming.md'
 import OverviewScreen from './OverviewScreen'
-import ThemingScreen from './ThemingScreen'
 
 import { component } from './concepts-screen.scss'
 
