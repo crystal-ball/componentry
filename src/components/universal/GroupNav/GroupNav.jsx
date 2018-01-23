@@ -1,6 +1,7 @@
 // @flow
 import React from 'react'
 import { NavLink } from 'react-router-dom'
+import classNames from 'classnames'
 
 import routesMapToArray from 'utils/routes-map-to-array'
 import type { Route } from 'utils/routes-map-to-array'
@@ -19,7 +20,7 @@ export default ({ routesMap }: Props) => {
   const routesArray = routesMapToArray(routesMap)
 
   return (
-    <nav className={component}>
+    <nav className={classNames('ml-5', component)}>
       {routesArray.map(routeTo => (
         <div className="pb-1" key={routeTo.id}>
           <NavLink to={routeTo} activeClassName="text-primary">

@@ -12,4 +12,8 @@ export default {
     pathname: '/concepts/component-apis',
     state: { name: 'Component APIs' },
   },
+  architecture: {
+    pathname: '/concepts/architecture',
+    state: { name: 'Componentry Architecture' },
+  },
 }

@@ -43,7 +43,7 @@ export default ({ location: { state } }: Props) => (
       <Route path="/components/tabs" component={TabsScreen} />
       <Route path="/components/tooltips" component={TooltipsScreen} />
     </div>
-    <div className="ml-5">
+    <div>
       <GroupNav routesMap={componentRoutes} />
     </div>
   </div>

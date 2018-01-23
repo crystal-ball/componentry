@@ -6,6 +6,7 @@ import GroupNav from 'components/universal/GroupNav'
 import Header from 'components/universal/Header'
 import conceptsRoutes from 'utils/concepts-routes'
 
+import ArchitectureScreen from 'GUIDES/Architecture.md'
 import AccessibilityScreen from './AccessibilityScreen'
 import ComponentsScreen from './ComponentsScreen'
 import OverviewScreen from './OverviewScreen'
@@ -32,6 +33,10 @@ export default ({ location: { state } }: Props) => (
       <Route
         path={conceptsRoutes.components.pathname}
         component={ComponentsScreen}
+      />
+      <Route
+        path={conceptsRoutes.architecture.pathname}
+        component={ArchitectureScreen}
       />
       <Route
         path="/concepts"
