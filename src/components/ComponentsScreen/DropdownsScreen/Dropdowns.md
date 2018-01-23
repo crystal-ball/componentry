@@ -1,3 +1,11 @@
+<!-- TODO: remove wrapper div after inspirescript handles inline components -->
+
+<div>
+  <ComponentsList
+    components={['Dropdown', 'Dropdown.Trigger', 'Dropdown.Content', 'Dropdown.Item']}
+  />
+</div>
+
 <p className="lead">Dropdown component...</p>
 <Dropdown>
   <Dropdown.Trigger>Dropdown</Dropdown.Trigger>

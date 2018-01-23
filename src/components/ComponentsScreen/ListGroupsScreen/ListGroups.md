@@ -1,10 +1,18 @@
+<!-- TODO: remove wrapper div after inspirescript handles inline components -->
+
+<div>
+  <ComponentsList
+    components={['ListGroup', 'ListGroup.Item']}
+  />
+</div>
+
 <p className="lead">ListGroup component...</p>
 
 ## Button list
 
 <ListGroup className="w-50">
-  <ListGroup.Item onClick={testClick}>Button One</ListGroup.Item>
-  <ListGroup.Item onClick={testClick}>Button Two</ListGroup.Item>
+  <ListGroup.Item onClick={() => {}}>Button One</ListGroup.Item>
+  <ListGroup.Item onClick={() => {}}>Button Two</ListGroup.Item>
 </ListGroup>
 
 ### Link list

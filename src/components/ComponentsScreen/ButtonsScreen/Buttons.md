@@ -12,6 +12,14 @@ componentProps:
   - size: true
 ---
 
+<!-- TODO: remove wrapper div after inspirescript handles inline components -->
+
+<div>
+  <ComponentsList
+    components={['Button']}
+  />
+</div>
+
 <p className="lead">The Button component is the base component for any element
 that has a user interaction in the library. Use Button components
 for actions in forms, dialogs and more.</p>

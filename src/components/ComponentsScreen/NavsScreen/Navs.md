@@ -1,3 +1,11 @@
+<!-- TODO: remove wrapper div after inspirescript handles inline components -->
+
+<div>
+  <ComponentsList
+    components={['Nav', 'Nav.Item']}
+  />
+</div>
+
 <p className="lead">Nav component...</p>
 <Nav pills>
   <Nav.Item href="#">Item 1</Nav.Item>

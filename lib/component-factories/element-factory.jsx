@@ -35,6 +35,10 @@ type Options = {
 
 export type ElementProps = {
   /**
+   * Active state of element
+   */
+  active?: boolean,
+  /**
    * Component parent element render type, can be an HMTL tag or component type
    */
   as?: ComponentType<any> | string,

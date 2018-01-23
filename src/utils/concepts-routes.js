@@ -1,12 +1,15 @@
 // @flow
-const routes: Array<{ name: string, path: string, id: string }> = [
-  {
-    name: 'A++ Accessibility',
-    path: '/concepts/accessibility',
-    id: 'accessibility',
+export default {
+  accessibility: {
+    pathname: '/concepts/accessibility',
+    state: { name: 'A++ Accessibility' },
   },
-  { name: 'Theme Customization', path: '/concepts/theming', id: 'theming' },
-  { name: 'Component APIs', path: '/concepts/component-contract', id: 'apis' },
-]
-
-export default routes
+  theming: {
+    pathname: '/concepts/theming',
+    state: { name: 'Theme Customization' },
+  },
+  components: {
+    pathname: '/concepts/component-apis',
+    state: { name: 'Component APIs' },
+  },
+}

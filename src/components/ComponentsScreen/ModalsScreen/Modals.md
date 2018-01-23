@@ -1,3 +1,11 @@
+<!-- TODO: remove wrapper div after inspirescript handles inline components -->
+
+<div>
+  <ComponentsList
+    components={['Modal', 'Modal.Header', 'Modal.Title', 'Modal.Body', 'Modal.Footer']}
+  />
+</div>
+
 <p className="lead">Modal component...</p>
 
 #### Modal header alignment

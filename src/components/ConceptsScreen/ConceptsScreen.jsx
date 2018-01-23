@@ -22,15 +22,27 @@ type Props = {
 export default ({ location: { state } }: Props) => (
   <div className={`grid-container columns-page-layout m-5 ${component}`}>
     <div>
-      <Header title={state ? state.name : 'Concepts'} />
+      <Header title={state ? state.name : 'Concepts'} className="mb-5" />
 
-      <Route path="/concepts/accessibility" component={AccessibilityScreen} />
-      <Route path="/concepts/theming" component={ThemingScreen} />
-      <Route path="/concepts/component-contract" component={ComponentsScreen} />
-      <Route path="/concepts" exact component={OverviewScreen} />
+      <Route
+        path={conceptsRoutes.accessibility.pathname}
+        component={AccessibilityScreen}
+      />
+      <Route path={conceptsRoutes.theming.pathname} component={ThemingScreen} />
+      <Route
+        path={conceptsRoutes.components.pathname}
+        component={ComponentsScreen}
+      />
+      <Route
+        path="/concepts"
+        exact
+        render={props => (
+          <OverviewScreen {...props} conceptsRoutes={conceptsRoutes} />
+        )}
+      />
     </div>
     <div>
-      <GroupNav routes={conceptsRoutes} />
+      <GroupNav routesMap={conceptsRoutes} />
     </div>
   </div>
 )

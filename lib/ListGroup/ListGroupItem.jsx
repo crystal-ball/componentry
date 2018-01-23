@@ -11,7 +11,7 @@ export type Props = ElementProps
  * List group item of `li`, `a` or `Button`.
  */
 export default elementFactory({
-  name: 'ListGroup',
+  name: 'ListGroupItem',
   computedTag: props => {
     if (props.href || props.onClick) return props.href ? 'a' : Button
     // Default to li if not specified or not an action type list
@@ -22,4 +22,5 @@ export default elementFactory({
       active,
       'list-group-item-action': href || onClick,
     }),
+  clean: ['active'],
 })

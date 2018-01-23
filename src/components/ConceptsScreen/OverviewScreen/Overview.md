@@ -4,6 +4,8 @@
   flexible code <span role="img" aria-label="huzzah">🎉</span>.
 </p>
 
-* <Link to="/concepts/accessibility">A++ Accessibility</Link> covers out of the box accessibility provided by Componentry and recommendations for creating accessible content.
-* <Link to="/concepts/theming">Theme Customization</Link> covers customizing the styles and icons for Bootstrap + Componentry using SASS variables.
-* <Link to="/concepts/component-contract">Component APIs</Link> covers the APIs Componentry components expose for composing and customizing new components.
+<!-- Use passed routes map to include route name state in link for header -->
+
+* <Link to={props.conceptsRoutes.accessibility}>A++ Accessibility</Link> covers out of the box accessibility provided by Componentry and recommendations for creating accessible content.
+* <Link to={props.conceptsRoutes.theming}>Theme Customization</Link> covers customizing the styles and icons for Bootstrap + Componentry using SASS variables.
+* <Link to={props.conceptsRoutes.components}>Component APIs</Link> covers the APIs Componentry components expose for composing and customizing new components.

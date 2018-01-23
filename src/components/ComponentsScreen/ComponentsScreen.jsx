@@ -6,7 +6,6 @@ import GroupNav from 'components/universal/GroupNav'
 import componentRoutes from 'utils/component-routes'
 import Header from 'components/universal/Header'
 
-// Component Screens
 import ActiveScreen from './ActiveScreen'
 import AlertsScreen from './AlertsScreen'
 import ButtonsScreen from './ButtonsScreen'
@@ -21,35 +20,31 @@ import TabsScreen from './TabsScreen'
 import TooltipsScreen from './TooltipsScreen'
 
 type Props = {
-  match: {
-    params: { component: string },
+  location: {
+    state: { name: string },
   },
 }
 
-export default ({ match }: Props) => {
-  const { component } = match.params
+export default ({ location: { state } }: Props) => (
+  <div className="grid-container columns-page-layout m-5">
+    <div>
+      <Header title={state ? state.name : 'Components'} />
 
-  return (
-    <div className="grid-container columns-page-layout m-5">
-      <div>
-        <Header title={component || 'Components'} />
-
-        <Route path="/components/active" component={ActiveScreen} />
-        <Route path="/components/alerts" component={AlertsScreen} />
-        <Route path="/components/buttons" component={ButtonsScreen} />
-        <Route path="/components/cards" component={CardsScreen} />
-        <Route path="/components/drawers" component={DrawersScreen} />
-        <Route path="/components/dropdowns" component={DropdownsScreen} />
-        <Route path="/components/list-groups" component={ListGroupsScreen} />
-        <Route path="/components/modals" component={ModalsScreen} />
-        <Route path="/components/navs" component={NavsScreen} />
-        <Route path="/components/popovers" component={PopoversScreen} />
-        <Route path="/components/tabs" component={TabsScreen} />
-        <Route path="/components/tooltips" component={TooltipsScreen} />
-      </div>
-      <div className="ml-5">
-        <GroupNav routes={componentRoutes} />
-      </div>
+      <Route path="/components/active" component={ActiveScreen} />
+      <Route path="/components/alerts" component={AlertsScreen} />
+      <Route path="/components/buttons" component={ButtonsScreen} />
+      <Route path="/components/cards" component={CardsScreen} />
+      <Route path="/components/drawers" component={DrawersScreen} />
+      <Route path="/components/dropdowns" component={DropdownsScreen} />
+      <Route path="/components/list-groups" component={ListGroupsScreen} />
+      <Route path="/components/modals" component={ModalsScreen} />
+      <Route path="/components/navs" component={NavsScreen} />
+      <Route path="/components/popovers" component={PopoversScreen} />
+      <Route path="/components/tabs" component={TabsScreen} />
+      <Route path="/components/tooltips" component={TooltipsScreen} />
     </div>
-  )
-}
+    <div className="ml-5">
+      <GroupNav routesMap={componentRoutes} />
+    </div>
+  </div>
+)

@@ -3,19 +3,20 @@
 /**
  * Component routes defined here for reuse between navs.
  */
-const componentRoutes: Array<{ name: string, path: string, id: string }> = [
-  { name: 'Active', path: '/components/active', id: 'Active' },
-  { name: 'Alerts', path: '/components/alerts', id: 'Alerts' },
-  { name: 'Buttons', path: '/components/buttons', id: 'Buttons' },
-  { name: 'Cards', path: '/components/cards', id: 'Cards' },
-  { name: 'Drawers', path: '/components/drawers', id: 'Drawers' },
-  { name: 'Dropdowns', path: '/components/dropdowns', id: 'Dropdowns' },
-  { name: 'List Groups', path: '/components/list-groups', id: 'List' },
-  { name: 'Modals', path: '/components/modals', id: 'Modals' },
-  { name: 'Navs', path: '/components/navs', id: 'Navs' },
-  { name: 'Popovers', path: '/components/popovers', id: 'Popovers' },
-  { name: 'Tabs', path: '/components/tabs', id: 'tabs' },
-  { name: 'Tooltips', path: '/components/tooltips', id: 'Tooltips' },
-]
-
-export default componentRoutes
+export default {
+  active: { pathname: '/components/active', state: { name: 'Active' } },
+  alerts: { pathname: '/components/alerts', state: { name: 'Alerts' } },
+  buttons: { pathname: '/components/buttons', state: { name: 'Buttons' } },
+  cards: { pathname: '/components/cards', state: { name: 'Cards' } },
+  drawers: { pathname: '/components/drawers', state: { name: 'Drawers' } },
+  dropdowns: { pathname: '/components/dropdowns', state: { name: 'Dropdowns' } },
+  listGroups: {
+    pathname: '/components/list-groups',
+    state: { name: 'List Groups' },
+  },
+  modals: { pathname: '/components/modals', state: { name: 'Modals' } },
+  navs: { pathname: '/components/navs', state: { name: 'Navs' } },
+  popovers: { pathname: '/components/popovers', state: { name: 'Popovers' } },
+  tabs: { pathname: '/components/tabs', state: { name: 'Tabs' } },
+  tooltips: { pathname: '/components/tooltips', state: { name: 'Tooltips' } },
+}

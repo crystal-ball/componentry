@@ -1,3 +1,11 @@
+<!-- TODO: remove wrapper div after inspirescript handles inline components -->
+
+<div>
+  <ComponentsList
+    components={['Tooltip', 'Tooltip.Trigger', 'Tooltip.Content']}
+  />
+</div>
+
 <p className="lead">Tooltip component...</p>
 <Tooltip>
   <Tooltip.Trigger>Tooltip</Tooltip.Trigger>

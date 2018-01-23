@@ -1,22 +1,32 @@
 // @flow
 import React from 'react'
+import { NavLink } from 'react-router-dom'
 
-import StatefulNameLink from '../StatefulNameLink'
+import routesMapToArray from 'utils/routes-map-to-array'
+import type { Route } from 'utils/routes-map-to-array'
 import { component } from './group-nav.scss'
 
 type Props = {
-  routes: Array<{ name: string, path: string, id: string }>,
+  routesMap: {
+    [string]: Route,
+  },
 }
 
 /**
  * Group navs for the component and concept subroutes use a static router config.
  */
-export default ({ routes }: Props) => (
-  <nav className={component}>
-    {routes.map(({ name, path, id }) => (
-      <div className="pb-1" key={id}>
-        <StatefulNameLink {...{ name, path }} />
-      </div>
-    ))}
-  </nav>
-)
+export default ({ routesMap }: Props) => {
+  const routesArray = routesMapToArray(routesMap)
+
+  return (
+    <nav className={component}>
+      {routesArray.map(routeTo => (
+        <div className="pb-1" key={routeTo.id}>
+          <NavLink to={routeTo} activeClassName="text-primary">
+            {routeTo.state.name}
+          </NavLink>
+        </div>
+      ))}
+    </nav>
+  )
+}

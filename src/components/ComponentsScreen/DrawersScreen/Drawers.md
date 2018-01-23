@@ -1,3 +1,11 @@
+<!-- TODO: remove wrapper div after inspirescript handles inline components -->
+
+<div>
+  <ComponentsList
+    components={['Drawer', 'Drawer.Trigger', 'Drawer.Content', 'Accordion', 'Accordion.Trigger', 'Accordion.Content']}
+  />
+</div>
+
 <p className="lead">Drawer component...</p>
 <Drawer>
   <Drawer.Trigger>
