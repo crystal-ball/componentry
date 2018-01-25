@@ -8,6 +8,12 @@ and this project adheres to
 
 #### [Unreleased]
 
+## [2.0.0-beta.5] - 2018-01-18
+
+### Changed
+
+* Update Bootstrap styles to v4 🎉
+
 ## [2.0.0-beta.4] - 2018-01-18
 
 ### Changed
