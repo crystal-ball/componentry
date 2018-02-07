@@ -3,6 +3,7 @@
 exports[`renders correctly 1`] = `
 <div
   className="tooltip"
+  data-id="guid"
   data-test="tooltip-container"
   onMouseEnter={[Function]}
   onMouseLeave={[Function]}

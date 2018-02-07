@@ -3,6 +3,7 @@
 exports[`renders correctly 1`] = `
 <div
   className="dropdown"
+  data-id="guid"
   data-test="dropdown-container"
   onMouseEnter={undefined}
   onMouseLeave={undefined}

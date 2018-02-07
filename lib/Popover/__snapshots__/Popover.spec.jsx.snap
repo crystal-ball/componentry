@@ -3,6 +3,7 @@
 exports[`renders correctly 1`] = `
 <div
   className="popover"
+  data-id="guid"
   data-test="popover-container"
   onMouseEnter={[Function]}
   onMouseLeave={[Function]}

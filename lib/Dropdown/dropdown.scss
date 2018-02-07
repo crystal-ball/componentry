@@ -2,6 +2,12 @@
 // Dropdowns
 // ========================================================
 
+.dropdown {
+  // Defaulting to inline-block so that click area is constrained
+  // to dropdown button area.
+  display: inline-block;
+}
+
 // In Bs show/hide is handled by adding a .show class, Componentry uses aria-hidden
 // to hide content
 .dropdown-content {
