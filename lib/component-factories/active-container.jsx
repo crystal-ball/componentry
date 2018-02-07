@@ -239,7 +239,8 @@ export default ({
      * Call deactivate if click event was not inside the element
      */
     clickHandler: EventHandler = (e: Event): void => {
-      if (!closest(e.target, element)) this.handleDeactivate(e)
+      if (!closest(e.target, this.guid)) this.handleDeactivate(e)
+      console.log(e.target.dataset)
     }
     /**
      * Call deactivate on keypress if `esc` (27) was pressed
@@ -330,6 +331,7 @@ export default ({
         as || 'div',
         {
           'data-test': element ? `${element}-container` : undefined,
+          'data-id': this.guid,
           className:
             classNames(element, componentCtx.className, this.props.className) ||
             undefined,
