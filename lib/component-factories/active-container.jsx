@@ -240,7 +240,6 @@ export default ({
      */
     clickHandler: EventHandler = (e: Event): void => {
       if (!closest(e.target, this.guid)) this.handleDeactivate(e)
-      console.log(e.target.dataset)
     }
     /**
      * Call deactivate on keypress if `esc` (27) was pressed
