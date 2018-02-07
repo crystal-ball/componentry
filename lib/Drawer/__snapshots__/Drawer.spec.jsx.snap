@@ -3,6 +3,7 @@
 exports[`renders correctly 1`] = `
 <div
   className="drawer"
+  data-id="guid"
   data-test="drawer-container"
   onMouseEnter={undefined}
   onMouseLeave={undefined}
