@@ -10,8 +10,8 @@ import 'media/icons/chevron.svg'
 
 // App Components
 import registry from 'registry'
-import AppNav from 'UNIVERSAL/AppNav'
-import ScrollToTop from 'UNIVERSAL/ScrollToTop'
+import AppNav from 'components/universal/AppNav'
+import ScrollToTop from 'components/universal/ScrollToTop'
 
 // Screens
 import ComponentsScreen from '../ComponentsScreen'

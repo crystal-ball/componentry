@@ -10,7 +10,7 @@ const MinifyPlugin = require('babel-minify-webpack-plugin')
  * See https://webpack.js.org/guides/author-libraries/ for basics
  */
 module.exports = {
-  entry: './lib/index.js',
+  entry: './src/index.js',
   output: {
     path: resolve(__dirname, 'dist'),
     filename: 'componentry.js',

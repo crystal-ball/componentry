@@ -8,22 +8,22 @@ module.exports = env => {
     env,
     paths: {
       context: resolve(__dirname),
-      babelLoaderInclude: [resolve('src'), resolve('lib')],
+      // Set the source directory for webpack app to the demo app
+      appSrc: resolve('demo'),
+      // Include demo and source files in babel transpile
+      babelLoaderInclude: [resolve('src'), resolve('demo')],
+      // In production use /componentry/ publicPath for Github pages
       publicPath: env === 'production' ? '/componentry/' : '/',
     },
   })
 
-  // Default aliases for easy importing of common modules
-  config.resolve.alias.UNIVERSAL = resolve('src', 'components', 'universal')
-  config.resolve.alias.GUIDES = resolve('guides')
-  // Add an alias to the /lib for use in the documentation application
-  config.resolve.alias.componentry = resolve('lib')
-
   /*
-   * Make any changes to the base webpack configs for your application, eg:
-   *
-   * config.module.rules.push({ custom loader... })
+   * Make any changes to the base webpack configs for your application
    */
+  // Default aliases for easy importing of common modules
+  config.resolve.alias.GUIDES = resolve('guides')
+  // Add an alias to the /src for use in the demo application
+  config.resolve.alias.componentry = resolve('src')
 
   return config
 }
