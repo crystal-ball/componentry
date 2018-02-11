@@ -1,8 +1,15 @@
 <ComponentsList
-  components={['Tab', 'Tab.Trigger', 'Tab.Content', 'Tab.Nav', 'Tab.ContentContainer']}
+  components={[
+    "Tab",
+    "Tab.Trigger",
+    "Tab.Content",
+    "Tab.Nav",
+    "Tab.ContentContainer"
+  ]}
 />
 
-<p className="lead">Tab component...</p>
+Tab component...
+
 <Tab defaultActive="three">
   <Tab.Nav className="nav-justified mb-3">
     <Tab.Trigger activeId="one">Item 1</Tab.Trigger>

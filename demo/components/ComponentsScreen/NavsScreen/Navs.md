@@ -1,8 +1,7 @@
-<ComponentsList
-  components={['Nav', 'Nav.Item']}
-/>
+<ComponentsList components={['Nav', 'Nav.Item']} />
 
-<p className="lead">Nav component...</p>
+Nav component...
+
 <Nav pills>
   <Nav.Item href="#">Item 1</Nav.Item>
   <Nav.Item href="#">Item 2</Nav.Item>

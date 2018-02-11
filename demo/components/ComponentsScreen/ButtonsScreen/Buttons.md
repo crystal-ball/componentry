@@ -11,13 +11,11 @@ componentProps:
     defaultValue: false
   - size: true
 ---
-<ComponentsList
-  components={['Button']}
-/>
+<ComponentsList components={['Button']} />
 
-<p className="lead">The Button component is the base component for any element
-that has a user interaction in the library. Use Button components
-for actions in forms, dialogs and more.</p>
+The Button component is the base component for any element that has a user
+interaction in the library. Use Button components for actions in forms, dialogs
+and more.
 
 See the <Link to="/concepts/accessibility">A++ accessibility guide</Link> for
 information on the importance of using a button element for any user interaction

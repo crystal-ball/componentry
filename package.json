@@ -55,7 +55,7 @@
   },
   "devDependencies": {
     "@crystal-ball/eslint-config-eloquence": "~6.2.0",
-    "@inspirescript/webpack-configs": "^2.31.0",
+    "@inspirescript/webpack-configs": "^2.32.0",
     "babel-cli": "~6.26.0",
     "babel-jest": "~22.0.4",
     "babel-plugin-transform-class-properties": "~6.24.1",

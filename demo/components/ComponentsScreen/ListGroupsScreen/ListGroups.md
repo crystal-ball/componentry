@@ -1,8 +1,6 @@
-<ComponentsList
-  components={['ListGroup', 'ListGroup.Item']}
-/>
+<ComponentsList components={['ListGroup', 'ListGroup.Item']} />
 
-<p className="lead">ListGroup component...</p>
+ListGroup component...
 
 ## Button list
 

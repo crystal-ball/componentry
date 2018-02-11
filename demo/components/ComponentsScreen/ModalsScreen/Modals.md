@@ -1,8 +1,14 @@
 <ComponentsList
-  components={['Modal', 'Modal.Header', 'Modal.Title', 'Modal.Body', 'Modal.Footer']}
+  components={[
+    "Modal",
+    "Modal.Header",
+    "Modal.Title",
+    "Modal.Body",
+    "Modal.Footer"
+  ]}
 />
 
-<p className="lead">Modal component...</p>
+Modal component...
 
 #### Modal header alignment
 

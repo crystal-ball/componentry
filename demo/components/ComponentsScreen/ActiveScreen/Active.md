@@ -1,9 +1,7 @@
-<ComponentsList
-  components={['Active', 'Active.Trigger', 'Active.Content']
-}/>
+<ComponentsList components={['Active', 'Active.Trigger', 'Active.Content']} />
 
-<p className="lead">Manage active state with a controllable component that has
-event hooks and accessibility event handlers built in.</p>
+Manage active state with a controllable component that has event hooks and
+accessibility event handlers built in.
 
 See the <Link to="/concepts/component-contract">Component APIs guide</Link> for
 details on props conventions used for all library components with an active

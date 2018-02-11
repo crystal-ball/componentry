@@ -1,8 +1,16 @@
 <ComponentsList
-  components={['Drawer', 'Drawer.Trigger', 'Drawer.Content', 'Accordion', 'Accordion.Trigger', 'Accordion.Content']}
+  components={[
+    "Drawer",
+    "Drawer.Trigger",
+    "Drawer.Content",
+    "Accordion",
+    "Accordion.Trigger",
+    "Accordion.Content"
+  ]}
 />
 
-<p className="lead">Drawer component...</p>
+Drawer component...
+
 <Drawer>
   <Drawer.Trigger>
     <Icon id="chevron" />
@@ -14,6 +22,7 @@
     “The Academy thought we cheated by using computers”
   </Drawer.Content>
 </Drawer>
+
 <h2>Accordion</h2>
 <Accordion>
   <Accordion.Trigger activeId="one">Trigger One</Accordion.Trigger>

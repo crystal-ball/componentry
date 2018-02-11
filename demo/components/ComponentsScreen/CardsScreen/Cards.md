@@ -2,8 +2,8 @@
   components={['Card', 'Card.Header', 'Card.Body', 'Card.Title', 'Card.Footer']}
 />
 
-<p className="lead">Cards provide a flexible and extensible content container
-with multiple variants and options.</p>
+Cards provide a flexible and extensible content container with multiple variants
+and options.
 
 <Card>
   <Card.Body>

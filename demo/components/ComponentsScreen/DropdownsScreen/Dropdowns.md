@@ -1,8 +1,14 @@
 <ComponentsList
-  components={['Dropdown', 'Dropdown.Trigger', 'Dropdown.Content', 'Dropdown.Item']}
+  components={[
+    "Dropdown",
+    "Dropdown.Trigger",
+    "Dropdown.Content",
+    "Dropdown.Item"
+  ]}
 />
 
-<p className="lead">Dropdown component...</p>
+Dropdown component...
+
 <Dropdown>
   <Dropdown.Trigger>Dropdown</Dropdown.Trigger>
   <Dropdown.Content>

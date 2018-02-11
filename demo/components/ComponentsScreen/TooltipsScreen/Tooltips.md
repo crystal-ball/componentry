@@ -2,7 +2,8 @@
   components={['Tooltip', 'Tooltip.Trigger', 'Tooltip.Content']}
 />
 
-<p className="lead">Tooltip component...</p>
+Tooltip component...
+
 <Tooltip>
   <Tooltip.Trigger>Tooltip</Tooltip.Trigger>
   <Tooltip.Content>

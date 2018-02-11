@@ -1,8 +1,15 @@
 <ComponentsList
-  components={['Popover', 'Popover.Trigger', 'Popover.Content', 'Popover.Header', 'Popover.Body']}
+  components={[
+    "Popover",
+    "Popover.Trigger",
+    "Popover.Content",
+    "Popover.Header",
+    "Popover.Body"
+  ]}
 />
 
-<p className="lead">Popover component...</p>
+Popover component...
+
 <Popover>
   <Popover.Trigger color="primary" outline>
     Popover Top

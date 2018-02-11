@@ -19,6 +19,8 @@ import PopoversScreen from './PopoversScreen'
 import TabsScreen from './TabsScreen'
 import TooltipsScreen from './TooltipsScreen'
 
+import { component } from './components-screen.scss'
+
 type Props = {
   location: {
     state: { name: string },
@@ -26,22 +28,24 @@ type Props = {
 }
 
 export default ({ location: { state } }: Props) => (
-  <div className="grid-container columns-page-layout m-5">
+  <div className={`grid-container columns-page-layout m-5 ${component}`}>
     <div>
       <Header title={state ? state.name : 'Components'} />
 
-      <Route path="/components/active" component={ActiveScreen} />
-      <Route path="/components/alerts" component={AlertsScreen} />
-      <Route path="/components/buttons" component={ButtonsScreen} />
-      <Route path="/components/cards" component={CardsScreen} />
-      <Route path="/components/drawers" component={DrawersScreen} />
-      <Route path="/components/dropdowns" component={DropdownsScreen} />
-      <Route path="/components/list-groups" component={ListGroupsScreen} />
-      <Route path="/components/modals" component={ModalsScreen} />
-      <Route path="/components/navs" component={NavsScreen} />
-      <Route path="/components/popovers" component={PopoversScreen} />
-      <Route path="/components/tabs" component={TabsScreen} />
-      <Route path="/components/tooltips" component={TooltipsScreen} />
+      <div className="content">
+        <Route path="/components/active" component={ActiveScreen} />
+        <Route path="/components/alerts" component={AlertsScreen} />
+        <Route path="/components/buttons" component={ButtonsScreen} />
+        <Route path="/components/cards" component={CardsScreen} />
+        <Route path="/components/drawers" component={DrawersScreen} />
+        <Route path="/components/dropdowns" component={DropdownsScreen} />
+        <Route path="/components/list-groups" component={ListGroupsScreen} />
+        <Route path="/components/modals" component={ModalsScreen} />
+        <Route path="/components/navs" component={NavsScreen} />
+        <Route path="/components/popovers" component={PopoversScreen} />
+        <Route path="/components/tabs" component={TabsScreen} />
+        <Route path="/components/tooltips" component={TooltipsScreen} />
+      </div>
     </div>
     <div>
       <GroupNav routesMap={componentRoutes} />
