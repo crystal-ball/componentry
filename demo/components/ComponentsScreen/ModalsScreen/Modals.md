@@ -1,10 +1,6 @@
-<!-- TODO: remove wrapper div after inspirescript handles inline components -->
-
-<div>
-  <ComponentsList
-    components={['Modal', 'Modal.Header', 'Modal.Title', 'Modal.Body', 'Modal.Footer']}
-  />
-</div>
+<ComponentsList
+  components={['Modal', 'Modal.Header', 'Modal.Title', 'Modal.Body', 'Modal.Footer']}
+/>
 
 <p className="lead">Modal component...</p>
 

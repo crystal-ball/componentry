@@ -1,1 +1,1 @@
-export { default } from './content/Alerts.md'
+export { default } from './Alerts.md'

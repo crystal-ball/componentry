@@ -1,10 +1,6 @@
-<!-- TODO: remove wrapper div after inspirescript handles inline components -->
-
-<div>
-  <ComponentsList
-    components={['Popover', 'Popover.Trigger', 'Popover.Content', 'Popover.Header', 'Popover.Body']}
-  />
-</div>
+<ComponentsList
+  components={['Popover', 'Popover.Trigger', 'Popover.Content', 'Popover.Header', 'Popover.Body']}
+/>
 
 <p className="lead">Popover component...</p>
 <Popover>

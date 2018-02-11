@@ -1,10 +1,6 @@
-<!-- TODO: remove wrapper div after inspirescript handles inline components -->
-
-<div>
-  <ComponentsList
-    components={['Active', 'Active.Trigger', 'Active.Content']}
-  />
-</div>
+<ComponentsList
+  components={['Active', 'Active.Trigger', 'Active.Content']
+}/>
 
 <p className="lead">Manage active state with a controllable component that has
 event hooks and accessibility event handlers built in.</p>

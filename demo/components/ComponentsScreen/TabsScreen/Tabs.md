@@ -1,10 +1,6 @@
-<!-- TODO: remove wrapper div after inspirescript handles inline components -->
-
-<div>
-  <ComponentsList
-    components={['Tab', 'Tab.Trigger', 'Tab.Content', 'Tab.Nav', 'Tab.ContentContainer']}
-  />
-</div>
+<ComponentsList
+  components={['Tab', 'Tab.Trigger', 'Tab.Content', 'Tab.Nav', 'Tab.ContentContainer']}
+/>
 
 <p className="lead">Tab component...</p>
 <Tab defaultActive="three">

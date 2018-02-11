@@ -1,10 +1,6 @@
-<!-- TODO: remove wrapper div after inspirescript handles inline components -->
-
-<div>
-  <ComponentsList
-    components={['ListGroup', 'ListGroup.Item']}
-  />
-</div>
+<ComponentsList
+  components={['ListGroup', 'ListGroup.Item']}
+/>
 
 <p className="lead">ListGroup component...</p>
 

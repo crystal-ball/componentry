@@ -14,14 +14,9 @@ componentProps:
     type: number
     defaultValue: 300
 ---
-
-<!-- TODO: remove wrapper div after inspirescript handles inline components -->
-
-<div>
-  <ComponentsList
-    components={['Alert']}
-  />
-</div>
+<ComponentsList
+  components={['Alert']}
+/>
 
 <p className="lead">
   Alerts provide contextual feedback messages for typical user actions with the
