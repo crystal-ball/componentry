@@ -2,6 +2,7 @@
 import React from 'react'
 import { Route } from 'react-router-dom'
 
+import { colors, sizes } from 'utils/app-props'
 import GroupNav from 'components/universal/GroupNav'
 import componentRoutes from 'utils/component-routes'
 import Header from 'components/universal/Header'
@@ -34,8 +35,14 @@ export default ({ location: { state } }: Props) => (
 
       <div className="content">
         <Route path="/components/active" component={ActiveScreen} />
-        <Route path="/components/alerts" component={AlertsScreen} />
-        <Route path="/components/buttons" component={ButtonsScreen} />
+        <Route
+          path="/components/alerts"
+          render={() => <AlertsScreen colors={colors} />}
+        />
+        <Route
+          path="/components/buttons"
+          render={() => <ButtonsScreen colors={colors} sizes={sizes} />}
+        />
         <Route path="/components/cards" component={CardsScreen} />
         <Route path="/components/drawers" component={DrawersScreen} />
         <Route path="/components/dropdowns" component={DropdownsScreen} />

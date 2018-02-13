@@ -20,15 +20,41 @@ componentProps:
 Alerts provide contextual feedback messages for typical user actions with the
 handful of available and flexible alert messages.
 
+<InteractiveDemo
+  defaults={{ color: 'success', dismissible: true }}
+  formFields={[
+    { label: 'Theme color', options: this.props.colors, id: 'color' },
+    { label: 'Dismissible', boolean: true, id: 'dismissible' },
+  ]}
+  renderCode={({ color, dismissible }) => dismissible ? (
+    `<Active defaultActive>
+  <Alert color="${color}" dismissible>
+    <strong>Well done!</strong> You successfully read this important alert message.
+  </Alert>
+</Active>`
+  ) : (
+    `<Alert color="${color}">
+  <strong>Well done!</strong> You successfully read this important alertmessage.
+</Alert>`
+  )}
+  renderComponent={({ color, dismissible }) => dismissible ? (
+    <Active defaultActive className="w-100">
+      <Alert color={color} dismissible>
+        <strong>Well done!</strong> You successfully read this important alert message.
+      </Alert>
+    </Active>
+  ) : (
+    <Alert color={color} className="w-100">
+      <strong>Well done!</strong> You successfully read this important alert message.
+    </Alert>
+  )}
+/>
+
 <Alert color="info">
   Dismissible Alerts require library active props. The component is wrapped
   using <code>withActive</code> so disimissible Alerts can either be a child
   of a <code>{`<State />`}</code> component or props <code>active</code>{' '}
   and <code>deactivate</code> can be passed.
 </Alert>
-
-#### Alert configurations
-
-<AlertsDemo />
 
 <PropsDocs componentProps={componentProps} themeColors />

@@ -5,7 +5,7 @@ type Props = {
 }
 
 export default ({ components }: Props) => (
-  <div className="mt-1 mb-5">
+  <div className="mt-1 mb-2">
     <small>
       <span>Components:</span>
       <span>
