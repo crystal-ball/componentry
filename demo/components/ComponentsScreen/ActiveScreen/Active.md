@@ -3,22 +3,41 @@
 Manage active state with a controllable component that has event hooks and
 accessibility event handlers built in.
 
-See the <Link to="/concepts/component-contract">Component APIs guide</Link> for
-details on props conventions used for all library components with an active
-state.
+The `Active` component defines the APIs available for all Componentry components
+with active state, so the patterns for using the `Active` component also apply
+to Drawers, Dropdowns, Tooltips, Popovers, Alerts and Modals.
 
-### Uncontrolled usage
+The consistent active component API is possible because all of the Componentry
+active elements accomplish the same essential task: conditionally showing
+content. The styles and some fo the finer implementaiton details are different
+between elements, but the underlying API is consistent.
 
-By default the `Active` component internally manages its `active` state. Use the
-`Trigger` and `Content` subcomponents to compose components in any way you need.
+#### Design
 
-* The `Trigger` component handles calling `activate` and `deactivate` to update
-  the component `active` state.
-* The `Content` component uses the `active` component to show and hide content
-  in the component.
+The `Active` component is comprised of:
 
-<Card>
-  <Card.Body>
+* The `Active` container component. This component manages the active state and
+  the state change handlers. The active state and change handlers are mounted
+  on context in the `Active` component so that subcomponents can access them
+  without having to manually be wired together every time.
+* The `Active.Trigger` subcomponent is responsible for calling the
+  `activate` and `deactivate` change handlers to trigger `active` state changes
+  in the parent `Active` component.
+* The `Active.Content` subcomponent is responsible for conditionally displaying
+  content using the current `active` state.
+
+<InteractiveDemo
+  defaults={{}}
+  formFields={[]}
+  renderCode={() => `<Active>
+  <Active.Trigger>Active Toggle</Active.Trigger>
+  <Active.Content>
+    <p>
+      Content display toggled by the <code>Toggle</code> component.
+    </p>
+  </Active.Content>
+</Active>`}
+  renderComponent={() => (
     <Active>
       <Active.Trigger>Active Toggle</Active.Trigger>
       <Active.Content>
@@ -27,30 +46,23 @@ By default the `Active` component internally manages its `active` state. Use the
         </p>
       </Active.Content>
     </Active>
-  </Card.Body>
-</Card>
+  )}
+/>
 
-<PrismHighlighter language="jsx">
-{`<Active>
-  <Active.Trigger>Active Toggle</Active.Trigger>
-  <Active.Content>
-    <p>
-      Content display toggled by the <code>Toggle</code> component.
-    </p>
-  </Active.Content>
-</Active>`}
-</PrismHighlighter>
+#### FaCC usage
 
-<PageBreak />
-
-### FaCC usage
-
-Active components can also be passed a function for the component's children
+Active components can also be passed a function as the component's child
 that will be called with the `activate` and `deactivate` state change handlers
 as well as the current `active` state and `guid` of the component.
 
-<PrismHighlighter language="jsx">
-{`<Active>
+This allows access to the internals of the State component and is especially
+useful for conditionally rendering content or passing state change handlers to
+children components.
+
+<InteractiveDemo
+  defaults={{}}
+  formFields={[]}
+  renderCode={() => `<Active>
   {({ active, activate, deactivate, guid }) => (
     <div>
       <Active.Trigger>{active ? 'Close' : 'Open'}</Active.Trigger>
@@ -58,6 +70,16 @@ as well as the current `active` state and `guid` of the component.
     </div>
   )}
 </Active>`}
-</PrismHighlighter>
+  renderComponent={() => (
+    <Active>
+      {({ active, activate, deactivate, guid }) => (
+        <div>
+          <Active.Trigger>{active ? 'Close' : 'Open'}</Active.Trigger>
+          <Active.Content>Content</Active.Content>
+        </div>
+      )}
+    </Active>
+  )}
+/>
 
 <PropsDocs activeComponent />

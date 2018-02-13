@@ -28,6 +28,7 @@ export default class InteractiveDemo extends Component<Props> {
 
   render() {
     const { formFields, renderCode, renderComponent } = this.props
+    const fieldsLen = !!formFields.length
 
     // Call renderProps to get computed values
     const codeHighlight = renderCode(this.state)
@@ -36,28 +37,29 @@ export default class InteractiveDemo extends Component<Props> {
     return (
       <Card className={`mt-5 mb-3 ${component}`}>
         <Card.Body className="row">
-          <div className="col-4">
-            <h4>Props</h4>
-            <form className="mb-3">
-              {formFields.map(
-                (field, idx) =>
-                  field.label ? (
-                    <FormField
-                      key={field.label}
-                      {...field}
-                      value={this.state[field.id]}
-                      onChange={this.changeHandler}
-                    />
-                  ) : (
-                    /* eslint-disable react/no-array-index-key */
-                    <Fragment key={idx}>{field}</Fragment>
-                  ),
-              )}
-            </form>
-          </div>
-
-          <div className="col-8 d-flex flex-column">
-            <h4>Rendered</h4>
+          {fieldsLen && (
+            <div className="col-4">
+              <h4>Props</h4>
+              <form className="mb-3">
+                {formFields.map(
+                  (field, idx) =>
+                    field.label ? (
+                      <FormField
+                        key={field.label}
+                        {...field}
+                        value={this.state[field.id]}
+                        onChange={this.changeHandler}
+                      />
+                    ) : (
+                      /* eslint-disable react/no-array-index-key */
+                      <Fragment key={idx}>{field}</Fragment>
+                    ),
+                )}
+              </form>
+            </div>
+          )}
+          <div className={`col-${fieldsLen ? '8' : '12'} d-flex flex-column`}>
+            {fieldsLen && <h4>Rendered</h4>}
             <div className="d-flex justify-content-center align-items-center h-100">
               {demoComponent}
             </div>

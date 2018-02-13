@@ -10,7 +10,8 @@ pre[class*='language-'] {
   color: $color;
   background: none;
   border: none;
-  font-family: 'Source Code Pro', monospace; /* Be sure to include font!!! <link href="https://fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet"> */
+  font-family: 'Fira Code', monospace;
+  font-weight: 300;
   font-size: 13px;
   text-align: left;
   white-space: pre;
@@ -66,6 +67,7 @@ pre[class*='language-'] {
 .token.prolog,
 .token.doctype,
 .token.cdata {
+  font-style: italic;
   color: $token-comment;
 }
 
@@ -134,6 +136,20 @@ pre[class*='language-'] {
 
 .token a {
   color: inherit;
+}
+
+// ========================================================
+// JSX Tokens
+// ========================================================
+
+// Tag punctuation
+.token.tag {
+  color: #ff9ac1;
+
+  .token.punctuation {
+    color: #ffcc95;
+    font-style: italic;
+  }
 }
 
 // ========================================================
