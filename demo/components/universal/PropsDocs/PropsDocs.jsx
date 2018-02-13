@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react'
+import React from 'react'
 import { Tab } from 'componentry'
 
 import PropsTabsContent from './PropsDocsContent'
@@ -27,11 +27,9 @@ export default ({
   })
 
   return (
-    <Fragment>
-      <h3 className="mt-5 mb-3 text-right" id="props">
-        Properties
-      </h3>
-      <Tab defaultActive={defaultActive} className={`d-flex ${component}`}>
+    <div className={component}>
+      <h3 id="props">Props</h3>
+      <Tab defaultActive={defaultActive} className="d-flex">
         <Tab.ContentContainer>
           {showComponentProps && (
             <Tab.Content activeId="component">
@@ -57,6 +55,6 @@ export default ({
           )}
         </Tab.Nav>
       </Tab>
-    </Fragment>
+    </div>
   )
 }

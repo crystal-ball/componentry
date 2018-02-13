@@ -1,6 +1,8 @@
 /* props-docs */
 
 :local(.component) {
+  margin-top: 100px;
+
   // The tabs are the last element on each screen and having a min-height helps
   // reduce jump when changing from a long tab to a short tab
   .tab-content {
