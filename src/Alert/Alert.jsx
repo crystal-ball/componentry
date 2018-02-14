@@ -12,6 +12,11 @@ import type { ElementProps } from '../component-factories/element-factory'
 
 type Props = {
   /**
+   * Provides contextual information to screen readers that sighted users would gain
+   * from the alert color. Defaults to: 'COLOR alert', eg 'Success alert'
+   */
+  a11yLabel: string,
+  /**
    * Theme color for alert
    */
   color: ThemeColors,
@@ -39,6 +44,7 @@ type Context = { [string]: { [string]: any } }
 const Alert = (props: Props, { THEME = {} }: Context) => {
   const componentCtx = THEME.Alert || {}
   const {
+    a11yLabel,
     activate, // prevent dom inclusion
     active,
     as,
@@ -63,6 +69,8 @@ const Alert = (props: Props, { THEME = {} }: Context) => {
       'aria-hidden': active ? 'false' : 'true',
       ...rest,
     },
+    // Provide the alert color context for screen readers
+    <div className="sr-only">{a11yLabel || `${color} alert`}</div>,
     // Alert contents:
     <div className="alert-content">{children}</div>,
     // Render a close button or null depending on configs

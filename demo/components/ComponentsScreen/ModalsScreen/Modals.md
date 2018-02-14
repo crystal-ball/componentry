@@ -17,7 +17,7 @@ button to the top right corner. Use class `.align-items-center` to align the
 close button to the middle of the header.
 
 <Active>
-  <Active.Trigger link={false}>Toggle Modal</Active.Trigger>
+  <Active.Trigger link={false}>Trigger Modal</Active.Trigger>
   <Modal>
     <Modal.Header>
       <Modal.Title>This is the header</Modal.Title>

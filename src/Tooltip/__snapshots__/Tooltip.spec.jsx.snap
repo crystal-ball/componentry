@@ -11,7 +11,7 @@ exports[`renders correctly 1`] = `
   <button
     aria-describedby="guid"
     className="btn tooltip-toggle"
-    data-test="tooltip-toggle"
+    data-test="tooltip-trigger"
     onClick={[Function]}
     type="button"
     value={undefined}

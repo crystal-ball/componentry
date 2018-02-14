@@ -1,51 +1,54 @@
 <ComponentsList components={['Active', 'Active.Trigger', 'Active.Content']} />
 
-Manage active state with a controllable component that has event hooks and
-accessibility event handlers built in.
+Manage active state with a controllable component that has built-in
+accessibility and event hooks.
 
-The `Active` component defines the APIs available for all Componentry components
-with active state, so the patterns for using the `Active` component also apply
-to Drawers, Dropdowns, Tooltips, Popovers, Alerts and Modals.
+The Active component defines the APIs available for all Componentry components
+with active state, and is referred to as the active component API. The Drawer,
+Dropdown, Tooltip, Popover, Alert and Modal components all use the active
+component API.
 
 The consistent active component API is possible because all of the Componentry
-active elements accomplish the same essential task: conditionally showing
-content. The styles and some fo the finer implementaiton details are different
-between elements, but the underlying API is consistent.
+active components accomplish the same essential task: conditionally showing
+content. The styles and implementation details are different between components,
+but the underlying API is consistent.
 
-#### Design
+#### Component design
 
-The `Active` component is comprised of:
+The Active component is comprised of:
 
-* The `Active` container component. This component manages the active state and
-  the state change handlers. The active state and change handlers are mounted
-  on context in the `Active` component so that subcomponents can access them
-  without having to manually be wired together every time.
-* The `Active.Trigger` subcomponent is responsible for calling the
-  `activate` and `deactivate` change handlers to trigger `active` state changes
-  in the parent `Active` component.
-* The `Active.Content` subcomponent is responsible for conditionally displaying
-  content using the current `active` state.
+* **`Active` container component** - This component manages the active state and
+  the state change handlers. The active state and change handlers are mounted on
+  the context in the Active component so that subcomponents can access them
+  from any level without having to manually be wired together every time.
+* **`Active.Trigger` subcomponent** - The Trigger subcomponent is responsible
+  for calling the `activate` and `deactivate` change handlers to trigger
+  `active` state changes in the parent `Active` component.
+* **`Active.Content` subcomponent** - The Content subcomponent is responsible
+  for conditionally displaying content using the current `active` state.
 
 <InteractiveDemo
   defaults={{}}
   formFields={[]}
   renderCode={() => `<Active>
-  <Active.Trigger>Active Toggle</Active.Trigger>
+  <Active.Trigger>Active Trigger</Active.Trigger>
   <Active.Content>
     <p>
-      Content display toggled by the <code>Toggle</code> component.
+      Content display toggled by the <code>Trigger</code> component.
     </p>
   </Active.Content>
 </Active>`}
   renderComponent={() => (
-    <Active>
-      <Active.Trigger>Active Toggle</Active.Trigger>
-      <Active.Content>
-        <p>
-          Content display toggled by the <code>Toggle</code> component.
-        </p>
-      </Active.Content>
-    </Active>
+    <div className="w-50">
+      <Active>
+        <Active.Trigger>Active Trigger</Active.Trigger>
+        <Active.Content>
+          <p>
+            Content display toggled by the <code>Trigger</code> component.
+          </p>
+        </Active.Content>
+      </Active>
+    </div>
   )}
 />
 

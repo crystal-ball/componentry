@@ -9,7 +9,7 @@ import elementTests from '../utils-test/element-tests'
 import setupActiveContext from '../utils-test/setup-active-context'
 
 const dtContent = dt('dropdown-content')
-const dtToggle = dt('dropdown-toggle')
+const dtToggle = dt('dropdown-trigger')
 
 /**
  * TODO: Test keyboard events esc and click outside of element

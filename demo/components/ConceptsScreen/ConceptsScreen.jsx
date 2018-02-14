@@ -23,7 +23,7 @@ type Props = {
 export default ({ location: { state } }: Props) => (
   <div className={`grid-container columns-page-layout m-5 ${component}`}>
     <div>
-      <Header title={state ? state.name : 'Concepts'} className="mb-5" />
+      <Header title={state ? state.name : 'Concepts'} className="mb-3" />
 
       <Route
         path={conceptsRoutes.accessibility.pathname}

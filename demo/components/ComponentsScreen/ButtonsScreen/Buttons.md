@@ -18,27 +18,34 @@ componentProps:
 ---
 <ComponentsList components={['Button']} />
 
-The Button component is the base component for any element that has a user
-interaction in the library. Use Button components for actions in forms, dialogs
-and more.
+Create meaningful user interaction targets with support for theme, size and
+outline variants.
+
+The Button component is the base component used for composing all elements with
+an interactive target. The Button component's API is available for all
+Active.Trigger subcomponents.
+
+Buttons can be customized with theme color, size and outline variants to provide
+the exact styles needed.
 
 #### A++ Accessibility
 
-See the <Link to="/concepts/accessibility">A++ accessibility guide</Link> for
-information on the importance of using a button element for any user interaction
-target that is not an anchor element.
+When creating elements with user interaction it's important to use a button
+element for any target that is not an anchor. Using a button element ensures
+that screen readers are able to understand the intent of allowing a user to
+interact with that element. The Button component makes it easy to create semantic,
+accessible button elements that look like anchors with the `link` prop.
 
 <InteractiveDemo
   defaults={defaults}
   formFields={[
-    { label: 'Theme color', options: this.props.colors, id: 'color' },
-    { label: 'Outline', boolean: true, id: 'outline' },
-    { label: 'Size', options: this.props.sizes, id: 'size' },
+    { label: 'color', options: this.props.colors },
+    { label: 'outline', boolean: true },
+    { label: 'size', options: this.props.sizes },
     <hr />,
     {
-      label: 'Link',
+      label: 'link',
       boolean: true,
-      id: 'link',
       changeValues: {
         false: defaults,
         true: { color: null, size: null, outline: false, link: true }

@@ -47,7 +47,7 @@ export default class InteractiveDemo extends Component<Props> {
                       <FormField
                         key={field.label}
                         {...field}
-                        value={this.state[field.id]}
+                        value={this.state[field.label]}
                         onChange={this.changeHandler}
                       />
                     ) : (

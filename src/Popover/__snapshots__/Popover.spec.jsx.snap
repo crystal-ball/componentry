@@ -11,7 +11,7 @@ exports[`renders correctly 1`] = `
   <button
     aria-describedby="guid"
     className="btn popover-toggle"
-    data-test="popover-toggle"
+    data-test="popover-trigger"
     onClick={[Function]}
     type="button"
     value={undefined}

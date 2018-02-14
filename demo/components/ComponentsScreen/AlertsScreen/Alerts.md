@@ -1,5 +1,9 @@
 ---
 componentProps:
+  - name: a11yLabel
+    description: Screen reader only label that provides the context of the alert.
+    type: string
+    defaultValue: "'<COLOR> alert'"
   - color: true
   - name: dismissible
     description: Controls whether alert can be dismissed by user, pass <code>false</code> to prevent dismissal of an alert.
@@ -16,36 +20,50 @@ componentProps:
 ---
 <ComponentsList components={['Alert']} />
 
+Provide contextual feedback messages for typical user actions using theme
+colors.
 
-Alerts provide contextual feedback messages for typical user actions with the
-handful of available and flexible alert messages.
+Alerts can contain any HTML elements, and the `alert-heading` and `alert-link`
+classes can be used with headings or links to provide themed elements. Alerts
+can be dismissible or static.
+
+#### A++ Accessibility
+
+By default alerts include a screen readers only message that signals the type of
+alert to provide the context implied by the alert color. This context can by
+overridden by passing a custom `a11yLabel` prop.
 
 <InteractiveDemo
-  defaults={{ color: 'success', dismissible: true }}
+  defaults={{ color: 'success', dismissible: true, a11yLabel: '' }}
   formFields={[
-    { label: 'Theme color', options: this.props.colors, id: 'color' },
-    { label: 'Dismissible', boolean: true, id: 'dismissible' },
+    { label: 'color', options: this.props.colors },
+    { label: 'a11yLabel', string: true },
+    { label: 'dismissible', boolean: true },
   ]}
-  renderCode={({ color, dismissible }) => dismissible ? (
+  renderCode={({ a11yLabel, color, dismissible }) => dismissible ? (
     `<Active defaultActive>
-  <Alert color="${color}" dismissible>
-    <strong>Well done!</strong> You successfully read this important alert message.
+  <Alert color="${color}"${a11yLabel ? ` a11yLabel="${a11yLabel}"` : ''} dismissible>
+    <h4 className="alert-heading">Well done!</h4>
+    You successfully read this important alert message.
   </Alert>
 </Active>`
   ) : (
-    `<Alert color="${color}">
-  <strong>Well done!</strong> You successfully read this important alertmessage.
+    `<Alert color="${color}"${a11yLabel ? ` a11yLabel="${a11yLabel}"` : ''}>
+  <h4 className="alert-heading">Well done!</h4>
+  You successfully read this important alertmessage.
 </Alert>`
   )}
-  renderComponent={({ color, dismissible }) => dismissible ? (
+  renderComponent={({ a11yLabel, color, dismissible }) => dismissible ? (
     <Active defaultActive className="w-100">
-      <Alert color={color} dismissible>
-        <strong>Well done!</strong> You successfully read this important alert message.
+      <Alert color={color} dismissible a11yLabel={a11yLabel}>
+        <h4 className="alert-heading">Well done!</h4>
+        You successfully read this important alert message.
       </Alert>
     </Active>
   ) : (
-    <Alert color={color} className="w-100">
-      <strong>Well done!</strong> You successfully read this important alert message.
+    <Alert color={color} className="w-100" a11yLabel={a11yLabel}>
+      <h4 className="alert-heading">Well done!</h4>
+      You successfully read this important alert message.
     </Alert>
   )}
 />

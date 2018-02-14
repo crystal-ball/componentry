@@ -54,7 +54,7 @@ component.
 
 ```jsx
 <Active>
-  <Active.Trigger>Toggle</Active.Trigger>
+  <Active.Trigger>Trigger</Active.Trigger>
   <Active.Content>I manage my own state.</Active.Content>
 </Active>
 ```
@@ -75,7 +75,7 @@ Component state changes can be observed by passing on event handlers:
   onDeactivate={this.doSomethingOnDeactivate}
   onDeactivated={this.doSomethingAfterDeactivation}
 >
-  <Active.Trigger>Toggle</Active.Trigger>
+  <Active.Trigger>Trigger</Active.Trigger>
   <Active.Content>I will let you know when my state changes.</Active.Content>
 </State>
 ```
@@ -91,7 +91,7 @@ props.
   activate={this.handleActivationChangeEvents}
   deactivate={this.handleDeactivationChangeEvents}
 >
-  <Active.Trigger>Toggle</Active.Trigger>
+  <Active.Trigger>Trigger</Active.Trigger>
   <Active.Content>I will follow the instructions you give me.</Active.Content>
 </Active>
 ```

@@ -14,7 +14,7 @@ Drawer component...
 <Drawer>
   <Drawer.Trigger>
     <Icon id="chevron" />
-    Toggle Drawer
+    Trigger Drawer
   </Drawer.Trigger>
   <Drawer.Content>
     The Motion Picture Academy refused to nominate Tron (1982) for a

@@ -1,14 +1,17 @@
 import React from 'react'
 import { Dropdown } from 'componentry'
+import classNames from 'classnames'
+
+import { component } from './form-field.scss'
 
 /* eslint-disable jsx-a11y/label-has-for */
 
 type Props = {
   boolean?: boolean,
   changeValues?: Object,
-  id: string,
   label: string,
   options?: Array<string>,
+  string?: boolean,
   value: string,
   onChange: Function,
 }
@@ -17,10 +20,10 @@ const FormField = ({
   boolean,
   changeValues,
   label,
-  id,
-  options,
-  value,
   onChange,
+  options,
+  string,
+  value,
 }: Props) => {
   // Determine the form field type (input, checkbox, dropdown) to display
   let field
@@ -39,7 +42,7 @@ const FormField = ({
             val = value
           }
 
-          onChange({ [id]: val })
+          onChange({ [label]: val })
         }}
       >
         <Dropdown.Trigger link>{triggerValue}</Dropdown.Trigger>
@@ -56,10 +59,19 @@ const FormField = ({
         </Dropdown.Content>
       </Dropdown>
     )
+  } else if (string) {
+    field = (
+      <input
+        className="form-control"
+        onChange={e => {
+          onChange({ [label]: e.target.value })
+        }}
+      />
+    )
   } else if (boolean) {
     field = (
       <input
-        id="outline"
+        id={label}
         className="form-check-input ml-2"
         type="checkbox"
         checked={value}
@@ -67,7 +79,7 @@ const FormField = ({
           if (changeValues) {
             onChange(changeValues[String(!value)])
           } else {
-            onChange({ [id]: !value })
+            onChange({ [label]: !value })
           }
         }}
       />
@@ -75,11 +87,17 @@ const FormField = ({
   }
 
   return (
-    <div className="form-group row mb-2" key={id || label}>
-      <label htmlFor="hello" className="col-sm-6 col-form-label py-0">
-        {label}:
+    <div className={`form-group row mb-2 ${component}`} key={label}>
+      <label
+        htmlFor={label}
+        className={classNames('col-sm-5', {
+          'col-form-label': !boolean,
+          'form-check-label': boolean,
+        })}
+      >
+        <code>{label}</code>:
       </label>
-      <div className="col-sm-6">{field}</div>
+      <div className="col-sm-7">{field}</div>
     </div>
   )
 }
