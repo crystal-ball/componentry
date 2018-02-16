@@ -9,6 +9,9 @@ import arias from '../utils/arias'
 import type { ComponentArias } from '../utils/arias'
 
 type Options = {
+  /** Pass through to Button components to include btn base class */
+  baseClasses?: boolean,
+  /** Custom trigger static classes */
   classes?: string,
   /** Arias to include for component */
   componentArias: ComponentArias,
@@ -42,6 +45,7 @@ type Context = { [string]: { [string]: any } }
 export default ({
   classes = '',
   componentArias,
+  baseClasses,
   element = '',
   name,
   triggerType,
@@ -72,31 +76,39 @@ export default ({
       onClick = active ? deactivate : activate
     }
 
+    // Base props objects allows us to only include props under certain conditions
+    const baseProps = {}
+
+    // The baseClasses prop is a Button prop only, don't pass for any other element
+    if (!as) baseProps.baseClasses = baseClasses
+
+    // Multi-active elems have different arias to handle multiple show/hide
+    // elements. The passed id is used for trigger and content components,
+    // these arias will override the standard componentArias
+    const activeIdArias = activeId
+      ? {
+          active: activeId === active,
+          id: `${activeId}-tab`,
+          controls: `${activeId}-content`,
+          selected: true,
+        }
+      : {}
+
     return createElement(
       as || Button,
       {
+        ...baseProps,
         'data-test': element ? `${element}-trigger` : undefined,
         ...arias({
           guid,
           active,
           ...componentArias,
-          // Multi-active elems have different arias to handle multiple show/hide
-          // elements. The passed id is used for trigger and content components,
-          // these arias will override the standard componentArias
-          ...(activeId
-            ? {
-                active: activeId === active,
-                id: `${activeId}-tab`,
-                controls: `${activeId}-content`,
-                selected: true,
-              }
-            : {}),
+          ...activeIdArias,
         }),
         className: classNames(classes, componentCtx.className, props.className, {
           // For mutli-active triggers add active if the trigger is selected
           active: activeId && active === activeId,
           [`${element}-toggle`]: element,
-          'inline-trigger': link,
         }),
         onClick,
         link,
@@ -105,6 +117,7 @@ export default ({
         value: activeId || undefined,
         // Pass through any miscellaneous configurations from component factory
         ...optionsRest,
+        // Pass through props rest last to allow any instance overrides
         ...rest,
       },
       children,

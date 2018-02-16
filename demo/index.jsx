@@ -11,7 +11,7 @@ import './vendor/prism' // Prism uses a global on the window
 // ========================================================
 // ⚠️ Import application styles before application components so that base CSS
 // styles are included before component styles.
-import './styles.scss'
+import './styles/index.scss'
 import App from './components/App'
 
 // Inject SVG symbol sprite into document from local storage if exists, otherwise

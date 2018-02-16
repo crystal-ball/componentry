@@ -11,7 +11,7 @@ exports[`renders correctly 1`] = `
   <button
     aria-controls="guid"
     aria-expanded="false"
-    className="btn drawer-toggle"
+    className="drawer-toggle btn"
     data-test="drawer-trigger"
     onClick={[Function]}
     type="button"

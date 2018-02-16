@@ -7,6 +7,10 @@ import type { ElementProps } from '../component-factories/element-factory'
 
 export type Props = {
   /**
+   * Defaults to true and signals inclusion of `btn` and `btn-<COLOR>` classes.
+   */
+  baseClasses?: boolean,
+  /**
    * Theme color for button, used to create themed buttons and themed outline
    * buttons. A default value for color is passed from the `ThemeProvider` as
    * `defaultButtonColor` and is used with any button without a passed value for
@@ -36,19 +40,20 @@ export type Props = {
 
 export default elementFactory({
   name: 'Button',
-  clean: ['color', 'link', 'outline', 'size'],
+  clean: ['baseClasses', 'color', 'link', 'outline', 'size'],
   tag: 'button',
   type: 'button',
   computedClassName: (
     ctxClassName,
     propsClassName,
-    { link, color, outline, size },
+    { baseClasses = true, color, link, outline, size },
   ) =>
-    classNames('btn', ctxClassName, propsClassName, {
+    classNames(ctxClassName, propsClassName, {
+      btn: baseClasses,
       'btn-anchor': link,
       // btn-<COLOR> class is only for regular themed buttons, suppress for other
       // btn theme flavors
-      [`btn-${color}`]: color && !link && !outline,
+      [`btn-${color}`]: baseClasses && color && !link && !outline,
       [`btn-outline-${color}`]: outline,
       'btn-sm': size === 'small',
       'btn-lg': size === 'large',

@@ -5,6 +5,10 @@ defaults:
   size: null
   link: false
 componentProps:
+  - name: baseClasses
+    description: Includes/exclused the base `btn` and `btn-COLOR` classes.
+    type: boolean
+    default: true
   - color: true
   - name: link
     description: Link buttons are styled to appear the same as <code>anchor</code> elements.

@@ -12,13 +12,13 @@
 // Theme Variables
 // ========================================================
 
-@import './styles/theme';
+@import './theme';
 
 // ========================================================
 // Bootstrap
 // ========================================================
 
-@import '../styles/bootstrap';
+@import '../../styles/bootstrap';
 
 // ========================================================
 // Componentry Library Styles
@@ -28,7 +28,7 @@
 // any Boostrap variables you don't declare in your theme will still be
 // available from the Bootstrap variables.
 
-@import '../styles/componentry';
+@import '../../styles/componentry';
 
 // ========================================================
 // Bootstrap Jetpacked
@@ -46,10 +46,11 @@
 // Final import of app level style rules or updates to Bootstrap and Componentry
 // base styles.
 
-@import './styles/application/fonts';
-@import './styles/application/prism';
-@import './styles/application/documentation-typography';
-@import './styles/application/grid';
+@import './application/fonts';
+@import './application/prism';
+@import './application/documentation-typography';
+@import './application/grid';
+@import './application/dropdowns';
 
 // ========================================================
 // 🔨 TODOS
