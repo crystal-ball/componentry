@@ -1,5 +1,6 @@
 import React from 'react'
 import { mount } from 'enzyme'
+import renderer from 'react-test-renderer'
 
 import Alert from './Alert'
 import elementTests from '../utils-test/element-tests'
@@ -45,4 +46,17 @@ describe('<Alert/>', () => {
   })
 
   // TODO: test active and deactivate handling
+})
+
+describe('<Alert /> snapshots', () => {
+  it('renders correctly', () => {
+    const tree = renderer
+      .create(
+        <Alert color="danger" deactivate={jest.fn()} dismissible active>
+          Warning!
+        </Alert>,
+      )
+      .toJSON()
+    expect(tree).toMatchSnapshot()
+  })
 })

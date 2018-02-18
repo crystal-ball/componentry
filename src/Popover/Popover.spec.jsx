@@ -20,14 +20,16 @@ describe('<Popover />', () => {
 
 // Snapshots
 // ---------------------------------------------------------------------------
-it('renders correctly', () => {
-  const tree = renderer
-    .create(
-      <Popover>
-        <Popover.Trigger>Trigger</Popover.Trigger>
-        <Popover.Content>Content</Popover.Content>
-      </Popover>,
-    )
-    .toJSON()
-  expect(tree).toMatchSnapshot()
+describe('<Drawer /> snapshots', () => {
+  it('renders correctly', () => {
+    const tree = renderer
+      .create(
+        <Popover>
+          <Popover.Trigger>Trigger</Popover.Trigger>
+          <Popover.Content>Content</Popover.Content>
+        </Popover>,
+      )
+      .toJSON()
+    expect(tree).toMatchSnapshot()
+  })
 })

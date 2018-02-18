@@ -6,56 +6,50 @@ import type { ThemeColors } from '../utils/theme'
 import type { ElementProps } from '../component-factories/element-factory'
 
 export type Props = {
-  /**
-   * Defaults to true and signals inclusion of `btn` and `btn-<COLOR>` classes.
-   */
-  baseClasses?: boolean,
-  /**
-   * Theme color for button, used to create themed buttons and themed outline
-   * buttons. A default value for color is passed from the `ThemeProvider` as
-   * `defaultButtonColor` and is used with any button without a passed value for
-   * color.
-   *
-   * If a button is not passed a theme color, it will default to the
-   * `defaultButtonColor` value that can be set in the THEME context (it is
-   * `'primary'` by default). If you need a button that is not a `link` and not a
-   * themed button, pass an empty string to suppress both classes.
-   */
+  /** Theme color used to compute BS color class */
   color?: ThemeColors | 'link' | '',
-  /**
-   * A++ Accessibility: Creates a button that looks exactly like an anchor. This
-   * should be used for any action trigger in an application that is not a routing
-   * event.
-   */
+  /** Computes the button as anchor class */
   link?: boolean,
-  /**
-   * Creates outline style button, uses `color` for outline theme.
-   */
+  /** Creates outline style button, uses `color` for outline theme. */
   outline?: boolean,
-  /**
-   * Create a small or large style button
-   */
+  /** Create a small or large style button */
   size?: 'small' | 'large',
 } & ElementProps
 
-export default elementFactory({
-  name: 'Button',
-  clean: ['baseClasses', 'color', 'link', 'outline', 'size'],
-  tag: 'button',
-  type: 'button',
-  computedClassName: (
-    ctxClassName,
-    propsClassName,
-    { baseClasses = true, color, link, outline, size },
-  ) =>
-    classNames(ctxClassName, propsClassName, {
-      btn: baseClasses,
-      'btn-anchor': link,
-      // btn-<COLOR> class is only for regular themed buttons, suppress for other
-      // btn theme flavors
-      [`btn-${color}`]: baseClasses && color && !link && !outline,
-      [`btn-outline-${color}`]: outline,
-      'btn-sm': size === 'small',
-      'btn-lg': size === 'large',
-    }),
-})
+/**
+ * The library makes use of Buttons that should not have the base `.btn` class. It's
+ * more explicit to specify this as a component type (and easier to debug/reason
+ * about).
+ * @param {boolean} decorated
+ */
+const makeButton = decorated => {
+  const name = decorated ? 'Button' : 'BaseButton'
+
+  return elementFactory({
+    name,
+    clean: ['color', 'link', 'outline', 'size'],
+    tag: 'button',
+    type: 'button',
+    computedClassName: (
+      ctxClassName,
+      propsClassName,
+      { color, link, outline, size },
+    ) =>
+      classNames(ctxClassName, propsClassName, {
+        btn: decorated,
+        'btn-anchor': link,
+        // btn-<COLOR> class is only for regular themed buttons, suppress for other
+        // btn theme flavors
+        [`btn-${color}`]: color && !link && !outline,
+        [`btn-outline-${color}`]: outline,
+        'btn-sm': size === 'small',
+        'btn-lg': size === 'large',
+      }),
+  })
+}
+
+const Button = makeButton(true)
+const BaseButton = makeButton(false)
+
+export { BaseButton }
+export default Button

@@ -73,6 +73,8 @@ describe('<Button/>', () => {
 // Snapshots
 // ---------------------------------------------------------------------------
 describe('<Button /> Snapshots', () => {
+  // 📝 TODO: use enzyme tests to validate props effects, use snapshot for testing
+  // output of markup like 'type'
   test('it renders defaults correctly', () => {
     const tree = renderer.create(<Button color="primary">Facebook</Button>).toJSON()
     expect(tree).toMatchSnapshot()

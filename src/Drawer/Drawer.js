@@ -4,7 +4,7 @@ import activeContainer from '../component-factories/active-container'
 import activeContent from '../component-factories/active-content'
 import activeTrigger from '../component-factories/active-trigger'
 
-const createDrawerComponent = name => {
+const makeDrawer = name => {
   const elem = name.slice(0, 1).toLocaleLowerCase() + name.slice(1)
 
   const Content = activeContent({
@@ -34,7 +34,8 @@ const createDrawerComponent = name => {
   return Drawer
 }
 
-const Drawer = createDrawerComponent('Drawer')
-const Accordion = createDrawerComponent('Accordion')
+const Drawer = makeDrawer('Drawer')
+const Accordion = makeDrawer('Accordion')
 
-export { Drawer, Accordion }
+export { Accordion }
+export default Drawer

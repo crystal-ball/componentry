@@ -4,13 +4,13 @@ import type { ComponentType, Node } from 'react'
 import { object, shape } from 'prop-types'
 import classNames from 'classnames'
 
-import Button from '../Button/Button'
+import Button, { BaseButton } from '../Button/Button'
 import arias from '../utils/arias'
 import type { ComponentArias } from '../utils/arias'
 
 type Options = {
-  /** Pass through to Button components to include btn base class */
-  baseClasses?: boolean,
+  /** Determines whether to use Button or BaseButton components */
+  baseButton?: boolean,
   /** Custom trigger static classes */
   classes?: string,
   /** Arias to include for component */
@@ -43,9 +43,9 @@ type Context = { [string]: { [string]: any } }
  * Factory returns custom `<Trigger />` components defined by the options.
  */
 export default ({
+  baseButton,
   classes = '',
   componentArias,
-  baseClasses,
   element = '',
   name,
   triggerType,
@@ -76,12 +76,6 @@ export default ({
       onClick = active ? deactivate : activate
     }
 
-    // Base props objects allows us to only include props under certain conditions
-    const baseProps = {}
-
-    // The baseClasses prop is a Button prop only, don't pass for any other element
-    if (!as) baseProps.baseClasses = baseClasses
-
     // Multi-active elems have different arias to handle multiple show/hide
     // elements. The passed id is used for trigger and content components,
     // these arias will override the standard componentArias
@@ -95,9 +89,8 @@ export default ({
       : {}
 
     return createElement(
-      as || Button,
+      as || (baseButton ? BaseButton : Button),
       {
-        ...baseProps,
         'data-test': element ? `${element}-trigger` : undefined,
         ...arias({
           guid,

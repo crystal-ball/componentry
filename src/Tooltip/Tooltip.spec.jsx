@@ -18,14 +18,16 @@ describe('<Tooltip />', () => {
 
 // Snapshots
 // ---------------------------------------------------------------------------
-it('renders correctly', () => {
-  const tree = renderer
-    .create(
-      <Tooltip>
-        <Tooltip.Trigger>Trigger</Tooltip.Trigger>
-        <Tooltip.Content>Content</Tooltip.Content>
-      </Tooltip>,
-    )
-    .toJSON()
-  expect(tree).toMatchSnapshot()
+describe('<Drawer /> snapshots', () => {
+  it('renders correctly', () => {
+    const tree = renderer
+      .create(
+        <Tooltip>
+          <Tooltip.Trigger>Trigger</Tooltip.Trigger>
+          <Tooltip.Content>Content</Tooltip.Content>
+        </Tooltip>,
+      )
+      .toJSON()
+    expect(tree).toMatchSnapshot()
+  })
 })

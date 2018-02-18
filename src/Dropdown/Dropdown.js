@@ -21,7 +21,7 @@ const withActiveTrigger = withActive()(Trigger)
 const Item = activeTrigger({
   // Suppress the default btn classes, the .dropdown-item classes have all styles
   // needed for button items
-  baseClasses: false,
+  baseButton: true,
   classes: 'dropdown-item',
   componentArias: {},
   name: 'DropdownItem',

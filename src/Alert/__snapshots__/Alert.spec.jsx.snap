@@ -1,0 +1,35 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Alert /> snapshots renders correctly 1`] = `
+<div
+  aria-hidden="false"
+  className="alert fade alert-danger show"
+  role="alert"
+>
+  <div
+    className="sr-only"
+  >
+    danger alert
+  </div>
+  <div
+    className="alert-content"
+  >
+    Warning!
+  </div>
+  <button
+    className="text-danger btn btn-anchor"
+    onClick={[MockFunction]}
+    type="button"
+  >
+    <svg
+      aria-label="close"
+      className="icon close font"
+      role="img"
+    >
+      <use
+        href="#close"
+      />
+    </svg>
+  </button>
+</div>
+`;

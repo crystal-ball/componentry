@@ -4,7 +4,7 @@ import { shallow } from 'enzyme'
 import ListGroupItem from './ListGroupItem'
 import elementTests from '../utils-test/element-tests'
 
-describe('<ListGroup />', () => {
+describe('<ListGroupItem />', () => {
   // Basic library element test suite
   elementTests(ListGroupItem)
 
@@ -22,16 +22,16 @@ describe('<ListGroup />', () => {
     expect(wrapper.find('.active').length).toBeTruthy()
   })
 
-  test('should render a Button when component has onclick', () => {
+  test('should render a BaseButton when component has onclick', () => {
     const wrapper = shallow(<ListGroupItem onClick={() => {}} />)
-    expect(wrapper.find('Button').length).toBeTruthy()
+    expect(wrapper.find('BaseButton').length).toBeTruthy()
     expect(wrapper.find('li').length).toBeFalsy()
     expect(wrapper.find('a').length).toBeFalsy()
   })
 
   test('should render an anchor when component has href', () => {
     const wrapper = shallow(<ListGroupItem href="test" />)
-    expect(wrapper.find('Button').length).toBeFalsy()
+    expect(wrapper.find('BaseButton').length).toBeFalsy()
     expect(wrapper.find('li').length).toBeFalsy()
     expect(wrapper.find('a').length).toBeTruthy()
   })

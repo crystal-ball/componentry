@@ -1,5 +1,6 @@
 import React from 'react'
 import { mount, shallow } from 'enzyme'
+import renderer from 'react-test-renderer'
 
 import Card from './Card'
 import elementTests from '../utils-test/element-tests'
@@ -41,5 +42,25 @@ describe('<Card />', () => {
     expect(wrapper.find('.card-body').length).toEqual(1)
     expect(wrapper.find('.card-title').length).toEqual(1)
     expect(wrapper.find('.card-footer').length).toEqual(1)
+  })
+})
+
+// Snapshots
+// ---------------------------------------------------------------------------
+describe('<Card /> snapshots', () => {
+  it('renders correctly', () => {
+    const tree = renderer
+      .create(
+        <Card>
+          <Card.Header>Header</Card.Header>
+          <Card.Body>
+            <Card.Title>Title</Card.Title>
+            Body
+          </Card.Body>
+          <Card.Footer>Footer</Card.Footer>
+        </Card>,
+      )
+      .toJSON()
+    expect(tree).toMatchSnapshot()
   })
 })

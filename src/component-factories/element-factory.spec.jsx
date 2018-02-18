@@ -3,7 +3,7 @@ import { shallow } from 'enzyme'
 
 import elementFactory from './element-factory'
 
-describe('elementFactory', () => {
+describe('elementFactory()', () => {
   test('should return a component of: div with children', () => {
     const Test = elementFactory({ name: 'Test' })
     const wrapper = shallow(<Test>Children</Test>)

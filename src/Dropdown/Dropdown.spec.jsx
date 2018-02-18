@@ -72,17 +72,19 @@ describe('<Dropdown />', () => {
 
 // Snapshots
 // ---------------------------------------------------------------------------
-it('renders correctly', () => {
-  const tree = renderer
-    .create(
-      <Dropdown>
-        <Dropdown.Trigger>Trigger</Dropdown.Trigger>
-        <Dropdown.Content>
-          <Dropdown.Item>Item 1</Dropdown.Item>
-          <Dropdown.Item>Item 2</Dropdown.Item>
-        </Dropdown.Content>
-      </Dropdown>,
-    )
-    .toJSON()
-  expect(tree).toMatchSnapshot()
+describe('<Drawer /> snapshots', () => {
+  it('renders correctly', () => {
+    const tree = renderer
+      .create(
+        <Dropdown>
+          <Dropdown.Trigger>Trigger</Dropdown.Trigger>
+          <Dropdown.Content>
+            <Dropdown.Item>Item 1</Dropdown.Item>
+            <Dropdown.Item>Item 2</Dropdown.Item>
+          </Dropdown.Content>
+        </Dropdown>,
+      )
+      .toJSON()
+    expect(tree).toMatchSnapshot()
+  })
 })
