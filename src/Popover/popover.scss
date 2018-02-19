@@ -1,13 +1,10 @@
-// ========================================================
-// Popovers
-// ========================================================
+/* componentry/src/Popover/popover */
 
-/* Bootstrap popovers are inserted into the DOM at the end of the body on hover and
- * the location is assigned with transforms. Componentry instead sets the popover
- * parent container to position relative so that the absolute positioned content
- * displays relative to parent. This means that Componentry has custom popover styles
- * instead of using Bootstrap's
- */
+// Bootstrap popovers are inserted into the DOM at the end of the body on hover and
+// the location is assigned with transforms. Componentry instead sets the popover
+// parent container to position relative so that the absolute positioned content
+// displays relative to parent. This means that Componentry has custom popover styles
+// instead of using Bootstrap's
 
 // Container Element
 .popover {
@@ -90,9 +87,7 @@
     }
   }
 
-  // ========================================================
   // Position Rules
-  // ========================================================
 
   &.bottom .tip-container,
   &.top .tip-container {

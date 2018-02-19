@@ -1,14 +1,10 @@
-// ========================================================
-// Tooltips
-// ========================================================
+/* componentry/src/Tooltip/tooltip */
 
-/*
- * Bootstrap tooltips are inserted into the DOM at the end of the body on hover and
- * the location is assigned with transforms. Componentry instead sets the tooltip
- * parent container to position relative so that the absolute positioned content
- * displays relative to parent. This means that Componentry has custom tooltip styles
- * instead of using Bootstrap's
- */
+// Bootstrap tooltips are inserted into the DOM at the end of the body on hover and
+// the location is assigned with transforms. Componentry instead sets the tooltip
+// parent container to position relative so that the absolute positioned content
+// displays relative to parent. This means that Componentry has custom tooltip
+// styles instead of using Bootstrap's
 
 // Container Element
 .tooltip {

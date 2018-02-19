@@ -1,15 +1,7 @@
-// ========================================================
-// Buttons
-// ========================================================
-
-// Assumed class names:
-// .btn, .btn-link, .bnt-<COLOR>, .btn-outline-<COLOR>
-
-// NOTE: Bootstrap purposely doesn't have pointer for button cursor
-// See: https://github.com/twbs/bootstrap/pull/21812
+/* componentry/src/Button/button */
 
 // Bootstrap has a 'link' button with the font styles of an anchor AND all of the
-// padding of a button. For A++ Accessibility we want to have buttons that look
+// padding of a button. For 💯 Accessibility we want to have buttons that look
 // exactly like links for in application triggers, `btn-anchor` creates a button
 // styled exactly like an anchor. This should be used for application actions that
 // are not route navigations.

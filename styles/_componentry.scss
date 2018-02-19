@@ -2,12 +2,16 @@
 // Componentry Styles
 // ========================================================
 
-// Primary entry into Componentry styles. Includes library specific variables,
-// utility styles, and component styles.
+// Library custom variables
 
-@import 'componentry-variables';
-@import 'utility';
+@import 'variables';
+
+// Base styles required for components
+
+@import 'visibility';
 @import 'icons';
+
+// Componentry component styles
 
 @import '../src/Alert/alert';
 @import '../src/Button/button';

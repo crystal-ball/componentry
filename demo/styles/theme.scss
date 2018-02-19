@@ -1,22 +1,8 @@
-/* theme */
+/* demo/styles/theme */
 
 // Theme Variables
 // This theme file contains the complete theme declaration for the application, it
 // can be imported into any component file.
-
-// ========================================================
-// Syntax Highlighting Variables
-// ========================================================
-
-$background: #1a2937;
-$color: #e7e8e8;
-$token-keyword: #ff75b5;
-$token-string: #a6dcd0;
-$token-operator: #ffb86c;
-$token-number: #ffca58;
-$token-comment: #7b7d7d;
-$token-punctuation: #e7e8e8;
-$token-function: #6fc1ff;
 
 // ========================================================
 // Flatly 4.0.0 - Bootswatch
@@ -131,9 +117,17 @@ $list-group-disabled-bg: $gray-200 !default;
 $close-color: $white !default;
 $close-text-shadow: none !default;
 
-// ========================================================
-// Bootstrap default variables
-// ========================================================
+// Syntax Highlighting Variables
+
+$background: #1a2937;
+$color: #e7e8e8;
+$token-keyword: #ff75b5;
+$token-string: #a6dcd0;
+$token-operator: #ffb86c;
+$token-number: #ffca58;
+$token-comment: #7b7d7d;
+$token-punctuation: #e7e8e8;
+$token-function: #6fc1ff;
 
 // Complete variable set by importing Bootstrap default variables.
 

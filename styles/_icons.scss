@@ -1,9 +1,6 @@
-// ========================================================
-// Icons
-// ========================================================
+/* componentry/styles/icons */
 
-// NOTE: The icon class is intended for use with SVGs to create font icons
-
+// ℹ️ The icon class can be used with SVGs to create font icons
 .icon {
   display: inline-flex;
   fill: currentColor;
@@ -11,11 +8,10 @@
   position: relative; // for bottom
   width: 1em; // width + height of 1em makes icons font-sized by default
 
-  // Icons are styled as font icons by default, meaning they need a baseline
-  // adjustment provided by the `bottom` rule to match the font baseline. Do not
-  // include the `font` class
+  // SVG icons displayed with inline flex do not have the same baseline as fonts,
+  // the bottom adjustment aligns the svg baseline with the font baseline
   &.font {
-    bottom: $icon-bottom; // match svg baseline to match font baseline
+    bottom: $icon-bottom;
   }
 }
 

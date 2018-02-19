@@ -8,7 +8,7 @@ type Props = {
 }
 
 export default ({ title, className = '' }: Props) => (
-  <div className={classNames('bb-secondary-1', className)}>
+  <div className={classNames('border-bottom', 'border-secondary', className)}>
     <h1 className="display-3">{title.charAt(0).toUpperCase() + title.slice(1)}</h1>
   </div>
 )

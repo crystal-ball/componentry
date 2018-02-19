@@ -1,6 +1,4 @@
-// ========================================================
-// Drawers
-// ========================================================
+/* componentry/src/Drawer/drawer */
 
 .drawer-toggle,
 .accordion-toggle {
@@ -11,16 +9,18 @@
   display: block; // Prevent drawer content from starting at drawer button boundary
   margin-bottom: map-get($spacers, 2);
 
-  // The chevron icon can be included with the drawer and open/close will
-  // automatically be animated
-  .chevron.icon {
-    transition: transform 500ms;
-    transform: rotate(-0.25turn);
-  }
-
-  &[aria-expanded='true'] {
+  // If the chevron icon is used with a drawer toggle, it will rotate a quarter turn
+  // on open/close of drawer
+  @if $drawer-enhancements {
     .chevron.icon {
-      transform: rotate(0);
+      transition: transform 500ms;
+      transform: rotate(-0.25turn);
+    }
+
+    &[aria-expanded='true'] {
+      .chevron.icon {
+        transform: rotate(0);
+      }
     }
   }
 }
