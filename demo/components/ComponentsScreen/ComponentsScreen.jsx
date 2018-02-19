@@ -2,7 +2,7 @@
 import React from 'react'
 import { Route } from 'react-router-dom'
 
-import { colors, sizes } from 'utils/app-props'
+import { colors, directions, sizes } from 'utils/app-props'
 import GroupNav from 'components/universal/GroupNav'
 import componentRoutes from 'utils/component-routes'
 import Header from 'components/universal/Header'
@@ -45,11 +45,17 @@ export default ({ location: { state } }: Props) => (
         />
         <Route path="/components/cards" component={CardsScreen} />
         <Route path="/components/drawers" component={DrawersScreen} />
-        <Route path="/components/dropdowns" component={DropdownsScreen} />
+        <Route
+          path="/components/dropdowns"
+          render={() => <DropdownsScreen directions={directions} />}
+        />
         <Route path="/components/list-groups" component={ListGroupsScreen} />
         <Route path="/components/modals" component={ModalsScreen} />
         <Route path="/components/navs" component={NavsScreen} />
-        <Route path="/components/popovers" component={PopoversScreen} />
+        <Route
+          path="/components/popovers"
+          render={() => <PopoversScreen directions={directions} />}
+        />
         <Route path="/components/tabs" component={TabsScreen} />
         <Route path="/components/tooltips" component={TooltipsScreen} />
       </div>

@@ -28,11 +28,6 @@ type Props = {
   children?: Node,
   className?: string,
   activeId?: string,
-  // Position
-  top?: boolean,
-  right?: boolean,
-  bottom?: boolean,
-  left?: boolean,
   // Active boolean + change handlers from withActive HOC
   activate: Function,
   active: boolean,
@@ -61,11 +56,6 @@ export default ({
       children,
       guid,
       activeId = '',
-      // Position
-      top,
-      right,
-      bottom,
-      left,
       // YOU SHALL NOT PASS 🙅
       className,
       activate,
@@ -98,10 +88,6 @@ export default ({
         className:
           classNames(classes, componentCtx.className, props.className, {
             [`${element}-content`]: element,
-            top,
-            right,
-            bottom,
-            left,
           }) || undefined,
         ...rest,
       },
@@ -116,16 +102,7 @@ export default ({
     // If the element is a popper, wrap it in a content container, this is used to
     // bust width of parent element
     return popper ? (
-      <div
-        className={classNames(`${element}-content-container`, {
-          top,
-          right,
-          bottom,
-          left,
-        })}
-      >
-        {ComponentContent}
-      </div>
+      <div className={`${element}-content-container`}>{ComponentContent}</div>
     ) : (
       ComponentContent
     )

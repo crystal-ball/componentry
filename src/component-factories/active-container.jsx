@@ -75,6 +75,8 @@ type Options = {
   Content: ComponentType<any>,
   /** Component's `Trigger` subcomponent */
   Trigger: ComponentType<any>,
+  /** Default direction for directional content components */
+  defaultDirection?: 'top' | 'right' | 'bottom' | 'left',
   /** Name of element, used for classes and handler selection */
   element?: string,
   /** When tue the state container will register handlers for mouse events */
@@ -97,6 +99,7 @@ type Props = {
   as?: ComponentType<any> | string,
   children?: Node | Function,
   className?: string,
+  direction?: 'top' | 'right' | 'bottom' | 'left',
   // Active handlers
   onActivate: Function,
   onActivated: Function,
@@ -125,13 +128,14 @@ type Props = {
  * needs like setting or removing special event listeners.
  */
 export default ({
-  element,
-  mouseEvents,
-  name,
-  escHandler,
-  externalClickHandler,
   Content,
   Trigger,
+  defaultDirection,
+  element,
+  escHandler,
+  externalClickHandler,
+  mouseEvents,
+  name,
 }: Options) =>
   class StateContainer extends Component<Props> {
     unsubscribe: Function
@@ -301,6 +305,7 @@ export default ({
         // $FlowFixMe
         as,
         children,
+        direction,
         // YOU SHALL NOT PASS 🙅
         active,
         activate,
@@ -332,8 +337,12 @@ export default ({
           'data-test': element ? `${element}-container` : undefined,
           'data-id': this.guid,
           className:
-            classNames(element, componentCtx.className, this.props.className) ||
-            undefined,
+            classNames(
+              element,
+              componentCtx.className,
+              this.props.className,
+              direction || defaultDirection,
+            ) || undefined,
           // For elements with mouse events we need to know when the mouse event
           // occurs on the parent element, not the trigger element
           onMouseEnter: mouseEvents ? this.handleActivate : undefined,

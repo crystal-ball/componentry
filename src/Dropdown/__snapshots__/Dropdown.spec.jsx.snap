@@ -2,7 +2,7 @@
 
 exports[`<Drawer /> snapshots renders correctly 1`] = `
 <div
-  className="dropdown"
+  className="dropdown bottom"
   data-id="guid"
   data-test="dropdown-container"
   onMouseEnter={undefined}

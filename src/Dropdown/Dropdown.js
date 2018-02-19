@@ -5,8 +5,8 @@ import activeContent from '../component-factories/active-content'
 import activeTrigger from '../component-factories/active-trigger'
 
 const Content = activeContent({
-  element: 'dropdown',
   componentArias: { labelledby: true, hidden: true },
+  element: 'dropdown',
   name: 'DropdownContent',
 })
 const withActiveContent = withActive()(Content)
@@ -29,12 +29,13 @@ const Item = activeTrigger({
 const DropdownItem = withActive()(Item)
 
 const Dropdown = activeContainer({
-  element: 'dropdown',
-  name: 'Dropdown',
-  escHandler: true,
-  externalClickHandler: true,
   Content: withActiveContent,
   Trigger: withActiveTrigger,
+  defaultDirection: 'bottom',
+  element: 'dropdown',
+  escHandler: true,
+  externalClickHandler: true,
+  name: 'Dropdown',
 })
 
 Dropdown.Content = withActiveContent

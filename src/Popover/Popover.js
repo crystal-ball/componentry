@@ -28,12 +28,13 @@ const PopoverHeader = elementFactory({
 })
 
 const Popover = activeContainer({
-  element: 'popover',
-  mouseEvents: true,
-  name: 'Popover',
-  escHandler: true,
   Content: withActiveContent,
   Trigger: withActiveTrigger,
+  defaultDirection: 'right',
+  element: 'popover',
+  escHandler: true,
+  mouseEvents: true,
+  name: 'Popover',
 })
 
 Popover.Content = withActiveContent

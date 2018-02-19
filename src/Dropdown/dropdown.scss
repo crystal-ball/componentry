@@ -4,6 +4,36 @@
   // Default dropdown container to inline-block so that click area is constrained
   // to dropdown trigger
   display: inline-block;
+
+  // Directional styles
+
+  &.top {
+    @extend .dropup;
+
+    .dropdown-content {
+      top: unset;
+      bottom: 100%;
+    }
+  }
+
+  &.right {
+    @extend .dropright;
+
+    .dropdown-content {
+      top: 0;
+      left: 100%;
+    }
+  }
+
+  &.left {
+    @extend .dropleft;
+
+    .dropdown-content {
+      top: 0;
+      right: 100%;
+      left: unset;
+    }
+  }
 }
 
 // In Bs show/hide is handled by adding a .show class, Componentry uses aria-hidden

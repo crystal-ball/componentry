@@ -19,7 +19,7 @@ export default ({ contentProps }: Props) => (
     </thead>
     <tbody>
       {contentProps.map(
-        ({ name, description, type, defaultValue, color, size }) => {
+        ({ name, description, type, defaultValue, color, direction, size }) => {
           if (color) {
             return (
               <tr key="color">
@@ -28,6 +28,20 @@ export default ({ contentProps }: Props) => (
                   See{' '}
                   <Active.Trigger activeId="element" link>
                     element props - color
+                  </Active.Trigger>
+                </td>
+              </tr>
+            )
+          }
+
+          if (direction) {
+            return (
+              <tr key="direction">
+                <td className="text-info">direction</td>
+                <td colSpan="3">
+                  See{' '}
+                  <Active.Trigger activeId="element" link>
+                    element props - direction
                   </Active.Trigger>
                 </td>
               </tr>

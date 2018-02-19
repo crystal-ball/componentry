@@ -23,6 +23,11 @@ export default {
       defaultValue: 'undefined',
     },
     {
+      name: 'direction',
+      description: 'Content alignment direction relative to trigger.',
+      type: ['"top"', '"right"', '"bottom"', '"left"'],
+    },
+    {
       name: 'size',
       description: 'Sets the size for the element.',
       type: ['"small"', '"large"'],

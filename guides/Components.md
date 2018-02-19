@@ -26,6 +26,24 @@ Any component that is themeable uses the `color` prop to set the theme color.
 <Alert color="info">This alert will be use the info theme color.</Alert>
 ```
 
+#### Specifying content alignment with `direction`
+
+Active components that support aligning content in different directions use the
+`direction` prop to include classes that set the content position.
+
+* The direction classes are added to the container component so that both the
+  trigger and content components can be easily targeted.
+* Directional components have a sensible default set, so the `direction` prop
+  only needs to be overridden for custom directions.
+
+```jsx
+<Popover
+  Trigger="Open left"
+  Content="This content will be aligned left of the trigger instead of right."
+  direction="left"
+/>
+```
+
 #### `<Trigger />` and `<Content />` subcomponents
 
 All components with active state use Trigger and Content subcomponents.

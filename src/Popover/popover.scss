@@ -14,6 +14,95 @@
   display: inline-flex; // flex instead of block for easier center alignment of content
   justify-content: center;
   position: relative;
+
+  // Directional styles
+
+  &.top {
+    .popover-content-container {
+      bottom: 100%;
+      justify-content: center;
+    }
+
+    .popover-content {
+      // Top requires bumping bottom 100% again to compensate for container not having
+      // any height
+      bottom: 100%;
+      margin-bottom: $popover-arrow-width;
+    }
+
+    .tip-container {
+      left: 0;
+      top: 100%;
+      width: 100%;
+    }
+
+    .tip:after {
+      bottom: $popover-arrow-width * 1.5;
+    }
+  }
+
+  &.right {
+    .popover-content-container {
+      left: 100%;
+      align-items: center;
+    }
+
+    .popover-content {
+      margin-left: $popover-arrow-width;
+    }
+
+    .tip-container {
+      left: -$popover-arrow-width * 2;
+      height: 100%;
+      top: 0.5em; // We want the tip to be 1/2 of line height from the top for perfect center
+    }
+
+    .tip:after {
+      left: $popover-arrow-width * 1.5;
+    }
+  }
+
+  &.bottom {
+    .popover-content-container {
+      top: 100%;
+      justify-content: center;
+    }
+
+    .popover-content {
+      margin-top: $popover-arrow-width;
+    }
+
+    .tip-container {
+      bottom: 100%;
+      left: 0;
+      width: 100%;
+    }
+
+    .tip:after {
+      top: $popover-arrow-width * 1.5;
+    }
+  }
+
+  &.left {
+    .popover-content-container {
+      right: 100%;
+      align-items: center;
+    }
+
+    .popover-content {
+      margin-right: $popover-arrow-width;
+    }
+
+    .tip-container {
+      height: 100%;
+      right: -$popover-arrow-width * 2;
+      top: 0.5em; // We want the tip to be 1/2 of line height from the top for perfect center
+    }
+
+    .tip:after {
+      right: $popover-arrow-width * 1.5;
+    }
+  }
 }
 
 // Content container overrides the width constraints for parent element
@@ -21,26 +110,6 @@
   width: $popover-max-width;
   position: absolute;
   display: inline-flex;
-
-  &.top {
-    bottom: 100%;
-    justify-content: center;
-  }
-
-  &.right {
-    left: 100%;
-    align-items: center;
-  }
-
-  &.bottom {
-    top: 100%;
-    justify-content: center;
-  }
-
-  &.left {
-    right: 100%;
-    align-items: center;
-  }
 }
 
 // Content Element - The content element should be used to wrap a body/header element
@@ -84,73 +153,6 @@
       position: absolute;
       transform: rotate(45deg);
       width: $popover-arrow-width;
-    }
-  }
-
-  // Position Rules
-
-  &.bottom .tip-container,
-  &.top .tip-container {
-    left: 0;
-    width: 100%;
-  }
-
-  &.bottom {
-    margin-top: $popover-arrow-width;
-
-    .tip-container {
-      bottom: 100%;
-    }
-
-    .tip:after {
-      top: $popover-arrow-width * 1.5;
-    }
-  }
-
-  &.top {
-    // Top requires bumping bottom 100% again to compensate for container not having
-    // any height
-    bottom: 100%;
-    margin-bottom: $popover-arrow-width;
-
-    .tip-container {
-      top: 100%;
-    }
-
-    .tip:after {
-      bottom: $popover-arrow-width * 1.5;
-    }
-  }
-
-  &.right .tip-container,
-  &.left .tip-container {
-    height: 100%;
-    top: 0.5em; // We want the tip to be 1/2 of line height from the top for perfect center
-  }
-
-  &.right {
-    margin-left: $popover-arrow-width;
-
-    .tip-container {
-      left: -$popover-arrow-width * 2;
-    }
-
-    .tip:after {
-      left: $popover-arrow-width * 1.5;
-    }
-  }
-
-  &.left {
-    margin-right: $popover-arrow-width;
-    // left requires right 0 to compensate for absolute positioning
-    right: 0;
-
-    .tip-container {
-      right: -$popover-arrow-width * 2;
-    }
-
-    .tip:after {
-      right: $popover-arrow-width * 1.5;
     }
   }
 }

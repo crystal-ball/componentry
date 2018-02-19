@@ -1,4 +1,5 @@
 import React from 'react'
+import { shallow } from 'enzyme'
 import renderer from 'react-test-renderer'
 
 import Popover from './Popover'
@@ -16,6 +17,19 @@ describe('<Popover />', () => {
   elementTests(Popover.Content, setupActiveContext())
   elementTests(Popover.Header)
   elementTests(Popover.Body)
+
+  it('renders the correct directional classes using direction', () => {
+    const wrapper = shallow(
+      <Popover>
+        <Popover.Trigger>Trigger</Popover.Trigger>
+        <Popover.Content>Content</Popover.Content>
+      </Popover>,
+    )
+
+    expect(wrapper.find('.popover.right').length).toEqual(1) // default
+    wrapper.setProps({ direction: 'top' })
+    expect(wrapper.find('.popover.top').length).toEqual(1)
+  })
 })
 
 // Snapshots

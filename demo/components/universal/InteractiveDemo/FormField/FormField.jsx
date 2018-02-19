@@ -31,7 +31,7 @@ const FormField = ({
     const triggerValue = value === null ? <em>none</em> : value
     field = (
       <Dropdown
-        className="ml-2"
+        className="ml-2 dropdown-field"
         onDeactivated={e => {
           let val
           if (e.target.value && e.target.value === 'none') {

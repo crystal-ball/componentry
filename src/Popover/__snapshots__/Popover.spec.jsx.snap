@@ -2,7 +2,7 @@
 
 exports[`<Drawer /> snapshots renders correctly 1`] = `
 <div
-  className="popover"
+  className="popover right"
   data-id="guid"
   data-test="popover-container"
   onMouseEnter={[Function]}

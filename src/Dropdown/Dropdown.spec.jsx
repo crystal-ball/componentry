@@ -37,6 +37,7 @@ describe('<Dropdown />', () => {
 
     // Container
     expect(wrapper.find('.dropdown').length).toEqual(1)
+    expect(wrapper.find('.dropdown.bottom').length).toEqual(1)
     // Trigger
     const trigger = wrapper.find(dtToggle).first()
     const guid = trigger.prop('id')
@@ -67,6 +68,22 @@ describe('<Dropdown />', () => {
         .first()
         .prop('aria-hidden'),
     ).toEqual('false')
+  })
+
+  it('renders the correct directional classes using direction', () => {
+    const wrapper = mount(
+      <Dropdown>
+        <Dropdown.Trigger>Trigger</Dropdown.Trigger>
+        <Dropdown.Content>
+          <Dropdown.Item>Item 1</Dropdown.Item>
+          <Dropdown.Item>Item 2</Dropdown.Item>
+        </Dropdown.Content>
+      </Dropdown>,
+    )
+
+    expect(wrapper.find('.dropdown.bottom').length).toEqual(1) // default
+    wrapper.setProps({ direction: 'top' })
+    expect(wrapper.find('.dropdown.top').length).toEqual(1)
   })
 })
 

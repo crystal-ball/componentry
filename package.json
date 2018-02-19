@@ -24,6 +24,7 @@
     "js": "npm run js:esmodules && npm run js:esnext && npm run js:amdmodule",
     "styles": "npm run styles:copy",
     "test:unit": "BABEL_ENV=test NODE_ENV=test jest --env=jsdom",
+    "test:watch": "BABEL_ENV=test NODE_ENV=test jest --env=jsdom --watch",
     "format": "prettier --write \"{lib,src}/**/*.{js,jsx,scss}\"",
     "lint": "NODE_ENV=test eslint --ext .js --ext .jsx src lib",
     "documentation": "NODE_ENV=production webpack --env=production",
