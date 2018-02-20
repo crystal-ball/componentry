@@ -10,29 +10,26 @@ export type Props = {
   vertical?: boolean,
 } & ElementProps
 
-// Default Nav component, no special classes or attributes
-const Nav = elementFactory({
-  name: 'Nav',
-  tag: 'nav',
-  computedClassName: (ctxClassName, propsClassName, { pills, vertical }) =>
-    classNames('nav', ctxClassName, propsClassName, {
-      'flex-column': vertical,
-      'nav-pills': pills,
-    }),
-  clean: ['pills', 'vertical'],
-})
+const makeNav = tabNav => {
+  const options = {
+    name: tabNav ? 'TabNav' : 'Nav',
+    tag: 'nav',
+    computedClassName: (ctxClassName, propsClassName, { pills, vertical }) =>
+      classNames('nav', ctxClassName, propsClassName, {
+        'nav-tabs': tabNav,
+        'flex-column': vertical,
+        'nav-pills': pills,
+      }),
+    clean: ['pills', 'vertical'],
+  }
 
-const TabNav = elementFactory({
-  name: 'TabNav',
-  tag: 'nav',
-  role: 'tablist',
-  computedClassName: (ctxClassName, propsClassName, { pills, vertical }) =>
-    classNames('nav', 'nav-tabs', ctxClassName, propsClassName, {
-      'flex-column': vertical,
-      'nav-pills': pills,
-    }),
-  clean: ['pills', 'vertical'],
-})
+  if (tabNav) options.role = 'tablist'
+
+  return elementFactory(options)
+}
+
+const Nav = makeNav(false)
+const TabNav = makeNav(true)
 
 export { TabNav }
 
