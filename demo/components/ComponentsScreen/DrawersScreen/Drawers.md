@@ -19,8 +19,6 @@ drawers in an application without altering the utility of the base State
 component.
 
 <InteractiveDemo
-  defaults={{}}
-  formFields={[]}
   renderCode={() => `<Drawer>
   <Drawer.Trigger link>
     <Icon id="chevron" />
@@ -57,8 +55,6 @@ Opening any drawer in an accordion will close all other drawers. The `activeId`
 inside an accordion.
 
 <InteractiveDemo
-  defaults={{}}
-  formFields={[]}
   renderCode={() => `<Accordion>
   <Accordion.Trigger activeId="one">Trigger One</Accordion.Trigger>
   <Accordion.Content activeId="one">Content One</Accordion.Content>

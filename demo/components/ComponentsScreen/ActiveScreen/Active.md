@@ -63,8 +63,6 @@ useful for conditionally rendering content or passing state change handlers to
 children components.
 
 <InteractiveDemo
-  defaults={{}}
-  formFields={[]}
   renderCode={() => `<Active>
   {({ active, activate, deactivate, guid }) => (
     <div>

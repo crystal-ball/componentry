@@ -7,13 +7,18 @@ import FormField from './FormField'
 import { component } from './interactive-demo.scss'
 
 type Props = {
-  defaults: Object,
-  formFields: Array<{ label: string }>,
+  defaults?: Object,
+  formFields?: Array<{ label: string }>,
   renderCode: Function,
   renderComponent: Function,
 }
 
 export default class InteractiveDemo extends Component<Props> {
+  static defaultProps = {
+    defaults: {},
+    formFields: [],
+  }
+
   /**
    * Sets the passed demo defaults as the state that will be used
    */

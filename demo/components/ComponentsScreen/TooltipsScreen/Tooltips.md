@@ -2,16 +2,30 @@
   components={['Tooltip', 'Tooltip.Trigger', 'Tooltip.Content']}
 />
 
-Tooltip component...
+Display additional details for an element on hover.
 
-<Tooltip>
+If you'd like Tooltips to look like anchors by default the `link` prop can be
+defaulted to true for the Tooltip.Trigger component using the ThemeProvider.
+See the <Link to={{ pathname: '/concepts/theming', state: { name: 'Theme Customization' }}}>
+Theme customization guide</Link> for details.
+
+<InteractiveDemo
+  renderCode={() => `<Tooltip>
   <Tooltip.Trigger>Tooltip</Tooltip.Trigger>
   <Tooltip.Content>
     Only 8% of the world’s currency is physical money, the rest only exists
     on computers.
   </Tooltip.Content>
-</Tooltip>
-<Tooltip
-  Trigger="Tooltip"
-  Content="Only 8%!"
+</Tooltip>`}
+  renderComponent={() => (
+    <Tooltip>
+      <Tooltip.Trigger>Tooltip</Tooltip.Trigger>
+      <Tooltip.Content>
+        Only 8% of the world’s currency is physical money, the rest only exists
+        on computers.
+      </Tooltip.Content>
+    </Tooltip>
+  )}
 />
+
+<PropsDocs activeComponent />

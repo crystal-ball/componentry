@@ -9,8 +9,6 @@ headers and footers, a wide variety of content, contextual background colors,
 and powerful display options.
 
 <InteractiveDemo
-  defaults={{}}
-  formFields={[]}
   renderCode={() => `<Card>
   <Card.Header>Card Header</Card.Header>
   <Card.Body>
