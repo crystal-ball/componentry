@@ -3,6 +3,7 @@ import React, { Component } from 'react'
 import { object } from 'prop-types'
 import * as Componentry from 'componentry'
 import { BrowserRouter, Switch, Route, Link } from 'react-router-dom'
+import DocumentTitle from 'react-document-title'
 
 // Import SVG font icons used in application without an Icon component instance
 import 'media/icons/close.svg'
@@ -63,23 +64,25 @@ export default class App extends Component<{}> {
 
   render() {
     return (
-      <BrowserRouter basename={process.env.PUBLIC_PATH}>
-        <Componentry.ThemeProvider theme={theme}>
-          {/* Restores scroll position to page top on route change */}
-          <ScrollToTop />
+      <DocumentTitle title="Componentry">
+        <BrowserRouter basename={process.env.PUBLIC_PATH}>
+          <Componentry.ThemeProvider theme={theme}>
+            {/* Restores scroll position to page top on route change */}
+            <ScrollToTop />
 
-          {/* Show app navigation on every page but home page */}
-          <Route path="/:path" component={AppNav} />
+            {/* Show app navigation on every page but home page */}
+            <Route path="/:path" component={AppNav} />
 
-          <Switch>
-            <Route path="/" exact component={HomeScreen} />
-            <Route path="/getting-started" component={GettingStartedScreen} />
-            <Route path="/concepts/:concept?" component={ConceptsScreen} />
-            <Route path="/components/:component?" component={ComponentsScreen} />
-            <Route component={FourOhFourScreen} />
-          </Switch>
-        </Componentry.ThemeProvider>
-      </BrowserRouter>
+            <Switch>
+              <Route path="/" exact component={HomeScreen} />
+              <Route path="/getting-started" component={GettingStartedScreen} />
+              <Route path="/concepts/:concept?" component={ConceptsScreen} />
+              <Route path="/components/:component?" component={ComponentsScreen} />
+              <Route component={FourOhFourScreen} />
+            </Switch>
+          </Componentry.ThemeProvider>
+        </BrowserRouter>
+      </DocumentTitle>
     )
   }
 }
