@@ -1,16 +1,13 @@
 // @flow
 import { Children } from 'react'
 
-import ListGroupItem from './ListGroupItem'
 import elementFactory from '../component-factories/element-factory'
+import itemFactory from '../component-factories/item-factory'
 import type { ElementProps } from '../component-factories/element-factory'
 
 /**
- * To Document:
- * - There are different wrappers for clickable vs non-clickable list groups. (this
- *   seems less than ideal Bootstrap, can we always do a div?)
- * - Only the first child is checked for an href or onClick for perf. If it is variable,
- *   (which is probably not good in the first place), pass a specific `as`.
+ * 🤔 There are different wrappers for clickable vs non-clickable list groups. (this
+ * seems less than ideal Bootstrap, can we always do a div?)
  */
 
 export type Props = ElementProps
@@ -24,7 +21,12 @@ const ListGroup = elementFactory({
   },
 })
 
+const ListGroupItem = itemFactory({
+  name: 'ListGroupItem',
+  defaultClasses: 'list-group-item',
+  triggerClass: 'list-group-item-action',
+})
+
 // $FlowFixMe
 ListGroup.Item = ListGroupItem
-
 export default ListGroup

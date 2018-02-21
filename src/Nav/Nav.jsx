@@ -1,8 +1,8 @@
 // @flow
 import classNames from 'classnames'
 
-import NavItem from './NavItem'
 import elementFactory from '../component-factories/element-factory'
+import itemFactory from '../component-factories/item-factory'
 import type { ElementProps } from '../component-factories/element-factory'
 
 export type Props = {
@@ -30,6 +30,12 @@ const makeNav = tabNav => {
 
 const Nav = makeNav(false)
 const TabNav = makeNav(true)
+
+const NavItem = itemFactory({
+  name: 'NavItem',
+  defaultClasses: 'nav-item',
+  triggerClass: 'nav-link',
+})
 
 export { TabNav }
 

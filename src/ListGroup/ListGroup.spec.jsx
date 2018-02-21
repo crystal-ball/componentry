@@ -1,5 +1,6 @@
 import React from 'react'
-import { mount, shallow } from 'enzyme'
+import { shallow } from 'enzyme'
+import renderer from 'react-test-renderer'
 
 import ListGroup from './ListGroup'
 import elementTests from '../utils-test/element-tests'
@@ -33,26 +34,20 @@ describe('<ListGroup />', () => {
     expect(wrapper.find('ul').length).toBeFalsy()
     expect(wrapper.find('div').length).toBeTruthy()
   })
+})
 
-  test('should render children', () => {
-    const wrapper = shallow(
-      <ListGroup>
-        <span>Rad</span>
-      </ListGroup>,
-    )
-    expect(wrapper.find('span').length).toEqual(1)
-  })
-
-  // Contextual Components
-  // ---------------------------------------------------------------------------
-  test('should render contextual components', () => {
-    const wrapper = mount(
-      <ListGroup>
-        <ListGroup.Item>Item 1</ListGroup.Item>
-      </ListGroup>,
-    )
-
-    expect(wrapper.find('.list-group').length).toEqual(1)
-    expect(wrapper.find('.list-group-item').length).toEqual(1)
+// Snapshots
+// ---------------------------------------------------------------------------
+describe('<ListGroup /> snapshots', () => {
+  it('renders correctly', () => {
+    const tree = renderer
+      .create(
+        <ListGroup>
+          <ListGroup.Item>Item 1</ListGroup.Item>
+          <ListGroup.Item>Item 2</ListGroup.Item>
+        </ListGroup>,
+      )
+      .toJSON()
+    expect(tree).toMatchSnapshot()
   })
 })
