@@ -1,5 +1,13 @@
 ---
 componentProps:
+  - name: fill
+    description: Toggles the fill style so that nav items fill the nav container based on their width.
+    type: boolean
+    defaultValue: "false"
+  - name: justify
+    description: Togles the justify styles so that nav items fill the nav container using an equal width.
+    defaultValue: "false"
+    type: boolean
   - name: pills
     description: Toggles the nav item 'pill' styles.
     defaultValue: "false"
@@ -21,22 +29,26 @@ component creates a `nav` tag with either `a` or Button elements for nav items,
 but the tags used can be specified using the `as` prop.
 
 <InteractiveDemo
-  defaults={{ pills: false, vertical: false }}
+  defaults={{ fill: false, justify: false, pills: false, vertical: false }}
   formFields={[
+    { label: 'fill', boolean: true },
+    { label: 'justify', boolean: true },
     { label: 'pills', boolean: true },
     { label: 'vertical', boolean: true },
   ]}
-  renderCode={({ pills, vertical }) => `<Nav${pills ? ' pills' : ''}${vertical ? ' vertical' : ''}>
+  renderCode={({ fill, justify, pills, vertical }) => `<Nav${pills ? ' pills' : ''}${vertical ? ' vertical' : ''}${fill ? ' fill' : ''}${justify ? ' justify' : ''}>
   <Nav.Item href="#" active>Item 1</Nav.Item>
   <Nav.Item href="#">Item 2</Nav.Item>
   <Nav.Item href="#">Item 3</Nav.Item>
 </Nav>`}
-  renderComponent={({ pills, vertical }) => (
-    <Nav pills={pills} vertical={vertical}>
-      <Nav.Item href="#" active>Item 1</Nav.Item>
-      <Nav.Item href="#">Item 2</Nav.Item>
-      <Nav.Item href="#">Item 3</Nav.Item>
-    </Nav>
+  renderComponent={({ fill, justify, pills, vertical }) => (
+    <div className="w-75">
+      <Nav pills={pills} vertical={vertical} fill={fill} justify={justify}>
+        <Nav.Item href="#" active>Item 1</Nav.Item>
+        <Nav.Item href="#">Item 2</Nav.Item>
+        <Nav.Item href="#">Item 3</Nav.Item>
+      </Nav>
+    </div>
   )}
 />
 

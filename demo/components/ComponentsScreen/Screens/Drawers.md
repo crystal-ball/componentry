@@ -20,7 +20,7 @@ component.
 
 <InteractiveDemo
   renderCode={() => `<Drawer>
-  <Drawer.Trigger link>
+  <Drawer.Trigger>
     <Icon id="chevron" />
     Trigger Drawer
   </Drawer.Trigger>
@@ -33,7 +33,7 @@ component.
   renderComponent={() => (
     <div className="w-50">
       <Drawer>
-        <Drawer.Trigger link>
+        <Drawer.Trigger>
           <Icon id="chevron" />
           Trigger Drawer
         </Drawer.Trigger>

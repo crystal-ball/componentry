@@ -91,14 +91,13 @@ modal.
     uncontrolled component, or pass in <code>active</code> and{' '}
     <code>deactivate</code> props to control the modal.
   </div>
-
-
-  <h4 className="alert-heading mt-3">ℹ️ Close button alignment</h4>
-  <div>
-    By default the modal header flex alignment is set to start to align the close
-    button to the top of the header. Use class <code>.align-items-center</code>
-    {' '}to align the close button to the vertical middle of the header.
-  </div>
 </Alert>
+
+#### Close button alignment
+
+By default the modal header flex alignment is set to start to align the close
+button to the top of the header. Use class <code>.align-items-center</code> to
+align the close button to the vertical middle of the header.
+
 
 <PropsTabs componentProps={componentProps} activeComponent size />

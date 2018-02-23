@@ -1,5 +1,5 @@
 // @flow
-import React, { Component } from 'react'
+import React, { Component, Fragment } from 'react'
 import { object } from 'prop-types'
 import * as Componentry from 'componentry'
 import { BrowserRouter, Switch, Route, Link } from 'react-router-dom'
@@ -47,6 +47,7 @@ Object.keys(Componentry).forEach(component => {
 
 // Registry React Router <Link /> for convenience
 registry.register(Link, 'Link')
+registry.register(Fragment, 'Fragment')
 
 /**
  * Application class component:

@@ -44,7 +44,7 @@ export default class InteractiveDemo extends Component<Props> {
         <Card.Body className="row">
           {fieldsLen && (
             <div className="col-4">
-              <h4>Props</h4>
+              <h4 className="border-bottom border-dark">Props</h4>
               <form className="mb-3">
                 {formFields.map(
                   (field, idx) =>
@@ -64,12 +64,12 @@ export default class InteractiveDemo extends Component<Props> {
             </div>
           )}
           <div className={`col-${fieldsLen ? '8' : '12'} d-flex flex-column`}>
-            {fieldsLen && <h4>Rendered</h4>}
+            <h4 className="border-bottom border-dark">Rendered</h4>
             <div className="d-flex justify-content-center align-items-center h-100">
               {demoComponent}
             </div>
           </div>
-          <div className="col-12 mt-3">
+          <div className="col-12 mt-4">
             <PrismHighlighter language="jsx">{codeHighlight}</PrismHighlighter>
           </div>
         </Card.Body>

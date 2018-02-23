@@ -33,19 +33,15 @@ The Active component is comprised of:
   renderCode={() => `<Active>
   <Active.Trigger>Active Trigger</Active.Trigger>
   <Active.Content>
-    <p>
-      Content display toggled by the <code>Trigger</code> component.
-    </p>
+    Content display toggled by the <code>Trigger</code> component.
   </Active.Content>
 </Active>`}
   renderComponent={() => (
-    <div className="w-50">
+    <div className="w-100">
       <Active>
         <Active.Trigger>Active Trigger</Active.Trigger>
         <Active.Content>
-          <p>
-            Content display toggled by the <code>Trigger</code> component.
-          </p>
+          Content display toggled by the <code>Trigger</code> component.
         </Active.Content>
       </Active>
     </div>
@@ -65,21 +61,29 @@ children components.
 <InteractiveDemo
   renderCode={() => `<Active>
   {({ active, activate, deactivate, guid }) => (
-    <div>
+    <Fragment>
       <Active.Trigger>{active ? 'Close' : 'Open'}</Active.Trigger>
-      <Active.Content>Content</Active.Content>
-    </div>
+      <Active.Content>
+        👍 Any of the Active component handlers can be accessed outside
+        the component using this pattern.
+      </Active.Content>
+    </Fragment>
   )}
 </Active>`}
   renderComponent={() => (
-    <Active>
-      {({ active, activate, deactivate, guid }) => (
-        <div>
-          <Active.Trigger>{active ? 'Close' : 'Open'}</Active.Trigger>
-          <Active.Content>Content</Active.Content>
-        </div>
-      )}
-    </Active>
+    <div className="w-100">
+      <Active>
+        {({ active, activate, deactivate, guid }) => (
+          <Fragment>
+            <Active.Trigger>{active ? 'Close' : 'Open'}</Active.Trigger>
+            <Active.Content>
+              👍 Any of the Active component handlers can be accessed outside
+              the component using this pattern.
+            </Active.Content>
+          </Fragment>
+        )}
+      </Active>
+    </div>
   )}
 />
 

@@ -42,7 +42,6 @@ accessible button elements that look like anchors with the `link` prop.
     { label: 'color', options: this.props.colors },
     { label: 'outline', boolean: true },
     { label: 'size', options: this.props.sizes },
-    <hr />,
     {
       label: 'link',
       boolean: true,
