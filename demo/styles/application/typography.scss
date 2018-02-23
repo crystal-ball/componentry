@@ -2,11 +2,24 @@
 
 // Constrain typography elements to 700px wide for better readability
 p,
-li {
+li,
+.alert-content {
   max-width: 700px;
 }
 
 // Add margin-top to h2 for visual breaking of important headers
 h2 {
   margin-top: map-get($map: $spacers, $key: 4);
+}
+
+// Alert styles that are cleaner, using Boostrap docs for inspiration!
+.alert {
+  background-color: transparent;
+  border-color: $border-color;
+}
+
+@each $color, $value in $theme-colors {
+  .alert-#{$color} {
+    border-left: 5px solid $value;
+  }
 }

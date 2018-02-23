@@ -75,4 +75,22 @@ overridden by passing a custom `a11yLabel` prop.
   and <code>deactivate</code> can be passed.
 </Alert>
 
+### Componentry alert styles
+
+Alerts in this documentation have additional styles added for a cleaner, sharper
+look. Add this SCSS to your project for these alerts:
+
+```scss
+.alert {
+  background-color: transparent;
+  border-color: $border-color;
+}
+
+@each $color, $value in $theme-colors {
+  .alert-#{$color} {
+    border-left: 5px solid $value;
+  }
+}
+```
+
 <PropsDocs componentProps={componentProps} themeColors />

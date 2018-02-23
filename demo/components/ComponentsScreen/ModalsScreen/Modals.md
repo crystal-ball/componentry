@@ -10,11 +10,6 @@
 
 Modal component...
 
-#### Modal header alignment
-
-By default the modal header uses flex align-items start to align the close
-button to the top right corner. Use class `.align-items-center` to align the
-close button to the middle of the header.
 
 <Active>
   <Active.Trigger link={false}>Trigger Modal</Active.Trigger>
@@ -34,3 +29,21 @@ close button to the middle of the header.
     </Modal.Footer>
   </Modal>
 </Active>
+
+<Alert color="info">
+  <h4 className="alert-heading">ℹ️ Active usage</h4>
+  <div>
+    The Modal component is wrapped with the Active.Content subcomponent state
+    handlers, so you can use the Modal inside of an Active component for an
+    uncontrolled component, or pass in <code>active</code> and{' '}
+    <code>deactivate</code> props to control the modal.
+  </div>
+
+
+  <h4 className="alert-heading mt-3">ℹ️ Close button alignment</h4>
+  <div>
+    By default the modal header flex alignment is set to start to align the close
+    button to the top of the header. Use class <code>.align-items-center</code>
+    {' '}to align the close button to the vertical middle of the header.
+  </div>
+</Alert>
