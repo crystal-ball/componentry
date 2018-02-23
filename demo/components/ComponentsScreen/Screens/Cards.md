@@ -29,4 +29,4 @@ and powerful display options.
   )}
 />
 
-<PropsDocs />
+<PropsTabs />

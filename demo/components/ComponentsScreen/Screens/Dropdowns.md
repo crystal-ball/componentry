@@ -48,4 +48,4 @@ enable easy navigation between multiple options.
   override the default direction.
 </Alert>
 
-<PropsDocs activeComponent directionalComponent="bottom" />
+<PropsTabs activeComponent directionalComponent="bottom" />

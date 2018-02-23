@@ -28,4 +28,4 @@ Theme customization guide</Link> for details.
   )}
 />
 
-<PropsDocs activeComponent />
+<PropsTabs activeComponent />

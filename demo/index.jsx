@@ -17,7 +17,9 @@ import App from './components/App'
 // Inject SVG symbol sprite into document from local storage if exists, otherwise
 // fetch, cache in local storage and inject. Manifest is inlined to index.html by
 // webpack
-localStorageSVGLoader(window.webpackManifest['icon-sprite.svg'])
+localStorageSVGLoader(
+  `${process.env.PUBLIC_PATH}${window.webpackManifest['icon-sprite.svg']}`,
+)
 
 const render = Component => {
   ReactDOM.render(

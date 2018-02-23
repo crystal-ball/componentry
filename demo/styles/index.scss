@@ -27,6 +27,7 @@
 
 // Final import of app level style rules or updates to Bootstrap and Componentry
 // base styles.
+@import './application/application';
 @import './application/fonts';
 @import './application/prism';
 @import './application/typography';

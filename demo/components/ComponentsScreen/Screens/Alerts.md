@@ -1,18 +1,15 @@
 ---
 componentProps:
-  - name: a11yLabel
-    description: Screen reader only label that provides the context of the alert.
+  - name: ariaTitle
+    description: Screen reader only title that provides the context of the alert. By default the type of alert is included.
     type: string
-    defaultValue: "'<COLOR> alert'"
+    defaultValue: "''"
   - color: true
   - name: dismissible
     description: Controls whether alert can be dismissed by user, pass <code>false</code> to prevent dismissal of an alert.
     type: boolean
     defaultValue: "false"
-  - name: deactivate
-    description: When passed, the <code>deactivate</code> will be called in place of internal state change handler. Note that the opacity transition and hiding of the component must be handled externally when passing a custom <code>deactivate</code> handler.
-    type: function
-    defaultValue: undefined
+  - deactivate: true
   - name: transitionDuration
     description: Length of opacity transition, if not passed component will default to 300ms or <code>THEME</code> value if set using <code>ThemeProvider</code>.
     type: number
@@ -65,13 +62,13 @@ can be dismissible or static.
   and <code>deactivate</code> can be passed.
 </Alert>
 
-### A++ Accessibility
+#### <Icon id="stars" /> A++ Accessibility
 
 By default alerts include a screen readers only message that signals the type of
 alert to provide the context implied by the alert color. This context can by
-overridden by passing a custom `a11yLabel` prop.
+overridden by passing a custom `ariaTitle` prop.
 
-### Componentry alert styles
+#### Componentry alert styles
 
 Alerts in this documentation have additional styles added for a cleaner, sharper
 look. Add this SCSS to your project for these alerts:
@@ -89,4 +86,4 @@ look. Add this SCSS to your project for these alerts:
 }
 ```
 
-<PropsDocs componentProps={componentProps} themeColors />
+<PropsTabs componentProps={componentProps} themeColors />

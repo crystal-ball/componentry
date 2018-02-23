@@ -1,9 +1,10 @@
 import React from 'react'
 import { Tab } from 'componentry'
 
-import PropsDocsContent from './PropsDocsContent'
-import propsContent from './content/props'
-import { component } from './props-docs.scss'
+import Icon from 'components/universal/Icon'
+import TabContent from './TabContent'
+import { activeProps, componentryProps } from './props-content'
+import { component } from './props-tabs.scss'
 
 type Props = {
   activeComponent: boolean,
@@ -21,10 +22,10 @@ export default ({
   themeColors = false,
 }: Props) => {
   const showComponentProps = !!componentProps.length
-  const defaultActive = componentProps.length ? 'component' : 'element'
+  const defaultActive = componentProps.length ? 'Component' : 'Componentry'
 
-  // Filter out the element props that aren't applicable for this component
-  const elementProps = propsContent.elementProps.filter(prop => {
+  // Filter out the Componentry props that aren't applicable for this component
+  const filteredComponentryProps = componentryProps.filter(prop => {
     if (!themeColors && prop.name === 'color') return false
     if (!size && prop.name === 'size') return false
 
@@ -41,30 +42,32 @@ export default ({
 
   return (
     <div className={component}>
-      <h3 id="props">Props</h3>
+      <h3 id="props">
+        <Icon id="tune" /> Component props
+      </h3>
       <Tab defaultActive={defaultActive} className="d-flex">
         <Tab.ContentContainer>
           {showComponentProps && (
-            <Tab.Content activeId="component">
-              <PropsDocsContent contentProps={componentProps} />
+            <Tab.Content activeId="Component">
+              <TabContent contentProps={componentProps} />
             </Tab.Content>
           )}
-          <Tab.Content activeId="element">
-            <PropsDocsContent contentProps={elementProps} />
+          <Tab.Content activeId="Componentry">
+            <TabContent contentProps={filteredComponentryProps} />
           </Tab.Content>
           {activeComponent && (
-            <Tab.Content activeId="active">
-              <PropsDocsContent contentProps={propsContent.activeProps} />
+            <Tab.Content activeId="Active">
+              <TabContent contentProps={activeProps} />
             </Tab.Content>
           )}
         </Tab.ContentContainer>
         <Tab.Nav vertical pills className="ml-4">
           {showComponentProps && (
-            <Tab.Trigger activeId="component">Component props</Tab.Trigger>
+            <Tab.Trigger activeId="Component">Component props</Tab.Trigger>
           )}
-          <Tab.Trigger activeId="element">Element props</Tab.Trigger>
+          <Tab.Trigger activeId="Componentry">Componentry props</Tab.Trigger>
           {activeComponent && (
-            <Tab.Trigger activeId="active">Active props</Tab.Trigger>
+            <Tab.Trigger activeId="Active">Active props</Tab.Trigger>
           )}
         </Tab.Nav>
       </Tab>

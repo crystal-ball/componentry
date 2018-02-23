@@ -71,4 +71,4 @@ showing detailed user hints on hover.
   override the default direction.
 </Alert>
 
-<PropsDocs activeComponent directionalComponent="right" />
+<PropsTabs activeComponent directionalComponent="right" />

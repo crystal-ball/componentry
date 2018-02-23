@@ -77,4 +77,4 @@ inside an accordion.
   )}
 />
 
-<PropsDocs activeComponent />
+<PropsTabs activeComponent />

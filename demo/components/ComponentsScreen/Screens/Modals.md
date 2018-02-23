@@ -2,9 +2,9 @@
 componentProps:
   - active: true
   - name: ariaTitle
-    description: Provides a modal title for screen readers
+    description: Provides a modal title for screen readers. An aria title should be provided for modals without headers or modals that use visual cues to create context.
     type: string
-    defaultValue: ''
+    defaultValue: "''"
   - deactivate: true
   - size: true
 ---
@@ -101,4 +101,4 @@ modal.
   </div>
 </Alert>
 
-<PropsDocs componentProps={componentProps} activeComponent size />
+<PropsTabs componentProps={componentProps} activeComponent size />

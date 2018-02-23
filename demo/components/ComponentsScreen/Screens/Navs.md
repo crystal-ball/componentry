@@ -1,3 +1,15 @@
+---
+componentProps:
+  - name: pills
+    description: Toggles the nav item 'pill' styles.
+    defaultValue: "false"
+    type: boolean
+  - name: vertical
+    description: Toggles flex column classes to create a vertically oriented nav.
+    defaultValue: "false"
+    type: boolean
+---
+
 <ComponentsList components={['Nav', 'Nav.Item']} />
 
 Create structured navs or custom navigation elements using the base Nav
@@ -28,4 +40,4 @@ but the tags used can be specified using the `as` prop.
   )}
 />
 
-
+<PropsTabs componentProps={componentProps} />

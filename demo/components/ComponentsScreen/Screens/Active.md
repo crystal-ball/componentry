@@ -83,4 +83,4 @@ children components.
   )}
 />
 
-<PropsDocs activeComponent />
+<PropsTabs activeComponent />

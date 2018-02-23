@@ -28,7 +28,7 @@ Active.Trigger subcomponents.
 Buttons can be customized with theme color, size and outline variants to provide
 the exact styles needed.
 
-#### A++ Accessibility
+#### <Icon id="stars" /> A++ Accessibility
 
 When creating elements with user interaction it's important to use a button
 element for any target that is not an anchor. Using a button element ensures
@@ -56,4 +56,4 @@ accessible button elements that look like anchors with the `link` prop.
   renderComponent={data => <Button {...data}>Click me!</Button>}
 />
 
-<PropsDocs componentProps={componentProps} themeColors size />
+<PropsTabs componentProps={componentProps} themeColors size />

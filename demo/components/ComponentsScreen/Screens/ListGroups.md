@@ -36,4 +36,4 @@ user interactions. Including a `href` or `onClick` wil return a `div` with appro
   or component using the `as` prop on the ListGroup.
 </Alert>
 
-<PropsDocs componentProps={componentProps} />
+<PropsTabs componentProps={componentProps} />

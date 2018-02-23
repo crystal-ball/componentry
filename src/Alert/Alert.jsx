@@ -15,7 +15,7 @@ type Props = {
    * Provides contextual information to screen readers that sighted users would gain
    * from the alert color. Defaults to: 'COLOR alert', eg 'Success alert'
    */
-  a11yLabel: string,
+  ariaTitle: string,
   /**
    * Theme color for alert
    */
@@ -44,7 +44,7 @@ type Context = { [string]: { [string]: any } }
 const Alert = (props: Props, { THEME = {} }: Context) => {
   const componentCtx = THEME.Alert || {}
   const {
-    a11yLabel,
+    ariaTitle,
     activate, // prevent dom inclusion
     active,
     as,
@@ -70,7 +70,7 @@ const Alert = (props: Props, { THEME = {} }: Context) => {
       ...rest,
     },
     // Provide the alert color context for screen readers
-    <div className="sr-only">{a11yLabel || `${color} alert`}</div>,
+    <div className="sr-only">{ariaTitle || `${color} alert`}</div>,
     // Alert contents:
     <div className="alert-content">{children}</div>,
     // Render a close button or null depending on configs
