@@ -27,44 +27,34 @@ Alerts can contain any HTML elements, and the `alert-heading` and `alert-link`
 classes can be used with headings or links to provide themed elements. Alerts
 can be dismissible or static.
 
-#### A++ Accessibility
-
-By default alerts include a screen readers only message that signals the type of
-alert to provide the context implied by the alert color. This context can by
-overridden by passing a custom `a11yLabel` prop.
-
 <InteractiveDemo
-  defaults={{ color: 'success', dismissible: true, a11yLabel: '' }}
+  defaults={{ color: 'success', dismissible: true }}
   formFields={[
     { label: 'color', options: this.props.colors },
-    { label: 'a11yLabel', string: true },
     { label: 'dismissible', boolean: true },
   ]}
-  renderCode={({ a11yLabel, color, dismissible }) => dismissible ? (
+  renderCode={({ color, dismissible }) => dismissible ? (
     `<Active defaultActive>
-  <Alert color="${color}"${a11yLabel ? ` a11yLabel="${a11yLabel}"` : ''} dismissible>
+  <Alert color="${color}" dismissible>
     <h4 className="alert-heading">Well done!</h4>
     You successfully read this important alert message.
   </Alert>
 </Active>`
   ) : (
-    `<Alert color="${color}"${a11yLabel ? ` a11yLabel="${a11yLabel}"` : ''}>
+    `<Alert color="${color}">
   <h4 className="alert-heading">Well done!</h4>
   You successfully read this important alertmessage.
 </Alert>`
   )}
-  renderComponent={({ a11yLabel, color, dismissible }) => dismissible ? (
-    <Active defaultActive className="w-100">
-      <Alert color={color} dismissible a11yLabel={a11yLabel}>
-        <h4 className="alert-heading">Well done!</h4>
-        You successfully read this important alert message.
-      </Alert>
-    </Active>
-  ) : (
-    <Alert color={color} className="w-100" a11yLabel={a11yLabel}>
-      <h4 className="alert-heading">Well done!</h4>
-      You successfully read this important alert message.
-    </Alert>
+  renderComponent={({ color, dismissible }) => (
+    <div className="w-100">
+      <Active defaultActive>
+        <Alert color={color} dismissible={dismissible}>
+          <h4 className="alert-heading">Well done!</h4>
+          You successfully read this important alert message.
+        </Alert>
+      </Active>
+    </div>
   )}
 />
 
@@ -74,6 +64,12 @@ overridden by passing a custom `a11yLabel` prop.
   of a <code>{`<State />`}</code> component or props <code>active</code>{' '}
   and <code>deactivate</code> can be passed.
 </Alert>
+
+### A++ Accessibility
+
+By default alerts include a screen readers only message that signals the type of
+alert to provide the context implied by the alert color. This context can by
+overridden by passing a custom `a11yLabel` prop.
 
 ### Componentry alert styles
 

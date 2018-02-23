@@ -50,7 +50,10 @@ export default ({ location: { state } }: Props) => (
           render={() => <DropdownsScreen directions={directions} />}
         />
         <Route path="/components/list-groups" component={ListGroupsScreen} />
-        <Route path="/components/modals" component={ModalsScreen} />
+        <Route
+          path="/components/modals"
+          render={() => <ModalsScreen sizes={sizes} />}
+        />
         <Route path="/components/navs" component={NavsScreen} />
         <Route
           path="/components/popovers"
