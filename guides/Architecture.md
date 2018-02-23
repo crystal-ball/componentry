@@ -1,5 +1,3 @@
-# Componentry Architecture
-
 Componentry's architecture is driven by two primary goals:
 
 * Maintain as light of a footprint as possible
