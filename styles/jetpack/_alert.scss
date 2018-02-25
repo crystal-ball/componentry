@@ -1,0 +1,17 @@
+/* componentry/styles/jetpack/alert */
+
+// Enhance alert styling with a single 5px border left with theme color instead of
+// the alert background 😍
+// Design from Bootstrap documentation site
+.alert {
+  // Clear out original styles with a transparent background and standard gray border
+  background-color: transparent;
+  border-color: $border-color;
+}
+
+@each $color, $value in $theme-colors {
+  // Add the themed border left for each color
+  .alert-#{$color} {
+    border-left: 5px solid $value;
+  }
+}

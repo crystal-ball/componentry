@@ -13,7 +13,7 @@ active components accomplish the same essential task: conditionally showing
 content. The styles and implementation details are different between components,
 but the underlying API is consistent.
 
-#### Component design
+## Component design
 
 The Active component is comprised of:
 
@@ -48,7 +48,7 @@ The Active component is comprised of:
   )}
 />
 
-#### FaCC usage
+## FaCC usage
 
 Active components can also be passed a function as the component's child
 that will be called with the `activate` and `deactivate` state change handlers

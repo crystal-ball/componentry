@@ -12,8 +12,6 @@ import ComponentsScreen from 'GUIDES/Components.md'
 import ThemingScreen from 'GUIDES/Theming.md'
 import OverviewScreen from './Screens/Overview.md'
 
-import { component } from './concepts-screen.scss'
-
 type Props = {
   location: {
     state: { name: string },
@@ -21,8 +19,8 @@ type Props = {
 }
 
 export default ({ location: { state } }: Props) => (
-  <div className={`grid-container columns-page-layout m-5 ${component}`}>
-    <div>
+  <div className="grid-container columns-page-layout m-5">
+    <div className="guides">
       <Header title={state ? state.name : 'Concepts'} className="mb-3" />
 
       <Route

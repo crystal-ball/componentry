@@ -46,6 +46,8 @@ by a trigger and content pane must match.
   )}
 />
 
+<SupportingInfo apis={['Active component', 'Nav component']} />
+
 <PropsTabs activeComponent />
 
 

@@ -21,7 +21,6 @@ component.
 <InteractiveDemo
   renderCode={() => `<Drawer>
   <Drawer.Trigger>
-    <Icon id="chevron" />
     Trigger Drawer
   </Drawer.Trigger>
   <Drawer.Content>
@@ -34,7 +33,6 @@ component.
     <div className="w-50">
       <Drawer>
         <Drawer.Trigger>
-          <Icon id="chevron" />
           Trigger Drawer
         </Drawer.Trigger>
         <Drawer.Content>
@@ -45,6 +43,10 @@ component.
       </Drawer>
     </div>
   )}
+/>
+
+<SupportingInfo
+  apis={['Active component']}
 />
 
 ## Accordion

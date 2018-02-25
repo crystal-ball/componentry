@@ -1,6 +1,7 @@
 import React, { Component, Fragment } from 'react'
 import { Card } from 'componentry'
 
+import ClickToCopy from 'components/universal/ClickToCopy'
 import PrismHighlighter from 'components/universal/PrismHighlighter'
 import FormField from './FormField'
 
@@ -19,6 +20,9 @@ export default class InteractiveDemo extends Component<Props> {
     formFields: [],
   }
 
+  // Hooks
+  // ---------------------------------------------------------------------------
+
   /**
    * Sets the passed demo defaults as the state that will be used
    */
@@ -27,9 +31,15 @@ export default class InteractiveDemo extends Component<Props> {
     this.state = props.defaults
   }
 
+  // Methods
+  // ---------------------------------------------------------------------------
+
   changeHandler = newState => {
     this.setState(newState)
   }
+
+  // Render
+  // ---------------------------------------------------------------------------
 
   render() {
     const { formFields, renderCode, renderComponent } = this.props
@@ -63,14 +73,23 @@ export default class InteractiveDemo extends Component<Props> {
               </form>
             </div>
           )}
-          <div className={`col-${fieldsLen ? '8' : '12'} d-flex flex-column`}>
+          <div
+            className={`col-${
+              fieldsLen ? '8' : '12'
+            } d-flex flex-column rendered-container`}
+          >
             <h4 className="border-bottom border-dark">Rendered</h4>
             <div className="d-flex justify-content-center align-items-center h-100">
               {demoComponent}
             </div>
           </div>
           <div className="col-12 mt-4">
-            <PrismHighlighter language="jsx">{codeHighlight}</PrismHighlighter>
+            <div className="code-container">
+              <div className="copy-container">
+                <ClickToCopy copyText={codeHighlight} className="h3 text-light" />
+              </div>
+              <PrismHighlighter language="jsx">{codeHighlight}</PrismHighlighter>
+            </div>
           </div>
         </Card.Body>
       </Card>

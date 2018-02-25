@@ -1,9 +1,7 @@
-<p className="lead">
-  These APIs are avilable for customizing Componentry components. The APIs are
-  consistent across components for predictability.
-</p>
+These APIs are avilable for customizing Componentry components. The APIs are
+consistent across components for predictability.
 
-#### Specifying render element with `as`
+## Specifying render element with `as`
 
 All Componentry elements accept the `as` prop to specify a custom render
 element. It's possible to pass a component or html tag. Internally this prop is
@@ -18,7 +16,7 @@ passed to the component `createElement` call.
 </Card>
 ```
 
-#### Specify theme color with `color`
+## Specify theme color with `color`
 
 Any component that is themeable uses the `color` prop to set the theme color.
 
@@ -26,7 +24,7 @@ Any component that is themeable uses the `color` prop to set the theme color.
 <Alert color="info">This alert will be use the info theme color.</Alert>
 ```
 
-#### Specifying content alignment with `direction`
+## Specifying content alignment with `direction`
 
 Active components that support aligning content in different directions use the
 `direction` prop to include classes that set the content position.
@@ -44,7 +42,7 @@ Active components that support aligning content in different directions use the
 />
 ```
 
-#### `<Trigger />` and `<Content />` subcomponents
+## `<Trigger />` and `<Content />` subcomponents
 
 All components with active state use Trigger and Content subcomponents.
 

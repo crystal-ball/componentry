@@ -1,4 +1,5 @@
 /* demo/components/universal/PropsDocs/props-docs */
+@import 'theme';
 
 :local(.component) {
   margin-top: 100px;
@@ -7,6 +8,12 @@
   // reduce jump when changing from a long tab to a short tab
   .tab-content {
     min-height: 500px;
+  }
+
+  // Create a sort of inverse pill nav for active highlighting
+  .nav-link.active {
+    border: 1px solid $primary;
+    color: $primary;
   }
 
   tbody {

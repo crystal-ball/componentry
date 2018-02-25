@@ -20,6 +20,7 @@ import ConceptsScreen from '../ConceptsScreen'
 import FourOhFourScreen from '../FourOhFourScreen'
 import GettingStartedScreen from '../GettingStartedScreen'
 import HomeScreen from '../HomeScreen'
+import JetpackScreen from '../JetpackScreen'
 
 // ========================================================
 // Componentry Theme Customization
@@ -78,6 +79,7 @@ export default class App extends Component<{}> {
               <Route path="/" exact component={HomeScreen} />
               <Route path="/getting-started" component={GettingStartedScreen} />
               <Route path="/concepts/:concept?" component={ConceptsScreen} />
+              <Route path="/jetpack-collection" component={JetpackScreen} />
               <Route path="/components/:component?" component={ComponentsScreen} />
               <Route component={FourOhFourScreen} />
             </Switch>

@@ -1,8 +1,6 @@
-<p className="lead">
-  We believe that creating fully accessible content is not just a compliance
-  checkbox. Accessibility is a core goal that Componentry aims to fulfill with
-  A++, 💯 level support.
-</p>
+We believe that creating fully accessible content is not just a compliance
+checkbox. Accessibility is a core goal that Componentry aims to fulfill with
+A++, 💯 level support.
 
 Componentry components are fully accessible out of the box. The library handles
 coordinating [WAI-ARIA][] accessibility attributes within components, but
@@ -17,7 +15,7 @@ knowledge for creating accessible content.
   {' '}letting us know, or better yet submit a pull request 🎉
 </Alert>
 
-#### Use the `<Button />` component
+## Use the `<Button />` component
 
 When creating interactable elements, using the correct HTML element provides
 better default accessibility attributes. The `<Button />` component can be
@@ -32,7 +30,7 @@ default, such as keyboard operation.
 </Button>
 ```
 
-#### Visibility utilities
+## Visibility utilities
 
 Content which should be visually hidden, but remain accessible to assistive
 technologies such as screen readers, can be styled using the `.sr-only` class.
@@ -75,14 +73,14 @@ the `presentation` role can be used.
 </span>
 ```
 
-#### Color contrast
+## Color contrast
 
 Sufficient color contrast is important to provide enough contrast between text
 and its background so that it can be read by people with moderately low vision.
 A [contrast ratio checker][contrast] can be used to verify your theme colors
 have enough contrast.
 
-#### Additional resources
+### Additional resources
 
 * [`eslint-plugin-jsx-a11y`][eslint]
 * [Contrast ratio checker][contrast]

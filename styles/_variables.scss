@@ -4,18 +4,13 @@
 
 // ⚠️ These variables should be overrideable, so they should all use !default
 
-// This bottom adjustment is added to every font icon to account for svg vs font
-// baseline differences
-$icon-bottom: -0.125em !default;
+// This margin-bottom adjustment is added to every font icon to account for svg vs
+// font baseline differences
+$icon-bottom: -0.14em !default;
 
 // When true this will include background-image rules for the close and chevron
 // icons, if you have an SVG system set-up this should be false to use real SVGs
 $include-icons: true !default;
-
-// Componentry comes with some useful enhancements by default, but they can be
-// suppressed with these variables
-$drawer-enhancements: true !default;
-$dropdown-enhancements: true !default;
 
 // Dropdown enhancements for dropdown link triggers
 $dropdown-trigger-border-color: $link-color !default;

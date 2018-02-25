@@ -4,32 +4,40 @@ import { Link } from 'react-router-dom'
 
 import ComponentsNav from '../ComponentsNav'
 
+import { component } from './app-nav.scss'
+
+const appRoutes = [
+  { name: 'Home', to: '/' },
+  { name: 'Get Started', to: '/getting-started' },
+  { name: 'Concepts', to: '/concepts' },
+]
+
 /**
  * App navigation is shown on pages that are not home or component guides.
  */
 export default () => (
-  <header className="bg-primary p-4 mb-5 d-flex justify-content-between">
+  <header
+    className={`${component} bg-gray-100 p-4 mb-5 d-flex justify-content-between`}
+  >
     {/* Group level routes */}
     <div className="d-flex">
-      {[
-        { name: 'Home', to: '/' },
-        { name: 'Get Started', to: '/getting-started' },
-        { name: 'Concepts', to: '/concepts' },
-      ].map(route => (
+      {appRoutes.map(route => (
         <div className="pr-3 d-flex align-items-center" key={route.name}>
-          <Link to={route.to} className="text-light">
+          <Link to={route.to} className="text-primary">
             {route.name}
           </Link>
         </div>
       ))}
     </div>
 
-    {/* Component dropdown navigation */}
     <div className="d-flex align-items-center">
-      <ComponentsNav color="light" />
+      {/* Component dropdown navigation */}
+      <ComponentsNav />
+
+      {/* Github link */}
       <div className="pl-3">
         <a
-          className="text-light h2"
+          className="text-primary h2"
           href="https://github.com/crystal-ball/componentry"
         >
           <svg

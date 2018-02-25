@@ -1,0 +1,13 @@
+/* demo/components/universal/app-nav */
+@import 'theme';
+
+:local(.component) {
+  border-bottom: 5px solid $primary;
+
+  // The app nav has a gray-100 background with primary text, it's the simplest to
+  // override those styles specifically within this component
+  .dropdown-toggle {
+    background-color: $gray-100;
+    color: $primary;
+  }
+}

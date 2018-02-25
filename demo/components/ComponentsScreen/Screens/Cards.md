@@ -22,11 +22,32 @@ and powerful display options.
       <Card.Header>Card Header</Card.Header>
       <Card.Body>
         <Card.Title>Card title</Card.Title>
-        <p className="card-text">Card Body Content.</p>
+        <p className="card-text">Example of card body content.</p>
+        <p className="card-text">
+          Using the <code>card-text</code> class with card content will set the
+          bottom margin of the last child to zero for consistent whitespace.
+        </p>
+        <a href="#" className="card-link">Card link</a>
+        <a href="#" className="card-link">Another link</a>
       </Card.Body>
       <Card.Footer>2 days ago</Card.Footer>
     </Card>
   )}
+/>
+
+<SupportingInfo
+  classes={[
+    'card-text',
+    'card-subtitle',
+    'card-link',
+    'card-img-top',
+    'card-img-bottom',
+    'card-img-overlay',
+    'card-header-tabs',
+    'card-group',
+    'card-deck',
+    'card-columns'
+  ]}
 />
 
 <PropsTabs />

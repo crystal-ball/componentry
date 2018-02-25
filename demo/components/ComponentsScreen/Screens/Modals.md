@@ -83,6 +83,11 @@ modal.
   )}
 />
 
+<SupportingInfo
+  classes={['modal-dialog-centered', ]}
+  apis={['Active component', 'Sized component']}
+/>
+
 <Alert color="info">
   <h4 className="alert-heading">ℹ️ Active usage</h4>
   <div>

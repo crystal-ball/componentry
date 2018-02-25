@@ -28,4 +28,6 @@ Theme customization guide</Link> for details.
   )}
 />
 
+<SupportingInfo apis={['Active component']} />
+
 <PropsTabs activeComponent />

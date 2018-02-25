@@ -65,6 +65,8 @@ showing detailed user hints on hover.
   )}
 />
 
+<SupportingInfo apis={['Active component', 'Directional component']} />
+
 <Alert color="info">
   ℹ️ The Popover component defaults <code>direction</code> to
   <code>"right"</code>, so the <code>direction</code> prop is only required to

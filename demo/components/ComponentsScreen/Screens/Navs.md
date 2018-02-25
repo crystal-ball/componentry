@@ -52,4 +52,6 @@ but the tags used can be specified using the `as` prop.
   )}
 />
 
+<SupportingInfo apis={['Items component']} />
+
 <PropsTabs componentProps={componentProps} />

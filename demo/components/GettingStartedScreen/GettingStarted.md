@@ -24,8 +24,3 @@ typical import will look like this:
 // and enhances Bootstrap
 @import '~componentry/dist/componentry';
 ```
-
-## Next Steps
-
-* <Link to="/concepts">Concepts</Link> include guides on usage
-* <Link to="/components">Components</Link> document component APIs

@@ -1,7 +1,6 @@
 /* componentry/styles/icons */
 
-// ℹ️ The icon class can be used with SVGs to create font icons
-.icon {
+.componentry-icon {
   display: inline-flex;
   fill: currentColor;
   height: 1em;
@@ -11,17 +10,7 @@
   // SVG icons displayed with inline flex do not have the same baseline as fonts,
   // the bottom adjustment aligns the svg baseline with the font baseline
   &.font {
-    bottom: $icon-bottom;
-  }
-}
-
-// Animate close icon on hover
-.icon.close {
-  opacity: 0.6;
-  transition: $transition-fade;
-
-  @include hover-focus {
-    opacity: 1;
+    margin-bottom: $icon-bottom;
   }
 }
 
@@ -30,6 +19,8 @@
 // icon system and set $include-icons to false to use real SVGs for icons.
 @if $include-icons {
   .icon.close {
+    @extend .componentry-icon;
+
     background-image: str-replace(
       url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='#{$body-color}' viewBox='0 0 32 32'%3E%3Cpath d='M32,3.22,19.22,16,32,28.78,28.78,32,16,19.22,3.22,32,0,28.78,12.78,16,0,3.22,3.22,0,16,12.78,28.78,0Z'/%3E%3C/svg%3E"),
       '#',
@@ -38,6 +29,8 @@
   }
 
   .icon.chevron {
+    @extend .componentry-icon;
+
     background-image: str-replace(
       url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='#{$link-color}' viewBox='0 0 32 32'%3E%3Cpath d='M6.71,8.51,16,17.8l9.29-9.29,2.84,2.84L16,23.49,3.86,11.35Z'/%3E%3C/svg%3E"),
       '#',

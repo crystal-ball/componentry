@@ -52,19 +52,20 @@ class Modal extends Component<Props> {
   // ---------------------------------------------------------------------------
 
   /**
-   * Handle adding/removing the `modal-open` class to the body when the modal is
-   * opening and closing. This allows long modals to scroll within the `.modal`
-   * container.
-   *
-   * 🤔 This could move to the activate/deactivate hooks inside one  of the active
-   * component factories which would allow us to more explicitly know when the modal
-   * is opening/closing but also makes it less apparent where that change is coming
-   * from...
+   * Disable scrolling on the body when the modal is open to allow long modals to
+   * scroll within the `.modal` container.
    */
   componentWillReceiveProps(nextProps) {
     const { active } = this.props
-    if (!active && nextProps.active) document.body.classList.add('modal-open')
-    if (active && !nextProps.active) document.body.classList.remove('modal-open')
+    if (!active && nextProps.active) document.body.classList.add('no-scroll')
+    if (active && !nextProps.active) document.body.classList.remove('no-scroll')
+  }
+
+  /**
+   * Remove body scroll disabler in case modal is unmounted without closing
+   */
+  componentWillUnmount() {
+    document.body.classList.remove('no-scroll')
   }
 
   // Methods

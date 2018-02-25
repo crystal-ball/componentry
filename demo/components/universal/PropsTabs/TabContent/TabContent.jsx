@@ -10,7 +10,7 @@ type Props = {
 
 const renderPropRef = (name, activeId) => (
   <tr key={name}>
-    <td className="text-info">{name}</td>
+    <td className="text-primary">{name}</td>
     <td colSpan="3">
       <Active.Trigger activeId={activeId} link>
         <Icon id="share" /> {activeId} props
@@ -41,7 +41,7 @@ export default ({ contentProps }: Props) => (
 
         return (
           <tr key={name}>
-            <td className="text-info">{name}</td>
+            <td className="text-primary">{name}</td>
             <td>
               <code>{Array.isArray(type) ? 'Enum' : type}</code>
             </td>

@@ -23,6 +23,7 @@ const ListGroup = elementFactory({
 
 const ListGroupItem = itemFactory({
   name: 'ListGroupItem',
+  colorBase: 'list-group-item',
   defaultClasses: 'list-group-item',
   triggerClass: 'list-group-item-action',
 })

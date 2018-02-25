@@ -42,6 +42,16 @@ enable easy navigation between multiple options.
   )}
 />
 
+<SupportingInfo
+  classes={[
+    'dropdown-toggle-split',
+    'dropdown-menu-right',
+    'dropdown-header',
+    'dropdown-divider'
+  ]}
+  apis={['Active component', 'Items component', 'Directional component']}
+/>
+
 <Alert color="info">
   ℹ️ The Dropdown component defaults <code>direction</code> to
   <code>"bottom"</code>, so the <code>direction</code> prop is only required to

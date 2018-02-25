@@ -1,5 +1,6 @@
 ---
 componentProps:
+  - color: true
   - name: active
     description: Designates a list item as active, adding class active.
     type: boolean
@@ -10,8 +11,9 @@ componentProps:
 
 Flexible display capabilities for series of content.
 
-The ListGroup will automatically render a `ul` and child `li` tags for lists of elements without
-user interactions. Including a `href` or `onClick` wil return a `div` with appropriate `a` or `Button` components for list items.
+The ListGroup will automatically render a `ul` and child `li` tags for lists of
+elements without user interactions. Including a `href` or `onClick` wil return a
+`div` with appropriate `a` or `Button` components for list items.
 
 <InteractiveDemo
   renderCode={() => `<ListGroup>
@@ -22,12 +24,17 @@ user interactions. Including a `href` or `onClick` wil return a `div` with appro
   renderComponent={() => (
     <div className="w-50">
       <ListGroup>
-        <ListGroup.Item>Item One</ListGroup.Item>
+        <ListGroup.Item color="info">Item One</ListGroup.Item>
         <ListGroup.Item active>Item Two</ListGroup.Item>
         <ListGroup.Item>Item Three</ListGroup.Item>
       </ListGroup>
     </div>
   )}
+/>
+
+<SupportingInfo
+  classes={['list-group-flush', ]}
+  apis={['Items component', 'Theme colors']}
 />
 
 <Alert color="info">

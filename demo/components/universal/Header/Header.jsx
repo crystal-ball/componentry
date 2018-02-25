@@ -12,7 +12,7 @@ export default ({ title, className = '' }: Props) => {
   const pageTitle = title.charAt(0).toUpperCase() + title.slice(1)
 
   return (
-    <div className={classNames('border-bottom', 'border-secondary', className)}>
+    <div className={classNames('border-bottom', 'border-light', className)}>
       <DocumentTitle title={`${pageTitle} · Componentry`} />
       <h1 className="display-3">{pageTitle}</h1>
     </div>

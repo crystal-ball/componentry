@@ -17,12 +17,12 @@ componentProps:
 ---
 <ComponentsList components={['Alert']} />
 
-Provide contextual feedback messages for typical user actions using theme
-colors.
+Provide contextual feedback messages for user actions using theme colors.
 
-Alerts can contain any HTML elements, and the `alert-heading` and `alert-link`
-classes can be used with headings or links to provide themed elements. Alerts
-can be dismissible or static.
+Alerts can contain any HTML elements, and can be dismissible or static. A
+dismissible Alert requires Componentry Active `active` and `deactivate` props,
+which can be passed directly or the Alert can be nested inside of an Active
+component to automatically create an uncontrolled Alert.
 
 <InteractiveDemo
   defaults={{ color: 'success', dismissible: true }}
@@ -34,13 +34,13 @@ can be dismissible or static.
     `<Active defaultActive>
   <Alert color="${color}" dismissible>
     <h4 className="alert-heading">Well done!</h4>
-    You successfully read this important alert message.
+    <p className="mb-0">You successfully read this important alert message.</p>
   </Alert>
 </Active>`
   ) : (
     `<Alert color="${color}">
   <h4 className="alert-heading">Well done!</h4>
-  You successfully read this important alertmessage.
+  <p className="mb-0">You successfully read this important alert message.</p>
 </Alert>`
   )}
   renderComponent={({ color, dismissible }) => (
@@ -48,42 +48,28 @@ can be dismissible or static.
       <Active defaultActive>
         <Alert color={color} dismissible={dismissible}>
           <h4 className="alert-heading">Well done!</h4>
-          You successfully read this important alert message.
+          <p className="mb-0">You successfully read this important alert message.</p>
         </Alert>
       </Active>
     </div>
   )}
 />
 
-<Alert color="info">
-  Dismissible Alerts require library active props. The component is wrapped
-  using <code>withActive</code> so disimissible Alerts can either be a child
-  of a <code>{`<State />`}</code> component or props <code>active</code>{' '}
-  and <code>deactivate</code> can be passed.
+<SupportingInfo
+  classes={['alert-link','alert-heading']}
+  apis={['Active component', 'Theme colors']}
+/>
+
+<Alert color="info" className="mt">
+  The Alerts in this documentation use the enhanced alert styles from the
+  Jetpack styles collection. They can also
+  be imported directly from <code>~componentry/styles/jetpack/alert</code>.
 </Alert>
 
-#### <Icon id="stars" /> A++ Accessibility
+### <Icon id="stars" /> A++ Accessibility
 
-By default alerts include a screen readers only message that signals the type of
-alert to provide the context implied by the alert color. This context can by
-overridden by passing a custom `ariaTitle` prop.
-
-#### Componentry alert styles
-
-Alerts in this documentation have additional styles added for a cleaner, sharper
-look. Add this SCSS to your project for these alerts:
-
-```scss
-.alert {
-  background-color: transparent;
-  border-color: $border-color;
-}
-
-@each $color, $value in $theme-colors {
-  .alert-#{$color} {
-    border-left: 5px solid $value;
-  }
-}
-```
+Alert components include a screen reader only message to announce the the type
+of alert based on the theme color to provide the context created by the Alert
+color. This context can be customized using the `ariaTitle` prop.
 
 <PropsTabs componentProps={componentProps} themeColors />

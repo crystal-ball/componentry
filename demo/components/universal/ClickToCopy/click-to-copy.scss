@@ -1,0 +1,36 @@
+/* demo/components/universal/click-to-copy */
+
+:local(.component) {
+  line-height: 1;
+
+  &:hover,
+  &:focus {
+    text-decoration: none;
+  }
+
+  // The copied icon needs to position off of this container
+  .icons {
+    display: inline-block;
+    position: relative;
+    opacity: 0.25;
+    transition: opacity 0.5s;
+  }
+
+  &:hover {
+    .icons {
+      opacity: 1;
+    }
+  }
+
+  .copied {
+    position: absolute;
+    top: 0;
+    left: 0;
+    opacity: 0;
+    transition: opacity 0.35s;
+
+    &.active {
+      opacity: 1;
+    }
+  }
+}

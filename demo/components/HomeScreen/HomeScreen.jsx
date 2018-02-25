@@ -15,9 +15,9 @@ export default () => (
   <div className={component}>
     <div className="hero display-1 d-flex flex-column align-items-center">
       <div>
-        <span className="logo bootstrap-logo">B</span>
-        <span className="ml-3 mr-2 text-muted">+</span>
         <img className="logo react-logo" src={reactLogo} alt="React" />
+        <span className="ml-2 mr-3">+</span>
+        <span className="logo bootstrap-logo">B</span>
       </div>
       <h2 className="my-5 text-center w-75">
         Lightweight, simple and accessible components built with React and Bootstrap
@@ -48,7 +48,7 @@ export default () => (
             <div className="media-body">
               <p>
                 Componentry is optimized for size and performance. With no external
-                dependencies the library weighs in at 10kB. Advanced optimizations
+                dependencies the library weighs in at 12.1kB. Advanced optimizations
                 are possible using targeted ESM and ESNext build targets.
               </p>
             </div>

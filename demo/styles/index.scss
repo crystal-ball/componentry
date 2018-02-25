@@ -22,6 +22,8 @@
 // any Boostrap variables you don't declare in your theme will still be
 // available from the Bootstrap variables.
 @import '../../styles/componentry';
+// Include the optional jetpack for turbo-charging our application styles
+@import '../../styles/jetpack';
 
 // 4️⃣ Application styles
 
