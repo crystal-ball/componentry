@@ -1,6 +1,6 @@
 import React from 'react'
+import { Icon } from 'componentry'
 
-import Icon from 'components/universal/Icon'
 import ClickToCopy from 'components/universal/ClickToCopy'
 
 type Props = {

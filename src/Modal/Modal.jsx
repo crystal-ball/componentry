@@ -12,29 +12,19 @@ import elementFactory from '../component-factories/element-factory'
 /* eslint-disable react/no-unused-prop-types */
 type Props = {
   active: boolean,
-  ariaTitle?: string,
   children?: Node,
   deactivate?: Function,
   size?: 'small' | 'large',
   visible?: boolean,
 }
 
-/**
- * TODO:
- * - Close button auto-wiring of aria-label=close && deactivate
- * - Auto focus on open
- * - Docs on passing flex align-items-center/start to header for close icon alignment
- * - Add close button when `ariaTitle is used
- *
- * ## Notes:
- * See MDN [Using the dialog role](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/ARIA_Techniques/Using_the_dialog_role)
- */
 class Modal extends Component<Props> {
   static Header = elementFactory({ classes: 'modal-header', name: 'ModalHeader' })
   static Body = elementFactory({ classes: 'modal-body', name: 'ModalBody' })
   static Footer = elementFactory({ classes: 'modal-footer', name: 'ModalFooter' })
   static Title = Title
 
+  static displayName = 'Modal'
   static contextTypes = { THEME: shape({ Alert: object }) }
 
   // Set modal guid on context for Title
@@ -93,7 +83,7 @@ class Modal extends Component<Props> {
   render() {
     const THEME = this.context.THEME || {}
     const componentCtx = THEME.Modal || {}
-    const { active, ariaTitle, children, size, visible }: Props = {
+    const { active, children, size, visible }: Props = {
       ...componentCtx,
       ...this.props,
     }
@@ -122,16 +112,7 @@ class Modal extends Component<Props> {
             })}
             role="document"
           >
-            <div className="modal-content">
-              {/* A++ Accessibility title for modals without visual title */}
-              {ariaTitle && (
-                <div id={this.guid} className="sr-only">
-                  {ariaTitle}
-                  {/* TODO: Include close button for aria title modals */}
-                </div>
-              )}
-              {children}
-            </div>
+            <div className="modal-content">{children}</div>
           </div>
         </div>
         <div
@@ -143,6 +124,5 @@ class Modal extends Component<Props> {
     )
   }
 }
-Modal.displayName = 'Modal'
 
 export default withActive({ transitionState: true })(Modal)

@@ -65,6 +65,7 @@ type Context = { [string]: { [string]: any } }
  * @returns {Component} React functional stateless component with base classes.
  */
 export default ({
+  children: optionsChildren,
   classes,
   clean,
   computedClassName,
@@ -87,12 +88,12 @@ export default ({
       as || (computedTag ? computedTag(props) : tag || 'div'),
       {
         className: computedClassName
-          ? computedClassName(componentCtx.className, props.className, rest)
-          : classNames(classes, className),
+          ? computedClassName(componentCtx.className, className, rest)
+          : classNames(classes, componentCtx.className, className),
         ...optionsRest,
         ...spread,
       },
-      children,
+      children || optionsChildren,
     )
   }
 

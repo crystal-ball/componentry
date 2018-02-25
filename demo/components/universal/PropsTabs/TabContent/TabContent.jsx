@@ -1,7 +1,6 @@
 import React, { Fragment } from 'react'
-import { Active } from 'componentry'
+import { Active, Icon } from 'componentry'
 
-import Icon from 'components/universal/Icon'
 import { component } from './tab-content.scss'
 
 type Props = {

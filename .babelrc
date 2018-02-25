@@ -36,7 +36,6 @@
         "react"
       ],
       "plugins": [
-        "syntax-dynamic-import", // Magic imports
         "transform-class-properties",
         "transform-object-rest-spread",
         "transform-react-remove-prop-types", // Strip propTypes declarations

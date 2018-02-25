@@ -3,7 +3,7 @@ import React, { createElement } from 'react'
 import { object, shape } from 'prop-types'
 import classNames from 'classnames'
 
-import Button from '../Button/Button'
+import Close from '../Close/Close'
 import withActive from '../withActive/withActive'
 
 import type { ThemeColors } from '../utils/theme'
@@ -61,7 +61,7 @@ const Alert = (props: Props, { THEME = {} }: Context) => {
     as || 'div',
     {
       role: 'alert',
-      className: classNames('alert', 'fade', className, {
+      className: classNames('alert', 'fade', componentCtx.className, className, {
         [`alert-${color}`]: color,
         show: visible,
       }),
@@ -74,13 +74,7 @@ const Alert = (props: Props, { THEME = {} }: Context) => {
     // Alert contents:
     <div className="alert-content">{children}</div>,
     // Render a close button or null depending on configs
-    dismissible && (
-      <Button link onClick={deactivate} className={`text-${color}`}>
-        <svg className="icon close font" role="img" aria-label="close">
-          <use href="#close" />
-        </svg>
-      </Button>
-    ),
+    dismissible && <Close onClick={deactivate} className={`text-${color}`} />,
   )
 }
 

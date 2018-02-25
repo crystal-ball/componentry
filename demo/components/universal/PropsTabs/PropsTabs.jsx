@@ -1,7 +1,6 @@
 import React from 'react'
-import { Nav, Tab } from 'componentry'
+import { Icon, Nav, Tab } from 'componentry'
 
-import Icon from 'components/universal/Icon'
 import TabContent from './TabContent'
 import { activeProps, componentryProps } from './props-content'
 import { component } from './props-tabs.scss'

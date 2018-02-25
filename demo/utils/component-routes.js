@@ -8,8 +8,10 @@ export default {
   alerts: { pathname: '/components/alerts', state: { name: 'Alerts' } },
   buttons: { pathname: '/components/buttons', state: { name: 'Buttons' } },
   cards: { pathname: '/components/cards', state: { name: 'Cards' } },
+  close: { pathname: '/components/close', state: { name: 'Close' } },
   drawers: { pathname: '/components/drawers', state: { name: 'Drawers' } },
   dropdowns: { pathname: '/components/dropdowns', state: { name: 'Dropdowns' } },
+  icons: { pathname: '/components/icons', state: { name: 'Icons' } },
   listGroups: {
     pathname: '/components/list-groups',
     state: { name: 'List Groups' },

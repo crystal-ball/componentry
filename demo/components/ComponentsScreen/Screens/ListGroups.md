@@ -24,7 +24,7 @@ elements without user interactions. Including a `href` or `onClick` wil return a
   renderComponent={() => (
     <div className="w-50">
       <ListGroup>
-        <ListGroup.Item color="info">Item One</ListGroup.Item>
+        <ListGroup.Item>Item One</ListGroup.Item>
         <ListGroup.Item active>Item Two</ListGroup.Item>
         <ListGroup.Item>Item Three</ListGroup.Item>
       </ListGroup>

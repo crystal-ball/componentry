@@ -305,6 +305,7 @@ export default ({
         // $FlowFixMe
         as,
         children,
+        className,
         direction,
         // YOU SHALL NOT PASS 🙅
         active,
@@ -315,7 +316,6 @@ export default ({
         onActivated,
         onDeactivate,
         onDeactivated,
-        className,
         ...rest
       }: Props = { ...componentCtx, ...this.props }
 
@@ -340,7 +340,7 @@ export default ({
             classNames(
               element,
               componentCtx.className,
-              this.props.className,
+              className,
               direction || defaultDirection,
             ) || undefined,
           // For elements with mouse events we need to know when the mouse event

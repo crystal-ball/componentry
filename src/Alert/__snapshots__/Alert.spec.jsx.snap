@@ -17,7 +17,7 @@ exports[`<Alert /> snapshots renders correctly 1`] = `
     Warning!
   </div>
   <button
-    className="text-danger btn btn-anchor"
+    className="btn-close text-danger"
     onClick={[MockFunction]}
     type="button"
   >

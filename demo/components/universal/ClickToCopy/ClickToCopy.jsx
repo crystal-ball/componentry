@@ -1,10 +1,9 @@
 import React, { Component } from 'react'
 import { func, string } from 'prop-types'
-import { Button } from 'componentry'
+import { Button, Icon } from 'componentry'
 import classNames from 'classnames'
 
 import copyToClipboard from 'utils/copy-to-clipboard'
-import Icon from 'components/universal/Icon'
 
 import { component } from './click-to-copy.scss'
 

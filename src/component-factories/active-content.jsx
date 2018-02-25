@@ -54,10 +54,10 @@ export default ({
       // $FlowFixMe
       as,
       children,
+      className,
       guid,
       activeId = '',
       // YOU SHALL NOT PASS 🙅
-      className,
       activate,
       deactivate,
       ...rest
@@ -86,7 +86,7 @@ export default ({
             : {}),
         }),
         className:
-          classNames(classes, componentCtx.className, props.className, {
+          classNames(classes, componentCtx.className, className, {
             [`${element}-content`]: element,
           }) || undefined,
         ...rest,

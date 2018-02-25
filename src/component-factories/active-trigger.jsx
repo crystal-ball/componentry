@@ -58,12 +58,11 @@ export default ({
       active,
       as,
       children,
+      className,
       deactivate,
       guid,
       link,
       activeId = '',
-      // YOU SHALL NOT PASS 🙅
-      className,
       ...rest
     }: Props = { ...componentCtx, ...props }
 
@@ -98,7 +97,7 @@ export default ({
           ...componentArias,
           ...activeIdArias,
         }),
-        className: classNames(classes, componentCtx.className, props.className, {
+        className: classNames(classes, componentCtx.className, className, {
           // For mutli-active triggers add active if the trigger is selected
           active: activeId && active === activeId,
           [`${element}-toggle`]: element,

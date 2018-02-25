@@ -3,7 +3,7 @@
 'use strict' // eslint-disable-line
 const { resolve } = require('path')
 const { optimize } = require('webpack')
-const MinifyPlugin = require('babel-minify-webpack-plugin')
+const UglifyJsPlugin = require('uglifyjs-webpack-plugin')
 
 /**
  * Webpack configs for generating a UMD distributable of library.
@@ -25,5 +25,5 @@ module.exports = {
     rules: [{ test: /\.jsx?$/, exclude: /node_modules/, loader: 'babel-loader' }],
   },
   // MINIFY AND CONCATENATE ALL THEM MODULES!!!
-  plugins: [new MinifyPlugin(), new optimize.ModuleConcatenationPlugin()],
+  plugins: [new UglifyJsPlugin(), new optimize.ModuleConcatenationPlugin()],
 }

@@ -1,10 +1,6 @@
 ---
 componentProps:
   - active: true
-  - name: ariaTitle
-    description: Provides a modal title for screen readers. An aria title should be provided for modals without headers or modals that use visual cues to create context.
-    type: string
-    defaultValue: "''"
   - deactivate: true
   - size: true
 ---
@@ -38,9 +34,7 @@ modal.
   <Modal${size ? ` size="${size}"` : ''}>
     <Modal.Header>
       <Modal.Title>Demo uncontrolled modal</Modal.Title>
-      <Active.Trigger link>
-        <Icon id="close" className="text-dark" aria-label="close" />
-      </Active.Trigger>
+      <Active.Trigger as={Close} />
     </Modal.Header>
     <Modal.Body>
       <p>
@@ -62,9 +56,7 @@ modal.
       <Modal size={size}>
         <Modal.Header>
           <Modal.Title>Demo uncontrolled modal</Modal.Title>
-          <Active.Trigger link>
-            <Icon id="close" className="text-dark" aria-label="close" />
-          </Active.Trigger>
+          <Active.Trigger as={Close} />
         </Modal.Header>
         <Modal.Body>
           <p>
@@ -98,11 +90,27 @@ modal.
   </div>
 </Alert>
 
-#### Close button alignment
+### <Icon id="stars" /> A++ Accessibility
 
-By default the modal header flex alignment is set to start to align the close
-button to the top of the header. Use class <code>.align-items-center</code> to
-align the close button to the vertical middle of the header.
+The Modal and Modal.Title components automatically set up the required aria
+attributes for screen readers to link the title content to the modal. For modals
+without a visual title, it is best practice to include a Modal.Title instance
+with a description of the modal and the class `sr-only`. This will provide the
+screen reader context for the modal without affecting layout.
 
+```jsx
+<Modal>
+  <Modal.Title className="sr-only">Confirm accessibility</Modal.Title>
+  <Modal.Body className="text-center">
+    <p>
+      Using the <code>sr-only</code> class with the Modal.Title<br/>
+      provides an accessible title for this header.
+    </p>
+  </Modal.Body>
+</Modal>
+```
 
 <PropsTabs componentProps={componentProps} activeComponent size />
+
+<!-- Magic Markdown doesn't know how to parse the {Close} as a component... -->
+<Close className="sr-only"/>

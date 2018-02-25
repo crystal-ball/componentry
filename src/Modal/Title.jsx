@@ -20,7 +20,7 @@ type Context = {
 /**
  * Modal title uses the modal guid as an id to refer to modal `labelledby`
  */
-const Title = (props: Props, { guid, THEME = { ModalTitle: {} } }: Context) => {
+const Title = (props: Props, { guid, THEME = {} }: Context) => {
   const componentCtx = THEME.ModalTitle || {}
   const { as, children, className, ...rest } = { ...componentCtx, ...props }
 
@@ -28,7 +28,7 @@ const Title = (props: Props, { guid, THEME = { ModalTitle: {} } }: Context) => {
     as || 'h4',
     {
       id: guid,
-      className: classNames('modal-title', className),
+      className: classNames('modal-title', componentCtx.className, className),
       ...rest,
     },
     children,

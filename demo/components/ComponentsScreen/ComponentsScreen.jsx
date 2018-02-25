@@ -11,8 +11,10 @@ import ActiveScreen from './Screens/Active.md'
 import AlertsScreen from './Screens/Alerts.md'
 import ButtonsScreen from './Screens/Buttons.md'
 import CardsScreen from './Screens/Cards.md'
+import CloseScreen from './Screens/Close.md'
 import DrawersScreen from './Screens/Drawers.md'
 import DropdownsScreen from './Screens/Dropdowns.md'
+import IconsScreen from './Screens/Icons.md'
 import ListGroupsScreen from './Screens/ListGroups.md'
 import ModalsScreen from './Screens/Modals.md'
 import NavsScreen from './Screens/Navs.md'
@@ -31,33 +33,38 @@ export default ({ location: { state } }: Props) => (
     <div className="guides">
       <Header title={state ? state.name : 'Components'} />
 
-      <Route path="/components/active" component={ActiveScreen} />
+      <Route path={componentRoutes.active.pathname} component={ActiveScreen} />
       <Route
-        path="/components/alerts"
+        path={componentRoutes.alerts.pathname}
         render={() => <AlertsScreen colors={colors} />}
       />
       <Route
-        path="/components/buttons"
+        path={componentRoutes.buttons.pathname}
         render={() => <ButtonsScreen colors={colors} sizes={sizes} />}
       />
-      <Route path="/components/cards" component={CardsScreen} />
-      <Route path="/components/drawers" component={DrawersScreen} />
+      <Route path={componentRoutes.cards.pathname} component={CardsScreen} />
+      <Route path={componentRoutes.close.pathname} component={CloseScreen} />
+      <Route path={componentRoutes.drawers.pathname} component={DrawersScreen} />
       <Route
-        path="/components/dropdowns"
+        path={componentRoutes.dropdowns.pathname}
         render={() => <DropdownsScreen directions={directions} />}
       />
-      <Route path="/components/list-groups" component={ListGroupsScreen} />
+      <Route path={componentRoutes.icons.pathname} component={IconsScreen} />
       <Route
-        path="/components/modals"
+        path={componentRoutes.listGroups.pathname}
+        component={ListGroupsScreen}
+      />
+      <Route
+        path={componentRoutes.modals.pathname}
         render={() => <ModalsScreen sizes={sizes} />}
       />
-      <Route path="/components/navs" component={NavsScreen} />
+      <Route path={componentRoutes.navs.pathname} component={NavsScreen} />
       <Route
-        path="/components/popovers"
+        path={componentRoutes.popovers.pathname}
         render={() => <PopoversScreen directions={directions} />}
       />
-      <Route path="/components/tabs" component={TabsScreen} />
-      <Route path="/components/tooltips" component={TooltipsScreen} />
+      <Route path={componentRoutes.tabs.pathname} component={TabsScreen} />
+      <Route path={componentRoutes.tooltips.pathname} component={TooltipsScreen} />
     </div>
     <div>
       <GroupNav routesMap={componentRoutes} />
