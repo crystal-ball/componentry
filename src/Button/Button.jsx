@@ -1,9 +1,6 @@
 // @flow
-import classNames from 'classnames'
-
-import elementFactory from '../component-factories/element-factory'
+import elementFactory, { type ElementProps } from '../component-factories/element'
 import type { ThemeColors } from '../utils/theme'
-import type { ElementProps } from '../component-factories/element-factory'
 
 export type Props = {
   /** Theme color used to compute BS color class */
@@ -22,20 +19,13 @@ export type Props = {
  * about).
  * @param {boolean} decorated
  */
-const makeButton = decorated => {
-  const name = decorated ? 'Button' : 'BaseButton'
-
-  return elementFactory({
-    name,
-    clean: ['color', 'link', 'outline', 'size'],
-    tag: 'button',
-    type: 'button',
-    computedClassName: (
-      ctxClassName,
-      propsClassName,
-      { color, link, outline, size },
-    ) =>
-      classNames(ctxClassName, propsClassName, {
+const makeButton = decorated =>
+  elementFactory(
+    decorated ? 'Button' : 'BaseButton',
+    ({ color, link, outline, size, ...props }) => ({
+      tag: 'button',
+      type: 'button',
+      className: {
         btn: decorated,
         'btn-anchor': link,
         // btn-<COLOR> class is only for regular themed buttons, suppress for other
@@ -44,9 +34,10 @@ const makeButton = decorated => {
         [`btn-outline-${color}`]: outline,
         'btn-sm': size === 'small',
         'btn-lg': size === 'large',
-      }),
-  })
-}
+      },
+      ...props,
+    }),
+  )
 
 const Button = makeButton(true)
 const BaseButton = makeButton(false)

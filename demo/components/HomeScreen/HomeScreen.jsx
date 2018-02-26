@@ -48,7 +48,7 @@ export default () => (
             <div className="media-body">
               <p>
                 Componentry is optimized for size and performance. With no external
-                dependencies the library weighs in at 12.1kB. Advanced optimizations
+                dependencies the library weighs in at 12.8kB. Advanced optimizations
                 are possible using targeted ESM and ESNext build targets.
               </p>
             </div>

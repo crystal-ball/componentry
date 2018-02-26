@@ -10,7 +10,7 @@ exports[`<Drawer /> snapshots renders correctly 1`] = `
 >
   <button
     aria-describedby="guid"
-    className="tooltip-toggle btn"
+    className="btn tooltip-toggle"
     data-test="tooltip-trigger"
     onClick={[Function]}
     type="button"

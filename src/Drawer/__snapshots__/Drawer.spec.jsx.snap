@@ -11,7 +11,7 @@ exports[`<Drawer /> snapshots renders correctly 1`] = `
   <button
     aria-controls="guid"
     aria-expanded="false"
-    className="drawer-toggle btn"
+    className="btn drawer-toggle"
     data-test="drawer-trigger"
     onClick={[Function]}
     type="button"

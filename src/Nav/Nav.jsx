@@ -1,9 +1,6 @@
 // @flow
-import classNames from 'classnames'
-
-import elementFactory from '../component-factories/element-factory'
-import itemFactory from '../component-factories/item-factory'
-import type { ElementProps } from '../component-factories/element-factory'
+import { BaseButton } from '../Button/Button'
+import elementFactory, { type ElementProps } from '../component-factories/element'
 
 export type Props = {
   fill?: boolean,
@@ -12,37 +9,40 @@ export type Props = {
   vertical?: boolean,
 } & ElementProps
 
-const makeNav = tabNav => {
-  const options = {
-    name: tabNav ? 'TabNav' : 'Nav',
-    tag: 'nav',
-    computedClassName: (
-      ctxClassName,
-      propsClassName,
-      { fill, justify, pills, vertical },
-    ) =>
-      classNames('nav', ctxClassName, propsClassName, {
+const makeNav = tabNav =>
+  elementFactory(
+    tabNav ? 'TabNav' : 'Nav',
+    ({ fill, justify, pills, vertical, ...props }) => ({
+      tag: 'nav',
+      role: tabNav ? 'tablist' : undefined,
+      className: {
+        nav: true,
         'nav-tabs': tabNav,
         'flex-column': vertical,
         'nav-pills': pills,
         'nav-fill': fill,
         'nav-justified': justify,
-      }),
-    clean: ['fill', 'justify', 'pills', 'vertical'],
-  }
-
-  if (tabNav) options.role = 'tablist'
-
-  return elementFactory(options)
-}
+      },
+      ...props,
+    }),
+  )
 
 const Nav = makeNav(false)
 const TabNav = makeNav(true)
 
-const NavItem = itemFactory({
-  name: 'NavItem',
-  defaultClasses: 'nav-item',
-  triggerClass: 'nav-link',
+const NavItem = elementFactory('NavItem', ({ active, ...rest }) => {
+  const { href, onClick } = rest
+
+  return {
+    className: {
+      'nav-item': true,
+      active,
+      'nav-link': href || onClick,
+    },
+    /* eslint-disable no-nested-ternary */
+    tag: href || onClick ? (href ? 'a' : BaseButton) : 'li',
+    ...rest,
+  }
 })
 
 export { TabNav }

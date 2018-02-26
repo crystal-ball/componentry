@@ -1,9 +1,8 @@
 // @flow
 import { Children } from 'react'
 
-import elementFactory from '../component-factories/element-factory'
-import itemFactory from '../component-factories/item-factory'
-import type { ElementProps } from '../component-factories/element-factory'
+import { BaseButton } from '../Button/Button'
+import elementFactory, { type ElementProps } from '../component-factories/element'
 
 /**
  * 🤔 There are different wrappers for clickable vs non-clickable list groups. (this
@@ -12,21 +11,34 @@ import type { ElementProps } from '../component-factories/element-factory'
 
 export type Props = ElementProps
 
-const ListGroup = elementFactory({
-  name: 'ListGroup',
-  classes: 'list-group',
-  computedTag: props => {
-    const child = Children.toArray(props.children)[0]
-    return child && (child.props.href || child.props.onClick) ? 'div' : 'ul'
-  },
+const ListGroup = elementFactory('ListGroup', props => {
+  const child = Children.toArray(props.children)[0]
+
+  return {
+    className: 'list-group',
+    tag: child && (child.props.href || child.props.onClick) ? 'div' : 'ul',
+    ...props,
+  }
 })
 
-const ListGroupItem = itemFactory({
-  name: 'ListGroupItem',
-  colorBase: 'list-group-item',
-  defaultClasses: 'list-group-item',
-  triggerClass: 'list-group-item-action',
-})
+const ListGroupItem = elementFactory(
+  'ListGroupItem',
+  ({ active, color, ...rest }) => {
+    const { href, onClick } = rest
+
+    return {
+      className: {
+        'list-group-item': true,
+        active,
+        'list-group-item-action': href || onClick,
+        [`list-group-item-${color}`]: color,
+      },
+      /* eslint-disable no-nested-ternary */
+      tag: href || onClick ? (href ? 'a' : BaseButton) : 'li',
+      ...rest,
+    }
+  },
+)
 
 // $FlowFixMe
 ListGroup.Item = ListGroupItem

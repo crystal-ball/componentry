@@ -10,7 +10,7 @@ exports[`<Drawer /> snapshots renders correctly 1`] = `
 >
   <button
     aria-describedby="guid"
-    className="popover-toggle btn"
+    className="btn popover-toggle"
     data-test="popover-trigger"
     onClick={[Function]}
     type="button"

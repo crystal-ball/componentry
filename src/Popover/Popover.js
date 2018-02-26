@@ -3,7 +3,7 @@ import withActive from '../withActive/withActive'
 import activeContainer from '../component-factories/active-container'
 import activeContent from '../component-factories/active-content'
 import activeTrigger from '../component-factories/active-trigger'
-import elementFactory from '../component-factories/element-factory'
+import elementFactory from '../component-factories/element'
 
 const Content = activeContent({
   componentArias: { id: true, role: 'tooltip', hidden: true },
@@ -20,11 +20,10 @@ const Trigger = activeTrigger({
 })
 const withActiveTrigger = withActive()(Trigger)
 
-const PopoverBody = elementFactory({ classes: 'popover-body', name: 'PopoverBody' })
-const PopoverHeader = elementFactory({
-  classes: 'popover-header',
+const PopoverBody = elementFactory('PopoverBody', { className: 'popover-body' })
+const PopoverHeader = elementFactory('PopoverHeader', {
+  className: 'popover-header',
   tag: 'h3',
-  name: 'PopoverHeader',
 })
 
 const Popover = activeContainer({

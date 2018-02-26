@@ -11,7 +11,7 @@ exports[`<Drawer /> snapshots renders correctly 1`] = `
   <button
     aria-expanded="false"
     aria-haspopup="true"
-    className="dropdown-toggle btn"
+    className="btn dropdown-toggle"
     data-test="dropdown-trigger"
     id="guid"
     onClick={[Function]}

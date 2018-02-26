@@ -1,14 +1,10 @@
 // @flow
-import React, { createElement } from 'react'
-import { object, shape } from 'prop-types'
-import classNames from 'classnames'
+import React, { Fragment } from 'react'
 
 import Close from '../Close/Close'
-import withActive from '../withActive/withActive'
-
+import withActive, { type ActiveProps } from '../withActive/withActive'
+import elementFactory, { type ElementProps } from '../component-factories/element'
 import type { ThemeColors } from '../utils/theme'
-import type { ActiveProps } from '../withActive/withActive'
-import type { ElementProps } from '../component-factories/element-factory'
 
 type Props = {
   /**
@@ -32,8 +28,6 @@ type Props = {
 } & ActiveProps &
   ElementProps
 
-type Context = { [string]: { [string]: any } }
-
 /**
  * Alerts provide contextual feedback to users. Alerts are available in the info
  * theme colors success, info, warning and danger. They are not available in primary
@@ -41,54 +35,41 @@ type Context = { [string]: { [string]: any } }
  * context. For non alert information blocks a card with theme color primary or
  * secondary can be used.
  */
-const Alert = (props: Props, { THEME = {} }: Context) => {
-  const componentCtx = THEME.Alert || {}
-  const {
+const Alert = elementFactory(
+  'Alert',
+  ({
     ariaTitle,
-    activate, // prevent dom inclusion
-    active,
-    as,
+    active = true,
     children,
-    className,
     color,
-    dismissible,
+    dismissible = false,
     deactivate,
-    visible,
+    visible = true,
+    // 🙅‍♀️ You shall not pass!
+    activate,
     ...rest
-  } = { ...componentCtx, ...props }
-
-  return createElement(
-    as || 'div',
-    {
-      role: 'alert',
-      className: classNames('alert', 'fade', componentCtx.className, className, {
-        [`alert-${color}`]: color,
-        show: visible,
-      }),
-      // hidden state is updated after active opacity transition
-      'aria-hidden': active ? 'false' : 'true',
-      ...rest,
+  }: Props) => ({
+    role: 'alert',
+    className: {
+      alert: true,
+      fade: true,
+      [`alert-${color}`]: color,
+      show: visible,
     },
-    // Provide the alert color context for screen readers
-    <div className="sr-only">{ariaTitle || `${color} alert`}</div>,
-    // Alert contents:
-    <div className="alert-content">{children}</div>,
-    // Render a close button or null depending on configs
-    dismissible && <Close onClick={deactivate} className={`text-${color}`} />,
-  )
-}
-
-Alert.displayName = 'Alert'
-Alert.defaultProps = {
-  /* eslint-disable react/default-props-match-prop-types */
-  active: true,
-  visible: true,
-  dismissible: false,
-}
-Alert.contextTypes = { THEME: shape({ Alert: object }) }
-
-const withActiveAlert = withActive({ defaultActive: true, transitionState: true })(
-  Alert,
+    // hidden state is updated after active opacity transition
+    'aria-hidden': active ? 'false' : 'true',
+    children: (
+      <Fragment>
+        {/* Provide the alert color context for screen readers */}
+        <div className="sr-only">{ariaTitle || `${color} alert`}</div>
+        {/* Alert contents */}
+        <div className="alert-content">{children}</div>
+        {/* Render a close button or null depending on configs */}
+        {dismissible && <Close onClick={deactivate} className={`text-${color}`} />}
+      </Fragment>
+    ),
+    ...rest,
+  }),
 )
 
-export default withActiveAlert
+export default withActive({ defaultActive: true, transitionState: true })(Alert)

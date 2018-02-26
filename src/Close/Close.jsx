@@ -1,11 +1,10 @@
 import React from 'react'
 
 import { BaseButton } from '../Button/Button'
-import elementFactory from '../component-factories/element-factory'
+import elementFactory from '../component-factories/element'
 
-const Close = elementFactory({
-  name: 'Close',
-  classes: 'btn-close',
+export default elementFactory('Close', {
+  className: 'btn-close',
   tag: BaseButton,
   children: (
     <svg className="icon close font" role="img" aria-label="close">
@@ -13,5 +12,3 @@ const Close = elementFactory({
     </svg>
   ),
 })
-
-export default Close

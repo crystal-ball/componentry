@@ -3,7 +3,7 @@ import withActive from '../withActive/withActive'
 import activeContainer from '../component-factories/active-container'
 import activeContent from '../component-factories/active-content'
 import activeTrigger from '../component-factories/active-trigger'
-import elementFactory from '../component-factories/element-factory'
+import elementFactory from '../component-factories/element'
 
 import { TabNav } from '../Nav/Nav'
 
@@ -28,9 +28,8 @@ const Trigger = activeTrigger({
 })
 const withActiveTrigger = withActive()(Trigger)
 
-const ContentContainer = elementFactory({
-  classes: 'tab-content',
-  name: 'TabContentContainer',
+const ContentContainer = elementFactory('TabContentContainer', {
+  className: 'tab-content',
 })
 
 const Tab = activeContainer({
