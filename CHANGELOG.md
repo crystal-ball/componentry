@@ -8,13 +8,20 @@ and this project adheres to
 
 #### [Unreleased]
 
+## [2.0.0] - 2018-02-17
+
+### Componentry v2 🎉 🎉 🎉
+
+Componentry v2 is the first stable release of the library _(lesson learned: be
+cautious initializing packages at 1.0.0)_. Going forward any change to component
+APIs or classes or any change to the Bootstrap styles will follow semver and be
+considered breaking changes.
+
 ## Breaking Changes 💥
 
 * All non-essential styles have been moved to the Jetpack collection. This
   collection allows us to provide useful enhancements and utility classes in an
   opt-in fashion.
-
-### Changed
 
 ### Added
 
