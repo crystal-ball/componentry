@@ -20,14 +20,10 @@ export default (TestComponent, enzymeOptions = {}) => {
    * override the parent element the component renders
    */
   test('should render as specified html element or component', () => {
-    // TODO: b/c we're passing link=true for State Trigger components, this throws
-    // an error about passing a non-boolean value for attribute `link`
-    // const htmlWrapper = mount(<TestComponent as="section" />, enzymeOptions)
-    // expect(htmlWrapper.find('section').length).toBeTruthy()
-
+    // Create a component to validate that the TestComponent returns.
     const TestAs = () => <section />
-    const componentWrapper = mount(<TestComponent as={TestAs} />, enzymeOptions)
-    expect(componentWrapper.find(TestAs).length).toBeTruthy()
+    const wrapper = mount(<TestComponent as={TestAs} />, enzymeOptions)
+    expect(wrapper.find(TestAs).length).toBeTruthy()
   })
 
   /*

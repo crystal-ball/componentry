@@ -13,10 +13,12 @@ export type Props = ElementProps
 
 const ListGroup = elementFactory('ListGroup', props => {
   const child = Children.toArray(props.children)[0]
+  // We have to be careful of children like text nodes with this check
+  const childProps = child && child.props ? child.props : {}
 
   return {
     className: 'list-group',
-    tag: child && (child.props.href || child.props.onClick) ? 'div' : 'ul',
+    tag: childProps.href || childProps.onClick ? 'div' : 'ul',
     ...props,
   }
 })
