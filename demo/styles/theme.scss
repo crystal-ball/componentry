@@ -1,0 +1,94 @@
+/* demo/styles/theme */
+
+// Theme Variables
+// This theme file contains the complete theme declaration for the application, it
+// can be imported into any component file.
+
+// Componentry
+
+// Use SVG sprites in demo app
+$include-icons: false;
+
+// Color system
+
+$white: #fff;
+$gray-100: #ecf0f1;
+$gray-200: #dee2e6;
+$gray-300: #ced4da;
+$gray-400: #b4bcc2;
+$gray-500: #95a5a6;
+$gray-600: #7b8a8b;
+$gray-700: #5b6163;
+$gray-800: #464a4c;
+$gray-900: #343a40;
+$black: #212529;
+
+$primary: #374d68;
+$secondary: #1382ad;
+$success: #77b300;
+$info: #17a2b8;
+$warning: #d4860b;
+$danger: #d9534f;
+$light: $gray-100;
+$dark: $gray-700;
+
+$purple: #563d7c;
+
+// Links
+
+$link-color: $secondary;
+
+// Body
+
+$body-bg: $white;
+$body-color: $gray-900;
+
+// Fonts
+
+$font-family-sans-serif: 'Libre Franklin', Arial, sans-serif;
+
+$font-size-base: 0.9375rem; // 15px base assuming 1 rem = 16px
+$font-size-lg: $font-size-base * 1.25;
+$font-size-sm: $font-size-base * 0.8;
+
+$line-height-base: 1.5;
+
+$h1-font-size: $font-size-base * 3.2;
+$h2-font-size: $font-size-base * 2;
+$h3-font-size: $font-size-base * 1.6;
+$h4-font-size: $font-size-base * 1.2;
+
+$headings-font-weight: 300;
+$headings-color: $gray-800;
+
+$small-font-size: 80%;
+$text-muted: $gray-600;
+
+// Close
+
+$close-color: $gray-700;
+
+// Tooltips
+
+$tooltip-bg: $gray-200;
+$tooltip-color: $gray-900;
+
+$tooltip-arrow-width: 6px !default;
+$tooltip-arrow-height: 6px !default;
+
+// Syntax Highlighting Variables
+
+$background: #1a2937;
+$color: #e7e8e8;
+$token-keyword: #ff75b5;
+$token-string: #a6dcd0;
+$token-operator: #ffb86c;
+$token-number: #ffca58;
+$token-comment: #7b7d7d;
+$token-punctuation: #e7e8e8;
+$token-function: #6fc1ff;
+
+// Complete variable set by importing Bootstrap default variables.
+
+@import '../../styles/bootstrap/_functions.scss';
+@import '../../styles/bootstrap/_variables.scss';

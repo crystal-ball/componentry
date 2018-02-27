@@ -1,0 +1,15 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Nav /> snapshots renders correctly 1`] = `
+<nav
+  className="nav"
+  role={undefined}
+>
+  <a
+    className="nav-item nav-link"
+    href="#"
+  >
+    Anchor one
+  </a>
+</nav>
+`;

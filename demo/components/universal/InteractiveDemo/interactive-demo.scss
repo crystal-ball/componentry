@@ -1,0 +1,35 @@
+/* demo/components/universal/InteractiveDemo/interactive-demo */
+
+@import 'theme';
+
+:local(.component) {
+  .card {
+    border-radius: 0;
+    box-shadow: rgba(80, 80, 80, 0.1) 1px 1px 3px;
+    min-height: 200px;
+  }
+
+  pre {
+    max-width: 100%;
+    padding-left: 70px;
+  }
+
+  .rendered-container {
+    min-height: 150px;
+  }
+
+  .code-container {
+    position: relative;
+  }
+
+  .copy-container {
+    position: absolute;
+    top: 0.75em;
+    right: 0.75em;
+
+    // trying to pass a font-size class gets overridden 😢
+    button {
+      font-size: $h3-font-size;
+    }
+  }
+}

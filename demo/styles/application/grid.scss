@@ -1,0 +1,10 @@
+/* demo/styles/application/grid */
+
+.grid-container {
+  display: grid;
+}
+
+// Creates a two column layout with CSS Grid
+.columns-page-layout {
+  grid-template-columns: 79% 21%;
+}

@@ -1,12 +1,9 @@
-// ========================================================
-// Bootstrap v4
-// Imports Bootstrap library except: Close, Popovers, Tooltips
-// ========================================================
+/* componentry/styles/bootstrap */
 
 /*!
- * Bootstrap v4.0.0-beta.3 (https://getbootstrap.com)
- * Copyright 2011-2017 The Bootstrap Authors
- * Copyright 2011-2017 Twitter, Inc.
+ * Bootstrap v4.0.0 (https://getbootstrap.com)
+ * Copyright 2011-2018 The Bootstrap Authors
+ * Copyright 2011-2018 Twitter, Inc.
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
  */
 
@@ -38,7 +35,21 @@
 @import 'bootstrap/progress';
 @import 'bootstrap/media';
 @import 'bootstrap/list-group';
+// ℹ️ Do not import Bootstrap close styles:
+// The Bootstrap close styles assume that you are using the &times; character for
+// your close button, and includes some styles to bump the font size, adjust line
+// line height and add a float.
+//
+// Componentry supports using an SVG icon so that applications can choose a close
+// icon that fits their theme, as well as using flexbox on containers with close
+// buttons instead of floats.
+// @import 'bootstrap/close';
 @import 'bootstrap/modal';
+// ℹ️ Do not import Bootstrap tooltip and popover styles:
+// Componentry tooltips and popovers have custom styles that use relative
+// positioning.
+// @import 'bootstrap/tooltip';
+// @import 'bootstrap/popover';
 @import 'bootstrap/carousel';
 @import 'bootstrap/utilities';
 @import 'bootstrap/print';

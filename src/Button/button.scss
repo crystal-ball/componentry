@@ -1,0 +1,20 @@
+/* componentry/src/Button/button */
+
+// Bootstrap has a 'link' button with the font styles of an anchor AND all of the
+// padding of a button. For 💯 Accessibility we want to have buttons that look
+// exactly like links for in application triggers, `btn-anchor` creates a button
+// styled exactly like an anchor. This should be used for application actions that
+// are not route navigations.
+.btn-anchor {
+  @extend .btn-link; // Extend link styles for font styling
+  // Remove additional button styles for anchor appearance
+  -webkit-appearance: none !important; // Remove Chrome native button styling
+  border: none;
+  border-radius: 0;
+  font-family: $font-family-sans-serif;
+  line-height: $line-height-base;
+  padding: 0;
+  user-select: auto;
+  vertical-align: baseline;
+  white-space: normal;
+}

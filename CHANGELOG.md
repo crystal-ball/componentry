@@ -8,6 +8,30 @@ and this project adheres to
 
 #### [Unreleased]
 
+## Breaking Changes 💥
+
+* All non-essential styles have been moved to the Jetpack collection. This
+  collection allows us to provide useful enhancements and utility classes in an
+  opt-in fashion.
+
+### Changed
+
+### Added
+
+* So. much. documentation. goodness. 📖 🎉 💯
+* ✨ New `<Close />` component 🎉
+* ✨ New `<Icon />` component 🎉
+* Utility gray classes for backgrounds, borders and text added to
+  `jetpack/grays`.
+* Library `no-scroll` class added to replace `modal-open`, the `no-scroll` class
+  can be used by any component that needs to freeze scroll (eg freeze scroll on
+  mouseenter for scrollable dropdowns)
+
+### Removed
+
+* Modal `ariaTitle` is removed, the `Modal.Title` component should be used with
+  class `sr-only` for modals without visual titles.
+
 ## [2.0.0-beta.5] - 2018-01-18
 
 ### Changed

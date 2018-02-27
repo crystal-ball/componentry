@@ -1,0 +1,9 @@
+/* componentry/src/Alert/alert */
+
+// Make the alert container a flex container by default with space-between to align
+// close button to right side
+.alert {
+  align-items: flex-start;
+  display: flex;
+  justify-content: space-between;
+}

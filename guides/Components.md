@@ -1,9 +1,7 @@
-<p className="lead">
-  These APIs are avilable for customizing Componentry components. The APIs are
-  consistent across components for predictability.
-</p>
+These APIs are avilable for customizing Componentry components. The APIs are
+consistent across components for predictability.
 
-#### Specifying render element with `as`
+## Specifying render element with `as`
 
 All Componentry elements accept the `as` prop to specify a custom render
 element. It's possible to pass a component or html tag. Internally this prop is
@@ -18,7 +16,7 @@ passed to the component `createElement` call.
 </Card>
 ```
 
-#### Specify theme color with `color`
+## Specify theme color with `color`
 
 Any component that is themeable uses the `color` prop to set the theme color.
 
@@ -26,7 +24,25 @@ Any component that is themeable uses the `color` prop to set the theme color.
 <Alert color="info">This alert will be use the info theme color.</Alert>
 ```
 
-#### `<Trigger />` and `<Content />` subcomponents
+## Specifying content alignment with `direction`
+
+Active components that support aligning content in different directions use the
+`direction` prop to include classes that set the content position.
+
+* The direction classes are added to the container component so that both the
+  trigger and content components can be easily targeted.
+* Directional components have a sensible default set, so the `direction` prop
+  only needs to be overridden for custom directions.
+
+```jsx
+<Popover
+  Trigger="Open left"
+  Content="This content will be aligned left of the trigger instead of right."
+  direction="left"
+/>
+```
+
+## `<Trigger />` and `<Content />` subcomponents
 
 All components with active state use Trigger and Content subcomponents.
 
@@ -54,7 +70,7 @@ component.
 
 ```jsx
 <Active>
-  <Active.Trigger>Toggle</Active.Trigger>
+  <Active.Trigger>Trigger</Active.Trigger>
   <Active.Content>I manage my own state.</Active.Content>
 </Active>
 ```
@@ -75,7 +91,7 @@ Component state changes can be observed by passing on event handlers:
   onDeactivate={this.doSomethingOnDeactivate}
   onDeactivated={this.doSomethingAfterDeactivation}
 >
-  <Active.Trigger>Toggle</Active.Trigger>
+  <Active.Trigger>Trigger</Active.Trigger>
   <Active.Content>I will let you know when my state changes.</Active.Content>
 </State>
 ```
@@ -91,7 +107,7 @@ props.
   activate={this.handleActivationChangeEvents}
   deactivate={this.handleDeactivationChangeEvents}
 >
-  <Active.Trigger>Toggle</Active.Trigger>
+  <Active.Trigger>Trigger</Active.Trigger>
   <Active.Content>I will follow the instructions you give me.</Active.Content>
 </Active>
 ```

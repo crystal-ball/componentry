@@ -1,0 +1,180 @@
+/* componentry/src/Popover/popover */
+
+// Bootstrap popovers are inserted into the DOM at the end of the body on hover and
+// the location is assigned with transforms. Componentry instead sets the popover
+// parent container to position relative so that the absolute positioned content
+// displays relative to parent. This means that Componentry has custom popover styles
+// instead of using Bootstrap's
+
+// Container Element
+.popover {
+  // Default align content to dead center of trigger, the specific content styles can
+  // then easily move to top/left/right/bottom where needed
+  align-items: center;
+  display: inline-flex; // flex instead of block for easier center alignment of content
+  justify-content: center;
+  position: relative;
+
+  // Directional styles
+
+  &.top {
+    .popover-content-container {
+      bottom: 100%;
+      justify-content: center;
+    }
+
+    .popover-content {
+      // Top requires bumping bottom 100% again to compensate for container not having
+      // any height
+      bottom: 100%;
+      margin-bottom: $popover-arrow-width;
+    }
+
+    .tip-container {
+      left: 0;
+      top: 100%;
+      width: 100%;
+    }
+
+    .tip:after {
+      bottom: $popover-arrow-width * 1.5;
+    }
+  }
+
+  &.right {
+    .popover-content-container {
+      left: 100%;
+      align-items: center;
+    }
+
+    .popover-content {
+      margin-left: $popover-arrow-width;
+    }
+
+    .tip-container {
+      left: -$popover-arrow-width * 2;
+      height: 100%;
+      top: 0.5em; // We want the tip to be 1/2 of line height from the top for perfect center
+    }
+
+    .tip:after {
+      left: $popover-arrow-width * 1.5;
+    }
+  }
+
+  &.bottom {
+    .popover-content-container {
+      top: 100%;
+      justify-content: center;
+    }
+
+    .popover-content {
+      margin-top: $popover-arrow-width;
+    }
+
+    .tip-container {
+      bottom: 100%;
+      left: 0;
+      width: 100%;
+    }
+
+    .tip:after {
+      top: $popover-arrow-width * 1.5;
+    }
+  }
+
+  &.left {
+    .popover-content-container {
+      right: 100%;
+      align-items: center;
+    }
+
+    .popover-content {
+      margin-right: $popover-arrow-width;
+    }
+
+    .tip-container {
+      height: 100%;
+      right: -$popover-arrow-width * 2;
+      top: 0.5em; // We want the tip to be 1/2 of line height from the top for perfect center
+    }
+
+    .tip:after {
+      right: $popover-arrow-width * 1.5;
+    }
+  }
+}
+
+// Content container overrides the width constraints for parent element
+.popover-content-container {
+  width: $popover-max-width;
+  position: absolute;
+  display: inline-flex;
+}
+
+// Content Element - The content element should be used to wrap a body/header element
+.popover-content {
+  @include border-radius($border-radius-lg);
+  @include box-shadow($popover-box-shadow);
+  // Reset font properties for consistent font styling regardless of cascading values
+  @include reset-text();
+  background-clip: padding-box;
+  background-color: $popover-bg;
+  border: $popover-border-width solid $popover-border-color;
+  display: block;
+  font-size: $font-size-sm;
+  max-width: $popover-max-width;
+  position: absolute;
+  // Allow breaking very long words so they don't overflow the popover's bounds
+  word-wrap: break-word;
+  z-index: $zindex-popover;
+
+  .tip-container {
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    overflow: hidden;
+    position: absolute;
+  }
+
+  .tip {
+    height: $popover-arrow-width * 2;
+    overflow: hidden;
+    width: $popover-arrow-width * 2;
+
+    &:after {
+      border: $popover-border-width solid $popover-border-color;
+      // Do not use box-shadow mixin, output is wrapped in a check against
+      // $enable-shadows, but we always want the arrow box-shadow included
+      box-shadow: $popover-box-shadow;
+      background: $popover-bg;
+      content: '';
+      height: $popover-arrow-width;
+      position: absolute;
+      transform: rotate(45deg);
+      width: $popover-arrow-width;
+    }
+  }
+}
+
+// Body element should contain popover inner content
+.popover-body {
+  padding: $popover-body-padding-y $popover-body-padding-x;
+  color: $popover-body-color;
+}
+
+// Header element
+.popover-header {
+  padding: $popover-header-padding-y $popover-header-padding-x;
+  margin-bottom: 0; // Reset the default from Reboot
+  font-size: $font-size-base;
+  color: $popover-header-color;
+  background-color: $popover-header-bg;
+  border-bottom: $popover-border-width solid darken($popover-header-bg, 5%);
+  $offset-border-width: calc(#{$border-radius-lg} - #{$popover-border-width});
+  @include border-top-radius($offset-border-width);
+
+  &:empty {
+    display: none;
+  }
+}

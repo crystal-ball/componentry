@@ -1,0 +1,18 @@
+/* componentry/styles/jetpack/grays */
+
+// Create a bg class for each gray
+@each $color, $value in $grays {
+  @include bg-variant('.bg-gray-#{$color}', $value);
+}
+
+// Create a text class for each gray
+@each $color, $value in $grays {
+  @include text-emphasis-variant('.text-gray-#{$color}', $value);
+}
+
+// Create a border class for each gray
+@each $color, $value in $grays {
+  .border-gray-#{$color} {
+    border-color: $value !important;
+  }
+}

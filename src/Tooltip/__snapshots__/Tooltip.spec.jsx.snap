@@ -1,0 +1,42 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Drawer /> snapshots renders correctly 1`] = `
+<div
+  className="tooltip"
+  data-id="guid"
+  data-test="tooltip-container"
+  onMouseEnter={[Function]}
+  onMouseLeave={[Function]}
+>
+  <button
+    aria-describedby="guid"
+    className="btn tooltip-toggle"
+    data-test="tooltip-trigger"
+    onClick={[Function]}
+    type="button"
+    value={undefined}
+  >
+    Trigger
+  </button>
+  <div
+    className="tooltip-content-container"
+  >
+    <div
+      aria-hidden="true"
+      className="tooltip-content"
+      data-test="tooltip-content"
+      id="guid"
+      role="tooltip"
+    >
+      <div
+        className="tip-container"
+      >
+        <div
+          className="tip"
+        />
+      </div>
+      Content
+    </div>
+  </div>
+</div>
+`;

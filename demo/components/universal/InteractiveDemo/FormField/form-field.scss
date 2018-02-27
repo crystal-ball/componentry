@@ -1,0 +1,8 @@
+/* form-field */
+
+:local(.component) {
+  .dropdown-field {
+    // Match the padding top of the .col-form-label
+    padding-top: calc(0.375rem + 1px);
+  }
+}

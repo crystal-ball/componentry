@@ -1,0 +1,30 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Active /> snapshots renders correctly 1`] = `
+<div
+  className={undefined}
+  data-id="guid"
+  data-test={undefined}
+  onMouseEnter={undefined}
+  onMouseLeave={undefined}
+>
+  <button
+    aria-controls="guid"
+    className="btn"
+    data-test={undefined}
+    onClick={[Function]}
+    type="button"
+    value={undefined}
+  >
+    Trigger
+  </button>
+  <div
+    aria-hidden="true"
+    className={undefined}
+    data-test={undefined}
+    id="guid"
+  >
+    Content
+  </div>
+</div>
+`;

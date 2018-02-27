@@ -1,0 +1,31 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Drawer /> snapshots renders correctly 1`] = `
+<div
+  className="drawer"
+  data-id="guid"
+  data-test="drawer-container"
+  onMouseEnter={undefined}
+  onMouseLeave={undefined}
+>
+  <button
+    aria-controls="guid"
+    aria-expanded="false"
+    className="btn drawer-toggle"
+    data-test="drawer-trigger"
+    onClick={[Function]}
+    type="button"
+    value={undefined}
+  >
+    Trigger
+  </button>
+  <div
+    aria-hidden="true"
+    className="drawer-content"
+    data-test="drawer-content"
+    id="guid"
+  >
+    Content
+  </div>
+</div>
+`;

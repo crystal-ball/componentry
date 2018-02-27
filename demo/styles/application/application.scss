@@ -1,0 +1,16 @@
+/* demo/styles/application */
+
+// This icon is used with all A++ Accessible headers and is default green
+.icon.stars {
+  color: $success;
+}
+
+.icon.bootstrap {
+  color: $purple;
+}
+
+.swatch {
+  display: inline-block;
+  width: 115px;
+  height: 50px;
+}

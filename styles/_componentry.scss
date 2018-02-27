@@ -2,19 +2,24 @@
 // Componentry Styles
 // ========================================================
 
-// Primary entry into Componentry styles. Includes library specific variables,
-// utility styles, and component styles.
+// Library custom variables
 
-@import 'componentry-variables';
-@import 'utility';
-@import 'icons';
+@import 'variables';
 
-@import '../lib/Alert/alert';
-@import '../lib/Button/button';
-@import '../lib/Drawer/drawer';
-@import '../lib/Dropdown/dropdown';
-@import '../lib/ListGroup/list-group';
-@import '../lib/Modal/modals';
-@import '../lib/Popover/popover';
-@import '../lib/Tab/tab';
-@import '../lib/Tooltip/tooltip';
+// Base styles required for components
+
+@import 'core/visibility';
+@import 'core/icons';
+
+// Componentry component styles
+
+@import '../src/Alert/alert';
+@import '../src/Button/button';
+@import '../src/Close/close';
+@import '../src/Drawer/drawer';
+@import '../src/Dropdown/dropdown';
+@import '../src/Icon/icon';
+@import '../src/Modal/modals';
+@import '../src/Popover/popover';
+@import '../src/Tab/tab';
+@import '../src/Tooltip/tooltip';

@@ -1,0 +1,24 @@
+/* componentry/src/close */
+
+// The btn-close allows for targeted styles for the close buttons. The .icon.close
+// can also be styled for close buttons only using that as a target
+.btn-close {
+  @extend .btn;
+  @extend .btn-anchor;
+
+  color: $close-color;
+
+  @include hover-focus {
+    color: $close-color;
+  }
+
+  // Animate close icon opacity on hover
+  .icon.close {
+    opacity: 0.6;
+    transition: $transition-fade;
+
+    @include hover-focus {
+      opacity: 1;
+    }
+  }
+}
