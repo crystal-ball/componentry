@@ -1,38 +1,34 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<Drawer /> snapshots renders correctly 1`] = `
+exports[`<Popover /> snapshots renders correctly 1`] = `
 <div
-  className="popover right"
+  class="popover right"
   data-id="guid"
   data-test="popover-container"
-  onMouseEnter={[Function]}
-  onMouseLeave={[Function]}
 >
   <button
     aria-describedby="guid"
-    className="btn popover-toggle"
+    class="btn popover-toggle"
     data-test="popover-trigger"
-    onClick={[Function]}
     type="button"
-    value={undefined}
   >
     Trigger
   </button>
   <div
-    className="popover-content-container"
+    class="popover-content-container"
   >
     <div
       aria-hidden="true"
-      className="popover-content"
+      class="popover-content"
       data-test="popover-content"
       id="guid"
       role="tooltip"
     >
       <div
-        className="tip-container"
+        class="tip-container"
       >
         <div
-          className="tip"
+          class="tip"
         />
       </div>
       Content

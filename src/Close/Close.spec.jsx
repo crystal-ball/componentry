@@ -1,5 +1,5 @@
 import React from 'react'
-import renderer from 'react-test-renderer'
+import { render } from 'enzyme'
 
 import Close from './Close'
 import elementTests from '../utils-test/element-tests'
@@ -13,7 +13,7 @@ describe('<Close />', () => {
 // ---------------------------------------------------------------------------
 describe('<Close /> snapshots', () => {
   it('renders correctly', () => {
-    const tree = renderer.create(<Close />).toJSON()
+    const tree = render(<Close />)
     expect(tree).toMatchSnapshot()
   })
 })

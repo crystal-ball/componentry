@@ -2,15 +2,15 @@
 
 exports[`<ListGroup /> snapshots renders correctly 1`] = `
 <ul
-  className="list-group"
+  class="list-group"
 >
   <li
-    className="list-group-item"
+    class="list-group-item"
   >
     Item 1
   </li>
   <li
-    className="list-group-item"
+    class="list-group-item"
   >
     Item 2
   </li>

@@ -1,6 +1,5 @@
 import React from 'react'
-import { shallow } from 'enzyme'
-import renderer from 'react-test-renderer'
+import { shallow, render } from 'enzyme'
 
 import Icon from './Icon'
 
@@ -15,7 +14,7 @@ describe('<Icon />', () => {
 // ---------------------------------------------------------------------------
 describe('<Icon /> snapshots', () => {
   it('renders correctly', () => {
-    const tree = renderer.create(<Icon id="test" />).toJSON()
+    const tree = render(<Icon id="test" />)
     expect(tree).toMatchSnapshot()
   })
 })

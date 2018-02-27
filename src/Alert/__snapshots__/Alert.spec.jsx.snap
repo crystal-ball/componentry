@@ -3,27 +3,26 @@
 exports[`<Alert /> snapshots renders correctly 1`] = `
 <div
   aria-hidden="false"
-  className="alert fade alert-danger show"
+  class="alert fade alert-danger show"
   role="alert"
 >
   <div
-    className="sr-only"
+    class="sr-only"
   >
     danger alert
   </div>
   <div
-    className="alert-content"
+    class="alert-content"
   >
     Warning!
   </div>
   <button
-    className="btn-close text-danger"
-    onClick={[MockFunction]}
+    class="btn-close text-danger"
     type="button"
   >
     <svg
       aria-label="close"
-      className="icon close font"
+      class="icon close font"
       role="img"
     >
       <use

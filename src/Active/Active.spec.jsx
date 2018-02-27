@@ -1,5 +1,5 @@
 import React from 'react'
-import renderer from 'react-test-renderer'
+import { render } from 'enzyme'
 
 import Active from './Active'
 
@@ -18,14 +18,13 @@ describe('<Active />', () => {
 // ---------------------------------------------------------------------------
 describe('<Active /> snapshots', () => {
   it('renders correctly', () => {
-    const tree = renderer
-      .create(
-        <Active>
-          <Active.Trigger>Trigger</Active.Trigger>
-          <Active.Content>Content</Active.Content>
-        </Active>,
-      )
-      .toJSON()
+    const tree = render(
+      <Active>
+        <Active.Trigger>Trigger</Active.Trigger>
+        <Active.Content>Content</Active.Content>
+      </Active>,
+    )
+
     expect(tree).toMatchSnapshot()
   })
 })

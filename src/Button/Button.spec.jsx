@@ -1,6 +1,5 @@
 import React from 'react'
-import { shallow } from 'enzyme'
-import renderer from 'react-test-renderer'
+import { shallow, render } from 'enzyme'
 
 import Button from './Button'
 import elementTests from '../utils-test/element-tests'
@@ -76,35 +75,37 @@ describe('<Button /> Snapshots', () => {
   // 📝 TODO: use enzyme tests to validate props effects, use snapshot for testing
   // output of markup like 'type'
   test('it renders defaults correctly', () => {
-    const tree = renderer.create(<Button color="primary">Facebook</Button>).toJSON()
+    const tree = render(<Button color="primary">Componentry</Button>)
     expect(tree).toMatchSnapshot()
   })
+
   test('it renders brand color correctly', () => {
-    const tree = renderer.create(<Button color="success">Facebook</Button>).toJSON()
+    const tree = render(<Button color="success">Componentry</Button>)
     expect(tree).toMatchSnapshot()
   })
+
   test('it renders link style correctly', () => {
-    const tree = renderer.create(<Button link>Facebook</Button>).toJSON()
+    const tree = render(<Button link>Componentry</Button>)
     expect(tree).toMatchSnapshot()
   })
+
   test('it renders outline correctly', () => {
-    const tree = renderer
-      .create(
-        <Button color="success" outline>
-          Facebook
-        </Button>,
-      )
-      .toJSON()
+    const tree = render(
+      <Button color="success" outline>
+        Componentry
+      </Button>,
+    )
+
     expect(tree).toMatchSnapshot()
   })
+
   test('it renders large outline correctly', () => {
-    const tree = renderer
-      .create(
-        <Button color="success" size="large" outline>
-          Facebook
-        </Button>,
-      )
-      .toJSON()
+    const tree = render(
+      <Button color="success" size="large" outline>
+        Componentry
+      </Button>,
+    )
+
     expect(tree).toMatchSnapshot()
   })
 })

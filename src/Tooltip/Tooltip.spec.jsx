@@ -1,5 +1,5 @@
 import React from 'react'
-import renderer from 'react-test-renderer'
+import { render } from 'enzyme'
 
 import Tooltip from './Tooltip'
 // import activationTestSuite from '../utils-test/activation-tests'
@@ -20,14 +20,13 @@ describe('<Tooltip />', () => {
 // ---------------------------------------------------------------------------
 describe('<Drawer /> snapshots', () => {
   it('renders correctly', () => {
-    const tree = renderer
-      .create(
-        <Tooltip>
-          <Tooltip.Trigger>Trigger</Tooltip.Trigger>
-          <Tooltip.Content>Content</Tooltip.Content>
-        </Tooltip>,
-      )
-      .toJSON()
+    const tree = render(
+      <Tooltip>
+        <Tooltip.Trigger>Trigger</Tooltip.Trigger>
+        <Tooltip.Content>Content</Tooltip.Content>
+      </Tooltip>,
+    )
+
     expect(tree).toMatchSnapshot()
   })
 })

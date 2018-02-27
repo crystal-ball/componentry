@@ -2,37 +2,33 @@
 
 exports[`<Drawer /> snapshots renders correctly 1`] = `
 <div
-  className="tooltip"
+  class="tooltip"
   data-id="guid"
   data-test="tooltip-container"
-  onMouseEnter={[Function]}
-  onMouseLeave={[Function]}
 >
   <button
     aria-describedby="guid"
-    className="btn tooltip-toggle"
+    class="btn tooltip-toggle"
     data-test="tooltip-trigger"
-    onClick={[Function]}
     type="button"
-    value={undefined}
   >
     Trigger
   </button>
   <div
-    className="tooltip-content-container"
+    class="tooltip-content-container"
   >
     <div
       aria-hidden="true"
-      className="tooltip-content"
+      class="tooltip-content"
       data-test="tooltip-content"
       id="guid"
       role="tooltip"
     >
       <div
-        className="tip-container"
+        class="tip-container"
       >
         <div
-          className="tip"
+          class="tip"
         />
       </div>
       Content

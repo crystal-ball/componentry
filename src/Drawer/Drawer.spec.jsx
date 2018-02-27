@@ -1,5 +1,5 @@
 import React from 'react'
-import renderer from 'react-test-renderer'
+import { render } from 'enzyme'
 
 import Drawer from './Drawer'
 import activationTestSuite from '../utils-test/activation-tests'
@@ -17,14 +17,13 @@ describe('<Drawer />', () => {
 // ---------------------------------------------------------------------------
 describe('<Drawer /> snapshots', () => {
   it('renders correctly', () => {
-    const tree = renderer
-      .create(
-        <Drawer>
-          <Drawer.Trigger>Trigger</Drawer.Trigger>
-          <Drawer.Content>Content</Drawer.Content>
-        </Drawer>,
-      )
-      .toJSON()
+    const tree = render(
+      <Drawer>
+        <Drawer.Trigger>Trigger</Drawer.Trigger>
+        <Drawer.Content>Content</Drawer.Content>
+      </Drawer>,
+    )
+
     expect(tree).toMatchSnapshot()
   })
 })

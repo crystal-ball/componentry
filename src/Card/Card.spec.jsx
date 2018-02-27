@@ -1,6 +1,5 @@
 import React from 'react'
-import { mount, shallow } from 'enzyme'
-import renderer from 'react-test-renderer'
+import { mount, shallow, render } from 'enzyme'
 
 import Card from './Card'
 import elementTests from '../utils-test/element-tests'
@@ -49,18 +48,17 @@ describe('<Card />', () => {
 // ---------------------------------------------------------------------------
 describe('<Card /> snapshots', () => {
   it('renders correctly', () => {
-    const tree = renderer
-      .create(
-        <Card>
-          <Card.Header>Header</Card.Header>
-          <Card.Body>
-            <Card.Title>Title</Card.Title>
-            Body
-          </Card.Body>
-          <Card.Footer>Footer</Card.Footer>
-        </Card>,
-      )
-      .toJSON()
+    const tree = render(
+      <Card>
+        <Card.Header>Header</Card.Header>
+        <Card.Body>
+          <Card.Title>Title</Card.Title>
+          Body
+        </Card.Body>
+        <Card.Footer>Footer</Card.Footer>
+      </Card>,
+    )
+
     expect(tree).toMatchSnapshot()
   })
 })

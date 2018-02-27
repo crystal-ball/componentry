@@ -1,6 +1,5 @@
 import React from 'react'
-import { shallow } from 'enzyme'
-import renderer from 'react-test-renderer'
+import { shallow, render } from 'enzyme'
 
 import Popover from './Popover'
 // import activationTestSuite from '../utils-test/activation-tests'
@@ -34,16 +33,15 @@ describe('<Popover />', () => {
 
 // Snapshots
 // ---------------------------------------------------------------------------
-describe('<Drawer /> snapshots', () => {
+describe('<Popover /> snapshots', () => {
   it('renders correctly', () => {
-    const tree = renderer
-      .create(
-        <Popover>
-          <Popover.Trigger>Trigger</Popover.Trigger>
-          <Popover.Content>Content</Popover.Content>
-        </Popover>,
-      )
-      .toJSON()
+    const tree = render(
+      <Popover>
+        <Popover.Trigger>Trigger</Popover.Trigger>
+        <Popover.Content>Content</Popover.Content>
+      </Popover>,
+    )
+
     expect(tree).toMatchSnapshot()
   })
 })

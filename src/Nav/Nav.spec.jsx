@@ -1,6 +1,5 @@
 import React from 'react'
-import { shallow } from 'enzyme'
-import renderer from 'react-test-renderer'
+import { shallow, render } from 'enzyme'
 
 import Nav from './Nav'
 import elementTests from '../utils-test/element-tests'
@@ -32,13 +31,12 @@ describe('<Nav />', () => {
 // ---------------------------------------------------------------------------
 describe('<Nav /> snapshots', () => {
   it('renders correctly', () => {
-    const tree = renderer
-      .create(
-        <Nav>
-          <Nav.Item href="#">Anchor one</Nav.Item>
-        </Nav>,
-      )
-      .toJSON()
+    const tree = render(
+      <Nav>
+        <Nav.Item href="#">Anchor one</Nav.Item>
+      </Nav>,
+    )
+
     expect(tree).toMatchSnapshot()
   })
 })

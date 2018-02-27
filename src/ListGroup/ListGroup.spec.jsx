@@ -1,6 +1,5 @@
 import React from 'react'
-import { shallow } from 'enzyme'
-import renderer from 'react-test-renderer'
+import { shallow, render } from 'enzyme'
 
 import ListGroup from './ListGroup'
 import elementTests from '../utils-test/element-tests'
@@ -40,14 +39,13 @@ describe('<ListGroup />', () => {
 // ---------------------------------------------------------------------------
 describe('<ListGroup /> snapshots', () => {
   it('renders correctly', () => {
-    const tree = renderer
-      .create(
-        <ListGroup>
-          <ListGroup.Item>Item 1</ListGroup.Item>
-          <ListGroup.Item>Item 2</ListGroup.Item>
-        </ListGroup>,
-      )
-      .toJSON()
+    const tree = render(
+      <ListGroup>
+        <ListGroup.Item>Item 1</ListGroup.Item>
+        <ListGroup.Item>Item 2</ListGroup.Item>
+      </ListGroup>,
+    )
+
     expect(tree).toMatchSnapshot()
   })
 })

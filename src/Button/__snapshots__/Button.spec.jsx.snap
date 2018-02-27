@@ -2,45 +2,45 @@
 
 exports[`<Button /> Snapshots it renders brand color correctly 1`] = `
 <button
-  className="btn btn-success"
+  class="btn btn-success"
   type="button"
 >
-  Facebook
+  Componentry
 </button>
 `;
 
 exports[`<Button /> Snapshots it renders defaults correctly 1`] = `
 <button
-  className="btn btn-primary"
+  class="btn btn-primary"
   type="button"
 >
-  Facebook
+  Componentry
 </button>
 `;
 
 exports[`<Button /> Snapshots it renders large outline correctly 1`] = `
 <button
-  className="btn btn-outline-success btn-lg"
+  class="btn btn-outline-success btn-lg"
   type="button"
 >
-  Facebook
+  Componentry
 </button>
 `;
 
 exports[`<Button /> Snapshots it renders link style correctly 1`] = `
 <button
-  className="btn btn-anchor"
+  class="btn btn-anchor"
   type="button"
 >
-  Facebook
+  Componentry
 </button>
 `;
 
 exports[`<Button /> Snapshots it renders outline correctly 1`] = `
 <button
-  className="btn btn-outline-success"
+  class="btn btn-outline-success"
   type="button"
 >
-  Facebook
+  Componentry
 </button>
 `;

@@ -2,45 +2,35 @@
 
 exports[`<Drawer /> snapshots renders correctly 1`] = `
 <div
-  className="dropdown bottom"
+  class="dropdown bottom"
   data-id="guid"
   data-test="dropdown-container"
-  onMouseEnter={undefined}
-  onMouseLeave={undefined}
 >
   <button
     aria-expanded="false"
     aria-haspopup="true"
-    className="btn dropdown-toggle"
+    class="btn dropdown-toggle"
     data-test="dropdown-trigger"
     id="guid"
-    onClick={[Function]}
     type="button"
-    value={undefined}
   >
     Trigger
   </button>
   <div
     aria-hidden="true"
     aria-labelledby="guid"
-    className="dropdown-content"
+    class="dropdown-content"
     data-test="dropdown-content"
   >
     <button
-      className="dropdown-item"
-      data-test={undefined}
-      onClick={[Function]}
+      class="dropdown-item"
       type="button"
-      value={undefined}
     >
       Item 1
     </button>
     <button
-      className="dropdown-item"
-      data-test={undefined}
-      onClick={[Function]}
+      class="dropdown-item"
       type="button"
-      value={undefined}
     >
       Item 2
     </button>

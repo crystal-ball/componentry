@@ -2,11 +2,10 @@
 
 exports[`<Nav /> snapshots renders correctly 1`] = `
 <nav
-  className="nav"
-  role={undefined}
+  class="nav"
 >
   <a
-    className="nav-item nav-link"
+    class="nav-item nav-link"
     href="#"
   >
     Anchor one

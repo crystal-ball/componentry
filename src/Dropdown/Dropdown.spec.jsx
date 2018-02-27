@@ -1,6 +1,5 @@
 import React from 'react'
-import { mount } from 'enzyme'
-import renderer from 'react-test-renderer'
+import { mount, render } from 'enzyme'
 
 import Dropdown from './Dropdown'
 import dt from '../utils-test/dt'
@@ -91,17 +90,16 @@ describe('<Dropdown />', () => {
 // ---------------------------------------------------------------------------
 describe('<Drawer /> snapshots', () => {
   it('renders correctly', () => {
-    const tree = renderer
-      .create(
-        <Dropdown>
-          <Dropdown.Trigger>Trigger</Dropdown.Trigger>
-          <Dropdown.Content>
-            <Dropdown.Item>Item 1</Dropdown.Item>
-            <Dropdown.Item>Item 2</Dropdown.Item>
-          </Dropdown.Content>
-        </Dropdown>,
-      )
-      .toJSON()
+    const tree = render(
+      <Dropdown>
+        <Dropdown.Trigger>Trigger</Dropdown.Trigger>
+        <Dropdown.Content>
+          <Dropdown.Item>Item 1</Dropdown.Item>
+          <Dropdown.Item>Item 2</Dropdown.Item>
+        </Dropdown.Content>
+      </Dropdown>,
+    )
+
     expect(tree).toMatchSnapshot()
   })
 })
