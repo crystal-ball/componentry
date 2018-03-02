@@ -34,14 +34,18 @@ $dark: $gray-700;
 
 $purple: #563d7c;
 
+// Global
+
+$enable-shadows: true;
+
 // Links
 
 $link-color: $secondary;
 
-// Body
+// Components
 
-$body-bg: $white;
-$body-color: $gray-900;
+$border-width: 1px;
+$transition-fade: opacity 0.3s linear;
 
 // Fonts
 
@@ -51,8 +55,6 @@ $font-size-base: 0.9375rem; // 15px base assuming 1 rem = 16px
 $font-size-lg: $font-size-base * 1.25;
 $font-size-sm: $font-size-base * 0.8;
 
-$line-height-base: 1.5;
-
 $h1-font-size: $font-size-base * 3.2;
 $h2-font-size: $font-size-base * 2;
 $h3-font-size: $font-size-base * 1.6;
@@ -61,20 +63,35 @@ $h4-font-size: $font-size-base * 1.2;
 $headings-font-weight: 300;
 $headings-color: $gray-800;
 
-$small-font-size: 80%;
-$text-muted: $gray-600;
+// Tooltips
+
+$tooltip-max-width: 350px;
+$tooltip-bg: $gray-200;
+$tooltip-color: $gray-900;
+
+$tooltip-padding-y: 6px !default;
+$tooltip-padding-x: 10px !default;
+
+$tooltip-arrow-width: 8px;
+$tooltip-arrow-height: 8px;
+
+// Popovers
+
+$popover-box-shadow: 0px 1px 5px rgba(0, 0, 0, 0.2);
+
+// Modals
+// ---------------------------------------------------------------------------
+
+// Remove border surrounding modal and use a sharp box-shadow
+$modal-content-border-width: 0;
+$modal-header-border-width: $border-width;
+$modal-footer-border-width: $border-width;
+$modal-content-box-shadow-xs: 0 3px 9px rgba(149, 165, 175, 0.7);
+$modal-content-box-shadow-sm-up: 0 5px 15px rgba(149, 165, 175, 0.7);
 
 // Close
 
 $close-color: $gray-700;
-
-// Tooltips
-
-$tooltip-bg: $gray-200;
-$tooltip-color: $gray-900;
-
-$tooltip-arrow-width: 6px !default;
-$tooltip-arrow-height: 6px !default;
 
 // Syntax Highlighting Variables
 

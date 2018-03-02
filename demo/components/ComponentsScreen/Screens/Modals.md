@@ -30,33 +30,13 @@ modal.
     { label: 'size', options: this.props.sizes },
   ]}
   renderCode={({ size }) => `<Active>
-  <Active.Trigger>Trigger Modal</Active.Trigger>
-  <Modal${size ? ` size="${size}"` : ''}>
-    <Modal.Header>
-      <Modal.Title>Demo uncontrolled modal</Modal.Title>
-      <Active.Trigger as={Close} />
-    </Modal.Header>
-    <Modal.Body>
-      <p>
-        This is an uncontrolled modal that will automatically manage its active
-        state using the parent Active component.
-      </p>
-    </Modal.Body>
-    <Modal.Footer>
-      <Active.Trigger color="dark" outline>
-        Close
-      </Active.Trigger>
-      <Button color="primary">Save Changes</Button>
-    </Modal.Footer>
-  </Modal>
-</Active>`}
-  renderComponent={({ size }) => (
-    <Active>
+  {({ deactivate }) => (
+    <Fragment>
       <Active.Trigger>Trigger Modal</Active.Trigger>
       <Modal size={size}>
         <Modal.Header>
           <Modal.Title>Demo uncontrolled modal</Modal.Title>
-          <Active.Trigger as={Close} />
+          <Close onClick={deactivate} />
         </Modal.Header>
         <Modal.Body>
           <p>
@@ -71,6 +51,34 @@ modal.
           <Button color="primary">Save Changes</Button>
         </Modal.Footer>
       </Modal>
+    </Fragment>
+  )}
+</Active>`}
+  renderComponent={({ size }) => (
+    <Active>
+      {({ deactivate }) => (
+        <Fragment>
+          <Active.Trigger>Trigger Modal</Active.Trigger>
+          <Modal size={size}>
+            <Modal.Header>
+              <Modal.Title>Demo uncontrolled modal</Modal.Title>
+              <Close onClick={deactivate} />
+            </Modal.Header>
+            <Modal.Body>
+              <p>
+                This is an uncontrolled modal that will automatically manage its active
+                state using the parent Active component.
+              </p>
+            </Modal.Body>
+            <Modal.Footer>
+              <Active.Trigger color="dark" outline>
+                Close
+              </Active.Trigger>
+              <Button color="primary">Save Changes</Button>
+            </Modal.Footer>
+          </Modal>
+        </Fragment>
+      )}
     </Active>
   )}
 />
@@ -111,6 +119,3 @@ screen reader context for the modal without affecting layout.
 ```
 
 <PropsTabs componentProps={componentProps} activeComponent size />
-
-<!-- Magic Markdown doesn't know how to parse the {Close} as a component... -->
-<Close className="sr-only"/>
