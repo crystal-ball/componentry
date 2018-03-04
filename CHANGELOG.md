@@ -8,6 +8,13 @@ and this project adheres to
 
 #### [Unreleased]
 
+## [2.0.1] - 2018-03-03
+
+### Fixed
+
+* Corrected npm publish ignore files.
+* Fix checking list group children props validation.
+
 ## [2.0.0] - 2018-02-17
 
 ### Componentry v2 🎉 🎉 🎉

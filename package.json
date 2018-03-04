@@ -1,7 +1,7 @@
 {
   "name": "componentry",
-  "version": "2.0.0",
-  "description": "Radical React Components",
+  "version": "2.0.1",
+  "description": "React Componentry",
   "main": "dist/componentry.js",
   "module": "es/index.js",
   "esnext": "esnext/index.js",
