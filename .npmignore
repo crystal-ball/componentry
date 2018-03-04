@@ -5,15 +5,27 @@
 # Source
 #################################
 styles
-# NOTE: Don't ignore /lib, the SCSS files need to be in bundle
+.github
+__mocks__
+config
+# NOTE: Don't ignore /src, the SCSS files need to be in bundle
 
 # Output
 #################################
 build
+monitor
 
-# esmodules
+# Packages, Logging, Congis
 #################################
 .esm-cache
+false
+.editorconfig
+.flowconfig
+.travis.yml
+jest.config.js
+webpack.config.js
+webpack.config.umd.js
+.babelrc
 
 # Config
 #################################
@@ -27,6 +39,6 @@ documentation.yml
 # Documentation
 #################################
 docs
+demo
 guides
-src
 public
