@@ -1,4 +1,10 @@
-<h1 align="center">Componentry</h1>
+<div align="center">
+  <img
+    width="1000"
+    src="https://cdn.rawgit.com/crystal-ball/componentry/master/demo/media/Componentry.png"
+    alt="Componentry"
+  />
+</div>
 
 <p align="center">
   <a href="https://github.com/prettier/prettier">
