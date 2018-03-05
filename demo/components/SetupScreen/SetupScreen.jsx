@@ -1,14 +1,14 @@
 import React from 'react'
 import DocumentTitle from 'react-document-title'
 
-import GettingStarted from './GettingStarted.md'
+import Setup from './Setup.md'
 
 export default () => (
   <div className="container">
-    <DocumentTitle title="Getting started · Componentry" />
+    <DocumentTitle title="Setup · Componentry" />
     <div className="row">
       <div className="col-9">
-        <GettingStarted />
+        <Setup />
       </div>
     </div>
   </div>

@@ -1,14 +1,13 @@
 // @flow
 import React from 'react'
 import { NavLink } from 'react-router-dom'
-import classNames from 'classnames'
 
-import routesMapToArray from 'utils/routes-map-to-array'
-import type { Route } from 'utils/routes-map-to-array'
+import type { Route } from 'utils/routes-map'
+
 import { component } from './group-nav.scss'
 
 type Props = {
-  routesMap: {
+  routes: {
     [string]: Route,
   },
 }
@@ -16,18 +15,14 @@ type Props = {
 /**
  * Group navs for the component and concept subroutes use a static router config.
  */
-export default ({ routesMap }: Props) => {
-  const routesArray = routesMapToArray(routesMap)
-
-  return (
-    <nav className={classNames('ml-5', component)}>
-      {routesArray.map(routeTo => (
-        <div className="pb-1" key={routeTo.id}>
-          <NavLink to={routeTo} activeClassName="text-primary">
-            {routeTo.state.name}
-          </NavLink>
-        </div>
-      ))}
-    </nav>
-  )
-}
+export default ({ routes }: Props) => (
+  <nav className={`ml-5 ${component}`}>
+    {routes.map(route => (
+      <div className="pb-1" key={route.id}>
+        <NavLink to={route} activeClassName="text-primary">
+          {route.state.name}
+        </NavLink>
+      </div>
+    ))}
+  </nav>
+)

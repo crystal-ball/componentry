@@ -2,40 +2,53 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 
-import ComponentsNav from 'components/universal/ComponentsNav'
-
-import { component } from './home-screen.scss'
+import routesMap, { componentRoutes, conceptRoutes } from 'utils/routes-map'
+import SubRoutesNav from 'components/universal/SubRoutesNav'
 
 import accessibleSVG from './media/accessibility.svg'
 import bundleSVG from './media/bundle.svg'
 import mergeSVG from './media/merge.svg'
 import reactLogo from './media/react.svg'
 
+import { component } from './home-screen.scss'
+
 export default () => (
   <div className={component}>
-    <div className="hero display-1 d-flex flex-column align-items-center">
-      <div>
+    <div className="hero d-flex flex-column align-items-center">
+      <h1 className="display-2 text-primary mb-5">
+        <u>C</u>omponentry
+      </h1>
+
+      <div className="text-center mb-3">
         <img className="logo react-logo" src={reactLogo} alt="React" />
-        <span className="ml-2 mr-3">+</span>
+        <span className="ml-2 mr-3 display-3">+</span>
         <span className="logo bootstrap-logo">B</span>
       </div>
-      <h2 className="my-5 text-center w-75">
-        Lightweight, simple and accessible components built with React and Bootstrap
-        v4
+
+      <h2 className="mb-5 text-center w-75">
+        Lightweight, simple and accessible components <br />built with React and
+        Bootstrap v4
       </h2>
     </div>
-    <div className="home-nav border border-right-0 border-left-0 d-flex justify-content-center align-items-center">
+
+    <div className="home-nav border border-right-0 border-left-0 d-flex justify-content-center align-items-center mb-4">
       <div className="m-3">
-        <Link to="/getting-started">Get Started</Link>
+        <Link to={routesMap.setup.pathname}>{routesMap.setup.name}</Link>
       </div>
-      <div className="m-3">
-        <ComponentsNav color="link" outline={false} />
+      <div className="my-3">
+        {/* Library concepts guides navigation */}
+        <SubRoutesNav label="Concepts" subRoutes={conceptRoutes} />
+      </div>
+      <div className="my-3">
+        {/* Component dropdown navigation */}
+        <SubRoutesNav label="Components" subRoutes={componentRoutes} />
       </div>
       <div className="m-3">
         <a href="https://github.com/crystal-ball/componentry">Github</a>
       </div>
     </div>
-    <div className="my-5 row justify-content-center">
+
+    <div className="mb-5 row justify-content-center">
       <div className="col-7 d-flex justify-content-center my-4">
         <div>
           <h3 className="feature-header">Lightweight Bundle Size</h3>

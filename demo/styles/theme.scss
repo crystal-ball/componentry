@@ -34,9 +34,17 @@ $dark: $gray-700;
 
 $purple: #563d7c;
 
-// Global
+// Options
 
 $enable-shadows: true;
+
+// Spacing
+
+$spacer: 1rem;
+$spacers: (
+  4: ($spacer * 2.25),
+  5: ($spacer * 4.25)
+);
 
 // Links
 

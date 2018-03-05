@@ -25,10 +25,10 @@ Componentry is a component library built for React and Bootstrap v4.
 The [Componentry documentation][documentation] covers component APIs, theme
 customization, library architecture and other advanced topics.
 
-## Installation
+## Setup
 
 Getting started with Componentry can be as simple as `npm i componentry`. See
-the [Getting started guide][installation] for details on advanced setup.
+the [Setup][setup] for details on advanced setup.
 
 ## Contributing
 
@@ -39,6 +39,6 @@ contributions from everyone 🎉. Please read the [Code of Conduct][coc] and
 <!-- Links -->
 
 [documentation]: https://crystal-ball.github.io/componentry/
-[installation]: https://crystal-ball.github.io/componentry/getting-started
+[setup]: https://crystal-ball.github.io/componentry/setup
 [coc]: ./CODE_OF_CONDUCT.md
 [contributing]: ./.github/CONTRIBUTING.md

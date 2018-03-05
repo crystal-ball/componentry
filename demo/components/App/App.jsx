@@ -13,12 +13,13 @@ import 'media/icons/chevron.svg'
 import registry from 'registry'
 import AppNav from 'components/universal/AppNav'
 import ScrollToTop from 'components/universal/ScrollToTop'
+import routesMap from 'utils/routes-map'
 
 // Screens
 import ComponentsScreen from '../ComponentsScreen'
 import ConceptsScreen from '../ConceptsScreen'
 import FourOhFourScreen from '../FourOhFourScreen'
-import GettingStartedScreen from '../GettingStartedScreen'
+import SetupScreen from '../SetupScreen'
 import HomeScreen from '../HomeScreen'
 import JetpackScreen from '../JetpackScreen'
 
@@ -50,6 +51,8 @@ Object.keys(Componentry).forEach(component => {
 registry.register(Link, 'Link')
 registry.register(Fragment, 'Fragment')
 
+const { setup, jetpack, concepts, components } = routesMap
+
 /**
  * Application class component:
  *
@@ -75,12 +78,19 @@ export default class App extends Component<{}> {
             {/* Show app navigation on every page but home page */}
             <Route path="/:path" component={AppNav} />
 
+            {/* Application level routing */}
             <Switch>
               <Route path="/" exact component={HomeScreen} />
-              <Route path="/getting-started" component={GettingStartedScreen} />
-              <Route path="/concepts/:concept?" component={ConceptsScreen} />
-              <Route path="/jetpack-collection" component={JetpackScreen} />
-              <Route path="/components/:component?" component={ComponentsScreen} />
+              <Route path={setup.pathname} component={SetupScreen} />
+              <Route path={jetpack.pathname} component={JetpackScreen} />
+              <Route
+                path={`${concepts.pathname}/:concept?`}
+                component={ConceptsScreen}
+              />
+              <Route
+                path={`${components.pathname}/:component?`}
+                component={ComponentsScreen}
+              />
               <Route component={FourOhFourScreen} />
             </Switch>
           </Componentry.ThemeProvider>
