@@ -1,10 +1,12 @@
 <div align="center">
   <img
-    width="1000"
+    width="650"
     src="https://cdn.rawgit.com/crystal-ball/componentry/master/demo/media/Componentry.png"
     alt="Componentry"
   />
 </div>
+
+<h1></h1>
 
 <p align="center">
   <a href="https://github.com/prettier/prettier">
@@ -20,6 +22,8 @@
     <img src="https://img.shields.io/npm/v/componentry.svg?style=flat-square" alt="current version">
   </a>
 </p>
+
+<br/>
 
 Componentry is a component library built for React and Bootstrap v4.
 
