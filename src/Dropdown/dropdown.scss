@@ -40,4 +40,10 @@
 // to hide content
 .dropdown-content {
   display: block;
+
+  // Bs uses JS to create a menu right aligned
+  &.dropdown-menu-right {
+    left: unset;
+    right: 0;
+  }
 }
