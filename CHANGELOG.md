@@ -8,6 +8,13 @@ and this project adheres to
 
 #### [Unreleased]
 
+## [2.1.0] - 2018-03-04
+
+### Added
+
+* Styles for right aligned menu added to the dropdown styles.
+* Dropdown chevron icon flip added to Jetpack collection.
+
 ## [2.0.1] - 2018-03-03
 
 ### Fixed
