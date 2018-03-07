@@ -9,10 +9,10 @@ passed to the component `createElement` call.
 
 ```jsx
 <Card as="section">
-  <Card.Boyd>
+  <Card.Body>
     The container for this card will be an HTML section element instead of a
     div.
-  </Card.Boyd>
+  </Card.Body>
 </Card>
 ```
 
