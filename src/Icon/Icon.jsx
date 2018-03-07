@@ -20,6 +20,6 @@ export default elementFactory('Icon', ({ id, font = true, ...props }: Props) => 
     [id]: true,
     font,
   },
-  children: <use href={`#${id}`} />,
+  children: <use href={`#${id}`} xlinkHref={`#${id}`} />,
   ...props,
 }))

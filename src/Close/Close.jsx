@@ -8,7 +8,7 @@ export default elementFactory('Close', {
   tag: BaseButton,
   children: (
     <svg className="icon close font" role="img" aria-label="close">
-      <use href="#close" />
+      <use href="#close" xlinkHref="#close" />
     </svg>
   ),
 })
