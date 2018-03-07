@@ -8,6 +8,12 @@ and this project adheres to
 
 #### [Unreleased]
 
+## [2.1.1] - 2018-03-07
+
+### Fixed
+
+* Ensure svg icons show in Safari with `xlinkHref`
+
 ## [2.1.0] - 2018-03-04
 
 ### Added
