@@ -31,13 +31,12 @@
     }
 
     .tip-container {
-      left: 0;
       top: 100%;
       width: 100%;
     }
 
     .tip:after {
-      bottom: $popover-arrow-width * 1.5;
+      bottom: $popover-arrow-width * 0.5;
     }
   }
 
@@ -52,13 +51,12 @@
     }
 
     .tip-container {
-      left: -$popover-arrow-width * 2;
       height: 100%;
-      top: 0.5em; // We want the tip to be 1/2 of line height from the top for perfect center
+      right: 100%;
     }
 
     .tip:after {
-      left: $popover-arrow-width * 1.5;
+      left: $popover-arrow-width * 0.5;
     }
   }
 
@@ -74,12 +72,11 @@
 
     .tip-container {
       bottom: 100%;
-      left: 0;
       width: 100%;
     }
 
     .tip:after {
-      top: $popover-arrow-width * 1.5;
+      top: $popover-arrow-width * 0.5;
     }
   }
 
@@ -91,16 +88,16 @@
 
     .popover-content {
       margin-right: $popover-arrow-width;
+      right: 0;
     }
 
     .tip-container {
       height: 100%;
-      right: -$popover-arrow-width * 2;
-      top: 0.5em; // We want the tip to be 1/2 of line height from the top for perfect center
+      left: 100%;
     }
 
     .tip:after {
-      right: $popover-arrow-width * 1.5;
+      right: $popover-arrow-width * 0.5;
     }
   }
 }
@@ -137,10 +134,13 @@
     position: absolute;
   }
 
+  // The .tip container creates a containing box of the same height and width as the
+  // tip with overflow hidden. Then inside that container we create a square of the
+  // same dimensions, and rotate it 45 degrees to create the tip effect
   .tip {
-    height: $popover-arrow-width * 2;
+    height: $popover-arrow-width;
     overflow: hidden;
-    width: $popover-arrow-width * 2;
+    width: $popover-arrow-width;
 
     &:after {
       border: $popover-border-width solid $popover-border-color;
