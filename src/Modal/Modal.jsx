@@ -9,7 +9,6 @@ import withActive from '../withActive/withActive'
 import elementFactory from '../component-factories/element'
 import Close from '../Close/Close'
 
-/* eslint-disable react/no-unused-prop-types */
 type Props = {
   active: boolean,
   children?: Node,

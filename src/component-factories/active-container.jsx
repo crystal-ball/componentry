@@ -89,8 +89,6 @@ type Options = {
   externalClickHandler?: boolean,
 }
 
-// TODO: is this fixable?
-/* eslint-disable react/no-unused-prop-types */
 type Props = {
   // Subcomponent shorthand props
   Content?: string,

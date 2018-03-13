@@ -4,7 +4,6 @@ import React from 'react'
 import elementFactory from '../component-factories/element'
 
 type Props = {
-  /* eslint-disable react/no-unused-prop-types */
   font: ?boolean,
   id: string,
 }

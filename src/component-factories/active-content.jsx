@@ -19,9 +19,6 @@ type Options = {
   popper?: boolean,
 }
 
-// TODO: is this fixable?
-/* eslint-disable react/no-unused-prop-types */
-/* eslint-disable react/require-default-props */
 type Props = {
   // Component props
   as?: ComponentType<any> | string,
