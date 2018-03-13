@@ -35,6 +35,9 @@ const theme = {
     // Buttons for documentation site are primary theme color as default
     color: 'primary',
   },
+  ModalHeader: {
+    close: true,
+  },
 }
 
 // ========================================================

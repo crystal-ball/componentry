@@ -8,6 +8,12 @@ and this project adheres to
 
 #### [Unreleased]
 
+### Added
+
+* The ModalHeader component now accepts a `close` prop to include a Close
+  component with `deactivate` set to `onClick`. The ThemeProvider can be used to
+  include close buttons in all ModalHeader instances by default.
+
 ## [2.1.1] - 2018-03-07
 
 ### Fixed
