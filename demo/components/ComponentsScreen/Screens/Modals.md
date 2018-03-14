@@ -36,7 +36,6 @@ modal.
       <Modal size={size}>
         <Modal.Header>
           <Modal.Title>Demo uncontrolled modal</Modal.Title>
-          <Close onClick={deactivate} />
         </Modal.Header>
         <Modal.Body>
           <p>
@@ -62,7 +61,6 @@ modal.
           <Modal size={size}>
             <Modal.Header>
               <Modal.Title>Demo uncontrolled modal</Modal.Title>
-              <Close onClick={deactivate} />
             </Modal.Header>
             <Modal.Body>
               <p>
@@ -97,6 +95,27 @@ modal.
     <code>deactivate</code> props to control the modal.
   </div>
 </Alert>
+
+### Header close button
+
+By default a close button is not included in the Modal.Header component. Pass
+{' '}`close` to include an instance of the Close component with the Modal
+{' '}`deactivate` set to the Close `onClick`.
+
+```jsx
+<Modal.Header close>
+  <Modal.Title>Modal with close button</Modal.Title>
+</Modal.Header>
+```
+
+If you'd like to include a Close button by default for all modals in your
+application, you can use the ThemeProvider to set close to true by default.
+
+```jsx
+<ThemeProvider theme={{ ModalHeader: { close: true }}}>
+  {/* All Modal.Header instances in your app will have close defaulted true */}
+</ThemeProvider>
+```
 
 ### <Icon id="stars" /> A++ Accessibility
 

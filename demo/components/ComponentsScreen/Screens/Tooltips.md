@@ -28,6 +28,6 @@ Theme customization guide</Link> for details.
   )}
 />
 
-<SupportingInfo apis={['Active component']} />
+<SupportingInfo apis={['Active component', 'Trigger decoration']} />
 
 <PropsTabs activeComponent />

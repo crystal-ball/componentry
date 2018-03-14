@@ -10,7 +10,7 @@ The Close component icon includes an `aria-label` to provide screen readers to
 announce the close button purpose.
 
 <InteractiveDemo
-  renderCode={() => `<Close onClick={() => {}} />`}
-  renderComponent={() => <Close onClick={() => {}} />}
+  renderCode={() => `<Close onClick={evt => console.log(evt) } />`}
+  renderComponent={() => <Close onClick={evt => console.log(evt) } />}
 />
 

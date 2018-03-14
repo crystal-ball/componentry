@@ -1,14 +1,12 @@
 // @flow
-import React, { Component, Fragment } from 'react'
-import type { Node } from 'react'
-import { object, shape, string } from 'prop-types'
+import React, { Component, Fragment, type Node } from 'react'
+import { func, object, shape, string } from 'prop-types'
 import classNames from 'classnames'
 import nanoid from 'nanoid'
 
 import withActive from '../withActive/withActive'
 import elementFactory from '../component-factories/element'
 
-/* eslint-disable react/no-unused-prop-types */
 type Props = {
   active: boolean,
   children?: Node,
@@ -18,9 +16,26 @@ type Props = {
 }
 
 class Modal extends Component<Props> {
-  static Header = elementFactory('ModalHeader', { className: 'modal-header' })
   static Body = elementFactory('ModalBody', { className: 'modal-body' })
   static Footer = elementFactory('ModalFooter', { className: 'modal-footer' })
+  /**
+   * The Modal.Header close button is not shown by default, pass close to show a
+   * Close component with deactivate. This is for 'standard' usage only, for custom
+   * requirements, use a custom close setup.
+   */
+  static Header = elementFactory(
+    'ModalHeader',
+    ({ children, Close, ...props }, ctx) => ({
+      className: 'modal-header',
+      children: (
+        <Fragment>
+          {children}
+          {Close && <Close onClick={ctx.ModalHeader.deactivate} />}
+        </Fragment>
+      ),
+      ...props,
+    }),
+  )
   static Title = elementFactory('ModalTitle', (props, ctx) => ({
     tag: 'h4',
     id: ctx.ModalTitle.guid,
@@ -32,8 +47,14 @@ class Modal extends Component<Props> {
   static contextTypes = { THEME: shape({ Modal: object }) }
 
   // Set modal guid on context for Title
-  static childContextTypes = { ModalTitle: shape({ guid: string }) }
-  getChildContext = () => ({ ModalTitle: { guid: this.guid } })
+  static childContextTypes = {
+    ModalTitle: shape({ guid: string }),
+    ModalHeader: shape({ deactivate: func }),
+  }
+  getChildContext = () => ({
+    ModalTitle: { guid: this.guid },
+    ModalHeader: { deactivate: this.props.deactivate },
+  })
 
   /**
    * Guid instance property will be uniquely assigned once for each modal instance,

@@ -8,6 +8,7 @@ import DocumentTitle from 'react-document-title'
 // Import SVG font icons used in application without an Icon component instance
 import 'media/icons/close.svg'
 import 'media/icons/chevron.svg'
+import 'media/icons/info.svg'
 
 // App Components
 import registry from 'registry'
@@ -27,6 +28,8 @@ import JetpackScreen from '../JetpackScreen'
 // Componentry Theme Customization
 // ========================================================
 
+const { Close, Icon } = Componentry
+
 // Componentry configuration defaults can be updated using the ThemeProvider
 // component and passing a theme configuration object
 const theme = {
@@ -34,6 +37,14 @@ const theme = {
   Button: {
     // Buttons for documentation site are primary theme color as default
     color: 'primary',
+  },
+  ModalHeader: {
+    // Include a Close component in all modal headers by default
+    Close,
+  },
+  DropdownTrigger: {
+    // Include the chevron icon decoration by default in all dropdowns
+    decoration: <Icon id="chevron" />,
   },
 }
 

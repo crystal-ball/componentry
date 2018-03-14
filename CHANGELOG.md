@@ -8,6 +8,16 @@ and this project adheres to
 
 #### [Unreleased]
 
+### Added
+
+* Active.Trigger components now accept a `decoration` prop that is rendered
+  after the component children. The ThemeProvider can be used to include a
+  decoration in all instances of any trigger component by default.
+* The ModalHeader component now accepts a `Close` prop of type component that
+  will be passed an `onClick` that will call the modal instance's `deactivate`
+  prop. The ThemeProvider can be used to set the Close component for all modal
+  headers by default.
+
 ## [2.1.1] - 2018-03-07
 
 ### Fixed

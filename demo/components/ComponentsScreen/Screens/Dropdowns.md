@@ -49,7 +49,7 @@ enable easy navigation between multiple options.
     'dropdown-header',
     'dropdown-divider'
   ]}
-  apis={['Active component', 'Items component', 'Directional component']}
+  apis={['Active component', 'Items component', 'Directional component', 'Trigger decoration']}
 />
 
 <Alert color="info">

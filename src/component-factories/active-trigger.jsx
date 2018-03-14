@@ -1,6 +1,5 @@
 // @flow
-import { createElement } from 'react'
-import type { ComponentType, Node } from 'react'
+import { createElement, type Node, type ComponentType } from 'react'
 import { object, shape } from 'prop-types'
 import classNames from 'classnames'
 
@@ -28,6 +27,7 @@ type Props = {
   as?: ComponentType<any> | string,
   children?: Node,
   className?: string,
+  decoration?: boolean | Node,
   link?: boolean,
   activeId?: string,
   // Active boolean + change handlers from withActive HOC
@@ -60,6 +60,7 @@ export default ({
       children,
       className,
       deactivate,
+      decoration,
       guid,
       link,
       activeId = '',
@@ -113,6 +114,7 @@ export default ({
         ...rest,
       },
       children,
+      decoration,
     )
   }
 

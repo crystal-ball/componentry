@@ -13,6 +13,10 @@
   }
 
   .chevron.icon {
+    // Assumes that dropdowns use the decoration to include a chevron by default,
+    // provide margin for spacing from dropdown label
+    margin-left: map-get($spacers, 1);
+    // Provide a fun flip transition between open and closed states
     transition: transform 500ms;
   }
 
