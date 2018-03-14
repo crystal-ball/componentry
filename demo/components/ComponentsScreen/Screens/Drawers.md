@@ -46,7 +46,7 @@ component.
 />
 
 <SupportingInfo
-  apis={['Active component']}
+  apis={['Active component', , 'Trigger decoration']}
 />
 
 ## Accordion

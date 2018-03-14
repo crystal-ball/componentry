@@ -13,6 +13,9 @@ and this project adheres to
 * The ModalHeader component now accepts a `close` prop to include a Close
   component with `deactivate` set to `onClick`. The ThemeProvider can be used to
   include close buttons in all ModalHeader instances by default.
+* The DropdownTrigger component now accepts a `decoration` prop to include a
+  custom decoration or a chevron Icon component instance. The ThemeProvider can
+  be used to include a decoration in all DropdownTrigger instances by default.
 
 ## [2.1.1] - 2018-03-07
 

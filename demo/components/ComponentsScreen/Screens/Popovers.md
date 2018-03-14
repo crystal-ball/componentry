@@ -65,7 +65,7 @@ showing detailed user hints on hover.
   )}
 />
 
-<SupportingInfo apis={['Active component', 'Directional component']} />
+<SupportingInfo apis={['Active component', 'Directional component', 'Trigger decoration']} />
 
 <Alert color="info">
   ℹ️ The Popover component defaults <code>direction</code> to
