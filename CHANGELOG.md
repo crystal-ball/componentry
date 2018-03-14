@@ -8,6 +8,10 @@ and this project adheres to
 
 #### [Unreleased]
 
+### Fixed
+
+* Popover content alignment styles fixed for left direction popovers.
+
 ### Added
 
 * Active.Trigger components now accept a `decoration` prop that is rendered
