@@ -8,6 +8,8 @@ and this project adheres to
 
 #### [Unreleased]
 
+## [2.2.0] - 2018-03-14
+
 ### Fixed
 
 * Popover content alignment styles fixed for left direction popovers.
