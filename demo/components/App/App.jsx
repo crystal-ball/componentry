@@ -28,7 +28,7 @@ import JetpackScreen from '../JetpackScreen'
 // Componentry Theme Customization
 // ========================================================
 
-const { Icon } = Componentry
+const { Close, Icon } = Componentry
 
 // Componentry configuration defaults can be updated using the ThemeProvider
 // component and passing a theme configuration object
@@ -40,7 +40,7 @@ const theme = {
   },
   ModalHeader: {
     // Include a Close component in all modal headers by default
-    close: true,
+    Close,
   },
   DropdownTrigger: {
     // Include the chevron icon decoration by default in all dropdowns

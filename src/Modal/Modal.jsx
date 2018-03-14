@@ -1,13 +1,11 @@
 // @flow
-import React, { Component, Fragment } from 'react'
-import type { Node } from 'react'
+import React, { Component, Fragment, type Node } from 'react'
 import { func, object, shape, string } from 'prop-types'
 import classNames from 'classnames'
 import nanoid from 'nanoid'
 
 import withActive from '../withActive/withActive'
 import elementFactory from '../component-factories/element'
-import Close from '../Close/Close'
 
 type Props = {
   active: boolean,
@@ -27,12 +25,12 @@ class Modal extends Component<Props> {
    */
   static Header = elementFactory(
     'ModalHeader',
-    ({ children, close, ...props }, ctx) => ({
+    ({ children, Close, ...props }, ctx) => ({
       className: 'modal-header',
       children: (
         <Fragment>
           {children}
-          {close && <Close onClick={ctx.ModalHeader.deactivate} />}
+          {Close && <Close onClick={ctx.ModalHeader.deactivate} />}
         </Fragment>
       ),
       ...props,
