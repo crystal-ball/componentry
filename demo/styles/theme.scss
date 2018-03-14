@@ -37,7 +37,9 @@ $purple: #563d7c;
 // Options
 
 $enable-caret: false;
-$enable-shadows: true;
+// ℹ️ Do not enable shadows ($enable-shadows), it will cause very weird behavior
+// with link/anchor buttons on press and also doesn't do what you would expect and
+// instead adds weird other types of shadows
 
 // Spacing
 

@@ -31,7 +31,7 @@ the exact styles needed.
 <InteractiveDemo
   defaults={defaults}
   formFields={[
-    { label: 'color', options: this.props.colors },
+    { label: 'color', options: [...this.props.colors, 'link'] },
     { label: 'outline', boolean: true },
     { label: 'size', options: this.props.sizes },
     {

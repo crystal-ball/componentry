@@ -65,7 +65,6 @@
     "babel-plugin-transform-react-stateless-component-name": "^1.1.2",
     "babel-plugin-transform-runtime": "~6.23.0",
     "bootstrap": "^4.0.0",
-    "bootstrap-jetpacked": "^0.4.2",
     "commitizen": "^2.9.6",
     "cz-customizable": "^5.2.0",
     "enzyme": "^3.3.0",
