@@ -114,7 +114,7 @@ props.
 
 ## Trigger decorations
 
-All Trigger components accept a `decoration` prop which is rendered to the right
-of the Trigger children content. The decoration can be set at a component level
-or at an application level using the ThemeProvider. This makes it easy to add a
-default decoration to all trigger instances, eg adding an icon to all popovers.
+All Trigger components accept a `decoration` prop which is rendered after the
+Trigger children. The decoration can be set at a component level or at an
+application level using the ThemeProvider. This makes it easy to add a default
+decoration to all trigger instances, eg adding an icon to all popovers.
