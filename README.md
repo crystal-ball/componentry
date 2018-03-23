@@ -37,6 +37,8 @@ customization, library architecture and other advanced topics.
 
 ## Setup
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/crystal-ball/componentry.svg)](https://greenkeeper.io/)
+
 Getting started with Componentry can be as simple as `npm i componentry`. See
 the [Setup][setup] for details on advanced setup.
 
