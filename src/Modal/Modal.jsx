@@ -10,7 +10,7 @@ import elementFactory from '../component-factories/element'
 type Props = {
   active: boolean,
   children?: Node,
-  deactivate?: Function,
+  deactivate: Function,
   size?: 'small' | 'large',
   visible?: boolean,
 }
@@ -72,15 +72,16 @@ class Modal extends Component<Props> {
    */
   componentWillReceiveProps(nextProps) {
     const { active } = this.props
-    if (!active && nextProps.active) document.body.classList.add('no-scroll')
-    if (active && !nextProps.active) document.body.classList.remove('no-scroll')
+    const { body } = window.document
+    if (!active && nextProps.active) body.classList.add('no-scroll')
+    if (active && !nextProps.active) body.classList.remove('no-scroll')
   }
 
   /**
    * Remove body scroll disabler in case modal is unmounted without closing
    */
   componentWillUnmount() {
-    document.body.classList.remove('no-scroll')
+    window.document.body.classList.remove('no-scroll')
   }
 
   // Methods

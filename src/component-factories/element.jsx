@@ -22,7 +22,7 @@ type Context = { [string]: { [string]: any } }
  * @export
  * @returns {Component} React functional stateless component with base classes.
  */
-export default (name, elementComputer) => {
+export default (name: string, elementComputer: Function | Object) => {
   const Element = (
     { className: propsClassName, ...props }: ElementProps,
     ctx: Context = { THEME: {} },
