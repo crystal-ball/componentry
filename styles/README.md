@@ -1,56 +1,30 @@
-# CSS In Componentry
+# Componentry styling
 
-Componentry is built to work as seamlessly as possible with Bootstrap v4. As
-little CSS as possible is used in the project to minimize interference with Bs
-styling. Style rules in Componentry are included in the cases where
-optimizations over the existing Bs styles became possible.
+Componentry is designed to utilize Bootstrap v4 as seamlessly as possible in
+order to provide seamless appearance between atomic styles and React components.
+When appropriate, Componentry overrides or extends Bootstrap with enhancements.
 
-## Import Structure
+See https://crystal-ball.github.io/componentry/setup for full documentation.
 
-Componentry uses the same SCSS variables as Bootstrap, so that the styling
-between components and Bs elements is the same. Include them in your project
-like so:
+## Directory structure
 
-```scss
-// 1. Theme Variables
-// Import any customization variables to theme Bootstrap and Componentry, if you
-// don't load any the Bootstrap default variables will be used
-@import 'your-variables';
+Styles are split into the following categories:
 
-// 2. Bootstrap Styles
-// Componentry includes the Bootstrap styles, and has a convenience entry import
-// The Bootstrap styles form the base style rule set for your application
-@import '~componentry/dist/bootstrap';
+* `/styles` root contains import aggregation entry files. These are consumed by
+  library users.
+* `/styles/bootstrap` contains the latest release of Bootstrap. Only change
+  these styles when absolutely necessary, they will be overwritten when updating
+  Bootstrap releases.
+* `/styles/componetry` contains styles for the library that provide atomic
+  styles for the components.
+* `/styles/jetpack` contains optional utility styles and enhancements for
+  Bootstrap and Componentry styles.
 
-// 3. Componentry Styles
-// Import Componentry styles on top of Bootstrap base ruleset
-@import '~componentry/dist/componentry';
+Component styles are colocated with component source files int he `/src`
+directory.
 
-// 4. Application Styles
-// Import application styles as final ruleset
-@import 'your-application/styles';
-```
+## ⚠️ Componentry overrides
 
-## Componentry Styles
-
-Componentry enhancements to Bootstrap include:
-
-* Using the `aria-hidden` attribute to handle showing/hiding elements instead of
-  a class name. The `aria-hidden` attribute is used in all components for A++
-  accesibility, and instead of duplicating the aria status in a class name
-  Componentry extends the Bs styles to trigger off the aria status.
-* Where possible floats have been replaced with flexbox rules.
-* The `btn-anchor` rule is intended to be used to create A++ accessible buttons
-  styled to look exactly like anchors for any interactive element that is not a
-  link to a different page.
-* Included `icon` class adds base styles for font icons using SVGs.
-* Tooltips and Popovers use a relative positioned container with absolute
-  positioned children for DOM placement instead of fixed position. This removes
-  necessity of calculating fixed top/left coordinates.
-* The content container for any element with active states uses a standard
-  classname convention where a `<TYPE>-container` wraps a `<TYPE>-content`
-  class. For dropdowns, this means the `.dropdown-menu` class is normalized to
-  `dropdown-content`.
-
-ℹ️ Any changes to Bootstrap's styles can be found by searching for
-`@COMPONENTRY` in the `styles/bootstrap` directory.
+Changes to Bootstrap's styles in `/styles/bootstrap` should include a
+`@COMPONENTRY` flag to help provide guides on what is library changes when we
+are updating the Bootstrap styles used.
