@@ -4,7 +4,7 @@ import React from 'react'
 import elementFactory from '../component-factories/element'
 
 type Props = {
-  font: ?boolean,
+  font?: boolean,
   id: string,
 }
 

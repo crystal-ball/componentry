@@ -52,15 +52,6 @@ type ActiveContext = {
   subscribe: Function,
 }
 
-// TODO: this seems to fix Flow errors with hoisting class statics, but doesn't
-// actually provide the right typings???
-interface WrappedStatics {
-  Header?: ComponentType<*>;
-  Body?: ComponentType<*>;
-  Footer?: ComponentType<*>;
-  Title?: ComponentType<*>;
-}
-
 /**
  * HOC passes active state props along with computed aria attributes. Component is
  * responsible for passing ACTIVE context as props and handling state transitions
@@ -69,14 +60,18 @@ interface WrappedStatics {
 export default ({
   defaultActive = false,
   transitionState = false,
-}: Options = {}) => (Wrapped: ComponentType<*> & WrappedStatics) =>
+}: Options = {}) => (Wrapped: ComponentType<*>) =>
   class WithActive extends Component<Props, State> {
     unsubscribe: Function
     transitionDuration: number
 
+    // $FlowFixMe
     static Header = Wrapped.Header
+    // $FlowFixMe
     static Body = Wrapped.Body
+    // $FlowFixMe
     static Footer = Wrapped.Footer
+    // $FlowFixMe
     static Title = Wrapped.Title
 
     static displayName = `withActive${Wrapped.displayName || Wrapped.name}`
