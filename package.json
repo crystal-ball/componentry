@@ -1,6 +1,6 @@
 {
   "name": "componentry",
-  "version": "2.2.1",
+  "version": "0.0.0-semantic",
   "description": "React Componentry",
   "main": "dist/componentry.js",
   "module": "es/index.js",
@@ -58,7 +58,6 @@
     "nanoid": "^1.0.2"
   },
   "devDependencies": {
-    "eslint-config-eloquence": "^7.3.0",
     "@inspirescript/webpack-configs": "^2.32.0",
     "babel-cli": "~6.26.0",
     "babel-jest": "^22.4.1",
@@ -73,6 +72,7 @@
     "enzyme": "^3.3.0",
     "enzyme-adapter-react-16": "^1.1.1",
     "enzyme-to-json": "^3.3.1",
+    "eslint-config-eloquence": "^7.3.0",
     "flow-bin": "^0.71.0",
     "gh-pages": "^1.1.0",
     "husky": "^0.14.3",
@@ -85,7 +85,8 @@
     "react-dom": "^16.3.1",
     "react-router": "^4.2.0",
     "react-router-dom": "^4.2.2",
-    "react-test-renderer": "^16.3.0"
+    "react-test-renderer": "^16.3.0",
+    "semantic-release": "^15.2.0"
   },
   "config": {
     "commitizen": {
