@@ -9,11 +9,14 @@
 <h1></h1>
 
 <p align="center">
-  <a href="https://github.com/prettier/prettier">
+  <a href="https://github.com/prettier/prettier" target="_blank" rel="noopener noreferrer">
     <img src="https://img.shields.io/badge/styled_with-prettier-ff69b4.svg" alt="Prettier">
   </a>
   <a href="https://travis-ci.org/crystal-ball/componentry">
     <img src="https://travis-ci.org/crystal-ball/componentry.svg?branch=master" alt="Build">
+  </a>
+  <a href="https://greenkeeper.io/" target="_blank" rel="noopener noreferrer">
+    <img src="https://badges.greenkeeper.io/crystal-ball/componentry.svg">
   </a>
   <a href="http://commitizen.github.io/cz-cli/">
     <img src="https://img.shields.io/badge/commitizen-friendly-brightgreen.svg" alt="Commitizen">
@@ -36,8 +39,6 @@ The [Componentry documentation][documentation] covers component APIs, theme
 customization, library architecture and other advanced topics.
 
 ## Setup
-
-[![Greenkeeper badge](https://badges.greenkeeper.io/crystal-ball/componentry.svg)](https://greenkeeper.io/)
 
 Getting started with Componentry can be as simple as `npm i componentry`. See
 the [Setup][setup] for details on advanced setup.
