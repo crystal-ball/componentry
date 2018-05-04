@@ -20,7 +20,7 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/crystal-ball/componentry"
+    "url": "https://github.com/crystal-ball/componentry.git"
   },
   "engines": {
     "node": ">=8.9.0"
