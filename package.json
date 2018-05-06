@@ -57,7 +57,7 @@
     "nanoid": "^1.0.2"
   },
   "devDependencies": {
-    "@inspirescript/webpack-configs": "^2.32.0",
+    "@inspirescript/webpack-configs": "^3.0.0",
     "babel-cli": "~6.26.0",
     "babel-jest": "^22.4.1",
     "babel-plugin-transform-class-properties": "~6.24.1",
