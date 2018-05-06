@@ -9,8 +9,8 @@
 <h1></h1>
 
 <p align="center">
-  <a href="https://github.com/prettier/prettier" target="_blank" rel="noopener noreferrer">
-    <img src="https://img.shields.io/badge/styled_with-prettier-ff69b4.svg" alt="Prettier">
+  <a href="https://www.npmjs.com/package/componentry">
+    <img src="https://img.shields.io/npm/v/componentry.svg?style=flat-square" alt="current version">
   </a>
   <a href="https://travis-ci.org/crystal-ball/componentry">
     <img src="https://travis-ci.org/crystal-ball/componentry.svg?branch=master" alt="Build">
@@ -18,11 +18,11 @@
   <a href="https://greenkeeper.io/" target="_blank" rel="noopener noreferrer">
     <img src="https://badges.greenkeeper.io/crystal-ball/componentry.svg">
   </a>
-  <a href="http://commitizen.github.io/cz-cli/">
-    <img src="https://img.shields.io/badge/commitizen-friendly-brightgreen.svg" alt="Commitizen">
+  <a href="https://github.com/prettier/prettier" target="_blank" rel="noopener noreferrer">
+    <img src="https://img.shields.io/badge/styled_with-prettier-ff69b4.svg" alt="Prettier">
   </a>
-  <a href="https://www.npmjs.com/package/componentry">
-    <img src="https://img.shields.io/npm/v/componentry.svg?style=flat-square" alt="current version">
+  <a href="https://github.com/semantic-release/semantic-release" target="_blank" rel="noopener noreferrer">
+    <img src="https://img.shields.io/badge/%20%20%F0%9F%93%A6%F0%9F%9A%80-semantic--release-e10079.svg" alt="managed by semantic release">
   </a>
 </p>
 
