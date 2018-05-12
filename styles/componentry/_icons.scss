@@ -1,19 +1,5 @@
 /* componentry/styles/icons */
 
-.componentry-icon {
-  display: inline-flex;
-  fill: currentColor;
-  height: 1em;
-  position: relative; // for bottom
-  width: 1em; // width + height of 1em makes icons font-sized by default
-
-  // SVG icons displayed with inline flex do not have the same baseline as fonts,
-  // the bottom adjustment aligns the svg baseline with the font baseline
-  &.font {
-    margin-bottom: $icon-bottom;
-  }
-}
-
 // By default Componentry provides a very simple set of icon classes with background
 // images, but this is not the recommended system. Consumers should set up an SVG
 // icon system and set $include-icons to false to use real SVGs for icons.
