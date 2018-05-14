@@ -1,13 +1,13 @@
 Componentry's architecture is driven by two primary goals:
 
-* Maintain as light of a footprint as possible
 * Make consumption of library as simple as possible
+* Maintain as light of a footprint as possible
 
 There are _lots_ of React component libraries available, and we don't want to
 add noise to the community. This library is useful because it's small, simple
 and compatible with Boostrap v4.
 
-## Component Expectations
+## Component architecture
 
 One of the primary goals of Componentry is a simple, consistent API for all
 components. The following expectations should be met for all components, and if
@@ -30,7 +30,7 @@ not documentation should explain why the convention has been overridden.
   `classNames` that will be computed along with the base component classes.
 * Tests for the component should cover the exposed component API.
 
-## Computing props
+### Computing props
 
 Every library component can have default props configured using the
 `<ThemeProvider />`. The default configurations are accessed by individual
@@ -41,7 +41,7 @@ that any values which are additive, such as `className` need to be accessed
 directly from props and context because merging the two can override or
 duplicate the values.
 
-#### Passing props
+### Passing props
 
 All props that are not used by the library are passed through using rest syntax.
 This supports composition by allowing any root component to be used as a library
@@ -49,6 +49,28 @@ element and any arbitrary props to be passed. It's important that the props rest
 is included **last** in the `createElement` call so that **any** library prop
 can be overriden _(Eg: passing activate/deactive methods override library props
 which enables controlled components)_.
+
+## Design principles
+
+<p class="lead">
+  The guiding principles of Componentry aim to enable scaling applications
+  to large sizes while maintaining design cohesion, even as the application
+  theme evolves.
+</p>
+
+In order to accomplish this Componentry:
+
+* Utilizes theme customization variables with sensible defaults for generating
+  utility and component styles. This drives cohesion, and enables both sweeping
+  and fine grained customization of an application theme.
+* Provides powerful atomic classes that enable functional composition of custom
+  styles. This drives cohesion across large scale apps and provides solid best
+  practices for teams to follow.
+* Scopes styles to single component elements to ensure that it's easy to
+  understand how the complete style set of a component was generated.
+
+_Componentry extends Bootstrap, so it's helpful to be familiar with their
+[Approach][]._
 
 ## Dependencies
 
@@ -70,3 +92,7 @@ script. The different versions are created using Babel configs triggered by the
 * `package.esnext` ES Stage 4 version: Untranspiled source version using only
   Stage-4 features. This version can be used to by consuming projects configured
   to create their own targeted compile configurations.
+
+<!-- Link -->
+
+[approach]: https://getbootstrap.com/docs/4.0/extend/approach/

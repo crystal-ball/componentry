@@ -37,7 +37,7 @@
     "styles": "npm run styles:copy",
     "test:unit": "BABEL_ENV=test NODE_ENV=test jest --env=jsdom",
     "test:watch": "BABEL_ENV=test NODE_ENV=test jest --env=jsdom --watch",
-    "format": "prettier --write \"{demo,src}/**/*.{js,jsx,scss}\"",
+    "format": "prettier --write \"{demo,src}/**/*.{js,jsx,scss}\" guides/*.md",
     "lint": "NODE_ENV=test eslint --ext .js --ext .jsx src demo",
     "documentation": "NODE_ENV=production webpack --env=production",
     "clean": "rm -rf dist es esnext build",
