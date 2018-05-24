@@ -72,7 +72,7 @@
     "enzyme-adapter-react-16": "^1.1.1",
     "enzyme-to-json": "^3.3.1",
     "eslint-config-eloquence": "^7.3.0",
-    "flow-bin": "^0.71.0",
+    "flow-bin": "^0.73.0",
     "gh-pages": "^1.1.0",
     "husky": "^0.14.3",
     "jest": "^22.4.2",
