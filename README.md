@@ -9,6 +9,7 @@
 <h1></h1>
 
 <p align="center">
+  <img src="https://img.shields.io/badge/%20%20%F0%9F%A6%84%F0%9F%8C%88-made%20with%20love-e10079.svg" alt="made with love">
   <a href="https://www.npmjs.com/package/componentry">
     <img src="https://img.shields.io/npm/v/componentry.svg?style=flat-square" alt="current version">
   </a>
