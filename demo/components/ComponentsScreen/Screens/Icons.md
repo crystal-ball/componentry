@@ -11,6 +11,6 @@ default. SVGs automatically inherit font sizes and color, and inline SVGs can
 be styled with CSS.
 
 <InteractiveDemo
-  renderCode={() => `<h1><Icon id="bootstrap" /> SVG icon system</h1>`}
+  renderCode={() => `<h1><Icon id="check-box" /> SVG icon system</h1>`}
   renderComponent={() => <h1><Icon id="check-box" /> SVG icon system</h1>}
 />
