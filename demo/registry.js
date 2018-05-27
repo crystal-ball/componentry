@@ -37,6 +37,6 @@ function deepRegister(r) {
 
 // Use webpack require.context to recursively find all registry imports anywhere in
 // application and register them
-deepRegister(require.context('./', true, /\.registry\.jsx?$/))
+deepRegister(require.context('./', true, /\.registry\.js$/))
 
 export default registry

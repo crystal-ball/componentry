@@ -1,15 +1,12 @@
-/* eslint-env node */
-/* eslint-disable import/no-extraneous-dependencies */
 'use strict' // eslint-disable-line
 const { resolve } = require('path')
-const { optimize } = require('webpack')
-const UglifyJsPlugin = require('uglifyjs-webpack-plugin')
 
 /**
  * Webpack configs for generating a UMD distributable of library.
  * See https://webpack.js.org/guides/author-libraries/ for basics
  */
 module.exports = {
+  mode: 'production',
   entry: './src/index.js',
   output: {
     path: resolve(__dirname, 'dist'),
@@ -18,12 +15,7 @@ module.exports = {
     libraryTarget: 'umd',
   },
   externals: ['react', 'prop-types'],
-  resolve: {
-    extensions: ['.js', '.jsx', '.json'],
-  },
   module: {
-    rules: [{ test: /\.jsx?$/, exclude: /node_modules/, loader: 'babel-loader' }],
+    rules: [{ test: /\.js$/, exclude: /node_modules/, loader: 'babel-loader' }],
   },
-  // MINIFY AND CONCATENATE ALL THEM MODULES!!!
-  plugins: [new UglifyJsPlugin(), new optimize.ModuleConcatenationPlugin()],
 }
