@@ -45,8 +45,12 @@ $enable-caret: false;
 
 $spacer: 1rem;
 $spacers: (
-  4: ($spacer * 2.25),
-  5: ($spacer * 4.25)
+  4: (
+    $spacer * 2.25,
+  ),
+  5: (
+    $spacer * 4.25,
+  ),
 );
 
 // Links

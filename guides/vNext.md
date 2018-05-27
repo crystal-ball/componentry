@@ -16,9 +16,9 @@ provides the best foundation for writing reusable and scalable CSS.
 
 #### Upgrade goals
 
-* Simplify the setup and usage of Componentry styles.
-* Scope component styles to a single consumer.
-* Provide a foundation for building custom design systems.
+- Simplify the setup and usage of Componentry styles.
+- Scope component styles to a single consumer.
+- Provide a foundation for building custom design systems.
 
 ## 🗺 Direction
 
@@ -35,15 +35,15 @@ scoped to a single component usage.
 
 ## 🚧 Upcoming changes
 
-* [ ] Update bundled Bootstrap styles to v4.1.1 (latest)
-* [ ] Update package to declare webpack `sideEffects` to allow applications to
+- [ ] Update bundled Bootstrap styles to v4.1.1 (latest)
+- [ ] Update package to declare webpack `sideEffects` to allow applications to
       start importing single components.
-* [ ] Create a `styles/atomic` directory for separation of atomic styles.
-* [ ] Identify and migrate atomic theme mixins/functions to allow applications
+- [ ] Create a `styles/atomic` directory for separation of atomic styles.
+- [ ] Identify and migrate atomic theme mixins/functions to allow applications
       to begin consuming single components.
-* [ ] Create a `theme.scss` styles entrypoint that includes all variables and
+- [ ] Create a `theme.scss` styles entrypoint that includes all variables and
       helper mixins/functions required by component styles.
-* [ ] Validate that any component class name can be imported and used without
+- [ ] Validate that any component class name can be imported and used without
       impact or dependency on global styles.
-* [ ] Validate that component styles do no assume styling provided by general
+- [ ] Validate that component styles do no assume styling provided by general
       Bootstrap content styles.

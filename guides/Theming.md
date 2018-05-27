@@ -9,8 +9,8 @@ Customizations for behavior or defaults can be set using the `<ThemeProvider />`
 component. The theme provider sets your customizations on the context, and will
 be picked up by any child component. The available options are:
 
-* `defaultButtonColor` - Sets the default color for `Button` components.
-* `transitionDuration` - Sets the default length for transitions.
+- `defaultButtonColor` - Sets the default color for `Button` components.
+- `transitionDuration` - Sets the default length for transitions.
 
 ```jsx
 <ThemeProvider theme={{ defaultButtonColor: 'secondary' }}>
@@ -46,19 +46,19 @@ included icon. The id for any icon used is documented in the component.
 
 Componentry enhancements to Bootstrap include:
 
-* Using the `aria-hidden` attribute to handle showing/hiding elements instead of
+- Using the `aria-hidden` attribute to handle showing/hiding elements instead of
   a class name. The `aria-hidden` attribute is used in all components for A++
   accesibility, and instead of duplicating the aria status in a class name
   Componentry extends the Bs styles to trigger off the aria status.
-* Where possible floats have been replaced with flexbox rules.
-* The `btn-anchor` rule can be used to create A++ accessible buttons styled to
+- Where possible floats have been replaced with flexbox rules.
+- The `btn-anchor` rule can be used to create A++ accessible buttons styled to
   look exactly like anchors for any interactive element that is not a link to a
   different page.
-* Included `icon` class adds base styles for font icons using SVGs.
-* Tooltips and Popovers use a relative positioned container with absolute
+- Included `icon` class adds base styles for font icons using SVGs.
+- Tooltips and Popovers use a relative positioned container with absolute
   positioned children for DOM placement instead of fixed position. This removes
   necessity of calculating fixed top/left coordinates.
-* The content container for any element with active states uses a standard
+- The content container for any element with active states uses a standard
   classname convention where a `<TYPE>-container` wraps a `<TYPE>-content`
   class. For dropdowns, this means the `.dropdown-menu` class is normalized to
   `dropdown-content`.
