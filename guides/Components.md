@@ -29,9 +29,9 @@ Any component that is themeable uses the `color` prop to set the theme color.
 Active components that support aligning content in different directions use the
 `direction` prop to include classes that set the content position.
 
-* The direction classes are added to the container component so that both the
+- The direction classes are added to the container component so that both the
   trigger and content components can be easily targeted.
-* Directional components have a sensible default set, so the `direction` prop
+- Directional components have a sensible default set, so the `direction` prop
   only needs to be overridden for custom directions.
 
 ```jsx
@@ -79,10 +79,10 @@ component.
 
 Component state changes can be observed by passing on event handlers:
 
-* `onActivate`
-* `onActivated`
-* `onDeactivate`
-* `onDeactivated`
+- `onActivate`
+- `onActivated`
+- `onDeactivate`
+- `onDeactivated`
 
 ```jsx
 <Active

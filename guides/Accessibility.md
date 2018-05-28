@@ -82,14 +82,14 @@ have enough contrast.
 
 ### Additional resources
 
-* [`eslint-plugin-jsx-a11y`][eslint]
-* [Contrast ratio checker][contrast]
-* [Web Content Accessibility Guidelines (WCAG) 2.0][wcag]
-* [The A11Y Project][a11y-project]
-* [MDN accessibility documentation][mdn-accessibility]
-* [Tenon.io Accessibility Checker][tenon]
-* [Colour Contrast Analyser (CCA)][cca]
-* ["HTML Codesniffer" bookmarklet for identifying accessibility
+- [`eslint-plugin-jsx-a11y`][eslint]
+- [Contrast ratio checker][contrast]
+- [Web Content Accessibility Guidelines (WCAG) 2.0][wcag]
+- [The A11Y Project][a11y-project]
+- [MDN accessibility documentation][mdn-accessibility]
+- [Tenon.io Accessibility Checker][tenon]
+- [Colour Contrast Analyser (CCA)][cca]
+- ["HTML Codesniffer" bookmarklet for identifying accessibility
   issues][codesniffer]
 
 _[Thanks to Bootstrap for some of the above utilties and docs][bootstrap]_
