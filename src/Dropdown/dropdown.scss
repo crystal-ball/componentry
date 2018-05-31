@@ -9,30 +9,14 @@
 
   &.top {
     @extend .dropup;
-
-    .dropdown-content {
-      top: unset;
-      bottom: 100%;
-    }
   }
 
   &.right {
     @extend .dropright;
-
-    .dropdown-content {
-      top: 0;
-      left: 100%;
-    }
   }
 
   &.left {
     @extend .dropleft;
-
-    .dropdown-content {
-      top: 0;
-      right: 100%;
-      left: unset;
-    }
   }
 }
 
@@ -40,10 +24,4 @@
 // to hide content
 .dropdown-content {
   display: block;
-
-  // Bs uses JS to create a menu right aligned
-  &.dropdown-menu-right {
-    left: unset;
-    right: 0;
-  }
 }

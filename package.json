@@ -64,7 +64,7 @@
     "babel-plugin-transform-react-remove-prop-types": "^0.4.13",
     "babel-plugin-transform-react-stateless-component-name": "^1.1.2",
     "babel-plugin-transform-runtime": "~6.23.0",
-    "bootstrap": "^4.0.0",
+    "bootstrap": "^4.1.1",
     "commitizen": "^2.10.1",
     "cz-customizable": "^5.2.0",
     "enzyme": "^3.3.0",
