@@ -1,9 +1,70 @@
 /* componentry/src/Alert/alert */
 
+@mixin alert-variant($background, $border, $color) {
+  color: $color;
+  @include gradient-bg($background);
+  border-color: $border;
+
+  hr {
+    border-top-color: darken($border, 5%);
+  }
+
+  .alert-link {
+    color: darken($color, 10%);
+  }
+}
+
 // Make the alert container a flex container by default with space-between to align
 // close button to right side
 .alert {
   align-items: flex-start;
+  border: $alert-border-width solid transparent;
   display: flex;
   justify-content: space-between;
+  margin-bottom: $alert-margin-bottom;
+  padding: $alert-padding-y $alert-padding-x;
+  position: relative;
+  @include border-radius($alert-border-radius);
 }
+
+// Headings for larger alerts
+.alert-heading {
+  // Specified to prevent conflicts of changing $headings-color
+  color: inherit;
+}
+
+// Provide class for links that match alerts
+.alert-link {
+  font-weight: $alert-link-font-weight;
+}
+
+// Alternate styles
+//
+// Generate contextual modifier classes for colorizing the alert.
+
+@each $color, $value in $theme-colors {
+  .alert-#{$color} {
+    @include alert-variant(
+      theme-color-level($color, $alert-bg-level),
+      theme-color-level($color, $alert-border-level),
+      theme-color-level($color, $alert-color-level)
+    );
+  }
+}
+
+// TODO: Jetpack alerts, make configurable
+// // Enhance alert styling with a single 5px border left with theme color instead of
+// // the alert background 😍
+// // Design from Bootstrap documentation site
+// .alert {
+//   // Clear out original styles with a transparent background and standard gray border
+//   background-color: transparent;
+//   border-color: $border-color;
+// }
+
+// @each $color, $value in $theme-colors {
+//   // Add the themed border left for each color
+//   .alert-#{$color} {
+//     border-left: 5px solid $value;
+//   }
+// }

@@ -23,3 +23,27 @@
     }
   }
 }
+
+// By default Componentry provides a very simple set of icon classes with background
+// images, but this is not the recommended system. Consumers should set up an SVG
+// icon system and set $include-icons to false to use real SVGs for icons.
+@if $include-icons {
+  .icon.close {
+    @extend .componentry-icon;
+
+    background-image: str-replace(
+      url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='#{$body-color}' viewBox='0 0 32 32'%3E%3Cpath d='M32,3.22,19.22,16,32,28.78,28.78,32,16,19.22,3.22,32,0,28.78,12.78,16,0,3.22,3.22,0,16,12.78,28.78,0Z'/%3E%3C/svg%3E"),
+      '#',
+      '%23'
+    );
+  }
+}
+
+// ℹ️ Do not import Bootstrap close styles:
+// The Bootstrap close styles assume that you are using the &times; character for
+// your close button, and includes some styles to bump the font size, adjust line
+// line height and add a float.
+//
+// Componentry supports using an SVG icon so that applications can choose a close
+// icon that fits their theme, as well as using flexbox on containers with close
+// buttons instead of floats.

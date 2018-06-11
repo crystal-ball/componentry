@@ -8,13 +8,9 @@
 // libraries to create a set of themed components matching your app styles
 // perfectly.
 
-// 1️⃣ Theme variables
+// 1️⃣ Theme definition
 
 @import './theme';
-
-// 2️⃣ Bootstrap
-
-@import '../../styles/bootstrap';
 
 // 3️⃣ Componentry library styles
 
@@ -22,8 +18,6 @@
 // any Boostrap variables you don't declare in your theme will still be
 // available from the Bootstrap variables.
 @import '../../styles/componentry';
-// Include the optional jetpack for turbo-charging our application styles
-@import '../../styles/jetpack';
 
 // 4️⃣ Application styles
 

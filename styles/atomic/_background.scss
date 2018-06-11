@@ -1,0 +1,45 @@
+// stylelint-disable declaration-no-important
+
+// Contextual backgrounds
+
+@mixin bg-variant($parent, $color) {
+  #{$parent} {
+    background-color: $color !important;
+  }
+  a#{$parent},
+  button#{$parent} {
+    @include hover-focus {
+      background-color: darken($color, 10%) !important;
+    }
+  }
+}
+
+@mixin bg-gradient-variant($parent, $color) {
+  #{$parent} {
+    background: $color linear-gradient(180deg, mix($body-bg, $color, 15%), $color)
+      repeat-x !important;
+  }
+}
+
+@each $color, $value in $theme-colors {
+  @include bg-variant('.bg-#{$color}', $value);
+}
+
+// Create a bg class for each gray
+@each $color, $value in $grays {
+  @include bg-variant('.bg-gray-#{$color}', $value);
+}
+
+@if $enable-gradients {
+  @each $color, $value in $theme-colors {
+    @include bg-gradient-variant('.bg-gradient-#{$color}', $value);
+  }
+}
+
+.bg-white {
+  background-color: $white !important;
+}
+
+.bg-transparent {
+  background-color: transparent !important;
+}

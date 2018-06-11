@@ -44,7 +44,6 @@
     "js:esnext": "BABEL_ENV=esnext babel src --out-dir esnext",
     "js:esmodules": "BABEL_ENV=production babel src --out-dir es",
     "js:amdmodule": "NODE_ENV=production webpack --config webpack.config.umd.js",
-    "bootstrap:copy": "cp -a ./node_modules/bootstrap/scss/* ./styles/bootstrap",
     "styles:copy": "cp -r styles/* dist"
   },
   "peerDependencies": {
@@ -53,8 +52,8 @@
   },
   "dependencies": {
     "babel-runtime": "^6.26.0",
-    "classnames": "^2.2.5",
-    "nanoid": "^1.0.2"
+    "classnames": "^2.2.6",
+    "nanoid": "^1.0.3"
   },
   "devDependencies": {
     "@inspirescript/webpack-configs": "3.2.0",
@@ -64,7 +63,6 @@
     "babel-plugin-transform-react-remove-prop-types": "^0.4.13",
     "babel-plugin-transform-react-stateless-component-name": "^1.1.2",
     "babel-plugin-transform-runtime": "~6.23.0",
-    "bootstrap": "^4.1.1",
     "commitizen": "^2.10.1",
     "cz-customizable": "^5.2.0",
     "enzyme": "^3.3.0",

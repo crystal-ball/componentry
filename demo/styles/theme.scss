@@ -123,5 +123,8 @@ $token-function: #6fc1ff;
 
 // Complete variable set by importing Bootstrap default variables.
 
-@import '../../styles/bootstrap/_functions.scss';
-@import '../../styles/bootstrap/_variables.scss';
+/*
+ * Complete theme setup by importing the Componentry default variables,
+ * functions and mixins
+ */
+@import '../../styles/theme';
