@@ -57,7 +57,7 @@
     "nanoid": "^1.0.2"
   },
   "devDependencies": {
-    "@inspirescript/webpack-configs": "^3.1.1",
+    "@inspirescript/webpack-configs": "3.2.0",
     "babel-cli": "~6.26.0",
     "babel-plugin-transform-class-properties": "~6.24.1",
     "babel-plugin-transform-object-rest-spread": "~6.26.0",
@@ -71,7 +71,7 @@
     "enzyme-adapter-react-16": "^1.1.1",
     "enzyme-to-json": "^3.3.4",
     "eslint-config-eloquence": "^7.4.0",
-    "flow-bin": "^0.73.0",
+    "flow-bin": "^0.74.0",
     "gh-pages": "^1.1.0",
     "husky": "^0.14.3",
     "jest": "^23.0.1",
