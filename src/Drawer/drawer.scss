@@ -4,14 +4,15 @@
 .accordion-toggle {
   // Bs doesn't have real drawers, the 'Collapse' styles can be used to create
   // them, but b/c they don't include any structural styles they are not
-  // convenient for creating standard drawers with minimal markup. Add display and
-  // margin for standard drawers that could be easily extended/overriden
-  display: block; // Prevent drawer content from starting at drawer button boundary
-  margin-bottom: map-get($spacers, 2);
+  // convenient for creating standard drawers with minimal markup. Add display
+  // for standard drawers to prevent drawer content from starting at drawer
+  // button boundary
+  display: block;
 
-  // By default Componentry provides a very simple set of icon classes with background
-  // images, but this is not the recommended system. Consumers should set up an SVG
-  // icon system and set $include-icons to false to use real SVGs for icons.
+  // By default Componentry provides a very simple set of icon classes with
+  // background images, but this is not the recommended system. Consumers should
+  // set up an SVG icon system and set $include-icons to false to use real SVGs
+  // for icons.
   @if $include-icons {
     .icon.chevron {
       @extend .componentry-icon;
@@ -25,13 +26,13 @@
   }
 }
 
-// If the chevron icon is used with a drawer toggle, it will rotate a quarter turn
-// on open/close of drawer
+// If the chevron icon is used with a drawer toggle, it will rotate a half
+// turn on open/close of drawer
 .drawer-toggle,
 .accordion-toggle {
   .chevron.icon {
     transition: transform 500ms;
-    transform: rotate(-0.25turn);
+    transform: rotate(-0.5turn);
   }
 
   &[aria-expanded='true'] {

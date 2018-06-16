@@ -58,7 +58,7 @@ const theme = {
   },
   DropdownTrigger: {
     // Include the chevron icon decoration by default in all dropdowns
-    decoration: <Icon id="chevron" />,
+    decoration: <Icon id="chevron" className="ml-1" />,
   },
 }
 

@@ -14,3 +14,16 @@
   width: 115px;
   height: 50px;
 }
+
+// Do a fun 3d flip transition between open and closed states
+.dropdown-toggle {
+  .chevron.icon {
+    transition: transform 500ms;
+  }
+
+  &[aria-expanded='true'] {
+    .chevron.icon {
+      transform: rotateX(-180deg);
+    }
+  }
+}

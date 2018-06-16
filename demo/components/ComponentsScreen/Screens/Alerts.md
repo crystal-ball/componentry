@@ -25,7 +25,7 @@ which can be passed directly or the Alert can be nested inside of an Active
 component to automatically create an uncontrolled Alert.
 
 <InteractiveDemo
-  defaults={{ color: 'success', outline: false, dismissible: true }}
+  defaults={{ color: 'success', outline: true, dismissible: true }}
   formFields={[
     { label: 'color', options: this.props.colors },
     { label: 'dismissible', boolean: true },

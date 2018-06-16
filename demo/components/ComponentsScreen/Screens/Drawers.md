@@ -20,26 +20,46 @@ component.
 
 <InteractiveDemo
   renderCode={() => `<Drawer>
-  <Drawer.Trigger>
-    Trigger Drawer
-  </Drawer.Trigger>
-  <Drawer.Content>
-    The Motion Picture Academy refused to nominate Tron (1982) for a
-    special-effects award because, according to director Steven Lisberger,
-    “The Academy thought we cheated by using computers”
-  </Drawer.Content>
+  <Card>
+    <Card.Header>
+      <Drawer.Trigger
+        link
+        className="d-flex justify-content-between w-100 align-items-center"
+      >
+        <span>Trigger Drawer</span>
+        <Icon id="chevron" />
+      </Drawer.Trigger>
+    </Card.Header>
+    <Drawer.Content>
+    <Card.Body>
+      The Motion Picture Academy refused to nominate Tron (1982) for a
+      special-effects award because, according to director Steven Lisberger,
+      “The Academy thought we cheated by using computers”
+    </Card.Body>
+    </Drawer.Content>
+  </Card>
 </Drawer>`}
   renderComponent={() => (
-    <div className="w-50">
+    <div className="w-50" style={{height: "160px"}}>
       <Drawer>
-        <Drawer.Trigger>
-          Trigger Drawer
-        </Drawer.Trigger>
-        <Drawer.Content>
-          The Motion Picture Academy refused to nominate Tron (1982) for a
-          special-effects award because, according to director Steven Lisberger,
-          “The Academy thought we cheated by using computers”
-        </Drawer.Content>
+        <Card>
+          <Card.Header>
+            <Drawer.Trigger
+              link
+              className="d-flex justify-content-between w-100 align-items-center"
+            >
+              <span>Trigger Drawer</span>
+              <Icon id="chevron" />
+            </Drawer.Trigger>
+          </Card.Header>
+          <Drawer.Content>
+          <Card.Body>
+            The Motion Picture Academy refused to nominate Tron (1982) for a
+            special-effects award because, according to director Steven Lisberger,
+            “The Academy thought we cheated by using computers”
+          </Card.Body>
+          </Drawer.Content>
+        </Card>
       </Drawer>
     </div>
   )}
@@ -58,22 +78,58 @@ inside an accordion.
 
 <InteractiveDemo
   renderCode={() => `<Accordion>
-  <Accordion.Trigger activeId="one">Trigger One</Accordion.Trigger>
-  <Accordion.Content activeId="one">Content One</Accordion.Content>
-  <Accordion.Trigger activeId="two">Trigger Two</Accordion.Trigger>
-  <Accordion.Content activeId="two">Content Two</Accordion.Content>
-  <Accordion.Trigger activeId="three">Trigger Three</Accordion.Trigger>
-  <Accordion.Content activeId="three">Content Three</Accordion.Content>
+  <Card>
+    <Card.Header>
+      <Accordion.Trigger activeId="one" link>Trigger One</Accordion.Trigger>
+    </Card.Header>
+    <Accordion.Content as={Card.Body} activeId="one">
+        Content One
+    </Accordion.Content>
+  </Card>
+  <Card>
+    <Card.Header>
+      <Accordion.Trigger activeId="two" link>Trigger Two</Accordion.Trigger>
+    </Card.Header>
+    <Accordion.Content as={Card.Body} activeId="two">
+        Content Two
+    </Accordion.Content>
+  </Card>
+  <Card>
+    <Card.Header>
+      <Accordion.Trigger activeId="three" link>Trigger Three</Accordion.Trigger>
+    </Card.Header>
+    <Accordion.Content as={Card.Body} activeId="three">
+        Content Three
+    </Accordion.Content>
+  </Card>
 </Accordion>`}
   renderComponent={() => (
     <div className="w-50">
       <Accordion>
-        <Accordion.Trigger activeId="one">Trigger One</Accordion.Trigger>
-        <Accordion.Content activeId="one">Content One</Accordion.Content>
-        <Accordion.Trigger activeId="two">Trigger Two</Accordion.Trigger>
-        <Accordion.Content activeId="two">Content Two</Accordion.Content>
-        <Accordion.Trigger activeId="three">Trigger Three</Accordion.Trigger>
-        <Accordion.Content activeId="three">Content Three</Accordion.Content>
+        <Card>
+          <Card.Header>
+            <Accordion.Trigger activeId="one" link>Trigger One</Accordion.Trigger>
+          </Card.Header>
+          <Accordion.Content as={Card.Body} activeId="one">
+              Content One
+          </Accordion.Content>
+        </Card>
+        <Card>
+          <Card.Header>
+            <Accordion.Trigger activeId="two" link>Trigger Two</Accordion.Trigger>
+          </Card.Header>
+          <Accordion.Content as={Card.Body} activeId="two">
+              Content Two
+          </Accordion.Content>
+        </Card>
+        <Card>
+          <Card.Header>
+            <Accordion.Trigger activeId="three" link>Trigger Three</Accordion.Trigger>
+          </Card.Header>
+          <Accordion.Content as={Card.Body} activeId="three">
+              Content Three
+          </Accordion.Content>
+        </Card>
       </Accordion>
     </div>
   )}
