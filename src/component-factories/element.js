@@ -33,6 +33,10 @@ export default (name: string, elementComputer: Function | Object) => {
 
     if (ctxProps) {
       mergedProps = { ...ctxProps, ...props }
+      // We handle merging classNames in this function, don't pass through the
+      // ctx className to elementComputer or it may override and specified
+      // className
+      delete mergedProps.className
       ctxClassName = ctxProps.className
     }
 

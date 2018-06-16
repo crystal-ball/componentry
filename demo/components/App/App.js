@@ -52,6 +52,8 @@ const theme = {
   Button: {
     // Buttons for documentation site are primary theme color as default
     color: 'primary',
+    // The white Libre Franklin font looks nice at a lighter weight
+    className: 'font-weight-light',
   },
   ModalHeader: {
     // Include a Close component in all modal headers by default
