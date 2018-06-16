@@ -25,28 +25,29 @@ which can be passed directly or the Alert can be nested inside of an Active
 component to automatically create an uncontrolled Alert.
 
 <InteractiveDemo
-  defaults={{ color: 'success', dismissible: true }}
+  defaults={{ color: 'success', outline: false, dismissible: true }}
   formFields={[
     { label: 'color', options: this.props.colors },
     { label: 'dismissible', boolean: true },
+    { label: 'outline', boolean: true },
   ]}
-  renderCode={({ color, dismissible }) => dismissible ? (
+  renderCode={({ color, dismissible, outline }) => dismissible ? (
     `<Active defaultActive>
-  <Alert color="${color}" dismissible>
+  <Alert color="${color}" dismissible${outline ? ' outline' : ''}>
     <h4 className="alert-heading">Well done!</h4>
     <p className="mb-0">You successfully read this important alert message.</p>
   </Alert>
 </Active>`
   ) : (
-    `<Alert color="${color}">
+    `<Alert color="${color}"${outline ? ' outline' : ''}>
   <h4 className="alert-heading">Well done!</h4>
   <p className="mb-0">You successfully read this important alert message.</p>
 </Alert>`
   )}
-  renderComponent={({ color, dismissible }) => (
+  renderComponent={({ color, dismissible, outline }) => (
     <div className="w-100">
       <Active defaultActive>
-        <Alert color={color} dismissible={dismissible}>
+        <Alert color={color} dismissible={dismissible} outline={outline}>
           <h4 className="alert-heading">Well done!</h4>
           <p className="mb-0">You successfully read this important alert message.</p>
         </Alert>

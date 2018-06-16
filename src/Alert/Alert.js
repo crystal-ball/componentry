@@ -21,6 +21,10 @@ type Props = {
    */
   dismissible?: boolean,
   /**
+   * Pass `true` to render an outline style alert
+   */
+  outline?: boolean,
+  /**
    * Length of opacity transition, defaults to 300ms or `THEME` value if set using
    * `ThemeProvider`.
    */
@@ -44,6 +48,7 @@ const Alert = elementFactory(
     color,
     dismissible = false,
     deactivate,
+    outline = false,
     visible = true,
     // 🙅‍♀️ You shall not pass!
     activate,
@@ -55,6 +60,7 @@ const Alert = elementFactory(
       fade: true,
       [`alert-${color}`]: color,
       show: visible,
+      outline,
     },
     // hidden state is updated after active opacity transition
     'aria-hidden': active ? 'false' : 'true',

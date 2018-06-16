@@ -52,19 +52,14 @@
   }
 }
 
-// TODO: Jetpack alerts, make configurable
-// // Enhance alert styling with a single 5px border left with theme color instead of
-// // the alert background 😍
-// // Design from Bootstrap documentation site
-// .alert {
-//   // Clear out original styles with a transparent background and standard gray border
-//   background-color: transparent;
-//   border-color: $border-color;
-// }
+// Outline styles
+//
+// Outline alerts have a transparent background with a bright left side border
 
-// @each $color, $value in $theme-colors {
-//   // Add the themed border left for each color
-//   .alert-#{$color} {
-//     border-left: 5px solid $value;
-//   }
-// }
+@each $color, $value in $theme-colors {
+  .alert-#{$color}.outline {
+    background-color: transparent;
+    border-color: $border-color;
+    border-left: 5px solid $value;
+  }
+}

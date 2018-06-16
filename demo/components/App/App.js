@@ -45,6 +45,9 @@ const { Close, Icon } = Componentry
 // component and passing a theme configuration object
 const theme = {
   transitionDuration: 350,
+  Alert: {
+    outline: true,
+  },
   Button: {
     // Buttons for documentation site are primary theme color as default
     color: 'primary',
