@@ -11,7 +11,7 @@ $include-icons: false;
 
 // Color system
 
-$white: #fff;
+$white:    #fff;
 $gray-100: #ecf0f1;
 $gray-200: #dee2e6;
 $gray-300: #ced4da;
@@ -21,18 +21,18 @@ $gray-600: #7b8a8b;
 $gray-700: #5b6163;
 $gray-800: #464a4c;
 $gray-900: #343a40;
-$black: #212529;
+$black:    #212529;
 
-$primary: #374d68;
+$primary:   #374d68;
 $secondary: #1382ad;
-$success: #77b300;
-$info: #17a2b8;
-$warning: #d4860b;
-$danger: #d9534f;
-$light: $gray-100;
-$dark: $gray-700;
+$success:   #77b300;
+$info:      #17a2b8;
+$warning:   #d4860b;
+$danger:    #d9534f;
+$light:       $gray-100;
+$dark:        $gray-700;
 
-$purple: #563d7c;
+$purple:    #563d7c;
 
 // Options
 
@@ -45,81 +45,79 @@ $enable-caret: false;
 
 $spacer: 1rem;
 $spacers: (
-  4: (
-    $spacer * 2.25,
-  ),
-  5: (
-    $spacer * 4.25,
-  ),
+  4: ($spacer * 2.25,),
+  5: ($spacer * 4.25,),
 );
 
 // Links
 
-$link-color: $secondary;
+$link-color:      $secondary;
 
 // Components
 
-$border-width: 1px;
-$transition-fade: opacity 0.3s linear;
+$border-width:            1px;
+$transition-fade:         opacity 0.3s linear;
 
 // Fonts
 
-$font-family-sans-serif: 'Libre Franklin', Arial, sans-serif;
+$font-family-sans-serif:  'Libre Franklin', Arial, sans-serif;
 
-$font-size-base: 0.9375rem; // 15px base assuming 1 rem = 16px
-$font-size-lg: $font-size-base * 1.25;
-$font-size-sm: $font-size-base * 0.8;
+$font-size-base:          0.9375rem; // 15px base assuming 1 rem = 16px
+$font-size-lg:            $font-size-base * 1.25;
+$font-size-sm:            $font-size-base * 0.8;
 
-$h1-font-size: $font-size-base * 3.2;
-$h2-font-size: $font-size-base * 2;
-$h3-font-size: $font-size-base * 1.6;
-$h4-font-size: $font-size-base * 1.2;
+$h1-font-size:            $font-size-base * 3.2;
+$h2-font-size:            $font-size-base * 2;
+$h3-font-size:            $font-size-base * 1.6;
+$h4-font-size:            $font-size-base * 1.2;
 
-$headings-font-weight: 300;
-$headings-color: $gray-800;
+$headings-font-weight:    300;
+$headings-color:          $gray-800;
+
+// Buttons
+$btn-font-weight:         300; // The white Libre Franklin font looks nice at a lighter weight
 
 // Tooltips
 
-$tooltip-max-width: 350px;
-$tooltip-bg: $gray-200;
-$tooltip-color: $gray-900;
+$tooltip-max-width:       350px;
+$tooltip-bg:              $gray-200;
+$tooltip-color:           $gray-900;
 
-$tooltip-padding-y: 6px !default;
-$tooltip-padding-x: 10px !default;
+$tooltip-padding-y:       6px !default;
+$tooltip-padding-x:       10px !default;
 
-$tooltip-arrow-width: 8px;
-$tooltip-arrow-height: 8px;
+$tooltip-arrow-width:     8px;
+$tooltip-arrow-height:    8px;
 
 // Popovers
 
-$popover-box-shadow: 0px 1px 5px rgba(0, 0, 0, 0.2);
-$popover-arrow-width: 11px;
+$popover-box-shadow:      0px 1px 5px rgba(0, 0, 0, 0.2);
+$popover-arrow-width:     11px;
 
 // Modals
-// ---------------------------------------------------------------------------
 
 // Remove border surrounding modal and use a sharp box-shadow
-$modal-content-border-width: 0;
-$modal-header-border-width: $border-width;
-$modal-footer-border-width: $border-width;
-$modal-content-box-shadow-xs: 0 3px 9px rgba(149, 165, 175, 0.7);
+$modal-content-border-width:     0;
+$modal-header-border-width:      $border-width;
+$modal-footer-border-width:      $border-width;
+$modal-content-box-shadow-xs:    0 3px 9px rgba(149, 165, 175, 0.7);
 $modal-content-box-shadow-sm-up: 0 5px 15px rgba(149, 165, 175, 0.7);
 
 // Close
 
-$close-color: $gray-700;
+$close-color:       $gray-700;
 
 // Syntax Highlighting Variables
 
-$background: #1a2937;
-$color: #e7e8e8;
-$token-keyword: #ff75b5;
-$token-string: #a6dcd0;
-$token-operator: #ffb86c;
-$token-number: #ffca58;
-$token-comment: #7b7d7d;
+$background:        #1a2937;
+$color:             #e7e8e8;
+$token-keyword:     #ff75b5;
+$token-string:      #a6dcd0;
+$token-operator:    #ffb86c;
+$token-number:      #ffca58;
+$token-comment:     #7b7d7d;
 $token-punctuation: #e7e8e8;
-$token-function: #6fc1ff;
+$token-function:    #6fc1ff;
 
 // Complete variable set by importing Bootstrap default variables.
 
