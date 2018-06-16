@@ -15,6 +15,7 @@ This guide contains an overview of changes that would impact consumers of Compon
 
 ## Updates
 
+* Button has a `block` prop to toggle full width buttons 🎉
 * The Bootstrap mixins have been separated based on if they are used as utility mixins
   in multiple places, or in a single component file.
 * The Bootstrap files have been extracted into Componentry styles file, there is now a

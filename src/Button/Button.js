@@ -3,6 +3,8 @@ import elementFactory, { type ElementProps } from '../component-factories/elemen
 import type { ThemeColors } from '../utils/theme'
 
 export type Props = {
+  /** Creates a full-width button */
+  block?: boolean,
   /** Theme color used to compute BS color class */
   color?: ThemeColors | 'link' | '',
   /** Computes the button as anchor class */
@@ -22,12 +24,13 @@ export type Props = {
 const makeButton = decorated =>
   elementFactory(
     decorated ? 'Button' : 'BaseButton',
-    ({ color, link, outline, size, ...props }) => ({
+    ({ block, color, link, outline, size, ...props }) => ({
       tag: 'button',
       type: 'button',
       className: {
         btn: decorated,
         'btn-anchor': link,
+        'btn-block': block,
         // btn-<COLOR> class is only for regular themed buttons, suppress for other
         // btn theme flavors
         [`btn-${color}`]: color && !link && !outline,

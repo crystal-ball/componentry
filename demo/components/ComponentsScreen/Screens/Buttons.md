@@ -1,5 +1,6 @@
 ---
 defaults:
+  block: false
   color: primary
   outline: false
   size: null
@@ -32,6 +33,7 @@ the exact styles needed.
   defaults={defaults}
   formFields={[
     { label: 'color', options: [...this.props.colors, 'link'] },
+    { label: 'block', boolean: true },
     { label: 'outline', boolean: true },
     { label: 'size', options: this.props.sizes },
     {
@@ -43,7 +45,8 @@ the exact styles needed.
       }
     },
   ]}
-  renderCode={({ color, outline, size, link }) => `<Button${color ? ` color="${color}"` : ''}${outline ? ' outline' : ''}${size ? ` size="${size}"` : ''}${link ? ' link' : ''}>Click me!</Button>`}
+  renderCode={({ block, color, outline, size, link }) =>
+    `<Button${color ? ` color="${color}"` : ''}${block ? ` block` : ''}${outline ? ' outline' : ''}${size ? ` size="${size}"` : ''}${link ? ' link' : ''}>Click me!</Button>`}
   renderComponent={data => <Button {...data}>Click me!</Button>}
 />
 
