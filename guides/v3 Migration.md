@@ -12,7 +12,8 @@ This guide contains an overview of changes that would impact consumers of Compon
 * Drawer and Accordion toggle no longer have default margin bottom, see the demo
   for an example of using the Drawer and Card component together.
 * The non-standard dropdown classes `dropup`, `dropright`, `dropleft` and
-  `dropdown-menu` have been removed
+  `dropdown-menu` have been removed.
+* Styles are no longer published at `/dist`! Styles are published in `/styles`.
 
 ## Updates
 

@@ -2,7 +2,7 @@
   "name": "componentry",
   "version": "0.0.0-semantic",
   "description": "React Componentry",
-  "main": "dist/componentry.js",
+  "main": "lib/index.js",
   "module": "es/index.js",
   "esnext": "esnext/index.js",
   "keywords": [
@@ -23,28 +23,26 @@
     "url": "https://github.com/crystal-ball/componentry.git"
   },
   "engines": {
-    "node": ">=8.9.0"
+    "node": ">=8.11"
   },
   "scripts": {
     "commit": "git cz",
     "start": "NODE_ENV=development webpack-dev-server --env=development",
     "test": "npm run lint && npm run test:unit",
-    "prepublishOnly": "npm run js && npm run styles",
+    "prepublishOnly": "npm run clean && npm run js",
     "postpublish": "npm run clean",
     "flow": "flow",
     "deploy": "gh-pages -d build",
-    "js": "npm run js:esmodules && npm run js:esnext && npm run js:amdmodule",
-    "styles": "npm run styles:copy",
+    "js": "npm run js:commonjs && npm run js:esmodules && npm run js:esnext",
     "test:unit": "BABEL_ENV=test NODE_ENV=test jest --env=jsdom",
     "test:watch": "BABEL_ENV=test NODE_ENV=test jest --env=jsdom --watch",
     "format": "prettier --write \"{demo,src,styles}/**/*.{js,scss}\" guides/*.md",
     "lint": "NODE_ENV=test eslint src demo",
     "documentation": "NODE_ENV=production webpack --env=production",
-    "clean": "rm -rf dist es esnext build",
-    "js:esnext": "BABEL_ENV=esnext babel src --out-dir esnext",
-    "js:esmodules": "BABEL_ENV=production babel src --out-dir es",
-    "js:amdmodule": "NODE_ENV=production webpack --config webpack.config.umd.js",
-    "styles:copy": "cp -r styles/* dist"
+    "clean": "rm -rf dist monitor lib es esnext",
+    "js:commonjs": "BABEL_ENV=common babel src --out-dir lib --ignore *.spec.js",
+    "js:esmodules": "BABEL_ENV=esm babel src --out-dir es --ignore *.spec.js",
+    "js:esnext": "BABEL_ENV=next babel src --out-dir esnext --ignore *.spec.js"
   },
   "peerDependencies": {
     "prop-types": "15.x",
@@ -59,6 +57,7 @@
     "@inspirescript/webpack-configs": "3.2.0",
     "babel-cli": "~6.26.0",
     "babel-plugin-transform-class-properties": "~6.24.1",
+    "babel-plugin-transform-es2015-modules-commonjs": "^6.26.2",
     "babel-plugin-transform-object-rest-spread": "~6.26.0",
     "babel-plugin-transform-react-remove-prop-types": "^0.4.13",
     "babel-plugin-transform-react-stateless-component-name": "^1.1.2",

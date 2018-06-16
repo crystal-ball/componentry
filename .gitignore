@@ -9,11 +9,11 @@ node_modules
 
 # Published
 #################################
-dist
+lib
 es
 esnext
 
 # Documentation
 #################################
-build
+dist
 monitor

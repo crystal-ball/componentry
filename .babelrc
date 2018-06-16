@@ -1,63 +1,92 @@
 {
-  "env": {
-    // Local Dev
-    // ---------------------------------------------------------------------------
-    "development": {
-      "presets": [
+  env: {
+    // Local Development
+    development: {
+      presets: [
         [
-          "env",
+          'env',
           {
-            "modules": false,
-            "targets": {
-              "Chrome": "59"
-            }
-          }
+            modules: false,
+            targets: {
+              Chrome: '65',
+            },
+          },
         ],
-        "react"
+        'react',
       ],
-      "plugins": [
-        "transform-react-stateless-component-name", // Give names to SFCs
-        "react-hot-loader/babel", // 🔥
-        "transform-object-rest-spread", // Spread operator inside objects
-        "transform-class-properties", // Class static and property initializers
-        "transform-runtime" // runtime needed for generators
-      ]
+      plugins: [
+        'transform-react-stateless-component-name', // Give names to SFCs
+        'react-hot-loader/babel', // 🔥
+        'transform-object-rest-spread', // Spread operator inside objects
+        'transform-class-properties', // Class static and property initializers
+        'transform-runtime', // runtime needed for generators
+      ],
     },
-    // Production - Bundling for ES5 AMD module and ES modules
-    // ---------------------------------------------------------------------------
-    "production": {
-      "presets": [
+    // Production - Bundling documentation site
+    production: {
+      presets: [
         [
-          "env",
+          'env',
           {
-            "modules": false
-          }
+            modules: false,
+          },
         ],
-        "react"
+        'react',
       ],
-      "plugins": [
-        "transform-class-properties",
-        "transform-object-rest-spread",
-        "transform-react-remove-prop-types", // Strip propTypes declarations
-        "transform-runtime" // Library babel-helpers with import statements
-      ]
-    },
-    // Next - Transpiled to stage 4 for package.esnext
-    // ---------------------------------------------------------------------------
-    "esnext": {
-      "presets": ["react"],
-      "plugins": [
-        "transform-class-properties",
-        "transform-object-rest-spread",
-        "transform-react-remove-prop-types",
-        "transform-runtime"
-      ]
+      plugins: [
+        'transform-class-properties',
+        'transform-object-rest-spread',
+        'transform-react-remove-prop-types', // Strip propTypes declarations
+        'transform-runtime', // Library babel-helpers with import statements
+      ],
     },
     // Test - Mocha setup cannot use esmodules
+    test: {
+      presets: ['env', 'react'],
+      plugins: ['transform-class-properties', 'transform-object-rest-spread'],
+    },
+
+    // Publish targets
     // ---------------------------------------------------------------------------
-    "test": {
-      "presets": ["env", "react"],
-      "plugins": ["transform-class-properties", "transform-object-rest-spread"]
-    }
-  }
+
+    // commonJS - ES5 syntax with commonJS modules
+    common: {
+      presets: ['env', 'react'],
+      plugins: [
+        'transform-es2015-modules-commonjs',
+        'transform-class-properties',
+        'transform-object-rest-spread',
+        'transform-react-remove-prop-types',
+        'transform-runtime',
+      ],
+    },
+    // ESM - ES5 syntax with ESModules
+    esm: {
+      presets: [
+        'react',
+        [
+          'env',
+          {
+            modules: false,
+          },
+        ],
+      ],
+      plugins: [
+        'transform-class-properties',
+        'transform-object-rest-spread',
+        'transform-react-remove-prop-types',
+        'transform-runtime',
+      ],
+    },
+    // Next - Transpiled to stage 4 for package.esnext
+    next: {
+      presets: ['react'],
+      plugins: [
+        'transform-class-properties',
+        'transform-object-rest-spread',
+        'transform-react-remove-prop-types',
+        'transform-runtime',
+      ],
+    },
+  },
 }
