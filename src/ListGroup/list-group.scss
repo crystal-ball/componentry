@@ -1,22 +1,4 @@
-@mixin list-group-item-variant($state, $background, $color) {
-  .list-group-item-#{$state} {
-    color: $color;
-    background-color: $background;
-
-    &.list-group-item-action {
-      @include hover-focus {
-        color: $color;
-        background-color: darken($background, 5%);
-      }
-
-      &.active {
-        color: $white;
-        background-color: $color;
-        border-color: $color;
-      }
-    }
-  }
-}
+/* ~componentry/src/ListGroup/list-group */
 
 // Base class
 //
@@ -125,6 +107,26 @@
 //
 // Add modifier classes to change text and background color on individual items.
 // Organizationally, this must come after the `:hover` states.
+
+@mixin list-group-item-variant($state, $background, $color) {
+  .list-group-item-#{$state} {
+    color: $color;
+    background-color: $background;
+
+    &.list-group-item-action {
+      @include hover-focus {
+        color: $color;
+        background-color: darken($background, 5%);
+      }
+
+      &.active {
+        color: $white;
+        background-color: $color;
+        border-color: $color;
+      }
+    }
+  }
+}
 
 @each $color, $value in $theme-colors {
   @include list-group-item-variant(

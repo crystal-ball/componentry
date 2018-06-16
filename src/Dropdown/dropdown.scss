@@ -1,3 +1,5 @@
+/* componentry/src/Dropdown/dropdown */
+
 // Caret
 //
 // Creates carets for dropdown
@@ -69,27 +71,64 @@
   }
 }
 
-// Horizontal dividers
-//
-// Dividers (basically an hr) within dropdowns and nav lists
-
-@mixin nav-divider($color: $nav-divider-color, $margin-y: $nav-divider-margin-y) {
-  height: 0;
-  margin: $margin-y 0;
-  overflow: hidden;
-  border-top: 1px solid $color;
-}
-
-/* componentry/src/Dropdown/dropdown */
-
 // The dropdown wrapper (`<div>`)
-.dropup,
-.dropright,
-.dropdown,
-.dropleft {
+.dropdown {
   position: relative;
+  // Default dropdown container to inline-block so that click area is constrained
+  // to dropdown trigger
+  display: inline-block;
+
+  // Directional styles
+
+  &.top {
+    .dropdown-content {
+      top: auto;
+      bottom: 100%;
+      margin-top: 0;
+      margin-bottom: $dropdown-spacer;
+    }
+
+    .dropdown-toggle {
+      @include caret(up);
+    }
+  }
+
+  &.right {
+    .dropdown-content {
+      top: 0;
+      right: auto;
+      left: 100%;
+      margin-top: 0;
+      margin-left: $dropdown-spacer;
+    }
+
+    .dropdown-toggle {
+      @include caret(right);
+      &::after {
+        vertical-align: 0;
+      }
+    }
+  }
+
+  &.left {
+    .dropdown-content {
+      top: 0;
+      right: 100%;
+      left: auto;
+      margin-top: 0;
+      margin-right: $dropdown-spacer;
+    }
+
+    .dropdown-toggle {
+      @include caret(left);
+      &::before {
+        vertical-align: 0;
+      }
+    }
+  }
 }
 
+// The dropdown trigger
 .dropdown-toggle {
   // Generate the caret automatically
   @include caret;
@@ -108,14 +147,12 @@
 }
 
 // The dropdown menu
-// @COMPONENTRY: See note on class standardization in styles/README.md
-.dropdown-content,
-.dropdown-menu {
+.dropdown-content {
+  display: block;
   position: absolute;
   top: 100%;
   left: 0;
   z-index: $zindex-dropdown;
-  display: none; // none by default, but block on "open" of the menu
   float: left;
   min-width: $dropdown-min-width;
   padding: $dropdown-padding-y 0;
@@ -136,75 +173,12 @@
   left: auto;
 }
 
-// Allow for dropdowns to go bottom up (aka, dropup-menu)
-// Just add .dropup after the standard .dropdown class and you're set.
-.dropup {
-  // @COMPONENTRY: See note on class standardization in styles/README.md
-  .dropdown-content,
-  .dropdown-menu {
-    top: auto;
-    bottom: 100%;
-    margin-top: 0;
-    margin-bottom: $dropdown-spacer;
-  }
-
-  .dropdown-toggle {
-    @include caret(up);
-  }
-}
-
-.dropright {
-  // @COMPONENTRY: See note on class standardization in styles/README.md
-  .dropdown-content,
-  .dropdown-menu {
-    top: 0;
-    right: auto;
-    left: 100%;
-    margin-top: 0;
-    margin-left: $dropdown-spacer;
-  }
-
-  .dropdown-toggle {
-    @include caret(right);
-    &::after {
-      vertical-align: 0;
-    }
-  }
-}
-
-.dropleft {
-  // @COMPONENTRY: See note on class standardization in styles/README.md
-  .dropdown-content,
-  .dropdown-menu {
-    top: 0;
-    right: 100%;
-    left: auto;
-    margin-top: 0;
-    margin-right: $dropdown-spacer;
-  }
-
-  .dropdown-toggle {
-    @include caret(left);
-    &::before {
-      vertical-align: 0;
-    }
-  }
-}
-
-// When enabled Popper.js, reset basic dropdown position
-.dropdown-menu {
-  &[x-placement^='top'],
-  &[x-placement^='right'],
-  &[x-placement^='bottom'],
-  &[x-placement^='left'] {
-    right: auto;
-    bottom: auto;
-  }
-}
-
 // Dividers (basically an `<hr>`) within the dropdown
 .dropdown-divider {
-  @include nav-divider($dropdown-divider-bg);
+  height: 0;
+  margin: $nav-divider-margin-y 0;
+  overflow: hidden;
+  border-top: 1px solid $dropdown-divider-bg;
 }
 
 // Links, buttons, and more within the dropdown menu
@@ -246,11 +220,6 @@
   }
 }
 
-// @COMPONENTRY: use aria-hidden for show/hide of content
-// .dropdown-menu.show {
-//   display: block;
-// }
-
 // Dropdown section headers
 .dropdown-header {
   display: block;
@@ -266,30 +235,4 @@
   display: block;
   padding: $dropdown-item-padding-y $dropdown-item-padding-x;
   color: $dropdown-link-color;
-}
-
-.dropdown {
-  // Default dropdown container to inline-block so that click area is constrained
-  // to dropdown trigger
-  display: inline-block;
-
-  // Directional styles
-
-  &.top {
-    @extend .dropup;
-  }
-
-  &.right {
-    @extend .dropright;
-  }
-
-  &.left {
-    @extend .dropleft;
-  }
-}
-
-// In Bs show/hide is handled by adding a .show class, Componentry uses aria-hidden
-// to hide content
-.dropdown-content {
-  display: block;
 }

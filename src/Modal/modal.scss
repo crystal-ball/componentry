@@ -1,24 +1,18 @@
 /* componentry/src/Modal/modal */
 
-// .modal-open      - body class for killing the scroll
 // .modal           - container to scroll within
 // .modal-dialog    - positioning shell for the actual modal
 // .modal-content   - actual modal w/ bg and corners and stuff
 
-// Kill the scroll on the body
-.modal-open {
-  overflow: hidden;
-}
-
 // Container that the modal scrolls within
 .modal {
   position: fixed;
+  display: block;
   top: 0;
   right: 0;
   bottom: 0;
   left: 0;
   z-index: $zindex-modal;
-  display: none;
   overflow: hidden;
   // Prevent Chrome on Windows from adding a focus outline. For details, see
   // https://github.com/twbs/bootstrap/pull/10951.
@@ -27,10 +21,9 @@
   // gnarly iOS Safari bug: https://bugs.webkit.org/show_bug.cgi?id=158342
   // See also https://github.com/twbs/bootstrap/issues/17695
 
-  .modal-open & {
-    overflow-x: hidden;
-    overflow-y: auto;
-  }
+  // Makes the container scroll, looks like the modal inside is scrolling
+  overflow-x: hidden;
+  overflow-y: auto;
 }
 
 // Shell div to position the modal with bottom padding
@@ -51,6 +44,7 @@
   }
 }
 
+// TODO: convert this to flex classes on modal parent
 .modal-dialog-centered {
   display: flex;
   align-items: center;
@@ -102,15 +96,6 @@
   padding: $modal-header-padding;
   border-bottom: $modal-header-border-width solid $modal-header-border-color;
   @include border-top-radius($modal-content-border-radius);
-
-  // @COMPONENTRY: Rely on .modal-header flex positioning, rely on aria header when
-  // there is no .modal-title
-  // .close {
-  //   padding: $modal-header-padding;
-  //   // auto on the left force icon to the right even when there is no .modal-title
-  //   margin: (-$modal-header-padding) (-$modal-header-padding)
-  //     (-$modal-header-padding) auto;
-  // }
 }
 
 // Title text within header
@@ -180,10 +165,4 @@
   .modal-lg {
     max-width: $modal-lg;
   }
-}
-
-// In Bs show/hide is handled by adding a .show class, Componentry uses aria-hidden
-// to hide content
-.modal {
-  display: block;
 }

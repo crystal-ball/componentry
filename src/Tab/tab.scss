@@ -1,7 +1,3 @@
 /* componentry/src/Tab/tab */
 
-// Bootstrap uses 'active' class with tab-panes to show/hide, Componentry overrides
-// this to use aria-hidden
-.tab-pane[aria-hidden='false'] {
-  display: block;
-}
+// Tabs don't come with any styles yet

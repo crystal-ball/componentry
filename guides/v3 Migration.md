@@ -11,7 +11,8 @@ This guide contains an overview of changes that would impact consumers of Compon
 * The `$include-icons` variable is defaulted to `false` now.
 * Drawer and Accordion toggle no longer have default margin bottom, see the demo
   for an example of using the Drawer and Card component together.
-
+* The non-standard dropdown classes `dropup`, `dropright`, `dropleft` and
+  `dropdown-menu` have been removed
 
 ## Updates
 
@@ -29,6 +30,7 @@ This guide contains an overview of changes that would impact consumers of Compon
 * A new mixin strategy has been setup:Componentry favors atomic classes over
   using mixins to compose styles. The preferred usage of mixins is to generate
   entire classes, like breakpoint mixins.
+* Fixed long modals not scrolling
 
 
 ## Deprecated
@@ -39,3 +41,7 @@ This guide contains an overview of changes that would impact consumers of Compon
 ## Roadmap
 
 - [ ] Evaluate the mixins in `theme` and convert them to atomic classes wherever possible.
+- [ ] Remove all `.show` classes, relying consistently on `aria-hidden` states
+- [ ] Use `.modal-scrollbar-measure` to add body padding for modal show/hide in Windows that
+      accounts for scrollbar addition
+- [ ] Extract Accordion component and styles to separate folder

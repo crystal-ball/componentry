@@ -9,6 +9,19 @@
   // button boundary
   display: block;
 
+  // If the chevron icon is used with a drawer toggle, it will rotate a half
+  // turn on open/close of drawer
+  .chevron.icon {
+    transition: transform 500ms;
+    transform: rotate(-0.5turn);
+  }
+
+  &[aria-expanded='true'] {
+    .chevron.icon {
+      transform: rotate(0);
+    }
+  }
+
   // By default Componentry provides a very simple set of icon classes with
   // background images, but this is not the recommended system. Consumers should
   // set up an SVG icon system and set $include-icons to false to use real SVGs
@@ -22,22 +35,6 @@
         '#',
         '%23'
       );
-    }
-  }
-}
-
-// If the chevron icon is used with a drawer toggle, it will rotate a half
-// turn on open/close of drawer
-.drawer-toggle,
-.accordion-toggle {
-  .chevron.icon {
-    transition: transform 500ms;
-    transform: rotate(-0.5turn);
-  }
-
-  &[aria-expanded='true'] {
-    .chevron.icon {
-      transform: rotate(0);
     }
   }
 }

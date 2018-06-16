@@ -1,9 +1,73 @@
 /* componentry/src/Button/button */
 
-// Button variants
 //
-// Easily pump out default styles, as well as :hover, :focus, :active,
-// and disabled options for all buttons
+// Base styles
+//
+
+.btn {
+  display: inline-block;
+  font-weight: $btn-font-weight;
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: middle;
+  user-select: none;
+  border: $btn-border-width solid transparent;
+  padding: $btn-padding-y $btn-padding-x;
+  font-size: $font-size-base;
+  line-height: $btn-line-height;
+
+  // Manually declare to provide an override to the browser default
+  @if $enable-rounded {
+    border-radius: $btn-border-radius;
+  } @else {
+    border-radius: 0;
+  }
+
+  @include transition($btn-transition);
+
+  // Share hover and focus styles
+  @include hover-focus {
+    text-decoration: none;
+  }
+
+  &:focus,
+  &.focus {
+    outline: 0;
+    box-shadow: $btn-focus-box-shadow;
+  }
+
+  // Disabled comes first so active can properly restyle
+  &.disabled,
+  &:disabled {
+    opacity: $btn-disabled-opacity;
+    @include box-shadow(none);
+  }
+
+  // Opinionated: add "hand" cursor to non-disabled .btn elements
+  &:not(:disabled):not(.disabled) {
+    cursor: pointer;
+  }
+
+  &:not(:disabled):not(.disabled):active,
+  &:not(:disabled):not(.disabled).active {
+    background-image: none;
+    @include box-shadow($btn-active-box-shadow);
+
+    &:focus {
+      @include box-shadow($btn-focus-box-shadow, $btn-active-box-shadow);
+    }
+  }
+}
+
+// Future-proof disabling of clicks on `<a>` elements
+a.btn.disabled,
+fieldset:disabled a.btn {
+  pointer-events: none;
+}
+
+//
+// Theme color variants
+//
 
 @mixin button-variant(
   $background,
@@ -64,6 +128,16 @@
   }
 }
 
+@each $color, $value in $theme-colors {
+  .btn-#{$color} {
+    @include button-variant($value, $value);
+  }
+}
+
+//
+// Outline button variants
+//
+
 @mixin button-outline-variant(
   $color,
   $color-hover: color-yiq($color),
@@ -107,96 +181,6 @@
         box-shadow: 0 0 0 $btn-focus-width rgba($color, 0.5);
       }
     }
-  }
-}
-
-// Button sizes
-@mixin button-size(
-  $padding-y,
-  $padding-x,
-  $font-size,
-  $line-height,
-  $border-radius
-) {
-  padding: $padding-y $padding-x;
-  font-size: $font-size;
-  line-height: $line-height;
-  // Manually declare to provide an override to the browser default
-  @if $enable-rounded {
-    border-radius: $border-radius;
-  } @else {
-    border-radius: 0;
-  }
-}
-
-//
-// Base styles
-//
-
-.btn {
-  display: inline-block;
-  font-weight: $btn-font-weight;
-  text-align: center;
-  white-space: nowrap;
-  vertical-align: middle;
-  user-select: none;
-  border: $btn-border-width solid transparent;
-  @include button-size(
-    $btn-padding-y,
-    $btn-padding-x,
-    $font-size-base,
-    $btn-line-height,
-    $btn-border-radius
-  );
-  @include transition($btn-transition);
-
-  // Share hover and focus styles
-  @include hover-focus {
-    text-decoration: none;
-  }
-
-  &:focus,
-  &.focus {
-    outline: 0;
-    box-shadow: $btn-focus-box-shadow;
-  }
-
-  // Disabled comes first so active can properly restyle
-  &.disabled,
-  &:disabled {
-    opacity: $btn-disabled-opacity;
-    @include box-shadow(none);
-  }
-
-  // Opinionated: add "hand" cursor to non-disabled .btn elements
-  &:not(:disabled):not(.disabled) {
-    cursor: pointer;
-  }
-
-  &:not(:disabled):not(.disabled):active,
-  &:not(:disabled):not(.disabled).active {
-    background-image: none;
-    @include box-shadow($btn-active-box-shadow);
-
-    &:focus {
-      @include box-shadow($btn-focus-box-shadow, $btn-active-box-shadow);
-    }
-  }
-}
-
-// Future-proof disabling of clicks on `<a>` elements
-a.btn.disabled,
-fieldset:disabled a.btn {
-  pointer-events: none;
-}
-
-//
-// Alternate buttons
-//
-
-@each $color, $value in $theme-colors {
-  .btn-#{$color} {
-    @include button-variant($value, $value);
   }
 }
 
@@ -245,6 +229,25 @@ fieldset:disabled a.btn {
 // Button Sizes
 //
 
+@mixin button-size(
+  $padding-y,
+  $padding-x,
+  $font-size,
+  $line-height,
+  $border-radius
+) {
+  padding: $padding-y $padding-x;
+  font-size: $font-size;
+  line-height: $line-height;
+
+  // Manually declare to provide an override to the browser default
+  @if $enable-rounded {
+    border-radius: $border-radius;
+  } @else {
+    border-radius: 0;
+  }
+}
+
 .btn-lg {
   @include button-size(
     $btn-padding-y-lg,
@@ -288,13 +291,20 @@ input[type='button'] {
   }
 }
 
-// Bootstrap has a 'link' button with the font styles of an anchor AND all of the
-// padding of a button. For 💯 Accessibility we want to have buttons that look
-// exactly like links for in application triggers, `btn-anchor` creates a button
-// styled exactly like an anchor. This should be used for application actions that
-// are not route navigations.
+//
+// Anchor button
+//
+
+// The "color='link'" button has the font styles of an anchor ADN all of the
+// regular padding of a button. For 💯 Accessibility we want to have buttons
+// that look exactly like links for in application triggers, `btn-anchor`
+// creates a button styled exactly like an anchor. This should be used for
+// application actions that are not route navigations.
+
 .btn-anchor {
-  @extend .btn-link; // Extend link styles for font styling
+  // Extend link styles for font styling
+  @extend .btn-link;
+
   // Remove additional button styles for anchor appearance
   -webkit-appearance: none !important; // Remove Chrome native button styling
   border: none;

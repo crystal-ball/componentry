@@ -1,19 +1,5 @@
 /* componentry/src/Alert/alert */
 
-@mixin alert-variant($background, $border, $color) {
-  color: $color;
-  @include gradient-bg($background);
-  border-color: $border;
-
-  hr {
-    border-top-color: darken($border, 5%);
-  }
-
-  .alert-link {
-    color: darken($color, 10%);
-  }
-}
-
 // Make the alert container a flex container by default with space-between to align
 // close button to right side
 .alert {
@@ -41,6 +27,20 @@
 // Alternate styles
 //
 // Generate contextual modifier classes for colorizing the alert.
+
+@mixin alert-variant($background, $border, $color) {
+  color: $color;
+  @include gradient-bg($background);
+  border-color: $border;
+
+  hr {
+    border-top-color: darken($border, 5%);
+  }
+
+  .alert-link {
+    color: darken($color, 10%);
+  }
+}
 
 @each $color, $value in $theme-colors {
   .alert-#{$color} {
