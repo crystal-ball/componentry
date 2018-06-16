@@ -1,8 +1,8 @@
 /* ~componentry/styles/initialize/css-variables */
 
-/*
- * Define CSS variables consumed by library styles
- */
+//
+// Define CSS variables consumed by library styles
+//
 
 :root {
   @each $color, $value in $theme-colors {

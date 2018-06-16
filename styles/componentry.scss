@@ -2,13 +2,14 @@
  * Componentry v3.0.0
  * Licensed under MIT
  *
+ * Componentry extends and greatly appreciates:
  * Bootstrap v4.1.1 (https://getbootstrap.com/)
  * Copyright 2011-2018 The Bootstrap Authors
  * Copyright 2011-2018 Twitter, Inc.
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
  */
 
-// --- Required
+// --- Required imports
 
 // The theme contains only side effect free setup code including variables, mixins
 // and functions. It can be imported as a base context for users of CSS modules.
@@ -18,7 +19,7 @@
 // Bootstrap browser reboot and CSS variable declarations
 @import 'initialize';
 
-// --- Optional
+// --- Optional imports
 
 // Base typography and content styles. These provide additional consistency across
 // browsers, but can be replaced with components or excluded if desired

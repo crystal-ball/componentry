@@ -1,15 +1,8 @@
-@mixin gradient-striped($color: rgba($white, 0.15), $angle: 45deg) {
-  background-image: linear-gradient(
-    $angle,
-    $color 25%,
-    transparent 25%,
-    transparent 50%,
-    $color 50%,
-    $color 75%,
-    transparent 75%,
-    transparent
-  );
-}
+/* ~componentry/styles/content/progress */
+
+//
+// Progress bars
+//
 
 @keyframes progress-bar-stripes {
   from {
@@ -42,7 +35,16 @@
 }
 
 .progress-bar-striped {
-  @include gradient-striped();
+  background-image: linear-gradient(
+    45deg,
+    rgba($white, 0.15) 25%,
+    transparent 25%,
+    transparent 50%,
+    rgba($white, 0.15) 50%,
+    rgba($white, 0.15) 75%,
+    transparent 75%,
+    transparent
+  );
   background-size: $progress-height $progress-height;
 }
 

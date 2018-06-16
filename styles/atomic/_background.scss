@@ -1,6 +1,8 @@
-// stylelint-disable declaration-no-important
+/* ~componentry/styles/atomic/background */
 
+//
 // Contextual backgrounds
+//
 
 @mixin bg-variant($parent, $color) {
   #{$parent} {

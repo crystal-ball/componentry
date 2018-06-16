@@ -1,4 +1,4 @@
-// stylelint-disable declaration-no-important, selector-no-qualifying-type
+/* ~componentry/styles/content/print */
 
 // Source: https://github.com/h5bp/html5-boilerplate/blob/master/src/css/main.css
 
@@ -13,10 +13,7 @@
     *,
     *::before,
     *::after {
-      // Bootstrap specific; comment out `color` and `background`
-      //color: $black !important; // Black prints faster
       text-shadow: none !important;
-      //background: transparent !important;
       box-shadow: none !important;
     }
 
@@ -26,25 +23,9 @@
       }
     }
 
-    // Bootstrap specific; comment the following selector out
-    //a[href]::after {
-    //  content: " (" attr(href) ")";
-    //}
-
     abbr[title]::after {
       content: ' (' attr(title) ')';
     }
-
-    // Bootstrap specific; comment the following selector out
-    //
-    // Don't show links that are fragment identifiers,
-    // or use the `javascript:` pseudo protocol
-    //
-
-    //a[href^="#"]::after,
-    //a[href^="javascript:"]::after {
-    // content: "";
-    //}
 
     pre {
       white-space: pre-wrap !important;

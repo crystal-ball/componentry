@@ -1,12 +1,11 @@
-/*
- * Mixins Strategy
- *
- * Componentry favors atomic classes over using mixins to compose styles. Preferred
- * usage of mixins is to generate classes, like the breakpoint mixins.
- *
- * TODO: evaluate all mixins are used across themes and convert atomic styles to
- * classes.
- */
+/* ~componentry/styles/theme/mixins */
+
+//
+// ℹ️ Theme mixins - see documentation for mixin strategy
+//
+
+// Breakpoints
+// ---------------------------------------------------------------------------
 
 // Breakpoint viewport sizes and media queries.
 //
@@ -136,10 +135,9 @@
   }
 }
 
-// === End breakpoints
-
-// TODO: make atomic classes
-// Single side border-radius
+// Border radius
+// ---------------------------------------------------------------------------
+// TODO: make atomic classes `b-rd-*`
 
 @mixin border-radius($radius: $border-radius) {
   @if $enable-rounded {
@@ -175,6 +173,9 @@
   }
 }
 
+// Shows+Backgrounds
+// ---------------------------------------------------------------------------
+
 // TODO: make atomic class
 @mixin box-shadow($shadow...) {
   @if $enable-shadows {
@@ -193,7 +194,8 @@
   }
 }
 
-// === Hover mixins
+// Hover
+// ---------------------------------------------------------------------------
 
 @mixin hover {
   &:hover {
@@ -224,33 +226,8 @@
   }
 }
 
-// TODO: this doesn't seem to be used anywhere, is it worth keeping?
-// Retina image
-//
-// Short retina mixin for setting background-image and -size.
-
-// stylelint-disable indentation, media-query-list-comma-newline-after
-@mixin img-retina($file-1x, $file-2x, $width-1x, $height-1x) {
-  background-image: url($file-1x);
-
-  // Autoprefixer takes care of adding -webkit-min-device-pixel-ratio and -o-min-device-pixel-ratio,
-  // but doesn't convert dppx=>dpi.
-  // There's no such thing as unprefixed min-device-pixel-ratio since it's nonstandard.
-  // Compatibility info: https://caniuse.com/#feat=css-media-resolution
-  @media only screen and (min-resolution: 192dpi),
-    /* IE9-11 don't support dppx*/ only screen and (min-resolution: 2dppx) {
-    // Standardized
-    background-image: url($file-2x);
-    background-size: $width-1x $height-1x;
-  }
-}
-
-// Unstyled keeps list items block level, just removes default browser padding and list-style
-// TODO: make atomic class
-@mixin list-unstyled {
-  padding-left: 0;
-  list-style: none;
-}
+// Type
+// ---------------------------------------------------------------------------
 
 // Resets text to baseline
 @mixin reset-text {
@@ -260,7 +237,7 @@
   font-weight: $font-weight-normal;
   line-height: $line-height-base;
   text-align: left; // Fallback for where `start` is not supported
-  text-align: start; // stylelint-disable-line declaration-block-no-duplicate-properties
+  text-align: start;
   text-decoration: none;
   text-shadow: none;
   text-transform: none;
@@ -271,7 +248,9 @@
   line-break: auto;
 }
 
-// TODO: make atomic class
+// Transitions
+// ---------------------------------------------------------------------------
+
 @mixin transition($transition...) {
   @if $enable-transitions {
     @if length($transition) == 0 {

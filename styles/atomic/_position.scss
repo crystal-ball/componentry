@@ -1,9 +1,10 @@
-// stylelint-disable declaration-no-important
+/* ~componentry/styles/atomic/position */
 
-// Common values
+//
+// Position
+//
 
 // Sass list not in variables since it's not intended for customization.
-// stylelint-disable-next-line scss/dollar-variable-default
 $positions: static, relative, absolute, fixed, sticky;
 
 @each $position in $positions {

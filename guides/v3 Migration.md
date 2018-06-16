@@ -26,9 +26,16 @@ This guide contains an overview of changes that would impact consumers of Compon
   1. `components`: includes each of the component styles
   1. `atomics`: includes all of the utility styles
 * An `outline` style has been added to the `Alert` component.
+* A new mixin strategy has been setup:Componentry favors atomic classes over
+  using mixins to compose styles. The preferred usage of mixins is to generate
+  entire classes, like breakpoint mixins.
 
 
 ## Deprecated
 
 * The `$colors` variables and `$colors` map. The library doesn't use these colors, only the theme-colors.
   Apps that would like to set their own colors map can continue to do so.
+
+## Roadmap
+
+- [ ] Evaluate the mixins in `theme` and convert them to atomic classes wherever possible.

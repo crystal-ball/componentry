@@ -1,33 +1,14 @@
-@mixin pagination-size(
-  $padding-y,
-  $padding-x,
-  $font-size,
-  $line-height,
-  $border-radius
-) {
-  .page-link {
-    padding: $padding-y $padding-x;
-    font-size: $font-size;
-    line-height: $line-height;
-  }
+/* ~componentry/styles/content/pagination */
 
-  .page-item {
-    &:first-child {
-      .page-link {
-        @include border-left-radius($border-radius);
-      }
-    }
-    &:last-child {
-      .page-link {
-        @include border-right-radius($border-radius);
-      }
-    }
-  }
-}
+//
+// Base class
+//
 
 .pagination {
   display: flex;
-  @include list-unstyled();
+  // Extends .list-unstyled:
+  padding-left: 0;
+  list-style: none;
   @include border-radius();
 }
 
@@ -94,6 +75,33 @@
 //
 // Sizing
 //
+
+@mixin pagination-size(
+  $padding-y,
+  $padding-x,
+  $font-size,
+  $line-height,
+  $border-radius
+) {
+  .page-link {
+    padding: $padding-y $padding-x;
+    font-size: $font-size;
+    line-height: $line-height;
+  }
+
+  .page-item {
+    &:first-child {
+      .page-link {
+        @include border-left-radius($border-radius);
+      }
+    }
+    &:last-child {
+      .page-link {
+        @include border-right-radius($border-radius);
+      }
+    }
+  }
+}
 
 .pagination-lg {
   @include pagination-size(

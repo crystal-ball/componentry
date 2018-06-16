@@ -1,4 +1,8 @@
-// stylelint-disable declaration-no-important
+/* ~componentry/styles/atomic/text */
+
+//
+// Typography shorthand
+//
 
 @mixin text-emphasis-variant($parent, $color) {
   #{$parent} {
@@ -13,7 +17,6 @@
 
 // Text truncate
 // Requires inline-block or block for proper styling
-
 @mixin text-truncate() {
   overflow: hidden;
   text-overflow: ellipsis;
@@ -116,20 +119,10 @@
 
 // Misc
 
-// CSS image replacement
-@mixin text-hide($ignore-warning: false) {
-  // stylelint-disable-next-line font-family-no-missing-generic-family-keyword
+.text-hide {
   font: 0/0 a;
   color: transparent;
   text-shadow: none;
   background-color: transparent;
   border: 0;
-
-  @if ($ignore-warning != true) {
-    @warn "The `text-hide()` mixin has been deprecated as of v4.1.0. It will be removed entirely in v5.";
-  }
-}
-
-.text-hide {
-  @include text-hide($ignore-warning: true);
 }

@@ -1,6 +1,8 @@
-// stylelint-disable declaration-no-important
+/* ~componentry/styles/atomic/sizing */
 
+//
 // Width and height
+//
 
 @each $prop, $abbrev in (width: w, height: h) {
   @each $size, $length in $sizes {

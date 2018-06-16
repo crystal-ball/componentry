@@ -1,3 +1,9 @@
+/* ~componentry/styles/content/breadcrumb */
+
+//
+// Base class
+//
+
 .breadcrumb {
   display: flex;
   flex-wrap: wrap;
@@ -30,7 +36,7 @@
   + .breadcrumb-item:hover::before {
     text-decoration: underline;
   }
-  // stylelint-disable-next-line no-duplicate-selectors
+
   + .breadcrumb-item:hover::before {
     text-decoration: none;
   }

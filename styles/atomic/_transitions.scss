@@ -1,6 +1,8 @@
-// TODO: BS file - review
+/* ~componentry/styles/atomic/transitions */
 
-// stylelint-disable selector-no-qualifying-type
+//
+// Transitions
+//
 
 .fade {
   @include transition($transition-fade);

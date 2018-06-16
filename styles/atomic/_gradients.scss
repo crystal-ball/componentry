@@ -1,4 +1,8 @@
+/* ~componentry/styles/atomic/gradients */
+
+//
 // Gradients
+//
 
 // Horizontal gradient, from left to right
 //
@@ -42,6 +46,7 @@
   background-image: linear-gradient($deg, $start-color, $end-color);
   background-repeat: repeat-x;
 }
+
 @mixin gradient-x-three-colors(
   $start-color: $blue,
   $mid-color: $purple,
@@ -56,6 +61,7 @@
   );
   background-repeat: no-repeat;
 }
+
 @mixin gradient-y-three-colors(
   $start-color: $blue,
   $mid-color: $purple,
@@ -69,6 +75,7 @@
   );
   background-repeat: no-repeat;
 }
+
 @mixin gradient-radial($inner-color: $gray-700, $outer-color: $gray-800) {
   background-image: radial-gradient(circle, $inner-color, $outer-color);
   background-repeat: no-repeat;

@@ -1,15 +1,4 @@
-@mixin badge-variant($bg) {
-  color: color-yiq($bg);
-  background-color: $bg;
-
-  &[href] {
-    @include hover-focus {
-      color: color-yiq($bg);
-      text-decoration: none;
-      background-color: darken($bg, 10%);
-    }
-  }
-}
+/* ~componentry/styles/content/badge */
 
 // Base class
 //
@@ -52,6 +41,19 @@
 // Colors
 //
 // Contextual variations (linked badges get darker on :hover).
+
+@mixin badge-variant($bg) {
+  color: color-yiq($bg);
+  background-color: $bg;
+
+  &[href] {
+    @include hover-focus {
+      color: color-yiq($bg);
+      text-decoration: none;
+      background-color: darken($bg, 10%);
+    }
+  }
+}
 
 @each $color, $value in $theme-colors {
   .badge-#{$color} {

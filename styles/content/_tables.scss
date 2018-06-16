@@ -1,31 +1,4 @@
-@mixin table-row-variant($state, $background) {
-  // Exact selectors below required to override `.table-striped` and prevent
-  // inheritance to nested tables.
-  .table-#{$state} {
-    &,
-    > th,
-    > td {
-      background-color: $background;
-    }
-  }
-
-  // Hover states for `.table-hover`
-  // Note: this is not available for cells or rows within `thead` or `tfoot`.
-  .table-hover {
-    $hover-background: darken($background, 5%);
-
-    .table-#{$state} {
-      @include hover {
-        background-color: $hover-background;
-
-        > td,
-        > th {
-          background-color: $hover-background;
-        }
-      }
-    }
-  }
-}
+/* ~componentry/styles/content/tables */
 
 //
 // Basic Bootstrap table
@@ -125,6 +98,35 @@
 // Exact selectors below required to override `.table-striped` and prevent
 // inheritance to nested tables.
 
+@mixin table-row-variant($state, $background) {
+  // Exact selectors below required to override `.table-striped` and prevent
+  // inheritance to nested tables.
+  .table-#{$state} {
+    &,
+    > th,
+    > td {
+      background-color: $background;
+    }
+  }
+
+  // Hover states for `.table-hover`
+  // Note: this is not available for cells or rows within `thead` or `tfoot`.
+  .table-hover {
+    $hover-background: darken($background, 5%);
+
+    .table-#{$state} {
+      @include hover {
+        background-color: $hover-background;
+
+        > td,
+        > th {
+          background-color: $hover-background;
+        }
+      }
+    }
+  }
+}
+
 @each $color, $value in $theme-colors {
   @include table-row-variant($color, theme-color-level($color, -9));
 }
@@ -135,7 +137,6 @@
 //
 // Same table markup, but inverted color scheme: dark background and light text.
 
-// stylelint-disable-next-line no-duplicate-selectors
 .table {
   .thead-dark {
     th {

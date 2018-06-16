@@ -1,3 +1,5 @@
+/* ~componentry/styles/content/forms */
+
 // Form control focus state
 //
 // Generate a customized focus state and for any input with the specified color,
@@ -21,129 +23,6 @@
       box-shadow: $input-box-shadow, $input-focus-box-shadow;
     } @else {
       box-shadow: $input-focus-box-shadow;
-    }
-  }
-}
-
-@mixin form-validation-state($state, $color) {
-  .#{$state}-feedback {
-    display: none;
-    width: 100%;
-    margin-top: $form-feedback-margin-top;
-    font-size: $form-feedback-font-size;
-    color: $color;
-  }
-
-  .#{$state}-tooltip {
-    position: absolute;
-    top: 100%;
-    z-index: 5;
-    display: none;
-    max-width: 100%; // Contain to parent when possible
-    padding: 0.5rem;
-    margin-top: 0.1rem;
-    font-size: 0.875rem;
-    line-height: 1;
-    color: $white;
-    background-color: rgba($color, 0.8);
-    border-radius: 0.2rem;
-  }
-
-  .form-control,
-  .custom-select {
-    .was-validated &:#{$state},
-    &.is-#{$state} {
-      border-color: $color;
-
-      &:focus {
-        border-color: $color;
-        box-shadow: 0 0 0 $input-focus-width rgba($color, 0.25);
-      }
-
-      ~ .#{$state}-feedback,
-      ~ .#{$state}-tooltip {
-        display: block;
-      }
-    }
-  }
-
-  .form-control-file {
-    .was-validated &:#{$state},
-    &.is-#{$state} {
-      ~ .#{$state}-feedback,
-      ~ .#{$state}-tooltip {
-        display: block;
-      }
-    }
-  }
-
-  .form-check-input {
-    .was-validated &:#{$state},
-    &.is-#{$state} {
-      ~ .form-check-label {
-        color: $color;
-      }
-
-      ~ .#{$state}-feedback,
-      ~ .#{$state}-tooltip {
-        display: block;
-      }
-    }
-  }
-
-  .custom-control-input {
-    .was-validated &:#{$state},
-    &.is-#{$state} {
-      ~ .custom-control-label {
-        color: $color;
-
-        &::before {
-          background-color: lighten($color, 25%);
-        }
-      }
-
-      ~ .#{$state}-feedback,
-      ~ .#{$state}-tooltip {
-        display: block;
-      }
-
-      &:checked {
-        ~ .custom-control-label::before {
-          @include gradient-bg(lighten($color, 10%));
-        }
-      }
-
-      &:focus {
-        ~ .custom-control-label::before {
-          box-shadow: 0 0 0 1px $body-bg,
-            0 0 0 $input-focus-width rgba($color, 0.25);
-        }
-      }
-    }
-  }
-
-  // custom file
-  .custom-file-input {
-    .was-validated &:#{$state},
-    &.is-#{$state} {
-      ~ .custom-file-label {
-        border-color: $color;
-
-        &::before {
-          border-color: inherit;
-        }
-      }
-
-      ~ .#{$state}-feedback,
-      ~ .#{$state}-tooltip {
-        display: block;
-      }
-
-      &:focus {
-        ~ .custom-file-label {
-          box-shadow: 0 0 0 $input-focus-width rgba($color, 0.25);
-        }
-      }
     }
   }
 }
@@ -389,6 +268,129 @@ select.form-control-lg {
 // primarily for client-side validation via scoped `:invalid` and `:valid`
 // pseudo-classes but also includes `.is-invalid` and `.is-valid` classes for
 // server side validation.
+
+@mixin form-validation-state($state, $color) {
+  .#{$state}-feedback {
+    display: none;
+    width: 100%;
+    margin-top: $form-feedback-margin-top;
+    font-size: $form-feedback-font-size;
+    color: $color;
+  }
+
+  .#{$state}-tooltip {
+    position: absolute;
+    top: 100%;
+    z-index: 5;
+    display: none;
+    max-width: 100%; // Contain to parent when possible
+    padding: 0.5rem;
+    margin-top: 0.1rem;
+    font-size: 0.875rem;
+    line-height: 1;
+    color: $white;
+    background-color: rgba($color, 0.8);
+    border-radius: 0.2rem;
+  }
+
+  .form-control,
+  .custom-select {
+    .was-validated &:#{$state},
+    &.is-#{$state} {
+      border-color: $color;
+
+      &:focus {
+        border-color: $color;
+        box-shadow: 0 0 0 $input-focus-width rgba($color, 0.25);
+      }
+
+      ~ .#{$state}-feedback,
+      ~ .#{$state}-tooltip {
+        display: block;
+      }
+    }
+  }
+
+  .form-control-file {
+    .was-validated &:#{$state},
+    &.is-#{$state} {
+      ~ .#{$state}-feedback,
+      ~ .#{$state}-tooltip {
+        display: block;
+      }
+    }
+  }
+
+  .form-check-input {
+    .was-validated &:#{$state},
+    &.is-#{$state} {
+      ~ .form-check-label {
+        color: $color;
+      }
+
+      ~ .#{$state}-feedback,
+      ~ .#{$state}-tooltip {
+        display: block;
+      }
+    }
+  }
+
+  .custom-control-input {
+    .was-validated &:#{$state},
+    &.is-#{$state} {
+      ~ .custom-control-label {
+        color: $color;
+
+        &::before {
+          background-color: lighten($color, 25%);
+        }
+      }
+
+      ~ .#{$state}-feedback,
+      ~ .#{$state}-tooltip {
+        display: block;
+      }
+
+      &:checked {
+        ~ .custom-control-label::before {
+          @include gradient-bg(lighten($color, 10%));
+        }
+      }
+
+      &:focus {
+        ~ .custom-control-label::before {
+          box-shadow: 0 0 0 1px $body-bg,
+            0 0 0 $input-focus-width rgba($color, 0.25);
+        }
+      }
+    }
+  }
+
+  // custom file
+  .custom-file-input {
+    .was-validated &:#{$state},
+    &.is-#{$state} {
+      ~ .custom-file-label {
+        border-color: $color;
+
+        &::before {
+          border-color: inherit;
+        }
+      }
+
+      ~ .#{$state}-feedback,
+      ~ .#{$state}-tooltip {
+        display: block;
+      }
+
+      &:focus {
+        ~ .custom-file-label {
+          box-shadow: 0 0 0 $input-focus-width rgba($color, 0.25);
+        }
+      }
+    }
+  }
+}
 
 @include form-validation-state('valid', $form-feedback-valid-color);
 @include form-validation-state('invalid', $form-feedback-invalid-color);
