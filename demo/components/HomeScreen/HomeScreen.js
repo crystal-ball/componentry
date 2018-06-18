@@ -1,6 +1,7 @@
 // @flow
 import React from 'react'
 import { Link } from 'react-router-dom'
+import { Flex } from 'componentry'
 
 import routesMap, { componentRoutes, conceptRoutes } from 'utils/routes-map'
 import SubRoutesNav from 'components/universal/SubRoutesNav'
@@ -14,7 +15,7 @@ import { component } from './home-screen.scss'
 
 export default () => (
   <div className={component}>
-    <div className="hero d-flex flex-column align-items-center">
+    <Flex direction="column" align="center" className="hero">
       <h1 className="display-2 text-primary mb-5">
         <u>C</u>omponentry
       </h1>
@@ -29,9 +30,13 @@ export default () => (
         Lightweight, simple and accessible components <br />built with React and Bootstrap
         v4
       </h2>
-    </div>
+    </Flex>
 
-    <div className="home-nav border border-right-0 border-left-0 d-flex justify-content-center align-items-center mb-4">
+    <Flex
+      align="center"
+      justify="center"
+      className="home-nav border border-right-0 border-left-0 mb-4"
+    >
       <div className="m-3">
         <Link to={routesMap.setup.pathname}>{routesMap.setup.name}</Link>
       </div>
@@ -46,10 +51,10 @@ export default () => (
       <div className="m-3">
         <a href="https://github.com/crystal-ball/componentry">Github</a>
       </div>
-    </div>
+    </Flex>
 
     <div className="mb-5 row justify-content-center">
-      <div className="col-7 d-flex justify-content-center my-4">
+      <Flex justify="center" className="col-7 my-4">
         <div>
           <h3 className="feature-header">Lightweight Bundle Size</h3>
           <div className="media feature">
@@ -67,8 +72,8 @@ export default () => (
             </div>
           </div>
         </div>
-      </div>
-      <div className="col-7 d-flex justify-content-center my-4">
+      </Flex>
+      <Flex justify="center" className="col-7 my-4">
         <div>
           <h3 className="feature-header">Consistent APIs</h3>
           <div className="media feature">
@@ -86,8 +91,8 @@ export default () => (
             />
           </div>
         </div>
-      </div>
-      <div className="col-7 d-flex justify-content-center my-4">
+      </Flex>
+      <Flex justify="center" className="col-7 my-4">
         <div>
           <h3 className="feature-header">A++ Accessibility</h3>
           <div className="media feature border-bottom-0">
@@ -109,7 +114,7 @@ export default () => (
             </div>
           </div>
         </div>
-      </div>
+      </Flex>
     </div>
   </div>
 )

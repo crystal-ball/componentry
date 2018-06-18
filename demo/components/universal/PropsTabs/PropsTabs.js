@@ -1,5 +1,5 @@
 import React from 'react'
-import { Icon, Nav, Tab } from 'componentry'
+import { Flex, Icon, Nav, Tab } from 'componentry'
 
 import TabContent from './TabContent'
 import { activeProps, componentryProps } from './props-content'
@@ -44,7 +44,7 @@ export default ({
       <h2 id="props">
         <Icon id="tune" /> Component props
       </h2>
-      <Tab defaultActive={defaultActive} className="d-flex">
+      <Flex as={Tab} defaultActive={defaultActive}>
         <Tab.ContentContainer>
           {showComponentProps && (
             <Tab.Content activeId="Component">
@@ -67,7 +67,7 @@ export default ({
           <Tab.Trigger activeId="Componentry">Componentry props</Tab.Trigger>
           {activeComponent && <Tab.Trigger activeId="Active">Active props</Tab.Trigger>}
         </Nav>
-      </Tab>
+      </Flex>
     </div>
   )
 }

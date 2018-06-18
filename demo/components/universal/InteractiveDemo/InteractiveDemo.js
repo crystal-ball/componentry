@@ -1,5 +1,5 @@
 import React, { Component, Fragment } from 'react'
-import { Card } from 'componentry'
+import { Card, Flex } from 'componentry'
 
 import ClickToCopy from 'components/universal/ClickToCopy'
 import PrismHighlighter from 'components/universal/PrismHighlighter'
@@ -73,16 +73,15 @@ export default class InteractiveDemo extends Component<Props> {
               </form>
             </div>
           )}
-          <div
-            className={`col-${
-              fieldsLen ? '8' : '12'
-            } d-flex flex-column rendered-container`}
+          <Flex
+            direction="column"
+            className={`col-${fieldsLen ? '8' : '12'} rendered-container`}
           >
             <h4 className="border-bottom border-dark">Rendered</h4>
-            <div className="d-flex justify-content-center align-items-center h-100">
+            <Flex align="center" justify="center" className="h-100">
               {demoComponent}
-            </div>
-          </div>
+            </Flex>
+          </Flex>
           <div className="col-12 mt-4">
             <div className="code-container">
               <div className="copy-container">

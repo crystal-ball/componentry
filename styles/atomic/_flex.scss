@@ -8,6 +8,7 @@
   @include media-breakpoint-up($breakpoint) {
     $infix: breakpoint-infix($breakpoint, $grid-breakpoints);
 
+    // Flex direction
     .flex#{$infix}-row {
       flex-direction: row !important;
     }
@@ -46,6 +47,7 @@
       flex-shrink: 1 !important;
     }
 
+    // Flex justify
     .justify-content#{$infix}-start {
       justify-content: flex-start !important;
     }
@@ -62,6 +64,7 @@
       justify-content: space-around !important;
     }
 
+    // Flex align items
     .align-items#{$infix}-start {
       align-items: flex-start !important;
     }
@@ -78,6 +81,7 @@
       align-items: stretch !important;
     }
 
+    // Flex align content
     .align-content#{$infix}-start {
       align-content: flex-start !important;
     }

@@ -22,13 +22,10 @@ component.
   renderCode={() => `<Drawer>
   <Card>
     <Card.Header>
-      <Drawer.Trigger
-        link
-        className="d-flex justify-content-between w-100 align-items-center"
-      >
+      <Flex as={Drawer.Trigger} align="center" justify="between" link className="w-100">
         <span>Trigger Drawer</span>
         <Icon id="chevron" />
-      </Drawer.Trigger>
+      </Flex>
     </Card.Header>
     <Drawer.Content>
     <Card.Body>
@@ -44,13 +41,10 @@ component.
       <Drawer>
         <Card>
           <Card.Header>
-            <Drawer.Trigger
-              link
-              className="d-flex justify-content-between w-100 align-items-center"
-            >
+            <Flex as={Drawer.Trigger} align="center" justify="between" link className="w-100">
               <span>Trigger Drawer</span>
               <Icon id="chevron" />
-            </Drawer.Trigger>
+            </Flex>
           </Card.Header>
           <Drawer.Content>
           <Card.Body>

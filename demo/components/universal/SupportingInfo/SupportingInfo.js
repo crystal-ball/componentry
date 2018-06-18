@@ -1,5 +1,5 @@
 import React from 'react'
-import { Icon } from 'componentry'
+import { Flex, Icon } from 'componentry'
 
 import ClickToCopy from 'components/universal/ClickToCopy'
 
@@ -14,7 +14,7 @@ export default ({ classes = [], apis = [] }: Props) => {
 
   return (
     <div className="row justify-content-center my-4">
-      <div className="w-100 d-flex">
+      <Flex className="w-100">
         {showClasses && (
           <div className="w-50 mx-3">
             <h4 className="border-bottom border-dark">
@@ -51,7 +51,7 @@ export default ({ classes = [], apis = [] }: Props) => {
             </ul>
           </div>
         )}
-      </div>
+      </Flex>
     </div>
   )
 }

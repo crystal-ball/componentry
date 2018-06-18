@@ -1,7 +1,7 @@
 // @flow
 import React from 'react'
 import { Link } from 'react-router-dom'
-import { Icon } from 'componentry'
+import { Anchor, Flex, Icon } from 'componentry'
 
 import routesMap, { componentRoutes, conceptRoutes } from 'utils/routes-map'
 
@@ -13,17 +13,17 @@ import { component } from './app-nav.scss'
  * App navigation is shown on pages that are not home or component guides.
  */
 export default () => (
-  <header className={`${component} bg-gray-100 p-4 mb-5 d-flex justify-content-between`}>
+  <Flex as="header" justify="between" className={`${component} bg-gray-100 p-4 mb-5`}>
     {/* Home route */}
-    <div className="d-flex">
-      <div className="pr-3 d-flex align-items-center">
+    <Flex>
+      <Flex align="center" className="pr-3">
         <Link to="/" className="text-primary logo">
           <u>C</u>omponentry
         </Link>
-      </div>
-    </div>
+      </Flex>
+    </Flex>
 
-    <div className="d-flex align-items-center">
+    <Flex align="center">
       {/* Library setup */}
       <Link to={routesMap.setup.pathname} className="text-primary pr-2">
         {routesMap.setup.name}
@@ -37,10 +37,13 @@ export default () => (
 
       {/* Github link */}
       <div className="pl-3">
-        <a className="text-primary h2" href="https://github.com/crystal-ball/componentry">
+        <Anchor
+          className="text-primary h2"
+          href="https://github.com/crystal-ball/componentry"
+        >
           <Icon id="github" font={false} />
-        </a>
+        </Anchor>
       </div>
-    </div>
-  </header>
+    </Flex>
+  </Flex>
 )
