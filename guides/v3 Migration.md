@@ -17,6 +17,9 @@ This guide contains an overview of changes that would impact consumers of Compon
 
 ## Updates
 
+* Added `Flex` component 💖
+* Added `Header` component 💖
+* Added `Anchor` component 💖
 * Button has a `block` prop to toggle full width buttons 🎉
 * The Bootstrap mixins have been separated based on if they are used as utility mixins
   in multiple places, or in a single component file.

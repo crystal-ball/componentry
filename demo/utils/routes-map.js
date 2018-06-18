@@ -5,6 +5,7 @@ import CardsScreen from 'components/ComponentsScreen/Screens/Cards.md'
 import CloseScreen from 'components/ComponentsScreen/Screens/Close.md'
 import DrawersScreen from 'components/ComponentsScreen/Screens/Drawers.md'
 import DropdownsScreen from 'components/ComponentsScreen/Screens/Dropdowns.md'
+import FlexScreen from 'components/ComponentsScreen/Screens/Flex.md'
 import IconsScreen from 'components/ComponentsScreen/Screens/Icons.md'
 import ListGroupsScreen from 'components/ComponentsScreen/Screens/ListGroups.md'
 import ModalsScreen from 'components/ComponentsScreen/Screens/Modals.md'
@@ -12,6 +13,7 @@ import NavsScreen from 'components/ComponentsScreen/Screens/Navs.md'
 import PopoversScreen from 'components/ComponentsScreen/Screens/Popovers.md'
 import TabsScreen from 'components/ComponentsScreen/Screens/Tabs.md'
 import TooltipsScreen from 'components/ComponentsScreen/Screens/Tooltips.md'
+import TypeScreen from 'components/ComponentsScreen/Screens/Type.md'
 
 import ArchitectureScreen from 'GUIDES/Architecture.md'
 import AccessibilityScreen from 'GUIDES/Accessibility.md'
@@ -35,6 +37,7 @@ const routesMap = {
         pathname: '/components/dropdowns',
         state: { name: 'Dropdowns' },
       },
+      flex: { pathname: '/components/flex', state: { name: 'Flex' } },
       icons: { pathname: '/components/icons', state: { name: 'Icons' } },
       listGroups: {
         pathname: '/components/list-groups',
@@ -45,6 +48,7 @@ const routesMap = {
       popovers: { pathname: '/components/popovers', state: { name: 'Popovers' } },
       tabs: { pathname: '/components/tabs', state: { name: 'Tabs' } },
       tooltips: { pathname: '/components/tooltips', state: { name: 'Tooltips' } },
+      type: { pathname: '/components/type', state: { name: 'Type' } },
     },
     screens: {
       active: ActiveScreen,
@@ -54,6 +58,7 @@ const routesMap = {
       close: CloseScreen,
       drawers: DrawersScreen,
       dropdowns: DropdownsScreen,
+      flex: FlexScreen,
       icons: IconsScreen,
       listGroups: ListGroupsScreen,
       modals: ModalsScreen,
@@ -61,6 +66,7 @@ const routesMap = {
       popovers: PopoversScreen,
       tabs: TabsScreen,
       tooltips: TooltipsScreen,
+      type: TypeScreen,
     },
   },
   concepts: {
