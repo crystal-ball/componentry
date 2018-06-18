@@ -7,7 +7,7 @@ import DrawersScreen from 'components/ComponentsScreen/Screens/Drawers.md'
 import DropdownsScreen from 'components/ComponentsScreen/Screens/Dropdowns.md'
 import FlexScreen from 'components/ComponentsScreen/Screens/Flex.md'
 import IconsScreen from 'components/ComponentsScreen/Screens/Icons.md'
-import ListGroupsScreen from 'components/ComponentsScreen/Screens/ListGroups.md'
+import ListsScreen from 'components/ComponentsScreen/Screens/Lists.md'
 import ModalsScreen from 'components/ComponentsScreen/Screens/Modals.md'
 import NavsScreen from 'components/ComponentsScreen/Screens/Navs.md'
 import PopoversScreen from 'components/ComponentsScreen/Screens/Popovers.md'
@@ -39,10 +39,7 @@ const routesMap = {
       },
       flex: { pathname: '/components/flex', state: { name: 'Flex' } },
       icons: { pathname: '/components/icons', state: { name: 'Icons' } },
-      listGroups: {
-        pathname: '/components/list-groups',
-        state: { name: 'List Groups' },
-      },
+      lists: { pathname: '/components/lists', state: { name: 'List Groups' } },
       modals: { pathname: '/components/modals', state: { name: 'Modals' } },
       navs: { pathname: '/components/navs', state: { name: 'Navs' } },
       popovers: { pathname: '/components/popovers', state: { name: 'Popovers' } },
@@ -60,7 +57,7 @@ const routesMap = {
       dropdowns: DropdownsScreen,
       flex: FlexScreen,
       icons: IconsScreen,
-      listGroups: ListGroupsScreen,
+      lists: ListsScreen,
       modals: ModalsScreen,
       navs: NavsScreen,
       popovers: PopoversScreen,

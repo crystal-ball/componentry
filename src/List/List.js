@@ -11,7 +11,7 @@ import elementFactory, { type ElementProps } from '../component-factories/elemen
 
 export type Props = ElementProps
 
-const ListGroup = elementFactory('ListGroup', props => {
+const List = elementFactory('List', props => {
   const child = Children.toArray(props.children)[0]
   // We have to be careful of children like text nodes with this check
   const childProps = child && child.props ? child.props : {}
@@ -23,25 +23,22 @@ const ListGroup = elementFactory('ListGroup', props => {
   }
 })
 
-const ListGroupItem = elementFactory(
-  'ListGroupItem',
-  ({ active, color, ...rest }) => {
-    const { href, onClick } = rest
+const ListItem = elementFactory('ListItem', ({ active, color, ...rest }) => {
+  const { href, onClick } = rest
 
-    return {
-      className: {
-        'list-group-item': true,
-        active,
-        'list-group-item-action': href || onClick,
-        [`list-group-item-${color}`]: color,
-      },
-      /* eslint-disable no-nested-ternary */
-      tag: href || onClick ? (href ? 'a' : BaseButton) : 'li',
-      ...rest,
-    }
-  },
-)
+  return {
+    className: {
+      'list-group-item': true,
+      active,
+      'list-group-item-action': href || onClick,
+      [`list-group-item-${color}`]: color,
+    },
+    /* eslint-disable no-nested-ternary */
+    tag: href || onClick ? (href ? 'a' : BaseButton) : 'li',
+    ...rest,
+  }
+})
 
 // $FlowFixMe
-ListGroup.Item = ListGroupItem
-export default ListGroup
+List.Item = ListItem
+export default List

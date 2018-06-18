@@ -1,24 +1,24 @@
 import React from 'react'
 import { shallow, render } from 'enzyme'
 
-import ListGroup from './ListGroup'
+import List from './List'
 import elementTests from '../utils-test/element-tests'
 
-describe('<ListGroup />', () => {
+describe('<List />', () => {
   // Basic library element test suite
-  elementTests(ListGroup)
+  elementTests(List)
 
   test('should render a container ul with class list-group by default', () => {
-    const wrapper = shallow(<ListGroup />)
+    const wrapper = shallow(<List />)
     expect(wrapper.find('ul').length).toEqual(1)
     expect(wrapper.find('.list-group').length).toEqual(1)
   })
 
   test('should render a div when children have onclick', () => {
     const wrapper = shallow(
-      <ListGroup>
-        <ListGroup.Item onClick={() => {}} />
-      </ListGroup>,
+      <List>
+        <List.Item onClick={() => {}} />
+      </List>,
     )
     expect(wrapper.find('ul').length).toBeFalsy()
     expect(wrapper.find('div').length).toBeTruthy()
@@ -26,9 +26,9 @@ describe('<ListGroup />', () => {
 
   test('should render a div when children have hrefs', () => {
     const wrapper = shallow(
-      <ListGroup>
-        <ListGroup.Item href="test" />
-      </ListGroup>,
+      <List>
+        <List.Item href="test" />
+      </List>,
     )
     expect(wrapper.find('ul').length).toBeFalsy()
     expect(wrapper.find('div').length).toBeTruthy()
@@ -37,13 +37,13 @@ describe('<ListGroup />', () => {
 
 // Snapshots
 // ---------------------------------------------------------------------------
-describe('<ListGroup /> snapshots', () => {
+describe('<List /> snapshots', () => {
   it('renders correctly', () => {
     const tree = render(
-      <ListGroup>
-        <ListGroup.Item>Item 1</ListGroup.Item>
-        <ListGroup.Item>Item 2</ListGroup.Item>
-      </ListGroup>,
+      <List>
+        <List.Item>Item 1</List.Item>
+        <List.Item>Item 2</List.Item>
+      </List>,
     )
 
     expect(tree).toMatchSnapshot()

@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<ListGroup /> snapshots renders correctly 1`] = `
+exports[`<List /> snapshots renders correctly 1`] = `
 <ul
   class="list-group"
 >

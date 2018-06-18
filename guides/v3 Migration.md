@@ -14,6 +14,10 @@ This guide contains an overview of changes that would impact consumers of Compon
 * The non-standard dropdown classes `dropup`, `dropright`, `dropleft` and
   `dropdown-menu` have been removed.
 * Styles are no longer published at `/dist`! Styles are published in `/styles`.
+* The `ListGroup` component has been renamed to `List`. It will be updated with
+  props to work with any lists, eg `.list-unstyled`. This also reflects the
+  evolution from a Bootstrap implementation, to a sensible defaults/naming
+  library.
 
 ## Updates
 

@@ -7,27 +7,27 @@ componentProps:
     default: false
 ---
 
-<ComponentsList components={['ListGroup', 'ListGroup.Item']} />
+<ComponentsList components={['List', 'List.Item']} />
 
 Flexible display capabilities for series of content.
 
-The ListGroup will automatically render a `ul` and child `li` tags for lists of
+The List will automatically render a `ul` and child `li` tags for lists of
 elements without user interactions. Including a `href` or `onClick` wil return a
 `div` with appropriate `a` or `Button` components for list items.
 
 <InteractiveDemo
-  renderCode={() => `<ListGroup>
-  <ListGroup.Item>Item One</ListGroup.Item>
-  <ListGroup.Item active>Item Two</ListGroup.Item>
-  <ListGroup.Item>Item Three</ListGroup.Item>
-</ListGroup>`}
+  renderCode={() => `<List>
+  <List.Item>Item One</List.Item>
+  <List.Item active>Item Two</List.Item>
+  <List.Item>Item Three</List.Item>
+</List>`}
   renderComponent={() => (
     <div className="w-50">
-      <ListGroup>
-        <ListGroup.Item>Item One</ListGroup.Item>
-        <ListGroup.Item active>Item Two</ListGroup.Item>
-        <ListGroup.Item>Item Three</ListGroup.Item>
-      </ListGroup>
+      <List>
+        <List.Item>Item One</List.Item>
+        <List.Item active>Item Two</List.Item>
+        <List.Item>Item Three</List.Item>
+      </List>
     </div>
   )}
 />
@@ -39,8 +39,8 @@ elements without user interactions. Including a `href` or `onClick` wil return a
 
 <Alert color="info">
   ℹ️ Only the first list item is checked for an href or onClick to determine the
-  ListGroup container tag. If you have a mixed list you can pass the desired tag
-  or component using the `as` prop on the ListGroup.
+  List container tag. If you have a mixed list you can pass the desired tag
+  or component using the `as` prop on the List.
 </Alert>
 
 <PropsTabs componentProps={componentProps} />
