@@ -55,3 +55,4 @@ Componentry.
 - [ ] Use `.modal-scrollbar-measure` to add body padding for modal show/hide in
       Windows that accounts for scrollbar addition
 - [ ] Extract Accordion component and styles to separate folder
+- [ ] Create a 'Layout' section in component docs, add `Media` and `Flex` components

@@ -1,7 +1,7 @@
 // @flow
 import React from 'react'
 import { Link } from 'react-router-dom'
-import { Flex, Header } from 'componentry'
+import { Flex, Header, Media } from 'componentry'
 
 import routesMap, { componentRoutes, conceptRoutes } from 'utils/routes-map'
 import SubRoutesNav from 'components/universal/SubRoutesNav'
@@ -51,20 +51,20 @@ export default () => (
           <Header as="h3" className="feature-header">
             Lightweight Bundle Size
           </Header>
-          <div className="media feature">
+          <Media className="feature">
             <img
               className="icon display-3 mr-3"
               src={bundleSVG}
               alt="Library bundle size is a small percentage of overall bundle"
             />
-            <div className="media-body">
+            <Media.Body>
               <p>
-                Componentry is optimized for size and performance. With no external
+                Componentry is optimized for size and performance. With minimial external
                 dependencies the library weighs in at 12.8kB. Advanced optimizations are
                 possible using targeted ESM and ESNext build targets.
               </p>
-            </div>
-          </div>
+            </Media.Body>
+          </Media>
         </div>
       </Flex>
       <Flex justify="center" className="col-7 my-4">
@@ -72,20 +72,20 @@ export default () => (
           <Header as="h3" className="feature-header">
             Consistent APIs
           </Header>
-          <div className="media feature">
-            <div className="media-body">
+          <Media className="feature">
+            <Media.Body>
               <p>
                 Spend more time writing and less time checking documentation with
                 consistent APIs and event hooks across components. Consistent APIs and
                 focused component concerns make component composition easy.
               </p>
-            </div>
+            </Media.Body>
             <img
               className="icon display-3 mr-3"
               src={mergeSVG}
               alt="Different components utilize the same API"
             />
-          </div>
+          </Media>
         </div>
       </Flex>
       <Flex justify="center" className="col-7 my-4">
@@ -93,13 +93,13 @@ export default () => (
           <Header as="h3" className="feature-header">
             A++ Accessibility
           </Header>
-          <div className="media feature border-bottom-0">
+          <Media className="feature border-bottom-0">
             <img
               className="icon display-3 mr-3"
               src={accessibleSVG}
               alt="Library focuses on A++ accessibility"
             />
-            <div className="media-body">
+            <Media.Body>
               <p>
                 Components are written using{' '}
                 <a href="https://www.w3.org/WAI/intro/aria" rel="noreferrer noopener">
@@ -109,8 +109,8 @@ export default () => (
                 Internal component APIs even handle assigning dynamic aria attributes on
                 subcomponents.
               </p>
-            </div>
-          </div>
+            </Media.Body>
+          </Media>
         </div>
       </Flex>
     </div>
