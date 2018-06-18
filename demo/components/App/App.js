@@ -34,7 +34,6 @@ import ConceptsScreen from '../ConceptsScreen'
 import FourOhFourScreen from '../FourOhFourScreen'
 import SetupScreen from '../SetupScreen'
 import HomeScreen from '../HomeScreen'
-import JetpackScreen from '../JetpackScreen'
 
 // ========================================================
 // Componentry Theme Customization
@@ -77,7 +76,7 @@ Object.keys(Componentry).forEach(component => {
 registry.register(Link, 'Link')
 registry.register(Fragment, 'Fragment')
 
-const { setup, jetpack, concepts, components } = routesMap
+const { setup, concepts, components } = routesMap
 
 /**
  * Application class component:
@@ -108,7 +107,6 @@ class App extends Component<{}> {
             <Switch>
               <Route path="/" exact component={HomeScreen} />
               <Route path={setup.pathname} component={SetupScreen} />
-              <Route path={jetpack.pathname} component={JetpackScreen} />
               <Route path={`${concepts.pathname}/:concept?`} component={ConceptsScreen} />
               <Route
                 path={`${components.pathname}/:component?`}

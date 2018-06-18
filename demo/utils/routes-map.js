@@ -22,7 +22,6 @@ import ThemingScreen from 'GUIDES/Theming.md'
 
 const routesMap = {
   setup: { name: 'Setup', pathname: '/setup' },
-  jetpack: { name: 'Jetpack collection', pathname: '/jetpack-collection' },
   components: {
     name: 'Components',
     pathname: '/components',

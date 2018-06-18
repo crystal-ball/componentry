@@ -17,8 +17,6 @@ Styles are split into the following categories:
   Bootstrap releases.
 * `/styles/componetry` contains styles for the library that provide atomic
   styles for the components.
-* `/styles/jetpack` contains optional utility styles and enhancements for
-  Bootstrap and Componentry styles.
 
 Component styles are colocated with component source files int he `/src`
 directory.

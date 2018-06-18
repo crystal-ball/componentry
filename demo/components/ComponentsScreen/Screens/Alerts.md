@@ -61,12 +61,6 @@ component to automatically create an uncontrolled Alert.
   apis={['Active component', 'Theme colors']}
 />
 
-<Alert color="info" className="mt">
-  The Alerts in this documentation use the enhanced alert styles from the
-  Jetpack styles collection. They can also
-  be imported directly from <code>~componentry/styles/jetpack/alert</code>.
-</Alert>
-
 ### <Icon id="stars" /> A++ Accessibility
 
 Alert components include a screen reader only message to announce the the type
