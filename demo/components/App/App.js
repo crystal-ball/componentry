@@ -2,9 +2,10 @@
 import React, { Component, Fragment } from 'react'
 import { object } from 'prop-types'
 import * as Componentry from 'componentry'
-import { hot } from 'react-hot-loader'
-import { BrowserRouter, Switch, Route, Link } from 'react-router-dom'
 import DocumentTitle from 'react-document-title'
+import { BrowserRouter, Switch, Route, Link } from 'react-router-dom'
+import { ThemeProvider } from 'styled-components'
+import { hot } from 'react-hot-loader'
 
 // Import SVG icons used by Icon component to generate svg symbol sprite
 // TODO: Move icon imports to a project Icon component
@@ -33,7 +34,7 @@ import ComponentsScreen from '../ComponentsScreen'
 import ConceptsScreen from '../ConceptsScreen'
 import FourOhFourScreen from '../FourOhFourScreen'
 import SetupScreen from '../SetupScreen'
-import HomeScreen from '../HomeScreen'
+import HomeScreen from '../HomeScreen/HomeScreen'
 
 // ========================================================
 // Componentry Theme Customization
@@ -59,6 +60,16 @@ const theme = {
   DropdownTrigger: {
     // Include the chevron icon decoration by default in all dropdowns
     decoration: <Icon id="chevron" className="ml-1" />,
+  },
+}
+
+const styledTheme = {
+  border: {
+    color: '#ced4da',
+  },
+  spacers: {
+    4: '2.25rem',
+    5: '4.25rem',
   },
 }
 
@@ -96,25 +107,30 @@ class App extends Component<{}> {
     return (
       <DocumentTitle title="Componentry">
         <BrowserRouter basename={process.env.PUBLIC_PATH}>
-          <Componentry.ThemeProvider theme={theme}>
-            {/* Restores scroll position to page top on route change */}
-            <ScrollToTop />
+          <ThemeProvider theme={styledTheme}>
+            <Componentry.ThemeProvider theme={theme}>
+              {/* Restores scroll position to page top on route change */}
+              <ScrollToTop />
 
-            {/* Show app navigation on every page but home page */}
-            <Route path="/:path" component={AppNav} />
+              {/* Show app navigation on every page but home page */}
+              <Route path="/:path" component={AppNav} />
 
-            {/* Application level routing */}
-            <Switch>
-              <Route path="/" exact component={HomeScreen} />
-              <Route path={setup.pathname} component={SetupScreen} />
-              <Route path={`${concepts.pathname}/:concept?`} component={ConceptsScreen} />
-              <Route
-                path={`${components.pathname}/:component?`}
-                component={ComponentsScreen}
-              />
-              <Route component={FourOhFourScreen} />
-            </Switch>
-          </Componentry.ThemeProvider>
+              {/* Application level routing */}
+              <Switch>
+                <Route path="/" exact component={HomeScreen} />
+                <Route path={setup.pathname} component={SetupScreen} />
+                <Route
+                  path={`${concepts.pathname}/:concept?`}
+                  component={ConceptsScreen}
+                />
+                <Route
+                  path={`${components.pathname}/:component?`}
+                  component={ComponentsScreen}
+                />
+                <Route component={FourOhFourScreen} />
+              </Switch>
+            </Componentry.ThemeProvider>
+          </ThemeProvider>
         </BrowserRouter>
       </DocumentTitle>
     )
