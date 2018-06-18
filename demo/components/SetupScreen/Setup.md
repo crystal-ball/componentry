@@ -6,22 +6,20 @@
 
 ## Styles
 
-Componentry uses Bootstrap v4 for styling. To make getting started as easy as
-possible, the latest v4 release is included in the library. You can customize
-Bootstrap and Componentry using the SCSS variables consumed by Bootstrap. A
-typical import will look like this:
+The Componentry library styles are written in SASS, so you will need a SASS
+loader to use them. Applications can customize Componentry using any of the
+theme variables used by Bootstrap. A typical application styles setup will look
+like this:
 
 ```scss
-// Define theme customization variables, they will be used by both for Bootstrap
-// and Componentry in order to create a seamless theme. If you don't define
-// custom variables, the default Bootstrap theme will take effect.
+// Define application theme customization variables, If you don't define
+// custom variables, the default Componentry values will be sued
 @import 'styles/your-variables';
 
-// Import Bootstrap v4 from Componentry. This creates the foundational styling
-// for your app.
-@import '~componentry/dist/bootstrap';
-
-// Import the Componentry component styles. These styles provide the seamless
-// customization of the React components.
-@import '~componentry/dist/componentry';
+// Import the Componentry library styles. The componentry import includes the
+// full set of styles for content and components
+@import '~componentry/styles/componentry';
 ```
+
+_Componentry styles are a customized fork of the Bootstrap v4 styles. Thank you
+to the Bootstrap community for creating such an amazing set of styles!_

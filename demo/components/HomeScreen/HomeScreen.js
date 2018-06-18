@@ -1,7 +1,7 @@
 // @flow
 import React from 'react'
 import { Link } from 'react-router-dom'
-import { Flex } from 'componentry'
+import { Flex, Header } from 'componentry'
 
 import routesMap, { componentRoutes, conceptRoutes } from 'utils/routes-map'
 import SubRoutesNav from 'components/universal/SubRoutesNav'
@@ -9,27 +9,19 @@ import SubRoutesNav from 'components/universal/SubRoutesNav'
 import accessibleSVG from './media/accessibility.svg'
 import bundleSVG from './media/bundle.svg'
 import mergeSVG from './media/merge.svg'
-import reactLogo from './media/react.svg'
 
 import { component } from './home-screen.scss'
 
 export default () => (
   <div className={component}>
     <Flex direction="column" align="center" className="hero">
-      <h1 className="display-2 text-primary mb-5">
+      <Header className="display-2 text-primary mb-4">
         <u>C</u>omponentry
-      </h1>
+      </Header>
 
-      <div className="text-center mb-3">
-        <img className="logo react-logo" src={reactLogo} alt="React" />
-        <span className="ml-2 mr-3 display-3">+</span>
-        <span className="logo bootstrap-logo">B</span>
-      </div>
-
-      <h2 className="mb-5 text-center w-75">
-        Lightweight, simple and accessible components <br />built with React and Bootstrap
-        v4
-      </h2>
+      <Header as="h2" subheader className="mb-5 text-center w-75 font-weight-light">
+        <em>Scalable, simple, accessible components</em>
+      </Header>
     </Flex>
 
     <Flex
@@ -56,7 +48,9 @@ export default () => (
     <div className="mb-5 row justify-content-center">
       <Flex justify="center" className="col-7 my-4">
         <div>
-          <h3 className="feature-header">Lightweight Bundle Size</h3>
+          <Header as="h3" className="feature-header">
+            Lightweight Bundle Size
+          </Header>
           <div className="media feature">
             <img
               className="icon display-3 mr-3"
@@ -75,7 +69,9 @@ export default () => (
       </Flex>
       <Flex justify="center" className="col-7 my-4">
         <div>
-          <h3 className="feature-header">Consistent APIs</h3>
+          <Header as="h3" className="feature-header">
+            Consistent APIs
+          </Header>
           <div className="media feature">
             <div className="media-body">
               <p>
@@ -94,7 +90,9 @@ export default () => (
       </Flex>
       <Flex justify="center" className="col-7 my-4">
         <div>
-          <h3 className="feature-header">A++ Accessibility</h3>
+          <Header as="h3" className="feature-header">
+            A++ Accessibility
+          </Header>
           <div className="media feature border-bottom-0">
             <img
               className="icon display-3 mr-3"
