@@ -25,9 +25,7 @@ export default ({ location: { state } }: Props) => (
         <Route
           key={route}
           path={subRoutes[route].pathname}
-          render={() =>
-            createElement(routesMap.components.screens[route], libProps)
-          }
+          render={() => createElement(routesMap.components.screens[route], libProps)}
         />
       ))}
     </div>

@@ -13,9 +13,7 @@ import { component } from './app-nav.scss'
  * App navigation is shown on pages that are not home or component guides.
  */
 export default () => (
-  <header
-    className={`${component} bg-gray-100 p-4 mb-5 d-flex justify-content-between`}
-  >
+  <header className={`${component} bg-gray-100 p-4 mb-5 d-flex justify-content-between`}>
     {/* Home route */}
     <div className="d-flex">
       <div className="pr-3 d-flex align-items-center">
@@ -39,10 +37,7 @@ export default () => (
 
       {/* Github link */}
       <div className="pl-3">
-        <a
-          className="text-primary h2"
-          href="https://github.com/crystal-ball/componentry"
-        >
+        <a className="text-primary h2" href="https://github.com/crystal-ball/componentry">
           <Icon id="github" font={false} />
         </a>
       </div>

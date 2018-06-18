@@ -26,8 +26,8 @@ export default () => (
       </div>
 
       <h2 className="mb-5 text-center w-75">
-        Lightweight, simple and accessible components <br />built with React and
-        Bootstrap v4
+        Lightweight, simple and accessible components <br />built with React and Bootstrap
+        v4
       </h2>
     </div>
 
@@ -61,8 +61,8 @@ export default () => (
             <div className="media-body">
               <p>
                 Componentry is optimized for size and performance. With no external
-                dependencies the library weighs in at 12.8kB. Advanced optimizations
-                are possible using targeted ESM and ESNext build targets.
+                dependencies the library weighs in at 12.8kB. Advanced optimizations are
+                possible using targeted ESM and ESNext build targets.
               </p>
             </div>
           </div>
@@ -75,8 +75,8 @@ export default () => (
             <div className="media-body">
               <p>
                 Spend more time writing and less time checking documentation with
-                consistent APIs and event hooks across components. Consistent APIs
-                and focused component concerns make component composition easy.
+                consistent APIs and event hooks across components. Consistent APIs and
+                focused component concerns make component composition easy.
               </p>
             </div>
             <img
@@ -99,15 +99,12 @@ export default () => (
             <div className="media-body">
               <p>
                 Components are written using{' '}
-                <a
-                  href="https://www.w3.org/WAI/intro/aria"
-                  rel="noreferrer noopener"
-                >
+                <a href="https://www.w3.org/WAI/intro/aria" rel="noreferrer noopener">
                   WAI-ARIA
                 </a>{' '}
-                roles and attributes for A++ fully accessible components out of the
-                box. Internal component APIs even handle assigning dynamic aria
-                attributes on subcomponents.
+                roles and attributes for A++ fully accessible components out of the box.
+                Internal component APIs even handle assigning dynamic aria attributes on
+                subcomponents.
               </p>
             </div>
           </div>

@@ -8,14 +8,11 @@ type Props = {
   subheader?: boolean,
 }
 
-export default elementFactory(
-  'Header',
-  ({ subheader, children, ...props }: Props) => ({
-    as: 'h1',
-    className: {
-      'text-muted': subheader,
-    },
-    children: subheader ? <small>{children}</small> : children,
-    ...props,
-  }),
-)
+export default elementFactory('Header', ({ subheader, children, ...props }: Props) => ({
+  as: 'h1',
+  className: {
+    'text-muted': subheader,
+  },
+  children: subheader ? <small>{children}</small> : children,
+  ...props,
+}))

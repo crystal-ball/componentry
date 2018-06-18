@@ -65,9 +65,7 @@ export default ({
             <Tab.Trigger activeId="Component">Component props</Tab.Trigger>
           )}
           <Tab.Trigger activeId="Componentry">Componentry props</Tab.Trigger>
-          {activeComponent && (
-            <Tab.Trigger activeId="Active">Active props</Tab.Trigger>
-          )}
+          {activeComponent && <Tab.Trigger activeId="Active">Active props</Tab.Trigger>}
         </Nav>
       </Tab>
     </div>

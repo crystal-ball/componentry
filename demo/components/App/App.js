@@ -109,10 +109,7 @@ class App extends Component<{}> {
               <Route path="/" exact component={HomeScreen} />
               <Route path={setup.pathname} component={SetupScreen} />
               <Route path={jetpack.pathname} component={JetpackScreen} />
-              <Route
-                path={`${concepts.pathname}/:concept?`}
-                component={ConceptsScreen}
-              />
+              <Route path={`${concepts.pathname}/:concept?`} component={ConceptsScreen} />
               <Route
                 path={`${components.pathname}/:component?`}
                 component={ComponentsScreen}

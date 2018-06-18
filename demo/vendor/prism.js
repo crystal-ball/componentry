@@ -147,10 +147,7 @@ var Prism = (function() {
             if (_.util.type(o[i]) === 'Object' && !visited[_.util.objId(o[i])]) {
               visited[_.util.objId(o[i])] = true
               _.languages.DFS(o[i], callback, null, visited)
-            } else if (
-              _.util.type(o[i]) === 'Array' &&
-              !visited[_.util.objId(o[i])]
-            ) {
+            } else if (_.util.type(o[i]) === 'Array' && !visited[_.util.objId(o[i])]) {
               visited[_.util.objId(o[i])] = true
               _.languages.DFS(o[i], callback, i, visited)
             }
@@ -193,9 +190,7 @@ var Prism = (function() {
 
       // Set language on the element, if not present
       element.className =
-        element.className.replace(lang, '').replace(/\s+/g, ' ') +
-        ' language-' +
-        language
+        element.className.replace(lang, '').replace(/\s+/g, ' ') + ' language-' + language
 
       // Set language on the parent, for styling
       parent = element.parentNode
@@ -271,15 +266,7 @@ var Prism = (function() {
       return Token.stringify(_.util.encode(tokens), language)
     },
 
-    matchGrammar: function(
-      text,
-      strarr,
-      grammar,
-      index,
-      startPos,
-      oneshot,
-      target,
-    ) {
+    matchGrammar: function(text, strarr, grammar, index, startPos, oneshot, target) {
       var Token = _.Token
 
       for (var token in grammar) {
@@ -414,8 +401,7 @@ var Prism = (function() {
 
             Array.prototype.splice.apply(strarr, args)
 
-            if (delNum != 1)
-              _.matchGrammar(text, strarr, grammar, i, pos, true, token)
+            if (delNum != 1) _.matchGrammar(text, strarr, grammar, i, pos, true, token)
 
             if (oneshot) break
           }
@@ -511,9 +497,7 @@ var Prism = (function() {
 
     var attributes = Object.keys(env.attributes)
       .map(function(name) {
-        return (
-          name + '="' + (env.attributes[name] || '').replace(/"/g, '&quot;') + '"'
-        )
+        return name + '="' + (env.attributes[name] || '').replace(/"/g, '&quot;') + '"'
       })
       .join(' ')
 
@@ -559,17 +543,12 @@ var Prism = (function() {
 
   //Get current script and highlight
   var script =
-    document.currentScript ||
-    [].slice.call(document.getElementsByTagName('script')).pop()
+    document.currentScript || [].slice.call(document.getElementsByTagName('script')).pop()
 
   if (script) {
     _.filename = script.src
 
-    if (
-      document.addEventListener &&
-      !_.manual &&
-      !script.hasAttribute('data-manual')
-    ) {
+    if (document.addEventListener && !_.manual && !script.hasAttribute('data-manual')) {
       if (document.readyState !== 'loading') {
         if (window.requestAnimationFrame) {
           window.requestAnimationFrame(_.highlightAll)

@@ -23,19 +23,16 @@ class Modal extends Component<Props> {
    * Close component with deactivate. This is for 'standard' usage only, for custom
    * requirements, use a custom close setup.
    */
-  static Header = elementFactory(
-    'ModalHeader',
-    ({ children, Close, ...props }, ctx) => ({
-      className: 'modal-header',
-      children: (
-        <Fragment>
-          {children}
-          {Close && <Close onClick={ctx.ModalHeader.deactivate} />}
-        </Fragment>
-      ),
-      ...props,
-    }),
-  )
+  static Header = elementFactory('ModalHeader', ({ children, Close, ...props }, ctx) => ({
+    className: 'modal-header',
+    children: (
+      <Fragment>
+        {children}
+        {Close && <Close onClick={ctx.ModalHeader.deactivate} />}
+      </Fragment>
+    ),
+    ...props,
+  }))
   static Title = elementFactory('ModalTitle', (props, ctx) => ({
     tag: 'h4',
     id: ctx.ModalTitle.guid,

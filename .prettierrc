@@ -1,9 +1,9 @@
 {
-  "printWidth": 84,
-  "singleQuote": true,
-  "semi": false,
-  "trailingComma": "all",
+  "printWidth": 90,
   "proseWrap": "always",
+  "semi": false,
+  "singleQuote": true,
+  "trailingComma": "all",
   "overrides": [
     {
       "files": "*.md",

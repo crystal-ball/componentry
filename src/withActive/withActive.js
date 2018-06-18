@@ -57,10 +57,9 @@ type ActiveContext = {
  * responsible for passing ACTIVE context as props and handling state transitions
  * when appropriate.
  */
-export default ({
-  defaultActive = false,
-  transitionState = false,
-}: Options = {}) => (Wrapped: ComponentType<*>) =>
+export default ({ defaultActive = false, transitionState = false }: Options = {}) => (
+  Wrapped: ComponentType<*>,
+) =>
   class WithActive extends Component<Props, State> {
     unsubscribe: Function
     transitionDuration: number

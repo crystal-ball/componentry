@@ -38,8 +38,7 @@ export default ({
   if (role) arias.role = role
 
   // Handle dynamic aria values
-  if (controls)
-    arias['aria-controls'] = typeof controls === 'string' ? controls : guid
+  if (controls) arias['aria-controls'] = typeof controls === 'string' ? controls : guid
   if (id) arias.id = typeof id === 'string' ? id : guid
   if (labelledby)
     arias['aria-labelledby'] = typeof labelledby === 'string' ? labelledby : guid
