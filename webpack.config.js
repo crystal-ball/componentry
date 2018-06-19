@@ -1,13 +1,10 @@
-/* eslint-env node */
 'use strict' // eslint-disable-line
 const { resolve } = require('path')
-const webpackConfigs = require('@inspirescript/webpack-configs')
+const webpackBase = require('@crystal-ball/webpack-base')
 
 module.exports = env => {
-  const config = webpackConfigs({
-    env,
+  const config = webpackBase({
     paths: {
-      context: resolve(__dirname),
       // Set the source directory for webpack app to the demo app
       appSrc: resolve('demo'),
       // Include demo and source files in babel transpile
@@ -15,6 +12,18 @@ module.exports = env => {
       // In production use /componentry/ publicPath for Github pages
       publicPath: env === 'production' ? '/componentry/' : '/',
     },
+  })
+
+  // --- 🔮 Markdown loader
+  // Turn plain text into a magic experience!
+  config.module.rules.push({
+    test: /\.md$/,
+    use: [
+      // Returned JSX must be transpiled to JS
+      { loader: 'babel-loader' },
+      // Convert markdown to a component with content as JSX
+      { loader: '@inspirescript/magic-markdown-loader' },
+    ],
   })
 
   /*

@@ -27,7 +27,7 @@
   },
   "scripts": {
     "commit": "git cz",
-    "start": "NODE_ENV=development webpack-dev-server --env=development",
+    "start": "webpack-serve",
     "test": "npm run lint && npm run test:unit",
     "prepublishOnly": "npm run clean && npm run js",
     "postpublish": "npm run clean",
@@ -38,7 +38,7 @@
     "test:watch": "BABEL_ENV=test NODE_ENV=test jest --env=jsdom --watch",
     "format": "prettier --write \"{demo,src,styles}/**/*.{js,scss}\" guides/*.md",
     "lint": "NODE_ENV=test eslint src demo",
-    "documentation": "NODE_ENV=production webpack --env=production",
+    "documentation": "webpack",
     "clean": "rm -rf dist monitor lib es esnext",
     "js:commonjs": "BABEL_ENV=common babel src --out-dir lib --ignore *.spec.js",
     "js:esmodules": "BABEL_ENV=esm babel src --out-dir es --ignore *.spec.js",
@@ -54,7 +54,8 @@
     "nanoid": "^1.0.3"
   },
   "devDependencies": {
-    "@inspirescript/webpack-configs": "3.2.0",
+    "@crystal-ball/webpack-base": "^1.1.1",
+    "@inspirescript/magic-markdown-loader": "^1.0.0",
     "babel-cli": "~6.26.0",
     "babel-plugin-transform-class-properties": "~6.24.1",
     "babel-plugin-transform-es2015-modules-commonjs": "^6.26.2",

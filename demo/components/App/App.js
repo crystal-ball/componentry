@@ -7,6 +7,12 @@ import { BrowserRouter, Switch, Route, Link } from 'react-router-dom'
 import { ThemeProvider } from 'styled-components'
 import { hot } from 'react-hot-loader'
 
+// App Components
+import registry from 'registry'
+import AppNav from 'components/universal/AppNav'
+import ScrollToTop from 'components/universal/ScrollToTop'
+import routesMap from 'utils/routes-map'
+
 // Import SVG icons used by Icon component to generate svg symbol sprite
 // TODO: Move icon imports to a project Icon component
 import 'media/icons/bootstrap.svg'
@@ -22,12 +28,6 @@ import 'media/icons/share.svg'
 import 'media/icons/stars.svg'
 import 'media/icons/terminal.svg'
 import 'media/icons/tune.svg'
-
-// App Components
-import registry from 'registry'
-import AppNav from 'components/universal/AppNav'
-import ScrollToTop from 'components/universal/ScrollToTop'
-import routesMap from 'utils/routes-map'
 
 // Screens
 import ComponentsScreen from '../ComponentsScreen'
