@@ -15,6 +15,8 @@
   padding: $btn-padding-y $btn-padding-x;
   font-size: $font-size-base;
   line-height: $btn-line-height;
+  text-transform: $btn-text-transform;
+  letter-spacing: $btn-letter-spacing;
 
   // Manually declare to provide an override to the browser default
   @if $enable-rounded {
@@ -84,7 +86,14 @@ fieldset:disabled a.btn {
 
   @include hover {
     color: color-yiq($hover-background);
-    @include gradient-bg($hover-background);
+    // If a hover-gradient is provided, it should overlay the regular background
+    @if $btn-hover-gradient {
+      background-image: $btn-hover-gradient;
+      background-blend-mode: overlay;
+    } @else {
+      @include gradient-bg($hover-background);
+    }
+
     border-color: $hover-border;
   }
 
@@ -110,10 +119,15 @@ fieldset:disabled a.btn {
   &:not(:disabled):not(.disabled).active,
   .show > &.dropdown-toggle {
     color: color-yiq($active-background);
-    background-color: $active-background;
-    @if $enable-gradients {
-      background-image: none; // Remove the gradient for the pressed/active state
+
+    // If a hover-gradient is provided, it should overlay the regular background
+    @if $btn-active-gradient {
+      background-image: $btn-active-gradient;
+      background-blend-mode: overlay;
+    } @else {
+      @include gradient-bg($active-background);
     }
+
     border-color: $active-border;
 
     &:focus {
