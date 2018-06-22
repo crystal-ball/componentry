@@ -5,18 +5,24 @@
 //
 
 .btn {
+  -webkit-appearance: button;
+  // Opinionated: add "hand" cursor to non-disabled .btn elements
+  cursor: pointer;
+  user-select: none;
   display: inline-block;
+  margin: 0; // Reset the margin in Firefox and Safari
+  padding: $btn-padding-y $btn-padding-x;
+  border: $btn-border-width solid transparent;
+  font-family: inherit;
+  font-size: $font-size-base;
   font-weight: $btn-font-weight;
   text-align: center;
   white-space: nowrap;
   vertical-align: middle;
-  user-select: none;
-  border: $btn-border-width solid transparent;
-  padding: $btn-padding-y $btn-padding-x;
-  font-size: $font-size-base;
   line-height: $btn-line-height;
   text-transform: $btn-text-transform;
   letter-spacing: $btn-letter-spacing;
+  overflow: visible; // Show the overflow in Edge
 
   // Manually declare to provide an override to the browser default
   @if $enable-rounded {
@@ -41,13 +47,9 @@
   // Disabled comes first so active can properly restyle
   &.disabled,
   &:disabled {
+    cursor: default;
     opacity: $btn-disabled-opacity;
     @include box-shadow(none);
-  }
-
-  // Opinionated: add "hand" cursor to non-disabled .btn elements
-  &:not(:disabled):not(.disabled) {
-    cursor: pointer;
   }
 
   &:not(:disabled):not(.disabled):active,
