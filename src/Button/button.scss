@@ -242,9 +242,17 @@ fieldset:disabled a.btn {
 // Button Sizes
 //
 
-@mixin button-size($padding-y, $padding-x, $font-size, $line-height, $border-radius) {
+@mixin button-size(
+  $padding-y,
+  $padding-x,
+  $font-size,
+  $line-height,
+  $border-radius,
+  $letter-spacing
+) {
   padding: $padding-y $padding-x;
   font-size: $font-size;
+  letter-spacing: $letter-spacing;
   line-height: $line-height;
 
   // Manually declare to provide an override to the browser default
@@ -261,7 +269,8 @@ fieldset:disabled a.btn {
     $btn-padding-x-lg,
     $font-size-lg,
     $btn-line-height-lg,
-    $btn-border-radius-lg
+    $btn-border-radius-lg,
+    $btn-letter-spacing-lg
   );
 }
 
@@ -271,7 +280,8 @@ fieldset:disabled a.btn {
     $btn-padding-x-sm,
     $font-size-sm,
     $btn-line-height-sm,
-    $btn-border-radius-sm
+    $btn-border-radius-sm,
+    $btn-letter-spacing-lg
   );
 }
 
