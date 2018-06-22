@@ -1,34 +1,20 @@
 /* ~componentry/styles/atomic/text */
 
 //
-// Typography shorthand
-//
-
-@mixin text-emphasis-variant($parent, $color) {
-  #{$parent} {
-    color: $color !important;
-  }
-  a#{$parent} {
-    @include hover-focus {
-      color: darken($color, 10%) !important;
-    }
-  }
-}
-
-// Text truncate
-// Requires inline-block or block for proper styling
-@mixin text-truncate() {
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-}
-
-//
 // Text
 //
 
-.text-monospace {
-  font-family: $font-family-monospace;
+// Sizes
+
+// The .text-sm and text-lg classes are intended for regular text like p, span,
+// etc. and provide a utility for minor text adjustments when applications don't
+// want to use small headers and small dom elements to handle these types
+.text-sm {
+  font-size: $font-size-sm;
+}
+
+.text-lg {
+  font-size: $font-size-lg;
 }
 
 // Alignment
@@ -36,9 +22,20 @@
 .text-justify {
   text-align: justify !important;
 }
+
 .text-nowrap {
   white-space: nowrap !important;
 }
+
+// Text truncate
+
+@mixin text-truncate() {
+  // ℹ️ Requires inline-block or block for proper styling
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
 .text-truncate {
   @include text-truncate;
 }
@@ -94,11 +91,21 @@
   color: $white !important;
 }
 
+@mixin text-emphasis-variant($parent, $color) {
+  #{$parent} {
+    color: $color !important;
+  }
+  a#{$parent} {
+    @include hover-focus {
+      color: darken($color, 10%) !important;
+    }
+  }
+}
+
 @each $color, $value in $theme-colors {
   @include text-emphasis-variant('.text-#{$color}', $value);
 }
 
-// Create a text class for each gray
 @each $color, $value in $grays {
   @include text-emphasis-variant('.text-gray-#{$color}', $value);
 }
@@ -118,6 +125,10 @@
 }
 
 // Misc
+
+.text-monospace {
+  font-family: $font-family-monospace;
+}
 
 .text-hide {
   font: 0/0 a;
