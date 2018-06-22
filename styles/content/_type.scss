@@ -13,6 +13,15 @@ $heading-sizes: (
   h6: $h6-font-size,
 );
 
+$heading-weights: (
+  h1: $h1-font-weight,
+  h2: $h2-font-weight,
+  h3: $h3-font-weight,
+  h4: $h4-font-weight,
+  h5: $h5-font-weight,
+  h6: $h6-font-weight,
+);
+
 // Creating individual output for each header adds ~25 lines of CSS, but also
 // makes debugging styles much cleaner, and more closely aligns with the goal of
 // mapping classes to usage 1:1.
@@ -22,7 +31,7 @@ $heading-sizes: (
     margin-top: 0;
     margin-bottom: $headings-margin-bottom;
     font-family: $headings-font-family;
-    font-weight: $headings-font-weight;
+    font-weight: map-get($map: $heading-weights, $key: $heading);
     line-height: $headings-line-height;
     color: $headings-color;
     font-size: $heading-font-size;

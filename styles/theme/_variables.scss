@@ -266,6 +266,12 @@ $font-weight-bold:            700 !default;
 $font-weight-base:            $font-weight-normal !default;
 $line-height-base:            1.5 !default;
 
+$headings-margin-bottom:      ($spacer / 2) !default;
+$headings-font-family:        inherit !default;
+$headings-font-weight:        500 !default;
+$headings-line-height:        1.2 !default;
+$headings-color:              inherit !default;
+
 $h1-font-size:                $font-size-base * 2.5 !default;
 $h2-font-size:                $font-size-base * 2 !default;
 $h3-font-size:                $font-size-base * 1.75 !default;
@@ -273,11 +279,12 @@ $h4-font-size:                $font-size-base * 1.5 !default;
 $h5-font-size:                $font-size-base * 1.25 !default;
 $h6-font-size:                $font-size-base !default;
 
-$headings-margin-bottom:      ($spacer / 2) !default;
-$headings-font-family:        inherit !default;
-$headings-font-weight:        500 !default;
-$headings-line-height:        1.2 !default;
-$headings-color:              inherit !default;
+$h1-font-weight:              $headings-font-weight !default;
+$h2-font-weight:              $headings-font-weight !default;
+$h3-font-weight:              $headings-font-weight !default;
+$h4-font-weight:              $headings-font-weight !default;
+$h5-font-weight:              $headings-font-weight !default;
+$h6-font-weight:              $headings-font-weight !default;
 
 $display1-size:               6rem !default;
 $display2-size:               5.5rem !default;
