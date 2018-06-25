@@ -5,147 +5,70 @@
 //
 
 .btn {
-  -webkit-appearance: button;
-  // Opinionated: add "hand" cursor to non-disabled .btn elements
-  cursor: pointer;
-  user-select: none;
-  display: inline-block;
-  margin: 0; // Reset the margin in Firefox and Safari
-  padding: $btn-padding-y $btn-padding-x;
   border: $btn-border-width solid transparent;
-  font-family: inherit;
+  @include border-radius($btn-border-radius);
+  cursor: pointer; // Opinionated: add pointer to non-disabled .btn elements
+  display: inline-block;
   font-size: $font-size-base;
   font-weight: $btn-font-weight;
-  text-align: center;
-  white-space: nowrap;
-  vertical-align: middle;
-  line-height: $btn-line-height;
-  text-transform: $btn-text-transform;
   letter-spacing: $btn-letter-spacing;
-  overflow: visible; // Show the overflow in Edge
+  line-height: $btn-line-height;
+  padding: $btn-padding-y $btn-padding-x;
+  text-align: center;
+  text-transform: $btn-text-transform;
+  user-select: none;
+  vertical-align: middle;
+  white-space: nowrap;
 
-  // Manually declare to provide an override to the browser default
-  @if $enable-rounded {
-    border-radius: $btn-border-radius;
-  } @else {
-    border-radius: 0;
-  }
+  // ℹ️ The box-shadow styles remain static throughout hover/active states
+  @include box-shadow($btn-box-shadow);
 
+  // $btn-transition default includes color, background-color, border-color
   @include transition($btn-transition);
 
-  // Share hover and focus styles
-  @include hover-focus {
-    text-decoration: none;
-  }
-
-  &:focus,
-  &.focus {
-    outline: 0;
-    box-shadow: $btn-focus-box-shadow;
-  }
-
-  // Disabled comes first so active can properly restyle
-  &.disabled,
+  &.disabled, // For use with a.btn elements only
   &:disabled {
     cursor: default;
     opacity: $btn-disabled-opacity;
-    @include box-shadow(none);
   }
-
-  &:not(:disabled):not(.disabled):active,
-  &:not(:disabled):not(.disabled).active {
-    background-image: none;
-    @include box-shadow($btn-active-box-shadow);
-
-    &:focus {
-      @include box-shadow($btn-focus-box-shadow, $btn-active-box-shadow);
-    }
-  }
-}
-
-// Future-proof disabling of clicks on `<a>` elements
-a.btn.disabled,
-fieldset:disabled a.btn {
-  pointer-events: none;
 }
 
 //
 // Theme color variants
 //
 
-@mixin button-variant(
-  $background,
-  $border,
-  $hover-background: darken($background, 7.5%),
-  $hover-border: darken($border, 10%),
-  $active-background: darken($background, 10%),
-  $active-border: darken($border, 12.5%)
-) {
-  color: color-yiq($background);
-  @include gradient-bg($background);
-  border-color: $border;
-  @include box-shadow($btn-box-shadow);
-
-  @include hover {
-    color: color-yiq($hover-background);
-    // If a hover-gradient is provided, it should overlay the regular background
-    @if $btn-hover-gradient {
-      background-image: $btn-hover-gradient;
-      background-blend-mode: overlay;
-    } @else {
-      @include gradient-bg($hover-background);
-    }
-
-    border-color: $hover-border;
-  }
-
-  &:focus,
-  &.focus {
-    // Avoid using mixin so we can pass custom focus shadow properly
-    @if $enable-shadows {
-      box-shadow: $btn-box-shadow, 0 0 0 $btn-focus-width rgba($border, 0.5);
-    } @else {
-      box-shadow: 0 0 0 $btn-focus-width rgba($border, 0.5);
-    }
-  }
-
-  // Disabled comes first so active can properly restyle
-  &.disabled,
-  &:disabled {
-    color: color-yiq($background);
-    background-color: $background;
-    border-color: $border;
-  }
-
-  &:not(:disabled):not(.disabled):active,
-  &:not(:disabled):not(.disabled).active,
-  .show > &.dropdown-toggle {
-    color: color-yiq($active-background);
-
-    // If a hover-gradient is provided, it should overlay the regular background
-    @if $btn-active-gradient {
-      background-image: $btn-active-gradient;
-      background-blend-mode: overlay;
-    } @else {
-      @include gradient-bg($active-background);
-    }
-
-    border-color: $active-border;
-
-    &:focus {
-      // Avoid using mixin so we can pass custom focus shadow properly
-      @if $enable-shadows {
-        box-shadow: $btn-active-box-shadow, 0 0 0 $btn-focus-width rgba($border, 0.5);
-      } @else {
-        box-shadow: 0 0 0 $btn-focus-width rgba($border, 0.5);
-      }
-    }
-  }
-}
-
 @each $color, $value in $theme-colors {
   .btn-#{$color} {
-    @include button-variant($value, $value);
+    border-color: $value;
+    color: color-yiq($value);
+    @include gradient-bg($value);
+
+    &:hover {
+      border-color: darken($value, 10%);
+      color: color-yiq($value);
+      @include gradient-bg(darken($value, 7.5%));
+
+      @include button-hover-styles($value); // Overrides escape hatch
+    }
+
+    &:active,
+    &.active {
+      border-color: darken($value, 12.5%);
+      color: color-yiq($value);
+      @include gradient-bg(darken($value, 10%));
+
+      @include button-active-styles($value); // Overrides escape hatch
+    }
+
+    // Reset any psuedo styles to variant default for disabled
+    &.disabled,
+    &:disabled {
+      border-color: $value;
+      color: color-yiq($value);
+      @include gradient-bg($value);
+
+      @include button-disabled-styles($value); // Overrides escape hatch
+    }
   }
 }
 
@@ -153,55 +76,38 @@ fieldset:disabled a.btn {
 // Outline button variants
 //
 
-@mixin button-outline-variant(
-  $color,
-  $color-hover: color-yiq($color),
-  $active-background: $color,
-  $active-border: $color
-) {
-  color: $color;
-  background-color: transparent;
-  background-image: none;
-  border-color: $color;
-
-  &:hover {
-    color: $color-hover;
-    background-color: $active-background;
-    border-color: $active-border;
-  }
-
-  &:focus,
-  &.focus {
-    box-shadow: 0 0 0 $btn-focus-width rgba($color, 0.5);
-  }
-
-  &.disabled,
-  &:disabled {
-    color: $color;
-    background-color: transparent;
-  }
-
-  &:not(:disabled):not(.disabled):active,
-  &:not(:disabled):not(.disabled).active,
-  .show > &.dropdown-toggle {
-    color: color-yiq($active-background);
-    background-color: $active-background;
-    border-color: $active-border;
-
-    &:focus {
-      // Avoid using mixin so we can pass custom focus shadow properly
-      @if $enable-shadows and $btn-active-box-shadow != none {
-        box-shadow: $btn-active-box-shadow, 0 0 0 $btn-focus-width rgba($color, 0.5);
-      } @else {
-        box-shadow: 0 0 0 $btn-focus-width rgba($color, 0.5);
-      }
-    }
-  }
-}
-
 @each $color, $value in $theme-colors {
   .btn-outline-#{$color} {
-    @include button-outline-variant($value);
+    color: $value;
+    background-color: transparent;
+    background-image: none;
+    border-color: $value;
+
+    &:hover {
+      color: color-yiq($value);
+      background-color: $value;
+      border-color: $value;
+      @include gradient-bg($value);
+
+      @include button-outline-hover-styles($value); // Overrides escape hatch
+    }
+
+    &:active,
+    &.active {
+      border-color: $value;
+      color: color-yiq($value);
+      @include gradient-bg(darken($value, 7.5%));
+
+      @include button-outline-active-styles($value); // Overrides escape hatch
+    }
+
+    &.disabled,
+    &:disabled {
+      color: $value;
+      background-color: transparent;
+
+      @include button-outline-disabled-styles($value); // Overrides escape hatch
+    }
   }
 }
 
@@ -209,26 +115,18 @@ fieldset:disabled a.btn {
 // Link buttons
 //
 
-// Make a button look and behave like a link
-// TODO: the comment from BS doesn't match up with what is shown in BS docs, how is
-// a btn-link supposed to be used???
+// Creates a button that has the text styles of an anchor, but maintains the
+// padding of a button, this is useful for adding secondary CTA buttons.
 .btn-link {
-  font-weight: $font-weight-normal;
-  color: $link-color;
   background-color: transparent;
+  color: $link-color;
+  font-weight: $font-weight-normal;
 
-  @include hover {
-    color: $link-hover-color;
-    text-decoration: $link-hover-decoration;
+  &:hover {
     background-color: transparent;
     border-color: transparent;
-  }
-
-  &:focus,
-  &.focus {
+    color: $link-hover-color;
     text-decoration: $link-hover-decoration;
-    border-color: transparent;
-    box-shadow: none;
   }
 
   &:disabled,
@@ -238,6 +136,31 @@ fieldset:disabled a.btn {
   }
 
   // No need for an active state here
+}
+
+//
+// Anchor button
+//
+
+// The `.btn-link` style button has the font styles of an anchor AND all of the
+// regular padding of a button. For 💯 Accessibility we want to have buttons
+// that look exactly like links for in application triggers, `btn-anchor`
+// creates a button styled exactly like an anchor. This should be used for any
+// application actions that are not route navigations.
+
+.btn-anchor {
+  @extend .btn-link; // Extend link styles for font styling
+
+  // Remove additional button styles for anchor appearance
+  -webkit-appearance: none !important; // Remove Chrome native button styling
+  border: none;
+  border-radius: 0;
+  font-family: $font-family-sans-serif;
+  line-height: $line-height-base;
+  padding: 0;
+  user-select: auto;
+  vertical-align: baseline;
+  white-space: normal;
 }
 
 //
@@ -252,17 +175,11 @@ fieldset:disabled a.btn {
   $border-radius,
   $letter-spacing
 ) {
-  padding: $padding-y $padding-x;
+  @include border-radius($border-radius);
   font-size: $font-size;
   letter-spacing: $letter-spacing;
   line-height: $line-height;
-
-  // Manually declare to provide an override to the browser default
-  @if $enable-rounded {
-    border-radius: $border-radius;
-  } @else {
-    border-radius: 0;
-  }
+  padding: $padding-y $padding-x;
 }
 
 .btn-lg {
@@ -296,42 +213,19 @@ fieldset:disabled a.btn {
   width: 100%;
 
   // Vertically space out multiple block buttons
+  // 🤔 Do we want to include this as a default library style? It's somewhat
+  // opinionated and isn't based on "adding" a class to produce a style...
   + .btn-block {
     margin-top: $btn-block-spacing-y;
   }
 }
 
-// Specificity overrides
-input[type='submit'],
-input[type='reset'],
-input[type='button'] {
-  &.btn-block {
-    width: 100%;
-  }
-}
-
 //
-// Anchor button
+// Disabled button style anchors
 //
 
-// The "color='link'" button has the font styles of an anchor ADN all of the
-// regular padding of a button. For 💯 Accessibility we want to have buttons
-// that look exactly like links for in application triggers, `btn-anchor`
-// creates a button styled exactly like an anchor. This should be used for
-// application actions that are not route navigations.
-
-.btn-anchor {
-  // Extend link styles for font styling
-  @extend .btn-link;
-
-  // Remove additional button styles for anchor appearance
-  -webkit-appearance: none !important; // Remove Chrome native button styling
-  border: none;
-  border-radius: 0;
-  font-family: $font-family-sans-serif;
-  line-height: $line-height-base;
-  padding: 0;
-  user-select: auto;
-  vertical-align: baseline;
-  white-space: normal;
+// Future-proof disabling of clicks on `<a>` elements
+a.btn.disabled,
+fieldset:disabled a.btn {
+  pointer-events: none;
 }

@@ -19,3 +19,4 @@ export { default as ThemeProvider } from './ThemeProvider/ThemeProvider'
 export { default as Tooltip } from './Tooltip/Tooltip'
 
 export { default as withActive } from './withActive/withActive'
+export { default as setupOutlineHandlers } from './utils/setup-outline-handlers'

@@ -37,35 +37,3 @@ export function closest(target, guid) {
 //   const metrics = context.measureText(text)
 //   return metrics.width
 // }
-
-// NOTE: The new Bootstrap focus box-shadow looks nice, so we're not suppressing it
-// any longer. If everything is after a few releases remove this.
-/**
- * Function to handle removing default Bootstrap box-shadow focus style only on click
- * of button by attaching function to the `onMouseDown` event (which is only
- * fired for mouse events).
- *
- * Function overrides default browser outline css, then attaches a blur
- * listener to element that returns outline control to browser on blur and
- * self destructs listener. This allows the element to regain focus if the
- * user switches to keyboard.
- *
- * _Note that Bootstrap overrides the default browser **outline** to none for button
- * focus and replaces it with a box shadow. This targets that box shadow for click
- * events **only**. On keyboard focus, the default Bootstrap box shadow is still
- * shown. This provides A++ Accessibility for keyboard users._
- * @param {Object} evt React synthetic event
- */
-// export function suppressBoxShadowOnClick(evt) {
-//   function blurHandler(event) {
-//     // Remove box-shadow override to enable possibility of keyboard focus
-//     event.target.style.boxShadow = ''
-//     event.target.style.outline = ''
-//     // Remove this blur listener
-//     event.target.removeEventListener('blur', blurHandler)
-//   }
-
-//   evt.target.style.boxShadow = 'none'
-//   evt.target.style.outline = 'none'
-//   evt.target.addEventListener('blur', blurHandler)
-// }

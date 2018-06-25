@@ -19,6 +19,14 @@ Componentry.
   props to work with any lists, eg `.list-unstyled`. This also reflects the
   evolution from a Bootstrap implementation, to a sensible defaults/naming
   library.
+- The `.focus` classes have been removed from the `Button` styles. Any focus
+  should be handled using the `:focus` psuedo selector, and elements should be
+  programaticaly focused.
+- The library no longer alters the default browser focus styles. Outlines are
+  left as defaults, and a utility method `setup-outline-handlers` has been added
+  that will suppress focus outlines in an accessible manner for mouser and touch
+  users only. This has also cleaned up much of the original Button box-shadow
+  styles.
 
 ## Updates
 
