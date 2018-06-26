@@ -8,6 +8,10 @@ and this project adheres to
 
 #### [Unreleased]
 
+# [3.0.0-alpha.0] - 2018-06-26
+
+See the v3 migration doc for in progress updates.
+
 ## [2.2.0] - 2018-03-14
 
 ### Fixed
