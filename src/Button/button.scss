@@ -121,6 +121,7 @@
   background-color: transparent;
   color: $link-color;
   font-weight: $font-weight-normal;
+  // 🤔 Should btn-link reset the text tansform and letter spacing?
 
   &:hover {
     background-color: transparent;
@@ -156,8 +157,10 @@
   border: none;
   border-radius: 0;
   font-family: $font-family-sans-serif;
+  letter-spacing: 0;
   line-height: $line-height-base;
   padding: 0;
+  text-transform: none;
   user-select: auto;
   vertical-align: baseline;
   white-space: normal;

@@ -110,6 +110,17 @@
     }
   }
 
+  &.bottom {
+    .dropdown-content {
+      top: 100%;
+      left: 0;
+    }
+
+    .dropdown-toggle {
+      @include caret(bottom);
+    }
+  }
+
   &.left {
     .dropdown-content {
       top: 0;
@@ -126,22 +137,12 @@
       }
     }
   }
-}
 
-// The dropdown trigger
-.dropdown-toggle {
-  // Generate the caret automatically
-  @include caret;
-
-  // TODO: it would be great to make this a specific class like: `.dropdown-toggle-anchor
-  &.btn-anchor {
-    border-bottom: 1px solid $dropdown-trigger-anchor-border-color;
-
-    // Add styles for inline dropdowns for a border bottom that matches the
-    // anchor color Helps the dropdown to stand out, even when used inline style
-    @include hover-focus {
-      border-bottom: 1px solid $dropdown-trigger-anchor-hover-border-color;
-      text-decoration: none; // Trigger border is the decoration
+  // Overlay direction places the dropdown content on top of the dropdown
+  // trigger
+  &.overlay {
+    .dropdown-content {
+      top: 0;
     }
   }
 }
@@ -150,10 +151,7 @@
 .dropdown-content {
   display: block;
   position: absolute;
-  top: 100%;
-  left: 0;
   z-index: $zindex-dropdown;
-  float: left;
   min-width: $dropdown-min-width;
   padding: $dropdown-padding-y 0;
   margin: $dropdown-spacer 0 0; // override default ul
@@ -196,7 +194,8 @@
   background-color: transparent; // For `<button>`s
   border: 0; // For `<button>`s
 
-  @include hover-focus {
+  &:hover,
+  &:focus {
     color: $dropdown-link-hover-color;
     text-decoration: none;
     @include gradient-bg($dropdown-link-hover-bg);

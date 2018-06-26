@@ -16,7 +16,7 @@ enable easy navigation between multiple options.
 <InteractiveDemo
   defaults={{ direction: null }}
   formFields={[
-    { label: 'direction', options: this.props.directions },
+    { label: 'direction', options: [...this.props.directions, 'overlay'] },
   ]}
   renderCode={({ direction }) => `<Dropdown${direction ? ` direction="${direction}"` : ""}>
   <Dropdown.Trigger>Dropdown</Dropdown.Trigger>
