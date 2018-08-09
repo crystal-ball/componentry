@@ -1,9 +1,11 @@
 // @flow
-import React, { Fragment } from 'react'
-
+import React, { Fragment, createElement } from 'react'
+import classnames from 'classnames'
 import Close from '../Close/Close'
 import withActive, { type ActiveProps } from '../withActive/withActive'
-import elementFactory, { type ElementProps } from '../component-factories/element'
+import withTheme from '../withTheme/withTheme'
+import { cleanActive } from '../utils/clean-props'
+import { type ElementProps } from '../component-factories/element'
 import type { ThemeColors } from '../utils/theme'
 
 type Props = {
@@ -39,43 +41,43 @@ type Props = {
  * context. For non alert information blocks a card with theme color primary or
  * secondary can be used.
  */
-const Alert = elementFactory(
-  'Alert',
-  ({
-    ariaTitle,
-    active = true,
-    children,
-    color,
-    dismissible = false,
-    deactivate,
-    outline = false,
-    visible = true,
-    // 🙅‍♀️ You shall not pass!
-    activate,
-    ...rest
-  }: Props) => ({
-    role: 'alert',
-    className: {
-      alert: true,
-      fade: true,
-      [`alert-${color}`]: color,
-      show: visible,
-      outline,
-    },
-    // hidden state is updated after active opacity transition
-    'aria-hidden': active ? 'false' : 'true',
-    children: (
-      <Fragment>
-        {/* Provide the alert color context for screen readers */}
-        <div className="sr-only">{ariaTitle || `${color} alert`}</div>
-        {/* Alert contents */}
-        <div className="alert-content">{children}</div>
-        {/* Render a close button or null depending on configs */}
-        {dismissible && <Close onClick={deactivate} className={`text-${color}`} />}
-      </Fragment>
-    ),
-    ...rest,
-  }),
-)
 
-export default withActive({ defaultActive: true, transitionState: true })(Alert)
+const Alert = ({
+  as,
+  children,
+  className,
+  active,
+  ariaTitle,
+  color,
+  deactivate,
+  dismissible,
+  outline,
+  visible,
+  ...rest
+}: Props) =>
+  createElement(
+    as || 'div',
+    {
+      role: 'alert',
+      className: classnames('alert fade', className, {
+        [`alert-${color}`]: color,
+        show: visible,
+        outline,
+      }),
+      // hidden state is updated after active opacity transition
+      'aria-hidden': active ? 'false' : 'true',
+      ...cleanActive(rest),
+    },
+    <Fragment>
+      {/* Provide the alert color context for screen readers */}
+      <div className="sr-only">{ariaTitle || `${color} alert`}</div>
+      {/* Alert contents */}
+      <div className="alert-content">{children}</div>
+      {/* Render a close button or null depending on configs */}
+      {dismissible && <Close onClick={deactivate} className={`text-${color}`} />}
+    </Fragment>,
+  )
+
+export default withActive({ defaultActive: true, transitionState: true })(
+  withTheme('Alert')(Alert),
+)

@@ -6,6 +6,7 @@ import { func, number, shape, string } from 'prop-types'
 import type { Theme } from '../ThemeProvider/ThemeProvider'
 
 export type ActiveProps = {
+  /** Active state of element */
   activate?: Function,
   active?: boolean,
   deactivate?: Function,

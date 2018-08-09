@@ -1,16 +1,21 @@
-import React from 'react'
+import React, { createElement } from 'react'
+import classnames from 'classnames'
+import withTheme from '../withTheme/withTheme'
+import { type ElementProps } from '../component-factories/element'
 
-import Button from '../Button/Button'
-import elementFactory from '../component-factories/element'
-
-export default elementFactory('Close', {
-  className: 'btn-close',
-  tag: Button,
-  // Don't include base btn decoration class
-  decorated: false,
-  children: (
-    <svg className="icon close font" role="img" aria-label="close">
+const Close = ({ as, className, ...rest }: ElementProps) =>
+  createElement(
+    as || 'button',
+    {
+      type: 'button',
+      'aria-label': 'close',
+      className: classnames('btn-close', className),
+      ...rest,
+    },
+    <svg className="icon close font" role="img">
       <use href="#close" xlinkHref="#close" />
-    </svg>
-  ),
-})
+    </svg>,
+  )
+Close.displayName = 'Close'
+
+export default withTheme('Close')(Close)

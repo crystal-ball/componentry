@@ -13,3 +13,7 @@ export default function cleanProps(props: {}, removeKeys: Array<string>): {} {
 
   return cleaned
 }
+
+// Cleans all active related props for passing ...rest safely to DOM elements
+// $FlowIgnore
+export const cleanActive = ({ active, visible, activate, deactivate, ...rest }) => rest
