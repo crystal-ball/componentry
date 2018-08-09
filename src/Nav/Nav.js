@@ -1,5 +1,5 @@
 // @flow
-import { BaseButton } from '../Button/Button'
+import Button from '../Button/Button'
 import elementFactory, { type ElementProps } from '../component-factories/element'
 
 export type Props = {
@@ -40,7 +40,9 @@ const NavItem = elementFactory('NavItem', ({ active, ...rest }) => {
       'nav-link': href || onClick,
     },
     /* eslint-disable no-nested-ternary */
-    tag: href || onClick ? (href ? 'a' : BaseButton) : 'li',
+    tag: href || onClick ? (href ? 'a' : Button) : 'li',
+    // For button nav items don't include base btn class decoration
+    decorated: href ? false : undefined,
     ...rest,
   }
 })

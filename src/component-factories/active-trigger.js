@@ -3,13 +3,11 @@ import { createElement, type Node, type ComponentType } from 'react'
 import { object, shape } from 'prop-types'
 import classNames from 'classnames'
 
-import Button, { BaseButton } from '../Button/Button'
+import Button from '../Button/Button'
 import arias from '../utils/arias'
 import type { ComponentArias } from '../utils/arias'
 
 type Options = {
-  /** Determines whether to use Button or BaseButton components */
-  baseButton?: boolean,
   /** Custom trigger static classes */
   classes?: string,
   /** Arias to include for component */
@@ -43,7 +41,6 @@ type Context = { [string]: { [string]: any } }
  * Factory returns custom `<Trigger />` components defined by the options.
  */
 export default ({
-  baseButton,
   classes = '',
   componentArias,
   element = '',
@@ -89,7 +86,7 @@ export default ({
       : {}
 
     return createElement(
-      as || (baseButton ? BaseButton : Button),
+      as || Button,
       {
         'data-test': element ? `${element}-trigger` : undefined,
         ...arias({

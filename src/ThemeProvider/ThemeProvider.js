@@ -1,7 +1,12 @@
 // @flow
-import { Component } from 'react'
+import { Component, createContext } from 'react'
 import type { Node } from 'react'
 import { number, shape } from 'prop-types'
+
+export const themeDefaults = { transitionDuration: 300 }
+
+const ThemeContext = createContext(themeDefaults)
+export default ThemeContext
 
 /**
  * The `<ThemeProvider>` is a shorthand for setting context values that can be used
@@ -34,7 +39,7 @@ type Props = {
   theme: Theme,
 }
 
-export default class ThemeProvider extends Component<Props> {
+export class LegacyThemeProvider extends Component<Props> {
   static childContextTypes = {
     THEME: shape({
       transitionDuration: number,

@@ -1,5 +1,8 @@
 // @flow
-import elementFactory, { type ElementProps } from '../component-factories/element'
+import { createElement } from 'react'
+import classnames from 'classnames'
+import withTheme from '../withTheme/withTheme'
+import { type ElementProps } from '../component-factories/element'
 import type { ThemeColors } from '../utils/theme'
 
 export type Props = {
@@ -7,6 +10,11 @@ export type Props = {
   block?: boolean,
   /** Theme color used to compute BS color class */
   color?: ThemeColors | 'link' | '',
+  /**
+   * Semi-private internal prop that determines if component is deocrated with
+   * base `btn` class
+   */
+  decorated: boolean,
   /** Computes the button as anchor class */
   link?: boolean,
   /** Creates outline style button, uses `color` for outline theme. */
@@ -15,19 +23,23 @@ export type Props = {
   size?: 'small' | 'large',
 } & ElementProps
 
-/**
- * The library makes use of Buttons that should not have the base `.btn` class. It's
- * more explicit to specify this as a component type (and easier to debug/reason
- * about).
- * @param {boolean} decorated
- */
-const makeButton = decorated =>
-  elementFactory(
-    decorated ? 'Button' : 'BaseButton',
-    ({ block, color, link, outline, size, ...props }) => ({
-      tag: 'button',
+const Button = ({
+  as,
+  children,
+  className,
+  decorated,
+  block,
+  color,
+  link,
+  outline,
+  size,
+  ...rest
+}: Props) =>
+  createElement(
+    as || 'button',
+    {
       type: 'button',
-      className: {
+      className: classnames(className, {
         btn: decorated,
         'btn-anchor': link,
         'btn-block': block,
@@ -37,13 +49,13 @@ const makeButton = decorated =>
         [`btn-outline-${color}`]: outline,
         'btn-sm': size === 'small',
         'btn-lg': size === 'large',
-      },
-      ...props,
-    }),
+      }),
+      ...rest,
+    },
+    children,
   )
-
-const Button = makeButton(true)
-const BaseButton = makeButton(false)
-
-export { BaseButton }
-export default Button
+Button.displayName = Button
+Button.defaultProps = {
+  decorated: true,
+}
+export default withTheme('Button')(Button)

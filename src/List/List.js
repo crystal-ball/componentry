@@ -1,7 +1,7 @@
 // @flow
 import { Children } from 'react'
 
-import { BaseButton } from '../Button/Button'
+import Button from '../Button/Button'
 import elementFactory, { type ElementProps } from '../component-factories/element'
 
 /**
@@ -34,7 +34,9 @@ const ListItem = elementFactory('ListItem', ({ active, color, ...rest }) => {
       [`list-group-item-${color}`]: color,
     },
     /* eslint-disable no-nested-ternary */
-    tag: href || onClick ? (href ? 'a' : BaseButton) : 'li',
+    tag: href || onClick ? (href ? 'a' : Button) : 'li',
+    // For button list items, don't include base btn decoration class
+    decorated: onClick ? false : undefined,
     ...rest,
   }
 })
