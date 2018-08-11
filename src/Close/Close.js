@@ -18,4 +18,4 @@ const Close = ({ as, className, ...rest }: ElementProps) =>
   )
 Close.displayName = 'Close'
 
-export default withTheme('Close')(Close)
+export default withTheme(Close)

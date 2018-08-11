@@ -14,11 +14,11 @@ import ThemeProvider from '../ThemeProvider/ThemeProvider'
  * @param {string} name The component field name in theme, should match the
  * component `displayName`
  */
-const withTheme = componentName => Component =>
-  forwardRef((props, ref) => (
+const withTheme = Component => {
+  const themedComponent = forwardRef((props, ref) => (
     <ThemeProvider.Consumer>
       {theme => {
-        const componentTheme = theme[componentName] || {}
+        const componentTheme = theme[Component.displayName] || {}
 
         return (
           <Component
@@ -31,5 +31,8 @@ const withTheme = componentName => Component =>
       }}
     </ThemeProvider.Consumer>
   ))
+  themedComponent.displayName = Component.displayName
+  return themedComponent
+}
 
 export default withTheme

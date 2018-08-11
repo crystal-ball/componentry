@@ -5,9 +5,6 @@ import { number, shape } from 'prop-types'
 
 export const themeDefaults = { transitionDuration: 300 }
 
-const ThemeContext = createContext(themeDefaults)
-export default ThemeContext
-
 /**
  * The `<ThemeProvider>` is a shorthand for setting context values that can be used
  * for changing the default configuration values used by Componentry components.
@@ -23,6 +20,12 @@ export default ThemeContext
  * @class ThemeProvider
  * @extends {Component}
  */
+
+const ThemeContext = createContext(themeDefaults)
+export default ThemeContext
+
+// LEGACY
+// ---------------------------------------------------------------------------
 
 export type Theme = {
   /** Default duration for theme visibility transitions */

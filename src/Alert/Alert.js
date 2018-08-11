@@ -77,7 +77,8 @@ const Alert = ({
       {dismissible && <Close onClick={deactivate} className={`text-${color}`} />}
     </Fragment>,
   )
+Alert.displayName = 'Alert'
 
 export default withActive({ defaultActive: true, transitionState: true })(
-  withTheme('Alert')(Alert),
+  withTheme(Alert),
 )

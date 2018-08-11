@@ -54,8 +54,8 @@ const Button = ({
     },
     children,
   )
-Button.displayName = Button
+Button.displayName = 'Button'
 Button.defaultProps = {
   decorated: true,
 }
-export default withTheme('Button')(Button)
+export default withTheme(Button)
