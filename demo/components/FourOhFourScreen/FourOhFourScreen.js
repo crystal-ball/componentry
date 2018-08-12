@@ -1,12 +1,12 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
+import { Anchor } from 'componentry'
 
 export default () => (
   <div>
     <div className="row">
       <div className="col-12">
         <h3>Page Not Found</h3>
-        <Link to="/">Home</Link>
+        <Anchor to="/">Home</Anchor>
       </div>
     </div>
   </div>

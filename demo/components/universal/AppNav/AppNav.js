@@ -25,9 +25,9 @@ export default () => (
 
     <Flex align="center">
       {/* Library setup */}
-      <Link to={routesMap.setup.pathname} className="text-primary pr-2">
+      <Anchor to={routesMap.setup.pathname} className="text-primary pr-2">
         {routesMap.setup.name}
-      </Link>
+      </Anchor>
 
       {/* Concepts dropdown navigation */}
       <SubRoutesNav label="Concepts" subRoutes={conceptRoutes} />
@@ -38,7 +38,7 @@ export default () => (
       {/* Github link */}
       <div className="pl-3">
         <Anchor
-          className="text-primary h2"
+          className="text-primary h2 hi friend"
           href="https://github.com/crystal-ball/componentry"
         >
           <Icon id="github" font={false} />

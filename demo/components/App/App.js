@@ -3,7 +3,7 @@ import React, { Component, Fragment } from 'react'
 import { object } from 'prop-types'
 import * as Componentry from 'componentry'
 import DocumentTitle from 'react-document-title'
-import { BrowserRouter, Switch, Route, Link } from 'react-router-dom'
+import { BrowserRouter, Switch, Route } from 'react-router-dom'
 import { ThemeProvider } from 'styled-components'
 import { hot } from 'react-hot-loader'
 
@@ -11,6 +11,7 @@ import { hot } from 'react-hot-loader'
 import registry from 'registry'
 import AppNav from 'components/universal/AppNav'
 import ScrollToTop from 'components/universal/ScrollToTop'
+import AnchorLink from './AnchorLink'
 import routesMap from 'utils/routes-map'
 
 // Import SVG icons used by Icon component to generate svg symbol sprite
@@ -46,6 +47,9 @@ const { Close, Icon } = Componentry
 // component and passing a theme configuration object
 const theme = {
   transitionDuration: 350,
+  Anchor: {
+    as: AnchorLink,
+  },
   Alert: {
     outline: true,
   },
@@ -84,7 +88,6 @@ Object.keys(Componentry).forEach(component => {
 })
 
 // Registry React Router <Link /> for convenience
-registry.register(Link, 'Link')
 registry.register(Fragment, 'Fragment')
 
 const { setup, concepts, components } = routesMap

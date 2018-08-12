@@ -45,7 +45,9 @@ const Button = ({
         'btn-block': block,
         // btn-<COLOR> class is only for regular themed buttons, suppress for other
         // btn theme flavors
+        // $FlowIgnore
         [`btn-${color}`]: color && !link && !outline,
+        // $FlowIgnore
         [`btn-outline-${color}`]: outline,
         'btn-sm': size === 'small',
         'btn-lg': size === 'large',
