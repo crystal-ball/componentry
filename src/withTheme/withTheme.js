@@ -1,4 +1,4 @@
-import React, { forwardRef } from 'react'
+import React from 'react'
 import classnames from 'classnames'
 import ThemeProvider from '../ThemeProvider/ThemeProvider'
 
@@ -11,27 +11,32 @@ import ThemeProvider from '../ThemeProvider/ThemeProvider'
  *    same type. This allows setting default component values in theme, and
  *    overriding them as needed per component with props.
  *
+ * ## TODO: Create a wrapper for passing refs only as needed, see Material-ui
+ *    RootRef component for an example
+ *
+ *
  * @param {string} name The component field name in theme, should match the
  * component `displayName`
  */
-const withTheme = Component => {
-  const themedComponent = forwardRef((props, ref) => (
+/* eslint-disable react/prop-types */
+const withTheme = Wrapped => {
+  const themedComponent = props => (
     <ThemeProvider.Consumer>
       {theme => {
-        const componentTheme = theme[Component.displayName] || {}
+        const componentTheme = theme[Wrapped.displayName] || {}
 
         return (
-          <Component
+          <Wrapped
             {...componentTheme}
             {...props}
             className={classnames(componentTheme.className, props.className)}
-            ref={ref}
           />
         )
       }}
     </ThemeProvider.Consumer>
-  ))
-  themedComponent.displayName = Component.displayName
+  )
+
+  themedComponent.displayName = `withTheme${Wrapped.displayName || Wrapped.name}`
   return themedComponent
 }
 
