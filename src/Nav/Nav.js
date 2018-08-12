@@ -1,21 +1,20 @@
 // @flow
-import Button from '../Button/Button'
-import elementFactory, { type ElementProps } from '../component-factories/element'
+import elem from '../elem-factory'
+import withTheme from '../withTheme'
 
 export type Props = {
   fill?: boolean,
   justify?: boolean,
   pills?: boolean,
   vertical?: boolean,
-} & ElementProps
+}
 
 const makeNav = tabNav =>
-  elementFactory(
-    tabNav ? 'TabNav' : 'Nav',
-    ({ fill, justify, pills, vertical, ...props }) => ({
-      tag: 'nav',
+  withTheme(tabNav ? 'TabNav' : 'Nav', ({ fill, justify, pills, vertical, ...rest }) =>
+    elem({
+      defaultAs: 'nav',
       role: tabNav ? 'tablist' : undefined,
-      className: {
+      classes: {
         nav: true,
         'nav-tabs': tabNav,
         'flex-column': vertical,
@@ -23,32 +22,28 @@ const makeNav = tabNav =>
         'nav-fill': fill,
         'nav-justified': justify,
       },
-      ...props,
+      ...rest,
     }),
   )
 
 const Nav = makeNav(false)
 const TabNav = makeNav(true)
 
-const NavItem = elementFactory('NavItem', ({ active, ...rest }) => {
+const Item = withTheme('NavItem', ({ active, ...rest }) => {
   const { href, onClick } = rest
 
-  return {
-    className: {
-      'nav-item': true,
+  return elem({
+    /* eslint-disable no-nested-ternary */
+    defaultAs: href || onClick ? (href ? 'a' : 'button') : 'li',
+    classes: {
       active,
+      'nav-item': true,
       'nav-link': href || onClick,
     },
-    /* eslint-disable no-nested-ternary */
-    tag: href || onClick ? (href ? 'a' : Button) : 'li',
-    // For button nav items don't include base btn class decoration
-    decorated: href ? false : undefined,
     ...rest,
-  }
+  })
 })
+Nav.Item = Item
 
 export { TabNav }
-
-// $FlowFixMe
-Nav.Item = NavItem
 export default Nav

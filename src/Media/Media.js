@@ -1,10 +1,10 @@
 // @flow
-import elementFactory from '../component-factories/element'
+import elem from '../elem-factory'
+import withTheme from '../withTheme'
 
-const Media = elementFactory('Media', { className: 'media' })
-const MediaBody = elementFactory('MediaBody', { className: 'media-body' })
+const Media = withTheme('Media', props => elem({ classes: 'media', ...props }))
 
-// $FlowFixMe
-Media.Body = MediaBody
+const Body = withTheme('MediaBody', props => elem({ classes: 'media-body', ...props }))
+Media.Body = Body
 
 export default Media

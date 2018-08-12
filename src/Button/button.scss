@@ -77,7 +77,7 @@
 //
 
 @each $color, $value in $theme-colors {
-  .btn-outline-#{$color} {
+  .btn-#{$color}.btn-outline {
     color: $value;
     background-color: transparent;
     background-image: none;

@@ -1,5 +1,5 @@
 // @flow
-import withActive from '../withActive/withActive'
+import withActive from '../withActive'
 import activeContainer from '../component-factories/active-container'
 import activeContent from '../component-factories/active-content'
 import activeTrigger from '../component-factories/active-trigger'

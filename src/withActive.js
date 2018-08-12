@@ -3,7 +3,7 @@ import React, { Component } from 'react'
 import type { ComponentType } from 'react'
 import { func, number, shape, string } from 'prop-types'
 
-import type { Theme } from '../ThemeProvider/ThemeProvider'
+import type { Theme } from './ThemeProvider/ThemeProvider'
 
 export type ActiveProps = {
   /** Active state of element */

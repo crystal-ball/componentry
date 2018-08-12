@@ -1,11 +1,11 @@
 // @flow
-import React, { Component, Fragment, type Node } from 'react'
-import { func, object, shape, string } from 'prop-types'
+import React, { Component, Fragment, createContext, type Node } from 'react'
 import classNames from 'classnames'
 import nanoid from 'nanoid'
 
-import withActive from '../withActive/withActive'
-import elementFactory from '../component-factories/element'
+import elem from '../elem-factory'
+import withActive from '../withActive'
+import withTheme from '../withTheme'
 
 type Props = {
   active: boolean,
@@ -15,44 +15,52 @@ type Props = {
   visible?: boolean,
 }
 
+const ModalContext = createContext()
+
+/**
+ * The Modal.Header close button is not shown by default, pass close to show a
+ * Close component with deactivate. This is for 'standard' usage only, for custom
+ * requirements, use a custom close setup.
+ */
+const Header = withTheme('ModalHeader', ({ children, deactivate, Close, ...props }) => (
+  <ModalContext.Consumer>
+    {modalDetails =>
+      elem({
+        classes: 'modal-header',
+        children: (
+          <Fragment>
+            {children}
+            {/* $FlowIgnore */}
+            {Close && <Close onClick={modalDetails.deactivate} />}
+          </Fragment>
+        ),
+        ...props,
+      })
+    }
+  </ModalContext.Consumer>
+))
+
+const Title = withTheme('ModalTitle', props => (
+  <ModalContext.Consumer>
+    {modalDetails =>
+      elem({
+        defaultAs: 'h4',
+        // $FlowIgnore
+        id: modalDetails.guid,
+        classes: 'modal-title',
+        ...props,
+      })
+    }
+  </ModalContext.Consumer>
+))
+
+const Body = withTheme('ModalBody', props => elem({ classes: 'modal-body', ...props }))
+
+const Footer = withTheme('ModalFooter', props =>
+  elem({ classes: 'modal-footer', ...props }),
+)
+
 class Modal extends Component<Props> {
-  static Body = elementFactory('ModalBody', { className: 'modal-body' })
-  static Footer = elementFactory('ModalFooter', { className: 'modal-footer' })
-  /**
-   * The Modal.Header close button is not shown by default, pass close to show a
-   * Close component with deactivate. This is for 'standard' usage only, for custom
-   * requirements, use a custom close setup.
-   */
-  static Header = elementFactory('ModalHeader', ({ children, Close, ...props }, ctx) => ({
-    className: 'modal-header',
-    children: (
-      <Fragment>
-        {children}
-        {Close && <Close onClick={ctx.ModalHeader.deactivate} />}
-      </Fragment>
-    ),
-    ...props,
-  }))
-  static Title = elementFactory('ModalTitle', (props, ctx) => ({
-    tag: 'h4',
-    id: ctx.ModalTitle.guid,
-    className: 'modal-title',
-    ...props,
-  }))
-
-  static displayName = 'Modal'
-  static contextTypes = { THEME: shape({ Modal: object }) }
-
-  // Set modal guid on context for Title
-  static childContextTypes = {
-    ModalTitle: shape({ guid: string }),
-    ModalHeader: shape({ deactivate: func }),
-  }
-  getChildContext = () => ({
-    ModalTitle: { guid: this.guid },
-    ModalHeader: { deactivate: this.props.deactivate },
-  })
-
   /**
    * Guid instance property will be uniquely assigned once for each modal instance,
    * this unique id is then passed to all children through context where it can be
@@ -104,48 +112,51 @@ class Modal extends Component<Props> {
   // Render
   // ---------------------------------------------------------------------------
   render() {
-    const THEME = this.context.THEME || {}
-    const componentCtx = THEME.Modal || {}
-    const { active, children, size, visible }: Props = {
-      ...componentCtx,
-      ...this.props,
-    }
+    const { active, children, deactivate, size, visible }: Props = this.props
 
     return (
-      <Fragment>
-        {/* ℹ️ Bootstrap modal layout uses the .modal container in such a way that
+      <ModalContext.Provider value={{ deactivate, guid: this.guid }}>
+        <Fragment>
+          {/* ℹ️ Bootstrap modal layout uses the .modal container in such a way that
         it receives all click events outside the modal content. This requires adding
         the modal click handler. This handler is _just_ for mouse users, so we are
         disabling the aria linters for adding mouse events to a dialog. Keyboard
         users can close the dialog with an esc keypress */}
-        {/* eslint-disable jsx-a11y/no-noninteractive-element-interactions */}
-        {/* eslint-disable jsx-a11y/click-events-have-key-events */}
-        <div
-          aria-hidden={active ? 'false' : 'true'}
-          aria-labelledby={`${this.guid}`}
-          className={classNames('modal', 'fade', { show: visible })}
-          role="dialog"
-          tabIndex="-1"
-          onClick={this.handleModalClick}
-        >
+          {/* eslint-disable jsx-a11y/no-noninteractive-element-interactions */}
+          {/* eslint-disable jsx-a11y/click-events-have-key-events */}
           <div
-            className={classNames('modal-dialog', {
-              'modal-sm': size === 'small',
-              'modal-lg': size === 'large',
-            })}
-            role="document"
+            aria-hidden={active ? 'false' : 'true'}
+            aria-labelledby={`${this.guid}`}
+            className={classNames('modal', 'fade', { show: visible })}
+            role="dialog"
+            tabIndex="-1"
+            onClick={this.handleModalClick}
           >
-            <div className="modal-content">{children}</div>
+            <div
+              className={classNames('modal-dialog', {
+                'modal-sm': size === 'small',
+                'modal-lg': size === 'large',
+              })}
+              role="document"
+            >
+              <div className="modal-content">{children}</div>
+            </div>
           </div>
-        </div>
-        <div
-          aria-hidden={active ? 'false' : 'true'}
-          className={classNames('modal-backdrop', 'fade', { show: visible })}
-          role="presentation"
-        />
-      </Fragment>
+          <div
+            aria-hidden={active ? 'false' : 'true'}
+            className={classNames('modal-backdrop', 'fade', { show: visible })}
+            role="presentation"
+          />
+        </Fragment>
+      </ModalContext.Provider>
     )
   }
 }
 
-export default withActive({ transitionState: true })(Modal)
+const ThemedModal = withTheme('Modal', Modal)
+ThemedModal.Header = Header
+ThemedModal.Title = Title
+ThemedModal.Body = Body
+ThemedModal.Footer = Footer
+
+export default withActive({ transitionState: true })(ThemedModal)

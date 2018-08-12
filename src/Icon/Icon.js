@@ -1,7 +1,7 @@
 // @flow
 import React from 'react'
-
-import elementFactory from '../component-factories/element'
+import elem from '../elem-factory'
+import withTheme from '../withTheme'
 
 type Props = {
   font?: boolean,
@@ -11,14 +11,16 @@ type Props = {
 /**
  * ⚠️ Requires SVGs are inlined into document somewhere
  */
-export default elementFactory('Icon', ({ id, font = true, ...props }: Props) => ({
-  role: 'img',
-  tag: 'svg',
-  className: {
-    icon: true,
-    [id]: true,
-    font,
-  },
-  children: <use href={`#${id}`} xlinkHref={`#${id}`} />,
-  ...props,
-}))
+export default withTheme('Icon', ({ id, font = true, ...rest }: Props) =>
+  elem({
+    defaultAs: 'svg',
+    role: 'img',
+    classes: {
+      icon: true,
+      [id]: true,
+      font,
+    },
+    children: <use href={`#${id}`} xlinkHref={`#${id}`} />,
+    ...rest,
+  }),
+)

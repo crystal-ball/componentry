@@ -1,8 +1,6 @@
 // @flow
-import { createElement } from 'react'
-import classnames from 'classnames'
-import withTheme from '../withTheme/withTheme'
-import { type ElementProps } from '../component-factories/element'
+import elem from '../elem-factory'
+import withTheme from '../withTheme'
 import type { ThemeColors } from '../utils/theme'
 
 export type Props = {
@@ -10,54 +8,29 @@ export type Props = {
   block?: boolean,
   /** Theme color used to compute BS color class */
   color?: ThemeColors | 'link' | '',
-  /**
-   * Semi-private internal prop that determines if component is deocrated with
-   * base `btn` class
-   */
-  decorated: boolean,
   /** Computes the button as anchor class */
   link?: boolean,
   /** Creates outline style button, uses `color` for outline theme. */
   outline?: boolean,
   /** Create a small or large style button */
   size?: 'small' | 'large',
-} & ElementProps
+}
 
-const Button = ({
-  as,
-  children,
-  className,
-  decorated,
-  block,
-  color,
-  link,
-  outline,
-  size,
-  ...rest
-}: Props) =>
-  createElement(
-    as || 'button',
-    {
+export default withTheme(
+  'Button',
+  ({ block, color = '', link, outline, size, ...rest }: Props) =>
+    elem({
+      defaultAs: 'button',
       type: 'button',
-      className: classnames(className, {
-        btn: decorated,
+      classes: {
+        btn: true,
         'btn-anchor': link,
         'btn-block': block,
-        // btn-<COLOR> class is only for regular themed buttons, suppress for other
-        // btn theme flavors
-        // $FlowIgnore
-        [`btn-${color}`]: color && !link && !outline,
-        // $FlowIgnore
-        [`btn-outline-${color}`]: outline,
+        [`btn-${color}`]: color,
+        'btn-outline': outline,
         'btn-sm': size === 'small',
         'btn-lg': size === 'large',
-      }),
+      },
       ...rest,
-    },
-    children,
-  )
-Button.displayName = 'Button'
-Button.defaultProps = {
-  decorated: true,
-}
-export default withTheme(Button)
+    }),
+)

@@ -1,9 +1,10 @@
 // @flow
-import withActive from '../withActive/withActive'
+import withActive from '../withActive'
 import activeContainer from '../component-factories/active-container'
 import activeContent from '../component-factories/active-content'
 import activeTrigger from '../component-factories/active-trigger'
-import elementFactory from '../component-factories/element'
+import elem from '../elem-factory'
+import withTheme from '../withTheme'
 
 import { TabNav } from '../Nav/Nav'
 
@@ -28,9 +29,12 @@ const Trigger = activeTrigger({
 })
 const withActiveTrigger = withActive()(Trigger)
 
-const ContentContainer = elementFactory('TabContentContainer', {
-  className: 'tab-content',
-})
+const ContentContainer = withTheme('TabContentContainer', props =>
+  elem({
+    classes: 'tab-content',
+    ...props,
+  }),
+)
 
 const Tab = activeContainer({
   name: 'Tab',

@@ -1,28 +1,28 @@
 // @flow
-import elementFactory from '../component-factories/element'
+import elem from '../elem-factory'
+import withTheme from '../withTheme'
 
 /**
  * Card component is a simple wrapper for creating markup for card elements
  */
-const Card = elementFactory('Card', { className: 'card' })
+const Card = withTheme('Card', props => elem({ classes: 'card', ...props }))
 
-const CardBody = elementFactory('CardBody', { className: 'card-body' })
-// $FlowFixMe
-Card.Body = CardBody
+const Body = withTheme('CardBody', props => elem({ classes: 'card-body', ...props }))
+Card.Body = Body
 
-const CardFooter = elementFactory('CardFooter', { className: 'card-footer' })
-// $FlowFixMe
-Card.Footer = CardFooter
+const Footer = withTheme('CardFooter', props =>
+  elem({ classes: 'card-footer', ...props }),
+)
+Card.Footer = Footer
 
-const CardHeader = elementFactory('CardHeader', { className: 'card-header' })
-// $FlowFixMe
-Card.Header = CardHeader
+const Header = withTheme('CardHeader', props =>
+  elem({ classes: 'card-header', ...props }),
+)
+Card.Header = Header
 
-const CardTitle = elementFactory('CardTitle', {
-  className: 'card-title',
-  tag: 'h4',
-})
-// $FlowFixMe
-Card.Title = CardTitle
+const Title = withTheme('CardTitle', props =>
+  elem({ defaultAs: 'h4', classes: 'card-title', ...props }),
+)
+Card.Title = Title
 
 export default Card

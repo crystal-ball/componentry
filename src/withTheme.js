@@ -1,6 +1,6 @@
 import React from 'react'
 import classnames from 'classnames'
-import ThemeProvider from '../ThemeProvider/ThemeProvider'
+import ThemeProvider from './ThemeProvider/ThemeProvider'
 
 /**
  * HOC automates merging the theme values into library components, including:
@@ -13,17 +13,18 @@ import ThemeProvider from '../ThemeProvider/ThemeProvider'
  *
  * ## TODO: Create a wrapper for passing refs only as needed, see Material-ui
  *    RootRef component for an example
- *
- *
- * @param {string} name The component field name in theme, should match the
- * component `displayName`
  */
 /* eslint-disable react/prop-types */
-const withTheme = Wrapped => {
-  const themedComponent = props => (
+const withTheme = (name, Wrapped) => {
+  /* eslint-disable no-param-reassign */
+  if (name) Wrapped.displayName = name // eslint-disable-line
+  if (!name) name = Wrapped.displayName || Wrapped.name
+  /* eslint-enable no-param-reassign */
+
+  const Themed = props => (
     <ThemeProvider.Consumer>
       {theme => {
-        const componentTheme = theme[Wrapped.displayName] || {}
+        const componentTheme = theme[name] || {}
 
         return (
           <Wrapped
@@ -36,8 +37,8 @@ const withTheme = Wrapped => {
     </ThemeProvider.Consumer>
   )
 
-  themedComponent.displayName = `withTheme${Wrapped.displayName || Wrapped.name}`
-  return themedComponent
+  Themed.displayName = `withTheme${name}`
+  return Themed
 }
 
 export default withTheme
