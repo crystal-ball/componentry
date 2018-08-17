@@ -112,28 +112,26 @@ class App extends Component<{}> {
         <BrowserRouter basename={process.env.PUBLIC_PATH}>
           <ThemeProvider theme={styledTheme}>
             <Componentry.ThemeProvider.Provider value={theme}>
-              <Componentry.LegacyThemeProvider theme={theme}>
-                {/* Restores scroll position to page top on route change */}
-                <ScrollToTop />
+              {/* Restores scroll position to page top on route change */}
+              <ScrollToTop />
 
-                {/* Show app navigation on every page but home page */}
-                <Route path="/:path" component={AppNav} />
+              {/* Show app navigation on every page but home page */}
+              <Route path="/:path" component={AppNav} />
 
-                {/* Application level routing */}
-                <Switch>
-                  <Route path="/" exact component={HomeScreen} />
-                  <Route path={setup.pathname} component={SetupScreen} />
-                  <Route
-                    path={`${concepts.pathname}/:concept?`}
-                    component={ConceptsScreen}
-                  />
-                  <Route
-                    path={`${components.pathname}/:component?`}
-                    component={ComponentsScreen}
-                  />
-                  <Route component={FourOhFourScreen} />
-                </Switch>
-              </Componentry.LegacyThemeProvider>
+              {/* Application level routing */}
+              <Switch>
+                <Route path="/" exact component={HomeScreen} />
+                <Route path={setup.pathname} component={SetupScreen} />
+                <Route
+                  path={`${concepts.pathname}/:concept?`}
+                  component={ConceptsScreen}
+                />
+                <Route
+                  path={`${components.pathname}/:component?`}
+                  component={ComponentsScreen}
+                />
+                <Route component={FourOhFourScreen} />
+              </Switch>
             </Componentry.ThemeProvider.Provider>
           </ThemeProvider>
         </BrowserRouter>

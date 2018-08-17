@@ -1,11 +1,7 @@
 // @flow
 /**
- * Prevent passing invalid props to DOM elements by passing component props not meant
- * for DOM.
- * @export
- * @param {Object} props Props to clean up
- * @param {Array} removeKeys Keys mapping to props to remove
- * @returns {Object} Props object with keys removed
+ * Removes props specified in `removeKeys` to prevent passing invalid props to
+ * DOM elements.
  */
 export default function cleanProps(props: {}, removeKeys: Array<string>): {} {
   const cleaned: {} = Object.assign({}, props)
@@ -14,6 +10,19 @@ export default function cleanProps(props: {}, removeKeys: Array<string>): {} {
   return cleaned
 }
 
-// Cleans all active related props for passing ...rest safely to DOM elements
+/**
+ * Removes all props used by active components
+ */
 // $FlowIgnore
-export const cleanActive = ({ active, visible, activate, deactivate, ...rest }) => rest
+export const cleanActive = ({
+  active,
+  visible,
+  activate,
+  deactivate,
+  defaultActive,
+  onActivate,
+  onActivated,
+  onDeactivate,
+  onDeactivated,
+  ...rest
+}) => rest

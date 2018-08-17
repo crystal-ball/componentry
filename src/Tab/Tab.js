@@ -1,24 +1,24 @@
 // @flow
-import withActive from '../withActive'
-import activeContainer from '../component-factories/active-container'
-import activeContent from '../component-factories/active-content'
-import activeTrigger from '../component-factories/active-trigger'
+import activeContainer from '../active-container-factory'
+import activeContent from '../active-content-factory'
+import activeTrigger from '../active-trigger-factory'
 import elem from '../elem-factory'
+import withActive from '../withActive'
 import withTheme from '../withTheme'
 
-import { TabNav } from '../Nav/Nav'
+import { TabNav } from '../Navs/Navs'
 
 const Content = activeContent({
-  componentArias: { hidden: true, role: 'tabpanel' },
+  arias: { hidden: true, role: 'tabpanel' },
   classes: 'tab-pane',
-  name: 'Tabcontent',
+  element: 'tab',
 })
-const withActiveContent = withActive()(Content)
+const withActiveContent = withActive(withTheme('TabContent', Content))
 
 const Trigger = activeTrigger({
-  componentArias: { selected: true, role: 'tab' },
+  arias: { selected: true, role: 'tab' },
   classes: 'nav-link nav-item',
-  name: 'TabTrigger',
+  element: 'tab',
   // Tabs can only activate, they never deactivate when clicked
   triggerType: 'activate',
   // Misc configs
@@ -27,7 +27,7 @@ const Trigger = activeTrigger({
   // look like an anchor
   color: 'link',
 })
-const withActiveTrigger = withActive()(Trigger)
+const withActiveTrigger = withActive(withTheme('TabTrigger', Trigger))
 
 const ContentContainer = withTheme('TabContentContainer', props =>
   elem({
@@ -36,11 +36,14 @@ const ContentContainer = withTheme('TabContentContainer', props =>
   }),
 )
 
-const Tab = activeContainer({
-  name: 'Tab',
-  Content: withActiveContent,
-  Trigger: withActiveTrigger,
-})
+const Tab = withTheme(
+  'Tab',
+  activeContainer({
+    Content: withActiveContent,
+    Trigger: withActiveTrigger,
+    element: 'tab',
+  }),
+)
 
 Tab.Content = withActiveContent
 Tab.Trigger = withActiveTrigger

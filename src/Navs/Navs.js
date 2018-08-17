@@ -45,5 +45,4 @@ const Item = withTheme('NavItem', ({ active, ...rest }) => {
 })
 Nav.Item = Item
 
-export { TabNav }
-export default Nav
+export { Nav, TabNav }

@@ -1,7 +1,7 @@
 import React from 'react'
 import { shallow, render } from 'enzyme'
 
-import Nav from './Nav'
+import { Nav } from './Navs'
 import elementTests from '../utils-test/element-tests'
 
 describe('<Nav />', () => {

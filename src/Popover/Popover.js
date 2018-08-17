@@ -1,25 +1,23 @@
 // @flow
-import withActive from '../withActive'
-import activeContainer from '../component-factories/active-container'
-import activeContent from '../component-factories/active-content'
-import activeTrigger from '../component-factories/active-trigger'
+import container from '../active-container-factory'
+import content from '../active-content-factory'
+import trigger from '../active-trigger-factory'
 import elem from '../elem-factory'
+import withActive from '../withActive'
 import withTheme from '../withTheme'
 
-const Content = activeContent({
-  componentArias: { id: true, role: 'tooltip', hidden: true },
+const Content = content({
+  arias: { id: true, role: 'tooltip', hidden: true },
   element: 'popover',
-  name: 'PopoverContent',
   popper: true,
 })
-const withActiveContent = withActive()(Content)
+const withActiveContent = withActive(withTheme('PopoverContent', Content))
 
-const Trigger = activeTrigger({
+const Trigger = trigger({
+  arias: { describedby: true },
   element: 'popover',
-  componentArias: { describedby: true, subscribe: false },
-  name: 'PopoverTrigger',
 })
-const withActiveTrigger = withActive()(Trigger)
+const withActiveTrigger = withActive(withTheme('PopoverTrigger', Trigger))
 
 const Body = withTheme('PopoverBody', props =>
   elem({ classes: 'popover-body', ...props }),
@@ -28,20 +26,21 @@ const Header = withTheme('PopoverHeader', props =>
   elem({
     defaultAs: 'h3',
     classes: 'popover-header',
-
     ...props,
   }),
 )
 
-const Popover = activeContainer({
-  Content: withActiveContent,
-  Trigger: withActiveTrigger,
-  defaultDirection: 'right',
-  element: 'popover',
-  escHandler: true,
-  mouseEvents: true,
-  name: 'Popover',
-})
+const Popover = withTheme(
+  'Popover',
+  container({
+    Content: withActiveContent,
+    Trigger: withActiveTrigger,
+    defaultDirection: 'right',
+    element: 'popover',
+    escHandler: true,
+    mouseEvents: true,
+  }),
+)
 
 Popover.Content = withActiveContent
 Popover.Trigger = withActiveTrigger

@@ -1,42 +1,41 @@
 // @flow
 import withActive from '../withActive'
-import activeContainer from '../component-factories/active-container'
-import activeContent from '../component-factories/active-content'
-import activeTrigger from '../component-factories/active-trigger'
+import withTheme from '../withTheme'
+import activeContainer from '../active-container-factory'
+import activeContent from '../active-content-factory'
+import activeTrigger from '../active-trigger-factory'
 
 const Content = activeContent({
-  componentArias: { labelledby: true, hidden: true },
+  arias: { labelledby: true, hidden: true },
   element: 'dropdown',
-  name: 'DropdownContent',
 })
-const withActiveContent = withActive()(Content)
+const withActiveContent = withActive(withTheme('DropdownContent', Content))
 
 const Trigger = activeTrigger({
   element: 'dropdown',
-  componentArias: { expanded: true, haspopup: true, id: true },
-  name: 'DropdownTrigger',
+  arias: { expanded: true, haspopup: true, id: true },
 })
-const withActiveTrigger = withActive()(Trigger)
+const withActiveTrigger = withActive(withTheme('DropdownTrigger', Trigger))
 
 const Item = activeTrigger({
-  // Suppress the default btn classes, the .dropdown-item classes have all styles
-  // needed for button items
-  // decorated: false,
   classes: 'dropdown-item',
-  componentArias: {},
-  name: 'DropdownItem',
+  // TODO: what arias should this have?
+  arias: {},
+  element: 'dropdown-item',
 })
-const DropdownItem = withActive()(Item)
+const DropdownItem = withActive(withTheme('DropdownItem', Item))
 
-const Dropdown = activeContainer({
-  Content: withActiveContent,
-  Trigger: withActiveTrigger,
-  defaultDirection: 'bottom',
-  element: 'dropdown',
-  escHandler: true,
-  externalClickHandler: true,
-  name: 'Dropdown',
-})
+const Dropdown = withTheme(
+  'Dropdown',
+  activeContainer({
+    Content: withActiveContent,
+    Trigger: withActiveTrigger,
+    defaultDirection: 'bottom',
+    element: 'dropdown',
+    escHandler: true,
+    externalClickHandler: true,
+  }),
+)
 
 Dropdown.Content = withActiveContent
 Dropdown.Trigger = withActiveTrigger

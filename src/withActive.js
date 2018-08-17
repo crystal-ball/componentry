@@ -1,228 +1,89 @@
-// @flow
-import React, { Component } from 'react'
-import type { ComponentType } from 'react'
-import { func, number, shape, string } from 'prop-types'
-
-import type { Theme } from './ThemeProvider/ThemeProvider'
-
-export type ActiveProps = {
-  /** Active state of element */
-  activate?: Function,
-  active?: boolean,
-  deactivate?: Function,
-  visible?: boolean,
-}
-
-type Options = {
-  /**
-   * Set the default state for active (and visible if transitionState is enabled).
-   */
-  defaultActive?: boolean,
-  /**
-   * For active state components that should have a transition, eg Alerts and
-   * Modals. Setting this to true will provide visibility and active props to
-   * transition opacity before updating active state
-   */
-  transitionState?: boolean,
-}
+import React, { Component, type ComponentType } from 'react'
+import ActiveProvider from './Active/ActiveProvider'
 
 type Props = {
-  /**
-   * The active prop can be passed directly to `withActive` to create a controlled
-   * component. Note that typically the controlled active state should be passed
-   * to the parent State component, but some components (eg Modal, Alert) can be
-   * used as controlled components without a wrapping State component.
-   */
-  active?: boolean,
-  /**
-   * Override the default 300ms/ THEME duration for a specific component
-   */
-  transitionDuration?: number,
+  active: boolean | string,
+  Component: ComponentType<*>,
 }
 
 type State = {
   active: boolean | string,
-  visible: boolean | string,
-}
-
-type ActiveContext = {
-  activate: Function,
-  deactivate: Function,
-  getActive: Function,
-  guid: string,
-  subscribe: Function,
+  visible: boolean,
 }
 
 /**
- * HOC passes active state props along with computed aria attributes. Component is
- * responsible for passing ACTIVE context as props and handling state transitions
- * when appropriate.
+ * Component handles transitioning display and opacity using active and visible
+ * state using the following rules:
+ *
+ * - Show: Set active true to display element, then set visible true to
+ *   transition element opacity using css transitions
+ * - Hide: Set visible false to start element opacity using css transitions,
+ *   then after transition duration set active false to set display none
  */
-export default ({ defaultActive = false, transitionState = false }: Options = {}) => (
-  Wrapped: ComponentType<*>,
-) =>
-  class WithActive extends Component<Props, State> {
-    unsubscribe: Function
-    transitionDuration: number
+class ActiveTransition extends Component<Props, State> {
+  state = {
+    active: this.props.active,
+    visible: this.props.active,
+  }
 
-    // $FlowFixMe
-    static Header = Wrapped.Header
-    // $FlowFixMe
-    static Body = Wrapped.Body
-    // $FlowFixMe
-    static Footer = Wrapped.Footer
-    // $FlowFixMe
-    static Title = Wrapped.Title
+  static getDerivedStateFromProps(props) {
+    // When transitioning either active or visible should update immediately.
+    return props.active === true ? { active: true } : { visible: false }
+  }
 
-    static displayName = `withActive${Wrapped.displayName || Wrapped.name}`
+  componentDidUpdate() {
+    const { active } = this.props
 
-    static contextTypes = {
-      ACTIVE: shape({
-        activate: func,
-        deactivate: func,
-        getActive: func,
-        guid: string,
-        subscribe: func,
-      }),
-      THEME: shape({
-        transitionDuration: number,
-      }),
+    // When component becomes active wait 1/60s (ensures browsers see addition
+    // of visible as a transition state) then add visible class, transition
+    // length determined by css
+    if (active && !this.state.visible) {
+      setTimeout(() => {
+        if (this.unmounted) return
+        this.setState({ visible: true })
+      }, 17)
     }
 
-    state = {
-      active: defaultActive,
-      visible: defaultActive,
-    }
-
-    /**
-     * If this HOC is used outside the scope of a `withState` HOC, the ACTIVE
-     * context will not exist. This prop makes it easy to skip context operations in
-     * that case.
-     */
-    invalidContext: boolean = false
-
-    /**
-     * Set references to context and `transitionDuration` for simpler checks
-     * throughout component lifecycle
-     */
-    constructor(props: Props, context: { ACTIVE?: ActiveContext, THEME?: Theme }) {
-      super(props)
-      // Update bail out flag when context is not present
-      if (!context.ACTIVE) this.invalidContext = true
-
-      const { transitionDuration = 300 } = context.THEME || {}
-
-      // props has precedence to allow for single instance overrides, context
-      // can be used for app wide configs, fall back to defaults
-      this.transitionDuration = this.props.transitionDuration || transitionDuration
-    }
-
-    // Hooks
-    // ---------------------------------------------------------------------------
-    /**
-     * Ensure that state matches context before first render
-     */
-    componentWillMount() {
-      if (this.props.active === undefined && this.invalidContext) return
-
-      const active =
-        this.props.active !== undefined
-          ? this.props.active
-          : this.context.ACTIVE.getActive()
-
-      if (this.state.active !== active) this.setState({ active, visible: active })
-    }
-    /**
-     * Subscribe to active state updates on mount, trigger renders with setState
-     * when state changes. Typically this won't be needed b/c parent component will
-     * rerender on active state change. We still subscribe in case
-     * `shouldComponentUpdate` on an intermediate component returns false.
-     */
-    componentDidMount() {
-      if (this.invalidContext) return
-
-      this.unsubscribe = this.context.ACTIVE.subscribe(active => {
-        if (active !== this.state.active) this.handleStateUpdate(active)
-      })
-    }
-    /**
-     * Handle directly passed active prop
-     */
-    componentWillReceiveProps({ active }: Props) {
-      // If active is not explicitly passed, it will always be undefined, we only
-      // want to update state when a value is passed. See note on props, this is
-      // not preferred, pass active to State container component
-      if (active === undefined) return
-      if (this.state.active !== active) this.handleStateUpdate(active)
-    }
-    /**
-     * Remove subscription on unmount!
-     */
-    componentWillUnmount() {
-      if (this.unsubscribe) this.unsubscribe()
-    }
-
-    // Methods
-    // ---------------------------------------------------------------------------
-    /**
-     * State updates are handled differently when transitionState is true, this
-     * method handles appropriately updating based on options config.
-     */
-    handleStateUpdate = (active: boolean | string) => {
-      /**
-       * Handle: transitionState and order of transitions:
-       *
-       * When transition state is true, the visible and active state is
-       * transitioned for opacity transitions:
-       *
-       * 1. When activating, set active true immediately for `display`, then
-       *    wait 15ms before starting visibility transition otherwise browsers
-       *    see the `display` and visibility transitions as the same event and
-       *    the CSS transitions don't happen
-       * 2. When deactivating, set visibility false to begin transition, after
-       *    the visibility transition completes set active false for `display`
-       *    changes
-       */
-      if (transitionState) {
-        if (active) {
-          this.setState({ active }, () => {
-            setTimeout(() => {
-              this.setState({ visible: active })
-            }, 15)
-          })
-        } else {
-          this.setState({ visible: active }, () => {
-            setTimeout(() => {
-              this.setState({ active })
-            }, this.transitionDuration)
-          })
-        }
-      } else {
+    // When component becomes inactive wait the transition duration before
+    // removing display to allow opacity transitions to occur before hiding
+    if (!active && this.state.active) {
+      setTimeout(() => {
+        if (this.unmounted) return
         this.setState({ active })
-      }
-    }
-
-    // Render
-    // ---------------------------------------------------------------------------
-    render() {
-      const { active, visible } = this.state
-      const passedState = transitionState ? { active, visible } : { active }
-
-      // ⚠️ NO CONTEXT RETURN
-      // If context doesn't exist return wrapped with passed props and state only
-      if (this.invalidContext) return <Wrapped {...this.props} {...passedState} />
-
-      const { activate, deactivate, guid } = this.context.ACTIVE
-
-      return (
-        // Only pass visible state if the consuming component has state transitions
-        <Wrapped
-          guid={guid}
-          activate={activate}
-          deactivate={deactivate}
-          {...passedState}
-          {...this.props}
-        />
-      )
+      }, this.transitionDuration || 300)
     }
   }
+
+  componentWillUnmount() {
+    this.unmounted = true
+  }
+  render() {
+    const { Component: RenderCompoent, ...rest } = this.props
+    const { active, visible } = this.state
+    return <RenderCompoent {...rest} visible={visible} active={active} />
+  }
+}
+
+/**
+ * Components that need transitional active and visible states will use the
+ * Consumer to access the activeCtx, and pass Wrapped into the ActiveTransition
+ * component, which uses state to manage passing active and visible according
+ * to the transition duration for that component.
+ */
+
+export default (Wrapped: ComponentType<*>, transitions) => {
+  // $FlowIgnore
+  const WithActive = props => (
+    <ActiveProvider.Consumer>
+      {activeCtx =>
+        transitions ? (
+          <ActiveTransition Component={Wrapped} {...activeCtx} {...props} />
+        ) : (
+          <Wrapped {...activeCtx} {...props} />
+        )
+      }
+    </ActiveProvider.Consumer>
+  )
+  WithActive.displayName = `withActive${Wrapped.displayName || Wrapped.name}`
+  return WithActive
+}

@@ -1,7 +1,7 @@
 import React from 'react'
 import { render } from 'enzyme'
 
-import Drawer from './Drawer'
+import { Drawer } from './Drawers'
 import activationTestSuite from '../utils-test/activation-tests'
 import elementTests from '../utils-test/element-tests'
 import setupActiveContext from '../utils-test/setup-active-context'

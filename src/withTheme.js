@@ -21,7 +21,7 @@ const withTheme = (name, Wrapped) => {
   if (!name) name = Wrapped.displayName || Wrapped.name
   /* eslint-enable no-param-reassign */
 
-  const Themed = props => (
+  const WithTheme = props => (
     <ThemeProvider.Consumer>
       {theme => {
         const componentTheme = theme[name] || {}
@@ -37,8 +37,8 @@ const withTheme = (name, Wrapped) => {
     </ThemeProvider.Consumer>
   )
 
-  Themed.displayName = `withTheme${name}`
-  return Themed
+  WithTheme.displayName = `withTheme${name}`
+  return WithTheme
 }
 
 export default withTheme

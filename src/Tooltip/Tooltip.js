@@ -1,32 +1,33 @@
 // @flow
+import activeContainer from '../active-container-factory'
+import activeContent from '../active-content-factory'
+import activeTrigger from '../active-trigger-factory'
 import withActive from '../withActive'
-import activeContainer from '../component-factories/active-container'
-import activeContent from '../component-factories/active-content'
-import activeTrigger from '../component-factories/active-trigger'
+import withTheme from '../withTheme'
 
 const Content = activeContent({
-  componentArias: { id: true, role: 'tooltip', hidden: true },
+  arias: { id: true, role: 'tooltip', hidden: true },
   element: 'tooltip',
-  name: 'TooltipContent',
   popper: true,
 })
-const withActiveContent = withActive()(Content)
+const withActiveContent = withActive(withTheme('TooltipContent', Content))
 
 const Trigger = activeTrigger({
+  arias: { describedby: true },
   element: 'tooltip',
-  componentArias: { describedby: true, subscribe: false },
-  name: 'TooltipTrigger',
 })
-const withActiveTrigger = withActive()(Trigger)
+const withActiveTrigger = withActive(withTheme('TooltipTrigger', Trigger))
 
-const Tooltip = activeContainer({
-  element: 'tooltip',
-  mouseEvents: true,
-  name: 'Tooltip',
-  escHandler: true,
-  Content: withActiveContent,
-  Trigger: withActiveTrigger,
-})
+const Tooltip = withTheme(
+  'Tooltip',
+  activeContainer({
+    Content: withActiveContent,
+    Trigger: withActiveTrigger,
+    element: 'tooltip',
+    escHandler: true,
+    mouseEvents: true,
+  }),
+)
 
 Tooltip.Content = withActiveContent
 Tooltip.Trigger = withActiveTrigger

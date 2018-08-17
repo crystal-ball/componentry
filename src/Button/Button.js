@@ -1,7 +1,7 @@
 // @flow
 import elem from '../elem-factory'
 import withTheme from '../withTheme'
-import type { ThemeColors } from '../utils/theme'
+import type { ThemeColors } from '../types'
 
 export type Props = {
   /** Creates a full-width button */

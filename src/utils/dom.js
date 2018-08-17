@@ -1,39 +1,15 @@
+// @flow
 /* eslint-disable import/prefer-default-export */
 
 /**
- * Find the closest DOM parent with the passed `className`. If a matching ancestor
- * is not found return `null`
- * @method closest
- * @param {Object} target    Starting DOM node
- * @param {string} className Class name to filter ancestors against
- * @return {?Object} Closest DOM ancestor when it exists, otherwise null
+ * Find the closest DOM parent with the a `data-id` matching `guid`. If a matching
+ * ancestor is not found returns `null`
  */
-export function closest(target, guid) {
-  if (target.dataset && target.dataset.id === guid) {
-    return target
-  }
-  if (target.parentNode) {
-    return closest(target.parentNode, guid)
-  }
+export const closest = (target: Node, guid: string): ?Node => {
+  // $FlowIgnore
+  if (target.dataset && target.dataset.id === guid) return target
+  if (target.parentNode) return closest(target.parentNode, guid)
+
   // Default null when no matches are found
   return null
 }
-
-/**
- * Uses canvas.measureText to compute and return the width of the given text of given
- * font in pixels. Kudos to:
- * http://stackoverflow.com/questions/118241/calculate-text-width-with-javascript/21015393#21015393
- *
- * @param {String} text The text to be rendered.
- * @param {String} font The css font descriptor that text is to be rendered with (e.g. "bold 14px verdana").
- * @return {string} The width of the text in a px string format, eg: `'467px'`
- */
-// export function getTextWidth(text, font) {
-//   // re-use canvas object for better performance
-//   const canvas =
-//     getTextWidth.canvas || (getTextWidth.canvas = document.createElement('canvas'))
-//   const context = canvas.getContext('2d')
-//   context.font = font
-//   const metrics = context.measureText(text)
-//   return metrics.width
-// }

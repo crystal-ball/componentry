@@ -2,18 +2,9 @@
 import React, { Component, Fragment, createContext, type Node } from 'react'
 import classNames from 'classnames'
 import nanoid from 'nanoid'
-
 import elem from '../elem-factory'
 import withActive from '../withActive'
 import withTheme from '../withTheme'
-
-type Props = {
-  active: boolean,
-  children?: Node,
-  deactivate: Function,
-  size?: 'small' | 'large',
-  visible?: boolean,
-}
 
 const ModalContext = createContext()
 
@@ -24,14 +15,14 @@ const ModalContext = createContext()
  */
 const Header = withTheme('ModalHeader', ({ children, deactivate, Close, ...props }) => (
   <ModalContext.Consumer>
-    {modalDetails =>
+    {modalCtx =>
       elem({
         classes: 'modal-header',
         children: (
           <Fragment>
             {children}
             {/* $FlowIgnore */}
-            {Close && <Close onClick={modalDetails.deactivate} />}
+            {Close && <Close onClick={modalCtx.deactivate} />}
           </Fragment>
         ),
         ...props,
@@ -42,11 +33,11 @@ const Header = withTheme('ModalHeader', ({ children, deactivate, Close, ...props
 
 const Title = withTheme('ModalTitle', props => (
   <ModalContext.Consumer>
-    {modalDetails =>
+    {modalCtx =>
       elem({
         defaultAs: 'h4',
         // $FlowIgnore
-        id: modalDetails.guid,
+        id: modalCtx.guid,
         classes: 'modal-title',
         ...props,
       })
@@ -59,6 +50,14 @@ const Body = withTheme('ModalBody', props => elem({ classes: 'modal-body', ...pr
 const Footer = withTheme('ModalFooter', props =>
   elem({ classes: 'modal-footer', ...props }),
 )
+
+type Props = {
+  active: boolean,
+  children?: Node,
+  deactivate: Function,
+  size?: 'small' | 'large',
+  visible?: boolean,
+}
 
 class Modal extends Component<Props> {
   /**
@@ -153,10 +152,10 @@ class Modal extends Component<Props> {
   }
 }
 
-const ThemedModal = withTheme('Modal', Modal)
+const ThemedModal = withActive(withTheme('Modal', Modal), 'transition')
 ThemedModal.Header = Header
 ThemedModal.Title = Title
 ThemedModal.Body = Body
 ThemedModal.Footer = Footer
 
-export default withActive({ transitionState: true })(ThemedModal)
+export default ThemedModal
