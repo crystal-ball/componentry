@@ -32,7 +32,7 @@ const Dropdown = withTheme(
     Trigger: withActiveTrigger,
     element: 'dropdown',
     escHandler: true,
-    externalClickHandler: true,
+    clickHandler: true,
   }),
 )
 Dropdown.defaultProps = {

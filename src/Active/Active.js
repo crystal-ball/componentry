@@ -20,6 +20,7 @@ const Active = activeContainer({
   Content: withActiveContent,
   Trigger: withActiveTrigger,
   element: 'active',
+  escHandler: true,
 })
 
 Active.Content = withActiveContent

@@ -67,7 +67,7 @@ export default ({
   Content,
   Trigger,
   element,
-  escHandler = true,
+  escHandler,
   clickHandler,
   mouseEvents,
 }: Options) =>

@@ -84,7 +84,6 @@
     .dropdown-content {
       top: auto;
       bottom: 100%;
-      margin-top: 0;
       margin-bottom: $dropdown-spacer;
     }
 
@@ -98,7 +97,6 @@
       top: 0;
       right: auto;
       left: 100%;
-      margin-top: 0;
       margin-left: $dropdown-spacer;
     }
 
@@ -114,6 +112,7 @@
     .dropdown-content {
       top: 100%;
       left: 0;
+      margin-top: $dropdown-spacer;
     }
 
     .dropdown-toggle {
@@ -126,7 +125,6 @@
       top: 0;
       right: 100%;
       left: auto;
-      margin-top: 0;
       margin-right: $dropdown-spacer;
     }
 
@@ -154,11 +152,9 @@
   z-index: $zindex-dropdown;
   min-width: $dropdown-min-width;
   padding: $dropdown-padding-y 0;
-  margin: $dropdown-spacer 0 0; // override default ul
   font-size: $font-size-base; // Redeclare because nesting can cause inheritance issues
   color: $body-color;
   text-align: left; // Ensures proper alignment if parent has it changed (e.g., modal footer)
-  list-style: none;
   background-color: $dropdown-bg;
   background-clip: padding-box;
   border: $dropdown-border-width solid $dropdown-border-color;

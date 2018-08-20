@@ -15,7 +15,7 @@ display can also be used for displaying HTML, making them especially useful for
 showing detailed user hints on hover.
 
 <InteractiveDemo
-  defaults={{ direction: 'right' }}
+  defaults={{ direction: null }}
   formFields={[
     { label: 'direction', options: this.props.directions },
   ]}
@@ -41,7 +41,7 @@ showing detailed user hints on hover.
   </Popover.Content>
 </Popover>`}
   renderComponent={({ direction }) => (
-    <Popover direction={direction}>
+    <Popover direction={direction || undefined}>
       <Popover.Trigger>
         Popover Trigger
       </Popover.Trigger>
