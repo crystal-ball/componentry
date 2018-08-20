@@ -21,13 +21,14 @@ const Trigger = activeTrigger({
   element: 'tab',
   // Tabs can only activate, they never deactivate when clicked
   triggerType: 'activate',
-  // Misc configs
+})
+const withActiveTrigger = withActive(withTheme('TabTrigger', Trigger))
+withActiveTrigger.defaultProps = {
   // Componentry uses <Button /> components for the tab triggers instead of
   // anchors like Bootstrap. Default the button to have the link theme style to
   // look like an anchor
   color: 'link',
-})
-const withActiveTrigger = withActive(withTheme('TabTrigger', Trigger))
+}
 
 const ContentContainer = withTheme('TabContentContainer', props =>
   elem({

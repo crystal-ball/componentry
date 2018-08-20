@@ -4,6 +4,7 @@ import classNames from 'classnames'
 import nanoid from 'nanoid'
 import elem from '../elem-factory'
 import withActive from '../withActive'
+import withVisible from '../withVisible'
 import withTheme from '../withTheme'
 
 const ModalContext = createContext()
@@ -152,7 +153,7 @@ class Modal extends Component<Props> {
   }
 }
 
-const ThemedModal = withActive(withTheme('Modal', Modal), 'transition')
+const ThemedModal = withActive(withVisible(withTheme('Modal', Modal)))
 ThemedModal.Header = Header
 ThemedModal.Title = Title
 ThemedModal.Body = Body

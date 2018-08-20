@@ -35,7 +35,6 @@ export default ({ arias, classes = '', element = '', popper = false }: Options =
   // Create component content (return optionally wraps content in a width busting
   // container)
   const ComponentContent = elem({
-    'data-test': element ? `${element}-content` : undefined,
     ...ariasComputer({
       active,
       activeId,
@@ -49,8 +48,6 @@ export default ({ arias, classes = '', element = '', popper = false }: Options =
         [`${element}-content`]: element,
       },
     ],
-    // Pass through props rest last to allow any instance overrides
-    ...cleanActive(rest),
     children: (
       <Fragment>
         {popper && (
@@ -61,6 +58,8 @@ export default ({ arias, classes = '', element = '', popper = false }: Options =
         {children}
       </Fragment>
     ),
+    // Pass through props rest last to allow any instance overrides
+    ...cleanActive(rest),
   })
 
   // If the element is a popper, wrap it in a content container, this is used to

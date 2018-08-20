@@ -12,15 +12,15 @@ const Content = activeContent({
 const withActiveContent = withActive(withTheme('DropdownContent', Content))
 
 const Trigger = activeTrigger({
-  element: 'dropdown',
   arias: { expanded: true, haspopup: true, id: true },
+  element: 'dropdown',
 })
 const withActiveTrigger = withActive(withTheme('DropdownTrigger', Trigger))
 
 const Item = activeTrigger({
-  classes: 'dropdown-item',
   // TODO: what arias should this have?
   arias: {},
+  classes: 'dropdown-item',
   element: 'dropdown-item',
 })
 const DropdownItem = withActive(withTheme('DropdownItem', Item))
@@ -30,12 +30,14 @@ const Dropdown = withTheme(
   activeContainer({
     Content: withActiveContent,
     Trigger: withActiveTrigger,
-    defaultDirection: 'bottom',
     element: 'dropdown',
     escHandler: true,
     externalClickHandler: true,
   }),
 )
+Dropdown.defaultProps = {
+  direction: 'bottom',
+}
 
 Dropdown.Content = withActiveContent
 Dropdown.Trigger = withActiveTrigger

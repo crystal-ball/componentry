@@ -18,10 +18,7 @@ type Options = {
 }
 
 type Props = {
-  // Component props
-  // as?: ComponentType<any> | string,
   children?: Node,
-  // className?: string,
   decoration?: boolean | Node,
   link?: boolean,
   activeId?: string,
@@ -35,7 +32,7 @@ type Props = {
 /**
  * Factory returns custom `<Trigger />` components defined by the options.
  */
-export default ({ arias, classes, element, triggerType, ...optsRest }: Options = {}) => ({
+export default ({ arias, classes, element, triggerType }: Options = {}) => ({
   activate,
   active,
   activeId = '',
@@ -56,7 +53,6 @@ export default ({ arias, classes, element, triggerType, ...optsRest }: Options =
 
   return elem({
     defaultAs: Button,
-    'data-test': element ? `${element}-trigger` : undefined,
     ...ariasComputer({
       active,
       activeId,
@@ -77,15 +73,13 @@ export default ({ arias, classes, element, triggerType, ...optsRest }: Options =
     // For multi-active elems, the value is used in `withState` to handle
     // changing the active id
     value: activeId || undefined,
-    // Pass through any miscellaneous configurations from component factory
-    ...optsRest,
-    // Pass through props rest last to allow any instance overrides
-    ...rest,
     children: (
       <Fragment>
         {children}
         {decoration}
       </Fragment>
     ),
+    // Pass through props rest last to allow any instance overrides
+    ...rest,
   })
 }

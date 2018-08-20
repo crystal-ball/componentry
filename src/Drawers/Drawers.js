@@ -9,14 +9,14 @@ const makeDrawer = name => {
   const elem = name.slice(0, 1).toLocaleLowerCase() + name.slice(1)
 
   const Content = activeContent({
-    element: elem,
     arias: { id: true, hidden: true },
+    element: elem,
   })
   const withActiveContent = withActive(withTheme(`${name}Content`, Content))
 
   const Trigger = activeTrigger({
-    element: elem,
     arias: { controls: true, expanded: true },
+    element: elem,
   })
   const withActiveTrigger = withActive(withTheme(`${name}Trigger`, Trigger))
 

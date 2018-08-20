@@ -35,12 +35,14 @@ const Popover = withTheme(
   container({
     Content: withActiveContent,
     Trigger: withActiveTrigger,
-    defaultDirection: 'right',
     element: 'popover',
     escHandler: true,
     mouseEvents: true,
   }),
 )
+Popover.defaultProps = {
+  direction: 'right',
+}
 
 Popover.Content = withActiveContent
 Popover.Trigger = withActiveTrigger

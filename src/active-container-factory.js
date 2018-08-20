@@ -2,7 +2,7 @@
 import React, { Component, type ComponentType, type Node } from 'react'
 import nanoid from 'nanoid'
 
-import ActiveProvider from './Active/ActiveProvider'
+import ActiveProvider from './ActiveProvider'
 import elem from './elem-factory'
 import { closest } from './utils/dom'
 import { cleanActive } from './utils/clean-props'
@@ -12,22 +12,6 @@ type Options = {
   Content: ComponentType<any>,
   /** Component's `Trigger` subcomponent */
   Trigger: ComponentType<any>,
-
-  /**
-   * Set the default state for active (and visible if transitionState is enabled).
-   */
-  defaultActive?: boolean,
-  /**
-   * Default direction for directional content components
-   */
-  defaultDirection?: 'top' | 'right' | 'bottom' | 'left',
-  /**
-   * For active state components that should have a transition, eg Alerts and
-   * Modals. Setting this to true will provide visibility and active props to
-   * transition opacity before updating active state
-   */
-  transitionState?: boolean,
-
   /** Name of element, used for classes and handler selection */
   element: string,
   /** When tue the state container will register handlers for mouse events */
@@ -47,12 +31,12 @@ type Props = {
   children?: Node | Function,
   className?: string,
   direction?: 'top' | 'right' | 'bottom' | 'left',
-  // Active handlers
+  // Active change listeners
   onActivate?: Function,
   onActivated?: Function,
   onDeactivate?: Function,
   onDeactivated?: Function,
-  // Pass to override and create controlled component
+  // Passed props to create a controlled component
   active?: boolean,
   defaultActive?: boolean | string,
   activate?: Function,
@@ -61,7 +45,6 @@ type Props = {
 
 type State = {
   active: boolean | string,
-  // visible: boolean,
 }
 
 /**
@@ -69,10 +52,11 @@ type State = {
  * components are responsible for:
  *
  * 1. Creating a scoped `active` value (type boolean for single set of
- *    trigger+content, string for set of triggers+content)
+ *    trigger+content, string for set of triggers+content).
  * 2. Exposing internal `activate` and`deactivate` methods for changing `active`
- *    state
- * 3. On `active` change add or remove configured event listeners
+ *    state.
+ * 3. On `active` change add or remove configured event listeners and fire
+ *    change listeners.
  *
  * NOTE: The `handleActivate` and `handleDeactivate` methods are passed through
  * context as the `activate` and `deactivate` handlers for subcomponents to _always_
@@ -82,27 +66,19 @@ type State = {
 export default ({
   Content,
   Trigger,
-  defaultDirection,
-  defaultActive,
   element,
   escHandler = true,
   clickHandler,
   mouseEvents,
 }: Options) =>
   class ActiveContainer extends Component<Props, State> {
-    state = {
-      active:
-        this.props.defaultActive !== undefined
-          ? this.props.defaultActive
-          : defaultActive || false,
-      // visible:
-      //   this.props.defaultActive !== undefined
-      //     ? this.props.defaultActive
-      //     : defaultActive || false,
-      transitionDuration: 300,
+    static defaultProps = {
+      defaultActive: false,
     }
 
-    static defaultProps = {}
+    state = {
+      active: this.props.defaultActive,
+    }
 
     /**
      * Guid instance property will be uniquely assigned once for each component
@@ -116,30 +92,31 @@ export default ({
     // ---------------------------------------------------------------------------
 
     /**
-     * Props ALWAYS overrides whatever the active state is, but we always use
-     * internal component state for consistency/clarity
+     * Props ALWAYS overrides whatever the active state is (controlled component).
+     * But we always use internal component state for managing active state.
      */
     static getDerivedStateFromProps({ active }: Props) {
       return active !== undefined ? { active } : null
     }
 
     /**
-     * Subscribe to active changes on mount. When active changes setup or remove any
-     * configured special listeners for events like pressing `esc` or clicking
-     * outside the component. For FaCC usage, force a render to ensure exposed
-     * `active` value updates.
+     * Event listeners are assigned in `componentDidUpdate` on active change,
+     * and we need to check on mount if for adding listeners (b/c didUpdate
+     * doesn't fire during mount)
      */
     componentDidMount() {
+      // TODO: validate that state is correct when active is defaulted to true
+      // with `defaultActive`
       if (this.state.active === true) this.updateEventListeners('add')
     }
     /**
-     * Whenever component updates, handle updating listeners
-     * TODO: may need an instance property of 'listenersAttached' to safegaurd
-     * against attaching listeners multiple times...
+     * On active change, add/remove configured event listeners.
      */
     componentDidUpdate() {
       const { active } = this.state
 
+      // TODO: may need an instance property of 'listenersAttached' to safegaurd
+      // against attaching listeners multiple times...
       if (active === true) {
         this.updateEventListeners('add')
       } else if (active === false) {
@@ -147,7 +124,7 @@ export default ({
       }
     }
     /**
-     * Remove subscription on unmount!
+     * Clean up any listeners on unmount!
      */
     componentWillUnmount() {
       this.updateEventListeners('remove')
@@ -155,65 +132,70 @@ export default ({
 
     // Methods
     // ---------------------------------------------------------------------------
+
     /**
      * Call deactivate if click event was not inside the element
      */
     clickHandler: EventHandler = (e: Event): void => {
       if (!closest(e.target, this.guid)) this.handleDeactivate(e)
     }
+
     /**
      * Call deactivate on keypress if `esc` (27) was pressed
      */
     keyHandler: KeyboardEventHandler = (e: KeyboardEvent): void => {
       if (e.which === 27) this.handleDeactivate(e)
     }
+
     updateEventListeners = (updateType: 'add' | 'remove') => {
       const updateListener = `${updateType}EventListener`
 
-      // Activation: Handle attaching activation listeners for special close
-      // events
       if (escHandler) {
-        // Add a keydown listener to handle pressing `esc`
         // $FlowIgnore
         document[updateListener]('keydown', this.keyHandler)
       }
 
       if (clickHandler) {
-        // Add click+touch listener to handle clicking outside component
         // $FlowIgnore
         document[updateListener]('mouseup', this.clickHandler)
         // $FlowIgnore
         document[updateListener]('touchend', this.clickHandler)
       }
     }
-    /** Calls activation hooks and `activate` function */
+
+    /**
+     * Internal activation handler (manages active state and fires change
+     * listeners)
+     */
     handleActivate = (e: SyntheticEvent<>) => {
       const { onActivate, activate, onActivated } = this.props
-      if (onActivate) onActivate(e, this)
-      console.log({ activate })
+
       if (activate) {
         activate(e, this)
       } else {
+        if (onActivate) onActivate(e, this)
         // Elements that track an active string id set the id as the target value,
         // if it's present use it otherwise use boolean.
         // $FlowFixMe
         this.setState({ active: e.target.value || true })
+        if (onActivated) onActivated(e, this)
       }
-
-      if (onActivated) onActivated(e, this)
     }
-    /** Calls deactivation hooks and `deactivate` function */
+
+    /**
+     * Internal deactivation handler (manages active state and fires change
+     * listeners)
+     */
     handleDeactivate = (e: SyntheticEvent<> | Event) => {
       const { onDeactivate, deactivate, onDeactivated } = this.props
-      if (onDeactivate) onDeactivate(e, this)
 
       if (deactivate) {
         deactivate(e, this)
       } else {
+        if (onDeactivate) onDeactivate(e, this)
         this.setState({ active: false })
+        if (onDeactivated) onDeactivated(e, this)
       }
-
-      if (onDeactivated) onDeactivated(e, this)
     }
 
     // Render
@@ -237,8 +219,8 @@ export default ({
 
       // Handles FaCC style usage
       if (typeof children === 'function') {
-        // We still need to wrap with a context provider so that withActive can
-        // use context Consumers
+        // ℹ️ Provider is still required so that withActive con pass active
+        // context to connected consumers
         return (
           <ActiveProvider.Provider value={activeValues}>
             {children(activeValues)}
@@ -247,10 +229,11 @@ export default ({
       }
 
       // Handles default component style usage
+      // TODO: only wrap elements with a `div` when the element needs it
       return elem({
         'data-test': element ? `${element}-container` : undefined,
         'data-id': this.guid,
-        classes: [element, direction || defaultDirection],
+        classes: [element, direction],
         // For elements with mouse events we need to know when the mouse event
         // occurs on the parent element, not the trigger element
         onMouseEnter: mouseEvents ? this.handleActivate : undefined,

@@ -1,11 +1,15 @@
 // @flow
 import React, { Fragment, type Node } from 'react'
 import Close from '../Close/Close'
-import withActive from '../withActive'
 import elem from '../elem-factory'
+import withActive from '../withActive'
 import withTheme from '../withTheme'
+import withVisible from '../withVisible'
 import { cleanActive } from '../utils/clean-props'
 import type { ActiveProps, ThemeColors } from '../types'
+
+// ⚠️ For dismissible Alerts, the active context must be set.
+// TODO: docs on dismissible vs non-dismissible alerts usage
 
 type Props = {
   children: Node,
@@ -60,8 +64,8 @@ const Alert = ({
       show: visible,
       'alert-outline': outline,
     },
-    // hidden state is updated after active opacity transition
-    'aria-hidden': active === undefined ? undefined : String(!active),
+    // ⚠️ Only include aria-hidden value if the alert is dismissible
+    'aria-hidden': dismissible ? String(!active) : undefined,
     children: (
       <Fragment>
         {/* Provide the alert color context for screen readers */}
@@ -77,5 +81,4 @@ const Alert = ({
     ...cleanActive(rest),
   })
 
-// TODO: Alert must default to active!
-export default withActive(withTheme('Alert', Alert), 'transition')
+export default withActive(withVisible(withTheme('Alert', Alert)))
