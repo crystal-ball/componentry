@@ -59,7 +59,8 @@ const Alert = ({
     role: 'alert',
     classes: {
       alert: true,
-      fade: true,
+      // Only include opacity transition class for disimissible alerts
+      fade: dismissible,
       [`alert-${color}`]: color,
       show: visible,
       'alert-outline': outline,

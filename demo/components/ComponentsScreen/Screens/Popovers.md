@@ -15,7 +15,7 @@ display can also be used for displaying HTML, making them especially useful for
 showing detailed user hints on hover.
 
 <InteractiveDemo
-  defaults={{ direction: null }}
+  defaults={{ direction: 'right' }}
   formFields={[
     { label: 'direction', options: this.props.directions },
   ]}

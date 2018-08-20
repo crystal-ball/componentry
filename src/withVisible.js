@@ -65,10 +65,12 @@ export default Wrapped => {
       this.unmounted = true
     }
     render() {
-      const { active, visible } = this.state
-      return <Wrapped visible={visible} active={active} {...this.props} />
+      // ℹ️ HOC state overrides the active prop and includes a visible prop for
+      // elements that need transitioned active states (pass state second to
+      // override `active` prop from `withActive`)
+      return <Wrapped {...this.props} {...this.state} />
     }
   }
-  WithVisible.displayName = `withActive${Wrapped.displayName || Wrapped.name}`
+  WithVisible.displayName = `withVisible${Wrapped.displayName || Wrapped.name}`
   return WithVisible
 }
