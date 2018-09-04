@@ -1,36 +1,6 @@
 /* componentry/src/Dropdown/dropdown */
 
-// Caret
-//
-// Creates carets for dropdown
-
-@mixin caret-down {
-  border-top: $caret-width solid;
-  border-right: $caret-width solid transparent;
-  border-bottom: 0;
-  border-left: $caret-width solid transparent;
-}
-
-@mixin caret-up {
-  border-top: 0;
-  border-right: $caret-width solid transparent;
-  border-bottom: $caret-width solid;
-  border-left: $caret-width solid transparent;
-}
-
-@mixin caret-right {
-  border-top: $caret-width solid transparent;
-  border-right: 0;
-  border-bottom: $caret-width solid transparent;
-  border-left: $caret-width solid;
-}
-
-@mixin caret-left {
-  border-top: $caret-width solid transparent;
-  border-right: $caret-width solid;
-  border-bottom: $caret-width solid transparent;
-}
-
+// Caret mixin creates :after carets for dropdown trigger
 @mixin caret($direction: down) {
   @if $enable-caret {
     &::after {
@@ -41,14 +11,25 @@
       vertical-align: $caret-width * 0.85;
       content: '';
       @if $direction == down {
-        @include caret-down;
+        border-top: $caret-width solid;
+        border-right: $caret-width solid transparent;
+        border-bottom: 0;
+        border-left: $caret-width solid transparent;
       } @else if $direction == up {
-        @include caret-up;
+        border-top: 0;
+        border-right: $caret-width solid transparent;
+        border-bottom: $caret-width solid;
+        border-left: $caret-width solid transparent;
       } @else if $direction == right {
-        @include caret-right;
+        border-top: $caret-width solid transparent;
+        border-right: 0;
+        border-bottom: $caret-width solid transparent;
+        border-left: $caret-width solid;
       }
     }
 
+    // For left open dropdowns, show a caret before trigger content instead of
+    // after
     @if $direction == left {
       &::after {
         display: none;
@@ -61,86 +42,50 @@
         margin-right: $caret-width * 0.85;
         vertical-align: $caret-width * 0.85;
         content: '';
-        @include caret-left;
+        border-top: $caret-width solid transparent;
+        border-right: $caret-width solid;
+        border-bottom: $caret-width solid transparent;
       }
     }
 
+    // For triggers without content, remove margin-right so caret is centered in
+    // the trigger
     &:empty::after {
       margin-left: 0;
     }
   }
 }
 
-// The dropdown wrapper (`<div>`)
+// The dropdown wrapper element handles creating a relative container that the
+// content is absolutely positioned off of
 .dropdown {
   position: relative;
   // Default dropdown container to inline-block so that click area is constrained
   // to dropdown trigger
   display: inline-block;
+}
 
-  // Directional styles
+// The dropdown trigger
+.dropdown-toggle {
+  .top & {
+    @include caret(up);
+  }
 
-  &.top {
-    .dropdown-content {
-      top: auto;
-      bottom: 100%;
-      margin-bottom: $dropdown-spacer;
-    }
-
-    .dropdown-toggle {
-      @include caret(up);
+  .right & {
+    @include caret(right);
+    &::after {
+      vertical-align: 0;
     }
   }
 
-  &.right {
-    .dropdown-content {
-      top: 0;
-      right: auto;
-      left: 100%;
-      margin-left: $dropdown-spacer;
-    }
-
-    .dropdown-toggle {
-      @include caret(right);
-      &::after {
-        vertical-align: 0;
-      }
-    }
+  .bottom & {
+    @include caret(down);
   }
 
-  &.bottom {
-    .dropdown-content {
-      top: 100%;
-      left: 0;
-      margin-top: $dropdown-spacer;
-    }
-
-    .dropdown-toggle {
-      @include caret(bottom);
-    }
-  }
-
-  &.left {
-    .dropdown-content {
-      top: 0;
-      right: 100%;
-      left: auto;
-      margin-right: $dropdown-spacer;
-    }
-
-    .dropdown-toggle {
-      @include caret(left);
-      &::before {
-        vertical-align: 0;
-      }
-    }
-  }
-
-  // Overlay direction places the dropdown content on top of the dropdown
-  // trigger
-  &.overlay {
-    .dropdown-content {
-      top: 0;
+  .left & {
+    @include caret(left);
+    &::before {
+      vertical-align: 0;
     }
   }
 }
@@ -160,29 +105,57 @@
   border: $dropdown-border-width solid $dropdown-border-color;
   @include border-radius($dropdown-border-radius);
   @include box-shadow($dropdown-box-shadow);
+
+  // --- Directional styles with parent selector
+
+  .overlay & {
+    top: 0;
+  }
+
+  .top & {
+    top: auto;
+    bottom: 100%;
+    margin-bottom: $dropdown-spacer;
+  }
+
+  .right & {
+    top: 0;
+    right: auto;
+    left: 100%;
+    margin-left: $dropdown-spacer;
+  }
+
+  .bottom & {
+    top: 100%;
+    left: 0;
+    margin-top: $dropdown-spacer;
+  }
+
+  .left & {
+    top: 0;
+    right: 100%;
+    left: auto;
+    margin-right: $dropdown-spacer;
+  }
+
+  // Class intended to be used with dropdown bottom direction and aligns the menu
+  // to the right edge of the trigger instead of the left
+  &.dropdown-menu-right {
+    right: 0;
+    left: auto;
+  }
 }
 
-.dropdown-menu-right {
-  right: 0;
-  left: auto;
-}
-
-// Dividers (basically an `<hr>`) within the dropdown
-.dropdown-divider {
-  height: 0;
-  margin: $nav-divider-margin-y 0;
-  overflow: hidden;
-  border-top: 1px solid $dropdown-divider-bg;
-}
-
-// Links, buttons, and more within the dropdown menu
 //
+// Content items, text, headers and dividers
+//
+
+// Dropdown items
 // `<button>`-specific styles are denoted with `// For <button>s`
 .dropdown-item {
   display: block;
   width: 100%; // For `<button>`s
   padding: $dropdown-item-padding-y $dropdown-item-padding-x;
-  clear: both;
   font-weight: $font-weight-normal;
   color: $dropdown-link-color;
   text-align: inherit; // For `<button>`s
@@ -215,6 +188,13 @@
   }
 }
 
+// Dropdown text
+.dropdown-item-text {
+  display: block;
+  padding: $dropdown-item-padding-y $dropdown-item-padding-x;
+  color: $dropdown-link-color;
+}
+
 // Dropdown section headers
 .dropdown-header {
   display: block;
@@ -225,9 +205,10 @@
   white-space: nowrap; // as with > li > a
 }
 
-// Dropdown text
-.dropdown-item-text {
-  display: block;
-  padding: $dropdown-item-padding-y $dropdown-item-padding-x;
-  color: $dropdown-link-color;
+// Dividers (basically an `<hr>`) within the dropdown
+.dropdown-divider {
+  height: 0;
+  margin: $nav-divider-margin-y 0;
+  overflow: hidden;
+  border-top: 1px solid $dropdown-divider-bg;
 }
