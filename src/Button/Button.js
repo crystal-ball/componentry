@@ -1,5 +1,5 @@
 // @flow
-import elem from '../elem-factory'
+import componentryElem from '../elem-factory'
 import withTheme from '../withTheme'
 import type { ThemeColors } from '../types'
 
@@ -16,21 +16,20 @@ export type Props = {
   size?: 'small' | 'large',
 }
 
-export default withTheme(
-  'Button',
-  ({ block, color = '', link, outline, size, ...rest }: Props) =>
-    elem({
-      defaultAs: 'button',
-      type: 'button',
-      classes: {
-        btn: true,
-        'btn-anchor': link,
-        'btn-block': block,
-        [`btn-${color}`]: color,
-        'btn-outline': outline,
-        'btn-sm': size === 'small',
-        'btn-lg': size === 'large',
-      },
-      ...rest,
-    }),
-)
+const Button = ({ block, color = '', link, outline, size, ...rest }: Props) =>
+  componentryElem({
+    defaultAs: 'button',
+    type: 'button',
+    classes: {
+      btn: true,
+      'btn-anchor': link,
+      'btn-block': block,
+      [`btn-${color}`]: color,
+      'btn-outline': outline,
+      'btn-sm': size === 'small',
+      'btn-lg': size === 'large',
+    },
+    ...rest,
+  })
+
+export default withTheme('Button', Button)

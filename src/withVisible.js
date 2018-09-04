@@ -57,6 +57,8 @@ export default Wrapped => {
         setTimeout(() => {
           if (this.unmounted) return
           this.setState({ active })
+          // TODO: this.transitionDuration state will always be undefined, this
+          // needs to be reconnected to Theme
         }, this.transitionDuration || 300)
       }
     }
@@ -71,6 +73,6 @@ export default Wrapped => {
       return <Wrapped {...this.props} {...this.state} />
     }
   }
-  WithVisible.displayName = `withVisible${Wrapped.displayName || Wrapped.name}`
+  WithVisible.displayName = `withVisible(${Wrapped.displayName || Wrapped.name})`
   return WithVisible
 }

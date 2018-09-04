@@ -15,6 +15,6 @@ export default (Wrapped: ComponentType<*>) => {
       {activeCtx => <Wrapped {...activeCtx} {...props} />}
     </ActiveProvider.Consumer>
   )
-  WithActive.displayName = `withActive${Wrapped.displayName || Wrapped.name}`
+  WithActive.displayName = `withActive(${Wrapped.displayName || Wrapped.name})`
   return WithActive
 }

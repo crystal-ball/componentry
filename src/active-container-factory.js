@@ -1,5 +1,5 @@
 // @flow
-import React, { Component, type ComponentType, type Node } from 'react'
+import React, { Component, Fragment, type ComponentType, type Node } from 'react'
 import nanoid from 'nanoid'
 
 import ActiveProvider from './ActiveProvider'
@@ -230,24 +230,28 @@ export default ({
 
       // Handles default component style usage
       // TODO: only wrap elements with a `div` when the element needs it
-      return elem({
-        'data-test': element ? `${element}-container` : undefined,
-        'data-id': this.guid,
-        classes: [element, direction],
-        // For elements with mouse events we need to know when the mouse event
-        // occurs on the parent element, not the trigger element
-        onMouseEnter: mouseEvents ? this.handleActivate : undefined,
-        onMouseLeave: mouseEvents ? this.handleDeactivate : undefined,
-        // If shorthand values for Trigger/Content were passed in props, render
-        // subcomponents with prop as children
-        children: (
-          <ActiveProvider.Provider value={activeValues}>
-            {PropsTrigger && <Trigger>{PropsTrigger}</Trigger>}
-            {children}
-            {PropsContent && <Content>{PropsContent}</Content>}
-          </ActiveProvider.Provider>
-        ),
-        ...cleanActive(rest),
-      })
+      return (
+        <ActiveProvider.Provider value={activeValues}>
+          {elem({
+            'data-test': element ? `${element}-container` : undefined,
+            'data-id': this.guid,
+            classes: [element, direction],
+            // For elements with mouse events we need to know when the mouse event
+            // occurs on the parent element, not the trigger element
+            onMouseEnter: mouseEvents ? this.handleActivate : undefined,
+            onMouseLeave: mouseEvents ? this.handleDeactivate : undefined,
+            // If shorthand values for Trigger/Content were passed in props, render
+            // subcomponents with prop as children
+            children: (
+              <Fragment>
+                {PropsTrigger && <Trigger>{PropsTrigger}</Trigger>}
+                {children}
+                {PropsContent && <Content>{PropsContent}</Content>}
+              </Fragment>
+            ),
+            ...cleanActive(rest),
+          })}
+        </ActiveProvider.Provider>
+      )
     }
   }

@@ -15,16 +15,11 @@ import ThemeProvider from './ThemeProvider/ThemeProvider'
  *    RootRef component for an example
  */
 /* eslint-disable react/prop-types */
-const withTheme = (name, Wrapped) => {
-  /* eslint-disable no-param-reassign */
-  if (name) Wrapped.displayName = name // eslint-disable-line
-  if (!name) name = Wrapped.displayName || Wrapped.name
-  /* eslint-enable no-param-reassign */
-
+const withTheme = (namespace, Wrapped) => {
   const WithTheme = props => (
     <ThemeProvider.Consumer>
       {theme => {
-        const componentTheme = theme[name] || {}
+        const componentTheme = theme[namespace] || {}
 
         return (
           <Wrapped
@@ -37,7 +32,7 @@ const withTheme = (name, Wrapped) => {
     </ThemeProvider.Consumer>
   )
 
-  WithTheme.displayName = `withTheme${name}`
+  WithTheme.displayName = `withTheme(${Wrapped.displayName || Wrapped.name || namespace})`
   return WithTheme
 }
 

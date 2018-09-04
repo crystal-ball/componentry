@@ -1,5 +1,5 @@
 // @flow
-import elem from '../elem-factory'
+import componentryElem from '../elem-factory'
 import withTheme from '../withTheme'
 
 type Props = {
@@ -13,20 +13,25 @@ type Props = {
   justify?: '' | 'start' | 'center' | 'end' | 'around' | 'between',
 }
 
-export default withTheme(
-  'Flex',
-  ({ align = '', direction = '', inline = false, justify = '', ...rest }: Props) =>
-    elem({
-      classes: {
-        'd-flex': !inline,
-        'd-inline-flex': inline,
-        'flex-column': direction === 'column',
-        'flex-column-reverse': direction === 'column-reverse',
-        'flex-row': direction === 'row',
-        'flex-row-reverse': direction === 'row-reverse',
-        [`align-items-${align}`]: align,
-        [`justify-content-${justify}`]: justify,
-      },
-      ...rest,
-    }),
-)
+const Flex = ({
+  align = '',
+  direction = '',
+  inline = false,
+  justify = '',
+  ...rest
+}: Props) =>
+  componentryElem({
+    classes: {
+      'd-flex': !inline,
+      'd-inline-flex': inline,
+      'flex-column': direction === 'column',
+      'flex-column-reverse': direction === 'column-reverse',
+      'flex-row': direction === 'row',
+      'flex-row-reverse': direction === 'row-reverse',
+      [`align-items-${align}`]: align,
+      [`justify-content-${justify}`]: justify,
+    },
+    ...rest,
+  })
+
+export default withTheme('Flex', Flex)

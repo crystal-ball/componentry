@@ -1,7 +1,7 @@
 // @flow
 import React, { Fragment, type Node } from 'react'
 import Close from '../Close/Close'
-import elem from '../elem-factory'
+import componentryElem from '../elem-factory'
 import withActive from '../withActive'
 import withTheme from '../withTheme'
 import withVisible from '../withVisible'
@@ -55,13 +55,14 @@ const Alert = ({
   visible,
   ...rest
 }: Props) =>
-  elem({
+  componentryElem({
     role: 'alert',
     classes: {
       alert: true,
       // Only include opacity transition class for disimissible alerts
       fade: dismissible,
       [`alert-${color}`]: color,
+      // Show controls opacity transitions
       show: visible,
       'alert-outline': outline,
     },
@@ -82,4 +83,4 @@ const Alert = ({
     ...cleanActive(rest),
   })
 
-export default withActive(withVisible(withTheme('Alert', Alert)))
+export default withTheme('Alert', withActive(withVisible(Alert)))
