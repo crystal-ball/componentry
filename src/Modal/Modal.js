@@ -9,49 +9,6 @@ import withTheme from '../withTheme'
 
 const ModalContext = createContext()
 
-/**
- * The Modal.Header close button is not shown by default, pass close to show a
- * Close component with deactivate. This is for 'standard' usage only, for custom
- * requirements, use a custom close setup.
- */
-const Header = withTheme('ModalHeader', ({ children, deactivate, Close, ...props }) => (
-  <ModalContext.Consumer>
-    {modalCtx =>
-      elem({
-        classes: 'modal-header',
-        children: (
-          <Fragment>
-            {children}
-            {/* $FlowIgnore */}
-            {Close && <Close onClick={modalCtx.deactivate} />}
-          </Fragment>
-        ),
-        ...props,
-      })
-    }
-  </ModalContext.Consumer>
-))
-
-const Title = withTheme('ModalTitle', props => (
-  <ModalContext.Consumer>
-    {modalCtx =>
-      elem({
-        defaultAs: 'h4',
-        // $FlowIgnore
-        id: modalCtx.guid,
-        classes: 'modal-title',
-        ...props,
-      })
-    }
-  </ModalContext.Consumer>
-))
-
-const Body = withTheme('ModalBody', props => elem({ classes: 'modal-body', ...props }))
-
-const Footer = withTheme('ModalFooter', props =>
-  elem({ classes: 'modal-footer', ...props }),
-)
-
 type Props = {
   active: boolean,
   children?: Node,
@@ -61,6 +18,52 @@ type Props = {
 }
 
 class Modal extends Component<Props> {
+  /**
+   * The Modal.Header close button is not shown by default, pass close to show a
+   * Close component with deactivate. This is for 'standard' usage only, for custom
+   * requirements, use a custom close setup.
+   */
+  static Header = withTheme(
+    'ModalHeader',
+    ({ children, deactivate, Close, ...props }) => (
+      <ModalContext.Consumer>
+        {modalCtx =>
+          elem({
+            classes: 'modal-header',
+            children: (
+              <Fragment>
+                {children}
+                {/* $FlowIgnore */}
+                {Close && <Close onClick={modalCtx.deactivate} />}
+              </Fragment>
+            ),
+            ...props,
+          })
+        }
+      </ModalContext.Consumer>
+    ),
+  )
+
+  static Title = withTheme('ModalTitle', props => (
+    <ModalContext.Consumer>
+      {modalCtx =>
+        elem({
+          defaultAs: 'h4',
+          // $FlowIgnore
+          id: modalCtx.guid,
+          classes: 'modal-title',
+          ...props,
+        })
+      }
+    </ModalContext.Consumer>
+  ))
+
+  static Body = withTheme('ModalBody', props => elem({ classes: 'modal-body', ...props }))
+
+  static Footer = withTheme('ModalFooter', props =>
+    elem({ classes: 'modal-footer', ...props }),
+  )
+
   /**
    * Guid instance property will be uniquely assigned once for each modal instance,
    * this unique id is then passed to all children through context where it can be
@@ -74,6 +77,9 @@ class Modal extends Component<Props> {
   /**
    * Disable scrolling on the body when the modal is open to allow long modals to
    * scroll within the `.modal` container.
+   *
+   * ℹ️ NOTE: this needs to remain in this component so that a Modal can be used
+   * outside of an Active container.
    */
   componentWillReceiveProps(nextProps) {
     const { active } = this.props
@@ -153,10 +159,4 @@ class Modal extends Component<Props> {
   }
 }
 
-const ThemedModal = withActive(withVisible(withTheme('Modal', Modal)))
-ThemedModal.Header = Header
-ThemedModal.Title = Title
-ThemedModal.Body = Body
-ThemedModal.Footer = Footer
-
-export default ThemedModal
+export default withActive(withVisible(withTheme('Modal', Modal)))

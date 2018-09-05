@@ -1,5 +1,6 @@
 import React, { type ComponentType } from 'react'
 import ActiveProvider from './ActiveProvider'
+import transferStatics from './utils/transfer-statics'
 
 /**
  * Components that need transitional active and visible states will use the
@@ -15,6 +16,8 @@ export default (Wrapped: ComponentType<*>) => {
       {activeCtx => <Wrapped {...activeCtx} {...props} />}
     </ActiveProvider.Consumer>
   )
+
+  transferStatics(Wrapped, WithActive)
   WithActive.displayName = `withActive(${Wrapped.displayName || Wrapped.name})`
   return WithActive
 }

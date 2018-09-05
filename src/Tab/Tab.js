@@ -13,7 +13,6 @@ const Content = activeContent({
   classes: 'tab-pane',
   element: 'tab',
 })
-const withActiveContent = withActive(withTheme('TabContent', Content))
 
 const Trigger = activeTrigger({
   arias: { selected: true, role: 'tab' },
@@ -22,8 +21,7 @@ const Trigger = activeTrigger({
   // Tabs can only activate, they never deactivate when clicked
   triggerType: 'activate',
 })
-const withActiveTrigger = withActive(withTheme('TabTrigger', Trigger))
-withActiveTrigger.defaultProps = {
+Trigger.defaultProps = {
   // Componentry uses <Button /> components for the tab triggers instead of
   // anchors like Bootstrap. Default the button to have the link theme style to
   // look like an anchor
@@ -37,18 +35,13 @@ const ContentContainer = withTheme('TabContentContainer', props =>
   }),
 )
 
-const Tab = withTheme(
-  'Tab',
-  activeContainer({
-    Content: withActiveContent,
-    Trigger: withActiveTrigger,
-    element: 'tab',
-  }),
-)
+const Tab = activeContainer({
+  Content: withActive(withTheme('TabContent', Content)),
+  Trigger: withActive(withTheme('TabTrigger', Trigger)),
+  element: 'tab',
+})
 
-Tab.Content = withActiveContent
-Tab.Trigger = withActiveTrigger
 Tab.Nav = TabNav
 Tab.ContentContainer = ContentContainer
 
-export default Tab
+export default withTheme('Tab', Tab)

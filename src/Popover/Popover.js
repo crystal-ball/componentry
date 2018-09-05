@@ -1,23 +1,21 @@
 // @flow
-import container from '../active-container-factory'
-import content from '../active-content-factory'
-import trigger from '../active-trigger-factory'
+import activeContainer from '../active-container-factory'
+import activeContent from '../active-content-factory'
+import activeTrigger from '../active-trigger-factory'
 import elem from '../elem-factory'
 import withActive from '../withActive'
 import withTheme from '../withTheme'
 
-const Content = content({
+const Content = activeContent({
   arias: { id: true, role: 'tooltip', hidden: true },
   element: 'popover',
   popper: true,
 })
-const withActiveContent = withActive(withTheme('PopoverContent', Content))
 
-const Trigger = trigger({
+const Trigger = activeTrigger({
   arias: { describedby: true },
   element: 'popover',
 })
-const withActiveTrigger = withActive(withTheme('PopoverTrigger', Trigger))
 
 const Body = withTheme('PopoverBody', props =>
   elem({ classes: 'popover-body', ...props }),
@@ -30,22 +28,17 @@ const Header = withTheme('PopoverHeader', props =>
   }),
 )
 
-const Popover = withTheme(
-  'Popover',
-  container({
-    Content: withActiveContent,
-    Trigger: withActiveTrigger,
-    element: 'popover',
-    escHandler: true,
-    mouseEvents: true,
-  }),
-)
+const Popover = activeContainer({
+  Content: withActive(withTheme('PopoverContent', Content)),
+  Trigger: withActive(withTheme('PopoverTrigger', Trigger)),
+  element: 'popover',
+  escHandler: true,
+  mouseEvents: true,
+})
 Popover.defaultProps = {
   direction: 'right',
 }
 
-Popover.Content = withActiveContent
-Popover.Trigger = withActiveTrigger
 Popover.Body = Body
 Popover.Header = Header
 
@@ -61,4 +54,4 @@ Popover.Header = Header
  * @constructor
  * @extends React.Component
  */
-export default Popover
+export default withTheme('Popover', Popover)

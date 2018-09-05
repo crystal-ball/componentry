@@ -8,22 +8,17 @@ const Content = activeContent({
   arias: { id: true, hidden: true },
   element: 'active',
 })
-const withActiveContent = withActive(Content)
 
 const Trigger = activeTrigger({
   arias: { controls: true },
   element: 'active',
 })
-const withActiveTrigger = withActive(Trigger)
 
 const Active = activeContainer({
-  Content: withActiveContent,
-  Trigger: withActiveTrigger,
+  Content: withActive(Content),
+  Trigger: withActive(Trigger),
   element: 'active',
   escHandler: true,
 })
-
-Active.Content = withActiveContent
-Active.Trigger = withActiveTrigger
 
 export default Active

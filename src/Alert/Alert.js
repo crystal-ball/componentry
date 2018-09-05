@@ -83,4 +83,4 @@ const Alert = ({
     ...cleanActive(rest),
   })
 
-export default withTheme('Alert', withActive(withVisible(Alert)))
+export default withActive(withVisible(withTheme('Alert', Alert)))

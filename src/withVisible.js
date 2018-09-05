@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import transferStatics from './utils/transfer-statics'
 
 type Props = {
   active: boolean | string,
@@ -73,6 +74,8 @@ export default Wrapped => {
       return <Wrapped {...this.props} {...this.state} />
     }
   }
+
+  transferStatics(Wrapped, WithVisible)
   WithVisible.displayName = `withVisible(${Wrapped.displayName || Wrapped.name})`
   return WithVisible
 }

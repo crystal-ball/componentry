@@ -10,27 +10,19 @@ const Content = activeContent({
   element: 'tooltip',
   popper: true,
 })
-const withActiveContent = withActive(withTheme('TooltipContent', Content))
 
 const Trigger = activeTrigger({
   arias: { describedby: true },
   element: 'tooltip',
 })
-const withActiveTrigger = withActive(withTheme('TooltipTrigger', Trigger))
 
-const Tooltip = withTheme(
-  'Tooltip',
-  activeContainer({
-    Content: withActiveContent,
-    Trigger: withActiveTrigger,
-    element: 'tooltip',
-    escHandler: true,
-    mouseEvents: true,
-  }),
-)
-
-Tooltip.Content = withActiveContent
-Tooltip.Trigger = withActiveTrigger
+const Tooltip = activeContainer({
+  Content: withActive(withTheme('TooltipContent', Content)),
+  Trigger: withActive(withTheme('TooltipTrigger', Trigger)),
+  element: 'tooltip',
+  escHandler: true,
+  mouseEvents: true,
+})
 
 /**
  * The Tooltip component creates an expandable info container on hover.
@@ -41,4 +33,4 @@ Tooltip.Trigger = withActiveTrigger
  * @constructor
  * @extends React.Component
  */
-export default Tooltip
+export default withTheme('Tooltip', Tooltip)

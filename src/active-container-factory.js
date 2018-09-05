@@ -38,7 +38,7 @@ type Props = {
   onDeactivated?: Function,
   // Passed props to create a controlled component
   active?: boolean,
-  defaultActive?: boolean | string,
+  defaultActive: boolean | string,
   activate?: Function,
   deactivate?: Function,
 }
@@ -75,6 +75,14 @@ export default ({
     static defaultProps = {
       defaultActive: false,
     }
+
+    // TODO: might as well add flow types for these ¯\_(ツ)_/¯
+    static Trigger = Trigger
+    static Content = Content
+    static Body: ?ComponentType<*>
+    static Header: ?ComponentType<*>
+    static Nav: ?ComponentType<*>
+    static ContentContainer: ?ComponentType<*>
 
     state = {
       active: this.props.defaultActive,
