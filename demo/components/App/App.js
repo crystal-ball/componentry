@@ -36,6 +36,7 @@ import ConceptsScreen from '../ConceptsScreen'
 import FourOhFourScreen from '../FourOhFourScreen'
 import SetupScreen from '../SetupScreen'
 import HomeScreen from '../HomeScreen/HomeScreen'
+import TestScreen from '../TestScreen/TestScreen'
 
 // ========================================================
 // Componentry Theme Customization
@@ -130,6 +131,9 @@ class App extends Component<{}> {
                   path={`${components.pathname}/:component?`}
                   component={ComponentsScreen}
                 />
+
+                {/* Used for testing components in a normal JSX env */}
+                <Route path="/test" component={TestScreen} />
                 <Route component={FourOhFourScreen} />
               </Switch>
             </Componentry.ThemeProvider.Provider>
