@@ -1,5 +1,5 @@
 import React from 'react'
-import { mount, shallow, render } from 'enzyme'
+import { mount, render } from 'enzyme'
 
 import Card from './Card'
 import elementTests from '../utils-test/element-tests'
@@ -9,13 +9,13 @@ describe('<Card />', () => {
   elementTests(Card)
 
   test('should render a container div with class card by default', () => {
-    const wrapper = shallow(<Card />)
+    const wrapper = mount(<Card />)
     expect(wrapper.find('div').length).toEqual(1)
     expect(wrapper.find('.card').length).toEqual(1)
   })
 
   test('should render children', () => {
-    const wrapper = shallow(
+    const wrapper = mount(
       <Card>
         <span>Rad</span>
       </Card>,

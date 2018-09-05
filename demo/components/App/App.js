@@ -1,6 +1,6 @@
 // @flow
 import React, { Component, Fragment } from 'react'
-import { object } from 'prop-types'
+import { shape } from 'prop-types'
 import * as Componentry from 'componentry'
 import DocumentTitle from 'react-document-title'
 import { BrowserRouter, Switch, Route } from 'react-router-dom'
@@ -11,8 +11,8 @@ import { hot } from 'react-hot-loader'
 import registry from 'registry'
 import AppNav from 'components/universal/AppNav'
 import ScrollToTop from 'components/universal/ScrollToTop'
-import AnchorLink from './AnchorLink'
 import routesMap from 'utils/routes-map'
+import AnchorLink from './AnchorLink'
 
 // Import SVG icons used by Icon component to generate svg symbol sprite
 // TODO: Move icon imports to a project Icon component
@@ -101,7 +101,7 @@ const { setup, concepts, components } = routesMap
  * 3. Sets up application level routing and components
  */
 class App extends Component<{}> {
-  static childContextTypes = { REGISTRY: object }
+  static childContextTypes = { REGISTRY: shape({}) }
 
   getChildContext() {
     return { REGISTRY: registry.getRegistry() }

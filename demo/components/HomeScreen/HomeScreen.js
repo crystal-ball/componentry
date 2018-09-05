@@ -30,7 +30,8 @@ export default () => (
   <div>
     <Hero direction="column" align="center">
       <h1 className="display-2 text-primary mb-4">
-        <u>C</u>omponentry
+        <u>C</u>
+        omponentry
       </h1>
 
       <h3 className="mb-5 text-center w-75 text-muted">

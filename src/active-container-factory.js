@@ -77,12 +77,14 @@ export default ({
     }
 
     // TODO: might as well add flow types for these ¯\_(ツ)_/¯
+    /* eslint-disable lines-between-class-members */
     static Trigger = Trigger
     static Content = Content
     static Body: ?ComponentType<*>
     static Header: ?ComponentType<*>
     static Nav: ?ComponentType<*>
     static ContentContainer: ?ComponentType<*>
+    /* eslint-enable lines-between-class-members */
 
     state = {
       active: this.props.defaultActive,
@@ -117,6 +119,7 @@ export default ({
       // with `defaultActive`
       if (this.state.active === true) this.updateEventListeners('add')
     }
+
     /**
      * On active change, add/remove configured event listeners.
      */
@@ -131,6 +134,7 @@ export default ({
         this.updateEventListeners('remove')
       }
     }
+
     /**
      * Clean up any listeners on unmount!
      */
@@ -241,7 +245,6 @@ export default ({
       return (
         <ActiveProvider.Provider value={activeValues}>
           {elem({
-            'data-test': element ? `${element}-container` : undefined,
             'data-id': this.guid,
             classes: [element, direction],
             // For elements with mouse events we need to know when the mouse event

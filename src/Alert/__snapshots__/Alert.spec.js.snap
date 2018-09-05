@@ -17,11 +17,11 @@ exports[`<Alert /> snapshots renders correctly 1`] = `
     Warning!
   </div>
   <button
+    aria-label="close"
     class="btn-close text-danger"
     type="button"
   >
     <svg
-      aria-label="close"
       class="icon close font"
       role="img"
     >

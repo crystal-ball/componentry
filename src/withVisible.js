@@ -67,6 +67,7 @@ export default Wrapped => {
     componentWillUnmount() {
       this.unmounted = true
     }
+
     render() {
       // ℹ️ HOC state overrides the active prop and includes a visible prop for
       // elements that need transitioned active states (pass state second to

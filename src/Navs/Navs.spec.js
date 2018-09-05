@@ -1,5 +1,5 @@
 import React from 'react'
-import { shallow, render } from 'enzyme'
+import { mount, render } from 'enzyme'
 
 import { Nav } from './Navs'
 import elementTests from '../utils-test/element-tests'
@@ -9,7 +9,7 @@ describe('<Nav />', () => {
   elementTests(Nav)
 
   test('should render .flex-column when vertical is passed', () => {
-    const wrapper = shallow(
+    const wrapper = mount(
       <Nav vertical>
         <Nav.Item href="#">Anchor one</Nav.Item>
       </Nav>,
@@ -18,7 +18,7 @@ describe('<Nav />', () => {
   })
 
   test('should render .nav-pills when pills is passed', () => {
-    const wrapper = shallow(
+    const wrapper = mount(
       <Nav pills>
         <Nav.Item href="#">Anchor one</Nav.Item>
       </Nav>,

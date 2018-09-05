@@ -30,6 +30,7 @@ const Dropdown = activeContainer({
 })
 Dropdown.Item = withTheme('DropdownItem', withActive(Item))
 Dropdown.defaultProps = {
+  ...Dropdown.defaultProps,
   direction: 'bottom',
 }
 

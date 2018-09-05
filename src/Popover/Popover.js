@@ -36,6 +36,7 @@ const Popover = activeContainer({
   mouseEvents: true,
 })
 Popover.defaultProps = {
+  ...Popover.defaultProps,
   direction: 'right',
 }
 

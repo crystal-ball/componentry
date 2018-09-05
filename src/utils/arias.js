@@ -22,7 +22,13 @@ export type AriasOptions = {
 /**
  * Return object of aria attributes using options
  */
-export default ({ active, activeId, guid, type, arias: configArias }: AriasOptions) => {
+export default ({
+  active,
+  activeId,
+  guid,
+  type,
+  arias: configArias = {},
+}: AriasOptions) => {
   const {
     controls,
     describedby,
@@ -49,8 +55,6 @@ export default ({ active, activeId, guid, type, arias: configArias }: AriasOptio
   // For elements with multiple trigger/content groups an activeId is used to
   // track which group is active. Aria values must include addl identifiers
   // to ensure uniqueness
-
-  // TODO: should these include guids to ensure ids are unique??
   if (activeId && type === 'trigger') {
     arias.id = `${guid}-${activeId}-tab`
     arias['aria-controls'] = `${guid}-${activeId}-content`

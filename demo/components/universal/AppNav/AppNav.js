@@ -18,7 +18,8 @@ export default () => (
     <Flex>
       <Flex align="center" className="pr-3">
         <Link to="/" className="text-primary logo">
-          <u>C</u>omponentry
+          <u>C</u>
+          omponentry
         </Link>
       </Flex>
     </Flex>

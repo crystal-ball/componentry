@@ -4,12 +4,10 @@ exports[`<Drawer /> snapshots renders correctly 1`] = `
 <div
   class="tooltip"
   data-id="guid"
-  data-test="tooltip-container"
 >
   <button
     aria-describedby="guid"
     class="btn tooltip-toggle"
-    data-test="tooltip-trigger"
     type="button"
   >
     Trigger
@@ -20,7 +18,6 @@ exports[`<Drawer /> snapshots renders correctly 1`] = `
     <div
       aria-hidden="true"
       class="tooltip-content"
-      data-test="tooltip-content"
       id="guid"
       role="tooltip"
     >
