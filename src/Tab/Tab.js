@@ -1,46 +1,46 @@
 // @flow
-import withActive from '../withActive/withActive'
-import activeContainer from '../component-factories/active-container'
-import activeContent from '../component-factories/active-content'
-import activeTrigger from '../component-factories/active-trigger'
-import elementFactory from '../component-factories/element'
+import activeContainer from '../active-container-factory'
+import activeContent from '../active-content-factory'
+import activeTrigger from '../active-trigger-factory'
+import elem from '../elem-factory'
+import withActive from '../withActive'
+import withTheme from '../withTheme'
 
-import { TabNav } from '../Nav/Nav'
+import { TabNav } from '../Navs/Navs'
+
+const ContentContainer = withTheme('TabContentContainer', props =>
+  elem({
+    classes: 'tab-panes-container',
+    ...props,
+  }),
+)
 
 const Content = activeContent({
-  componentArias: { hidden: true, role: 'tabpanel' },
+  arias: { hidden: true, role: 'tabpanel' },
   classes: 'tab-pane',
-  name: 'Tabcontent',
 })
-const withActiveContent = withActive()(Content)
 
 const Trigger = activeTrigger({
-  componentArias: { selected: true, role: 'tab' },
-  classes: 'nav-link nav-item',
-  name: 'TabTrigger',
+  arias: { selected: true, role: 'tab' },
+  // TODO: Should this really have default nav-link and nav-item classes??
+  classes: 'tab-toggle nav-link nav-item',
   // Tabs can only activate, they never deactivate when clicked
   triggerType: 'activate',
-  // Misc configs
+})
+Trigger.defaultProps = {
   // Componentry uses <Button /> components for the tab triggers instead of
   // anchors like Bootstrap. Default the button to have the link theme style to
   // look like an anchor
   color: 'link',
-})
-const withActiveTrigger = withActive()(Trigger)
-
-const ContentContainer = elementFactory('TabContentContainer', {
-  className: 'tab-content',
-})
+}
 
 const Tab = activeContainer({
-  name: 'Tab',
-  Content: withActiveContent,
-  Trigger: withActiveTrigger,
+  Content: withActive(withTheme('TabContent', Content)),
+  Trigger: withActive(withTheme('TabTrigger', Trigger)),
+  classes: 'tab',
 })
 
-Tab.Content = withActiveContent
-Tab.Trigger = withActiveTrigger
 Tab.Nav = TabNav
 Tab.ContentContainer = ContentContainer
 
-export default Tab
+export default withTheme('Tab', Tab)

@@ -1,11 +1,13 @@
 import React from 'react'
-import { shallow, render } from 'enzyme'
+import { mount, render } from 'enzyme'
 
+import elementTests from '../utils-test/element-tests'
 import Icon from './Icon'
 
 describe('<Icon />', () => {
+  elementTests(Icon)
   test('should not include class font when false', () => {
-    const wrapper = shallow(<Icon id="test" font={false} />)
+    const wrapper = mount(<Icon id="test" font={false} />)
     expect(wrapper.find('.font').length).toEqual(0)
   })
 })

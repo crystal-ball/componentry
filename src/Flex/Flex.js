@@ -1,5 +1,6 @@
 // @flow
-import elementFactory from '../component-factories/element'
+import componentryElem from '../elem-factory'
+import withTheme from '../withTheme'
 
 type Props = {
   /** Specify the flex direction of the container */
@@ -12,10 +13,15 @@ type Props = {
   justify?: '' | 'start' | 'center' | 'end' | 'around' | 'between',
 }
 
-export default elementFactory(
-  'Flex',
-  ({ align = '', direction = '', inline = false, justify = '', ...props }: Props) => ({
-    className: {
+const Flex = ({
+  align = '',
+  direction = '',
+  inline = false,
+  justify = '',
+  ...rest
+}: Props) =>
+  componentryElem({
+    classes: {
       'd-flex': !inline,
       'd-inline-flex': inline,
       'flex-column': direction === 'column',
@@ -25,6 +31,7 @@ export default elementFactory(
       [`align-items-${align}`]: align,
       [`justify-content-${justify}`]: justify,
     },
-    ...props,
-  }),
-)
+    ...rest,
+  })
+
+export default withTheme('Flex', Flex)

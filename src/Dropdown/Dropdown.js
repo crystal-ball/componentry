@@ -1,46 +1,37 @@
-// @flow
-import withActive from '../withActive/withActive'
-import activeContainer from '../component-factories/active-container'
-import activeContent from '../component-factories/active-content'
-import activeTrigger from '../component-factories/active-trigger'
+import activeContainer from '../active-container-factory'
+import activeContent from '../active-content-factory'
+import activeTrigger from '../active-trigger-factory'
+import withActive from '../withActive'
+import withTheme from '../withTheme'
 
 const Content = activeContent({
-  componentArias: { labelledby: true, hidden: true },
-  element: 'dropdown',
-  name: 'DropdownContent',
+  arias: { labelledby: true, hidden: true },
+  classes: 'dropdown-content',
 })
-const withActiveContent = withActive()(Content)
 
 const Trigger = activeTrigger({
-  element: 'dropdown',
-  componentArias: { expanded: true, haspopup: true, id: true },
-  name: 'DropdownTrigger',
+  arias: { expanded: true, haspopup: true, id: true },
+  classes: 'dropdown-toggle',
 })
-const withActiveTrigger = withActive()(Trigger)
 
 const Item = activeTrigger({
-  // Suppress the default btn classes, the .dropdown-item classes have all styles
-  // needed for button items
-  baseButton: true,
+  // TODO: what arias should this have?
+  arias: {},
   classes: 'dropdown-item',
-  componentArias: {},
-  name: 'DropdownItem',
 })
-const DropdownItem = withActive()(Item)
 
 const Dropdown = activeContainer({
-  Content: withActiveContent,
-  Trigger: withActiveTrigger,
-  defaultDirection: 'bottom',
-  element: 'dropdown',
+  Content: withTheme('DropdownContent', withActive(Content)),
+  Trigger: withTheme('DropdownTrigger', withActive(Trigger)),
+  classes: 'dropdown',
   escHandler: true,
-  externalClickHandler: true,
-  name: 'Dropdown',
+  clickHandler: true,
 })
-
-Dropdown.Content = withActiveContent
-Dropdown.Trigger = withActiveTrigger
-Dropdown.Item = DropdownItem
+Dropdown.Item = withTheme('DropdownItem', withActive(Item))
+Dropdown.defaultProps = {
+  ...Dropdown.defaultProps,
+  direction: 'bottom',
+}
 
 /**
  * The `<Dropdown>` element creates a menu.
@@ -49,4 +40,4 @@ Dropdown.Item = DropdownItem
  * - Default focus on open first item
  * - Keydown listener for arrows to navigate through menu items
  */
-export default Dropdown
+export default withTheme('Dropdown', Dropdown)

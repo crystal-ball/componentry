@@ -1,7 +1,16 @@
 // @flow
-import elementFactory from '../component-factories/element'
+import elem from '../elem-factory'
+import withTheme from '../withTheme'
 
-export default elementFactory('Anchor', {
-  as: 'a',
-  className: 'anchor',
-})
+/**
+ * Very simple, but this provides the ability to customize what element every
+ * Anchor in an application renders, with the ability to override by instance,
+ * and provides a className to target!
+ */
+
+export default withTheme('Anchor', props =>
+  elem({
+    classes: 'anchor',
+    ...props,
+  }),
+)

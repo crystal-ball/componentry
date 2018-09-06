@@ -1,14 +1,18 @@
 import React from 'react'
+import withTheme from '../withTheme'
+import elem from '../elem-factory'
 
-import { BaseButton } from '../Button/Button'
-import elementFactory from '../component-factories/element'
-
-export default elementFactory('Close', {
-  className: 'btn-close',
-  tag: BaseButton,
-  children: (
-    <svg className="icon close font" role="img" aria-label="close">
-      <use href="#close" xlinkHref="#close" />
-    </svg>
-  ),
-})
+export default withTheme('Close', props =>
+  elem({
+    defaultAs: 'button',
+    'aria-label': 'close',
+    classes: 'btn-close',
+    type: 'button',
+    children: (
+      <svg className="icon close font" role="img">
+        <use href="#close" xlinkHref="#close" />
+      </svg>
+    ),
+    ...props,
+  }),
+)

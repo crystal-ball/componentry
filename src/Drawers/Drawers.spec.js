@@ -1,16 +1,15 @@
 import React from 'react'
 import { render } from 'enzyme'
 
-import Drawer from './Drawer'
+import { Drawer } from './Drawers'
 import activationTestSuite from '../utils-test/activation-tests'
 import elementTests from '../utils-test/element-tests'
-import setupActiveContext from '../utils-test/setup-active-context'
 
 describe('<Drawer />', () => {
   activationTestSuite(Drawer)
   elementTests(Drawer)
-  elementTests(Drawer.Trigger, setupActiveContext())
-  elementTests(Drawer.Content, setupActiveContext())
+  elementTests(Drawer.Trigger)
+  elementTests(Drawer.Content)
 })
 
 // Snapshots

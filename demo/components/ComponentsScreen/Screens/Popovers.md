@@ -41,7 +41,7 @@ showing detailed user hints on hover.
   </Popover.Content>
 </Popover>`}
   renderComponent={({ direction }) => (
-    <Popover direction={direction}>
+    <Popover direction={direction || undefined}>
       <Popover.Trigger>
         Popover Trigger
       </Popover.Trigger>

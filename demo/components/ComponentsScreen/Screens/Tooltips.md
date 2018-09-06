@@ -6,8 +6,8 @@ Display additional details for an element on hover.
 
 If you'd like Tooltips to look like anchors by default the `link` prop can be
 defaulted to true for the Tooltip.Trigger component using the ThemeProvider.
-See the <Link to={{ pathname: '/concepts/theming', state: { name: 'Theme Customization' }}}>
-Theme customization guide</Link> for details.
+See the <Anchor to={{ pathname: '/concepts/theming', state: { name: 'Theme Customization' }}}>
+Theme customization guide</Anchor> for details.
 
 <InteractiveDemo
   renderCode={() => `<Tooltip>

@@ -30,14 +30,16 @@ describe('arias()', () => {
     const attrs = {
       active: false,
       guid: 'test',
-      controls: false,
-      describedby: false,
-      expanded: false,
-      haspopup: false,
-      hidden: false,
-      id: false,
-      labelledby: false,
-      selected: false,
+      arias: {
+        controls: false,
+        describedby: false,
+        expanded: false,
+        haspopup: false,
+        hidden: false,
+        id: false,
+        labelledby: false,
+        selected: false,
+      },
     }
 
     const result = arias(attrs)
@@ -52,26 +54,17 @@ describe('arias()', () => {
     const attrs = {
       active: true,
       guid: 'test',
-      controls: true,
-      describedby: true,
-      expanded: true,
-      haspopup: true,
-      hidden: true,
-      id: true,
-      labelledby: true,
-      selected: true,
+      arias: {
+        controls: true,
+        describedby: true,
+        expanded: true,
+        haspopup: true,
+        hidden: true,
+        id: true,
+        labelledby: true,
+        selected: true,
+      },
     }
-
-    // expect().toEqual({
-    //   'aria-controls': 'test',
-    //   'aria-describedby': 'test',
-    //   'aria-expanded': 'true',
-    //   'aria-haspopup': 'true',
-    //   'aria-hidden': 'false',
-    //   id: 'test',
-    //   'aria-labelledby': 'test',
-    //   'aria-selected': 'true'
-    // })
 
     const result = arias(attrs)
 
@@ -82,7 +75,7 @@ describe('arias()', () => {
   })
 
   test('it assigns passed role', () => {
-    expect(arias({ active: true, guid: 'test', role: 'tab' })).toEqual({
+    expect(arias({ active: true, guid: 'test', arias: { role: 'tab' } })).toEqual({
       role: 'tab',
     })
   })
@@ -91,11 +84,13 @@ describe('arias()', () => {
     const attrs = {
       active: true,
       guid: 'test',
-      controls: true,
-      describedby: true,
-      haspopup: true,
-      id: true,
-      labelledby: true,
+      arias: {
+        controls: true,
+        describedby: true,
+        haspopup: true,
+        id: true,
+        labelledby: true,
+      },
     }
 
     expect(arias(attrs)).toEqual({
@@ -107,19 +102,23 @@ describe('arias()', () => {
     })
   })
 
-  test('it uses explicit values for dynamic arias', () => {
+  test('it uses activeId for elements with mutli-target/content', () => {
     const attrs = {
-      active: true,
+      active: 'tab1',
+      activeId: 'tab1',
       guid: 'test',
-      controls: 'id',
-      id: 'id',
-      labelledby: 'id',
+      type: 'content',
+      arias: {
+        hidden: true,
+        id: true,
+        labelledby: true,
+      },
     }
 
     expect(arias(attrs)).toEqual({
-      'aria-controls': 'id',
-      id: 'id',
-      'aria-labelledby': 'id',
+      'aria-hidden': 'false',
+      id: 'test-tab1-content',
+      'aria-labelledby': 'test-tab1-trigger',
     })
   })
 
@@ -127,9 +126,11 @@ describe('arias()', () => {
     const attrs = {
       active: true,
       guid: 'test',
-      expanded: true,
-      hidden: true,
-      selected: true,
+      arias: {
+        expanded: true,
+        hidden: true,
+        selected: true,
+      },
     }
 
     expect(arias(attrs)).toEqual({
@@ -143,9 +144,11 @@ describe('arias()', () => {
     const attrs = {
       active: false,
       guid: 'test',
-      expanded: true,
-      hidden: true,
-      selected: true,
+      arias: {
+        expanded: true,
+        hidden: true,
+        selected: true,
+      },
     }
 
     expect(arias(attrs)).toEqual({

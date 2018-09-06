@@ -57,7 +57,7 @@
 // Outline alerts have a transparent background with a bright left side border
 
 @each $color, $value in $theme-colors {
-  .alert-#{$color}.outline {
+  .alert-#{$color}.alert-outline {
     background-color: transparent;
     border-color: $border-color;
     border-left: 5px solid $value;

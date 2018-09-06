@@ -1,22 +1,23 @@
+let mouseMoveSuppressOutline
+let touchMoveSuppressOutline
+
 function onKeyTab(e) {
   if (e.keyCode === 9) {
     document.body.classList.remove('suppress-outline')
     window.removeEventListener('keydown', onKeyTab)
 
-    /* eslint-disable no-use-before-define */
     window.addEventListener('mousemove', mouseMoveSuppressOutline)
     window.addEventListener('touchmove', touchMoveSuppressOutline)
-    /* eslint-enable no-use-before-define */
   }
 }
 
-function mouseMoveSuppressOutline() {
+mouseMoveSuppressOutline = () => {
   document.body.classList.add('suppress-outline')
   window.removeEventListener('mousemove', mouseMoveSuppressOutline)
   window.addEventListener('keydown', onKeyTab)
 }
 
-function touchMoveSuppressOutline() {
+touchMoveSuppressOutline = () => {
   document.body.classList.add('suppress-outline')
   window.removeEventListener('touchmove', touchMoveSuppressOutline)
   window.addEventListener('keydown', onKeyTab)

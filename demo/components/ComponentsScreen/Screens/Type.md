@@ -7,14 +7,14 @@ Create consistent typography elements.
   renderComponent={() => <Anchor href="#">Anchor element</Anchor>}
 />
 
-<Header as="h2">Headers</Header>
+<Header header="h2">Headers</Header>
 
 <InteractiveDemo
-  defaults={{ as: 'h2', subheader: false }}
+  defaults={{ header: 'h1', muted: false }}
   formFields={[
-    { label: 'as', options: ['h1', 'h2', 'h3', 'h4', 'h5'] },
-    { label: 'subheader', boolean: true },
+    { label: 'header', options: ['h1', 'h2', 'h3', 'h4', 'h5'] },
+    { label: 'muted', boolean: true },
   ]}
-  renderCode={({ as, subheader }) => `<Header as="${as}"${subheader ? ' subheader' : ''}>Headers</Header>`}
+  renderCode={({ header, muted }) => `<Header header="${header}"${muted ? ' muted' : ''}>Headers</Header>`}
   renderComponent={opts => <Header {...opts}>Headers</Header>}
 />

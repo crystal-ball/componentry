@@ -1,45 +1,47 @@
 // @flow
-import withActive from '../withActive/withActive'
-import activeContainer from '../component-factories/active-container'
-import activeContent from '../component-factories/active-content'
-import activeTrigger from '../component-factories/active-trigger'
-import elementFactory from '../component-factories/element'
+import activeContainer from '../active-container-factory'
+import activeContent from '../active-content-factory'
+import activeTrigger from '../active-trigger-factory'
+import elem from '../elem-factory'
+import withActive from '../withActive'
+import withTheme from '../withTheme'
 
 const Content = activeContent({
-  componentArias: { id: true, role: 'tooltip', hidden: true },
-  element: 'popover',
-  name: 'PopoverContent',
+  arias: { id: true, role: 'tooltip', hidden: true },
+  classes: 'popover-content',
   popper: true,
 })
-const withActiveContent = withActive()(Content)
 
 const Trigger = activeTrigger({
-  element: 'popover',
-  componentArias: { describedby: true, subscribe: false },
-  name: 'PopoverTrigger',
+  arias: { describedby: true },
+  classes: 'popover-toggle',
 })
-const withActiveTrigger = withActive()(Trigger)
 
-const PopoverBody = elementFactory('PopoverBody', { className: 'popover-body' })
-const PopoverHeader = elementFactory('PopoverHeader', {
-  className: 'popover-header',
-  tag: 'h3',
-})
+const Body = withTheme('PopoverBody', props =>
+  elem({ classes: 'popover-body', ...props }),
+)
+const Header = withTheme('PopoverHeader', props =>
+  elem({
+    defaultAs: 'h3',
+    classes: 'popover-header',
+    ...props,
+  }),
+)
 
 const Popover = activeContainer({
-  Content: withActiveContent,
-  Trigger: withActiveTrigger,
-  defaultDirection: 'right',
-  element: 'popover',
+  Content: withActive(withTheme('PopoverContent', Content)),
+  Trigger: withActive(withTheme('PopoverTrigger', Trigger)),
+  classes: 'popover',
   escHandler: true,
   mouseEvents: true,
-  name: 'Popover',
 })
+Popover.defaultProps = {
+  ...Popover.defaultProps,
+  direction: 'right',
+}
 
-Popover.Content = withActiveContent
-Popover.Trigger = withActiveTrigger
-Popover.Body = PopoverBody
-Popover.Header = PopoverHeader
+Popover.Body = Body
+Popover.Header = Header
 
 /**
  * The Tooltip component creates an expandable info container on hover.
@@ -53,4 +55,4 @@ Popover.Header = PopoverHeader
  * @constructor
  * @extends React.Component
  */
-export default Popover
+export default withTheme('Popover', Popover)

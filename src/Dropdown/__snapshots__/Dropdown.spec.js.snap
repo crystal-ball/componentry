@@ -4,13 +4,11 @@ exports[`<Drawer /> snapshots renders correctly 1`] = `
 <div
   class="dropdown bottom"
   data-id="guid"
-  data-test="dropdown-container"
 >
   <button
     aria-expanded="false"
     aria-haspopup="true"
     class="btn dropdown-toggle"
-    data-test="dropdown-trigger"
     id="guid"
     type="button"
   >
@@ -20,16 +18,15 @@ exports[`<Drawer /> snapshots renders correctly 1`] = `
     aria-hidden="true"
     aria-labelledby="guid"
     class="dropdown-content"
-    data-test="dropdown-content"
   >
     <button
-      class="dropdown-item"
+      class="btn dropdown-item"
       type="button"
     >
       Item 1
     </button>
     <button
-      class="dropdown-item"
+      class="btn dropdown-item"
       type="button"
     >
       Item 2

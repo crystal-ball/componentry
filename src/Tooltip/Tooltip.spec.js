@@ -2,18 +2,17 @@ import React from 'react'
 import { render } from 'enzyme'
 
 import Tooltip from './Tooltip'
-// import activationTestSuite from '../utils-test/activation-tests'
+import activationTestSuite from '../utils-test/activation-tests'
 import elementTests from '../utils-test/element-tests'
-import setupActiveContext from '../utils-test/setup-active-context'
 
 describe('<Tooltip />', () => {
   // Basic library activation test suite
   // TODO: Fix me
-  // activationTestSuite(Popover)
+  activationTestSuite(Tooltip)
   // Basic library element test suite
   elementTests(Tooltip)
-  elementTests(Tooltip.Trigger, setupActiveContext())
-  elementTests(Tooltip.Content, setupActiveContext())
+  elementTests(Tooltip.Trigger)
+  elementTests(Tooltip.Content)
 })
 
 // Snapshots

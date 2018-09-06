@@ -28,8 +28,8 @@ component to automatically create an uncontrolled Alert.
   defaults={{ color: 'success', outline: true, dismissible: true }}
   formFields={[
     { label: 'color', options: this.props.colors },
-    { label: 'dismissible', boolean: true },
     { label: 'outline', boolean: true },
+    { label: 'dismissible', boolean: true },
   ]}
   renderCode={({ color, dismissible, outline }) => dismissible ? (
     `<Active defaultActive>

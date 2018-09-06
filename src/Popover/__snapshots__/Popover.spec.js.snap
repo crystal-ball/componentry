@@ -4,12 +4,10 @@ exports[`<Popover /> snapshots renders correctly 1`] = `
 <div
   class="popover right"
   data-id="guid"
-  data-test="popover-container"
 >
   <button
     aria-describedby="guid"
     class="btn popover-toggle"
-    data-test="popover-trigger"
     type="button"
   >
     Trigger
@@ -20,7 +18,6 @@ exports[`<Popover /> snapshots renders correctly 1`] = `
     <div
       aria-hidden="true"
       class="popover-content"
-      data-test="popover-content"
       id="guid"
       role="tooltip"
     >

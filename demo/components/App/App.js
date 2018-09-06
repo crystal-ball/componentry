@@ -1,9 +1,9 @@
 // @flow
 import React, { Component, Fragment } from 'react'
-import { object } from 'prop-types'
+import { shape } from 'prop-types'
 import * as Componentry from 'componentry'
 import DocumentTitle from 'react-document-title'
-import { BrowserRouter, Switch, Route, Link } from 'react-router-dom'
+import { BrowserRouter, Switch, Route } from 'react-router-dom'
 import { ThemeProvider } from 'styled-components'
 import { hot } from 'react-hot-loader'
 
@@ -12,6 +12,7 @@ import registry from 'registry'
 import AppNav from 'components/universal/AppNav'
 import ScrollToTop from 'components/universal/ScrollToTop'
 import routesMap from 'utils/routes-map'
+import AnchorLink from './AnchorLink'
 
 // Import SVG icons used by Icon component to generate svg symbol sprite
 // TODO: Move icon imports to a project Icon component
@@ -35,6 +36,7 @@ import ConceptsScreen from '../ConceptsScreen'
 import FourOhFourScreen from '../FourOhFourScreen'
 import SetupScreen from '../SetupScreen'
 import HomeScreen from '../HomeScreen/HomeScreen'
+import TestScreen from '../TestScreen/TestScreen'
 
 // ========================================================
 // Componentry Theme Customization
@@ -46,6 +48,9 @@ const { Close, Icon } = Componentry
 // component and passing a theme configuration object
 const theme = {
   transitionDuration: 350,
+  Anchor: {
+    as: AnchorLink,
+  },
   Alert: {
     outline: true,
   },
@@ -84,7 +89,6 @@ Object.keys(Componentry).forEach(component => {
 })
 
 // Registry React Router <Link /> for convenience
-registry.register(Link, 'Link')
 registry.register(Fragment, 'Fragment')
 
 const { setup, concepts, components } = routesMap
@@ -97,7 +101,7 @@ const { setup, concepts, components } = routesMap
  * 3. Sets up application level routing and components
  */
 class App extends Component<{}> {
-  static childContextTypes = { REGISTRY: object }
+  static childContextTypes = { REGISTRY: shape({}) }
 
   getChildContext() {
     return { REGISTRY: registry.getRegistry() }
@@ -108,7 +112,7 @@ class App extends Component<{}> {
       <DocumentTitle title="Componentry">
         <BrowserRouter basename={process.env.PUBLIC_PATH}>
           <ThemeProvider theme={styledTheme}>
-            <Componentry.ThemeProvider theme={theme}>
+            <Componentry.ThemeProvider.Provider value={theme}>
               {/* Restores scroll position to page top on route change */}
               <ScrollToTop />
 
@@ -127,9 +131,12 @@ class App extends Component<{}> {
                   path={`${components.pathname}/:component?`}
                   component={ComponentsScreen}
                 />
+
+                {/* Used for testing components in a normal JSX env */}
+                <Route path="/test" component={TestScreen} />
                 <Route component={FourOhFourScreen} />
               </Switch>
-            </Componentry.ThemeProvider>
+            </Componentry.ThemeProvider.Provider>
           </ThemeProvider>
         </BrowserRouter>
       </DocumentTitle>

@@ -1,5 +1,5 @@
 import React from 'react'
-import { shallow, render } from 'enzyme'
+import { mount, render } from 'enzyme'
 
 import List from './List'
 import elementTests from '../utils-test/element-tests'
@@ -9,13 +9,13 @@ describe('<List />', () => {
   elementTests(List)
 
   test('should render a container ul with class list-group by default', () => {
-    const wrapper = shallow(<List />)
+    const wrapper = mount(<List />)
     expect(wrapper.find('ul').length).toEqual(1)
     expect(wrapper.find('.list-group').length).toEqual(1)
   })
 
   test('should render a div when children have onclick', () => {
-    const wrapper = shallow(
+    const wrapper = mount(
       <List>
         <List.Item onClick={() => {}} />
       </List>,
@@ -25,7 +25,7 @@ describe('<List />', () => {
   })
 
   test('should render a div when children have hrefs', () => {
-    const wrapper = shallow(
+    const wrapper = mount(
       <List>
         <List.Item href="test" />
       </List>,

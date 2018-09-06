@@ -1,35 +1,28 @@
 // @flow
-import withActive from '../withActive/withActive'
-import activeContainer from '../component-factories/active-container'
-import activeContent from '../component-factories/active-content'
-import activeTrigger from '../component-factories/active-trigger'
+import activeContainer from '../active-container-factory'
+import activeContent from '../active-content-factory'
+import activeTrigger from '../active-trigger-factory'
+import withActive from '../withActive'
+import withTheme from '../withTheme'
 
 const Content = activeContent({
-  componentArias: { id: true, role: 'tooltip', hidden: true },
-  element: 'tooltip',
-  name: 'TooltipContent',
+  arias: { id: true, role: 'tooltip', hidden: true },
+  classes: 'tooltip-content',
   popper: true,
 })
-const withActiveContent = withActive()(Content)
 
 const Trigger = activeTrigger({
-  element: 'tooltip',
-  componentArias: { describedby: true, subscribe: false },
-  name: 'TooltipTrigger',
+  arias: { describedby: true },
+  classes: 'tooltip-toggle',
 })
-const withActiveTrigger = withActive()(Trigger)
 
 const Tooltip = activeContainer({
-  element: 'tooltip',
-  mouseEvents: true,
-  name: 'Tooltip',
+  Content: withActive(withTheme('TooltipContent', Content)),
+  Trigger: withActive(withTheme('TooltipTrigger', Trigger)),
+  classes: 'tooltip',
   escHandler: true,
-  Content: withActiveContent,
-  Trigger: withActiveTrigger,
+  mouseEvents: true,
 })
-
-Tooltip.Content = withActiveContent
-Tooltip.Trigger = withActiveTrigger
 
 /**
  * The Tooltip component creates an expandable info container on hover.
@@ -40,4 +33,4 @@ Tooltip.Trigger = withActiveTrigger
  * @constructor
  * @extends React.Component
  */
-export default Tooltip
+export default withTheme('Tooltip', Tooltip)

@@ -21,22 +21,22 @@ enable easy navigation between multiple options.
   renderCode={({ direction }) => `<Dropdown${direction ? ` direction="${direction}"` : ""}>
   <Dropdown.Trigger>Dropdown</Dropdown.Trigger>
   <Dropdown.Content>
-    <h6 className="dropdown-header">Available actions</h6>
-    <Dropdown.Item>Item 1</Dropdown.Item>
-    <Dropdown.Item>Item 2</Dropdown.Item>
+    <h4 className="dropdown-header">Available actions</h4>
+    <Dropdown.Item>Interactive Item 1</Dropdown.Item>
+    <Dropdown.Item>Interactive Item 2</Dropdown.Item>
     <div className="dropdown-divider" />
-    <Dropdown.Item>Item 3</Dropdown.Item>
+    <span className="dropdown-item-text">Dropdown item text is not interactive</span>
   </Dropdown.Content>
 </Dropdown>`}
   renderComponent={({ direction }) => (
     <Dropdown direction={direction}>
       <Dropdown.Trigger>Dropdown</Dropdown.Trigger>
       <Dropdown.Content>
-        <h6 className="dropdown-header">Available actions</h6>
-        <Dropdown.Item>Item 1</Dropdown.Item>
-        <Dropdown.Item>Item 2</Dropdown.Item>
+        <h4 className="dropdown-header">Available actions</h4>
+        <Dropdown.Item>Interactive Item 1</Dropdown.Item>
+        <Dropdown.Item>Interactive Item 2</Dropdown.Item>
         <div className="dropdown-divider" />
-        <Dropdown.Item>Item 3</Dropdown.Item>
+        <span className="dropdown-item-text">Dropdown item text is not interactive</span>
       </Dropdown.Content>
     </Dropdown>
   )}

@@ -5,13 +5,12 @@ import Active from './Active'
 
 import activationTestSuite from '../utils-test/activation-tests'
 import elementTests from '../utils-test/element-tests'
-import setupActiveContext from '../utils-test/setup-active-context'
 
 describe('<Active />', () => {
   activationTestSuite(Active)
   elementTests(Active)
-  elementTests(Active.Trigger, setupActiveContext())
-  elementTests(Active.Content, setupActiveContext())
+  elementTests(Active.Trigger)
+  elementTests(Active.Content)
 })
 
 // Snapshots

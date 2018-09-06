@@ -1,29 +1,24 @@
 // @flow
-import withActive from '../withActive/withActive'
-import activeContainer from '../component-factories/active-container'
-import activeContent from '../component-factories/active-content'
-import activeTrigger from '../component-factories/active-trigger'
+import withActive from '../withActive'
+import activeContainer from '../active-container-factory'
+import activeContent from '../active-content-factory'
+import activeTrigger from '../active-trigger-factory'
 
 const Content = activeContent({
-  componentArias: { id: true, hidden: true },
-  name: 'ActiveContent',
+  arias: { id: true, hidden: true },
+  classes: 'active-content',
 })
-const withActiveContent = withActive()(Content)
 
 const Trigger = activeTrigger({
-  componentArias: { controls: true },
-  name: 'ActiveTrigger',
+  arias: { controls: true },
+  classes: 'active-toggle',
 })
-const withActiveTrigger = withActive()(Trigger)
 
 const Active = activeContainer({
-  name: 'Active',
+  Content: withActive(Content),
+  Trigger: withActive(Trigger),
+  classes: 'active',
   escHandler: true,
-  Content: withActiveContent,
-  Trigger: withActiveTrigger,
 })
-
-Active.Content = withActiveContent
-Active.Trigger = withActiveTrigger
 
 export default Active

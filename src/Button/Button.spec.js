@@ -1,5 +1,5 @@
 import React from 'react'
-import { shallow, render } from 'enzyme'
+import { mount, render } from 'enzyme'
 
 import Button from './Button'
 import elementTests from '../utils-test/element-tests'
@@ -9,51 +9,50 @@ describe('<Button/>', () => {
   elementTests(Button)
 
   test('should render a button element default', () => {
-    const wrapper = shallow(<Button />)
+    const wrapper = mount(<Button />)
     expect(wrapper.find('button').length).toEqual(1)
     expect(wrapper.find('.btn').length).toEqual(1)
     expect(wrapper.find('button[type="button"]').length).toEqual(1)
   })
 
   test('should render any brand classes for prop color', () => {
-    const wrapper = shallow(<Button color="info" />)
+    const wrapper = mount(<Button color="info" />)
     expect(wrapper.find('.btn.btn-info').length).toEqual(1)
   })
 
   test('should render outline class for prop outline', () => {
-    const wrapper = shallow(<Button color="primary" outline />)
-    // Even though color is passed, primary flag should override
-    expect(wrapper.find('.btn.btn-primary').length).toEqual(0)
-    expect(wrapper.find('.btn.btn-outline-primary').length).toEqual(1)
+    const wrapper = mount(<Button color="primary" outline />)
+    // Should render the color and outline classes
+    expect(wrapper.find('.btn.btn-primary.btn-outline').length).toEqual(1)
   })
 
   test('should render class for small button', () => {
-    const wrapper = shallow(<Button size="small" />)
+    const wrapper = mount(<Button size="small" />)
     expect(wrapper.find('.btn.btn-sm').length).toEqual(1)
   })
 
   test('should render class for large button', () => {
-    const wrapper = shallow(<Button size="large" />)
+    const wrapper = mount(<Button size="large" />)
     expect(wrapper.find('.btn.btn-lg').length).toEqual(1)
   })
 
   test('should not render class btn-anchor without passed prop', () => {
-    const wrapper = shallow(<Button />)
+    const wrapper = mount(<Button />)
     expect(wrapper.find('button.btn-anchor').length).toEqual(0)
   })
 
   test('should render class btn-anchor when passed prop', () => {
-    const wrapper = shallow(<Button link />)
+    const wrapper = mount(<Button link />)
     expect(wrapper.find('button.btn-anchor').length).toEqual(1)
   })
 
   test('should render a passed type', () => {
-    const wrapper = shallow(<Button type="reset" />)
+    const wrapper = mount(<Button type="reset" />)
     expect(wrapper.find('button[type="reset"]').length).toEqual(1)
   })
 
   test('should render children', () => {
-    const wrapper = shallow(
+    const wrapper = mount(
       <Button>
         <span>Rad</span>
       </Button>,
@@ -63,7 +62,7 @@ describe('<Button/>', () => {
 
   test('simulates click events', () => {
     const onButtonClick = jest.fn()
-    const wrapper = shallow(<Button onClick={onButtonClick} />)
+    const wrapper = mount(<Button onClick={onButtonClick} />)
     wrapper.find('button').simulate('click')
     expect(onButtonClick).toHaveBeenCalled()
   })

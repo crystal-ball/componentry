@@ -1,6 +1,7 @@
 // @flow
-import elementFactory, { type ElementProps } from '../component-factories/element'
-import type { ThemeColors } from '../utils/theme'
+import componentryElem from '../elem-factory'
+import withTheme from '../withTheme'
+import type { ThemeColors } from '../types'
 
 export type Props = {
   /** Creates a full-width button */
@@ -13,37 +14,22 @@ export type Props = {
   outline?: boolean,
   /** Create a small or large style button */
   size?: 'small' | 'large',
-} & ElementProps
+}
 
-/**
- * The library makes use of Buttons that should not have the base `.btn` class. It's
- * more explicit to specify this as a component type (and easier to debug/reason
- * about).
- * @param {boolean} decorated
- */
-const makeButton = decorated =>
-  elementFactory(
-    decorated ? 'Button' : 'BaseButton',
-    ({ block, color, link, outline, size, ...props }) => ({
-      tag: 'button',
-      type: 'button',
-      className: {
-        btn: decorated,
-        'btn-anchor': link,
-        'btn-block': block,
-        // btn-<COLOR> class is only for regular themed buttons, suppress for other
-        // btn theme flavors
-        [`btn-${color}`]: color && !link && !outline,
-        [`btn-outline-${color}`]: outline,
-        'btn-sm': size === 'small',
-        'btn-lg': size === 'large',
-      },
-      ...props,
-    }),
-  )
+const Button = ({ block, color = '', link, outline, size, ...rest }: Props) =>
+  componentryElem({
+    defaultAs: 'button',
+    type: 'button',
+    classes: {
+      btn: true,
+      'btn-anchor': link,
+      'btn-block': block,
+      [`btn-${color}`]: color,
+      'btn-outline': outline,
+      'btn-sm': size === 'small',
+      'btn-lg': size === 'large',
+    },
+    ...rest,
+  })
 
-const Button = makeButton(true)
-const BaseButton = makeButton(false)
-
-export { BaseButton }
-export default Button
+export default withTheme('Button', Button)
