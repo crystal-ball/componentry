@@ -29,6 +29,7 @@ webpack.config.umd.js
 # Config
 #################################
 .vscode
+jsconfig.json
 .cz-config.js
 .eslintrc.js
 .prettierrc
