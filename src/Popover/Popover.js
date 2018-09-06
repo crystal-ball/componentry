@@ -8,13 +8,13 @@ import withTheme from '../withTheme'
 
 const Content = activeContent({
   arias: { id: true, role: 'tooltip', hidden: true },
-  element: 'popover',
+  classes: 'popover-content',
   popper: true,
 })
 
 const Trigger = activeTrigger({
   arias: { describedby: true },
-  element: 'popover',
+  classes: 'popover-toggle',
 })
 
 const Body = withTheme('PopoverBody', props =>
@@ -31,7 +31,7 @@ const Header = withTheme('PopoverHeader', props =>
 const Popover = activeContainer({
   Content: withActive(withTheme('PopoverContent', Content)),
   Trigger: withActive(withTheme('PopoverTrigger', Trigger)),
-  element: 'popover',
+  classes: 'popover',
   escHandler: true,
   mouseEvents: true,
 })

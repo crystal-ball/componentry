@@ -6,18 +6,18 @@ import activeTrigger from '../active-trigger-factory'
 
 const Content = activeContent({
   arias: { id: true, hidden: true },
-  element: 'active',
+  classes: 'active-content',
 })
 
 const Trigger = activeTrigger({
   arias: { controls: true },
-  element: 'active',
+  classes: 'active-toggle',
 })
 
 const Active = activeContainer({
   Content: withActive(Content),
   Trigger: withActive(Trigger),
-  element: 'active',
+  classes: 'active',
   escHandler: true,
 })
 

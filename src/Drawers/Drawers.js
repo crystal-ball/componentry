@@ -10,12 +10,12 @@ const makeDrawer = name => {
 
   const Content = activeContent({
     arias: { id: true, hidden: true },
-    element: elem,
+    classes: `${elem}-content`,
   })
 
   const Trigger = activeTrigger({
     arias: { controls: true, expanded: true },
-    element: elem,
+    classes: `${elem}-toggle`,
   })
 
   const Element = withTheme(
@@ -23,8 +23,7 @@ const makeDrawer = name => {
     activeContainer({
       Content: withActive(withTheme(`${name}Content`, Content)),
       Trigger: withActive(withTheme(`${name}Trigger`, Trigger)),
-      element: elem,
-      name,
+      classes: elem,
     }),
   )
 

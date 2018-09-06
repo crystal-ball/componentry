@@ -20,13 +20,13 @@ exports[`<Drawer /> snapshots renders correctly 1`] = `
     class="dropdown-content"
   >
     <button
-      class="btn dropdown-item dropdown-item-toggle"
+      class="btn dropdown-item"
       type="button"
     >
       Item 1
     </button>
     <button
-      class="btn dropdown-item dropdown-item-toggle"
+      class="btn dropdown-item"
       type="button"
     >
       Item 2

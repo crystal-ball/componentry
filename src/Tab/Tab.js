@@ -8,16 +8,22 @@ import withTheme from '../withTheme'
 
 import { TabNav } from '../Navs/Navs'
 
+const ContentContainer = withTheme('TabContentContainer', props =>
+  elem({
+    classes: 'tab-panes-container',
+    ...props,
+  }),
+)
+
 const Content = activeContent({
   arias: { hidden: true, role: 'tabpanel' },
   classes: 'tab-pane',
-  element: 'tab',
 })
 
 const Trigger = activeTrigger({
   arias: { selected: true, role: 'tab' },
-  classes: 'nav-link nav-item',
-  element: 'tab',
+  // TODO: Should this really have default nav-link and nav-item classes??
+  classes: 'tab-toggle nav-link nav-item',
   // Tabs can only activate, they never deactivate when clicked
   triggerType: 'activate',
 })
@@ -28,17 +34,10 @@ Trigger.defaultProps = {
   color: 'link',
 }
 
-const ContentContainer = withTheme('TabContentContainer', props =>
-  elem({
-    classes: 'tab-content',
-    ...props,
-  }),
-)
-
 const Tab = activeContainer({
   Content: withActive(withTheme('TabContent', Content)),
   Trigger: withActive(withTheme('TabTrigger', Trigger)),
-  element: 'tab',
+  classes: 'tab',
 })
 
 Tab.Nav = TabNav

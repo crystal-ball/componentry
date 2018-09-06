@@ -5,11 +5,9 @@ import ariasComputer, { type ComponentArias } from './utils/arias'
 import { cleanActive } from './utils/clean-props'
 
 type Options = {
-  classes?: string,
   /** Arias to include for component */
   arias: ComponentArias,
-  /** Name of element, used for classes and handler selection */
-  element?: string,
+  classes?: string,
   /** Popper elements are tooltips and popovers, they include extra markup */
   popper?: boolean,
 }
@@ -25,7 +23,7 @@ type Props = {
 /**
  * Factory returns custom `<Content />` components defined by the options.
  */
-export default ({ arias, classes = '', element = '', popper = false }: Options = {}) => ({
+export default ({ arias, classes = '', popper = false }: Options = {}) => ({
   active,
   children,
   guid,
@@ -42,12 +40,7 @@ export default ({ arias, classes = '', element = '', popper = false }: Options =
       type: 'content',
       arias,
     }),
-    classes: [
-      classes,
-      {
-        [`${element}-content`]: element,
-      },
-    ],
+    classes,
     children: (
       <Fragment>
         {popper && (
@@ -65,7 +58,10 @@ export default ({ arias, classes = '', element = '', popper = false }: Options =
   // If the element is a popper, wrap it in a content container, this is used to
   // bust width of parent element
   return popper ? (
-    <div className={`${element}-content-container`}>{ComponentContent}</div>
+    // This className works right now b/c we're only passing a single className
+    // in classes, but this is fragile... would be nice to be more explicity but
+    // not add in unnecessary factory config code.
+    <div className={`${classes}-container`}>{ComponentContent}</div>
   ) : (
     ComponentContent
   )

@@ -9,10 +9,6 @@ type Options = {
   arias: ComponentArias,
   /** Custom trigger static classes */
   classes?: string,
-  /** Name of element, used for classes and handler selection */
-  element: string,
-  /** The display name for the component, specified for better debugging */
-  // name: string,
   /** If the trigger can act as a toggle vs activate only */
   triggerType?: 'activate' | 'deactivate',
 }
@@ -32,7 +28,7 @@ type Props = {
 /**
  * Factory returns custom `<Trigger />` components defined by the options.
  */
-export default ({ arias, classes, element, triggerType }: Options = {}) => ({
+export default ({ arias, classes, triggerType }: Options = {}) => ({
   activate,
   active,
   activeId = '',
@@ -65,8 +61,6 @@ export default ({ arias, classes, element, triggerType }: Options = {}) => ({
       {
         // For mutli-active triggers add active if the trigger is selected
         active: activeId && active === activeId,
-        // TODO: rename to element-trigger
-        [`${element}-toggle`]: element,
       },
     ],
     onClick,

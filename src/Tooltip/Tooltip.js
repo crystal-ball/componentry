@@ -7,19 +7,19 @@ import withTheme from '../withTheme'
 
 const Content = activeContent({
   arias: { id: true, role: 'tooltip', hidden: true },
-  element: 'tooltip',
+  classes: 'tooltip-content',
   popper: true,
 })
 
 const Trigger = activeTrigger({
   arias: { describedby: true },
-  element: 'tooltip',
+  classes: 'tooltip-toggle',
 })
 
 const Tooltip = activeContainer({
   Content: withActive(withTheme('TooltipContent', Content)),
   Trigger: withActive(withTheme('TooltipTrigger', Trigger)),
-  element: 'tooltip',
+  classes: 'tooltip',
   escHandler: true,
   mouseEvents: true,
 })

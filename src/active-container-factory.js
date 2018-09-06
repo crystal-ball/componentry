@@ -12,8 +12,8 @@ type Options = {
   Content: ComponentType<any>,
   /** Component's `Trigger` subcomponent */
   Trigger: ComponentType<any>,
-  /** Name of element, used for classes and handler selection */
-  element: string,
+  /** Default class names to pass to component */
+  classes?: string,
   /** When tue the state container will register handlers for mouse events */
   mouseEvents?: boolean,
   /** When true call deactivate on `esc` keypress */
@@ -66,7 +66,7 @@ type State = {
 export default ({
   Content,
   Trigger,
-  element,
+  classes,
   escHandler,
   clickHandler,
   mouseEvents,
@@ -246,7 +246,7 @@ export default ({
         <ActiveProvider.Provider value={activeValues}>
           {elem({
             'data-id': this.guid,
-            classes: [element, direction],
+            classes: [classes, direction],
             // For elements with mouse events we need to know when the mouse event
             // occurs on the parent element, not the trigger element
             onMouseEnter: mouseEvents ? this.handleActivate : undefined,

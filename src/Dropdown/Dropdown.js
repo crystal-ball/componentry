@@ -6,25 +6,24 @@ import withTheme from '../withTheme'
 
 const Content = activeContent({
   arias: { labelledby: true, hidden: true },
-  element: 'dropdown',
+  classes: 'dropdown-content',
 })
 
 const Trigger = activeTrigger({
   arias: { expanded: true, haspopup: true, id: true },
-  element: 'dropdown',
+  classes: 'dropdown-toggle',
 })
 
 const Item = activeTrigger({
   // TODO: what arias should this have?
   arias: {},
   classes: 'dropdown-item',
-  element: 'dropdown-item',
 })
 
 const Dropdown = activeContainer({
   Content: withTheme('DropdownContent', withActive(Content)),
   Trigger: withTheme('DropdownTrigger', withActive(Trigger)),
-  element: 'dropdown',
+  classes: 'dropdown',
   escHandler: true,
   clickHandler: true,
 })
