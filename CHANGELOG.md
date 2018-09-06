@@ -8,6 +8,20 @@ and this project adheres to
 
 #### [Unreleased]
 
+# [3.0.0-alpha.1] - 2018-09-06
+
+## BREAKING CHANGES
+
+* React 16.3 now required!
+* Alert and Button outline classes refactored to work WITH color classes instead of REPLACING them.
+
+## Refactors
+
+* Use React context
+* Component factories required for clarity and consistency
+* Element factory refactored to only handle returning JSX
+* Theme, Active, and Visible states/data separated into individual HOCs
+
 # [3.0.0-alpha.0] - 2018-06-26
 
 See the v3 migration doc for in progress updates.
