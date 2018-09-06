@@ -1,13 +1,13 @@
 const statics = [
-  'Trigger',
-  'Content',
-  'Item',
-  'Header',
-  'Title',
   'Body',
-  'Footer',
-  'Nav',
+  'Content',
   'ContentContainer',
+  'Footer',
+  'Header',
+  'Item',
+  'Nav',
+  'Title',
+  'Trigger',
 ]
 
 export default function transferStatics(Base, Target) {

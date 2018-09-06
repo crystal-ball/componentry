@@ -16,11 +16,9 @@ const CardTitle = props =>
   })
 
 const Card = props => componentryElem({ classes: 'card', ...props })
+Card.Body = withTheme('CardBody', CardBody)
+Card.Footer = withTheme('CardFooter', CardFooter)
+Card.Header = withTheme('CardHeader', CardHeader)
+Card.Title = withTheme('CardTitle', CardTitle)
 
-const ThemedCard = withTheme('Card', Card)
-ThemedCard.Body = withTheme('CardBody', CardBody)
-ThemedCard.Footer = withTheme('CardFooter', CardFooter)
-ThemedCard.Header = withTheme('CardHeader', CardHeader)
-ThemedCard.Title = withTheme('CardTitle', CardTitle)
-
-export default ThemedCard
+export default withTheme('Card', Card)
