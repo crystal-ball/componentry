@@ -2,7 +2,8 @@
   "compilerOptions": {
     "baseUrl": ".",
     "paths": {
-      "*": ["*", "src/*"]
+      "componentry": ["src/index"],
+      "*": ["*", "demo/*"]
     }
   },
   "exclude": ["node_modules", "dist", "flow-typed"]
