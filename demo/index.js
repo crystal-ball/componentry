@@ -14,6 +14,9 @@ import './vendor/prism' // Prism uses a global on the window
 import './styles/index.scss'
 import App from './components/App'
 
+// Include error overlay during dev
+if (process.env.NODE_ENV === 'development') require('webpack-serve-overlay') // eslint-disable-line
+
 // Inject SVG symbol sprite into document from local storage if exists, otherwise
 // fetch, cache in local storage and inject. Manifest is inlined to index.html by
 // webpack
