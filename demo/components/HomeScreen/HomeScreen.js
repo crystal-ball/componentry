@@ -29,14 +29,14 @@ const Feature = styled(Media)`
 export default () => (
   <div>
     <Hero direction="column" align="center">
-      <h1 className="display-2 text-primary mb-4">
+      <Header color="primary" className="display-2 mb-4">
         <u>C</u>
         omponentry
-      </h1>
+      </Header>
 
-      <h3 className="mb-5 text-center w-75 text-muted">
+      <Header as="h3" color="muted" textAlign="center" className="mb-5 w-75">
         <em>A scalable, accessible React component library</em>
-      </h3>
+      </Header>
     </Hero>
 
     <Flex

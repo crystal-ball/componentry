@@ -3,18 +3,28 @@ import withTheme from '../withTheme'
 import elem from '../elem-factory'
 
 type Props = {
-  /** Specifies DOM header element size */
-  header: 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6',
-  /** Sets text color to muted */
-  muted: boolean,
+  /** Sets utility text color class */
+  color: string, // theme colors + muted
+  /** Sets a direct style matching font size number */
+  fontSize?: number,
+
+  textAlign: '' | 'justify' | 'right' | 'center' | 'left',
 }
 
-export default withTheme('Header', ({ header = 'h1', muted, ...rest }: Props) =>
+const Header = ({ color, fontSize, textAlign, ...rest }: Props) =>
   elem({
-    defaultAs: header,
+    defaultAs: 'h1',
+    style: { fontSize },
     classes: {
-      'text-muted': muted,
+      [`text-${textAlign}`]: textAlign,
+      [`text-${color}`]: color,
     },
     ...rest,
-  }),
-)
+  })
+
+Header.defaultProps = {
+  textAlign: '',
+  color: '',
+}
+
+export default withTheme('Header', Header)
