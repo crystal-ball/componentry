@@ -47,7 +47,7 @@ pre[class*='language-'] {
 
 :not(pre) > code[class*='language-'],
 pre[class*='language-'] {
-  background: $background;
+  background: $prism-background;
 }
 
 // Inline code
@@ -160,7 +160,7 @@ div.prism-show-language {
 }
 
 div.prism-show-language > div.prism-show-language-label {
-  color: $background;
+  color: $prism-background;
   background-color: $color;
   display: inline-block;
   position: absolute;

@@ -8,4 +8,6 @@
   @each $color, $value in $theme-colors {
     --#{$color}: #{$value};
   }
+  // --- Headings
+  --heading-color: #{$headings-color};
 }
