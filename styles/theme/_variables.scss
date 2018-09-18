@@ -77,6 +77,8 @@ $warning:       $yellow !default;
 $danger:        $red !default;
 $light:         $gray-100 !default;
 $dark:          $gray-800 !default;
+$background:    $white !default;
+$foreground:    $gray-900 !default;
 
 // Theme colors
 //
@@ -91,7 +93,9 @@ $theme-colors: map-merge((
   "warning":    $warning,
   "danger":     $danger,
   "light":      $light,
-  "dark":       $dark
+  "dark":       $dark,
+  "background": $background,
+  "foreground": $foreground,
 ), $theme-colors);
 
 // Set a specific jump point for requesting color jumps
@@ -150,8 +154,8 @@ $sizes: map-merge((
 //
 // Settings for the `<body>` element.
 
-$body-bg:                   $white !default;
-$body-color:                $gray-900 !default;
+$body-bg:                   $background !default;
+$body-color:                $foreground !default;
 
 // Links
 //

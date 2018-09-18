@@ -20,6 +20,31 @@ be picked up by any child component. The available options are:
 
 _Note that these defaults can still be overriden for any component instance._
 
+## Dynamic theming
+
+Componentry supports runtime dynamic theming with CSS variables. The SASS
+variables define the default theme for Componentry. Additional containers can
+be added that update the CSS variables inside them.
+
+1. Continue to allow using SASS variables to set the theme
+2. Library handles creating CSS variables for styles
+3. Better ability to work within a theme context
+
+Answer:
+
+1. Componentry sets up the CSS variables that will be the "default" theme,
+   applications can then create additional theme containers that override the
+   CSS variables:
+
+   ```scss
+   .rad-theme {
+     --primary: #fe6083;
+   }
+   ```
+
+   In this case, the `.rad-theme` container can be used to override the primary
+   color used throughout library.
+
 ## Customizing icons
 
 The default library icons can be enabled by setting `$include-icons` true in

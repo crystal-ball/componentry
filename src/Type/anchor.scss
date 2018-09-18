@@ -1,0 +1,12 @@
+/* componentry/src/Type/anchor */
+
+a {
+  color: $link-color;
+  text-decoration: $link-decoration;
+  -webkit-text-decoration-skip: objects; // Remove gaps in links underline in iOS 8+ and Safari 8+.
+
+  &:hover {
+    color: $link-hover-color;
+    text-decoration: $link-hover-decoration;
+  }
+}
