@@ -5,6 +5,7 @@ defaults:
   outline: false
   size: null
   link: false
+  disabled: false
 componentProps:
   - color: true
   - name: link
@@ -44,9 +45,13 @@ the exact styles needed.
         true: { color: null, size: null, outline: false, link: true }
       }
     },
+    {
+      label: 'disabled',
+      boolean: true,
+    }
   ]}
-  renderCode={({ block, color, outline, size, link }) =>
-    `<Button${color ? ` color="${color}"` : ''}${block ? ` block` : ''}${outline ? ' outline' : ''}${size ? ` size="${size}"` : ''}${link ? ' link' : ''}>Click me!</Button>`}
+  renderCode={({ block, color, outline, size, link, disabled }) =>
+    `<Button${color ? ` color="${color}"` : ''}${block ? ` block` : ''}${outline ? ' outline' : ''}${size ? ` size="${size}"` : ''}${link ? ' link' : ''}${disabled ? ' disabled' : ''}>Click me!</Button>`}
   renderComponent={data => <Button {...data}>Click me!</Button>}
 />
 

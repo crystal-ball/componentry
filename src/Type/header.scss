@@ -29,7 +29,7 @@ $heading-weights: (
     font-family: $headings-font-family;
     font-weight: map-get($map: $heading-weights, $key: $heading);
     line-height: $headings-line-height;
-    color: var(--heading-color);
+    color: $headings-color;
     font-size: $heading-font-size;
   }
 }
