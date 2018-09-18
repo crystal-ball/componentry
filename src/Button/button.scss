@@ -26,7 +26,8 @@
   // $btn-transition default includes color, background-color, border-color
   @include transition($btn-transition);
 
-  // NOPE For use with a.btn elements only
+  // Default disabled styles remove pointer and adjust opacity to indicate
+  // button is disabled
   &.disabled,
   &:disabled {
     cursor: default;
