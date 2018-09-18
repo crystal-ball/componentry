@@ -5,6 +5,7 @@ defaults:
   outline: false
   size: null
   link: false
+  disabled: false
 componentProps:
   - color: true
   - name: link
@@ -44,9 +45,13 @@ the exact styles needed.
         true: { color: null, size: null, outline: false, link: true }
       }
     },
+    {
+      label: 'disabled',
+      boolean: true,
+    }
   ]}
-  renderCode={({ block, color, outline, size, link }) =>
-    `<Button${color ? ` color="${color}"` : ''}${block ? ` block` : ''}${outline ? ' outline' : ''}${size ? ` size="${size}"` : ''}${link ? ' link' : ''}>Click me!</Button>`}
+  renderCode={({ block, color, outline, size, link, disabled }) =>
+    `<Button${color ? ` color="${color}"` : ''}${block ? ` block` : ''}${outline ? ' outline' : ''}${size ? ` size="${size}"` : ''}${link ? ' link' : ''}${disabled ? ' disabled' : ''}>Click me!</Button>`}
   renderComponent={data => <Button {...data}>Click me!</Button>}
 />
 
@@ -62,5 +67,10 @@ element for any target that is not an anchor. Using a button element ensures
 that screen readers are able to understand the intent of a user interacting with
 that element. The Button component makes it easy to create semantic, accessible
 button elements that look like anchors with the `link` prop.
+
+## Advanced theming
+
+Advanced button theming is available to control: darken percent for hover and
+active states, single disabled style, text transform and text weight.
 
 <PropsTabs componentProps={componentProps} themeColors size />

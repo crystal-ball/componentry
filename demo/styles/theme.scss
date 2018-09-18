@@ -72,10 +72,16 @@ $h3-font-size:            $font-size-base * 1.6;
 $h4-font-size:            $font-size-base * 1.2;
 
 $headings-font-weight:    300;
-$headings-color:          $gray-800;
+$headings-color:          var(--headings-color);
 
 // Buttons
 $btn-font-weight:         300; // The white Libre Franklin font looks nice at a lighter weight
+
+// Demo using a single diabled style for all button colors
+$btn-disabled-bg:         transparent;
+$btn-disabled-border:     #e1e7e6;
+$btn-disabled-color:      var(--btn-disabled-color);
+$btn-disabled-opacity:    1; // Overrides default behavior of reducing opacity
 
 // Tooltips
 

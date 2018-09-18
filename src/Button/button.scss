@@ -26,7 +26,9 @@
   // $btn-transition default includes color, background-color, border-color
   @include transition($btn-transition);
 
-  &.disabled, // For use with a.btn elements only
+  // Default disabled styles remove pointer and adjust opacity to indicate
+  // button is disabled
+  &.disabled,
   &:disabled {
     cursor: default;
     opacity: $btn-disabled-opacity;
@@ -46,28 +48,36 @@
     &:hover {
       border-color: darken($value, 10%);
       color: color-yiq($value);
-      @include gradient-bg(darken($value, 7.5%));
-
-      @include button-hover-styles($value); // Overrides escape hatch
+      @include gradient-bg(darken($value, $btn-bg-hover-darken));
     }
 
     &:active,
     &.active {
       border-color: darken($value, 12.5%);
       color: color-yiq($value);
-      @include gradient-bg(darken($value, 10%));
-
-      @include button-active-styles($value); // Overrides escape hatch
+      @include gradient-bg(darken($value, $btn-bg-active-darken));
     }
 
-    // Reset any psuedo styles to variant default for disabled
+    // Disabled buttons can be styled to a consistent appearance with optional
+    // disabled theme vars, otherwise reset to default appearance with an
+    // opacity change to indicate disabled state
     &.disabled,
     &:disabled {
-      border-color: $value;
-      color: color-yiq($value);
-      @include gradient-bg($value);
-
-      @include button-disabled-styles($value); // Overrides escape hatch
+      @if variable-exists(btn-disabled-bg) {
+        @include gradient-bg($btn-disabled-bg);
+      } @else {
+        @include gradient-bg($value);
+      }
+      @if variable-exists(btn-disabled-border) {
+        border-color: $btn-disabled-border;
+      } @else {
+        border-color: $value;
+      }
+      @if variable-exists(btn-disabled-color) {
+        color: $btn-disabled-color;
+      } @else {
+        color: color-yiq($value);
+      }
     }
   }
 }
@@ -88,8 +98,6 @@
       background-color: $value;
       border-color: $value;
       @include gradient-bg($value);
-
-      @include button-outline-hover-styles($value); // Overrides escape hatch
     }
 
     &:active,
@@ -97,16 +105,12 @@
       border-color: $value;
       color: color-yiq($value);
       @include gradient-bg(darken($value, 7.5%));
-
-      @include button-outline-active-styles($value); // Overrides escape hatch
     }
 
     &.disabled,
     &:disabled {
       color: $value;
       background-color: transparent;
-
-      @include button-outline-disabled-styles($value); // Overrides escape hatch
     }
   }
 }
