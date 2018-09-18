@@ -66,7 +66,7 @@ which enables controlled components)_.
 
 ## Design principles
 
-<p class="lead">
+<p className="lead">
   The guiding principles of Componentry aim to enable scaling applications
   to large sizes while maintaining design cohesion, even as the application
   theme evolves.
