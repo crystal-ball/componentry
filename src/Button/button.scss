@@ -47,18 +47,14 @@
     &:hover {
       border-color: darken($value, 10%);
       color: color-yiq($value);
-      @include gradient-bg(darken($value, 7.5%));
-
-      @include button-hover-styles($value); // Overrides escape hatch
+      @include gradient-bg(darken($value, $btn-bg-hover-darken));
     }
 
     &:active,
     &.active {
       border-color: darken($value, 12.5%);
       color: color-yiq($value);
-      @include gradient-bg(darken($value, 10%));
-
-      @include button-active-styles($value); // Overrides escape hatch
+      @include gradient-bg(darken($value, $btn-bg-active-darken));
     }
 
     // Disabled buttons can be styled to a consistent appearance with optional
@@ -101,8 +97,6 @@
       background-color: $value;
       border-color: $value;
       @include gradient-bg($value);
-
-      @include button-outline-hover-styles($value); // Overrides escape hatch
     }
 
     &:active,
@@ -110,16 +104,12 @@
       border-color: $value;
       color: color-yiq($value);
       @include gradient-bg(darken($value, 7.5%));
-
-      @include button-outline-active-styles($value); // Overrides escape hatch
     }
 
     &.disabled,
     &:disabled {
       color: $value;
       background-color: transparent;
-
-      @include button-outline-disabled-styles($value); // Overrides escape hatch
     }
   }
 }

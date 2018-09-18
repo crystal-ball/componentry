@@ -68,4 +68,9 @@ that screen readers are able to understand the intent of a user interacting with
 that element. The Button component makes it easy to create semantic, accessible
 button elements that look like anchors with the `link` prop.
 
+## Advanced theming
+
+Advanced button theming is available to control: darken percent for hover and
+active states, single disabled style, text transform and text weight.
+
 <PropsTabs componentProps={componentProps} themeColors size />

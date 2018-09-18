@@ -264,15 +264,3 @@
     transition: none;
   }
 }
-
-// Component mixins
-// ---------------------------------------------------------------------------
-
-/*
- * These mixins are intended to be overrideable for advanced customization of
- * library styles. In order to override them, they need to be included before
- * the override version. Intended workflow is that these mixins are included
- * as part of the base theme, and are then overwritten...
- */
-
-@import '../../src/Button/button-mixins';

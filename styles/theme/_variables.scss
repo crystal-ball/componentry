@@ -396,6 +396,10 @@ $btn-padding-y-lg:            $input-btn-padding-y-lg !default;
 $btn-padding-x-lg:            $input-btn-padding-x-lg !default;
 $btn-line-height-lg:          $input-btn-line-height-lg !default;
 
+$btn-border-radius:           $border-radius !default;
+$btn-border-radius-lg:        $border-radius-lg !default;
+$btn-border-radius-sm:        $border-radius-sm !default;
+
 $btn-border-width:            $input-btn-border-width !default;
 
 $btn-letter-spacing:          0px !default;
@@ -404,29 +408,29 @@ $btn-letter-spacing-lg:       $btn-letter-spacing !default;
 
 $btn-text-transform:          none !default;
 $btn-font-weight:             $font-weight-normal !default;
+
 $btn-box-shadow:              inset 0 1px 0 rgba($white, .15), 0 1px 1px rgba($black, .075) !default;
-$btn-focus-width:             $input-btn-focus-width !default;
-$btn-focus-box-shadow:        $input-btn-focus-box-shadow !default;
+// TODO: this shouldn't be needed anymore since we're not doing custom focus styles
 $btn-active-box-shadow:       inset 0 3px 5px rgba($black, .125) !default;
 
-$btn-link-disabled-color:     $gray-600 !default;
-
-$btn-block-spacing-y:         .5rem !default;
+$btn-bg-hover-darken:         7.5%;
+$btn-bg-active-darken:        10%;
 
 // Disabled buttons
+$btn-link-disabled-color:     $gray-600 !default;
 $btn-disabled-opacity:        .65 !default;
 
-// $btn-disabled-bg - default undefined
-// $btn-disabled-border - default undefined
-// $btn-disabled-color - default undefined
+// The following variables are undefined and can be set by an application to
+// create consistent disabled button styles
+// $btn-disabled-bg
+// $btn-disabled-border
+// $btn-disabled-color
 
+// Sets margin between stacked block buttons
+$btn-block-spacing-y:         .5rem !default;
 
-// Allows for customizing button radius independently from global border radius
-$btn-border-radius:           $border-radius !default;
-$btn-border-radius-lg:        $border-radius-lg !default;
-$btn-border-radius-sm:        $border-radius-sm !default;
-
-$btn-transition:              color .15s ease-in-out, background-color .15s ease-in-out, border-color .15s ease-in-out !default;
+// Customize button transition styles
+$btn-transition: color .15s ease-in-out, background-color .15s ease-in-out, border-color .15s ease-in-out !default;
 
 
 // Forms
