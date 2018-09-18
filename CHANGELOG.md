@@ -8,6 +8,29 @@ and this project adheres to
 
 #### [Unreleased]
 
+# [3.0.0-alpha.2] - 2018-09-18
+
+## Added
+
+* All library components now support space util props.
+* The `Text` component has been added and shares the same API as the `Anchor`
+  and `Header` compoents. These type components are considered stable enough to
+  begin using and tracking changes against.
+* Theme variables `background` and `foreground` added to simplify dynamic
+  theming of type elements.
+
+## Refactors
+
+* Button custom mixins have been replaced with appropriate SASS variables
+* Anchor styles have been moved out of `reboot.scss` into `Type/anchor.scss`
+* Reboot styles have been condensed to only output one ruleset per element to
+  clean up debugging.
+
+## Fixed
+
+* Packages `hoist-non-react-statics` and `prop-types` have been removed from
+  project dependencies and peer-deps.
+
 # [3.0.0-alpha.1] - 2018-09-06
 
 ## BREAKING CHANGES
