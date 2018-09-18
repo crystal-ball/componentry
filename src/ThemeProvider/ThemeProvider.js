@@ -1,7 +1,5 @@
 // @flow
-import { Component, createContext } from 'react'
-import type { Node } from 'react'
-import { number, shape } from 'prop-types'
+import { createContext } from 'react'
 
 export const themeDefaults = { transitionDuration: 300 }
 
@@ -24,41 +22,3 @@ export const themeDefaults = { transitionDuration: 300 }
 
 const ThemeContext = createContext(themeDefaults)
 export default ThemeContext
-
-// LEGACY
-// ---------------------------------------------------------------------------
-
-export type Theme = {
-  /** Default duration for theme visibility transitions */
-  transitionDuration: number,
-  /**
-   * All components can have default behaviors configured using a context object for
-   * that component. The values are spread into each component instance.
-   */
-  [string]: { [string]: any },
-}
-
-type Props = {
-  children: Node,
-  theme: Theme,
-}
-
-export class LegacyThemeProvider extends Component<Props> {
-  static childContextTypes = {
-    THEME: shape({
-      transitionDuration: number,
-      // Component configurations not declared, explicit declaration not necessary
-    }),
-  }
-
-  /**
-   * Return a library namespace for theme configurations to prevent name collisions
-   */
-  getChildContext() {
-    return { THEME: { ...this.props.theme } }
-  }
-
-  render() {
-    return this.props.children
-  }
-}

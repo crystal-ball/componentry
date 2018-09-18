@@ -34,7 +34,7 @@ export default () => (
         omponentry
       </Header>
 
-      <Header as="h3" color="muted" textAlign="center" className="mb-5 w-75">
+      <Header as="h3" color="muted" textAlign="center" className="w-75 mb-5">
         <em>A scalable, accessible React component library</em>
       </Header>
     </Hero>
