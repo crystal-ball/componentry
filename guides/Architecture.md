@@ -86,6 +86,24 @@ In order to accomplish this Componentry:
 _Componentry extends Bootstrap, so it's helpful to be familiar with their
 [Approach][]._
 
+### Spacing
+
+Componentry will convert passed spacing props of `m*` and `p*` to `className` or inline `style`
+values. This simplifies using consistent theme spacing values with the ability to override
+as needed.
+
+A general recommendation of the library is to directly pass class values for the
+default utility classes, falling back to passing props for custom override
+scenarios. This helps to call out when a custom override is occuring.
+
+```jsx
+// Best practice: using a theme space value to create consistent spacing
+<Header className="mb-5">Large margin-bottom header</Header>
+
+// Custom overrides: pass a string for a custom spacing value
+<Header mb='22'>Custom margin-bottom header</Header>
+```
+
 ## Dependencies
 
 Componentry has dependencies on `classnames` (SIZE) and `nanoid` (SIZE). These

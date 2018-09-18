@@ -46,7 +46,6 @@
     "js:esnext": "BABEL_ENV=next babel src --out-dir esnext --ignore *.spec.js"
   },
   "peerDependencies": {
-    "prop-types": "15.x",
     "react": "^16.3"
   },
   "dependencies": {
