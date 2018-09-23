@@ -63,16 +63,20 @@
     // opacity change to indicate disabled state
     &.disabled,
     &:disabled {
+      border-width: $btn-disabled-border-width;
+
       @if variable-exists(btn-disabled-bg) {
         @include gradient-bg($btn-disabled-bg);
       } @else {
         @include gradient-bg($value);
       }
+
       @if variable-exists(btn-disabled-border) {
         border-color: $btn-disabled-border;
       } @else {
         border-color: $value;
       }
+
       @if variable-exists(btn-disabled-color) {
         color: $btn-disabled-color;
       } @else {
