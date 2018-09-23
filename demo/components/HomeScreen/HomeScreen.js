@@ -1,5 +1,5 @@
 // @flow
-import React from 'react'
+import React, { Fragment } from 'react'
 import styled from 'styled-components'
 import { Flex, Header, Media } from 'componentry'
 import { Link } from 'react-router-dom'
@@ -15,6 +15,11 @@ const Hero = styled(Flex)`
   margin-top: 5rem;
 `
 
+const FeatureContainer = styled.div`
+  max-width: 650px;
+  margin: auto;
+`
+
 const FeatureHeader = styled(Header)`
   text-align: center;
   letter-spacing: 3px;
@@ -27,7 +32,7 @@ const Feature = styled(Media)`
 `
 
 export default () => (
-  <div>
+  <Fragment>
     <Hero direction="column" align="center">
       <Header color="primary" className="display-2 mb-4">
         <u>C</u>
@@ -60,68 +65,62 @@ export default () => (
       </div>
     </Flex>
 
-    <div className="mb-5 row justify-content-center">
-      <Flex justify="center" className="col-7 my-4">
-        <div>
-          <FeatureHeader as="h3">Lightweight Bundle Size</FeatureHeader>
-          <Feature>
-            <img
-              className="icon display-3 mr-3"
-              src={bundleSVG}
-              alt="Library bundle size is a small percentage of overall bundle"
-            />
-            <Media.Body>
-              <p>
-                Componentry is optimized for size and performance. With minimial external
-                dependencies the library weighs in at 12.8kB. Advanced optimizations are
-                possible using targeted ESM and ESNext build targets.
-              </p>
-            </Media.Body>
-          </Feature>
-        </div>
-      </Flex>
-      <Flex justify="center" className="col-7 my-4">
-        <div>
-          <FeatureHeader as="h3">Consistent APIs</FeatureHeader>
-          <Feature>
-            <Media.Body>
-              <p>
-                Spend more time writing and less time checking documentation with
-                consistent APIs and event hooks across components. Consistent APIs and
-                focused component concerns make component composition easy.
-              </p>
-            </Media.Body>
-            <img
-              className="icon display-3 mr-3"
-              src={mergeSVG}
-              alt="Different components utilize the same API"
-            />
-          </Feature>
-        </div>
-      </Flex>
-      <Flex justify="center" className="col-7 my-4">
-        <div>
-          <FeatureHeader as="h3">A++ Accessibility</FeatureHeader>
-          <Feature className="border-bottom-0">
-            <img
-              className="icon display-3 mr-3"
-              src={accessibleSVG}
-              alt="Library focuses on A++ accessibility"
-            />
-            <Media.Body>
-              <p>
-                Components are written using{' '}
-                <a href="https://www.w3.org/WAI/intro/aria" rel="noreferrer noopener">
-                  WAI-ARIA
-                </a>{' '}
-                roles and attributes for A++ fully accessible components out of the box.
-                Internal component APIs even handle assigning dynamic aria attributes on
-                subcomponents.
-              </p>
-            </Media.Body>
-          </Feature>
-        </div>
-      </Flex>
-    </div>
-  </div>
+    <Flex justify="center" mb={5} direction="column">
+      <FeatureContainer className="my-4">
+        <FeatureHeader as="h3">Lightweight Bundle Size</FeatureHeader>
+        <Feature>
+          <img
+            className="icon display-3 mr-3"
+            src={bundleSVG}
+            alt="Library bundle size is a small percentage of overall bundle"
+          />
+          <Media.Body>
+            <p>
+              Componentry is optimized for size and performance. With minimial external
+              dependencies the library weighs in at 12.8kB. Advanced optimizations are
+              possible using targeted ESM and ESNext build targets.
+            </p>
+          </Media.Body>
+        </Feature>
+      </FeatureContainer>
+      <FeatureContainer className="my-4">
+        <FeatureHeader as="h3">Consistent APIs</FeatureHeader>
+        <Feature>
+          <Media.Body>
+            <p>
+              Spend more time writing and less time checking documentation with consistent
+              APIs and event hooks across components. Consistent APIs and focused
+              component concerns make component composition easy.
+            </p>
+          </Media.Body>
+          <img
+            className="icon display-3 mr-3"
+            src={mergeSVG}
+            alt="Different components utilize the same API"
+          />
+        </Feature>
+      </FeatureContainer>
+      <FeatureContainer className="my-4">
+        <FeatureHeader as="h3">A++ Accessibility</FeatureHeader>
+        <Feature className="border-bottom-0">
+          <img
+            className="icon display-3 mr-3"
+            src={accessibleSVG}
+            alt="Library focuses on A++ accessibility"
+          />
+          <Media.Body>
+            <p>
+              Components are written using{' '}
+              <a href="https://www.w3.org/WAI/intro/aria" rel="noreferrer noopener">
+                WAI-ARIA
+              </a>{' '}
+              roles and attributes for A++ fully accessible components out of the box.
+              Internal component APIs even handle assigning dynamic aria attributes on
+              subcomponents.
+            </p>
+          </Media.Body>
+        </Feature>
+      </FeatureContainer>
+    </Flex>
+  </Fragment>
 )
