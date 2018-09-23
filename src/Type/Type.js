@@ -15,8 +15,12 @@ type Props = {
   uppercase: boolean,
 }
 
-const makeType = defaultAs => {
-  const Elem = ({
+/**
+ * The type elements share the same props API and are only different in the
+ * default `as` value which is customized with default props.
+ */
+const makeType = as => {
+  const Type = ({
     color,
     fontSize,
     fontWeight,
@@ -28,7 +32,6 @@ const makeType = defaultAs => {
     ...rest
   }: Props) =>
     elem({
-      defaultAs,
       style: { fontSize, letterSpacing, lineHeight },
       classes: {
         'font-italic': italic,
@@ -40,7 +43,8 @@ const makeType = defaultAs => {
       ...rest,
     })
 
-  Elem.defaultProps = {
+  Type.defaultProps = {
+    as,
     color: '',
     fontWeight: '',
     italic: false,
@@ -48,7 +52,7 @@ const makeType = defaultAs => {
     uppercase: false,
   }
 
-  return Elem
+  return Type
 }
 
 const Anchor = withTheme('Anchor', makeType('a'))
