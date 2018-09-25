@@ -28,6 +28,10 @@ options for composing navigation into other components. By default the Nav
 component creates a `nav` tag with either `a` or Button elements for nav items,
 but the tags used can be specified using the `as` prop.
 
+Like the `List.Item` component, the `Nav.Item` has a base class `nav-item` that
+is added to any element. The modifier `nav-item-action` is added to button and
+anchor elements to provide user interaction styles.
+
 <InteractiveDemo
   defaults={{ fill: false, justify: false, pills: false, vertical: false }}
   formFields={[
@@ -37,16 +41,18 @@ but the tags used can be specified using the `as` prop.
     { label: 'vertical', boolean: true },
   ]}
   renderCode={({ fill, justify, pills, vertical }) => `<Nav${pills ? ' pills' : ''}${vertical ? ' vertical' : ''}${fill ? ' fill' : ''}${justify ? ' justify' : ''}>
-  <Nav.Item href="#" active>Item 1</Nav.Item>
-  <Nav.Item href="#">Item 2</Nav.Item>
-  <Nav.Item href="#">Item 3</Nav.Item>
+  <Nav.Item href="#" active>Active</Nav.Item>
+  <Nav.Item href="#">Link</Nav.Item>
+  <Nav.Item onClick={() => console.log('hi')}>Link</Nav.Item>
+  <Nav.Item href="#" disabled>Disabled</Nav.Item>
 </Nav>`}
   renderComponent={({ fill, justify, pills, vertical }) => (
     <div className="w-75">
       <Nav pills={pills} vertical={vertical} fill={fill} justify={justify}>
-        <Nav.Item href="#" active>Item 1</Nav.Item>
-        <Nav.Item href="#">Item 2</Nav.Item>
-        <Nav.Item href="#">Item 3</Nav.Item>
+        <Nav.Item href="#" active>Active</Nav.Item>
+        <Nav.Item href="#">Link</Nav.Item>
+        <Nav.Item onClick={() => console.log('hi')}>Link</Nav.Item>
+        <Nav.Item href="#" disabled>Disabled</Nav.Item>
       </Nav>
     </div>
   )}

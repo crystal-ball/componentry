@@ -1,10 +1,5 @@
 /* componentry/src/Close/close */
 
-// ℹ️ Do not import Bootstrap close styles:
-// The Bootstrap close styles assume that you are using the &times; character for
-// your close button, and includes some styles to bump the font size, adjust line
-// line height and add a float.
-//
 // Componentry supports using an SVG icon so that applications can choose a close
 // icon that fits their theme, as well as using flexbox on containers with close
 // buttons instead of floats.
@@ -13,7 +8,6 @@
 // can also be styled for close buttons only using that as a target
 // ℹ️ The background image styles for close icons is located in `/styles/componentry/icons`
 .btn-close {
-  @extend .btn;
   @extend .btn-anchor;
 
   color: $close-color;

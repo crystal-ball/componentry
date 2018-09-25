@@ -1,7 +1,6 @@
 // @flow
 import React, { Fragment, type Node } from 'react'
 import elem from './elem-factory'
-import Button from './Button/Button'
 import ariasComputer, { type ComponentArias } from './utils/arias'
 
 type Options = {
@@ -23,12 +22,20 @@ type Props = {
   active: boolean,
   deactivate: Function,
   guid: string,
+  /**
+   * Toggle `btn-anchor` utility class to style button as an anchor. Defaulted
+   * to true, this is the only button prop currently being handled. Pass the
+   * Button component for any `as` to use all button props.
+   */
+  link: boolean,
 }
 
 /**
  * Factory returns custom `<Trigger />` components defined by the options.
+ * Componentry sets up triggers to be anchor style buttons by default, this
+ * can be overridden by passing an as, type and link to reset the defaults.
  */
-export default ({ arias, classes, triggerType }: Options = {}) => ({
+export default ({ arias, classes, triggerType, defaultLink = true }: Options = {}) => ({
   activate,
   active,
   activeId = '',
@@ -36,6 +43,7 @@ export default ({ arias, classes, triggerType }: Options = {}) => ({
   deactivate,
   decoration,
   guid,
+  link,
   ...rest
 }: Props) => {
   let onClick
@@ -48,7 +56,8 @@ export default ({ arias, classes, triggerType }: Options = {}) => ({
   }
 
   return elem({
-    defaultAs: Button,
+    defaultAs: 'button',
+    type: 'button',
     ...ariasComputer({
       active,
       activeId,
@@ -61,6 +70,8 @@ export default ({ arias, classes, triggerType }: Options = {}) => ({
       {
         // For mutli-active triggers add active if the trigger is selected
         active: activeId && active === activeId,
+        disabled: rest.disabled,
+        'btn-anchor': link || defaultLink,
       },
     ],
     onClick,

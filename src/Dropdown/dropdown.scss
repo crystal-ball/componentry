@@ -152,6 +152,7 @@
 
 // Dropdown items
 // `<button>`-specific styles are denoted with `// For <button>s`
+// TODO: handle cursors for buttons...
 .dropdown-item {
   display: block;
   width: 100%; // For `<button>`s
@@ -159,6 +160,7 @@
   font-weight: $font-weight-normal;
   color: $dropdown-link-color;
   text-align: inherit; // For `<button>`s
+  line-height: $dropdown-item-line-height;
   white-space: nowrap; // prevent links from randomly breaking onto new lines
   background-color: transparent; // For `<button>`s
   border: 0; // For `<button>`s
@@ -177,8 +179,7 @@
     @include gradient-bg($dropdown-link-active-bg);
   }
 
-  &.disabled,
-  &:disabled {
+  &.disabled {
     color: $dropdown-link-disabled-color;
     background-color: transparent;
     // Remove CSS gradients if they're enabled

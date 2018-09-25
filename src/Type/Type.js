@@ -19,41 +19,29 @@ type Props = {
  * The type elements share the same props API and are only different in the
  * default `as` value which is customized with default props.
  */
-const makeType = as => {
-  const Type = ({
-    color,
-    fontSize,
-    fontWeight,
-    italic,
-    letterSpacing,
-    lineHeight,
-    uppercase,
-    textAlign,
-    ...rest
-  }: Props) =>
-    elem({
-      style: { fontSize, letterSpacing, lineHeight },
-      classes: {
-        'font-italic': italic,
-        'text-uppercase': uppercase,
-        [`font-weight-${fontWeight}`]: fontWeight,
-        [`text-${color}`]: color,
-        [`text-${textAlign}`]: textAlign,
-      },
-      ...rest,
-    })
-
-  Type.defaultProps = {
-    as,
-    color: '',
-    fontWeight: '',
-    italic: false,
-    textAlign: '',
-    uppercase: false,
-  }
-
-  return Type
-}
+const makeType = as => ({
+  color,
+  fontSize,
+  fontWeight,
+  italic = false,
+  letterSpacing,
+  lineHeight,
+  uppercase = false,
+  textAlign,
+  ...rest
+}: Props) =>
+  elem({
+    defaultAs: as,
+    style: { fontSize, letterSpacing, lineHeight },
+    classes: {
+      'font-italic': italic,
+      'text-uppercase': uppercase,
+      [`font-weight-${fontWeight}`]: fontWeight,
+      [`text-${color}`]: color,
+      [`text-${textAlign}`]: textAlign,
+    },
+    ...rest,
+  })
 
 const Anchor = withTheme('Anchor', makeType('a'))
 const Header = withTheme('Header', makeType('h1'))

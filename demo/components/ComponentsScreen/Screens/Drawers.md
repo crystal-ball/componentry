@@ -22,7 +22,7 @@ component.
   renderCode={() => `<Drawer>
   <Card>
     <Card.Header>
-      <Flex as={Drawer.Trigger} align="center" justify="between" link className="w-100">
+      <Flex as={Drawer.Trigger} align="center" justify="between" className="w-100">
         <span>Trigger Drawer</span>
         <Icon id="chevron" />
       </Flex>
@@ -41,7 +41,7 @@ component.
       <Drawer>
         <Card>
           <Card.Header>
-            <Flex as={Drawer.Trigger} align="center" justify="between" link className="w-100">
+            <Flex as={Drawer.Trigger} align="center" justify="between" className="w-100">
               <span>Trigger Drawer</span>
               <Icon id="chevron" />
             </Flex>
@@ -74,7 +74,7 @@ inside an accordion.
   renderCode={() => `<Accordion>
   <Card>
     <Card.Header>
-      <Accordion.Trigger activeId="one" link>Trigger One</Accordion.Trigger>
+      <Accordion.Trigger activeId="one">Trigger One</Accordion.Trigger>
     </Card.Header>
     <Accordion.Content as={Card.Body} activeId="one">
         Content One
@@ -82,7 +82,7 @@ inside an accordion.
   </Card>
   <Card>
     <Card.Header>
-      <Accordion.Trigger activeId="two" link>Trigger Two</Accordion.Trigger>
+      <Accordion.Trigger activeId="two">Trigger Two</Accordion.Trigger>
     </Card.Header>
     <Accordion.Content as={Card.Body} activeId="two">
         Content Two
@@ -90,7 +90,7 @@ inside an accordion.
   </Card>
   <Card>
     <Card.Header>
-      <Accordion.Trigger activeId="three" link>Trigger Three</Accordion.Trigger>
+      <Accordion.Trigger activeId="three">Trigger Three</Accordion.Trigger>
     </Card.Header>
     <Accordion.Content as={Card.Body} activeId="three">
         Content Three
@@ -102,7 +102,7 @@ inside an accordion.
       <Accordion>
         <Card>
           <Card.Header>
-            <Accordion.Trigger activeId="one" link>Trigger One</Accordion.Trigger>
+            <Accordion.Trigger activeId="one">Trigger One</Accordion.Trigger>
           </Card.Header>
           <Accordion.Content as={Card.Body} activeId="one">
               Content One
@@ -110,7 +110,7 @@ inside an accordion.
         </Card>
         <Card>
           <Card.Header>
-            <Accordion.Trigger activeId="two" link>Trigger Two</Accordion.Trigger>
+            <Accordion.Trigger activeId="two">Trigger Two</Accordion.Trigger>
           </Card.Header>
           <Accordion.Content as={Card.Body} activeId="two">
               Content Two
@@ -118,7 +118,7 @@ inside an accordion.
         </Card>
         <Card>
           <Card.Header>
-            <Accordion.Trigger activeId="three" link>Trigger Three</Accordion.Trigger>
+            <Accordion.Trigger activeId="three">Trigger Three</Accordion.Trigger>
           </Card.Header>
           <Accordion.Content as={Card.Body} activeId="three">
               Content Three

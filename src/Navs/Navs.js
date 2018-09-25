@@ -15,9 +15,9 @@ const makeNav = tabNav =>
       defaultAs: 'nav',
       role: tabNav ? 'tablist' : undefined,
       classes: {
-        nav: true,
-        'nav-tabs': tabNav,
-        'flex-column': vertical,
+        nav: !tabNav,
+        'tabs-nav-container': tabNav,
+        'nav-vertical': vertical,
         'nav-pills': pills,
         'nav-fill': fill,
         'nav-justified': justify,
@@ -29,6 +29,10 @@ const makeNav = tabNav =>
 const Nav = makeNav(false)
 const TabNav = makeNav(true)
 
+/**
+ * Nav items can be action items or li, notice this follows the same pattern as
+ * the List.Item components
+ */
 const Item = withTheme('NavItem', ({ active, ...rest }) => {
   const { href, onClick } = rest
 
@@ -37,8 +41,9 @@ const Item = withTheme('NavItem', ({ active, ...rest }) => {
     defaultAs: href || onClick ? (href ? 'a' : 'button') : 'li',
     classes: {
       active,
+      disabled: rest.disabled,
       'nav-item': true,
-      'nav-link': href || onClick,
+      'nav-item-action': href || onClick,
     },
     ...rest,
   })

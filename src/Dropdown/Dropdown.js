@@ -18,6 +18,8 @@ const Item = activeTrigger({
   // TODO: what arias should this have?
   arias: {},
   classes: 'dropdown-item',
+  // Dropdown items have appropriate styles
+  defaultLink: false,
 })
 
 const Dropdown = activeContainer({

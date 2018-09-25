@@ -290,6 +290,7 @@ th {
 
 button {
   -webkit-appearance: button;
+  cursor: pointer; // Opinionated: add pointer to non-disabled .btn elements
   margin: 0; // Remove the margin in Firefox and Safari
   font-family: inherit;
   font-size: inherit;
@@ -473,26 +474,4 @@ template {
 // Needed for proper display in IE 10-.
 [hidden] {
   display: none !important;
-}
-
-//
-// Focus outline handlers
-//
-
-body.suppress-outline {
-  & a:focus {
-    outline: none;
-  }
-  & button:focus {
-    outline: none;
-  }
-  & input:focus {
-    outline: none;
-  }
-  & select:focus {
-    outline: none;
-  }
-  & textarea:focus {
-    outline: none;
-  }
 }

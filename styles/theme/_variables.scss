@@ -627,6 +627,7 @@ $dropdown-link-disabled-color:      $gray-600 !default;
 
 $dropdown-item-padding-y:           .25rem !default;
 $dropdown-item-padding-x:           1.5rem !default;
+$dropdown-item-line-height:         $line-height-base !default;
 
 $dropdown-header-color:             $gray-600 !default;
 
@@ -649,9 +650,13 @@ $zindex-tooltip:                    1070 !default;
 
 // Navs
 
-$nav-link-padding-y:                .5rem !default;
-$nav-link-padding-x:                1rem !default;
-$nav-link-disabled-color:           $gray-600 !default;
+$nav-item-padding-y:                .5rem !default;
+$nav-item-padding-x:                1rem !default;
+$nav-item-action-color:             $link-color !default;
+$nav-item-action-hover-color:       $link-hover-color !default;
+$nav-item-action-hover-decoration:  underline !default;
+
+$nav-item-disabled-color:           $gray-600 !default;
 
 $nav-tabs-border-color:             $gray-300 !default;
 $nav-tabs-border-width:             $border-width !default;
@@ -668,6 +673,60 @@ $nav-pills-link-active-bg:          $component-active-bg !default;
 $nav-divider-color:                 $gray-200 !default;
 $nav-divider-margin-y:              ($spacer / 2) !default;
 
+//
+// --- Tabs
+//
+
+$tabs-nav-container-bg:         transparent !default;
+$tabs-nav-container-shadow:     none !default;
+$tabs-nav-container-margin:     0 !default;
+$tabs-nav-container-border:     1px solid $gray-300 !default;
+
+$tabs-nav-vertical-margin:      0 0 0 map-get($map: $spacers, $key: 4);
+
+$tabs-pane-container-padding:   1.25rem !default;
+
+$tabs-tab-padding-y: 0.5rem !default;
+$tabs-tab-padding-x: 1.25rem !default;
+$tabs-tab-color: $gray-700 !default;
+$tabs-tab-bg: transparent !default;
+$tabs-tab-border-color: transparent !default;
+$tabs-tab-border-width: 0 0 2px 0 !default;
+$tabs-tab-border-radius: 0 !default;
+
+$tabs-tab-transition: border-color 0.3s !default;
+
+$tabs-tab-hover-color: $primary !default;
+$tabs-tab-hover-bg: transparent !default;
+$tabs-tab-hover-border-color: transparent !default;
+
+$tabs-tab-active-color: $primary !default;
+$tabs-tab-active-bg: transparent !default;
+$tabs-tab-active-border-color: $primary !default;
+
+$tabs-tab-disabled-bg: transparent !default;
+$tabs-tab-disabled-border-color: transparent !default;
+$tabs-tab-disabled-color: $gray-500 !default;
+
+// Vertical tabs
+
+$tabs-tab-vertical-margin: 0 0 map-get($spacers, 1) !default;
+$tabs-tab-vertical-border-width: 1px !default;
+$tabs-tab-vertical-border-color: transparent !default;
+$tabs-tab-vertical-border-radius: $btn-border-radius !default;
+
+$tabs-tab-vertical-transition: none !default;
+
+$tabs-tab-vertical-hover-border-width: $tabs-tab-vertical-border-width !default;
+$tabs-tab-vertical-hover-border-color: transparent !default;
+
+$tabs-tab-vertical-active-border-width: $tabs-tab-vertical-border-width !default;
+$tabs-tab-vertical-active-border-color: $primary !default;
+
+$tabs-tab-vertical-disabled-border-width: $tabs-tab-vertical-border-width !default;
+$tabs-tab-vertical-disabled-border-color: $tabs-tab-disabled-color !default;
+
+
 // Navbar
 
 $navbar-padding-y:                  ($spacer / 2) !default;
@@ -677,7 +736,7 @@ $navbar-nav-link-padding-x:         .5rem !default;
 
 $navbar-brand-font-size:            $font-size-lg !default;
 // Compute the navbar-brand padding-y so the navbar-brand will have the same height as navbar-text and nav-link
-$nav-link-height:                   ($font-size-base * $line-height-base + $nav-link-padding-y * 2) !default;
+$nav-link-height:                   ($font-size-base * $line-height-base + $nav-item-padding-y * 2) !default;
 $navbar-brand-height:               $navbar-brand-font-size * $line-height-base !default;
 $navbar-brand-padding-y:            ($nav-link-height - $navbar-brand-height) / 2 !default;
 

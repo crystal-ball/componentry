@@ -24,6 +24,9 @@ enable easy navigation between multiple options.
     <h4 className="dropdown-header">Available actions</h4>
     <Dropdown.Item>Interactive Item 1</Dropdown.Item>
     <Dropdown.Item>Interactive Item 2</Dropdown.Item>
+    <Dropdown.Item onClick={() => console.log('hi')} disabled>
+      Disabled Item
+    </Dropdown.Item>
     <div className="dropdown-divider" />
     <span className="dropdown-item-text">Dropdown item text is not interactive</span>
   </Dropdown.Content>
@@ -35,6 +38,9 @@ enable easy navigation between multiple options.
         <h4 className="dropdown-header">Available actions</h4>
         <Dropdown.Item>Interactive Item 1</Dropdown.Item>
         <Dropdown.Item>Interactive Item 2</Dropdown.Item>
+        <Dropdown.Item onClick={() => console.log('hi')} disabled>
+          Disabled Item
+        </Dropdown.Item>
         <div className="dropdown-divider" />
         <span className="dropdown-item-text">Dropdown item text is not interactive</span>
       </Dropdown.Content>
