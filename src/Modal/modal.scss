@@ -89,6 +89,7 @@
   align-items: flex-start; // so the close btn always stays on the upper right corner
   justify-content: space-between; // Put modal header elements (title and dismiss) on opposite ends
   padding: $modal-header-padding;
+  background: $modal-header-bg;
   border-bottom: $modal-header-border-width solid $modal-header-border-color;
   @include border-top-radius($modal-content-border-radius);
 }
@@ -97,6 +98,12 @@
 .modal-title {
   margin-bottom: 0;
   line-height: $modal-title-line-height;
+  color: $modal-title-color;
+  font-weight: $modal-title-font-weight;
+
+  @if variable-exists(modal-title-font-size) {
+    font-size: $modal-title-font-size;
+  }
 }
 
 // Modal body
@@ -115,6 +122,7 @@
   align-items: center; // vertically center
   justify-content: flex-end; // Right align buttons with flex property because text-align doesn't work on flex items
   padding: $modal-inner-padding;
+  background: $modal-header-bg;
   border-top: $modal-footer-border-width solid $modal-footer-border-color;
 
   // Easily place margin between footer elements
