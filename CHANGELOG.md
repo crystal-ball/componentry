@@ -8,6 +8,30 @@ and this project adheres to
 
 #### [Unreleased]
 
+# [3.0.0-alpha.3] - 2018-09-24
+
+## BREAKING CHANGES
+
+- The active trigger factory no longer uses the `Button` component as the render
+  element. This fixes issues with Button context being applied to incorrect
+  elements, but also means you can no longer use Button api props directly with
+  active triggers unless you use an `as={Button}`. Adding these props back is
+  planned.
+- Nav.Item classes have been updated to match List.Item classes. Previously the
+  nav item classes were targeted at anchors, the new `nav-item-action` class is
+  targeted at anchor and button elements.
+- Tab component styles have been completely rewritten. They're more explicitly
+  mapped to the Tab component, and have more theming variables available.
+
+## Added
+
+- Modal theming for header, title and footer
+
+## Refactors
+
+- Modal body clicks are now managed with a stop propagation handler on the modal
+  body.
+
 # [3.0.0-alpha.2] - 2018-09-18
 
 ## Added

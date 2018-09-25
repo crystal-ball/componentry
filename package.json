@@ -1,6 +1,6 @@
 {
   "name": "componentry",
-  "version": "3.0.0-alpha.2",
+  "version": "3.0.0-alpha.3",
   "description": "React Componentry",
   "sideEffects": false,
   "main": "lib/index.js",
