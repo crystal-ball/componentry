@@ -9,4 +9,7 @@ a {
     color: $link-hover-color;
     text-decoration: $link-hover-decoration;
   }
+
+  // ⚠️ Any styles added to anchors should be mirrored in the `btn-anchor`
+  // class
 }

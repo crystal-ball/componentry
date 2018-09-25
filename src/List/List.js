@@ -1,11 +1,10 @@
-// @flow
 import { Children } from 'react'
 import elem from '../elem-factory'
 import withTheme from '../withTheme'
 
 /**
- * 🤔 There are different wrappers for clickable vs non-clickable list groups. (this
- * seems less than ideal Bootstrap, can we always do a div?)
+ * List checks first child (only first child!) to see if it has actions, and if
+ * it does, it's not a `li` so we render a `ul`.
  */
 
 const List = withTheme('List', props => {
@@ -20,6 +19,11 @@ const List = withTheme('List', props => {
   })
 })
 
+/**
+ * List items always have the `list-group-item` class, and items that are
+ * actionable (buttons/anchors) have the `list-group-item-action` modifier class
+ * added with additional required styles.
+ */
 const Item = withTheme('ListItem', ({ active, color, ...rest }) => {
   const { href, onClick } = rest
 
@@ -28,6 +32,7 @@ const Item = withTheme('ListItem', ({ active, color, ...rest }) => {
     defaultAs: href || onClick ? (href ? 'a' : 'button') : 'li',
     classes: {
       active,
+      disabled: rest.disabled,
       'list-group-item': true,
       'list-group-item-action': href || onClick,
       [`list-group-item-${color}`]: color,
@@ -35,6 +40,6 @@ const Item = withTheme('ListItem', ({ active, color, ...rest }) => {
     ...rest,
   })
 })
-List.Item = Item
 
+List.Item = Item
 export default List

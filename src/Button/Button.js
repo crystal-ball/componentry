@@ -1,4 +1,3 @@
-// @flow
 import componentryElem from '../elem-factory'
 import withTheme from '../withTheme'
 import type { ThemeColors } from '../types'
@@ -7,7 +6,7 @@ export type Props = {
   /** Creates a full-width button */
   block?: boolean,
   /** Theme color used to compute BS color class */
-  color?: ThemeColors | 'link' | '',
+  color?: ThemeColors | 'link',
   /** Computes the button as anchor class */
   link?: boolean,
   /** Creates outline style button, uses `color` for outline theme. */
@@ -16,18 +15,26 @@ export type Props = {
   size?: 'small' | 'large',
 }
 
-const Button = ({ block, color = '', link, outline, size, ...rest }: Props) =>
+const Button = ({
+  block = false,
+  color,
+  link = false,
+  outline = false,
+  size,
+  ...rest
+}: Props) =>
   componentryElem({
     defaultAs: 'button',
     type: 'button',
     classes: {
-      btn: true,
+      btn: !link,
       'btn-anchor': link,
       'btn-block': block,
       [`btn-${color}`]: color,
       'btn-outline': outline,
       'btn-sm': size === 'small',
       'btn-lg': size === 'large',
+      disabled: rest.disabled,
     },
     ...rest,
   })

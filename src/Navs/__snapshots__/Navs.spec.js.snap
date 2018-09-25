@@ -5,7 +5,7 @@ exports[`<Nav /> snapshots renders correctly 1`] = `
   class="nav"
 >
   <a
-    class="nav-item nav-link"
+    class="nav-item nav-item-action"
     href="#"
   >
     Anchor one

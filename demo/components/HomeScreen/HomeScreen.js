@@ -49,18 +49,18 @@ export default () => (
       justify="center"
       className="border border-right-0 border-left-0 mb-4"
     >
-      <div className="m-3">
+      <div className="my-3 mx-2">
         <Link to={routesMap.setup.pathname}>{routesMap.setup.name}</Link>
       </div>
-      <div className="my-3">
+      <div className="my-3 mx-2">
         {/* Library concepts guides navigation */}
         <SubRoutesNav label="Concepts" subRoutes={conceptRoutes} />
       </div>
-      <div className="my-3">
+      <div className="my-3 mx-2">
         {/* Component dropdown navigation */}
         <SubRoutesNav label="Components" subRoutes={componentRoutes} />
       </div>
-      <div className="m-3">
+      <div className="my-3 mx-2">
         <a href="https://github.com/crystal-ball/componentry">Github</a>
       </div>
     </Flex>

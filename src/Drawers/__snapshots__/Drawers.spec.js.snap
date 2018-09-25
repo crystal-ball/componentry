@@ -8,7 +8,7 @@ exports[`<Drawer /> snapshots renders correctly 1`] = `
   <button
     aria-controls="guid"
     aria-expanded="false"
-    class="btn drawer-toggle"
+    class="drawer-toggle btn-anchor"
     type="button"
   >
     Trigger

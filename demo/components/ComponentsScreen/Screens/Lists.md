@@ -15,18 +15,39 @@ The List will automatically render a `ul` and child `li` tags for lists of
 elements without user interactions. Including a `href` or `onClick` wil return a
 `div` with appropriate `a` or `Button` components for list items.
 
+Note that list group items should *not* render the `btn` class. They are
+separate components with distinct classes and styles!
+
 <InteractiveDemo
-  renderCode={() => `<List>
+  renderCode={() => `<Header as="h4" mt={3}>List Items</Header>
+<List>
   <List.Item>Item One</List.Item>
   <List.Item active>Item Two</List.Item>
   <List.Item>Item Three</List.Item>
+  <List.Item disabled>Disabled</List.Item>
+</List>
+<Header as="h4" mt={3}>Action List Items</Header>
+<List>
+  <List.Item onClick={() => {}}>Button One</List.Item>
+  <List.Item active onClick={() => {}}>Button Two</List.Item>
+  <List.Item onClick={() => {}}>Button Three</List.Item>
+  <List.Item onClick={() => {}} disabled>Disabled</List.Item>
 </List>`}
   renderComponent={() => (
     <div className="w-50">
+      <Header as="h4" mt={3}>List Items</Header>
       <List>
         <List.Item>Item One</List.Item>
         <List.Item active>Item Two</List.Item>
         <List.Item>Item Three</List.Item>
+        <List.Item disabled>Disabled</List.Item>
+      </List>
+      <Header as="h4" mt={3}>Action List Items</Header>
+      <List>
+        <List.Item onClick={() => {}}>Button One</List.Item>
+        <List.Item active onClick={() => {}}>Button Two</List.Item>
+        <List.Item onClick={() => {}}>Button Three</List.Item>
+        <List.Item onClick={() => {}} disabled>Disabled</List.Item>
       </List>
     </div>
   )}

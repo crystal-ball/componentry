@@ -8,13 +8,13 @@ describe('<Nav />', () => {
   // Basic library element test suite
   elementTests(Nav)
 
-  test('should render .flex-column when vertical is passed', () => {
+  test('should render .nav-vertical when vertical is passed', () => {
     const wrapper = mount(
       <Nav vertical>
         <Nav.Item href="#">Anchor one</Nav.Item>
       </Nav>,
     )
-    expect(wrapper.find('nav.flex-column').length).toBeTruthy()
+    expect(wrapper.find('nav.nav-vertical').length).toBeTruthy()
   })
 
   test('should render .nav-pills when pills is passed', () => {

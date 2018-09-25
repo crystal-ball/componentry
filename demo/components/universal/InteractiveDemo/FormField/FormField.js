@@ -45,7 +45,7 @@ const FormField = ({
           onChange({ [label]: val })
         }}
       >
-        <Dropdown.Trigger link>{triggerValue}</Dropdown.Trigger>
+        <Dropdown.Trigger>{triggerValue}</Dropdown.Trigger>
         <Dropdown.Content>
           <Dropdown.Item value="none" className="font-italic font-weight-light">
             none

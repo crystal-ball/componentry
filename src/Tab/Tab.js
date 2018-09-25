@@ -10,34 +10,32 @@ import { TabNav } from '../Navs/Navs'
 
 const ContentContainer = withTheme('TabContentContainer', props =>
   elem({
-    classes: 'tab-panes-container',
+    classes: 'tabs-panes-container',
     ...props,
   }),
 )
 
 const Content = activeContent({
   arias: { hidden: true, role: 'tabpanel' },
-  classes: 'tab-pane',
+  classes: 'tabs-panes-pane',
 })
 
+// TODO: This should probably be defaultAs a nav item... issues:
+// If making a tab with anchors, these should have class 'nav-link'
 const Trigger = activeTrigger({
   arias: { selected: true, role: 'tab' },
   // TODO: Should this really have default nav-link and nav-item classes??
-  classes: 'tab-toggle nav-link nav-item',
+  classes: 'tabs-nav-tab',
   // Tabs can only activate, they never deactivate when clicked
   triggerType: 'activate',
+  // Do NOT include default btn styles in tabs
+  defaultLink: false,
 })
-Trigger.defaultProps = {
-  // Componentry uses <Button /> components for the tab triggers instead of
-  // anchors like Bootstrap. Default the button to have the link theme style to
-  // look like an anchor
-  color: 'link',
-}
 
 const Tab = activeContainer({
   Content: withActive(withTheme('TabContent', Content)),
   Trigger: withActive(withTheme('TabTrigger', Trigger)),
-  classes: 'tab',
+  classes: 'tabs',
 })
 
 Tab.Nav = TabNav

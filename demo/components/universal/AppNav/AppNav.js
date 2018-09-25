@@ -12,39 +12,30 @@ import { component } from './app-nav.scss'
 /**
  * App navigation is shown on pages that are not home or component guides.
  */
-export default () => (
+const AppNav = () => (
   <Flex as="header" justify="between" className={`${component} bg-gray-100 p-4 mb-5`}>
-    {/* Home route */}
-    <Flex>
-      <Flex align="center" className="pr-3">
-        <Link to="/" className="text-primary logo">
-          <u>C</u>
-          omponentry
-        </Link>
-      </Flex>
-    </Flex>
+    <Link to="/" className="text-primary logo">
+      <u>C</u>
+      omponentry
+    </Link>
 
     <Flex align="center">
-      {/* Library setup */}
-      <Anchor to={routesMap.setup.pathname} className="text-primary pr-2">
+      <Anchor to={routesMap.setup.pathname} className="text-primary pr-3">
         {routesMap.setup.name}
       </Anchor>
 
-      {/* Concepts dropdown navigation */}
-      <SubRoutesNav label="Concepts" subRoutes={conceptRoutes} />
+      <SubRoutesNav label="Concepts" subRoutes={conceptRoutes} className="pr-3" />
 
-      {/* Component dropdown navigation */}
-      <SubRoutesNav label="Components" subRoutes={componentRoutes} />
+      <SubRoutesNav label="Components" subRoutes={componentRoutes} className="pr-3" />
 
-      {/* Github link */}
-      <div className="pl-3">
-        <Anchor
-          className="text-primary h2 hi friend"
-          href="https://github.com/crystal-ball/componentry"
-        >
-          <Icon id="github" font={false} />
-        </Anchor>
-      </div>
+      <Anchor
+        className="d-flex text-primary h2 mb-0"
+        href="https://github.com/crystal-ball/componentry"
+      >
+        <Icon id="github" font={false} />
+      </Anchor>
     </Flex>
   </Flex>
 )
+
+export default AppNav

@@ -7,7 +7,6 @@
 .btn {
   border: $btn-border-width solid transparent;
   @include border-radius($btn-border-radius);
-  cursor: pointer; // Opinionated: add pointer to non-disabled .btn elements
   display: inline-block;
   font-size: $font-size-base;
   font-weight: $btn-font-weight;
@@ -28,9 +27,7 @@
 
   // Default disabled styles remove pointer and adjust opacity to indicate
   // button is disabled
-  &.disabled,
-  &:disabled {
-    cursor: default;
+  &.disabled {
     opacity: $btn-disabled-opacity;
   }
 }
@@ -61,18 +58,21 @@
     // Disabled buttons can be styled to a consistent appearance with optional
     // disabled theme vars, otherwise reset to default appearance with an
     // opacity change to indicate disabled state
-    &.disabled,
-    &:disabled {
+    &.disabled {
+      border-width: $btn-disabled-border-width;
+
       @if variable-exists(btn-disabled-bg) {
         @include gradient-bg($btn-disabled-bg);
       } @else {
         @include gradient-bg($value);
       }
+
       @if variable-exists(btn-disabled-border) {
         border-color: $btn-disabled-border;
       } @else {
         border-color: $value;
       }
+
       @if variable-exists(btn-disabled-color) {
         color: $btn-disabled-color;
       } @else {
@@ -80,6 +80,28 @@
       }
     }
   }
+}
+
+// 'Link' theme color variant -  have the padding and alignment of a button with
+// font styles matching anchors (can be used for things like secondary CTAs)
+.btn-link {
+  background-color: transparent;
+  color: $link-color;
+  font-weight: $font-weight-normal;
+  // 🤔 Should btn-link reset the text tansform and letter spacing?
+
+  &:hover {
+    background-color: transparent;
+    border-color: transparent;
+    color: $link-hover-color;
+    text-decoration: $link-hover-decoration;
+  }
+
+  &.disabled {
+    color: $btn-link-disabled-color;
+  }
+
+  // No need for an active state here
 }
 
 //
@@ -107,67 +129,11 @@
       @include gradient-bg(darken($value, 7.5%));
     }
 
-    &.disabled,
-    &:disabled {
+    &.disabled {
       color: $value;
       background-color: transparent;
     }
   }
-}
-
-//
-// Link buttons
-//
-
-// Creates a button that has the text styles of an anchor, but maintains the
-// padding of a button, this is useful for adding secondary CTA buttons.
-.btn-link {
-  background-color: transparent;
-  color: $link-color;
-  font-weight: $font-weight-normal;
-  // 🤔 Should btn-link reset the text tansform and letter spacing?
-
-  &:hover {
-    background-color: transparent;
-    border-color: transparent;
-    color: $link-hover-color;
-    text-decoration: $link-hover-decoration;
-  }
-
-  &:disabled,
-  &.disabled {
-    color: $btn-link-disabled-color;
-    pointer-events: none;
-  }
-
-  // No need for an active state here
-}
-
-//
-// Anchor button
-//
-
-// The `.btn-link` style button has the font styles of an anchor AND all of the
-// regular padding of a button. For 💯 Accessibility we want to have buttons
-// that look exactly like links for in application triggers, `btn-anchor`
-// creates a button styled exactly like an anchor. This should be used for any
-// application actions that are not route navigations.
-
-.btn-anchor {
-  @extend .btn-link; // Extend link styles for font styling
-
-  // Remove additional button styles for anchor appearance
-  -webkit-appearance: none !important; // Remove Chrome native button styling
-  border: none;
-  border-radius: 0;
-  font-family: $font-family-sans-serif;
-  letter-spacing: 0;
-  line-height: $line-height-base;
-  padding: 0;
-  text-transform: none;
-  user-select: auto;
-  vertical-align: baseline;
-  white-space: normal;
 }
 
 //
@@ -212,6 +178,50 @@
 }
 
 //
+// Anchor button
+//
+
+// The `.btn-link` style button has the font styles of an anchor AND all of the
+// regular padding of a button. For 💯 Accessibility we want to have buttons
+// that look exactly like links for in application triggers, `btn-anchor`
+// creates a button styled exactly like an anchor. This should be used for any
+// application actions that are not route navigations.
+
+.btn-anchor {
+  -webkit-appearance: none !important; // Remove Chrome native button styling
+  display: inline-block;
+  padding: 0;
+  background-color: transparent;
+
+  // Set anchor font styles
+  color: $link-color;
+  font-family: $font-family-sans-serif;
+  font-size: $font-size-base;
+  font-weight: $font-weight-normal;
+  line-height: $line-height-base;
+  letter-spacing: 0;
+  text-transform: none;
+
+  user-select: auto;
+  vertical-align: baseline;
+  white-space: normal;
+
+  border: none;
+  border-radius: 0;
+
+  &:hover {
+    background-color: transparent;
+    border-color: transparent;
+    color: $link-hover-color;
+    text-decoration: $link-hover-decoration;
+  }
+
+  &.disabled {
+    color: $btn-link-disabled-color;
+  }
+}
+
+//
 // Block button
 //
 
@@ -225,14 +235,4 @@
   + .btn-block {
     margin-top: $btn-block-spacing-y;
   }
-}
-
-//
-// Disabled button style anchors
-//
-
-// Future-proof disabling of clicks on `<a>` elements
-a.btn.disabled,
-fieldset:disabled a.btn {
-  pointer-events: none;
 }
