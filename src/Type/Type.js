@@ -1,4 +1,3 @@
-// @flow
 import withTheme from '../withTheme'
 import elem from '../elem-factory'
 
@@ -11,6 +10,7 @@ type Props = {
   color: string,
   fontWeight: '' | 'light' | 'normal' | 'bold',
   italic: boolean,
+  monospace: boolean,
   textAlign: '' | 'justify' | 'right' | 'center' | 'left',
   uppercase: boolean,
 }
@@ -26,6 +26,7 @@ const makeType = as => ({
   italic = false,
   letterSpacing,
   lineHeight,
+  monospace = false,
   uppercase = false,
   textAlign,
   ...rest
@@ -36,6 +37,7 @@ const makeType = as => ({
     classes: {
       'font-italic': italic,
       'text-uppercase': uppercase,
+      'text-monospace': monospace,
       [`font-weight-${fontWeight}`]: fontWeight,
       [`text-${color}`]: color,
       [`text-${textAlign}`]: textAlign,

@@ -18,14 +18,20 @@ export type Props = {
 const Button = ({
   block = false,
   color,
+  fontSize,
+  fontWeight,
+  letterSpacing,
+  lineHeight,
   link = false,
   outline = false,
   size,
+  textAlign,
   ...rest
 }: Props) =>
   componentryElem({
     defaultAs: 'button',
     type: 'button',
+    style: { fontSize, letterSpacing, lineHeight },
     classes: {
       btn: !link,
       'btn-anchor': link,
@@ -35,6 +41,8 @@ const Button = ({
       'btn-sm': size === 'small',
       'btn-lg': size === 'large',
       disabled: rest.disabled,
+      [`font-weight-${fontWeight}`]: fontWeight,
+      [`text-${textAlign}`]: textAlign,
     },
     ...rest,
   })
