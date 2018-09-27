@@ -31,13 +31,16 @@
   // allow clicks to pass through for custom click handling to close modal
   pointer-events: none;
 
-  // When fading in the modal, animate it to slide down
-  .modal.fade & {
-    @include transition($modal-transition);
-    transform: translate(0, -25%);
-  }
-  .modal.show & {
-    transform: translate(0, 0);
+  // When enabled, slide the modal down from top of screen on show
+  @if ($enable-modal-transform) {
+    .modal.fade & {
+      @include transition($modal-transition);
+      transform: translate(0, -25%);
+    }
+
+    .modal.show & {
+      transform: translate(0, 0);
+    }
   }
 }
 
@@ -86,7 +89,7 @@
 // Top section of the modal w/ title and dismiss
 .modal-header {
   display: flex;
-  align-items: flex-start; // so the close btn always stays on the upper right corner
+  align-items: center;
   justify-content: space-between; // Put modal header elements (title and dismiss) on opposite ends
   padding: $modal-header-padding;
   background: $modal-header-bg;

@@ -67,8 +67,8 @@
         @include gradient-bg($value);
       }
 
-      @if variable-exists(btn-disabled-border) {
-        border-color: $btn-disabled-border;
+      @if variable-exists(btn-disabled-border-color) {
+        border-color: $btn-disabled-border-color;
       } @else {
         border-color: $value;
       }

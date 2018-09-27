@@ -11,9 +11,11 @@
   @extend .btn-anchor;
 
   color: $close-color;
+  text-decoration: $close-decoration;
 
   @include hover-focus {
-    color: $close-color;
+    color: $close-hover-color;
+    text-decoration: $close-hover-decoration;
   }
 
   // Animate close icon opacity on hover

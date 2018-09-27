@@ -419,13 +419,13 @@ $btn-bg-active-darken:        10% !default;
 // Disabled buttons
 $btn-link-disabled-color:     $gray-600 !default;
 $btn-disabled-opacity:        .65 !default;
-$btn-disabled-border-width: $btn-border-width !default;
+$btn-disabled-border-width:   $btn-border-width !default;
 
 // The following variables are undefined and can be set by an application to
 // create a single consistent disabled button style instead of the reduced
 // opacity theme color default style
 // $btn-disabled-bg
-// $btn-disabled-border
+// $btn-disabled-border-color
 // $btn-disabled-color
 
 // Sets margin between stacked block buttons
@@ -876,6 +876,8 @@ $badge-pill-border-radius:          10rem !default;
 
 // Modals
 
+$enable-modal-transform:            true !default;
+
 // Padding applied to the modal body
 $modal-inner-padding:               1rem !default;
 
@@ -1026,6 +1028,11 @@ $close-font-size:                   $font-size-base * 1.5 !default;
 $close-font-weight:                 $font-weight-bold !default;
 $close-color:                       $black !default;
 $close-text-shadow:                 0 1px 0 $white !default;
+$close-decoration:                  none !default;
+
+$close-hover-color:                 $close-color !default;
+$close-hover-decoration:            $close-decoration !default;
+
 
 // Code
 
