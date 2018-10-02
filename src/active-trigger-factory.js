@@ -1,7 +1,7 @@
-// @flow
 import React, { Fragment, type Node } from 'react'
 import elem from './elem-factory'
 import ariasComputer, { type ComponentArias } from './utils/arias'
+import { btnClasses, cleanBtnClasses } from './Button/Button'
 
 type Options = {
   /** Arias to include for component */
@@ -21,11 +21,7 @@ type Props = {
   active: boolean,
   deactivate: Function,
   guid: string,
-  /**
-   * Toggle `btn-anchor` utility class to style button as an anchor. Defaulted
-   * to true, this is the only button prop currently being handled. Pass the
-   * Button component for any `as` to use all button props.
-   */
+  /** Toggles `btn-anchor` utility class to style button as an anchor */
   anchor: boolean,
 }
 
@@ -34,7 +30,7 @@ type Props = {
  * Componentry sets up triggers to be anchor style buttons by default, this
  * can be overridden by passing an as, type and anchor to reset the defaults.
  */
-export default ({ arias, classes, triggerType, defaultAnchor = true }: Options = {}) => ({
+export default ({ arias, classes, triggerType, btnStyles = true }: Options = {}) => ({
   activate,
   active,
   activeId = '',
@@ -42,7 +38,7 @@ export default ({ arias, classes, triggerType, defaultAnchor = true }: Options =
   deactivate,
   decoration,
   guid,
-  anchor,
+  anchor = true,
   ...rest
 }: Props) => {
   let onClick
@@ -54,6 +50,10 @@ export default ({ arias, classes, triggerType, defaultAnchor = true }: Options =
     onClick = active ? deactivate : activate
   }
 
+  // For mutli-active triggers add active if the trigger is selected
+  const classNames = [classes, { active: activeId && active === activeId }]
+  if (btnStyles) classNames.push(btnClasses({ anchor, ...rest }))
+
   return elem({
     defaultAs: 'button',
     type: 'button',
@@ -64,15 +64,7 @@ export default ({ arias, classes, triggerType, defaultAnchor = true }: Options =
       type: 'trigger',
       arias,
     }),
-    classes: [
-      classes,
-      {
-        // For mutli-active triggers add active if the trigger is selected
-        active: activeId && active === activeId,
-        disabled: rest.disabled,
-        'btn-anchor': anchor || defaultAnchor,
-      },
-    ],
+    classes: classNames,
     onClick,
     // For multi-active elems, the value is used in `withState` to handle
     // changing the active id
@@ -84,6 +76,6 @@ export default ({ arias, classes, triggerType, defaultAnchor = true }: Options =
       </Fragment>
     ),
     // Pass through props rest last to allow any instance overrides
-    ...rest,
+    ...cleanBtnClasses(rest),
   })
 }

@@ -30,45 +30,48 @@ export type Props = {
   uppercase?: boolean,
 }
 
-const Button = ({
-  anchor = false,
-  block = false,
+export const btnClasses = p => ({
+  btn: !p.anchor,
+  'btn-anchor': p.anchor,
+  'btn-block': p.block,
+  'btn-outline': p.outline,
+  [`btn-${p.color}`]: !p.anchor && p.color,
+  [`btn-${p.size}`]: p.size,
+  disabled: p.disabled,
+  // --- Typography
+  // When rendering an anchor style button use the typography classes
+  'font-italic': p.italic,
+  'text-monospace': p.monospace,
+  'text-uppercase': p.uppercase,
+  [`font-weight-${p.fontWeight}`]: p.fontWeight,
+  [`text-${p.color}`]: p.anchor && p.color,
+  [`text-${p.textAlign}`]: p.textAlign,
+})
+
+export const cleanBtnClasses = ({
+  anchor,
+  block,
   color,
   fontSize,
   fontWeight,
-  italic = false,
+  italic,
   letterSpacing,
   lineHeight,
-  monospace = false,
-  outline = false,
+  monospace,
+  outline,
   size,
   textAlign,
-  uppercase = false,
+  uppercase,
   ...rest
-}: Props) =>
+}) => rest
+
+const Button = ({ fontSize, letterSpacing, lineHeight, ...rest }: Props) =>
   componentryElem({
     defaultAs: 'button',
     type: 'button',
     style: { fontSize, letterSpacing, lineHeight },
-    classes: {
-      btn: !anchor,
-      'btn-anchor': anchor,
-      'btn-block': block,
-      'btn-outline': outline,
-      [`btn-${color}`]: !anchor && color,
-      [`btn-${size}`]: size,
-      disabled: rest.disabled,
-      // --- Typography
-      'font-italic': italic,
-      'text-monospace': monospace,
-      'text-uppercase': uppercase,
-      [`font-weight-${fontWeight}`]: fontWeight,
-      [`text-${textAlign}`]: textAlign,
-      // When rendering an anchor style button, a passed color should style the
-      // color of the anchor
-      [`text-${color}`]: anchor && color,
-    },
-    ...rest,
+    classes: btnClasses(rest),
+    ...cleanBtnClasses(rest),
   })
 
 export default withTheme('Button', Button)

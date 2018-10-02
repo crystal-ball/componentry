@@ -29,7 +29,7 @@ const Trigger = activeTrigger({
   // Tabs can only activate, they never deactivate when clicked
   triggerType: 'activate',
   // Do NOT include default btn styles in tabs
-  defaultAnchor: false,
+  btnStyles: false,
 })
 
 const Tab = activeContainer({

@@ -14,11 +14,11 @@ content with multiple user interactions. The focus and keybinding handlers
 enable easy navigation between multiple options.
 
 <InteractiveDemo
-  defaults={{ direction: null }}
+  defaults={{ direction: 'bottom' }}
   formFields={[
     { label: 'direction', options: [...this.props.directions, 'overlay'] },
   ]}
-  renderCode={({ direction }) => `<Dropdown${direction ? ` direction="${direction}"` : ""}>
+  renderCode={data => `<Dropdown${props.renderPropsText(data)}>
   <Dropdown.Trigger>Dropdown</Dropdown.Trigger>
   <Dropdown.Content>
     <h4 className="dropdown-header">Available actions</h4>
@@ -31,8 +31,8 @@ enable easy navigation between multiple options.
     <span className="dropdown-item-text">Dropdown item text is not interactive</span>
   </Dropdown.Content>
 </Dropdown>`}
-  renderComponent={({ direction }) => (
-    <Dropdown direction={direction}>
+  renderComponent={data => (
+    <Dropdown {...data}>
       <Dropdown.Trigger>Dropdown</Dropdown.Trigger>
       <Dropdown.Content>
         <h4 className="dropdown-header">Available actions</h4>
