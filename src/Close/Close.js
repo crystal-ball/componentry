@@ -9,7 +9,7 @@ export default withTheme('Close', props =>
     classes: 'btn-close',
     type: 'button',
     children: (
-      <svg className="icon close font" role="img">
+      <svg className="icon icon-close font" role="img">
         <use href="#close" xlinkHref="#close" />
       </svg>
     ),

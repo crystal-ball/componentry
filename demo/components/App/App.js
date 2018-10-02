@@ -8,27 +8,12 @@ import { ThemeProvider } from 'styled-components'
 import { hot } from 'react-hot-loader'
 
 // App Components
+import 'lib/import-icons'
 import registry from 'registry'
 import AppNav from 'components/universal/AppNav'
 import ScrollToTop from 'components/universal/ScrollToTop'
-import routesMap from 'utils/routes-map'
+import routesMap from 'lib/routes-map'
 import AnchorLink from './AnchorLink'
-
-// Import SVG icons used by Icon component to generate svg symbol sprite
-// TODO: Move icon imports to a project Icon component
-import 'media/icons/bootstrap.svg'
-import 'media/icons/check-box.svg'
-import 'media/icons/check.svg'
-import 'media/icons/chevron.svg'
-import 'media/icons/close.svg'
-import 'media/icons/copied.svg'
-import 'media/icons/copy.svg'
-import 'media/icons/info.svg'
-import 'media/icons/github.svg'
-import 'media/icons/share.svg'
-import 'media/icons/stars.svg'
-import 'media/icons/terminal.svg'
-import 'media/icons/tune.svg'
 
 // Screens
 import ComponentsScreen from '../ComponentsScreen'

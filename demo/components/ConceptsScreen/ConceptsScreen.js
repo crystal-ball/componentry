@@ -2,7 +2,7 @@
 import React from 'react'
 import { Route } from 'react-router-dom'
 
-import routesMap, { conceptRoutes } from 'utils/routes-map'
+import routesMap, { conceptRoutes } from 'lib/routes-map'
 
 import GroupNav from 'components/universal/GroupNav'
 import Header from 'components/universal/Header'

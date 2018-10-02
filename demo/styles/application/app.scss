@@ -10,11 +10,11 @@
 }
 
 // This icon is used with all A++ Accessible headers and is default green
-.icon.stars {
+.icon-stars {
   color: $success;
 }
 
-.icon.bootstrap {
+.icon-bootstrap {
   color: $purple;
 }
 
@@ -26,12 +26,12 @@
 
 // Do a fun 3d flip transition between open and closed states
 .dropdown-toggle {
-  .chevron.icon {
+  .icon-chevron {
     transition: transform 500ms;
   }
 
   &[aria-expanded='true'] {
-    .chevron.icon {
+    .icon-chevron {
       transform: rotateX(-180deg);
     }
   }

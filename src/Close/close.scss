@@ -4,7 +4,7 @@
 // icon that fits their theme, as well as using flexbox on containers with close
 // buttons instead of floats.
 
-// The btn-close allows for targeted styles for the close buttons. The .icon.close
+// The btn-close allows for targeted styles for the close buttons. The .icon-close
 // can also be styled for close buttons only using that as a target
 // ℹ️ The background image styles for close icons is located in `/styles/componentry/icons`
 .btn-close {
@@ -19,7 +19,7 @@
   }
 
   // Animate close icon opacity on hover
-  .icon.close {
+  .icon-close {
     opacity: 0.6;
     transition: $transition-fade;
 
@@ -33,7 +33,7 @@
 // images, but this is not the recommended system. Consumers should set up an SVG
 // icon system and set $include-icons to false to use real SVGs for icons.
 @if $include-icons {
-  .icon.close {
+  .icon-close {
     @extend .componentry-icon;
 
     background-image: str-replace(

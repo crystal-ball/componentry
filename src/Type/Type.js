@@ -3,16 +3,20 @@ import elem from '../elem-factory'
 
 type Props = {
   // Inline style props
-  fontSize?: number,
-  letterSpacing?: number,
-  lineHeight?: number,
+  /** Numbers will be converted to px value */
+  fontSize?: number | string,
+  /** Numbers will be converted to px value */
+  letterSpacing?: number | string,
+  /** Numbers converted to unitless value */
+  lineHeight?: number | string,
   // -- Utility class name props
-  color: string,
-  fontWeight: '' | 'light' | 'normal' | 'bold',
-  italic: boolean,
-  monospace: boolean,
-  textAlign: '' | 'justify' | 'right' | 'center' | 'left',
-  uppercase: boolean,
+  /** Additionally all theme colors and grays  */
+  color?: 'white' | 'body' | 'muted',
+  fontWeight?: 'light' | 'normal' | 'bold',
+  italic?: boolean,
+  monospace?: boolean,
+  textAlign?: 'justify' | 'right' | 'center' | 'left',
+  uppercase?: boolean,
 }
 
 /**

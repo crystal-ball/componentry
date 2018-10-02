@@ -41,6 +41,7 @@ type Props = {
   defaultActive: boolean | string,
   activate?: Function,
   deactivate?: Function,
+  mouseEvents?: boolean,
 }
 
 type State = {
@@ -69,7 +70,7 @@ export default ({
   classes,
   escHandler,
   clickHandler,
-  mouseEvents,
+  mouseEvents: defaultMouseEvents,
 }: Options) =>
   class ActiveContainer extends Component<Props, State> {
     static defaultProps = {
@@ -218,6 +219,7 @@ export default ({
         Trigger: PropsTrigger,
         children,
         direction,
+        mouseEvents,
         ...rest
       }: Props = this.props
       const { active } = this.state
@@ -228,6 +230,9 @@ export default ({
         deactivate: this.handleDeactivate,
         guid: this.guid,
       }
+
+      const hanldeMouseEvents =
+        mouseEvents === undefined ? defaultMouseEvents : mouseEvents
 
       // Handles FaCC style usage
       if (typeof children === 'function') {
@@ -249,8 +254,8 @@ export default ({
             classes: [classes, direction],
             // For elements with mouse events we need to know when the mouse event
             // occurs on the parent element, not the trigger element
-            onMouseEnter: mouseEvents ? this.handleActivate : undefined,
-            onMouseLeave: mouseEvents ? this.handleDeactivate : undefined,
+            onMouseEnter: hanldeMouseEvents ? this.handleActivate : undefined,
+            onMouseLeave: hanldeMouseEvents ? this.handleDeactivate : undefined,
             // If shorthand values for Trigger/Content were passed in props, render
             // subcomponents with prop as children
             children: (

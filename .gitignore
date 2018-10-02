@@ -9,7 +9,7 @@ node_modules
 
 # Published
 #################################
-lib
+lib/*
 es
 esnext
 

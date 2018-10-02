@@ -11,13 +11,13 @@
 
   // If the chevron icon is used with a drawer toggle, it will rotate a half
   // turn on open/close of drawer
-  .chevron.icon {
+  .icon-chevron {
     transition: transform 500ms;
     transform: rotate(-0.5turn);
   }
 
   &[aria-expanded='true'] {
-    .chevron.icon {
+    .icon-chevron {
       transform: rotate(0);
     }
   }
@@ -27,7 +27,7 @@
   // set up an SVG icon system and set $include-icons to false to use real SVGs
   // for icons.
   @if $include-icons {
-    .icon.chevron {
+    .icon-chevron {
       @extend .componentry-icon;
 
       background-image: str-replace(

@@ -2,7 +2,7 @@
 import React from 'react'
 import { NavLink } from 'react-router-dom'
 
-import type { Route } from 'utils/routes-map'
+import type { Route } from 'lib/routes-map'
 
 import { component } from './group-nav.scss'
 

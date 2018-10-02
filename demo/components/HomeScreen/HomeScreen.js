@@ -4,7 +4,7 @@ import styled from 'styled-components'
 import { Flex, Header, Media } from 'componentry'
 import { Link } from 'react-router-dom'
 
-import routesMap, { componentRoutes, conceptRoutes } from 'utils/routes-map'
+import routesMap, { componentRoutes, conceptRoutes } from 'lib/routes-map'
 import SubRoutesNav from 'components/universal/SubRoutesNav'
 
 import accessibleSVG from './media/accessibility.svg'

@@ -6,6 +6,7 @@ defaults:
   size: null
   link: false
   disabled: false
+  fontWeight: null
 componentProps:
   - color: true
   - name: link
@@ -48,10 +49,14 @@ the exact styles needed.
     {
       label: 'disabled',
       boolean: true,
-    }
+    },
+    'Typography API',
+    { label: 'fontWeight', options: ['light', 'normal', 'bold'] },
+    { label: 'fontSize', string: true },
+    { label: 'letterSpacing', string: true },
+    { label: 'textAlign', string: true }
   ]}
-  renderCode={({ block, color, outline, size, link, disabled }) =>
-    `<Button${color ? ` color="${color}"` : ''}${block ? ` block` : ''}${outline ? ' outline' : ''}${size ? ` size="${size}"` : ''}${link ? ' link' : ''}${disabled ? ' disabled' : ''}>Click me!</Button>`}
+  renderCode={data => `<Button${props.renderPropsText(data)}>Click me!</Button>`}
   renderComponent={data => <Button {...data}>Click me!</Button>}
 />
 

@@ -3,7 +3,7 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import { Anchor, Flex, Icon } from 'componentry'
 
-import routesMap, { componentRoutes, conceptRoutes } from 'utils/routes-map'
+import routesMap, { componentRoutes, conceptRoutes } from 'lib/routes-map'
 
 import SubRoutesNav from '../SubRoutesNav'
 

@@ -3,7 +3,7 @@ import { func, string } from 'prop-types'
 import { Button, Icon } from 'componentry'
 import classNames from 'classnames'
 
-import copyToClipboard from 'utils/copy-to-clipboard'
+import copyToClipboard from 'lib/copy-to-clipboard'
 
 import { component } from './click-to-copy.scss'
 

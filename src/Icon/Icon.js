@@ -15,11 +15,7 @@ export default withTheme('Icon', ({ id, font = true, ...rest }: Props) =>
   elem({
     defaultAs: 'svg',
     role: 'img',
-    classes: {
-      icon: true,
-      [id]: true,
-      font,
-    },
+    classes: [`icon icon-${id}`, { font }],
     children: <use href={`#${id}`} xlinkHref={`#${id}`} />,
     ...rest,
   }),

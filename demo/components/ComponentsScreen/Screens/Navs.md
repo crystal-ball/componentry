@@ -46,9 +46,9 @@ anchor elements to provide user interaction styles.
   <Nav.Item onClick={() => console.log('hi')}>Link</Nav.Item>
   <Nav.Item href="#" disabled>Disabled</Nav.Item>
 </Nav>`}
-  renderComponent={({ fill, justify, pills, vertical }) => (
+  renderComponent={configs => (
     <div className="w-75">
-      <Nav pills={pills} vertical={vertical} fill={fill} justify={justify}>
+      <Nav {...configs}>
         <Nav.Item href="#" active>Active</Nav.Item>
         <Nav.Item href="#">Link</Nav.Item>
         <Nav.Item onClick={() => console.log('hi')}>Link</Nav.Item>

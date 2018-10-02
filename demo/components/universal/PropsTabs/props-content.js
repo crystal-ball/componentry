@@ -52,6 +52,13 @@ export const activeProps = [
     type: 'function',
     defaultValue: 'undefined',
   },
+  {
+    name: 'mouseEvents',
+    description:
+      'For elements with mouseEvents they can be disabled by passing a falsey value',
+    type: 'boolean',
+    defaultValue: 'true',
+  },
 ]
 
 export const componentryProps = [
@@ -79,13 +86,25 @@ export const componentryProps = [
   },
   {
     name: 'direction',
-    description: 'Content alignment direction relative to trigger.',
+    description: 'Content alignment direction relative to trigger',
     type: ['"top"', '"right"', '"bottom"', '"left"'],
   },
   {
     name: 'size',
-    description: 'Sets the size for the element.',
+    description: 'Sets the size for the element',
     type: ['"small"', '"large"'],
     defaultValue: 'undefined',
+  },
+  {
+    name: 'p, pt, pr, pb, pl',
+    description:
+      'Set a padding, pass a number for a theme class or a string for a specific override',
+    type: 'number | string',
+  },
+  {
+    name: 'm, mt, mr, mb, ml',
+    description:
+      'Set a margin, pass a number for a theme class or a string for a specific override',
+    type: 'number | string',
   },
 ]

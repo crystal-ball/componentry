@@ -8,6 +8,17 @@ and this project adheres to
 
 #### [Unreleased]
 
+## BREAKING CHANGES
+
+- The Icon component now adds class `icon-NAME` instead of `icon NAME`. This is
+  to ensure icon classes are always properly scoped and prevent issues for icons
+  with ids like `alert`.
+
+## Added
+
+- Components with mouse events can now be disabled with prop `mouseEvents`
+- Button component now supports all typography props
+
 # [3.0.0-alpha.3] - 2018-09-24
 
 ## BREAKING CHANGES
