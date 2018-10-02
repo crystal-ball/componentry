@@ -242,13 +242,15 @@ $transition-collapse:         height .35s ease !default;
 //
 // Icon baseline, and background image fallbacks
 
+$icon-color:                  inherit !default;
+
 // This margin-bottom adjustment is added to every font icon to account for svg
 // vs font baseline differences
-$icon-bottom: -0.14em !default;
+$icon-bottom:                 -0.14em !default;
 
 // When true this will include background-image rules for the close and chevron
 // icons, you can enable it if you don't have SVGs
-$include-icons: false !default;
+$include-icons:               false !default;
 
 
 // Fonts

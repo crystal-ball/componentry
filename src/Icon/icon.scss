@@ -4,6 +4,7 @@
 .icon {
   display: inline-flex;
   fill: currentColor;
+  color: $icon-color;
 
   // width + height of 1em makes icons font-sized by default 🎓
   height: 1em;
