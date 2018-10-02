@@ -15,6 +15,7 @@ type Props = {
   fontWeight?: 'light' | 'normal' | 'bold',
   italic?: boolean,
   monospace?: boolean,
+  size?: 'sm' | 'lg',
   textAlign?: 'justify' | 'right' | 'center' | 'left',
   uppercase?: boolean,
 }
@@ -32,6 +33,7 @@ const makeType = as => ({
   lineHeight,
   monospace = false,
   uppercase = false,
+  size,
   textAlign,
   ...rest
 }: Props) =>
@@ -44,6 +46,7 @@ const makeType = as => ({
       'text-monospace': monospace,
       [`font-weight-${fontWeight}`]: fontWeight,
       [`text-${color}`]: color,
+      [`text-${size}`]: size,
       [`text-${textAlign}`]: textAlign,
     },
     ...rest,

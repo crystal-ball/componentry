@@ -13,6 +13,8 @@ and this project adheres to
 - The Icon component now adds class `icon-NAME` instead of `icon NAME`. This is
   to ensure icon classes are always properly scoped and prevent issues for icons
   with ids like `alert`.
+- The library now uses size props `sm` and `lg` for all size classes. This is
+  breaking for Button and Modal component.
 
 ## Added
 

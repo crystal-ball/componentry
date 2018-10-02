@@ -6,10 +6,13 @@ formFields:
     options: [light, normal, bold]
   - label: italic
     boolean: true
+  - label: size
+    options: [sm, lg]
 formDefaults:
   color: null
   fontWeight: null
   italic: false
+  size: null
 ---
 <ComponentsList components={['Anchor', 'Header']} />
 

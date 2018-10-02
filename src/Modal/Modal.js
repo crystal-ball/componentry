@@ -13,7 +13,7 @@ type Props = {
   active: boolean,
   children?: Node,
   deactivate: Function,
-  size?: 'small' | 'large',
+  size?: 'sm' | 'lg',
   visible?: boolean,
 }
 
@@ -117,10 +117,7 @@ class Modal extends Component<Props> {
             {/* eslint-disable jsx-a11y/click-events-have-key-events */}
             <div
               onClick={evt => evt.stopPropagation()}
-              className={classNames('modal-dialog', {
-                'modal-sm': size === 'small',
-                'modal-lg': size === 'large',
-              })}
+              className={classNames('modal-dialog', { [`modal-${size}`]: size })}
               role="dialog"
             >
               <div className="modal-content">{children}</div>

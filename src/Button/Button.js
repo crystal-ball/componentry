@@ -12,7 +12,7 @@ export type Props = {
   /** Creates outline style button, uses `color` for outline theme. */
   outline?: boolean,
   /** Create a small or large style button */
-  size?: 'small' | 'large',
+  size?: 'sm' | 'lg',
   // --- Text props
   /** Sets font size inline style */
   fontSize?: number | string,
@@ -53,10 +53,9 @@ const Button = ({
       btn: !link,
       'btn-anchor': link,
       'btn-block': block,
-      [`btn-${color}`]: color,
       'btn-outline': outline,
-      'btn-sm': size === 'small',
-      'btn-lg': size === 'large',
+      [`btn-${color}`]: color,
+      [`btn-${size}`]: size,
       disabled: rest.disabled,
       // --- Typography
       'font-italic': italic,
