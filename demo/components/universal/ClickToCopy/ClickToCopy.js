@@ -46,7 +46,7 @@ export default class ClickToCopy extends Component {
     )
 
     return (
-      <Button onClick={this.copy} link className={classNames(component, className)}>
+      <Button onClick={this.copy} anchor className={classNames(component, className)}>
         {render ? render(icons) : icons}
       </Button>
     )

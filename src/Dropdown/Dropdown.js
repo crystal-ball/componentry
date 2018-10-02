@@ -19,7 +19,7 @@ const Item = activeTrigger({
   arias: {},
   classes: 'dropdown-item',
   // Dropdown items have appropriate styles
-  defaultLink: false,
+  defaultAnchor: false,
 })
 
 const Dropdown = activeContainer({

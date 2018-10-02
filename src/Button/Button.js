@@ -7,13 +7,14 @@ export type Props = {
   block?: boolean,
   /** Sets button background or link font color */
   color?: ThemeColors | 'link' | 'body',
-  /** Sets button to display as a link */
-  link?: boolean,
   /** Creates outline style button, uses `color` for outline theme. */
   outline?: boolean,
   /** Create a small or large style button */
   size?: 'sm' | 'lg',
-  // --- Text props
+
+  // --- Anchor+Text props
+  /** Sets button to display as an anchor */
+  anchor?: boolean,
   /** Sets font size inline style */
   fontSize?: number | string,
   /** Sets font weight class */
@@ -30,6 +31,7 @@ export type Props = {
 }
 
 const Button = ({
+  anchor = false,
   block = false,
   color,
   fontSize,
@@ -37,7 +39,6 @@ const Button = ({
   italic = false,
   letterSpacing,
   lineHeight,
-  link = false,
   monospace = false,
   outline = false,
   size,
@@ -50,11 +51,11 @@ const Button = ({
     type: 'button',
     style: { fontSize, letterSpacing, lineHeight },
     classes: {
-      btn: !link,
-      'btn-anchor': link,
+      btn: !anchor,
+      'btn-anchor': anchor,
       'btn-block': block,
       'btn-outline': outline,
-      [`btn-${color}`]: color,
+      [`btn-${color}`]: !anchor && color,
       [`btn-${size}`]: size,
       disabled: rest.disabled,
       // --- Typography
@@ -63,9 +64,9 @@ const Button = ({
       'text-uppercase': uppercase,
       [`font-weight-${fontWeight}`]: fontWeight,
       [`text-${textAlign}`]: textAlign,
-      // When rendering a link style button, a passed color should style the
-      // color of the link
-      [`text-${color}`]: link && color,
+      // When rendering an anchor style button, a passed color should style the
+      // color of the anchor
+      [`text-${color}`]: anchor && color,
     },
     ...rest,
   })

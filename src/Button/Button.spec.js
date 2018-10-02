@@ -27,12 +27,12 @@ describe('<Button/>', () => {
   })
 
   test('should render class for small button', () => {
-    const wrapper = mount(<Button size="small" />)
+    const wrapper = mount(<Button size="sm" />)
     expect(wrapper.find('.btn.btn-sm').length).toEqual(1)
   })
 
   test('should render class for large button', () => {
-    const wrapper = mount(<Button size="large" />)
+    const wrapper = mount(<Button size="lg" />)
     expect(wrapper.find('.btn.btn-lg').length).toEqual(1)
   })
 
@@ -42,7 +42,7 @@ describe('<Button/>', () => {
   })
 
   test('should render class btn-anchor when passed prop', () => {
-    const wrapper = mount(<Button link />)
+    const wrapper = mount(<Button anchor />)
     expect(wrapper.find('button.btn-anchor').length).toEqual(1)
   })
 
@@ -74,7 +74,7 @@ describe('<Button /> Snapshots', () => {
   // 📝 TODO: use enzyme tests to validate props effects, use snapshot for testing
   // output of markup like 'type'
   test('it renders defaults correctly', () => {
-    const tree = render(<Button color="primary">Componentry</Button>)
+    const tree = render(<Button>Componentry</Button>)
     expect(tree).toMatchSnapshot()
   })
 
@@ -83,8 +83,8 @@ describe('<Button /> Snapshots', () => {
     expect(tree).toMatchSnapshot()
   })
 
-  test('it renders link style correctly', () => {
-    const tree = render(<Button link>Componentry</Button>)
+  test('it renders anchor style correctly', () => {
+    const tree = render(<Button anchor>Componentry</Button>)
     expect(tree).toMatchSnapshot()
   })
 
@@ -100,7 +100,7 @@ describe('<Button /> Snapshots', () => {
 
   test('it renders large outline correctly', () => {
     const tree = render(
-      <Button color="success" size="large" outline>
+      <Button color="success" size="lg" outline>
         Componentry
       </Button>,
     )

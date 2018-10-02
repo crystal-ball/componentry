@@ -10,6 +10,8 @@ and this project adheres to
 
 ## BREAKING CHANGES
 
+- The Button `link` prop is renamed to `anchor`. This more closely reflects the
+  use of classes `btn-link` and `btn-anchor`.
 - The Icon component now adds class `icon-NAME` instead of `icon NAME`. This is
   to ensure icon classes are always properly scoped and prevent issues for icons
   with ids like `alert`.

@@ -15,7 +15,6 @@ type Options = {
 type Props = {
   children?: Node,
   decoration?: boolean | Node,
-  link?: boolean,
   activeId?: string,
   // Active boolean + change handlers from withActive HOC
   activate: Function,
@@ -27,15 +26,15 @@ type Props = {
    * to true, this is the only button prop currently being handled. Pass the
    * Button component for any `as` to use all button props.
    */
-  link: boolean,
+  anchor: boolean,
 }
 
 /**
  * Factory returns custom `<Trigger />` components defined by the options.
  * Componentry sets up triggers to be anchor style buttons by default, this
- * can be overridden by passing an as, type and link to reset the defaults.
+ * can be overridden by passing an as, type and anchor to reset the defaults.
  */
-export default ({ arias, classes, triggerType, defaultLink = true }: Options = {}) => ({
+export default ({ arias, classes, triggerType, defaultAnchor = true }: Options = {}) => ({
   activate,
   active,
   activeId = '',
@@ -43,7 +42,7 @@ export default ({ arias, classes, triggerType, defaultLink = true }: Options = {
   deactivate,
   decoration,
   guid,
-  link,
+  anchor,
   ...rest
 }: Props) => {
   let onClick
@@ -71,7 +70,7 @@ export default ({ arias, classes, triggerType, defaultLink = true }: Options = {
         // For mutli-active triggers add active if the trigger is selected
         active: activeId && active === activeId,
         disabled: rest.disabled,
-        'btn-anchor': link || defaultLink,
+        'btn-anchor': anchor || defaultAnchor,
       },
     ],
     onClick,

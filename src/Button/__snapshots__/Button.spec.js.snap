@@ -1,5 +1,14 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`<Button /> Snapshots it renders anchor style correctly 1`] = `
+<button
+  class="btn-anchor"
+  type="button"
+>
+  Componentry
+</button>
+`;
+
 exports[`<Button /> Snapshots it renders brand color correctly 1`] = `
 <button
   class="btn btn-success"
@@ -11,7 +20,7 @@ exports[`<Button /> Snapshots it renders brand color correctly 1`] = `
 
 exports[`<Button /> Snapshots it renders defaults correctly 1`] = `
 <button
-  class="btn btn-primary"
+  class="btn"
   type="button"
 >
   Componentry
@@ -20,16 +29,7 @@ exports[`<Button /> Snapshots it renders defaults correctly 1`] = `
 
 exports[`<Button /> Snapshots it renders large outline correctly 1`] = `
 <button
-  class="btn btn-success btn-outline btn-lg"
-  type="button"
->
-  Componentry
-</button>
-`;
-
-exports[`<Button /> Snapshots it renders link style correctly 1`] = `
-<button
-  class="btn-anchor"
+  class="btn btn-outline btn-success btn-lg"
   type="button"
 >
   Componentry
@@ -38,7 +38,7 @@ exports[`<Button /> Snapshots it renders link style correctly 1`] = `
 
 exports[`<Button /> Snapshots it renders outline correctly 1`] = `
 <button
-  class="btn btn-success btn-outline"
+  class="btn btn-outline btn-success"
   type="button"
 >
   Componentry

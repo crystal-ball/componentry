@@ -20,12 +20,12 @@ knowledge for creating accessible content.
 When creating interactable elements, using the correct HTML element provides
 better default accessibility attributes. The `<Button />` component can be
 configured to appear and behave the same as an anchor element by passing a
-truthy `link` prop. Using buttons for any element that has user interaction is
+truthy `anchor` prop. Using buttons for any element that has user interaction is
 important because button elements include important accessibility traits by
 default, such as keyboard operation.
 
 ```jsx
-<Button onClick={this.handleEvent} link>
+<Button onClick={this.handleEvent} anchor>
   Click here to trigger an event...
 </Button>
 ```

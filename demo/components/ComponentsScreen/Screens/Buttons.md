@@ -1,16 +1,16 @@
 ---
 defaults:
+  anchor: false
   block: false
   color: primary
   outline: false
   size: null
-  link: false
   disabled: false
   fontWeight: null
 componentProps:
   - color: true
-  - name: link
-    description: Link buttons are styled to appear the same as <code>anchor</code> elements.
+  - name: anchor
+    description: Anchor buttons are styled to appear the same as <code>anchor</code> elements.
     type: boolean
     defaultValue: false
   - name: outline
@@ -39,11 +39,11 @@ the exact styles needed.
     { label: 'outline', boolean: true },
     { label: 'size', options: this.props.sizes },
     {
-      label: 'link',
+      label: 'anchor',
       boolean: true,
       changeValues: {
         false: defaults,
-        true: { color: null, size: null, outline: false, link: true }
+        true: { color: null, size: null, outline: false, anchor: true }
       }
     },
     {
@@ -71,7 +71,7 @@ When creating elements with user interaction it's important to use a button
 element for any target that is not an anchor. Using a button element ensures
 that screen readers are able to understand the intent of a user interacting with
 that element. The Button component makes it easy to create semantic, accessible
-button elements that look like anchors with the `link` prop.
+button elements that look like anchors with the `anchor` prop.
 
 ## Advanced theming
 

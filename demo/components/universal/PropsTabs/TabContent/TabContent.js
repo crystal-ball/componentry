@@ -11,7 +11,7 @@ const renderPropRef = (name, activeId) => (
   <tr key={name}>
     <td className="text-primary">{name}</td>
     <td colSpan="3">
-      <Active.Trigger activeId={activeId} link>
+      <Active.Trigger activeId={activeId} anchor>
         <Icon id="share" /> {activeId} props
       </Active.Trigger>
     </td>
