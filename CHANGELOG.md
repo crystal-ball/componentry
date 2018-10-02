@@ -8,6 +8,8 @@ and this project adheres to
 
 #### [Unreleased]
 
+## [3.0.0-alpha.4] - 2018-10-01
+
 ## BREAKING CHANGES
 
 - The Button `link` prop is renamed to `anchor`. This more closely reflects the
@@ -22,6 +24,17 @@ and this project adheres to
 
 - Components with mouse events can now be disabled with prop `mouseEvents`
 - Button component now supports all typography props
+- Close `$close-decoration` and `$close-hover-decoration`
+- Modal `$enable-modal-transform`
+- Type props added to Button and Type components
+
+## Fixed
+
+- `$btn-disabled-border` fixed to `$btn-disabled-border-color`
+
+## Changed
+
+- Modal header is now align to flex start instead of center
 
 # [3.0.0-alpha.3] - 2018-09-24
 
