@@ -8,6 +8,13 @@ and this project adheres to
 
 #### [Unreleased]
 
+## [3.0.0-alpha.5] - 2018-10-02
+
+## Added
+
+- `$icon-color` variable added to define default icon color.
+- Active.Trigger components handle button style API props.
+
 ## [3.0.0-alpha.4] - 2018-10-01
 
 ## BREAKING CHANGES
