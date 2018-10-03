@@ -85,6 +85,17 @@
   font-style: italic !important;
 }
 
+// Decoration
+
+.text-underline {
+  text-decoration: underline !important;
+
+  &:hover,
+  &:active {
+    text-decoration: underline !important;
+  }
+}
+
 // Contextual colors
 
 .text-white {

@@ -35,3 +35,36 @@
 .invisible {
   @include invisible(hidden);
 }
+
+//
+// Disabled
+//
+
+.disabled {
+  // Ensure that disabled elements cannot be interacted with (and reset cursor
+  // styles to initial), individual elements should add specific disabled styles
+  // for color, bg, etc.
+  pointer-events: none;
+}
+
+//
+// Focus outlines
+//
+
+.suppress-outline {
+  & a:focus {
+    outline: none;
+  }
+  & button:focus {
+    outline: none;
+  }
+  & input:focus {
+    outline: none;
+  }
+  & select:focus {
+    outline: none;
+  }
+  & textarea:focus {
+    outline: none;
+  }
+}
