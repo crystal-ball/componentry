@@ -1,8 +1,6 @@
 // @flow
 import { createContext } from 'react'
 
-export const themeDefaults = { transitionDuration: 300 }
-
 /**
  * The `<ThemeProvider>` is a shorthand for setting context values that can be
  * used for changing the default configuration values used by Componentry
@@ -19,6 +17,5 @@ export const themeDefaults = { transitionDuration: 300 }
  * @class ThemeProvider
  * @extends {Component}
  */
-
-const ThemeContext = createContext(themeDefaults)
+const ThemeContext = createContext()
 export default ThemeContext

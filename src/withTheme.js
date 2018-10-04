@@ -38,9 +38,10 @@ const withTheme = (namespace, Wrapped) => {
 
   transferStatics(Wrapped, WithTheme)
   /* eslint-disable no-param-reassign */
-  if (!Wrapped.displayName) Wrapped.displayName = Wrapped.name || namespace
+  if (!Wrapped.displayName) Wrapped.displayName = namespace
   /* eslint-enable no-param-reassign */
-  WithTheme.displayName = `withTheme(${Wrapped.displayName || Wrapped.name || namespace})`
+
+  WithTheme.displayName = `withTheme(${namespace})`
   return WithTheme
 }
 

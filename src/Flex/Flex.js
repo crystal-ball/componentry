@@ -30,12 +30,5 @@ const Flex = ({ align, direction, inline, justify, wrap, ...rest }: Props) =>
     },
     ...rest,
   })
-Flex.defaultProps = {
-  align: '',
-  direction: '',
-  inline: false,
-  justify: '',
-  wrap: '',
-}
 
 export default withTheme('Flex', Flex)

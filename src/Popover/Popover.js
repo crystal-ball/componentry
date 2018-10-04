@@ -33,12 +33,9 @@ const Popover = activeContainer({
   Trigger: withActive(withTheme('PopoverTrigger', Trigger)),
   classes: 'popover',
   escHandler: true,
-  mouseEvents: true,
+  defaultMouseEvents: true,
+  defaultDirection: 'right',
 })
-Popover.defaultProps = {
-  ...Popover.defaultProps,
-  direction: 'right',
-}
 
 Popover.Body = Body
 Popover.Header = Header

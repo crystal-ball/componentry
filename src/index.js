@@ -16,6 +16,6 @@ export { default as Tab } from './Tab/Tab'
 export { default as Tooltip } from './Tooltip/Tooltip'
 export { Anchor, Header, Text } from './Type/Type'
 
-export { default as ThemeProvider, themeDefaults } from './ThemeProvider/ThemeProvider'
+export { default as ThemeProvider } from './ThemeProvider/ThemeProvider'
 export { default as withActive } from './withActive'
 export { default as setupOutlineHandlers } from './utils/setup-outline-handlers'
