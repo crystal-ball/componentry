@@ -58,26 +58,26 @@ component, useful for custom content or flag rendering.
 <InteractiveDemo
   renderCode={() => `<Active>
   {({ active, activate, deactivate, guid }) => (
-    <Fragment>
+    <>
       <Active.Trigger>{active ? 'Close' : 'Open'}</Active.Trigger>
       <Active.Content>
         👍 Any of the Active component handlers can be accessed outside
         the component using this pattern.
       </Active.Content>
-    </Fragment>
+    </>
   )}
 </Active>`}
   renderComponent={() => (
     <div className="w-100">
       <Active>
         {({ active, activate, deactivate, guid }) => (
-          <Fragment>
+          <>
             <Active.Trigger>{active ? 'Close' : 'Open'}</Active.Trigger>
             <Active.Content>
               👍 Any of the Active component handlers can be accessed outside
               the component using this pattern.
             </Active.Content>
-          </Fragment>
+          </>
         )}
       </Active>
     </div>

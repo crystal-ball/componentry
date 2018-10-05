@@ -31,7 +31,7 @@ modal.
   ]}
   renderCode={({ size }) => `<Active>
   {({ deactivate }) => (
-    <Fragment>
+    <>
       <Active.Trigger>Trigger Modal</Active.Trigger>
       <Modal size={size}>
         <Modal.Header>
@@ -50,13 +50,13 @@ modal.
           <Button color="primary">Save Changes</Button>
         </Modal.Footer>
       </Modal>
-    </Fragment>
+    </>
   )}
 </Active>`}
   renderComponent={({ size }) => (
     <Active>
       {({ deactivate }) => (
-        <Fragment>
+        <>
           <Active.Trigger>Trigger Modal</Active.Trigger>
           <Modal size={size}>
             <Modal.Header>
@@ -75,7 +75,7 @@ modal.
               <Button color="primary">Save Changes</Button>
             </Modal.Footer>
           </Modal>
-        </Fragment>
+        </>
       )}
     </Active>
   )}

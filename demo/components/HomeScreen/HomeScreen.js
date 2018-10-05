@@ -1,15 +1,16 @@
 // @flow
-import React, { Fragment } from 'react'
+import React from 'react'
 import styled from 'styled-components'
 import { Flex, Header, Media } from 'componentry'
 import { Link } from 'react-router-dom'
 
 import routesMap, { componentRoutes, conceptRoutes } from 'lib/routes-map'
 import SubRoutesNav from 'components/universal/SubRoutesNav'
+import { component } from './homescreen.scss'
 
-import accessibleSVG from './media/accessibility.svg'
-import bundleSVG from './media/bundle.svg'
-import mergeSVG from './media/merge.svg'
+import Accessible from './media/accessibility.svg'
+import Bundle from './media/bundle.svg'
+import Merge from './media/merge.svg'
 
 const Hero = styled(Flex)`
   margin-top: 5rem;
@@ -32,7 +33,7 @@ const Feature = styled(Media)`
 `
 
 export default () => (
-  <Fragment>
+  <>
     <Hero direction="column" align="center">
       <Header color="primary" className="display-2 mb-4">
         <u>C</u>
@@ -65,15 +66,15 @@ export default () => (
       </div>
     </Flex>
 
-    <Flex justify="center" mb={5} direction="column">
+    <Flex justify="center" mb={5} direction="column" className={component}>
       <FeatureContainer className="my-4">
         <FeatureHeader as="h3">Lightweight Bundle Size</FeatureHeader>
         <Feature>
-          <img
-            className="icon display-3 mr-3"
-            src={bundleSVG}
+          <Bundle
+            className="feature-icon display-3 mr-3"
             alt="Library bundle size is a small percentage of overall bundle"
           />
+
           <Media.Body>
             <p>
               Componentry is optimized for size and performance. With minimial external
@@ -93,9 +94,8 @@ export default () => (
               component concerns make component composition easy.
             </p>
           </Media.Body>
-          <img
-            className="icon display-3 mr-3"
-            src={mergeSVG}
+          <Merge
+            className="feature-icon display-3 mr-3"
             alt="Different components utilize the same API"
           />
         </Feature>
@@ -103,9 +103,8 @@ export default () => (
       <FeatureContainer className="my-4">
         <FeatureHeader as="h3">A++ Accessibility</FeatureHeader>
         <Feature className="border-bottom-0">
-          <img
-            className="icon display-3 mr-3"
-            src={accessibleSVG}
+          <Accessible
+            className="feature-icon display-3 mr-3"
             alt="Library focuses on A++ accessibility"
           />
           <Media.Body>
@@ -122,5 +121,5 @@ export default () => (
         </Feature>
       </FeatureContainer>
     </Flex>
-  </Fragment>
+  </>
 )

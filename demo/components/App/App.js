@@ -1,5 +1,5 @@
 // @flow
-import React, { Component, Fragment } from 'react'
+import React, { Component } from 'react'
 import { shape } from 'prop-types'
 import * as Componentry from 'componentry'
 import DocumentTitle from 'react-document-title'
@@ -72,9 +72,6 @@ Object.keys(Componentry).forEach(component => {
   if (component === 'ThemeProvider') return // Application only component
   registry.register(Componentry[component], component)
 })
-
-// Registry React Router <Link /> for convenience
-registry.register(Fragment, 'Fragment')
 
 const { setup, concepts, components } = routesMap
 
