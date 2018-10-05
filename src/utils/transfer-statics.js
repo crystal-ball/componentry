@@ -8,7 +8,6 @@ const statics = [
   'Nav',
   'Title',
   'Trigger',
-  'defaultProps',
 ]
 
 export default function transferStatics(Base, Target) {

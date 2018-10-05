@@ -21,7 +21,7 @@ const Tooltip = activeContainer({
   Trigger: withActive(withTheme('TooltipTrigger', Trigger)),
   classes: 'tooltip',
   escHandler: true,
-  mouseEvents: true,
+  defaultMouseEvents: true,
 })
 
 /**

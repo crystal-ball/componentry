@@ -28,12 +28,9 @@ const Dropdown = activeContainer({
   classes: 'dropdown',
   escHandler: true,
   clickHandler: true,
+  defaultDirection: 'bottom',
 })
 Dropdown.Item = withTheme('DropdownItem', withActive(Item))
-Dropdown.defaultProps = {
-  ...Dropdown.defaultProps,
-  direction: 'bottom',
-}
 
 /**
  * The `<Dropdown>` element creates a menu.
