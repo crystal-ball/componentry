@@ -17,5 +17,5 @@ import { createContext } from 'react'
  * @class ThemeProvider
  * @extends {Component}
  */
-const ThemeContext = createContext()
+const ThemeContext = createContext({})
 export default ThemeContext
