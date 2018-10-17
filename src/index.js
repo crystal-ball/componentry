@@ -16,6 +16,11 @@ export { default as Tab } from './Tab/Tab'
 export { default as Tooltip } from './Tooltip/Tooltip'
 export { Anchor, Header, Text } from './Type/Type'
 
+// --- Forms
+export { default as FormGroup } from './FormGroup/FormGroup'
+export { default as Input } from './Input/Input'
+
+// --- Utilities
 export { default as ThemeProvider } from './ThemeProvider/ThemeProvider'
 export { default as withActive } from './withActive'
 export { default as setupOutlineHandlers } from './utils/setup-outline-handlers'

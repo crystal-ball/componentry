@@ -14,6 +14,7 @@ import PopoversScreen from 'components/ComponentsScreen/Screens/Popovers.md'
 import TabsScreen from 'components/ComponentsScreen/Screens/Tabs.md'
 import TooltipsScreen from 'components/ComponentsScreen/Screens/Tooltips.md'
 import TypeScreen from 'components/ComponentsScreen/Screens/Type.md'
+import FormsScreen from 'components/ComponentsScreen/Screens/Forms.md'
 
 import ArchitectureScreen from 'GUIDES/Architecture.md'
 import AccessibilityScreen from 'GUIDES/Accessibility.md'
@@ -45,6 +46,7 @@ const routesMap = {
       tabs: { pathname: '/components/tabs', state: { name: 'Tabs' } },
       tooltips: { pathname: '/components/tooltips', state: { name: 'Tooltips' } },
       type: { pathname: '/components/type', state: { name: 'Type' } },
+      forms: { pathname: '/components/forms', state: { name: 'Forms' } },
     },
     screens: {
       active: ActiveScreen,
@@ -63,6 +65,7 @@ const routesMap = {
       tabs: TabsScreen,
       tooltips: TooltipsScreen,
       type: TypeScreen,
+      forms: FormsScreen,
     },
   },
   concepts: {

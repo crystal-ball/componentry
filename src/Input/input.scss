@@ -1,0 +1,134 @@
+/* componentry/src/Input/input */
+
+.input-field {
+  display: block;
+  width: 100%;
+  padding: $input-padding-y $input-padding-x;
+  font-size: $font-size-base;
+  line-height: $input-line-height;
+  color: $input-color;
+  background-color: $input-bg;
+  background-clip: padding-box;
+  border: $input-border-width solid $input-border-color;
+
+  // Note: This has no effect on <select>s in some browsers, due to the limited stylability of `<select>`s in CSS.
+  @if $enable-rounded {
+    // Manually use the if/else instead of the mixin to account for iOS override
+    border-radius: $input-border-radius;
+  } @else {
+    // Otherwise undo the iOS default
+    border-radius: 0;
+  }
+
+  @include box-shadow($input-box-shadow);
+  @include transition($input-transition);
+
+  // Customize the `:focus` state to imitate native WebKit styles.
+  &:focus {
+    color: $input-focus-color;
+    background-color: $input-focus-bg;
+    border-color: $input-focus-border-color;
+    outline: 0;
+    // Avoid using mixin so we can pass custom focus shadow properly
+    @if $enable-shadows {
+      box-shadow: $input-box-shadow, $input-focus-box-shadow;
+    } @else {
+      box-shadow: $input-focus-box-shadow;
+    }
+  }
+
+  // Placeholder
+  &::placeholder {
+    color: $input-placeholder-color;
+    font-style: $input-placeholder-font-style;
+    // Override Firefox's unusual default opacity; see https://github.com/twbs/bootstrap/pull/11526.
+    opacity: 1;
+  }
+
+  // Disabled and read-only inputs
+  //
+  // HTML5 says that controls under a fieldset > legend:first-child won't be
+  // disabled if the fieldset is disabled. Due to implementation difficulty, we
+  // don't honor that edge case; we style them as disabled anyway.
+  &:disabled,
+  &[readonly] {
+    background-color: $input-disabled-bg;
+    // iOS fix for unreadable disabled content; see https://github.com/twbs/bootstrap/issues/11655.
+    opacity: 1;
+  }
+}
+
+// Validation
+
+// Use :invalid with HTML and `was-validated`
+// OR use .invalid
+
+.input-field.invalid {
+  background: $input-invalid-bg;
+  color: $input-invalid-color;
+  border-color: $input-invalid-border-color;
+
+  // Note: This has no effect on <select>s in some browsers, due to the limited stylability of `<select>`s in CSS.
+  @if $enable-rounded {
+    // Manually use the if/else instead of the mixin to account for iOS override
+    border-radius: $input-invalid-border-radius;
+  } @else {
+    // Otherwise undo the iOS default
+    border-radius: 0;
+  }
+
+  &::placeholder {
+    color: $input-invalid-color;
+  }
+}
+
+// Sizing
+
+.input-field-sm {
+  padding: $input-padding-y-sm $input-padding-x-sm;
+  font-size: $font-size-sm;
+  line-height: $input-line-height-sm;
+  @include border-radius($input-border-radius-sm);
+}
+
+.input-field-lg {
+  padding: $input-padding-y-lg $input-padding-x-lg;
+  font-size: $font-size-lg;
+  line-height: $input-line-height-lg;
+  @include border-radius($input-border-radius-lg);
+}
+
+//
+// Label
+//
+
+.input-label {
+  color: $input-label-color;
+  font-size: $input-label-font-size;
+  letter-spacing: $input-label-letter-spacing;
+  text-transform: $input-label-text-transform;
+}
+
+//
+// Description
+//
+
+.input-description {
+  display: block;
+  margin: $input-description-margin-y $input-description-margin-x;
+  color: $input-description-color;
+  font-size: $input-description-font-size;
+  font-style: $input-description-font-style;
+}
+
+//
+// Error
+//
+
+.input-error {
+  background: $input-error-bg;
+  padding: $input-error-padding-y $input-error-padding-x;
+  color: $input-error-color;
+  font-size: $input-error-font-size;
+  border-radius: $input-error-border-radius;
+}
