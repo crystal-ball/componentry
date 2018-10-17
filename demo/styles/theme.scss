@@ -77,11 +77,14 @@ $headings-color:          var(--headings-color);
 // Buttons
 $btn-font-weight:         300; // The white Libre Franklin font looks nice at a lighter weight
 
+$btn-bg-states: (
+  disabled: transparent,
+);
+
 // Demo using a single diabled style for all button colors
-$btn-disabled-bg:         transparent;
-$btn-disabled-border:     #e1e7e6;
-$btn-disabled-color:      var(--btn-disabled-color);
-$btn-disabled-opacity:    1; // Overrides default behavior of reducing opacity
+$btn-disabled-opacity:           1; // Overrides default behavior of reducing opacity
+$btn-disabled-border-color:      var(--btn-disabled-border-color);
+$btn-disabled-color:             $gray-700;
 
 // Tooltips
 

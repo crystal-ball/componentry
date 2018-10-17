@@ -1,5 +1,11 @@
 /* componentry/src/Button/button */
 
+/*
+ * Button customizations to document:
+ * - Disabled state overrides
+ * - Btn states override
+ */
+
 //
 // Base styles
 //
@@ -38,34 +44,45 @@
 
 @each $color, $value in $theme-colors {
   .btn-#{$color} {
+    @if map-get($btn-bg-states, $color) {
+      background: map-get($btn-bg-states, $color);
+    } @else {
+      @include gradient-bg($value);
+    }
     border-color: $value;
     color: color-yiq($value);
-    @include gradient-bg($value);
 
     &:hover {
+      @if map-get($btn-bg-states, #{$color}-hover) {
+        background: map-get($btn-bg-states, #{$color}-hover);
+      } @else {
+        @include gradient-bg(darken($value, $btn-bg-hover-darken));
+      }
       border-color: darken($value, 10%);
       color: color-yiq($value);
-      @include gradient-bg(darken($value, $btn-bg-hover-darken));
     }
 
     &:active,
     &.active {
+      @if map-get($btn-bg-states, #{$color}-active) {
+        background: map-get($btn-bg-states, #{$color}-active);
+      } @else {
+        @include gradient-bg(darken($value, $btn-bg-active-darken));
+      }
       border-color: darken($value, 12.5%);
       color: color-yiq($value);
-      @include gradient-bg(darken($value, $btn-bg-active-darken));
     }
 
     // Disabled buttons can be styled to a consistent appearance with optional
     // disabled theme vars, otherwise reset to default appearance with an
     // opacity change to indicate disabled state
     &.disabled {
-      border-width: $btn-disabled-border-width;
-
-      @if variable-exists(btn-disabled-bg) {
-        @include gradient-bg($btn-disabled-bg);
+      @if map-get($btn-bg-states, disabled) {
+        background: map-get($btn-bg-states, disabled);
       } @else {
         @include gradient-bg($value);
       }
+      border-width: $btn-disabled-border-width;
 
       @if variable-exists(btn-disabled-border-color) {
         border-color: $btn-disabled-border-color;

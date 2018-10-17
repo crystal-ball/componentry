@@ -5,7 +5,7 @@
 // element theming for buttons && headers (Note that these vars correspond to
 // the theme which sets the var to the SASS variable)
 :root {
-  --btn-disabled-color: #89a19d;
+  --btn-disabled-border-color: #{$gray-600};
   --headings-color: #{$gray-800};
 }
 
