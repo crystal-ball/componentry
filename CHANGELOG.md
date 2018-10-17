@@ -8,6 +8,19 @@ and this project adheres to
 
 #### [Unreleased]
 
+## [3.0.0-alpha.6] - 2018-10-17
+
+## BREAKING CHANGES
+
+- Library no longer inserts CSS Variables by default, they can be used for SASS
+  vars where needed.
+
+### Updated
+
+- Fix using `defaultProps` overriding context
+- Add `btn-bg-states` config mechanism
+- Add `Input component
+
 ## [3.0.0-alpha.5] - 2018-10-02
 
 ## Added
