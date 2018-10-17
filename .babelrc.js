@@ -61,7 +61,7 @@ module.exports = {
       ],
     },
     // ESM - ES5 syntax with ESModules
-    esm: {
+    esmodules: {
       presets: [
         [
           '@babel/preset-env',
