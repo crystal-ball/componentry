@@ -8,13 +8,14 @@ export default function spacing(props) {
 
   Object.keys(props).forEach(key => {
     let value = props[key]
-    // Append px if a unit isn't set otherwise inline styles don't work
-    if (!/[a-z]/.test(value)) value += 'px'
 
     if (typeof value === 'number') {
       classNames.push(`${key}-${value}`)
       return
     }
+
+    // Append px if a unit isn't set otherwise inline styles don't work
+    if (!/[a-z]/.test(value)) value += 'px'
 
     const [, base, modifier] = key.match(/([mp])([trblxy]?)/)
     const styleKey = base === 'm' ? 'margin' : 'padding'
