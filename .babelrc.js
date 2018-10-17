@@ -80,8 +80,10 @@ module.exports = {
     },
     // Next - Transpiled to stage 4 for package.esnext
     next: {
-      presets: ['@babel/preset-react'],
+      presets: ['@babel/preset-react', '@babel/preset-flow'],
       plugins: [
+        // Preset env doesn't yet support this syntax
+        '@babel/plugin-syntax-object-rest-spread',
         '@babel/plugin-proposal-class-properties',
         '@babel/plugin-transform-runtime',
         'transform-react-remove-prop-types',
