@@ -14,35 +14,36 @@ export default function spacing(props) {
       return
     }
 
-    // Else add the key value to style props map
-    const styleName = key.replace(/([mp])([trbl]?)/, (match, p1, p2) => {
-      let styleKey = p1 === 'm' ? 'margin' : 'padding'
-      if (p2) {
-        /* eslint-disable default-case */
-        switch (p2) {
-          case 't':
-            styleKey += 'Top'
-            break
-          case 'r':
-            styleKey += 'Right'
-            break
-          case 'b':
-            styleKey += 'Bottom'
-            break
-          case 'l':
-            styleKey += 'Left'
-            break
-        }
-        /* eslint-enable default-case */
-      }
-
-      return styleKey
-    })
-
     // Append px if a unit isn't set otherwise inline styles don't work
     if (!/[a-z]/.test(value)) value += 'px'
 
-    styles[styleName] = value
+    const [, base, modifier] = key.match(/([mp])([trblxy]?)/)
+    const styleKey = base === 'm' ? 'margin' : 'padding'
+
+    switch (modifier) {
+      case 't':
+        styles[`${styleKey}Top`] = value
+        break
+      case 'r':
+        styles[`${styleKey}Right`] = value
+        break
+      case 'b':
+        styles[`${styleKey}Bottom`] = value
+        break
+      case 'l':
+        styles[`${styleKey}Left`] = value
+        break
+      case 'x':
+        styles[`${styleKey}Left`] = value
+        styles[`${styleKey}Right`] = value
+        break
+      case 'y':
+        styles[`${styleKey}Top`] = value
+        styles[`${styleKey}Bottom`] = value
+        break
+      default:
+        styles[styleKey] = value
+    }
   })
 
   return { classNames, styles }
