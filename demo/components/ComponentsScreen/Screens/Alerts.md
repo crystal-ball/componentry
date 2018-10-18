@@ -42,6 +42,8 @@ component to automatically create an uncontrolled Alert.
     `<Alert color="${color}"${outline ? ' outline' : ''}>
   <h4 className="alert-heading">Well done!</h4>
   <p className="mb-0">You successfully read this important alert message.</p>
+  <hr />
+  <Anchor href="#" className="alert-link">Go home</Anchor>
 </Alert>`
   )}
   renderComponent={({ color, dismissible, outline }) => (
@@ -50,6 +52,8 @@ component to automatically create an uncontrolled Alert.
         <Alert color={color} dismissible={dismissible} outline={outline}>
           <h4 className="alert-heading">Well done!</h4>
           <p className="mb-0">You successfully read this important alert message.</p>
+          <hr />
+          <Anchor href="#" className="alert-link">Go home</Anchor>
         </Alert>
       </Active>
     </div>
