@@ -183,7 +183,8 @@
   }
 }
 
-// TODO make atomic class
+// DEPRECATED
+// Use the gradient-background function
 @mixin gradient-bg($color) {
   @if $enable-gradients {
     background: $color

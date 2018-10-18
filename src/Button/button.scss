@@ -6,6 +6,32 @@
  * - Btn states override
  */
 
+$btn-defaults: ();
+@each $color, $value in $theme-colors {
+  $btn-defaults: map-merge(
+    $btn-defaults,
+    (
+      // --- Background color
+      #{$color}-bg: #{gradient-background($value)},
+      #{$color}-hover-bg: #{gradient-background(darken($value, 7.5%))},
+      #{$color}-active-bg: #{gradient-background(darken($value, 10%))},
+      #{$color}-disabled-bg: #{gradient-background($value)},
+      // --- Border color
+      #{$color}-border-color: #{$value},
+      #{$color}-hover-border-color: #{darken($value, 10%)},
+      #{$color}-active-border-color: #{darken($value, 12.5%)},
+      #{$color}-disabled-border-color: #{$value},
+      // --- Color
+      #{$color}-color: #{color-yiq($value)},
+      #{$color}-hover-color: #{color-yiq($value)},
+      #{$color}-active-color: #{color-yiq($value)},
+      #{$color}-disabled-color: #{color-yiq($value)}
+    )
+  );
+}
+
+$btn-states-map: map-merge($btn-defaults, $btn-states);
+
 //
 // Base styles
 //
@@ -34,6 +60,7 @@
   // Default disabled styles remove pointer and adjust opacity to indicate
   // button is disabled
   &.disabled {
+    border-width: $btn-disabled-border-width;
     opacity: $btn-disabled-opacity;
   }
 }
@@ -44,57 +71,27 @@
 
 @each $color, $value in $theme-colors {
   .btn-#{$color} {
-    @if map-get($btn-bg-states, $color) {
-      background: map-get($btn-bg-states, $color);
-    } @else {
-      @include gradient-bg($value);
-    }
-    border-color: $value;
-    color: color-yiq($value);
+    background: map-get($btn-states-map, #{$color}-bg);
+    border-color: map-get($btn-states-map, #{$color}-border-color);
+    color: map-get($btn-states-map, #{$color}-color);
 
     &:hover {
-      @if map-get($btn-bg-states, #{$color}-hover) {
-        background: map-get($btn-bg-states, #{$color}-hover);
-      } @else {
-        @include gradient-bg(darken($value, $btn-bg-hover-darken));
-      }
-      border-color: darken($value, 10%);
-      color: color-yiq($value);
+      background: map-get($btn-states-map, #{$color}-hover-bg);
+      border-color: map-get($btn-states-map, #{$color}-hover-border-color);
+      color: map-get($btn-states-map, #{$color}-hover-color);
     }
 
     &:active,
     &.active {
-      @if map-get($btn-bg-states, #{$color}-active) {
-        background: map-get($btn-bg-states, #{$color}-active);
-      } @else {
-        @include gradient-bg(darken($value, $btn-bg-active-darken));
-      }
-      border-color: darken($value, 12.5%);
-      color: color-yiq($value);
+      background: map-get($btn-states-map, #{$color}-active-bg);
+      border-color: map-get($btn-states-map, #{$color}-active-border-color);
+      color: map-get($btn-states-map, #{$color}-active-color);
     }
 
-    // Disabled buttons can be styled to a consistent appearance with optional
-    // disabled theme vars, otherwise reset to default appearance with an
-    // opacity change to indicate disabled state
     &.disabled {
-      @if map-get($btn-bg-states, disabled) {
-        background: map-get($btn-bg-states, disabled);
-      } @else {
-        @include gradient-bg($value);
-      }
-      border-width: $btn-disabled-border-width;
-
-      @if variable-exists(btn-disabled-border-color) {
-        border-color: $btn-disabled-border-color;
-      } @else {
-        border-color: $value;
-      }
-
-      @if variable-exists(btn-disabled-color) {
-        color: $btn-disabled-color;
-      } @else {
-        color: color-yiq($value);
-      }
+      background: map-get($btn-states-map, #{$color}-disabled-bg);
+      border-color: map-get($btn-states-map, #{$color}-disabled-border-color);
+      color: map-get($btn-states-map, #{$color}-disabled-color);
     }
   }
 }

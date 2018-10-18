@@ -1,4 +1,7 @@
 styles/theme/_variables.scss
 styles/theme/_button.scss
 styles/theme/_input.scss
+
+src/Button/button.scss
+
 demo/styles/theme.scss

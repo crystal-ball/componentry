@@ -88,3 +88,14 @@
 
   @return mix($color-base, $color, $level * $theme-color-interval);
 }
+
+/**
+ * Returns a gradient background color when gradients are enabled for theme
+ */
+@function gradient-background($color) {
+  @if $enable-gradients {
+    @return $color linear-gradient(180deg, mix($body-bg, $color, 15%), $color) repeat-x;
+  } @else {
+    @return $color;
+  }
+}
