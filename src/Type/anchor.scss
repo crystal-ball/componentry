@@ -1,5 +1,7 @@
 /* componentry/src/Type/anchor */
 
+// ⚠️ Any styles added to anchors should be mirrored in the `btn-anchor`
+// class
 a {
   color: $link-color;
   text-decoration: $link-decoration;
@@ -10,6 +12,16 @@ a {
     text-decoration: $link-hover-decoration;
   }
 
-  // ⚠️ Any styles added to anchors should be mirrored in the `btn-anchor`
-  // class
+  &:active {
+    color: $link-active-color;
+    text-decoration: $link-active-decoration;
+  }
+
+  // When no href is passed the Anchor component will include disabled, which
+  // we use to remove the stylesof the anchor
+  // See https://github.com/twbs/bootstrap/issues/19402
+  &.disabled {
+    color: $link-disabled-color;
+    text-decoration: $link-disabled-decoration;
+  }
 }

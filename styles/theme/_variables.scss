@@ -163,8 +163,19 @@ $body-color:                $foreground !default;
 
 $link-color:                theme-color("primary") !default;
 $link-decoration:           none !default;
+
 $link-hover-color:          darken($link-color, 15%) !default;
 $link-hover-decoration:     underline !default;
+
+$link-active-color:         $link-hover-color !default;
+$link-active-decoration:    $link-hover-decoration !default;
+
+// Disabled links are a weird thing, they're not technically real, but you can
+// "disable" a link by removing the href which we handle by making the link
+// look like normal text...
+$link-disabled-color:       inherit !default;
+$link-disabled-decoration:  none !default;
+
 
 // Paragraphs
 //

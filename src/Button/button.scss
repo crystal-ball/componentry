@@ -70,6 +70,7 @@ $btn-states-map: map-merge($btn-defaults, $btn-states);
 //
 
 @each $color, $value in $theme-colors {
+  // --- Theme variant
   .btn-#{$color} {
     background: map-get($btn-states-map, #{$color}-bg);
     border-color: map-get($btn-states-map, #{$color}-border-color);
@@ -94,35 +95,8 @@ $btn-states-map: map-merge($btn-defaults, $btn-states);
       color: map-get($btn-states-map, #{$color}-disabled-color);
     }
   }
-}
 
-// 'Link' theme color variant -  have the padding and alignment of a button with
-// font styles matching anchors (can be used for things like secondary CTAs)
-.btn-link {
-  background-color: transparent;
-  color: $link-color;
-  font-weight: $font-weight-normal;
-  // 🤔 Should btn-link reset the text tansform and letter spacing?
-
-  &:hover {
-    background-color: transparent;
-    border-color: transparent;
-    color: $link-hover-color;
-    text-decoration: $link-hover-decoration;
-  }
-
-  &.disabled {
-    color: $btn-link-disabled-color;
-  }
-
-  // No need for an active state here
-}
-
-//
-// Outline button variants
-//
-
-@each $color, $value in $theme-colors {
+  // --- Outline variant
   .btn-#{$color}.btn-outline {
     color: $value;
     background-color: transparent;
@@ -148,6 +122,28 @@ $btn-states-map: map-merge($btn-defaults, $btn-states);
       background-color: transparent;
     }
   }
+}
+
+// TODO: this should use the map override mechanism as: `link-<modifier>`
+// 'Link' theme color variant -  have the padding and alignment of a button with
+// font styles matching anchors (can be used for things like secondary CTAs)
+.btn-link {
+  background-color: transparent;
+  color: $link-color;
+  font-weight: $font-weight-normal;
+  // 🤔 Should btn-link reset the text tansform and letter spacing?
+
+  &:hover {
+    background-color: transparent;
+    border-color: transparent;
+    color: $link-hover-color;
+    text-decoration: $link-hover-decoration;
+  }
+
+  &.disabled {
+    color: $btn-link-disabled-color;
+  }
+  // No need for an active state here, WHY NOT???
 }
 
 //
@@ -224,14 +220,18 @@ $btn-states-map: map-merge($btn-defaults, $btn-states);
   border-radius: 0;
 
   &:hover {
-    background-color: transparent;
-    border-color: transparent;
     color: $link-hover-color;
     text-decoration: $link-hover-decoration;
   }
 
+  &:active {
+    color: $link-active-color;
+    text-decoration: $link-active-decoration;
+  }
+
   &.disabled {
-    color: $btn-link-disabled-color;
+    color: $link-disabled-color;
+    text-decoration: $link-disabled-decoration;
   }
 }
 
@@ -242,11 +242,10 @@ $btn-states-map: map-merge($btn-defaults, $btn-states);
 .btn-block {
   display: block;
   width: 100%;
-
-  // Vertically space out multiple block buttons
-  // 🤔 Do we want to include this as a default library style? It's somewhat
-  // opinionated and isn't based on "adding" a class to produce a style...
-  + .btn-block {
-    margin-top: $btn-block-spacing-y;
-  }
 }
+
+// TODO: Make a `block-button-container` class or similar for automatically
+// adding margin to sibling block buttons
+// + .btn-block {
+//   margin-top: $btn-block-spacing-y;
+// }
