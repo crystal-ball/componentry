@@ -77,7 +77,9 @@ const Alert = ({
         <div className="alert-content">{children}</div>
 
         {/* Render a close button or null depending on configs */}
-        {dismissible && <Close onClick={deactivate} className={`text-${color}`} />}
+        {dismissible && (
+          <Close onClick={deactivate} className={`alert-close text-${color}`} />
+        )}
       </Fragment>
     ),
     ...cleanActive(rest),

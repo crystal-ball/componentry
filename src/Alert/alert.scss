@@ -1,5 +1,19 @@
 /* componentry/src/Alert/alert */
 
+$alert-defaults: ();
+@each $color, $value in $theme-colors {
+  $alert-defaults: map-merge(
+    $alert-defaults,
+    (
+      #{$color}-bg: #{gradient-background(theme-color-level($color, $alert-bg-level))},
+      #{$color}-border-color: #{theme-color-level($color, $alert-border-level)},
+      #{$color}-color: #{theme-color-level($color, $alert-color-level)}
+    )
+  );
+}
+
+$alert-states-map: map-merge($alert-defaults, $alert-states);
+
 // Make the alert container a flex container by default with space-between to align
 // close button to right side
 .alert {
@@ -13,6 +27,45 @@
   @include border-radius($alert-border-radius);
 }
 
+// Alternate styles
+//
+// Generate contextual modifier classes for colorizing the alert.
+
+@each $color, $value in $theme-colors {
+  .alert-#{$color} {
+    background: map-get($alert-states-map, #{$color}-bg);
+    border-color: map-get($alert-states-map, #{$color}-border-color);
+    color: map-get($alert-states-map, #{$color}-color);
+
+    hr {
+      border-top-color: darken(theme-color-level($color, $alert-border-level), 5%);
+    }
+
+    .alert-link {
+      color: darken(theme-color-level($color, $alert-color-level), 10%);
+    }
+  }
+
+  // Outline alerts have a transparent background with a bright left side border
+  .alert-#{$color}.alert-outline {
+    background-color: transparent;
+    border-color: $border-color;
+    border-left: 5px solid $value;
+  }
+}
+
+//
+// Alert elements
+//
+
+.alert-content {
+  flex-grow: 1;
+}
+
+.alert-close {
+  margin-left: $alert-close-margin-left;
+}
+
 // Headings for larger alerts
 .alert-heading {
   // Specified to prevent conflicts of changing $headings-color
@@ -22,44 +75,4 @@
 // Provide class for links that match alerts
 .alert-link {
   font-weight: $alert-link-font-weight;
-}
-
-// Alternate styles
-//
-// Generate contextual modifier classes for colorizing the alert.
-
-@mixin alert-variant($background, $border, $color) {
-  color: $color;
-  @include gradient-bg($background);
-  border-color: $border;
-
-  hr {
-    border-top-color: darken($border, 5%);
-  }
-
-  .alert-link {
-    color: darken($color, 10%);
-  }
-}
-
-@each $color, $value in $theme-colors {
-  .alert-#{$color} {
-    @include alert-variant(
-      theme-color-level($color, $alert-bg-level),
-      theme-color-level($color, $alert-border-level),
-      theme-color-level($color, $alert-color-level)
-    );
-  }
-}
-
-// Outline styles
-//
-// Outline alerts have a transparent background with a bright left side border
-
-@each $color, $value in $theme-colors {
-  .alert-#{$color}.alert-outline {
-    background-color: transparent;
-    border-color: $border-color;
-    border-left: 5px solid $value;
-  }
 }

@@ -74,17 +74,14 @@ $h4-font-size:            $font-size-base * 1.2;
 $headings-font-weight:    300;
 $headings-color:          var(--headings-color);
 
+// --- Alerts
+
+$alert-color-level:       2;
+
+
 // Buttons
+
 $btn-font-weight:         300; // The white Libre Franklin font looks nice at a lighter weight
-
-$btn-bg-states: (
-  disabled: transparent,
-);
-
-// Demo using a single diabled style for all button colors
-$btn-disabled-opacity:           1; // Overrides default behavior of reducing opacity
-$btn-disabled-border-color:      var(--btn-disabled-border-color);
-$btn-disabled-color:             $gray-700;
 
 // Tooltips
 
