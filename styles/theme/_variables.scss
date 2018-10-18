@@ -163,8 +163,16 @@ $body-color:                $foreground !default;
 
 $link-color:                theme-color("primary") !default;
 $link-decoration:           none !default;
+
 $link-hover-color:          darken($link-color, 15%) !default;
 $link-hover-decoration:     underline !default;
+
+$link-active-color:         $link-hover-color !default;
+$link-active-decoration:    $link-hover-decoration !default;
+
+$link-disabled-color:       inherit !default;
+$link-disabled-decoration:  none !default;
+
 
 // Paragraphs
 //

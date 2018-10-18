@@ -13,13 +13,13 @@ type Props = {
  * This component checks for an href, and renders an `a` element when found,
  * otherwise it renders a Link for the internal link.
  */
-const AnchorLink = ({ children, href, ...rest }: Props) =>
-  href ? (
-    <a href={href} {...rest}>
+const AnchorLink = ({ children, to, ...rest }: Props) =>
+  to ? (
+    <Link to={to} {...rest}>
       {children}
-    </a>
+    </Link>
   ) : (
-    <Link {...rest}>{children}</Link>
+    <a {...rest}>{children}</a>
   )
 
 export default AnchorLink

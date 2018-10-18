@@ -36,21 +36,26 @@ const makeType = as => ({
   size,
   textAlign,
   ...rest
-}: Props) =>
-  elem({
+}: Props) => {
+  const classes = {
+    'font-italic': italic,
+    'text-uppercase': uppercase,
+    'text-monospace': monospace,
+    [`font-weight-${fontWeight}`]: fontWeight,
+    [`text-${color}`]: color,
+    [`text-${size}`]: size,
+    [`text-${textAlign}`]: textAlign,
+  }
+
+  if (as === 'a') classes.disabled = !rest.href
+
+  return elem({
     defaultAs: as,
     style: { fontSize, letterSpacing, lineHeight },
-    classes: {
-      'font-italic': italic,
-      'text-uppercase': uppercase,
-      'text-monospace': monospace,
-      [`font-weight-${fontWeight}`]: fontWeight,
-      [`text-${color}`]: color,
-      [`text-${size}`]: size,
-      [`text-${textAlign}`]: textAlign,
-    },
+    classes,
     ...rest,
   })
+}
 
 const Anchor = withTheme('Anchor', makeType('a'))
 const Header = withTheme('Header', makeType('h1'))
