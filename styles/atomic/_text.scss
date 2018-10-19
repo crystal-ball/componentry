@@ -96,6 +96,15 @@
   }
 }
 
+.suppress-text-decoration {
+  text-decoration: none !important;
+
+  &:hover,
+  &:active {
+    text-decoration: none !important;
+  }
+}
+
 // Contextual colors
 
 .text-white {
