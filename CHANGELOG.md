@@ -8,6 +8,8 @@ and this project adheres to
 
 #### [Unreleased]
 
+## [3.0.0-alpha.8] - 2018-10-19
+
 ## BREAKING CHANGES
 
 - Following the pattern of explicit classNames usage, the outline button variant
@@ -19,6 +21,9 @@ and this project adheres to
 
 - The `btn-container-<x/y>` classes have been added to automatically create
   spacing between buttons in a container.
+- An issue where using the FaCC render pattern with active containers wouldn't
+  render the containing wrapper is fixed.
+- The text utility class `.suppress-text-decoration` was added.
 
 ## [3.0.0-alpha.7] - 2018-10-18
 
