@@ -232,18 +232,6 @@ export default ({
         guid: this.guid,
       }
 
-      // Handles FaCC style usage
-      if (typeof children === 'function') {
-        // ℹ️ Provider is still required so that withActive con pass active
-        // context to connected consumers
-        return (
-          <ActiveProvider.Provider value={activeValues}>
-            {children(activeValues)}
-          </ActiveProvider.Provider>
-        )
-      }
-
-      // Handles default component style usage
       // TODO: only wrap elements with a `div` when the element needs it
       return (
         <ActiveProvider.Provider value={activeValues}>
@@ -256,13 +244,16 @@ export default ({
             onMouseLeave: mouseEvents ? this.handleDeactivate : undefined,
             // If shorthand values for Trigger/Content were passed in props, render
             // subcomponents with prop as children
-            children: (
-              <Fragment>
-                {PropsTrigger && <Trigger>{PropsTrigger}</Trigger>}
-                {children}
-                {PropsContent && <Content>{PropsContent}</Content>}
-              </Fragment>
-            ),
+            children:
+              typeof children === 'function' ? (
+                children(activeValues) // Handle FaCC syntax
+              ) : (
+                <Fragment>
+                  {PropsTrigger && <Trigger>{PropsTrigger}</Trigger>}
+                  {children}
+                  {PropsContent && <Content>{PropsContent}</Content>}
+                </Fragment>
+              ),
             ...cleanActive(rest),
           })}
         </ActiveProvider.Provider>
