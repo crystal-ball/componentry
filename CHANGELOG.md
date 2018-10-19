@@ -8,6 +8,18 @@ and this project adheres to
 
 #### [Unreleased]
 
+## BREAKING CHANGES
+
+- Following the pattern of explicit classNames usage, the outline button variant
+  is now used without the color modifier class. The color modifier class and the
+  outline class are not additive, so it doesn't make sense to use them in an
+  additive way. The outline prop now takes the color of the outline button!
+
+## Updated
+
+- The `btn-container-<x/y>` classes have been added to automatically create
+  spacing between buttons in a container.
+
 ## [3.0.0-alpha.7] - 2018-10-18
 
 ## BREAKING CHANGES

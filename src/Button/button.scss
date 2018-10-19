@@ -1,9 +1,7 @@
 /* componentry/src/Button/button */
 
-/*
- * Button customizations to document:
- * - Disabled state overrides
- * - Btn states override
+/**
+ * BUTTONS
  */
 
 $btn-defaults: ();
@@ -57,8 +55,6 @@ $btn-states-map: map-merge($btn-defaults, $btn-states);
   // $btn-transition default includes color, background-color, border-color
   @include transition($btn-transition);
 
-  // Default disabled styles remove pointer and adjust opacity to indicate
-  // button is disabled
   &.disabled {
     border-width: $btn-disabled-border-width;
     opacity: $btn-disabled-opacity;
@@ -97,94 +93,57 @@ $btn-states-map: map-merge($btn-defaults, $btn-states);
   }
 
   // --- Outline variant
-  .btn-#{$color}.btn-outline {
-    color: $value;
-    background-color: transparent;
-    background-image: none;
+  .btn-outline-#{$color} {
+    // TODO: this should use the map override mechanism as: `outline-primary-<modifier>`
+    background: transparent;
     border-color: $value;
+    color: $value;
 
     &:hover {
-      color: color-yiq($value);
-      background-color: $value;
+      background: gradient-background($value);
       border-color: $value;
-      @include gradient-bg($value);
+      color: color-yiq($value);
     }
 
     &:active,
     &.active {
+      background: gradient-background(darken($value, 7.5%));
       border-color: $value;
       color: color-yiq($value);
-      @include gradient-bg(darken($value, 7.5%));
     }
 
     &.disabled {
+      background: transparent;
+      border-color: $value;
       color: $value;
-      background-color: transparent;
     }
   }
 }
 
-// TODO: this should use the map override mechanism as: `link-<modifier>`
-// 'Link' theme color variant -  have the padding and alignment of a button with
+// 'Link' theme color variant has the padding and alignment of a button with
 // font styles matching anchors (can be used for things like secondary CTAs)
 .btn-link {
-  background-color: transparent;
+  // TODO: this should use the map override mechanism as: `link-<modifier>`
+  background: transparent;
   color: $link-color;
   font-weight: $font-weight-normal;
   // 🤔 Should btn-link reset the text tansform and letter spacing?
 
   &:hover {
-    background-color: transparent;
+    background: transparent;
     border-color: transparent;
     color: $link-hover-color;
     text-decoration: $link-hover-decoration;
   }
 
+  &:active {
+    color: $link-active-color;
+    text-decoration: $link-active-decoration;
+  }
+
   &.disabled {
     color: $btn-link-disabled-color;
   }
-  // No need for an active state here, WHY NOT???
-}
-
-//
-// Button Sizes
-//
-
-@mixin button-size(
-  $padding-y,
-  $padding-x,
-  $font-size,
-  $line-height,
-  $border-radius,
-  $letter-spacing
-) {
-  @include border-radius($border-radius);
-  font-size: $font-size;
-  letter-spacing: $letter-spacing;
-  line-height: $line-height;
-  padding: $padding-y $padding-x;
-}
-
-.btn-lg {
-  @include button-size(
-    $btn-padding-y-lg,
-    $btn-padding-x-lg,
-    $font-size-lg,
-    $btn-line-height-lg,
-    $btn-border-radius-lg,
-    $btn-letter-spacing-lg
-  );
-}
-
-.btn-sm {
-  @include button-size(
-    $btn-padding-y-sm,
-    $btn-padding-x-sm,
-    $font-size-sm,
-    $btn-line-height-sm,
-    $btn-border-radius-sm,
-    $btn-letter-spacing-lg
-  );
 }
 
 //
@@ -196,7 +155,6 @@ $btn-states-map: map-merge($btn-defaults, $btn-states);
 // that look exactly like links for in application triggers, `btn-anchor`
 // creates a button styled exactly like an anchor. This should be used for any
 // application actions that are not route navigations.
-
 .btn-anchor {
   -webkit-appearance: none !important; // Remove Chrome native button styling
   display: inline-block;
@@ -244,8 +202,38 @@ $btn-states-map: map-merge($btn-defaults, $btn-states);
   width: 100%;
 }
 
-// TODO: Make a `block-button-container` class or similar for automatically
-// adding margin to sibling block buttons
-// + .btn-block {
-//   margin-top: $btn-block-spacing-y;
-// }
+//
+// Button Sizes
+//
+
+.btn-lg {
+  @include border-radius($btn-border-radius-lg);
+  font-size: $font-size-lg;
+  letter-spacing: $btn-letter-spacing-lg;
+  line-height: $btn-line-height-lg;
+  padding: $btn-padding-y-lg $btn-padding-x-lg;
+}
+
+.btn-sm {
+  @include border-radius($btn-border-radius-sm);
+  font-size: $font-size-sm;
+  letter-spacing: $btn-letter-spacing-sm;
+  line-height: $btn-line-height-sm;
+  padding: $btn-padding-y-sm $btn-padding-x-sm;
+}
+
+//
+// Containers
+//
+
+.btn-container-x {
+  .btn + .btn {
+    margin-left: $btn-container-spacing-x;
+  }
+}
+
+.btn-container-y {
+  .btn + .btn {
+    margin-top: $btn-container-spacing-x;
+  }
+}

@@ -1,6 +1,6 @@
-// Buttons
-//
-// For each of Componentry's buttons, define text, background, and border color.
+/**
+ * BUTTONS
+ */
 
 $btn-padding-y:               $input-btn-padding-y !default;
 $btn-padding-x:               $input-btn-padding-x !default;
@@ -32,11 +32,9 @@ $btn-link-disabled-color:     $text-muted !default;
 // The btn-states is a backdoor to set specific color values for button states
 $btn-states:                  () !default;
 
-// Sets margin between stacked block buttons
-$btn-block-spacing-y:         .5rem !default;
+// Containers spacing
+$btn-container-spacing-x:     map-get($spacers, 2);
+$btn-container-spacing-y:     map-get($spacers, 3);
 
 // Customize button transition styles
 $btn-transition: color .15s ease-in-out, background-color .15s ease-in-out, border-color .15s ease-in-out !default;
-
-// TODO: this shouldn't be needed anymore since we're not doing custom focus styles
-$btn-active-box-shadow:       inset 0 3px 5px rgba($black, .125) !default;

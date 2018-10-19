@@ -119,22 +119,14 @@
   padding: $modal-inner-padding;
 }
 
-// Footer (for actions)
+// Footer
 .modal-footer {
   display: flex;
-  align-items: center; // vertically center
-  justify-content: flex-end; // Right align buttons with flex property because text-align doesn't work on flex items
+  align-items: center;
+  justify-content: flex-end;
   padding: $modal-inner-padding;
   background: $modal-header-bg;
   border-top: $modal-footer-border-width solid $modal-footer-border-color;
-
-  // Easily place margin between footer elements
-  > :not(:first-child) {
-    margin-left: 0.25rem;
-  }
-  > :not(:last-child) {
-    margin-right: 0.25rem;
-  }
 }
 
 // Measure scrollbar width for padding body during modal show/hide

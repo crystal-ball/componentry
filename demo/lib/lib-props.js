@@ -9,6 +9,6 @@ export const colors = [
   'dark',
 ]
 
-export const sizes = ['small', 'large']
+export const sizes = ['sm', 'lg']
 
 export const directions = ['top', 'right', 'bottom', 'left']

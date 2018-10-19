@@ -34,9 +34,9 @@ export const btnClasses = p => ({
   btn: !p.anchor,
   'btn-anchor': p.anchor,
   'btn-block': p.block,
-  'btn-outline': p.outline,
   [`btn-${p.color}`]: !p.anchor && p.color,
   [`btn-${p.size}`]: p.size,
+  [`btn-outline-${p.outline}`]: p.outline,
   disabled: p.disabled,
   // --- Typography
   // When rendering an anchor style button use the typography classes

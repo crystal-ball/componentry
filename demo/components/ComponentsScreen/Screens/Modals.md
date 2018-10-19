@@ -43,8 +43,8 @@ modal.
             state using the parent Active component.
           </p>
         </Modal.Body>
-        <Modal.Footer>
-          <Active.Trigger color="dark" outline>
+        <Modal.Footer className="btn-container-x">
+          <Active.Trigger outline="dark" anchor={false}>
             Close
           </Active.Trigger>
           <Button color="primary">Save Changes</Button>
@@ -68,8 +68,8 @@ modal.
                 state using the parent Active component.
               </p>
             </Modal.Body>
-            <Modal.Footer>
-              <Active.Trigger color="dark" outline>
+            <Modal.Footer className="btn-container-x">
+              <Active.Trigger outline="dark" anchor={false}>
                 Close
               </Active.Trigger>
               <Button color="primary">Save Changes</Button>

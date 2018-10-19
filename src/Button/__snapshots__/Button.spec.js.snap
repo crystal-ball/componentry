@@ -29,7 +29,7 @@ exports[`<Button /> Snapshots it renders defaults correctly 1`] = `
 
 exports[`<Button /> Snapshots it renders large outline correctly 1`] = `
 <button
-  class="btn btn-outline btn-success btn-lg"
+  class="btn btn-lg btn-outline-success"
   type="button"
 >
   Componentry
@@ -38,7 +38,7 @@ exports[`<Button /> Snapshots it renders large outline correctly 1`] = `
 
 exports[`<Button /> Snapshots it renders outline correctly 1`] = `
 <button
-  class="btn btn-outline btn-success"
+  class="btn btn-outline-success"
   type="button"
 >
   Componentry

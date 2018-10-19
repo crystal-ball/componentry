@@ -21,9 +21,9 @@ describe('<Button/>', () => {
   })
 
   test('should render outline class for prop outline', () => {
-    const wrapper = mount(<Button color="primary" outline />)
+    const wrapper = mount(<Button outline="primary" />)
     // Should render the color and outline classes
-    expect(wrapper.find('.btn.btn-primary.btn-outline').length).toEqual(1)
+    expect(wrapper.find('.btn.btn-outline-primary').length).toEqual(1)
   })
 
   test('should render class for small button', () => {
@@ -89,18 +89,14 @@ describe('<Button /> Snapshots', () => {
   })
 
   test('it renders outline correctly', () => {
-    const tree = render(
-      <Button color="success" outline>
-        Componentry
-      </Button>,
-    )
+    const tree = render(<Button outline="success">Componentry</Button>)
 
     expect(tree).toMatchSnapshot()
   })
 
   test('it renders large outline correctly', () => {
     const tree = render(
-      <Button color="success" size="lg" outline>
+      <Button outline="success" size="lg">
         Componentry
       </Button>,
     )

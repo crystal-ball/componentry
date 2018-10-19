@@ -3,7 +3,7 @@ defaults:
   anchor: false
   block: false
   color: primary
-  outline: false
+  outline: null
   size: null
   disabled: false
   fontWeight: null
@@ -15,7 +15,7 @@ componentProps:
     defaultValue: false
   - name: outline
     description: Outline buttons have a themed outline and white background appearance.
-    type: boolean
+    type: ['primary','secondary','success','danger','warning','info','light','dark']
     defaultValue: false
   - size: true
 ---
@@ -35,8 +35,8 @@ the exact styles needed.
   defaults={defaults}
   formFields={[
     { label: 'color', options: [...this.props.colors, 'link'] },
+    { label: 'outline',options: [...this.props.colors, 'link'] },
     { label: 'block', boolean: true },
-    { label: 'outline', boolean: true },
     { label: 'size', options: this.props.sizes },
     {
       label: 'anchor',
@@ -61,9 +61,27 @@ the exact styles needed.
 />
 
 <SupportingInfo
-  classes={['btn-block', 'btn-group', 'btn-group-toggle']}
+  classes={['btn-container-x', 'btn-container-y']}
   apis={['Theme colors', 'Sized component']}
 />
+
+#### Containers
+
+The `btn-container-x` and `btn-container-y` classes can be added to a containing
+element to automatically add spacing between buttons (Useful for creating groups
+of buttons automatically).
+
+<InteractiveDemo
+  renderCode={data => `<div className="btn-container-x">
+  <Button outline="dark">Cancel</Button>
+  <Button color="primary">Confirm</Button>
+</div>`}
+  renderComponent={data => (<div className="btn-container-x">
+  <Button outline="dark">Cancel</Button>
+  <Button color="primary">Confirm</Button>
+</div>)}
+/>
+
 
 #### <Icon id="stars" /> A++ Accessibility
 
