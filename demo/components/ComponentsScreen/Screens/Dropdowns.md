@@ -24,6 +24,9 @@ enable easy navigation between multiple options.
     <h4 className="dropdown-header">Available actions</h4>
     <Dropdown.Item>Interactive Item 1</Dropdown.Item>
     <Dropdown.Item>Interactive Item 2</Dropdown.Item>
+    <Dropdown.Item href="https://github.com/crystal-ball/componentry">
+      Componentry
+    </Dropdown.Item>
     <Dropdown.Item onClick={() => console.log('hi')} disabled>
       Disabled Item
     </Dropdown.Item>
@@ -38,6 +41,9 @@ enable easy navigation between multiple options.
         <h4 className="dropdown-header">Available actions</h4>
         <Dropdown.Item>Interactive Item 1</Dropdown.Item>
         <Dropdown.Item>Interactive Item 2</Dropdown.Item>
+        <Dropdown.Item href="https://github.com/crystal-ball/componentry">
+          Componentry
+        </Dropdown.Item>
         <Dropdown.Item onClick={() => console.log('hi')} disabled>
           Disabled Item
         </Dropdown.Item>

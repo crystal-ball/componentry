@@ -23,6 +23,30 @@ const findTrigger = wrapper => wrapper.find(dt('trigger')).last()
 
 export default TestComponent => {
   /**
+   * Test that by default Active.Trigger elements render as button nodes, and
+   * when passed an href render anchor nodes.
+   */
+  test('should render button or anchor tags by default', () => {
+    const wrapper = mount(
+      <TestComponent>
+        <TestComponent.Trigger data-test="btn" />
+        <TestComponent.Trigger data-test="anchor" href="http://localhost:3000/">
+          Anchor
+        </TestComponent.Trigger>
+        <TestComponent.Content data-test="content" />
+      </TestComponent>,
+    )
+
+    const btn = wrapper.find(dt('btn')).last()
+    const anchor = wrapper.find(dt('anchor')).last()
+
+    expect(anchor.type()).toEqual('a')
+    expect(anchor.prop('type')).toEqual(undefined) // should not have type="button"
+    expect(btn.type()).toEqual('button')
+    expect(btn.prop('type')).toEqual('button') // should have type="button"
+  })
+
+  /**
    * Test that the default uncontrolled state scenario works. The active state should
    * be managed internally if not overriden with props and clicking the trigger should
    * show/hide content.

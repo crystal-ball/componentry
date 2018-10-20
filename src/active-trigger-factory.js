@@ -54,9 +54,17 @@ export default ({ arias, classes, triggerType, btnStyles = true }: Options = {})
   const classNames = [classes, { active: activeId && active === activeId }]
   if (btnStyles) classNames.push(btnClasses({ anchor, ...rest }))
 
+  const node = rest.href
+    ? {
+        defaultAs: 'a',
+      }
+    : {
+        defaultAs: 'button',
+        type: 'button',
+      }
+
   return elem({
-    defaultAs: 'button',
-    type: 'button',
+    ...node,
     ...ariasComputer({
       active,
       activeId,
