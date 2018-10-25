@@ -14,6 +14,9 @@ and this project adheres to
   number values are no longer converted to classNames,
 
   eg: `m={3}` will now return `margin: 3px` instead of `className="m-3"`
+- The `content` styles are no longer included by default in the base `componentry`
+  styleset. These styles have not been evaluated and are completely opt-in now.
+- The `size` mixin has been deleted. It doesn't seem to be needed...
 
 ## Updated
 
@@ -22,6 +25,10 @@ and this project adheres to
 - Fixed the Active.Trigger elements failing to render anchor nodes when passed
   an href.
 - Fixed items with tabindex showing outlines on click
+- Added `.flex-basis-0` and `.flex-basis-1` atomic classes
+- Added `.min-100vw` and `.min-100vh` atomic classes for working with page
+  level containers
+- Moved all typography related classes to `/atomic/text`
 
 ## [3.0.0-alpha.8] - 2018-10-19
 

@@ -6,6 +6,29 @@
 
 // Sizes
 
+// --- Display
+
+.display-1 {
+  font-size: $display1-size;
+  font-weight: $display1-weight;
+  line-height: $display-line-height;
+}
+.display-2 {
+  font-size: $display2-size;
+  font-weight: $display2-weight;
+  line-height: $display-line-height;
+}
+.display-3 {
+  font-size: $display3-size;
+  font-weight: $display3-weight;
+  line-height: $display-line-height;
+}
+.display-4 {
+  font-size: $display4-size;
+  font-weight: $display4-weight;
+  line-height: $display-line-height;
+}
+
 // The .text-sm and text-lg classes are intended for regular text like p, span,
 // etc. and provide a utility for minor text adjustments when applications don't
 // want to use small headers and small dom elements to handle these types
@@ -156,4 +179,83 @@
   text-shadow: none;
   background-color: transparent;
   border: 0;
+}
+
+.lead {
+  font-size: $lead-font-size;
+  font-weight: $lead-font-weight;
+}
+
+//
+// Horizontal rules
+//
+
+.hr {
+  margin-top: $hr-margin-y;
+  margin-bottom: $hr-margin-y;
+  border: 0;
+  border-top: $hr-border-width solid $hr-border-color;
+}
+
+//
+// Emphasis
+//
+
+.small {
+  font-size: $small-font-size;
+  font-weight: $font-weight-normal;
+}
+
+.mark {
+  padding: $mark-padding;
+  background-color: $mark-bg;
+}
+
+//
+// Lists
+//
+
+.list-unstyled {
+  padding-left: 0;
+  list-style: none;
+}
+
+// Inline turns list items into inline-block
+.list-inline {
+  padding-left: 0;
+  list-style: none;
+}
+
+.list-inline-item {
+  display: inline-block;
+
+  &:not(:last-child) {
+    margin-right: $list-inline-padding;
+  }
+}
+
+//
+// Misc
+//
+
+// Builds on `abbr`
+.initialism {
+  font-size: 90%;
+  text-transform: uppercase;
+}
+
+// Blockquotes
+.blockquote {
+  margin-bottom: $spacer;
+  font-size: $blockquote-font-size;
+}
+
+.blockquote-footer {
+  display: block;
+  font-size: 80%; // back to default font-size
+  color: $blockquote-small-color;
+
+  &::before {
+    content: '\2014 \00A0'; // em dash, nbsp
+  }
 }

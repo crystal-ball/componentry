@@ -17,7 +17,8 @@
 // Note that you should import componentry after importing Boostrap so that
 // any Boostrap variables you don't declare in your theme will still be
 // available from the Bootstrap variables.
-@import '../../styles/componentry';
+@import '../styles/componentry';
+@import '../styles/content';
 
 // 4️⃣ Application styles
 

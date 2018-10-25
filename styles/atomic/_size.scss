@@ -1,8 +1,0 @@
-/* ~componentry/styles/atomic/size */
-
-// Sizing shortcuts
-
-@mixin size($width, $height: $width) {
-  width: $width;
-  height: $height;
-}

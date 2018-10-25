@@ -21,10 +21,6 @@
 
 // --- Optional imports
 
-// Base typography and content styles. These provide additional consistency across
-// browsers, but can be replaced with components or excluded if desired
-@import 'content';
-
 // Scoped library component styles. These styles are intended to be used only with
 // their parent components.
 @import 'components';
