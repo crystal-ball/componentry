@@ -8,6 +8,8 @@ and this project adheres to
 
 #### [Unreleased]
 
+## [3.0.0-alpha.9] - 2018-10-25
+
 ## BREAKING CHANGES
 
 - The updated atomic styles handling passes values directly through, so spacing
@@ -20,7 +22,9 @@ and this project adheres to
 
 ## Updated
 
-- Added componentry library atomic styles
+- Added a Block component to complement the Flex component
+- Added componentry library atomic styles utility in `/src/utils/componentry`
+- Added initial library typings for Active, Button and Dropdown components
 - Added `border` border color to create a utility border class
 - Fixed the Active.Trigger elements failing to render anchor nodes when passed
   an href.
@@ -29,6 +33,7 @@ and this project adheres to
 - Added `.min-100vw` and `.min-100vh` atomic classes for working with page
   level containers
 - Moved all typography related classes to `/atomic/text`
+- Refactored subcomponent assignment to be more explicit
 
 ## [3.0.0-alpha.8] - 2018-10-19
 
