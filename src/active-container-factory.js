@@ -40,7 +40,7 @@ export default ({
       Content: node,
       Trigger: node,
       // Component props
-      as: node,
+      // as: oneOfType([func, node, element]), -> unclear what this should be ¯\_(ツ)_/¯
       children: oneOfType([node, func]),
       className: string,
       direction: oneOf(['top', 'right', 'bottom', 'left', 'overlay']),
