@@ -12,6 +12,7 @@ and this project adheres to
 
 - Fixed the Active.Trigger elements failing to render anchor nodes when passed
   an href.
+- Fixed items with tabindex showing outlines on click
 
 ## [3.0.0-alpha.8] - 2018-10-19
 

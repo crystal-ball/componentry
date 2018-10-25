@@ -67,4 +67,7 @@
   & textarea:focus {
     outline: none;
   }
+  & [tabindex='0']:focus {
+    outline: none;
+  }
 }
