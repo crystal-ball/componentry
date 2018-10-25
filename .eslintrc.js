@@ -11,5 +11,6 @@ module.exports = {
     'react/require-default-props': 'off',
     'react/no-unused-prop-types': 'off',
     'import/first': 'off',
+    'import/no-extraneous-dependencies': 'off',
   },
 }

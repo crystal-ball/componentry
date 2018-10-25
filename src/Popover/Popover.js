@@ -1,4 +1,3 @@
-// @flow
 import activeContainer from '../active-container-factory'
 import activeContent from '../active-content-factory'
 import activeTrigger from '../active-trigger-factory'
@@ -6,21 +5,29 @@ import elem from '../elem-factory'
 import withActive from '../withActive'
 import withTheme from '../withTheme'
 
-const Content = activeContent({
-  arias: { id: true, role: 'tooltip', hidden: true },
-  classes: 'popover-content',
-  popper: true,
+const Popover = activeContainer({
+  classes: 'popover',
+  escHandler: true,
+  defaultMouseEvents: true,
+  defaultDirection: 'right',
 })
 
-const Trigger = activeTrigger({
-  arias: { describedby: true },
-  classes: 'popover-toggle',
-})
-
-const Body = withTheme('PopoverBody', props =>
+Popover.Body = withTheme('PopoverBody', props =>
   elem({ classes: 'popover-body', ...props }),
 )
-const Header = withTheme('PopoverHeader', props =>
+
+Popover.Content = withActive(
+  withTheme(
+    'PopoverContent',
+    activeContent({
+      arias: { id: true, role: 'tooltip', hidden: true },
+      classes: 'popover-content',
+      popper: true,
+    }),
+  ),
+)
+
+Popover.Header = withTheme('PopoverHeader', props =>
   elem({
     defaultAs: 'h3',
     classes: 'popover-header',
@@ -28,17 +35,15 @@ const Header = withTheme('PopoverHeader', props =>
   }),
 )
 
-const Popover = activeContainer({
-  Content: withActive(withTheme('PopoverContent', Content)),
-  Trigger: withActive(withTheme('PopoverTrigger', Trigger)),
-  classes: 'popover',
-  escHandler: true,
-  defaultMouseEvents: true,
-  defaultDirection: 'right',
-})
-
-Popover.Body = Body
-Popover.Header = Header
+Popover.Trigger = withActive(
+  withTheme(
+    'PopoverTrigger',
+    activeTrigger({
+      arias: { describedby: true },
+      classes: 'popover-toggle',
+    }),
+  ),
+)
 
 /**
  * The Tooltip component creates an expandable info container on hover.

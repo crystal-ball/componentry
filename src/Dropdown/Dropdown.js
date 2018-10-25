@@ -4,15 +4,18 @@ import activeTrigger from '../active-trigger-factory'
 import withActive from '../withActive'
 import withTheme from '../withTheme'
 
+const Dropdown = activeContainer({
+  classes: 'dropdown',
+  escHandler: true,
+  clickHandler: true,
+  defaultDirection: 'bottom',
+})
+
 const Content = activeContent({
   arias: { labelledby: true, hidden: true },
   classes: 'dropdown-content',
 })
-
-const Trigger = activeTrigger({
-  arias: { expanded: true, haspopup: true, id: true },
-  classes: 'dropdown-toggle',
-})
+Dropdown.Content = withTheme('DropdownContent', withActive(Content))
 
 const Item = activeTrigger({
   // TODO: what arias should this have?
@@ -21,16 +24,13 @@ const Item = activeTrigger({
   // Dropdown items have appropriate styles
   btnStyles: false,
 })
-
-const Dropdown = activeContainer({
-  Content: withTheme('DropdownContent', withActive(Content)),
-  Trigger: withTheme('DropdownTrigger', withActive(Trigger)),
-  classes: 'dropdown',
-  escHandler: true,
-  clickHandler: true,
-  defaultDirection: 'bottom',
-})
 Dropdown.Item = withTheme('DropdownItem', withActive(Item))
+
+const Trigger = activeTrigger({
+  arias: { expanded: true, haspopup: true, id: true },
+  classes: 'dropdown-toggle',
+})
+Dropdown.Trigger = withTheme('DropdownTrigger', withActive(Trigger))
 
 /**
  * The `<Dropdown>` element creates a menu.

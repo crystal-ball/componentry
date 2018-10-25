@@ -1,52 +1,11 @@
-// @flow
-import React, { Component, Fragment, type ComponentType, type Node } from 'react'
+import React, { Component, Fragment } from 'react'
+import { bool, func, node, oneOfType, oneOf, string } from 'prop-types'
 import nanoid from 'nanoid'
 
 import ActiveProvider from './ActiveProvider'
 import elem from './elem-factory'
 import { closest } from './utils/dom'
 import { cleanActive } from './utils/clean-props'
-
-type Options = {
-  /** Component's `Content` subcomponent */
-  Content: ComponentType<any>,
-  /** Component's `Trigger` subcomponent */
-  Trigger: ComponentType<any>,
-  /** Default class names to pass to component */
-  classes?: string,
-  /** When tue the state container will register handlers for mouse events */
-  defaultMouseEvents?: boolean,
-  /** When true call deactivate on `esc` keypress */
-  escHandler?: boolean,
-  /** When true call deactivate on click outside of element */
-  clickHandler?: boolean,
-}
-
-type Props = {
-  // Subcomponent shorthand props
-  Content?: string,
-  Trigger?: string,
-  // Component props
-  as?: ComponentType<any> | string,
-  children?: Node | Function,
-  className?: string,
-  direction?: 'top' | 'right' | 'bottom' | 'left',
-  // Active change listeners
-  onActivate?: Function,
-  onActivated?: Function,
-  onDeactivate?: Function,
-  onDeactivated?: Function,
-  // Passed props to create a controlled component
-  active?: boolean,
-  defaultActive: boolean | string,
-  activate?: Function,
-  deactivate?: Function,
-  mouseEvents?: boolean,
-}
-
-type State = {
-  active: boolean | string,
-}
 
 /**
  * Factory returns custom `<Active />` components defined by the options. Active
@@ -65,28 +24,43 @@ type State = {
  * needs like setting or removing special event listeners.
  */
 export default ({
-  Content,
-  Trigger,
+  /** Default class names to pass to component */
   classes,
+  /** When true call deactivate on `esc` keypress */
   escHandler,
+  /** When true call deactivate on click outside of element */
   clickHandler,
+  /** Default direction for directional elements */
   defaultDirection = null,
+  /** When true the state container will register handlers for mouse events */
   defaultMouseEvents = false,
-}: Options) =>
-  class ActiveContainer extends Component<Props, State> {
+}) =>
+  class ActiveContainer extends Component {
+    static propTypes = {
+      // Subcomponent shorthand props
+      Content: node,
+      Trigger: node,
+      // Component props
+      as: node,
+      children: oneOfType([node, func]),
+      className: string,
+      direction: oneOf(['top', 'right', 'bottom', 'left', 'overlay']),
+      // Active change listeners
+      onActivate: func,
+      onActivated: func,
+      onDeactivate: func,
+      onDeactivated: func,
+      // Passed props to create a controlled component
+      active: bool,
+      defaultActive: oneOfType([bool, string]),
+      activate: func,
+      deactivate: func,
+      mouseEvents: bool,
+    }
+
     static defaultProps = {
       defaultActive: false,
     }
-
-    // TODO: might as well add flow types for these ¯\_(ツ)_/¯
-    /* eslint-disable lines-between-class-members */
-    static Trigger = Trigger
-    static Content = Content
-    static Body: ?ComponentType<*>
-    static Header: ?ComponentType<*>
-    static Nav: ?ComponentType<*>
-    static ContentContainer: ?ComponentType<*>
-    /* eslint-enable lines-between-class-members */
 
     state = {
       active: this.props.defaultActive,
@@ -107,7 +81,7 @@ export default ({
      * Props ALWAYS overrides whatever the active state is (controlled component).
      * But we always use internal component state for managing active state.
      */
-    static getDerivedStateFromProps({ active }: Props) {
+    static getDerivedStateFromProps({ active }) {
       return active !== undefined ? { active } : null
     }
 
@@ -150,29 +124,26 @@ export default ({
     /**
      * Call deactivate if click event was not inside the element
      */
-    clickHandler: EventHandler = (e: Event): void => {
+    clickHandler: EventHandler = e => {
       if (!closest(e.target, this.guid)) this.handleDeactivate(e)
     }
 
     /**
      * Call deactivate on keypress if `esc` (27) was pressed
      */
-    keyHandler: KeyboardEventHandler = (e: KeyboardEvent): void => {
+    keyHandler: KeyboardEventHandler = e => {
       if (e.which === 27) this.handleDeactivate(e)
     }
 
-    updateEventListeners = (updateType: 'add' | 'remove') => {
+    updateEventListeners = updateType => {
       const updateListener = `${updateType}EventListener`
 
       if (escHandler) {
-        // $FlowIgnore
         document[updateListener]('keydown', this.keyHandler)
       }
 
       if (clickHandler) {
-        // $FlowIgnore
         document[updateListener]('mouseup', this.clickHandler)
-        // $FlowIgnore
         document[updateListener]('touchend', this.clickHandler)
       }
     }
@@ -181,7 +152,7 @@ export default ({
      * Internal activation handler (manages active state and fires change
      * listeners)
      */
-    handleActivate = (e: SyntheticEvent<>) => {
+    handleActivate = e => {
       const { onActivate, activate, onActivated } = this.props
 
       if (activate) {
@@ -200,7 +171,7 @@ export default ({
      * Internal deactivation handler (manages active state and fires change
      * listeners)
      */
-    handleDeactivate = (e: SyntheticEvent<> | Event) => {
+    handleDeactivate = e => {
       const { onDeactivate, deactivate, onDeactivated } = this.props
 
       if (deactivate) {
@@ -216,13 +187,13 @@ export default ({
     // ---------------------------------------------------------------------------
     render() {
       const {
-        Content: PropsContent,
-        Trigger: PropsTrigger,
+        Content,
+        Trigger,
         children,
         direction = defaultDirection,
         mouseEvents = defaultMouseEvents,
         ...rest
-      }: Props = this.props
+      } = this.props
       const { active } = this.state
 
       const activeValues = {
@@ -249,9 +220,13 @@ export default ({
                 children(activeValues) // Handle FaCC syntax
               ) : (
                 <Fragment>
-                  {PropsTrigger && <Trigger>{PropsTrigger}</Trigger>}
+                  {Trigger && (
+                    <ActiveContainer.Trigger>{Trigger}</ActiveContainer.Trigger>
+                  )}
                   {children}
-                  {PropsContent && <Content>{PropsContent}</Content>}
+                  {Content && (
+                    <ActiveContainer.Content>{Content}</ActiveContainer.Content>
+                  )}
                 </Fragment>
               ),
             ...cleanActive(rest),
