@@ -6,52 +6,82 @@
  * 4. Classes are an optimization
  */
 
-// --- Available classes
-const classNamesMap = {
-  color: true,
-  fontWeight: true,
-  italic: true,
-  monospace: true,
-  size: true,
-  textAlign: true,
-  uppercase: true,
-}
+// Library class names
+// ---------------------------------------------------------------------------
 
-// --- Available styles
-const stylesMap = {
-  /* p* and m* space classes */ // type number -> px
-  fontSize: 'fontSize', // type number -> px
-  letterSpacing: 'letterSpacing', // type number -> px
-  lineHeight: 'lineHeight', // type number -> number
-}
-
-const baseSpace = {
-  m: 'margin',
-  p: 'padding',
-}
-
-const directionalSpace = {
-  t: 'Top',
-  l: 'Left',
-  r: 'Right',
-  b: 'Bottom',
-}
-;['m', 'p'].forEach(space => {
-  stylesMap[space] = baseSpace[space]
-  ;['t', 'r', 'b', 'l'].forEach(directional => {
-    stylesMap[space + directional] = baseSpace[space] + directionalSpace[directional]
-  })
+const classNamesMap = {}
+;[
+  'bg',
+  'borderColor',
+  'color',
+  'fontWeight',
+  'italic',
+  'monospace',
+  'size',
+  'textAlign',
+  'uppercase',
+].forEach(p => {
+  classNamesMap[p] = true
 })
 
 const generateClassNames = p => ({
   'font-italic': p.italic,
   'text-uppercase': p.uppercase,
   'text-monospace': p.monospace,
+  [`bg-${p.bg}`]: p.bg,
+  [`border-${p.borderColor}`]: p.borderColor,
   [`font-weight-${p.fontWeight}`]: p.fontWeight,
   [`text-${p.color}`]: p.color,
   [`text-${p.size}`]: p.size,
   [`text-${p.textAlign}`]: p.textAlign,
 })
+
+// Library styles
+// ---------------------------------------------------------------------------
+
+const stylesMap = {}
+;[
+  /* includes m* and p* styles */
+  /* includes b* and border* styles */
+  'border',
+  'fontSize',
+  'letterSpacing',
+  'lineHeight',
+  'width',
+  'maxWidth',
+  'minWidth',
+  'height',
+  'maxHeight',
+  'minHeight',
+].forEach(baseStyle => {
+  stylesMap[baseStyle] = baseStyle
+})
+
+const base = {
+  m: 'margin',
+  p: 'padding',
+  b: 'border',
+}
+
+const modifier = {
+  t: 'Top',
+  l: 'Left',
+  r: 'Right',
+  b: 'Bottom',
+}
+;['m', 'p', 'b'].forEach(b => {
+  stylesMap[b] = base[b]
+  ;['t', 'r', 'b', 'l'].forEach(m => {
+    stylesMap[b + m] = base[b] + modifier[m]
+
+    // Add border* modifiers
+    const border = `border${modifier[m]}`
+    stylesMap[border] = border
+  })
+})
+
+// Componentry utility
+// ---------------------------------------------------------------------------
 
 const componentry = ({
   active,
