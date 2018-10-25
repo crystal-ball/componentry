@@ -66,7 +66,7 @@ export default () => (
       </div>
     </Flex>
 
-    <Flex justify="center" mb={5} direction="column" className={component}>
+    <Flex justify="center" direction="column" className={`${component} mb-5`}>
       <FeatureContainer className="my-4">
         <FeatureHeader as="h3">Lightweight Bundle Size</FeatureHeader>
         <Feature>

@@ -100,8 +100,8 @@ scenarios. This helps to call out when a custom override is occuring.
 // Best practice: using a theme space value to create consistent spacing
 <Header className="mb-5">Large margin-bottom header</Header>
 
-// Custom overrides: pass a string for a custom spacing value
-<Header mb='22'>Custom margin-bottom header</Header>
+// Custom overrides: pass a custom override to create an inline style
+<Header mb={22}>Custom margin-bottom header</Header>
 ```
 
 ## Dependencies

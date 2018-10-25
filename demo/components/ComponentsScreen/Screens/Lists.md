@@ -19,34 +19,38 @@ Note that list group items should *not* render the `btn` class. They are
 separate components with distinct classes and styles!
 
 <InteractiveDemo
-  renderCode={() => `<Header as="h4" mt={3}>List Items</Header>
+  renderCode={() => `<Header as="h4" className="mt-3">List Items</Header>
 <List>
   <List.Item>Item One</List.Item>
   <List.Item active>Item Two</List.Item>
   <List.Item>Item Three</List.Item>
   <List.Item disabled>Disabled</List.Item>
 </List>
-<Header as="h4" mt={3}>Action List Items</Header>
+<Header as="h4" className="mt-3">Action List Items</Header>
 <List>
   <List.Item onClick={() => {}}>Button One</List.Item>
   <List.Item active onClick={() => {}}>Button Two</List.Item>
-  <List.Item onClick={() => {}}>Button Three</List.Item>
+  <List.Item onClick={() => {alert('CLICKED!')}} color="danger">
+    Be Careful!
+  </List.Item>
   <List.Item onClick={() => {}} disabled>Disabled</List.Item>
 </List>`}
   renderComponent={() => (
     <div className="w-50">
-      <Header as="h4" mt={3}>List Items</Header>
+      <Header as="h4" className="mt-3">List Items</Header>
       <List>
         <List.Item>Item One</List.Item>
         <List.Item active>Item Two</List.Item>
         <List.Item>Item Three</List.Item>
         <List.Item disabled>Disabled</List.Item>
       </List>
-      <Header as="h4" mt={3}>Action List Items</Header>
+      <Header as="h4" className="mt-3">Action List Items</Header>
       <List>
         <List.Item onClick={() => {}}>Button One</List.Item>
         <List.Item active onClick={() => {}}>Button Two</List.Item>
-        <List.Item onClick={() => {}}>Button Three</List.Item>
+        <List.Item onClick={() => {alert('CLICKED!')}} color="danger">
+          Be Careful!
+        </List.Item>
         <List.Item onClick={() => {}} disabled>Disabled</List.Item>
       </List>
     </div>
