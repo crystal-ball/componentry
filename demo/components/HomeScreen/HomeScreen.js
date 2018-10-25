@@ -1,4 +1,3 @@
-// @flow
 import React from 'react'
 import styled from 'styled-components'
 import { Flex, Header, Media } from 'componentry'
@@ -6,35 +5,37 @@ import { Link } from 'react-router-dom'
 
 import routesMap, { componentRoutes, conceptRoutes } from 'lib/routes-map'
 import SubRoutesNav from 'components/universal/SubRoutesNav'
-import { component } from './homescreen.scss'
 
 import Accessible from './media/accessibility.svg'
 import Bundle from './media/bundle.svg'
 import Merge from './media/merge.svg'
-
-const Hero = styled(Flex)`
-  margin-top: 5rem;
-`
 
 const FeatureContainer = styled.div`
   max-width: 650px;
   margin: auto;
 `
 
-const FeatureHeader = styled(Header)`
-  text-align: center;
-  letter-spacing: 3px;
-  text-transform: uppercase;
-`
+const featureHeaderProps = {
+  as: 'h3',
+  textAlign: 'center',
+  letterSpacing: '3px',
+  uppercase: true,
+}
 
-const Feature = styled(Media)`
-  border-bottom: 1px solid ${props => props.theme.border.color};
-  padding-bottom: ${props => props.theme.spacers['4']};
+const featureProps = {
+  borderBottom: '1px solid',
+  borderColor: 'border',
+  className: 'pb-4',
+}
+
+const FeatureIcon = styled.svg`
+  width: 72px;
+  height: 72px;
 `
 
 export default () => (
   <>
-    <Hero direction="column" align="center">
+    <Flex direction="column" align="center" mt="5rem">
       <Header color="primary" className="display-2 mb-4">
         <u>C</u>
         omponentry
@@ -43,7 +44,7 @@ export default () => (
       <Header as="h3" color="muted" textAlign="center" className="w-75 mb-5">
         <em>A scalable, accessible React component library</em>
       </Header>
-    </Hero>
+    </Flex>
 
     <Flex
       align="center"
@@ -66,15 +67,15 @@ export default () => (
       </div>
     </Flex>
 
-    <Flex justify="center" direction="column" className={`${component} mb-5`}>
-      <FeatureContainer className="my-4">
-        <FeatureHeader as="h3">Lightweight Bundle Size</FeatureHeader>
-        <Feature>
-          <Bundle
-            className="feature-icon display-3 mr-3"
+    <Flex justify="center" direction="column" className="mb-5">
+      <FeatureContainer maxWidth="650px" className="my-4" m="auto">
+        <Header {...featureHeaderProps}>Lightweight Bundle Size</Header>
+        <Media {...featureProps}>
+          <FeatureIcon
+            as={Bundle}
+            className="mr-3"
             alt="Library bundle size is a small percentage of overall bundle"
           />
-
           <Media.Body>
             <p>
               Componentry is optimized for size and performance. With minimial external
@@ -82,11 +83,12 @@ export default () => (
               possible using targeted ESM and ESNext build targets.
             </p>
           </Media.Body>
-        </Feature>
+        </Media>
       </FeatureContainer>
+
       <FeatureContainer className="my-4">
-        <FeatureHeader as="h3">Consistent APIs</FeatureHeader>
-        <Feature>
+        <Header {...featureHeaderProps}>Consistent APIs</Header>
+        <Media {...featureProps}>
           <Media.Body>
             <p>
               Spend more time writing and less time checking documentation with consistent
@@ -94,16 +96,19 @@ export default () => (
               component concerns make component composition easy.
             </p>
           </Media.Body>
-          <Merge
-            className="feature-icon display-3 mr-3"
+          <FeatureIcon
+            as={Merge}
+            className="ml-3"
             alt="Different components utilize the same API"
           />
-        </Feature>
+        </Media>
       </FeatureContainer>
+
       <FeatureContainer className="my-4">
-        <FeatureHeader as="h3">A++ Accessibility</FeatureHeader>
-        <Feature className="border-bottom-0">
-          <Accessible
+        <Header {...featureHeaderProps}>A++ Accessibility</Header>
+        <Media {...featureProps} className="border-bottom-0">
+          <FeatureIcon
+            as={Accessible}
             className="feature-icon display-3 mr-3"
             alt="Library focuses on A++ accessibility"
           />
@@ -118,7 +123,7 @@ export default () => (
               subcomponents.
             </p>
           </Media.Body>
-        </Feature>
+        </Media>
       </FeatureContainer>
     </Flex>
   </>

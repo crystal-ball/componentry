@@ -17,6 +17,8 @@ and this project adheres to
 
 ## Updated
 
+- Added componentry library atomic styles
+- Added `border` border color to create a utility border class
 - Fixed the Active.Trigger elements failing to render anchor nodes when passed
   an href.
 - Fixed items with tabindex showing outlines on click
