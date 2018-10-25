@@ -8,7 +8,7 @@ export type Props = {
   /** Sets button background or link font color */
   color?: ThemeColors | 'link' | 'body',
   /** Creates outline style button, uses `color` for outline theme. */
-  outline?: boolean,
+  outline?: ThemeColors | 'link' | 'body',
   /** Create a small or large style button */
   size?: 'sm' | 'lg',
 
