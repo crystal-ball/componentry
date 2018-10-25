@@ -8,24 +8,19 @@ import withTheme from '../withTheme'
 const makeDrawer = name => {
   const elem = name.slice(0, 1).toLocaleLowerCase() + name.slice(1)
 
+  const Element = withTheme(name, activeContainer({ classes: elem }))
+
   const Content = activeContent({
     arias: { id: true, hidden: true },
     classes: `${elem}-content`,
   })
+  Element.Content = withActive(withTheme(`${name}Content`, Content))
 
   const Trigger = activeTrigger({
     arias: { controls: true, expanded: true },
     classes: `${elem}-toggle`,
   })
-
-  const Element = withTheme(
-    name,
-    activeContainer({
-      Content: withActive(withTheme(`${name}Content`, Content)),
-      Trigger: withActive(withTheme(`${name}Trigger`, Trigger)),
-      classes: elem,
-    }),
-  )
+  Element.Trigger = withActive(withTheme(`${name}Trigger`, Trigger))
 
   return Element
 }

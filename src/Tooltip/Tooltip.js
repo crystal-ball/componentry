@@ -5,24 +5,32 @@ import activeTrigger from '../active-trigger-factory'
 import withActive from '../withActive'
 import withTheme from '../withTheme'
 
-const Content = activeContent({
-  arias: { id: true, role: 'tooltip', hidden: true },
-  classes: 'tooltip-content',
-  popper: true,
-})
-
-const Trigger = activeTrigger({
-  arias: { describedby: true },
-  classes: 'tooltip-toggle',
-})
-
 const Tooltip = activeContainer({
-  Content: withActive(withTheme('TooltipContent', Content)),
-  Trigger: withActive(withTheme('TooltipTrigger', Trigger)),
   classes: 'tooltip',
   escHandler: true,
   defaultMouseEvents: true,
 })
+
+Tooltip.Content = withActive(
+  withTheme(
+    'TooltipContent',
+    activeContent({
+      arias: { id: true, role: 'tooltip', hidden: true },
+      classes: 'tooltip-content',
+      popper: true,
+    }),
+  ),
+)
+
+Tooltip.Trigger = withActive(
+  withTheme(
+    'TooltipTrigger',
+    activeTrigger({
+      arias: { describedby: true },
+      classes: 'tooltip-toggle',
+    }),
+  ),
+)
 
 /**
  * The Tooltip component creates an expandable info container on hover.
