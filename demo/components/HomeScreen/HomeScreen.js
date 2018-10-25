@@ -1,6 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
-import { Flex, Header, Media } from 'componentry'
+import { Block, Flex, Header, Media } from 'componentry'
 import { Link } from 'react-router-dom'
 
 import routesMap, { componentRoutes, conceptRoutes } from 'lib/routes-map'
@@ -10,9 +10,9 @@ import Accessible from './media/accessibility.svg'
 import Bundle from './media/bundle.svg'
 import Merge from './media/merge.svg'
 
-const FeatureContainer = styled.div`
-  max-width: 650px;
-  margin: auto;
+const FeatureIcon = styled.svg`
+  width: 72px;
+  height: 72px;
 `
 
 const featureHeaderProps = {
@@ -27,11 +27,6 @@ const featureProps = {
   borderColor: 'border',
   className: 'pb-4',
 }
-
-const FeatureIcon = styled.svg`
-  width: 72px;
-  height: 72px;
-`
 
 export default () => (
   <>
@@ -68,7 +63,7 @@ export default () => (
     </Flex>
 
     <Flex justify="center" direction="column" className="mb-5">
-      <FeatureContainer maxWidth="650px" className="my-4" m="auto">
+      <Block maxWidth="650px" className="my-4" m="auto">
         <Header {...featureHeaderProps}>Lightweight Bundle Size</Header>
         <Media {...featureProps}>
           <FeatureIcon
@@ -84,9 +79,9 @@ export default () => (
             </p>
           </Media.Body>
         </Media>
-      </FeatureContainer>
+      </Block>
 
-      <FeatureContainer className="my-4">
+      <Block maxWidth="650px" className="my-4" m="auto">
         <Header {...featureHeaderProps}>Consistent APIs</Header>
         <Media {...featureProps}>
           <Media.Body>
@@ -102,9 +97,9 @@ export default () => (
             alt="Different components utilize the same API"
           />
         </Media>
-      </FeatureContainer>
+      </Block>
 
-      <FeatureContainer className="my-4">
+      <Block maxWidth="650px" className="my-4" m="auto">
         <Header {...featureHeaderProps}>A++ Accessibility</Header>
         <Media {...featureProps} className="border-bottom-0">
           <FeatureIcon
@@ -124,7 +119,7 @@ export default () => (
             </p>
           </Media.Body>
         </Media>
-      </FeatureContainer>
+      </Block>
     </Flex>
   </>
 )
