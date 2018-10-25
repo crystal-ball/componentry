@@ -41,11 +41,10 @@ Notes:
 <Header header="h2">Headers</Header>
 
 <InteractiveDemo
-  defaults={{ header: 'h1', muted: false }}
+  defaults={{ as: 'h1' }}
   formFields={[
-    { label: 'header', options: ['h1', 'h2', 'h3', 'h4', 'h5'] },
-    { label: 'muted', boolean: true },
+    { label: 'as', options: ['h1', 'h2', 'h3', 'h4', 'h5'] },
   ]}
-  renderCode={({ header, muted }) => `<Header header="${header}"${muted ? ' muted' : ''}>Headers</Header>`}
+  renderCode={({ header, muted }) => `<Header as="${header}">Headers</Header>`}
   renderComponent={opts => <Header {...opts}>Headers</Header>}
 />

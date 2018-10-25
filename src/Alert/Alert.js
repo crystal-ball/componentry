@@ -5,7 +5,6 @@ import componentryElem from '../elem-factory'
 import withActive from '../withActive'
 import withTheme from '../withTheme'
 import withVisible from '../withVisible'
-import { cleanActive } from '../utils/clean-props'
 import type { ActiveProps, ThemeColors } from '../types'
 
 // ⚠️ For dismissible Alerts, the active context must be set.
@@ -82,7 +81,7 @@ const Alert = ({
         )}
       </Fragment>
     ),
-    ...cleanActive(rest),
+    ...rest,
   })
 
 export default withActive(withVisible(withTheme('Alert', Alert)))

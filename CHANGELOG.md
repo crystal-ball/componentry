@@ -8,6 +8,13 @@ and this project adheres to
 
 #### [Unreleased]
 
+## BREAKING CHANGES
+
+- The updated atomic styles handling passes values directly through, so spacing
+  number values are no longer converted to classNames,
+
+  eg: `m={3}` will now return `margin: 3px` instead of `className="m-3"`
+
 ## Updated
 
 - Fixed the Active.Trigger elements failing to render anchor nodes when passed

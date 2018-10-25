@@ -1,7 +1,6 @@
 import { createElement } from 'react'
 import classnames from 'classnames'
-import { filterProps } from './utils/clean-props'
-import spacing from './utils/spacing'
+import componentry from './utils/componentry'
 
 /**
  * Utility function handles calling React.createElement such that the component
@@ -19,13 +18,12 @@ const elementFactory = ({
   style,
   ...rest
 }) => {
-  const { space, props } = filterProps(rest)
-  const { classNames, styles } = spacing(space)
+  const { className: classNames, style: styles, rest: filteredRest } = componentry(rest)
 
   return createElement(as || defaultAs, {
     style: { ...styles, ...style },
     className: classnames(classes, className, classNames),
-    ...props,
+    ...filteredRest,
   })
 }
 

@@ -5,7 +5,6 @@ import nanoid from 'nanoid'
 import ActiveProvider from './ActiveProvider'
 import elem from './elem-factory'
 import { closest } from './utils/dom'
-import { cleanActive } from './utils/clean-props'
 
 /**
  * Factory returns custom `<Active />` components defined by the options. Active
@@ -229,7 +228,7 @@ export default ({
                   )}
                 </Fragment>
               ),
-            ...cleanActive(rest),
+            ...rest,
           })}
         </ActiveProvider.Provider>
       )

@@ -38,13 +38,4 @@ export default (TestComponent, enzymeOptions = {}) => {
     expect(wrapper.find('.test-custom').length).toBeTruthy()
     expect(wrapper.find(dt('test-custom')).length).toBeTruthy()
   })
-
-  /**
-   * All components should convert numeric space props to className values
-   * TODO: test passing custom strings converting to styles
-   */
-  test('should convert numeric space props to className values', () => {
-    const wrapper = mount(<TestComponent className="test-custom" mx={3} />, enzymeOptions)
-    expect(wrapper.find('.test-custom.mx-3').length).toBeTruthy()
-  })
 }

@@ -3,6 +3,8 @@ import withTheme from '../withTheme'
 import type { ThemeColors } from '../types'
 
 export type Props = {
+  /** Sets button to display as an anchor */
+  anchor?: boolean,
   /** Creates a full-width button */
   block?: boolean,
   /** Sets button background or link font color */
@@ -11,67 +13,28 @@ export type Props = {
   outline?: ThemeColors | 'link' | 'body',
   /** Create a small or large style button */
   size?: 'sm' | 'lg',
-
-  // --- Anchor+Text props
-  /** Sets button to display as an anchor */
-  anchor?: boolean,
-  /** Sets font size inline style */
-  fontSize?: number | string,
-  /** Sets font weight class */
-  fontWeight: 'light' | 'normal' | 'bold',
-  /** Sets letter spacing inline style */
-  letterSpacing?: number | string,
-  /** Sets line height inline style */
-  lineHeight?: number | string,
-  /** Sets text alignment class */
-  textAlign?: 'justify' | 'right' | 'center' | 'left',
-  italic?: boolean,
-  monospace?: boolean,
-  uppercase?: boolean,
 }
 
 export const btnClasses = p => ({
   btn: !p.anchor,
   'btn-anchor': p.anchor,
   'btn-block': p.block,
-  [`btn-${p.color}`]: !p.anchor && p.color,
   [`btn-${p.size}`]: p.size,
   [`btn-outline-${p.outline}`]: p.outline,
   disabled: p.disabled,
-  // --- Typography
-  // When rendering an anchor style button use the typography classes
-  'font-italic': p.italic,
-  'text-monospace': p.monospace,
-  'text-uppercase': p.uppercase,
-  [`font-weight-${p.fontWeight}`]: p.fontWeight,
+  // Button color switching
+  [`btn-${p.color}`]: !p.anchor && p.color,
   [`text-${p.color}`]: p.anchor && p.color,
-  [`text-${p.textAlign}`]: p.textAlign,
 })
 
-export const cleanBtnClasses = ({
-  anchor,
-  block,
-  color,
-  fontSize,
-  fontWeight,
-  italic,
-  letterSpacing,
-  lineHeight,
-  monospace,
-  outline,
-  size,
-  textAlign,
-  uppercase,
-  ...rest
-}) => rest
+export const cleanBtnClasses = ({ anchor, block, color, outline, size, ...rest }) => rest
 
-const Button = ({ fontSize, letterSpacing, lineHeight, ...rest }: Props) =>
+const Button = props =>
   componentryElem({
     defaultAs: 'button',
     type: 'button',
-    style: { fontSize, letterSpacing, lineHeight },
-    classes: btnClasses(rest),
-    ...cleanBtnClasses(rest),
+    classes: btnClasses(props),
+    ...cleanBtnClasses(props),
   })
 
 export default withTheme('Button', Button)

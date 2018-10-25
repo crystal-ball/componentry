@@ -2,7 +2,6 @@
 import React, { Fragment, type Node } from 'react'
 import elem from './elem-factory'
 import ariasComputer, { type ComponentArias } from './utils/arias'
-import { cleanActive } from './utils/clean-props'
 
 type Options = {
   /** Arias to include for component */
@@ -51,8 +50,7 @@ export default ({ arias, classes = '', popper = false }: Options = {}) => ({
         {children}
       </Fragment>
     ),
-    // Pass through props rest last to allow any instance overrides
-    ...cleanActive(rest),
+    ...rest,
   })
 
   // If the element is a popper, wrap it in a content container, this is used to
