@@ -1,6 +1,7 @@
 import ActiveScreen from 'components/ComponentsScreen/Screens/Active.md'
 import AlertsScreen from 'components/ComponentsScreen/Screens/Alerts.md'
 import ButtonsScreen from 'components/ComponentsScreen/Screens/Buttons.md'
+import BlockScreen from 'components/ComponentsScreen/Screens/Block.md'
 import CardsScreen from 'components/ComponentsScreen/Screens/Cards.md'
 import CloseScreen from 'components/ComponentsScreen/Screens/Close.md'
 import DrawersScreen from 'components/ComponentsScreen/Screens/Drawers.md'
@@ -29,6 +30,7 @@ const routesMap = {
     subRoutes: {
       active: { pathname: '/components/active', state: { name: 'Active' } },
       alerts: { pathname: '/components/alerts', state: { name: 'Alerts' } },
+      block: { pathname: '/components/block', state: { name: 'Block' } },
       buttons: { pathname: '/components/buttons', state: { name: 'Buttons' } },
       cards: { pathname: '/components/cards', state: { name: 'Cards' } },
       close: { pathname: '/components/close', state: { name: 'Close' } },
@@ -51,6 +53,7 @@ const routesMap = {
     screens: {
       active: ActiveScreen,
       alerts: AlertsScreen,
+      block: BlockScreen,
       buttons: ButtonsScreen,
       cards: CardsScreen,
       close: CloseScreen,

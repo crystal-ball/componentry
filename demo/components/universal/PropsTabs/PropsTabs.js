@@ -1,38 +1,35 @@
 import React from 'react'
+import { arrayOf, bool, shape, string } from 'prop-types'
 import { Icon, Tab } from 'componentry'
 
 import TabContent from './TabContent'
 import { activeProps, componentryProps } from './props-content'
 import { component } from './props-tabs.scss'
 
-type Props = {
-  activeComponent: boolean,
-  componentProps: Array,
-  directionalComponent?: string,
-  size?: boolean,
-  themeColors: boolean,
-}
-
-export default ({
+const PropsTabs = ({
   activeComponent = false,
   componentProps = [],
   directionalComponent = null,
-  size = false,
-  themeColors = false,
-}: Props) => {
+}) => {
   const showComponentProps = !!componentProps.length
-  const defaultActive = componentProps.length ? 'Component' : 'Componentry'
+  /* eslint-disable no-nested-ternary */
+  const defaultActive = componentProps.length
+    ? 'Component'
+    : activeComponent
+      ? 'Active'
+      : 'Componentry'
+  /* eslint-enable no-nested-ternary */
 
   // Filter out the Componentry props that aren't applicable for this component
   const filteredComponentryProps = componentryProps.filter(prop => {
-    if (!themeColors && prop.name === 'color') return false
-    if (!size && prop.name === 'size') return false
+    if (prop.name === 'color' && componentProps.find(p => p.name === 'color')) return null
+    if (prop.name === 'size' && componentProps.find(p => p.name === 'size')) return null
 
     // Directional components have different default directions, assign correct
     // default for directionals
     if (prop.name === 'direction') {
       if (!directionalComponent) return false // filter out
-      prop.defaultValue = directionalComponent // eslint-disable-line
+      prop.default = directionalComponent // eslint-disable-line
       return prop
     }
 
@@ -65,10 +62,24 @@ export default ({
           {showComponentProps && (
             <Tab.Trigger activeId="Component">Component props</Tab.Trigger>
           )}
-          <Tab.Trigger activeId="Componentry">Componentry props</Tab.Trigger>
           {activeComponent && <Tab.Trigger activeId="Active">Active props</Tab.Trigger>}
+          <Tab.Trigger activeId="Componentry">Componentry props</Tab.Trigger>
         </Tab.Nav>
       </Tab>
     </div>
   )
 }
+
+PropsTabs.propTypes = {
+  activeComponent: bool,
+  componentProps: arrayOf(shape({ name: string })),
+  directionalComponent: bool,
+}
+
+PropsTabs.defaultProps = {
+  activeComponent: false,
+  componentProps: [],
+  directionalComponent: false,
+}
+
+export default PropsTabs

@@ -14,3 +14,5 @@ be styled with CSS.
   renderCode={() => `<h1><Icon id="check-box" /> SVG icon system</h1>`}
   renderComponent={() => <h1><Icon id="check-box" /> SVG icon system</h1>}
 />
+
+<PropsTabs />

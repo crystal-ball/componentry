@@ -29,7 +29,7 @@ export default ({ contentProps }: Props) => (
       </tr>
     </thead>
     <tbody>
-      {contentProps.map(({ name, description, type, defaultValue, ...refs }) => {
+      {contentProps.map(({ name, description, type, default: defaultValue, ...refs }) => {
         // Component pages can specify refs to Componentry API props that render a
         // link to that tab
         if (refs.active) return renderPropRef('active', 'Active')
@@ -61,7 +61,7 @@ export default ({ contentProps }: Props) => (
               ) : null}
             </td>
             <td>
-              <code>{defaultValue}</code>
+              <code>{String(defaultValue)}</code>
             </td>
           </tr>
         )

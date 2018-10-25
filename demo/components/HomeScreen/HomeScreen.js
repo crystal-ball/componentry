@@ -1,6 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
-import { Block, Flex, Header, Media } from 'componentry'
+import { Block, Flex, Header, Media, Text } from 'componentry'
 import { Link } from 'react-router-dom'
 
 import routesMap, { componentRoutes, conceptRoutes } from 'lib/routes-map'
@@ -31,10 +31,14 @@ const featureProps = {
 export default () => (
   <>
     <Flex direction="column" align="center" mt="5rem">
-      <Header color="primary" className="display-2 mb-4">
+      <Header color="primary" className="display-2 mb-3">
         <u>C</u>
         omponentry
       </Header>
+
+      <Text size="small" color="muted" className="mb-4" monospace>
+        {process.env.PACKAGE_VERSION}
+      </Text>
 
       <Header as="h3" color="muted" textAlign="center" className="w-75 mb-5">
         <em>A scalable, accessible React component library</em>

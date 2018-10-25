@@ -1,6 +1,8 @@
 'use strict' // eslint-disable-line
 const { resolve } = require('path')
 const webpackBase = require('@crystal-ball/webpack-base')
+const { EnvironmentPlugin } = require('webpack')
+const packageJSON = require('./package.json')
 
 module.exports = env => {
   const config = webpackBase({
@@ -25,6 +27,8 @@ module.exports = env => {
       { loader: '@inspirescript/magic-markdown-loader' },
     ],
   })
+
+  config.plugins.push(new EnvironmentPlugin({ PACKAGE_VERSION: packageJSON.version }))
 
   /*
    * Make any changes to the base webpack configs for your application

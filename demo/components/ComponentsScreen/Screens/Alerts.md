@@ -1,19 +1,27 @@
 ---
 componentProps:
+  - name: active
+    description: Sets visibility of dismissible alerts
+    type: boolean
+    default: false
   - name: ariaTitle
     description: Screen reader only title that provides the context of the alert. By default the type of alert is included.
     type: string
-    defaultValue: "''"
-  - color: true
+    default: "'CONTEXT_COLOR alert'"
+  - name: color
+    description: Sets alert contextual color
+    type: ['primary','secondary','success','danger','warning','info','light','dark']
+  - name: deactivate
+    description: The deactivate callback will be passed to any dismissible Alert's <code>Close</code>
+    type: func
   - name: dismissible
-    description: Controls whether alert can be dismissed by user, pass <code>false</code> to prevent dismissal of an alert.
+    description: Sets whether Alert can be dismissed. Dismissible Alerts render a Close component.
     type: boolean
-    defaultValue: "false"
-  - deactivate: true
-  - name: transitionDuration
-    description: Length of opacity transition, if not passed component will default to 300ms or <code>THEME</code> value if set using <code>ThemeProvider</code>.
-    type: number
-    defaultValue: 300
+    default: false
+  - name: outline
+    description: Toggles the outline alert style
+    type: boolean
+    default: false
 ---
 <ComponentsList components={['Alert']} />
 
@@ -71,4 +79,4 @@ Alert components include a screen reader only message to announce the the type
 of alert based on the theme color to provide the context created by the Alert
 color. This context can be customized using the `ariaTitle` prop.
 
-<PropsTabs componentProps={componentProps} themeColors />
+<PropsTabs componentProps={componentProps} />

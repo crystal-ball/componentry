@@ -8,16 +8,20 @@ defaults:
   disabled: false
   fontWeight: null
 componentProps:
-  - color: true
   - name: anchor
     description: Anchor buttons are styled to appear the same as <code>anchor</code> elements.
     type: boolean
-    defaultValue: false
+    default: false
+  - name: color
+    description: Sets button background style unless button is type anchor, anchor buttons set text color
+    type: ['primary','secondary','success','danger','warning','info','light','dark']
   - name: outline
     description: Outline buttons have a themed outline and white background appearance.
     type: ['primary','secondary','success','danger','warning','info','light','dark']
-    defaultValue: false
-  - size: true
+    default: false
+  - name: size
+    description: Sets button size modifier
+    type: ['sm', 'lg']
 ---
 <ComponentsList components={['Button']} />
 
@@ -96,4 +100,4 @@ button elements that look like anchors with the `anchor` prop.
 Advanced button theming is available to control: darken percent for hover and
 active states, single disabled style, text transform and text weight.
 
-<PropsTabs componentProps={componentProps} themeColors size />
+<PropsTabs componentProps={componentProps} />

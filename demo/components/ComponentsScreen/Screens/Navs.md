@@ -3,18 +3,18 @@ componentProps:
   - name: fill
     description: Toggles the fill style so that nav items fill the nav container based on their width.
     type: boolean
-    defaultValue: "false"
+    default: false
   - name: justify
     description: Togles the justify styles so that nav items fill the nav container using an equal width.
-    defaultValue: "false"
+    default: false
     type: boolean
   - name: pills
     description: Toggles the nav item 'pill' styles.
-    defaultValue: "false"
+    default: false
     type: boolean
   - name: vertical
     description: Toggles flex column classes to create a vertically oriented nav.
-    defaultValue: "false"
+    default: false
     type: boolean
 ---
 

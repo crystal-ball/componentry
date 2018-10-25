@@ -137,4 +137,4 @@ screen reader context for the modal without affecting layout.
 </Modal>
 ```
 
-<PropsTabs componentProps={componentProps} activeComponent size />
+<PropsTabs componentProps={componentProps} activeComponent />
