@@ -18,12 +18,14 @@ const elementFactory = ({
   style,
   ...rest
 }) => {
-  const { className: classNames, style: styles, rest: filteredRest } = componentry(rest)
+  // The componentry util will: filter out remaining library props, create base
+  // styles, and create base classNames
+  const c = componentry(rest)
 
   return createElement(as || defaultAs, {
-    style: { ...styles, ...style },
-    className: classnames(classes, className, classNames),
-    ...filteredRest,
+    style: { ...c.style, ...style },
+    className: classnames(classes, className, c.className),
+    ...c.rest,
   })
 }
 
