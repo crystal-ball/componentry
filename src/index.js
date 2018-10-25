@@ -1,5 +1,6 @@
 export { default as Active } from './Active/Active'
 export { default as Alert } from './Alert/Alert'
+export { default as Block } from './Block/Block'
 export { default as Button } from './Button/Button'
 export { default as Card } from './Card/Card'
 export { default as Close } from './Close/Close'
