@@ -1,4 +1,3 @@
-/* eslint-disable react/prop-types */
 import React, { Component, Fragment, createContext } from 'react'
 import nanoid from 'nanoid'
 import elem from '../elem-factory'

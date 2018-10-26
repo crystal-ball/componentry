@@ -18,7 +18,6 @@ import transferStatics from './utils/transfer-statics'
  * TODO: Create a wrapper for passing refs only as needed, see Material-ui
  * RootRef component for an example
  */
-/* eslint-disable react/prop-types */
 const withTheme = (namespace, Wrapped) => {
   const WithTheme = props => (
     <ThemeProvider.Consumer>

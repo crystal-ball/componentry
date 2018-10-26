@@ -1,5 +1,4 @@
 import React, { Component, Fragment } from 'react'
-import { bool, func, node, oneOfType, oneOf, string } from 'prop-types'
 import nanoid from 'nanoid'
 
 import ActiveProvider from './ActiveProvider'
@@ -35,27 +34,29 @@ export default ({
   defaultMouseEvents = false,
 }) =>
   class ActiveContainer extends Component {
-    static propTypes = {
-      // Subcomponent shorthand props
-      Content: node,
-      Trigger: node,
-      // Component props
-      // as: oneOfType([func, node, element]), -> unclear what this should be ¯\_(ツ)_/¯
-      children: oneOfType([node, func]),
-      className: string,
-      direction: oneOf(['top', 'right', 'bottom', 'left', 'overlay']),
-      // Active change listeners
-      onActivate: func,
-      onActivated: func,
-      onDeactivate: func,
-      onDeactivated: func,
-      // Passed props to create a controlled component
-      active: bool,
-      defaultActive: oneOfType([bool, string]),
-      activate: func,
-      deactivate: func,
-      mouseEvents: bool,
-    }
+    /**
+     * Prop Types
+     * ---
+     * // Subcomponent shorthand props
+     * Content: node,
+     * Trigger: node,
+     * // Component props
+     * as: oneOfType([func, node, element])
+     * children: oneOfType([node, func]),
+     * className: string,
+     * direction: oneOf(['top', 'right', 'bottom', 'left', 'overlay']),
+     * // Active change listeners
+     * onActivate: func,
+     * onActivated: func,
+     * onDeactivate: func,
+     * onDeactivated: func,
+     * // Passed props to create a controlled component
+     * active: bool,
+     * defaultActive: oneOfType([bool, string]),
+     * activate: func,
+     * deactivate: func,
+     * mouseEvents: bool,
+     */
 
     static defaultProps = {
       defaultActive: false,
