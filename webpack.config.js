@@ -4,7 +4,7 @@ const webpackBase = require('@crystal-ball/webpack-base')
 const { EnvironmentPlugin } = require('webpack')
 const packageJSON = require('./package.json')
 
-module.exports = env => {
+module.exports = () => {
   const config = webpackBase({
     paths: {
       // Set the source directory for webpack app to the demo app
@@ -12,7 +12,7 @@ module.exports = env => {
       // Include demo and source files in babel transpile
       babelLoaderInclude: [resolve('src'), resolve('demo')],
       // In production use /componentry/ publicPath for Github pages
-      publicPath: env === 'production' ? '/componentry/' : '/',
+      publicPath: process.env.NODE_ENV === 'production' ? '/componentry/' : '/',
     },
   })
 

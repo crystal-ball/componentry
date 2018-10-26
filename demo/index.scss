@@ -10,7 +10,7 @@
 
 // 1️⃣ Theme definition
 
-@import './theme';
+@import './styles/theme';
 
 // 3️⃣ Componentry library styles
 
@@ -24,4 +24,4 @@
 
 // Final import of app level style rules or updates to Bootstrap and Componentry
 // base styles.
-@import './application/index';
+@import './styles/application/index';

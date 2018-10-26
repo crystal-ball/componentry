@@ -34,17 +34,17 @@
     "prepublishOnly": "npm run clean && npm run js",
     "postpublish": "npm run clean",
     "flow": "flow",
-    "deploy": "gh-pages -d build",
-    "js": "npm run js:commonjs && npm run js:esmodules && npm run js:esnext",
     "test:unit": "BABEL_ENV=test NODE_ENV=test jest ",
     "test:watch": "BABEL_ENV=test NODE_ENV=test jest --watch",
     "format": "prettier --write \"{demo,src,styles}/**/*.{js,scss}\" guides/*.md",
     "lint": "NODE_ENV=test eslint src demo",
-    "documentation": "webpack --mode=production",
-    "clean": "rm -rf dist monitor lib es esnext",
+    "documentation": "NODE_ENV=production webpack --mode=production",
+    "deploy": "gh-pages -d dist",
+    "js": "npm run js:commonjs && npm run js:esmodules && npm run js:esnext",
     "js:commonjs": "BABEL_ENV=common babel src --out-dir lib --ignore *.spec.js",
     "js:esmodules": "BABEL_ENV=esmodules babel src --out-dir es --ignore *.spec.js",
-    "js:esnext": "BABEL_ENV=next babel src --out-dir esnext --ignore *.spec.js"
+    "js:esnext": "BABEL_ENV=next babel src --out-dir esnext --ignore *.spec.js",
+    "clean": "rm -rf dist monitor lib es esnext"
   },
   "peerDependencies": {
     "react": "^16.3"
