@@ -8,6 +8,13 @@ and this project adheres to
 
 #### [Unreleased]
 
+## [3.0.0-alpha.10] - 2018-10-25
+
+## Fix
+
+- Remove references to `prop-types` in lib src
+- Fix publishing references
+
 ## [3.0.0-alpha.9] - 2018-10-25
 
 ## BREAKING CHANGES
