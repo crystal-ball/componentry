@@ -4,7 +4,7 @@
 
 All components should be available with varying levels of control specified:
 
-* **uncontrolled**: The component uses internal state and toggle methods
+* **uncontrolled**: The component uses internal state and trigger methods
 * **controlled**: The component's state is a parameter. Changing state requires
   passing methods in component hooks to handle externally changing state. Hooks
   are available to know when events are called.

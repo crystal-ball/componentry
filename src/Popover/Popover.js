@@ -40,7 +40,7 @@ Popover.Trigger = withActive(
     'PopoverTrigger',
     activeTrigger({
       arias: { describedby: true },
-      classes: 'popover-toggle',
+      classes: 'popover-trigger',
     }),
   ),
 )

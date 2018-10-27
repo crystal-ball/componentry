@@ -1,7 +1,7 @@
 /* componentry/src/Drawer/drawer */
 
-.drawer-toggle,
-.accordion-toggle {
+.drawer-trigger,
+.accordion-trigger {
   // Bs doesn't have real drawers, the 'Collapse' styles can be used to create
   // them, but b/c they don't include any structural styles they are not
   // convenient for creating standard drawers with minimal markup. Add display
@@ -9,7 +9,7 @@
   // button boundary
   display: block;
 
-  // If the chevron icon is used with a drawer toggle, it will rotate a half
+  // If the chevron icon is used with a drawer trigger, it will rotate a half
   // turn on open/close of drawer
   .icon-chevron {
     transition: transform 500ms;

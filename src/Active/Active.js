@@ -18,7 +18,7 @@ Active.Content = withActive(
 Active.Trigger = withActive(
   activeTrigger({
     arias: { controls: true },
-    classes: 'active-toggle',
+    classes: 'active-trigger',
   }),
 )
 

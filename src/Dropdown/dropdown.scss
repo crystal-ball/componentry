@@ -74,7 +74,7 @@
 //
 
 // TODO: replace decoration styles with a decoration element
-.dropdown-toggle {
+.dropdown-trigger {
   font-size: $dropdown-font-size;
   font-weight: $dropdown-font-weight;
 
@@ -166,7 +166,7 @@
 
 .dropdown-sm {
   .dropdown-content,
-  .dropdown-toggle {
+  .dropdown-trigger {
     font-size: $dropdown-font-size-sm;
     font-weight: $dropdown-font-weight-sm;
   }
@@ -178,7 +178,7 @@
 
 .dropdown-lg {
   .dropdown-content,
-  .dropdown-toggle {
+  .dropdown-trigger {
     font-size: $dropdown-font-size-lg;
     font-weight: $dropdown-font-weight-lg;
   }

@@ -7,7 +7,7 @@ exports[`<Drawer /> snapshots renders correctly 1`] = `
 >
   <button
     aria-describedby="guid"
-    class="tooltip-toggle btn-anchor"
+    class="tooltip-trigger btn-anchor"
     type="button"
   >
     Trigger

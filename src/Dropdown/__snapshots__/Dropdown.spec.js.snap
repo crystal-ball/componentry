@@ -8,7 +8,7 @@ exports[`<Drawer /> snapshots renders correctly 1`] = `
   <button
     aria-expanded="false"
     aria-haspopup="true"
-    class="dropdown-toggle btn-anchor"
+    class="dropdown-trigger btn-anchor"
     id="guid"
     type="button"
   >

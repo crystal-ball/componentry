@@ -18,7 +18,7 @@ const makeDrawer = name => {
 
   const Trigger = activeTrigger({
     arias: { controls: true, expanded: true },
-    classes: `${elem}-toggle`,
+    classes: `${elem}-trigger`,
   })
   Element.Trigger = withActive(withTheme(`${name}Trigger`, Trigger))
 

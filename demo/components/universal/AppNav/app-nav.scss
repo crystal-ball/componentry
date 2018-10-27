@@ -15,7 +15,7 @@
 
   // The app nav has a gray-100 background with primary text, it's the simplest to
   // override those styles specifically within this component
-  .dropdown-toggle {
+  .dropdown-trigger {
     background-color: $gray-100;
     color: $primary;
   }

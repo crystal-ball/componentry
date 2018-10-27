@@ -64,10 +64,10 @@ enable easy navigation between multiple options.
 
 <SupportingInfo
   classes={[
-    'dropdown-toggle-split',
-    'dropdown-menu-right',
+    'dropdown-content-right',
     'dropdown-header',
-    'dropdown-divider'
+    'dropdown-divider',
+    'dropdown-item-text'
   ]}
   apis={['Active component', 'Items component', 'Directional component', 'Trigger decoration']}
 />

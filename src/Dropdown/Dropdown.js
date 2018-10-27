@@ -28,7 +28,7 @@ Dropdown.Item = withTheme('DropdownItem', withActive(Item))
 
 const Trigger = activeTrigger({
   arias: { expanded: true, haspopup: true, id: true },
-  classes: 'dropdown-toggle',
+  classes: 'dropdown-trigger',
 })
 Dropdown.Trigger = withTheme('DropdownTrigger', withActive(Trigger))
 

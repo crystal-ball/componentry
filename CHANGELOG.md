@@ -15,6 +15,8 @@ and this project adheres to
   instead of the Close prop.
 - Dropdown util `.dropdown-menu-right` renamed to `.dropdown-content-right` to align
   with subcomponent naming.
+- All Active.Trigger subcomponent classnames have been renamed from `.elem-toggle`
+  to `.elem-trigger` to align with subcomponent naming.
 
 ## Updated
 

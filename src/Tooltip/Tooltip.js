@@ -27,7 +27,7 @@ Tooltip.Trigger = withActive(
     'TooltipTrigger',
     activeTrigger({
       arias: { describedby: true },
-      classes: 'tooltip-toggle',
+      classes: 'tooltip-trigger',
     }),
   ),
 )
