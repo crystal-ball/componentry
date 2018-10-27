@@ -1,23 +1,17 @@
-// @flow
-import React, { Component, Fragment, createContext, type Node } from 'react'
+import React, { Component, Fragment, createContext } from 'react'
 import classNames from 'classnames'
 import nanoid from 'nanoid'
 import elem from '../elem-factory'
 import withActive from '../withActive'
 import withVisible from '../withVisible'
 import withTheme from '../withTheme'
+import Close from '../Close/Close'
 
 const ModalContext = createContext()
 
-type Props = {
-  active: boolean,
-  children?: Node,
-  deactivate: Function,
-  size?: 'sm' | 'lg',
-  visible?: boolean,
-}
+class Modal extends Component {
+  static Close = Close
 
-class Modal extends Component<Props> {
   /**
    * The Modal.Header close button is not shown by default, pass close to show a
    * Close component with deactivate. This is for 'standard' usage only, for custom
@@ -25,7 +19,7 @@ class Modal extends Component<Props> {
    */
   static Header = withTheme(
     'ModalHeader',
-    ({ children, deactivate, Close, ...props }) => (
+    ({ children, deactivate, close, ...props }) => (
       <ModalContext.Consumer>
         {modalCtx =>
           elem({
@@ -33,8 +27,7 @@ class Modal extends Component<Props> {
             children: (
               <Fragment>
                 {children}
-                {/* $FlowIgnore */}
-                {Close && <Close onClick={modalCtx.deactivate} />}
+                {close && <ModalExport.Close onClick={modalCtx.deactivate} />}
               </Fragment>
             ),
             ...props,
@@ -98,7 +91,7 @@ class Modal extends Component<Props> {
   // Render
   // ---------------------------------------------------------------------------
   render() {
-    const { active, children, deactivate, size, visible }: Props = this.props
+    const { active, children, deactivate, size, visible } = this.props
 
     return (
       <ModalContext.Provider value={{ deactivate, guid: this.guid }}>
@@ -134,4 +127,5 @@ class Modal extends Component<Props> {
   }
 }
 
-export default withActive(withVisible(withTheme('Modal', Modal)))
+const ModalExport = withActive(withVisible(withTheme('Modal', Modal)))
+export default ModalExport

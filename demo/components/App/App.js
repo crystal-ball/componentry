@@ -1,4 +1,3 @@
-// @flow
 import React, { Component } from 'react'
 import { shape } from 'prop-types'
 import * as Componentry from 'componentry'
@@ -27,7 +26,7 @@ import TestScreen from '../TestScreen/TestScreen'
 // Componentry Theme Customization
 // ========================================================
 
-const { Close, Icon } = Componentry
+const { Icon } = Componentry
 
 // Componentry configuration defaults can be updated using the ThemeProvider
 // component and passing a theme configuration object
@@ -45,7 +44,7 @@ const theme = {
   },
   ModalHeader: {
     // Include a Close component in all modal headers by default
-    Close,
+    close: true,
   },
   DropdownTrigger: {
     // Include the chevron icon decoration by default in all dropdowns

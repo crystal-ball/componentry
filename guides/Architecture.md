@@ -104,6 +104,12 @@ scenarios. This helps to call out when a custom override is occuring.
 <Header mb={22}>Custom margin-bottom header</Header>
 ```
 
+### Customization and decoration
+
+Library components use subcomponents for including decoration elements, which
+allows customization of any decoration by overriding the subcomponent during
+application setup. The `Modal.Close` is a good example of this.
+
 ## Dependencies
 
 Componentry has dependencies on `classnames` (SIZE) and `nanoid` (SIZE). These

@@ -8,6 +8,12 @@ and this project adheres to
 
 #### [Unreleased]
 
+## BREAKING CHANGES
+
+- The Modal.Header now uses the `close` props (instead of `Close`) as the flag
+  to render a close element, and internally renders the `Modal.Close` subcomponent
+  instead of the Close prop.
+
 ## [3.0.0-alpha.10] - 2018-10-25
 
 ## Fix

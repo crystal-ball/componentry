@@ -1,5 +1,6 @@
 const statics = [
   'Body',
+  'Close',
   'Content',
   'ContentContainer',
   'Footer',

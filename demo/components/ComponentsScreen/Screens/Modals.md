@@ -117,6 +117,18 @@ application, you can use the ThemeProvider to set close to true by default.
 </ThemeProvider>
 ```
 
+### Customizing the <Mono>Modal.Close</Mono> subcomponent
+
+Internally the <Mono>Modal</Mono> component uses the <Mono>Modal.Close</Mono>{' '}
+subcomponent when rendering the close button. Custom <Mono>Close</Mono> elements
+can be set by overriding this subcomponent in your application setup:
+
+```jsx
+// index.js
+Modal.Close = ({ deactivate }) => <button onClick={deactivate}>CLOSE</button>
+
+```
+
 ### <Icon id="stars" /> A++ Accessibility
 
 The Modal and Modal.Title components automatically set up the required aria
