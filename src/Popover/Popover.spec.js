@@ -7,7 +7,7 @@ import elementTests from '../utils-test/element-tests'
 
 describe('<Popover />', () => {
   // Basic library activation test suite
-  activationTestSuite(Popover)
+  activationTestSuite(Popover, { name: 'popover' })
   // Basic library element test suite
   elementTests(Popover)
   elementTests(Popover.Trigger)

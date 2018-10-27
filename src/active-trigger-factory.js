@@ -1,36 +1,14 @@
-import React, { Fragment, type Node } from 'react'
+import React, { Fragment } from 'react'
 import elem from './elem-factory'
-import ariasComputer, { type ComponentArias } from './utils/arias'
+import ariasComputer from './utils/arias'
 import { btnClasses, cleanBtnClasses } from './Button/Button'
-
-type Options = {
-  /** Arias to include for component */
-  arias: ComponentArias,
-  /** Custom trigger static classes */
-  classes?: string,
-  /** If the trigger can act as a toggle vs activate only */
-  triggerType?: 'activate' | 'deactivate',
-}
-
-type Props = {
-  children?: Node,
-  decoration?: boolean | Node,
-  activeId?: string,
-  // Active boolean + change handlers from withActive HOC
-  activate: Function,
-  active: boolean,
-  deactivate: Function,
-  guid: string,
-  /** Toggles `btn-anchor` utility class to style button as an anchor */
-  anchor: boolean,
-}
 
 /**
  * Factory returns custom `<Trigger />` components defined by the options.
  * Componentry sets up triggers to be anchor style buttons by default, this
  * can be overridden by passing an as, type and anchor to reset the defaults.
  */
-export default ({ arias, classes, triggerType, btnStyles = true }: Options = {}) => ({
+export default ({ arias, classes, triggerType, btnStyles = true } = {}) => ({
   activate,
   active,
   activeId = '',
@@ -38,9 +16,9 @@ export default ({ arias, classes, triggerType, btnStyles = true }: Options = {})
   deactivate,
   decoration,
   guid,
-  anchor = true,
+  anchor = true, // toggles btn-anchor utility class
   ...rest
-}: Props) => {
+}) => {
   let onClick
   if (triggerType) {
     onClick = triggerType === 'activate' ? activate : deactivate
@@ -54,17 +32,11 @@ export default ({ arias, classes, triggerType, btnStyles = true }: Options = {})
   const classNames = [classes, { active: activeId && active === activeId }]
   if (btnStyles) classNames.push(btnClasses({ anchor, ...rest }))
 
-  const node = rest.href
-    ? {
-        defaultAs: 'a',
-      }
-    : {
-        defaultAs: 'button',
-        type: 'button',
-      }
+  const isAnchor = !!rest.href
 
   return elem({
-    ...node,
+    defaultAs: isAnchor ? 'a' : 'button',
+    type: isAnchor ? undefined : 'button',
     ...ariasComputer({
       active,
       activeId,

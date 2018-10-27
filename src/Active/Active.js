@@ -4,7 +4,7 @@ import activeContent from '../active-content-factory'
 import activeTrigger from '../active-trigger-factory'
 
 const Active = activeContainer({
-  classes: 'active',
+  name: 'active',
   escHandler: true,
 })
 

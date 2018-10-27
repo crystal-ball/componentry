@@ -7,7 +7,7 @@ import withTheme from '../withTheme'
 
 import { TabNav } from '../Navs/Navs'
 
-const Tab = activeContainer({ classes: 'tabs' })
+const Tab = activeContainer({ name: 'tabs' })
 
 Tab.Content = withActive(
   withTheme(

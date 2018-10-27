@@ -8,7 +8,7 @@ import withTheme from '../withTheme'
 const makeDrawer = name => {
   const elem = name.slice(0, 1).toLocaleLowerCase() + name.slice(1)
 
-  const Element = withTheme(name, activeContainer({ classes: elem }))
+  const Element = withTheme(name, activeContainer({ name: elem }))
 
   const Content = activeContent({
     arias: { id: true, hidden: true },

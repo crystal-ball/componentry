@@ -6,7 +6,7 @@ import withActive from '../withActive'
 import withTheme from '../withTheme'
 
 const Tooltip = activeContainer({
-  classes: 'tooltip',
+  name: 'tooltip',
   escHandler: true,
   defaultMouseEvents: true,
 })

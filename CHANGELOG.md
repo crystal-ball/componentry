@@ -13,6 +13,17 @@ and this project adheres to
 - The Modal.Header now uses the `close` props (instead of `Close`) as the flag
   to render a close element, and internally renders the `Modal.Close` subcomponent
   instead of the Close prop.
+- Dropdown util `.dropdown-menu-right` renamed to `.dropdown-content-right` to align
+  with subcomponent naming.
+
+## Updated
+
+- Added `$font-size-monospace` SASS var
+- Active elements now accept a `size` prop that will include an `.element-size`
+  className
+- Dropdown Sass vars added for size variants:
+
+  $dropdown-font-size(-sm/lg), $dropdown-font-weight(-sm/lg), $dropdown-item-padding-(x/y)-(sm/lg)
 
 ## [3.0.0-alpha.10] - 2018-10-25
 

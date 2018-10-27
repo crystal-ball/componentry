@@ -552,6 +552,13 @@ $dropdown-border-radius:            $border-radius !default;
 $dropdown-border-width:             $border-width !default;
 $dropdown-divider-bg:               $gray-200 !default;
 $dropdown-box-shadow:               0 .5rem 1rem rgba($black, .175) !default;
+$dropdown-font-size:                $font-size-base !default;
+$dropdown-font-weight:              $font-weight-base !default;
+
+$dropdown-font-size-sm:             $font-size-sm !default;
+$dropdown-font-weight-sm:           $font-weight-base !default;
+$dropdown-font-size-lg:             $font-size-lg !default;
+$dropdown-font-weight-lg:           $font-weight-base !default;
 
 $dropdown-link-color:               $gray-900 !default;
 $dropdown-link-hover-color:         darken($gray-900, 5%) !default;
@@ -565,6 +572,12 @@ $dropdown-link-disabled-color:      $gray-600 !default;
 $dropdown-item-padding-y:           .25rem !default;
 $dropdown-item-padding-x:           1.5rem !default;
 $dropdown-item-line-height:         $line-height-base !default;
+
+$dropdown-item-padding-y-sm:        ($dropdown-item-padding-y * 0.8) !default;
+$dropdown-item-padding-x-sm:        ($dropdown-item-padding-x * 0.8) !default;
+
+$dropdown-item-padding-y-lg:        ($dropdown-item-padding-y * 1.1) !default;
+$dropdown-item-padding-x-lg:        ($dropdown-item-padding-x * 1.1) !default;
 
 $dropdown-header-color:             $gray-600 !default;
 

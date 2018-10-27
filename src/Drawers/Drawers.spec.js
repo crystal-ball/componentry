@@ -6,7 +6,7 @@ import activationTestSuite from '../utils-test/activation-tests'
 import elementTests from '../utils-test/element-tests'
 
 describe('<Drawer />', () => {
-  activationTestSuite(Drawer)
+  activationTestSuite(Drawer, { name: 'drawer' })
   elementTests(Drawer)
   elementTests(Drawer.Trigger)
   elementTests(Drawer.Content)

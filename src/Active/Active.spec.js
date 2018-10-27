@@ -7,7 +7,7 @@ import activationTestSuite from '../utils-test/activation-tests'
 import elementTests from '../utils-test/element-tests'
 
 describe('<Active />', () => {
-  activationTestSuite(Active)
+  activationTestSuite(Active, { name: 'active' })
   elementTests(Active)
   elementTests(Active.Trigger)
   elementTests(Active.Content)

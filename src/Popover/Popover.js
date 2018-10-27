@@ -6,7 +6,7 @@ import withActive from '../withActive'
 import withTheme from '../withTheme'
 
 const Popover = activeContainer({
-  classes: 'popover',
+  name: 'popover',
   escHandler: true,
   defaultMouseEvents: true,
   defaultDirection: 'right',

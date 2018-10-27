@@ -73,7 +73,7 @@ const PropsTabs = ({
 PropsTabs.propTypes = {
   activeComponent: bool,
   componentProps: arrayOf(shape({ name: string })),
-  directionalComponent: bool,
+  directionalComponent: string,
 }
 
 PropsTabs.defaultProps = {

@@ -21,7 +21,7 @@ import dt from './dt'
 const findContent = wrapper => wrapper.find(dt('content')).last()
 const findTrigger = wrapper => wrapper.find(dt('trigger')).last()
 
-export default TestComponent => {
+export default (TestComponent, opts = {}) => {
   /**
    * Test that by default Active.Trigger elements render as button nodes, and
    * when passed an href render anchor nodes.
@@ -221,5 +221,15 @@ export default TestComponent => {
     expect(wrapper.find(dt('active')).text()).toEqual('false')
     wrapper.find(dt('activate')).simulate('click')
     expect(wrapper.find(dt('active')).text()).toEqual('true')
+  })
+
+  test('should pass appropriate name and size classes', () => {
+    const { name } = opts
+
+    const wrapper = mount(<TestComponent size={null} />)
+    expect(wrapper.find(`.${name}`).length).toBeTruthy()
+
+    wrapper.setProps({ size: 'sm' })
+    expect(wrapper.find(`.${name}.${name}-sm`).length).toBeTruthy()
   })
 }

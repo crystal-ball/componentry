@@ -56,6 +56,10 @@
   }
 }
 
+//
+// --- Container styles
+//
+
 // The dropdown wrapper element handles creating a relative container that the
 // content is absolutely positioned off of
 .dropdown {
@@ -65,8 +69,15 @@
   display: inline-block;
 }
 
-// The dropdown trigger
+//
+// --- Trigger styles
+//
+
+// TODO: replace decoration styles with a decoration element
 .dropdown-toggle {
+  font-size: $dropdown-font-size;
+  font-weight: $dropdown-font-weight;
+
   .top & {
     @include caret(up);
   }
@@ -90,15 +101,19 @@
   }
 }
 
-// The dropdown menu
+//
+// --- Content styles
+//
+
 .dropdown-content {
   display: block;
   position: absolute;
   z-index: $zindex-dropdown;
   min-width: $dropdown-min-width;
   padding: $dropdown-padding-y 0;
-  font-size: $font-size-base; // Redeclare because nesting can cause inheritance issues
   color: $body-color;
+  font-size: $dropdown-font-size;
+  font-weight: $dropdown-font-weight;
   text-align: left; // Ensures proper alignment if parent has it changed (e.g., modal footer)
   background-color: $dropdown-bg;
   background-clip: padding-box;
@@ -106,7 +121,7 @@
   @include border-radius($dropdown-border-radius);
   @include box-shadow($dropdown-box-shadow);
 
-  // --- Directional styles with parent selector
+  // Directional styles with parent selector
 
   .overlay & {
     top: 0;
@@ -138,11 +153,38 @@
     margin-right: $dropdown-spacer;
   }
 
-  // Class intended to be used with dropdown bottom direction and aligns the menu
-  // to the right edge of the trigger instead of the left
-  &.dropdown-menu-right {
+  // Aligns dropdown content to right edge of dropdown trigger instead of left
+  &.dropdown-content-right {
     right: 0;
     left: auto;
+  }
+}
+
+//
+// Sizes
+//
+
+.dropdown-sm {
+  .dropdown-content,
+  .dropdown-toggle {
+    font-size: $dropdown-font-size-sm;
+    font-weight: $dropdown-font-weight-sm;
+  }
+
+  .dropdown-item {
+    padding: $dropdown-item-padding-y-sm $dropdown-item-padding-x-sm;
+  }
+}
+
+.dropdown-lg {
+  .dropdown-content,
+  .dropdown-toggle {
+    font-size: $dropdown-font-size-lg;
+    font-weight: $dropdown-font-weight-lg;
+  }
+
+  .dropdown-item {
+    padding: $dropdown-item-padding-y-lg $dropdown-item-padding-x-lg;
   }
 }
 
@@ -157,7 +199,9 @@
   display: block;
   width: 100%; // For `<button>`s
   padding: $dropdown-item-padding-y $dropdown-item-padding-x;
-  font-weight: $font-weight-normal;
+  // Ensure that buttons and anchors inherit dropdown container font-size
+  font-size: inherit;
+  font-weight: inherit;
   color: $dropdown-link-color;
   text-align: inherit; // For `<button>`s
   line-height: $dropdown-item-line-height;

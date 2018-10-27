@@ -1,3 +1,13 @@
+---
+defaults:
+  direction: bottom
+  size: null
+formFields:
+  - label: direction
+    options: ['top', 'right', 'bottom', 'left', 'overlay']
+  - label: size
+    options: ['sm', 'lg']
+---
 <ComponentsList
   components={[
     "Dropdown",
@@ -14,10 +24,8 @@ content with multiple user interactions. The focus and keybinding handlers
 enable easy navigation between multiple options.
 
 <InteractiveDemo
-  defaults={{ direction: 'bottom' }}
-  formFields={[
-    { label: 'direction', options: [...this.props.directions, 'overlay'] },
-  ]}
+  defaults={defaults}
+  formFields={formFields}
   renderCode={data => `<Dropdown${props.renderPropsText(data)}>
   <Dropdown.Trigger>Dropdown</Dropdown.Trigger>
   <Dropdown.Content>

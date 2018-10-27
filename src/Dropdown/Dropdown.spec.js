@@ -15,7 +15,7 @@ const dtToggle = dt('dropdown-trigger')
 
 describe('<Dropdown />', () => {
   // Basic library activation test suite
-  activationTestSuite(Dropdown)
+  activationTestSuite(Dropdown, { name: 'dropdown' })
   // Basic library element test suite
   elementTests(Dropdown)
   elementTests(Dropdown.Trigger)

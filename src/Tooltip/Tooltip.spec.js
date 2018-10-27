@@ -8,7 +8,7 @@ import elementTests from '../utils-test/element-tests'
 describe('<Tooltip />', () => {
   // Basic library activation test suite
   // TODO: Fix me
-  activationTestSuite(Tooltip)
+  activationTestSuite(Tooltip, { name: 'tooltip' })
   // Basic library element test suite
   elementTests(Tooltip)
   elementTests(Tooltip.Trigger)

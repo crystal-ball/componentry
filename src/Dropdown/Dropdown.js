@@ -5,7 +5,7 @@ import withActive from '../withActive'
 import withTheme from '../withTheme'
 
 const Dropdown = activeContainer({
-  classes: 'dropdown',
+  name: 'dropdown',
   escHandler: true,
   clickHandler: true,
   defaultDirection: 'bottom',

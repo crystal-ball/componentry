@@ -22,8 +22,8 @@ import { closest } from './utils/dom'
  * needs like setting or removing special event listeners.
  */
 export default ({
-  /** Default class names to pass to component */
-  classes,
+  /** Component name used for classNames */
+  name,
   /** When true call deactivate on `esc` keypress */
   escHandler,
   /** When true call deactivate on click outside of element */
@@ -192,6 +192,7 @@ export default ({
         children,
         direction = defaultDirection,
         mouseEvents = defaultMouseEvents,
+        size,
         ...rest
       } = this.props
       const { active } = this.state
@@ -208,7 +209,7 @@ export default ({
         <ActiveProvider.Provider value={activeValues}>
           {elem({
             'data-id': this.guid,
-            classes: [classes, direction],
+            classes: [name, direction, { [`${name}-${size}`]: size }],
             // For elements with mouse events we need to know when the mouse event
             // occurs on the parent element, not the trigger element
             onMouseEnter: mouseEvents ? this.handleActivate : undefined,
