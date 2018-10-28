@@ -1,7 +1,7 @@
 /* eslint-disable */
 import React from 'react'
 import styled from 'styled-components'
-import { Block, ButtonGroup, Flex, Header, Media, Text } from 'componentry'
+import { Block, Flex, Header, Media, Text } from 'componentry'
 import { Link } from 'react-router-dom'
 
 import routesMap, { componentRoutes, conceptRoutes } from 'lib/routes-map'
