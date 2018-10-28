@@ -10,27 +10,13 @@
   position: relative;
   display: inline-flex;
   vertical-align: middle; // match .btn alignment given font-size hack above
+  font-size: $btn-group-font-size;
 
-  // .btn as children of a .btn-group
   > .btn {
     position: relative;
     flex: 0 1 auto;
-
-    // Bring the hover, focused, and "active" buttons to the front to overlay
-    // the borders properly
-    &:focus,
-    &:active,
-    &.active {
-      z-index: 1;
-    }
-  }
-
-  // Prevent double borders when buttons are next to each other
-  .btn + .btn,
-  .btn + .btn-group,
-  .btn-group + .btn,
-  .btn-group + .btn-group {
-    margin-left: -$btn-border-width;
+    border: none;
+    font-size: inherit;
   }
 }
 
@@ -40,26 +26,37 @@
   }
 
   // Reset rounded corners
-  > .btn:not(:last-child):not(.dropdown-toggle),
-  > .btn-group:not(:last-child) > .btn {
-    @include border-right-radius(0);
+  > .btn:not(:last-child) {
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
   }
-
-  > .btn:not(:first-child),
-  > .btn-group:not(:first-child) > .btn {
-    @include border-left-radius(0);
+  > .btn:not(:first-child) {
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
   }
 }
 
 //
-// Sizing
+// Sizes
 //
 
-.btn-group-sm > .btn {
-  @extend .btn-sm;
+.btn-group-sm {
+  font-size: $btn-group-font-size-sm;
+
+  > .btn {
+    letter-spacing: $btn-letter-spacing-sm;
+    line-height: $btn-line-height-sm;
+    padding: $btn-group-btn-padding-y-sm $btn-group-btn-padding-x-sm;
+  }
 }
-.btn-group-lg > .btn {
-  @extend .btn-lg;
+.btn-group-lg {
+  font-size: $btn-group-font-size-lg;
+
+  > .btn {
+    letter-spacing: $btn-letter-spacing-lg;
+    line-height: $btn-line-height-lg;
+    padding: $btn-group-btn-padding-y-lg $btn-group-btn-padding-x-lg;
+  }
 }
 
 //
@@ -71,28 +68,22 @@
   align-items: flex-start;
   justify-content: center;
 
-  .btn,
-  .btn-group {
+  .btn {
     width: 100%;
   }
 
-  > .btn + .btn,
-  > .btn + .btn-group,
-  > .btn-group + .btn,
-  > .btn-group + .btn-group {
-    margin-top: -$btn-border-width;
+  > .btn + .btn {
     margin-left: 0;
   }
 
   // Reset rounded corners
-  > .btn:not(:last-child):not(.dropdown-toggle),
-  > .btn-group:not(:last-child) > .btn {
-    @include border-bottom-radius(0);
+  > .btn:not(:last-child) {
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
   }
-
-  > .btn:not(:first-child),
-  > .btn-group:not(:first-child) > .btn {
-    @include border-top-radius(0);
+  > .btn:not(:first-child) {
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
   }
 }
 
@@ -109,12 +100,10 @@
 // https://github.com/twbs/bootstrap/pull/14559 for more information.
 
 .btn-group {
-  > .btn,
-  > .btn-group > .btn {
+  > .btn {
     margin-bottom: 0; // Override default `<label>` value
 
-    input[type='radio'],
-    input[type='checkbox'] {
+    input[type='radio'] {
       position: absolute;
       clip: rect(0, 0, 0, 0);
       pointer-events: none;

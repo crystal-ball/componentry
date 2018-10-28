@@ -67,20 +67,6 @@ export default () => (
       </div>
     </Flex>
 
-    <Flex justify="center">
-      <ButtonGroup label="Select OS" defaultActive="mac" className="btn-group-vertical">
-        <ButtonGroup.Button color="primary" activeId="linux">
-          Linux
-        </ButtonGroup.Button>
-        <ButtonGroup.Button color="primary" activeId="mac">
-          MacOS
-        </ButtonGroup.Button>
-        <ButtonGroup.Button color="primary" activeId="windows">
-          Window
-        </ButtonGroup.Button>
-      </ButtonGroup>
-    </Flex>
-
     <Flex justify="center" direction="column" className="mb-5">
       <Block maxWidth="650px" className="my-4" m="auto">
         <Header {...featureHeaderProps}>Lightweight Bundle Size</Header>
