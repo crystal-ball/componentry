@@ -1,0 +1,112 @@
+/* ~componentry/src/ButtonGroup/button-group */
+
+//
+// Container div
+//
+
+// Make the div behave like a button
+.btn-group,
+.btn-group-vertical {
+  position: relative;
+  display: inline-flex;
+  vertical-align: middle; // match .btn alignment given font-size hack above
+  font-size: $btn-group-font-size;
+
+  > .btn {
+    position: relative;
+    flex: 0 1 auto;
+    border: none;
+    font-size: inherit;
+  }
+}
+
+.btn-group {
+  > .btn:first-child {
+    margin-left: 0;
+  }
+
+  // Reset rounded corners
+  > .btn:not(:last-child) {
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+  }
+  > .btn:not(:first-child) {
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+  }
+}
+
+//
+// Sizes
+//
+
+.btn-group-sm {
+  font-size: $btn-group-font-size-sm;
+
+  > .btn {
+    letter-spacing: $btn-letter-spacing-sm;
+    line-height: $btn-line-height-sm;
+    padding: $btn-group-btn-padding-y-sm $btn-group-btn-padding-x-sm;
+  }
+}
+.btn-group-lg {
+  font-size: $btn-group-font-size-lg;
+
+  > .btn {
+    letter-spacing: $btn-letter-spacing-lg;
+    line-height: $btn-line-height-lg;
+    padding: $btn-group-btn-padding-y-lg $btn-group-btn-padding-x-lg;
+  }
+}
+
+//
+// Vertical button groups
+//
+
+.btn-group-vertical {
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+
+  .btn {
+    width: 100%;
+  }
+
+  > .btn + .btn {
+    margin-left: 0;
+  }
+
+  // Reset rounded corners
+  > .btn:not(:last-child) {
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+  }
+  > .btn:not(:first-child) {
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+  }
+}
+
+// Checkbox and radio options
+//
+// In order to support the browser's form validation feedback, powered by the
+// `required` attribute, we have to "hide" the inputs via `clip`. We cannot use
+// `display: none;` or `visibility: hidden;` as that also hides the popover.
+// Simply visually hiding the inputs via `opacity` would leave them clickable in
+// certain cases which is prevented by using `clip` and `pointer-events`.
+// This way, we ensure a DOM element is visible to position the popover from.
+//
+// See https://github.com/twbs/bootstrap/pull/12794 and
+// https://github.com/twbs/bootstrap/pull/14559 for more information.
+
+.btn-group {
+  > .btn {
+    margin-bottom: 0; // Override default `<label>` value
+
+    input[type='radio'] {
+      position: absolute;
+      clip: rect(0, 0, 0, 0);
+      pointer-events: none;
+    }
+  }
+}

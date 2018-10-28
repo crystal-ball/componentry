@@ -32,6 +32,7 @@ export default ({
   defaultDirection = null,
   /** When true the state container will register handlers for mouse events */
   defaultMouseEvents = false,
+  ...optsRest
 }) =>
   class ActiveContainer extends Component {
     /**
@@ -230,6 +231,7 @@ export default ({
                   )}
                 </Fragment>
               ),
+            ...optsRest,
             ...rest,
           })}
         </ActiveProvider.Provider>

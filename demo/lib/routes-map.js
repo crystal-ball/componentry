@@ -1,6 +1,7 @@
 import ActiveScreen from 'components/ComponentsScreen/Screens/Active.md'
 import AlertsScreen from 'components/ComponentsScreen/Screens/Alerts.md'
 import ButtonsScreen from 'components/ComponentsScreen/Screens/Buttons.md'
+import ButtonGroupScreen from 'components/ComponentsScreen/Screens/ButtonGroup.md'
 import BlockScreen from 'components/ComponentsScreen/Screens/Block.md'
 import CardsScreen from 'components/ComponentsScreen/Screens/Cards.md'
 import CloseScreen from 'components/ComponentsScreen/Screens/Close.md'
@@ -32,6 +33,10 @@ const routesMap = {
       alerts: { pathname: '/components/alerts', state: { name: 'Alerts' } },
       block: { pathname: '/components/block', state: { name: 'Block' } },
       buttons: { pathname: '/components/buttons', state: { name: 'Buttons' } },
+      buttonGroup: {
+        pathname: '/components/button-group',
+        state: { name: 'Button Group' },
+      },
       cards: { pathname: '/components/cards', state: { name: 'Cards' } },
       close: { pathname: '/components/close', state: { name: 'Close' } },
       drawers: { pathname: '/components/drawers', state: { name: 'Drawers' } },
@@ -55,6 +60,7 @@ const routesMap = {
       alerts: AlertsScreen,
       block: BlockScreen,
       buttons: ButtonsScreen,
+      buttonGroup: ButtonGroupScreen,
       cards: CardsScreen,
       close: CloseScreen,
       drawers: DrawersScreen,
