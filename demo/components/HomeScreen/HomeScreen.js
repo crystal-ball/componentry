@@ -1,6 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
-import { Block, Flex, Header, Media, Text } from 'componentry'
+import { Block, ButtonGroup, Flex, Header, Media, Text } from 'componentry'
 import { Link } from 'react-router-dom'
 
 import routesMap, { componentRoutes, conceptRoutes } from 'lib/routes-map'
@@ -65,6 +65,18 @@ export default () => (
         <a href="https://github.com/crystal-ball/componentry">Github</a>
       </div>
     </Flex>
+
+    <ButtonGroup label="Select OS" defaultActive="mac">
+      <ButtonGroup.Button color="primary" activeId="linux">
+        Linux
+      </ButtonGroup.Button>
+      <ButtonGroup.Button color="primary" activeId="mac">
+        MacOS
+      </ButtonGroup.Button>
+      <ButtonGroup.Button color="primary" activeId="windows">
+        Window
+      </ButtonGroup.Button>
+    </ButtonGroup>
 
     <Flex justify="center" direction="column" className="mb-5">
       <Block maxWidth="650px" className="my-4" m="auto">

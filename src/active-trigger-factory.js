@@ -8,7 +8,13 @@ import { btnClasses, cleanBtnClasses } from './Button/Button'
  * Componentry sets up triggers to be anchor style buttons by default, this
  * can be overridden by passing an as, type and anchor to reset the defaults.
  */
-export default ({ arias, classes, triggerType, btnStyles = true } = {}) => ({
+export default ({
+  arias,
+  classes,
+  triggerType,
+  btnStyles = true,
+  defaultAnchor = true,
+} = {}) => ({
   activate,
   active,
   activeId = '',
@@ -16,7 +22,7 @@ export default ({ arias, classes, triggerType, btnStyles = true } = {}) => ({
   deactivate,
   decoration,
   guid,
-  anchor = true, // toggles btn-anchor utility class
+  anchor = defaultAnchor,
   ...rest
 }) => {
   let onClick

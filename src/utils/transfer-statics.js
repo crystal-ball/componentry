@@ -1,5 +1,7 @@
+// TODO: can statics just be assigned after withTheme wrapping?
 const statics = [
   'Body',
+  'Button',
   'Close',
   'Content',
   'ContentContainer',
