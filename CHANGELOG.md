@@ -8,6 +8,8 @@ and this project adheres to
 
 #### [Unreleased]
 
+## [3.0.0-alpha.11] - 2018-10-30
+
 ## BREAKING CHANGES
 
 - The Modal.Header now uses the `close` props (instead of `Close`) as the flag
@@ -20,6 +22,9 @@ and this project adheres to
 
 ## Updated
 
+- Fixed mx/y and px/y props failing to return appropriate styles
+- Added the ButtonGroup component 🎉
+- Added `.justify-content-evenly` class to match Flex justify prop `evenly`
 - Added `$font-size-monospace` SASS var
 - Active elements now accept a `size` prop that will include an `.element-size`
   className
