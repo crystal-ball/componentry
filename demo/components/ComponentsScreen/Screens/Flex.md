@@ -13,7 +13,7 @@ formFields:
   - label: inline
     boolean: true
   - label: justify
-    options: ['start', 'center', 'end', 'around', 'between']
+    options: ['start', 'center', 'end', 'around', 'between', 'evenly']
   - label: wrap
     options: ['wrap', 'wrap-reverse', 'nowrap']
 componentProps:

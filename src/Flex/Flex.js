@@ -10,7 +10,7 @@ type Props = {
   /** Adds flexbox align-items atomic classes */
   align: '' | 'start' | 'center' | 'end' | 'baseline' | 'stretch',
   /** Adds flexbox justify-content atomic classes */
-  justify: '' | 'start' | 'center' | 'end' | 'around' | 'between',
+  justify: '' | 'start' | 'center' | 'end' | 'around' | 'between' | 'evenly',
   /** Sets a flex-wrap utility class */
   wrap: '' | 'wrap' | 'wrap-reverse' | 'nowrap',
 }
