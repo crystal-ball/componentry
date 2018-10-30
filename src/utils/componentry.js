@@ -68,10 +68,12 @@ const modifier = {
   l: 'Left',
   r: 'Right',
   b: 'Bottom',
+  x: ['Left', 'Right'],
+  y: ['Top', 'Bottom'],
 }
 ;['m', 'p', 'b'].forEach(b => {
   stylesMap[b] = base[b]
-  ;['t', 'r', 'b', 'l'].forEach(m => {
+  ;['t', 'r', 'b', 'l', 'x', 'y'].forEach(m => {
     stylesMap[b + m] = base[b] + modifier[m]
 
     // Add border* modifiers
@@ -102,7 +104,14 @@ const componentry = ({
 
   Object.keys(filtered).forEach(p => {
     if (stylesMap[p]) {
-      style[stylesMap[p]] = filtered[p]
+      const match = p.match(/([pm])([xy])/)
+      if (match) {
+        const [, b, m] = match
+        style[base[b] + modifier[m][0]] = filtered[p]
+        style[base[b] + modifier[m][1]] = filtered[p]
+      } else {
+        style[stylesMap[p]] = filtered[p]
+      }
     } else if (classNamesMap[p]) {
       classNames[p] = filtered[p]
     } else {

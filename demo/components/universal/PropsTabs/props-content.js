@@ -161,7 +161,7 @@ export const componentryProps = [
     type: 'number | string',
   },
   {
-    name: 'm, mt, mr, mb, ml',
+    name: 'm, mt, mr, mb, ml, mx, my',
     description:
       'Set a margin, pass a number for a theme class or a string for a specific override',
     type: 'number | string',
@@ -173,7 +173,7 @@ export const componentryProps = [
     default: false,
   },
   {
-    name: 'p, pt, pr, pb, pl',
+    name: 'p, pt, pr, pb, pl, px, py',
     description:
       'Set a padding, pass a number for a theme class or a string for a specific override',
     type: 'number | string',
