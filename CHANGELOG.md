@@ -8,6 +8,8 @@ and this project adheres to
 
 #### [Unreleased]
 
+## [3.0.0-alpha.12] - 2018-11-16
+
 ## Updated
 
 - Added `position` prop to handle position utility classes.
