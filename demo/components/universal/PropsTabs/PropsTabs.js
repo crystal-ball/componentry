@@ -79,7 +79,7 @@ PropsTabs.propTypes = {
 PropsTabs.defaultProps = {
   activeComponent: false,
   componentProps: [],
-  directionalComponent: false,
+  directionalComponent: '', // will default filter out directional prop
 }
 
 export default PropsTabs

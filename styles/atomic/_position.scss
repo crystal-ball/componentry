@@ -38,3 +38,11 @@ $positions: static, relative, absolute, fixed, sticky;
     z-index: $zindex-sticky;
   }
 }
+
+.absolute-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+}

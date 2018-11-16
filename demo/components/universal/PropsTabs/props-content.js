@@ -173,6 +173,11 @@ export const componentryProps = [
     default: false,
   },
   {
+    name: 'position',
+    description: 'Sets position utility class <code>.position-POSITION</code>',
+    type: ['static', 'relative', 'absolute', 'fixed', 'sticky'],
+  },
+  {
     name: 'p, pt, pr, pb, pl, px, py',
     description:
       'Set a padding, pass a number for a theme class or a string for a specific override',

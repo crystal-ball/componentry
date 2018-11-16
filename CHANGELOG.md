@@ -8,6 +8,11 @@ and this project adheres to
 
 #### [Unreleased]
 
+## Updated
+
+- Added `position` prop to handle position utility classes.
+- Added `.text-line-through` utility class for line through decoration
+
 ## [3.0.0-alpha.11] - 2018-10-30
 
 ## BREAKING CHANGES
