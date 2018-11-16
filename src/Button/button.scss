@@ -48,12 +48,22 @@ $btn-states-map: map-merge($btn-defaults, $btn-states);
   user-select: none;
   vertical-align: middle;
   white-space: nowrap;
+  // Setting the text-decoration is required for anchors using the btn styles
+  text-decoration: $btn-decoration;
 
   // ℹ️ The box-shadow styles remain static throughout hover/active states
   @include box-shadow($btn-box-shadow);
 
   // $btn-transition default includes color, background-color, border-color
   @include transition($btn-transition);
+
+  &:hover {
+    text-decoration: $btn-hover-decoration;
+  }
+
+  &:active {
+    text-decoration: $btn-active-decoration;
+  }
 
   &.disabled {
     border-width: $btn-disabled-border-width;

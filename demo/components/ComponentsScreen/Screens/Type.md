@@ -1,4 +1,9 @@
 ---
+componentProps:
+  - name: button
+    description: Toggles button styles for the <span class="text-monospace">Anchor</span> component
+    type: boolean
+    default: false
 formFields:
   - label: color
     options: [primary, secondary, success, info, warning, danger, light, dark, white, muted, body]
@@ -36,20 +41,31 @@ formDefaults:
 
 Create consistent typography elements.
 
+## Headers and Text
+
 <InteractiveDemo
   defaults={formDefaults}
   formFields={formFields}
-  renderCode={data => (`<div>
-  <Header${props.renderPropsText(data)}>Header element</Header>
-  <Text${props.renderPropsText(data)}>Text element</Text>
-  <Anchor href="#" ${props.renderPropsText(data)}>Anchor element</Anchor>
- </div>`
+  renderCode={data => (`<Header${props.renderPropsText(data)}>Header element</Header>
+<Text${props.renderPropsText(data)}>Text element</Text>`
    )}
   renderComponent={data => (<div>
   <Header {...data}>Header element</Header>
   <Text {...data}>Text element</Text>
+ </div>)}
+/>
+
+## Anchors
+
+<InteractiveDemo
+  defaults={{ ...formDefaults, button: false }}
+  formFields={[ { label: 'button', boolean: true }, ...formFields ]}
+  renderCode={data => (
+    `<Anchor href="#"${props.renderPropsText(data)}>Anchor element</Anchor>`
+  )}
+  renderComponent={data => (<div>
   <Anchor href="#" {...data}>Anchor element</Anchor>
  </div>)}
 />
 
-<PropsTabs />
+<PropsTabs componentProps={componentProps} />

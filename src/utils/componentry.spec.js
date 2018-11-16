@@ -24,4 +24,8 @@ describe('componentry()', () => {
     expect(componentry({ pb: 5 }).style).toEqual({ paddingBottom: 5 })
     expect(componentry({ pl: 5 }).style).toEqual({ paddingLeft: 5 })
   })
+
+  test('returns position util', () => {
+    expect(componentry({ position: 'static' }).className['position-static']).toBeTruthy()
+  })
 })

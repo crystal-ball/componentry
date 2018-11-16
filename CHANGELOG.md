@@ -12,6 +12,8 @@ and this project adheres to
 
 - Added `position` prop to handle position utility classes.
 - Added `.text-line-through` utility class for line through decoration
+- Added `button` prop to Anchor component to toggle button styles
+- Fixed modal footer bg variable usage
 
 ## [3.0.0-alpha.11] - 2018-10-30
 
