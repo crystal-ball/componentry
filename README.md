@@ -1,7 +1,7 @@
 <div align="center">
   <img
     width="650"
-    src="https://cdn.rawgit.com/crystal-ball/componentry/master/demo/media/Componentry.png"
+    src="https://cdn.jsdelivr.net/gh/crystal-ball/componentry/demo/media/Componentry.png"
     alt="Componentry"
   />
 </div>
