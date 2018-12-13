@@ -4,7 +4,6 @@ import * as Componentry from 'componentry'
 import DocumentTitle from 'react-document-title'
 import { BrowserRouter, Switch, Route } from 'react-router-dom'
 import { ThemeProvider } from 'styled-components'
-import { hot } from 'react-hot-loader'
 
 // App Components
 import 'lib/import-icons'
@@ -125,4 +124,4 @@ class App extends Component<{}> {
   }
 }
 
-export default hot(module)(App)
+export default App

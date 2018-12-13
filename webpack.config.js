@@ -1,16 +1,18 @@
 'use strict' // eslint-disable-line
 const { resolve } = require('path')
 const webpackBase = require('@crystal-ball/webpack-base')
-const { EnvironmentPlugin } = require('webpack')
 const packageJSON = require('./package.json')
 
 module.exports = () => {
-  const config = webpackBase({
+  const { configs } = webpackBase({
+    envVars: {
+      PACKAGE_VERSION: packageJSON.version,
+    },
     paths: {
       // Set the source directory for webpack app to the demo app
       appSrc: resolve('demo'),
       // Include demo and source files in babel transpile
-      babelLoaderInclude: [resolve('src'), resolve('demo')],
+      jsLoaderPaths: [resolve('src'), resolve('demo')],
       // In production use /componentry/ publicPath for Github pages
       publicPath: process.env.NODE_ENV === 'production' ? '/componentry/' : '/',
     },
@@ -18,7 +20,7 @@ module.exports = () => {
 
   // --- 🔮 Markdown loader
   // Turn plain text into a magic experience!
-  config.module.rules.push({
+  configs.module.rules.push({
     test: /\.md$/,
     use: [
       // Returned JSX must be transpiled to JS
@@ -28,15 +30,13 @@ module.exports = () => {
     ],
   })
 
-  config.plugins.push(new EnvironmentPlugin({ PACKAGE_VERSION: packageJSON.version }))
-
   /*
    * Make any changes to the base webpack configs for your application
    */
   // Default aliases for easy importing of common modules
-  config.resolve.alias.GUIDES = resolve('guides')
+  configs.resolve.alias.GUIDES = resolve('guides')
   // Add an alias to the /src for use in the demo application
-  config.resolve.alias.componentry = resolve('src')
+  configs.resolve.alias.componentry = resolve('src')
 
-  return config
+  return configs
 }
