@@ -88,9 +88,9 @@ _Componentry extends Bootstrap, so it's helpful to be familiar with their
 
 ### Spacing
 
-Componentry will convert passed spacing props of `m*` and `p*` to `className` or inline `style`
-values. This simplifies using consistent theme spacing values with the ability to override
-as needed.
+Componentry will convert passed spacing props of `m*` and `p*` to `className` or
+inline `style` values. This simplifies using consistent theme spacing values
+with the ability to override as needed.
 
 A general recommendation of the library is to directly pass class values for the
 default utility classes, falling back to passing props for custom override

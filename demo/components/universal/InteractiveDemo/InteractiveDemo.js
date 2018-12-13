@@ -56,19 +56,18 @@ export default class InteractiveDemo extends Component<Props> {
             <div className="col-4">
               <h4 className="border-bottom border-dark">Props</h4>
               <form className="mb-3">
-                {formFields.map(
-                  (field, idx) =>
-                    field.label ? (
-                      <FormField
-                        key={field.label}
-                        {...field}
-                        value={this.state[field.label]}
-                        onChange={this.changeHandler}
-                      />
-                    ) : (
-                      /* eslint-disable react/no-array-index-key */
-                      <Fragment key={idx}>{field}</Fragment>
-                    ),
+                {formFields.map((field, idx) =>
+                  field.label ? (
+                    <FormField
+                      key={field.label}
+                      {...field}
+                      value={this.state[field.label]}
+                      onChange={this.changeHandler}
+                    />
+                  ) : (
+                    /* eslint-disable react/no-array-index-key */
+                    <Fragment key={idx}>{field}</Fragment>
+                  ),
                 )}
               </form>
             </div>
