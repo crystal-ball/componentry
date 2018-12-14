@@ -8,8 +8,8 @@ module.exports = {
           {
             modules: false,
             targets: {
-              Chrome: '65',
-              Firefox: '60',
+              Chrome: '71',
+              Firefox: '64',
             },
           },
         ],
@@ -17,7 +17,6 @@ module.exports = {
         '@babel/preset-flow',
       ],
       plugins: [
-        'react-hot-loader/babel', // 🔥
         '@babel/plugin-proposal-class-properties', // Class static and property initializers
         '@babel/plugin-transform-runtime', // runtime needed for generators
       ],
@@ -29,7 +28,10 @@ module.exports = {
           '@babel/preset-env',
           {
             modules: false,
-            targets: { browsers: ['>0.25%', 'not ie 11', 'not op_mini all'] },
+            targets: '> 0.25%, not dead',
+            // Will automatically add core-js imports for unsupported language
+            // features based on environment
+            useBuiltIns: 'usage',
           },
         ],
         '@babel/preset-react',

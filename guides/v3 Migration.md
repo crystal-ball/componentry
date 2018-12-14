@@ -10,8 +10,8 @@ Componentry.
 ## Breaking changes
 
 - The `$include-icons` variable is defaulted to `false` now.
-- Drawer and Accordion trigger no longer have default margin bottom, see the demo
-  for an example of using the Drawer and Card component together.
+- Drawer and Accordion trigger no longer have default margin bottom, see the
+  demo for an example of using the Drawer and Card component together.
 - The non-standard dropdown classes `dropup`, `dropright`, `dropleft` and
   `dropdown-menu` have been removed.
 - Styles are no longer published at `/dist`! Styles are published in `/styles`.

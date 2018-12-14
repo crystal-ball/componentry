@@ -16,8 +16,8 @@ const PropsTabs = ({
   const defaultActive = componentProps.length
     ? 'Component'
     : activeComponent
-      ? 'Active'
-      : 'Componentry'
+    ? 'Active'
+    : 'Componentry'
   /* eslint-enable no-nested-ternary */
 
   // Filter out the Componentry props that aren't applicable for this component

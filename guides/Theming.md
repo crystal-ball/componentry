@@ -23,8 +23,8 @@ _Note that these defaults can still be overriden for any component instance._
 ## Dynamic theming
 
 Componentry supports runtime dynamic theming with CSS variables. The SASS
-variables define the default theme for Componentry. Additional containers can
-be added that update the CSS variables inside them.
+variables define the default theme for Componentry. Additional containers can be
+added that update the CSS variables inside them.
 
 1. Continue to allow using SASS variables to set the theme
 2. Library handles creating CSS variables for styles
@@ -61,8 +61,9 @@ included icon. The id for any icon used is documented in the component.
   style="position: absolute; width: 0; height: 0"
 >
   <symbol viewBox="0 0 32 32" id="close">
-    <path d="M32,3.22,19.22,16,32,28.78,28.78,32,16,19.22,3.22,32,0,28.78,12.78,16,0,3.22,3.22,0,16,12.78,28.78,0Z">
-    </path>
+    <path
+      d="M32,3.22,19.22,16,32,28.78,28.78,32,16,19.22,3.22,32,0,28.78,12.78,16,0,3.22,3.22,0,16,12.78,28.78,0Z"
+    ></path>
   </symbol>
 </svg>
 ```
