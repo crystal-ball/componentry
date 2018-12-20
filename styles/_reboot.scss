@@ -120,11 +120,8 @@ p {
 // 1. Remove the bottom border in Firefox 39-.
 // 2. Add the correct text decoration in Chrome, Edge, IE, Opera, and Safari.
 // 3. Add explicit cursor to indicate changed behavior.
-// 4. Duplicate behavior to the data-* attribute for our tooltip plugin
 
-abbr[title],
-abbr[data-original-title] {
-  // 4
+abbr[title] {
   text-decoration: underline; // 2
   text-decoration: underline dotted; // 2
   cursor: help; // 3
@@ -340,7 +337,6 @@ optgroup {
 }
 
 // Correct the inability to style clickable types in iOS and Safari.
-// ??Be opinionated about semantic html and remove this default??
 input[type='button'],
 input[type='reset'],
 input[type='submit'] {
