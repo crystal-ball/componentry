@@ -8,6 +8,15 @@ and this project adheres to
 
 #### [Unreleased]
 
+### BREAKING CHANGES
+
+- The `<Media />` component is removed and a new `<Media />` provider component
+  is available.
+
+### Added
+
+-
+
 ## [3.0.0-alpha.12] - 2018-11-16
 
 ## Updated

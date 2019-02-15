@@ -25,7 +25,7 @@ import TestScreen from '../TestScreen/TestScreen'
 // Componentry Theme Customization
 // ========================================================
 
-const { Icon } = Componentry
+const { Icon, Media } = Componentry
 
 // Componentry configuration defaults can be updated using the ThemeProvider
 // component and passing a theme configuration object
@@ -67,7 +67,7 @@ const styledTheme = {
 
 // Register all Componentry components for convenience
 Object.keys(Componentry).forEach(component => {
-  if (component === 'ThemeProvider') return // Application only component
+  if (component === 'ThemeProvider' || component === 'Media') return // Application only component
   registry.register(Componentry[component], component)
 })
 
@@ -93,29 +93,31 @@ class App extends Component<{}> {
         <BrowserRouter basename={process.env.PUBLIC_PATH}>
           <ThemeProvider theme={styledTheme}>
             <Componentry.ThemeProvider.Provider value={theme}>
-              {/* Restores scroll position to page top on route change */}
-              <ScrollToTop />
+              <Media>
+                {/* Restores scroll position to page top on route change */}
+                <ScrollToTop />
 
-              {/* Show app navigation on every page but home page */}
-              <Route path="/:path" component={AppNav} />
+                {/* Show app navigation on every page but home page */}
+                <Route path="/:path" component={AppNav} />
 
-              {/* Application level routing */}
-              <Switch>
-                <Route path="/" exact component={HomeScreen} />
-                <Route path={setup.pathname} component={SetupScreen} />
-                <Route
-                  path={`${concepts.pathname}/:concept?`}
-                  component={ConceptsScreen}
-                />
-                <Route
-                  path={`${components.pathname}/:component?`}
-                  component={ComponentsScreen}
-                />
+                {/* Application level routing */}
+                <Switch>
+                  <Route path="/" exact component={HomeScreen} />
+                  <Route path={setup.pathname} component={SetupScreen} />
+                  <Route
+                    path={`${concepts.pathname}/:concept?`}
+                    component={ConceptsScreen}
+                  />
+                  <Route
+                    path={`${components.pathname}/:component?`}
+                    component={ComponentsScreen}
+                  />
 
-                {/* Used for testing components in a normal JSX env */}
-                <Route path="/test" component={TestScreen} />
-                <Route component={FourOhFourScreen} />
-              </Switch>
+                  {/* Used for testing components in a normal JSX env */}
+                  <Route path="/test" component={TestScreen} />
+                  <Route component={FourOhFourScreen} />
+                </Switch>
+              </Media>
             </Componentry.ThemeProvider.Provider>
           </ThemeProvider>
         </BrowserRouter>

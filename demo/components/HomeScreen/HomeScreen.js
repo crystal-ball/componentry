@@ -1,6 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
-import { Block, Flex, Header, Media, Text } from 'componentry'
+import { Block, Flex, Header, Text } from 'componentry'
 import { Link } from 'react-router-dom'
 
 import routesMap, { componentRoutes, conceptRoutes } from 'lib/routes-map'
@@ -69,49 +69,49 @@ export default () => (
     <Flex justify="center" direction="column" className="mb-5">
       <Block maxWidth="650px" className="my-4" m="auto">
         <Header {...featureHeaderProps}>Lightweight Bundle Size</Header>
-        <Media {...featureProps}>
+        <Block {...featureProps} className="media">
           <FeatureIcon
             as={Bundle}
             className="mr-3"
             alt="Library bundle size is a small percentage of overall bundle"
           />
-          <Media.Body>
+          <div className="media-body">
             <p>
               Componentry is optimized for size and performance. With minimial external
               dependencies the library weighs in at 12.8kB. Advanced optimizations are
               possible using targeted ESM and ESNext build targets.
             </p>
-          </Media.Body>
-        </Media>
+          </div>
+        </Block>
       </Block>
 
       <Block maxWidth="650px" className="my-4" m="auto">
         <Header {...featureHeaderProps}>Consistent APIs</Header>
-        <Media {...featureProps}>
-          <Media.Body>
+        <Block {...featureProps} className="media">
+          <div className="media-body">
             <p>
               Spend more time writing and less time checking documentation with consistent
               APIs and event hooks across components. Consistent APIs and focused
               component concerns make component composition easy.
             </p>
-          </Media.Body>
+          </div>
           <FeatureIcon
             as={Merge}
             className="ml-3"
             alt="Different components utilize the same API"
           />
-        </Media>
+        </Block>
       </Block>
 
       <Block maxWidth="650px" className="my-4" m="auto">
         <Header {...featureHeaderProps}>A++ Accessibility</Header>
-        <Media {...featureProps} className="border-bottom-0">
+        <Block {...featureProps} className="media border-bottom-0">
           <FeatureIcon
             as={Accessible}
             className="feature-icon display-3 mr-3"
             alt="Library focuses on A++ accessibility"
           />
-          <Media.Body>
+          <div className="media-body">
             <p>
               Components are written using{' '}
               <a href="https://www.w3.org/WAI/intro/aria" rel="noreferrer noopener">
@@ -121,8 +121,8 @@ export default () => (
               Internal component APIs even handle assigning dynamic aria attributes on
               subcomponents.
             </p>
-          </Media.Body>
-        </Media>
+          </div>
+        </Block>
       </Block>
     </Flex>
   </>
