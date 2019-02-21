@@ -1,19 +1,5 @@
-import componentryElem from '../elem-factory'
-import withTheme from '../withTheme'
-import type { ThemeColors } from '../types'
-
-export type Props = {
-  /** Sets button to display as an anchor */
-  anchor?: boolean,
-  /** Creates a full-width button */
-  block?: boolean,
-  /** Sets button background or link font color */
-  color?: ThemeColors | 'link' | 'body',
-  /** Creates outline style button, uses `color` for outline theme. */
-  outline?: ThemeColors | 'link' | 'body',
-  /** Create a small or large style button */
-  size?: 'sm' | 'lg',
-}
+import elem from '../elem-factory'
+import { useTheme } from '../Theme/Theme'
 
 export const btnClasses = p => ({
   btn: !p.anchor,
@@ -29,12 +15,13 @@ export const btnClasses = p => ({
 
 export const cleanBtnClasses = ({ anchor, block, color, outline, size, ...rest }) => rest
 
-const Button = props =>
-  componentryElem({
+export default function Button(props) {
+  const merged = { ...useTheme('Button'), ...props }
+
+  return elem({
     defaultAs: 'button',
     type: 'button',
-    classes: btnClasses(props),
-    ...cleanBtnClasses(props),
+    classes: btnClasses(merged),
+    ...cleanBtnClasses(merged),
   })
-
-export default withTheme('Button', Button)
+}

@@ -1,4 +1,4 @@
-import React, { createContext, useState, useEffect } from 'react'
+import React, { createContext, useContext, useState, useEffect } from 'react'
 
 /**
  * Media Context
@@ -13,7 +13,7 @@ export const Context = createContext()
  * - md = >= 900
  * - lg = >= 1250
  */
-const MediaProvider = ({ children, breakpoints = [0, 900, 1250] }) => {
+export default function MediaProvider({ children, breakpoints = [0, 900, 1250] }) {
   const calcBreakpoints = w => ({
     sm: w < breakpoints[1],
     md: w >= breakpoints[1] && w < breakpoints[2],
@@ -34,4 +34,15 @@ const MediaProvider = ({ children, breakpoints = [0, 900, 1250] }) => {
 
   return <Context.Provider value={bps}> {children}</Context.Provider>
 }
-export default MediaProvider
+
+/**
+ * Custom hook that should be used to access Media context.
+ */
+export const useMedia = () => {
+  const media = useContext(Context)
+  if (process.env.NODE_ENV !== 'production' && !media) {
+    console.warn('useMedia used without a <Media /> provider provided')
+    return null
+  }
+  return media
+}

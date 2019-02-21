@@ -1,15 +1,14 @@
-import componentryElem from '../elem-factory'
-import withTheme from '../withTheme'
+import elem from '../elem-factory'
+import { useTheme } from '../Theme/Theme'
 
-const Block = ({ block, inline, ...rest }) =>
-  componentryElem({
+export default function Block(props) {
+  const { block, inline, ...rest } = { ...useTheme('Block'), ...props }
+
+  return elem({
     classes: {
-      // Divs are display block by default, so this isn't necessary as a default
-      // className
       'd-block': block,
       'd-inline-block': inline,
     },
     ...rest,
   })
-
-export default withTheme('Block', Block)
+}

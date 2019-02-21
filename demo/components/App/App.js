@@ -25,7 +25,7 @@ import TestScreen from '../TestScreen/TestScreen'
 // Componentry Theme Customization
 // ========================================================
 
-const { Icon, Media } = Componentry
+const { Icon, Media, Theme } = Componentry
 
 // Componentry configuration defaults can be updated using the ThemeProvider
 // component and passing a theme configuration object
@@ -51,6 +51,13 @@ const theme = {
   },
 }
 
+// Tests overriding the Modal Close decoration
+// Modal.Close = props => (
+//   <Button anchor {...props}>
+//     ESC
+//   </Button>
+// )
+
 const styledTheme = {
   border: {
     color: '#ced4da',
@@ -67,9 +74,11 @@ const styledTheme = {
 
 // Register all Componentry components for convenience
 Object.keys(Componentry).forEach(component => {
-  if (component === 'ThemeProvider' || component === 'Media') return // Application only component
+  if (component === 'Theme' || component === 'Media') return // Application only component
   registry.register(Componentry[component], component)
 })
+
+registry.register(AnchorLink, 'AnchorLink')
 
 const { setup, concepts, components } = routesMap
 
@@ -92,7 +101,7 @@ class App extends Component<{}> {
       <DocumentTitle title="Componentry">
         <BrowserRouter basename={process.env.PUBLIC_PATH}>
           <ThemeProvider theme={styledTheme}>
-            <Componentry.ThemeProvider.Provider value={theme}>
+            <Theme theme={theme}>
               <Media>
                 {/* Restores scroll position to page top on route change */}
                 <ScrollToTop />
@@ -118,7 +127,7 @@ class App extends Component<{}> {
                   <Route component={FourOhFourScreen} />
                 </Switch>
               </Media>
-            </Componentry.ThemeProvider.Provider>
+            </Theme>
           </ThemeProvider>
         </BrowserRouter>
       </DocumentTitle>

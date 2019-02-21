@@ -1,6 +1,6 @@
 import React from 'react'
 import classnames from 'classnames'
-import ThemeProvider from './ThemeProvider/ThemeProvider'
+import { Context } from './Theme/Theme'
 import transferStatics from './utils/transfer-statics'
 
 /**
@@ -20,7 +20,7 @@ import transferStatics from './utils/transfer-statics'
  */
 const withTheme = (namespace, Wrapped) => {
   const WithTheme = props => (
-    <ThemeProvider.Consumer>
+    <Context.Consumer>
       {theme => {
         const componentTheme = theme[namespace] || {}
 
@@ -32,7 +32,7 @@ const withTheme = (namespace, Wrapped) => {
           />
         )
       }}
-    </ThemeProvider.Consumer>
+    </Context.Consumer>
   )
 
   transferStatics(Wrapped, WithTheme)

@@ -1,8 +1,8 @@
 // --- Providers
-export { default as ThemeProvider } from './ThemeProvider/ThemeProvider'
-export { default as Media } from './Media/Media'
-export { default as useMedia } from './Media/useMedia'
+export { default as Theme, useTheme } from './Theme/Theme'
+export { default as Media, useMedia } from './Media/Media'
 
+// --- Components
 export { default as Active } from './Active/Active'
 export { default as Alert } from './Alert/Alert'
 export { default as Block } from './Block/Block'
@@ -22,10 +22,11 @@ export { default as Tab } from './Tab/Tab'
 export { default as Tooltip } from './Tooltip/Tooltip'
 export { Anchor, Header, Text } from './Type/Type'
 
-// --- Forms
+// --- Form Components
 export { default as FormGroup } from './FormGroup/FormGroup'
 export { default as Input } from './Input/Input'
 
 // --- Utilities
 export { default as withActive } from './withActive'
+export { useActive, useVisible } from './Active/useActive'
 export { default as setupOutlineHandlers } from './utils/setup-outline-handlers'

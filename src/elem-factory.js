@@ -16,6 +16,7 @@ const elementFactory = ({
   className,
   defaultAs = 'div',
   style,
+  themeClassName,
   ...rest
 }) => {
   // The componentry util will: filter out remaining library props, create base
@@ -24,7 +25,7 @@ const elementFactory = ({
 
   return createElement(as || defaultAs, {
     style: { ...c.style, ...style },
-    className: classnames(classes, className, c.className),
+    className: classnames(themeClassName, classes, className, c.className),
     ...c.rest,
   })
 }
