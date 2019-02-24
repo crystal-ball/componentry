@@ -1,16 +1,18 @@
 import React from 'react'
 import elem from '../elem-factory'
-import withTheme from '../withTheme'
+import { useTheme } from '../Theme/Theme'
 
 /**
  * ⚠️ Requires SVGs are inlined into document somewhere
  */
-export default withTheme('Icon', ({ id, font = true, ...rest }) =>
-  elem({
+export default function Icon(props) {
+  const { id, font = true, ...rest } = { ...useTheme('Icon'), ...props }
+
+  return elem({
     defaultAs: 'svg',
     role: 'img',
     classes: [`icon icon-${id}`, { font }],
     children: <use href={`#${id}`} xlinkHref={`#${id}`} />,
     ...rest,
-  }),
-)
+  })
+}

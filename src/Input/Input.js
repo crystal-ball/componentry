@@ -1,74 +1,61 @@
-import React, { Component, Fragment, createContext } from 'react'
+import React, { createContext, useContext, useRef } from 'react'
 import nanoid from 'nanoid'
 import elem from '../elem-factory'
-import withTheme from '../withTheme'
+import { useTheme } from '../Theme/Theme'
 
-const InputContext = createContext()
+const InputCtx = createContext()
 
-/**
- * FormGroup provides form structure
- */
-class Input extends Component {
-  static Field = withTheme('InputField', props => (
-    <InputContext.Consumer>
-      {inputCtx =>
-        elem({
-          defaultAs: 'input',
-          type: 'text',
-          classes: 'input-field',
-          id: inputCtx.guid,
-          ...props,
-        })
-      }
-    </InputContext.Consumer>
-  ))
-
-  static Label = withTheme('InputLabel', props => (
-    <InputContext.Consumer>
-      {inputCtx =>
-        elem({
-          defaultAs: 'label',
-          classes: 'input-label',
-          htmlFor: inputCtx.guid,
-          ...props,
-        })
-      }
-    </InputContext.Consumer>
-  ))
-
-  static Error = withTheme('InputError', props =>
-    elem({
-      classes: 'input-error',
-      ...props,
-    }),
-  )
-
-  static Description = withTheme('InputDescription', props =>
-    elem({
-      classes: 'input-description',
-      ...props,
-    }),
-  )
-
+export default function Input(props) {
   /**
    * Guid instance property will be uniquely assigned once for each modal instance,
    * this unique id is then passed to all children through context where it can be
    * used to wire together aria attributes
    */
-  guid = nanoid()
+  const guid = useRef(nanoid())
 
-  render() {
-    return (
-      <Fragment>
-        <InputContext.Provider value={{ guid: this.guid }}>
-          {this.props.children}
-        </InputContext.Provider>
-      </Fragment>
-    )
-  }
+  return <InputCtx.Provider value={{ guid }}>{props.children}</InputCtx.Provider>
 }
 
-export default Input
+/**
+ * FormGroup provides form structure
+ */
+
+const InputField = props =>
+  elem({
+    defaultAs: 'input',
+    type: 'text',
+    classes: 'input-field',
+    id: useContext(InputCtx).guid,
+    ...useTheme('InputField'),
+    ...props,
+  })
+Input.Field = InputField
+
+const InputLabel = props =>
+  elem({
+    defaultAs: 'label',
+    classes: 'input-label',
+    htmlFor: useContext(InputCtx).guid,
+    ...useTheme('InputLabel'),
+    ...props,
+  })
+Input.Label = InputLabel
+
+const InputError = props =>
+  elem({
+    classes: 'input-error',
+    ...useTheme('InputError'),
+    ...props,
+  })
+Input.Error = InputError
+
+const InputDescription = props =>
+  elem({
+    classes: 'input-description',
+    ...useTheme('InputDescription'),
+    ...props,
+  })
+Input.Description = InputDescription
 
 /**
  * Requirements:

@@ -1,31 +1,35 @@
 import React from 'react'
 import elem from './elem-factory'
 import ariasComputer from './utils/arias'
-
-// type Options = {
-//   /** Arias to include for component */
-//   arias: ComponentArias,
-//   classes?: string,
-//   /** Popper elements are tooltips and popovers, they include extra markup */
-//   popper?: boolean,
-// }
-
-// type Props = {
-//   children?: Node,
-//   activeId?: string,
-//   // withActive props
-//   active: boolean,
-//   guid: string,
-// }
+import { useActive } from './Active/useActive'
+import { useTheme } from './Theme/Theme'
 
 /**
  * Factory returns custom `<Content />` components defined by the options.
  */
-export default (component, { arias, classes = '', popper = false } = {}) => {
-  function ActiveContent({ active, children, guid, activeId = '', ...rest }) {
+export default (
+  component,
+  {
+    // Map of aria attributes to render with component
+    arias,
+    // The base css class for this component
+    baseClass = `${component}-content`,
+    // The component name used for display and theme lookups
+    name = `${component.slice(0, 1).toUpperCase()}${component.slice(1)}Trigger}`,
+    // Switch to include a content wrapper for positioning+width styles
+    popper = false,
+  } = {},
+) => {
+  function ActiveContent(props) {
+    const { active, activeId, children, guid, ...rest } = {
+      ...useTheme(name),
+      ...useActive(),
+      ...props,
+    }
+
     // Create component content (return optionally wraps content in a width busting
     // container)
-    const ComponentContent = elem({
+    const content = elem({
       ...ariasComputer({
         active,
         activeId,
@@ -33,7 +37,7 @@ export default (component, { arias, classes = '', popper = false } = {}) => {
         type: 'content',
         arias,
       }),
-      classes,
+      classes: baseClass,
       children: (
         <>
           {popper && (
@@ -53,11 +57,11 @@ export default (component, { arias, classes = '', popper = false } = {}) => {
       // This className works right now b/c we're only passing a single className
       // in classes, but this is fragile... would be nice to be more explicity but
       // not add in unnecessary factory config code.
-      <div className={`${classes}-container`}>{ComponentContent}</div>
+      <div className={`${component}-container`}>{content}</div>
     ) : (
-      ComponentContent
+      content
     )
   }
-  ActiveContent.displayName = component
+  ActiveContent.displayName = name
   return ActiveContent
 }

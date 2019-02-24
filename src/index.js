@@ -27,6 +27,5 @@ export { default as FormGroup } from './FormGroup/FormGroup'
 export { default as Input } from './Input/Input'
 
 // --- Utilities
-export { default as withActive } from './withActive'
 export { useActive, useVisible } from './Active/useActive'
 export { default as setupOutlineHandlers } from './utils/setup-outline-handlers'

@@ -14,7 +14,6 @@ module.exports = {
           },
         ],
         '@babel/preset-react',
-        '@babel/preset-flow',
       ],
       plugins: [
         '@babel/plugin-proposal-class-properties', // Class static and property initializers
@@ -35,7 +34,6 @@ module.exports = {
           },
         ],
         '@babel/preset-react',
-        '@babel/preset-flow',
       ],
       plugins: [
         '@babel/plugin-proposal-class-properties',
@@ -45,7 +43,7 @@ module.exports = {
     },
     // Test - Mocha setup cannot use esmodules
     test: {
-      presets: ['@babel/preset-env', '@babel/preset-react', '@babel/preset-flow'],
+      presets: ['@babel/preset-env', '@babel/preset-react'],
       plugins: ['@babel/plugin-proposal-class-properties'],
     },
 
@@ -54,7 +52,7 @@ module.exports = {
 
     // commonJS - ES5 syntax with commonJS modules
     common: {
-      presets: ['@babel/preset-env', '@babel/preset-react', '@babel/preset-flow'],
+      presets: ['@babel/preset-env', '@babel/preset-react'],
       plugins: [
         '@babel/plugin-transform-modules-commonjs',
         '@babel/plugin-proposal-class-properties',
@@ -72,7 +70,6 @@ module.exports = {
           },
         ],
         '@babel/preset-react',
-        '@babel/preset-flow',
       ],
       plugins: [
         '@babel/plugin-proposal-class-properties',
@@ -82,7 +79,7 @@ module.exports = {
     },
     // Next - Transpiled to stage 4 for package.esnext
     next: {
-      presets: ['@babel/preset-react', '@babel/preset-flow'],
+      presets: ['@babel/preset-react'],
       plugins: [
         // Preset env doesn't yet support this syntax
         '@babel/plugin-syntax-object-rest-spread',

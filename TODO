@@ -1,0 +1,20 @@
+# TODO
+
+- Dropdown: Default focus on open first item
+- Dropdown: Keydown listener for arrows to navigate through menu items
+- Come up with a term for Active components with multiple elements instead of multi-active
+- Come up with a term for elements with wrappers around content instead of `popper`
+- Change `btnStyles` to `btnClasses`
+- Change `defaultAnchor to anchorDefault
+- Change defaultDirection to directionDefault
+- Why was `activeId` default to an empty string?
+- Check body overflow on render and adjust width if needed in Tooltip and Popover
+- Better names for all Tab related components
+- Rename `tabs-panes-pane` to `tab-content`
+
+## Classes for factories
+
+By default a className is assigned to each generated component in the active component
+factories using the passed name. For components that need a different `baseClass`, it can
+be passed explicitly. Similarly a `baseName` can be passed to override the default
+component name used to look up theme values.

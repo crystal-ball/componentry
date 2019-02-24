@@ -1,5 +1,5 @@
 import { useContext, useEffect, useState } from 'react'
-import Context from '../ActiveProvider'
+import Context from './Context'
 
 /**
  * Components that need transitional active and visible states will use the

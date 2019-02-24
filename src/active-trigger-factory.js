@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react'
+import React from 'react'
 import elem from './elem-factory'
 import ariasComputer from './utils/arias'
 import { btnClasses, cleanBtnClasses } from './Button/Button'
@@ -12,29 +12,43 @@ import { useTheme } from './Theme/Theme'
  */
 export default (
   component,
-  { arias, classes, triggerType, btnStyles = true, defaultAnchor = true } = {},
+  {
+    // Switch to set default anchor value
+    defaultAnchor = true,
+    // Map of aria attributes to render with component
+    arias = {},
+    // The base css class for this component
+    baseClass = `${component}-trigger`,
+    // Switch to include button classes
+    btnStyles = true,
+    // The component name used for display and theme lookups
+    name = `${component.slice(0, 1).toUpperCase()}${component.slice(1)}Trigger}`,
+    // Overrides component onClick to specified activate/deactivate event
+    triggerType,
+  } = {},
 ) => {
   function ActiveTrigger(props) {
     const {
-      activate,
-      active,
-      activeId = '',
       children,
-      deactivate,
+      anchor = defaultAnchor,
       decoration,
       guid,
-      anchor = defaultAnchor,
+      // --- Active controls
+      active,
+      activeId,
+      activate,
+      deactivate,
       ...rest
-    } = { ...useTheme(component), ...useActive(), ...props }
+    } = { ...useTheme(name), ...useActive(), ...props }
 
+    // Handle determining whether to call activate or deactivate on click
+    // 1. If a trigger type was passed, call that event always
+    // 2. else if using multi-active container check if this active id is active
+    // 3. else use opposite of active status
     let onClick
     if (triggerType) onClick = triggerType === 'activate' ? activate : deactivate
     else if (activeId) onClick = activeId === active ? deactivate : activate
     else onClick = active ? deactivate : activate
-
-    // For mutli-active triggers add active if the trigger is selected
-    const classNames = [classes, { active: activeId && active === activeId }]
-    if (btnStyles) classNames.push(btnClasses({ anchor, ...rest }))
 
     const isAnchor = !!rest.href
 
@@ -48,21 +62,26 @@ export default (
         type: 'trigger',
         arias,
       }),
-      classes: classNames,
+      classes: [
+        baseClass,
+        // For mutli-active triggers add active if the trigger is selected
+        { active: activeId && active === activeId },
+        btnStyles ? btnClasses({ anchor, ...rest }) : null,
+      ],
       onClick,
       // For multi-active elems, the value is used in `withState` to handle
       // changing the active id
-      value: activeId || undefined,
+      value: activeId,
       children: (
-        <Fragment>
+        <>
           {children}
           {decoration}
-        </Fragment>
+        </>
       ),
       // Pass through props rest last to allow any instance overrides
       ...cleanBtnClasses(rest),
     })
   }
-  ActiveTrigger.displayName = component
+  ActiveTrigger.displayName = name
   return ActiveTrigger
 }

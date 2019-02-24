@@ -9,25 +9,26 @@ import componentry from './utils/componentry'
  *
  * (This lets us create elements that are very flexible with much less verbose
  * code at the definition site.)
+ *
+ * NOTE: we could use the useContext to look up theme and pluck out any default
+ * assigned classNames here... but first we're going to provide consistent and
+ * useful classes on all elements...
  */
-const elementFactory = ({
+export default function elementFactory({
   as,
   classes,
   className,
   defaultAs = 'div',
   style,
-  themeClassName,
   ...rest
-}) => {
+}) {
   // The componentry util will: filter out remaining library props, create base
   // styles, and create base classNames
   const c = componentry(rest)
 
   return createElement(as || defaultAs, {
     style: { ...c.style, ...style },
-    className: classnames(themeClassName, classes, className, c.className),
+    className: classnames(classes, className, c.className),
     ...c.rest,
   })
 }
-
-export default elementFactory

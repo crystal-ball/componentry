@@ -1,10 +1,8 @@
 'use strict'
 
-process.env.ELOQUENCE_PROJECT_TYPE = 'webpack'
-
 module.exports = {
   root: true,
-  extends: 'eloquence',
+  extends: 'eloquence/webpack',
   rules: {
     'react/require-default-props': 'off',
     'react/prop-types': 'off',

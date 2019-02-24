@@ -1,31 +1,16 @@
-// @flow
 import activeContainer from '../active-container-factory'
 import activeContent from '../active-content-factory'
 import activeTrigger from '../active-trigger-factory'
-import withActive from '../withActive'
-import withTheme from '../withTheme'
 
 const makeDrawer = name => {
-  const elem = name.slice(0, 1).toLocaleLowerCase() + name.slice(1)
-
-  const Element = withTheme(name, activeContainer({ name: elem }))
-
-  const Content = activeContent({
-    arias: { id: true, hidden: true },
-    classes: `${elem}-content`,
-  })
-  Element.Content = withActive(withTheme(`${name}Content`, Content))
-
-  const Trigger = activeTrigger({
-    arias: { controls: true, expanded: true },
-    classes: `${elem}-trigger`,
-  })
-  Element.Trigger = withActive(withTheme(`${name}Trigger`, Trigger))
+  const Element = activeContainer(name)
+  Element.Content = activeContent(name, { arias: { id: true, hidden: true } })
+  Element.Trigger = activeTrigger(name, { arias: { controls: true, expanded: true } })
 
   return Element
 }
 
-const Drawer = makeDrawer('Drawer')
-const Accordion = makeDrawer('Accordion')
+const Drawer = makeDrawer('drawer')
+const Accordion = makeDrawer('accordion')
 
 export { Accordion, Drawer }
