@@ -72,12 +72,9 @@ export default (
     const [_active, updateActive] = useState(defaultActive)
 
     // When active is passed as a prop, it should always be used as active state
-    useEffect(
-      () => {
-        if (active !== undefined) updateActive(active)
-      },
-      [active],
-    )
+    useEffect(() => {
+      if (active !== undefined) updateActive(active)
+    }, [active])
 
     /**
      * Internal activation handler (manages active state and fires change
@@ -107,7 +104,7 @@ export default (
 
     /** Call deactivate if click event was not inside the element */
     const onClick = e => {
-      if (!closest(e.target, guid)) handleDeactivate(e)
+      if (!closest(e.target, guid.current)) handleDeactivate(e)
     }
 
     /** Call deactivate on keypress if `esc` (27) was pressed */
@@ -126,21 +123,18 @@ export default (
       }
     }
 
-    useEffect(
-      () => {
-        updateEventListeners(_active ? 'add' : 'remove')
-        return function cleanup() {
-          updateEventListeners('remove')
-        }
-      },
-      [active],
-    )
+    useEffect(() => {
+      updateEventListeners(_active ? 'add' : 'remove')
+      return function cleanup() {
+        updateEventListeners('remove')
+      }
+    }, [active])
 
     const activeValues = {
       active: _active,
       activate: handleActivate,
       deactivate: handleDeactivate,
-      guid,
+      guid: guid.current,
     }
 
     const element = component.slice(0, 1).toLowerCase() + component.slice(1)
@@ -149,7 +143,7 @@ export default (
     return (
       <ActiveProvider.Provider value={activeValues}>
         {elem({
-          'data-id': guid,
+          'data-id': guid.current,
           classes: [element, direction, { [`${element}-${size}`]: size }],
 
           // For elements with mouse events we need to know when the mouse event

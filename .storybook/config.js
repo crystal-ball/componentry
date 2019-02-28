@@ -1,6 +1,11 @@
+import React from 'react'
 import { addDecorator, configure } from '@storybook/react'
 import { withOptions } from '@storybook/addon-options'
 import { withKnobs } from '@storybook/addon-knobs'
+
+// --- Load styles
+
+import './storybook.scss'
 
 // --- Setup global decorators
 
@@ -13,6 +18,9 @@ addDecorator(
 
 // Enable knobs addon in all stories
 addDecorator(withKnobs)
+
+// Wrap all stories in a screen wrapper
+addDecorator(storyFn => <div className="storybook-screen">{storyFn()}</div>)
 
 // --- Require all stories in /src 🎉
 const stories = require.context('../src', true, /.stories.js$/)

@@ -1,5 +1,6 @@
 # TODO
 
+- The useActive hook passes everything through which needs to be cleaned (eg guid in Alert)
 - Dropdown: Default focus on open first item
 - Dropdown: Keydown listener for arrows to navigate through menu items
 - Come up with a term for Active components with multiple elements instead of multi-active

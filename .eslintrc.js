@@ -2,7 +2,7 @@
 
 module.exports = {
   root: true,
-  extends: 'eloquence/webpack',
+  extends: 'eloquence',
   rules: {
     'react/require-default-props': 'off',
     'react/prop-types': 'off',
