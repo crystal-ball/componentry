@@ -1,20 +1,24 @@
 import React from 'react'
-import { addDecorator, configure } from '@storybook/react'
-import { withOptions } from '@storybook/addon-options'
+import { addDecorator, addParameters, configure } from '@storybook/react'
+import { themes } from '@storybook/theming'
 import { withKnobs } from '@storybook/addon-knobs'
 
-// --- Load styles
+// --- Load Componentry and Storybook styles ---
 
 import './storybook.scss'
 
-// --- Setup global decorators
+// --- Setup global decorators --
 
 // Customize dispaly of Storybook to be hecka rad
-addDecorator(
-  withOptions({
-    name: 'Componentry',
-  }),
-)
+addParameters({
+  options: {
+    theme: {
+      ...themes.light,
+      brandTitle: 'Componentry',
+      brandImage: null,
+    },
+  },
+})
 
 // Enable knobs addon in all stories
 addDecorator(withKnobs)
@@ -22,11 +26,11 @@ addDecorator(withKnobs)
 // Wrap all stories in a screen wrapper
 addDecorator(storyFn => <div className="storybook-screen">{storyFn()}</div>)
 
-// --- Require all stories in /src 🎉
-const stories = require.context('../src', true, /.stories.js$/)
+// --- Require all stories in /src 🎉 --
+
+const req = require.context('../src', true, /.stories.js$/)
 function loadStories() {
-  const orderedStories = stories.keys()
-  orderedStories.unshift(orderedStories.pop())
-  orderedStories.forEach(filename => stories(filename))
+  require('./welcome')
+  req.keys().forEach(file => req(file))
 }
 configure(loadStories, module)

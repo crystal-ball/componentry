@@ -22,7 +22,7 @@ const sizes = {
   Large: 'lg',
 }
 
-storiesOf('Button', module)
+storiesOf('Core|Button', module)
   .add('<Button />', () => (
     <Button
       color={select('Color', { ...colors, None: null }, 'primary')}

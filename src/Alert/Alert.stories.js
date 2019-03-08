@@ -18,7 +18,7 @@ const colors = {
   Danger: 'danger',
 }
 
-storiesOf('Alert', module)
+storiesOf('Active|Alert', module)
   .add('<Alert />', () => (
     <Active defaultActive>
       <Alert
