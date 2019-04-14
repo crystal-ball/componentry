@@ -38,4 +38,6 @@ export default (TestComponent, enzymeOptions = {}) => {
     expect(wrapper.find('.test-custom').length).toBeTruthy()
     expect(wrapper.find(dt('test-custom')).length).toBeTruthy()
   })
+
+  // TODO: should render passed children
 }
