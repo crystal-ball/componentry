@@ -8,6 +8,12 @@ and this project adheres to
 
 #### [Unreleased]
 
+## [2.4.0] - 2019-04-22
+
+### Added
+
+* webpack `sideEffects` flag added to `package.json` for tree shaking bundle.
+
 ## [2.2.0] - 2018-03-14
 
 ### Fixed
