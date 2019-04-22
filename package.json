@@ -2,6 +2,7 @@
   "name": "componentry",
   "version": "0.0.0-semantic",
   "description": "React Componentry",
+  "sideEffects": false,
   "main": "dist/componentry.js",
   "module": "es/index.js",
   "esnext": "esnext/index.js",
