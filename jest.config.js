@@ -4,7 +4,7 @@ module.exports = {
   verbose: true,
 
   // OS notifications of test results
-  notify: process.env.JEST_NOTIFY,
+  notify: Boolean(process.env.JEST_NOTIFY),
 
   // Test coverage can be enforced with a coverageThreshold
   collectCoverage: process.env.COLLECT_COVERAGE,
