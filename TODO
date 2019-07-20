@@ -1,6 +1,7 @@
 # TODO
 
-- The useActive hook passes everything through which needs to be cleaned (eg guid in Alert)
+- The useActive hook passes everything through which needs to be cleaned (eg guid in
+  Alert)
 - Dropdown: Default focus on open first item
 - Dropdown: Keydown listener for arrows to navigate through menu items
 - Come up with a term for Active components with multiple elements instead of multi-active
@@ -12,6 +13,8 @@
 - Check body overflow on render and adjust width if needed in Tooltip and Popover
 - Better names for all Tab related components
 - Rename `tabs-panes-pane` to `tab-content`
+- Document setting up spacing styles that change by breakpoint, eg greater padding in
+  large screens than small screens
 
 ## Classes for factories
 

@@ -1,3 +1,5 @@
+/* global module */
+
 import React from 'react'
 import { storiesOf } from '@storybook/react'
 import { boolean, select } from '@storybook/addon-knobs'
@@ -22,7 +24,7 @@ const sizes = {
   Large: 'lg',
 }
 
-storiesOf('Core|Button')
+storiesOf('Core|Button', module)
   .add('<Button />', () => (
     <Button
       color={select('Color', { ...colors, None: null }, 'primary')}

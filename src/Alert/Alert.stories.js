@@ -1,3 +1,5 @@
+/* global module */
+
 import React from 'react'
 import { storiesOf } from '@storybook/react'
 import { boolean, select } from '@storybook/addon-knobs'
@@ -17,7 +19,7 @@ const colors = {
   Danger: 'danger',
 }
 
-storiesOf('Active|Alert')
+storiesOf('Active|Alert', module)
   .add('<Alert />', () => (
     <Active defaultActive>
       <Alert
