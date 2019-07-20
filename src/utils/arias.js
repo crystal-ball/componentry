@@ -21,7 +21,13 @@
 /**
  * Return object of aria attributes using options
  */
-export default ({ active, activeId, guid, type, arias: configArias = {} }) => {
+export default function componentArias({
+  active,
+  activeId,
+  guid,
+  type,
+  arias: configArias = {},
+}) {
   const {
     controls,
     describedby,

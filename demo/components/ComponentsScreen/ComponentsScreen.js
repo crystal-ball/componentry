@@ -34,8 +34,8 @@ const renderPropsText = props => {
 }
 
 export default ({ location: { state } }) => (
-  <div className="grid-container columns-page-layout m-5">
-    <div className="guides">
+  <div className='grid-container columns-page-layout m-5'>
+    <div className='guides'>
       <Header title={state ? state.name : 'Components'} />
 
       {Object.keys(subRoutes).map(route => (

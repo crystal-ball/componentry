@@ -47,7 +47,7 @@ const theme = {
   },
   DropdownTrigger: {
     // Include the chevron icon decoration by default in all dropdowns
-    decoration: <Icon id="chevron" className="ml-1" />,
+    decoration: <Icon id='chevron' className='ml-1' />,
   },
 }
 
@@ -98,7 +98,7 @@ class App extends Component<{}> {
 
   render() {
     return (
-      <DocumentTitle title="Componentry">
+      <DocumentTitle title='Componentry'>
         <BrowserRouter basename={process.env.PUBLIC_PATH}>
           <ThemeProvider theme={styledTheme}>
             <Theme theme={theme}>
@@ -107,11 +107,11 @@ class App extends Component<{}> {
                 <ScrollToTop />
 
                 {/* Show app navigation on every page but home page */}
-                <Route path="/:path" component={AppNav} />
+                <Route path='/:path' component={AppNav} />
 
                 {/* Application level routing */}
                 <Switch>
-                  <Route path="/" exact component={HomeScreen} />
+                  <Route path='/' exact component={HomeScreen} />
                   <Route path={setup.pathname} component={SetupScreen} />
                   <Route
                     path={`${concepts.pathname}/:concept?`}
@@ -123,7 +123,7 @@ class App extends Component<{}> {
                   />
 
                   {/* Used for testing components in a normal JSX env */}
-                  <Route path="/test" component={TestScreen} />
+                  <Route path='/test' component={TestScreen} />
                   <Route component={FourOhFourScreen} />
                 </Switch>
               </Media>

@@ -10,9 +10,9 @@ type Props = {
 }
 
 const SubRoutesNav = ({ className, subRoutes, label }: Props) => (
-  <Dropdown as="nav" className={className}>
-    <Dropdown.Trigger color="link">{label}</Dropdown.Trigger>
-    <Dropdown.Content className="dropdown-menu-right">
+  <Dropdown as='nav' className={className}>
+    <Dropdown.Trigger color='link'>{label}</Dropdown.Trigger>
+    <Dropdown.Content className='dropdown-menu-right'>
       {subRoutes.map(routeTo => (
         <Dropdown.Item as={Link} to={routeTo} key={routeTo.id}>
           {routeTo.state.name}

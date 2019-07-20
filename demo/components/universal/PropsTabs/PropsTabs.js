@@ -38,32 +38,32 @@ const PropsTabs = ({
 
   return (
     <div className={component}>
-      <h2 id="props">
-        <Icon id="tune" /> Component props
+      <h2 id='props'>
+        <Icon id='tune' /> Component props
       </h2>
 
-      <Tab className="d-flex" defaultActive={defaultActive}>
+      <Tab className='d-flex' defaultActive={defaultActive}>
         <Tab.ContentContainer>
           {showComponentProps && (
-            <Tab.Content activeId="Component">
+            <Tab.Content activeId='Component'>
               <TabContent contentProps={componentProps} />
             </Tab.Content>
           )}
-          <Tab.Content activeId="Componentry">
+          <Tab.Content activeId='Componentry'>
             <TabContent contentProps={filteredComponentryProps} />
           </Tab.Content>
           {activeComponent && (
-            <Tab.Content activeId="Active">
+            <Tab.Content activeId='Active'>
               <TabContent contentProps={activeProps} />
             </Tab.Content>
           )}
         </Tab.ContentContainer>
         <Tab.Nav vertical>
           {showComponentProps && (
-            <Tab.Trigger activeId="Component">Component props</Tab.Trigger>
+            <Tab.Trigger activeId='Component'>Component props</Tab.Trigger>
           )}
-          {activeComponent && <Tab.Trigger activeId="Active">Active props</Tab.Trigger>}
-          <Tab.Trigger activeId="Componentry">Componentry props</Tab.Trigger>
+          {activeComponent && <Tab.Trigger activeId='Active'>Active props</Tab.Trigger>}
+          <Tab.Trigger activeId='Componentry'>Componentry props</Tab.Trigger>
         </Tab.Nav>
       </Tab>
     </div>

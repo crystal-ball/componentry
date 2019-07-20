@@ -8,7 +8,7 @@ element. It's possible to pass a component or html tag. Internally this prop is
 passed to the component `createElement` call.
 
 ```jsx
-<Card as="section">
+<Card as='section'>
   <Card.Body>
     The container for this card will be an HTML section element instead of a
     div.
@@ -21,7 +21,7 @@ passed to the component `createElement` call.
 Any component that is themeable uses the `color` prop to set the theme color.
 
 ```jsx
-<Alert color="info">This alert will be use the info theme color.</Alert>
+<Alert color='info'>This alert will be use the info theme color.</Alert>
 ```
 
 ## Specifying content alignment with `direction`
@@ -36,9 +36,9 @@ Active components that support aligning content in different directions use the
 
 ```jsx
 <Popover
-  Trigger="Open left"
-  Content="This content will be aligned left of the trigger instead of right."
-  direction="left"
+  Trigger='Open left'
+  Content='This content will be aligned left of the trigger instead of right.'
+  direction='left'
 />
 ```
 

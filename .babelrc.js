@@ -1,6 +1,8 @@
 module.exports = {
   env: {
-    // Local Development
+    /**
+     * Local Development
+     */
     development: {
       presets: [
         [
@@ -8,19 +10,23 @@ module.exports = {
           {
             modules: false,
             targets: {
-              Chrome: '71',
-              Firefox: '64',
+              chrome: '70',
+              firefox: '63',
             },
           },
         ],
         '@babel/preset-react',
       ],
       plugins: [
-        '@babel/plugin-proposal-class-properties', // Class static and property initializers
-        '@babel/plugin-transform-runtime', // runtime needed for generators
+        '@babel/plugin-proposal-class-properties',
+        // Runtime will transform Babel helpers to imports from @babel/runtime
+        // Passing useESModules allows webpack to handle module transforms
+        ['@babel/plugin-transform-runtime', { useESModules: true }],
       ],
     },
-    // Production - Bundling documentation site
+    /**
+     * Production - Bundling documentation site
+     */
     production: {
       presets: [
         [
@@ -37,11 +43,17 @@ module.exports = {
       ],
       plugins: [
         '@babel/plugin-proposal-class-properties',
-        '@babel/plugin-transform-runtime', // Library babel-helpers with import statements
-        'transform-react-remove-prop-types', // Strip propTypes declarations
+        // Runtime will transform Babel helpers to imports from @babel/runtime
+        // Passing useESModules allows webpack to handle module transforms
+        ['@babel/plugin-transform-runtime', { useESModules: true }],
+        // Strip propTypes declarations
+        'transform-react-remove-prop-types',
       ],
     },
-    // Test - Mocha setup cannot use esmodules
+    /**
+     * Test env mimics production, but uses commonjs modules because Jest
+     * doesn't support ESModules and operates directly on source code.
+     */
     test: {
       presets: ['@babel/preset-env', '@babel/preset-react'],
       plugins: ['@babel/plugin-proposal-class-properties'],
@@ -50,7 +62,7 @@ module.exports = {
     // Publish targets
     // ---------------------------------------------------------------------------
 
-    // commonJS - ES5 syntax with commonJS modules
+    // CommonJS - ES5 syntax with commonJS modules
     common: {
       presets: ['@babel/preset-env', '@babel/preset-react'],
       plugins: [

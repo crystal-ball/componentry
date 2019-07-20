@@ -9,8 +9,8 @@ export default function Close(props) {
     classes: 'btn-close',
     type: 'button',
     children: (
-      <svg className="icon icon-close font" role="img">
-        <use href="#close" xlinkHref="#close" />
+      <svg className='icon icon-close font' role='img'>
+        <use href='#close' xlinkHref='#close' />
       </svg>
     ),
     ...useTheme('Close'),

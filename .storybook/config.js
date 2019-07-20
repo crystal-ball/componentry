@@ -24,7 +24,7 @@ addParameters({
 addDecorator(withKnobs)
 
 // Wrap all stories in a screen wrapper
-addDecorator(storyFn => <div className="storybook-screen">{storyFn()}</div>)
+addDecorator(storyFn => <div className='storybook-screen'>{storyFn()}</div>)
 
 // --- Require all stories in /src 🎉 --
 

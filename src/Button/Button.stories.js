@@ -22,7 +22,7 @@ const sizes = {
   Large: 'lg',
 }
 
-storiesOf('Core|Button', module)
+storiesOf('Core|Button')
   .add('<Button />', () => (
     <Button
       color={select('Color', { ...colors, None: null }, 'primary')}
@@ -37,8 +37,8 @@ storiesOf('Core|Button', module)
   ))
   .add('Collection', () => (
     <Block>
-      <h2 className="storybook-section-header">Colors</h2>
-      <div className="btn-container-x">
+      <h2 className='storybook-section-header'>Colors</h2>
+      <div className='btn-container-x'>
         {Object.keys(colors).map(color => (
           <Button color={colors[color]} onClick={action('button-click')} key={color}>
             {color}
@@ -46,8 +46,8 @@ storiesOf('Core|Button', module)
         ))}
       </div>
 
-      <h2 className="storybook-section-header">Outline</h2>
-      <div className="btn-container-x">
+      <h2 className='storybook-section-header'>Outline</h2>
+      <div className='btn-container-x'>
         {Object.keys(colors).map(color => (
           <Button outline={colors[color]} onClick={action('button-click')} key={color}>
             {color}
@@ -55,28 +55,28 @@ storiesOf('Core|Button', module)
         ))}
       </div>
 
-      <h2 className="storybook-section-header">Sizes</h2>
-      <div className="btn-container-y">
-        <Button color="primary" size="lg" onClick={action('button-click')}>
+      <h2 className='storybook-section-header'>Sizes</h2>
+      <div className='btn-container-y'>
+        <Button color='primary' size='lg' onClick={action('button-click')}>
           Large
         </Button>
-        <div className="mt-1" />
-        <Button color="primary" size="sm" onClick={action('button-click')}>
+        <div className='mt-1' />
+        <Button color='primary' size='sm' onClick={action('button-click')}>
           Small
         </Button>
       </div>
 
-      <h2 className="storybook-section-header">Block</h2>
-      <Button color="primary" block onClick={action('button-click')}>
+      <h2 className='storybook-section-header'>Block</h2>
+      <Button color='primary' block onClick={action('button-click')}>
         Block
       </Button>
 
-      <h2 className="storybook-section-header">Disabled</h2>
-      <Button color="primary" disabled onClick={action('button-click')}>
+      <h2 className='storybook-section-header'>Disabled</h2>
+      <Button color='primary' disabled onClick={action('button-click')}>
         Disabled
       </Button>
 
-      <h2 className="storybook-section-header">Anchor</h2>
+      <h2 className='storybook-section-header'>Anchor</h2>
       <Button anchor onClick={action('button-click')}>
         Anchor
       </Button>

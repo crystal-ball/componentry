@@ -1,7 +1,6 @@
 import React from 'react'
 import { storiesOf } from '@storybook/react'
 import { boolean, select } from '@storybook/addon-knobs'
-import { action } from '@storybook/addon-actions'
 
 import Alert from './Alert'
 import Active from '../Active/Active'
@@ -18,7 +17,7 @@ const colors = {
   Danger: 'danger',
 }
 
-storiesOf('Active|Alert', module)
+storiesOf('Active|Alert')
   .add('<Alert />', () => (
     <Active defaultActive>
       <Alert
@@ -26,10 +25,10 @@ storiesOf('Active|Alert', module)
         outline={boolean('Outline', false)}
         dismissible={boolean('Dismissible', true)}
       >
-        <h4 className="alert-heading">Well done!</h4>
-        <p className="mb-0">You successfully read this important alert message.</p>
-        <hr className="hr" />
-        <Anchor href="#" className="alert-link">
+        <h4 className='alert-heading'>Well done!</h4>
+        <p className='mb-0'>You successfully read this important alert message.</p>
+        <hr className='hr' />
+        <Anchor href='#' className='alert-link'>
           Go home
         </Anchor>
       </Alert>
@@ -38,8 +37,8 @@ storiesOf('Active|Alert', module)
   .add('Collection', () => (
     <>
       <div>
-        <h2 className="storybook-section-header">Colors</h2>
-        <div className="d-flex flex-column">
+        <h2 className='storybook-section-header'>Colors</h2>
+        <div className='d-flex flex-column'>
           {Object.keys(colors).map(color => (
             <Active defaultActive key={color}>
               <Alert color={colors[color]} dismissible>
@@ -49,8 +48,8 @@ storiesOf('Active|Alert', module)
           ))}
         </div>
 
-        <h2 className="storybook-section-header">Outline</h2>
-        <div className="d-flex flex-column">
+        <h2 className='storybook-section-header'>Outline</h2>
+        <div className='d-flex flex-column'>
           {Object.keys(colors).map(color => (
             <Active defaultActive key={color}>
               <Alert color={colors[color]} outline dismissible>
@@ -60,10 +59,10 @@ storiesOf('Active|Alert', module)
           ))}
         </div>
 
-        <h2 className="storybook-section-header">Aria title</h2>
+        <h2 className='storybook-section-header'>Aria title</h2>
         <Alert
-          color="primary"
-          ariaTitle="Alert provides context on setting the aria title"
+          color='primary'
+          ariaTitle='Alert provides context on setting the aria title'
         >
           Pass an <code>ariaTitle</code> to provide more context.
         </Alert>

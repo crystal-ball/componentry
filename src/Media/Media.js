@@ -41,7 +41,7 @@ export default function MediaProvider({ children, breakpoints = [0, 900, 1250] }
 export const useMedia = () => {
   const media = useContext(Context)
   if (process.env.NODE_ENV !== 'production' && !media) {
-    console.warn('useMedia used without a <Media /> provider provided')
+    console.warn('useMedia used without a <Media /> provider provided') // eslint-disable-line
     return null
   }
   return media

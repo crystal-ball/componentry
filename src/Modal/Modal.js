@@ -35,8 +35,8 @@ export default function Modal(props) {
           className={classNames('modal', 'fade', { show: visible })}
           aria-hidden={_active ? 'false' : 'true'}
           aria-labelledby={`${guid}`}
-          role="presentation"
-          tabIndex="-1"
+          role='presentation'
+          tabIndex='-1'
         >
           {/* ℹ️ Stop propogation of clicks inside modal or they will trigger
             the modal background deactivate handler */}
@@ -45,15 +45,15 @@ export default function Modal(props) {
           <div
             onClick={evt => evt.stopPropagation()}
             className={classNames('modal-dialog', { [`modal-${size}`]: size })}
-            role="dialog"
+            role='dialog'
           >
-            <div className="modal-content">{children}</div>
+            <div className='modal-content'>{children}</div>
           </div>
         </div>
         <div
           aria-hidden={_active ? 'false' : 'true'}
           className={classNames('modal-backdrop', 'fade', { show: visible })}
-          role="presentation"
+          role='presentation'
         />
       </>
     </ModalCtx.Provider>

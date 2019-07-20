@@ -29,11 +29,11 @@ export default (TestComponent, opts = {}) => {
   test('should render button or anchor tags by default', () => {
     const wrapper = mount(
       <TestComponent>
-        <TestComponent.Trigger data-test="btn" />
-        <TestComponent.Trigger data-test="anchor" href="http://localhost:3000/">
+        <TestComponent.Trigger data-test='btn' />
+        <TestComponent.Trigger data-test='anchor' href='http://localhost:3000/'>
           Anchor
         </TestComponent.Trigger>
-        <TestComponent.Content data-test="content" />
+        <TestComponent.Content data-test='content' />
       </TestComponent>,
     )
 
@@ -54,8 +54,8 @@ export default (TestComponent, opts = {}) => {
   test('should update arias when trigger is activated', () => {
     const wrapper = mount(
       <TestComponent>
-        <TestComponent.Trigger data-test="trigger" />
-        <TestComponent.Content data-test="content" />
+        <TestComponent.Trigger data-test='trigger' />
+        <TestComponent.Content data-test='content' />
       </TestComponent>,
     )
 
@@ -100,8 +100,8 @@ export default (TestComponent, opts = {}) => {
         onDeactivate={onDeactivate}
         onDeactivated={onDeactivated}
       >
-        <TestComponent.Trigger data-test="trigger" />
-        <TestComponent.Content data-test="content" />
+        <TestComponent.Trigger data-test='trigger' />
+        <TestComponent.Content data-test='content' />
       </TestComponent>,
     )
 
@@ -128,8 +128,8 @@ export default (TestComponent, opts = {}) => {
   test('state should default to defaultActive when passed', () => {
     const wrapper = mount(
       <TestComponent defaultActive>
-        <TestComponent.Trigger data-test="trigger" />
-        <TestComponent.Content data-test="content" />
+        <TestComponent.Trigger data-test='trigger' />
+        <TestComponent.Content data-test='content' />
       </TestComponent>,
     )
 
@@ -145,8 +145,8 @@ export default (TestComponent, opts = {}) => {
   test('should not use active prop when value is undefined', () => {
     const wrapper = mount(
       <TestComponent>
-        <TestComponent.Trigger data-test="trigger" />
-        <TestComponent.Content data-test="content" />
+        <TestComponent.Trigger data-test='trigger' />
+        <TestComponent.Content data-test='content' />
       </TestComponent>,
     )
     expect(findContent(wrapper).prop('aria-hidden')).toEqual('true')
@@ -164,8 +164,8 @@ export default (TestComponent, opts = {}) => {
     const deactivate = jest.fn()
     const wrapper = mount(
       <TestComponent activate={activate} deactivate={deactivate}>
-        <TestComponent.Trigger data-test="trigger" />
-        <TestComponent.Content data-test="content" />
+        <TestComponent.Trigger data-test='trigger' />
+        <TestComponent.Content data-test='content' />
       </TestComponent>,
     )
 
@@ -210,9 +210,9 @@ export default (TestComponent, opts = {}) => {
       <TestComponent>
         {({ active, activate, deactivate }) => (
           <div>
-            <span data-test="active">{String(active)}</span>
-            <button type="button" onClick={activate} data-test="activate" />
-            <button type="button" onClick={deactivate} data-test="deactivate" />
+            <span data-test='active'>{String(active)}</span>
+            <button type='button' onClick={activate} data-test='activate' />
+            <button type='button' onClick={deactivate} data-test='deactivate' />
           </div>
         )}
       </TestComponent>,

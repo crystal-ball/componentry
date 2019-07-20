@@ -16,9 +16,9 @@ type Props = {
 const { subRoutes } = routesMap.concepts
 
 export default ({ location: { state } }: Props) => (
-  <div className="grid-container columns-page-layout m-5">
-    <div className="guides">
-      <Header title={state ? state.name : 'Concepts'} className="mb-3" />
+  <div className='grid-container columns-page-layout m-5'>
+    <div className='guides'>
+      <Header title={state ? state.name : 'Concepts'} className='mb-3' />
 
       {Object.keys(subRoutes).map(route => (
         <Route

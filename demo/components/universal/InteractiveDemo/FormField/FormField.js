@@ -31,7 +31,7 @@ const FormField = ({
     const triggerValue = value === null ? <em>none</em> : value
     field = (
       <Dropdown
-        className="ml-2 dropdown-field"
+        className='ml-2 dropdown-field'
         onDeactivated={e => {
           let val
           if (e.target.value && e.target.value === 'none') {
@@ -47,10 +47,10 @@ const FormField = ({
       >
         <Dropdown.Trigger>{triggerValue}</Dropdown.Trigger>
         <Dropdown.Content>
-          <Dropdown.Item value="none" className="font-italic font-weight-light">
+          <Dropdown.Item value='none' className='font-italic font-weight-light'>
             none
           </Dropdown.Item>
-          <div className="dropdown-divider" />
+          <div className='dropdown-divider' />
           {options.map(option => (
             <Dropdown.Item key={option} value={option}>
               {option}
@@ -62,7 +62,7 @@ const FormField = ({
   } else if (string) {
     field = (
       <input
-        className="form-control"
+        className='form-control'
         onChange={e => {
           onChange({ [label]: e.target.value })
         }}
@@ -72,8 +72,8 @@ const FormField = ({
     field = (
       <input
         id={label}
-        className="form-check-input ml-2"
-        type="checkbox"
+        className='form-check-input ml-2'
+        type='checkbox'
         checked={value}
         onChange={() => {
           if (changeValues) {
@@ -97,7 +97,7 @@ const FormField = ({
       >
         <code>{label}</code>:
       </label>
-      <div className="col-sm-7">{field}</div>
+      <div className='col-sm-7'>{field}</div>
     </div>
   )
 }

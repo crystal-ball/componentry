@@ -28,7 +28,7 @@ touchMoveSuppressOutline = () => {
  * user shows us they're not a keyboard user. Re-enable focus outlines if they
  * start navigating w/ keyboard.
  */
-export default () => {
+export default function setupOutlineHandlers() {
   window.addEventListener('mousemove', mouseMoveSuppressOutline)
   window.addEventListener('touchmove', touchMoveSuppressOutline)
 }

@@ -25,8 +25,8 @@ describe('<Dropdown />', () => {
   test('should render appropriate classes and arias by default', () => {
     const wrapper = mount(
       <Dropdown>
-        <Dropdown.Trigger data-test="dropdown-trigger">Trigger</Dropdown.Trigger>
-        <Dropdown.Content data-test="dropdown-content">
+        <Dropdown.Trigger data-test='dropdown-trigger'>Trigger</Dropdown.Trigger>
+        <Dropdown.Content data-test='dropdown-content'>
           <Dropdown.Item>Item 1</Dropdown.Item>
           <Dropdown.Item>Item 2</Dropdown.Item>
         </Dropdown.Content>

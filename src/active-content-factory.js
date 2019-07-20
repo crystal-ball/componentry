@@ -7,7 +7,7 @@ import { useTheme } from './Theme/Theme'
 /**
  * Factory returns custom `<Content />` components defined by the options.
  */
-export default (
+export default function ActiveContentFactory(
   component,
   {
     // Map of aria attributes to render with component
@@ -19,7 +19,7 @@ export default (
     // Switch to include a content wrapper for positioning+width styles
     popper = false,
   } = {},
-) => {
+) {
   function ActiveContent(props) {
     const { active, activeId, children, guid, ...rest } = {
       ...useTheme(name),
@@ -41,8 +41,8 @@ export default (
       children: (
         <>
           {popper && (
-            <div className="tip-container">
-              <div className="tip" />
+            <div className='tip-container'>
+              <div className='tip' />
             </div>
           )}
           {children}

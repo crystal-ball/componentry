@@ -5,7 +5,6 @@ import ActiveProvider from './Active/Context'
 import elem from './elem-factory'
 import { closest } from './utils/dom'
 import { useTheme } from './Theme/Theme'
-import Active from './Active/Active'
 
 /**
  * Factory returns custom `<Active />` components defined by the options. Active
@@ -23,7 +22,7 @@ import Active from './Active/Active'
  * use. This ensures that we can always hook into the change events for internal
  * needs like setting or removing special event listeners.
  */
-export default (
+export default function activeContainerFactory(
   component,
   {
     /** When true call deactivate on `esc` keypress */
@@ -37,7 +36,7 @@ export default (
     // Escape hatch to pass addl props to component instance
     ...optsRest
   } = {},
-) => {
+) {
   const themeName = `${component.slice(0, 1).toUpperCase()}${component.slice(1)}}`
   function ActiveContainer(props) {
     const {

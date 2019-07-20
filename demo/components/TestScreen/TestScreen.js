@@ -8,7 +8,7 @@ export default function TestScreen() {
 
   return (
     <div>
-      <button type="button" onClick={() => udpateActive(!active)}>
+      <button type='button' onClick={() => udpateActive(!active)}>
         Toggle
       </button>
       <div aria-hidden={!_active} className={`fade${visible ? ' show' : ''}`}>

@@ -1,5 +1,5 @@
 import React from 'react'
-import { render, fireEvent } from 'react-testing-library'
+import { cleanup, render, fireEvent } from '@testing-library/react'
 
 import Button from './Button'
 // import elementTests from '../utils-test/element-tests'
@@ -7,6 +7,8 @@ import Button from './Button'
 describe('<Button/>', () => {
   // Basic library element test suite
   // elementTests(Button)
+
+  afterEach(cleanup)
 
   test('should render a button element default', () => {
     const { container, getByText } = render(<Button>Button</Button>)
@@ -20,27 +22,27 @@ describe('<Button/>', () => {
   })
 
   test('should render any brand classes for prop color', () => {
-    const { getByText } = render(<Button color="info">Button</Button>)
+    const { getByText } = render(<Button color='info'>Button</Button>)
     expect(getByText('Button')).toHaveClass('btn btn-info')
   })
 
   test('should render the outline classes for outline', () => {
-    const { getByText } = render(<Button outline="primary">Button</Button>)
+    const { getByText } = render(<Button outline='primary'>Button</Button>)
     expect(getByText('Button')).toHaveClass('btn btn-outline-primary')
   })
 
   test('should render class for button size', () => {
-    const { getByText } = render(<Button size="sm" />)
+    const { getByText } = render(<Button size='sm'>Button</Button>)
     expect(getByText('Button')).toHaveClass('btn btn-sm')
   })
 
-  test('should render class btn-anchor when passed prop', () => {
+  test('should render only class btn-anchor when passed prop', () => {
     const { getByText } = render(<Button anchor>Button</Button>)
-    expect(getByText('Button')).toHaveClass('btn btn-anchor')
+    expect(getByText('Button')).toHaveClass('btn-anchor')
   })
 
   test('should use override type', () => {
-    const { container } = render(<Button type="reset">Button</Button>)
+    const { container } = render(<Button type='reset'>Button</Button>)
     expect(container).toContainElement(document.querySelector('button[type="reset"]'))
   })
 
@@ -64,7 +66,7 @@ describe('<Button /> Snapshots', () => {
   })
 
   test('it renders brand color correctly', () => {
-    const { container } = render(<Button color="success">Componentry</Button>)
+    const { container } = render(<Button color='success'>Componentry</Button>)
     expect(container.firstChild).toMatchSnapshot()
   })
 
@@ -74,13 +76,13 @@ describe('<Button /> Snapshots', () => {
   })
 
   test('it renders outline correctly', () => {
-    const { container } = render(<Button outline="success">Componentry</Button>)
+    const { container } = render(<Button outline='success'>Componentry</Button>)
     expect(container.firstChild).toMatchSnapshot()
   })
 
   test('it renders large outline correctly', () => {
     const { container } = render(
-      <Button outline="success" size="lg">
+      <Button outline='success' size='lg'>
         Componentry
       </Button>,
     )

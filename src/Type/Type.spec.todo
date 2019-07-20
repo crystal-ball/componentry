@@ -9,12 +9,12 @@ describe('<Anchor/>', () => {
   elementTests(Anchor)
 
   test('should render type classes for anchor', () => {
-    const wrapper = mount(<Anchor color="success" size="sm" />)
+    const wrapper = mount(<Anchor color='success' size='sm' />)
     expect(wrapper.find('a.anchor.text-success.text-sm').length).toEqual(1)
   })
 
   test('should render btn classes for button style anchor', () => {
-    const wrapper = mount(<Anchor button color="success" size="sm" />)
+    const wrapper = mount(<Anchor button color='success' size='sm' />)
     expect(wrapper.find('a.btn.btn-success.btn-sm').length).toEqual(1)
   })
 })

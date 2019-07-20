@@ -22,22 +22,19 @@ export const useActive = () => useContext(Context)
 export const useVisible = (active, duration = 300) => {
   const [state, updateState] = useState({ active, visible: active })
 
-  useEffect(
-    () => {
-      if (active) {
-        updateState({ active: true, visible: false })
-        setTimeout(() => {
-          updateState({ active: true, visible: true })
-        }, 17)
-      } else {
-        updateState({ active: true, visible: false })
-        setTimeout(() => {
-          updateState({ active: false, visible: false })
-        }, duration)
-      }
-    },
-    [active],
-  )
+  useEffect(() => {
+    if (active) {
+      updateState({ active: true, visible: false })
+      setTimeout(() => {
+        updateState({ active: true, visible: true })
+      }, 17)
+    } else {
+      updateState({ active: true, visible: false })
+      setTimeout(() => {
+        updateState({ active: false, visible: false })
+      }, duration)
+    }
+  }, [active])
 
   return state
 }

@@ -9,7 +9,7 @@ describe('<Alert/>', () => {
   elementTests(Alert)
 
   test('should render an alert without a close button by default', () => {
-    const wrapper = mount(<Alert color="success">Warning!</Alert>)
+    const wrapper = mount(<Alert color='success'>Warning!</Alert>)
 
     expect(wrapper.find('.alert.alert-success').length).toEqual(1) // default classes
     expect(wrapper.find('.alert[role="alert"]').length).toEqual(1) // correct aria role
@@ -17,13 +17,13 @@ describe('<Alert/>', () => {
 
   test('should render the appropriate contextual color class', () => {
     // color prop should determine contextual class output
-    const wrapper = mount(<Alert color="danger">Warning!</Alert>)
+    const wrapper = mount(<Alert color='danger'>Warning!</Alert>)
     expect(wrapper.find('.alert.alert-danger').length).toEqual(1)
   })
 
   test('should not render a close button if not dismissible', () => {
     // passing dismissible false suppresses the close button
-    const wrapper = mount(<Alert color="danger">Warning!</Alert>)
+    const wrapper = mount(<Alert color='danger'>Warning!</Alert>)
 
     expect(wrapper.find('button').length).toEqual(0)
   })
@@ -31,7 +31,7 @@ describe('<Alert/>', () => {
   test('should bind passed deactivate to close button', () => {
     const deactivate = jest.fn()
     const wrapper = mount(
-      <Alert color="danger" deactivate={deactivate} dismissible active>
+      <Alert color='danger' deactivate={deactivate} dismissible active>
         Warning!
       </Alert>,
     )
@@ -50,7 +50,7 @@ describe('<Alert/>', () => {
 describe('<Alert /> snapshots', () => {
   it('renders correctly', () => {
     const tree = render(
-      <Alert color="danger" deactivate={jest.fn()} dismissible active>
+      <Alert color='danger' deactivate={jest.fn()} dismissible active>
         Warning!
       </Alert>,
     )

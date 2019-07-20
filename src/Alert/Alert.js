@@ -44,10 +44,10 @@ export default function Alert(props) {
     children: (
       <>
         {/* Provide the alert color context for screen readers */}
-        <div className="sr-only">{ariaTitle || `${color} alert`}</div>
+        <div className='sr-only'>{ariaTitle || `${color} alert`}</div>
 
         {/* Alert contents */}
-        <div className="alert-content">{children}</div>
+        <div className='alert-content'>{children}</div>
 
         {/* Render a close button or null depending on configs */}
         {dismissible && (

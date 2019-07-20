@@ -39,8 +39,8 @@ This can be useful in situations where additional visual information or cues
 non-visual users.
 
 ```jsx
-<p class="text-danger">
-  <span class="sr-only">Danger: </span>
+<p class='text-danger'>
+  <span class='sr-only'>Danger: </span>
   This action is not reversible
 </p>
 ```
@@ -50,7 +50,7 @@ For visually hidden interactive controls, such as traditional "skip" links,
 that the control becomes visible once focused (for sighted keyboard users).
 
 ```jsx
-<a class="sr-only sr-only-focusable" href="#content">
+<a class='sr-only sr-only-focusable' href='#content'>
   Skip to main content
 </a>
 ```

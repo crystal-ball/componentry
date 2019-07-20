@@ -30,52 +30,52 @@ const featureProps = {
 
 export default () => (
   <>
-    <Flex direction="column" align="center" mt="5rem">
-      <Header color="primary" className="display-2 mb-3">
+    <Flex direction='column' align='center' mt='5rem'>
+      <Header color='primary' className='display-2 mb-3'>
         <u>C</u>
         omponentry
       </Header>
 
-      <Text size="small" color="muted" className="mb-4" monospace>
+      <Text size='small' color='muted' className='mb-4' monospace>
         {process.env.PACKAGE_VERSION}
       </Text>
 
-      <Header as="h3" color="muted" textAlign="center" className="w-75 mb-5">
+      <Header as='h3' color='muted' textAlign='center' className='w-75 mb-5'>
         <em>A scalable, accessible React component library</em>
       </Header>
     </Flex>
 
     <Flex
-      align="center"
-      justify="center"
-      className="border border-right-0 border-left-0 mb-4"
+      align='center'
+      justify='center'
+      className='border border-right-0 border-left-0 mb-4'
     >
-      <div className="my-3 mx-2">
+      <div className='my-3 mx-2'>
         <Link to={routesMap.setup.pathname}>{routesMap.setup.name}</Link>
       </div>
-      <div className="my-3 mx-2">
+      <div className='my-3 mx-2'>
         {/* Library concepts guides navigation */}
-        <SubRoutesNav label="Concepts" subRoutes={conceptRoutes} />
+        <SubRoutesNav label='Concepts' subRoutes={conceptRoutes} />
       </div>
-      <div className="my-3 mx-2">
+      <div className='my-3 mx-2'>
         {/* Component dropdown navigation */}
-        <SubRoutesNav label="Components" subRoutes={componentRoutes} />
+        <SubRoutesNav label='Components' subRoutes={componentRoutes} />
       </div>
-      <div className="my-3 mx-2">
-        <a href="https://github.com/crystal-ball/componentry">Github</a>
+      <div className='my-3 mx-2'>
+        <a href='https://github.com/crystal-ball/componentry'>Github</a>
       </div>
     </Flex>
 
-    <Flex justify="center" direction="column" className="mb-5">
-      <Block maxWidth="650px" className="my-4" m="auto">
+    <Flex justify='center' direction='column' className='mb-5'>
+      <Block maxWidth='650px' className='my-4' m='auto'>
         <Header {...featureHeaderProps}>Lightweight Bundle Size</Header>
-        <Block {...featureProps} className="media">
+        <Block {...featureProps} className='media'>
           <FeatureIcon
             as={Bundle}
-            className="mr-3"
-            alt="Library bundle size is a small percentage of overall bundle"
+            className='mr-3'
+            alt='Library bundle size is a small percentage of overall bundle'
           />
-          <div className="media-body">
+          <div className='media-body'>
             <p>
               Componentry is optimized for size and performance. With minimial external
               dependencies the library weighs in at 12.8kB. Advanced optimizations are
@@ -85,10 +85,10 @@ export default () => (
         </Block>
       </Block>
 
-      <Block maxWidth="650px" className="my-4" m="auto">
+      <Block maxWidth='650px' className='my-4' m='auto'>
         <Header {...featureHeaderProps}>Consistent APIs</Header>
-        <Block {...featureProps} className="media">
-          <div className="media-body">
+        <Block {...featureProps} className='media'>
+          <div className='media-body'>
             <p>
               Spend more time writing and less time checking documentation with consistent
               APIs and event hooks across components. Consistent APIs and focused
@@ -97,24 +97,24 @@ export default () => (
           </div>
           <FeatureIcon
             as={Merge}
-            className="ml-3"
-            alt="Different components utilize the same API"
+            className='ml-3'
+            alt='Different components utilize the same API'
           />
         </Block>
       </Block>
 
-      <Block maxWidth="650px" className="my-4" m="auto">
+      <Block maxWidth='650px' className='my-4' m='auto'>
         <Header {...featureHeaderProps}>A++ Accessibility</Header>
-        <Block {...featureProps} className="media border-bottom-0">
+        <Block {...featureProps} className='media border-bottom-0'>
           <FeatureIcon
             as={Accessible}
-            className="feature-icon display-3 mr-3"
-            alt="Library focuses on A++ accessibility"
+            className='feature-icon display-3 mr-3'
+            alt='Library focuses on A++ accessibility'
           />
-          <div className="media-body">
+          <div className='media-body'>
             <p>
               Components are written using{' '}
-              <a href="https://www.w3.org/WAI/intro/aria" rel="noreferrer noopener">
+              <a href='https://www.w3.org/WAI/intro/aria' rel='noreferrer noopener'>
                 WAI-ARIA
               </a>{' '}
               roles and attributes for A++ fully accessible components out of the box.

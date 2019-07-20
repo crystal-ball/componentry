@@ -1,4 +1,3 @@
-import React from 'react'
 import elem from './elem-factory'
 import ariasComputer from './utils/arias'
 import { btnClasses, cleanBtnClasses } from './Button/Button'
@@ -10,7 +9,7 @@ import { useTheme } from './Theme/Theme'
  * Componentry sets up triggers to be anchor style buttons by default, this
  * can be overridden by passing an as, type and anchor to reset the defaults.
  */
-export default (
+export default function activeTriggerFactory(
   component,
   {
     // Switch to set default anchor value
@@ -26,7 +25,7 @@ export default (
     // Overrides component onClick to specified activate/deactivate event
     triggerType,
   } = {},
-) => {
+) {
   function ActiveTrigger(props) {
     const {
       children,

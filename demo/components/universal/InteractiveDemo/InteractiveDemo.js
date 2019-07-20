@@ -51,11 +51,11 @@ export default class InteractiveDemo extends Component<Props> {
 
     return (
       <Card className={`mt-5 mb-3 ${component}`}>
-        <Card.Body className="row">
+        <Card.Body className='row'>
           {fieldsLen && (
-            <div className="col-4">
-              <h4 className="border-bottom border-dark">Props</h4>
-              <form className="mb-3">
+            <div className='col-4'>
+              <h4 className='border-bottom border-dark'>Props</h4>
+              <form className='mb-3'>
                 {formFields.map((field, idx) =>
                   field.label ? (
                     <FormField
@@ -73,20 +73,20 @@ export default class InteractiveDemo extends Component<Props> {
             </div>
           )}
           <Flex
-            direction="column"
+            direction='column'
             className={`col-${fieldsLen ? '8' : '12'} rendered-container`}
           >
-            <h4 className="border-bottom border-dark">Rendered</h4>
-            <Flex align="center" justify="center" className="h-100">
+            <h4 className='border-bottom border-dark'>Rendered</h4>
+            <Flex align='center' justify='center' className='h-100'>
               {demoComponent}
             </Flex>
           </Flex>
-          <div className="col-12 mt-4">
-            <div className="code-container">
-              <div className="copy-container">
-                <ClickToCopy copyText={codeHighlight} className="h3 text-light" />
+          <div className='col-12 mt-4'>
+            <div className='code-container'>
+              <div className='copy-container'>
+                <ClickToCopy copyText={codeHighlight} className='h3 text-light' />
               </div>
-              <PrismHighlighter language="jsx">{codeHighlight}</PrismHighlighter>
+              <PrismHighlighter language='jsx'>{codeHighlight}</PrismHighlighter>
             </div>
           </div>
         </Card.Body>

@@ -27,7 +27,7 @@ describe('<List />', () => {
   test('should render a div when children have hrefs', () => {
     const wrapper = mount(
       <List>
-        <List.Item href="test" />
+        <List.Item href='test' />
       </List>,
     )
     expect(wrapper.find('ul').length).toBeFalsy()
