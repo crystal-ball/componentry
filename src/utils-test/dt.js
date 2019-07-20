@@ -1,4 +1,6 @@
 /**
  * Just a utility method for shorthanding data-test attributes
  */
-export default dataTest => `[data-test="${dataTest}"]`
+export default function dt(dataTest) {
+  return `[data-test="${dataTest}"]`
+}

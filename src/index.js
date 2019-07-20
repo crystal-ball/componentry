@@ -1,3 +1,8 @@
+// --- Providers
+export { default as Theme, useTheme } from './Theme/Theme'
+export { default as Media, useMedia } from './Media/Media'
+
+// --- Components
 export { default as Active } from './Active/Active'
 export { default as Alert } from './Alert/Alert'
 export { default as Block } from './Block/Block'
@@ -10,7 +15,6 @@ export { default as Dropdown } from './Dropdown/Dropdown'
 export { default as Flex } from './Flex/Flex'
 export { default as Icon } from './Icon/Icon'
 export { default as List } from './List/List'
-export { default as Media } from './Media/Media'
 export { default as Modal } from './Modal/Modal'
 export { Nav, TabNav } from './Navs/Navs'
 export { default as Popover } from './Popover/Popover'
@@ -18,11 +22,10 @@ export { default as Tab } from './Tab/Tab'
 export { default as Tooltip } from './Tooltip/Tooltip'
 export { Anchor, Header, Text } from './Type/Type'
 
-// --- Forms
+// --- Form Components
 export { default as FormGroup } from './FormGroup/FormGroup'
 export { default as Input } from './Input/Input'
 
 // --- Utilities
-export { default as ThemeProvider } from './ThemeProvider/ThemeProvider'
-export { default as withActive } from './withActive'
+export { useActive, useVisible } from './Active/useActive'
 export { default as setupOutlineHandlers } from './utils/setup-outline-handlers'

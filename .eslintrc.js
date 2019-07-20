@@ -1,15 +1,18 @@
 'use strict'
 
-process.env.ELOQUENCE_PROJECT_TYPE = 'webpack'
-
 module.exports = {
   root: true,
-  extends: 'eloquence',
+  extends: 'eloquence/react',
+
+  // Override the webpack resolver from react config to use the node resolver,
+  // The src files don't use any aliasing from webpack
+  settings: {
+    'import/resolver': 'node',
+  },
+
   rules: {
-    'react/require-default-props': 'off',
+    // Disable prop types checking, project has TS typings for components
     'react/prop-types': 'off',
-    'react/no-unused-prop-types': 'off',
-    'import/first': 'off',
-    'import/no-extraneous-dependencies': 'off',
+    'react/require-default-props': 'off',
   },
 }

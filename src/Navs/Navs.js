@@ -1,39 +1,37 @@
-// @flow
 import elem from '../elem-factory'
-import withTheme from '../withTheme'
+import { useTheme } from '../Theme/Theme'
 
-export type Props = {
-  fill?: boolean,
-  justify?: boolean,
-  pills?: boolean,
-  vertical?: boolean,
-}
+const makeNav = name => {
+  const Elem = props => {
+    const { fill, justify, pills, vertical, ...rest } = { ...useTheme(name), ...props }
 
-const makeNav = tabNav =>
-  withTheme(tabNav ? 'TabNav' : 'Nav', ({ fill, justify, pills, vertical, ...rest }) =>
-    elem({
+    return elem({
       defaultAs: 'nav',
-      role: tabNav ? 'tablist' : undefined,
+      role: name === 'TabNav' ? 'tablist' : undefined,
       classes: {
-        nav: !tabNav,
-        'tabs-nav-container': tabNav,
+        nav: name === 'Nav',
+        'tabs-nav-container': name === 'TabNav',
         'nav-vertical': vertical,
         'nav-pills': pills,
         'nav-fill': fill,
         'nav-justified': justify,
       },
       ...rest,
-    }),
-  )
+    })
+  }
+  Elem.displayName = name
+  return Elem
+}
 
-const Nav = makeNav(false)
-const TabNav = makeNav(true)
+const Nav = makeNav('Nav')
+const TabNav = makeNav('TabNav')
 
 /**
  * Nav items can be action items or li, notice this follows the same pattern as
  * the List.Item components
  */
-const Item = withTheme('NavItem', ({ active, ...rest }) => {
+const NavItem = props => {
+  const { active, ...rest } = { ...useTheme('NavItem'), ...props }
   const { href, onClick } = rest
 
   return elem({
@@ -47,7 +45,7 @@ const Item = withTheme('NavItem', ({ active, ...rest }) => {
     },
     ...rest,
   })
-})
-Nav.Item = Item
+}
+Nav.Item = NavItem
 
 export { Nav, TabNav }

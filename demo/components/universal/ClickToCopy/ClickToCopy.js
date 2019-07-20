@@ -39,9 +39,9 @@ export default class ClickToCopy extends Component {
     const { copied } = this.state
 
     const icons = (
-      <span className="icons">
-        <Icon id="copy" />
-        <Icon id="copied" className={classNames({ active: copied })} />
+      <span className='icons'>
+        <Icon id='copy' />
+        <Icon id='copied' className={classNames({ active: copied })} />
       </span>
     )
 

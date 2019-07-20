@@ -4,8 +4,8 @@ var _self =
   typeof window !== 'undefined'
     ? window // if in browser
     : typeof WorkerGlobalScope !== 'undefined' && self instanceof WorkerGlobalScope
-      ? self // if in worker
-      : {} // if in node js
+    ? self // if in worker
+    : {} // if in node js
 
 /**
  * Prism: Lightweight, robust, elegant syntax highlighting
@@ -346,9 +346,9 @@ var Prism = (function() {
               }
 
               /*
-						 * If strarr[i] is a Token, then the match starts inside another Token, which is invalid
-						 * If strarr[k - 1] is greedy we are in conflict with another greedy pattern
-						 */
+               * If strarr[i] is a Token, then the match starts inside another Token, which is invalid
+               * If strarr[k - 1] is greedy we are in conflict with another greedy pattern
+               */
               if (strarr[i] instanceof Token || strarr[k - 1].greedy) {
                 continue
               }

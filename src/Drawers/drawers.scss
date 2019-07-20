@@ -28,8 +28,6 @@
   // for icons.
   @if $include-icons {
     .icon-chevron {
-      @extend .componentry-icon;
-
       background-image: str-replace(
         url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='#{$link-color}' viewBox='0 0 32 32'%3E%3Cpath d='M6.71,8.51,16,17.8l9.29-9.29,2.84,2.84L16,23.49,3.86,11.35Z'/%3E%3C/svg%3E"),
         '#',

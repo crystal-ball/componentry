@@ -1,39 +1,8 @@
-// @flow
-import React, { Fragment, type Node } from 'react'
+import React from 'react'
 import Close from '../Close/Close'
-import componentryElem from '../elem-factory'
-import withActive from '../withActive'
-import withTheme from '../withTheme'
-import withVisible from '../withVisible'
-import type { ActiveProps, ThemeColors } from '../types'
-
-// ⚠️ For dismissible Alerts, the active context must be set.
-// TODO: docs on dismissible vs non-dismissible alerts usage
-
-type Props = {
-  children: Node,
-  /**
-   * Provides contextual information to screen readers that sighted users would gain
-   * from the alert color. Defaults to: 'COLOR alert', eg 'Success alert'
-   */
-  ariaTitle: string,
-  /**
-   * Theme color for alert
-   */
-  color: ThemeColors,
-  /**
-   * Pass `false` to suppress alert dismiss button
-   */
-  dismissible?: boolean,
-  /**
-   * Pass `true` to render an outline style alert
-   */
-  outline?: boolean,
-  /**
-   * Controls opacity of element
-   */
-  visible: boolean,
-} & ActiveProps
+import elem from '../elem-factory'
+import { useTheme } from '../Theme/Theme'
+import { useActive, useVisible } from '../Active/useActive'
 
 /**
  * Alerts provide contextual feedback to users. Alerts are available in the info
@@ -41,20 +10,25 @@ type Props = {
  * or secondary theme colors because they are intended to be used for alerting with
  * context. For non alert information blocks a card with theme color primary or
  * secondary can be used.
+ *
+ * TODO: docs on dismissible vs non-dismissible alerts usage
+ * TODO: ⚠️ For dismissible Alerts, the active context must be set docs
  */
+export default function Alert(props) {
+  const {
+    children,
+    active,
+    ariaTitle,
+    color,
+    deactivate,
+    dismissible,
+    outline,
+    ...rest
+  } = { ...useTheme('Alert'), ...useActive(), ...props }
 
-const Alert = ({
-  children,
-  active,
-  ariaTitle,
-  color,
-  deactivate,
-  dismissible,
-  outline,
-  visible,
-  ...rest
-}: Props) =>
-  componentryElem({
+  const { active: _active, visible } = useVisible(active)
+
+  return elem({
     role: 'alert',
     classes: {
       alert: true,
@@ -66,22 +40,21 @@ const Alert = ({
       'alert-outline': outline,
     },
     // ⚠️ Only include aria-hidden value if the alert is dismissible
-    'aria-hidden': dismissible ? String(!active) : undefined,
+    'aria-hidden': dismissible ? String(!_active) : undefined,
     children: (
-      <Fragment>
+      <>
         {/* Provide the alert color context for screen readers */}
-        <div className="sr-only">{ariaTitle || `${color} alert`}</div>
+        <div className='sr-only'>{ariaTitle || `${color} alert`}</div>
 
         {/* Alert contents */}
-        <div className="alert-content">{children}</div>
+        <div className='alert-content'>{children}</div>
 
         {/* Render a close button or null depending on configs */}
         {dismissible && (
           <Close onClick={deactivate} className={`alert-close text-${color}`} />
         )}
-      </Fragment>
+      </>
     ),
     ...rest,
   })
-
-export default withActive(withVisible(withTheme('Alert', Alert)))
+}

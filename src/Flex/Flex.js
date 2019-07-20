@@ -1,22 +1,13 @@
-// @flow
-import componentryElem from '../elem-factory'
-import withTheme from '../withTheme'
+import elem from '../elem-factory'
+import { useTheme } from '../Theme/Theme'
 
-type Props = {
-  /** Specify the flex direction of the container */
-  direction: '' | 'column' | 'column-reverse' | 'row' | 'row-reverse',
-  /** Toggles between display flex and display inline-flex */
-  inline: boolean,
-  /** Adds flexbox align-items atomic classes */
-  align: '' | 'start' | 'center' | 'end' | 'baseline' | 'stretch',
-  /** Adds flexbox justify-content atomic classes */
-  justify: '' | 'start' | 'center' | 'end' | 'around' | 'between' | 'evenly',
-  /** Sets a flex-wrap utility class */
-  wrap: '' | 'wrap' | 'wrap-reverse' | 'nowrap',
-}
+export default function Flex(props) {
+  const { align, direction, inline, justify, wrap, ...rest } = {
+    ...useTheme('Flex'),
+    ...props,
+  }
 
-const Flex = ({ align, direction, inline, justify, wrap, ...rest }: Props) =>
-  componentryElem({
+  return elem({
     classes: {
       'd-flex': !inline,
       'd-inline-flex': inline,
@@ -30,5 +21,4 @@ const Flex = ({ align, direction, inline, justify, wrap, ...rest }: Props) =>
     },
     ...rest,
   })
-
-export default withTheme('Flex', Flex)
+}

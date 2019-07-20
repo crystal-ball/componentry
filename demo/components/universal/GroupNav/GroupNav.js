@@ -18,8 +18,8 @@ type Props = {
 export default ({ routes }: Props) => (
   <nav className={`ml-5 ${component}`}>
     {routes.map(route => (
-      <div className="pb-1" key={route.id}>
-        <NavLink to={route} activeClassName="text-primary">
+      <div className='pb-1' key={route.id}>
+        <NavLink to={route} activeClassName='text-primary'>
           {route.state.name}
         </NavLink>
       </div>

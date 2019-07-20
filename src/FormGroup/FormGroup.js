@@ -1,13 +1,14 @@
 import elem from '../elem-factory'
-import withTheme from '../withTheme'
+import { useTheme } from '../Theme/Theme'
 
 /**
  * FormGroup provides form structure
  */
-export default withTheme('FormGroup', props =>
-  elem({
+export default function FormGroup(props) {
+  return elem({
     defaultAs: 'div',
     classes: 'form-group',
+    ...useTheme('FormGroup'),
     ...props,
-  }),
-)
+  })
+}

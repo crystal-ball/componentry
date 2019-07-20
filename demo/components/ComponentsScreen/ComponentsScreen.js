@@ -1,4 +1,3 @@
-// @flow
 import React, { createElement } from 'react'
 import { Route } from 'react-router-dom'
 
@@ -8,11 +7,11 @@ import routesMap, { componentRoutes } from 'lib/routes-map'
 import GroupNav from 'components/universal/GroupNav'
 import Header from 'components/universal/Header'
 
-type Props = {
-  location: {
-    state: { name: string },
-  },
-}
+// type Props = {
+//   location: {
+//     state: { name: string },
+//   },
+// }
 
 const { subRoutes } = routesMap.components
 
@@ -34,9 +33,9 @@ const renderPropsText = props => {
   return text
 }
 
-export default ({ location: { state } }: Props) => (
-  <div className="grid-container columns-page-layout m-5">
-    <div className="guides">
+export default ({ location: { state } }) => (
+  <div className='grid-container columns-page-layout m-5'>
+    <div className='guides'>
       <Header title={state ? state.name : 'Components'} />
 
       {Object.keys(subRoutes).map(route => (

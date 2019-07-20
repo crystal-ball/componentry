@@ -1,34 +1,33 @@
-// @flow
-export type ComponentArias = {
-  controls?: boolean | string,
-  describedby?: boolean,
-  expanded?: boolean,
-  haspopup?: boolean,
-  hidden?: boolean,
-  id?: boolean | string,
-  labelledby?: boolean | string,
-  role?: string,
-  selected?: boolean,
-}
+// export type ComponentArias = {
+//   controls?: boolean | string,
+//   describedby?: boolean,
+//   expanded?: boolean,
+//   haspopup?: boolean,
+//   hidden?: boolean,
+//   id?: boolean | string,
+//   labelledby?: boolean | string,
+//   role?: string,
+//   selected?: boolean,
+// }
 
-export type AriasOptions = {
-  active?: boolean,
-  activeId?: string,
-  guid: string,
-  type: 'content' | 'trigger',
-  arias: ComponentArias,
-}
+// export type AriasOptions = {
+//   active?: boolean,
+//   activeId?: string,
+//   guid: string,
+//   type: 'content' | 'trigger',
+//   arias: ComponentArias,
+// }
 
 /**
  * Return object of aria attributes using options
  */
-export default ({
+export default function componentArias({
   active,
   activeId,
   guid,
   type,
   arias: configArias = {},
-}: AriasOptions) => {
+}) {
   const {
     controls,
     describedby,

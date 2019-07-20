@@ -1,69 +1,56 @@
 import React from 'react'
-import { mount, render } from 'enzyme'
+import { cleanup, render, fireEvent } from '@testing-library/react'
 
 import Button from './Button'
-import elementTests from '../utils-test/element-tests'
+// import elementTests from '../utils-test/element-tests'
 
 describe('<Button/>', () => {
   // Basic library element test suite
-  elementTests(Button)
+  // elementTests(Button)
+
+  afterEach(cleanup)
 
   test('should render a button element default', () => {
-    const wrapper = mount(<Button />)
-    expect(wrapper.find('button').length).toEqual(1)
-    expect(wrapper.find('.btn').length).toEqual(1)
-    expect(wrapper.find('button[type="button"]').length).toEqual(1)
+    const { container, getByText } = render(<Button>Button</Button>)
+
+    // By default the button should have type button
+    expect(container).toContainElement(document.querySelector('button[type="button"]'))
+    // By default the class btn is included
+    expect(getByText('Button')).toHaveClass('btn')
+    // Don't render anchor class without anchor prop
+    expect(getByText('Button')).not.toHaveClass('btn-anchor')
   })
 
   test('should render any brand classes for prop color', () => {
-    const wrapper = mount(<Button color="info" />)
-    expect(wrapper.find('.btn.btn-info').length).toEqual(1)
+    const { getByText } = render(<Button color='info'>Button</Button>)
+    expect(getByText('Button')).toHaveClass('btn btn-info')
   })
 
-  test('should render outline class for prop outline', () => {
-    const wrapper = mount(<Button outline="primary" />)
-    // Should render the color and outline classes
-    expect(wrapper.find('.btn.btn-outline-primary').length).toEqual(1)
+  test('should render the outline classes for outline', () => {
+    const { getByText } = render(<Button outline='primary'>Button</Button>)
+    expect(getByText('Button')).toHaveClass('btn btn-outline-primary')
   })
 
-  test('should render class for small button', () => {
-    const wrapper = mount(<Button size="sm" />)
-    expect(wrapper.find('.btn.btn-sm').length).toEqual(1)
+  test('should render class for button size', () => {
+    const { getByText } = render(<Button size='sm'>Button</Button>)
+    expect(getByText('Button')).toHaveClass('btn btn-sm')
   })
 
-  test('should render class for large button', () => {
-    const wrapper = mount(<Button size="lg" />)
-    expect(wrapper.find('.btn.btn-lg').length).toEqual(1)
+  test('should render only class btn-anchor when passed prop', () => {
+    const { getByText } = render(<Button anchor>Button</Button>)
+    expect(getByText('Button')).toHaveClass('btn-anchor')
   })
 
-  test('should not render class btn-anchor without passed prop', () => {
-    const wrapper = mount(<Button />)
-    expect(wrapper.find('button.btn-anchor').length).toEqual(0)
-  })
-
-  test('should render class btn-anchor when passed prop', () => {
-    const wrapper = mount(<Button anchor />)
-    expect(wrapper.find('button.btn-anchor').length).toEqual(1)
-  })
-
-  test('should render a passed type', () => {
-    const wrapper = mount(<Button type="reset" />)
-    expect(wrapper.find('button[type="reset"]').length).toEqual(1)
-  })
-
-  test('should render children', () => {
-    const wrapper = mount(
-      <Button>
-        <span>Rad</span>
-      </Button>,
-    )
-    expect(wrapper.find('span').length).toEqual(1)
+  test('should use override type', () => {
+    const { container } = render(<Button type='reset'>Button</Button>)
+    expect(container).toContainElement(document.querySelector('button[type="reset"]'))
   })
 
   test('simulates click events', () => {
     const onButtonClick = jest.fn()
-    const wrapper = mount(<Button onClick={onButtonClick} />)
-    wrapper.find('button').simulate('click')
+    const { getByText } = render(<Button onClick={onButtonClick}>Button</Button>)
+
+    fireEvent.click(getByText('Button'))
     expect(onButtonClick).toHaveBeenCalled()
   })
 })
@@ -74,33 +61,31 @@ describe('<Button /> Snapshots', () => {
   // 📝 TODO: use enzyme tests to validate props effects, use snapshot for testing
   // output of markup like 'type'
   test('it renders defaults correctly', () => {
-    const tree = render(<Button>Componentry</Button>)
-    expect(tree).toMatchSnapshot()
+    const { container } = render(<Button>Componentry</Button>)
+    expect(container.firstChild).toMatchSnapshot()
   })
 
   test('it renders brand color correctly', () => {
-    const tree = render(<Button color="success">Componentry</Button>)
-    expect(tree).toMatchSnapshot()
+    const { container } = render(<Button color='success'>Componentry</Button>)
+    expect(container.firstChild).toMatchSnapshot()
   })
 
   test('it renders anchor style correctly', () => {
-    const tree = render(<Button anchor>Componentry</Button>)
-    expect(tree).toMatchSnapshot()
+    const { container } = render(<Button anchor>Componentry</Button>)
+    expect(container.firstChild).toMatchSnapshot()
   })
 
   test('it renders outline correctly', () => {
-    const tree = render(<Button outline="success">Componentry</Button>)
-
-    expect(tree).toMatchSnapshot()
+    const { container } = render(<Button outline='success'>Componentry</Button>)
+    expect(container.firstChild).toMatchSnapshot()
   })
 
   test('it renders large outline correctly', () => {
-    const tree = render(
-      <Button outline="success" size="lg">
+    const { container } = render(
+      <Button outline='success' size='lg'>
         Componentry
       </Button>,
     )
-
-    expect(tree).toMatchSnapshot()
+    expect(container.firstChild).toMatchSnapshot()
   })
 })

@@ -9,10 +9,10 @@ type Props = {
 
 const renderPropRef = (name, activeId) => (
   <tr key={name}>
-    <td className="text-primary">{name}</td>
-    <td colSpan="3">
+    <td className='text-primary'>{name}</td>
+    <td colSpan='3'>
       <Active.Trigger activeId={activeId} anchor>
-        <Icon id="share" /> {activeId} props
+        <Icon id='share' /> {activeId} props
       </Active.Trigger>
     </td>
   </tr>
@@ -22,10 +22,10 @@ export default ({ contentProps }: Props) => (
   <table className={`table ${component}`}>
     <thead>
       <tr>
-        <th className="name">Name</th>
-        <th className="type">Type</th>
-        <th className="description">Description</th>
-        <th className="default">Default</th>
+        <th className='name'>Name</th>
+        <th className='type'>Type</th>
+        <th className='description'>Description</th>
+        <th className='default'>Default</th>
       </tr>
     </thead>
     <tbody>
@@ -40,7 +40,7 @@ export default ({ contentProps }: Props) => (
 
         return (
           <tr key={name}>
-            <td className="text-primary">{name}</td>
+            <td className='text-primary'>{name}</td>
             <td>
               <code>{Array.isArray(type) ? 'Enum' : type}</code>
             </td>
@@ -48,7 +48,7 @@ export default ({ contentProps }: Props) => (
             <td>
               <div dangerouslySetInnerHTML={{ __html: description }} />
               {Array.isArray(type) ? (
-                <div className="small text-muted">
+                <div className='small text-muted'>
                   Enums: [
                   {type.map((enumerable, idx) => (
                     <Fragment key={enumerable}>

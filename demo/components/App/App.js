@@ -25,7 +25,7 @@ import TestScreen from '../TestScreen/TestScreen'
 // Componentry Theme Customization
 // ========================================================
 
-const { Icon } = Componentry
+const { Icon, Media, Theme } = Componentry
 
 // Componentry configuration defaults can be updated using the ThemeProvider
 // component and passing a theme configuration object
@@ -47,9 +47,16 @@ const theme = {
   },
   DropdownTrigger: {
     // Include the chevron icon decoration by default in all dropdowns
-    decoration: <Icon id="chevron" className="ml-1" />,
+    decoration: <Icon id='chevron' className='ml-1' />,
   },
 }
+
+// Tests overriding the Modal Close decoration
+// Modal.Close = props => (
+//   <Button anchor {...props}>
+//     ESC
+//   </Button>
+// )
 
 const styledTheme = {
   border: {
@@ -67,9 +74,11 @@ const styledTheme = {
 
 // Register all Componentry components for convenience
 Object.keys(Componentry).forEach(component => {
-  if (component === 'ThemeProvider') return // Application only component
+  if (component === 'Theme' || component === 'Media') return // Application only component
   registry.register(Componentry[component], component)
 })
+
+registry.register(AnchorLink, 'AnchorLink')
 
 const { setup, concepts, components } = routesMap
 
@@ -89,34 +98,36 @@ class App extends Component<{}> {
 
   render() {
     return (
-      <DocumentTitle title="Componentry">
+      <DocumentTitle title='Componentry'>
         <BrowserRouter basename={process.env.PUBLIC_PATH}>
           <ThemeProvider theme={styledTheme}>
-            <Componentry.ThemeProvider.Provider value={theme}>
-              {/* Restores scroll position to page top on route change */}
-              <ScrollToTop />
+            <Theme theme={theme}>
+              <Media>
+                {/* Restores scroll position to page top on route change */}
+                <ScrollToTop />
 
-              {/* Show app navigation on every page but home page */}
-              <Route path="/:path" component={AppNav} />
+                {/* Show app navigation on every page but home page */}
+                <Route path='/:path' component={AppNav} />
 
-              {/* Application level routing */}
-              <Switch>
-                <Route path="/" exact component={HomeScreen} />
-                <Route path={setup.pathname} component={SetupScreen} />
-                <Route
-                  path={`${concepts.pathname}/:concept?`}
-                  component={ConceptsScreen}
-                />
-                <Route
-                  path={`${components.pathname}/:component?`}
-                  component={ComponentsScreen}
-                />
+                {/* Application level routing */}
+                <Switch>
+                  <Route path='/' exact component={HomeScreen} />
+                  <Route path={setup.pathname} component={SetupScreen} />
+                  <Route
+                    path={`${concepts.pathname}/:concept?`}
+                    component={ConceptsScreen}
+                  />
+                  <Route
+                    path={`${components.pathname}/:component?`}
+                    component={ComponentsScreen}
+                  />
 
-                {/* Used for testing components in a normal JSX env */}
-                <Route path="/test" component={TestScreen} />
-                <Route component={FourOhFourScreen} />
-              </Switch>
-            </Componentry.ThemeProvider.Provider>
+                  {/* Used for testing components in a normal JSX env */}
+                  <Route path='/test' component={TestScreen} />
+                  <Route component={FourOhFourScreen} />
+                </Switch>
+              </Media>
+            </Theme>
           </ThemeProvider>
         </BrowserRouter>
       </DocumentTitle>

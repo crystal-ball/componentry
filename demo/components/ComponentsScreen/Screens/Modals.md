@@ -42,6 +42,10 @@ modal.
             This is an uncontrolled modal that will automatically manage its active
             state using the parent Active component.
           </p>
+          <p>
+            Learn more about{' '}
+            <AnchorLink to="/components/active">Active components</AnchorLink>
+          </p>
         </Modal.Body>
         <Modal.Footer className="btn-container-x">
           <Active.Trigger outline="dark" anchor={false}>
@@ -66,6 +70,10 @@ modal.
               <p>
                 This is an uncontrolled modal that will automatically manage its active
                 state using the parent Active component.
+              </p>
+              <p>
+                Learn more about{' '}
+                <AnchorLink to="/components/active">Active components</AnchorLink>
               </p>
             </Modal.Body>
             <Modal.Footer className="btn-container-x">

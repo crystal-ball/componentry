@@ -14,7 +14,7 @@ export default ({ title, className = '' }: Props) => {
   return (
     <div className={classNames('border-bottom', 'border-light', className)}>
       <DocumentTitle title={`${pageTitle} · Componentry`} />
-      <h1 className="display-3">{pageTitle}</h1>
+      <h1 className='display-3'>{pageTitle}</h1>
     </div>
   )
 }
