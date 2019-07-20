@@ -3,7 +3,7 @@ import React, { createContext, useContext, useState, useEffect } from 'react'
 /**
  * Media Context
  */
-export const Context = createContext()
+const MediaCtx = createContext({})
 
 /**
  * The Media provider accepts breakpoints and can be used with the `useMedia`
@@ -12,6 +12,17 @@ export const Context = createContext()
  * - sm = >= 0
  * - md = >= 900
  * - lg = >= 1250
+ *
+ * Resize is listened to using the `matchMedia` API, which is supoorted by IE10,
+ * so it's pretty widely implemented
+ *
+ * TODO: by default provide breakpoints for small and large with docs on adding
+ * a medium breakpoint -> this covers "normal" use case for a sane app.
+ *
+ * TODO: remove query listeners on unmount??
+ *
+ * TODO: nest breakpoints so that other media info can be provided like device
+ * orientation, dark mode, etc.
  */
 export default function MediaProvider({ children, breakpoints = [0, 900, 1250] }) {
   const calcBreakpoints = w => ({
@@ -27,22 +38,33 @@ export default function MediaProvider({ children, breakpoints = [0, 900, 1250] }
 
   useEffect(() => {
     breakpoints.forEach(bp => {
+      // https://developer.mozilla.org/en-US/docs/Web/CSS/Media_Queries/Testing_media_queries#Receiving_query_notifications
       const mq = window.matchMedia(`(min-width: ${bp}px)`)
       mq.addListener(setBreakpoints)
     })
   }, [])
 
-  return <Context.Provider value={bps}> {children}</Context.Provider>
+  return <MediaCtx.Provider value={bps}> {children}</MediaCtx.Provider>
 }
 
 /**
  * Custom hook that should be used to access Media context.
  */
 export const useMedia = () => {
-  const media = useContext(Context)
+  const media = useContext(MediaCtx)
   if (process.env.NODE_ENV !== 'production' && !media) {
-    console.warn('useMedia used without a <Media /> provider provided') // eslint-disable-line
+    console.warn('useMedia used without a <Media /> provider') // eslint-disable-line
     return null
   }
   return media
 }
+
+/**
+ * DARK MODE (todo)
+ *
+ * There is basically no support for this media query yet... but these can be
+ * checked for truthy values to determine which mode to use
+ *
+ * darkScheme: window.matchMedia('(prefers-color-scheme: dark)')
+ * lightScheme: window.matchMedia('(prefers-color-scheme: light)')
+ */

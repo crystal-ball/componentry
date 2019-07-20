@@ -3,7 +3,7 @@ import React, { createContext, useContext } from 'react'
 /**
  * Theme Context
  */
-export const Context = createContext()
+const ThemeCtx = createContext({})
 
 /**
  * The `<ThemeProvider>` is a shorthand for setting context values that can be
@@ -12,13 +12,16 @@ export const Context = createContext()
  * collisions.
  */
 export default function ThemeProvider({ children, theme }) {
-  return <Context.Provider value={theme}>{children}</Context.Provider>
+  return <ThemeCtx.Provider value={theme}>{children}</ThemeCtx.Provider>
 }
 
 /**
- * Custom hook that should be used to access Media context.
+ * Custom hook that should be used to access Theme context.
  */
 export const useTheme = component => {
-  const theme = useContext(Context) || {}
+  // For the theme context, we don't warn on accessing without a provider, b/c
+  // internally components use this hook to check for optionally set theme values
+  // but should fallback to defaults if not set
+  const theme = useContext(ThemeCtx) || {}
   return component ? theme[component] || {} : theme
 }
