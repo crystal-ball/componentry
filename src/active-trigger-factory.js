@@ -1,3 +1,4 @@
+import React from 'react'
 import elem from './elem-factory'
 import ariasComputer from './utils/arias'
 import { btnClasses, cleanBtnClasses } from './Button/Button'
