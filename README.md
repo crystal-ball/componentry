@@ -8,8 +8,8 @@
   <a href="https://www.npmjs.com/package/componentry">
     <img src="https://img.shields.io/npm/v/componentry.svg" alt="NPM version">
   </a>
-  <a href="https://travis-ci.org/crystal-ball/componentry">
-    <img src="https://travis-ci.org/crystal-ball/componentry.svg?branch=master" alt="Travis build status">
+  <a href="https://travis-ci.com/crystal-ball/componentry">
+    <img src="https://travis-ci.com/crystal-ball/componentry.svg?branch=v3" alt="Travis build status">
   </a>
   <a href="https://github.com/crystal-ball/componentry#zenhub">
     <img src="https://img.shields.io/badge/Shipping_faster_with-ZenHub-5e60ba.svg" alt="Issues managed using ZenHub"/>
