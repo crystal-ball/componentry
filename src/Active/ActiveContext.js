@@ -1,5 +1,10 @@
-import { useContext, useEffect, useState } from 'react'
-import Context from './Context'
+import { createContext, useContext, useEffect, useState } from 'react'
+
+/**
+ * Active context
+ */
+const ActiveCtx = createContext({ active: false })
+export default ActiveCtx
 
 /**
  * Components that need transitional active and visible states will use the
@@ -8,7 +13,7 @@ import Context from './Context'
  * to the transition duration for that component.
  */
 
-export const useActive = () => useContext(Context)
+export const useActive = () => useContext(ActiveCtx)
 
 /**
  * Hook handles transitioning display and opacity using active and visible

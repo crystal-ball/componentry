@@ -78,9 +78,13 @@ storiesOf('Core|Button', module)
         Disabled
       </Button>
 
-      <h2 className='storybook-section-header'>Anchor</h2>
-      <Button anchor onClick={action('button-click')}>
-        Anchor
-      </Button>
+      <h2 className='storybook-section-header'>Anchor variant</h2>
+      {Object.keys(colors).map(color => (
+        <p key={color}>
+          <Button anchor color={colors[color]} onClick={action('button-click')}>
+            Anchor
+          </Button>
+        </p>
+      ))}
     </Block>
   ))

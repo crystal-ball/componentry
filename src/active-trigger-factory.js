@@ -1,9 +1,9 @@
 import React from 'react'
 import elem from './elem-factory'
 import ariasComputer from './utils/arias'
-import { btnClasses, cleanBtnClasses } from './Button/Button'
-import { useActive } from './Active/useActive'
+import { useActive } from './Active/ActiveContext'
 import { useTheme } from './Theme/Theme'
+import { targetClassNames } from './utils/componentry'
 
 /**
  * Factory returns custom `<Trigger />` components defined by the options.
@@ -14,13 +14,12 @@ export default function activeTriggerFactory(
   component,
   {
     // Switch to set default anchor value
-    defaultAnchor = true,
+    variantDefault = 'anchor',
     // Map of aria attributes to render with component
     arias = {},
     // The base css class for this component
+    // TODO: how does this relate to variant??
     baseClass = `${component}-trigger`,
-    // Switch to include button classes
-    btnStyles = true,
     // The component name used for display and theme lookups
     name = `${component.slice(0, 1).toUpperCase()}${component.slice(1)}Trigger}`,
     // Overrides component onClick to specified activate/deactivate event
@@ -30,7 +29,6 @@ export default function activeTriggerFactory(
   function ActiveTrigger(props) {
     const {
       children,
-      anchor = defaultAnchor,
       decoration,
       guid,
       // --- Active controls
@@ -39,7 +37,18 @@ export default function activeTriggerFactory(
       activate,
       deactivate,
       ...rest
-    } = { ...useTheme(name), ...useActive(), ...props }
+    } = {
+      as: 'button',
+      type: 'button',
+      variant: variantDefault,
+      ...useTheme(name),
+      ...useActive(),
+      ...props,
+    }
+
+    // Remap target color prop to differentiate from library text color prop
+    rest.targetColor = rest.color
+    rest.color = null
 
     // Handle determining whether to call activate or deactivate on click
     // 1. If a trigger type was passed, call that event always
@@ -50,11 +59,7 @@ export default function activeTriggerFactory(
     else if (activeId) onClick = activeId === active ? deactivate : activate
     else onClick = active ? deactivate : activate
 
-    const isAnchor = !!rest.href
-
     return elem({
-      defaultAs: isAnchor ? 'a' : 'button',
-      type: isAnchor ? undefined : 'button',
       ...ariasComputer({
         active,
         activeId,
@@ -62,11 +67,11 @@ export default function activeTriggerFactory(
         type: 'trigger',
         arias,
       }),
-      classes: [
-        baseClass,
+      componentClassNames: [
+        targetClassNames(rest),
         // For mutli-active triggers add active if the trigger is selected
         { active: activeId && active === activeId },
-        btnStyles ? btnClasses({ anchor, ...rest }) : null,
+        baseClass,
       ],
       onClick,
       // For multi-active elems, the value is used in `withState` to handle
@@ -79,7 +84,7 @@ export default function activeTriggerFactory(
         </>
       ),
       // Pass through props rest last to allow any instance overrides
-      ...cleanBtnClasses(rest),
+      ...rest,
     })
   }
   ActiveTrigger.displayName = name

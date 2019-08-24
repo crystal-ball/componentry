@@ -1,19 +1,27 @@
-import { useTheme } from '../Theme/Theme'
 import elem from '../elem-factory'
-import { btnClasses, cleanBtnClasses } from '../Button/Button'
+import { targetClassNames } from '../utils/componentry'
+import { useTheme } from '../Theme/Theme'
 
-export const Anchor = props => {
-  const { button, ...rest } = { ...useTheme('Anchor'), ...props }
+/**
+ * Anchor component
+ */
+export const Anchor = ({ button, ...props }) => {
+  const merged = {
+    as: 'a',
+    variant: button ? 'btn' : 'anchor',
+    ...useTheme('Anchor'),
+    ...props,
+  }
+
+  // Remap target color prop to differentiate from library text color prop
+  merged.targetColor = merged.color
+  merged.color = null
 
   return elem({
-    defaultAs: 'a',
-    // Passing button creates an anchor with button styles
-    classes: button ? btnClasses(rest) : 'anchor',
-    // Only clean btn classes for button style or default type props (eg color)
-    // won't work
-    ...(button ? cleanBtnClasses(rest) : rest),
+    componentClassNames: targetClassNames(merged),
+    ...merged,
   })
 }
 
-export const Header = props => elem({ defaultAs: 'h1', ...useTheme('Header'), ...props })
-export const Text = props => elem({ defaultAs: 'p', ...useTheme('Text'), ...props })
+export const Header = props => elem({ as: 'h1', ...useTheme('Header'), ...props })
+export const Text = props => elem({ as: 'p', ...useTheme('Text'), ...props })

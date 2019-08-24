@@ -1,5 +1,5 @@
 import React from 'react'
-import { cleanup, render, fireEvent } from '@testing-library/react'
+import { cleanup, render } from '@testing-library/react'
 
 import Button from './Button'
 // import elementTests from '../utils-test/element-tests'
@@ -10,48 +10,108 @@ describe('<Button/>', () => {
 
   afterEach(cleanup)
 
-  test('should render a button element default', () => {
+  // 3. Test default as is 'button'
+  // 4. Test passing block provides $flavor-block
+  // 5. Test passing color provides $flavor-color
+  // 6. Test passing outline provides $flavor-outline-$outline
+  // 7. Test passing size provides $flavor-size
+  // 8. Test passing disabled
+
+  test('When no props are passed, then defaults should be rendered', () => {
     const { container, getByText } = render(<Button>Button</Button>)
 
-    // By default the button should have type button
+    // By default the button should have type button for a11y
     expect(container).toContainElement(document.querySelector('button[type="button"]'))
-    // By default the class btn is included
+    // By default the flavor btn should be included and not btn-anchor
     expect(getByText('Button')).toHaveClass('btn')
-    // Don't render anchor class without anchor prop
-    expect(getByText('Button')).not.toHaveClass('btn-anchor')
+    // TODO: Is it possible to get the classes from the element and just check that?
+    // ...there shouldn't be any other classes
   })
 
-  test('should render any brand classes for prop color', () => {
-    const { getByText } = render(<Button color='info'>Button</Button>)
-    expect(getByText('Button')).toHaveClass('btn btn-info')
-  })
-
-  test('should render the outline classes for outline', () => {
-    const { getByText } = render(<Button outline='primary'>Button</Button>)
-    expect(getByText('Button')).toHaveClass('btn btn-outline-primary')
-  })
-
-  test('should render class for button size', () => {
-    const { getByText } = render(<Button size='sm'>Button</Button>)
-    expect(getByText('Button')).toHaveClass('btn btn-sm')
-  })
-
-  test('should render only class btn-anchor when passed prop', () => {
-    const { getByText } = render(<Button anchor>Button</Button>)
-    expect(getByText('Button')).toHaveClass('btn-anchor')
-  })
-
-  test('should use override type', () => {
+  test('When `type` is passed, then it override the default', () => {
     const { container } = render(<Button type='reset'>Button</Button>)
     expect(container).toContainElement(document.querySelector('button[type="reset"]'))
   })
 
-  test('simulates click events', () => {
-    const onButtonClick = jest.fn()
-    const { getByText } = render(<Button onClick={onButtonClick}>Button</Button>)
+  test('When `flavor` is passed, then it should be used as base className value', () => {
+    const { getByText } = render(<Button flavor='btn-test'>Button</Button>)
+    expect(getByText('Button')).toHaveClass('btn-test')
+    // TODO: assert only classname
+  })
 
-    fireEvent.click(getByText('Button'))
-    expect(onButtonClick).toHaveBeenCalled()
+  test('When `block` is passed, then the block className should render', () => {
+    const { getByText } = render(
+      <>
+        <Button block>Button</Button>
+        <Button flavor='btn-test' block>
+          Flavor Button
+        </Button>
+      </>,
+    )
+    expect(getByText('Button')).toHaveClass('btn btn-block')
+    expect(getByText('Flavor Button')).toHaveClass('btn-test btn-test-block')
+  })
+
+  test('When `color` is passed, then the color className should render', () => {
+    const { getByText } = render(
+      <>
+        <Button color='info'>Button</Button>
+        <Button flavor='btn-test' color='info'>
+          Flavor Button
+        </Button>
+      </>,
+    )
+    expect(getByText('Button')).toHaveClass('btn btn-info')
+    expect(getByText('Flavor Button')).toHaveClass('btn-test btn-test-info')
+  })
+
+  test('When `outline` is passed, then the outline className should render', () => {
+    const { getByText } = render(
+      <>
+        <Button outline='info'>Button</Button>
+        <Button flavor='btn-test' outline='info'>
+          Flavor Button
+        </Button>
+      </>,
+    )
+    expect(getByText('Button')).toHaveClass('btn btn-info-outline')
+    expect(getByText('Flavor Button')).toHaveClass('btn-test btn-test-info-outline')
+  })
+
+  test('When `size` is passed, then the size className should render', () => {
+    const { getByText } = render(
+      <>
+        <Button size='sm'>Button</Button>
+        <Button flavor='btn-test' size='sm'>
+          Flavor Button
+        </Button>
+      </>,
+    )
+    expect(getByText('Button')).toHaveClass('btn btn-sm')
+    expect(getByText('Flavor Button')).toHaveClass('btn-test btn-test-sm')
+  })
+
+  test('When `anchor` is passed, then it should be mapped to btn-anchor flavor', () => {
+    const { getByText } = render(
+      <>
+        <Button anchor>Button</Button>
+        <Button anchor color='info'>
+          Info Button
+        </Button>
+        <Button anchor outline='info'>
+          Outline Info Button
+        </Button>
+        <Button anchor size='sm'>
+          Small Button
+        </Button>
+      </>,
+    )
+    expect(getByText('Button')).toHaveClass('btn-anchor')
+    expect(getByText('Info Button')).toHaveClass('btn-anchor btn-anchor-info')
+    expect(getByText('Outline Info Button')).toHaveClass(
+      'btn-anchor btn-anchor-outline-info',
+    )
+    expect(getByText('Small Button')).toHaveClass('btn-anchor btn-anchor-outline-info')
   })
 })
 

@@ -1,7 +1,7 @@
 import React, { useEffect, useState, useRef } from 'react'
 import nanoid from 'nanoid'
 
-import ActiveProvider from './Active/Context'
+import ActiveProvider from './Active/ActiveContext'
 import elem from './elem-factory'
 import { closest } from './utils/dom'
 import { useTheme } from './Theme/Theme'
@@ -143,7 +143,7 @@ export default function activeContainerFactory(
       <ActiveProvider.Provider value={activeValues}>
         {elem({
           'data-id': guid.current,
-          classes: [element, direction, { [`${element}-${size}`]: size }],
+          componentClassNames: [element, direction, { [`${element}-${size}`]: size }],
 
           // For elements with mouse events we need to know when the mouse event
           // occurs on the parent element, not the trigger element

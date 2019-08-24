@@ -104,7 +104,6 @@ $btn-states-map: map-merge($btn-defaults, $btn-states);
 
   // --- Outline variant
   .btn-outline-#{$color} {
-    // TODO: this should use the map override mechanism as: `outline-primary-<modifier>`
     background: transparent;
     border-color: $value;
     color: $value;
@@ -133,7 +132,6 @@ $btn-states-map: map-merge($btn-defaults, $btn-states);
 // 'Link' theme color variant has the padding and alignment of a button with
 // font styles matching anchors (can be used for things like secondary CTAs)
 .btn-link {
-  // TODO: this should use the map override mechanism as: `link-<modifier>`
   background: transparent;
   color: $link-color;
   font-weight: $font-weight-normal;
@@ -153,53 +151,6 @@ $btn-states-map: map-merge($btn-defaults, $btn-states);
 
   &.disabled {
     color: $btn-link-disabled-color;
-  }
-}
-
-//
-// Anchor button
-//
-
-// The `.btn-link` style button has the font styles of an anchor AND all of the
-// regular padding of a button. For 💯 Accessibility we want to have buttons
-// that look exactly like links for in application triggers, `btn-anchor`
-// creates a button styled exactly like an anchor. This should be used for any
-// application actions that are not route navigations.
-.btn-anchor {
-  -webkit-appearance: none !important; // Remove Chrome native button styling
-  display: inline-block;
-  padding: 0;
-  background-color: transparent;
-
-  // Set anchor font styles
-  color: $link-color;
-  font-family: $font-family-sans-serif;
-  font-size: $font-size-base;
-  font-weight: $font-weight-normal;
-  line-height: $line-height-base;
-  letter-spacing: 0;
-  text-transform: none;
-
-  user-select: auto;
-  vertical-align: baseline;
-  white-space: normal;
-
-  border: none;
-  border-radius: 0;
-
-  &:hover {
-    color: $link-hover-color;
-    text-decoration: $link-hover-decoration;
-  }
-
-  &:active {
-    color: $link-active-color;
-    text-decoration: $link-active-decoration;
-  }
-
-  &.disabled {
-    color: $link-disabled-color;
-    text-decoration: $link-disabled-decoration;
   }
 }
 

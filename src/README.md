@@ -1,61 +1,37 @@
-## Component Standards
+## Component standards checklist
 
-## State
+- All components accept an `as` prop to control the wrapper element
+- Components with subcomponents should accept a shorthand render prop for that
+  subcomponent matching the name.
+- Props not used by the library should be passed through container components
+  using spread operator
 
-All components should be available with varying levels of control specified:
+## Stateful components
 
-* **uncontrolled**: The component uses internal state and trigger methods
-* **controlled**: The component's state is a parameter. Changing state requires
-  passing methods in component hooks to handle externally changing state. Hooks
-  are available to know when events are called.
+- All stateful components use an `active` prop to determine visibility state
+- Component state management can be uncontrolled, or controlled:
+  - By default components are uncontrolled and will internally manage updating
+    state
+  - Components can be controlled by passing override `activate` and `deactivate`
+    props that manage updating state
+- Stateful components changes can be observed by passing `on<EVENT>` props
 
-#### Active Prop
+## Code patterns
 
-Any component that toggles state should use prop `active` that can be controlled
-and defaults to a private `_active` if not controlled
+1. Using merge and spread to layer props to generate final values
 
-#### Changing State
+```jsx
+const merged = { as: 'button', ...useTheme('Button'), ...props }
+```
 
-Method `toggleActive` controls calling state change, accepts a boolean for
-explict state changes.
+_This allows a component to cleanly top level set default values for a
+component, override those with context values and override those with JSX prop
+values._
 
-#### Hooks
+## TODO
 
-All components that toggle state should call hooks for:
-
-* onActivate
-* onActivated
-* onDeactivate
-* onDeactivated
-
-Hooks should be called with the component as the first parameter and the event
-as the second parameter.
-
-#### Render as
-
-Each component should accept an `as` prop that can be used to specify what a
-component should be rendered as. Using an upper case `as` for the prop allows us
-to directly use the prop in the template without needing another variable (b/c
-JSX component must be upper case).
-
-#### Shortcut Properties
-
-Allow any subcomponent to be passed as a paremeter to the parent component for
-simple invocations. The property name is always the subcomponent name.
-
-#### Child Properties
-
-Don't pass properties to children, expose them as part of the API. Then any
-properties can be passed to those components.
-
-#### Wrapping Containers
-
-Wrapping tags should use ...rest to allow passing any data to components, this
-can also be used with the render as feature to pass specific data to any
-component that is rendered for an element.
-
-#### Exports
-
-All components should be in an individual file and export as default. Classes
-should export the default class and functional components should declare a
-function and default export it.
+- Animating reqs
+- Does `active` NEED to be passed when creating a controlled component with
+  override activate/deactivate props?
+- Change the shorthand to `render<COMPONENT>`, eg instead of passing `Content`,
+  pass `renderContent`???

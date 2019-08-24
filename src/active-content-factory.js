@@ -1,7 +1,7 @@
 import React from 'react'
 import elem from './elem-factory'
 import ariasComputer from './utils/arias'
-import { useActive } from './Active/useActive'
+import { useActive } from './Active/ActiveContext'
 import { useTheme } from './Theme/Theme'
 
 /**
@@ -37,7 +37,7 @@ export default function ActiveContentFactory(
         type: 'content',
         arias,
       }),
-      classes: baseClass,
+      componentClassNames: baseClass,
       children: (
         <>
           {popper && (

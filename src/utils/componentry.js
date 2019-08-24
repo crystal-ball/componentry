@@ -1,16 +1,9 @@
 /**
- * Componentry styles design:
- * 1. Default provide utility props for component
- * 2. Pass through numbers to styles
- * 3. Pass through strings to styles
- * 4. Classes are an optimization
+ * Library utility functions for working with props to className+style mappings
+ * @module
  */
 
-// Library class names
-// ---------------------------------------------------------------------------
-
-const classNamesMap = {}
-;[
+const classNamesProps = new Set([
   'bg',
   'borderColor',
   'color',
@@ -21,8 +14,42 @@ const classNamesMap = {}
   'size',
   'textAlign',
   'uppercase',
-].forEach(p => {
-  classNamesMap[p] = true
+])
+
+const stylesProps = new Set([
+  'border',
+  'fontSize',
+  'letterSpacing',
+  'lineHeight',
+  'width',
+  'maxWidth',
+  'minWidth',
+  'height',
+  'maxHeight',
+  'minHeight',
+])
+
+// Generate set of border (b*), margin (m*), and padding (p*) style props
+const shortStylesProps = new Set([])
+const base = {
+  m: 'margin',
+  p: 'padding',
+  b: 'border',
+}
+const modifier = {
+  t: 'Top',
+  l: 'Left',
+  r: 'Right',
+  b: 'Bottom',
+  x: ['Left', 'Right'],
+  y: ['Top', 'Bottom'],
+}
+
+Object.keys(base).forEach(b => {
+  shortStylesProps.add(b)
+  Object.keys(modifier).forEach(m => {
+    shortStylesProps.add(b + m)
+  })
 })
 
 const generateClassNames = p => ({
@@ -38,56 +65,20 @@ const generateClassNames = p => ({
   [`text-${p.textAlign}`]: p.textAlign,
 })
 
-// Library styles
-// ---------------------------------------------------------------------------
-
-const stylesMap = {}
-;[
-  /* includes m* and p* styles */
-  /* includes b* and border* styles */
-  'border',
-  'fontSize',
-  'letterSpacing',
-  'lineHeight',
-  'width',
-  'maxWidth',
-  'minWidth',
-  'height',
-  'maxHeight',
-  'minHeight',
-].forEach(baseStyle => {
-  stylesMap[baseStyle] = baseStyle
-})
-
-const base = {
-  m: 'margin',
-  p: 'padding',
-  b: 'border',
-}
-
-const modifier = {
-  t: 'Top',
-  l: 'Left',
-  r: 'Right',
-  b: 'Bottom',
-  x: ['Left', 'Right'],
-  y: ['Top', 'Bottom'],
-}
-;['m', 'p', 'b'].forEach(b => {
-  stylesMap[b] = base[b]
-  ;['t', 'r', 'b', 'l', 'x', 'y'].forEach(m => {
-    stylesMap[b + m] = base[b] + modifier[m]
-
-    // Add border* modifiers
-    const border = `border${modifier[m]}`
-    stylesMap[border] = border
-  })
-})
-
-// Componentry utility
-// ---------------------------------------------------------------------------
-
-const componentry = ({
+/**
+ * Library utility that handles:
+ * 1. filtering out library props
+ * 2. Mapping library props to style and className values
+ *
+ * NB: values are passed through without additional mapping, eg the number 1
+ * isn't mapped to 1px or 1rem.
+ */
+export const componentry = ({
+  variant,
+  block,
+  outline,
+  targetColor,
+  // Component props filtered out
   active,
   visible,
   activate,
@@ -98,50 +89,57 @@ const componentry = ({
   onDeactivate,
   onDeactivated,
   // --- Library props filtered out
-  ...filtered
+  ...filteredProps
 }) => {
   const classNames = {}
-  const style = {}
+  const styles = {}
   const rest = {}
 
-  Object.keys(filtered).forEach(p => {
-    if (stylesMap[p]) {
-      const match = p.match(/([pm])([xy])/)
-      if (match) {
-        const [, b, m] = match
-        style[base[b] + modifier[m][0]] = filtered[p]
-        style[base[b] + modifier[m][1]] = filtered[p]
+  // For each prop passed to any component, bucket it into a library className
+  // or style set or pass through in rest
+  Object.keys(filteredProps).forEach(prop => {
+    if (classNamesProps.has(prop)) {
+      classNames[prop] = filteredProps[prop]
+    } else if (stylesProps.has(prop)) {
+      styles[prop] = filteredProps[prop]
+    } else if (shortStylesProps.has(prop)) {
+      // Map the shorthand notation to valid style attributes, eg mt -> marginTop
+      const [, b, m] = prop.match(/([bmp])([trblxy])?/)
+      if (m === 'x' || m === 'y') {
+        // x and y values have to be broken out into the individual direction values
+        styles[base[b] + modifier[m][0]] = filteredProps[prop]
+        styles[base[b] + modifier[m][1]] = filteredProps[prop]
       } else {
-        style[stylesMap[p]] = filtered[p]
+        styles[base[b] + (modifier[m] || '')] = filteredProps[prop]
       }
-    } else if (classNamesMap[p]) {
-      classNames[p] = filtered[p]
     } else {
-      rest[p] = filtered[p]
+      rest[prop] = filteredProps[prop]
     }
   })
 
   return {
-    className: generateClassNames(classNames),
+    libraryClassNames: generateClassNames(classNames),
     rest,
-    style,
+    libraryStyles: styles,
   }
 }
 
-export default componentry
-
-// type Props = {
-//   // Inline style props
-//   fontSize?: number | string, // num -> px
-//   letterSpacing?: number | string, // num -> px
-//   lineHeight?: number | string, // num -> px
-//   // -- Utility class name props
-//   /** Additionally all theme colors and grays  */
-//   color?: 'white' | 'body' | 'muted',
-//   fontWeight?: 'light' | 'normal' | 'bold',
-//   italic?: boolean,
-//   monospace?: boolean,
-//   size?: 'sm' | 'lg',
-//   textAlign?: 'justify' | 'right' | 'center' | 'left',
-//   uppercase?: boolean,
-// }
+/**
+ * Fn generates the classes for anchor and button type target elements
+ */
+export const targetClassNames = ({
+  variant,
+  block,
+  targetColor,
+  disabled,
+  outline,
+  size,
+}) => ({
+  [variant]: true,
+  [`${variant}-block`]: block,
+  [`${variant}-${targetColor}`]: targetColor,
+  [`${variant}-outline-${outline}`]: outline,
+  [`${variant}-${size}`]: size,
+  // We include a disabled class AND pass disabled prop to btn element for a11y
+  disabled,
+})
