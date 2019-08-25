@@ -46,7 +46,7 @@
 
 .card-subtitle {
   margin-top: -($card-spacer-y / 2);
-  margin-bottom: 0;
+  margin-bottom: $card-spacer-y;
 }
 
 .card-text:last-child {

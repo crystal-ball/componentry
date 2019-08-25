@@ -1,0 +1,28 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Card /> snapshots renders correctly 1`] = `
+<div
+  class="card"
+>
+  <div
+    class="card-header"
+  >
+    Header
+  </div>
+  <div
+    class="card-body"
+  >
+    <h4
+      class="card-title"
+    >
+      Title
+    </h4>
+    Body
+  </div>
+  <div
+    class="card-footer"
+  >
+    Footer
+  </div>
+</div>
+`;
