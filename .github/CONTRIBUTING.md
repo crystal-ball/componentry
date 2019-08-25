@@ -1,6 +1,6 @@
 # Contributing to Componentry
 
-Contributions are welcome! This guide is a resource for navigating the package
+Contributions are welcome! This guide is a resource for navigating the project
 structure and conventions.
 
 ## Code of Conduct
@@ -10,16 +10,15 @@ contributors are required to adhere to the guidelines.
 
 ## Development process
 
+Development work in the project is done inside Storybook stories. The stories
+for each component are colocated in the component folder.
+
 Get started developing Componentry with the following steps:
 
 1. Fork and clone the repository.
-1. Create a branch off of `develop`. The `master` branch is for releases,
-   development and PRs should target develop branch, this will ensure you have
-   all in flight work.
-1. Install all dependencies with `npm install`. We use NPM ^5.6 to manage
-   dependencies.
-1. Start the development server for the documentation app with `npm start`. The
-   documentation app is used for developing the library code.
+1. Install all dependencies with `npm install`. _(We use NPM ^5.6 to manage
+   dependencies.)_
+1. Start the Storybook development server with `npm start`.
 1. Make your changes and add or update tests. Ensure the test suite still passes
    by running `npm test`.
 1. Create a PR! Thank You 🎉!!!
@@ -27,8 +26,8 @@ Get started developing Componentry with the following steps:
 #### Committing with Commitizen
 
 [Commitizen][] is configured to provide consistent commit messages and enable
-automatic semantic releases. Run `npm run commit` to be guided through a commit
-message.
+automatic semantic releases. A Husky pre-commit hook will start an interactive
+terminal session to help build a commit message.
 
 #### Style guide
 

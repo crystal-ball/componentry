@@ -4,6 +4,8 @@
 // Componentry component styles
 //
 
+@import '../src/Type/type';
+
 @import '../src/Alert/alert';
 @import '../src/Button/button';
 @import '../src/ButtonGroup/button-group';
@@ -21,7 +23,3 @@
 
 @import '../src/FormGroup/form-group';
 @import '../src/Input/input';
-
-// Type styles
-@import '../src/Type/anchor';
-@import '../src/Type/header';

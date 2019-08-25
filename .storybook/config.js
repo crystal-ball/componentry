@@ -33,6 +33,7 @@ function loadStories() {
   // Update app welcome story, which is the last story req'd, to be first displayed
   const orderedStories = stories.keys()
   orderedStories.unshift(orderedStories.pop())
+  orderedStories.unshift(orderedStories.pop())
   orderedStories.forEach(filename => stories(filename))
 }
 configure(loadStories, module)

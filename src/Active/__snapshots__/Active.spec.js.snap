@@ -1,0 +1,23 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Active /> snapshots renders correctly 1`] = `
+<div
+  class="active"
+  data-id="guid"
+>
+  <button
+    aria-controls="guid"
+    class="anchor active-trigger"
+    type="button"
+  >
+    Trigger
+  </button>
+  <div
+    aria-hidden="true"
+    class="active-content"
+    id="guid"
+  >
+    Content
+  </div>
+</div>
+`;

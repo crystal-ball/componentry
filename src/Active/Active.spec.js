@@ -1,12 +1,14 @@
 import React from 'react'
-import { render } from 'enzyme'
+import { cleanup, render } from '@testing-library/react'
 
-import Active from './Active'
+import Active from './ActiveComponent'
 
 import activationTestSuite from '../utils-test/activation-tests'
 import elementTests from '../utils-test/element-tests'
 
 describe('<Active />', () => {
+  afterEach(cleanup)
+
   activationTestSuite(Active, { name: 'active' })
   elementTests(Active)
   elementTests(Active.Trigger)
@@ -17,13 +19,13 @@ describe('<Active />', () => {
 // ---------------------------------------------------------------------------
 describe('<Active /> snapshots', () => {
   it('renders correctly', () => {
-    const tree = render(
+    const { container } = render(
       <Active>
         <Active.Trigger>Trigger</Active.Trigger>
         <Active.Content>Content</Active.Content>
       </Active>,
     )
 
-    expect(tree).toMatchSnapshot()
+    expect(container.firstChild).toMatchSnapshot()
   })
 })

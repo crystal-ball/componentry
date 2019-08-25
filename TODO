@@ -1,5 +1,7 @@
 # TODO
 
+- Make a story for library principles like render as prop.
+- Document that classNames are additive, they don't override. SHOULD THAT BE THE CASE???
 - The useActive hook passes everything through which needs to be cleaned (eg guid in
   Alert)
 - Dropdown: Default focus on open first item
@@ -7,7 +9,6 @@
 - Come up with a term for Active components with multiple elements instead of multi-active
 - Come up with a term for elements with wrappers around content instead of `popper`
 - Change `btnStyles` to `btnClasses`
-- Change `defaultAnchor to anchorDefault
 - Change defaultDirection to directionDefault
 - Why was `activeId` default to an empty string?
 - Check body overflow on render and adjust width if needed in Tooltip and Popover
@@ -15,6 +16,7 @@
 - Rename `tabs-panes-pane` to `tab-content`
 - Document setting up spacing styles that change by breakpoint, eg greater padding in
   large screens than small screens
+- Are border<DIRECTION> props working??
 
 ## Classes for factories
 
@@ -22,3 +24,5 @@ By default a className is assigned to each generated component in the active com
 factories using the passed name. For components that need a different `baseClass`, it can
 be passed explicitly. Similarly a `baseName` can be passed to override the default
 component name used to look up theme values.
+
+- What's better: `variant` or `flavor`

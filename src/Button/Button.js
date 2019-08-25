@@ -1,27 +1,25 @@
 import elem from '../elem-factory'
+import { targetClassNames } from '../utils/componentry'
 import { useTheme } from '../Theme/Theme'
 
-export const btnClasses = p => ({
-  btn: !p.anchor,
-  'btn-anchor': p.anchor,
-  'btn-block': p.block,
-  [`btn-${p.size}`]: p.size,
-  [`btn-outline-${p.outline}`]: p.outline,
-  disabled: p.disabled,
-  // Button color switching
-  [`btn-${p.color}`]: !p.anchor && p.color,
-  [`text-${p.color}`]: p.anchor && p.color,
-})
+/**
+ * Button component
+ */
+export default function Button({ anchor, ...props }) {
+  const merged = {
+    as: 'button',
+    type: 'button',
+    variant: anchor ? 'anchor' : 'btn',
+    ...useTheme('Button'),
+    ...props,
+  }
 
-export const cleanBtnClasses = ({ anchor, block, color, outline, size, ...rest }) => rest
-
-export default function Button(props) {
-  const merged = { ...useTheme('Button'), ...props }
+  // Remap target color prop to differentiate from library text color prop
+  merged.targetColor = merged.color
+  merged.color = null
 
   return elem({
-    defaultAs: 'button',
-    type: 'button',
-    classes: btnClasses(merged),
-    ...cleanBtnClasses(merged),
+    componentClassNames: targetClassNames(merged),
+    ...merged,
   })
 }

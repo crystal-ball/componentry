@@ -1,34 +1,35 @@
 import { createElement } from 'react'
 import classnames from 'classnames'
-import componentry from './utils/componentry'
+import { componentry } from './utils/componentry'
 
 /**
  * Utility function handles calling React.createElement such that the component
- * render element can be specified with an `as` prop and component `className`
- * prop is merged with the convenience `classes` config.
+ * render element can be specified with an `as` prop and all classes and styles
+ * are merged properly.
  *
  * (This lets us create elements that are very flexible with much less verbose
- * code at the definition site.)
- *
- * NOTE: we could use the useContext to look up theme and pluck out any default
- * assigned classNames here... but first we're going to provide consistent and
- * useful classes on all elements...
+ * code at the definition site)
  */
 export default function elementFactory({
-  as,
-  classes,
+  as = 'div',
   className,
-  defaultAs = 'div',
+  componentClassNames,
   style,
-  ...rest
+  themeClassName,
+  ...merged
 }) {
   // The componentry util will: filter out remaining library props, create base
   // styles, and create base classNames
-  const c = componentry(rest)
+  const c = componentry(merged)
 
-  return createElement(as || defaultAs, {
-    style: { ...c.style, ...style },
-    className: classnames(classes, className, c.className),
+  return createElement(as, {
+    style: { ...c.libraryStyles, ...style },
+    className: classnames(
+      themeClassName, // Context theme
+      className, // JSX className prop
+      componentClassNames, // Component props computed classes
+      c.libraryClassNames, // Library props computed classes
+    ),
     ...c.rest,
   })
 }

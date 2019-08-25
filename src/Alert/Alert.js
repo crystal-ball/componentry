@@ -2,7 +2,7 @@ import React from 'react'
 import Close from '../Close/Close'
 import elem from '../elem-factory'
 import { useTheme } from '../Theme/Theme'
-import { useActive, useVisible } from '../Active/useActive'
+import { useActive, useVisible } from '../Active/Active'
 
 /**
  * Alerts provide contextual feedback to users. Alerts are available in the info
