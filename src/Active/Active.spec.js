@@ -1,7 +1,7 @@
 import React from 'react'
 import { cleanup, render } from '@testing-library/react'
 
-import Active from './Active'
+import Active from './ActiveComponent'
 
 import activationTestSuite from '../utils-test/activation-tests'
 import elementTests from '../utils-test/element-tests'

@@ -4,7 +4,7 @@ import React from 'react'
 import { storiesOf } from '@storybook/react'
 import { action } from '@storybook/addon-actions'
 
-import Active from './Active'
+import Active from './ActiveComponent'
 import Block from '../Block/Block'
 
 storiesOf('Core|Active', module).add('<Active />', () => (
@@ -45,6 +45,21 @@ storiesOf('Core|Active', module).add('<Active />', () => (
     <Active size='sm' direction='up'>
       <Active.Trigger>Toggle</Active.Trigger>
       <Active.Content>Active component content</Active.Content>
+    </Active>
+
+    <h2 className='storybook-section-header'>FaCC pattern</h2>
+    <Active>
+      {({ active, activate, deactivate }) => (
+        <>
+          <div>{String(active)}</div>
+          <button type='button' onClick={activate}>
+            activate
+          </button>
+          <button type='button' onClick={deactivate}>
+            deactivate
+          </button>
+        </>
+      )}
     </Active>
   </Block>
 ))

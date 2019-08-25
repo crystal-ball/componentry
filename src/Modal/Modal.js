@@ -5,7 +5,7 @@ import elem from '../elem-factory'
 import Close from '../Close/Close'
 import { useNoScroll } from '../hooks'
 import { useTheme } from '../Theme/Theme'
-import { useActive, useVisible } from '../Active/ActiveContext'
+import { useActive, useVisible } from '../Active/Active'
 
 const ModalCtx = createContext()
 

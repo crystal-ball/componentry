@@ -1,7 +1,7 @@
 import React, { useEffect, useState, useRef } from 'react'
 import nanoid from 'nanoid'
 
-import ActiveProvider from './Active/ActiveContext'
+import ActiveProvider from './Active/Active'
 import elem from './elem-factory'
 import { closest } from './utils/dom'
 import { useTheme } from './Theme/Theme'
