@@ -8,15 +8,16 @@ export default function Flex(props) {
   }
 
   return elem({
-    classes: {
+    componentClassNames: {
       'd-flex': !inline,
       'd-inline-flex': inline,
-      'flex-column': direction === 'column',
-      'flex-column-reverse': direction === 'column-reverse',
-      'flex-row': direction === 'row',
-      'flex-row-reverse': direction === 'row-reverse',
-      [`align-items-${align}`]: align,
+      // column, column-reverse, row, row-reverse
+      [`flex-${direction}`]: direction,
+      // wrap, wrap-reverse, nowrap
       [`flex-${wrap}`]: wrap,
+      // start, end, center, baseline, stretch
+      [`align-items-${align}`]: align,
+      // start, end, center, around, between, evenly
       [`justify-content-${justify}`]: justify,
     },
     ...rest,

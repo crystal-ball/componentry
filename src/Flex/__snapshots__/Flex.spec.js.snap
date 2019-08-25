@@ -1,0 +1,16 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Flex /> snapshots renders correctly 1`] = `
+<div>
+  <div
+    class="d-flex"
+  >
+    Flex content
+  </div>
+  <div
+    class="d-inline-flex"
+  >
+    Inline flex content
+  </div>
+</div>
+`;
