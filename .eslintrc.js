@@ -11,6 +11,8 @@ module.exports = {
   },
 
   rules: {
+    // Disable no underscore, library uses them for shadowed props
+    'no-underscore-dangle': 'off',
     // Disable prop types checking, project has TS typings for components
     'react/prop-types': 'off',
     'react/require-default-props': 'off',

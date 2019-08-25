@@ -4,9 +4,9 @@ import elem from '../elem-factory'
 
 export default function Close(props) {
   return elem({
-    defaultAs: 'button',
     'aria-label': 'close',
-    classes: 'btn-close',
+    as: 'button',
+    componentClassNames: 'close',
     type: 'button',
     children: (
       <svg className='icon icon-close font' role='img'>

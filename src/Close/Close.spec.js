@@ -1,10 +1,12 @@
 import React from 'react'
-import { render } from 'enzyme'
+import { cleanup, render } from '@testing-library/react'
 
 import Close from './Close'
 import elementTests from '../utils-test/element-tests'
 
 describe('<Close />', () => {
+  afterEach(cleanup)
+
   // Basic library element test suite
   elementTests(Close)
 })
@@ -13,7 +15,7 @@ describe('<Close />', () => {
 // ---------------------------------------------------------------------------
 describe('<Close /> snapshots', () => {
   it('renders correctly', () => {
-    const tree = render(<Close />)
-    expect(tree).toMatchSnapshot()
+    const { container } = render(<Close />)
+    expect(container.firstChild).toMatchSnapshot()
   })
 })

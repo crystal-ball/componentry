@@ -5,7 +5,7 @@ import { storiesOf } from '@storybook/react'
 import { boolean, select } from '@storybook/addon-knobs'
 
 import Alert from './Alert'
-import Active from '../Active/Active'
+import Active from '../Active/ActiveComponent'
 import { Anchor } from '../Type/Type'
 
 const colors = {
@@ -42,24 +42,45 @@ storiesOf('Active|Alert', module)
         <h2 className='storybook-section-header'>Colors</h2>
         <div className='d-flex flex-column'>
           {Object.keys(colors).map(color => (
-            <Active defaultActive key={color}>
-              <Alert color={colors[color]} dismissible>
-                {color} - Provide contextual info with an alert.
-              </Alert>
-            </Active>
+            <Alert color={colors[color]} key={color}>
+              <h4 className='alert-heading'>Well done!</h4>
+              <p className='mb-0'>You successfully read this important alert message.</p>
+              <hr className='hr' />
+              <Anchor href='#' className='alert-link'>
+                Go home
+              </Anchor>
+              .
+            </Alert>
           ))}
         </div>
 
         <h2 className='storybook-section-header'>Outline</h2>
         <div className='d-flex flex-column'>
           {Object.keys(colors).map(color => (
-            <Active defaultActive key={color}>
-              <Alert color={colors[color]} outline dismissible>
-                {color} - Provide contextual info with an alert.
-              </Alert>
-            </Active>
+            <Alert color={colors[color]} outline key={color}>
+              <h4 className='alert-heading'>Well done!</h4>
+              <p className='mb-0'>You successfully read this important alert message.</p>
+              <hr className='hr' />
+              <Anchor href='#' className='alert-link'>
+                Go home
+              </Anchor>
+              .
+            </Alert>
           ))}
         </div>
+
+        <h2 className='storybook-section-header'>Dismissible</h2>
+        <Active defaultActive>
+          <Alert color='primary' dismissible>
+            <h4 className='alert-heading'>Well done!</h4>
+            <p className='mb-0'>You successfully read this important alert message.</p>
+            <hr className='hr' />
+            <Anchor href='#' className='alert-link'>
+              Go home
+            </Anchor>
+            .
+          </Alert>
+        </Active>
 
         <h2 className='storybook-section-header'>Aria title</h2>
         <Alert

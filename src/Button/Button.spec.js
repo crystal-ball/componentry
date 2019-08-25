@@ -5,16 +5,16 @@ import Button from './Button'
 // import elementTests from '../utils-test/element-tests'
 
 describe('<Button/>', () => {
+  afterEach(cleanup)
+
   // Basic library element test suite
   // elementTests(Button)
 
-  afterEach(cleanup)
-
   // 3. Test default as is 'button'
-  // 4. Test passing block provides $flavor-block
-  // 5. Test passing color provides $flavor-color
-  // 6. Test passing outline provides $flavor-outline-$outline
-  // 7. Test passing size provides $flavor-size
+  // 4. Test passing block provides $variant-block
+  // 5. Test passing color provides $variant-color
+  // 6. Test passing outline provides $variant-outline-$outline
+  // 7. Test passing size provides $variant-size
   // 8. Test passing disabled
 
   test('When no props are passed, then defaults should be rendered', () => {
@@ -22,7 +22,7 @@ describe('<Button/>', () => {
 
     // By default the button should have type button for a11y
     expect(container).toContainElement(document.querySelector('button[type="button"]'))
-    // By default the flavor btn should be included and not btn-anchor
+    // By default the variant btn should be included and not anchor
     expect(getByText('Button')).toHaveClass('btn')
     // TODO: Is it possible to get the classes from the element and just check that?
     // ...there shouldn't be any other classes
@@ -33,8 +33,8 @@ describe('<Button/>', () => {
     expect(container).toContainElement(document.querySelector('button[type="reset"]'))
   })
 
-  test('When `flavor` is passed, then it should be used as base className value', () => {
-    const { getByText } = render(<Button flavor='btn-test'>Button</Button>)
+  test('When `variant` is passed, then it should be used as base className value', () => {
+    const { getByText } = render(<Button variant='btn-test'>Button</Button>)
     expect(getByText('Button')).toHaveClass('btn-test')
     // TODO: assert only classname
   })
@@ -43,55 +43,55 @@ describe('<Button/>', () => {
     const { getByText } = render(
       <>
         <Button block>Button</Button>
-        <Button flavor='btn-test' block>
-          Flavor Button
+        <Button variant='btn-test' block>
+          Variant Button
         </Button>
       </>,
     )
     expect(getByText('Button')).toHaveClass('btn btn-block')
-    expect(getByText('Flavor Button')).toHaveClass('btn-test btn-test-block')
+    expect(getByText('Variant Button')).toHaveClass('btn-test btn-test-block')
   })
 
   test('When `color` is passed, then the color className should render', () => {
     const { getByText } = render(
       <>
         <Button color='info'>Button</Button>
-        <Button flavor='btn-test' color='info'>
-          Flavor Button
+        <Button variant='btn-test' color='info'>
+          Variant Button
         </Button>
       </>,
     )
     expect(getByText('Button')).toHaveClass('btn btn-info')
-    expect(getByText('Flavor Button')).toHaveClass('btn-test btn-test-info')
+    expect(getByText('Variant Button')).toHaveClass('btn-test btn-test-info')
   })
 
   test('When `outline` is passed, then the outline className should render', () => {
     const { getByText } = render(
       <>
         <Button outline='info'>Button</Button>
-        <Button flavor='btn-test' outline='info'>
-          Flavor Button
+        <Button variant='btn-test' outline='info'>
+          Variant Button
         </Button>
       </>,
     )
-    expect(getByText('Button')).toHaveClass('btn btn-info-outline')
-    expect(getByText('Flavor Button')).toHaveClass('btn-test btn-test-info-outline')
+    expect(getByText('Button')).toHaveClass('btn btn-outline-info')
+    expect(getByText('Variant Button')).toHaveClass('btn-test btn-test-outline-info')
   })
 
   test('When `size` is passed, then the size className should render', () => {
     const { getByText } = render(
       <>
         <Button size='sm'>Button</Button>
-        <Button flavor='btn-test' size='sm'>
-          Flavor Button
+        <Button variant='btn-test' size='sm'>
+          Variant Button
         </Button>
       </>,
     )
     expect(getByText('Button')).toHaveClass('btn btn-sm')
-    expect(getByText('Flavor Button')).toHaveClass('btn-test btn-test-sm')
+    expect(getByText('Variant Button')).toHaveClass('btn-test btn-test-sm')
   })
 
-  test('When `anchor` is passed, then it should be mapped to btn-anchor flavor', () => {
+  test('When `anchor` is passed, then it should be mapped to anchor variant', () => {
     const { getByText } = render(
       <>
         <Button anchor>Button</Button>
@@ -106,12 +106,10 @@ describe('<Button/>', () => {
         </Button>
       </>,
     )
-    expect(getByText('Button')).toHaveClass('btn-anchor')
-    expect(getByText('Info Button')).toHaveClass('btn-anchor btn-anchor-info')
-    expect(getByText('Outline Info Button')).toHaveClass(
-      'btn-anchor btn-anchor-outline-info',
-    )
-    expect(getByText('Small Button')).toHaveClass('btn-anchor btn-anchor-outline-info')
+    expect(getByText('Button')).toHaveClass('anchor')
+    expect(getByText('Info Button')).toHaveClass('anchor anchor-info')
+    expect(getByText('Outline Info Button')).toHaveClass('anchor anchor-outline-info')
+    expect(getByText('Small Button')).toHaveClass('anchor anchor-sm')
   })
 })
 

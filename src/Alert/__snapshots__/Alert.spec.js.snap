@@ -1,0 +1,35 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Alert /> snapshots renders correctly 1`] = `
+<div
+  aria-hidden="false"
+  class="alert fade alert-danger"
+  role="alert"
+>
+  <div
+    class="sr-only"
+  >
+    danger alert
+  </div>
+  <div
+    class="alert-content"
+  >
+    Warning!
+  </div>
+  <button
+    aria-label="close"
+    class="alert-close text-danger close"
+    type="button"
+  >
+    <svg
+      class="icon icon-close font"
+      role="img"
+    >
+      <use
+        href="#close"
+        xlink:href="#close"
+      />
+    </svg>
+  </button>
+</div>
+`;

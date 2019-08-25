@@ -62,10 +62,10 @@ describe('componentry()', () => {
       targetClassNames({
         variant: 'btn',
         block: true,
-        color: 'primary',
+        _color: 'primary',
         disabled: true,
         outline: 'primary',
-        size: 'sm',
+        _size: 'sm',
       }),
     ).toEqual({
       btn: true,

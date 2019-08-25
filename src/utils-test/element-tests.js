@@ -17,16 +17,20 @@ const elementTests = TestComponent => {
   test('should handle component element requirements', () => {
     const TestChild = () => <div>Test child content</div>
 
-    const { getByText } = render(
-      <TestComponent className='test-custom' data-test='test-custom'>
+    const { getByTestId, getByText } = render(
+      <TestComponent
+        className='test-custom'
+        data-test='test-custom'
+        data-testid='component'
+      >
         Component
         <TestChild />
       </TestComponent>,
     )
 
     getByText('Test child content') // √ children
-    expect(getByText('Component')).toHaveClass('test-custom') // √ className
-    expect(getByText('Component')).toHaveAttribute('data-test', 'test-custom') // √ attrs
+    expect(getByTestId('component')).toHaveClass('test-custom') // √ className
+    expect(getByTestId('component')).toHaveAttribute('data-test', 'test-custom') // √ attrs
   })
 
   /*
@@ -49,35 +53,40 @@ const elementTests = TestComponent => {
    * by default to all component instances
    */
   test('should merge theme and JSX props correctly', () => {
-    const { getByText } = render(
+    const { getByTestId } = render(
       <Theme
         theme={{
-          [TestComponent.displayName]: {
+          [TestComponent.displayName || TestComponent.name]: {
             themeClassName: 'theme-class',
             'data-radical': 'hecka',
           },
         }}
       >
-        <TestComponent>Theme values example</TestComponent>
-        <TestComponent themeClassName={null} data-radical='nope'>
+        <TestComponent data-testid='theme'>Theme values example</TestComponent>
+        <TestComponent themeClassName={null} data-radical='nope' data-testid='jsx'>
           JSX overrides example
         </TestComponent>
-        <TestComponent className='jsx-class' textAlign='center' uppercase>
+        <TestComponent
+          className='jsx-class'
+          textAlign='center'
+          uppercase
+          data-testid='merge'
+        >
           Classes merging example
         </TestComponent>
       </Theme>,
     )
 
-    expect(getByText('Theme values example')).toHaveClass('theme-class')
-    expect(getByText('Theme values example')).toHaveAttribute('data-radical', 'hecka')
+    expect(getByTestId('theme')).toHaveClass('theme-class')
+    expect(getByTestId('theme')).toHaveAttribute('data-radical', 'hecka')
 
-    expect(getByText('JSX overrides example')).not.toHaveClass('theme-class')
-    expect(getByText('JSX overrides example')).toHaveAttribute('data-radical', 'nope')
+    expect(getByTestId('jsx')).not.toHaveClass('theme-class')
+    expect(getByTestId('jsx')).toHaveAttribute('data-radical', 'nope')
 
-    expect(getByText('Classes merging example')).toHaveClass(
+    expect(getByTestId('merge')).toHaveClass(
       'theme-class jsx-class text-center text-uppercase',
     )
-    expect(getByText('Classes merging example')).toHaveAttribute('data-radical', 'hecka')
+    expect(getByTestId('merge')).toHaveAttribute('data-radical', 'hecka')
   })
 
   /*
@@ -85,7 +94,7 @@ const elementTests = TestComponent => {
    * computed and rendered correctly
    */
   test('should include library classes and styles correctly', () => {
-    const { getByText } = render(
+    const { getByTestId } = render(
       <TestComponent
         className='jsx-class'
         textAlign='center'
@@ -93,15 +102,14 @@ const elementTests = TestComponent => {
         lineHeight={2}
         my={16}
         style={{ position: 'relative' }}
+        data-testid='component'
       >
         Test component
       </TestComponent>,
     )
 
-    expect(getByText('Test component')).toHaveClass(
-      'jsx-class text-center text-uppercase',
-    )
-    expect(getByText('Test component')).toHaveStyle(`
+    expect(getByTestId('component')).toHaveClass('jsx-class text-center text-uppercase')
+    expect(getByTestId('component')).toHaveStyle(`
       line-height: 2;
       margin-left: 16;
       margin-right: 16;

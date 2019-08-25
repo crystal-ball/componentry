@@ -13,6 +13,7 @@ import { useActive, useVisible } from '../Active/Active'
  *
  * TODO: docs on dismissible vs non-dismissible alerts usage
  * TODO: ⚠️ For dismissible Alerts, the active context must be set docs
+ * TODO: Use Alert.Close instead of Close directly
  */
 export default function Alert(props) {
   const {
@@ -30,7 +31,7 @@ export default function Alert(props) {
 
   return elem({
     role: 'alert',
-    classes: {
+    componentClassNames: {
       alert: true,
       // Only include opacity transition class for disimissible alerts
       fade: dismissible,
@@ -51,10 +52,12 @@ export default function Alert(props) {
 
         {/* Render a close button or null depending on configs */}
         {dismissible && (
-          <Close onClick={deactivate} className={`alert-close text-${color}`} />
+          <Alert.Close onClick={deactivate} className={`alert-close text-${color}`} />
         )}
       </>
     ),
     ...rest,
   })
 }
+
+Alert.Close = Close

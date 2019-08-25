@@ -1,0 +1,19 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Close /> snapshots renders correctly 1`] = `
+<button
+  aria-label="close"
+  class="close"
+  type="button"
+>
+  <svg
+    class="icon icon-close font"
+    role="img"
+  >
+    <use
+      href="#close"
+      xlink:href="#close"
+    />
+  </svg>
+</button>
+`;
