@@ -46,8 +46,11 @@ export default function activeContainerFactory(
       children,
       // --- Behavior configurations
       direction = defaultDirection, // 'top', 'right', 'bottom', 'left', 'overlay'
-      mouseEvents = mouseHandler, // bool
       size, // 'sm', 'lg'
+      // --- Events configuration
+      clickEvents = clickHandler,
+      escEvents = escHandler,
+      mouseEvents = mouseHandler, // bool
       // --- Active controls
       active,
       defaultActive = false, // bool OR string
@@ -68,6 +71,9 @@ export default function activeContainerFactory(
      */
     const guid = useRef(process.env.NODE_ENV === 'test' ? 'guid' : nanoid())
 
+    /**
+     * Internally the container keeps a separate active state variable
+     */
     const [_active, updateActive] = useState(defaultActive)
 
     // When active is passed as a prop, it should always be used as active state
@@ -108,15 +114,16 @@ export default function activeContainerFactory(
 
     /** Call deactivate on keypress if `esc` (27) was pressed */
     const onKeydown = e => {
-      if (e.which === 27) handleDeactivate(e)
+      if (e.which === 27 || e.code === 27) handleDeactivate(e)
     }
 
     const updateEventListeners = updateType => {
       const updateListener = `${updateType}EventListener`
 
-      if (escHandler) document[updateListener]('keydown', onKeydown)
+      if (escEvents) document[updateListener]('keydown', onKeydown)
 
-      if (clickHandler) {
+      if (clickEvents) {
+        // TODO: are these the best events to listen to??
         document[updateListener]('mouseup', onClick)
         document[updateListener]('touchend', onClick)
       }
@@ -127,7 +134,7 @@ export default function activeContainerFactory(
       return function cleanup() {
         updateEventListeners('remove')
       }
-    }, [active])
+    }, [_active])
 
     const activeValues = {
       active: _active,

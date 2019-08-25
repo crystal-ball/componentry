@@ -9,6 +9,37 @@ import { render, fireEvent } from '@testing-library/react'
  */
 const activationTests = (TestComponent, { name } = {}) => {
   /**
+   * Active component containers should map size prop to the component name,
+   * this is how size variants can be created
+   */
+  test('should include size class for container', () => {
+    const { container } = render(<TestComponent size='sm' />)
+    expect(container.firstChild).toHaveClass(`${name}-sm`)
+  })
+
+  /**
+   * Active containers should accept a direction prop that renders a className
+   */
+  test('should include direction class for container', () => {
+    const { container } = render(<TestComponent direction='overlay' />)
+    expect(container.firstChild).toHaveClass('overlay')
+  })
+
+  /**
+   * Test that the shorthand subcombonent props renders subcomponents
+   */
+  test('should render components for subcomponent shorthand', () => {
+    const { getByText } = render(<TestComponent Trigger='Trigger' Content='Content' />)
+
+    getByText('Trigger')
+    getByText('Content')
+    expect(getByText('Content')).toHaveAttribute('aria-hidden', 'true')
+
+    fireEvent.click(getByText('Trigger'))
+    expect(getByText('Content')).toHaveAttribute('aria-hidden', 'false')
+  })
+
+  /**
    * Test that the default uncontrolled state scenario works. The active state should
    * be managed internally if not overriden with props and clicking the trigger should
    * show/hide content.
@@ -82,6 +113,110 @@ const activationTests = (TestComponent, { name } = {}) => {
     )
 
     expect(getByText('Content')).toHaveAttribute('aria-hidden', 'false')
+  })
+
+  /**
+   * Test that clicking outside of the container component will deactivate it
+   * if clickHandler is true
+   */
+  test('should deactivate when clickHandler is true', () => {
+    const { getByText } = render(
+      <div>
+        <button type='button'>External</button>
+        <TestComponent clickEvents={false}>
+          <TestComponent.Trigger>No handler trigger</TestComponent.Trigger>
+          <TestComponent.Content>No handler content</TestComponent.Content>
+        </TestComponent>
+        <TestComponent clickEvents>
+          <TestComponent.Trigger>Handler trigger</TestComponent.Trigger>
+          <TestComponent.Content>Handler content</TestComponent.Content>
+        </TestComponent>
+      </div>,
+    )
+
+    // Both content elements should be hidden
+    expect(getByText('No handler content')).toHaveAttribute('aria-hidden', 'true')
+    expect(getByText('Handler content')).toHaveAttribute('aria-hidden', 'true')
+
+    // Element without click events should not close when click outside
+    fireEvent.click(getByText('No handler trigger'))
+    expect(getByText('No handler content')).toHaveAttribute('aria-hidden', 'false')
+    fireEvent.mouseUp(getByText('External'))
+    expect(getByText('No handler content')).toHaveAttribute('aria-hidden', 'false')
+
+    // Click outside element with click events should deactivate it
+    fireEvent.click(getByText('Handler trigger'))
+    expect(getByText('Handler content')).toHaveAttribute('aria-hidden', 'false')
+    fireEvent.mouseUp(getByText('External'))
+    expect(getByText('Handler content')).toHaveAttribute('aria-hidden', 'true')
+  })
+
+  /**
+   * Test that the esc handler works
+   */
+  test('should deactivate on esc if escEvents is true', () => {
+    const { container, getByText } = render(
+      <div>
+        <TestComponent escEvents={false}>
+          <TestComponent.Trigger>No handler trigger</TestComponent.Trigger>
+          <TestComponent.Content>No handler content</TestComponent.Content>
+        </TestComponent>
+        <TestComponent escEvents>
+          <TestComponent.Trigger>Handler trigger</TestComponent.Trigger>
+          <TestComponent.Content>Handler content</TestComponent.Content>
+        </TestComponent>
+      </div>,
+    )
+
+    // Both content elements should be hidden
+    expect(getByText('No handler content')).toHaveAttribute('aria-hidden', 'true')
+    expect(getByText('Handler content')).toHaveAttribute('aria-hidden', 'true')
+
+    // Esc keydown should not deactivate
+    fireEvent.click(getByText('No handler trigger'))
+    expect(getByText('No handler content')).toHaveAttribute('aria-hidden', 'false')
+    fireEvent.keyDown(container, { key: 'Escape', code: 27, which: 27 })
+    expect(getByText('No handler content')).toHaveAttribute('aria-hidden', 'false')
+
+    // Esc keydown should deactivate it
+    fireEvent.click(getByText('Handler trigger'))
+    expect(getByText('Handler content')).toHaveAttribute('aria-hidden', 'false')
+    fireEvent.keyDown(container, { key: 'Escape', code: 27, which: 27 })
+    expect(getByText('Handler content')).toHaveAttribute('aria-hidden', 'true')
+  })
+
+  /**
+   * Test that the mouse events handler works
+   */
+  test('should handle mouse events when mouseEvents is true', () => {
+    const { getByText } = render(
+      <div>
+        <TestComponent mouseEvents={false}>
+          <TestComponent.Trigger>No handler trigger</TestComponent.Trigger>
+          <TestComponent.Content>No handler content</TestComponent.Content>
+        </TestComponent>
+        <TestComponent mouseEvents>
+          <TestComponent.Trigger>Handler trigger</TestComponent.Trigger>
+          <TestComponent.Content>Handler content</TestComponent.Content>
+        </TestComponent>
+      </div>,
+    )
+
+    // Both content elements should be hidden
+    expect(getByText('No handler content')).toHaveAttribute('aria-hidden', 'true')
+    expect(getByText('Handler content')).toHaveAttribute('aria-hidden', 'true')
+
+    // Element without mouse events should not change
+    fireEvent.mouseEnter(getByText('No handler trigger'))
+    expect(getByText('No handler content')).toHaveAttribute('aria-hidden', 'true')
+    fireEvent.mouseLeave(getByText('No handler trigger'))
+    expect(getByText('No handler content')).toHaveAttribute('aria-hidden', 'true')
+
+    // Element with mouse events should activate/deactivate
+    fireEvent.mouseEnter(getByText('Handler trigger'))
+    expect(getByText('Handler content')).toHaveAttribute('aria-hidden', 'false')
+    fireEvent.mouseLeave(getByText('Handler trigger'))
+    expect(getByText('Handler content')).toHaveAttribute('aria-hidden', 'true')
   })
 
   /**
@@ -190,16 +325,6 @@ const activationTests = (TestComponent, { name } = {}) => {
     getByText('true')
     fireEvent.click(getByText('deactivate'))
     getByText('false')
-  })
-
-  /**
-   * Active component containers should map size prop to the component name,
-   * this is how size variants can be created
-   */
-  test('should include size class for container', () => {
-    const { container } = render(<TestComponent size='sm' />)
-
-    expect(container.firstChild).toHaveClass(`${name}-sm`)
   })
 }
 export default activationTests
