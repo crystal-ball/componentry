@@ -1,0 +1,16 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Block /> snapshots renders correctly 1`] = `
+<div>
+  <div
+    class="d-block"
+  >
+    Block content
+  </div>
+  <div
+    class="d-inline-block"
+  >
+    Inline block content
+  </div>
+</div>
+`;

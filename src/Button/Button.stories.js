@@ -9,26 +9,28 @@ import Button from './Button'
 import Block from '../Block/Block'
 
 const colors = {
-  Primary: 'primary',
-  Secondary: 'secondary',
-  Info: 'info',
-  Light: 'light',
-  Dark: 'dark',
-  Success: 'success',
-  Warning: 'warning',
-  Danger: 'danger',
+  primary: 'primary',
+  secondary: 'secondary',
+  info: 'info',
+  light: 'light',
+  dark: 'dark',
+  success: 'success',
+  warning: 'warning',
+  danger: 'danger',
+  None: null,
 }
 
 const sizes = {
-  Small: 'sm',
-  Large: 'lg',
+  sm: 'sm',
+  lg: 'lg',
+  None: null,
 }
 
 storiesOf('Core|Button', module)
   .add('<Button />', () => (
     <Button
-      color={select('Color', { ...colors, None: null }, 'primary')}
-      outline={select('Outline', { ...colors, None: null }, null)}
+      color={select('Color', colors, 'primary')}
+      outline={select('Outline', colors, null)}
       block={boolean('Block', false)}
       size={select('Size', sizes, null)}
       disabled={boolean('Disabled', false)}
