@@ -77,7 +77,8 @@ export const componentry = ({
   variant,
   block,
   outline,
-  targetColor,
+  _color,
+  _size,
   // Component props filtered out
   active,
   visible,
@@ -130,16 +131,16 @@ export const componentry = ({
 export const targetClassNames = ({
   variant,
   block,
-  targetColor,
+  _color,
   disabled,
   outline,
-  size,
+  _size,
 }) => ({
   [variant]: true,
   [`${variant}-block`]: block,
-  [`${variant}-${targetColor}`]: targetColor,
+  [`${variant}-${_color}`]: _color,
   [`${variant}-outline-${outline}`]: outline,
-  [`${variant}-${size}`]: size,
+  [`${variant}-${_size}`]: _size,
   // We include a disabled class AND pass disabled prop to btn element for a11y
   disabled,
 })

@@ -16,11 +16,24 @@ const Welcome = () => (
     </Header>
     <Block>
       <ul>
+        <li>Core components</li>
         <li>
           <LinkTo kind='Core|Button' story='Button'>
             Button
           </LinkTo>
         </li>
+        <li>Active components</li>
+        <li>
+          <LinkTo kind='Active|Active' story='Active'>
+            Active
+          </LinkTo>
+        </li>
+        <li>
+          <LinkTo kind='Active|Alert' story='Alert'>
+            Alert
+          </LinkTo>
+        </li>
+        <li>Providers</li>
         <li>
           <LinkTo kind='Providers|Media' story='Media'>
             Media Provider

@@ -7,11 +7,30 @@
 // The btn-close allows for targeted styles for the close buttons. The .icon-close
 // can also be styled for close buttons only using that as a target
 // ℹ️ The background image styles for close icons is located in `/styles/componentry/icons`
-.btn-close {
-  @extend .anchor;
+.close {
+  -webkit-appearance: none !important; // Remove Chrome native button styling
+  display: inline-block;
+  padding: 0;
+  background-color: transparent;
 
+  // Set anchor font styles
   color: $close-color;
+  font-family: $font-family-sans-serif;
+  font-size: $font-size-base;
+  font-weight: $font-weight-normal;
+  line-height: $line-height-base;
+  letter-spacing: 0;
+  text-transform: none;
+
+  user-select: auto;
+  vertical-align: baseline;
+  white-space: normal;
+
+  border: none;
+  border-radius: 0;
+
   text-decoration: $close-decoration;
+  -webkit-text-decoration-skip: objects; // Remove gaps in links underline in iOS 8+ and Safari 8+
 
   @include hover-focus {
     color: $close-hover-color;

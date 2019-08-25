@@ -15,8 +15,10 @@ export default function Button({ anchor, ...props }) {
   }
 
   // Remap target color prop to differentiate from library text color prop
-  merged.targetColor = merged.color
+  merged._color = merged.color
   merged.color = null
+  merged._size = merged.size
+  merged.size = null
 
   return elem({
     componentClassNames: targetClassNames(merged),

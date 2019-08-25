@@ -47,8 +47,10 @@ export default function activeTriggerFactory(
     }
 
     // Remap target color prop to differentiate from library text color prop
-    rest.targetColor = rest.color
+    rest._color = rest.color
     rest.color = null
+    rest._size = rest.size
+    rest.size = null
 
     // Handle determining whether to call activate or deactivate on click
     // 1. If a trigger type was passed, call that event always
