@@ -14,7 +14,7 @@ export default function activeTriggerFactory(
   component,
   {
     // Switch to set default anchor value
-    variantDefault = 'anchor',
+    variantDefault = 'a',
     // Map of aria attributes to render with component
     arias = {},
     // The base css class for this component
@@ -46,10 +46,10 @@ export default function activeTriggerFactory(
       ...props,
     }
 
-    // Remap target color prop to differentiate from library text color prop
-    rest._color = rest.color
+    const componentClassNames = targetClassNames(rest)
+
+    // Clear component props that are also library props
     rest.color = null
-    rest._size = rest.size
     rest.size = null
 
     // Handle determining whether to call activate or deactivate on click
@@ -70,7 +70,7 @@ export default function activeTriggerFactory(
         arias,
       }),
       componentClassNames: [
-        targetClassNames(rest),
+        componentClassNames,
         // For mutli-active triggers add active if the trigger is selected
         { active: activeId && active === activeId },
         baseClass,

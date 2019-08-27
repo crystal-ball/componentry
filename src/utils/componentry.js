@@ -77,8 +77,6 @@ export const componentry = ({
   variant,
   block,
   outline,
-  _color,
-  _size,
   // Component props filtered out
   active,
   visible,
@@ -128,19 +126,12 @@ export const componentry = ({
 /**
  * Fn generates the classes for anchor and button type target elements
  */
-export const targetClassNames = ({
-  variant,
-  block,
-  _color,
-  disabled,
-  outline,
-  _size,
-}) => ({
+export const targetClassNames = ({ variant, block, color, disabled, outline, size }) => ({
   [variant]: true,
   [`${variant}-block`]: block,
-  [`${variant}-${_color}`]: _color,
+  [`${variant}-${color}`]: color,
   [`${variant}-outline-${outline}`]: outline,
-  [`${variant}-${_size}`]: _size,
+  [`${variant}-${size}`]: size,
   // We include a disabled class AND pass disabled prop to btn element for a11y
   disabled,
 })

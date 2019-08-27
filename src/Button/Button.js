@@ -9,19 +9,19 @@ export default function Button({ anchor, ...props }) {
   const merged = {
     as: 'button',
     type: 'button',
-    variant: anchor ? 'anchor' : 'btn',
+    variant: anchor ? 'a' : 'btn',
     ...useTheme('Button'),
     ...props,
   }
 
-  // Remap target color prop to differentiate from library text color prop
-  merged._color = merged.color
+  const componentClassNames = targetClassNames(merged)
+
+  // Clear component props that are also library props
   merged.color = null
-  merged._size = merged.size
   merged.size = null
 
   return elem({
-    componentClassNames: targetClassNames(merged),
+    componentClassNames,
     ...merged,
   })
 }
