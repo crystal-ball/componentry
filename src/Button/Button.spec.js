@@ -2,13 +2,13 @@ import React from 'react'
 import { cleanup, render } from '@testing-library/react'
 
 import Button from './Button'
-// import elementTests from '../utils-test/element-tests'
+import elementTests from '../utils-test/element-tests'
 
 describe('<Button/>', () => {
   afterEach(cleanup)
 
   // Basic library element test suite
-  // elementTests(Button)
+  elementTests(Button)
 
   // 3. Test default as is 'button'
   // 4. Test passing block provides $variant-block
@@ -106,10 +106,10 @@ describe('<Button/>', () => {
         </Button>
       </>,
     )
-    expect(getByText('Button')).toHaveClass('anchor')
-    expect(getByText('Info Button')).toHaveClass('anchor anchor-info')
-    expect(getByText('Outline Info Button')).toHaveClass('anchor anchor-outline-info')
-    expect(getByText('Small Button')).toHaveClass('anchor anchor-sm')
+    expect(getByText('Button')).toHaveClass('a')
+    expect(getByText('Info Button')).toHaveClass('a a-info')
+    expect(getByText('Outline Info Button')).toHaveClass('a a-outline-info')
+    expect(getByText('Small Button')).toHaveClass('a a-sm')
   })
 })
 

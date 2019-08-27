@@ -2,7 +2,7 @@
 
 exports[`<Button /> Snapshots it renders anchor style correctly 1`] = `
 <button
-  class="anchor"
+  class="a"
   type="button"
 >
   Componentry

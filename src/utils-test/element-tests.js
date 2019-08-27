@@ -15,7 +15,7 @@ const elementTests = TestComponent => {
    * 3. Custom attributes are passed through
    */
   test('should handle component element requirements', () => {
-    const TestChild = () => <div>Test child content</div>
+    const TestChild = () => <span>Test child content</span>
 
     const { getByTestId, getByText } = render(
       <TestComponent

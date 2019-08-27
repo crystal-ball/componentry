@@ -8,19 +8,19 @@ import { useTheme } from '../Theme/Theme'
 export const Anchor = ({ button, ...props }) => {
   const merged = {
     as: 'a',
-    variant: button ? 'btn' : 'anchor',
+    variant: button ? 'btn' : 'a',
     ...useTheme('Anchor'),
     ...props,
   }
 
-  // Remap target color prop to differentiate from library text color prop
-  merged._color = merged.color
+  const componentClassNames = targetClassNames(merged)
+
+  // Clear component props that are also library props
   merged.color = null
-  merged._size = merged.size
   merged.size = null
 
   return elem({
-    componentClassNames: targetClassNames(merged),
+    componentClassNames,
     ...merged,
   })
 }
