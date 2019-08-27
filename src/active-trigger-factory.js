@@ -13,7 +13,6 @@ import { targetClassNames } from './utils/componentry'
 export default function activeTriggerFactory(
   component,
   {
-    // Switch to set default anchor value
     variantDefault = 'a',
     // Map of aria attributes to render with component
     arias = {},
@@ -70,10 +69,14 @@ export default function activeTriggerFactory(
         arias,
       }),
       componentClassNames: [
+<<<<<<< HEAD
         componentClassNames,
+=======
+        baseClass,
+        targetClassNames(rest),
+>>>>>>> Update: wip buttongroup
         // For mutli-active triggers add active if the trigger is selected
         { active: activeId && active === activeId },
-        baseClass,
       ],
       onClick,
       // For multi-active elems, the value is used in `withState` to handle

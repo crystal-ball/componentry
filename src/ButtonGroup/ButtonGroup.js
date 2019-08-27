@@ -1,7 +1,13 @@
 import activeContainer from '../active-container-factory'
 import activeTrigger from '../active-trigger-factory'
 
-const ButtonGroup = activeContainer('ButtonGroup', { name: 'btn-group', role: 'group' })
+const ButtonGroup = activeContainer('button-group', {
+  baseClass: 'btn-group',
+  role: 'group',
+})
 export default ButtonGroup
 
-ButtonGroup.Button = activeTrigger('ButtonGroupButton', { variantDefault: 'btn' })
+ButtonGroup.Option = activeTrigger('button-group', {
+  as: 'label',
+  variantDefault: 'btn',
+})
