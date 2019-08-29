@@ -1,12 +1,10 @@
 import React from 'react'
-import { cleanup, render, fireEvent } from '@testing-library/react'
+import { render, fireEvent } from '@testing-library/react'
 
 import Alert from './Alert'
 import elementTests from '../utils-test/element-tests'
 
 describe('<Alert/>', () => {
-  afterEach(cleanup)
-
   // Basic library element test suite
   elementTests(Alert)
 

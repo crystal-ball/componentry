@@ -1,13 +1,11 @@
 import React from 'react'
-import { cleanup, render } from '@testing-library/react'
+import { render } from '@testing-library/react'
 
 import Flex from './Flex'
 
 import elementTests from '../utils-test/element-tests'
 
 describe('<Flex />', () => {
-  afterEach(cleanup)
-
   elementTests(Flex)
 
   test('When inline is not passed, then d-flex className is rendered', () => {

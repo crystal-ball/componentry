@@ -25,19 +25,29 @@ export const useActive = () => useContext(ActiveCtx)
  *   then after transition duration set active false to set display none
  */
 export const useVisible = (active, duration = 300) => {
+  // ℹ️ Although the timeout used is very short, it's possible that a component
+  // could be unmounted before it's run -> so we keep a reference to the timeout
+  // that we can cleanup
   const [state, updateState] = useState({ active, visible: active })
 
   useEffect(() => {
+    let timer
     if (active) {
       updateState({ active: true, visible: false })
-      setTimeout(() => {
+      timer = setTimeout(() => {
         updateState({ active: true, visible: true })
+        timer = null
       }, 17)
     } else {
       updateState({ active: true, visible: false })
-      setTimeout(() => {
+      timer = setTimeout(() => {
         updateState({ active: false, visible: false })
+        timer = null
       }, duration)
+    }
+
+    return function cleanup() {
+      clearTimeout(timer)
     }
   }, [active])
 

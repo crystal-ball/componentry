@@ -1,12 +1,10 @@
 import React from 'react'
-import { cleanup, render } from '@testing-library/react'
+import { render } from '@testing-library/react'
 
 import { Anchor, Header, Text } from './Type'
 import elementTests from '../utils-test/element-tests'
 
 describe('<Anchor/>', () => {
-  afterEach(cleanup)
-
   // Basic library element test suite
   elementTests(Anchor)
 
@@ -30,13 +28,11 @@ describe('<Anchor/>', () => {
 })
 
 describe('<Header/>', () => {
-  afterEach(cleanup)
   // Basic library element test suite
   elementTests(Header)
 })
 
 describe('<Text/>', () => {
-  afterEach(cleanup)
   // Basic library element test suite
   elementTests(Text)
 })

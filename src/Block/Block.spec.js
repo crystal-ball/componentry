@@ -1,13 +1,11 @@
 import React from 'react'
-import { cleanup, render } from '@testing-library/react'
+import { render } from '@testing-library/react'
 
 import Block from './Block'
 
 import elementTests from '../utils-test/element-tests'
 
 describe('<Block />', () => {
-  afterEach(cleanup)
-
   elementTests(Block)
 
   test('When inline is not passed, then d-block className is rendered', () => {
