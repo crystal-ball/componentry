@@ -5,9 +5,9 @@ import elem from '../elem-factory'
 import { useTheme } from '../Theme/Theme'
 
 const Popover = activeContainer('popover', {
-  escHandler: true,
-  mouseHandler: true,
-  defaultDirection: 'right',
+  direction: 'right',
+  escEvents: true,
+  mouseEvents: true,
 })
 
 Popover.Content = activeContent('popover', {

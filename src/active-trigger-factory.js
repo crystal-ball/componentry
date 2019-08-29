@@ -13,8 +13,6 @@ import { targetClassNames } from './utils/componentry'
 export default function activeTriggerFactory(
   component,
   {
-    // Switch to set default anchor value
-    variantDefault = 'a',
     // Map of aria attributes to render with component
     arias = {},
     // The base css class for this component
@@ -24,14 +22,17 @@ export default function activeTriggerFactory(
     name = `${component.slice(0, 1).toUpperCase()}${component.slice(1)}Trigger}`,
     // Overrides component onClick to specified activate/deactivate event
     triggerType,
+    ...opts
   } = {},
 ) {
   function ActiveTrigger(props) {
     const {
+      // --- Render elements
       children,
       decoration,
-      guid,
+
       // --- Active controls
+      guid,
       active,
       activeId,
       activate,
@@ -40,7 +41,8 @@ export default function activeTriggerFactory(
     } = {
       as: 'button',
       type: 'button',
-      variant: variantDefault,
+      variant: 'a',
+      ...opts,
       ...useTheme(name),
       ...useActive(),
       ...props,
@@ -70,10 +72,10 @@ export default function activeTriggerFactory(
         arias,
       }),
       componentClassNames: [
+        baseClass,
         componentClassNames,
         // For mutli-active triggers add active if the trigger is selected
         { active: activeId && active === activeId },
-        baseClass,
       ],
       onClick,
       // For multi-active elems, the value is used in `withState` to handle

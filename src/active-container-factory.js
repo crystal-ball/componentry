@@ -22,21 +22,7 @@ import { useTheme } from './Theme/Theme'
  * use. This ensures that we can always hook into the change events for internal
  * needs like setting or removing special event listeners.
  */
-export default function activeContainerFactory(
-  component,
-  {
-    /** When true call deactivate on `esc` keypress */
-    escHandler = false,
-    /** When true call deactivate on click outside of element */
-    clickHandler = false,
-    /** When true the state container will register handlers for mouse events */
-    mouseHandler = false,
-    /** Default direction for directional elements */
-    defaultDirection = null,
-    // Escape hatch to pass addl props to component instance
-    ...optsRest
-  } = {},
-) {
+export default function activeContainerFactory(component, opts = {}) {
   const themeName = `${component.slice(0, 1).toUpperCase()}${component.slice(1)}}`
   function ActiveContainer(props) {
     const {
@@ -44,13 +30,19 @@ export default function activeContainerFactory(
       Content, // node
       Trigger, // node
       children,
+
       // --- Behavior configurations
-      direction = defaultDirection, // 'top', 'right', 'bottom', 'left', 'overlay'
+      direction = null, // 'top', 'right', 'bottom', 'left', 'overlay'
       size, // 'sm', 'lg'
+
       // --- Events configuration
-      clickEvents = clickHandler,
-      escEvents = escHandler,
-      mouseEvents = mouseHandler, // bool
+      /** When true call deactivate on click outside of element */
+      clickEvents = false,
+      /** When true call deactivate on `esc` keypress */
+      escEvents = false,
+      /** When true the state container will register handlers for mouse events */
+      mouseEvents = false,
+
       // --- Active controls
       active,
       defaultActive = false, // bool OR string
@@ -61,7 +53,7 @@ export default function activeContainerFactory(
       onDeactivate,
       onDeactivated,
       ...rest
-    } = { ...useTheme(themeName), ...props }
+    } = { ...opts, ...useTheme(themeName), ...props }
 
     /**
      * Guid instance property will be uniquely assigned once for each component
@@ -168,7 +160,6 @@ export default function activeContainerFactory(
                 {Content && <ActiveContainer.Content>{Content}</ActiveContainer.Content>}
               </>
             ),
-          ...optsRest,
           ...rest,
         })}
       </ActiveProvider.Provider>
