@@ -32,7 +32,6 @@ export default function activeContainerFactory(component, opts = {}) {
       children,
 
       // --- Behavior configurations
-      variant,
       direction = null, // 'top', 'right', 'bottom', 'left', 'overlay'
       size, // 'sm', 'lg'
 
@@ -143,12 +142,7 @@ export default function activeContainerFactory(component, opts = {}) {
       <ActiveProvider.Provider value={activeValues}>
         {elem({
           'data-id': guid.current,
-          componentClassNames: [
-            element,
-            variant,
-            direction,
-            { [`${element}-${size}`]: size },
-          ],
+          componentClassNames: [element, direction, { [`${element}-${size}`]: size }],
 
           // For elements with mouse events we need to know when the mouse event
           // occurs on the parent element, not the trigger element

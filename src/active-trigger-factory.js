@@ -13,7 +13,6 @@ import { targetClassNames } from './utils/componentry'
 export default function activeTriggerFactory(
   component,
   {
-    variantDefault = 'a',
     // Map of aria attributes to render with component
     arias = {},
     // The base css class for this component
@@ -28,7 +27,7 @@ export default function activeTriggerFactory(
 ) {
   function ActiveTrigger(props) {
     const {
-      // --- Children
+      // --- Render elements
       children,
       decoration,
 
@@ -42,7 +41,7 @@ export default function activeTriggerFactory(
     } = {
       as: 'button',
       type: 'button',
-      variant: variantDefault,
+      variant: 'a',
       ...opts,
       ...useTheme(name),
       ...useActive(),
