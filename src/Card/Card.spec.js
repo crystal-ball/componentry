@@ -1,12 +1,10 @@
 import React from 'react'
-import { cleanup, render } from '@testing-library/react'
+import { render } from '@testing-library/react'
 
 import Card from './Card'
 import elementTests from '../utils-test/element-tests'
 
 describe('<Card />', () => {
-  afterEach(cleanup)
-
   // Basic library element test suite
   elementTests(Card)
   elementTests(Card.Header)

@@ -1,12 +1,10 @@
 import React from 'react'
-import { cleanup, render } from '@testing-library/react'
+import { render } from '@testing-library/react'
 
 import Close from './Close'
 import elementTests from '../utils-test/element-tests'
 
 describe('<Close />', () => {
-  afterEach(cleanup)
-
   // Basic library element test suite
   elementTests(Close)
 })

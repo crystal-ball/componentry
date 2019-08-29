@@ -1,5 +1,5 @@
 import React from 'react'
-import { cleanup, render } from '@testing-library/react'
+import { render } from '@testing-library/react'
 
 import Active from './ActiveComponent'
 
@@ -7,8 +7,6 @@ import activationTestSuite from '../utils-test/activation-tests'
 import elementTests from '../utils-test/element-tests'
 
 describe('<Active />', () => {
-  afterEach(cleanup)
-
   activationTestSuite(Active, { name: 'active' })
   elementTests(Active)
   elementTests(Active.Trigger)
