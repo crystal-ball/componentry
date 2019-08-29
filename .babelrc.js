@@ -1,5 +1,8 @@
-// Explicitly set the `core-js` version used by `preset-env` per Babel best
-// practices and allow polyifilling proposal stage features
+/**
+ * CoreJS includes the polyfills for new language features compiled by Babel.
+ * Explicitly set the `core-js` version used by `preset-env` per Babel best
+ * practices and allow polyifilling proposal stage features
+ */
 const corejs = { version: 3, proposals: true }
 
 module.exports = {
@@ -28,7 +31,7 @@ module.exports = {
       plugins: [
         '@babel/plugin-transform-modules-commonjs',
         '@babel/plugin-proposal-class-properties',
-        '@babel/plugin-transform-runtime',
+        ['@babel/plugin-transform-runtime', { corejs }],
         'transform-react-remove-prop-types',
       ],
     },
@@ -40,7 +43,7 @@ module.exports = {
       ],
       plugins: [
         '@babel/plugin-proposal-class-properties',
-        '@babel/plugin-transform-runtime',
+        ['@babel/plugin-transform-runtime', { corejs }],
         'transform-react-remove-prop-types',
       ],
     },
@@ -51,7 +54,7 @@ module.exports = {
         // Preset env doesn't yet support this syntax
         '@babel/plugin-syntax-object-rest-spread',
         '@babel/plugin-proposal-class-properties',
-        '@babel/plugin-transform-runtime',
+        ['@babel/plugin-transform-runtime', { corejs }],
         'transform-react-remove-prop-types',
       ],
     },
