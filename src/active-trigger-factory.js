@@ -23,14 +23,17 @@ export default function activeTriggerFactory(
     name = `${component.slice(0, 1).toUpperCase()}${component.slice(1)}Trigger}`,
     // Overrides component onClick to specified activate/deactivate event
     triggerType,
+    ...opts
   } = {},
 ) {
   function ActiveTrigger(props) {
     const {
+      // --- Children
       children,
       decoration,
-      guid,
+
       // --- Active controls
+      guid,
       active,
       activeId,
       activate,
@@ -40,6 +43,7 @@ export default function activeTriggerFactory(
       as: 'button',
       type: 'button',
       variant: variantDefault,
+      ...opts,
       ...useTheme(name),
       ...useActive(),
       ...props,
@@ -69,12 +73,8 @@ export default function activeTriggerFactory(
         arias,
       }),
       componentClassNames: [
-<<<<<<< HEAD
-        componentClassNames,
-=======
         baseClass,
-        targetClassNames(rest),
->>>>>>> Update: wip buttongroup
+        componentClassNames,
         // For mutli-active triggers add active if the trigger is selected
         { active: activeId && active === activeId },
       ],

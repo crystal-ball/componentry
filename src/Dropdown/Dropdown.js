@@ -3,9 +3,9 @@ import activeContent from '../active-content-factory'
 import activeTrigger from '../active-trigger-factory'
 
 const Dropdown = activeContainer('dropdown', {
-  escHandler: true,
-  clickHandler: true,
-  defaultDirection: 'bottom',
+  clickEvents: true,
+  direction: 'bottom',
+  escEvents: true,
 })
 
 Dropdown.Content = activeContent('dropdown', {

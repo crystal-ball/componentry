@@ -1,5 +1,9 @@
 # TODO
 
+- ⭐️ `variant` and `baseClass` -> Is it possible to separate the functionality CSS of
+  active components into the baseClass, and include all of the styles in the `variant`
+  class? This would enable switching the variant without having to rewrite show/hide
+  CSS...
 - Make a story for library principles like render as prop.
 - Document that classNames are additive, they don't override. SHOULD THAT BE THE CASE???
 - The useActive hook passes everything through which needs to be cleaned (eg guid in
