@@ -7,7 +7,7 @@ exports[`<Active /> snapshots renders correctly 1`] = `
 >
   <button
     aria-controls="guid"
-    class="a active-trigger"
+    class="active-trigger a"
     type="button"
   >
     Trigger
