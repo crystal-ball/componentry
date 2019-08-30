@@ -1,0 +1,36 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Dropdown /> snapshots renders correctly 1`] = `
+<div
+  class="dropdown bottom"
+  data-id="guid"
+>
+  <button
+    aria-expanded="false"
+    aria-haspopup="true"
+    class="dropdown-trigger a"
+    id="guid"
+    type="button"
+  >
+    Trigger
+  </button>
+  <div
+    aria-hidden="true"
+    aria-labelledby="guid"
+    class="dropdown-content"
+  >
+    <button
+      class="dropdown-item a"
+      type="button"
+    >
+      Item 1
+    </button>
+    <button
+      class="dropdown-item a"
+      type="button"
+    >
+      Item 2
+    </button>
+  </div>
+</div>
+`;

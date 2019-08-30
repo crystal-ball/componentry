@@ -69,6 +69,13 @@ const Welcome = () => (
           </LinkTo>
         </li>
 
+        <li>Interact components</li>
+        <li>
+          <LinkTo kind='Interact|Dropdown' story='Dropdown'>
+            Dropdown
+          </LinkTo>
+        </li>
+
         <li>Active components</li>
         <li>
           <LinkTo kind='Active|Active' story='Active'>

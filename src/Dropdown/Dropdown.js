@@ -15,7 +15,6 @@ Dropdown.Content = activeContent('dropdown', {
 // TODO: what arias should this have?
 Dropdown.Item = activeTrigger('dropdown', {
   baseClass: 'dropdown-item',
-  btnStyles: false, // No btn styles for dropdown items
   name: 'DropdownItem',
 })
 

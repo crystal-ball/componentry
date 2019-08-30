@@ -7,7 +7,7 @@ import activationTestSuite from '../utils-test/activation-tests'
 import elementTests from '../utils-test/element-tests'
 
 describe('<Active />', () => {
-  activationTestSuite(Active, { name: 'active' })
+  activationTestSuite(Active, { name: 'active', testArias: ['controls'] })
   elementTests(Active)
   elementTests(Active.Trigger)
   elementTests(Active.Content)
