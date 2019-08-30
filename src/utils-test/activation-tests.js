@@ -7,7 +7,7 @@ import { render, fireEvent } from '@testing-library/react'
  * but this provides a simple high level check on if functionality is working
  * as expected for each component.
  */
-const activationTests = (TestComponent, { name } = {}) => {
+const activationTests = (TestComponent, { name, testArias } = {}) => {
   /**
    * Active component containers should map size prop to the component name,
    * this is how size variants can be created
@@ -45,6 +45,11 @@ const activationTests = (TestComponent, { name } = {}) => {
    * show/hide content.
    */
   test('should update arias when trigger is activated', () => {
+    // Components must specify which aria attrs should be tested
+    const testControls = testArias.includes('controls')
+    const testLabelledBy = testArias.includes('labelledby')
+    const testExpanded = testArias.includes('expanded')
+
     const { getByText } = render(
       <TestComponent>
         <TestComponent.Trigger>Trigger</TestComponent.Trigger>
@@ -55,15 +60,37 @@ const activationTests = (TestComponent, { name } = {}) => {
     // Trigger and Content should have correct attrs for a11y and hidden content
     expect(getByText('Trigger')).toHaveAttribute('type', 'button')
     expect(getByText('Content')).toHaveAttribute('aria-hidden', 'true')
-    expect(getByText('Content')).toHaveAttribute('id', 'guid')
 
-    // TODO: handle controls vs described-by aria attrs (popovers+tooltips are described-by)
+    if (testControls) {
+      // If aria-controls, trigger should have attr pointing to id on content
+      expect(getByText('Trigger')).toHaveAttribute('aria-controls', 'guid')
+      expect(getByText('Content')).toHaveAttribute('id', 'guid')
+    }
+
+    if (testLabelledBy) {
+      // If aria-labelledby, content should have attr pointing to id on trigger
+      expect(getByText('Trigger')).toHaveAttribute('id', 'guid')
+      expect(getByText('Content')).toHaveAttribute('aria-labelledby', 'guid')
+    }
+
+    if (testExpanded) {
+      // If aria-expanded, trigger should have visible state updated in attr
+      expect(getByText('Trigger')).toHaveAttribute('aria-expanded', 'false')
+    }
 
     fireEvent.click(getByText('Trigger'))
     expect(getByText('Content')).toHaveAttribute('aria-hidden', 'false')
 
+    if (testExpanded) {
+      expect(getByText('Trigger')).toHaveAttribute('aria-expanded', 'true')
+    }
+
     fireEvent.click(getByText('Trigger'))
     expect(getByText('Content')).toHaveAttribute('aria-hidden', 'true')
+
+    if (testExpanded) {
+      expect(getByText('Trigger')).toHaveAttribute('aria-expanded', 'false')
+    }
   })
 
   /**
