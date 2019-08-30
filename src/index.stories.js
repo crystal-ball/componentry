@@ -59,6 +59,11 @@ const Welcome = () => (
           </LinkTo>
         </li>
         <li>
+          <LinkTo kind='Display|ListGroup' story='ListGroup'>
+            ListGroup
+          </LinkTo>
+        </li>
+        <li>
           <LinkTo kind='Display|Typography' story='Typography'>
             Typography
           </LinkTo>

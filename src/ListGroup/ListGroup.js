@@ -6,15 +6,15 @@ import { useTheme } from '../Theme/Theme'
  * List checks first child (only first child!) to see if it has actions, and if
  * it does, it's not a `li` so we render a `ul`.
  */
-export default function List(props) {
+export default function ListGroup(props) {
   const child = Children.toArray(props.children)[0]
   // We have to be careful of children like text nodes with this check
   const childProps = child && child.props ? child.props : {}
 
   return elem({
-    defaultAs: childProps.href || childProps.onClick ? 'div' : 'ul',
-    classes: 'list-group',
-    ...useTheme('List'),
+    as: childProps.href || childProps.onClick ? 'div' : 'ul',
+    componentClassNames: 'list-group',
+    ...useTheme('ListGroup'),
     ...props,
   })
 }
@@ -24,14 +24,14 @@ export default function List(props) {
  * actionable (buttons/anchors) have the `list-group-item-action` modifier class
  * added with additional required styles.
  */
-function Item(props) {
-  const { active, color, ...rest } = { ...useTheme('ListItem'), ...props }
+function ListGroupItem(props) {
+  const { active, color, ...rest } = { ...useTheme('ListGroupItem'), ...props }
   const { href, onClick } = rest
 
   return elem({
     /* eslint-disable no-nested-ternary */
-    defaultAs: href || onClick ? (href ? 'a' : 'button') : 'li',
-    classes: {
+    as: href || onClick ? (href ? 'a' : 'button') : 'li',
+    componentClassNames: {
       active,
       disabled: rest.disabled,
       'list-group-item': true,
@@ -41,4 +41,4 @@ function Item(props) {
     ...rest,
   })
 }
-List.Item = Item
+ListGroup.Item = ListGroupItem
