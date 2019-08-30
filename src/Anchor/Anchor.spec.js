@@ -1,8 +1,8 @@
 import React from 'react'
 import { render } from '@testing-library/react'
 
-import { Anchor, Header, Text } from './Type'
-import elementTests from '../utils-test/element-tests'
+import Anchor from './Anchor'
+import elementTests from '../../test/element-tests'
 
 describe('<Anchor/>', () => {
   // Basic library element test suite
@@ -27,12 +27,11 @@ describe('<Anchor/>', () => {
   })
 })
 
-describe('<Header/>', () => {
-  // Basic library element test suite
-  elementTests(Header)
-})
-
-describe('<Text/>', () => {
-  // Basic library element test suite
-  elementTests(Text)
+// Snapshots
+// ---------------------------------------------------------------------------
+describe('<Anchor /> snapshots', () => {
+  it('renders correctly', () => {
+    const { container } = render(<Anchor>Link</Anchor>)
+    expect(container.firstChild).toMatchSnapshot()
+  })
 })

@@ -1,19 +1,19 @@
 import React from 'react'
 import { render } from '@testing-library/react'
 
-import Close from './Close'
+import Text from './Text'
 import elementTests from '../../test/element-tests'
 
-describe('<Close />', () => {
+describe('<Text/>', () => {
   // Basic library element test suite
-  elementTests(Close)
+  elementTests(Text)
 })
 
 // Snapshots
 // ---------------------------------------------------------------------------
-describe('<Close /> snapshots', () => {
+describe('<Text /> snapshots', () => {
   it('renders correctly', () => {
-    const { container } = render(<Close />)
+    const { container } = render(<Text>text</Text>)
     expect(container.firstChild).toMatchSnapshot()
   })
 })

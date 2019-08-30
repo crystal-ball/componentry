@@ -37,9 +37,9 @@
     "prepublishOnly": "npm run clean && npm run js",
     "postpublish": "npm run clean",
     "js": "npm run js:commonjs && npm run js:esmodules && npm run js:esnext",
-    "js:commonjs": "BABEL_ENV=common babel src --out-dir lib --ignore *.spec.js",
-    "js:esmodules": "BABEL_ENV=esmodules babel src --out-dir es --ignore *.spec.js",
-    "js:esnext": "BABEL_ENV=next babel src --out-dir esnext --ignore *.spec.js",
+    "js:commonjs": "BABEL_ENV=common babel src --out-dir lib --ignore '**/*.spec.js','**/*.stories.js'",
+    "js:esmodules": "BABEL_ENV=esmodules babel src --out-dir es --ignore **/*.spec.js --ignore  '**/*.spec.js','**/*.stories.js'",
+    "js:esnext": "BABEL_ENV=next babel src --out-dir esnext --ignore **/*.spec.js --ignore  '**/*.spec.js','**/*.stories.js'",
     "clean": "rm -rf dist monitor lib es esnext"
   },
   "peerDependencies": {

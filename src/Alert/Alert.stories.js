@@ -6,7 +6,7 @@ import { boolean, select } from '@storybook/addon-knobs'
 
 import Alert from './Alert'
 import Active from '../Active/ActiveComponent'
-import { Anchor } from '../Type/Type'
+import Anchor from '../Anchor/Anchor'
 
 const colors = {
   Primary: 'primary',
@@ -19,7 +19,7 @@ const colors = {
   Danger: 'danger',
 }
 
-storiesOf('Active|Alert', module)
+storiesOf('Alert', module)
   .add('<Alert />', () => (
     <Active defaultActive>
       <Alert

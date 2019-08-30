@@ -5,7 +5,7 @@ import { useTheme } from '../Theme/Theme'
 /**
  * Anchor component
  */
-export const Anchor = ({ button, ...props }) => {
+export default function Anchor({ button, ...props }) {
   const merged = {
     as: 'a',
     variant: button ? 'btn' : 'a',
@@ -24,6 +24,3 @@ export const Anchor = ({ button, ...props }) => {
     ...merged,
   })
 }
-
-export const Header = props => elem({ as: 'h1', ...useTheme('Header'), ...props })
-export const Text = props => elem({ as: 'p', ...useTheme('Text'), ...props })

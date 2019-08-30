@@ -26,7 +26,7 @@ const storyTheme = {
   },
 }
 
-storiesOf('Providers|Theme', module).add('<Theme />', () => (
+storiesOf('Theme', module).add('<Theme />', () => (
   <Theme theme={storyTheme}>
     <div>
       <ThemeConsumer />

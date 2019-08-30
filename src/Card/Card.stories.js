@@ -4,9 +4,9 @@ import React from 'react'
 import { storiesOf } from '@storybook/react'
 
 import Card from './Card'
-import { Anchor } from '../Type/Type'
+import Anchor from '../Anchor/Anchor'
 
-storiesOf('Display|Card', module).add('<Card />', () => (
+storiesOf('Card', module).add('<Card />', () => (
   <div className='d-flex flex-column'>
     <Card maxWidth='50%'>
       <Card.Header>Card Header</Card.Header>

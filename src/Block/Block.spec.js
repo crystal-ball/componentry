@@ -3,7 +3,7 @@ import { render } from '@testing-library/react'
 
 import Block from './Block'
 
-import elementTests from '../utils-test/element-tests'
+import elementTests from '../../test/element-tests'
 
 describe('<Block />', () => {
   elementTests(Block)

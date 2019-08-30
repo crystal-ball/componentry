@@ -3,7 +3,7 @@
 import React from 'react'
 import { storiesOf } from '@storybook/react'
 
-import { Anchor, Header, Text } from './Type'
+import Anchor from './Anchor'
 import Block from '../Block/Block'
 
 const colors = {
@@ -17,10 +17,8 @@ const colors = {
   Danger: 'danger',
 }
 
-storiesOf('Display|Typography', module)
+storiesOf('Anchor', module)
   .add('<Anchor />', () => <Anchor href='#'>Componentry anchor</Anchor>)
-  .add('<Header />', () => <Header>Componentry header</Header>)
-  .add('<Text />', () => <Text>Componentry text</Text>)
   .add('Collection', () => (
     <Block>
       <h2 className='storybook-section-header'>Anchor</h2>

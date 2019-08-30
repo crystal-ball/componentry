@@ -3,8 +3,8 @@ import { render } from '@testing-library/react'
 
 import Active from './ActiveComponent'
 
-import activationTestSuite from '../utils-test/activation-tests'
-import elementTests from '../utils-test/element-tests'
+import activationTestSuite from '../../test/activation-tests'
+import elementTests from '../../test/element-tests'
 
 describe('<Active />', () => {
   activationTestSuite(Active, { name: 'active', testArias: ['controls'] })

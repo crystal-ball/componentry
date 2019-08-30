@@ -21,7 +21,7 @@ const MediaConsumer = () => {
   )
 }
 
-storiesOf('Providers|Media', module).add('<Media />', () => (
+storiesOf('Media', module).add('<Media />', () => (
   <Media>
     <div>
       <MediaConsumer />

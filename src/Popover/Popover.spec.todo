@@ -2,8 +2,8 @@ import React from 'react'
 import { mount, render } from 'enzyme'
 
 import Popover from './Popover'
-import activationTestSuite from '../utils-test/activation-tests'
-import elementTests from '../utils-test/element-tests'
+import activationTestSuite from '../../test/activation-tests'
+import elementTests from '../../test/element-tests'
 
 describe('<Popover />', () => {
   // Basic library activation test suite

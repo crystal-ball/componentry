@@ -16,5 +16,5 @@ module.exports = {
   collectCoverageFrom: ['src/**/*.js'],
 
   // Pre/Post test framework setup configs
-  setupFilesAfterEnv: ['<rootDir>/src/utils-test/jest-extend.js'],
+  setupFilesAfterEnv: ['<rootDir>/test/jest-extend.js'],
 }

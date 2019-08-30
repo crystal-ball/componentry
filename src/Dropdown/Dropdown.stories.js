@@ -9,7 +9,7 @@ import Dropdown from './Dropdown'
 
 const directions = ['top', 'right', 'bottom', 'left', 'overlay']
 
-storiesOf('Interact|Dropdown', module).add('<Dropdown />', () => (
+storiesOf('|Dropdown', module).add('<Dropdown />', () => (
   <Dropdown
     onActivate={action('activating')}
     onDeactivate={action('deactivating')}

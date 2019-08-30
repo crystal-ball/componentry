@@ -40,7 +40,7 @@ const justify = {
   None: null,
 }
 
-storiesOf('Layout|Flex', module).add('<Flex />', () => (
+storiesOf('Flex', module).add('<Flex />', () => (
   <div className='w-100 min-100vh' style={{ height: 1 }}>
     <Flex
       className='w-100 h-100'

@@ -2,8 +2,8 @@ import React from 'react'
 import { render } from 'enzyme'
 
 import Tooltip from './Tooltip'
-import activationTestSuite from '../utils-test/activation-tests'
-import elementTests from '../utils-test/element-tests'
+import activationTestSuite from '../../test/activation-tests'
+import elementTests from '../../test/element-tests'
 
 describe('<Tooltip />', () => {
   // Basic library activation test suite

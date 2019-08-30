@@ -4,20 +4,21 @@
 // Componentry component styles
 //
 
-@import '../src/Type/type';
-
 @import '../src/Alert/alert';
+@import '../src/Anchor/anchor.scss';
 @import '../src/Button/button';
 @import '../src/Card/card';
 @import '../src/Close/close';
 @import '../src/Drawers/drawers';
 @import '../src/Dropdown/dropdown';
+@import '../src/Header/header';
 @import '../src/Icon/icon';
 @import '../src/ListGroup/list-group';
 @import '../src/Modal/modal';
 @import '../src/Navs/navs';
 @import '../src/Popover/popover';
 @import '../src/Tab/tab';
+@import '../src/Text/text';
 @import '../src/Tooltip/tooltip';
 
 @import '../src/FormGroup/form-group';

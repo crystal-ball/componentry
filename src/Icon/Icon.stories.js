@@ -7,7 +7,7 @@ import { boolean, select } from '@storybook/addon-knobs'
 
 import Icon from './Icon'
 
-storiesOf('Display|Icon', module).add('<Icon />', () => (
+storiesOf('Icon', module).add('<Icon />', () => (
   <>
     <svg
       xmlns='http://www.w3.org/2000/svg'

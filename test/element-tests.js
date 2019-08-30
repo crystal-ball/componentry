@@ -2,7 +2,7 @@
 import React from 'react'
 import { render } from '@testing-library/react'
 
-import Theme from '../Theme/Theme'
+import Theme from '../src/Theme/Theme'
 
 /**
  * Library default component requirment test suite.

@@ -7,7 +7,7 @@ import { action } from '@storybook/addon-actions'
 import Active from './ActiveComponent'
 import Block from '../Block/Block'
 
-storiesOf('Active|Active', module).add('<Active />', () => (
+storiesOf('Active', module).add('<Active />', () => (
   <Block>
     <h2 className='storybook-section-header'>Uncontrolled component</h2>
     <Active

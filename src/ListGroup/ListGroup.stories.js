@@ -18,7 +18,7 @@ const colors = {
   danger: 'Danger',
 }
 
-storiesOf('Display|ListGroup', module)
+storiesOf('ListGroup', module)
   .add('<ListGroup />', () => (
     <ListGroup>
       <ListGroup.Item>Radical React</ListGroup.Item>

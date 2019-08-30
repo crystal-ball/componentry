@@ -2,7 +2,7 @@ import React from 'react'
 import { mount, render } from 'enzyme'
 
 import { Nav } from './Navs'
-import elementTests from '../utils-test/element-tests'
+import elementTests from '../../test/element-tests'
 
 describe('<Nav />', () => {
   // Basic library element test suite

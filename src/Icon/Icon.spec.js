@@ -1,7 +1,7 @@
 import React from 'react'
 import { render } from '@testing-library/react'
 
-import elementTests from '../utils-test/element-tests'
+import elementTests from '../../test/element-tests'
 import Icon from './Icon'
 
 describe('<Icon />', () => {
