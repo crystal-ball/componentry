@@ -9,9 +9,9 @@ export default function Icon(props) {
   const { id, font = true, ...rest } = { ...useTheme('Icon'), ...props }
 
   return elem({
-    defaultAs: 'svg',
+    as: 'svg',
     role: 'img',
-    classes: [`icon icon-${id}`, { font }],
+    componentClassNames: [`icon icon-${id}`, { font }],
     children: <use href={`#${id}`} xlinkHref={`#${id}`} />,
     ...rest,
   })

@@ -17,7 +17,7 @@ const colors = {
   Danger: 'danger',
 }
 
-storiesOf('Core|Typography', module)
+storiesOf('Display|Typography', module)
   .add('<Anchor />', () => <Anchor href='#'>Componentry anchor</Anchor>)
   .add('<Header />', () => <Header>Componentry header</Header>)
   .add('<Text />', () => <Text>Componentry text</Text>)

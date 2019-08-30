@@ -1,0 +1,13 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Icon /> snapshots renders correctly 1`] = `
+<svg
+  class="icon icon-test font"
+  role="img"
+>
+  <use
+    href="#test"
+    xlink:href="#test"
+  />
+</svg>
+`;
