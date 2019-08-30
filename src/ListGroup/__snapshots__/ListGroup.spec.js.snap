@@ -1,0 +1,54 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<List /> snapshots renders anchor list correctly 1`] = `
+<div
+  class="list-group"
+>
+  <a
+    class="list-group-item list-group-item-action"
+    href="#"
+  >
+    Item 1
+  </a>
+  <a
+    class="list-group-item list-group-item-action"
+    href="#"
+  >
+    Item 2
+  </a>
+</div>
+`;
+
+exports[`<List /> snapshots renders button list correctly 1`] = `
+<div
+  class="list-group"
+>
+  <button
+    class="list-group-item list-group-item-action"
+  >
+    Item 1
+  </button>
+  <button
+    class="list-group-item list-group-item-action"
+  >
+    Item 2
+  </button>
+</div>
+`;
+
+exports[`<List /> snapshots renders ul list correctly 1`] = `
+<ul
+  class="list-group"
+>
+  <li
+    class="list-group-item"
+  >
+    Item 1
+  </li>
+  <li
+    class="list-group-item"
+  >
+    Item 2
+  </li>
+</ul>
+`;

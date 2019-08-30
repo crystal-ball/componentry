@@ -43,20 +43,30 @@ storiesOf('Core|Button', module)
     <Block>
       <h2 className='storybook-section-header'>Colors</h2>
       <div className='btn-container-x'>
-        {Object.keys(colors).map(color => (
-          <Button color={colors[color]} onClick={action('button-click')} key={color}>
-            {color}
-          </Button>
-        ))}
+        {Object.keys(colors).map(
+          color =>
+            colors[color] && (
+              <Button color={colors[color]} onClick={action('button-click')} key={color}>
+                {color}
+              </Button>
+            ),
+        )}
       </div>
 
       <h2 className='storybook-section-header'>Outline</h2>
       <div className='btn-container-x'>
-        {Object.keys(colors).map(color => (
-          <Button outline={colors[color]} onClick={action('button-click')} key={color}>
-            {color}
-          </Button>
-        ))}
+        {Object.keys(colors).map(
+          color =>
+            colors[color] && (
+              <Button
+                outline={colors[color]}
+                onClick={action('button-click')}
+                key={color}
+              >
+                {color}
+              </Button>
+            ),
+        )}
       </div>
 
       <h2 className='storybook-section-header'>Sizes</h2>
@@ -81,12 +91,15 @@ storiesOf('Core|Button', module)
       </Button>
 
       <h2 className='storybook-section-header'>Anchor variant</h2>
-      {Object.keys(colors).map(color => (
-        <p key={color}>
-          <Button anchor color={colors[color]} onClick={action('button-click')}>
-            Anchor
-          </Button>
-        </p>
-      ))}
+      {Object.keys(colors).map(
+        color =>
+          colors[color] && (
+            <p key={color}>
+              <Button anchor color={colors[color]} onClick={action('button-click')}>
+                Anchor
+              </Button>
+            </p>
+          ),
+      )}
     </Block>
   ))
