@@ -52,6 +52,11 @@ const Welcome = () => (
           </LinkTo>
         </li>
         <li>
+          <LinkTo kind='Drawer' story='Drawer'>
+            Drawer
+          </LinkTo>
+        </li>
+        <li>
           <LinkTo kind='Dropdown' story='Dropdown'>
             Dropdown
           </LinkTo>

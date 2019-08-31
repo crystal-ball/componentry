@@ -353,5 +353,7 @@ const activationTests = (TestComponent, { name, testArias } = {}) => {
     fireEvent.click(getByText('deactivate'))
     getByText('false')
   })
+
+  // TODO: test multi-element active components (Drawer, Tabs)
 }
 export default activationTests
