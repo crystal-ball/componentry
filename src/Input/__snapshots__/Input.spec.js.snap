@@ -1,0 +1,27 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Input /> snapshots renders correctly 1`] = `
+<div>
+  <label
+    class="input-label"
+    for="guid"
+  >
+    Storybook
+  </label>
+  <input
+    class="input-field"
+    id="guid"
+    type="text"
+  />
+  <div
+    class="input-description"
+  >
+    Really important input!
+  </div>
+  <div
+    class="input-error"
+  >
+    Oh no!
+  </div>
+</div>
+`;
