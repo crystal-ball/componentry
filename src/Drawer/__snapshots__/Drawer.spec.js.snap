@@ -1,0 +1,24 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Drawer /> snapshots renders correctly 1`] = `
+<div
+  class="drawer"
+  data-id="guid"
+>
+  <button
+    aria-controls="guid"
+    aria-expanded="false"
+    class="drawer-trigger a"
+    type="button"
+  >
+    Trigger
+  </button>
+  <div
+    aria-hidden="true"
+    class="drawer-content"
+    id="guid"
+  >
+    Content
+  </div>
+</div>
+`;
