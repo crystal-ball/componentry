@@ -3,6 +3,9 @@
  * @module
  */
 
+// --------------------------------------------------------
+// Library shared className+styles generator
+
 const classNamesProps = new Set([
   'bg',
   'borderColor',
@@ -74,6 +77,8 @@ const generateClassNames = p => ({
  * isn't mapped to 1px or 1rem.
  */
 export const componentry = ({
+  anchor,
+  button,
   variant,
   block,
   outline,
@@ -123,6 +128,9 @@ export const componentry = ({
   }
 }
 
+// --------------------------------------------------------
+// Target component classNames generator
+
 /**
  * Fn generates the classes for anchor and button type target elements
  */
@@ -135,3 +143,49 @@ export const targetClassNames = ({ variant, block, color, disabled, outline, siz
   // We include a disabled class AND pass disabled prop to btn element for a11y
   disabled,
 })
+
+// --------------------------------------------------------
+// Component arias generator
+
+/**
+ * Return object of aria attributes using options
+ */
+export function arias({ active, activeId, guid, type, arias: configArias = {} }) {
+  const {
+    controls,
+    describedby,
+    expanded,
+    haspopup,
+    hidden,
+    id,
+    labelledby,
+    role,
+    selected,
+  } = configArias
+  const _arias = {}
+
+  if (controls) _arias['aria-controls'] = guid
+  if (describedby) _arias['aria-describedby'] = guid
+  if (expanded) _arias['aria-expanded'] = String(active)
+  if (haspopup) _arias['aria-haspopup'] = 'true'
+  if (hidden) _arias['aria-hidden'] = String(!active)
+  if (id) _arias.id = guid
+  if (labelledby) _arias['aria-labelledby'] = guid
+  if (role) _arias.role = role
+  if (selected) _arias['aria-selected'] = String(active)
+
+  // For elements with multiple trigger/content groups an activeId is used to
+  // track which group is active. Aria values must include addl identifiers
+  // to ensure uniqueness
+  if (activeId && type === 'trigger') {
+    _arias.id = `${guid}-${activeId}-tab`
+    _arias['aria-controls'] = `${guid}-${activeId}-content`
+    _arias['aria-selected'] = String(active === activeId)
+  } else if (activeId && type === 'content') {
+    _arias.id = `${guid}-${activeId}-content`
+    _arias['aria-labelledby'] = `${guid}-${activeId}-trigger`
+    _arias['aria-hidden'] = String(activeId !== active)
+  }
+
+  return _arias
+}

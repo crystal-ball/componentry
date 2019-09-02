@@ -92,6 +92,11 @@ const Welcome = () => (
           </LinkTo>
         </li>
         <li>
+          <LinkTo kind='Modal' story='Modal'>
+            Modal
+          </LinkTo>
+        </li>
+        <li>
           <LinkTo kind='Text' story='Text'>
             Text
           </LinkTo>

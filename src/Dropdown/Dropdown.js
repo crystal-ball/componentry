@@ -15,7 +15,7 @@ Dropdown.Content = activeContent('dropdown', {
 // TODO: what arias should this have?
 Dropdown.Item = activeTrigger('dropdown', {
   baseClass: 'dropdown-item',
-  name: 'DropdownItem',
+  displayName: 'DropdownItem',
 })
 
 Dropdown.Trigger = activeTrigger('dropdown', {

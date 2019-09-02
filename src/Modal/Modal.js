@@ -2,70 +2,106 @@ import React, { createContext, useContext, useRef } from 'react'
 import classNames from 'classnames'
 import nanoid from 'nanoid'
 import elem from '../elem-factory'
-import Close from '../Close/Close'
-import { useNoScroll } from '../hooks'
+import { closeBase } from '../Close/Close'
+import { useActive, useActiveSrollReset, useNoScroll, useVisible } from '../hooks'
 import { useTheme } from '../Theme/Theme'
-import { useActive, useVisible } from '../Active/Active'
 
 const ModalCtx = createContext()
 
+/**
+ * Modal component
+ * TODO: trap tab focus within modal on activation
+ */
 export default function Modal(props) {
   // Guid instance property will be uniquely assigned once for each modal
   // instance, this unique id is then passed to all children through context
   // where it can be used to wire together title aria attributes
-  const guid = useRef(nanoid())
+  const { current: guid } = useRef(process.env.NODE_ENV === 'test' ? 'guid' : nanoid())
 
-  const { active, children, deactivate, size } = {
+  const {
+    active: propsActive,
+    align,
+    children,
+    deactivate,
+    scroll = 'overlay', // overlay, container, body
+    size,
+    transitionDuration,
+    ...rest
+  } = {
     ...useTheme('Modal'),
     ...useActive(),
     ...props,
   }
 
-  const { active: _active, visible } = useVisible(active)
+  // Generate timed active/visible values for css property animations
+  const { active, visible } = useVisible(propsActive, transitionDuration)
 
   // Disable scrolling on the body when the modal is open to allow long modals
   // to scroll within the `.modal` container.
   useNoScroll(active)
 
+  // Handle resetting scrolled modal content on modal open
+  const containerRef = useRef(null)
+  const contentRef = useRef(null)
+  useActiveSrollReset(active, containerRef)
+  useActiveSrollReset(active, contentRef)
+
+  // Modal elements structure
+  // div.modal-overlay       - Modal overlay background with close handler
+  //   div.modal-positioner  - Manages positioning of modal container
+  //     div.modal-container - Contains the modal header,body,footer elements
   return (
-    <ModalCtx.Provider value={{ deactivate, guid }}>
-      <>
-        <div
-          onClick={deactivate}
-          className={classNames('modal', 'fade', { show: visible })}
-          aria-hidden={_active ? 'false' : 'true'}
-          aria-labelledby={`${guid}`}
-          role='presentation'
-          tabIndex='-1'
-        >
-          {/* ℹ️ Stop propogation of clicks inside modal or they will trigger
-            the modal background deactivate handler */}
-          {/* eslint-disable jsx-a11y/no-noninteractive-element-interactions */}
-          {/* eslint-disable jsx-a11y/click-events-have-key-events */}
-          <div
-            onClick={evt => evt.stopPropagation()}
-            className={classNames('modal-dialog', { [`modal-${size}`]: size })}
-            role='dialog'
-          >
-            <div className='modal-content'>{children}</div>
+    <ModalCtx.Provider value={{ active, deactivate, guid }}>
+      {elem({
+        onClick: deactivate,
+        componentClassNames: classNames(
+          'modal-overlay',
+          'fade',
+          `modal-${scroll}-scroll`,
+          { visible },
+        ),
+        'aria-hidden': String(!active),
+        'aria-labelledby': guid,
+        role: 'presentation',
+        tabIndex: '-1',
+        children: (
+          /* eslint-disable jsx-a11y/no-noninteractive-element-interactions, jsx-a11y/click-events-have-key-events */
+          <div className='modal-positioner' ref={containerRef}>
+            {/* ℹ️ Stop propogation of clicks inside modal or they will trigger the modal background deactivate handler */}
+            <div
+              className={classNames('modal-container', align, {
+                visible,
+                [`modal-${size}`]: size,
+              })}
+              ref={contentRef}
+              onClick={evt => evt.stopPropagation()}
+              role='dialog'
+            >
+              {children}
+            </div>
           </div>
-        </div>
-        <div
-          aria-hidden={_active ? 'false' : 'true'}
-          className={classNames('modal-backdrop', 'fade', { show: visible })}
-          role='presentation'
-        />
-      </>
+          /* eslint-enable jsx-a11y/no-noninteractive-element-interactions, jsx-a11y/click-events-have-key-events */
+        ),
+        ...rest,
+      })}
     </ModalCtx.Provider>
   )
 }
 
-Modal.Close = Close
+/**
+ * Modal themed close component
+ */
+Modal.Close = function ModalClose(props) {
+  return elem({
+    ...closeBase,
+    ...useTheme('ModalClose'),
+    ...props,
+  })
+}
 
 /**
- * The Modal.Header close button is not shown by default, pass close to show a
- * Close component with deactivate. This is for 'standard' usage only, for custom
- * requirements, use a custom close setup.
+ * Modal header close is a shorthand for enabling the default close button,
+ * For custom close components, the componenent must be passed as a header child
  */
 Modal.Header = function ModalHeader(props) {
   const { children, close, ...rest } = {
@@ -74,7 +110,7 @@ Modal.Header = function ModalHeader(props) {
   }
 
   return elem({
-    classes: 'modal-header',
+    componentClassNames: 'modal-header',
     children: (
       <>
         {children}
@@ -87,18 +123,30 @@ Modal.Header = function ModalHeader(props) {
 
 Modal.Title = function ModalTitle(props) {
   return elem({
-    defaultAs: 'h4',
+    as: 'h2',
     id: useContext(ModalCtx).guid,
-    classes: 'modal-title',
+    componentClassNames: 'modal-title',
     ...useTheme('Modaltitle'),
     ...props,
   })
 }
 
 Modal.Body = function ModalBody(props) {
-  return elem({ classes: 'modal-body', ...useContext('ModalBody'), ...props })
+  const bodyRef = useRef(null)
+  useActiveSrollReset(useContext(ModalCtx).active, bodyRef)
+
+  return elem({
+    ref: bodyRef,
+    componentClassNames: 'modal-body',
+    ...useTheme('ModalBody'),
+    ...props,
+  })
 }
 
 Modal.Footer = function ModalFooter(props) {
-  return elem({ classes: 'modal-footer', ...useContext('ModalFooter'), ...props })
+  return elem({
+    componentClassNames: 'modal-footer',
+    ...useTheme('ModalFooter'),
+    ...props,
+  })
 }

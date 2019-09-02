@@ -2,18 +2,16 @@
 
 //
 // Position
-//
 
-// Sass list not in variables since it's not intended for customization.
 $positions: static, relative, absolute, fixed, sticky;
-
 @each $position in $positions {
   .position-#{$position} {
     position: $position !important;
   }
 }
 
-// Shorthand
+//
+// Fixed utility classes
 
 .fixed-top {
   position: fixed;
@@ -31,6 +29,9 @@ $positions: static, relative, absolute, fixed, sticky;
   z-index: $zindex-fixed;
 }
 
+//
+// --- Sticky utility classes
+
 .sticky-top {
   @supports (position: sticky) {
     position: sticky;
@@ -39,8 +40,19 @@ $positions: static, relative, absolute, fixed, sticky;
   }
 }
 
-.absolute-overlay {
-  position: absolute;
+.sticky-bottom {
+  @supports (position: sticky) {
+    position: sticky;
+    bottom: 0;
+    z-index: $zindex-sticky;
+  }
+}
+
+//
+// --- Full screen overlay
+
+.screen-overlay {
+  position: fixed;
   top: 0;
   left: 0;
   bottom: 0;

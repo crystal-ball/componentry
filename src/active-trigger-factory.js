@@ -1,25 +1,23 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import elem from './elem-factory'
-import ariasComputer from './utils/arias'
-import { useActive } from './Active/Active'
+import { ActiveCtx } from './active-container-factory'
 import { useTheme } from './Theme/Theme'
-import { targetClassNames } from './utils/componentry'
+import { arias as gnArias, targetClassNames } from './utils/componentry'
 
 /**
- * Factory returns custom `<Trigger />` components defined by the options.
+ * Factory returns custom `<Trigger />` components defined by the fn options.
  * Componentry sets up triggers to be anchor style buttons by default, this
  * can be overridden by passing an as, type and anchor to reset the defaults.
  */
 export default function activeTriggerFactory(
-  component,
+  name,
   {
     // Map of aria attributes to render with component
     arias = {},
-    // The base css class for this component
-    // TODO: how does this relate to variant??
-    baseClass = `${component}-trigger`,
-    // The component name used for display and theme lookups
-    name = `${component.slice(0, 1).toUpperCase()}${component.slice(1)}Trigger}`,
+    // Component name className
+    baseClass = `${name}-trigger`,
+    // Theme lookups and component display name
+    displayName = `${name.slice(0, 1).toUpperCase()}${name.slice(1)}Trigger}`,
     // Overrides component onClick to specified activate/deactivate event
     triggerType,
     ...opts
@@ -41,12 +39,15 @@ export default function activeTriggerFactory(
     } = {
       as: 'button',
       type: 'button',
-      variant: 'a',
       ...opts,
-      ...useTheme(name),
-      ...useActive(),
+      ...useTheme(displayName),
+      ...useContext(ActiveCtx),
       ...props,
     }
+
+    // If variant className isn't set, default to `a` unless the `button`
+    // shorthand switch was passed
+    rest.variant = rest.variant || (rest.button ? 'btn' : 'a')
 
     const componentClassNames = targetClassNames(rest)
 
@@ -64,7 +65,7 @@ export default function activeTriggerFactory(
     else onClick = active ? deactivate : activate
 
     return elem({
-      ...ariasComputer({
+      ...gnArias({
         active,
         activeId,
         guid,
@@ -91,6 +92,6 @@ export default function activeTriggerFactory(
       ...rest,
     })
   }
-  ActiveTrigger.displayName = name
+  ActiveTrigger.displayName = displayName
   return ActiveTrigger
 }

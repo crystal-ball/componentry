@@ -1,0 +1,58 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Close /> snapshots renders correctly 1`] = `
+<div
+  aria-hidden="false"
+  aria-labelledby="guid"
+  class="modal-overlay fade modal-overlay-scroll"
+  role="presentation"
+  tabindex="-1"
+>
+  <div
+    class="modal-positioner"
+  >
+    <div
+      class="modal-container"
+      role="dialog"
+    >
+      <div
+        class="modal-header"
+      >
+        <h2
+          class="modal-title"
+          id="guid"
+        >
+          Demo uncontrolled modal
+        </h2>
+        <button
+          aria-label="close"
+          class="close"
+          type="button"
+        >
+          <svg
+            class="icon icon-close font"
+            role="img"
+          >
+            <use
+              href="#close"
+              xlink:href="#close"
+            />
+          </svg>
+        </button>
+      </div>
+      <div
+        class="modal-body"
+      >
+        <p>
+          This is an uncontrolled modal that will automatically manage its active state using the parent Active component.
+        </p>
+      </div>
+      <div
+        class="btn-container-x modal-footer"
+      >
+        Modal Footer
+      </div>
+    </div>
+  </div>
+</div>
+`;

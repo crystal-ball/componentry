@@ -1,10 +1,13 @@
-import React, { useEffect, useState, useRef } from 'react'
+import React, { createContext, useEffect, useState, useRef } from 'react'
 import nanoid from 'nanoid'
-
-import ActiveProvider from './Active/Active'
 import elem from './elem-factory'
-import { closest } from './utils/dom'
 import { useTheme } from './Theme/Theme'
+import { closest } from './utils/dom'
+
+/**
+ * Active context
+ */
+export const ActiveCtx = createContext({ active: false })
 
 /**
  * Factory returns custom `<Active />` components defined by the options. Active
@@ -61,7 +64,7 @@ export default function activeContainerFactory(component, opts = {}) {
      * to bind together aria attributes. _(In testing use 'guid' for consistent
      * snapshots.)_
      */
-    const guid = useRef(process.env.NODE_ENV === 'test' ? 'guid' : nanoid())
+    const { current: guid } = useRef(process.env.NODE_ENV === 'test' ? 'guid' : nanoid())
 
     /**
      * Internally the container keeps a separate active state variable
@@ -101,7 +104,7 @@ export default function activeContainerFactory(component, opts = {}) {
 
     /** Call deactivate if click event was not inside the element */
     const onClick = e => {
-      if (!closest(e.target, guid.current)) handleDeactivate(e)
+      if (!closest(e.target, guid)) handleDeactivate(e)
     }
 
     /** Call deactivate on keypress if `esc` (27) was pressed */
@@ -132,16 +135,16 @@ export default function activeContainerFactory(component, opts = {}) {
       active: _active,
       activate: handleActivate,
       deactivate: handleDeactivate,
-      guid: guid.current,
+      guid,
     }
 
     const element = component.slice(0, 1).toLowerCase() + component.slice(1)
 
     // TODO: only wrap elements with a `div` when the element needs it
     return (
-      <ActiveProvider.Provider value={activeValues}>
+      <ActiveCtx.Provider value={activeValues}>
         {elem({
-          'data-id': guid.current,
+          'data-id': guid,
           componentClassNames: [element, direction, { [`${element}-${size}`]: size }],
 
           // For elements with mouse events we need to know when the mouse event
@@ -162,7 +165,7 @@ export default function activeContainerFactory(component, opts = {}) {
             ),
           ...rest,
         })}
-      </ActiveProvider.Provider>
+      </ActiveCtx.Provider>
     )
   }
   ActiveContainer.displayName = themeName

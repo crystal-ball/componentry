@@ -5,14 +5,17 @@ import { useTheme } from '../Theme/Theme'
 /**
  * Button component
  */
-export default function Button({ anchor, ...props }) {
+export default function Button(props) {
   const merged = {
     as: 'button',
     type: 'button',
-    variant: anchor ? 'a' : 'btn',
     ...useTheme('Button'),
     ...props,
   }
+
+  // If variant className isn't set, default to `btn` unless the `anchor`
+  // shorthand switch was passed
+  merged.variant = merged.variant || (merged.anchor ? 'a' : 'btn')
 
   const componentClassNames = targetClassNames(merged)
 

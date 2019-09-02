@@ -5,7 +5,7 @@ import { storiesOf } from '@storybook/react'
 import { boolean, select } from '@storybook/addon-knobs'
 
 import Alert from './Alert'
-import Active from '../Active/ActiveComponent'
+import Active from '../Active/Active'
 import Anchor from '../Anchor/Anchor'
 
 const colors = {

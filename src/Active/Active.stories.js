@@ -4,7 +4,7 @@ import React from 'react'
 import { storiesOf } from '@storybook/react'
 import { action } from '@storybook/addon-actions'
 
-import Active from './ActiveComponent'
+import Active from './Active'
 import Block from '../Block/Block'
 
 storiesOf('Active', module).add('<Active />', () => (

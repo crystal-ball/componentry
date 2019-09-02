@@ -8,13 +8,14 @@ import Theme from '../src/Theme/Theme'
  * Library default component requirment test suite.
  */
 const elementTests = TestComponent => {
+  const name = TestComponent.displayName || TestComponent.name
   /*
    * All components should meet the following requirements:
    * 1. Children are passed through
    * 2. className prop is appended
    * 3. Custom attributes are passed through
    */
-  test('should handle component element requirements', () => {
+  test(`${name} should handle component element requirements`, () => {
     const TestChild = () => <span>Test child content</span>
 
     const { getByTestId, getByText } = render(
@@ -37,7 +38,7 @@ const elementTests = TestComponent => {
    * Test that any html tag or component can be passed through the 'as' prop to
    * override the parent element the component renders
    */
-  test('should render as specified html element or component', () => {
+  test(`${name} should render as specified html element or component`, () => {
     // Create a component to validate that the TestComponent returns.
     const TestAs = ({ isRad }) => <div>{isRad ? 'RAD' : null}</div>
 
@@ -52,7 +53,7 @@ const elementTests = TestComponent => {
    * Also test that the `themeClassName` prop can be used to pass a className
    * by default to all component instances
    */
-  test('should merge theme and JSX props correctly', () => {
+  test(`${name} should merge theme and JSX props correctly`, () => {
     const { getByTestId } = render(
       <Theme
         theme={{
@@ -93,7 +94,7 @@ const elementTests = TestComponent => {
    * Test that a couple of the library shared className and style props are
    * computed and rendered correctly
    */
-  test('should include library classes and styles correctly', () => {
+  test(`${name} should include library classes and styles correctly`, () => {
     const { getByTestId } = render(
       <TestComponent
         className='jsx-class'
