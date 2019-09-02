@@ -3,7 +3,7 @@ import React, { createContext, useContext } from 'react'
 /**
  * Theme Context
  */
-export const ThemeCtx = createContext({})
+const ThemeCtx = createContext({})
 
 /**
  * The `<ThemeProvider>` is a shorthand for setting context values that can be

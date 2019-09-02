@@ -3,7 +3,7 @@ import React, { createContext, useContext, useEffect, useState } from 'react'
 /**
  * Media Context
  */
-export const MediaCtx = createContext({})
+const MediaCtx = createContext({})
 
 /**
  * The Media provider accepts breakpoints and can be used with the `useMedia`
