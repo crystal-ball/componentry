@@ -27,6 +27,7 @@ $heading-weights: (
     margin-top: 0;
     margin-bottom: $headings-margin-bottom;
     font-family: $headings-font-family;
+    font-style: $headings-font-style;
     font-weight: map-get($map: $heading-weights, $key: $heading);
     line-height: $headings-line-height;
     color: $headings-color;

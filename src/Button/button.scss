@@ -35,13 +35,17 @@ $btn-states-map: map-merge($btn-defaults, $btn-states);
 //
 
 .btn {
+  -webkit-appearance: button;
+  cursor: pointer;
   border: $btn-border-width solid transparent;
   @include border-radius($btn-border-radius);
   display: inline-block;
+  font-family: inherit;
   font-size: $font-size-base;
   font-weight: $btn-font-weight;
   letter-spacing: $btn-letter-spacing;
   line-height: $btn-line-height;
+  margin: 0;
   padding: $btn-padding-y $btn-padding-x;
   text-align: center;
   text-transform: $btn-text-transform;
