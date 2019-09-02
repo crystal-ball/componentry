@@ -95,6 +95,9 @@
 
 // Weight and italics
 
+.font-weight-lighter {
+  font-weight: $font-weight-lighter !important;
+}
 .font-weight-light {
   font-weight: $font-weight-light !important;
 }
@@ -104,6 +107,10 @@
 .font-weight-bold {
   font-weight: $font-weight-bold !important;
 }
+.font-weight-bolder {
+  font-weight: $font-weight-bolder !important;
+}
+
 .font-italic {
   font-style: italic !important;
 }
@@ -189,17 +196,6 @@
 .lead {
   font-size: $lead-font-size;
   font-weight: $lead-font-weight;
-}
-
-//
-// Horizontal rules
-//
-
-.hr {
-  margin-top: $hr-margin-y;
-  margin-bottom: $hr-margin-y;
-  border: 0;
-  border-top: $hr-border-width solid $hr-border-color;
 }
 
 //

@@ -150,12 +150,12 @@ $sizes: map-merge((
   auto: auto
 ), $sizes);
 
-// Body
-//
-// Settings for the `<body>` element.
+// --------------------------------------------------------
+// Body element
 
 $body-bg:                   $background !default;
 $body-color:                $foreground !default;
+$body-text-align:           null !default;
 
 // Links
 //
@@ -275,18 +275,21 @@ $font-size-lg:                ($font-size-base * 1.25) !default;
 $font-size-sm:                ($font-size-base * .875) !default;
 $font-size-monospace:         0.93em !default;
 
+$font-weight-lighter:         lighter !default;
 $font-weight-light:           300 !default;
 $font-weight-normal:          400 !default;
 $font-weight-bold:            700 !default;
+$font-weight-bolder:          bolder !default;
 
 $font-weight-base:            $font-weight-normal !default;
 $line-height-base:            1.5 !default;
 
 $headings-margin-bottom:      ($spacer / 2) !default;
-$headings-font-family:        inherit !default;
+$headings-font-family:        null !default;
+$headings-font-style:         null !default;
 $headings-font-weight:        500 !default;
 $headings-line-height:        1.2 !default;
-$headings-color:              inherit !default;
+$headings-color:              null !default;
 
 $h1-font-size:                $font-size-base * 2.5 !default;
 $h2-font-size:                $font-size-base * 2 !default;
@@ -318,13 +321,21 @@ $lead-font-weight:            300 !default;
 
 $small-font-size:             80% !default;
 
+$sub-sup-font-size:           .75em !default;
+
 $text-muted:                  $gray-600 !default;
 
 $blockquote-small-color:      $gray-600 !default;
 $blockquote-font-size:        ($font-size-base * 1.25) !default;
 
-$hr-border-color:             rgba($black, .1) !default;
-$hr-border-width:             $border-width !default;
+$hr-color:                    inherit !default;
+$hr-height:                   $border-width !default;
+$hr-opacity:                  .25 !default;
+$hr-margin-y:                 $spacer !default;
+
+$legend-margin-bottom:        .5rem !default;
+$legend-font-size:            1.5rem !default;
+$legend-font-weight:          null !default;
 
 $mark-padding:                .2em !default;
 
@@ -336,8 +347,6 @@ $nested-kbd-font-weight:      $font-weight-bold !default;
 $list-inline-padding:         .5rem !default;
 
 $mark-bg:                     #fcf8e3 !default;
-
-$hr-margin-y:                 $spacer !default;
 
 
 // Tables
