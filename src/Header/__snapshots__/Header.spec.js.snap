@@ -2,7 +2,7 @@
 
 exports[`<Header /> snapshots renders correctly 1`] = `
 <h1
-  class=""
+  class="h1"
 >
   Header
 </h1>
