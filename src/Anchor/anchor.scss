@@ -5,7 +5,6 @@
 // that look exactly like links for in application triggers, `anc`
 // creates a button styled exactly like an anchor. This should be used for any
 // application actions that are not route navigations.
-a,
 .a {
   -webkit-appearance: none !important; // Remove Chrome native button styling
   display: inline-block;

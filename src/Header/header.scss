@@ -22,7 +22,6 @@ $heading-weights: (
 // makes debugging styles much cleaner, and more closely aligns with the goal of
 // mapping classes to usage 1:1.
 @each $heading, $heading-font-size in $heading-sizes {
-  #{$heading},
   .#{$heading} {
     margin-top: 0;
     margin-bottom: $headings-margin-bottom;
