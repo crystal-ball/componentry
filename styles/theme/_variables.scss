@@ -246,22 +246,20 @@ $component-active-bg:         theme-color("primary") !default;
 $caret-width:                 .3em !default;
 
 $transition-base:             all .2s ease-in-out !default;
-$transition-fade:             opacity .15s linear !default;
-$transition-collapse:         height .35s ease !default;
+$transition-fade:             opacity .25s linear !default;
 
+// --------------------------------------------------------
 // Icons
-//
-// Icon baseline, and background image fallbacks
+
+// When true this will include background-image rules for the close and chevron
+// icons, you can enable it if you don't have SVGs
+$include-icons:               false !default;
 
 $icon-color:                  inherit !default;
 
 // This margin-bottom adjustment is added to every font icon to account for svg
 // vs font baseline differences
 $icon-bottom:                 -0.14em !default;
-
-// When true this will include background-image rules for the close and chevron
-// icons, you can enable it if you don't have SVGs
-$include-icons:               false !default;
 
 
 // Fonts
@@ -594,13 +592,12 @@ $dropdown-trigger-anchor-hover-border-color: $link-hover-color !default;
 // Warning: Avoid customizing these values. They're used for a bird's eye view
 // of components dependent on the z-axis and are designed to all work together.
 
-$zindex-dropdown:                   1000 !default;
-$zindex-sticky:                     1020 !default;
-$zindex-fixed:                      1030 !default;
-$zindex-modal-backdrop:             1040 !default;
-$zindex-modal:                      1050 !default;
-$zindex-popover:                    1060 !default;
-$zindex-tooltip:                    1070 !default;
+$zindex-modal:                      1000 !default;
+$zindex-dropdown:                   1010 !default;
+$zindex-popover:                    1020 !default;
+$zindex-tooltip:                    1030 !default;
+$zindex-fixed:                      1040 !default;
+$zindex-sticky:                     1050 !default;
 
 // Navs
 
@@ -828,47 +825,43 @@ $badge-pill-padding-x:              .6em !default;
 $badge-pill-border-radius:          10rem !default;
 
 
-// Modals
+// --------------------------------------------------------
+// Modal
 
-$enable-modal-transform:            true !default;
-
-// Padding applied to the modal body
-$modal-inner-padding:               1rem !default;
-
-$modal-dialog-margin:               .5rem !default;
-$modal-dialog-margin-y-sm-up:       1.75rem !default;
-
-$modal-content-bg:                  $white !default;
-$modal-content-border-color:        rgba($black, .2) !default;
-$modal-content-border-width:        $border-width !default;
-$modal-content-border-radius:       $border-radius-lg !default;
-$modal-content-box-shadow-xs:       0 .25rem .5rem rgba($black, .5) !default;
-$modal-content-box-shadow-sm-up:    0 .5rem 1rem rgba($black, .5) !default;
-
-$modal-backdrop-bg:                 $black !default;
-$modal-backdrop-opacity:            .5 !default;
-
-$modal-header-bg:                   $modal-content-bg !default;
-$modal-header-border-color:         $gray-200 !default;
-$modal-header-border-width:         $modal-content-border-width !default;
-$modal-header-padding:              1rem !default;
-
-// $modal-title-font-size
-$modal-title-line-height:           $line-height-base !default;
-$modal-title-color:                 $headings-color !default;
-$modal-title-font-weight:           $headings-font-weight !default;
-
-$modal-footer-bg:                   $modal-content-bg !default;
-$modal-footer-border-color:         $modal-header-border-color !default;
-$modal-footer-border-width:         $modal-header-border-width !default;
+$enable-modal-transform:            false !default;
 
 $modal-lg:                          800px !default;
 $modal-md:                          500px !default;
 $modal-sm:                          300px !default;
 
-$modal-transition:                  transform .3s ease-out !default;
+$modal-overlay-bg:                 rgba(0, 0, 0, 0.5) !default;
 
+$modal-positioner-padding:          .5rem !default;
+$modal-positioner-padding-sm-up:    1.75rem !default;
 
+$modal-container-bg:                  $white !default;
+$modal-container-border-color:      rgba($black, .2) !default;
+$modal-container-border-width:      $border-width !default;
+$modal-container-border-radius:     $border-radius-lg !default;
+$modal-container-box-shadow:        0 .25rem .5rem rgba($black, .5) !default;
+$modal-container-box-shadow-sm-up:  0 .5rem 1rem rgba($black, .5) !default;
+
+$modal-body-padding:               1rem !default;
+
+$modal-header-bg:                   $modal-container-bg !default;
+$modal-header-border-color:         $gray-200 !default;
+$modal-header-border-width:         $modal-container-border-width !default;
+$modal-header-padding:              $modal-body-padding !default;
+
+$modal-title-font-size:             $font-size-lg !default;
+$modal-title-line-height:           $line-height-base !default;
+$modal-title-color:                 $headings-color !default;
+$modal-title-font-weight:           $headings-font-weight !default;
+
+$modal-footer-bg:                   $modal-container-bg !default;
+$modal-footer-border-color:         $modal-header-border-color !default;
+$modal-footer-border-width:         $modal-header-border-width !default;
+$modal-footer-padding:              $modal-body-padding !default;
 
 
 // Progress bars

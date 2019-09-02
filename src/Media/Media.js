@@ -1,4 +1,4 @@
-import React, { createContext, useContext, useState, useEffect } from 'react'
+import React, { createContext, useContext, useEffect, useState } from 'react'
 
 /**
  * Media Context
@@ -48,7 +48,7 @@ export default function MediaProvider({ children, breakpoints = [0, 900, 1250] }
 }
 
 /**
- * Custom hook that should be used to access Media context.
+ * Access the application media context value
  */
 export const useMedia = () => {
   const media = useContext(MediaCtx)

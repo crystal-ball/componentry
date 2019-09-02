@@ -1,7 +1,7 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import elem from './elem-factory'
-import ariasComputer from './utils/arias'
-import { useActive } from './Active/Active'
+import { arias as gnArias } from './utils/componentry'
+import { ActiveCtx } from './active-container-factory'
 import { useTheme } from './Theme/Theme'
 
 /**
@@ -23,14 +23,14 @@ export default function ActiveContentFactory(
   function ActiveContent(props) {
     const { active, activeId, children, guid, ...rest } = {
       ...useTheme(name),
-      ...useActive(),
+      ...useContext(ActiveCtx),
       ...props,
     }
 
     // Create component content (return optionally wraps content in a width busting
     // container)
     const content = elem({
-      ...ariasComputer({
+      ...gnArias({
         active,
         activeId,
         guid,

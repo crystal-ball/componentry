@@ -16,7 +16,7 @@ export default function ThemeProvider({ children, theme }) {
 }
 
 /**
- * Custom hook that should be used to access Theme context.
+ * Access the application theme context value
  */
 export const useTheme = component => {
   // For the theme context, we don't warn on accessing without a provider, b/c

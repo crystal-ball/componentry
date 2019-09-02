@@ -3,7 +3,7 @@ export { default as Theme, useTheme } from './Theme/Theme'
 export { default as Media, useMedia } from './Media/Media'
 
 // --- Components
-export { default as Active } from './Active/ActiveComponent'
+export { default as Active } from './Active/Active'
 export { default as Alert } from './Alert/Alert'
 export { default as Anchor } from './Anchor/Anchor'
 export { default as Block } from './Block/Block'
@@ -28,5 +28,5 @@ export { default as FormGroup } from './FormGroup/FormGroup'
 export { default as Input } from './Input/Input'
 
 // --- Utilities
-export { useActive, useVisible } from './Active/Active'
-export { default as setupOutlineHandlers } from './utils/setup-outline-handlers'
+export { useActive, useActiveSrollReset, useNoScroll, useVisible } from './hooks'
+export { setupOutlineHandlers } from './utils/dom'
