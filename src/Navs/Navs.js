@@ -6,9 +6,9 @@ const makeNav = name => {
     const { fill, justify, pills, vertical, ...rest } = { ...useTheme(name), ...props }
 
     return elem({
-      defaultAs: 'nav',
+      as: 'nav',
       role: name === 'TabNav' ? 'tablist' : undefined,
-      classes: {
+      componentClassNames: {
         nav: name === 'Nav',
         'tabs-nav-container': name === 'TabNav',
         'nav-vertical': vertical,
@@ -36,12 +36,12 @@ const NavItem = props => {
 
   return elem({
     /* eslint-disable no-nested-ternary */
-    defaultAs: href || onClick ? (href ? 'a' : 'button') : 'li',
-    classes: {
-      active,
-      disabled: rest.disabled,
+    as: href || onClick ? (href ? 'a' : 'button') : 'li',
+    componentClassNames: {
       'nav-item': true,
       'nav-item-action': href || onClick,
+      active,
+      disabled: rest.disabled,
     },
     ...rest,
   })
