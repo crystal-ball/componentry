@@ -17,7 +17,7 @@ export default function activeTriggerFactory(
     // Component name className
     baseClass = `${name}-trigger`,
     // Theme lookups and component display name
-    displayName = `${name.slice(0, 1).toUpperCase()}${name.slice(1)}Trigger}`,
+    displayName = `${name.slice(0, 1).toUpperCase()}${name.slice(1)}Trigger`,
     // Overrides component onClick to specified activate/deactivate event
     triggerType,
     ...opts
