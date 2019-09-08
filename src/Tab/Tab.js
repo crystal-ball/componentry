@@ -1,26 +1,34 @@
 import activeContainer from '../active-container-factory'
 import activeContent from '../active-content-factory'
 import activeTrigger from '../active-trigger-factory'
-import elem from '../elem-factory'
 import { useTheme } from '../Theme/Theme'
-
-import { TabNav } from '../Navs/Navs'
+import elem from '../elem-factory'
+import { navClasses } from '../utils/componentry'
 
 const Tab = activeContainer('tab', { name: 'tabs' })
-Tab.Nav = TabNav
 
-const TabContentContainer = props =>
-  elem({
-    classes: 'tabs-panes-container',
+Tab.ContentContainer = function TabContentContainer(props) {
+  return elem({
+    componentClassNames: 'tabs-panes-container',
     ...useTheme('TabContentContainer'),
     ...props,
   })
-Tab.ContentContainer = TabContentContainer
+}
 
 Tab.Content = activeContent('tab', {
   arias: { hidden: true, role: 'tabpanel' },
   baseClass: 'tabs-panes-pane', // tab-content-pane
 })
+
+Tab.Nav = function TabNav(props) {
+  return elem({
+    as: 'nav',
+    role: 'tablist',
+    componentClassNames: ['tabs-nav-container', navClasses(props)],
+    ...useTheme('TabNav'),
+    ...props,
+  })
+}
 
 // TODO: This should probably be defaultAs a nav item... issues:
 // If making a tab with anchors, these should have class 'nav-link'
@@ -30,8 +38,6 @@ Tab.Trigger = activeTrigger('tab', {
   baseClass: 'tabs-nav-tab',
   // Tabs can only activate, they never deactivate when clicked
   triggerType: 'activate',
-  // Do NOT include default btn styles in tabs
-  btnStyles: false,
 })
 
 export default Tab

@@ -4,7 +4,7 @@ import React from 'react'
 import { storiesOf } from '@storybook/react'
 import { boolean } from '@storybook/addon-knobs'
 
-import { Nav } from './Navs'
+import Nav from './Nav'
 
 storiesOf('Nav', module).add('<Nav />', () => (
   <div className='w-50'>

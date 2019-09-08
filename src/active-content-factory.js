@@ -15,7 +15,7 @@ export default function ActiveContentFactory(
     // The base css class for this component
     baseClass = `${component}-content`,
     // The component name used for display and theme lookups
-    name = `${component.slice(0, 1).toUpperCase()}${component.slice(1)}Trigger}`,
+    name = `${component.slice(0, 1).toUpperCase()}${component.slice(1)}Content`,
     // Switch to include a content wrapper for positioning+width styles
     popper = false,
   } = {},

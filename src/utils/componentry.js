@@ -4,6 +4,32 @@
  */
 
 // --------------------------------------------------------
+// Target class names generator
+
+/**
+ * Fn generates the classes for anchor and button type target elements
+ */
+export const targetClassNames = ({ variant, block, color, disabled, outline, size }) => ({
+  [variant]: true,
+  [`${variant}-block`]: block,
+  [`${variant}-${color}`]: color,
+  [`${variant}-outline-${outline}`]: outline,
+  [`${variant}-${size}`]: size,
+  // We include a disabled class AND pass disabled prop to btn element for a11y
+  disabled,
+})
+
+// --------------------------------------------------------
+// Nav class names generator
+
+export const navClasses = ({ fill, justify, pills, vertical }) => ({
+  'nav-vertical': vertical,
+  'nav-pills': pills,
+  'nav-fill': fill,
+  'nav-justified': justify,
+})
+
+// --------------------------------------------------------
 // Library shared className+styles generator
 
 const classNamesProps = new Set([
@@ -82,6 +108,10 @@ export const componentry = ({
   variant,
   block,
   outline,
+  fill,
+  justify,
+  pills,
+  vertical,
   // Component props filtered out
   active,
   visible,
@@ -127,22 +157,6 @@ export const componentry = ({
     libraryStyles: styles,
   }
 }
-
-// --------------------------------------------------------
-// Target component classNames generator
-
-/**
- * Fn generates the classes for anchor and button type target elements
- */
-export const targetClassNames = ({ variant, block, color, disabled, outline, size }) => ({
-  [variant]: true,
-  [`${variant}-block`]: block,
-  [`${variant}-${color}`]: color,
-  [`${variant}-outline-${outline}`]: outline,
-  [`${variant}-${size}`]: size,
-  // We include a disabled class AND pass disabled prop to btn element for a11y
-  disabled,
-})
 
 // --------------------------------------------------------
 // Component arias generator
