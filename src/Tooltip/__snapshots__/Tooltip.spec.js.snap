@@ -1,0 +1,35 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Tooltip /> snapshots renders correctly 1`] = `
+<div
+  class="tooltip"
+  data-id="guid"
+>
+  <button
+    aria-describedby="guid"
+    class="tooltip-trigger a"
+    type="button"
+  >
+    Trigger
+  </button>
+  <div
+    class="tooltip-content-container"
+  >
+    <div
+      aria-hidden="true"
+      class="tooltip-content"
+      id="guid"
+      role="tooltip"
+    >
+      <div
+        class="tip-container"
+      >
+        <div
+          class="tip"
+        />
+      </div>
+      Content
+    </div>
+  </div>
+</div>
+`;
