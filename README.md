@@ -1,8 +1,8 @@
 <div align="center">
-  <img src="./demo/media/Componentry.png" width="650" alt="Componentry" />
+  <img src="./docs/componentry.png" width="650" alt="Componentry" />
 </div>
 
-<h1></h1>
+---
 
 <div align="center">
   <a href="https://www.npmjs.com/package/componentry">
