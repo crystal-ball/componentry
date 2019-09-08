@@ -1,0 +1,33 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Nav /> snapshots renders correctly 1`] = `
+<nav
+  class="nav"
+>
+  <a
+    class="nav-item nav-item-action active"
+    href="#"
+  >
+    Active
+  </a>
+  <a
+    class="nav-item nav-item-action"
+    href="#"
+  >
+    React
+  </a>
+  <a
+    class="nav-item nav-item-action"
+    href="#"
+  >
+    Redux
+  </a>
+  <a
+    class="nav-item nav-item-action disabled"
+    disabled=""
+    href="#"
+  >
+    Styles
+  </a>
+</nav>
+`;

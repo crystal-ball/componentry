@@ -28,7 +28,7 @@
     "node": ">=8.11"
   },
   "scripts": {
-    "start": "start-storybook -p 6006",
+    "start": "start-storybook -p 6006 --ci",
     "test": "npm run test:lint && npm run test:unit",
     "test:lint": "NODE_ENV=test eslint --format=pretty src",
     "test:unit": "BABEL_ENV=test NODE_ENV=test jest",
