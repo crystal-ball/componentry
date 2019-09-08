@@ -10,23 +10,27 @@ const Popover = activeContainer('popover', {
   mouseEvents: true,
 })
 
+Popover.Body = function PopoverBody(props) {
+  return elem({
+    componentClassNames: 'popover-body',
+    ...useTheme('PopoverBody'),
+    ...props,
+  })
+}
+
 Popover.Content = activeContent('popover', {
   arias: { id: true, role: 'tooltip', hidden: true },
   popper: true,
 })
 
-const PopoverHeader = props =>
-  elem({
-    defaultAs: 'h3',
-    classes: 'popover-header',
+Popover.Header = function PopoverHeader(props) {
+  return elem({
+    as: 'h3',
+    componentClassNames: 'popover-header',
     ...useTheme('PopoverHeader'),
     ...props,
   })
-Popover.Header = PopoverHeader
-
-const PopoverBody = props =>
-  elem({ classes: 'popover-body', ...useTheme('PopoverBody'), ...props })
-Popover.Body = PopoverBody
+}
 
 Popover.Trigger = activeTrigger('popover', {
   arias: { describedby: true },

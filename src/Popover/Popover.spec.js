@@ -1,5 +1,5 @@
 import React from 'react'
-import { mount, render } from 'enzyme'
+import { render } from '@testing-library/react'
 
 import Popover from './Popover'
 import activationTestSuite from '../../test/activation-tests'
@@ -7,7 +7,7 @@ import elementTests from '../../test/element-tests'
 
 describe('<Popover />', () => {
   // Basic library activation test suite
-  activationTestSuite(Popover, { name: 'popover' })
+  activationTestSuite(Popover, { name: 'popover', testArias: ['describedby'] })
   // Basic library element test suite
   elementTests(Popover)
   elementTests(Popover.Trigger)
@@ -16,16 +16,13 @@ describe('<Popover />', () => {
   elementTests(Popover.Body)
 
   it('renders the correct directional classes using direction', () => {
-    const wrapper = mount(
-      <Popover>
+    const { getByTestId } = render(
+      <Popover direction='left' data-testid='popover'>
         <Popover.Trigger>Trigger</Popover.Trigger>
         <Popover.Content>Content</Popover.Content>
       </Popover>,
     )
-
-    expect(wrapper.find('.popover.right').length).toEqual(1) // default
-    wrapper.setProps({ direction: 'top' })
-    expect(wrapper.find('.popover.top').length).toEqual(1)
+    expect(getByTestId('popover')).toHaveClass('left')
   })
 })
 
@@ -33,13 +30,22 @@ describe('<Popover />', () => {
 // ---------------------------------------------------------------------------
 describe('<Popover /> snapshots', () => {
   it('renders correctly', () => {
-    const tree = render(
+    const { container } = render(
       <Popover>
-        <Popover.Trigger>Trigger</Popover.Trigger>
-        <Popover.Content>Content</Popover.Content>
+        <Popover.Trigger>Toggle</Popover.Trigger>
+        <Popover.Content>
+          <Popover.Header>Fun Fact!</Popover.Header>
+          <Popover.Body>
+            <span>
+              The new Texas Instrument calculators have ABC keyboards because if they had
+              QWERTY keyboards, they would be considered computers and wouldn’t be allowed
+              for standardized test taking.
+            </span>
+          </Popover.Body>
+        </Popover.Content>
       </Popover>,
     )
 
-    expect(tree).toMatchSnapshot()
+    expect(container.firstChild).toMatchSnapshot()
   })
 })
