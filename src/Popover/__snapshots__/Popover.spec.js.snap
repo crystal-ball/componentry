@@ -1,0 +1,46 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Popover /> snapshots renders correctly 1`] = `
+<div
+  class="popover right"
+  data-id="guid"
+>
+  <button
+    aria-describedby="guid"
+    class="popover-trigger a"
+    type="button"
+  >
+    Toggle
+  </button>
+  <div
+    class="popover-content-container"
+  >
+    <div
+      aria-hidden="true"
+      class="popover-content"
+      id="guid"
+      role="tooltip"
+    >
+      <div
+        class="tip-container"
+      >
+        <div
+          class="tip"
+        />
+      </div>
+      <h3
+        class="popover-header"
+      >
+        Fun Fact!
+      </h3>
+      <div
+        class="popover-body"
+      >
+        <span>
+          The new Texas Instrument calculators have ABC keyboards because if they had QWERTY keyboards, they would be considered computers and wouldn’t be allowed for standardized test taking.
+        </span>
+      </div>
+    </div>
+  </div>
+</div>
+`;

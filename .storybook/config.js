@@ -12,10 +12,10 @@ import './storybook.scss'
 // Customize dispaly of Storybook to be hecka rad
 addParameters({
   options: {
-    // Show addon panel by default
+    // Show addon panel by default on right
     showPanel: true,
-    // Show addon panel at bottom
-    panelPosition: 'bottom',
+    panelPosition: 'right',
+    // Custom theming
     theme: {
       ...themes.light,
       brandTitle: 'Componentry',

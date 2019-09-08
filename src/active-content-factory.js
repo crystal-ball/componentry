@@ -57,7 +57,7 @@ export default function ActiveContentFactory(
       // This className works right now b/c we're only passing a single className
       // in classes, but this is fragile... would be nice to be more explicity but
       // not add in unnecessary factory config code.
-      <div className={`${component}-container`}>{content}</div>
+      <div className={`${component}-content-container`}>{content}</div>
     ) : (
       content
     )
