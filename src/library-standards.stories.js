@@ -54,6 +54,4 @@ const Welcome = () => (
   </Block>
 )
 
-storiesOf('Overview|Library Standards', module).add('Componentry Storybook', () => (
-  <Welcome />
-))
+storiesOf('Componentry', module).add('Library Standards', () => <Welcome />)

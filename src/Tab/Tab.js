@@ -1,10 +1,9 @@
 import activeContainer from '../active-container-factory'
 import activeContent from '../active-content-factory'
 import activeTrigger from '../active-trigger-factory'
-import elem from '../elem-factory'
 import { useTheme } from '../Theme/Theme'
-
-import { TabNav } from '../Navs/Navs'
+import elem from '../elem-factory'
+import { navClasses } from '../utils/componentry'
 
 const Tab = activeContainer('tab', { name: 'tabs' })
 
@@ -21,7 +20,15 @@ Tab.Content = activeContent('tab', {
   baseClass: 'tabs-panes-pane', // tab-content-pane
 })
 
-Tab.Nav = TabNav
+Tab.Nav = function TabNav(props) {
+  return elem({
+    as: 'nav',
+    role: 'tablist',
+    componentClassNames: ['tabs-nav-container', navClasses(props)],
+    ...useTheme('TabNav'),
+    ...props,
+  })
+}
 
 // TODO: This should probably be defaultAs a nav item... issues:
 // If making a tab with anchors, these should have class 'nav-link'
