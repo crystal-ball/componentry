@@ -1,5 +1,5 @@
 import React from 'react'
-import { render } from 'enzyme'
+import { render } from '@testing-library/react'
 
 import Tooltip from './Tooltip'
 import activationTestSuite from '../../test/activation-tests'
@@ -7,8 +7,7 @@ import elementTests from '../../test/element-tests'
 
 describe('<Tooltip />', () => {
   // Basic library activation test suite
-  // TODO: Fix me
-  activationTestSuite(Tooltip, { name: 'tooltip' })
+  activationTestSuite(Tooltip, { name: 'tooltip', testArias: ['describedby'] })
   // Basic library element test suite
   elementTests(Tooltip)
   elementTests(Tooltip.Trigger)
@@ -17,15 +16,15 @@ describe('<Tooltip />', () => {
 
 // Snapshots
 // ---------------------------------------------------------------------------
-describe('<Drawer /> snapshots', () => {
+describe('<Tooltip /> snapshots', () => {
   it('renders correctly', () => {
-    const tree = render(
+    const { container } = render(
       <Tooltip>
         <Tooltip.Trigger>Trigger</Tooltip.Trigger>
         <Tooltip.Content>Content</Tooltip.Content>
       </Tooltip>,
     )
 
-    expect(tree).toMatchSnapshot()
+    expect(container.firstChild).toMatchSnapshot()
   })
 })
