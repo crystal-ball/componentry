@@ -3,5 +3,8 @@
 .p {
   margin-top: 0;
   margin-bottom: $paragraph-margin-bottom;
+  // This is defaulted to null and won't be in the generated styles, but is
+  // available to set a default paragraph width which is highly encouraged for
+  // keeping paragraphs a readable length by default
   max-width: $paragraph-max-width;
 }
