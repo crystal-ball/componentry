@@ -31,7 +31,7 @@ $btn-letter-spacing-lg:       $btn-letter-spacing !default;
 $btn-disabled-opacity:        .65 !default;
 $btn-disabled-border-width:   $btn-border-width !default;
 
-$btn-link-disabled-color:     $text-muted !default;
+$btn-link-disabled-color:     $text-muted-color !default;
 
 // The btn-states is a backdoor to set specific color values for button states
 $btn-states:                  () !default;
