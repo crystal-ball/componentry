@@ -1,35 +1,104 @@
 /* componentry/src/Header/header */
 
-$heading-sizes: (
-  h1: $h1-font-size,
-  h2: $h2-font-size,
-  h3: $h3-font-size,
-  h4: $h4-font-size,
-  h5: $h5-font-size,
-  h6: $h6-font-size,
+.header {
+  color: $headings-color;
+  font-family: $headings-font-family;
+  line-height: $headings-line-height;
+  margin-bottom: $headings-margin-bottom;
+  margin-top: 0;
+}
+
+$h1: map-merge(
+  (
+    font-size: $h1-font-size,
+    font-style: $headings-font-style,
+    font-weight: $h1-font-weight,
+    letter-spacing: $headings-letter-spacing,
+    text-transform: $headings-text-transform,
+  ),
+  $h1
 );
 
-$heading-weights: (
-  h1: $h1-font-weight,
-  h2: $h2-font-weight,
-  h3: $h3-font-weight,
-  h4: $h4-font-weight,
-  h5: $h5-font-weight,
-  h6: $h6-font-weight,
+.h1 {
+  font-size: map-get($map: $h1, $key: font-size);
+  font-style: map-get($map: $h1, $key: font-style);
+  font-weight: map-get($map: $h1, $key: font-weight);
+  letter-spacing: map-get($map: $h1, $key: letter-spacing);
+  text-transform: map-get($map: $h1, $key: text-transform);
+}
+
+$h2: map-merge(
+  (
+    font-size: $h2-font-size,
+    font-style: $headings-font-style,
+    font-weight: $h2-font-weight,
+    letter-spacing: $headings-letter-spacing,
+    text-transform: $headings-text-transform,
+  ),
+  $h2
 );
 
-// Creating individual output for each header adds ~25 lines of CSS, but also
-// makes debugging styles much cleaner, and more closely aligns with the goal of
-// mapping classes to usage 1:1.
-@each $heading, $heading-font-size in $heading-sizes {
-  .#{$heading} {
-    margin-top: 0;
-    margin-bottom: $headings-margin-bottom;
-    font-family: $headings-font-family;
-    font-style: $headings-font-style;
-    font-weight: map-get($map: $heading-weights, $key: $heading);
-    line-height: $headings-line-height;
-    color: $headings-color;
-    font-size: $heading-font-size;
-  }
+.h2 {
+  font-size: map-get($map: $h2, $key: font-size);
+  font-style: map-get($map: $h2, $key: font-style);
+  font-weight: map-get($map: $h2, $key: font-weight);
+  letter-spacing: map-get($map: $h2, $key: letter-spacing);
+  text-transform: map-get($map: $h2, $key: text-transform);
+}
+
+$h3: map-merge(
+  (
+    font-size: $h3-font-size,
+    font-style: $headings-font-style,
+    font-weight: $h3-font-weight,
+    letter-spacing: $headings-letter-spacing,
+    text-transform: $headings-text-transform,
+  ),
+  $h3
+);
+
+.h3 {
+  font-size: map-get($map: $h3, $key: font-size);
+  font-style: map-get($map: $h3, $key: font-style);
+  font-weight: map-get($map: $h3, $key: font-weight);
+  letter-spacing: map-get($map: $h3, $key: letter-spacing);
+  text-transform: map-get($map: $h3, $key: text-transform);
+}
+
+$h4: map-merge(
+  (
+    font-size: $h4-font-size,
+    font-style: $headings-font-style,
+    font-weight: $h4-font-weight,
+    letter-spacing: $headings-letter-spacing,
+    text-transform: $headings-text-transform,
+  ),
+  $h4
+);
+
+.h4 {
+  font-size: map-get($map: $h4, $key: font-size);
+  font-style: map-get($map: $h4, $key: font-style);
+  font-weight: map-get($map: $h4, $key: font-weight);
+  letter-spacing: map-get($map: $h4, $key: letter-spacing);
+  text-transform: map-get($map: $h4, $key: text-transform);
+}
+
+$h5: map-merge(
+  (
+    font-size: $h5-font-size,
+    font-style: $headings-font-style,
+    font-weight: $h5-font-weight,
+    letter-spacing: $headings-letter-spacing,
+    text-transform: $headings-text-transform,
+  ),
+  $h5
+);
+
+.h5 {
+  font-size: map-get($map: $h5, $key: font-size);
+  font-style: map-get($map: $h5, $key: font-style);
+  font-weight: map-get($map: $h5, $key: font-weight);
+  letter-spacing: map-get($map: $h5, $key: letter-spacing);
+  text-transform: map-get($map: $h5, $key: text-transform);
 }

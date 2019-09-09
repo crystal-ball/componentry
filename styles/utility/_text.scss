@@ -168,7 +168,7 @@
   color: $body-color !important;
 }
 .text-muted {
-  color: $text-muted !important;
+  color: $text-muted-color !important;
 }
 
 .text-black-50 {
@@ -203,8 +203,9 @@
 //
 
 .small {
+  color: $small-font-color;
   font-size: $small-font-size;
-  font-weight: $font-weight-normal;
+  font-weight: $small-font-weight;
 }
 
 .mark {
