@@ -43,6 +43,14 @@ $theme-colors: map-merge((
   "dark":       #282d31,
 ), $theme-colors);
 
+// Borders
+
+$borders: () !default;
+$borders: map-merge((
+  light: #f8f8f8,
+  dark: #282d31
+), $borders);
+
 // Set a specific jump point for requesting color jumps
 $theme-color-interval:      8% !default;
 

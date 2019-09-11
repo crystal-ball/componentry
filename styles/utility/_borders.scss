@@ -1,24 +1,50 @@
 /* ~componentry/styles/atomic/borders */
 
-//
+// --------------------------------------------------------
 // Borders
-//
+
+@each $color, $value in $theme-colors {
+  .border-#{$color} {
+    border-color: $value;
+    border-bottom-style: solid;
+    border-bottom-width: 1px;
+  }
+}
+
+@each $color, $value in $borders {
+  .border-#{$color} {
+    border-color: $value;
+    border-bottom-style: solid;
+    border-bottom-width: 1px;
+  }
+}
+
+// --------------------------------------------------------
+// Borders addition
 
 .border {
-  border: $border-width solid $border-color !important;
+  border-width: 1px;
+  border-style: solid;
 }
 .border-top {
-  border-top: $border-width solid $border-color !important;
+  border-top-style: solid;
+  border-top-width: 1px;
 }
 .border-right {
-  border-right: $border-width solid $border-color !important;
+  border-right-style: solid;
+  border-right-width: 1px;
 }
 .border-bottom {
-  border-bottom: $border-width solid $border-color !important;
+  border-bottom-style: solid;
+  border-bottom-width: 1px;
 }
 .border-left {
-  border-left: $border-width solid $border-color !important;
+  border-left-style: solid;
+  border-left-width: 1px;
 }
+
+// --------------------------------------------------------
+// Border clear
 
 .border-0 {
   border: 0 !important;
@@ -36,30 +62,8 @@
   border-left: 0 !important;
 }
 
-@each $color, $value in $theme-colors {
-  .border-#{$color} {
-    border-color: $value !important;
-  }
-}
-
-// Create a border class for each gray
-@each $color, $value in $grays {
-  .border-gray-#{$color} {
-    border-color: $value !important;
-  }
-}
-
-.border-white {
-  border-color: $white !important;
-}
-
-.border-border {
-  border-color: $border-color !important;
-}
-
-//
-// Border-radius
-//
+// --------------------------------------------------------
+// Border radius
 
 .rounded {
   border-radius: $border-radius !important;
