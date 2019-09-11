@@ -111,7 +111,7 @@
   z-index: $zindex-dropdown;
   min-width: $dropdown-min-width;
   padding: $dropdown-padding-y 0;
-  color: $body-color;
+  color: $foreground;
   font-size: $dropdown-font-size;
   font-weight: $dropdown-font-weight;
   text-align: left; // Ensures proper alignment if parent has it changed (e.g., modal footer)

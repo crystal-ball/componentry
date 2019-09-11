@@ -94,7 +94,7 @@
  */
 @function gradient-background($color) {
   @if $enable-gradients {
-    @return $color linear-gradient(180deg, mix($body-bg, $color, 15%), $color) repeat-x;
+    @return $color linear-gradient(180deg, mix($background, $color, 15%), $color) repeat-x;
   } @else {
     @return $color;
   }

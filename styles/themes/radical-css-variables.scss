@@ -1,0 +1,40 @@
+/**
+ *                         🔮 Radical Theme CSS Variables
+ * --------------------------------------------------------
+ */
+
+// Small screens
+
+:root {
+  --h1: 28px;
+  --h2: 24px;
+  --h3: 20px;
+  --h4: 18px;
+  --h5: 16px;
+
+  --s0: 0;
+  --s1: #{$spacer * 0.25};
+  --s2: #{$spacer * 0.5};
+  --s3: #{$spacer};
+  --s4: #{$spacer * 2};
+  --s5: #{$spacer * 3};
+}
+
+// Large screens
+
+@media (min-width: 768px) {
+  :root {
+    --h1: 44px;
+    --h2: 32px;
+    --h3: 28px;
+    --h4: 24px;
+    --h5: 18px;
+
+    --s0: 0;
+    --s1: #{$spacer * 0.25};
+    --s2: #{$spacer * 0.5};
+    --s3: #{$spacer};
+    --s4: #{$spacer * 2.75};
+    --s5: #{$spacer * 4};
+  }
+}

@@ -1,0 +1,83 @@
+/**
+ *                                       🔮 Radical Theme
+ * --------------------------------------------------------
+ */
+
+// --------------------------------------------------------
+// Theme Colors
+
+$background: #181424;
+$foreground: #c6d2d1;
+
+$theme-colors: (
+  primary: #ff428e,
+  secondary: #a8ffef,
+  success: #c3f920,
+  info: #2bf5e9,
+  warning: #ffc300,
+  danger: #fc4552,
+  light: #c6d2d1,
+  dark: #181424
+);
+
+$grays: (
+  "100": #e4e0f0,
+  "600": #48676a
+);
+
+$colors: (
+  teal: #5effbd,
+  bubblegum: #ffc4e2,
+);
+
+// --------------------------------------------------------
+// Spacing
+
+$spacer: 1rem;
+$spacers: (
+  0: 0,
+  1: var(--s1),
+  2: var(--s2),
+  3: var(--s3),
+  4: var(--s4),
+  5: var(--s5),
+);
+
+// Links
+// ---------------------------------------------------------------------------
+$link-color: map-get($colors, teal);
+
+// Fonts
+// ---------------------------------------------------------------------------
+$font-family-sans-serif: 'IBM Plex Sans', sans-serif;
+
+$font-size-base: 0.875rem; // 14px base assuming 1 rem = 16px
+$font-size-lg: $font-size-base * 1.25;
+$font-size-sm: $font-size-base * 0.8;
+
+$line-height-base: 1.5;
+
+$h1-font-size: var(--h1);
+$h2-font-size: var(--h2);
+$h3-font-size: var(--h3);
+$h4-font-size: var(--h4);
+$h5-font-size: var(--h5);
+
+$headings-color: map-get($colors, bubblegum);
+$headings-font-family: 'Montserrat', sans-serif;
+$headings-font-weight: 300;
+$headings-letter-spacing: 0.3em;
+$headings-text-transform: uppercase;
+
+// Keep paragraphs to a readable length by default, override with mw-100 where needed
+$paragraph-max-width: 800px;
+
+$small-font-size: 80%;
+$text-muted-color: map-get($grays, 600);
+
+$icon-bottom: -0.2em; // Componentry Var
+
+// --------------------------------------------------------
+// Componentry defaults for unset variables
+
+@import '../_theme.scss';
