@@ -1,70 +1,7 @@
-/* ~componentry/styles/theme/mixins */
+/* ~componentry/styles/helpers/mixins */
 
-//
-// ℹ️ Theme mixins - see documentation for mixin strategy
-//
-
+// --------------------------------------------------------
 // Breakpoints
-// ---------------------------------------------------------------------------
-
-// Breakpoint viewport sizes and media queries.
-//
-// Breakpoints are defined as a map of (name: minimum width), order from small to large:
-//
-//    (xs: 0, sm: 576px, md: 768px, lg: 992px, xl: 1200px)
-//
-// The map defined in the `$grid-breakpoints` global variable is used as the `$breakpoints` argument by default.
-
-// Name of the next breakpoint, or null for the last breakpoint.
-//
-//    >> breakpoint-next(sm)
-//    md
-//    >> breakpoint-next(sm, (xs: 0, sm: 576px, md: 768px, lg: 992px, xl: 1200px))
-//    md
-//    >> breakpoint-next(sm, $breakpoint-names: (xs sm md lg xl))
-//    md
-@function breakpoint-next(
-  $name,
-  $breakpoints: $grid-breakpoints,
-  $breakpoint-names: map-keys($breakpoints)
-) {
-  $n: index($breakpoint-names, $name);
-  @return if($n < length($breakpoint-names), nth($breakpoint-names, $n + 1), null);
-}
-
-// Minimum breakpoint width. Null for the smallest (first) breakpoint.
-//
-//    >> breakpoint-min(sm, (xs: 0, sm: 576px, md: 768px, lg: 992px, xl: 1200px))
-//    576px
-@function breakpoint-min($name, $breakpoints: $grid-breakpoints) {
-  $min: map-get($breakpoints, $name);
-  @return if($min != 0, $min, null);
-}
-
-// Maximum breakpoint width. Null for the largest (last) breakpoint.
-// The maximum value is calculated as the minimum of the next one less 0.02px
-// to work around the limitations of `min-` and `max-` prefixes and viewports with fractional widths.
-// See https://www.w3.org/TR/mediaqueries-4/#mq-min-max
-// Uses 0.02px rather than 0.01px to work around a current rounding bug in Safari.
-// See https://bugs.webkit.org/show_bug.cgi?id=178261
-//
-//    >> breakpoint-max(sm, (xs: 0, sm: 576px, md: 768px, lg: 992px, xl: 1200px))
-//    767.98px
-@function breakpoint-max($name, $breakpoints: $grid-breakpoints) {
-  $next: breakpoint-next($name, $breakpoints);
-  @return if($next, breakpoint-min($next, $breakpoints) - 0.02px, null);
-}
-
-// Returns a blank string if smallest breakpoint, otherwise returns the name with a dash infront.
-// Useful for making responsive utilities.
-//
-//    >> breakpoint-infix(xs, (xs: 0, sm: 576px, md: 768px, lg: 992px, xl: 1200px))
-//    ""  (Returns a blank string)
-//    >> breakpoint-infix(sm, (xs: 0, sm: 576px, md: 768px, lg: 992px, xl: 1200px))
-//    "-sm"
-@function breakpoint-infix($name, $breakpoints: $grid-breakpoints) {
-  @return if(breakpoint-min($name, $breakpoints) == null, '', '-#{$name}');
-}
 
 // Media of at least the minimum breakpoint width. No query for the smallest breakpoint.
 // Makes the @content apply to the given breakpoint and wider.
@@ -135,9 +72,8 @@
   }
 }
 
+// --------------------------------------------------------
 // Border radius
-// ---------------------------------------------------------------------------
-// TODO: make atomic classes `b-rd-*`
 
 @mixin border-radius($radius: $border-radius) {
   @if $enable-rounded {
@@ -173,30 +109,8 @@
   }
 }
 
-// Shows+Backgrounds
-// ---------------------------------------------------------------------------
-
-// TODO: make atomic class
-@mixin box-shadow($shadow...) {
-  @if $enable-shadows {
-    box-shadow: $shadow;
-  }
-}
-
-// DEPRECATED
-// Use the gradient-background function
-@mixin gradient-bg($color) {
-  @if $enable-gradients {
-    background: $color
-      linear-gradient(180deg, mix($background, $color, 15%), $color)
-      repeat-x;
-  } @else {
-    background-color: $color;
-  }
-}
-
-// Hover
-// ---------------------------------------------------------------------------
+// --------------------------------------------------------
+// Hover/Focus/Active states
 
 @mixin hover {
   &:hover {
@@ -227,8 +141,8 @@
   }
 }
 
-// Type
-// ---------------------------------------------------------------------------
+// --------------------------------------------------------
+// Typography
 
 // Resets text to baseline
 @mixin reset-text {
@@ -249,8 +163,8 @@
   line-break: auto;
 }
 
+// --------------------------------------------------------
 // Transitions
-// ---------------------------------------------------------------------------
 
 @mixin transition($transition...) {
   @if $enable-transitions {

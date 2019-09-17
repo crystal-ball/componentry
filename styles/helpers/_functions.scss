@@ -1,0 +1,129 @@
+/* ~componentry/styles/helpers/functions */
+
+// --------------------------------------------------------
+// Maps accessors
+
+/** Return a gray value by key */
+@function gray($key: '100') {
+  @return map-get($grayscale, $key);
+}
+
+/** Return a theme-color value by key */
+@function theme-color($key: 'primary') {
+  @return map-get($theme-colors, $key);
+}
+
+/** Return a font-color value by key */
+@function font-color($key: 'foreground') {
+  @return map-get($font-colors, $key);
+}
+
+// --------------------------------------------------------
+// Breakpoints
+
+/**
+ * Return the name of the next breakpoint or null for the last breakpoint
+ */
+@function breakpoint-next($name, $breakpoints) {
+  $breakpoint-names: map-keys($breakpoints);
+  $n: index($breakpoint-names, $name);
+  @return if($n < length($breakpoint-names), nth($breakpoint-names, $n + 1), null);
+}
+
+/**
+ * Return the pixel value for the lowest width of a given breakpoint or null for
+ * xs. Used to generate the media query values for breakpoint scoped styles.
+ * @example breakpoint-min(sm) === 576px
+ */
+@function breakpoint-min($name, $breakpoints: $grid-breakpoints) {
+  $min: map-get($breakpoints, $name);
+  @return if($min != 0, $min, null);
+}
+
+/**
+ * Return the pixel value for the maximum width of a given breakpoint or null
+ * for xl. Used to generate the media queries for breakpoint scoped styles.
+ * @example breakpoint-max(sm) === 767.98px
+ */
+@function breakpoint-max($name, $breakpoints: $grid-breakpoints) {
+  $next: breakpoint-next($name, $breakpoints);
+  @return if($next, breakpoint-min($next, $breakpoints) - 0.02px, null);
+}
+
+/**
+ * Return the passed breakpoint prefixed with a '-' for every breakpoint but xs.
+ * Used to create default styles for xs breakpoint with overrides for each
+ * larger breakpoint.
+ * @example breakpoint-infix(xs) === ''
+ * @example breakpoint-infix(sm) === '-sm'
+ */
+@function breakpoint-infix($breakpoint, $breakpoints: $grid-breakpoints) {
+  @return if(breakpoint-min($breakpoint, $breakpoints) == null, '', '-#{$breakpoint}');
+}
+
+// --------------------------------------------------------
+// String manipulations
+
+/**
+ * Replace `$search` with `$replace` in `$string`
+ * @author Hugo Giraudel
+ */
+@function str-replace($string, $search, $replace: '') {
+  $index: str-index($string, $search);
+
+  @if $index {
+    @return str-slice($string, 1, $index - 1) + $replace +
+      str-replace(str-slice($string, $index + str-length($search)), $search, $replace);
+  }
+
+  @return $string;
+}
+
+// --------------------------------------------------------
+// Color constrast
+
+/**
+ * Return appropriate dark or light text for the passed color
+ */
+@function color-yiq($color) {
+  $r: red($color);
+  $g: green($color);
+  $b: blue($color);
+
+  $yiq: (($r * 299) + ($g * 587) + ($b * 114)) / 1000;
+
+  @if ($yiq >= $yiq-contrasted-threshold) {
+    @return $yiq-text-dark;
+  } @else {
+    @return $yiq-text-light;
+  }
+}
+
+// --------------------------------------------------------
+// Color variations
+
+/**
+ * Get a theme color mixed with `mix` and the passed level multiplied by the
+ * theme color interval
+ */
+@function theme-color-level($color-name: 'primary', $level: 0) {
+  $color: theme-color($color-name);
+  $color-base: if($level > 0, theme-color(background), theme-color(foreground));
+  $level: abs($level);
+
+  @return mix($color-base, $color, $level * $theme-color-interval);
+}
+
+// --------------------------------------------------------
+// Shadows
+
+/**
+ * Return the box-shadow value only if box-shadows are enabled
+ */
+@function box-shadow($shadow...) {
+  @if $enable-shadows {
+    @return $shadow;
+  } @else {
+    @return null;
+  }
+}

@@ -1,7 +1,7 @@
 # Skip formatting files generated or managed by other tools
 
 # Theme definitions
+styles/_design-system.scss
 styles/themes
-styles/theme
 
 src/Button/button.scss

@@ -1,12 +1,26 @@
-/* ~componentry/styles/atomic/text */
+/*
+ * ~componentry/styles/utility/text
+ * Utility text classes
+ */
 
-//
-// Text
-//
+// --------------------------------------------------------
+// Colors
 
-// Sizes
+@each $color, $value in $font-colors {
+  // Support BS `text-<color>` classes
+  .text-#{$color},
+  .fg-#{$color} {
+    color: $value !important;
+  }
+  a.#{$color} {
+    @include hover-focus {
+      color: darken($value, 10%) !important;
+    }
+  }
+}
 
-// --- Display
+// --------------------------------------------------------
+// Display
 
 .display-1 {
   font-size: $display1-size;
@@ -29,17 +43,51 @@
   line-height: $display-line-height;
 }
 
+// --------------------------------------------------------
+// Sizes
+
+// TODO: xs/xl
+
 // The .text-sm and text-lg classes are intended for regular text like p, span,
 // etc. and provide a utility for minor text adjustments when applications don't
 // want to use small headers and small dom elements to handle these types
-.text-sm {
+.text-sm,
+.font-size-sm {
   font-size: $font-size-sm;
 }
 
-.text-lg {
+.text-lg,
+.font-size-lg {
   font-size: $font-size-lg;
 }
 
+// --------------------------------------------------------
+// Weights
+
+.font-weight-lighter {
+  font-weight: $font-weight-lighter !important;
+}
+.font-weight-light {
+  font-weight: $font-weight-light !important;
+}
+.font-weight-normal {
+  font-weight: $font-weight-normal !important;
+}
+.font-weight-bold {
+  font-weight: $font-weight-bold !important;
+}
+.font-weight-bolder {
+  font-weight: $font-weight-bolder !important;
+}
+
+// --------------------------------------------------------
+// Italic
+
+.font-italic {
+  font-style: italic !important;
+}
+
+// --------------------------------------------------------
 // Alignment
 
 .text-justify {
@@ -81,7 +129,8 @@
   }
 }
 
-// Transformation
+// --------------------------------------------------------
+// Transforms
 
 .text-lowercase {
   text-transform: lowercase !important;
@@ -93,28 +142,7 @@
   text-transform: capitalize !important;
 }
 
-// Weight and italics
-
-.font-weight-lighter {
-  font-weight: $font-weight-lighter !important;
-}
-.font-weight-light {
-  font-weight: $font-weight-light !important;
-}
-.font-weight-normal {
-  font-weight: $font-weight-normal !important;
-}
-.font-weight-bold {
-  font-weight: $font-weight-bold !important;
-}
-.font-weight-bolder {
-  font-weight: $font-weight-bolder !important;
-}
-
-.font-italic {
-  font-style: italic !important;
-}
-
+// --------------------------------------------------------
 // Decoration
 
 .text-underline {
@@ -139,68 +167,34 @@
   }
 }
 
-// Contextual colors
+// --------------------------------------------------------
+// Blockquotes
 
-.text-white {
-  color: $white !important;
+.blockquote {
+  margin-bottom: $spacer;
+  font-size: $blockquote-font-size;
 }
 
-@mixin text-emphasis-variant($parent, $color) {
-  #{$parent} {
-    color: $color !important;
+.blockquote-footer {
+  display: block;
+  font-size: 80%; // back to default font-size
+  color: $blockquote-small-color;
+
+  &::before {
+    content: '\2014 \00A0'; // em dash, nbsp
   }
-  a#{$parent} {
-    @include hover-focus {
-      color: darken($color, 10%) !important;
-    }
-  }
 }
 
-@each $color, $value in $theme-colors {
-  @include text-emphasis-variant('.text-#{$color}', $value);
-}
-
-@each $color, $value in $grays {
-  @include text-emphasis-variant('.text-gray-#{$color}', $value);
-}
-
-.text-body {
-  color: $foreground !important;
-}
-.text-muted {
-  color: $text-muted-color !important;
-}
-
-.text-black-50 {
-  color: rgba($black, 0.5) !important;
-}
-.text-white-50 {
-  color: rgba($white, 0.5) !important;
-}
-
-// Misc
-
-.text-monospace {
-  font-family: $font-family-monospace;
-  font-size: $font-size-monospace;
-}
-
-.text-hide {
-  font: 0/0 a;
-  color: transparent;
-  text-shadow: none;
-  background-color: transparent;
-  border: 0;
-}
+// --------------------------------------------------------
+// Lead
 
 .lead {
   font-size: $lead-font-size;
   font-weight: $lead-font-weight;
 }
 
-//
+// --------------------------------------------------------
 // Emphasis
-//
 
 .small {
   color: $small-font-color;
@@ -213,9 +207,8 @@
   background-color: $mark-bg;
 }
 
-//
+// --------------------------------------------------------
 // Lists
-//
 
 .list-unstyled {
   padding-left: 0;
@@ -236,28 +229,24 @@
   }
 }
 
-//
+// --------------------------------------------------------
 // Misc
-//
+
+.text-monospace {
+  font-family: $font-family-monospace;
+  font-size: $font-size-monospace;
+}
+
+.text-hide {
+  font: 0/0 a;
+  color: transparent;
+  text-shadow: none;
+  background-color: transparent;
+  border: 0;
+}
 
 // Builds on `abbr`
 .initialism {
   font-size: 90%;
   text-transform: uppercase;
-}
-
-// Blockquotes
-.blockquote {
-  margin-bottom: $spacer;
-  font-size: $blockquote-font-size;
-}
-
-.blockquote-footer {
-  display: block;
-  font-size: 80%; // back to default font-size
-  color: $blockquote-small-color;
-
-  &::before {
-    content: '\2014 \00A0'; // em dash, nbsp
-  }
 }

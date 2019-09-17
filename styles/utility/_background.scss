@@ -1,45 +1,15 @@
 /* ~componentry/styles/atomic/background */
 
-//
-// Contextual backgrounds
-//
-
-@mixin bg-variant($parent, $color) {
-  #{$parent} {
-    background-color: $color !important;
+@each $color, $value in $background-colors {
+  .bg-#{$color} {
+    background-color: $value !important;
   }
-  a#{$parent},
-  button#{$parent} {
+  a.bg-#{$color},
+  button.bg-#{$color} {
     @include hover-focus {
-      background-color: darken($color, 10%) !important;
+      background-color: darken($value, 10%) !important;
     }
   }
-}
-
-@mixin bg-gradient-variant($parent, $color) {
-  #{$parent} {
-    background: $color linear-gradient(180deg, mix($background, $color, 15%), $color)
-      repeat-x !important;
-  }
-}
-
-@each $color, $value in $theme-colors {
-  @include bg-variant('.bg-#{$color}', $value);
-}
-
-// Create a bg class for each gray
-@each $color, $value in $grays {
-  @include bg-variant('.bg-gray-#{$color}', $value);
-}
-
-@if $enable-gradients {
-  @each $color, $value in $theme-colors {
-    @include bg-gradient-variant('.bg-gradient-#{$color}', $value);
-  }
-}
-
-.bg-white {
-  background-color: $white !important;
 }
 
 .bg-transparent {

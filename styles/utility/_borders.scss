@@ -1,17 +1,12 @@
-/* ~componentry/styles/atomic/borders */
+/*
+ * ~componentry/styles/utility/borders
+ * Utility border classes
+ */
 
 // --------------------------------------------------------
-// Borders
+// Colors
 
-@each $color, $value in $theme-colors {
-  .border-#{$color} {
-    border-color: $value;
-    border-bottom-style: solid;
-    border-bottom-width: 1px;
-  }
-}
-
-@each $color, $value in $borders {
+@each $color, $value in $border-colors {
   .border-#{$color} {
     border-color: $value;
     border-bottom-style: solid;

@@ -36,10 +36,10 @@ body {
   font-size: $font-size-base;
   font-weight: $font-weight-base;
   line-height: $line-height-base;
-  color: $foreground;
-  background-color: $background; // 2
+  color: theme-color(foreground);
+  background-color: theme-color(background); // 2
   -webkit-text-size-adjust: 100%; // 3
-  -webkit-tap-highlight-color: rgba($black, 0); // 4
+  -webkit-tap-highlight-color: rgba(theme-color(background), 0); // 4
 }
 
 // Future-proof rule: in browsers that support :focus-visible, suppress the focus outline
@@ -218,7 +218,7 @@ kbd {
   kbd {
     padding: 0;
     font-size: 1em;
-    font-weight: $nested-kbd-font-weight;
+    font-weight: $kbd-nested-font-weight;
   }
 }
 

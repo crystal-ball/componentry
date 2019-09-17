@@ -26,33 +26,55 @@ $grays: map-merge((
   "900": #131416,
 ), $grays);
 
+// TODO: these are deprecated but work to get rid of
 $white: #ffffff;
 $black: #131416;
+
+
+$background: #ffffff;
+$foreground: #131416;
 
 // Theme colors
 
 $theme-colors: () !default;
 $theme-colors: map-merge((
-  "primary":    #007bff,
-  "secondary":  #6c757d,
-  "success":    #28a745,
-  "info":       #17a2b8,
-  "warning":    #ffc107,
-  "danger":     #dc3545,
-  "light":      #f8f8f8,
-  "dark":       #282d31,
+  primary:    #007bff,
+  secondary:  #6c757d,
+  success:    #28a745,
+  info:       #17a2b8,
+  warning:    #ffc107,
+  danger:     #dc3545,
+  light:      #f8f8f8,
+  dark:       #282d31,
 ), $theme-colors);
 
 // Borders
 
-$borders: () !default;
-$borders: map-merge((
+$border-colors: () !default;
+$border-colors: map-merge($theme-colors, $border-colors);
+$border-colors: map-merge((
   light: #f8f8f8,
   dark: #282d31
-), $borders);
+), $border-colors);
+
+// Text colors
+
+$text-colors: () !default;
+$text-colors: map-merge($text-colors, $theme-colors);
+$text-colors: map-merge((
+  foreground: $foreground,
+  background: $background,
+  anchor: #007bff,
+  muted: #6c757d,
+) , $text-colors);
 
 // Set a specific jump point for requesting color jumps
 $theme-color-interval:      8% !default;
+
+// --------------------------------------------------------
+// Dynamic themes
+
+$themes: () ! default;
 
 // --------------------------------------------------------
 // A11y color contrast
@@ -70,6 +92,7 @@ $yiq-text-light:            $white !default;
 // Theming Options
 // Quickly modify global styling by enabling or disabling optional features.
 
+$enable-themes:             true !default;
 $enable-caret:              true !default;
 $enable-rounded:            true !default;
 $enable-shadows:            true !default;
@@ -127,10 +150,6 @@ $grid-breakpoints: (
   xl: 1200px
 ) !default;
 
-@include _assert-ascending($grid-breakpoints, "$grid-breakpoints");
-@include _assert-starts-at-zero($grid-breakpoints);
-
-
 // Grid containers
 //
 // Define the maximum width of `.container` for different screen sizes.
@@ -141,9 +160,6 @@ $container-max-widths: (
   lg: 960px,
   xl: 1140px
 ) !default;
-
-@include _assert-ascending($container-max-widths, "$container-max-widths");
-
 
 // Grid columns
 //
@@ -216,8 +232,8 @@ $font-weight-bolder:          bolder !default;
 $font-weight-base:            $font-weight-normal !default;
 $line-height-base:            1.5 !default;
 
-$text-muted-color:            gray("600") !default;
-$text-emphasis-color:         gray("800") !default;
+$text-muted-color:            map-get($text-colors, muted) !default;
+$text-emphasis-color:         map-get($text-colors, emphasis) !default;
 
 $h1: () !default;
 $h2: () !default;
@@ -225,7 +241,7 @@ $h3: () !default;
 $h4: () !default;
 $h5: () !default;
 
-$headings-color:              null !default;
+$headings-color:              map-get($text-colors, header) !default;
 $headings-font-family:        null !default;
 $headings-font-style:         null !default;
 $headings-font-weight:        500 !default;

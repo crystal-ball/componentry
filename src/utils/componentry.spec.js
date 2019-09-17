@@ -1,4 +1,4 @@
-import { arias, componentry, targetClassNames } from './componentry'
+import { arias, componentry, actionClasses } from './componentry'
 
 describe('componentry()', () => {
   test('returns computed border, margin, and padding values', () => {
@@ -58,10 +58,10 @@ describe('componentry()', () => {
   })
 })
 
-describe('targetClassNames()', () => {
-  test('targetClassNames returns computed className values for target elements', () => {
+describe('actionClasses()', () => {
+  test('actionClasses returns computed className values for target elements', () => {
     expect(
-      targetClassNames({
+      actionClasses({
         variant: 'btn',
         block: true,
         color: 'primary',

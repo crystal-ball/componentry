@@ -1,24 +1,33 @@
-/* ~componentry/styles/atomic/align */
+/* ~componentry/styles/utility/vertical-align */
 
-//
-// Vertical alignments
-//
-
-.align-baseline {
-  vertical-align: baseline !important;
-} // Browser default
 .align-top {
   vertical-align: top !important;
 }
+
 .align-middle {
   vertical-align: middle !important;
 }
+
 .align-bottom {
   vertical-align: bottom !important;
 }
+
+.align-baseline {
+  vertical-align: baseline !important;
+}
+
 .align-text-bottom {
   vertical-align: text-bottom !important;
 }
+
 .align-text-top {
   vertical-align: text-top !important;
+}
+
+.align-super {
+  vertical-align: super !important;
+}
+
+.align-sub {
+  vertical-align: sub !important;
 }

@@ -1,65 +1,75 @@
 export interface ActiveContainerProps {
+  /** Controls the active state for binary-active components */
   active?: boolean
+  /** Sets the initial value for active */
   defaultActive: boolean | string
+  /** Handler called to transition from inactive to active */
   activate?: Function
+  /** Handler called to transition from active to inactive */
   deactivate?: Function
-  /** Direction is included as a className, used for creating style modifiers */
+  /** Sets the direction relative to component trigger to position content */
   direction: 'top' | 'right' | 'bottom' | 'left' | 'overlay'
-  /** Toggles whether mouse events will call activate/deactivate handlers */
+  /** Switch to enable a deactivate on external click handler */
+  clickEvents?: boolean
+  /** Switch to enable a deactivate on esc keypress handler */
+  escEvents?: boolean
+  /** Switch to enable calling activate+deactive on mouse enter and leave */
   mouseEvents?: boolean
-  /** Called before activation */
+  /** Listener fn that will be called before activation */
   onActivate?: Function
-  /** Called after activation */
+  /** Listener fn that will be called after activation  */
   onActivated?: Function
-  /** Called before deactivation */
+  /** Listener fn that will be called before deactivate */
   onDeactivate?: Function
-  /** Called after deactivation */
+  /** Listener fn that will be called after deactivation */
   onDeactivated?: Function
   // TODO: Content, Trigger
 }
 
 export interface ActiveContentProps {
+  /** Unique id for this element in compound active context */
   activeId?: string
 }
 
 export interface ActiveTriggerProps {
+  /** Unique id for this element in compound active context */
   activeId?: string
   // TODO: decoration?: string | React.ComponentType<any>
 }
 
 export interface ButtonProps {
-  /** Toggle the anchor button style */
+  /** Switch to style the button like an anchor */
   anchor?: boolean
-  /** Sets atomic .btn-block for a full width button */
+  /** Switch for a full width button that will fill its container */
   block?: boolean
-  /** Sets atomic .btn-<COLOR> (or .text-<COLOR>), should be a theme color or body or muted */
+  /** Sets a button fill color */
   color?: string
-  /** Toggle the outline button style, should be a theme color */
+  /** Sets a button outline color */
   outline?: string
-  /** Toggles the button size */
+  /** Sets a button size */
   size?: 'sm' | 'lg'
 }
 
 export interface FontProps {
-  /** Sets atomic .text-<COLOR>, should be a theme color or body or muted */
+  /** Sets the font color */
   color?: string
-  /** Sets atomic .text-<WEIGHT> */
+  /** Sets the font weigth */
   fontWeight?: 'light' | 'normal' | 'bold'
-  /** Sets style value, numbers are converted to pixel value */
+  /** Sets the font size */
   fontSize?: string | number
-  /** Sets atomic .text-italic */
+  /** Switch to style font italic */
   italic?: boolean
-  /** Sets style value, numbers are converted to pixel value */
+  /** Sets the font letter-spacing */
   letterSpacing?: number | string
-  /** Sets style value, numbers converted to unitless value */
+  /** Sets element line-height */
   lineHeight?: number | string
-  /** Sets atomic .text-monospace */
+  /** Switch to style font monospaced */
   monospace?: boolean
-  /** Sets atomic .text-<SIZE> */
+  /** Sets the font size */
   size?: 'sm' | 'lg'
-  /** Sets atomic .text-<ALIGN> */
+  /** Sets the text alignment */
   textAlign: 'left' | 'center' | 'right' | 'justify'
-  /** Sets atomic .text-uppercase */
+  /** Switch to style font uppercase */
   uppercase?: boolean
 }
 

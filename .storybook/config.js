@@ -34,10 +34,13 @@ addDecorator(storyFn => <div className='storybook-screen'>{storyFn()}</div>)
 
 const stories = require.context('../src', true, /.stories.js$/)
 function loadStories() {
-  // Update app welcome story, which is the last story req'd, to be first displayed
   const orderedStories = stories.keys()
-  orderedStories.unshift(orderedStories.pop())
-  orderedStories.unshift(orderedStories.pop())
+  // Move index story to first req'd for sidebar ordering
+  const indexStory = orderedStories.splice(
+    orderedStories.findIndex(storyPath => storyPath.includes('index.stories')),
+    1,
+  )
+  orderedStories.unshift(indexStory)
   orderedStories.forEach(filename => stories(filename))
 }
 configure(loadStories, module)
