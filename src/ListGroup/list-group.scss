@@ -1,8 +1,7 @@
 /* ~componentry/src/List/list */
 
-// Base class
-//
-// Easily usable on <ul>, <ol>, or <div>.
+// --------------------------------------------------------
+// List group (<ul>, <ol>, or <div>)
 
 .list-group {
   display: flex;
@@ -13,9 +12,8 @@
   margin-bottom: 0;
 }
 
-// Individual list items
-//
-// Use on `li`s or `div`s within the `.list-group` parent.
+// --------------------------------------------------------
+// List items (<li> or <div> within .list-group)
 
 .list-group-item {
   position: relative;
@@ -46,12 +44,15 @@
   }
 }
 
-// Interactive list items
+// --------------------------------------------------------
+// Action list items
 //
-// Use anchor or button elements instead of `li`s or `div`s to create interactive
-// list items. Includes an extra `.active` modifier class for selected items.
+// Use anchor or button elements instead of `li`s or `div`s to create
+// interactive list items. Includes an extra `.active` modifier class for
+// selected items.
 
-.list-group-item-action {
+.list-group-action-item {
+  @include reset-action-item;
   width: 100%; // For `<button>`s (anchors become 100% by default though)
   color: $list-group-action-color;
   text-align: inherit; // For `<button>`s (anchors inherit)
@@ -71,11 +72,10 @@
   }
 }
 
-//
-// Active styles
-//
+// --------------------------------------------------------
+// Active state modifier
 
-// Must be declared after list-group-item-action ensure active has precedence
+// Must be declared after list-group-action-item ensure active has precedence
 // over :hover (Note this is valid for items and action items)
 .list-group-item.active {
   z-index: 2; // Place active items above their siblings for proper border styling
@@ -84,11 +84,11 @@
   border-color: $list-group-active-border-color;
 }
 
-// Flush list items
-//
+// --------------------------------------------------------
+// Flush layout list item
+
 // Remove borders and border-radius to keep list group items edge-to-edge. Most
 // useful within other components (e.g., cards).
-
 .list-group-flush {
   .list-group-item {
     border-right: 0;
@@ -109,24 +109,24 @@
   }
 }
 
+// --------------------------------------------------------
 // Contextual variants
-//
-// Add modifier classes to change text and background color on individual items.
-// Organizationally, this must come after the `:hover` states.
 
+// Add modifier classes to change text and background color on individual items.
+// (Organizationally, this must come after the `:hover` states)
 @mixin list-group-item-variant($state, $background, $color) {
   .list-group-item-#{$state} {
     color: $color;
     background-color: $background;
 
-    &.list-group-item-action {
+    &.list-group-action-item {
       @include hover-focus {
         color: $color;
         background-color: darken($background, 5%);
       }
 
       &.active {
-        color: $white;
+        color: theme-color(background);
         background-color: $color;
         border-color: $color;
       }

@@ -144,7 +144,7 @@
 // --------------------------------------------------------
 // Typography
 
-// Resets text to baseline
+/** Resets text to baseline */
 @mixin reset-text {
   font-family: $font-family-base;
   // We deliberately do NOT reset font-size or word-wrap.
@@ -161,6 +161,30 @@
   word-spacing: normal;
   white-space: normal;
   line-break: auto;
+}
+
+// --------------------------------------------------------
+// Action elements
+
+/** Resets button and anchor styles to baseline */
+@mixin reset-action-item {
+  // button reset
+  -webkit-appearance: button;
+  border-radius: 0;
+  font-family: inherit;
+  font-size: $font-size-base;
+  line-height: $line-height-base;
+  margin: 0;
+  overflow: visible;
+  text-transform: none;
+  font-size: inherit;
+
+  // anchor reset
+  text-decoration: none;
+
+  &:not(:disabled) {
+    cursor: pointer; // 3
+  }
 }
 
 // --------------------------------------------------------

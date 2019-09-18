@@ -21,7 +21,7 @@ export default function ListGroup(props) {
 
 /**
  * List items always have the `list-group-item` class, and items that are
- * actionable (buttons/anchors) have the `list-group-item-action` modifier class
+ * actionable (buttons/anchors) have the `list-group-action-item` modifier class
  * added with additional required styles.
  */
 function ListGroupItem(props) {
@@ -35,7 +35,7 @@ function ListGroupItem(props) {
       active,
       disabled: rest.disabled,
       'list-group-item': true,
-      'list-group-item-action': href || onClick,
+      'list-group-action-item': href || onClick,
       [`list-group-item-${color}`]: color,
     },
     ...rest,

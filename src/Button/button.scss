@@ -1,9 +1,5 @@
 /* componentry/src/Button/button */
 
-/**
- * BUTTONS
- */
-
 $btn-defaults: ();
 @each $color, $value in $theme-colors {
   $btn-defaults: map-merge(
@@ -30,9 +26,8 @@ $btn-defaults: ();
 
 $btn-states-map: map-merge($btn-defaults, $btn-states);
 
-//
-// Base styles
-//
+// --------------------------------------------------------
+// Button base styles
 
 .btn {
   -webkit-appearance: button;
@@ -75,9 +70,8 @@ $btn-states-map: map-merge($btn-defaults, $btn-states);
   }
 }
 
-//
+// --------------------------------------------------------
 // Theme color variants
-//
 
 @each $color, $value in $theme-colors {
   // --- Theme variant
@@ -167,18 +161,16 @@ $btn-states-map: map-merge($btn-defaults, $btn-states);
   box-shadow: none;
 }
 
-//
-// Block button
-//
+// --------------------------------------------------------
+// Block buttons
 
 .btn-block {
   display: block;
   width: 100%;
 }
 
-//
-// Button Sizes
-//
+// --------------------------------------------------------
+// Button sizes
 
 .btn-lg {
   @include border-radius($btn-border-radius-lg);
