@@ -10,10 +10,10 @@ $btn-defaults: ();
     $btn-defaults,
     (
       // --- Background color
-      #{$color}-bg: #{gradient-background($value)},
-      #{$color}-hover-bg: #{gradient-background(darken($value, 7.5%))},
-      #{$color}-active-bg: #{gradient-background(darken($value, 10%))},
-      #{$color}-disabled-bg: #{gradient-background($value)},
+      #{$color}-bg: #{gradient-bg($value)},
+      #{$color}-hover-bg: #{gradient-bg(darken($value, 7.5%))},
+      #{$color}-active-bg: #{gradient-bg(darken($value, 10%))},
+      #{$color}-disabled-bg: #{gradient-bg($value)},
       // --- Border color
       #{$color}-border-color: #{$value},
       #{$color}-hover-border-color: #{darken($value, 10%)},
@@ -113,14 +113,14 @@ $btn-states-map: map-merge($btn-defaults, $btn-states);
     color: $value;
 
     &:hover {
-      background: gradient-background($value);
+      background: gradient-bg($value);
       border-color: $value;
       color: color-yiq($value);
     }
 
     &:active,
     &.active {
-      background: gradient-background(darken($value, 7.5%));
+      background: gradient-bg(darken($value, 7.5%));
       border-color: $value;
       color: color-yiq($value);
     }

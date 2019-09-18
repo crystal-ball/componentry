@@ -5,7 +5,7 @@ $alert-defaults: ();
   $alert-defaults: map-merge(
     $alert-defaults,
     (
-      #{$color}-bg: #{gradient-background(theme-color-level($color, $alert-bg-level))},
+      #{$color}-bg: #{gradient-bg(theme-color-level($color, $alert-bg-level))},
       #{$color}-border-color: #{theme-color-level($color, $alert-border-level)},
       #{$color}-color: #{theme-color-level($color, $alert-color-level)}
     )

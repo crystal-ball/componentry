@@ -94,6 +94,7 @@ $font-colors: () !default;
 $font-colors: map-merge($font-colors, $theme-colors);
 $font-colors: map-merge((
   anchor: #17a2b8,
+  heading: #131416,
   muted:  #6c757d,
 ), $font-colors);
 
@@ -200,7 +201,7 @@ $h3: () !default;
 $h4: () !default;
 $h5: () !default;
 
-$headings-color:          map-get($font-colors, header) !default;
+$headings-color:          map-get($font-colors, heading) !default;
 $headings-font-family:    null !default;
 $headings-font-style:     null !default;
 $headings-font-weight:    500 !default;
@@ -355,6 +356,29 @@ $btn-group-btn-padding-y-lg:    $input-btn-padding-y-lg !default;
 $btn-group-btn-padding-x-lg:    $input-btn-padding-x-lg !default;
 
 // --------------------------------------------------------
+// Cards
+
+$card-spacer-y:             .75rem !default;
+$card-spacer-x:             1.25rem !default;
+
+$card-border-width:         $border-width !default;
+$card-border-radius:        $border-radius !default;
+$card-border-color:         rgba(theme-color(foreground), .125) !default;
+$card-inner-border-radius:  calc(#{$card-border-radius} - #{$card-border-width}) !default;
+
+$card-cap-bg:               rgba(theme-color(foreground), .03) !default;
+$card-bg:                   theme-color(background) !default;
+
+$card-img-overlay-padding:  1.25rem !default;
+
+$card-group-margin:         ($spacer) !default;
+$card-deck-margin:          $card-group-margin !default;
+
+$card-columns-count:        3 !default;
+$card-columns-gap:          1.25rem !default;
+$card-columns-margin:       $card-spacer-y !default;
+
+// --------------------------------------------------------
 // Close
 
 $close-font-size:                   $font-size-base * 1.5 !default;
@@ -365,6 +389,50 @@ $close-decoration:                  none !default;
 
 $close-hover-color:                 $close-color !default;
 $close-hover-decoration:            $close-decoration !default;
+
+// --------------------------------------------------------
+// Dropdowns
+
+$dropdown-min-width:                10rem !default;
+$dropdown-padding-y:                .5rem !default;
+$dropdown-spacer:                   .125rem !default;
+$dropdown-bg:                       theme-color(background) !default;
+$dropdown-border-color:             rgba(theme-color(foreground), .15) !default;
+$dropdown-border-radius:            $border-radius !default;
+$dropdown-border-width:             $border-width !default;
+$dropdown-divider-bg:               gray("200") !default;
+$dropdown-box-shadow:               0 .5rem 1rem rgba(theme-color(foreground), .175) !default;
+$dropdown-font-size:                $font-size-base !default;
+$dropdown-font-weight:              $font-weight-base !default;
+
+$dropdown-font-size-sm:             $font-size-sm !default;
+$dropdown-font-weight-sm:           $font-weight-base !default;
+$dropdown-font-size-lg:             $font-size-lg !default;
+$dropdown-font-weight-lg:           $font-weight-base !default;
+
+$dropdown-anchor-color:             gray("900") !default;
+$dropdown-anchor-hover-color:       darken(gray("900"), 5%) !default;
+$dropdown-anchor-hover-bg:          gray("100") !default;
+
+$dropdown-anchor-active-color:      $component-active-color !default;
+$dropdown-anchor-active-bg:         $component-active-bg !default;
+
+$dropdown-anchor-disabled-color:    gray("600") !default;
+
+$dropdown-item-padding-y:           .25rem !default;
+$dropdown-item-padding-x:           1.5rem !default;
+$dropdown-item-line-height:         $line-height-base !default;
+
+$dropdown-item-padding-y-sm:        ($dropdown-item-padding-y * 0.8) !default;
+$dropdown-item-padding-x-sm:        ($dropdown-item-padding-x * 0.8) !default;
+
+$dropdown-item-padding-y-lg:        ($dropdown-item-padding-y * 1.1) !default;
+$dropdown-item-padding-x-lg:        ($dropdown-item-padding-x * 1.1) !default;
+
+$dropdown-heading-color:            gray("600") !default;
+
+$dropdown-trigger-anchor-border-color:       $anchor-color !default;
+$dropdown-trigger-anchor-hover-border-color: $anchor-hover-color !default;
 
 // --------------------------------------------------------
 // Icons
