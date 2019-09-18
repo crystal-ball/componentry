@@ -56,7 +56,7 @@ $btn-states-map: map-merge($btn-defaults, $btn-states);
   text-decoration: $btn-decoration;
 
   // ℹ️ The box-shadow styles remain static throughout hover/active states
-  @include box-shadow($btn-box-shadow);
+  box-shadow: box-shadow($btn-box-shadow);
 
   // $btn-transition default includes color, background-color, border-color
   @include transition($btn-transition);
@@ -137,25 +137,34 @@ $btn-states-map: map-merge($btn-defaults, $btn-states);
 // font styles matching anchors (can be used for things like secondary CTAs)
 .btn-link {
   background: transparent;
-  color: $link-color;
+  color: $anchor-color;
   font-weight: $font-weight-normal;
+  box-shadow: none;
   // 🤔 Should btn-link reset the text tansform and letter spacing?
 
   &:hover {
     background: transparent;
     border-color: transparent;
-    color: $link-hover-color;
-    text-decoration: $link-hover-decoration;
+    color: $anchor-hover-color;
+    text-decoration: $anchor-hover-decoration;
   }
 
   &:active {
-    color: $link-active-color;
-    text-decoration: $link-active-decoration;
+    color: $anchor-active-color;
+    text-decoration: $anchor-active-decoration;
   }
 
   &.disabled {
     color: $btn-link-disabled-color;
   }
+}
+
+.btn-outline-link {
+  background: transparent;
+  border-color: $anchor-color;
+  color: $anchor-color;
+  font-weight: $font-weight-normal;
+  box-shadow: none;
 }
 
 //
@@ -187,21 +196,6 @@ $btn-states-map: map-merge($btn-defaults, $btn-states);
   padding: $btn-padding-y-sm $btn-padding-x-sm;
 }
 
-//
-// Containers
-//
-
-.btn-container-x {
-  .btn + .btn {
-    margin-left: $btn-container-spacing-x;
-  }
-}
-
-.btn-container-y {
-  .btn + .btn {
-    margin-top: $btn-container-spacing-x;
-  }
-}
 
 /* ~componentry/src/ButtonGroup/button-group */
 

@@ -1,0 +1,13 @@
+/* ~componentry/styles/utility/button-containers */
+
+.btn-container-x {
+  .btn + .btn {
+    margin-left: $btn-container-spacing-x;
+  }
+}
+
+.btn-container-y {
+  .btn + .btn {
+    margin-top: $btn-container-spacing-x;
+  }
+}

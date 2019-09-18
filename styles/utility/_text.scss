@@ -9,10 +9,10 @@
 @each $color, $value in $font-colors {
   // Support BS `text-<color>` classes
   .text-#{$color},
-  .fg-#{$color} {
+  .font-#{$color} {
     color: $value !important;
   }
-  a.#{$color} {
+  a.font-#{$color} {
     @include hover-focus {
       color: darken($value, 10%) !important;
     }
@@ -30,16 +30,6 @@
 .display-2 {
   font-size: $display2-size;
   font-weight: $display2-weight;
-  line-height: $display-line-height;
-}
-.display-3 {
-  font-size: $display3-size;
-  font-weight: $display3-weight;
-  line-height: $display-line-height;
-}
-.display-4 {
-  font-size: $display4-size;
-  font-weight: $display4-weight;
   line-height: $display-line-height;
 }
 

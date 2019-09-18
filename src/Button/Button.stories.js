@@ -12,11 +12,12 @@ const colors = {
   primary: 'primary',
   secondary: 'secondary',
   info: 'info',
-  light: 'light',
-  dark: 'dark',
+  background: 'background',
+  foreground: 'foreground',
   success: 'success',
   warning: 'warning',
   danger: 'danger',
+  link: 'link',
   None: null,
 }
 
@@ -42,19 +43,19 @@ storiesOf('Button', module)
   .add('Collection', () => (
     <Block>
       <h2 className='storybook-section-header'>Colors</h2>
-      <div className='btn-container-x'>
+      <div className='d-flex justify-content-center btn-container-x'>
         {Object.keys(colors).map(
           color =>
             colors[color] && (
               <Button color={colors[color]} onClick={action('button-click')} key={color}>
-                {color}
+                Button
               </Button>
             ),
         )}
       </div>
 
       <h2 className='storybook-section-header'>Outline</h2>
-      <div className='btn-container-x'>
+      <div className='d-flex justify-content-center btn-container-x'>
         {Object.keys(colors).map(
           color =>
             colors[color] && (
@@ -63,7 +64,7 @@ storiesOf('Button', module)
                 onClick={action('button-click')}
                 key={color}
               >
-                {color}
+                Button
               </Button>
             ),
         )}

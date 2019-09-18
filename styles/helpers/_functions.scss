@@ -115,6 +115,14 @@
 }
 
 // --------------------------------------------------------
+// Gradients
+
+/** Return a gradient color value if gradients are enabled in theme */
+@function gradient-background($color) {
+  @return $color;
+}
+
+// --------------------------------------------------------
 // Shadows
 
 /**

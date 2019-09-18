@@ -13,11 +13,10 @@ export default function Button(props) {
     ...props,
   }
 
+  if (!merged.variant) merged.variant = merged.anchor ? 'a' : 'btn'
+
   return elem({
-    // Defaults
-    variant: merged.anchor ? 'a' : 'btn',
     componentClassNames: actionClasses(merged),
-    // Overrides
     ...merged,
     // Clear component props that are also library props
     color: null,
