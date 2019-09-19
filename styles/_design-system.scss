@@ -88,6 +88,9 @@ $background-colors: map-merge($grayscale, $background-colors);
 $border-colors: () !default;
 $border-colors: map-merge($theme-colors, $border-colors);
 $border-colors: map-merge($grayscale, $border-colors);
+$border-colors: map-merge((
+  default: #ced4da
+), $border-colors);
 
 // Font colors
 $font-colors: () !default;
@@ -470,6 +473,70 @@ $list-group-action-hover-color:     $list-group-action-color !default;
 
 $list-group-action-active-color:    theme-color(foreground) !default;
 $list-group-action-active-bg:       gray("200") !default;
+
+// --------------------------------------------------------
+// Modals
+
+$enable-modal-transform:            false !default;
+
+$modal-lg:                          800px !default;
+$modal-md:                          500px !default;
+$modal-sm:                          300px !default;
+
+$modal-overlay-bg:                 rgba(0, 0, 0, 0.5) !default;
+
+$modal-positioner-padding:          .5rem !default;
+$modal-positioner-padding-sm-up:    1.75rem !default;
+
+$modal-container-bg:                theme-color(background) !default;
+$modal-container-border-color:      rgba(border-color(default), .2) !default;
+$modal-container-border-width:      $border-width !default;
+$modal-container-border-radius:     $border-radius-lg !default;
+$modal-container-box-shadow:        0 .25rem .5rem rgba(theme-color(foreground), .5) !default;
+$modal-container-box-shadow-sm-up:  0 .5rem 1rem rgba(theme-color(foreground), .5) !default;
+
+$modal-body-padding:               1rem !default;
+
+$modal-header-bg:                   $modal-container-bg !default;
+$modal-header-border-color:         border-color(default) !default;
+$modal-header-border-width:         $modal-container-border-width !default;
+$modal-header-padding:              $modal-body-padding !default;
+
+$modal-title-font-size:             $font-size-lg !default;
+$modal-title-line-height:           $line-height-base !default;
+$modal-title-color:                 $headings-color !default;
+$modal-title-font-weight:           $headings-font-weight !default;
+
+$modal-footer-bg:                   $modal-container-bg !default;
+$modal-footer-border-color:         $modal-header-border-color !default;
+$modal-footer-border-width:         $modal-header-border-width !default;
+$modal-footer-padding:              $modal-body-padding !default;
+
+// --------------------------------------------------------
+// Navs
+
+$nav-item-padding-y:                .5rem !default;
+$nav-item-padding-x:                1rem !default;
+$nav-item-action-color:             $anchor-color !default;
+$nav-item-action-hover-color:       $anchor-hover-color !default;
+$nav-item-action-hover-decoration:  underline !default;
+
+$nav-item-disabled-color:           gray("600") !default;
+
+$nav-tabs-border-color:             gray("300") !default;
+$nav-tabs-border-width:             $border-width !default;
+$nav-tabs-border-radius:            $border-radius !default;
+$nav-tabs-link-hover-border-color:  gray("200") gray("200") $nav-tabs-border-color !default;
+$nav-tabs-link-active-color:        gray("700") !default;
+$nav-tabs-link-active-bg:           theme-color(background) !default;
+$nav-tabs-link-active-border-color: gray("300") gray("300") $nav-tabs-link-active-bg !default;
+
+$nav-pills-border-radius:           $border-radius !default;
+$nav-pills-link-active-color:       $component-active-color !default;
+$nav-pills-link-active-bg:          $component-active-bg !default;
+
+$nav-divider-color:                 gray("200") !default;
+$nav-divider-margin-y:              ($spacer / 2) !default;
 
 // --------------------------------------------------------
 // Tables

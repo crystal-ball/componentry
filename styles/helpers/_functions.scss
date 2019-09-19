@@ -8,12 +8,17 @@
   @return map-get($grayscale, $key);
 }
 
-/** Return a theme-color value by key */
+/** Return a border color value by key */
+@function border-color($key: 'default') {
+  @return map-get($border-colors, $key);
+}
+
+/** Return a theme color value by key */
 @function theme-color($key: 'primary') {
   @return map-get($theme-colors, $key);
 }
 
-/** Return a font-color value by key */
+/** Return a font color value by key */
 @function font-color($key: 'foreground') {
   @return map-get($font-colors, $key);
 }
