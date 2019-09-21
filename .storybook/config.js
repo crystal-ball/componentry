@@ -32,15 +32,4 @@ addDecorator(storyFn => <div className='storybook-screen'>{storyFn()}</div>)
 
 // --- Require all stories in /src 🎉 --
 
-const stories = require.context('../src', true, /.stories.js$/)
-function loadStories() {
-  const orderedStories = stories.keys()
-  // Move index story to first req'd for sidebar ordering
-  const indexStory = orderedStories.splice(
-    orderedStories.findIndex(storyPath => storyPath.includes('index.stories')),
-    1,
-  )
-  orderedStories.unshift(indexStory)
-  orderedStories.forEach(filename => stories(filename))
-}
-configure(loadStories, module)
+configure(require.context('../src', true, /\.stories\.(js|mdx)$/), module)
