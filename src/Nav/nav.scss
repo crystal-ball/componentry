@@ -1,9 +1,7 @@
 /* ~componentry/src/Nav/nav */
 
-// Base class
-//
-// Kickstart any navigation component with a set of style resets. Works with
-// `<nav>`s or `<ul>`s.
+// --------------------------------------------------------
+// Nav container (<nav> or <ul>)
 
 .nav {
   display: flex;
@@ -13,17 +11,15 @@
   list-style: none;
 }
 
-//
+// --------------------------------------------------------
 // Vertical
-//
 
 .nav-vertical {
   flex-direction: column;
 }
 
-//
+// --------------------------------------------------------
 // Pills
-//
 
 .nav-pills {
   .nav-item {
@@ -36,9 +32,8 @@
   }
 }
 
-//
-// Justified variants
-//
+// --------------------------------------------------------
+// Justified
 
 .nav-fill {
   .nav-item {
@@ -55,9 +50,8 @@
   }
 }
 
-//
-// Link elements
-//
+// --------------------------------------------------------
+// Nav items
 
 .nav-item {
   -webkit-appearance: none;

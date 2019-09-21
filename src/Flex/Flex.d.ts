@@ -1,12 +1,12 @@
 interface FlexProps {
-  /** Specify the flex direction of the container */
+  /** Sets the `direction` flex property */
   direction: '' | 'column' | 'column-reverse' | 'row' | 'row-reverse'
-  /** Toggles between display flex and display inline-flex */
+  /** Switch to display element as inline-flex */
   inline: boolean
-  /** Adds flexbox align-items atomic classes */
+  /** Sets the `align-items` flex property to control flex items' layout */
   align: '' | 'start' | 'center' | 'end' | 'baseline' | 'stretch'
-  /** Adds flexbox justify-content atomic classes */
+  /** Sets the `justify-content` flex property to control flex items' layou */
   justify: '' | 'start' | 'center' | 'end' | 'around' | 'between' | 'evenly'
-  /** Sets a flex-wrap utility class */
+  /** Sets the `wrap` flex property to control flex items' wrap behavior */
   wrap: '' | 'wrap' | 'wrap-reverse' | 'nowrap'
 }

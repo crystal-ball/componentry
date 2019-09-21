@@ -29,7 +29,7 @@ exports[`<Popover /> snapshots renders correctly 1`] = `
         />
       </div>
       <h3
-        class="popover-header"
+        class="popover-heading"
       >
         Fun Fact!
       </h3>

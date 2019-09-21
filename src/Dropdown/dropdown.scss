@@ -111,7 +111,7 @@
   z-index: $zindex-dropdown;
   min-width: $dropdown-min-width;
   padding: $dropdown-padding-y 0;
-  color: $foreground;
+  color: theme-color(foreground);
   font-size: $dropdown-font-size;
   font-weight: $dropdown-font-weight;
   text-align: left; // Ensures proper alignment if parent has it changed (e.g., modal footer)
@@ -119,7 +119,7 @@
   background-clip: padding-box;
   border: $dropdown-border-width solid $dropdown-border-color;
   @include border-radius($dropdown-border-radius);
-  @include box-shadow($dropdown-box-shadow);
+  box-shadow: box-shadow($dropdown-box-shadow);
 
   // Directional styles with parent selector
 
@@ -202,7 +202,7 @@
   // Ensure that buttons and anchors inherit dropdown container font-size
   font-size: inherit;
   font-weight: inherit;
-  color: $dropdown-link-color;
+  color: $dropdown-anchor-color;
   text-align: inherit; // For `<button>`s
   line-height: $dropdown-item-line-height;
   white-space: nowrap; // prevent links from randomly breaking onto new lines
@@ -211,25 +211,21 @@
 
   &:hover,
   &:focus {
-    color: $dropdown-link-hover-color;
+    color: $dropdown-anchor-hover-color;
     text-decoration: none;
-    @include gradient-bg($dropdown-link-hover-bg);
+    background: gradient-bg($dropdown-anchor-hover-bg);
   }
 
   &.active,
   &:active {
-    color: $dropdown-link-active-color;
+    color: $dropdown-anchor-active-color;
     text-decoration: none;
-    @include gradient-bg($dropdown-link-active-bg);
+    background: gradient-bg($dropdown-anchor-active-bg);
   }
 
   &.disabled {
-    color: $dropdown-link-disabled-color;
+    color: $dropdown-anchor-disabled-color;
     background-color: transparent;
-    // Remove CSS gradients if they're enabled
-    @if $enable-gradients {
-      background-image: none;
-    }
   }
 }
 
@@ -237,23 +233,23 @@
 .dropdown-item-text {
   display: block;
   padding: $dropdown-item-padding-y $dropdown-item-padding-x;
-  color: $dropdown-link-color;
+  color: $dropdown-anchor-color;
 }
 
 // Dropdown section headers
-.dropdown-header {
+.dropdown-heading {
   display: block;
   padding: $dropdown-padding-y $dropdown-item-padding-x;
   margin-bottom: 0; // for use with heading elements
   font-size: $font-size-sm;
-  color: $dropdown-header-color;
+  color: $dropdown-heading-color;
   white-space: nowrap; // as with > li > a
 }
 
 // Dividers (basically an `<hr>`) within the dropdown
 .dropdown-divider {
   height: 0;
-  margin: $nav-divider-margin-y 0;
+  margin: ($spacer / 2) 0;
   overflow: hidden;
   border-top: 1px solid $dropdown-divider-bg;
 }

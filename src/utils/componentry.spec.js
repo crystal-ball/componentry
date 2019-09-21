@@ -1,4 +1,4 @@
-import { arias, componentry, targetClassNames } from './componentry'
+import { arias, componentry, actionClasses } from './componentry'
 
 describe('componentry()', () => {
   test('returns computed border, margin, and padding values', () => {
@@ -33,35 +33,35 @@ describe('componentry()', () => {
     expect(
       componentry({
         bg: 'primary',
-        borderColor: 'primary',
-        color: 'primary',
+        border: 'primary',
+        fontColor: 'primary',
+        fontSize: 'sm',
         fontWeight: 'bold',
         italic: true,
         monospace: true,
         position: 'fixed',
-        size: 'sm',
         textAlign: 'center',
         uppercase: true,
       }).libraryClassNames,
     ).toEqual({
-      'font-italic': true,
-      'text-uppercase': true,
-      'text-monospace': true,
       'bg-primary': 'primary',
       'border-primary': 'primary',
+      'font-color-primary': 'primary',
+      'font-italic': true,
+      'font-size-sm': 'sm',
       'font-weight-bold': 'bold',
       'position-fixed': 'fixed',
-      'text-primary': 'primary',
-      'text-sm': 'sm',
       'text-center': 'center',
+      'text-monospace': true,
+      'text-uppercase': true,
     })
   })
 })
 
-describe('targetClassNames()', () => {
-  test('targetClassNames returns computed className values for target elements', () => {
+describe('actionClasses()', () => {
+  test('actionClasses returns computed className values for target elements', () => {
     expect(
-      targetClassNames({
+      actionClasses({
         variant: 'btn',
         block: true,
         color: 'primary',

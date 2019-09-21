@@ -1,19 +1,15 @@
 /* componentry/src/Button/button */
 
-/**
- * BUTTONS
- */
-
 $btn-defaults: ();
 @each $color, $value in $theme-colors {
   $btn-defaults: map-merge(
     $btn-defaults,
     (
       // --- Background color
-      #{$color}-bg: #{gradient-background($value)},
-      #{$color}-hover-bg: #{gradient-background(darken($value, 7.5%))},
-      #{$color}-active-bg: #{gradient-background(darken($value, 10%))},
-      #{$color}-disabled-bg: #{gradient-background($value)},
+      #{$color}-bg: #{gradient-bg($value)},
+      #{$color}-hover-bg: #{gradient-bg(darken($value, 7.5%))},
+      #{$color}-active-bg: #{gradient-bg(darken($value, 10%))},
+      #{$color}-disabled-bg: #{gradient-bg($value)},
       // --- Border color
       #{$color}-border-color: #{$value},
       #{$color}-hover-border-color: #{darken($value, 10%)},
@@ -30,9 +26,8 @@ $btn-defaults: ();
 
 $btn-states-map: map-merge($btn-defaults, $btn-states);
 
-//
-// Base styles
-//
+// --------------------------------------------------------
+// Button base styles
 
 .btn {
   -webkit-appearance: button;
@@ -56,7 +51,7 @@ $btn-states-map: map-merge($btn-defaults, $btn-states);
   text-decoration: $btn-decoration;
 
   // ℹ️ The box-shadow styles remain static throughout hover/active states
-  @include box-shadow($btn-box-shadow);
+  box-shadow: box-shadow($btn-box-shadow);
 
   // $btn-transition default includes color, background-color, border-color
   @include transition($btn-transition);
@@ -75,9 +70,8 @@ $btn-states-map: map-merge($btn-defaults, $btn-states);
   }
 }
 
-//
+// --------------------------------------------------------
 // Theme color variants
-//
 
 @each $color, $value in $theme-colors {
   // --- Theme variant
@@ -113,14 +107,14 @@ $btn-states-map: map-merge($btn-defaults, $btn-states);
     color: $value;
 
     &:hover {
-      background: gradient-background($value);
+      background: gradient-bg($value);
       border-color: $value;
       color: color-yiq($value);
     }
 
     &:active,
     &.active {
-      background: gradient-background(darken($value, 7.5%));
+      background: gradient-bg(darken($value, 7.5%));
       border-color: $value;
       color: color-yiq($value);
     }
@@ -137,20 +131,21 @@ $btn-states-map: map-merge($btn-defaults, $btn-states);
 // font styles matching anchors (can be used for things like secondary CTAs)
 .btn-link {
   background: transparent;
-  color: $link-color;
+  color: $anchor-color;
   font-weight: $font-weight-normal;
+  box-shadow: none;
   // 🤔 Should btn-link reset the text tansform and letter spacing?
 
   &:hover {
     background: transparent;
     border-color: transparent;
-    color: $link-hover-color;
-    text-decoration: $link-hover-decoration;
+    color: $anchor-hover-color;
+    text-decoration: $anchor-hover-decoration;
   }
 
   &:active {
-    color: $link-active-color;
-    text-decoration: $link-active-decoration;
+    color: $anchor-active-color;
+    text-decoration: $anchor-active-decoration;
   }
 
   &.disabled {
@@ -158,18 +153,24 @@ $btn-states-map: map-merge($btn-defaults, $btn-states);
   }
 }
 
-//
-// Block button
-//
+.btn-outline-link {
+  background: transparent;
+  border-color: $anchor-color;
+  color: $anchor-color;
+  font-weight: $font-weight-normal;
+  box-shadow: none;
+}
+
+// --------------------------------------------------------
+// Block buttons
 
 .btn-block {
   display: block;
   width: 100%;
 }
 
-//
-// Button Sizes
-//
+// --------------------------------------------------------
+// Button sizes
 
 .btn-lg {
   @include border-radius($btn-border-radius-lg);
@@ -187,21 +188,6 @@ $btn-states-map: map-merge($btn-defaults, $btn-states);
   padding: $btn-padding-y-sm $btn-padding-x-sm;
 }
 
-//
-// Containers
-//
-
-.btn-container-x {
-  .btn + .btn {
-    margin-left: $btn-container-spacing-x;
-  }
-}
-
-.btn-container-y {
-  .btn + .btn {
-    margin-top: $btn-container-spacing-x;
-  }
-}
 
 /* ~componentry/src/ButtonGroup/button-group */
 

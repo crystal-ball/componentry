@@ -1,0 +1,18 @@
+import { Meta, Title, Props } from '@storybook/addon-docs/blocks'
+import { boolean } from '@storybook/addon-knobs'
+import Input from './Input'
+
+<Meta title='Components|Input' component={Input} />
+
+# Input
+
+<div className='form-group'>
+  <Input>
+    <Input.Label>Storybook</Input.Label>
+    <Input.Field />
+    <Input.Description aria-hidden={!boolean('Description', true)}>
+      Really important input!
+    </Input.Description>
+    <Input.Error aria-hidden={!boolean('Error', false)}>Oh no!</Input.Error>
+  </Input>
+</div>

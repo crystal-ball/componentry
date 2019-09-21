@@ -1,0 +1,38 @@
+import { Meta, Story, Preview } from '@storybook/addon-docs/blocks'
+import { Button, Heading, Theme } from './index'
+
+<Meta title='Intro' />
+
+<Heading align='center' mt={50}>
+  It&apos;s hacking time 👾
+</Heading>
+
+### Library conventions
+
+_This story has examples of the core library component APIs and conventions._
+
+### Render as
+
+_All components accept an `as` prop that will override the container element passed to
+`React.createElement`. This can be useful for customizing how a component is rendered or
+layering additional logic onto a component instance._
+
+This override layers on a conditional loading display, note that passing all of the props
+to the button element in LoadingButton is required
+
+### Class names
+
+_Class names for each component are layered together from the theme context, JSX props,
+component computed class names and library computed class names._
+
+<Theme
+  theme={{
+    Button: {
+      themeClassName: 'context-class',
+    },
+  }}
+>
+  <Button className='jsx-prop-class' color='primary' uppercase>
+    ClassNames Button
+  </Button>
+</Theme>

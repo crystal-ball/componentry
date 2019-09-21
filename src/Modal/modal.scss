@@ -28,8 +28,8 @@
   // Prevent inner element bgs from overlaying border style
   background-clip: padding-box;
   border: $modal-container-border-width solid $modal-container-border-color;
+  box-shadow: box-shadow($modal-container-box-shadow);
   @include border-radius($modal-container-border-radius);
-  @include box-shadow($modal-container-box-shadow);
 
   // Horizontally center the content
   margin-left: auto;
@@ -94,7 +94,7 @@
 
   .modal-container {
     max-width: $modal-md;
-    @include box-shadow($modal-container-box-shadow-sm-up);
+    box-shadow: box-shadow($modal-container-box-shadow-sm-up);
   }
 
   // Screen is now wide enough for small modals

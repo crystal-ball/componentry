@@ -111,20 +111,22 @@
 
 // Content Element - The content element should be used to wrap a body/header element
 .popover-content {
-  @include border-radius($border-radius-lg);
-  @include box-shadow($popover-box-shadow);
   // Reset font properties for consistent font styling regardless of cascading values
   @include reset-text();
+  display: block;
+  position: absolute;
+  max-width: $popover-max-width;
+  z-index: $zindex-popover;
+
   background-clip: padding-box;
   background-color: $popover-bg;
   border: $popover-border-width solid $popover-border-color;
-  display: block;
   font-size: $font-size-sm;
-  max-width: $popover-max-width;
-  position: absolute;
   // Allow breaking very long words so they don't overflow the popover's bounds
   word-wrap: break-word;
-  z-index: $zindex-popover;
+
+  box-shadow: box-shadow($popover-box-shadow);
+  @include border-radius($border-radius-lg);
 
   .tip-container {
     align-items: center;
@@ -163,8 +165,10 @@
   color: $popover-body-color;
 }
 
-// Header element
-.popover-header {
+// --------------------------------------------------------
+// Heading element
+
+.popover-heading {
   padding: $popover-header-padding-y $popover-header-padding-x;
   // Try to guarantee that spacing is correct regardless of div vs h* usage
   margin-top: 0;

@@ -2,7 +2,7 @@ import React, { useContext } from 'react'
 import elem from './elem-factory'
 import { ActiveCtx } from './active-container-factory'
 import { useTheme } from './Theme/Theme'
-import { arias as gnArias, targetClassNames } from './utils/componentry'
+import { arias as gnArias, actionClasses } from './utils/componentry'
 
 /**
  * Factory returns custom `<Trigger />` components defined by the fn options.
@@ -49,7 +49,7 @@ export default function activeTriggerFactory(
     // shorthand switch was passed
     rest.variant = rest.variant || (rest.button ? 'btn' : 'a')
 
-    const componentClassNames = targetClassNames(rest)
+    const componentClassNames = actionClasses(rest)
 
     // Clear component props that are also library props
     rest.color = null
@@ -57,7 +57,7 @@ export default function activeTriggerFactory(
 
     // Handle determining whether to call activate or deactivate on click
     // 1. If a trigger type was passed, call that event always
-    // 2. else if using multi-active container check if this active id is active
+    // 2. else if in a compound-active context check if this activeId is active
     // 3. else use opposite of active status
     let onClick
     if (triggerType) onClick = triggerType === 'activate' ? activate : deactivate
@@ -75,12 +75,12 @@ export default function activeTriggerFactory(
       componentClassNames: [
         baseClass,
         componentClassNames,
-        // For mutli-active triggers add active if the trigger is selected
+        // For compound-active contexts add an active class if activeIds match
+        // (eg in tabs show which tab is selected)
         { active: activeId && active === activeId },
       ],
       onClick,
-      // For multi-active elems, the value is used in `withState` to handle
-      // changing the active id
+      // For compound-active contexts, the value attr is to expose the activeId
       value: activeId,
       children: (
         <>

@@ -1,9 +1,5 @@
 /* ~componentry/styles/components */
 
-//
-// Componentry component styles
-//
-
 @import '../src/Alert/alert';
 @import '../src/Anchor/anchor';
 @import '../src/Button/button';
@@ -11,15 +7,14 @@
 @import '../src/Close/close';
 @import '../src/Drawer/drawer';
 @import '../src/Dropdown/dropdown';
-@import '../src/Header/header';
+@import '../src/FormGroup/form-group';
+@import '../src/Heading/heading';
 @import '../src/Icon/icon';
+@import '../src/Input/input';
 @import '../src/ListGroup/list-group';
 @import '../src/Modal/modal';
 @import '../src/Nav/nav';
 @import '../src/Popover/popover';
-@import '../src/Tab/tab';
+@import '../src/Tabs/tabs';
 @import '../src/Text/text';
 @import '../src/Tooltip/tooltip';
-
-@import '../src/FormGroup/form-group';
-@import '../src/Input/input';

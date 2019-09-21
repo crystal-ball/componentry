@@ -6,20 +6,20 @@
 // The theme contains only side effect free setup code including variables,
 // mixins and functions. It can be imported as a base context for users of CSS
 // modules.
-@import 'theme';
+@import './design-system';
 
 // The initialize imports setup a consistent environment for the library using
 // the Bootstrap browser reboot and CSS variable declarations. (Note the browser
 // reboot styles are not required)
-@import 'reboot';
+@import './reboot';
 
 // Scoped library component styles. These styles are intended to be used only
 // with their parent components.
-@import 'components';
+@import './components';
 
 // Utility styles for composing custom elements leveraging a consistent design
 // system.
-@import 'utility';
+@import './utility';
 
 /*
 * 🙌 Componentry extends and greatly appreciates Bootstrap

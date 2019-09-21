@@ -7,9 +7,9 @@
 // Target class names generator
 
 /**
- * Fn generates the classes for anchor and button type target elements
+ * Fn generates the classes for action elements
  */
-export const targetClassNames = ({ variant, block, color, disabled, outline, size }) => ({
+export const actionClasses = ({ variant, block, color, disabled, outline, size }) => ({
   [variant]: true,
   [`${variant}-block`]: block,
   [`${variant}-${color}`]: color,
@@ -34,13 +34,13 @@ export const navClasses = ({ fill, justify, pills, vertical }) => ({
 
 const classNamesProps = new Set([
   'bg',
-  'borderColor',
-  'color',
+  'border',
+  'fontColor',
+  'fontSize',
   'fontWeight',
   'italic',
   'monospace',
   'position',
-  'size',
   'textAlign',
   'uppercase',
 ])
@@ -86,11 +86,11 @@ const generateClassNames = p => ({
   'text-uppercase': p.uppercase,
   'text-monospace': p.monospace,
   [`bg-${p.bg}`]: p.bg,
-  [`border-${p.borderColor}`]: p.borderColor,
+  [`border-${p.border}`]: p.border,
+  [`font-color-${p.fontColor}`]: p.fontColor,
+  [`font-size-${p.fontSize}`]: p.fontSize,
   [`font-weight-${p.fontWeight}`]: p.fontWeight,
   [`position-${p.position}`]: p.position,
-  [`text-${p.color}`]: p.color,
-  [`text-${p.size}`]: p.size,
   [`text-${p.textAlign}`]: p.textAlign,
 })
 

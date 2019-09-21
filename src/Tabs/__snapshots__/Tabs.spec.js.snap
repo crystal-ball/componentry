@@ -1,0 +1,100 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Tab /> snapshots renders correctly 1`] = `
+<div
+  class="tabs"
+  data-id="guid"
+  name="tabs"
+>
+  <nav
+    class="tabs-nav-container"
+    role="tablist"
+  >
+    <button
+      aria-controls="guid-one-content"
+      aria-selected="true"
+      class="tabs-nav-tab a active"
+      id="guid-one-tab"
+      role="tab"
+      type="button"
+      value="one"
+    >
+      Item 1
+    </button>
+    <button
+      aria-controls="guid-two-content"
+      aria-selected="false"
+      class="tabs-nav-tab a"
+      id="guid-two-tab"
+      role="tab"
+      type="button"
+      value="two"
+    >
+      Tab with long name
+    </button>
+    <button
+      aria-controls="guid-three-content"
+      aria-selected="false"
+      class="tabs-nav-tab a"
+      id="guid-three-tab"
+      role="tab"
+      type="button"
+      value="three"
+    >
+      Item 3
+    </button>
+    <button
+      aria-controls="guid-four-content"
+      aria-selected="false"
+      class="tabs-nav-tab a disabled"
+      disabled=""
+      id="guid-four-tab"
+      role="tab"
+      type="button"
+      value="four"
+    >
+      Disabled
+    </button>
+  </nav>
+  <div
+    class="tabs-panes-container"
+  >
+    <div
+      aria-hidden="false"
+      aria-labelledby="guid-one-trigger"
+      class="tabs-panes-pane"
+      id="guid-one-content"
+      role="tabpanel"
+    >
+      Tab 1
+    </div>
+    <div
+      aria-hidden="true"
+      aria-labelledby="guid-two-trigger"
+      class="tabs-panes-pane"
+      id="guid-two-content"
+      role="tabpanel"
+    >
+      Tab 2
+    </div>
+    <div
+      aria-hidden="true"
+      aria-labelledby="guid-three-trigger"
+      class="tabs-panes-pane"
+      id="guid-three-content"
+      role="tabpanel"
+    >
+      Tab 3
+    </div>
+    <div
+      aria-hidden="true"
+      aria-labelledby="guid-four-trigger"
+      class="tabs-panes-pane"
+      id="guid-four-content"
+      role="tabpanel"
+    >
+      This tab has been disabled
+    </div>
+  </div>
+</div>
+`;

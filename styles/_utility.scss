@@ -1,12 +1,8 @@
-/* ~componentry/styles/_utlity */
+/* ~componentry/styles/utlity */
 
-//
-// Componentry utility styles
-//
-
-@import 'utility/align';
 @import 'utility/background';
 @import 'utility/borders';
+@import 'utility/button-containers';
 @import 'utility/clearfix';
 @import 'utility/display';
 @import 'utility/embed';
@@ -20,6 +16,8 @@
 @import 'utility/shadows';
 @import 'utility/sizing';
 @import 'utility/spacing';
+@import 'utility/tables';
 @import 'utility/text';
 @import 'utility/transitions';
+@import 'utility/vertical-align';
 @import 'utility/visibility';

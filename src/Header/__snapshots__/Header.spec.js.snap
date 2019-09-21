@@ -1,9 +1,0 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
-
-exports[`<Header /> snapshots renders correctly 1`] = `
-<h1
-  class="header h1"
->
-  Header
-</h1>
-`;
