@@ -1,6 +1,11 @@
 language: node_js
 node_js:
-  - "10"
+  - '10'
+
+# Skip building branches except for master for automated releases
+branches:
+  only:
+    - master
 
 # Cache dependencies
 cache: npm
