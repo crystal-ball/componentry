@@ -23,7 +23,7 @@ storiesOf('|Dropdown', module).add('<Dropdown />', () => (
       <Dropdown.Item href='https://github.com/crystal-ball/componentry'>
         Componentry
       </Dropdown.Item>
-      <Dropdown.Item onClick={() => console.log('hi')} disabled>
+      <Dropdown.Item onClick={action('item click')} disabled>
         Disabled Item
       </Dropdown.Item>
       <div className='dropdown-divider' />
