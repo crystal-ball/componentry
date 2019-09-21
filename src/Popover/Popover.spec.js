@@ -12,7 +12,7 @@ describe('<Popover />', () => {
   elementTests(Popover)
   elementTests(Popover.Trigger)
   elementTests(Popover.Content)
-  elementTests(Popover.Header)
+  elementTests(Popover.Heading)
   elementTests(Popover.Body)
 
   it('renders the correct directional classes using direction', () => {
@@ -34,7 +34,7 @@ describe('<Popover /> snapshots', () => {
       <Popover>
         <Popover.Trigger>Toggle</Popover.Trigger>
         <Popover.Content>
-          <Popover.Header>Fun Fact!</Popover.Header>
+          <Popover.Heading>Fun Fact!</Popover.Heading>
           <Popover.Body>
             <span>
               The new Texas Instrument calculators have ABC keyboards because if they had

@@ -165,8 +165,10 @@
   color: $popover-body-color;
 }
 
-// Header element
-.popover-header {
+// --------------------------------------------------------
+// Heading element
+
+.popover-heading {
   padding: $popover-header-padding-y $popover-header-padding-x;
   // Try to guarantee that spacing is correct regardless of div vs h* usage
   margin-top: 0;

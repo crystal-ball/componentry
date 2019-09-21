@@ -17,7 +17,7 @@ storiesOf('|Dropdown', module).add('<Dropdown />', () => (
   >
     <Dropdown.Trigger>Trigger</Dropdown.Trigger>
     <Dropdown.Content>
-      <h4 className='dropdown-header'>Available actions</h4>
+      <h4 className='dropdown-heading'>Available actions</h4>
       <Dropdown.Item>Interactive Item 1</Dropdown.Item>
       <Dropdown.Item>Interactive Item 2</Dropdown.Item>
       <Dropdown.Item href='https://github.com/crystal-ball/componentry'>

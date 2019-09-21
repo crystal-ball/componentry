@@ -1,19 +1,19 @@
 import React from 'react'
 import { render } from '@testing-library/react'
 
-import Header from './Header'
+import Heading from './Heading'
 import elementTests from '../../test/element-tests'
 
-describe('<Header/>', () => {
+describe('<Heading/>', () => {
   // Basic library element test suite
-  elementTests(Header)
+  elementTests(Heading)
 })
 
 // Snapshots
 // ---------------------------------------------------------------------------
-describe('<Header /> snapshots', () => {
+describe('<Heading /> snapshots', () => {
   it('renders correctly', () => {
-    const { container } = render(<Header>Header</Header>)
+    const { container } = render(<Heading>Heading</Heading>)
     expect(container.firstChild).toMatchSnapshot()
   })
 })

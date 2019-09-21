@@ -34,13 +34,13 @@ export const navClasses = ({ fill, justify, pills, vertical }) => ({
 
 const classNamesProps = new Set([
   'bg',
-  'borderColor',
-  'color',
+  'border',
+  'fontColor',
+  'fontSize',
   'fontWeight',
   'italic',
   'monospace',
   'position',
-  'size',
   'textAlign',
   'uppercase',
 ])
@@ -87,11 +87,11 @@ const generateClassNames = p => ({
   'text-monospace': p.monospace,
   [`bg-${p.bg}`]: p.bg,
   [`border-${p.border}`]: p.border,
-  [`font-color-${p.color}`]: p.color,
-  [`font-size-${p.size}`]: p.size,
-  [`font-weight-${p.weight}`]: p.weight,
+  [`font-color-${p.fontColor}`]: p.fontColor,
+  [`font-size-${p.fontSize}`]: p.fontSize,
+  [`font-weight-${p.fontWeight}`]: p.fontWeight,
   [`position-${p.position}`]: p.position,
-  [`text-${p.textAlign}`]: p.align,
+  [`text-${p.textAlign}`]: p.textAlign,
 })
 
 /**

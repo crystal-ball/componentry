@@ -2,7 +2,7 @@
 
 exports[`<Tab /> snapshots renders correctly 1`] = `
 <div
-  class="tab"
+  class="tabs"
   data-id="guid"
   name="tabs"
 >

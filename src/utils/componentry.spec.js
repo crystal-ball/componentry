@@ -33,27 +33,27 @@ describe('componentry()', () => {
     expect(
       componentry({
         bg: 'primary',
-        borderColor: 'primary',
-        color: 'primary',
+        border: 'primary',
+        fontColor: 'primary',
+        fontSize: 'sm',
         fontWeight: 'bold',
         italic: true,
         monospace: true,
         position: 'fixed',
-        size: 'sm',
         textAlign: 'center',
         uppercase: true,
       }).libraryClassNames,
     ).toEqual({
-      'font-italic': true,
-      'text-uppercase': true,
-      'text-monospace': true,
       'bg-primary': 'primary',
       'border-primary': 'primary',
+      'font-color-primary': 'primary',
+      'font-italic': true,
+      'font-size-sm': 'sm',
       'font-weight-bold': 'bold',
       'position-fixed': 'fixed',
-      'text-primary': 'primary',
-      'text-sm': 'sm',
       'text-center': 'center',
+      'text-monospace': true,
+      'text-uppercase': true,
     })
   })
 })

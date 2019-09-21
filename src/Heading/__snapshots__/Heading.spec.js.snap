@@ -1,0 +1,9 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Heading /> snapshots renders correctly 1`] = `
+<h1
+  class="heading h1"
+>
+  Heading
+</h1>
+`;

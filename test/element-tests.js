@@ -69,7 +69,7 @@ const elementTests = TestComponent => {
         </TestComponent>
         <TestComponent
           className='jsx-class'
-          textAlign='center'
+          fontWeight='bold'
           uppercase
           data-testid='merge'
         >
@@ -85,7 +85,7 @@ const elementTests = TestComponent => {
     expect(getByTestId('jsx')).toHaveAttribute('data-radical', 'nope')
 
     expect(getByTestId('merge')).toHaveClass(
-      'theme-class jsx-class text-center text-uppercase',
+      'theme-class jsx-class font-weight-bold text-uppercase',
     )
     expect(getByTestId('merge')).toHaveAttribute('data-radical', 'hecka')
   })

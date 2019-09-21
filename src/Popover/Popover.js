@@ -23,11 +23,11 @@ Popover.Content = activeContent('popover', {
   popper: true,
 })
 
-Popover.Header = function PopoverHeader(props) {
+Popover.Heading = function PopoverHeading(props) {
   return elem({
     as: 'h3',
-    componentClassNames: 'popover-header',
-    ...useTheme('PopoverHeader'),
+    componentClassNames: 'popover-heading',
+    ...useTheme('PopoverHeading'),
     ...props,
   })
 }
