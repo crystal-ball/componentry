@@ -439,6 +439,11 @@ $dropdown-trigger-anchor-border-color:       $anchor-color !default;
 $dropdown-trigger-anchor-hover-border-color: $anchor-hover-color !default;
 
 // --------------------------------------------------------
+// Form groups
+
+$form-group-margin-bottom:   1rem !default;
+
+// --------------------------------------------------------
 // Icons
 
 // When true this will include background-image rules for the close and chevron
@@ -453,7 +458,66 @@ $icon-bottom:   -0.14em !default;
 // --------------------------------------------------------
 // Inputs
 
-$label-margin-bottom: .5rem !default;
+$input-bg:                      theme-color(background) !default;
+$input-color:                   gray("700") !default;
+$input-border-radius:           $border-radius !default;
+$input-border-color:            gray("400") !default;
+$input-border-width:            $input-btn-border-width !default;
+$input-box-shadow:              inset 0 1px 1px rgba($box-shadow-shadow, .075) !default;
+$input-padding-y:               $input-btn-padding-y !default;
+$input-padding-x:               $input-btn-padding-x !default;
+$input-line-height:             $input-btn-line-height !default;
+
+$input-border-radius-lg:        $border-radius-lg !default;
+$input-padding-y-lg:            $input-btn-padding-y-lg !default;
+$input-padding-x-lg:            $input-btn-padding-x-lg !default;
+$input-line-height-lg:          $input-btn-line-height-lg !default;
+
+$input-border-radius-sm:        $border-radius-sm !default;
+$input-padding-y-sm:            $input-btn-padding-y-sm !default;
+$input-padding-x-sm:            $input-btn-padding-x-sm !default;
+$input-line-height-sm:          $input-btn-line-height-sm !default;
+
+$input-focus-bg:                $input-bg !default;
+$input-focus-border-color:      lighten($component-active-bg, 25%) !default;
+$input-focus-color:             $input-color !default;
+$input-focus-width:             $input-btn-focus-width !default;
+$input-focus-box-shadow:        $input-btn-focus-box-shadow !default;
+
+$input-transition:              border-color .15s ease-in-out, box-shadow .15s ease-in-out !default;
+
+$input-disabled-bg:             gray("200") !default;
+
+// Input placeholder
+$input-placeholder-color:       gray("600") !default;
+$input-placeholder-font-style:  italic !default;
+
+// Input label
+$input-label-margin-bottom:     .5rem !default;
+$input-label-color:             theme-color(foreground) !default;
+$input-label-font-size:         $font-size-base !default;
+$input-label-letter-spacing:    0 !default;
+$input-label-text-transform:    none !default;
+
+// Input description
+$input-description-color:       map-get($font-colors, muted) !default;
+$input-description-font-size:   $font-size-sm !default;
+$input-description-font-style:  normal !default;
+$input-description-margin-y:    0.25rem !default;
+$input-description-margin-x:    0 !default;
+
+// Input validation
+$input-invalid-border-radius:   $border-radius $border-radius 0 0 !default;
+$input-invalid-bg:              $input-bg !default;
+$input-invalid-color:           theme-color(danger) !default;
+$input-invalid-border-color:    theme-color(danger) !default;
+
+$input-error-bg:                theme-color(background) !default;
+$input-error-color:             theme-color(danger) !default;
+$input-error-font-size:         $font-size-base !default;
+$input-error-padding-x:         $input-padding-x !default;
+$input-error-padding-y:         0.25rem !default;
+$input-error-border-radius:     0 0 $border-radius $border-radius !default;
 
 // --------------------------------------------------------
 // List groups
@@ -620,6 +684,23 @@ $tabs-tab-vertical-active-border-color: theme-color(primary) !default;
 
 $tabs-tab-vertical-disabled-border-width: $tabs-tab-vertical-border-width !default;
 $tabs-tab-vertical-disabled-border-color: $tabs-tab-disabled-color !default;
+
+// --------------------------------------------------------
+// Tooltips
+
+$tooltip-font-size:     $font-size-sm !default;
+$tooltip-max-width:     200px !default;
+$tooltip-color:         theme-color(background) !default;
+$tooltip-bg:            theme-color(foreground) !default;
+$tooltip-border-radius: $border-radius !default;
+$tooltip-opacity:       .9 !default;
+$tooltip-padding-y:     .25rem !default;
+$tooltip-padding-x:     .5rem !default;
+$tooltip-margin:        0 !default;
+
+$tooltip-arrow-width:   .8rem !default;
+$tooltip-arrow-height:  .4rem !default;
+$tooltip-arrow-color:   $tooltip-bg !default;
 
 // --------------------------------------------------------
 // HTML elements

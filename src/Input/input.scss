@@ -20,7 +20,7 @@
     border-radius: 0;
   }
 
-  @include box-shadow($input-box-shadow);
+  box-shadow: box-shadow($input-box-shadow);
   @include transition($input-transition);
 
   // Customize the `:focus` state to imitate native WebKit styles.
@@ -58,6 +58,7 @@
   }
 }
 
+// --------------------------------------------------------
 // Validation
 
 // Use :invalid with HTML and `was-validated`
@@ -82,7 +83,8 @@
   }
 }
 
-// Sizing
+// --------------------------------------------------------
+// Sizes
 
 .input-field-sm {
   padding: $input-padding-y-sm $input-padding-x-sm;
@@ -98,20 +100,20 @@
   @include border-radius($input-border-radius-lg);
 }
 
-//
+// --------------------------------------------------------
 // Label
-//
 
 .input-label {
+  display: inline-block;
+  margin-bottom: $input-label-margin-bottom;
   color: $input-label-color;
   font-size: $input-label-font-size;
   letter-spacing: $input-label-letter-spacing;
   text-transform: $input-label-text-transform;
 }
 
-//
+// --------------------------------------------------------
 // Description
-//
 
 .input-description {
   display: block;
@@ -121,9 +123,8 @@
   font-style: $input-description-font-style;
 }
 
-//
-// Error
-//
+// --------------------------------------------------------
+// Error state
 
 .input-error {
   background: $input-error-bg;
