@@ -5,9 +5,9 @@ import { useTheme } from '../Theme/Theme'
 import elem from '../elem-factory'
 import { navClasses } from '../utils/componentry'
 
-const Tab = activeContainer('tab', { name: 'tabs' })
+const Tabs = activeContainer('tabs', { name: 'tabs' })
 
-Tab.ContentContainer = function TabContentContainer(props) {
+Tabs.ContentContainer = function TabContentContainer(props) {
   return elem({
     componentClassNames: 'tabs-panes-container',
     ...useTheme('TabContentContainer'),
@@ -15,12 +15,12 @@ Tab.ContentContainer = function TabContentContainer(props) {
   })
 }
 
-Tab.Content = activeContent('tab', {
+Tabs.Content = activeContent('tab', {
   arias: { hidden: true, role: 'tabpanel' },
   baseClass: 'tabs-panes-pane', // tab-content-pane
 })
 
-Tab.Nav = function TabNav(props) {
+Tabs.Nav = function TabNav(props) {
   return elem({
     as: 'nav',
     role: 'tablist',
@@ -32,7 +32,7 @@ Tab.Nav = function TabNav(props) {
 
 // TODO: This should probably be defaultAs a nav item... issues:
 // If making a tab with anchors, these should have class 'nav-link'
-Tab.Trigger = activeTrigger('tab', {
+Tabs.Trigger = activeTrigger('tab', {
   arias: { selected: true, role: 'tab' },
   // TODO: Should this really have default nav-link and nav-item classes??
   baseClass: 'tabs-nav-tab',
@@ -40,4 +40,4 @@ Tab.Trigger = activeTrigger('tab', {
   triggerType: 'activate',
 })
 
-export default Tab
+export default Tabs

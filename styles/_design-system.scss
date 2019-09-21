@@ -128,9 +128,10 @@ $border-radius:          .25rem !default;
 $border-radius-lg:       .3rem !default;
 $border-radius-sm:       .2rem !default;
 
-$box-shadow-sm:          0 .125rem .25rem rgba(theme-color(background), .075) !default;
-$box-shadow:             0 .5rem 1rem rgba(theme-color(background), .15) !default;
-$box-shadow-lg:          0 1rem 3rem rgba(theme-color(background), .175) !default;
+$box-shadow-shadow:      #131416 !default;
+$box-shadow-sm:          0 .125rem .25rem rgba($box-shadow-shadow, .075) !default;
+$box-shadow:             0 .5rem 1rem rgba($box-shadow-shadow, .15) !default;
+$box-shadow-lg:          0 1rem 3rem rgba($box-shadow-shadow, .175) !default;
 
 $component-active-color: gray("100");
 $component-active-bg:    theme-color("primary") !default;
@@ -400,11 +401,11 @@ $dropdown-min-width:                10rem !default;
 $dropdown-padding-y:                .5rem !default;
 $dropdown-spacer:                   .125rem !default;
 $dropdown-bg:                       theme-color(background) !default;
-$dropdown-border-color:             rgba(theme-color(foreground), .15) !default;
+$dropdown-border-color:             border-color(default) !default;
 $dropdown-border-radius:            $border-radius !default;
 $dropdown-border-width:             $border-width !default;
 $dropdown-divider-bg:               gray("200") !default;
-$dropdown-box-shadow:               0 .5rem 1rem rgba(theme-color(foreground), .175) !default;
+$dropdown-box-shadow:               0 .5rem 1rem rgba($box-shadow-shadow, .175) !default;
 $dropdown-font-size:                $font-size-base !default;
 $dropdown-font-weight:              $font-weight-base !default;
 
@@ -450,6 +451,11 @@ $icon-color:    inherit !default;
 $icon-bottom:   -0.14em !default;
 
 // --------------------------------------------------------
+// Inputs
+
+$label-margin-bottom: .5rem !default;
+
+// --------------------------------------------------------
 // List groups
 
 $list-group-bg:                     theme-color(background) !default;
@@ -492,8 +498,8 @@ $modal-container-bg:                theme-color(background) !default;
 $modal-container-border-color:      rgba(border-color(default), .2) !default;
 $modal-container-border-width:      $border-width !default;
 $modal-container-border-radius:     $border-radius-lg !default;
-$modal-container-box-shadow:        0 .25rem .5rem rgba(theme-color(foreground), .5) !default;
-$modal-container-box-shadow-sm-up:  0 .5rem 1rem rgba(theme-color(foreground), .5) !default;
+$modal-container-box-shadow:        0 .25rem .5rem rgba($box-shadow-shadow, .5) !default;
+$modal-container-box-shadow-sm-up:  0 .5rem 1rem rgba($box-shadow-shadow, .5) !default;
 
 $modal-body-padding:               1rem !default;
 
@@ -539,36 +545,81 @@ $nav-divider-color:                 gray("200") !default;
 $nav-divider-margin-y:              ($spacer / 2) !default;
 
 // --------------------------------------------------------
-// Tables
+// Popovers
 
-$table-cell-padding:      .75rem !default;
-$table-cell-padding-sm:   .3rem !default;
+$popover-font-size:                 $font-size-sm !default;
+$popover-bg:                        theme-color(background) !default;
+$popover-max-width:                 276px !default;
+$popover-border-width:              $border-width !default;
+$popover-border-color:              border-color(default) !default;
+$popover-border-radius:             $border-radius-lg !default;
+$popover-box-shadow:                0 .25rem .5rem rgba($box-shadow-shadow, .2) !default;
 
-$table-bg:                transparent !default;
-$table-accent-bg:         rgba(gray("900"), .05) !default;
-$table-hover-bg:          rgba(gray("900"), .075) !default;
-$table-active-bg:         $table-hover-bg !default;
+$popover-header-bg:                 darken($popover-bg, 3%) !default;
+$popover-header-color:              $headings-color !default;
+$popover-header-padding-y:          .5rem !default;
+$popover-header-padding-x:          .75rem !default;
 
-$table-border-width:      $border-width !default;
-$table-border-color:      gray("300") !default;
+$popover-body-color:                theme-color(foreground) !default;
+$popover-body-padding-y:            $popover-header-padding-y !default;
+$popover-body-padding-x:            $popover-header-padding-x !default;
 
-$table-head-bg:           gray("200") !default;
-$table-head-color:        gray("700") !default;
+$popover-arrow-width:               1rem !default;
+$popover-arrow-height:              .5rem !default;
+$popover-arrow-color:               $popover-bg !default;
 
-$table-dark-bg:           gray("900") !default;
-$table-dark-accent-bg:    rgba(gray("100"), .05) !default;
-$table-dark-hover-bg:     rgba(gray("100"), .075) !default;
-$table-dark-border-color: lighten(gray("900"), 7.5%) !default;
-$table-dark-color:        theme-color(background) !default;
-
-$table-striped-order:     odd !default;
-
-$table-caption-color:     map-get($font-colors, muted) !default;
+$popover-arrow-outer-color:         fade-in($popover-border-color, .05) !default;
 
 // --------------------------------------------------------
-// Forms
+// Tabs
 
-$label-margin-bottom: .5rem !default;
+$tabs-nav-container-bg:         transparent !default;
+$tabs-nav-container-shadow:     none !default;
+$tabs-nav-container-margin:     0 !default;
+$tabs-nav-container-border:     1px solid border-color(default) !default;
+
+$tabs-nav-vertical-margin:      0 0 0 map-get($spacers, 4);
+
+$tabs-pane-container-padding:   1.25rem !default;
+
+$tabs-tab-padding-y: 0.5rem !default;
+$tabs-tab-padding-x: 1.25rem !default;
+$tabs-tab-color: gray("700") !default;
+$tabs-tab-bg: transparent !default;
+$tabs-tab-border-color: transparent !default;
+$tabs-tab-border-width: 0 0 2px 0 !default;
+$tabs-tab-border-radius: 0 !default;
+
+$tabs-tab-transition: border-color 0.3s !default;
+
+$tabs-tab-hover-color: theme-color(primary) !default;
+$tabs-tab-hover-bg: transparent !default;
+$tabs-tab-hover-border-color: transparent !default;
+
+$tabs-tab-active-color: theme-color(primary) !default;
+$tabs-tab-active-bg: transparent !default;
+$tabs-tab-active-border-color: theme-color(primary) !default;
+
+$tabs-tab-disabled-bg: transparent !default;
+$tabs-tab-disabled-border-color: transparent !default;
+$tabs-tab-disabled-color: gray("500") !default;
+
+// Vertical tabs
+$tabs-tab-vertical-margin: 0 0 map-get($spacers, 1) !default;
+$tabs-tab-vertical-border-width: 1px !default;
+$tabs-tab-vertical-border-color: transparent !default;
+$tabs-tab-vertical-border-radius: $btn-border-radius !default;
+
+$tabs-tab-vertical-transition: none !default;
+
+$tabs-tab-vertical-hover-border-width: $tabs-tab-vertical-border-width !default;
+$tabs-tab-vertical-hover-border-color: transparent !default;
+
+$tabs-tab-vertical-active-border-width: $tabs-tab-vertical-border-width !default;
+$tabs-tab-vertical-active-border-color: theme-color(primary) !default;
+
+$tabs-tab-vertical-disabled-border-width: $tabs-tab-vertical-border-width !default;
+$tabs-tab-vertical-disabled-border-color: $tabs-tab-disabled-color !default;
 
 // --------------------------------------------------------
 // HTML elements
@@ -614,5 +665,29 @@ $small-font-size:           80% !default;
 $small-font-weight:         $font-weight-base !default;
 
 $sub-sup-font-size:         .75em !default;
+
+$table-cell-padding:      .75rem !default;
+$table-cell-padding-sm:   .3rem !default;
+
+$table-bg:                transparent !default;
+$table-accent-bg:         rgba(gray("900"), .05) !default;
+$table-hover-bg:          rgba(gray("900"), .075) !default;
+$table-active-bg:         $table-hover-bg !default;
+
+$table-border-width:      $border-width !default;
+$table-border-color:      gray("300") !default;
+
+$table-head-bg:           gray("200") !default;
+$table-head-color:        gray("700") !default;
+
+$table-dark-bg:           gray("900") !default;
+$table-dark-accent-bg:    rgba(gray("100"), .05) !default;
+$table-dark-hover-bg:     rgba(gray("100"), .075) !default;
+$table-dark-border-color: lighten(gray("900"), 7.5%) !default;
+$table-dark-color:        theme-color(background) !default;
+
+$table-striped-order:     odd !default;
+
+$table-caption-color:     map-get($font-colors, muted) !default;
 
 

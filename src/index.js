@@ -19,7 +19,7 @@ export { default as ListGroup } from './ListGroup/ListGroup'
 export { default as Modal } from './Modal/Modal'
 export { default as Nav } from './Nav/Nav'
 export { default as Popover } from './Popover/Popover'
-export { default as Tab } from './Tab/Tab'
+export { default as Tabs } from './Tabs/Tabs'
 export { default as Text } from './Text/Text'
 export { default as Tooltip } from './Tooltip/Tooltip'
 
