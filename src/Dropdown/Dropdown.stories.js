@@ -9,25 +9,42 @@ import Dropdown from './Dropdown'
 
 const directions = ['top', 'right', 'bottom', 'left', 'overlay']
 
-storiesOf('|Dropdown', module).add('<Dropdown />', () => (
-  <Dropdown
-    onActivate={action('activating')}
-    onDeactivate={action('deactivating')}
-    direction={select('direction', directions, 'bottom')}
-  >
-    <Dropdown.Trigger>Trigger</Dropdown.Trigger>
-    <Dropdown.Content>
-      <h4 className='dropdown-heading'>Available actions</h4>
-      <Dropdown.Item>Interactive Item 1</Dropdown.Item>
-      <Dropdown.Item>Interactive Item 2</Dropdown.Item>
-      <Dropdown.Item href='https://github.com/crystal-ball/componentry'>
-        Componentry
-      </Dropdown.Item>
-      <Dropdown.Item onClick={action('item click')} disabled>
-        Disabled Item
-      </Dropdown.Item>
-      <div className='dropdown-divider' />
-      <span className='dropdown-item-text'>Dropdown item text is not interactive</span>
-    </Dropdown.Content>
-  </Dropdown>
-))
+storiesOf('|Dropdown', module)
+  .add('<Dropdown />', () => (
+    <Dropdown
+      onActivate={action('activating')}
+      onDeactivate={action('deactivating')}
+      direction={select('direction', directions, 'bottom')}
+    >
+      <Dropdown.Trigger>Trigger</Dropdown.Trigger>
+      <Dropdown.Content>
+        <h4 className='dropdown-heading'>Available actions</h4>
+        <Dropdown.Item>Interactive Item 1</Dropdown.Item>
+        <Dropdown.Item>Interactive Item 2</Dropdown.Item>
+        <Dropdown.Item href='https://github.com/crystal-ball/componentry'>
+          Componentry
+        </Dropdown.Item>
+        <Dropdown.Item onClick={action('item click')} disabled>
+          Disabled Item
+        </Dropdown.Item>
+        <div className='dropdown-divider' />
+        <span className='dropdown-item-text'>Dropdown item text is not interactive</span>
+      </Dropdown.Content>
+    </Dropdown>
+  ))
+  .add('variant', () => (
+    <Dropdown className='d-block w-50'>
+      <input className='w-100' placeholder='Enter search' />
+      <Dropdown.Trigger
+        as='input'
+        type='text'
+        variant='query-bar'
+        placeholder='Enter search'
+        className='w-100'
+      />
+      <Dropdown.Content>
+        <Dropdown.Item>Interactive Item 1</Dropdown.Item>
+        <Dropdown.Item>Interactive Item 2</Dropdown.Item>
+      </Dropdown.Content>
+    </Dropdown>
+  ))

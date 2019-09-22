@@ -28,7 +28,6 @@ export default function activeTriggerFactory(
       // --- Render elements
       children,
       decoration,
-
       // --- Active controls
       guid,
       active,
@@ -39,21 +38,12 @@ export default function activeTriggerFactory(
     } = {
       as: 'button',
       type: 'button',
+      variant: 'a',
       ...opts,
       ...useTheme(displayName),
       ...useContext(ActiveCtx),
       ...props,
     }
-
-    // If variant className isn't set, default to `a` unless the `button`
-    // shorthand switch was passed
-    rest.variant = rest.variant || (rest.button ? 'btn' : 'a')
-
-    const componentClassNames = actionClasses(rest)
-
-    // Clear component props that are also library props
-    rest.color = null
-    rest.size = null
 
     // Handle determining whether to call activate or deactivate on click
     // 1. If a trigger type was passed, call that event always
@@ -74,7 +64,7 @@ export default function activeTriggerFactory(
       }),
       componentClassNames: [
         baseClass,
-        componentClassNames,
+        actionClasses(rest),
         // For compound-active contexts add an active class if activeIds match
         // (eg in tabs show which tab is selected)
         { active: activeId && active === activeId },

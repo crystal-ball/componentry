@@ -1,0 +1,89 @@
+import { Meta, Title, Props, Description } from '@storybook/addon-docs/blocks'
+import { boolean, select } from '@storybook/addon-knobs'
+import { action } from '@storybook/addon-actions'
+
+import Button from './Button'
+import { colors, sizes } from '../storybook/constants'
+import ElementsProvider from '../storybook/ElementsProvider'
+
+<Meta title='Components|Button' component={Button} title='Buttons' />
+
+<ElementsProvider>
+
+## Theme colors
+
+Pass a `color` to set a theme color background:
+
+<div className='d-flex justify-content-center btn-container-x'>
+  {Object.keys(colors).map(color => (
+    <Button color={colors[color]} onClick={action('button-click')} key={color}>
+      Button
+    </Button>
+  ))}
+  <Button color='anchor' onClick={action('button-click')}>
+    Button
+  </Button>
+</div>
+
+## Outline style
+
+Pass an `outline` to set a theme color outline:
+
+<div className='d-flex justify-content-center btn-container-x'>
+  {Object.keys(colors).map(color => (
+    <Button outline={colors[color]} onClick={action('button-click')} key={color}>
+      Button
+    </Button>
+  ))}
+  <Button outline='anchor' onClick={action('button-click')}>
+    Button
+  </Button>
+</div>
+
+## Sizes
+
+Pass a `size` to set a button size:
+
+<div className='d-flex justify-content-center '>
+  <div className='btn-container-x'>
+    <Button color='primary' size='sm'>
+      Button
+    </Button>
+    <Button color='primary'>Button</Button>
+    <Button color='primary' size='lg'>
+      Button
+    </Button>
+  </div>
+</div>
+
+## Block button
+
+Pass the `block` prop to make a button fill its parent container:
+
+<Button block color='primary'>
+  Button
+</Button>
+
+## Disabled
+
+Pass `disabled` to make a button disabled:
+
+<Button disabled color='primary'>
+  Button
+</Button>
+
+## Button class
+
+Use the `as` prop to render anchor and input elements styled as buttons:
+
+<div className='d-flex justify-content-center btn-container-x'>
+  <Button color='primary'>Button</Button>
+  <Button as='a' href='#' color='primary'>
+    Anchor
+  </Button>
+  <Button as='input' color='primary' value='Input' />
+  <Button as='input' color='primary' type='submit' value='Submit' />
+  <Button as='input' color='primary' type='reset' value='Reset' />
+</div>
+
+</ElementsProvider>

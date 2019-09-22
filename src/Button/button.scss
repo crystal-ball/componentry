@@ -127,9 +127,9 @@ $btn-states-map: map-merge($btn-defaults, $btn-states);
   }
 }
 
-// 'Link' theme color variant has the padding and alignment of a button with
+// 'anchor' theme color variant has the padding and alignment of a button with
 // font styles matching anchors (can be used for things like secondary CTAs)
-.btn-link {
+.btn-anchor {
   background: transparent;
   color: $anchor-color;
   font-weight: $font-weight-normal;
@@ -153,7 +153,7 @@ $btn-states-map: map-merge($btn-defaults, $btn-states);
   }
 }
 
-.btn-outline-link {
+.btn-outline-anchor {
   background: transparent;
   border-color: $anchor-color;
   color: $anchor-color;

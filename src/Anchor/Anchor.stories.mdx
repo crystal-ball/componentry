@@ -1,0 +1,42 @@
+import { Meta, Title, Props, Description } from '@storybook/addon-docs/blocks'
+import { boolean, select } from '@storybook/addon-knobs'
+import { action } from '@storybook/addon-actions'
+
+import Anchor from './Anchor'
+import { colors, sizes } from '../storybook/constants'
+import ElementsProvider from '../storybook/ElementsProvider'
+
+<Meta title='Components|Anchor' component={Anchor} title='Anchors' />
+
+<ElementsProvider>
+
+## Theme colors
+
+Pass a `color` to set a theme color background:
+
+<div className='d-flex justify-content-center flex-column'>
+  {Object.keys(colors).map(color => (
+    <Anchor color={colors[color]} href='#' key={color}>
+      Achor element
+    </Anchor>
+  ))}
+</div>
+
+## Disabled
+
+Pass `disabled` to make an anchor disabled:
+
+<Anchor disabled>Anchor element</Anchor>
+
+## Button class
+
+Create a button element with anchor styles by passing `as='button'` to an Anchor:
+
+<div className='d-flex justify-content-around btn-container-x'>
+  <Anchor href='#'>Anchor element</Anchor>
+  <Anchor as='button' onClick={action('button anchor')}>
+    Button element
+  </Anchor>
+</div>
+
+</ElementsProvider>

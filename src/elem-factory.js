@@ -22,6 +22,12 @@ export default function elementFactory({
   // styles, and create base classNames
   const c = componentry(merged)
 
+  // Ensure that input elements do not contain children included by default from
+  // active factories
+  if (as === 'input') {
+    delete c.rest.children
+  }
+
   return createElement(as, {
     style: { ...c.libraryStyles, ...style },
     className: classnames(
