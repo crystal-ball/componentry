@@ -9,17 +9,20 @@ export default function Button(props) {
   const merged = {
     as: 'button',
     type: 'button',
+    variant: 'btn',
     ...useTheme('Button'),
     ...props,
   }
 
-  if (!merged.variant) merged.variant = merged.anchor ? 'a' : 'btn'
+  // When rendering an anchor with button styles, swap out the type attr for a
+  // role attr for proper a11y
+  if (merged.as === 'a') {
+    merged.type = undefined
+    merged.role = 'button'
+  }
 
   return elem({
     componentClassNames: actionClasses(merged),
     ...merged,
-    // Clear component props that are also library props
-    color: null,
-    size: null,
   })
 }

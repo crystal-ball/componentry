@@ -6,19 +6,15 @@ import { useTheme } from '../Theme/Theme'
  * Anchor component
  */
 export default function Anchor(props) {
-  const merged = {
-    as: 'a',
-    ...useTheme('Anchor'),
-    ...props,
-  }
+  const merged = { as: 'a', variant: 'a', ...useTheme('Anchor'), ...props }
 
-  if (!merged.variant) merged.variant = merged.button ? 'btn' : 'a'
+  // When rendering a button with anchor styles, add the button type
+  if (merged.as === 'button') {
+    merged.type = 'button'
+  }
 
   return elem({
     componentClassNames: actionClasses(merged),
     ...merged,
-    // Clear component props that are also library props
-    color: null,
-    size: null,
   })
 }

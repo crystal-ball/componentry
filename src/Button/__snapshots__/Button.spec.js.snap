@@ -1,12 +1,12 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`<Button /> Snapshots it renders anchor style correctly 1`] = `
-<button
-  class="a"
-  type="button"
+<a
+  class="btn"
+  role="button"
 >
   Componentry
-</button>
+</a>
 `;
 
 exports[`<Button /> Snapshots it renders brand color correctly 1`] = `

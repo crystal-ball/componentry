@@ -9,7 +9,7 @@
 /**
  * Fn generates the classes for action elements
  */
-export const actionClasses = ({ variant, block, color, disabled, outline, size }) => ({
+export const actionClasses = ({ block, color, disabled, outline, size, variant }) => ({
   [variant]: true,
   [`${variant}-block`]: block,
   [`${variant}-${color}`]: color,
@@ -105,12 +105,13 @@ const generateClassNames = p => ({
 export const componentry = ({
   anchor,
   button,
-  variant,
   block,
+  color,
   outline,
   fill,
   justify,
   pills,
+  variant,
   vertical,
   // Component props filtered out
   active,

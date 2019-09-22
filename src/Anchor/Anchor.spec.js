@@ -17,13 +17,9 @@ describe('<Anchor/>', () => {
     expect(getByText('Link')).toHaveClass('a a-success a-sm')
   })
 
-  test('should render btn classes for button style anchor', () => {
-    const { getByText } = render(
-      <Anchor button color='success' size='sm'>
-        Link
-      </Anchor>,
-    )
-    expect(getByText('Link')).toHaveClass('btn btn-success btn-sm')
+  test('When used to create a anchor styled button, then a is rendered', () => {
+    const { getByText } = render(<Anchor as='button'>Link</Anchor>)
+    expect(getByText('Link')).toHaveClass('a')
   })
 })
 
