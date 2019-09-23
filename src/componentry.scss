@@ -6,12 +6,12 @@
 // The theme contains only side effect free setup code including variables,
 // mixins and functions. It can be imported as a base context for users of CSS
 // modules.
-@import './design-system';
+@import './styles/variables';
 
 // The initialize imports setup a consistent environment for the library using
 // the Bootstrap browser reboot and CSS variable declarations. (Note the browser
 // reboot styles are not required)
-@import './reboot';
+@import './styles/reboot';
 
 // Scoped library component styles. These styles are intended to be used only
 // with their parent components.
