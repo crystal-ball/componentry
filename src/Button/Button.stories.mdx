@@ -1,4 +1,4 @@
-import { Meta, Title, Props, Description } from '@storybook/addon-docs/blocks'
+import { Meta, Title, Props } from '@storybook/addon-docs/blocks'
 import { boolean, select } from '@storybook/addon-knobs'
 import { action } from '@storybook/addon-actions'
 
@@ -6,17 +6,27 @@ import Button from './Button'
 import { colors, sizes } from '../storybook/constants'
 import ElementsProvider from '../storybook/ElementsProvider'
 
-<Meta title='Components|Button' component={Button} title='Buttons' />
+<Meta title='Components|Button' component={Button} />
 
 <ElementsProvider>
+
+# Buttons
+
+A primary button:
+
+<Button color='primary' onClick={action('button click')}>
+  Button
+</Button>
+
+<Props of={Button} />
 
 ## Theme colors
 
 Pass a `color` to set a theme color background:
 
 <div className='d-flex justify-content-center btn-container-x'>
-  {Object.keys(colors).map(color => (
-    <Button color={colors[color]} onClick={action('button-click')} key={color}>
+  {colors.map(color => (
+    <Button color={color} onClick={action('button-click')} key={color}>
       Button
     </Button>
   ))}
@@ -30,8 +40,8 @@ Pass a `color` to set a theme color background:
 Pass an `outline` to set a theme color outline:
 
 <div className='d-flex justify-content-center btn-container-x'>
-  {Object.keys(colors).map(color => (
-    <Button outline={colors[color]} onClick={action('button-click')} key={color}>
+  {colors.map(color => (
+    <Button outline={color} onClick={action('button-click')} key={color}>
       Button
     </Button>
   ))}

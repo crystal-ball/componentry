@@ -1,4 +1,4 @@
-import { Meta, Title, Props, Description } from '@storybook/addon-docs/blocks'
+import { Meta, Title, Props } from '@storybook/addon-docs/blocks'
 import { boolean, select } from '@storybook/addon-knobs'
 import { action } from '@storybook/addon-actions'
 
@@ -6,17 +6,25 @@ import Anchor from './Anchor'
 import { colors, sizes } from '../storybook/constants'
 import ElementsProvider from '../storybook/ElementsProvider'
 
-<Meta title='Components|Anchor' component={Anchor} title='Anchors' />
+<Meta title='Components|Anchor' component={Anchor} />
 
 <ElementsProvider>
+
+# Anchors
+
+Anchor element with an href:
+
+<Anchor href='#'>Anchor element</Anchor>
+
+<Props of={Anchor} />
 
 ## Theme colors
 
 Pass a `color` to set a theme color background:
 
 <div className='d-flex justify-content-center flex-column'>
-  {Object.keys(colors).map(color => (
-    <Anchor color={colors[color]} href='#' key={color}>
+  {colors.map(color => (
+    <Anchor color={color} href='#' key={color}>
       Achor element
     </Anchor>
   ))}

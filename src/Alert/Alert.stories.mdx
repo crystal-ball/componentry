@@ -1,20 +1,16 @@
-import { Meta, Title, Props, Description } from '@storybook/addon-docs/blocks'
+import { Meta, Title, Props } from '@storybook/addon-docs/blocks'
 import { boolean, select } from '@storybook/addon-knobs'
 import ElementsProvider from '../storybook/ElementsProvider'
 
 import Active from '../Active/Active'
 import Alert from './Alert'
+import { colors } from '../storybook/constants'
 
-<Meta title='Components|Alert' component={Alert} title='Alerts' />
+<Meta title='Components|Alert' component={Alert} />
 
 <ElementsProvider>
 
 # Alerts
-
-<Description
-  of={Alert}
-  markdown='Provide contextual feedback messages for user actions using theme colors.'
-></Description>
 
 Alerts can contain any HTML elements, and can be dismissible or static. A dismissible
 Alert requires Componentry Active `active` and `deactivate` props, which can be passed
@@ -31,6 +27,16 @@ an uncontrolled Alert.
 </Alert>
 
 <Props of={Alert} />
+
+## Colors
+
+<div>
+  {colors.map(color => (
+    <Alert color={color} key={color}>
+      Themed alert
+    </Alert>
+  ))}
+</div>
 
 You can also create outline alerts that have only a border-left
 
@@ -52,9 +58,9 @@ Create a dismissible alert by wrapping it in an `Active` component.
     <h4 className='alert-heading'>Well done!</h4>
     <p className='mb-0'>You successfully read this important alert message.</p>
     <hr className='hr' />
-    <Anchor href='#' className='alert-link'>
+    <a href='#' className='a alert-link'>
       Go home
-    </Anchor>.
+    </a>.
   </Alert>
 </Active>
 

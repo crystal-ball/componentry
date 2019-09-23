@@ -1,10 +1,14 @@
 import { Meta, Title, Props } from '@storybook/addon-docs/blocks'
 import { boolean } from '@storybook/addon-knobs'
+
 import Input from './Input'
+import ElementsProvider from '../storybook/ElementsProvider'
 
 <Meta title='Components|Input' component={Input} />
 
-# Input
+<ElementsProvider>
+
+# Inputs
 
 <div className='form-group'>
   <Input>
@@ -16,3 +20,7 @@ import Input from './Input'
     <Input.Error aria-hidden={!boolean('Error', false)}>Oh no!</Input.Error>
   </Input>
 </div>
+
+<Props of={Input} />
+
+</ElementsProvider>

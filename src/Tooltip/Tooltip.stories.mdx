@@ -4,7 +4,9 @@ import Tooltip from './Tooltip'
 
 <Meta title='Components|Tooltip' component={Tooltip} />
 
-# Tooltip
+<ElementsProvider>
+
+# Tooltips
 
 <Tooltip
   onActivate={action('onActivate event')}
@@ -17,3 +19,7 @@ import Tooltip from './Tooltip'
     Only 8% of the world’s currency is physical money, the rest only exists on computers.
   </Tooltip.Content>
 </Tooltip>
+
+<Props of={Tooltip} />
+
+</ElementsProvider>

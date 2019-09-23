@@ -16,6 +16,12 @@ const components = {
   hr: props => createElement('hr', props),
   div: props => createElement('div', props),
   a: props => createElement('a', props),
+  table: props => createElement('table', props),
+  thead: props => createElement('thead', props),
+  tbody: props => createElement('tbody', props),
+  tr: props => createElement('tr', props),
+  th: props => createElement('th', props),
+  td: props => createElement('td', props),
 }
 
 export default function ElementsProvider({ children }) {

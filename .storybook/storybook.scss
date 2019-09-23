@@ -11,14 +11,7 @@ $include-icons: true;
   justify-content: center;
 }
 
-.storybook-section-header {
-  text-decoration: underline;
-  margin-top: 3rem;
-  margin-bottom: 0.5rem;
-}
-
-.storybook-btns-container {
-  .btn + .btn {
-    margin-left: 5px;
-  }
+.vertical-align-guides {
+  font-weight: 300;
+  text-decoration: underline overline;
 }

@@ -1,10 +1,15 @@
 import { Meta, Title, Props } from '@storybook/addon-docs/blocks'
 import FormGroup from './FormGroup'
+import ElementsProvider from '../storybook/ElementsProvider'
 
 <Meta title='Components|FormGroup' component={FormGroup} />
 
-# FormGroup
+<ElementsProvider>
+
+# Form Groups
 
 <FormGroup>Form groups provide the wrapper class for spacing in forms</FormGroup>
 
 <Props of={FormGroup} />
+
+</ElementsProvider>

@@ -1,0 +1,39 @@
+import { Meta } from '@storybook/addon-docs/blocks'
+
+import Block from '../Block/Block'
+import { colors, grayscale, sizes } from '../storybook/constants'
+import ElementsProvider from '../storybook/ElementsProvider'
+
+<Meta title='Utility classes|Backgrounds' />
+
+<ElementsProvider>
+
+## Backgrounds
+
+### Theme colors
+
+<div className='d-flex justify-content-center'>
+  {colors.map(color => (
+    <div key={color}>
+      <Block width={100} height={100} bg={color} className='rounded mx-2' />
+      <small className='small ml-2'>.bg-{color}</small>
+    </div>
+  ))}
+</div>
+
+### Grayscale
+
+<div className='d-flex justify-content-center'>
+  {grayscale.map(gray => (
+    <div key={gray}>
+      <Block width={75} height={75} bg={gray} className='rounded mx-2' />
+      <small className='small ml-2'>.bg-{gray}</small>
+    </div>
+  ))}
+</div>
+
+### Transparent
+
+Add `.bg-transparent` to override the background to be transparent.
+
+</ElementsProvider>
