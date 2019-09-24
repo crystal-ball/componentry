@@ -1,0 +1,49 @@
+import { Meta, Props } from '@storybook/addon-docs/blocks'
+
+import Text from './Text'
+import { ElementsProvider } from '../story-resources'
+
+<Meta title='Components|Text' component={Text} />
+
+<ElementsProvider>
+
+# Text elements
+
+<Text>Componentry default text element</Text>
+
+---
+
+## Span text elements
+
+Pass `inline` to render a `span` instead of a `p`:
+
+<Text>
+  This is a larger block of text that has a{' '}
+  <Text fontWeight='bold' inline>
+    bold
+  </Text>{' '}
+  text span inside of it.
+</Text>
+
+---
+
+## Text sizes
+
+Pass a size prop to change the font size:
+
+<Text size="xl">Example extra large text content.</Text>
+<Text size="lg">Example large text content.</Text>
+<Text>Example text content.</Text>
+<Text size="sm">Example small text content.</Text>
+<Text size="xs">Example extra small text content.</Text>
+
+---
+
+## Lead
+
+Create a lead paragraph with the `lead` prop:
+
+<Text lead>This is a lead paragraph that will stand out.</Text>
+<Text>Followed by a default paragraph</Text>
+
+</ElementsProvider>

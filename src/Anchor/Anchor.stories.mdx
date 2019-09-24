@@ -11,17 +11,17 @@ import { ElementsProvider, colors, size } from '../story-resources'
 
 # Anchors
 
-Anchor element with an href:
-
 <Anchor href='#'>Anchor element</Anchor>
 
 <Props of={Anchor} />
 
+---
+
 ## Theme colors
 
-Pass a `color` to set a theme color background:
+Pass a `color` to set a theme font color:
 
-<div className='d-flex justify-content-center flex-column'>
+<div className='d-flex flex-column'>
   {colors.map(color => (
     <Anchor color={color} href='#' key={color}>
       Achor element
@@ -29,21 +29,22 @@ Pass a `color` to set a theme color background:
   ))}
 </div>
 
+---
+
 ## Disabled
 
 Pass `disabled` to make an anchor disabled:
 
 <Anchor disabled>Anchor element</Anchor>
 
-## Button class
+---
+
+## Anchor styled button
 
 Create a button element with anchor styles by passing `as='button'` to an Anchor:
 
-<div className='d-flex justify-content-around btn-container-x'>
-  <Anchor href='#'>Anchor element</Anchor>
-  <Anchor as='button' onClick={action('button anchor')}>
-    Button element
-  </Anchor>
-</div>
+<Anchor as='button' onClick={action('button anchor')}>
+  Button element
+</Anchor>
 
 </ElementsProvider>

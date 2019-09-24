@@ -49,12 +49,7 @@
     text-decoration: $anchor-disabled-decoration;
   }
 }
-
-@if ($style-dom-elements) {
-  a {
-    @extend .a;
-  }
-}
+@include dom-element-styles(a);
 
 @each $color, $value in $theme-colors {
   // --- Theme variant

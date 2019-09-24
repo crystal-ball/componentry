@@ -1,21 +1,11 @@
 /* componentry/src/Heading/heading */
 
-.heading {
+@mixin heading-base {
   color: $headings-color;
   font-family: $headings-font-family;
   line-height: $headings-line-height;
   margin-bottom: $headings-margin-bottom;
   margin-top: 0;
-}
-
-@if ($style-dom-elements) {
-  h1,
-  h2,
-  h3,
-  h4,
-  h5 {
-    @extend .heading;
-  }
 }
 
 $h1: map-merge(
@@ -30,18 +20,14 @@ $h1: map-merge(
 );
 
 .h1 {
+  @include heading-base();
   font-size: map-get($map: $h1, $key: font-size);
   font-style: map-get($map: $h1, $key: font-style);
   font-weight: map-get($map: $h1, $key: font-weight);
   letter-spacing: map-get($map: $h1, $key: letter-spacing);
   text-transform: map-get($map: $h1, $key: text-transform);
 }
-
-@if ($style-dom-elements) {
-  h1 {
-    @extend .h1;
-  }
-}
+@include dom-element-styles(h1);
 
 $h2: map-merge(
   (
@@ -55,18 +41,14 @@ $h2: map-merge(
 );
 
 .h2 {
+  @include heading-base();
   font-size: map-get($map: $h2, $key: font-size);
   font-style: map-get($map: $h2, $key: font-style);
   font-weight: map-get($map: $h2, $key: font-weight);
   letter-spacing: map-get($map: $h2, $key: letter-spacing);
   text-transform: map-get($map: $h2, $key: text-transform);
 }
-
-@if ($style-dom-elements) {
-  h2 {
-    @extend .h2;
-  }
-}
+@include dom-element-styles(h2);
 
 $h3: map-merge(
   (
@@ -80,18 +62,14 @@ $h3: map-merge(
 );
 
 .h3 {
+  @include heading-base();
   font-size: map-get($map: $h3, $key: font-size);
   font-style: map-get($map: $h3, $key: font-style);
   font-weight: map-get($map: $h3, $key: font-weight);
   letter-spacing: map-get($map: $h3, $key: letter-spacing);
   text-transform: map-get($map: $h3, $key: text-transform);
 }
-
-@if ($style-dom-elements) {
-  h3 {
-    @extend .h3;
-  }
-}
+@include dom-element-styles(h3);
 
 $h4: map-merge(
   (
@@ -105,18 +83,14 @@ $h4: map-merge(
 );
 
 .h4 {
+  @include heading-base();
   font-size: map-get($map: $h4, $key: font-size);
   font-style: map-get($map: $h4, $key: font-style);
   font-weight: map-get($map: $h4, $key: font-weight);
   letter-spacing: map-get($map: $h4, $key: letter-spacing);
   text-transform: map-get($map: $h4, $key: text-transform);
 }
-
-@if ($style-dom-elements) {
-  h4 {
-    @extend .h4;
-  }
-}
+@include dom-element-styles(h4);
 
 $h5: map-merge(
   (
@@ -130,15 +104,34 @@ $h5: map-merge(
 );
 
 .h5 {
+  @include heading-base();
   font-size: map-get($map: $h5, $key: font-size);
   font-style: map-get($map: $h5, $key: font-style);
   font-weight: map-get($map: $h5, $key: font-weight);
   letter-spacing: map-get($map: $h5, $key: letter-spacing);
   text-transform: map-get($map: $h5, $key: text-transform);
 }
+@include dom-element-styles(h5);
 
-@if ($style-dom-elements) {
-  h5 {
-    @extend .h5;
-  }
+// --------------------------------------------------------
+// Subheadings
+
+.subheading {
+  color: $subheading-font-color;
+  font-size: $subheading-font-size;
+  font-weight: $subheading-font-weight;
+}
+
+// --------------------------------------------------------
+// Display headings
+
+.display-1 {
+  font-size: $display1-size;
+  font-weight: $display1-weight;
+  line-height: $display-line-height;
+}
+.display-2 {
+  font-size: $display2-size;
+  font-weight: $display2-weight;
+  line-height: $display-line-height;
 }

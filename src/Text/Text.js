@@ -3,9 +3,13 @@ import { useTheme } from '../Theme/Theme'
 
 /**
  * Text component
- * TODO: use `span` prop to render a span?
+ * Add `size` prop for text-sm/text-lg
  */
 export default function Text(props) {
-  const merged = { as: 'p', ...useTheme('Text'), ...props }
-  return elem({ componentClassNames: merged.as, ...merged })
+  const { inline, lead, size, ...rest } = { as: 'p', ...useTheme('Text'), ...props }
+
+  if (inline) rest.as = 'span'
+  if (size) rest.fontSize = size
+
+  return elem({ componentClassNames: [rest.as, { lead }], ...rest })
 }

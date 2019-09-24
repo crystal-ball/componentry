@@ -1,6 +1,21 @@
 /* ~componentry/styles/helpers/mixins */
 
 // --------------------------------------------------------
+// Styled DOM elements
+
+/**
+ * Mixin is used to optionally include a DOM element when creating styles, eg
+ * also style `small` elements using `.small` class styles
+ */
+@mixin dom-element-styles($element) {
+  @if ($style-dom-elements) {
+    #{$element} {
+      @extend .#{$element};
+    }
+  }
+}
+
+// --------------------------------------------------------
 // Breakpoints
 
 // Media of at least the minimum breakpoint width. No query for the smallest breakpoint.

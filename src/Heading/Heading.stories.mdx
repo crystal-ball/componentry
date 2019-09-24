@@ -1,0 +1,57 @@
+import { Meta, Props } from '@storybook/addon-docs/blocks'
+
+import Heading from './Heading'
+import { ElementsProvider } from '../story-resources'
+
+<Meta title='Components|Heading' component={Heading} />
+
+<ElementsProvider>
+
+# Headings
+
+A default heading:
+
+<Heading>Componentry heading</Heading>
+
+<Props of={Heading} />
+
+---
+
+## Heading levels
+
+Use the `as` prop to change the heading level from an `h1`:
+
+<Heading as="h1">Componentry heading</Heading>
+<Heading as="h2">Componentry heading</Heading>
+<Heading as="h3">Componentry heading</Heading>
+<Heading as="h4">Componentry heading</Heading>
+
+---
+
+## Display Headings
+
+The `display` prop will set the display styles:
+
+<Heading display={1}>Display heading</Heading>
+<Heading display={2}>Display heading</Heading>
+
+---
+
+## Subheadings
+
+The `.subheading` class can be used to create heading levels:
+
+<Heading>
+  Important event <span className='subheading'>widespread impact</span>
+</Heading>
+<Heading as="h2">
+  Important event <span className='subheading'>widespread impact</span>
+</Heading>
+<Heading as="h3">
+  Important event <span className='subheading'>widespread impact</span>
+</Heading>
+<Heading as="h4">
+  Important event <span className='subheading'>widespread impact</span>
+</Heading>
+
+</ElementsProvider>
