@@ -1,0 +1,78 @@
+import { Meta } from '@storybook/addon-docs/blocks'
+
+import Block from '../../Block/Block'
+import { ElementsProvider, colors, grayscale } from '../../story-resources'
+
+<Meta title='Utility classes|Typography' />
+
+<ElementsProvider>
+
+# Typograpahy
+
+---
+
+## Theme colors
+
+<div>
+  {colors.map(color => (
+    <div key={color}>
+      <small>.font-color-{color}</small>
+      <p className={`font-color-${color}`}>
+        Componentry font colors can provide contextual hints.
+      </p>
+    </div>
+  ))}
+</div>
+
+---
+
+## Font sizes
+
+<small>.font-size-xl</small>
+<p className="font-size-xl">Example extra large text content.</p>
+
+<small>.font-size-lg</small>
+<p className="font-size-lg">Example large text content.</p>
+
+<small>.font-size-base</small>
+<p className="font-size-base">Example base size text content.</p>
+
+<small>.font-size-sm</small>
+<p className="font-size-sm">Example small text content.</p>
+
+<small>.font-size-xs</small>
+<p className="font-size-xs">Example extra small text content.</p>
+
+---
+
+## Font weights
+
+<small>.font-weight-bolder</small>
+<p className="font-weight-bolder">The boldest font weight style.</p>
+
+<small>.font-weight-bold</small>
+<p className="font-weight-bold">Bold font weight style.</p>
+
+<small>.font-weight-normal</small>
+<p className="font-weight-normal">Normal font weight style.</p>
+
+<small>.font-weight-light</small>
+<p className="font-weight-light">Light font weight style.</p>
+
+<small>.font-weight-lighter</small>
+<p className="font-weight-lighter">The lightest font weight style.</p>
+
+---
+
+## Text transforms
+
+<small>.text-lowercase</small>
+<p className='text-lowercase'>Lowercase text transform.</p>
+
+<small>.text-uppercase</small>
+<p className='text-uppercase'>Uppercase text transform.</p>
+
+<small>.text-capitalize</small>
+<p className='text-capitalize'>Capitalize text transform.</p>
+
+</ElementsProvider>

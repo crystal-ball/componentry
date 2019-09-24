@@ -1,7 +1,4 @@
-/*
- * ~componentry/styles/utility/text
- * Utility text classes
- */
+/* ~componentry/styles/utility/text */
 
 // --------------------------------------------------------
 // Colors
@@ -9,7 +6,7 @@
 @each $color, $value in $font-colors {
   // Support BS `text-<color>` classes
   .text-#{$color},
-  .font-#{$color} {
+  .font-color-#{$color} {
     color: $value !important;
   }
   a.font-#{$color} {
@@ -20,20 +17,6 @@
 }
 
 // --------------------------------------------------------
-// Display
-
-.display-1 {
-  font-size: $display1-size;
-  font-weight: $display1-weight;
-  line-height: $display-line-height;
-}
-.display-2 {
-  font-size: $display2-size;
-  font-weight: $display2-weight;
-  line-height: $display-line-height;
-}
-
-// --------------------------------------------------------
 // Sizes
 
 // TODO: xs/xl
@@ -41,14 +24,30 @@
 // The .text-sm and text-lg classes are intended for regular text like p, span,
 // etc. and provide a utility for minor text adjustments when applications don't
 // want to use small headers and small dom elements to handle these types
+
+.text-xs,
+.font-size-xs {
+  font-size: $font-size-xs;
+}
+
 .text-sm,
 .font-size-sm {
   font-size: $font-size-sm;
 }
 
+.text-base,
+.font-size-base {
+  font-size: $font-size-base;
+}
+
 .text-lg,
 .font-size-lg {
   font-size: $font-size-lg;
+}
+
+.text-xl,
+.font-size-xl {
+  font-size: $font-size-xl;
 }
 
 // --------------------------------------------------------
@@ -75,6 +74,44 @@
 
 .font-italic {
   font-style: italic !important;
+}
+
+// --------------------------------------------------------
+// Transforms
+
+.text-lowercase {
+  text-transform: lowercase !important;
+}
+.text-uppercase {
+  text-transform: uppercase !important;
+}
+.text-capitalize {
+  text-transform: capitalize !important;
+}
+
+// --------------------------------------------------------
+// Decoration
+
+.text-underline {
+  text-decoration: underline !important;
+
+  &:hover,
+  &:active {
+    text-decoration: underline !important;
+  }
+}
+
+.text-line-through {
+  text-decoration: line-through !important;
+}
+
+.suppress-text-decoration {
+  text-decoration: none !important;
+
+  &:hover,
+  &:active {
+    text-decoration: none !important;
+  }
 }
 
 // --------------------------------------------------------
@@ -120,44 +157,6 @@
 }
 
 // --------------------------------------------------------
-// Transforms
-
-.text-lowercase {
-  text-transform: lowercase !important;
-}
-.text-uppercase {
-  text-transform: uppercase !important;
-}
-.text-capitalize {
-  text-transform: capitalize !important;
-}
-
-// --------------------------------------------------------
-// Decoration
-
-.text-underline {
-  text-decoration: underline !important;
-
-  &:hover,
-  &:active {
-    text-decoration: underline !important;
-  }
-}
-
-.text-line-through {
-  text-decoration: line-through !important;
-}
-
-.suppress-text-decoration {
-  text-decoration: none !important;
-
-  &:hover,
-  &:active {
-    text-decoration: none !important;
-  }
-}
-
-// --------------------------------------------------------
 // Blockquotes
 
 .blockquote {
@@ -176,14 +175,6 @@
 }
 
 // --------------------------------------------------------
-// Lead
-
-.lead {
-  font-size: $lead-font-size;
-  font-weight: $lead-font-weight;
-}
-
-// --------------------------------------------------------
 // Emphasis
 
 .small {
@@ -191,6 +182,7 @@
   font-size: $small-font-size;
   font-weight: $small-font-weight;
 }
+@include dom-element-styles(small);
 
 .mark {
   padding: $mark-padding;
