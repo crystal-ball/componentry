@@ -17,7 +17,7 @@ describe('<Input />', () => {
 // ---------------------------------------------------------------------------
 describe('<Input /> snapshots', () => {
   it('renders correctly', () => {
-    const { container, debug } = render(
+    const { container } = render(
       <div>
         <Input>
           <Input.Label>Storybook</Input.Label>
@@ -27,7 +27,6 @@ describe('<Input /> snapshots', () => {
         </Input>
       </div>,
     )
-    debug()
     expect(container.firstChild).toMatchSnapshot()
   })
 })
