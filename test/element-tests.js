@@ -109,7 +109,10 @@ const elementTests = TestComponent => {
       </TestComponent>,
     )
 
-    expect(getByTestId('component')).toHaveClass('jsx-class text-center text-uppercase')
+    expect(getByTestId('component')).toHaveClass(
+      'jsx-class text-align-center text-uppercase',
+    )
+
     expect(getByTestId('component')).toHaveStyle(`
       line-height: 2;
       margin-left: 16;
