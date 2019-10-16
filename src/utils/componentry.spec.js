@@ -156,7 +156,7 @@ describe('componentry()', () => {
         uppercase: true,
       }).libraryClassNames[0],
     ).toEqual({
-      'bg-primary': 'primary',
+      'background-primary': 'primary',
       border: true,
       'border-top': true,
       'border-right': true,
@@ -165,7 +165,7 @@ describe('componentry()', () => {
       'border-primary': 'primary',
       'border-width-lg': 'lg',
       'font-color-primary': 'primary',
-      'font-italic': true,
+      'font-style-italic': true,
       'font-size-sm': 'sm',
       'font-weight-bold': 'bold',
       'position-fixed': 'fixed',

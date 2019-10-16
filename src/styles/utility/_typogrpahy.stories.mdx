@@ -15,12 +15,11 @@ import { ElementsProvider, colors, grayscale } from '../../story-resources'
 
 <div>
   {colors.map(color => (
-    <div key={color}>
-      <small>.font-color-{color}</small>
-      <p className={`font-color-${color}`}>
-        Componentry font colors can provide contextual hints.
-      </p>
-    </div>
+    <p className={`font-color-${color}`} key={color}>
+      Componentry font colors can provide contextual hints.
+      <br />
+      <small className='mb-base'>.font-color-{color}</small>
+    </p>
   ))}
 </div>
 
@@ -74,5 +73,17 @@ import { ElementsProvider, colors, grayscale } from '../../story-resources'
 
 <small>.text-capitalize</small>
 <p className='text-capitalize'>Capitalize text transform.</p>
+
+---
+
+### Italic
+
+<small>.font-style-italic</small>
+<p className='font-style-italic'>This text is italic.</p>
+
+### Monospace
+
+<small>.text-capitalize</small>
+<p className='text-monospace'>This text uses the monospace font-family.</p>
 
 </ElementsProvider>

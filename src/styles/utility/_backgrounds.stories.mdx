@@ -9,24 +9,29 @@ import { ElementsProvider, colors, grayscale, sizes } from '../../story-resource
 
 ## Backgrounds
 
-### Theme colors
+### Background colors
+
+Set the background color to any theme color as well as any color added to the
+`$background-colors` map.
 
 <div className='d-flex justify-content-center'>
   {colors.map(color => (
     <div key={color}>
-      <Block width={100} height={100} background={color} className='rounded mx-2' />
-      <small className='small ml-2'>.bg-{color}</small>
+      <Block width={100} height={100} background={color} mx='sm' className='radius' />
+      <small className='small ml-2'>.background-{color}</small>
     </div>
   ))}
 </div>
 
 ### Grayscale
 
+Set the background color to any shade from `$grayscale` map.
+
 <div className='d-flex justify-content-center'>
   {grayscale.map(gray => (
     <div key={gray}>
-      <Block width={75} height={75} background={gray} className='rounded mx-2' />
-      <small className='small ml-2'>.bg-{gray}</small>
+      <Block width={75} height={75} background={gray} mx='sm' className='radius' />
+      <small className='small ml-2'>.background-{gray}</small>
     </div>
   ))}
 </div>

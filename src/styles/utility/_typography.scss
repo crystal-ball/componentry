@@ -1,15 +1,31 @@
-/* ~componentry/styles/utility/text */
+/* ~componentry/ssrc/tyles/utility/text */
+
+// --------------------------------------------------------
+// Font Families
+
+.text-monospace {
+  font-family: $font-family-monospace;
+  font-size: $font-size-monospace;
+}
 
 // --------------------------------------------------------
 // Colors
 
 @each $color, $value in $font-colors {
-  // Support BS `text-<color>` classes
-  .text-#{$color},
   .font-color-#{$color} {
     color: $value !important;
   }
-  a.font-#{$color} {
+  a.font-color-#{color} {
+    @include hover-focus {
+      color: darken($value, 10%) !important;
+    }
+  }
+
+  // DEPRECATED: Support BS `text-<color>` classes
+  .text-#{$color} {
+    color: $value !important;
+  }
+  a.text-#{$color} {
     @include hover-focus {
       color: darken($value, 10%) !important;
     }
@@ -19,34 +35,48 @@
 // --------------------------------------------------------
 // Sizes
 
-// TODO: xs/xl
-
-// The .text-sm and text-lg classes are intended for regular text like p, span,
+// The .text-<size> classes are intended for regular text like p, span,
 // etc. and provide a utility for minor text adjustments when applications don't
 // want to use small headers and small dom elements to handle these types
 
-.text-xs,
 .font-size-xs {
   font-size: $font-size-xs;
 }
 
-.text-sm,
 .font-size-sm {
   font-size: $font-size-sm;
 }
 
-.text-base,
 .font-size-base {
   font-size: $font-size-base;
 }
 
-.text-lg,
 .font-size-lg {
   font-size: $font-size-lg;
 }
 
-.text-xl,
 .font-size-xl {
+  font-size: $font-size-xl;
+}
+
+// DEPRECATED: Support BS `text-<size>` classes
+.text-xs {
+  font-size: $font-size-xs;
+}
+
+.text-sm {
+  font-size: $font-size-sm;
+}
+
+.text-base {
+  font-size: $font-size-base;
+}
+
+.text-lg {
+  font-size: $font-size-lg;
+}
+
+.text-xl {
   font-size: $font-size-xl;
 }
 
@@ -72,7 +102,7 @@
 // --------------------------------------------------------
 // Italic
 
-.font-italic {
+.font-style-italic {
   font-style: italic !important;
 }
 
@@ -117,29 +147,6 @@
 // --------------------------------------------------------
 // Alignment
 
-.text-align-justify {
-  text-align: justify !important;
-}
-
-.text-nowrap {
-  white-space: nowrap !important;
-}
-
-// Text truncate
-
-@mixin text-truncate() {
-  // ℹ️ Requires inline-block or block for proper styling
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-}
-
-.text-truncate {
-  @include text-truncate;
-}
-
-// Responsive alignment
-
 @each $breakpoint in map-keys($grid-breakpoints) {
   @include media-breakpoint-up($breakpoint) {
     $infix: breakpoint-infix($breakpoint, $grid-breakpoints);
@@ -152,6 +159,9 @@
     }
     .text-align#{$infix}-center {
       text-align: center !important;
+    }
+    .text-align#{$infix}-justify {
+      text-align: justify !important;
     }
   }
 }
@@ -214,9 +224,14 @@
 // --------------------------------------------------------
 // Misc
 
-.text-monospace {
-  font-family: $font-family-monospace;
-  font-size: $font-size-monospace;
+.text-nowrap {
+  white-space: nowrap !important;
+}
+
+.text-truncate {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 .text-hide {

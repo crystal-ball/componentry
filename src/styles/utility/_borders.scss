@@ -68,35 +68,35 @@
 // --------------------------------------------------------
 // Border radius
 
-.radius {
+.border-radius {
   border-radius: $border-radius !important;
 }
-.radius-sm {
+.border-radius-sm {
   border-radius: $border-radius-sm !important;
 }
-.radius-lg {
+.border-radius-lg {
   border-radius: $border-radius-lg !important;
 }
 
 // TODO: provide sm and lg sizes for each of the directional variations
-.radius-top {
+.border-radius-top {
   border-top-left-radius: $border-radius !important;
   border-top-right-radius: $border-radius !important;
 }
-.radius-right {
+.border-radius-right {
   border-top-right-radius: $border-radius !important;
   border-bottom-right-radius: $border-radius !important;
 }
-.radius-bottom {
+.border-radius-bottom {
   border-bottom-right-radius: $border-radius !important;
   border-bottom-left-radius: $border-radius !important;
 }
-.radius-left {
+.border-radius-left {
   border-top-left-radius: $border-radius !important;
   border-bottom-left-radius: $border-radius !important;
 }
 
-.radius-circle {
+.border-radius-circle {
   // Setting a very large number for the border radius will cause browsers to
   // calculate the correct number for a completely rounded edge with no overlap
   // https://drafts.csswg.org/css-backgrounds/#corner-overlap
@@ -106,6 +106,6 @@
   border-radius: 1000px !important;
 }
 
-.radius-0 {
+.border-radius-0 {
   border-radius: 0 !important;
 }

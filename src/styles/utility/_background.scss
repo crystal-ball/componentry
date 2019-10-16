@@ -1,17 +1,21 @@
-/* ~componentry/styles/atomic/background */
+/* ~componentry/src/styles/utility/background */
 
 @each $color, $value in $background-colors {
+  .background-#{$color} {
+    background-color: $value !important;
+  }
+
+  // DEPRECATED: Bootstrap classes
   .bg-#{$color} {
     background-color: $value !important;
   }
-  a.bg-#{$color},
-  button.bg-#{$color} {
-    @include hover-focus {
-      background-color: darken($value, 10%) !important;
-    }
-  }
 }
 
+.background-transparent {
+  background-color: transparent !important;
+}
+
+// DEPRECATED:
 .bg-transparent {
   background-color: transparent !important;
 }

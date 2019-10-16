@@ -9,7 +9,9 @@ import { ElementsProvider, colors, grayscale } from '../../story-resources'
 
 ## Borders
 
-### Border base
+### Border & border directions
+
+Add a border using the border utility classes.
 
 <div className='d-flex justify-content-center'>
   <div>
@@ -30,7 +32,10 @@ import { ElementsProvider, colors, grayscale } from '../../story-resources'
   ))}
 </div>
 
-### Theme colors
+### Border colors
+
+Set the color of a border to any theme color as well as any color added to the
+`$border-colors` map.
 
 <div className='d-flex justify-content-center'>
   {colors.map(color => (
@@ -50,6 +55,8 @@ import { ElementsProvider, colors, grayscale } from '../../story-resources'
 
 ### Grayscale
 
+Set the border color to any shade from the `$grayscale` map.
+
 <div className='d-flex justify-content-center'>
   {grayscale.map(gray => (
     <div key={gray}>
@@ -60,6 +67,8 @@ import { ElementsProvider, colors, grayscale } from '../../story-resources'
 </div>
 
 ### Border Width
+
+Increase the width of a border using the `lg` and `xl` border width classes.
 
 <div className='d-flex justify-content-center'>
   <div>
@@ -74,46 +83,64 @@ import { ElementsProvider, colors, grayscale } from '../../story-resources'
 
 ### Border radius
 
-! Want radius levels, eg .radius-sm, .radius, .radius-lg
-
-1. radius -> add a border-radius, accept sm, lg to change radius size
-1. radiusTop, radiusRight, etc. -> same but for one side
-1. circle
-1. pill
+Add a border radius using the sized utility classes.
 
 <div className='d-flex justify-content-center'>
   <div>
-    <Block width={100} height={100} className='border radius-sm mx-2' background='100' />
-    <small className='small ml-2'>.radius-sm</small>
+    <Block
+      width={100}
+      height={100}
+      background='100'
+      mx='base'
+      className='border border-radius-sm'
+    />
+    <small className='small ml-2'>.border-radius-sm</small>
   </div>
   <div>
-    <Block width={100} height={100} className='border radius mx-2' background='100' />
-    <small className='small ml-2'>.radius</small>
+    <Block
+      width={100}
+      height={100}
+      background='100'
+      mx='base'
+      className='border border-radius'
+    />
+    <small className='small ml-2'>.border-radius</small>
   </div>
   <div>
-    <Block width={100} height={100} className='border radius-lg mx-2' background='100' />
-    <small className='small ml-2'>.radius-lg</small>
+    <Block
+      width={100}
+      height={100}
+      background='100'
+      mx='base'
+      className='border border-radius-lg'
+    />
+    <small className='small ml-2'>.border-radius-lg</small>
   </div>
 </div>
 
+### Border radius directions
+
+Add a directional border radius.
+
 <div className='d-flex justify-content-center'>
-  {['radius-top', 'radius-right', 'radius-bottom', 'radius-left'].map(className => (
+  {['top', 'right', 'bottom', 'left'].map(className => (
     <div key={className}>
       <Block
         width={100}
         height={100}
-        className={`border ${className} mx-2`}
         background='100'
+        mx='base'
+        className={`border border-radius-${className}`}
       />
-      <small className='small ml-2'>.{className}</small>
+      <small className='small ml-sm'>.border-radius-{className}</small>
     </div>
   ))}
 </div>
 
 #### Radius circle
 
-The `.radius-circle` class can be used to create circles or pills by adjusting the width
-and height ratio of an element
+Use `.border-radius-circle` to create circles or pills by adjusting the width and height
+ratio of an element
 
 <div className='d-flex justify-content-center align-items-center'>
   <div>
@@ -121,16 +148,21 @@ and height ratio of an element
       width={50}
       height={50}
       border
-      className='radius-circle'
+      className='border-radius-circle'
       mx='sm'
       background='100'
     />
-    <small className='small ml-2'>.radius-circle</small>
+    <small className='small ml-sm'>.border-radius-circle</small>
   </div>
 
 <div>
-  <Block width={100} height={50} className='border radius-circle mx-2' background='100' />
-  <small className='small ml-2'>.radius-circle</small>
+  <Block
+    width={100}
+    height={50}
+    className='border border-radius-circle mx-2'
+    background='100'
+  />
+  <small className='small ml-2'>.border-radius-circle</small>
 </div>
 
   <div>
@@ -138,11 +170,11 @@ and height ratio of an element
       width={50}
       height={100}
       border
-      className='radius-circle'
+      className='border-radius-circle'
       mx='sm'
       background='100'
     />
-    <small className='small ml-2'>.radius-circle</small>
+    <small className='small ml-2'>.border-radius-circle</small>
   </div>
 </div>
 

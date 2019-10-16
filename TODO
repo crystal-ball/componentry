@@ -25,3 +25,4 @@
 
 - Background, bg, foreground, color... The classes, props and Sass variables for working
   with background and foreground colors are inconsistent.
+- ?Add a `borderRadius` prop with sizes and passthrough values?
