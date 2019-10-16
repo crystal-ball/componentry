@@ -4,6 +4,12 @@
   active components into the baseClass, and include all of the styles in the `variant`
   class? This would enable switching the variant without having to rewrite show/hide
   CSS...
+
+  🎉 `variant` should control the default class passed to component that has styles
+  attached to it. Components should also include a set of behavior classes that have
+  visibility and transitions attached, eg `dropdown-behaviors`,
+  `dropdown-content-behaviors`
+
 - Document that classNames are additive, they don't override. SHOULD THAT BE THE CASE???
 - Dropdown: Default focus on open first item
 - Dropdown: Keydown listener for arrows to navigate through menu items
@@ -15,9 +21,7 @@
   large screens than small screens
 - Are border<DIRECTION> props working??
 
-## Classes for factories
+## Inconsistencies for the future
 
-By default a className is assigned to each generated component in the active component
-factories using the passed name. For components that need a different `baseClass`, it can
-be passed explicitly. Similarly a `baseName` can be passed to override the default
-component name used to look up theme values.
+- Background, bg, foreground, color... The classes, props and Sass variables for working
+  with background and foreground colors are inconsistent.

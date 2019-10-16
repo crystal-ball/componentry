@@ -1,86 +1,111 @@
 /* ~componentry/styles/utility/borders */
 
 // --------------------------------------------------------
+// Borders addition
+
+.border {
+  border-color: $border-color;
+  border-width: $border-width;
+  border-style: solid;
+}
+.border-top {
+  border-color: $border-color;
+  border-top-style: solid;
+  border-top-width: $border-width;
+}
+.border-right {
+  border-color: $border-color;
+  border-right-style: solid;
+  border-right-width: $border-width;
+}
+.border-bottom {
+  border-color: $border-color;
+  border-bottom-style: solid;
+  border-bottom-width: $border-width;
+}
+.border-left {
+  border-color: $border-color;
+  border-left-style: solid;
+  border-left-width: $border-width;
+}
+
+// --------------------------------------------------------
+// Borders removal
+
+.border-0 {
+  border-width: 0 !important;
+}
+.border-top-0 {
+  border-top-width: 0 !important;
+}
+.border-right-0 {
+  border-right-width: 0 !important;
+}
+.border-bottom-0 {
+  border-bottom-width: 0 !important;
+}
+.border-left-0 {
+  border-left-width: 0 !important;
+}
+
+// --------------------------------------------------------
 // Colors
 
 @each $color, $value in $border-colors {
   .border-#{$color} {
-    border-color: $value;
-    border-bottom-style: solid;
-    border-bottom-width: 1px;
+    border-color: $value !important;
   }
 }
 
-// --------------------------------------------------------
-// Borders addition
-
-.border {
-  border-width: 1px;
-  border-style: solid;
-}
-.border-top {
-  border-top-style: solid;
-  border-top-width: 1px;
-}
-.border-right {
-  border-right-style: solid;
-  border-right-width: 1px;
-}
-.border-bottom {
-  border-bottom-style: solid;
-  border-bottom-width: 1px;
-}
-.border-left {
-  border-left-style: solid;
-  border-left-width: 1px;
+.border-width-lg {
+  border-width: $border-width-lg;
 }
 
-// --------------------------------------------------------
-// Border clear
-
-.border-0 {
-  border: 0 !important;
-}
-.border-top-0 {
-  border-top: 0 !important;
-}
-.border-right-0 {
-  border-right: 0 !important;
-}
-.border-bottom-0 {
-  border-bottom: 0 !important;
-}
-.border-left-0 {
-  border-left: 0 !important;
+.border-width-xl {
+  border-width: $border-width-xl;
 }
 
 // --------------------------------------------------------
 // Border radius
 
-.rounded {
+.radius {
   border-radius: $border-radius !important;
 }
-.rounded-top {
+.radius-sm {
+  border-radius: $border-radius-sm !important;
+}
+.radius-lg {
+  border-radius: $border-radius-lg !important;
+}
+
+// TODO: provide sm and lg sizes for each of the directional variations
+.radius-top {
   border-top-left-radius: $border-radius !important;
   border-top-right-radius: $border-radius !important;
 }
-.rounded-right {
+.radius-right {
   border-top-right-radius: $border-radius !important;
   border-bottom-right-radius: $border-radius !important;
 }
-.rounded-bottom {
+.radius-bottom {
   border-bottom-right-radius: $border-radius !important;
   border-bottom-left-radius: $border-radius !important;
 }
-.rounded-left {
+.radius-left {
   border-top-left-radius: $border-radius !important;
   border-bottom-left-radius: $border-radius !important;
 }
 
-.rounded-circle {
-  border-radius: 50% !important;
+.radius-circle {
+  // Setting a very large number for the border radius will cause browsers to
+  // calculate the correct number for a completely rounded edge with no overlap
+  // https://drafts.csswg.org/css-backgrounds/#corner-overlap
+  // Corner curves must not overlap: When the sum of any two adjacent border
+  // radii exceeds the size of the border box, UAs must proportionally reduce
+  // the used values of all border radii until none of them overlap.
+  border-radius: 1000px !important;
 }
 
-.rounded-0 {
+.radius-0 {
   border-radius: 0 !important;
 }

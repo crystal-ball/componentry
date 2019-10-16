@@ -249,7 +249,7 @@
 // Dividers (basically an `<hr>`) within the dropdown
 .dropdown-divider {
   height: 0;
-  margin: ($spacer / 2) 0;
+  margin: $space-sm 0;
   overflow: hidden;
   border-top: 1px solid $dropdown-divider-bg;
 }

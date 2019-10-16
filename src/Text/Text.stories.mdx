@@ -1,6 +1,7 @@
 import { Meta, Props } from '@storybook/addon-docs/blocks'
 
 import Text from './Text'
+import Block from '../Block/Block'
 import { ElementsProvider } from '../story-resources'
 
 <Meta title='Components|Text' component={Text} />
@@ -33,7 +34,7 @@ Pass a size prop to change the font size:
 
 <Text size="xl">Example extra large text content.</Text>
 <Text size="lg">Example large text content.</Text>
-<Text>Example text content.</Text>
+<Text size='base'>Example text content.</Text>
 <Text size="sm">Example small text content.</Text>
 <Text size="xs">Example extra small text content.</Text>
 

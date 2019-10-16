@@ -1,9 +1,14 @@
 /**
- * Componentry styles design system definition
+ *                ⚙️ Componentry design system variables
+ * --------------------------------------------------------
+ *
+ * Motivations:
+ *
+ * - Color system variables are defined and then rolled up
+ *   in maps. The maps are intended to be used for
+ *   generating class name variations, but the original
+ *   variables should be used elsewhere for simplicity
  */
-
-// --------------------------------------------------------
-// Required design system helper fns and mixins
 
 @import './functions';
 @import './mixins';
@@ -11,28 +16,30 @@
 // --------------------------------------------------------
 // Design system options
 
-$enable-caret: true !default;
-$enable-rounded: true !default;
-$enable-shadows: true !default;
-$enable-transitions: true !default;
-$enable-grid-classes: true !default;
-$enable-print-styles: true !default;
+$enable-caret:         true !default; // 🔥
+$enable-rounded:       true !default;
+$enable-shadows:       true !default;
+$enable-transitions:   true !default;
+$enable-grid-classes:  true !default;
+$enable-print-styles:  true !default;
 
-$style-dom-elements: true !default;
+// Controls output of styles for dom elements, eg a
+$style-dom-elements:   true !default;
 
 // --------------------------------------------------------
 // Z-index layers
 
-$zindex-modal: 1000 !default;
-$zindex-dropdown: 1010 !default;
-$zindex-popover: 1020 !default;
-$zindex-tooltip: 1030 !default;
-$zindex-fixed: 1040 !default;
-$zindex-sticky: 1050 !default;
+$zindex-modal:     1000 !default;
+$zindex-dropdown:  1010 !default;
+$zindex-popover:   1020 !default;
+$zindex-tooltip:   1030 !default;
+$zindex-fixed:     1040 !default;
+$zindex-sticky:    1050 !default;
 
 // --------------------------------------------------------
 // Breakpoints
 
+// Note that breakpoints must start with a 0 value, and values must be ascending
 $grid-breakpoints: (
   xs: 0,
   sm: 576px,
@@ -41,71 +48,93 @@ $grid-breakpoints: (
   xl: 1200px,
 ) !default;
 
-// Note that breakpoints must start with a 0 value, and values must be ascending
 
 // --------------------------------------------------------
 // Color system
 
-// Grayscale
+// Shade colors are used for element styles like shadows or to create shades of
+// theme colors
+$dark-shade:   #151617 !default;
+$light-shade:  #f0f0f0 !default;
+
+// --- Grayscale
+
+$gray-100: #f3f3f3 !default;
+$gray-200: #eaedf0 !default;
+$gray-300: #dee2e6 !default;
+$gray-400: #ced4da !default;
+$gray-500: #adb5bd !default;
+$gray-600: #6c757d !default;
+$gray-700: #495057 !default;
+$gray-800: #282d31 !default;
+$gray-900: #131416 !default;
+
 $grayscale: () !default;
-$grayscale: map-merge(
-  (
-    '100': #f0f0f0,
-    '200': #e9ecef,
-    '300': #dee2e6,
-    '400': #ced4da,
-    '500': #adb5bd,
-    '600': #6c757d,
-    '700': #495057,
-    '800': #282d31,
-    '900': #131416,
-  ),
-  $grayscale
-);
+$grayscale: map-merge((
+  '100': $gray-100,
+  '200': $gray-200,
+  '300': $gray-300,
+  '400': $gray-400,
+  '500': $gray-500,
+  '600': $gray-600,
+  '700': $gray-700,
+  '800': $gray-800,
+  '900': $gray-900,
+), $grayscale);
 
-// Theme colors
+// --- Theme colors
+
+$background:  #ffffff !default;
+$foreground:  #1a1a1a !default;
+$primary:     #007bff !default;
+$secondary:   #6c757d !default;
+$success:     #28a745 !default;
+$info:        #46c9fd !default;
+$warning:     #ffc107 !default;
+$danger:      #dc3545 !default;
+
 $theme-colors: () !default;
-$theme-colors: map-merge(
-  (
-    background: #ffffff,
-    foreground: #131416,
-    primary: #007bff,
-    secondary: #6c757d,
-    success: #28a745,
-    info: #46c9fd,
-    warning: #ffc107,
-    danger: #dc3545,
-  ),
-  $theme-colors
-);
+$theme-colors: map-merge((
+  background:  $background,
+  foreground:  $foreground,
+  primary:     $primary,
+  secondary:   $secondary,
+  success:     $success,
+  info:        $info,
+  warning:     $warning,
+  danger:      $danger,
+), $theme-colors);
 
-// Background colors
+// --- Background colors
+
 $background-colors: () !default;
 $background-colors: map-merge($theme-colors, $background-colors);
 $background-colors: map-merge($grayscale, $background-colors);
 
-// Border colors
+// --- Border colors
+
+$border-color:  #ced4da !default;
+
 $border-colors: () !default;
 $border-colors: map-merge($theme-colors, $border-colors);
 $border-colors: map-merge($grayscale, $border-colors);
-$border-colors: map-merge(
-  (
-    default: #ced4da,
-  ),
-  $border-colors
-);
+$border-colors: map-merge((
+  border: $border-color,
+),$border-colors);
 
-// Font colors
+// --- Font colors
+
+$anchor-color:   #17a2b8 !default;
+$heading-color:  #242424 !default;
+$muted-color:    #6c757d !default;
+
 $font-colors: () !default;
 $font-colors: map-merge($font-colors, $theme-colors);
-$font-colors: map-merge(
-  (
-    anchor: #17a2b8,
-    heading: #131416,
-    muted: #6c757d,
-  ),
-  $font-colors
-);
+$font-colors: map-merge((
+  anchor:   $anchor-color,
+  heading:  $heading-color,
+  muted:    $muted-color,
+), $font-colors);
 
 // ℹ️ See documentation for declaring themes with the $themes map
 
@@ -121,153 +150,157 @@ $yiq-contrasted-threshold: 150 !default;
 
 // Customize the light and dark text colors for use in our YIQ color contrast
 // function.
-$yiq-text-dark: #131416 !default;
-$yiq-text-light: #f0f0f0 !default;
+$yiq-text-dark:   $dark-shade !default;
+$yiq-text-light:  $light-shade !default;
 
 // --------------------------------------------------------
 // System base values
 
-$border-width: 1px !default;
-$border-color: gray('300') !default;
+$border-width:       1px !default;
+$border-width-lg:    2px !default;
+$border-width-xl:    5px !default;
 
-$border-radius: 0.25rem !default;
-$border-radius-lg: 0.3rem !default;
-$border-radius-sm: 0.2rem !default;
+$border-radius:      0.25rem !default;
+$border-radius-lg:   0.3rem !default;
+$border-radius-sm:   0.2rem !default;
 
-$box-shadow-shadow: #131416 !default;
-$box-shadow-sm: 0 0.125rem 0.25rem rgba($box-shadow-shadow, 0.075) !default;
-$box-shadow: 0 0.5rem 1rem rgba($box-shadow-shadow, 0.15) !default;
-$box-shadow-lg: 0 1rem 3rem rgba($box-shadow-shadow, 0.175) !default;
+$box-shadow-shadow:  #131416 !default;
+$box-shadow-sm:      0 0.125rem 0.25rem rgba($box-shadow-shadow, 0.075) !default;
+$box-shadow:         0 0.5rem 1rem rgba($box-shadow-shadow, 0.15) !default;
+$box-shadow-lg:      0 1rem 3rem rgba($box-shadow-shadow, 0.175) !default;
 
-$component-active-color: gray('100');
-$component-active-bg: theme-color('primary') !default;
+// Active base values are used for generating styles like active list items
+$component-active-foreground:  $background !default;
+$component-active-background:  $primary !default;
 
-$caret-width: 0.3em !default;
+$caret-width: 0.3em !default; // 🔥
 
-$transition-base: all 0.2s ease-in-out !default;
-$transition-fade: opacity 0.25s linear !default;
+$transition-base:    all 0.2s ease-in-out !default;
+$transition-fade:    opacity 0.25s linear !default;
 
 // --------------------------------------------------------
-// Spacing
+// Space organization
 
-$spacer: 1rem !default;
+$space-root: 1rem !default;
 
-$spacers: () !default;
-$spacers: map-merge(
-  (
-    0: 0,
-    1: (
-      $spacer * 0.25,
-    ),
-    2: (
-      $spacer * 0.5,
-    ),
-    3: $spacer,
-    4: (
-      $spacer * 1.5,
-    ),
-    5: (
-      $spacer * 3,
-    ),
-  ),
-  $spacers
-);
+// Space organization defaults to a 4, 8, 16, 24, 48 scale
+$space-xs:   ($space-root * 0.25) !default;
+$space-sm:   ($space-root * 0.5) !default;
+$space-base: $space-root !default;
+$space-lg:   ($space-root * 1.5) !default;
+$space-xl:   ($space-root * 3) !default;
+
+$spacing: () !default;
+$spacing: map-merge((
+  // Utility classes suffixes
+  xs: $space-xs,
+  sm: $space-sm,
+  base: $space-base,
+  lg: $space-lg,
+  xl: $space-xl,
+  // DEPRECATED: Compatability suffixes
+  0: 0,
+  1: $space-xs,
+  2: $space-sm,
+  3: $space-base,
+  4: $space-lg,
+  5: $space-xl,
+), $spacing);
 
 $sizes: () !default;
-$sizes: map-merge(
-  (
-    10: 10%,
-    20: 20%,
-    25: 25%,
-    30: 30%,
-    33: 33.3%,
-    40: 40%,
-    50: 50%,
-    60: 60%,
-    66: 66.6%,
-    70: 70%,
-    75: 75%,
-    80: 80%,
-    90: 90%,
-    100: 100%,
-    auto: auto,
-  ),
-  $sizes
-);
+$sizes: map-merge((
+  10: 10%,
+  20: 20%,
+  25: 25%,
+  30: 30%,
+  33: 33.3%,
+  40: 40%,
+  50: 50%,
+  60: 60%,
+  66: 66.6%,
+  70: 70%,
+  75: 75%,
+  80: 80%,
+  90: 90%,
+  100: 100%,
+  auto: auto,
+), $sizes);
 
 // --------------------------------------------------------
 // Typography
 
-$font-family-sans-serif: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
-  'Helvetica Neue', Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
-  'Segoe UI Symbol' !default;
-$font-family-monospace: SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono',
-  'Courier New', monospace !default;
-$font-family-base: $font-family-sans-serif !default;
+$font-family-sans-serif: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol' !default;
+$font-family-monospace:  SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New', monospace !default;
+$font-family-base:       $font-family-sans-serif !default;
+$font-size-base:         1rem !default; // Assumes the browser default, typically `16px`
+$font-size-monospace:    0.925em !default;
 
-$font-size-base: 1rem !default; // Assumes the browser default, typically `16px`
-$font-size-xs: ($font-size-base * 0.75) !default;
-$font-size-sm: ($font-size-base * 0.875) !default;
-$font-size-lg: ($font-size-base * 1.25) !default;
-$font-size-xl: ($font-size-base * 1.5) !default;
-$font-size-monospace: 0.925em !default;
+$font-size-xs:         ($font-size-base * 0.75) !default;
+$font-size-sm:         ($font-size-base * 0.875) !default;
+$font-size-lg:         ($font-size-base * 1.25) !default;
+$font-size-xl:         ($font-size-base * 1.5) !default;
 
-$font-weight-lighter: lighter !default;
-$font-weight-light: 300 !default;
-$font-weight-normal: 400 !default;
-$font-weight-bold: 700 !default;
-$font-weight-bolder: bolder !default;
-$font-weight-base: $font-weight-normal !default;
+$font-weight-lighter:  lighter !default;
+$font-weight-light:    300 !default;
+$font-weight-normal:   400 !default;
+$font-weight-bold:     700 !default;
+$font-weight-bolder:   bolder !default;
+$font-weight-base:     $font-weight-normal !default;
 
-$line-height-base: 1.5 !default;
-$line-height-lg: 1.5 !default;
-$line-height-sm: 1.5 !default;
+$line-height-base:     1.5 !default;
+$line-height-lg:       1.5 !default;
+$line-height-sm:       1.5 !default;
 
 // Headings
+$headings-color:           $heading-color !default;
+$headings-font-family:     null !default;
+$headings-font-style:      null !default;
+$headings-font-weight:     500 !default;
+$headings-letter-spacing:  null !default;
+$headings-text-transform:  null !default;
+$headings-line-height:     1.2 !default;
+$headings-margin-bottom:   $space-sm !default;
+
 $h1: () !default;
 $h2: () !default;
 $h3: () !default;
 $h4: () !default;
 $h5: () !default;
 
-$headings-color: map-get($font-colors, heading) !default;
-$headings-font-family: null !default;
-$headings-font-style: null !default;
-$headings-font-weight: 500 !default;
-$headings-letter-spacing: null !default;
-$headings-text-transform: null !default;
-$headings-line-height: 1.2 !default;
-$headings-margin-bottom: ($spacer / 2) !default;
+$h1-font-size:    ($font-size-base * 2.5) !default;
+$h2-font-size:    ($font-size-base * 2) !default;
+$h3-font-size:    ($font-size-base * 1.75) !default;
+$h4-font-size:    ($font-size-base * 1.5) !default;
+$h5-font-size:    ($font-size-base * 1.25) !default;
 
-$h1-font-size: $font-size-base * 2.5 !default;
-$h2-font-size: $font-size-base * 2 !default;
-$h3-font-size: $font-size-base * 1.75 !default;
-$h4-font-size: $font-size-base * 1.5 !default;
-$h5-font-size: $font-size-base * 1.25 !default;
-
-$h1-font-weight: $headings-font-weight !default;
-$h2-font-weight: $headings-font-weight !default;
-$h3-font-weight: $headings-font-weight !default;
-$h4-font-weight: $headings-font-weight !default;
-$h5-font-weight: $headings-font-weight !default;
+$h1-font-weight:  $headings-font-weight !default;
+$h2-font-weight:  $headings-font-weight !default;
+$h3-font-weight:  $headings-font-weight !default;
+$h4-font-weight:  $headings-font-weight !default;
+$h5-font-weight:  $headings-font-weight !default;
 
 // Subheadings
-$subheading-font-color: map-get($font-colors, muted) !default;
-$subheading-font-size: 80% !default;
-$subheading-font-weight: $font-weight-light !default;
+$subheading-font-color:   $muted-color !default;
+$subheading-font-size:    80% !default;
+$subheading-font-weight:  $font-weight-light !default;
 
 // Display headings
-$display1-size: 6rem !default;
-$display2-size: 5.5rem !default;
+$display1-size:    6rem !default;
+$display2-size:    5.5rem !default;
 
-$display1-weight: 300 !default;
-$display2-weight: 300 !default;
+$display1-weight:  300 !default;
+$display2-weight:  300 !default;
 
 $display-line-height: $headings-line-height !default;
 
 // Paragraphs
-$paragraph-margin-bottom: 1rem !default;
-$paragraph-max-width: null !default;
+$paragraph-margin-bottom:  1rem !default;
+$paragraph-max-width:      null !default;
+
+// Lead paragraphs
+$lead-font-color:   $heading-color !default;
+$lead-font-size:    ($font-size-base * 1.25) !default;
+$lead-font-weight:  $font-weight-light !default;
 
 // --------------------------------------------------------
 // Anchors
@@ -315,7 +348,7 @@ $input-btn-padding-x: 0.75rem !default;
 $input-btn-line-height: $line-height-base !default;
 
 $input-btn-focus-width: 0.2rem !default;
-$input-btn-focus-color: rgba($component-active-bg, 0.25) !default;
+$input-btn-focus-color: rgba($component-active-background, 0.25) !default;
 $input-btn-focus-box-shadow: 0 0 0 $input-btn-focus-width $input-btn-focus-color !default;
 
 $input-btn-padding-y-sm: 0.25rem !default;
@@ -366,8 +399,8 @@ $btn-link-disabled-color: font-color(muted) !default;
 $btn-states: () !default;
 
 // Containers spacing
-$btn-container-spacing-x: map-get($spacers, 2);
-$btn-container-spacing-y: map-get($spacers, 3);
+$btn-container-spacing-x: $space-sm;
+$btn-container-spacing-y: $space-base;
 
 // Customize button transition styles
 $btn-transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out,
@@ -406,7 +439,7 @@ $card-bg: theme-color(background) !default;
 
 $card-img-overlay-padding: 1.25rem !default;
 
-$card-group-margin: ($spacer) !default;
+$card-group-margin: $space-base !default;
 $card-deck-margin: $card-group-margin !default;
 
 $card-columns-count: 3 !default;
@@ -432,7 +465,7 @@ $dropdown-min-width: 10rem !default;
 $dropdown-padding-y: 0.5rem !default;
 $dropdown-spacer: 0.125rem !default;
 $dropdown-bg: theme-color(background) !default;
-$dropdown-border-color: border-color(default) !default;
+$dropdown-border-color: $border-color !default;
 $dropdown-border-radius: $border-radius !default;
 $dropdown-border-width: $border-width !default;
 $dropdown-divider-bg: gray('200') !default;
@@ -449,8 +482,8 @@ $dropdown-anchor-color: gray('900') !default;
 $dropdown-anchor-hover-color: darken(gray('900'), 5%) !default;
 $dropdown-anchor-hover-bg: gray('100') !default;
 
-$dropdown-anchor-active-color: $component-active-color !default;
-$dropdown-anchor-active-bg: $component-active-bg !default;
+$dropdown-anchor-active-color: $component-active-foreground !default;
+$dropdown-anchor-active-bg: $component-active-background !default;
 
 $dropdown-anchor-disabled-color: gray('600') !default;
 
@@ -510,7 +543,7 @@ $input-padding-x-sm: $input-btn-padding-x-sm !default;
 $input-line-height-sm: $input-btn-line-height-sm !default;
 
 $input-focus-bg: $input-bg !default;
-$input-focus-border-color: lighten($component-active-bg, 25%) !default;
+$input-focus-border-color: lighten($component-active-background, 25%) !default;
 $input-focus-color: $input-color !default;
 $input-focus-width: $input-btn-focus-width !default;
 $input-focus-box-shadow: $input-btn-focus-box-shadow !default;
@@ -562,8 +595,8 @@ $list-group-item-padding-y: 0.75rem !default;
 $list-group-item-padding-x: 1.25rem !default;
 
 $list-group-hover-bg: gray('100') !default;
-$list-group-active-color: $component-active-color !default;
-$list-group-active-bg: $component-active-bg !default;
+$list-group-active-color: $component-active-foreground !default;
+$list-group-active-bg: $component-active-background !default;
 $list-group-active-border-color: $list-group-active-bg !default;
 
 $list-group-disabled-color: gray('600') !default;
@@ -590,7 +623,7 @@ $modal-positioner-padding: 0.5rem !default;
 $modal-positioner-padding-sm-up: 1.75rem !default;
 
 $modal-container-bg: theme-color(background) !default;
-$modal-container-border-color: rgba(border-color(default), 0.2) !default;
+$modal-container-border-color: rgba($border-color, 0.2) !default;
 $modal-container-border-width: $border-width !default;
 $modal-container-border-radius: $border-radius-lg !default;
 $modal-container-box-shadow: 0 0.25rem 0.5rem rgba($box-shadow-shadow, 0.5) !default;
@@ -599,7 +632,7 @@ $modal-container-box-shadow-sm-up: 0 0.5rem 1rem rgba($box-shadow-shadow, 0.5) !
 $modal-body-padding: 1rem !default;
 
 $modal-header-bg: $modal-container-bg !default;
-$modal-header-border-color: border-color(default) !default;
+$modal-header-border-color: $border-color !default;
 $modal-header-border-width: $modal-container-border-width !default;
 $modal-header-padding: $modal-body-padding !default;
 
@@ -633,11 +666,11 @@ $nav-tabs-link-active-bg: theme-color(background) !default;
 $nav-tabs-link-active-border-color: gray('300') gray('300') $nav-tabs-link-active-bg !default;
 
 $nav-pills-border-radius: $border-radius !default;
-$nav-pills-link-active-color: $component-active-color !default;
-$nav-pills-link-active-bg: $component-active-bg !default;
+$nav-pills-link-active-color: $component-active-foreground !default;
+$nav-pills-link-active-bg: $component-active-background !default;
 
 $nav-divider-color: gray('200') !default;
-$nav-divider-margin-y: ($spacer / 2) !default;
+$nav-divider-margin-y: $space-sm !default;
 
 // --------------------------------------------------------
 // Popovers
@@ -646,7 +679,7 @@ $popover-font-size: $font-size-sm !default;
 $popover-bg: theme-color(background) !default;
 $popover-max-width: 276px !default;
 $popover-border-width: $border-width !default;
-$popover-border-color: border-color(default) !default;
+$popover-border-color: $border-color !default;
 $popover-border-radius: $border-radius-lg !default;
 $popover-box-shadow: 0 0.25rem 0.5rem rgba($box-shadow-shadow, 0.2) !default;
 
@@ -671,9 +704,9 @@ $popover-arrow-outer-color: fade-in($popover-border-color, 0.05) !default;
 $tabs-nav-container-bg: transparent !default;
 $tabs-nav-container-shadow: none !default;
 $tabs-nav-container-margin: 0 !default;
-$tabs-nav-container-border: 1px solid border-color(default) !default;
+$tabs-nav-container-border: 1px solid $border-color !default;
 
-$tabs-nav-vertical-margin: 0 0 0 map-get($spacers, 4);
+$tabs-nav-vertical-margin: 0 0 0 $space-lg;
 
 $tabs-pane-container-padding: 1.25rem !default;
 
@@ -700,7 +733,7 @@ $tabs-tab-disabled-border-color: transparent !default;
 $tabs-tab-disabled-color: gray('500') !default;
 
 // Vertical tabs
-$tabs-tab-vertical-margin: 0 0 map-get($spacers, 1) !default;
+$tabs-tab-vertical-margin: 0 0 $space-xs !default;
 $tabs-tab-vertical-border-width: 1px !default;
 $tabs-tab-vertical-border-color: transparent !default;
 $tabs-tab-vertical-border-radius: $btn-border-radius !default;
@@ -747,7 +780,7 @@ $dt-font-weight: $font-weight-bold !default;
 $hr-color: inherit !default;
 $hr-height: $border-width !default;
 $hr-opacity: 0.25 !default;
-$hr-margin-y: $spacer !default;
+$hr-margin-y: $space-base !default;
 
 $kbd-padding-y: 0.2rem !default;
 $kbd-padding-x: 0.4rem !default;
@@ -755,10 +788,6 @@ $kbd-font-size: $code-font-size !default;
 $kbd-color: theme-color(background) !default;
 $kbd-bg: gray('800') !default;
 $kbd-nested-font-weight: $font-weight-bold !default;
-
-$lead-font-color: map-get($font-colors, emphasis) !default;
-$lead-font-size: ($font-size-base * 1.25) !default;
-$lead-font-weight: $font-weight-light !default;
 
 $legend-margin-bottom: 0.5rem !default;
 $legend-font-size: 1.5rem !default;
