@@ -13,12 +13,29 @@ import { ElementsProvider } from '../../story-resources'
 
 ## Space organization
 
+Pass the library size variants to one of the library spacing props to set margin or
+padding.
+
 <div>
-  <Block inline bg='primary' className='pr-1 mr-1' height='8px' />
-  <Block inline bg='primary' className='pr-2 mr-1' height='8px' />
-  <Block inline bg='primary' className='pr-3 mr-1' height='8px' />
-  <Block inline bg='primary' className='pr-4 mr-1' height='8px' />
-  <Block inline bg='primary' className='pr-5 mr-1' height='8px' />
+  <Block inline background='primary' pr='xs' mr='xs' height='8px' />
+  <Block inline background='primary' pr='sm' mr='xs' height='8px' />
+  <Block inline background='primary' pr='base' mr='xs' height='8px' />
+  <Block inline background='primary' pr='lg' mr='xs' height='8px' />
+  <Block inline background='primary' pr='xl' mr='xs' height='8px' />
+</div>
+
+- Margin props: `m`, `mt`, `mr`, `mb`, `ml`
+- Padding props: `p`, `pt`, `pr`, `pb`, `pl`
+- Size variants: `xs`, `sm`, `base`, `lg`, `xl`
+
+## Margin auto
+
+Pass `'auto'` to any margin prop and it will be applied as a style.
+
+eg `mx='auto'`
+
+<div className='w-100'>
+  <Block background='primary' height={16} width={16} mx='auto' />
 </div>
 
 </ElementsProvider>
