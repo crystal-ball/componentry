@@ -7,23 +7,25 @@
 // Theme Colors
 
 $grayscale: (
-  "100": #e4e0f0,
-  "600": #48676a
+  '100':  #e4e0f0,
+  '600':  #48676a,
 );
 
 $theme-colors: (
-  background: #181424,
-  foreground: #c6d2d1,
-  primary:    #ff428e,
-  secondary:  #a8ffef,
-  success:    #c3f920,
-  info:       #2bf5e9,
-  warning:    #ffc300,
-  danger:     #fc4552,
+  background:  #181424,
+  foreground:  #c6d2d1,
+  primary:     #ff428e,
+  secondary:   #a8ffef,
+  success:     #c3f920,
+  info:        #2bf5e9,
+  warning:     #ffc300,
+  danger:      #fc4552,
 );
 
 $background-colors: (
-  ultra: #181521
+  ultra:       #110f16,
+  background:  #181424,
+  overlay:     rgba(24, 20, 36, 0.5),
 );
 
 $border-colors: (
@@ -31,29 +33,29 @@ $border-colors: (
 );
 
 $font-colors: (
-  anchor: #5effbd,
-  header: #ffc4e2,
-  muted:  #48676a,
-  lead:   #48676a
+  anchor:   #5effbd,
+  heading:  #ffc4e2,
+  muted:    #48676a,
+  lead:     #48676a,
 );
 
 $themes: (
   majestical: (
-    class-name: 'majestical-theme'
+    class-name: 'majestical-theme',
   ),
   radical: (
     class-name: 'radical-theme',
     theme-colors: $theme-colors,
     border-colors: $border-colors,
-    background-colors: $background-colors
-  )
+    background-colors: $background-colors,
+  ),
 );
 
 // --------------------------------------------------------
 // Spacing
 
-$spacer: 1rem;
-$spacers: (
+$space-base: 1rem;
+$spacing: (
   0: 0,
   1: var(--s1),
   2: var(--s2),
@@ -64,29 +66,29 @@ $spacers: (
 
 // Fonts
 // ---------------------------------------------------------------------------
-$font-family-sans-serif: 'IBM Plex Sans', sans-serif;
+$font-family-sans-serif: 'Play', serif;
 
-$font-size-base:   0.875rem; // 14px base assuming 1 rem = 16px
-$font-size-lg:     $font-size-base * 1.25;
-$font-size-sm:     $font-size-base * 0.8;
+$font-size-base:   1rem;
+$font-size-lg:     1.25rem;
+$font-size-sm:     0.8rem;
 
-$line-height-base: 1.35;
+$line-height-base: 1.425;
 
 // Headings
-$headings-color:          font-color(header);
-$headings-font-family:    'Montserrat', sans-serif;
-$headings-font-weight:    300;
-$headings-letter-spacing: 0.3em;
-$headings-text-transform: uppercase;
+$headings-font-family:     'Orbitron', sans-serif;
+$headings-font-weight:     400;
+$headings-letter-spacing:  0.1em;
+$headings-line-height:     1.5;
 
 $h1-font-size: var(--h1);
 $h2-font-size: var(--h2);
 $h3-font-size: var(--h3);
 $h4-font-size: var(--h4);
-$h5-font-size: var(--h5);
 
 // Keep paragraphs to a readable length by default, override with mw-100 where needed
 $paragraph-max-width: 800px;
+
+$lead-font-size: var(--lead);
 
 // --------------------------------------------------------
 // Icons
@@ -101,4 +103,4 @@ $small-font-size: 80%;
 // --------------------------------------------------------
 // Componentry defaults for unset variables
 
-@import '../design-system';
+@import '../variables';

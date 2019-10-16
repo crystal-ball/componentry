@@ -117,7 +117,7 @@
 // --------------------------------------------------------
 // Alignment
 
-.text-justify {
+.text-align-justify {
   text-align: justify !important;
 }
 
@@ -144,13 +144,13 @@
   @include media-breakpoint-up($breakpoint) {
     $infix: breakpoint-infix($breakpoint, $grid-breakpoints);
 
-    .text#{$infix}-left {
+    .text-align#{$infix}-left {
       text-align: left !important;
     }
-    .text#{$infix}-right {
+    .text-align#{$infix}-right {
       text-align: right !important;
     }
-    .text#{$infix}-center {
+    .text-align#{$infix}-center {
       text-align: center !important;
     }
   }
@@ -160,7 +160,7 @@
 // Blockquotes
 
 .blockquote {
-  margin-bottom: $spacer;
+  margin-bottom: $space-base;
   font-size: $blockquote-font-size;
 }
 

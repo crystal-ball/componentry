@@ -1,0 +1,50 @@
+/**
+ *                         🔮 Radical Theme CSS Variables
+ * --------------------------------------------------------
+ *
+ * Scales generated using: https://type-scale.com/
+ */
+
+// --- Small screens
+
+:root {
+  font-size: 18px;
+
+  /* 1.125 scale on 18px */
+  --h1: 1.802rem;
+  --h2: 1.602rem;
+  --h3: 1.424rem;
+  --h4: 1.266rem;
+
+  --lead: 1.25rem;
+
+  --s0: 0;
+  --s1: #{$space-base * 0.274};
+  --s2: #{$space-base * 0.555};
+  --s3: #{$space-base};
+  --s4: #{$space-base * 1.424};
+  --s5: #{$space-base * 1.802};
+}
+
+// --- Large screens
+
+@media (min-width: 768px) {
+  :root {
+    font-size: 20px;
+
+    /* 1.33 Scale on 20px */
+    --h1: 4.209rem;
+    --h2: 3.157rem;
+    --h3: 2.369rem;
+    --h4: 1.777rem;
+
+    --lead: 1.5rem;
+
+    --s0: 0;
+    --s1: #{$space-base * 238};
+    --s2: #{$space-base * 0.563};
+    --s3: #{$space-base};
+    --s4: #{$space-base * 2.369};
+    --s5: #{$space-base * 4.209};
+  }
+}
