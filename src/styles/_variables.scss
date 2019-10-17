@@ -181,6 +181,7 @@ $transition-fade:    opacity 0.25s linear !default;
 // --------------------------------------------------------
 // Space organization
 
+// Defaults to a 16px root value for 8pt grid system
 $space-root: 1rem !default;
 
 // Space organization defaults to a 4, 8, 16, 24, 48 scale
@@ -232,13 +233,14 @@ $sizes: map-merge((
 $font-family-sans-serif: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol' !default;
 $font-family-monospace:  SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New', monospace !default;
 $font-family-base:       $font-family-sans-serif !default;
-$font-size-base:         1rem !default; // Assumes the browser default, typically `16px`
-$font-size-monospace:    0.925em !default;
 
-$font-size-xs:         ($font-size-base * 0.75) !default;
-$font-size-sm:         ($font-size-base * 0.875) !default;
-$font-size-lg:         ($font-size-base * 1.25) !default;
-$font-size-xl:         ($font-size-base * 1.5) !default;
+$font-size-xs:         0.75rem !default;  // 12px
+$font-size-sm:         0.875rem !default; // 14px
+$font-size-base:       1rem !default;     // 16px
+$font-size-lg:         1.125rem !default; // 18px
+$font-size-xl:         1.25rem !default;  // 20px
+
+$font-size-monospace:    0.925em !default;
 
 $font-weight-lighter:  lighter !default;
 $font-weight-light:    300 !default;
@@ -258,7 +260,7 @@ $headings-font-style:      null !default;
 $headings-font-weight:     500 !default;
 $headings-letter-spacing:  null !default;
 $headings-text-transform:  null !default;
-$headings-line-height:     1.2 !default;
+$headings-line-height:     1.25 !default;
 $headings-margin-bottom:   $space-sm !default;
 
 $h1: () !default;
@@ -267,10 +269,10 @@ $h3: () !default;
 $h4: () !default;
 $h5: () !default;
 
-$h1-font-size:    ($font-size-base * 2.5) !default;
-$h2-font-size:    ($font-size-base * 2) !default;
-$h3-font-size:    ($font-size-base * 1.75) !default;
-$h4-font-size:    ($font-size-base * 1.5) !default;
+$h1-font-size:    ($font-size-base * 5)    !default; // 80 ~ 2x
+$h2-font-size:    ($font-size-base * 2.5)  !default; // 40 ~ 1.7x
+$h3-font-size:    ($font-size-base * 1.75) !default; // 28 ~ 1.4x
+$h4-font-size:    ($font-size-base * 1.5)  !default;
 $h5-font-size:    ($font-size-base * 1.25) !default;
 
 $h1-font-weight:  $headings-font-weight !default;
@@ -802,7 +804,7 @@ $pre-color: gray('200') !default;
 $pre-scrollable-max-height: 340px !default;
 
 $small-font-color: map-get($font-colors, muted) !default;
-$small-font-size: 80% !default;
+$small-font-size: 75% !default;
 $small-font-weight: $font-weight-light !default;
 
 $sub-sup-font-size: 0.75em !default;

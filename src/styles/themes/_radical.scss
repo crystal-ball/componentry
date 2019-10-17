@@ -68,17 +68,19 @@ $spacing: (
 // ---------------------------------------------------------------------------
 $font-family-sans-serif: 'Play', serif;
 
-$font-size-base:   1rem;
+$font-size-base:   20px;
 $font-size-lg:     1.25rem;
 $font-size-sm:     0.8rem;
 
-$line-height-base: 1.425;
+$line-height-base: 1.6;
 
 // Headings
+$headings-color: #ffc4e2;
 $headings-font-family:     'Orbitron', sans-serif;
 $headings-font-weight:     400;
 $headings-letter-spacing:  0.1em;
 $headings-line-height:     1.5;
+$headings-margin-bottom:   0;
 
 $h1-font-size: var(--h1);
 $h2-font-size: var(--h2);
