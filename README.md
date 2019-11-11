@@ -10,9 +10,6 @@
   <a href="https://bundlephobia.com/result?p=componentry">
     <img src="https://img.shields.io/bundlephobia/minzip/componentry" alt="Bundle size" valign="text-top" />
   </a>
-  <a href="https://www.npmjs.com/package/componentry">
-    <img src="https://img.shields.io/npm/dt/componentry?color=blue" alt="NPM downloads" valign="text-top" />
-  </a>
   <a href="https://travis-ci.com/crystal-ball/componentry">
     <img src="https://travis-ci.com/crystal-ball/componentry.svg" alt="Build status" valign="text-top" />
   </a>
