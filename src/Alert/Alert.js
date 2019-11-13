@@ -1,5 +1,4 @@
 import React from 'react'
-import { string } from 'prop-types'
 import elem from '../elem-factory'
 import { closeBase } from '../Close/Close'
 import { useTheme } from '../Theme/Theme'
@@ -56,11 +55,6 @@ export default function Alert(props) {
     ),
     ...rest,
   })
-}
-
-Alert.propTypes = {
-  /** Sets the Alert theme color */
-  color: string,
 }
 
 /**
