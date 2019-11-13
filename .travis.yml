@@ -14,11 +14,3 @@ cache: npm
 
 # Default script is npm test
 # script
-
-# deploy:
-#   provider: script
-#   # Prevent Travis from resetting working directory after build
-#   skip_cleanup: true
-#   script: npx semantic-release
-#   on:
-#     branch: master

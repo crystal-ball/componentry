@@ -57,7 +57,7 @@
     "@babel/core": "7.6.0",
     "@babel/plugin-syntax-object-rest-spread": "7.2.0",
     "@babel/plugin-transform-modules-commonjs": "7.6.0",
-    "@crystal-ball/commit-semantics": "1.2.0",
+    "@crystal-ball/commitizen-base": "2.1.0",
     "@crystal-ball/prettier-base": "1.5.0",
     "@storybook/addon-actions": "5.2.1",
     "@storybook/addon-docs": "5.2.1",
@@ -83,7 +83,7 @@
   },
   "config": {
     "commitizen": {
-      "path": "@crystal-ball/commitizen-adapter"
+      "path": "@crystal-ball/commitizen-base"
     }
   },
   "husky": {
