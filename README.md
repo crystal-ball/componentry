@@ -13,8 +13,8 @@
   <a href="https://travis-ci.com/crystal-ball/componentry">
     <img src="https://travis-ci.com/crystal-ball/componentry.svg" alt="Build status" valign="text-top" />
   </a>
-  <a href="https://snyk.io/test/github/crystal-ball/crystal-ball.github.io?targetFile=package.json">
-    <img src="https://snyk.io/test/github/crystal-ball/crystal-ball.github.io/badge.svg?targetFile=package.json" alt="Known vulnerabilities" valign="text-top" />
+  <a href="https://snyk.io/test/github/crystal-ball/componentry?targetFile=package.json">
+    <img src="https://snyk.io/test/github/crystal-ball/componentry/badge.svg?targetFile=package.json" alt="Known vulnerabilities" valign="text-top" />
   </a>
   <a href="https://codeclimate.com/github/crystal-ball/componentry/test_coverage">
     <img src="https://api.codeclimate.com/v1/badges/7cadedbd49251df31254/test_coverage" alt="Test coverage" valign="text-top" />
