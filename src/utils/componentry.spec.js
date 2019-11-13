@@ -1,4 +1,4 @@
-import { arias, componentry, actionClasses } from './componentry'
+import { actionClasses, arias, componentry } from './componentry'
 
 describe('componentry()', () => {
   test('computes libary utility classes from props', () => {

@@ -2,7 +2,7 @@ import React, { useContext } from 'react'
 import elem from './elem-factory'
 import { ActiveCtx } from './active-container-factory'
 import { useTheme } from './Theme/Theme'
-import { arias as gnArias, actionClasses } from './utils/componentry'
+import { actionClasses, arias as gnArias } from './utils/componentry'
 
 /**
  * Factory returns custom `<Trigger />` components defined by the fn options.

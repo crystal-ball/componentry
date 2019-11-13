@@ -32,7 +32,6 @@ module.exports = {
         '@babel/plugin-transform-modules-commonjs',
         '@babel/plugin-proposal-class-properties',
         ['@babel/plugin-transform-runtime', { corejs }],
-        'transform-react-remove-prop-types',
       ],
     },
     // ESM - ES5 syntax with ESModules
@@ -44,7 +43,6 @@ module.exports = {
       plugins: [
         '@babel/plugin-proposal-class-properties',
         ['@babel/plugin-transform-runtime', { corejs }],
-        'transform-react-remove-prop-types',
       ],
     },
     // Next - Transpiled to stage 4 for package.esnext
@@ -55,7 +53,6 @@ module.exports = {
         '@babel/plugin-syntax-object-rest-spread',
         '@babel/plugin-proposal-class-properties',
         ['@babel/plugin-transform-runtime', { corejs }],
-        'transform-react-remove-prop-types',
       ],
     },
 

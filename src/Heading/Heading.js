@@ -1,4 +1,3 @@
-import { oneOf } from 'prop-types'
 import elem from '../elem-factory'
 import { useTheme } from '../Theme/Theme'
 
@@ -13,9 +12,4 @@ export default function Heading(props) {
     componentClassNames: [as, { [`display-${display}`]: display }],
     ...rest,
   })
-}
-
-Heading.propTypes = {
-  /** Set the display heading styles */
-  display: oneOf([1, 2]),
 }
