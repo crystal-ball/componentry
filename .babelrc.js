@@ -16,7 +16,6 @@ module.exports = {
         ['@babel/preset-env', { useBuiltIns: 'usage', corejs }],
         '@babel/preset-react',
       ],
-      plugins: ['@babel/plugin-proposal-class-properties'],
     },
 
     // Publish targets
@@ -30,8 +29,11 @@ module.exports = {
       ],
       plugins: [
         '@babel/plugin-transform-modules-commonjs',
-        '@babel/plugin-proposal-class-properties',
-        ['@babel/plugin-transform-runtime', { corejs }],
+        [
+          '@babel/plugin-transform-runtime',
+          // https://github.com/babel/babel/issues/10261
+          { corejs, version: require('@babel/helpers/package.json').version },
+        ],
       ],
     },
     // ESM - ES5 syntax with ESModules
@@ -41,18 +43,30 @@ module.exports = {
         '@babel/preset-react',
       ],
       plugins: [
-        '@babel/plugin-proposal-class-properties',
-        ['@babel/plugin-transform-runtime', { corejs }],
+        [
+          '@babel/plugin-transform-runtime',
+          {
+            corejs,
+            useESModules: true,
+            // https://github.com/babel/babel/issues/10261
+            version: require('@babel/helpers/package.json').version,
+          },
+        ],
       ],
     },
     // Next - Transpiled to stage 4 for package.esnext
     next: {
       presets: ['@babel/preset-react'],
       plugins: [
-        // Preset env doesn't yet support this syntax
-        '@babel/plugin-syntax-object-rest-spread',
-        '@babel/plugin-proposal-class-properties',
-        ['@babel/plugin-transform-runtime', { corejs }],
+        [
+          '@babel/plugin-transform-runtime',
+          {
+            corejs,
+            useESModules: true,
+            // https://github.com/babel/babel/issues/10261
+            version: require('@babel/helpers/package.json').version,
+          },
+        ],
       ],
     },
 

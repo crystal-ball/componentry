@@ -46,7 +46,6 @@
     "react": ">=16.8"
   },
   "dependencies": {
-    "@babel/runtime": "7",
     "@babel/runtime-corejs3": "7",
     "classnames": "2",
     "core-js": "3",
@@ -55,7 +54,6 @@
   "devDependencies": {
     "@babel/cli": "7.7.0",
     "@babel/core": "7.7.2",
-    "@babel/plugin-syntax-object-rest-spread": "7.2.0",
     "@babel/plugin-transform-modules-commonjs": "7.7.0",
     "@crystal-ball/commitizen-base": "2.3.0",
     "@crystal-ball/prettier-base": "1.6.0",
