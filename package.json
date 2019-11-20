@@ -46,9 +46,8 @@
     "react": ">=16.8"
   },
   "dependencies": {
-    "@babel/runtime-corejs3": "7",
+    "@babel/runtime": "7",
     "classnames": "2",
-    "core-js": "3",
     "nanoid": "2"
   },
   "devDependencies": {
