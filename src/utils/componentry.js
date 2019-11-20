@@ -9,25 +9,29 @@
 /**
  * Fn generates the classes for action elements
  */
-export const actionClasses = ({ block, color, disabled, outline, size, variant }) => ({
-  [variant]: true,
-  [`${variant}-block`]: block,
-  [`${variant}-${color}`]: color,
-  [`${variant}-outline-${outline}`]: outline,
-  [`${variant}-${size}`]: size,
-  // We include a disabled class AND pass disabled prop to btn element for a11y
-  disabled,
-})
+export function actionClasses({ block, color, disabled, outline, size, variant }) {
+  return {
+    [variant]: true,
+    [`${variant}-block`]: block,
+    [`${variant}-${color}`]: color,
+    [`${variant}-outline-${outline}`]: outline,
+    [`${variant}-${size}`]: size,
+    // We include a disabled class AND pass disabled prop to btn element for a11y
+    disabled,
+  }
+}
 
 // --------------------------------------------------------
 // Nav class names generator
 
-export const navClasses = ({ fill, justify, pills, vertical }) => ({
-  'nav-vertical': vertical,
-  'nav-pills': pills,
-  'nav-fill': fill,
-  'nav-justified': justify,
-})
+export function navClasses({ fill, justify, pills, vertical }) {
+  return {
+    'nav-vertical': vertical,
+    'nav-pills': pills,
+    'nav-fill': fill,
+    'nav-justified': justify,
+  }
+}
 
 // --------------------------------------------------------
 // Library shared className+styles generator
@@ -43,39 +47,39 @@ export const navClasses = ({ fill, justify, pills, vertical }) => ({
 
 // borderColor: border color
 
-const classNamesProps = new Set([
-  'background',
-  'border',
-  'borderTop',
-  'borderRight',
-  'borderBottom',
-  'borderLeft',
-  'borderColor',
-  'borderWidth',
-  'fontColor',
-  'fontSize',
-  'fontWeight',
-  'italic',
-  'monospace',
-  'position',
-  'textAlign',
-  'uppercase',
-])
+const classNamesProps = {
+  background: 1,
+  border: 1,
+  borderTop: 1,
+  borderRight: 1,
+  borderBottom: 1,
+  borderLeft: 1,
+  borderColor: 1,
+  borderWidth: 1,
+  fontColor: 1,
+  fontSize: 1,
+  fontWeight: 1,
+  italic: 1,
+  monospace: 1,
+  position: 1,
+  textAlign: 1,
+  uppercase: 1,
+}
 
-const stylesProps = new Set([
-  'fontSize',
-  'letterSpacing',
-  'lineHeight',
-  'width',
-  'maxWidth',
-  'minWidth',
-  'height',
-  'maxHeight',
-  'minHeight',
-])
+const stylesProps = {
+  fontSize: 1,
+  letterSpacing: 1,
+  lineHeight: 1,
+  width: 1,
+  maxWidth: 1,
+  minWidth: 1,
+  height: 1,
+  maxHeight: 1,
+  minHeight: 1,
+}
 
 // Generate set of margin (m*), and padding (p*) spacing props
-const spacingProps = new Set([])
+const spacingProps = {}
 const base = {
   m: 'margin',
   p: 'padding',
@@ -90,30 +94,33 @@ const modifier = {
 }
 
 Object.keys(base).forEach(b => {
-  spacingProps.add(b)
+  spacingProps[b] = 1
   Object.keys(modifier).forEach(m => {
-    spacingProps.add(b + m)
+    spacingProps[b + m] = 1
   })
 })
+const spacingRegex = new RegExp(/([bmp])([trblxy])?/)
 
-const generateClassNames = p => ({
-  border: p.border,
-  'border-top': p.borderTop,
-  'border-right': p.borderRight,
-  'border-bottom': p.borderBottom,
-  'border-left': p.borderLeft,
-  'font-style-italic': p.italic,
-  'text-monospace': p.monospace,
-  'text-uppercase': p.uppercase,
-  [`background-${p.background}`]: p.background,
-  [`border-${p.borderColor}`]: p.borderColor,
-  [`border-width-${p.borderWidth}`]: p.borderWidth,
-  [`font-color-${p.fontColor}`]: p.fontColor,
-  [`font-size-${p.fontSize}`]: p.fontSize,
-  [`font-weight-${p.fontWeight}`]: p.fontWeight,
-  [`position-${p.position}`]: p.position,
-  [`text-align-${p.textAlign}`]: p.textAlign,
-})
+function generateClassNames(p) {
+  return {
+    border: p.border,
+    'border-top': p.borderTop,
+    'border-right': p.borderRight,
+    'border-bottom': p.borderBottom,
+    'border-left': p.borderLeft,
+    'font-style-italic': p.italic,
+    'text-monospace': p.monospace,
+    'text-uppercase': p.uppercase,
+    [`background-${p.background}`]: p.background,
+    [`border-${p.borderColor}`]: p.borderColor,
+    [`border-width-${p.borderWidth}`]: p.borderWidth,
+    [`font-color-${p.fontColor}`]: p.fontColor,
+    [`font-size-${p.fontSize}`]: p.fontSize,
+    [`font-weight-${p.fontWeight}`]: p.fontWeight,
+    [`position-${p.position}`]: p.position,
+    [`text-align-${p.textAlign}`]: p.textAlign,
+  }
+}
 
 /**
  * Library utility that handles:
@@ -123,7 +130,7 @@ const generateClassNames = p => ({
  * NB: values are passed through without additional mapping, eg the number 1
  * isn't mapped to 1px or 1rem.
  */
-export const componentry = ({
+export function componentry({
   anchor,
   button,
   block,
@@ -146,7 +153,7 @@ export const componentry = ({
   onDeactivated,
   // --- Library props filtered out
   ...filteredProps
-}) => {
+}) {
   const classNames = {}
   const spacingCx = []
   const styles = {}
@@ -155,13 +162,13 @@ export const componentry = ({
   // For each prop passed to any component, bucket it into a library className
   // or style set or pass through in rest
   Object.keys(filteredProps).forEach(prop => {
-    if (classNamesProps.has(prop)) {
+    if (classNamesProps[prop]) {
       // 1. The prop maps to a utility className
       classNames[prop] = filteredProps[prop]
-    } else if (stylesProps.has(prop)) {
+    } else if (stylesProps[prop]) {
       // 2. The prop maps to a utility style
       styles[prop] = filteredProps[prop]
-    } else if (spacingProps.has(prop)) {
+    } else if (spacingProps[prop]) {
       // 3. The prop maps to a shorthand utility style/className
       if (['xs', 'sm', 'base', 'lg', 'xl'].includes(filteredProps[prop])) {
         // 3a. The prop value maps to a computed className, eg (pt: 'xs') -> `pt-xs`
@@ -169,7 +176,7 @@ export const componentry = ({
       } else {
         // 3b. The prop value is a raw value that should be set as a style
         // attribute, eg (pt: 7) -> `paddingTop: 7`
-        const [, b, m] = prop.match(/([bmp])([trblxy])?/)
+        const [, b, m] = spacingRegex.exec(prop)
         if (m === 'x' || m === 'y') {
           // x and y values have to be broken out into the individual direction values
           styles[base[b] + modifier[m][0]] = filteredProps[prop]
