@@ -5,8 +5,11 @@
 # Source
 #################################
 .github
+.storybook
+.vscode
 __mocks__
 config
+test
 # NOTE: Don't ignore /src, the SCSS files need to be in bundle
 
 # Output
