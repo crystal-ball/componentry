@@ -23,3 +23,5 @@ export const alignments = [
   'super',
   'sub',
 ]
+
+export const directions = ['top', 'right', 'bottom', 'left', 'overlay']

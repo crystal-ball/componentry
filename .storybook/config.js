@@ -1,11 +1,13 @@
 import React, { createElement } from 'react'
 import { addDecorator, addParameters, configure } from '@storybook/react'
+import { Meta } from '@storybook/addon-docs/blocks'
 import { themes } from '@storybook/theming'
 import { withKnobs } from '@storybook/addon-knobs'
 
 // --- Load Componentry and Storybook styles ---
 
 import './storybook.scss'
+import DocsTitle from './components/DocsTitle'
 
 // --- Setup global decorators --
 
@@ -29,6 +31,8 @@ addParameters({
 addParameters({
   docs: {
     components: {
+      DocsTitle,
+      Meta,
       div: props => createElement('div', props),
       span: props => createElement('span', props),
       h1: props => createElement('h1', props),

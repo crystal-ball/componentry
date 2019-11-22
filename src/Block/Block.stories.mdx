@@ -1,0 +1,12 @@
+import { boolean } from '@storybook/addon-knobs'
+
+import Block from './Block'
+
+<Meta title='Components|Block' component={Block} />
+
+<DocsTitle title="Block" experimental/>
+
+<div>
+  <Block inline={boolean('Inline', false)}>Block content</Block>
+  <Block inline={boolean('Inline', false)}>Block content</Block>
+</div>

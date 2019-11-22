@@ -1,0 +1,82 @@
+import { select } from '@storybook/addon-knobs'
+
+import Active from '../Active/Active'
+import Button from '../Button/Button'
+import Modal from './Modal'
+import { footerContent, scrollContent } from './stories/contents'
+
+<Meta title='Components|Modal' component={Modal} />
+
+<DocsTitle title="Modals" experimental/>
+
+<Active>
+  <Active.Trigger>Open Modal</Active.Trigger>
+  <Modal size={select('Size', ['sm', 'lg', null], null)}>
+    <Modal.Header close>
+      <Modal.Title>Demo modal</Modal.Title>
+    </Modal.Header>
+    <Modal.Body>
+      <p>
+        This is an uncontrolled modal that will automatically manage its active
+        state using the parent Active component.
+      </p>
+    </Modal.Body>
+    <Modal.Footer className="btn-container-x">
+      <Active.Trigger variant="btn" color='anchor'>
+        Close
+      </Active.Trigger>
+      <Button color='primary'>Save Changes</Button>
+    </Modal.Footer>
+  </Modal>
+</Active>
+
+## Screen top aligned modal
+
+<Active>
+  <Active.Trigger>Open Modal</Active.Trigger>
+  <Modal>
+    <Modal.Body>
+      <p className='mb-0'>
+        This is an uncontrolled modal that will automatically manage its active
+        state using the parent Active component.
+      </p>
+    </Modal.Body>
+  </Modal>
+</Active>
+
+## Center aligned modal
+
+<Active>
+  <Active.Trigger>Open Modal</Active.Trigger>
+  <Modal align='center'>
+    <Modal.Body>
+      <p className='mb-0'>This modal will be centered in the screen</p>
+    </Modal.Body>
+  </Modal>
+</Active>
+
+## Scrolling modal
+
+<Active>
+  <Active.Trigger>Open scroll-body modal</Active.Trigger>
+  <Modal scroll='overlay'>
+    {scrollContent}
+    {footerContent}
+  </Modal>
+</Active>
+
+<Active>
+  <Active.Trigger>Open modal-scroll modal</Active.Trigger>
+  <Modal scroll='container'>
+    {scrollContent}
+    {footerContent}
+  </Modal>
+</Active>
+
+<Active>
+  <Active.Trigger>Open modal-scroll modal</Active.Trigger>
+  <Modal scroll='body'>
+    {scrollContent}
+    {footerContent}
+  </Modal>
+</Active>

@@ -1,0 +1,21 @@
+import Theme from './Theme'
+import Button from '../Button/Button'
+import ThemeConsumer from './stories/ThemeConsumer'
+
+<Meta title='Components|Theme' component={Theme} />
+
+<DocsTitle title="Theme" experimental/>
+
+<Theme
+  theme={{
+    Button: {
+      color: 'success',
+      size: 'lg',
+    },
+  }}
+>
+  <div>
+    <Button>A large successful button!</Button>
+    <ThemeConsumer />
+  </div>
+</Theme>

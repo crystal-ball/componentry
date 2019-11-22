@@ -1,11 +1,7 @@
-/* global module */
-
 import React from 'react'
-import { storiesOf } from '@storybook/react'
+import { useMedia } from '../Media'
 
-import Media, { useMedia } from './Media'
-
-const MediaConsumer = () => {
+export default function MediaConsumer() {
   const media = useMedia()
 
   return (
@@ -20,11 +16,3 @@ const MediaConsumer = () => {
     </div>
   )
 }
-
-storiesOf('Media', module).add('<Media />', () => (
-  <Media>
-    <div>
-      <MediaConsumer />
-    </div>
-  </Media>
-))
