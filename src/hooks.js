@@ -3,7 +3,7 @@
  * @module
  */
 
-import { useContext, useEffect, useLayoutEffect, useState } from 'react'
+import { useContext, useEffect, useLayoutEffect, useRef, useState } from 'react'
 import { ActiveCtx } from './active-container-factory'
 
 // --------------------------------------------------------
@@ -67,6 +67,16 @@ export const useNoScroll = active => {
  *   then after transition duration set active false to set display none
  */
 export const useVisible = (active, duration = 250) => {
+  const mounted = useRef(true)
+  // Track when the component is unmounted so that we can prevent setting state
+  // after the timeouts if the component was unmounted
+  useEffect(
+    () => () => {
+      mounted.current = false
+    },
+    [],
+  )
+
   // Visible state splits active and visible to allow css animations
   const [state, updateState] = useState({ active, visible: active })
 
@@ -82,7 +92,7 @@ export const useVisible = (active, duration = 250) => {
       // transitions on the next possible paint cycle
       updateState({ active: true, visible: false })
       requestAnimationFrame(() => {
-        updateState({ active: true, visible: true })
+        if (mounted.current) updateState({ active: true, visible: true })
       })
     } else {
       // When deactivated immediately set visible to false and transition active
@@ -90,8 +100,8 @@ export const useVisible = (active, duration = 250) => {
       // to complete before toggling aria-hidden to true
       updateState({ active: true, visible: false })
       timer = setTimeout(() => {
-        updateState({ active: false, visible: false })
         timer = null
+        if (mounted.current) updateState({ active: false, visible: false })
       }, duration)
     }
 
