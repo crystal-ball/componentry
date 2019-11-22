@@ -342,6 +342,18 @@ $alert-close-margin-left: 0.5rem !default;
 $alert-states: () !default;
 
 // --------------------------------------------------------
+// Badges
+
+$badge-font-size:       .75em !default;
+$badge-font-weight:     $font-weight-bold !default;
+$badge-padding-x:       .5em !default;
+$badge-padding-y:       .25em !default;
+$badge-border-radius:   $border-radius !default;
+
+$badge-rounded-padding-x: .65em !default;
+$badge-rounded-padding-y: .25em !default;
+
+// --------------------------------------------------------
 // Button+Input common
 // Shared variables that are reassigned to `$input-` and `$btn-` specific variables.
 
