@@ -16,3 +16,4 @@ export default function Icon(props) {
     ...rest,
   })
 }
+Icon.displayName = 'Icon'

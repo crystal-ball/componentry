@@ -13,3 +13,4 @@ export default function Text(props) {
 
   return elem({ componentClassNames: [rest.as, { lead }], ...rest })
 }
+Text.displayName = 'Text'

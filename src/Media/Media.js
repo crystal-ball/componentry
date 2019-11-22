@@ -24,7 +24,7 @@ const MediaCtx = createContext({})
  * TODO: nest breakpoints so that other media info can be provided like device
  * orientation, dark mode, etc.
  */
-export default function MediaProvider({ children, breakpoints = [0, 768, 1250] }) {
+export default function Media({ children, breakpoints = [0, 768, 1250] }) {
   const calcBreakpoints = w => ({
     sm: w < breakpoints[1],
     md: w >= breakpoints[1] && w < breakpoints[2],
@@ -46,6 +46,7 @@ export default function MediaProvider({ children, breakpoints = [0, 768, 1250] }
 
   return <MediaCtx.Provider value={bps}> {children}</MediaCtx.Provider>
 }
+Media.displayName = 'Media'
 
 /**
  * Access the application media context value

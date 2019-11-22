@@ -15,10 +15,7 @@ export default function Input({ children }) {
 
   return <InputCtx.Provider value={{ guid }}>{children}</InputCtx.Provider>
 }
-
-/**
- * FormGroup provides form structure
- */
+Input.displayName = 'Input'
 
 Input.Field = function InputField(props) {
   return elem({
@@ -30,6 +27,7 @@ Input.Field = function InputField(props) {
     ...props,
   })
 }
+Input.Field.displayName = 'InputField'
 
 Input.Label = function InputLabel(props) {
   return elem({
@@ -40,6 +38,7 @@ Input.Label = function InputLabel(props) {
     ...props,
   })
 }
+Input.Label.displayName = 'InputLabel'
 
 Input.Error = function InputError(props) {
   return elem({
@@ -48,6 +47,7 @@ Input.Error = function InputError(props) {
     ...props,
   })
 }
+Input.Error.displayName = 'InputError'
 
 Input.Description = function InputDescription(props) {
   return elem({
@@ -56,6 +56,7 @@ Input.Description = function InputDescription(props) {
     ...props,
   })
 }
+Input.Description.displayName = 'InputDescription'
 
 /**
  * Requirements:

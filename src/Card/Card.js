@@ -7,15 +7,35 @@ import { useTheme } from '../Theme/Theme'
 export default function Card(props) {
   return elem({ componentClassNames: 'card', ...useTheme('Card'), ...props })
 }
+Card.displayName = 'Card'
+
+/**
+ * Card Body
+ */
 Card.Body = function CardBody(props) {
   return elem({ componentClassNames: 'card-body', ...useTheme('CardBody'), ...props })
 }
+Card.Body.displayName = 'CardBody'
+
+/**
+ * Card Footer
+ */
 Card.Footer = function CardFooter(props) {
   return elem({ componentClassNames: 'card-footer', ...useTheme('CardFooter'), ...props })
 }
+Card.Footer.displayName = 'CardFooter'
+
+/**
+ * Card Header
+ */
 Card.Header = function CardHeader(props) {
   return elem({ componentClassNames: 'card-header', ...useTheme('CardHeader'), ...props })
 }
+Card.Header.displayName = 'CardHeader'
+
+/**
+ * Card Title
+ */
 Card.Title = function CardTitle(props) {
   return elem({
     as: 'h4',
@@ -24,3 +44,4 @@ Card.Title = function CardTitle(props) {
     ...props,
   })
 }
+Card.Title.displayName = 'CardTitle'

@@ -87,6 +87,7 @@ export default function Modal(props) {
     </ModalCtx.Provider>
   )
 }
+Modal.displayName = 'Modal'
 
 /**
  * Modal themed close component
@@ -98,6 +99,7 @@ Modal.Close = function ModalClose(props) {
     ...props,
   })
 }
+Modal.Close.displayName = 'ModalClose'
 
 /**
  * Modal header close is a shorthand for enabling the default close button,
@@ -120,6 +122,7 @@ Modal.Header = function ModalHeader(props) {
     ...rest,
   })
 }
+Modal.Header.displayName = 'ModalHeader'
 
 Modal.Title = function ModalTitle(props) {
   return elem({
@@ -130,6 +133,7 @@ Modal.Title = function ModalTitle(props) {
     ...props,
   })
 }
+Modal.Title.displayName = 'ModalTitle'
 
 Modal.Body = function ModalBody(props) {
   const bodyRef = useRef(null)
@@ -142,6 +146,7 @@ Modal.Body = function ModalBody(props) {
     ...props,
   })
 }
+Modal.Body.displayName = 'ModalBody'
 
 Modal.Footer = function ModalFooter(props) {
   return elem({
@@ -150,3 +155,4 @@ Modal.Footer = function ModalFooter(props) {
     ...props,
   })
 }
+Modal.Footer.displayName = 'ModalFooter'

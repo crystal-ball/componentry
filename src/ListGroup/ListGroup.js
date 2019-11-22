@@ -18,13 +18,14 @@ export default function ListGroup(props) {
     ...props,
   })
 }
+ListGroup.displayName = 'ListGroup'
 
 /**
  * List items always have the `list-group-item` class, and items that are
  * actionable (buttons/anchors) have the `list-group-action-item` modifier class
  * added with additional required styles.
  */
-function ListGroupItem(props) {
+ListGroup.Item = function ListGroupItem(props) {
   const { active, color, ...rest } = { ...useTheme('ListGroupItem'), ...props }
   const { href, onClick } = rest
 
@@ -41,4 +42,4 @@ function ListGroupItem(props) {
     ...rest,
   })
 }
-ListGroup.Item = ListGroupItem
+ListGroup.Item.displayName = 'ListGroupItem'

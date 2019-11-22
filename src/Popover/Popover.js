@@ -9,6 +9,7 @@ const Popover = activeContainer('popover', {
   escEvents: true,
   mouseEvents: true,
 })
+export default Popover
 
 Popover.Body = function PopoverBody(props) {
   return elem({
@@ -17,6 +18,7 @@ Popover.Body = function PopoverBody(props) {
     ...props,
   })
 }
+Popover.Body.displayName = 'PopoverBody'
 
 Popover.Content = activeContent('popover', {
   arias: { id: true, role: 'tooltip', hidden: true },
@@ -31,9 +33,8 @@ Popover.Heading = function PopoverHeading(props) {
     ...props,
   })
 }
+Popover.Heading.displayName = 'PopoverHeading'
 
 Popover.Trigger = activeTrigger('popover', {
   arias: { describedby: true },
 })
-
-export default Popover

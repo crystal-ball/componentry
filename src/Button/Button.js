@@ -26,3 +26,4 @@ export default function Button(props) {
     ...merged,
   })
 }
+Button.displayName = 'Button'
