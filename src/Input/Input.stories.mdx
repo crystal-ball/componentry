@@ -1,12 +1,9 @@
-import { Meta, Title, Props } from '@storybook/addon-docs/blocks'
+import { Meta } from '@storybook/addon-docs/blocks'
 import { boolean } from '@storybook/addon-knobs'
 
 import Input from './Input'
-import { ElementsProvider } from '../story-resources'
 
 <Meta title='Components|Input' component={Input} />
-
-<ElementsProvider>
 
 # Inputs
 
@@ -20,7 +17,3 @@ import { ElementsProvider } from '../story-resources'
     <Input.Error aria-hidden={!boolean('Error', false)}>Oh no!</Input.Error>
   </Input>
 </div>
-
-<Props of={Input} />
-
-</ElementsProvider>

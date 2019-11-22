@@ -1,13 +1,10 @@
-import { Meta, Title, Props } from '@storybook/addon-docs/blocks'
+import { Meta } from '@storybook/addon-docs/blocks'
 import { boolean } from '@storybook/addon-knobs'
 import { action } from '@storybook/addon-actions'
 
 import Tabs from './Tabs'
-import { ElementsProvider } from '../story-resources'
 
 <Meta title='Components|Tabs' component={Tabs} />
-
-<ElementsProvider>
 
 # Tabs
 
@@ -27,7 +24,3 @@ import { ElementsProvider } from '../story-resources'
     <Tabs.Content activeId='four'>This tab has been disabled</Tabs.Content>
   </Tabs.ContentContainer>
 </Tabs>
-
-<Props of={Tabs} />
-
-</ElementsProvider>

@@ -1,13 +1,10 @@
-import { Meta, Title, Props } from '@storybook/addon-docs/blocks'
+import { Meta } from '@storybook/addon-docs/blocks'
 import { select } from '@storybook/addon-knobs'
 import { action } from '@storybook/addon-actions'
 
 import Popover from './Popover'
-import { ElementsProvider } from '../story-resources'
 
 <Meta title='Components|Popover' component={Popover} />
-
-<ElementsProvider>
 
 # Popovers
 
@@ -36,7 +33,3 @@ import { ElementsProvider } from '../story-resources'
     </Popover.Body>
   </Popover.Content>
 </Popover>
-
-<Props of={Popover} />
-
-</ElementsProvider>
