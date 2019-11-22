@@ -1,13 +1,11 @@
-import { Meta, Title, Props } from '@storybook/addon-docs/blocks'
+import { Meta } from '@storybook/addon-docs/blocks'
 import { boolean, select } from '@storybook/addon-knobs'
 
 import Alert from './Alert'
 import Active from '../Active/Active'
-import { ElementsProvider, colors } from '../story-resources'
+import { colors } from '../story-resources'
 
 <Meta title='Components|Alert' component={Alert} />
-
-<ElementsProvider>
 
 # Alerts
 
@@ -25,7 +23,7 @@ an uncontrolled Alert.
   </a>
 </Alert>
 
-<Props of={Alert} />
+---
 
 ## Colors
 
@@ -70,5 +68,3 @@ Provide an aria title for alerts with better accessibility.
 <Alert color='primary' ariaTitle='Alert provides context on setting the aria title'>
   Pass an `ariaTitle` to provide more context.
 </Alert>
-
-</ElementsProvider>

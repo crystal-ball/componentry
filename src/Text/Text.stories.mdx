@@ -2,11 +2,8 @@ import { Meta, Props } from '@storybook/addon-docs/blocks'
 
 import Text from './Text'
 import Block from '../Block/Block'
-import { ElementsProvider } from '../story-resources'
 
 <Meta title='Components|Text' component={Text} />
-
-<ElementsProvider>
 
 # Text elements
 
@@ -32,11 +29,11 @@ Pass `inline` to render a `span` instead of a `p`:
 
 Pass a size prop to change the font size:
 
-<Text size="xl">Example extra large text content.</Text>
-<Text size="lg">Example large text content.</Text>
+<Text size='xl'>Example extra large text content.</Text>
+<Text size='lg'>Example large text content.</Text>
 <Text size='base'>Example text content.</Text>
-<Text size="sm">Example small text content.</Text>
-<Text size="xs">Example extra small text content.</Text>
+<Text size='sm'>Example small text content.</Text>
+<Text size='xs'>Example extra small text content.</Text>
 
 ---
 
@@ -46,5 +43,3 @@ Create a lead paragraph with the `lead` prop:
 
 <Text lead>This is a lead paragraph that will stand out.</Text>
 <Text>Followed by a default paragraph</Text>
-
-</ElementsProvider>
