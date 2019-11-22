@@ -56,6 +56,7 @@ export default function Alert(props) {
     ...rest,
   })
 }
+Alert.displayName = 'Alert'
 
 /**
  * Alert close component

@@ -12,3 +12,4 @@ export default function FormGroup(props) {
     ...props,
   })
 }
+FormGroup.displayName = 'FormGroup'

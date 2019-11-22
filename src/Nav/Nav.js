@@ -2,7 +2,7 @@ import elem from '../elem-factory'
 import { useTheme } from '../Theme/Theme'
 import { navClasses } from '../utils/componentry'
 
-function Nav(props) {
+export default function Nav(props) {
   return elem({
     as: 'nav',
     componentClassNames: ['nav', navClasses(props)],
@@ -10,6 +10,7 @@ function Nav(props) {
     ...props,
   })
 }
+Nav.displayName = 'Nav'
 
 /**
  * Nav items can be action items or li, notice this follows the same pattern as
@@ -33,4 +34,4 @@ Nav.Item = function NavItem(props) {
     ...rest,
   })
 }
-export default Nav
+Nav.Item.displayName = 'NavItem'

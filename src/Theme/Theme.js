@@ -11,9 +11,10 @@ const ThemeCtx = createContext({})
  * components. The passed theme configurations are namespaced to prevent
  * collisions.
  */
-export default function ThemeProvider({ children, theme }) {
+export default function Theme({ children, theme }) {
   return <ThemeCtx.Provider value={theme}>{children}</ThemeCtx.Provider>
 }
+Theme.displayName = 'Theme'
 
 /**
  * Access the application theme context value

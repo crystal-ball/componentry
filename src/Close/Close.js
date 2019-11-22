@@ -21,3 +21,4 @@ export default function Close(props) {
     ...props,
   })
 }
+Close.displayName = 'Close'

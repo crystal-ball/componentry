@@ -18,3 +18,4 @@ export default function Anchor(props) {
     ...merged,
   })
 }
+Anchor.displayName = 'Anchor'

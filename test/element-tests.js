@@ -8,7 +8,15 @@ import Theme from '../src/Theme/Theme'
  * Library default component requirment test suite.
  */
 const elementTests = TestComponent => {
-  const name = TestComponent.displayName || TestComponent.name
+  const name = TestComponent.displayName
+  /*
+   * All components should have a display name so they can be easily debugged
+   * even in prod builds
+   */
+  test(`${name} should have a displayName`, () => {
+    expect(TestComponent.displayName).toBeTruthy()
+  })
+
   /*
    * All components should meet the following requirements:
    * 1. Children are passed through
@@ -57,7 +65,7 @@ const elementTests = TestComponent => {
     const { getByTestId } = render(
       <Theme
         theme={{
-          [TestComponent.displayName || TestComponent.name]: {
+          [TestComponent.displayName]: {
             themeClassName: 'theme-class',
             'data-radical': 'hecka',
           },

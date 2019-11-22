@@ -6,29 +6,32 @@ import elem from '../elem-factory'
 import { navClasses } from '../utils/componentry'
 
 const Tabs = activeContainer('tabs', { name: 'tabs' })
+export default Tabs
 
-Tabs.ContentContainer = function TabContentContainer(props) {
+Tabs.ContentContainer = function TabsContentContainer(props) {
   return elem({
     componentClassNames: 'tabs-panes-container',
-    ...useTheme('TabContentContainer'),
+    ...useTheme('TabsContentContainer'),
     ...props,
   })
 }
+Tabs.ContentContainer.displayName = 'TabsContentContainer'
 
 Tabs.Content = activeContent('tab', {
   arias: { hidden: true, role: 'tabpanel' },
   baseClass: 'tabs-panes-pane', // tab-content-pane
 })
 
-Tabs.Nav = function TabNav(props) {
+Tabs.Nav = function TabsNav(props) {
   return elem({
     as: 'nav',
     role: 'tablist',
     componentClassNames: ['tabs-nav-container', navClasses(props)],
-    ...useTheme('TabNav'),
+    ...useTheme('TabsNav'),
     ...props,
   })
 }
+Tabs.Nav.displayName = 'TabsNav'
 
 // TODO: This should probably be defaultAs a nav item... issues:
 // If making a tab with anchors, these should have class 'nav-link'
@@ -39,5 +42,3 @@ Tabs.Trigger = activeTrigger('tab', {
   // Tabs can only activate, they never deactivate when clicked
   triggerType: 'activate',
 })
-
-export default Tabs

@@ -13,3 +13,4 @@ export default function Heading(props) {
     ...rest,
   })
 }
+Heading.displayName = 'Heading'
