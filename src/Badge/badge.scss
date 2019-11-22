@@ -1,10 +1,10 @@
-/* ~componentry/styles/content/badge */
+/* ~componentry/src/Badge/badge */
 
-// Base class
-//
-// Requires one of the contextual, color modifier classes for `color` and
-// `background-color`.
-
+/**
+ * --- Base class
+ * Requires one of the contextual, color modifier classes for `color` and
+ * `background-color`.
+ */
 .badge {
   display: inline-block;
   padding: $badge-padding-y $badge-padding-x;
@@ -28,20 +28,20 @@
   top: -1px;
 }
 
-// Pill badges
-//
-// Make them extra rounded with a modifier to replace v3's badges.
-
-.badge-pill {
-  padding-right: $badge-pill-padding-x;
-  padding-left: $badge-pill-padding-x;
-  @include border-radius($badge-pill-border-radius);
+/**
+ * --- Rounded badges
+ * Creates a badge with rounded corners and extra padding
+ */
+.badge-rounded {
+  padding-right: $badge-rounded-padding-x;
+  padding-left: $badge-rounded-padding-x;
+  border-radius: 1000px !important;
 }
 
-// Colors
-//
-// Contextual variations (linked badges get darker on :hover).
-
+/**
+ * --- Colors
+ * Contextual variations (linked badges get darker on :hover).
+ */
 @mixin badge-variant($bg) {
   color: color-yiq($bg);
   background-color: $bg;
