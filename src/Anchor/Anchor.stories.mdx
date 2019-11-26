@@ -6,17 +6,15 @@ import { colors, size } from '../storybook-resources'
 
 <Meta title='Components|Anchor' component={Anchor} />
 
-<DocsTitle title="Anchors" experimental/>
+<DocsTitle title="Anchors" />
 
-Anchors render consistent anchor tags
+Anchor components render an anchor tag with anchor styles by default:
 
 <Anchor href='#'>Anchor element</Anchor>
 
----
-
 ## Theme colors
 
-Pass a `color` to set a theme font color:
+Pass a `color` prop to theme the anchor font color:
 
 <div className='d-flex flex-column'>
   {colors.map(color => (

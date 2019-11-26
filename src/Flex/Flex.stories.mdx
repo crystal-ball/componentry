@@ -6,45 +6,69 @@ import Flex from './Flex'
 
 <DocsTitle title="Flex" experimental/>
 
-<div className='w-100 min-100vh' style={{ height: 1 }}>
-  <Flex
-    className='w-100 h-100'
-    inline={boolean('Inline', false)}
-    direction={select('Direction', {
-      column: 'column',
-      'column-reverse': 'column-reverse',
-      row: 'row',
-      'row-reverse': 'row-reverse',
-      None: null,
-    }, null)}
-    wrap={select('Wrap', {
-      wrap: 'wrap',
-      'wrap-reverse': 'wrap-reverse',
-      nowrap: 'nowrap',
-      None: null,
-    }, null)}
-    align={select('Align', {
-      start: 'start',
-      end: 'end',
-      center: 'center',
-      baseline: 'baseline',
-      stretch: 'stretch',
-      None: null,
-    }, null)}
-    justify={select('Justify', {
-      start: 'start',
-      end: 'end',
-      center: 'center',
-      around: 'around',
-      between: 'between',
-      evenly: 'evenly',
-      None: null,
-    }, null)}
-  >
-    {[1, 2, 3].map(key => (
-      <div className='border' key={key}>
-        Flex content #{key}
-      </div>
-    ))}
-  </Flex>
-</div>
+## Block containers
+
+Flex components create block level flex containers:
+
+<Flex>
+  {[1, 2, 3].map(key => (
+    <div className='border' key={key}>
+      Flex content #{key}
+    </div>
+  ))}
+</Flex>
+
+## Inline containers
+
+Create inline level flex containers using the `inline` prop:
+
+<Flex inline>
+  {[1, 2].map(key => (
+    <div className='border' key={key}>
+      Flex content #{key}
+    </div>
+  ))}
+</Flex>
+<Flex inline>
+  {[1, 2].map(key => (
+    <div className='border' key={key}>
+      Flex content #{key}
+    </div>
+  ))}
+</Flex>
+
+## Flex direction
+
+Override the default direction of `row` with the `direction` prop:
+
+<Flex direction='column'>
+  {[1, 2, 3].map(key => (
+    <div className='border' key={key}>
+      Flex content #{key}
+    </div>
+  ))}
+</Flex>
+
+## Justify and align
+
+Set the flex items justification and alignment with the `justify` and `align` props:
+
+<Flex justify="center" align="center">
+  {[1, 2, 3].map(key => (
+    <div className='border' key={key}>
+      Flex content #{key}
+    </div>
+  ))}
+</Flex>
+
+## Flex wrap
+
+Override the flex wrap behavior with the `wrap` props:
+
+<Flex wrap='no-wrap'>
+  {[1, 2, 3].map(key => (
+    <div className='border' key={key}>
+      Flex content #{key}
+    </div>
+  ))}
+</Flex>

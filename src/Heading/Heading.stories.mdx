@@ -2,47 +2,35 @@ import Heading from './Heading'
 
 <Meta title='Components|Heading' component={Heading} />
 
-<DocsTitle title='Headings' experimental />
+<DocsTitle title='Headings' />
 
-A default heading:
+Use the `as` prop to set the heading level:
 
-<Heading>Componentry heading</Heading>
-
----
-
-## Heading levels
-
-Use the `as` prop to change the heading level from an `h1`:
-
-<Heading as='h1'>Componentry heading</Heading>
-<Heading as='h2'>Componentry heading</Heading>
-<Heading as='h3'>Componentry heading</Heading>
-<Heading as='h4'>Componentry heading</Heading>
-
----
+<Heading as='h1'>Componentry stories</Heading>
+<Heading as='h2'>Componentry stories</Heading>
+<Heading as='h3'>Componentry stories</Heading>
+<Heading as='h4'>Componentry stories</Heading>
 
 ## Display Headings
 
 The `display` prop will set the display styles:
 
-<Heading display={1}>Display heading</Heading>
-<Heading display={2}>Display heading</Heading>
-
----
+<Heading display={1}>Fancy!</Heading>
+<Heading display={2}>Fancy!</Heading>
 
 ## Subheadings
 
 The `.subheading` class can be used to create heading levels:
 
 <Heading>
-  Important event <span className='subheading'>widespread impact</span>
+  Componentry <span className='subheading'>components</span>
 </Heading>
 <Heading as='h2'>
-  Important event <span className='subheading'>widespread impact</span>
+  Componentry <span className='subheading'>components</span>
 </Heading>
 <Heading as='h3'>
-  Important event <span className='subheading'>widespread impact</span>
+  Componentry <span className='subheading'>components</span>
 </Heading>
 <Heading as='h4'>
-  Important event <span className='subheading'>widespread impact</span>
+  Componentry <span className='subheading'>components</span>
 </Heading>

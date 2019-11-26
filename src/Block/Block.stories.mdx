@@ -4,9 +4,22 @@ import Block from './Block'
 
 <Meta title='Components|Block' component={Block} />
 
-<DocsTitle title="Block" experimental/>
+<DocsTitle title="Block" />
+
+## Block elements
+
+Block components create block level containers:
 
 <div>
-  <Block inline={boolean('Inline', false)}>Block content</Block>
-  <Block inline={boolean('Inline', false)}>Block content</Block>
+  <Block border>Block content</Block>
+  <Block border>Block content</Block>
+</div>
+
+## Inline block elements
+
+Pass A truthy `inline` prop to create an block element with `display: inline-block`:
+
+<div>
+  <Block inline border>Block content</Block>
+  <Block inline border>Block content</Block>
 </div>

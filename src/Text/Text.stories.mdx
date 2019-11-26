@@ -5,29 +5,24 @@ import Block from '../Block/Block'
 
 <Meta title='Components|Text' component={Text} />
 
-<DocsTitle title='Text' experimental />
+<DocsTitle title='Text' />
+
+## Block (paragraph) text
+
+Paragraph elements are rendered by default:
 
 <Text>Componentry default text element</Text>
 
----
+## Inline (span) text
 
-## Span text elements
+A truthy `inline` prop renders a `span` element:
 
-Pass `inline` to render a `span` instead of a `p`:
+This is a larger block of text that has a <Text fontWeight='bold' inline>bold</Text>
+text span inside of it.
 
-<Text>
-  This is a larger block of text that has a{' '}
-  <Text fontWeight='bold' inline>
-    bold
-  </Text>{' '}
-  text span inside of it.
-</Text>
+## Sizes
 
----
-
-## Text sizes
-
-Pass a size prop to change the font size:
+The `size` prop sets a font size:
 
 <Text size='xl'>Example extra large text content.</Text>
 <Text size='lg'>Example large text content.</Text>
@@ -35,11 +30,9 @@ Pass a size prop to change the font size:
 <Text size='sm'>Example small text content.</Text>
 <Text size='xs'>Example extra small text content.</Text>
 
----
+## Lead style
 
-## Lead
-
-Create a lead paragraph with the `lead` prop:
+The `lead` prop will render a lead style text block:
 
 <Text lead>This is a lead paragraph that will stand out.</Text>
 <Text>Followed by a default paragraph</Text>

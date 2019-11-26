@@ -1,1 +1,1 @@
-export { alignments, colors, grayscale } from './constants'
+export { alignments, colors, directions, grayscale } from './constants'
