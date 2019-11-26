@@ -21,15 +21,12 @@ export const useActive = () => useContext(ActiveCtx)
  * @param {Object} ref
  */
 export const useActiveSrollReset = (active, ref) => {
-  // console.log({ active, ref: ref.current })
   useLayoutEffect(() => {
     if (active && ref.current) {
       // eslint-disable-next-line no-param-reassign
       ref.current.scrollTop = 0
-    } else {
-      // console.log('NOPE: ', ref.current)
     }
-  }, [active])
+  }, [active, ref])
 }
 
 // --------------------------------------------------------
@@ -108,7 +105,7 @@ export const useVisible = (active, duration = 250) => {
     return function cleanup() {
       clearTimeout(timer)
     }
-  }, [active])
+  }, [active, duration])
 
   return state
 }

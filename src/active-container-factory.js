@@ -1,4 +1,4 @@
-import React, { createContext, useEffect, useRef, useState } from 'react'
+import React, { createContext, useCallback, useEffect, useRef, useState } from 'react'
 import nanoid from 'nanoid'
 import elem from './elem-factory'
 import { useTheme } from './Theme/Theme'
@@ -25,8 +25,8 @@ export const ActiveCtx = createContext({ active: false })
  * use. This ensures that we can always hook into the change events for internal
  * needs like setting or removing special event listeners.
  */
-export default function activeContainerFactory(component, opts = {}) {
-  const themeName = `${component.slice(0, 1).toUpperCase()}${component.slice(1)}`
+export default function activeContainerFactory(name, opts = {}) {
+  const themeName = `${name.slice(0, 1).toUpperCase()}${name.slice(1)}`
   function ActiveContainer(props) {
     const {
       // --- Render elements
@@ -71,10 +71,8 @@ export default function activeContainerFactory(component, opts = {}) {
      */
     const [_active, updateActive] = useState(defaultActive)
 
-    // When active is passed as a prop, it should always be used as active state
-    useEffect(() => {
-      if (active !== undefined) updateActive(active)
-    }, [active])
+    // --------------------------------------------------------
+    // Handlers
 
     /**
      * Internal activation handler (manages active state and fires change
@@ -103,33 +101,56 @@ export default function activeContainerFactory(component, opts = {}) {
       }
 
     /** Call deactivate if click event was not inside the element */
-    const onClick = e => {
-      if (!closest(e.target, guid)) handleDeactivate(e)
-    }
+    const onClick = useCallback(
+      e => {
+        if (!closest(e.target, guid)) handleDeactivate(e)
+      },
+      [guid, handleDeactivate],
+    )
 
     /** Call deactivate on keypress if `esc` (27) was pressed */
-    const onKeydown = e => {
-      if (e.which === 27 || e.code === 27) handleDeactivate(e)
-    }
+    const onKeydown = useCallback(
+      e => {
+        if (e.which === 27 || e.code === 27) handleDeactivate(e)
+      },
+      [handleDeactivate],
+    )
 
-    const updateEventListeners = updateType => {
-      const updateListener = `${updateType}EventListener`
+    /** Handle adding/removing the component DOM event listeners */
+    const updateEventListeners = useCallback(
+      updateType => {
+        const updateListener = `${updateType}EventListener`
 
-      if (escEvents) document[updateListener]('keydown', onKeydown)
+        if (escEvents) document[updateListener]('keydown', onKeydown)
 
-      if (clickEvents) {
-        // TODO: are these the best events to listen to??
-        document[updateListener]('mouseup', onClick)
-        document[updateListener]('touchend', onClick)
-      }
-    }
+        if (clickEvents) {
+          // TODO: are these the best events to listen to??
+          document[updateListener]('mouseup', onClick)
+          document[updateListener]('touchend', onClick)
+        }
+      },
+      [clickEvents, escEvents, onClick, onKeydown],
+    )
 
+    // --------------------------------------------------------
+    // Effects
+
+    // When active is passed as a prop, it should always be used as active state
+    useEffect(() => {
+      if (active !== undefined) updateActive(active)
+    }, [active])
+
+    // On every change of internal _active state, call updateEventListeners
+    // with add/remove to reflect if the component is active
     useEffect(() => {
       updateEventListeners(_active ? 'add' : 'remove')
       return function cleanup() {
         updateEventListeners('remove')
       }
-    }, [_active])
+    }, [_active, updateEventListeners])
+
+    // --------------------------------------------------------
+    // Render
 
     const activeValues = {
       active: _active,
@@ -138,14 +159,12 @@ export default function activeContainerFactory(component, opts = {}) {
       guid,
     }
 
-    const element = component.slice(0, 1).toLowerCase() + component.slice(1)
-
     // TODO: only wrap elements with a `div` when the element needs it
     return (
       <ActiveCtx.Provider value={activeValues}>
         {elem({
           'data-id': guid,
-          componentClassNames: [element, direction, { [`${element}-${size}`]: size }],
+          componentClassNames: [name, direction, { [`${name}-${size}`]: size }],
 
           // For elements with mouse events we need to know when the mouse event
           // occurs on the parent element, not the trigger element

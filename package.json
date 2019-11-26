@@ -51,9 +51,9 @@
     "nanoid": "2"
   },
   "devDependencies": {
-    "@babel/cli": "7.7.0",
-    "@babel/core": "7.7.2",
-    "@babel/plugin-transform-modules-commonjs": "7.7.0",
+    "@babel/cli": "7.7.4",
+    "@babel/core": "7.7.4",
+    "@babel/plugin-transform-modules-commonjs": "7.7.4",
     "@crystal-ball/commitizen-base": "2.3.0",
     "@crystal-ball/prettier-base": "1.6.0",
     "@storybook/addon-actions": "5.2.6",
@@ -67,7 +67,7 @@
     "@testing-library/react": "9.3.2",
     "babel-loader": "8.0.6",
     "css-loader": "3.2.0",
-    "eslint-config-eloquence": "12.11.0",
+    "eslint-config-eloquence": "12.13.0",
     "husky": "3.1.0",
     "jest": "24.9.0",
     "node-sass": "4.13.0",
