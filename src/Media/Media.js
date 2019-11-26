@@ -41,24 +41,20 @@ function mountListeners(breakpoints, updateBps) {
  * The Media provider accepts breakpoints and can be used with the `useMedia`
  * hook in any component Default breakpoints are:
  *
- * - sm = >= 0
- * - md = >= 900
+ * - sm = < 768
+ * - md = < 1250
  * - lg = >= 1250
  *
- * Resize is listened to using the `matchMedia` API, which is supoorted by IE10,
- * so it's pretty widely implemented
- *
- * TODO: by default provide breakpoints for small and large with docs on adding
- * a medium breakpoint -> this covers "normal" use case for a sane app.
- *
- * TODO: remove query listeners on unmount??
- *
- * TODO: nest breakpoints so that other media info can be provided like device
- * orientation, dark mode, etc.
+ * Window resizing is listened to using the `matchMedia` API (which is supported
+ * all the way down to IE10)
  */
 export default function Media({ children, breakpoints = [0, 768, 1250] }) {
   const [bps, updateBps] = useState(calcBreakpoints(breakpoints))
 
+  // ℹ️ Call to mount media query listeners is wrapped in useEffect to prevent
+  // mounting listeners multiple times. Currently we don't remove and remount
+  // listeners if the breakpoints change, but that's a really edge case to
+  // support...
   /* eslint-disable react-hooks/exhaustive-deps */
   useEffect(() => {
     mountListeners(breakpoints, updateBps)
@@ -70,7 +66,7 @@ export default function Media({ children, breakpoints = [0, 768, 1250] }) {
 Media.displayName = 'Media'
 
 /**
- * Access the application media context value
+ * Hook to access the current Media context value
  */
 export const useMedia = () => {
   const media = useContext(MediaCtx)
@@ -80,13 +76,3 @@ export const useMedia = () => {
   }
   return media
 }
-
-/**
- * DARK MODE (todo)
- *
- * There is basically no support for this media query yet... but these can be
- * checked for truthy values to determine which mode to use
- *
- * darkScheme: window.matchMedia('(prefers-color-scheme: dark)')
- * lightScheme: window.matchMedia('(prefers-color-scheme: light)')
- */

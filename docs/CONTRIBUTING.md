@@ -33,7 +33,11 @@ with prompts.
 _ℹ️ Roadmap items track long term project goals, see the [ZenHub board][] for
 ready to work issues._
 
-- ...
+- Add experimental dark mode support to `<Media />`. There is basically no
+  support for this media query yet... but these queries can be checked for
+  truthy values to determine which mode to use
+  - darkScheme: `window.matchMedia('(prefers-color-scheme: dark)')`
+  - lightScheme: `window.matchMedia('(prefers-color-scheme: light)')`
 
 <!-- Links -->
 <!-- prettier-ignore-start -->
