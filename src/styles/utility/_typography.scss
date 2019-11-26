@@ -81,6 +81,29 @@
 }
 
 // --------------------------------------------------------
+// Line heights
+
+.line-height-xs {
+  line-height: $line-height-xs;
+}
+
+.line-height-sm {
+  line-height: $line-height-sm;
+}
+
+.line-height-base {
+  line-height: $line-height-base;
+}
+
+.line-height-lg {
+  line-height: $line-height-lg;
+}
+
+.line-height-xl {
+  line-height: $line-height-xl;
+}
+
+// --------------------------------------------------------
 // Weights
 
 .font-weight-lighter {

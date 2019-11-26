@@ -249,9 +249,11 @@ $font-weight-bold:     700 !default;
 $font-weight-bolder:   bolder !default;
 $font-weight-base:     $font-weight-normal !default;
 
-$line-height-base:     1.5 !default;
-$line-height-lg:       1.5 !default;
-$line-height-sm:       1.5 !default;
+$line-height-xs:       1    !default;
+$line-height-sm:       1.25 !default;
+$line-height-base:     1.5  !default;
+$line-height-lg:       1.75 !default;
+$line-height-xl:       2    !default;
 
 // Headings
 $headings-color:           $heading-color !default;
@@ -269,10 +271,10 @@ $h3: () !default;
 $h4: () !default;
 $h5: () !default;
 
-$h1-font-size:    ($font-size-base * 5)    !default; // 80 ~ 2x
-$h2-font-size:    ($font-size-base * 2.5)  !default; // 40 ~ 1.7x
-$h3-font-size:    ($font-size-base * 1.75) !default; // 28 ~ 1.4x
-$h4-font-size:    ($font-size-base * 1.5)  !default;
+$h1-font-size:    ($font-size-base * 4.5)  !default; // 72 ~ 1.5x
+$h2-font-size:    ($font-size-base * 3.0)  !default; // 48 ~ 1.5x
+$h3-font-size:    ($font-size-base * 2.0)  !default; // 32 ~ 1.33x
+$h4-font-size:    ($font-size-base * 1.5)  !default; // 24
 $h5-font-size:    ($font-size-base * 1.25) !default;
 
 $h1-font-weight:  $headings-font-weight !default;
@@ -288,7 +290,7 @@ $subheading-font-weight:  $font-weight-light !default;
 
 // Display headings
 $display1-size:    6rem !default;
-$display2-size:    5.5rem !default;
+$display2-size:    5rem !default;
 
 $display1-weight:  300 !default;
 $display2-weight:  300 !default;
@@ -813,6 +815,7 @@ $mark-padding: 0.2em !default;
 $mark-bg: #fcf8e3 !default;
 
 $pre-color: gray('200') !default;
+$pre-font-size: $code-font-size !default;
 $pre-scrollable-max-height: 340px !default;
 
 $small-font-color: map-get($font-colors, muted) !default;
