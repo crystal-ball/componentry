@@ -4,8 +4,6 @@ import { useTheme } from '../Theme'
 export default function ThemeConsumer() {
   const theme = useTheme()
 
-  console.log(theme)
-
   return (
     <div>
       <h3>Theme values:</h3>

@@ -45,8 +45,6 @@ export default function activeTriggerFactory(
       ...props,
     }
 
-    console.log(rest)
-
     // Handle determining whether to call activate or deactivate on click
     // 1. If a trigger type was passed, call that event always
     // 2. else if in a compound-active context check if this activeId is active

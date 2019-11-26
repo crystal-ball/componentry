@@ -110,13 +110,14 @@ Modal.Header = function ModalHeader(props) {
     ...useTheme('ModalHeader'),
     ...props,
   }
+  const { deactivate } = useContext(ModalCtx)
 
   return elem({
     componentClassNames: 'modal-header',
     children: (
       <>
         {children}
-        {close && <Modal.Close onClick={useContext(ModalCtx).deactivate} />}
+        {close && <Modal.Close onClick={deactivate} />}
       </>
     ),
     ...rest,

@@ -1,4 +1,4 @@
-import React, { createContext, useContext, useEffect, useState } from 'react'
+import React, { createContext, useContext, useState } from 'react'
 
 /**
  * Media Context
@@ -36,13 +36,11 @@ export default function Media({ children, breakpoints = [0, 768, 1250] }) {
     updateBps(calcBreakpoints(window.innerWidth))
   }
 
-  useEffect(() => {
-    breakpoints.forEach(bp => {
-      // https://developer.mozilla.org/en-US/docs/Web/CSS/Media_Queries/Testing_media_queries#Receiving_query_notifications
-      const mq = window.matchMedia(`(min-width: ${bp}px)`)
-      mq.addListener(setBreakpoints)
-    })
-  }, [])
+  breakpoints.forEach(bp => {
+    // https://developer.mozilla.org/en-US/docs/Web/CSS/Media_Queries/Testing_media_queries#Receiving_query_notifications
+    const mq = window.matchMedia(`(min-width: ${bp}px)`)
+    mq.addListener(setBreakpoints)
+  })
 
   return <MediaCtx.Provider value={bps}> {children}</MediaCtx.Provider>
 }
