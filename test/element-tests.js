@@ -50,7 +50,7 @@ const elementTests = TestComponent => {
     // Create a component to validate that the TestComponent returns.
     const TestAs = ({ isRad }) => <div>{isRad ? 'RAD' : null}</div>
 
-    const { getByText } = render(<TestComponent as={TestAs} isRad />)
+    const { getByText } = render(<TestComponent isRad as={TestAs} />)
 
     getByText('RAD')
   })
@@ -72,14 +72,14 @@ const elementTests = TestComponent => {
         }}
       >
         <TestComponent data-testid='theme'>Theme values example</TestComponent>
-        <TestComponent themeClassName={null} data-radical='nope' data-testid='jsx'>
+        <TestComponent data-radical='nope' data-testid='jsx' themeClassName={null}>
           JSX overrides example
         </TestComponent>
         <TestComponent
-          className='jsx-class'
-          fontWeight='bold'
           uppercase
+          className='jsx-class'
           data-testid='merge'
+          fontWeight='bold'
         >
           Classes merging example
         </TestComponent>
@@ -105,13 +105,13 @@ const elementTests = TestComponent => {
   test(`${name} should include library classes and styles correctly`, () => {
     const { getByTestId } = render(
       <TestComponent
-        className='jsx-class'
-        textAlign='center'
         uppercase
+        className='jsx-class'
+        data-testid='component'
         lineHeight={2}
         my={16}
         style={{ position: 'relative' }}
-        data-testid='component'
+        textAlign='center'
       >
         Test component
       </TestComponent>,

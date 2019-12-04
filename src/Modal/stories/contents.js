@@ -5,7 +5,7 @@ import Modal from '../Modal'
 
 export const footerContent = (
   <Modal.Footer className='btn-container-x'>
-    <Active.Trigger variant='btn' color='anchor'>
+    <Active.Trigger color='anchor' variant='btn'>
       Close
     </Active.Trigger>
     <Button color='primary'>Save Changes</Button>

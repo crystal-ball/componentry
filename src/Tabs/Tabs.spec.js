@@ -22,7 +22,7 @@ describe('<Tab /> snapshots', () => {
           <Tabs.Trigger activeId='one'>Item 1</Tabs.Trigger>
           <Tabs.Trigger activeId='two'>Tab with long name</Tabs.Trigger>
           <Tabs.Trigger activeId='three'>Item 3</Tabs.Trigger>
-          <Tabs.Trigger activeId='four' disabled>
+          <Tabs.Trigger disabled activeId='four'>
             Disabled
           </Tabs.Trigger>
         </Tabs.Nav>
