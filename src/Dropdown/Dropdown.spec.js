@@ -20,17 +20,17 @@ describe('<Dropdown />', () => {
 
   it('renders the correct directional classes using direction', () => {
     const { getByTestId, rerender } = render(
-      <Dropdown Trigger='Toggle' Content='Testing' data-testid='dropdown' />,
+      <Dropdown Content='Testing' data-testid='dropdown' Trigger='Toggle' />,
     )
 
     expect(getByTestId('dropdown')).toHaveClass('dropdown bottom') // default value
 
     rerender(
       <Dropdown
-        Trigger='Toggle'
         Content='Testing'
         data-testid='dropdown'
         direction='top'
+        Trigger='Toggle'
       />,
     )
 

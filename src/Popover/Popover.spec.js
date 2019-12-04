@@ -17,7 +17,7 @@ describe('<Popover />', () => {
 
   it('renders the correct directional classes using direction', () => {
     const { getByTestId } = render(
-      <Popover direction='left' data-testid='popover'>
+      <Popover data-testid='popover' direction='left'>
         <Popover.Trigger>Trigger</Popover.Trigger>
         <Popover.Content>Content</Popover.Content>
       </Popover>,

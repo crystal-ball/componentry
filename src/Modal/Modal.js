@@ -66,16 +66,16 @@ export default function Modal(props) {
         tabIndex: '-1',
         children: (
           /* eslint-disable jsx-a11y/no-noninteractive-element-interactions, jsx-a11y/click-events-have-key-events */
-          <div className='modal-positioner' ref={containerRef}>
+          <div ref={containerRef} className='modal-positioner'>
             {/* ℹ️ Stop propogation of clicks inside modal or they will trigger the modal background deactivate handler */}
             <div
+              ref={contentRef}
               className={classNames('modal-container', align, {
                 visible,
                 [`modal-${size}`]: size,
               })}
-              ref={contentRef}
-              onClick={evt => evt.stopPropagation()}
               role='dialog'
+              onClick={evt => evt.stopPropagation()}
             >
               {children}
             </div>

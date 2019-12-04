@@ -20,7 +20,7 @@ describe('<Flex />', () => {
 
   test('When modifier props are passed, then the expanded classNames are rendered', () => {
     const { getByText } = render(
-      <Flex direction='column' align='start' wrap='wrap' justify='start'>
+      <Flex align='start' direction='column' justify='start' wrap='wrap'>
         Content
       </Flex>,
     )

@@ -41,7 +41,7 @@ describe('<Button/>', () => {
     const { getByText } = render(
       <>
         <Button block>Button</Button>
-        <Button variant='btn-test' block>
+        <Button block variant='btn-test'>
           Variant Button
         </Button>
       </>,
@@ -54,7 +54,7 @@ describe('<Button/>', () => {
     const { getByText } = render(
       <>
         <Button color='info'>Button</Button>
-        <Button variant='btn-test' color='info'>
+        <Button color='info' variant='btn-test'>
           Variant Button
         </Button>
       </>,
@@ -67,7 +67,7 @@ describe('<Button/>', () => {
     const { getByText } = render(
       <>
         <Button outline='info'>Button</Button>
-        <Button variant='btn-test' outline='info'>
+        <Button outline='info' variant='btn-test'>
           Variant Button
         </Button>
       </>,
@@ -80,7 +80,7 @@ describe('<Button/>', () => {
     const { getByText } = render(
       <>
         <Button size='sm'>Button</Button>
-        <Button variant='btn-test' size='sm'>
+        <Button size='sm' variant='btn-test'>
           Variant Button
         </Button>
       </>,

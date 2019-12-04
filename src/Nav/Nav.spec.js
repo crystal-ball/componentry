@@ -32,7 +32,7 @@ describe('<Nav.Item />', () => {
   test('when active is passed, then active class should render', () => {
     const { getByText } = render(
       <Nav>
-        <Nav.Item href='#' active>
+        <Nav.Item active href='#'>
           React
         </Nav.Item>
       </Nav>,
@@ -47,12 +47,12 @@ describe('<Nav /> snapshots', () => {
   it('renders correctly', () => {
     const { container } = render(
       <Nav>
-        <Nav.Item href='#' active>
+        <Nav.Item active href='#'>
           Active
         </Nav.Item>
         <Nav.Item href='#'>React</Nav.Item>
         <Nav.Item href='#'>Redux</Nav.Item>
-        <Nav.Item href='#' disabled>
+        <Nav.Item disabled href='#'>
           Styles
         </Nav.Item>
       </Nav>,

@@ -8,7 +8,7 @@ describe('<Icon />', () => {
   elementTests(Icon)
 
   test('should not include class font when false', () => {
-    const { getByTestId } = render(<Icon id='test' font={false} data-testid='icon' />)
+    const { getByTestId } = render(<Icon data-testid='icon' font={false} id='test' />)
     expect(getByTestId('icon')).not.toHaveClass('font')
   })
 })

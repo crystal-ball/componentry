@@ -29,7 +29,7 @@ const activationTests = (TestComponent, { name, testArias } = {}) => {
    * Test that the shorthand subcombonent props renders subcomponents
    */
   test('should render components for subcomponent shorthand', () => {
-    const { getByText } = render(<TestComponent Trigger='Trigger' Content='Content' />)
+    const { getByText } = render(<TestComponent Content='Content' Trigger='Trigger' />)
 
     getByText('Trigger')
     getByText('Content')
@@ -286,7 +286,7 @@ const activationTests = (TestComponent, { name, testArias } = {}) => {
     const activate = jest.fn()
     const deactivate = jest.fn()
     const { getByText, rerender } = render(
-      <TestComponent activate={activate} deactivate={deactivate} active={false}>
+      <TestComponent activate={activate} active={false} deactivate={deactivate}>
         <TestComponent.Trigger>Trigger</TestComponent.Trigger>
         <TestComponent.Content>Content</TestComponent.Content>
       </TestComponent>,
@@ -309,7 +309,7 @@ const activationTests = (TestComponent, { name, testArias } = {}) => {
 
     // Mock controlled component being passed true, click should now ONLY call deactivate
     rerender(
-      <TestComponent activate={activate} deactivate={deactivate} active>
+      <TestComponent active activate={activate} deactivate={deactivate}>
         <TestComponent.Trigger>Trigger</TestComponent.Trigger>
         <TestComponent.Content>Content</TestComponent.Content>
       </TestComponent>,
