@@ -1,13 +1,13 @@
 /**
- *                ⚙️ Componentry design system variables
- * --------------------------------------------------------
+ *                                     ⚙️ Componentry design system variables
+ * -----------------------------------------------------------------------------
  *
- * Motivations:
+ * Motivations & Guidelines:
  *
- * - Color system variables are defined and then rolled up
- *   in maps. The maps are intended to be used for
- *   generating class name variations, but the original
+ * - Color system variables are defined and then rolled up in maps. The maps are
+ *   intended to be used for generating class name variations, but the original
  *   variables should be used elsewhere for simplicity
+ * - Each color set should follow the naming pattern `<domain>-colors`
  */
 
 @import './functions';
@@ -109,7 +109,6 @@ $theme-colors: map-merge((
 
 $background-colors: () !default;
 $background-colors: map-merge($theme-colors, $background-colors);
-$background-colors: map-merge($grayscale, $background-colors);
 
 // --- Border colors
 
@@ -117,7 +116,6 @@ $border-color:  #ced4da !default;
 
 $border-colors: () !default;
 $border-colors: map-merge($theme-colors, $border-colors);
-$border-colors: map-merge($grayscale, $border-colors);
 $border-colors: map-merge((
   border: $border-color,
 ),$border-colors);

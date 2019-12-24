@@ -38,6 +38,9 @@ ready to work issues._
   truthy values to determine which mode to use
   - darkScheme: `window.matchMedia('(prefers-color-scheme: dark)')`
   - lightScheme: `window.matchMedia('(prefers-color-scheme: light)')`
+- Add support for theming with an `$enable-themes` flag. Ideally theme colors
+  would be css variables, but that would also mean the color calculations need
+  to be replaced (which is probably fine)
 
 <!-- Links -->
 <!-- prettier-ignore-start -->

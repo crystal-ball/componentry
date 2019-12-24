@@ -51,8 +51,7 @@
 }
 @include dom-element-styles(a);
 
-@each $color, $value in $theme-colors {
-  // --- Theme variant
+@each $color, $value in $font-colors {
   .a-#{$color} {
     color: $value;
 
