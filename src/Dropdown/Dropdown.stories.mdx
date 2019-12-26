@@ -16,16 +16,18 @@ import { directions } from '../storybook-resources'
   <Dropdown.Trigger>Trigger</Dropdown.Trigger>
   <Dropdown.Content>
     <h4 className='dropdown-heading'>Available actions</h4>
-    <Dropdown.Item>Interactive Item 1</Dropdown.Item>
-    <Dropdown.Item>Interactive Item 2</Dropdown.Item>
+    <Dropdown.Item>Dropdown Item</Dropdown.Item>
     <Dropdown.Item href='https://github.com/crystal-ball/componentry'>
-      Componentry
+      Anchor item
+    </Dropdown.Item>
+    <Dropdown.Item onClick={action('item click')}>
+      Button item
     </Dropdown.Item>
     <Dropdown.Item onClick={action('item click')} disabled>
-      Disabled Item
+      Disabled button
     </Dropdown.Item>
     <div className='dropdown-divider' />
-    <span className='dropdown-item-text'>Dropdown item text is not interactive</span>
+    <div className='dropdown-item-text'>Dropdown item text is not interactive</div>
   </Dropdown.Content>
 </Dropdown>
 

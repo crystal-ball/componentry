@@ -1,61 +1,5 @@
 /* componentry/src/Dropdown/dropdown */
 
-// Caret mixin creates :after carets for dropdown trigger
-@mixin caret($direction: down) {
-  @if $enable-caret {
-    &::after {
-      display: inline-block;
-      width: 0;
-      height: 0;
-      margin-left: $caret-width * 0.85;
-      vertical-align: $caret-width * 0.85;
-      content: '';
-      @if $direction == down {
-        border-top: $caret-width solid;
-        border-right: $caret-width solid transparent;
-        border-bottom: 0;
-        border-left: $caret-width solid transparent;
-      } @else if $direction == up {
-        border-top: 0;
-        border-right: $caret-width solid transparent;
-        border-bottom: $caret-width solid;
-        border-left: $caret-width solid transparent;
-      } @else if $direction == right {
-        border-top: $caret-width solid transparent;
-        border-right: 0;
-        border-bottom: $caret-width solid transparent;
-        border-left: $caret-width solid;
-      }
-    }
-
-    // For left open dropdowns, show a caret before trigger content instead of
-    // after
-    @if $direction == left {
-      &::after {
-        display: none;
-      }
-
-      &::before {
-        display: inline-block;
-        width: 0;
-        height: 0;
-        margin-right: $caret-width * 0.85;
-        vertical-align: $caret-width * 0.85;
-        content: '';
-        border-top: $caret-width solid transparent;
-        border-right: $caret-width solid;
-        border-bottom: $caret-width solid transparent;
-      }
-    }
-
-    // For triggers without content, remove margin-right so caret is centered in
-    // the trigger
-    &:empty::after {
-      margin-left: 0;
-    }
-  }
-}
-
 //
 // --- Container styles
 //
@@ -73,32 +17,9 @@
 // --- Trigger styles
 //
 
-// TODO: replace decoration styles with a decoration element
 .dropdown-trigger {
   font-size: $dropdown-font-size;
   font-weight: $dropdown-font-weight;
-
-  .top & {
-    @include caret(up);
-  }
-
-  .right & {
-    @include caret(right);
-    &::after {
-      vertical-align: 0;
-    }
-  }
-
-  .bottom & {
-    @include caret(down);
-  }
-
-  .left & {
-    @include caret(left);
-    &::before {
-      vertical-align: 0;
-    }
-  }
 }
 
 //
@@ -194,18 +115,17 @@
 
 // Dropdown items
 // `<button>`-specific styles are denoted with `// For <button>s`
-// TODO: handle cursors for buttons...
 .dropdown-item {
   display: block;
-  width: 100%; // For `<button>`s
+  width: 100%;
   padding: $dropdown-item-padding-y $dropdown-item-padding-x;
-  // Ensure that buttons and anchors inherit dropdown container font-size
+  // Ensure that buttons and anchors inherit dropdown container font styles
   font-size: inherit;
   font-weight: inherit;
   color: $dropdown-anchor-color;
-  text-align: inherit; // For `<button>`s
   line-height: $dropdown-item-line-height;
   white-space: nowrap; // prevent links from randomly breaking onto new lines
+  text-align: inherit; // For `<button>`s
   background-color: transparent; // For `<button>`s
   border: 0; // For `<button>`s
 
