@@ -1,7 +1,7 @@
 /* componentry/src/Heading/heading */
 
 @mixin heading-base {
-  color: $headings-color;
+  color: typography-color(heading);
   font-family: $headings-font-family;
   line-height: $headings-line-height;
   margin-bottom: $headings-margin-bottom;
@@ -27,7 +27,6 @@ $h1: map-merge(
   letter-spacing: map-get($map: $h1, $key: letter-spacing);
   text-transform: map-get($map: $h1, $key: text-transform);
 }
-@include dom-element-styles(h1);
 
 $h2: map-merge(
   (
@@ -48,7 +47,6 @@ $h2: map-merge(
   letter-spacing: map-get($map: $h2, $key: letter-spacing);
   text-transform: map-get($map: $h2, $key: text-transform);
 }
-@include dom-element-styles(h2);
 
 $h3: map-merge(
   (
@@ -69,7 +67,6 @@ $h3: map-merge(
   letter-spacing: map-get($map: $h3, $key: letter-spacing);
   text-transform: map-get($map: $h3, $key: text-transform);
 }
-@include dom-element-styles(h3);
 
 $h4: map-merge(
   (
@@ -90,7 +87,6 @@ $h4: map-merge(
   letter-spacing: map-get($map: $h4, $key: letter-spacing);
   text-transform: map-get($map: $h4, $key: text-transform);
 }
-@include dom-element-styles(h4);
 
 $h5: map-merge(
   (
@@ -111,7 +107,6 @@ $h5: map-merge(
   letter-spacing: map-get($map: $h5, $key: letter-spacing);
   text-transform: map-get($map: $h5, $key: text-transform);
 }
-@include dom-element-styles(h5);
 
 // --------------------------------------------------------
 // Subheadings

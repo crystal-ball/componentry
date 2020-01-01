@@ -32,8 +32,7 @@ $border-colors: (
   mito: #2c3258,
 );
 
-$anchor-color: #5effbd;
-$font-colors: (
+$typography-colors: (
   anchor:   #5effbd,
   heading:  #ffc4e2,
   muted:    #48676a,
@@ -76,7 +75,6 @@ $font-size-sm:     0.8rem;
 $line-height-base: 1.6;
 
 // Headings
-$headings-color: #ffc4e2;
 $headings-font-family:     'Orbitron', sans-serif;
 $headings-font-weight:     400;
 $headings-letter-spacing:  0.1em;

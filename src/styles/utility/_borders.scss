@@ -4,27 +4,27 @@
 // Borders addition
 
 .border {
-  border-color: $border-color;
+  border-color: border-color(default);
   border-width: $border-width;
   border-style: solid;
 }
 .border-top {
-  border-color: $border-color;
+  border-color: border-color(default);
   border-top-style: solid;
   border-top-width: $border-width;
 }
 .border-right {
-  border-color: $border-color;
+  border-color: border-color(default);
   border-right-style: solid;
   border-right-width: $border-width;
 }
 .border-bottom {
-  border-color: $border-color;
+  border-color: border-color(default);
   border-bottom-style: solid;
   border-bottom-width: $border-width;
 }
 .border-left {
-  border-color: $border-color;
+  border-color: border-color(default);
   border-left-style: solid;
   border-left-width: $border-width;
 }

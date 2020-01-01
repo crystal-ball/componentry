@@ -18,9 +18,9 @@
   @return map-get($theme-colors, $key);
 }
 
-/** Return a font color value by key */
-@function font-color($key: 'foreground') {
-  @return map-get($font-colors, $key);
+/** Return a typography color value by key */
+@function typography-color($key: 'foreground') {
+  @return map-get($typography-colors, $key);
 }
 
 // --------------------------------------------------------

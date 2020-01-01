@@ -131,7 +131,7 @@ $btn-states-map: map-merge($btn-defaults, $btn-states);
 // font styles matching anchors (can be used for things like secondary CTAs)
 .btn-anchor {
   background: transparent;
-  color: $anchor-color;
+  color: typography-color(anchor);
   font-weight: $font-weight-normal;
   box-shadow: none;
   // 🤔 Should btn-link reset the text tansform and letter spacing?
@@ -155,8 +155,8 @@ $btn-states-map: map-merge($btn-defaults, $btn-states);
 
 .btn-outline-anchor {
   background: transparent;
-  border-color: $anchor-color;
-  color: $anchor-color;
+  border-color: typography-color(anchor);
+  color: typography-color(anchor);
   font-weight: $font-weight-normal;
   box-shadow: none;
 }
