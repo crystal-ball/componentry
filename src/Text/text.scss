@@ -8,7 +8,6 @@
   // keeping paragraphs a readable length by default
   max-width: $paragraph-max-width;
 }
-@include dom-element-styles(p);
 
 // --------------------------------------------------------
 // Lead
