@@ -7,7 +7,7 @@ import { useTheme } from '../Theme/Theme'
 export default function FormGroup(props) {
   return elem({
     as: 'div',
-    componentClassNames: 'form-group',
+    elemClassName: 'form-group',
     ...useTheme('FormGroup'),
     ...props,
   })

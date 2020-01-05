@@ -1,6 +1,6 @@
 import React, { useContext } from 'react'
 import elem from './elem-factory'
-import { arias as gnArias } from './utils/componentry'
+import { elemArias } from './utils/componentry'
 import { ActiveCtx } from './active-container-factory'
 import { useTheme } from './Theme/Theme'
 
@@ -30,14 +30,14 @@ export default function ActiveContentFactory(
     // Create component content (return optionally wraps content in a width busting
     // container)
     const content = elem({
-      ...gnArias({
+      ...elemArias({
         active,
         activeId,
         guid,
         type: 'content',
         arias,
       }),
-      componentClassNames: baseClass,
+      elemClassName: baseClass,
       children: (
         <>
           {popper && (

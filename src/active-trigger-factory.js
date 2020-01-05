@@ -2,7 +2,7 @@ import React, { useContext } from 'react'
 import elem from './elem-factory'
 import { ActiveCtx } from './active-container-factory'
 import { useTheme } from './Theme/Theme'
-import { actionClasses, arias as gnArias } from './utils/componentry'
+import { actionClasses, elemArias } from './utils/componentry'
 
 /**
  * Factory returns custom `<Trigger />` components defined by the fn options.
@@ -18,8 +18,8 @@ export default function activeTriggerFactory(
     baseClass = `${name}-trigger`,
     // Theme lookups and component display name
     displayName = `${name.slice(0, 1).toUpperCase()}${name.slice(1)}Trigger`,
-    // Overrides component onClick to specified activate/deactivate event
-    triggerType,
+    // Overrides component onClick to specified activate/deactivate action
+    action,
     ...opts
   } = {},
 ) {
@@ -50,19 +50,19 @@ export default function activeTriggerFactory(
     // 2. else if in a compound-active context check if this activeId is active
     // 3. else use opposite of active status
     let onClick
-    if (triggerType) onClick = triggerType === 'activate' ? activate : deactivate
+    if (action) onClick = action === 'activate' ? activate : deactivate
     else if (activeId) onClick = activeId === active ? deactivate : activate
     else onClick = active ? deactivate : activate
 
     return elem({
-      ...gnArias({
+      ...elemArias({
         active,
         activeId,
         guid,
         type: 'trigger',
         arias,
       }),
-      componentClassNames: [
+      elemClassName: [
         baseClass,
         actionClasses(rest),
         // For compound-active contexts add an active class if activeIds match

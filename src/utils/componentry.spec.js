@@ -1,19 +1,19 @@
-import { actionClasses, arias, componentry } from './componentry'
+import { actionClasses, componentry, elemArias } from './componentry'
 
 describe('componentry()', () => {
   test('computes libary utility classes from props', () => {
     ;['xs', 'sm', 'base', 'lg', 'xl'].forEach(size => {
-      expect(componentry({ m: size, p: size }).libraryClassNames[1]).toEqual([
+      expect(componentry({ m: size, p: size }).libClassName[1]).toEqual([
         `m-${size}`,
         `p-${size}`,
       ])
 
-      expect(componentry({ mx: size, px: size }).libraryClassNames[1]).toEqual([
+      expect(componentry({ mx: size, px: size }).libClassName[1]).toEqual([
         `mx-${size}`,
         `px-${size}`,
       ])
 
-      expect(componentry({ my: size, py: size }).libraryClassNames[1]).toEqual([
+      expect(componentry({ my: size, py: size }).libClassName[1]).toEqual([
         `my-${size}`,
         `py-${size}`,
       ])
@@ -28,7 +28,7 @@ describe('componentry()', () => {
           pr: size,
           pb: size,
           pl: size,
-        }).libraryClassNames[1],
+        }).libClassName[1],
       ).toEqual([
         `mt-${size}`,
         `mr-${size}`,
@@ -97,40 +97,40 @@ describe('componentry()', () => {
   })
 
   test('border style classes are computed correctly', () => {
-    expect(componentry({ border: true }).libraryClassNames[0]).toEqual(
+    expect(componentry({ border: true }).libClassName[0]).toEqual(
       expect.objectContaining({
         border: true,
       }),
     )
 
-    expect(componentry({ borderTop: true }).libraryClassNames[0]).toEqual(
+    expect(componentry({ borderTop: true }).libClassName[0]).toEqual(
       expect.objectContaining({
         'border-top': true,
       }),
     )
-    expect(componentry({ borderRight: true }).libraryClassNames[0]).toEqual(
+    expect(componentry({ borderRight: true }).libClassName[0]).toEqual(
       expect.objectContaining({
         'border-right': true,
       }),
     )
-    expect(componentry({ borderBottom: true }).libraryClassNames[0]).toEqual(
+    expect(componentry({ borderBottom: true }).libClassName[0]).toEqual(
       expect.objectContaining({
         'border-bottom': true,
       }),
     )
-    expect(componentry({ borderLeft: true }).libraryClassNames[0]).toEqual(
+    expect(componentry({ borderLeft: true }).libClassName[0]).toEqual(
       expect.objectContaining({
         'border-left': true,
       }),
     )
 
-    expect(componentry({ borderColor: 'primary' }).libraryClassNames[0]).toEqual(
+    expect(componentry({ borderColor: 'primary' }).libClassName[0]).toEqual(
       expect.objectContaining({
         'border-primary': 'primary',
       }),
     )
 
-    expect(componentry({ borderWidth: 'lg' }).libraryClassNames[0]).toEqual(
+    expect(componentry({ borderWidth: 'lg' }).libClassName[0]).toEqual(
       expect.objectContaining({ 'border-width-lg': 'lg' }),
     )
   })
@@ -154,7 +154,7 @@ describe('componentry()', () => {
         position: 'fixed',
         textAlign: 'center',
         uppercase: true,
-      }).libraryClassNames[0],
+      }).libClassName[0],
     ).toEqual({
       'background-primary': 'primary',
       border: true,
@@ -216,7 +216,7 @@ describe('arias()', () => {
       guid: 'test',
     }
 
-    const result = arias(attrs)
+    const result = elemArias(attrs)
 
     // Every aria should be undefined
     possibleArias.forEach(possibleAria => {
@@ -240,7 +240,7 @@ describe('arias()', () => {
       },
     }
 
-    const result = arias(attrs)
+    const result = elemArias(attrs)
 
     // Every aria should have some value
     possibleArias.forEach(possibleAria => {
@@ -264,7 +264,7 @@ describe('arias()', () => {
       },
     }
 
-    const result = arias(attrs)
+    const result = elemArias(attrs)
 
     // Every aria should have some value
     possibleArias.forEach(possibleAria => {
@@ -273,7 +273,7 @@ describe('arias()', () => {
   })
 
   test('it assigns passed role', () => {
-    expect(arias({ active: true, guid: 'test', arias: { role: 'tab' } })).toEqual({
+    expect(elemArias({ active: true, guid: 'test', arias: { role: 'tab' } })).toEqual({
       role: 'tab',
     })
   })
@@ -291,7 +291,7 @@ describe('arias()', () => {
       },
     }
 
-    expect(arias(attrs)).toEqual({
+    expect(elemArias(attrs)).toEqual({
       'aria-controls': 'test',
       'aria-describedby': 'test',
       'aria-haspopup': 'true',
@@ -313,7 +313,7 @@ describe('arias()', () => {
       },
     }
 
-    expect(arias(attrs)).toEqual({
+    expect(elemArias(attrs)).toEqual({
       'aria-hidden': 'false',
       id: 'test-tab1-content',
       'aria-labelledby': 'test-tab1-trigger',
@@ -331,7 +331,7 @@ describe('arias()', () => {
       },
     }
 
-    expect(arias(attrs)).toEqual({
+    expect(elemArias(attrs)).toEqual({
       'aria-expanded': 'true',
       'aria-hidden': 'false',
       'aria-selected': 'true',
@@ -349,7 +349,7 @@ describe('arias()', () => {
       },
     }
 
-    expect(arias(attrs)).toEqual({
+    expect(elemArias(attrs)).toEqual({
       'aria-expanded': 'false',
       'aria-hidden': 'true',
       'aria-selected': 'false',

@@ -11,6 +11,6 @@ export default function Text(props) {
   if (inline) rest.as = 'span'
   if (size) rest.fontSize = size
 
-  return elem({ componentClassNames: [rest.as, { lead }], ...rest })
+  return elem({ elemClassName: [rest.as, { lead }], ...rest })
 }
 Text.displayName = 'Text'

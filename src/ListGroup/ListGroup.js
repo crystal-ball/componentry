@@ -13,7 +13,7 @@ export default function ListGroup(props) {
 
   return elem({
     as: childProps.href || childProps.onClick ? 'div' : 'ul',
-    componentClassNames: 'list-group',
+    elemClassName: 'list-group',
     ...useTheme('ListGroup'),
     ...props,
   })
@@ -32,7 +32,7 @@ ListGroup.Item = function ListGroupItem(props) {
   return elem({
     /* eslint-disable no-nested-ternary */
     as: href || onClick ? (href ? 'a' : 'button') : 'li',
-    componentClassNames: {
+    elemClassName: {
       active,
       disabled: rest.disabled,
       'list-group-item': true,

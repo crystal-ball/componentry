@@ -1,5 +1,5 @@
 import React, { createContext, useContext, useRef } from 'react'
-import classNames from 'classnames'
+import cx from 'classnames'
 import nanoid from 'nanoid'
 import elem from '../elem-factory'
 import { closeBase } from '../Close/Close'
@@ -54,12 +54,14 @@ export default function Modal(props) {
     <ModalCtx.Provider value={{ active, deactivate, guid }}>
       {elem({
         onClick: deactivate,
-        componentClassNames: classNames(
+        elemClassName: [
           'modal-overlay',
           'fade',
           `modal-${scroll}-scroll`,
-          { visible },
-        ),
+          {
+            visible,
+          },
+        ],
         'aria-hidden': String(!active),
         'aria-labelledby': guid,
         role: 'presentation',
@@ -70,7 +72,7 @@ export default function Modal(props) {
             {/* ℹ️ Stop propogation of clicks inside modal or they will trigger the modal background deactivate handler */}
             <div
               ref={contentRef}
-              className={classNames('modal-container', align, {
+              className={cx('modal-container', align, {
                 visible,
                 [`modal-${size}`]: size,
               })}
@@ -113,7 +115,7 @@ Modal.Header = function ModalHeader(props) {
   const { deactivate } = useContext(ModalCtx)
 
   return elem({
-    componentClassNames: 'modal-header',
+    elemClassName: 'modal-header',
     children: (
       <>
         {children}
@@ -129,7 +131,7 @@ Modal.Title = function ModalTitle(props) {
   return elem({
     as: 'h2',
     id: useContext(ModalCtx).guid,
-    componentClassNames: 'modal-title',
+    elemClassName: 'modal-title',
     ...useTheme('Modaltitle'),
     ...props,
   })
@@ -142,7 +144,7 @@ Modal.Body = function ModalBody(props) {
 
   return elem({
     ref: bodyRef,
-    componentClassNames: 'modal-body',
+    elemClassName: 'modal-body',
     ...useTheme('ModalBody'),
     ...props,
   })
@@ -151,7 +153,7 @@ Modal.Body.displayName = 'ModalBody'
 
 Modal.Footer = function ModalFooter(props) {
   return elem({
-    componentClassNames: 'modal-footer',
+    elemClassName: 'modal-footer',
     ...useTheme('ModalFooter'),
     ...props,
   })

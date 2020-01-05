@@ -8,7 +8,7 @@ export default function Flex(props) {
   }
 
   return elem({
-    componentClassNames: {
+    elemClassName: {
       'd-flex': !inline,
       'd-inline-flex': inline,
       // column, column-reverse, row, row-reverse

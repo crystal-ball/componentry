@@ -3,9 +3,6 @@
  * @module
  */
 
-// --------------------------------------------------------
-// Target class names generator
-
 /**
  * Fn generates the classes for action elements
  */
@@ -21,9 +18,9 @@ export function actionClasses({ block, color, disabled, outline, size, variant }
   }
 }
 
-// --------------------------------------------------------
-// Nav class names generator
-
+/**
+ * Function generates the classes for nav elements
+ */
 export function navClasses({ fill, justify, pills, vertical }) {
   return {
     'nav-vertical': vertical,
@@ -35,17 +32,6 @@ export function navClasses({ fill, justify, pills, vertical }) {
 
 // --------------------------------------------------------
 // Library shared className+styles generator
-
-// Need border, borderTop, borderRight, etc. to set borderWidth (style)
-// Need borderColor to set `.border-<COLOR>` class
-// Need borderRadius
-
-// border will set default border width, color
-
-// border: 1px solid $border-color;
-// borderTop: 1px solid $border-color
-
-// borderColor: border color
 
 const classNamesProps = {
   background: 1,
@@ -147,6 +133,7 @@ export function componentry({
   activate,
   deactivate,
   defaultActive,
+  guid,
   onActivate,
   onActivated,
   onDeactivate,
@@ -192,7 +179,7 @@ export function componentry({
   })
 
   return {
-    libraryClassNames: [generateClassNames(classNames), spacingCx],
+    libClassName: [generateClassNames(classNames), spacingCx],
     rest,
     libraryStyles: styles,
   }
@@ -204,7 +191,7 @@ export function componentry({
 /**
  * Return object of aria attributes using options
  */
-export function arias({ active, activeId, guid, type, arias: configArias = {} }) {
+export function elemArias({ active, activeId, guid, type, arias = {} }) {
   const {
     controls,
     describedby,
@@ -215,7 +202,7 @@ export function arias({ active, activeId, guid, type, arias: configArias = {} })
     labelledby,
     role,
     selected,
-  } = configArias
+  } = arias
   const _arias = {}
 
   if (controls) _arias['aria-controls'] = guid

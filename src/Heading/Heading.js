@@ -9,7 +9,7 @@ export default function Heading(props) {
   const { as, display, ...rest } = { as: 'h1', ...useTheme('Heading'), ...props }
   return elem({
     as,
-    componentClassNames: [as, { [`display-${display}`]: display }],
+    elemClassName: [as, { [`display-${display}`]: display }],
     ...rest,
   })
 }

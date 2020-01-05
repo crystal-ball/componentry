@@ -5,7 +5,7 @@ export default function Badge(props) {
   const { color, rounded, ...rest } = { ...useTheme('Badge'), ...props }
 
   return elem({
-    componentClassNames: {
+    elemClassName: {
       badge: true,
       [`badge-${color}`]: color,
       'badge-rounded': rounded,

@@ -5,7 +5,7 @@ import elem from '../elem-factory'
 export const closeBase = {
   'aria-label': 'close',
   as: 'button',
-  componentClassNames: 'close',
+  elemClassName: 'close',
   type: 'button',
   children: (
     <svg className='icon icon-close font' role='img'>

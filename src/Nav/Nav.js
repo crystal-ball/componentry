@@ -5,7 +5,7 @@ import { navClasses } from '../utils/componentry'
 export default function Nav(props) {
   return elem({
     as: 'nav',
-    componentClassNames: ['nav', navClasses(props)],
+    elemClassName: ['nav', navClasses(props)],
     ...useTheme('Nav'),
     ...props,
   })
@@ -23,7 +23,7 @@ Nav.Item = function NavItem(props) {
   return elem({
     /* eslint-disable no-nested-ternary */
     as: href || onClick ? (href ? 'a' : 'button') : 'li',
-    componentClassNames: [
+    elemClassName: [
       'nav-item',
       {
         'nav-item-action': href || onClick,

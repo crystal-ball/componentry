@@ -30,7 +30,7 @@ export default function Alert(props) {
 
   return elem({
     role: 'alert',
-    componentClassNames: {
+    elemClassName: {
       alert: true,
       fade: dismissible, // Only include opacity transition class for disimissible alerts
       visible,

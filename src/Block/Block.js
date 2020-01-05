@@ -5,7 +5,7 @@ export default function Block(props) {
   const { inline, ...rest } = { ...useTheme('Block'), ...props }
 
   return elem({
-    componentClassNames: {
+    elemClassName: {
       'd-block': !inline,
       'd-inline-block': inline,
     },
