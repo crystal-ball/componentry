@@ -96,6 +96,7 @@ $border-colors: map-merge($theme-colors, $border-colors);
 $typography-colors: () !default;
 $typography-colors: map-merge((
   anchor:   #17a2b8,
+  code:     #ff57ac,
   heading:  #242424,
   lead:     #242424,
   muted:    #6c757d,
@@ -433,8 +434,8 @@ $dropdown-font-weight-sm: $font-weight-base !default;
 $dropdown-font-size-lg: $font-size-lg !default;
 $dropdown-font-weight-lg: $font-weight-base !default;
 
-$dropdown-anchor-color: gray('900') !default;
-$dropdown-anchor-hover-color: darken(gray('900'), 5%) !default;
+$dropdown-anchor-color: theme-color(foreground) !default;
+$dropdown-anchor-hover-color: darken(theme-color(foreground), 5%) !default;
 $dropdown-anchor-hover-bg: gray('100') !default;
 
 $dropdown-anchor-active-color: $active-foreground !default;
@@ -727,7 +728,6 @@ $blockquote-small-color: gray('600') !default;
 $blockquote-font-size: ($font-size-base * 1.25) !default;
 
 $code-font-size: 87.5% !default;
-$code-color: map-get($theme-colors, danger) !default;
 
 $dt-font-weight: $font-weight-bold !default;
 

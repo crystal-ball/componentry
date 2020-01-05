@@ -13,7 +13,7 @@ export default Popover
 
 Popover.Body = function PopoverBody(props) {
   return elem({
-    componentClassNames: 'popover-body',
+    elemClassName: 'popover-body',
     ...useTheme('PopoverBody'),
     ...props,
   })
@@ -28,7 +28,7 @@ Popover.Content = activeContent('popover', {
 Popover.Heading = function PopoverHeading(props) {
   return elem({
     as: 'h3',
-    componentClassNames: 'popover-heading',
+    elemClassName: 'popover-heading',
     ...useTheme('PopoverHeading'),
     ...props,
   })

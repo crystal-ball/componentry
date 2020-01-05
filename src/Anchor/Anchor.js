@@ -14,7 +14,7 @@ export default function Anchor(props) {
   }
 
   return elem({
-    componentClassNames: actionClasses(merged),
+    elemClassName: actionClasses(merged),
     ...merged,
   })
 }

@@ -199,7 +199,7 @@ pre {
 
 code {
   font-size: $code-font-size;
-  color: $code-color;
+  color: typography-color(code);
   word-wrap: break-word;
 
   // Streamline the style when inside anchors to avoid broken underline and more

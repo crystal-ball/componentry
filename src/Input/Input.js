@@ -21,7 +21,7 @@ Input.Field = function InputField(props) {
   return elem({
     as: 'input',
     type: 'text',
-    componentClassNames: 'input-field',
+    elemClassName: 'input-field',
     id: useContext(InputCtx).guid,
     ...useTheme('InputField'),
     ...props,
@@ -32,7 +32,7 @@ Input.Field.displayName = 'InputField'
 Input.Label = function InputLabel(props) {
   return elem({
     as: 'label',
-    componentClassNames: 'input-label',
+    elemClassName: 'input-label',
     htmlFor: useContext(InputCtx).guid,
     ...useTheme('InputLabel'),
     ...props,
@@ -42,7 +42,7 @@ Input.Label.displayName = 'InputLabel'
 
 Input.Error = function InputError(props) {
   return elem({
-    componentClassNames: 'input-error',
+    elemClassName: 'input-error',
     ...useTheme('InputError'),
     ...props,
   })
@@ -51,7 +51,7 @@ Input.Error.displayName = 'InputError'
 
 Input.Description = function InputDescription(props) {
   return elem({
-    componentClassNames: 'input-description',
+    elemClassName: 'input-description',
     ...useTheme('InputDescription'),
     ...props,
   })

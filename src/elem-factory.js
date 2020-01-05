@@ -1,5 +1,5 @@
 import { createElement } from 'react'
-import classnames from 'classnames'
+import cx from 'classnames'
 import { componentry } from './utils/componentry'
 
 /**
@@ -13,7 +13,7 @@ import { componentry } from './utils/componentry'
 export default function elementFactory({
   as = 'div',
   className,
-  componentClassNames,
+  elemClassName,
   style,
   themeClassName,
   ...merged
@@ -30,11 +30,11 @@ export default function elementFactory({
 
   return createElement(as, {
     style: { ...c.libraryStyles, ...style },
-    className: classnames(
-      themeClassName, // Context theme
-      className, // JSX className prop
-      componentClassNames, // Component props computed classes
-      c.libraryClassNames, // Library props computed classes
+    className: cx(
+      themeClassName, // User theme cx
+      elemClassName, // Library component cx
+      className, // User JSX cx
+      c.libClassName, // Library system cx
     ),
     ...c.rest,
   })

@@ -22,7 +22,7 @@ export default function Button(props) {
   }
 
   return elem({
-    componentClassNames: actionClasses(merged),
+    elemClassName: actionClasses(merged),
     ...merged,
   })
 }

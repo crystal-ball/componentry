@@ -5,7 +5,7 @@ import { useTheme } from '../Theme/Theme'
  * Card component is a simple wrapper for creating markup for card elements
  */
 export default function Card(props) {
-  return elem({ componentClassNames: 'card', ...useTheme('Card'), ...props })
+  return elem({ elemClassName: 'card', ...useTheme('Card'), ...props })
 }
 Card.displayName = 'Card'
 
@@ -13,7 +13,7 @@ Card.displayName = 'Card'
  * Card Body
  */
 Card.Body = function CardBody(props) {
-  return elem({ componentClassNames: 'card-body', ...useTheme('CardBody'), ...props })
+  return elem({ elemClassName: 'card-body', ...useTheme('CardBody'), ...props })
 }
 Card.Body.displayName = 'CardBody'
 
@@ -21,7 +21,7 @@ Card.Body.displayName = 'CardBody'
  * Card Footer
  */
 Card.Footer = function CardFooter(props) {
-  return elem({ componentClassNames: 'card-footer', ...useTheme('CardFooter'), ...props })
+  return elem({ elemClassName: 'card-footer', ...useTheme('CardFooter'), ...props })
 }
 Card.Footer.displayName = 'CardFooter'
 
@@ -29,7 +29,7 @@ Card.Footer.displayName = 'CardFooter'
  * Card Header
  */
 Card.Header = function CardHeader(props) {
-  return elem({ componentClassNames: 'card-header', ...useTheme('CardHeader'), ...props })
+  return elem({ elemClassName: 'card-header', ...useTheme('CardHeader'), ...props })
 }
 Card.Header.displayName = 'CardHeader'
 
@@ -39,7 +39,7 @@ Card.Header.displayName = 'CardHeader'
 Card.Title = function CardTitle(props) {
   return elem({
     as: 'h4',
-    componentClassNames: 'card-title',
+    elemClassName: 'card-title',
     ...useTheme('CardTitle'),
     ...props,
   })

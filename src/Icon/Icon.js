@@ -11,7 +11,7 @@ export default function Icon(props) {
   return elem({
     as: 'svg',
     role: 'img',
-    componentClassNames: [`icon icon-${id}`, { font }],
+    elemClassName: [`icon icon-${id}`, { font }],
     children: <use href={`#${id}`} xlinkHref={`#${id}`} />,
     ...rest,
   })

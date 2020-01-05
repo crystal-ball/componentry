@@ -164,7 +164,7 @@ export default function activeContainerFactory(name, opts = {}) {
       <ActiveCtx.Provider value={activeValues}>
         {elem({
           'data-id': guid,
-          componentClassNames: [name, direction, { [`${name}-${size}`]: size }],
+          elemClassName: [name, direction, { [`${name}-${size}`]: size }],
 
           // For elements with mouse events we need to know when the mouse event
           // occurs on the parent element, not the trigger element
