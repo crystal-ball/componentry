@@ -48,7 +48,7 @@ exports[`<Close /> snapshots renders correctly 1`] = `
         </p>
       </div>
       <div
-        class="btn-container-x modal-footer"
+        class="modal-footer btn-container-x"
       >
         Modal Footer
       </div>

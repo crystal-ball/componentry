@@ -18,7 +18,7 @@ exports[`<Alert /> snapshots renders correctly 1`] = `
   </div>
   <button
     aria-label="close"
-    class="alert-close text-danger close"
+    class="close alert-close text-danger"
     type="button"
   >
     <svg
