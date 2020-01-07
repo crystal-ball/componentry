@@ -7,7 +7,7 @@ export default function DocsTitle({ title, experimental }) {
       <div>
         <small>
           Status:{' '}
-          <span className={`text-${experimental ? 'warning' : 'success'}`}>
+          <span className={`font-color-${experimental ? 'warning' : 'success'}`}>
             {experimental ? 'Experimental' : 'Stable'}
           </span>
         </small>

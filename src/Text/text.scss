@@ -9,11 +9,14 @@
   max-width: $paragraph-max-width;
 }
 
-// --------------------------------------------------------
-// Lead
-
 .lead {
   color: typography-color(lead);
   font-size: $lead-font-size;
   font-weight: $lead-font-weight;
+}
+
+@if ($enable-dom-styles) {
+  p {
+    @extend .p;
+  }
 }

@@ -50,6 +50,13 @@
   }
 }
 
+@if ($enable-dom-styles) {
+  a {
+    @extend .a;
+  }
+}
+
+// Custom color style is needed to include :hover, and :focus styles
 @each $color, $value in $typography-colors {
   .a-#{$color} {
     color: $value;
