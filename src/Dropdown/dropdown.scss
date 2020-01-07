@@ -75,7 +75,7 @@
   }
 
   // Aligns dropdown content to right edge of dropdown trigger instead of left
-  &.dropdown-content-right {
+  &.align-right {
     right: 0;
     left: auto;
   }
@@ -122,7 +122,7 @@
   // Ensure that buttons and anchors inherit dropdown container font styles
   font-size: inherit;
   font-weight: inherit;
-  color: $dropdown-anchor-color;
+  color: $dropdown-action-item-color;
   line-height: $dropdown-item-line-height;
   white-space: nowrap; // prevent links from randomly breaking onto new lines
   text-align: inherit; // For `<button>`s
@@ -131,20 +131,20 @@
 
   &:hover,
   &:focus {
-    color: $dropdown-anchor-hover-color;
+    color: $dropdown-action-item-hover-color;
     text-decoration: none;
-    background: gradient-bg($dropdown-anchor-hover-bg);
+    background: gradient-bg($dropdown-action-item-hover-bg);
   }
 
   &.active,
   &:active {
-    color: $dropdown-anchor-active-color;
+    color: $dropdown-active-item-color;
     text-decoration: none;
-    background: gradient-bg($dropdown-anchor-active-bg);
+    background: gradient-bg($dropdown-active-item-bg);
   }
 
   &.disabled {
-    color: $dropdown-anchor-disabled-color;
+    color: $dropdown-disabled-item-color;
     background-color: transparent;
   }
 }
@@ -153,14 +153,15 @@
 .dropdown-item-text {
   display: block;
   padding: $dropdown-item-padding-y $dropdown-item-padding-x;
-  color: $dropdown-anchor-color;
+  color: typography-color(foreground);
 }
 
 // Dropdown section headers
 .dropdown-heading {
   display: block;
   padding: $dropdown-padding-y $dropdown-item-padding-x;
-  margin-bottom: 0; // for use with heading elements
+  margin-top: 0;
+  margin-bottom: 0;
   font-size: $font-size-sm;
   color: $dropdown-heading-color;
   white-space: nowrap; // as with > li > a

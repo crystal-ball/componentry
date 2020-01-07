@@ -186,7 +186,7 @@ pre {
   margin-top: 0; // 1
   margin-bottom: 1rem; // 2
   overflow: auto; // 3
-  font-size: $code-font-size;
+  font-size: $pre-font-size;
   color: $pre-color;
 
   // Account for some code outputs that place code tags in pre tags

@@ -19,19 +19,6 @@ Set the background color to any theme color as well as any color added to the
   ))}
 </div>
 
-### Grayscale
-
-Set the background color to any shade from `$grayscale` map.
-
-<div className='d-flex justify-content-center'>
-  {grayscale.map(gray => (
-    <div key={gray}>
-      <Block width={75} height={75} background={gray} mx='sm' className='radius' />
-      <small className='small ml-2'>.background-{gray}</small>
-    </div>
-  ))}
-</div>
-
 ### Transparent
 
 Add `.bg-transparent` to override the background to be transparent.
