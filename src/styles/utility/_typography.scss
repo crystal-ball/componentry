@@ -3,7 +3,7 @@
 // --------------------------------------------------------
 // Font Families
 
-.text-monospace {
+.monospace {
   font-family: $font-family-monospace;
   font-size: $font-size-monospace;
 }
@@ -14,21 +14,6 @@
 @each $color, $value in $typography-colors {
   .font-color-#{$color} {
     color: $value !important;
-  }
-  a.font-color-#{color} {
-    @include hover-focus {
-      color: darken($value, 10%) !important;
-    }
-  }
-
-  // DEPRECATED: Support BS `text-<color>` classes
-  .text-#{$color} {
-    color: $value !important;
-  }
-  a.text-#{$color} {
-    @include hover-focus {
-      color: darken($value, 10%) !important;
-    }
   }
 }
 
@@ -56,27 +41,6 @@
 }
 
 .font-size-xl {
-  font-size: $font-size-xl;
-}
-
-// DEPRECATED: Support BS `text-<size>` classes
-.text-xs {
-  font-size: $font-size-xs;
-}
-
-.text-sm {
-  font-size: $font-size-sm;
-}
-
-.text-base {
-  font-size: $font-size-base;
-}
-
-.text-lg {
-  font-size: $font-size-lg;
-}
-
-.text-xl {
   font-size: $font-size-xl;
 }
 
@@ -129,27 +93,27 @@
 // --------------------------------------------------------
 // Italic
 
-.font-style-italic {
+.italic {
   font-style: italic !important;
 }
 
 // --------------------------------------------------------
 // Transforms
 
-.text-lowercase {
+.lowercase {
   text-transform: lowercase !important;
 }
-.text-uppercase {
+.uppercase {
   text-transform: uppercase !important;
 }
-.text-capitalize {
+.capitalize {
   text-transform: capitalize !important;
 }
 
 // --------------------------------------------------------
 // Decoration
 
-.text-underline {
+.underline {
   text-decoration: underline !important;
 
   &:hover,
@@ -158,7 +122,7 @@
   }
 }
 
-.text-line-through {
+.line-through {
   text-decoration: line-through !important;
 }
 
@@ -212,17 +176,29 @@
 }
 
 // --------------------------------------------------------
-// Emphasis
+// Elements
 
+// Elements that are side comments
 .small {
   color: $small-font-color;
   font-size: $small-font-size;
   font-weight: $small-font-weight;
 }
 
+// Elements with contextual relevance, eg a search match
 .mark {
   padding: $mark-padding;
   background-color: $mark-bg;
+}
+
+@if ($enable-dom-styles) {
+  small {
+    @extend .small;
+  }
+
+  mark {
+    @extend .mark;
+  }
 }
 
 // --------------------------------------------------------

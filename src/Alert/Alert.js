@@ -49,7 +49,10 @@ export default function Alert(props) {
 
         {/* Render a close button or null depending on configs */}
         {dismissible && (
-          <Alert.Close className={`alert-close text-${color}`} onClick={deactivate} />
+          <Alert.Close
+            className={`alert-close font-color-${color}`}
+            onClick={deactivate}
+          />
         )}
       </>
     ),
