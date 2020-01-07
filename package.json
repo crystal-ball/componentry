@@ -68,7 +68,7 @@
     "babel-loader": "8.0.6",
     "css-loader": "3.4.1",
     "eslint-config-eloquence": "12.17.0",
-    "husky": "3.1.0",
+    "husky": "4.0.0",
     "jest": "24.9.0",
     "node-sass": "4.13.0",
     "react": "16.12.0",
