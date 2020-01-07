@@ -49,19 +49,6 @@ Set the color of a border to any theme color as well as any color added to the
   ))}
 </div>
 
-### Grayscale
-
-Set the border color to any shade from the `$grayscale` map.
-
-<div className='d-flex justify-content-center'>
-  {grayscale.map(gray => (
-    <div key={gray}>
-      <Block width={75} height={10} border borderColor={gray} mx='sm' background='100' />
-      <small className='small ml-2'>.border-{gray}</small>
-    </div>
-  ))}
-</div>
-
 ### Border Width
 
 Increase the width of a border using the `lg` and `xl` border width classes.

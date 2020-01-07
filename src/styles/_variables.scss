@@ -237,11 +237,11 @@ $h3: () !default;
 $h4: () !default;
 $h5: () !default;
 
-$h1-font-size:   ($font-size-base * 4.5)   !default; // 72 ~ 1.5x
-$h2-font-size:   ($font-size-base * 3.0)   !default; // 48 ~ 1.5x
-$h3-font-size:   ($font-size-base * 2.0)   !default; // 32 ~ 1.33x
-$h4-font-size:   ($font-size-base * 1.5)   !default; // 24 ~ 1.33x
-$h5-font-size:   ($font-size-base * 1.125) !default; // 20 ~ 1.125x
+$h1-font-size:   4.5rem   !default; // 72 ~ 1.5x
+$h2-font-size:   3.0rem   !default; // 48 ~ 1.5x
+$h3-font-size:   2.0rem   !default; // 32 ~ 1.33x
+$h4-font-size:   1.5rem   !default; // 24 ~ 1.33x
+$h5-font-size:   1.125rem !default; // 20 ~ 1.125x
 
 $h1-font-weight:  $headings-font-weight !default;
 $h2-font-weight:  $headings-font-weight !default;
@@ -268,8 +268,7 @@ $paragraph-margin-bottom:  1rem !default;
 $paragraph-max-width:      null !default;
 
 // Lead paragraphs
-$lead-font-color:   typography-color(lead) !default;
-$lead-font-size:    ($font-size-base * 1.25) !default;
+$lead-font-size:    $font-size-xl !default;
 $lead-font-weight:  $font-weight-light !default;
 
 // --------------------------------------------------------
@@ -405,7 +404,7 @@ $card-columns-margin: $card-spacer-y !default;
 // --------------------------------------------------------
 // Close
 
-$close-font-size: $font-size-base * 1.5 !default;
+$close-font-size: 1.5rem !default;
 $close-font-weight: $font-weight-bold !default;
 $close-color: theme-color(foreground) !default;
 $close-text-shadow: 0 1px 0 theme-color(background) !default;
@@ -417,46 +416,48 @@ $close-hover-decoration: $close-decoration !default;
 // --------------------------------------------------------
 // Dropdowns
 
-$dropdown-min-width: 10rem !default;
-$dropdown-padding-y: 0.5rem !default;
-$dropdown-spacer: 0.125rem !default;
-$dropdown-bg: theme-color(background) !default;
-$dropdown-border-color: border-color(default) !default;
+$dropdown-min-width:     10rem !default;
+$dropdown-padding-y:     0.5rem !default;
+$dropdown-spacer:        0.125rem !default;
+$dropdown-bg:            theme-color(background) !default;
+$dropdown-border-color:  border-color(default) !default;
 $dropdown-border-radius: $border-radius !default;
-$dropdown-border-width: $border-width !default;
-$dropdown-divider-bg: gray('200') !default;
-$dropdown-box-shadow: 0 0.5rem 1rem rgba($box-shadow-shadow, 0.175) !default;
-$dropdown-font-size: $font-size-base !default;
-$dropdown-font-weight: $font-weight-base !default;
+$dropdown-border-width:  $border-width !default;
+$dropdown-divider-bg:    gray('200') !default;
+$dropdown-box-shadow:    0 0.5rem 1rem rgba($box-shadow-shadow, 0.175) !default;
 
-$dropdown-font-size-sm: $font-size-sm !default;
-$dropdown-font-weight-sm: $font-weight-base !default;
-$dropdown-font-size-lg: $font-size-lg !default;
-$dropdown-font-weight-lg: $font-weight-base !default;
+$dropdown-font-size:         $font-size-base !default;
+$dropdown-font-weight:       $font-weight-base !default;
+$dropdown-item-padding-y:    0.25rem !default;
+$dropdown-item-padding-x:    1.5rem !default;
+$dropdown-item-line-height:  $line-height-base !default; // TODO: sm/lg line heights
 
-$dropdown-anchor-color: theme-color(foreground) !default;
-$dropdown-anchor-hover-color: darken(theme-color(foreground), 5%) !default;
-$dropdown-anchor-hover-bg: gray('100') !default;
-
-$dropdown-anchor-active-color: $active-foreground !default;
-$dropdown-anchor-active-bg: $active-background !default;
-
-$dropdown-anchor-disabled-color: gray('600') !default;
-
-$dropdown-item-padding-y: 0.25rem !default;
-$dropdown-item-padding-x: 1.5rem !default;
-$dropdown-item-line-height: $line-height-base !default;
-
+$dropdown-font-size-sm:      $font-size-sm !default;
+$dropdown-font-weight-sm:    $font-weight-base !default;
 $dropdown-item-padding-y-sm: ($dropdown-item-padding-y * 0.8) !default;
 $dropdown-item-padding-x-sm: ($dropdown-item-padding-x * 0.8) !default;
 
+$dropdown-font-size-lg:      $font-size-lg !default;
+$dropdown-font-weight-lg:    $font-weight-base !default;
 $dropdown-item-padding-y-lg: ($dropdown-item-padding-y * 1.1) !default;
 $dropdown-item-padding-x-lg: ($dropdown-item-padding-x * 1.1) !default;
 
-$dropdown-heading-color: gray('600') !default;
+// Dropdown items are assumed to be action elements (a or btn), default styling
+// is to not override the action element styles, but user's can define dropdown
+// action item specific styles with these variables.
+$dropdown-action-item-color:        null !default;
+$dropdown-action-item-hover-color:  null !default;
+$dropdown-action-item-hover-bg:     darken(theme-color(background), 7.5%) !default;
 
-$dropdown-trigger-anchor-border-color: typography-color(anchor) !default;
-$dropdown-trigger-anchor-hover-border-color: $anchor-hover-color !default;
+// Active state
+$dropdown-active-item-color:   $active-foreground !default;
+$dropdown-active-item-bg:      $active-background !default;
+
+// Disabled state
+$dropdown-disabled-item-color: gray('600') !default;
+
+// Dropdown headings
+$dropdown-heading-color:       gray('600') !default;
 
 // --------------------------------------------------------
 // Form groups
@@ -725,7 +726,7 @@ $tooltip-arrow-color: $tooltip-bg !default;
 // HTML elements
 
 $blockquote-small-color: gray('600') !default;
-$blockquote-font-size: ($font-size-base * 1.25) !default;
+$blockquote-font-size: $font-size-xl !default;
 
 $code-font-size: 87.5% !default;
 
