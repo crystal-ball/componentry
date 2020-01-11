@@ -99,8 +99,9 @@ $typography-colors: map-merge((
   anchor:   #17a2b8,
   code:     #ff57ac,
   heading:  #242424,
+  caption:  #6c757d,
+  disabled: #6c757d,
   lead:     #242424,
-  muted:    #6c757d,
   ), $typography-colors);
   $typography-colors: map-merge($typography-colors, $theme-colors);
 
@@ -226,7 +227,7 @@ $line-height-xl:       2    !default;
 // Headings
 $headings-font-family:     null !default;
 $headings-font-style:      null !default;
-$headings-font-weight:     500 !default;
+$headings-font-weight:     $font-weight-normal !default;
 $headings-letter-spacing:  null !default;
 $headings-text-transform:  null !default;
 $headings-line-height:     1.25 !default;
@@ -251,22 +252,32 @@ $h4-font-weight:  $headings-font-weight !default;
 $h5-font-weight:  $headings-font-weight !default;
 
 // Subheadings
-$subheading-font-color:   typography-color(muted) !default;
+$subheading-font-color:   typography-color(caption) !default;
 $subheading-font-size:    80% !default;
-$subheading-font-weight:  $font-weight-light !default;
+$subheading-font-weight:  $font-weight-normal !default;
+
+$subheading1-font-size:   ($h1-font-size * 0.8) !default;
+$subheading2-font-size:   ($h2-font-size * 0.8) !default;
+$subheading3-font-size:   ($h3-font-size * 0.8) !default;
+$subheading4-font-size:   ($h4-font-size * 0.8) !default;
+$subheading5-font-size:   ($h5-font-size * 0.8) !default;
 
 // Display headings
-$display1-size:    6rem !default;
-$display2-size:    5rem !default;
-
-$display1-weight:  300 !default;
-$display2-weight:  300 !default;
-
 $display-line-height: $headings-line-height !default;
+
+$display1-font-size:    6rem !default;
+$display2-font-size:    5rem !default;
+
+$display1-font-weight:  300 !default;
+$display2-font-weight:  300 !default;
 
 // Paragraphs
 $paragraph-margin-bottom:  1rem !default;
 $paragraph-max-width:      null !default;
+
+// Caption paragraphs
+$caption-font-size: $font-size-sm !default;
+$caption-font-weight: $font-weight-light !default;
 
 // Lead paragraphs
 $lead-font-size:    $font-size-xl !default;
@@ -339,7 +350,7 @@ $btn-active-decoration: none !default;
 
 $btn-disabled-opacity: 0.65 !default;
 $btn-disabled-border-width: $btn-border-width !default;
-$btn-link-disabled-color: font-color(muted) !default;
+$btn-link-disabled-color: font-color(disabled) !default;
 
 $btn-padding-y-sm: 0.25rem !default;
 $btn-padding-x-sm: 0.5rem !default;
@@ -521,7 +532,7 @@ $input-label-letter-spacing: 0 !default;
 $input-label-text-transform: none !default;
 
 // Input description
-$input-description-color: typography-color(muted) !default;
+$input-description-color: typography-color(caption) !default;
 $input-description-font-size: $font-size-sm !default;
 $input-description-font-style: normal !default;
 $input-description-margin-y: 0.25rem !default;
@@ -758,9 +769,7 @@ $pre-color: gray('200') !default;
 $pre-font-size: $code-font-size !default;
 $pre-scrollable-max-height: 340px !default;
 
-$small-font-color: typography-color(muted) !default;
 $small-font-size: 75% !default;
-$small-font-weight: $font-weight-light !default;
 
 $sub-sup-font-size: 0.75em !default;
 
@@ -786,4 +795,4 @@ $table-dark-color: theme-color(background) !default;
 
 $table-striped-order: odd !default;
 
-$table-caption-color: typography-color(muted) !default;
+$table-caption-color: typography-color(caption) !default;

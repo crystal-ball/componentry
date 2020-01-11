@@ -2,7 +2,7 @@
 
 exports[`<Text /> snapshots renders correctly 1`] = `
 <p
-  class="p"
+  class="body"
 >
   text
 </p>

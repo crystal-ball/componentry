@@ -176,32 +176,6 @@
 }
 
 // --------------------------------------------------------
-// Elements
-
-// Elements that are side comments
-.small {
-  color: $small-font-color;
-  font-size: $small-font-size;
-  font-weight: $small-font-weight;
-}
-
-// Elements with contextual relevance, eg a search match
-.mark {
-  padding: $mark-padding;
-  background-color: $mark-bg;
-}
-
-@if ($enable-dom-styles) {
-  small {
-    @extend .small;
-  }
-
-  mark {
-    @extend .mark;
-  }
-}
-
-// --------------------------------------------------------
 // Lists
 
 .list-unstyled {
