@@ -1,30 +1,15 @@
+/* eslint-disable react/no-multi-comp */
 import React, { createElement } from 'react'
-import { addDecorator, addParameters, configure } from '@storybook/react'
+import { addDecorator, addParameters } from '@storybook/react'
 import { Meta } from '@storybook/addon-docs/blocks'
-import { themes } from '@storybook/theming'
 import { withKnobs } from '@storybook/addon-knobs'
 
-// --- Load Componentry and Storybook styles ---
+// --- Load Componentry styles ---
 
 import './storybook.scss'
 import DocsTitle from './components/DocsTitle'
 
 // --- Setup global decorators --
-
-// Customize dispaly of Storybook to be hecka rad
-addParameters({
-  options: {
-    // Show addon panel by default on right
-    showPanel: true,
-    panelPosition: 'right',
-    // Custom theming
-    theme: {
-      ...themes.light,
-      brandTitle: 'Componentry',
-      brandImage: null,
-    },
-  },
-})
 
 // Override the Styled Components that the MDX provider uses for standard DOM
 // elements so that we can use Componentry styles classNames.
@@ -57,7 +42,3 @@ addDecorator(withKnobs)
 
 // Wrap all stories in a screen wrapper
 addDecorator(storyFn => <div className='storybook-screen'>{storyFn()}</div>)
-
-// --- Require all stories in /src 🎉 --
-
-configure(require.context('../src', true, /\.stories\.(js|mdx)$/), module)
