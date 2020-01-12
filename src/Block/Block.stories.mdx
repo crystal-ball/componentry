@@ -2,9 +2,9 @@ import { boolean } from '@storybook/addon-knobs'
 
 import Block from './Block'
 
-<Meta title='Components|Block' component={Block} />
+<Meta title='Components/Block' component={Block} />
 
-<DocsTitle title="Block" />
+<DocsTitle title='Block' />
 
 ## Block elements
 
@@ -20,6 +20,10 @@ Block components create block level containers:
 Pass A truthy `inline` prop to create an block element with `display: inline-block`:
 
 <div>
-  <Block inline border>Block content</Block>
-  <Block inline border>Block content</Block>
+  <Block inline border>
+    Block content
+  </Block>
+  <Block inline border>
+    Block content
+  </Block>
 </div>

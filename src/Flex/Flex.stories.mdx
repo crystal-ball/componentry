@@ -2,9 +2,9 @@ import { boolean, select } from '@storybook/addon-knobs'
 
 import Flex from './Flex'
 
-<Meta title='Components|Flex' component={Flex} />
+<Meta title='Components/Flex' component={Flex} />
 
-<DocsTitle title="Flex" experimental/>
+<DocsTitle title='Flex' experimental />
 
 ## Block containers
 
@@ -53,7 +53,7 @@ Override the default direction of `row` with the `direction` prop:
 
 Set the flex items justification and alignment with the `justify` and `align` props:
 
-<Flex justify="center" align="center">
+<Flex justify='center' align='center'>
   {[1, 2, 3].map(key => (
     <div className='border' key={key}>
       Flex content #{key}
