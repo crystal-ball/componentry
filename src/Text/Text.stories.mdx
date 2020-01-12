@@ -7,6 +7,24 @@ import Block from '../Block/Block'
 
 <DocsTitle title='Text' />
 
+## Body variant
+
+The default `variant` for Text components is `body`:
+
+<Text>This is a body paragraph. Use it for primary application text content.</Text>
+
+## Lead variant
+
+The `lead` variant will render a lead style paragraph:
+
+<Text variant='lead'>This is a lead paragraph that will stand out.</Text>
+
+## Caption variant
+
+The `caption` variant will render a caption style paragraph:
+
+<Text variant='caption'>This is a caption paragraph for details</Text>
+
 ## Block (paragraph) text
 
 Paragraph elements are rendered by default:
@@ -17,8 +35,8 @@ Paragraph elements are rendered by default:
 
 A truthy `inline` prop renders a `span` element:
 
-This is a larger block of text that has a <Text fontWeight='bold' inline>bold</Text>
-text span inside of it.
+This is a larger block of text that has a <Text fontWeight='bold' inline>bold</Text> text
+span inside of it.
 
 ## Sizes
 
@@ -29,10 +47,3 @@ The `size` prop sets a font size:
 <Text size='base'>Example text content.</Text>
 <Text size='sm'>Example small text content.</Text>
 <Text size='xs'>Example extra small text content.</Text>
-
-## Lead style
-
-The `lead` prop will render a lead style text block:
-
-<Text lead>This is a lead paragraph that will stand out.</Text>
-<Text>Followed by a default paragraph</Text>

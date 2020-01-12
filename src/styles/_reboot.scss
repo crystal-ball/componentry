@@ -86,6 +86,20 @@ hr:not([size]) {
   }
 }
 
+p {
+  margin-top: 0;
+  margin-bottom: $paragraph-margin-bottom;
+}
+
+small {
+  font-size: $small-font-size;
+}
+
+mark {
+  padding: $mark-padding;
+  background-color: $mark-bg;
+}
+
 // Abbreviations
 //
 // 1. Duplicate behavior to the data-* attribute for our tooltip plugin

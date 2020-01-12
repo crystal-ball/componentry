@@ -1,22 +1,24 @@
 /* componentry/src/Text/text */
 
-.p {
-  margin-top: 0;
-  margin-bottom: $paragraph-margin-bottom;
+.body {
+  color: typography-color(foreground);
+  font-size: $font-size-base;
+  font-weight: $font-weight-base;
+
   // This is defaulted to null and won't be in the generated styles, but is
   // available to set a default paragraph width which is highly encouraged for
   // keeping paragraphs a readable length by default
   max-width: $paragraph-max-width;
 }
 
+.caption {
+  color: typography-color(caption);
+  font-size: $caption-font-size;
+  font-weight: $caption-font-weight;
+}
+
 .lead {
   color: typography-color(lead);
   font-size: $lead-font-size;
   font-weight: $lead-font-weight;
-}
-
-@if ($enable-dom-styles) {
-  p {
-    @extend .p;
-  }
 }

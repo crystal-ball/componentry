@@ -1,7 +1,6 @@
 /* componentry/src/Heading/heading */
 
 @mixin heading-base {
-  color: typography-color(heading);
   font-family: $headings-font-family;
   line-height: $headings-line-height;
   margin-bottom: $headings-margin-bottom;
@@ -10,6 +9,7 @@
 
 $h1: map-merge(
   (
+    color: typography-color(heading),
     font-size: $h1-font-size,
     font-style: $headings-font-style,
     font-weight: $h1-font-weight,
@@ -19,7 +19,7 @@ $h1: map-merge(
   $h1
 );
 
-.h1 {
+.heading-1 {
   @include heading-base();
   font-size: map-get($map: $h1, $key: font-size);
   font-style: map-get($map: $h1, $key: font-style);
@@ -30,6 +30,7 @@ $h1: map-merge(
 
 $h2: map-merge(
   (
+    color: typography-color(heading),
     font-size: $h2-font-size,
     font-style: $headings-font-style,
     font-weight: $h2-font-weight,
@@ -39,7 +40,7 @@ $h2: map-merge(
   $h2
 );
 
-.h2 {
+.heading-2 {
   @include heading-base();
   font-size: map-get($map: $h2, $key: font-size);
   font-style: map-get($map: $h2, $key: font-style);
@@ -50,6 +51,7 @@ $h2: map-merge(
 
 $h3: map-merge(
   (
+    color: typography-color(heading),
     font-size: $h3-font-size,
     font-style: $headings-font-style,
     font-weight: $h3-font-weight,
@@ -59,7 +61,7 @@ $h3: map-merge(
   $h3
 );
 
-.h3 {
+.heading-3 {
   @include heading-base();
   font-size: map-get($map: $h3, $key: font-size);
   font-style: map-get($map: $h3, $key: font-style);
@@ -70,6 +72,7 @@ $h3: map-merge(
 
 $h4: map-merge(
   (
+    color: typography-color(heading),
     font-size: $h4-font-size,
     font-style: $headings-font-style,
     font-weight: $h4-font-weight,
@@ -79,7 +82,7 @@ $h4: map-merge(
   $h4
 );
 
-.h4 {
+.heading-4 {
   @include heading-base();
   font-size: map-get($map: $h4, $key: font-size);
   font-style: map-get($map: $h4, $key: font-style);
@@ -90,6 +93,7 @@ $h4: map-merge(
 
 $h5: map-merge(
   (
+    color: typography-color(heading),
     font-size: $h5-font-size,
     font-style: $headings-font-style,
     font-weight: $h5-font-weight,
@@ -99,7 +103,7 @@ $h5: map-merge(
   $h5
 );
 
-.h5 {
+.heading-5 {
   @include heading-base();
   font-size: map-get($map: $h5, $key: font-size);
   font-style: map-get($map: $h5, $key: font-style);
@@ -108,30 +112,37 @@ $h5: map-merge(
   text-transform: map-get($map: $h5, $key: text-transform);
 }
 
-@if ($enable-dom-styles) {
-  h1 {
-    @extend .h1;
-  }
-  h2 {
-    @extend .h2;
-  }
-  h3 {
-    @extend .h3;
-  }
-  h4 {
-    @extend .h4;
-  }
-  h5 {
-    @extend .h5;
-  }
-}
-
 // --------------------------------------------------------
 // Subheadings
 
-.subheading {
+.subheading-1 {
+  @include heading-base();
   color: $subheading-font-color;
-  font-size: $subheading-font-size;
+  font-size: $subheading1-font-size;
+  font-weight: $subheading-font-weight;
+}
+.subheading-2 {
+  @include heading-base();
+  color: $subheading-font-color;
+  font-size: $subheading2-font-size;
+  font-weight: $subheading-font-weight;
+}
+.subheading-3 {
+  @include heading-base();
+  color: $subheading-font-color;
+  font-size: $subheading3-font-size;
+  font-weight: $subheading-font-weight;
+}
+.subheading-4 {
+  @include heading-base();
+  color: $subheading-font-color;
+  font-size: $subheading4-font-size;
+  font-weight: $subheading-font-weight;
+}
+.subheading-5 {
+  @include heading-base();
+  color: $subheading-font-color;
+  font-size: $subheading5-font-size;
   font-weight: $subheading-font-weight;
 }
 
@@ -139,12 +150,12 @@ $h5: map-merge(
 // Display headings
 
 .display-1 {
-  font-size: $display1-size;
-  font-weight: $display1-weight;
+  font-size: $display1-font-size;
+  font-weight: $display1-font-weight;
   line-height: $display-line-height;
 }
 .display-2 {
-  font-size: $display2-size;
-  font-weight: $display2-weight;
+  font-size: $display2-font-size;
+  font-weight: $display2-font-weight;
   line-height: $display-line-height;
 }

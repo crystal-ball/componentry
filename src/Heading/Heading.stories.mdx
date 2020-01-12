@@ -4,33 +4,27 @@ import Heading from './Heading'
 
 <DocsTitle title='Headings' />
 
-Use the `as` prop to set the heading level:
+## Displays
 
-<Heading as='h1'>Componentry stories</Heading>
-<Heading as='h2'>Componentry stories</Heading>
-<Heading as='h3'>Componentry stories</Heading>
-<Heading as='h4'>Componentry stories</Heading>
+The `display` variant will set the display styles:
 
-## Display Headings
+<Heading variant='display-1'>Fancy!</Heading>
+<Heading variant='display-2'>Fancy!</Heading>
 
-The `display` prop will set the display styles:
+## Headings
 
-<Heading display={1}>Fancy!</Heading>
-<Heading display={2}>Fancy!</Heading>
+The `as` prop is used to create a `.heading-{1,4}` class:
+
+<Heading variant='heading-1'>Componentry stories</Heading>
+<Heading variant='heading-2'>Componentry stories</Heading>
+<Heading variant='heading-3'>Componentry stories</Heading>
+<Heading variant='heading-4'>Componentry stories</Heading>
+<Heading variant='heading-5'>Componentry stories</Heading>
 
 ## Subheadings
 
-The `.subheading` class can be used to create heading levels:
+The `subheading` variant will set subheading styles using the `as` prop
 
-<Heading>
-  Componentry <span className='subheading'>components</span>
-</Heading>
-<Heading as='h2'>
-  Componentry <span className='subheading'>components</span>
-</Heading>
-<Heading as='h3'>
-  Componentry <span className='subheading'>components</span>
-</Heading>
-<Heading as='h4'>
-  Componentry <span className='subheading'>components</span>
-</Heading>
+<Heading variant='subheading-1'>Componentry stories</Heading>
+<Heading variant='subheading-2'>Componentry stories</Heading>
+<Heading variant='subheading-3'>Componentry stories</Heading>
