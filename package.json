@@ -51,9 +51,10 @@
     "nanoid": "2"
   },
   "devDependencies": {
-    "@babel/cli": "7.7.7",
-    "@babel/core": "7.7.7",
-    "@babel/plugin-transform-modules-commonjs": "7.7.5",
+    "@babel/cli": "7.8.0",
+    "@babel/core": "7.8.0",
+    "@babel/plugin-transform-modules-commonjs": "7.8.0",
+    "@babel/plugin-transform-runtime": "7.8.0",
     "@crystal-ball/commitizen-base": "2.3.0",
     "@crystal-ball/prettier-base": "1.6.0",
     "@storybook/addon-actions": "5.3.0",
