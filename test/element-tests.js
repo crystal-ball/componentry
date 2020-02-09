@@ -1,4 +1,4 @@
-/* eslint-disable react/no-multi-comp */
+/* eslint-env jest */
 import React from 'react'
 import { render } from '@testing-library/react'
 
@@ -48,7 +48,7 @@ const elementTests = TestComponent => {
    */
   test(`${name} should render as specified html element or component`, () => {
     // Create a component to validate that the TestComponent returns.
-    const TestAs = ({ isRad }) => <div>{isRad ? 'RAD' : null}</div>
+    const TestAs = ({ isRad }) => <div>{isRad ? 'RAD' : null}</div> // eslint-disable-line
 
     const { getByText } = render(<TestComponent isRad as={TestAs} />)
 
