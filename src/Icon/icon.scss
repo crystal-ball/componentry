@@ -1,19 +1,20 @@
 /* componentry/src/Icon/icon */
 
-// ℹ️ The icon class can be used with SVGs to create font icons, by
+// ℹ️ The icon class can be used with SVGs to create font icons
 .icon {
-  display: inline-flex;
-  fill: currentColor;
+  // Make the parent of an icon a flex container for easy alignment
+  align-self: center;
+
+  // Default to use the parent color as the icon color
+  fill: $icon-color;
   color: $icon-color;
 
   // width + height of 1em makes icons font-sized by default 🎓
   height: 1em;
   width: 1em;
 
-  // SVG icons displayed with inline flex do not have the same baseline as fonts,
-  // the margin bottom adjustment aligns the svg baseline with the font baseline
-  // Using margin-bottom also helps prevent icons from affecting the height of
-  // parent containers with line-height set
+  // SVG elements do not have the same baseline as fonts, the margin bottom
+  // adjustment aligns the svg baseline with the font baseline
   &.font {
     margin-bottom: $icon-bottom;
   }

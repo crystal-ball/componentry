@@ -17,9 +17,10 @@ describe('<Anchor/>', () => {
     expect(getByText('Link')).toHaveClass('a a-success a-sm')
   })
 
-  test('When used to create a anchor styled button, then a is rendered', () => {
-    const { getByText } = render(<Anchor as='button'>Link</Anchor>)
-    expect(getByText('Link')).toHaveClass('a')
+  test('When used to create a button styled anchor, then btn is rendered', () => {
+    const { getByText } = render(<Anchor variant='btn'>Link</Anchor>)
+    expect(getByText('Link')).toHaveClass('btn')
+    expect(getByText('Link')).not.toHaveClass('a')
   })
 })
 
@@ -29,5 +30,17 @@ describe('<Anchor /> snapshots', () => {
   it('renders correctly', () => {
     const { container } = render(<Anchor>Link</Anchor>)
     expect(container.firstChild).toMatchSnapshot()
+  })
+
+  it('renders btn variants correctly', () => {
+    const { container } = render(
+      <>
+        <Anchor variant='btn'>Link</Anchor>
+        <Anchor variant='btn' outline='success' size='sm'>
+          Link
+        </Anchor>
+      </>,
+    )
+    expect(container).toMatchSnapshot()
   })
 })

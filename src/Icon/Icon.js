@@ -3,10 +3,10 @@ import elem from '../elem-factory'
 import { useTheme } from '../Theme/Theme'
 
 /**
- * ⚠️ Requires SVGs are inlined into document somewhere
+ * [Icon component 📝](https://componentry.design/components/icon)
  */
 export default function Icon(props) {
-  const { id, font = true, ...rest } = { ...useTheme('Icon'), ...props }
+  const { id, font, ...rest } = { ...useTheme('Icon'), ...props }
 
   return elem({
     as: 'svg',

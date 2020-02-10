@@ -7,6 +7,7 @@ import elementTests from '../../test/element-tests'
 describe('<Alert/>', () => {
   // Basic library element test suite
   elementTests(Alert)
+  elementTests(Alert.Close)
 
   test('should render an alert without a close button by default', () => {
     const { container } = render(<Alert color='success'>Warning!</Alert>)

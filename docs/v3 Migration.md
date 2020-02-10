@@ -3,10 +3,6 @@
 This guide contains an overview of changes that would impact consumers of
 Componentry.
 
-## Todo:
-
-- Make the `close` svg a little smaller, it's a little big
-
 ## Breaking changes
 
 - The `$include-icons` variable is defaulted to `false` now.

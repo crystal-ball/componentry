@@ -89,25 +89,10 @@ describe('<Button/>', () => {
     expect(getByText('Variant Button')).toHaveClass('btn-test btn-test-sm')
   })
 
-  test('When used to create a button styled anchor, then btn styles should be rendered', () => {
-    const { getByText } = render(
-      <>
-        <Button as='a'>Button</Button>
-        <Button as='a' color='info'>
-          Info Button
-        </Button>
-        <Button as='a' outline='info'>
-          Outline Info Button
-        </Button>
-        <Button as='a' size='sm'>
-          Small Button
-        </Button>
-      </>,
-    )
-    expect(getByText('Button')).toHaveClass('btn')
-    expect(getByText('Info Button')).toHaveClass('btn btn-info')
-    expect(getByText('Outline Info Button')).toHaveClass('btn btn-outline-info')
-    expect(getByText('Small Button')).toHaveClass('btn btn-sm')
+  test('When used to create an anchor styled button, then anchor styles should be rendered', () => {
+    const { getByText } = render(<Button variant='a'>Button</Button>)
+    expect(getByText('Button')).toHaveClass('a')
+    expect(getByText('Button')).not.toHaveClass('btn')
   })
 })
 
@@ -126,8 +111,8 @@ describe('<Button /> Snapshots', () => {
     expect(container.firstChild).toMatchSnapshot()
   })
 
-  test('it renders anchor style correctly', () => {
-    const { container } = render(<Button as='a'>Componentry</Button>)
+  test('it renders anchor variants correctly', () => {
+    const { container } = render(<Button variant='a'>Componentry</Button>)
     expect(container.firstChild).toMatchSnapshot()
   })
 
