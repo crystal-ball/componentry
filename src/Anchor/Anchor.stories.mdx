@@ -4,9 +4,9 @@ import { action } from '@storybook/addon-actions'
 import Anchor from './Anchor'
 import { colors, size } from '../storybook-resources'
 
-<Meta title='Components/Anchor' component={Anchor} />
+<Meta title='Components/Anchor' component={Anchor}></Meta>
 
-<DocsTitle title="Anchors" />
+<DocsTitle title='Anchors'></DocsTitle>
 
 Anchor components render an anchor tag with anchor styles by default:
 
@@ -34,10 +34,13 @@ Pass `disabled` to make an anchor disabled:
 
 ---
 
-## Anchor styled button
+## Button variant
 
-Create a button element with anchor styles by passing `as='button'` to an Anchor:
+Create an anchor with buttons style by passing `variant="btn"` to an Anchor:
 
-<Anchor as='button' onClick={action('button anchor')}>
-  Button element
+<Anchor variant='btn' color='danger' outline href='#'>
+  Go Back
+</Anchor>
+<Anchor variant='btn' color='anchor' href='#'>
+  Anchor color button
 </Anchor>

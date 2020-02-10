@@ -4,9 +4,9 @@ import { action } from '@storybook/addon-actions'
 import Button from './Button'
 import { colors, sizes } from '../storybook-resources'
 
-<Meta title='Components/Button' component={Button} />
+<Meta title='Components/Button' component={Button}></Meta>
 
-<DocsTitle title="Buttons" experimental/>
+<DocsTitle title='Button'></DocsTitle>
 
 A primary button:
 
@@ -78,15 +78,24 @@ Pass `disabled` to make a button disabled:
   Button
 </Button>
 
-## Button class
+## Anchor variant
 
-Use the `as` prop to render anchor and input elements styled as buttons:
+Create a button with anchor styles by passing `variant="a"` to a Button:
+
+<p>
+  Always use a button or{' '}
+  <Button variant="a" onClick={action('anchor variant click')} color='primary'>
+    anchor
+  </Button>{' '}
+  for creating interaction targets 👍
+</p>
+
+## Input buttons
+
+Use the `as` prop to render input elements styled as buttons:
 
 <div className='d-flex justify-content-center btn-container-x'>
   <Button color='primary'>Button</Button>
-  <Button as='a' href='#' color='primary'>
-    Anchor
-  </Button>
   <Button as='input' color='primary' value='Input' />
   <Button as='input' color='primary' type='submit' value='Submit' />
   <Button as='input' color='primary' type='reset' value='Reset' />
