@@ -2,7 +2,7 @@ import elem from '../elem-factory'
 import { useTheme } from '../Theme/Theme'
 
 /**
- * Card component is a simple wrapper for creating markup for card elements
+ * [Card component 📝](https://componentry.design/components/card)
  */
 export default function Card(props) {
   return elem({ elemClassName: 'card', ...useTheme('Card'), ...props })
@@ -10,7 +10,7 @@ export default function Card(props) {
 Card.displayName = 'Card'
 
 /**
- * Card Body
+ * [Card body component 📝](https://componentry.design/components/card)
  */
 Card.Body = function CardBody(props) {
   return elem({ elemClassName: 'card-body', ...useTheme('CardBody'), ...props })
@@ -18,7 +18,7 @@ Card.Body = function CardBody(props) {
 Card.Body.displayName = 'CardBody'
 
 /**
- * Card Footer
+ * [Card footer component 📝](https://componentry.design/components/card)
  */
 Card.Footer = function CardFooter(props) {
   return elem({ elemClassName: 'card-footer', ...useTheme('CardFooter'), ...props })
@@ -26,7 +26,7 @@ Card.Footer = function CardFooter(props) {
 Card.Footer.displayName = 'CardFooter'
 
 /**
- * Card Header
+ * [Card header component 📝](https://componentry.design/components/card)
  */
 Card.Header = function CardHeader(props) {
   return elem({ elemClassName: 'card-header', ...useTheme('CardHeader'), ...props })
@@ -34,7 +34,7 @@ Card.Header = function CardHeader(props) {
 Card.Header.displayName = 'CardHeader'
 
 /**
- * Card Title
+ * [Card title component 📝](https://componentry.design/components/card)
  */
 Card.Title = function CardTitle(props) {
   return elem({

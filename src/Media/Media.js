@@ -1,8 +1,6 @@
 import React, { createContext, useContext, useEffect, useState } from 'react'
 
-/**
- * Media Context
- */
+/** Media Context */
 const MediaCtx = createContext({})
 
 /**
@@ -23,7 +21,7 @@ function calcBreakpoints(breakpoints) {
  * Uses `window.matchMedia` to listen for changes to window media queries and
  * updates breakpoint status on every change.
  * @param {Array} breakpoints Set of application breakpoints
- * @param {func} updateBps Hook state update function
+ * @param {function} updateBps Hook state update function
  */
 function mountListeners(breakpoints, updateBps) {
   function setBreakpoints() {
@@ -38,15 +36,7 @@ function mountListeners(breakpoints, updateBps) {
 }
 
 /**
- * The Media provider accepts breakpoints and can be used with the `useMedia`
- * hook in any component Default breakpoints are:
- *
- * - sm = < 768
- * - md = < 1250
- * - lg = >= 1250
- *
- * Window resizing is listened to using the `matchMedia` API (which is supported
- * all the way down to IE10)
+ * [Media component 📝](https://componentry.design/components/media)
  */
 export default function Media({ children, breakpoints = [0, 768, 1250] }) {
   const [bps, updateBps] = useState(calcBreakpoints(breakpoints))
@@ -66,7 +56,7 @@ export default function Media({ children, breakpoints = [0, 768, 1250] }) {
 Media.displayName = 'Media'
 
 /**
- * Hook to access the current Media context value
+ * [Media hook 📝](https://componentry.design/components/media)
  */
 export const useMedia = () => {
   const media = useContext(MediaCtx)

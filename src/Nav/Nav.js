@@ -2,6 +2,9 @@ import elem from '../elem-factory'
 import { useTheme } from '../Theme/Theme'
 import { navClasses } from '../utils/componentry'
 
+/**
+ * [Nav component 📝](https://componentry.design/components/nav)
+ */
 export default function Nav(props) {
   return elem({
     as: 'nav',
@@ -13,8 +16,7 @@ export default function Nav(props) {
 Nav.displayName = 'Nav'
 
 /**
- * Nav items can be action items or li, notice this follows the same pattern as
- * the List.Item components
+ * [Nav item component 📝](https://componentry.design/components/nav)
  */
 Nav.Item = function NavItem(props) {
   const { active, ...rest } = { ...useTheme('NavItem'), ...props }

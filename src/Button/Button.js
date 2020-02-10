@@ -2,7 +2,9 @@ import elem from '../elem-factory'
 import { actionClasses } from '../utils/componentry'
 import { useTheme } from '../Theme/Theme'
 
-/** Button component */
+/**
+ * [Button component 📝](https://componentry.design/components/button)
+ */
 export default function Button(props) {
   const merged = {
     as: 'button',
@@ -10,13 +12,6 @@ export default function Button(props) {
     variant: 'btn',
     ...useTheme('Button'),
     ...props,
-  }
-
-  // When rendering an anchor with button styles, swap out the type attr for a
-  // role attr for proper a11y
-  if (merged.as === 'a') {
-    merged.type = undefined
-    merged.role = 'button'
   }
 
   return elem({

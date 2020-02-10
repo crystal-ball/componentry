@@ -1,15 +1,10 @@
 import React, { createContext, useContext } from 'react'
 
-/**
- * Theme Context
- */
+/** Theme Context */
 const ThemeCtx = createContext({})
 
 /**
- * The `<ThemeProvider>` is a shorthand for setting context values that can be
- * used for changing the default configuration values used by Componentry
- * components. The passed theme configurations are namespaced to prevent
- * collisions.
+ * [Theme component 📝](https://componentry.design/components/theme)
  */
 export default function Theme({ children, theme }) {
   return <ThemeCtx.Provider value={theme}>{children}</ThemeCtx.Provider>
@@ -17,7 +12,7 @@ export default function Theme({ children, theme }) {
 Theme.displayName = 'Theme'
 
 /**
- * Access the application theme context value
+ * [Theme hook 📝](https://componentry.design/components/theme)
  */
 export const useTheme = component => {
   // For the theme context, we don't warn on accessing without a provider, b/c

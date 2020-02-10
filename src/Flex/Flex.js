@@ -1,6 +1,9 @@
 import elem from '../elem-factory'
 import { useTheme } from '../Theme/Theme'
 
+/**
+ * [Flex component 📝](https://componentry.design/components/flex)
+ */
 export default function Flex(props) {
   const { align, direction, inline, justify, wrap, ...rest } = {
     ...useTheme('Flex'),

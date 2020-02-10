@@ -2,14 +2,16 @@ import elem from '../elem-factory'
 import { useTheme } from '../Theme/Theme'
 
 /**
- * @typedef {Object} props
- * @property {string} props.color Set the color of the badge
- * @property {boolean} props.rounded Sets the badge rounded styles
+ * @typedef {Object} Props
+ * @property {string} Props.color Set the color of the badge
+ * @property {boolean} Props.rounded Sets the badge rounded styles
  */
 
-/** Badge component */
+/**
+ * [Badge component 📝](https://componentry.design/components/badge)
+ */
 export default function Badge(props) {
-  /** @type {props} */
+  /** @type {Props} */
   const { color, rounded, ...rest } = { ...useTheme('Badge'), ...props }
 
   return elem({

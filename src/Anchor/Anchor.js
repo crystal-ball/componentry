@@ -3,15 +3,10 @@ import { actionClasses } from '../utils/componentry'
 import { useTheme } from '../Theme/Theme'
 
 /**
- * Anchor component
+ * [Anchor component 📝](https://componentry.design/components/anchor)
  */
 export default function Anchor(props) {
   const merged = { as: 'a', variant: 'a', ...useTheme('Anchor'), ...props }
-
-  // When rendering a button with anchor styles, add the button type
-  if (merged.as === 'button') {
-    merged.type = 'button'
-  }
 
   return elem({
     elemClassName: actionClasses(merged),
