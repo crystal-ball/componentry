@@ -7,13 +7,13 @@ exports[`<Tab /> snapshots renders correctly 1`] = `
   name="tabs"
 >
   <nav
-    class="tabs-nav-container"
+    class="tabs-nav"
     role="tablist"
   >
     <button
       aria-controls="guid-one-content"
       aria-selected="true"
-      class="tabs-nav-tab a active"
+      class="tabs-trigger a active"
       id="guid-one-tab"
       role="tab"
       type="button"
@@ -24,7 +24,7 @@ exports[`<Tab /> snapshots renders correctly 1`] = `
     <button
       aria-controls="guid-two-content"
       aria-selected="false"
-      class="tabs-nav-tab a"
+      class="tabs-trigger a"
       id="guid-two-tab"
       role="tab"
       type="button"
@@ -35,7 +35,7 @@ exports[`<Tab /> snapshots renders correctly 1`] = `
     <button
       aria-controls="guid-three-content"
       aria-selected="false"
-      class="tabs-nav-tab a"
+      class="tabs-trigger a"
       id="guid-three-tab"
       role="tab"
       type="button"
@@ -46,7 +46,7 @@ exports[`<Tab /> snapshots renders correctly 1`] = `
     <button
       aria-controls="guid-four-content"
       aria-selected="false"
-      class="tabs-nav-tab a disabled"
+      class="tabs-trigger a disabled"
       disabled=""
       id="guid-four-tab"
       role="tab"
@@ -57,12 +57,12 @@ exports[`<Tab /> snapshots renders correctly 1`] = `
     </button>
   </nav>
   <div
-    class="tabs-panes-container"
+    class="tabs-content-container"
   >
     <div
       aria-hidden="false"
       aria-labelledby="guid-one-trigger"
-      class="tabs-panes-pane"
+      class="tabs-content"
       id="guid-one-content"
       role="tabpanel"
     >
@@ -71,7 +71,7 @@ exports[`<Tab /> snapshots renders correctly 1`] = `
     <div
       aria-hidden="true"
       aria-labelledby="guid-two-trigger"
-      class="tabs-panes-pane"
+      class="tabs-content"
       id="guid-two-content"
       role="tabpanel"
     >
@@ -80,7 +80,7 @@ exports[`<Tab /> snapshots renders correctly 1`] = `
     <div
       aria-hidden="true"
       aria-labelledby="guid-three-trigger"
-      class="tabs-panes-pane"
+      class="tabs-content"
       id="guid-three-content"
       role="tabpanel"
     >
@@ -89,7 +89,7 @@ exports[`<Tab /> snapshots renders correctly 1`] = `
     <div
       aria-hidden="true"
       aria-labelledby="guid-four-trigger"
-      class="tabs-panes-pane"
+      class="tabs-content"
       id="guid-four-content"
       role="tabpanel"
     >

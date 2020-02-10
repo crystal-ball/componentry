@@ -13,7 +13,7 @@ exports[`<Popover /> snapshots renders correctly 1`] = `
     Toggle
   </button>
   <div
-    class="popover-content-container"
+    class="popover-positioned-container"
   >
     <div
       aria-hidden="true"

@@ -2,9 +2,7 @@ import elem from '../elem-factory'
 import { actionClasses } from '../utils/componentry'
 import { useTheme } from '../Theme/Theme'
 
-/**
- * Button component
- */
+/** Button component */
 export default function Button(props) {
   const merged = {
     as: 'button',

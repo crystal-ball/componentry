@@ -5,16 +5,16 @@ import { useTheme } from '../Theme/Theme'
 import { useActive, useVisible } from '../hooks'
 
 /**
- * Alerts provide contextual feedback to users. Alerts are available in the info
- * theme colors success, info, warning and danger. They are not available in primary
- * or secondary theme colors because they are intended to be used for alerting with
- * context. For non alert information blocks a card with theme color primary or
- * secondary can be used.
- *
- * TODO: docs on dismissible vs non-dismissible alerts usage
- * TODO: ⚠️ For dismissible Alerts, the active context must be set docs
+ * @typedef {Object} props
+ * @property {string} props.ariaTitle Set a specific aria title
+ * @property {string} props.color Set the theme color of the alert
+ * @property {boolean} props.dismissible If true the alert is dismissible
+ * @property {boolean} props.outline If true, the alert will have outline styles
  */
+
+/** Alert component */
 export default function Alert(props) {
+  /** @type {props} */
   const {
     children,
     active: propsActive,
@@ -61,9 +61,7 @@ export default function Alert(props) {
 }
 Alert.displayName = 'Alert'
 
-/**
- * Alert close component
- */
+/** Alert close component */
 Alert.Close = function AlertClose(props) {
   return elem({
     ...closeBase,

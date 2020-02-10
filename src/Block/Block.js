@@ -1,7 +1,14 @@
 import elem from '../elem-factory'
 import { useTheme } from '../Theme/Theme'
 
+/**
+ * @typedef {Object} Props
+ * @property {boolean} Props.inline
+ */
+
+/** Block component */
 export default function Block(props) {
+  /** @type {props} */
   const { inline, ...rest } = { ...useTheme('Block'), ...props }
 
   return elem({

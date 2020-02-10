@@ -13,7 +13,7 @@ exports[`<Tooltip /> snapshots renders correctly 1`] = `
     Trigger
   </button>
   <div
-    class="tooltip-content-container"
+    class="tooltip-positioned-container"
   >
     <div
       aria-hidden="true"
