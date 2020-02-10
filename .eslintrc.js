@@ -2,7 +2,11 @@
 
 module.exports = {
   root: true,
-  extends: 'eloquence/react',
+  extends: ['eloquence/react', 'eloquence/typescript'],
+
+  parserOptions: {
+    project: './tsconfig.json',
+  },
 
   // Override the webpack resolver from react config to use the node resolver,
   // The src files don't use any aliasing from webpack
@@ -17,4 +21,13 @@ module.exports = {
     'react/prop-types': 'off',
     'react/require-default-props': 'off',
   },
+
+  overrides: [
+    {
+      files: ['**/*.ts', '**/*.tsx'],
+      rules: {
+        'spaced-comment': 'off',
+      },
+    },
+  ],
 }

@@ -1,47 +1,45 @@
-
 # Don't Publish Me!
-#################################
+# -------------------------------------
 
 # Source
-#################################
+# -------------------------------------
+src
+public
+
+# Output
+# -------------------------------------
+build
+coverage
+monitor
+
+# Logs and caches
+# -------------------------------------
+.esm-cache
+false
+
+# Configs
+# -------------------------------------
 .github
 .storybook
 .vscode
-__mocks__
-config
-test
-# NOTE: Don't ignore /src, the SCSS files need to be in bundle
-
-# Output
-#################################
-build
-monitor
-
-# Packages, Logging, Congis
-#################################
-.esm-cache
-false
-.editorconfig
-.flowconfig
-.travis.yml
-jest.config.js
-webpack.config.js
-webpack.config.umd.js
-.babelrc
-
-# Config
-#################################
-.vscode
-jsconfig.json
 .cz-config.js
 .eslintrc.js
-.prettierrc
 .prettierignore
-documentation.yml
+.prettierrc
+.travis.yml
+babel.config.js
+jsconfig.json
+tsconfig.json
+webpack.config.js
+
+# Testing
+# -------------------------------------
+__mocks__
+test
+jest.config.js
 
 # Documentation
-#################################
+# -------------------------------------
 docs
-demo
 guides
-public
+documentation.yml
