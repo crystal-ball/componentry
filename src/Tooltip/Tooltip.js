@@ -9,7 +9,7 @@ const Tooltip = activeContainer('tooltip', {
 
 Tooltip.Content = activeContent('tooltip', {
   arias: { id: true, role: 'tooltip', hidden: true },
-  popper: true,
+  positioned: true,
 })
 
 Tooltip.Trigger = activeTrigger('tooltip', {

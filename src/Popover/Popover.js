@@ -22,7 +22,7 @@ Popover.Body.displayName = 'PopoverBody'
 
 Popover.Content = activeContent('popover', {
   arias: { id: true, role: 'tooltip', hidden: true },
-  popper: true,
+  positioned: true,
 })
 
 Popover.Heading = function PopoverHeading(props) {

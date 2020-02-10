@@ -13,7 +13,7 @@
 }
 
 // Content container overrides the width constraints for parent element
-.tooltip-content-container {
+.tooltip-positioned-container {
   width: $tooltip-max-width;
   position: absolute;
 }

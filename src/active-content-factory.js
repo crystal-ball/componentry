@@ -16,8 +16,8 @@ export default function ActiveContentFactory(
     baseClass = `${component}-content`,
     // The component name used for display and theme lookups
     name = `${component.slice(0, 1).toUpperCase()}${component.slice(1)}Content`,
-    // Switch to include a content wrapper for positioning+width styles
-    popper = false,
+    // Switch to include an absolute positioned wrapper for positioning+width styles
+    positioned = false,
   } = {},
 ) {
   function ActiveContent(props) {
@@ -40,7 +40,7 @@ export default function ActiveContentFactory(
       elemClassName: baseClass,
       children: (
         <>
-          {popper && (
+          {positioned && (
             <div className='tip-container'>
               <div className='tip' />
             </div>
@@ -53,11 +53,11 @@ export default function ActiveContentFactory(
 
     // If the element is a popper, wrap it in a content container, this is used to
     // bust width of parent element
-    return popper ? (
+    return positioned ? (
       // This className works right now b/c we're only passing a single className
       // in classes, but this is fragile... would be nice to be more explicity but
       // not add in unnecessary factory config code.
-      <div className={`${component}-content-container`}>{content}</div>
+      <div className={`${component}-positioned-container`}>{content}</div>
     ) : (
       content
     )
