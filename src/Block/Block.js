@@ -6,7 +6,9 @@ import { useTheme } from '../Theme/Theme'
  * @property {boolean} Props.inline
  */
 
-/** Block component */
+/**
+ * [Block component 📝](https://componentry.design/components/block)
+ */
 export default function Block(props) {
   /** @type {props} */
   const { inline, ...rest } = { ...useTheme('Block'), ...props }

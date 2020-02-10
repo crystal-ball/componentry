@@ -6,11 +6,10 @@ import { closeBase } from '../Close/Close'
 import { useActive, useActiveSrollReset, useNoScroll, useVisible } from '../hooks'
 import { useTheme } from '../Theme/Theme'
 
-const ModalCtx = createContext()
+const ModalCtx = createContext({})
 
 /**
- * Modal component
- * TODO: trap tab focus within modal on activation
+ * [Modal component 📝](https://componentry.design/components/modal)
  */
 export default function Modal(props) {
   // Guid instance property will be uniquely assigned once for each modal
@@ -92,7 +91,7 @@ export default function Modal(props) {
 Modal.displayName = 'Modal'
 
 /**
- * Modal themed close component
+ * [Modal close component 📝](https://componentry.design/components/modal)
  */
 Modal.Close = function ModalClose(props) {
   return elem({
@@ -104,8 +103,7 @@ Modal.Close = function ModalClose(props) {
 Modal.Close.displayName = 'ModalClose'
 
 /**
- * Modal header close is a shorthand for enabling the default close button,
- * For custom close components, the componenent must be passed as a header child
+ * [Modal header component 📝](https://componentry.design/components/modal)
  */
 Modal.Header = function ModalHeader(props) {
   const { children, close, ...rest } = {
@@ -119,6 +117,8 @@ Modal.Header = function ModalHeader(props) {
     children: (
       <>
         {children}
+        {/* Modal header close is a shorthand for enabling the default close button,
+        For custom close components, the componenent must be passed as a header child */}
         {close && <Modal.Close onClick={deactivate} />}
       </>
     ),
@@ -127,6 +127,9 @@ Modal.Header = function ModalHeader(props) {
 }
 Modal.Header.displayName = 'ModalHeader'
 
+/**
+ * [Modal title component 📝](https://componentry.design/components/modal)
+ */
 Modal.Title = function ModalTitle(props) {
   return elem({
     as: 'h2',
@@ -138,6 +141,9 @@ Modal.Title = function ModalTitle(props) {
 }
 Modal.Title.displayName = 'ModalTitle'
 
+/**
+ * [Modal body component 📝](https://componentry.design/components/modal)
+ */
 Modal.Body = function ModalBody(props) {
   const bodyRef = useRef(null)
   useActiveSrollReset(useContext(ModalCtx).active, bodyRef)
@@ -151,6 +157,9 @@ Modal.Body = function ModalBody(props) {
 }
 Modal.Body.displayName = 'ModalBody'
 
+/**
+ * [Modal footer component 📝](https://componentry.design/components/modal)
+ */
 Modal.Footer = function ModalFooter(props) {
   return elem({
     elemClassName: 'modal-footer',

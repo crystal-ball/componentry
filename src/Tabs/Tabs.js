@@ -5,11 +5,15 @@ import { useTheme } from '../Theme/Theme'
 import elem from '../elem-factory'
 import { navClasses } from '../utils/componentry'
 
-/** Tabs component */
+/**
+ * [Tabs component 📝](https://componentry.design/components/tabs)
+ */
 const Tabs = activeContainer('tabs', { name: 'tabs' })
 export default Tabs
 
-/** Tabs content container component */
+/**
+ * [Tabs content container component 📝](https://componentry.design/components/tabs)
+ */
 Tabs.ContentContainer = function TabsContentContainer(props) {
   return elem({
     elemClassName: 'tabs-content-container',
@@ -19,13 +23,17 @@ Tabs.ContentContainer = function TabsContentContainer(props) {
 }
 Tabs.ContentContainer.displayName = 'TabsContentContainer'
 
-/** Tabs content component */
+/**
+ * [Tabs content component 📝](https://componentry.design/components/tabs)
+ */
 Tabs.Content = activeContent('tabs', {
   arias: { hidden: true, role: 'tabpanel' },
   baseClass: 'tabs-content',
 })
 
-/** Tabs nav component */
+/**
+ * [Tabs nav component 📝](https://componentry.design/components/tabs)
+ */
 Tabs.Nav = function TabsNav(props) {
   return elem({
     as: 'nav',
@@ -37,12 +45,11 @@ Tabs.Nav = function TabsNav(props) {
 }
 Tabs.Nav.displayName = 'TabsNav'
 
-// TODO: This should probably be defaultAs a nav item... issues:
-// If making a tab with anchors, these should have class 'nav-link'
-/** Tabs trigger component */
+/**
+ * [Tabs trigger component 📝](https://componentry.design/components/tabs)
+ */
 Tabs.Trigger = activeTrigger('tabs', {
   arias: { selected: true, role: 'tab' },
-  // TODO: Should this really have default nav-link and nav-item classes??
   baseClass: 'tabs-trigger',
   // Tabs can only activate, they never deactivate when clicked
   action: 'activate',

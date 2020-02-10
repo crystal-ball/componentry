@@ -15,9 +15,7 @@ const asMap = {
 }
 
 /**
- * Heading element
- * @param {Object} props
- * @param {string} props.variant Library variants: heading, subheading
+ * [Heading component 📝](https://componentry.design/components/heading)
  */
 export default function Heading(props) {
   const { as, display, variant, ...rest } = {

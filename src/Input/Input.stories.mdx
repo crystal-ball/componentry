@@ -16,3 +16,19 @@ import Input from './Input'
     <Input.Error aria-hidden={!boolean('Error', false)}>Oh no!</Input.Error>
   </Input>
 </div>
+
+## Hidden labels
+
+Try to always include a label for inputs, they can be hidden using the `.sr-only`
+class for screen readers.
+
+<div className='form-group'>
+  <Input>
+    <Input.Label className="sr-only">Storybook</Input.Label>
+    <Input.Field />
+    <Input.Description aria-hidden={!boolean('Description', true)}>
+      Really important input!
+    </Input.Description>
+    <Input.Error aria-hidden={!boolean('Error', false)}>Oh no!</Input.Error>
+  </Input>
+</div>

@@ -14,6 +14,9 @@ export const closeBase = {
   ),
 }
 
+/**
+ * [Close component 📝](https://componentry.design/components/close)
+ */
 export default function Close(props) {
   return elem({
     ...closeBase,

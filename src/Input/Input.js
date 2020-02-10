@@ -5,6 +5,9 @@ import { useTheme } from '../Theme/Theme'
 
 const InputCtx = createContext({ guid: null })
 
+/**
+ * [Input component 📝](https://componentry.design/components/input)
+ */
 export default function Input({ children }) {
   /**
    * Guid instance property will be uniquely assigned once for each input
@@ -17,29 +20,38 @@ export default function Input({ children }) {
 }
 Input.displayName = 'Input'
 
+/**
+ * [Input field component 📝](https://componentry.design/components/input)
+ */
 Input.Field = function InputField(props) {
   return elem({
     as: 'input',
     type: 'text',
     elemClassName: 'input-field',
-    id: useContext(InputCtx).guid,
+    id: useContext(InputCtx).guid, // aria -> htmlFor
     ...useTheme('InputField'),
     ...props,
   })
 }
 Input.Field.displayName = 'InputField'
 
+/**
+ * [Input label component 📝](https://componentry.design/components/input)
+ */
 Input.Label = function InputLabel(props) {
   return elem({
     as: 'label',
     elemClassName: 'input-label',
-    htmlFor: useContext(InputCtx).guid,
+    htmlFor: useContext(InputCtx).guid, // aria -> id
     ...useTheme('InputLabel'),
     ...props,
   })
 }
 Input.Label.displayName = 'InputLabel'
 
+/**
+ * [Input error component 📝](https://componentry.design/components/input)
+ */
 Input.Error = function InputError(props) {
   return elem({
     elemClassName: 'input-error',
@@ -49,6 +61,9 @@ Input.Error = function InputError(props) {
 }
 Input.Error.displayName = 'InputError'
 
+/**
+ * [Input description component 📝](https://componentry.design/components/input)
+ */
 Input.Description = function InputDescription(props) {
   return elem({
     elemClassName: 'input-description',
@@ -57,9 +72,3 @@ Input.Description = function InputDescription(props) {
   })
 }
 Input.Description.displayName = 'InputDescription'
-
-/**
- * Requirements:
- * 1. Aria attrs for label and input
- * 2. Ability to add sr-hidden to Label
- */
