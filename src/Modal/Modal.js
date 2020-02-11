@@ -1,10 +1,12 @@
 import React, { createContext, useContext, useRef } from 'react'
 import cx from 'classnames'
 import nanoid from 'nanoid'
-import elem from '../elem-factory'
+
 import { closeBase } from '../Close/Close'
-import { useActive, useActiveSrollReset, useNoScroll, useVisible } from '../hooks'
 import { useTheme } from '../Theme/Theme'
+import elem from '../elem-factory'
+import { useActive, useActiveSrollReset, useNoScroll, useVisible } from '../hooks'
+import simpleComponent from '../simple-component-factory'
 
 const ModalCtx = createContext({})
 
@@ -93,14 +95,7 @@ Modal.displayName = 'Modal'
 /**
  * [Modal close component 📝](https://componentry.design/components/modal)
  */
-Modal.Close = function ModalClose(props) {
-  return elem({
-    ...closeBase,
-    ...useTheme('ModalClose'),
-    ...props,
-  })
-}
-Modal.Close.displayName = 'ModalClose'
+Modal.Close = simpleComponent('ModalClose', closeBase)
 
 /**
  * [Modal header component 📝](https://componentry.design/components/modal)
@@ -160,11 +155,6 @@ Modal.Body.displayName = 'ModalBody'
 /**
  * [Modal footer component 📝](https://componentry.design/components/modal)
  */
-Modal.Footer = function ModalFooter(props) {
-  return elem({
-    elemClassName: 'modal-footer',
-    ...useTheme('ModalFooter'),
-    ...props,
-  })
-}
-Modal.Footer.displayName = 'ModalFooter'
+Modal.Footer = simpleComponent('ModalFooter', {
+  elemClassName: 'modal-footer',
+})

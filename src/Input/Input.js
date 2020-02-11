@@ -2,6 +2,7 @@ import React, { createContext, useContext, useRef } from 'react'
 import nanoid from 'nanoid'
 import elem from '../elem-factory'
 import { useTheme } from '../Theme/Theme'
+import simpleComponent from '../simple-component-factory'
 
 const InputCtx = createContext({ guid: null })
 
@@ -52,23 +53,13 @@ Input.Label.displayName = 'InputLabel'
 /**
  * [Input error component 📝](https://componentry.design/components/input)
  */
-Input.Error = function InputError(props) {
-  return elem({
-    elemClassName: 'input-error',
-    ...useTheme('InputError'),
-    ...props,
-  })
-}
-Input.Error.displayName = 'InputError'
+Input.Error = simpleComponent('InputError', {
+  elemClassName: 'input-error',
+})
 
 /**
  * [Input description component 📝](https://componentry.design/components/input)
  */
-Input.Description = function InputDescription(props) {
-  return elem({
-    elemClassName: 'input-description',
-    ...useTheme('InputDescription'),
-    ...props,
-  })
-}
-Input.Description.displayName = 'InputDescription'
+Input.Description = simpleComponent('InputDescription', {
+  elemClassName: 'input-description',
+})

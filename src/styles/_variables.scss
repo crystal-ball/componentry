@@ -482,7 +482,7 @@ $form-group-margin-bottom: 1rem !default;
 // When true this will include background-image rules for the close and chevron
 // icons, you can enable it if you don't have SVGs
 $include-icons: false !default;
-$icon-color: inherit !default;
+$icon-color: currentColor !default;
 
 // This margin-bottom adjustment is added to every font icon to account for svg
 // vs font baseline differences

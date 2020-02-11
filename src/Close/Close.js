@@ -1,6 +1,5 @@
 import React from 'react'
-import { useTheme } from '../Theme/Theme'
-import elem from '../elem-factory'
+import simpleComponent from '../simple-component-factory'
 
 export const closeBase = {
   'aria-label': 'close',
@@ -17,11 +16,4 @@ export const closeBase = {
 /**
  * [Close component 📝](https://componentry.design/components/close)
  */
-export default function Close(props) {
-  return elem({
-    ...closeBase,
-    ...useTheme('Close'),
-    ...props,
-  })
-}
-Close.displayName = 'Close'
+export default simpleComponent('Close', closeBase)
