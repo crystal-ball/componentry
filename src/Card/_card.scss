@@ -20,14 +20,14 @@
     margin-left: 0;
   }
 
-  > .list-group:first-child {
-    .list-group-item:first-child {
+  > .list:first-child {
+    .list-item:first-child {
       @include border-top-radius($card-border-radius);
     }
   }
 
-  > .list-group:last-child {
-    .list-group-item:last-child {
+  > .list:last-child {
+    .list-item:last-child {
       @include border-bottom-radius($card-border-radius);
     }
   }
@@ -78,8 +78,8 @@
     @include border-radius($card-inner-border-radius $card-inner-border-radius 0 0);
   }
 
-  + .list-group {
-    .list-group-item:first-child {
+  + .list {
+    .list-item:first-child {
       border-top: 0;
     }
   }

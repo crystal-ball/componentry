@@ -2,16 +2,16 @@
 
 exports[`<List /> snapshots renders anchor list correctly 1`] = `
 <div
-  class="list-group"
+  class="list"
 >
   <a
-    class="list-group-item list-group-action-item"
+    class="list-item list-action-item"
     href="#"
   >
     Item 1
   </a>
   <a
-    class="list-group-item list-group-action-item"
+    class="list-item list-action-item"
     href="#"
   >
     Item 2
@@ -21,15 +21,15 @@ exports[`<List /> snapshots renders anchor list correctly 1`] = `
 
 exports[`<List /> snapshots renders button list correctly 1`] = `
 <div
-  class="list-group"
+  class="list"
 >
   <button
-    class="list-group-item list-group-action-item"
+    class="list-item list-action-item"
   >
     Item 1
   </button>
   <button
-    class="list-group-item list-group-action-item"
+    class="list-item list-action-item"
   >
     Item 2
   </button>
@@ -38,15 +38,15 @@ exports[`<List /> snapshots renders button list correctly 1`] = `
 
 exports[`<List /> snapshots renders ul list correctly 1`] = `
 <ul
-  class="list-group"
+  class="list"
 >
   <li
-    class="list-group-item"
+    class="list-item"
   >
     Item 1
   </li>
   <li
-    class="list-group-item"
+    class="list-item"
   >
     Item 2
   </li>

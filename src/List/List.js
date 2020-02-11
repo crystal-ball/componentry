@@ -3,45 +3,46 @@ import elem from '../elem-factory'
 import { useTheme } from '../Theme/Theme'
 
 /**
- * [ListGroup component 📝](https://componentry.design/components/list-group)
+ * [List component 📝](https://componentry.design/components/list)
  */
-export default function ListGroup(props) {
+export default function List(props) {
   // Lists check first child (only first child!) to see if it has actions, and
   // if it does, it's not a `li` so we render a `ul`.
   const child = Children.toArray(props.children)[0]
   // We have to be careful of children like text nodes with this check
   const childProps = child && child.props ? child.props : {}
 
+  const { flush, ...rest } = { ...useTheme('List'), ...props }
+
   return elem({
     as: childProps.href || childProps.onClick ? 'div' : 'ul',
-    elemClassName: 'list-group',
-    ...useTheme('ListGroup'),
-    ...props,
+    elemClassName: ['list', { 'list-flush': flush }],
+    ...rest,
   })
 }
-ListGroup.displayName = 'ListGroup'
+List.displayName = 'List'
 
 /**
- * [ListGroup item component 📝](https://componentry.design/components/list-group)
+ * [List item component 📝](https://componentry.design/components/list)
  */
-ListGroup.Item = function ListGroupItem(props) {
-  const { active, color, ...rest } = { ...useTheme('ListGroupItem'), ...props }
+List.Item = function ListItem(props) {
+  const { active, color, ...rest } = { ...useTheme('ListItem'), ...props }
   const { href, onClick } = rest
 
   return elem({
     /* eslint-disable no-nested-ternary */
     as: href || onClick ? (href ? 'a' : 'button') : 'li',
-    // List items always have the `list-group-item` class, and items that are
-    // actionable (buttons/anchors) have the `list-group-action-item` modifier
+    // List items always have the `list-item` class, and items that are
+    // actionable (buttons/anchors) have the `list-action-item` modifier
     // class added with additional required styles.
     elemClassName: {
       active,
       disabled: rest.disabled,
-      'list-group-item': true,
-      'list-group-action-item': href || onClick,
-      [`list-group-item-${color}`]: color,
+      'list-item': true,
+      'list-action-item': href || onClick,
+      [`list-item-${color}`]: color,
     },
     ...rest,
   })
 }
-ListGroup.Item.displayName = 'ListGroupItem'
+List.Item.displayName = 'ListItem'
