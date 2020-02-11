@@ -1,8 +1,9 @@
+import { useTheme } from '../Theme/Theme'
 import activeContainer from '../active-container-factory'
 import activeContent from '../active-content-factory'
 import activeTrigger from '../active-trigger-factory'
-import { useTheme } from '../Theme/Theme'
 import elem from '../elem-factory'
+import simpleComponent from '../simple-component-factory'
 import { navClasses } from '../utils/componentry'
 
 /**
@@ -14,14 +15,9 @@ export default Tabs
 /**
  * [Tabs content container component 📝](https://componentry.design/components/tabs)
  */
-Tabs.ContentContainer = function TabsContentContainer(props) {
-  return elem({
-    elemClassName: 'tabs-content-container',
-    ...useTheme('TabsContentContainer'),
-    ...props,
-  })
-}
-Tabs.ContentContainer.displayName = 'TabsContentContainer'
+Tabs.ContentContainer = simpleComponent('TabsContentContainer', {
+  elemClassName: 'tabs-content-container',
+})
 
 /**
  * [Tabs content component 📝](https://componentry.design/components/tabs)

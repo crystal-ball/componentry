@@ -2,6 +2,7 @@ import React from 'react'
 import elem from '../elem-factory'
 import { closeBase } from '../Close/Close'
 import { useTheme } from '../Theme/Theme'
+import simpleComponent from '../simple-component-factory'
 import { useActive, useVisible } from '../hooks'
 
 /**
@@ -66,11 +67,4 @@ Alert.displayName = 'Alert'
 /**
  * [Alert close component 📝](https://componentry.design/components/alert)
  */
-Alert.Close = function AlertClose(props) {
-  return elem({
-    ...closeBase,
-    ...useTheme('AlertClose'),
-    ...props,
-  })
-}
-Alert.Close.displayName = 'AlertClose'
+Alert.Close = simpleComponent('AlertClose', closeBase)

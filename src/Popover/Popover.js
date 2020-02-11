@@ -1,8 +1,7 @@
 import activeContainer from '../active-container-factory'
 import activeContent from '../active-content-factory'
 import activeTrigger from '../active-trigger-factory'
-import elem from '../elem-factory'
-import { useTheme } from '../Theme/Theme'
+import simpleComponent from '../simple-component-factory'
 
 /**
  * [Popover component 📝](https://componentry.design/components/popover)
@@ -17,14 +16,9 @@ export default Popover
 /**
  * [Popover body component 📝](https://componentry.design/components/popover)
  */
-Popover.Body = function PopoverBody(props) {
-  return elem({
-    elemClassName: 'popover-body',
-    ...useTheme('PopoverBody'),
-    ...props,
-  })
-}
-Popover.Body.displayName = 'PopoverBody'
+Popover.Body = simpleComponent('PopoverBody', {
+  elemClassName: 'popover-body',
+})
 
 /**
  * [Popover content component 📝](https://componentry.design/components/popover)
@@ -37,15 +31,10 @@ Popover.Content = activeContent('popover', {
 /**
  * [Popover heading component 📝](https://componentry.design/components/popover)
  */
-Popover.Heading = function PopoverHeading(props) {
-  return elem({
-    as: 'h3',
-    elemClassName: 'popover-heading',
-    ...useTheme('PopoverHeading'),
-    ...props,
-  })
-}
-Popover.Heading.displayName = 'PopoverHeading'
+Popover.Heading = simpleComponent('PopoverHeading', {
+  as: 'h3',
+  elemClassName: 'popover-heading',
+})
 
 /**
  * [Popover trigger component 📝](https://componentry.design/components/popover)

@@ -1,47 +1,38 @@
-import elem from '../elem-factory'
-import { useTheme } from '../Theme/Theme'
+import simpleComponent from '../simple-component-factory'
 
 /**
  * [Card component 📝](https://componentry.design/components/card)
  */
-export default function Card(props) {
-  return elem({ elemClassName: 'card', ...useTheme('Card'), ...props })
-}
-Card.displayName = 'Card'
+const Card = simpleComponent('Card', {
+  elemClassName: 'card',
+})
+export default Card
 
 /**
  * [Card body component 📝](https://componentry.design/components/card)
  */
-Card.Body = function CardBody(props) {
-  return elem({ elemClassName: 'card-body', ...useTheme('CardBody'), ...props })
-}
-Card.Body.displayName = 'CardBody'
+Card.Body = simpleComponent('CardBody', {
+  elemClassName: 'card-body',
+})
 
 /**
  * [Card footer component 📝](https://componentry.design/components/card)
  */
-Card.Footer = function CardFooter(props) {
-  return elem({ elemClassName: 'card-footer', ...useTheme('CardFooter'), ...props })
-}
-Card.Footer.displayName = 'CardFooter'
+Card.Footer = simpleComponent('CardFooter', {
+  elemClassName: 'card-footer',
+})
 
 /**
  * [Card header component 📝](https://componentry.design/components/card)
  */
-Card.Header = function CardHeader(props) {
-  return elem({ elemClassName: 'card-header', ...useTheme('CardHeader'), ...props })
-}
-Card.Header.displayName = 'CardHeader'
+Card.Header = simpleComponent('CardHeader', {
+  elemClassName: 'card-header',
+})
 
 /**
  * [Card title component 📝](https://componentry.design/components/card)
  */
-Card.Title = function CardTitle(props) {
-  return elem({
-    as: 'h4',
-    elemClassName: 'card-title',
-    ...useTheme('CardTitle'),
-    ...props,
-  })
-}
-Card.Title.displayName = 'CardTitle'
+Card.Title = simpleComponent('CardTitle', {
+  as: 'h4',
+  elemClassName: 'card-title',
+})

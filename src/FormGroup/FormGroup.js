@@ -1,15 +1,8 @@
-import elem from '../elem-factory'
-import { useTheme } from '../Theme/Theme'
+import simpleComponent from '../simple-component-factory'
 
 /**
  * [FormGroup component 📝](https://componentry.design/components/form-group)
  */
-export default function FormGroup(props) {
-  return elem({
-    as: 'div',
-    elemClassName: 'form-group',
-    ...useTheme('FormGroup'),
-    ...props,
-  })
-}
-FormGroup.displayName = 'FormGroup'
+export default simpleComponent('FormGroup', {
+  elemClassName: 'form-group',
+})
