@@ -1,5 +1,6 @@
 import Card from './Card'
 import Anchor from '../Anchor/Anchor'
+import List from '../List/List'
 
 <Meta title='Components/Card' component={Card} />
 
@@ -28,9 +29,9 @@ import Anchor from '../Anchor/Anchor'
   <Card.Footer>2 days ago</Card.Footer>
 </Card>
 
-## Card with image cap
+## Card elements
 
-<Card maxWidth='50%'>
+<Card width="50%">
   <svg
     className='bd-placeholder-img card-img-top'
     width='100%'
@@ -47,23 +48,23 @@ import Anchor from '../Anchor/Anchor'
       Image cap
     </text>
   </svg>
-
   <Card.Body>
     <Card.Title>Card title</Card.Title>
     <h5 className='card-subtitle'>Card subtitle</h5>
-    <p className='card-text'>
-      Card.Body example content. Note: If content with the <code>card-text</code>{' '}
-      class is the last child of the body the margin will be set to 0 for whitespace
-      consistency
-    </p>
-
-    <p className='card-text'>
-      <Anchor className='card-link' href='#'>
-        Card link
-      </Anchor>
-      <Anchor className='card-link' href='#'>
-        Another link
-      </Anchor>
+    <p class="card-text">
+      Must go faster... go, go, go, go, go! I was part of something special. This thing comes fully loaded. AM/FM radio, reclining bucket seats, and... power windows. You're a very talented young man, with your own clever thoughts and ideas. Do you need a manager?
     </p>
   </Card.Body>
+  <List flush>
+    <List.Item>God creates dinosaurs.</List.Item>
+    <List.Item>God destroys dinosaurs.</List.Item>
+    <List.Item>God creates Man.</List.Item>
+    <List.Item>Man destroys God.</List.Item>
+    <List.Item>Man creates Dinosaurs.</List.Item>
+  </List>
+  <Card.Body>
+    <a href="#" class="card-link">Card link</a>
+    <a href="#" class="card-link">Another link</a>
+  </Card.Body>
+  <Card.Footer>God help us, we're in the hands of engineers.</Card.Footer>
 </Card>

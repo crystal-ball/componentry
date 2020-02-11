@@ -552,29 +552,29 @@ $input-error-padding-y: 0.25rem !default;
 $input-error-border-radius: 0 0 $border-radius $border-radius !default;
 
 // --------------------------------------------------------
-// List groups
+// Lists 
 
-$list-group-bg: theme-color(background) !default;
-$list-group-border-color: rgba(theme-color(foreground), 0.125) !default;
-$list-group-border-width: $border-width !default;
-$list-group-border-radius: $border-radius !default;
+$list-bg: theme-color(background) !default;
+$list-border-color: rgba(theme-color(foreground), 0.125) !default;
+$list-border-width: $border-width !default;
+$list-border-radius: $border-radius !default;
 
-$list-group-item-padding-y: 0.75rem !default;
-$list-group-item-padding-x: 1.25rem !default;
+$list-item-padding-y: 0.75rem !default;
+$list-item-padding-x: 1.25rem !default;
 
-$list-group-hover-bg: gray('100') !default;
-$list-group-active-color: $active-foreground !default;
-$list-group-active-bg: $active-background !default;
-$list-group-active-border-color: $list-group-active-bg !default;
+$list-hover-bg: gray('100') !default;
+$list-active-color: $active-foreground !default;
+$list-active-bg: $active-background !default;
+$list-active-border-color: $list-active-bg !default;
 
-$list-group-disabled-color: gray('600') !default;
-$list-group-disabled-bg: $list-group-bg !default;
+$list-disabled-color: gray('600') !default;
+$list-disabled-bg: $list-bg !default;
 
-$list-group-action-color: gray('700') !default;
-$list-group-action-hover-color: $list-group-action-color !default;
+$list-action-color: gray('700') !default;
+$list-action-hover-color: $list-action-color !default;
 
-$list-group-action-active-color: theme-color(foreground) !default;
-$list-group-action-active-bg: gray('200') !default;
+$list-action-active-color: theme-color(foreground) !default;
+$list-action-active-bg: gray('200') !default;
 
 // --------------------------------------------------------
 // Modals
