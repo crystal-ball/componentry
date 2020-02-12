@@ -3,8 +3,11 @@
 
 # Source
 # -------------------------------------
-src
 public
+# nb: src/**.scss NEEDS to be published
+src/**/*.js
+src/**/*.mdx
+src/**/*.snap
 
 # Output
 # -------------------------------------
@@ -23,12 +26,14 @@ false
 .storybook
 .vscode
 .cz-config.js
+.eslintignore
 .eslintrc.js
 .prettierignore
 .prettierrc
 .travis.yml
 babel.config.js
 jsconfig.json
+renovate.json
 tsconfig.json
 webpack.config.js
 
