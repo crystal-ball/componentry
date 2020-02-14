@@ -6,10 +6,14 @@ import { useTheme } from '../Theme/Theme'
  * [Anchor component 📝](https://componentry.design/components/anchor)
  */
 export default function Anchor(props) {
-  const merged = { as: 'a', variant: 'a', ...useTheme('Anchor'), ...props }
+  const { variant = 'a', ...merged } = {
+    ...useTheme('Anchor'),
+    ...props,
+  }
 
   return elem({
-    elemClassName: actionClasses(merged),
+    as: 'a',
+    elemClassName: actionClasses(variant, merged),
     ...merged,
   })
 }

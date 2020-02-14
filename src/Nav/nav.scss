@@ -1,14 +1,13 @@
 /* ~componentry/src/Nav/nav */
 
 // --------------------------------------------------------
-// Nav container (<nav> or <ul>)
+// Nav container <nav>
 
 .nav {
   display: flex;
   flex-wrap: wrap;
   padding-left: 0;
   margin-bottom: 0;
-  list-style: none;
 }
 
 // --------------------------------------------------------
@@ -33,7 +32,7 @@
 }
 
 // --------------------------------------------------------
-// Justified
+// Filled
 
 .nav-fill {
   .nav-item {
@@ -41,6 +40,9 @@
     text-align: center;
   }
 }
+
+// --------------------------------------------------------
+// Justified
 
 .nav-justified {
   .nav-item {
@@ -54,25 +56,5 @@
 // Nav items
 
 .nav-item {
-  -webkit-appearance: none;
-  border: none;
-  display: block;
   padding: $nav-item-padding-y $nav-item-padding-x;
-  background: transparent;
-}
-
-.nav-item-action {
-  color: $nav-item-action-color;
-  text-align: left; // reset button font
-
-  @include hover-focus {
-    color: $nav-item-action-hover-color;
-    text-decoration: $nav-item-action-hover-decoration;
-  }
-
-  // Disabled state lightens text
-  &.disabled {
-    color: $nav-item-disabled-color;
-    text-decoration: none;
-  }
 }

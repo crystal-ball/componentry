@@ -159,23 +159,55 @@
 // Action elements
 
 /** Resets button and anchor styles to baseline */
-@mixin reset-action-item {
-  // button reset
-  -webkit-appearance: button;
-  border-radius: 0;
+@mixin reset-button {
+  -webkit-appearance: none !important; // Remove Chrome native button styling
+  display: inline; // Match browser agent display for <a>
+  padding: 0; // Remove browser agent padding
+
+  // Reset button font styles
   font-family: inherit;
-  font-size: $font-size-base;
-  line-height: $line-height-base;
-  margin: 0;
-  overflow: visible;
-  text-transform: none;
   font-size: inherit;
+  font-weight: inherit;
+  line-height: inherit;
+  letter-spacing: inherit;
+  text-align: inherit;
+  text-transform: none;
 
-  // anchor reset
-  text-decoration: none;
+  white-space: normal; // Reset .btn white space
 
-  &:not(:disabled) {
-    cursor: pointer; // 3
+  // TODO: is there a way to make it so that selecting button text doesn't show
+  // cursor pointer the same that way that selecting anchor text works?
+  user-select: auto;
+
+  // Reset button borders and background
+  background-color: transparent;
+  border: none;
+  border-radius: 0;
+}
+
+// Creates default styles for all the active trigger components to look like
+// anchors
+@mixin active-trigger-element {
+  @include reset-button;
+
+  // Set anchor font styles
+  color: typography-color(anchor);
+
+  &:hover,
+  &.hover {
+    color: $anchor-hover-color;
+    text-decoration: $anchor-hover-decoration;
+  }
+
+  &:active,
+  &.active {
+    color: $anchor-active-color;
+    text-decoration: $anchor-active-decoration;
+  }
+
+  &.disabled {
+    color: typography-color(disabled);
+    text-decoration: $anchor-disabled-decoration;
   }
 }
 

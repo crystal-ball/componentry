@@ -6,23 +6,22 @@ import { useTheme } from './Theme/Theme'
 
 /**
  * Factory returns custom `<Content />` components defined by the options.
+ * @returns {import('react').FunctionComponent<any>}
  */
 export default function ActiveContentFactory(
-  component,
+  name,
   {
     // Map of aria attributes to render with component
     arias,
-    // The base css class for this component
-    baseClass = `${component}-content`,
     // The component name used for display and theme lookups
-    name = `${component.slice(0, 1).toUpperCase()}${component.slice(1)}Content`,
+    displayName = `${name.slice(0, 1).toUpperCase()}${name.slice(1)}Content`,
     // Switch to include an absolute positioned wrapper for positioning+width styles
     positioned = false,
   } = {},
 ) {
   function ActiveContent(props) {
-    const { active, activeId, children, guid, ...rest } = {
-      ...useTheme(name),
+    const { active, activeId, children, guid, variant = `${name}-content`, ...rest } = {
+      ...useTheme(displayName),
       ...useContext(ActiveCtx),
       ...props,
     }
@@ -37,7 +36,7 @@ export default function ActiveContentFactory(
         type: 'content',
         arias,
       }),
-      elemClassName: baseClass,
+      elemClassName: variant,
       children: (
         <>
           {positioned && (
@@ -57,11 +56,11 @@ export default function ActiveContentFactory(
       // This className works right now b/c we're only passing a single className
       // in classes, but this is fragile... would be nice to be more explicity but
       // not add in unnecessary factory config code.
-      <div className={`${component}-positioned-container`}>{content}</div>
+      <div className={`${name}-content-container`}>{content}</div>
     ) : (
       content
     )
   }
-  ActiveContent.displayName = name
+  ActiveContent.displayName = displayName
   return ActiveContent
 }

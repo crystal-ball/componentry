@@ -1,9 +1,16 @@
 import elem from './elem-factory'
 import { useTheme } from './Theme/Theme'
 
-export default function simpleComponent(name, defaults) {
+/**
+ * Generate a library component with no dynamic behaviors
+ * @param {string} name
+ * @param {Object} propsDefaults Library defaults, overridden by theme defaults
+ *  then instance props
+ * @returns {import('react').FunctionComponent<any>}
+ */
+export default function simpleComponent(name, propsDefaults) {
   function Component(props) {
-    return elem({ ...defaults, ...useTheme(name), ...props })
+    return elem({ ...propsDefaults, ...useTheme(name), ...props })
   }
   Component.displayName = name
 

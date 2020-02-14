@@ -18,7 +18,7 @@
   // Directional styles
 
   &.top {
-    .popover-positioned-container {
+    .popover-content-container {
       bottom: 100%;
       justify-content: center;
     }
@@ -41,7 +41,7 @@
   }
 
   &.right {
-    .popover-positioned-container {
+    .popover-content-container {
       left: 100%;
       align-items: center;
     }
@@ -61,7 +61,7 @@
   }
 
   &.bottom {
-    .popover-positioned-container {
+    .popover-content-container {
       top: 100%;
       justify-content: center;
     }
@@ -81,7 +81,7 @@
   }
 
   &.left {
-    .popover-positioned-container {
+    .popover-content-container {
       right: 100%;
       align-items: center;
     }
@@ -102,8 +102,14 @@
   }
 }
 
+// --- Popover trigger ------------------------------------
+
+.popover-trigger {
+  @include active-trigger-element;
+}
+
 // Content container overrides the width constraints for parent element
-.popover-positioned-container {
+.popover-content-container {
   width: $popover-max-width;
   position: absolute;
   display: inline-flex;

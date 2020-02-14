@@ -6,14 +6,14 @@ exports[`<Tab /> snapshots renders correctly 1`] = `
   data-id="guid"
   name="tabs"
 >
-  <nav
-    class="tabs-nav"
+  <div
+    class="tabs-triggers-container"
     role="tablist"
   >
     <button
       aria-controls="guid-one-content"
       aria-selected="true"
-      class="tabs-trigger a active"
+      class="tabs-trigger active"
       id="guid-one-tab"
       role="tab"
       type="button"
@@ -24,7 +24,7 @@ exports[`<Tab /> snapshots renders correctly 1`] = `
     <button
       aria-controls="guid-two-content"
       aria-selected="false"
-      class="tabs-trigger a"
+      class="tabs-trigger"
       id="guid-two-tab"
       role="tab"
       type="button"
@@ -35,7 +35,7 @@ exports[`<Tab /> snapshots renders correctly 1`] = `
     <button
       aria-controls="guid-three-content"
       aria-selected="false"
-      class="tabs-trigger a"
+      class="tabs-trigger"
       id="guid-three-tab"
       role="tab"
       type="button"
@@ -46,7 +46,7 @@ exports[`<Tab /> snapshots renders correctly 1`] = `
     <button
       aria-controls="guid-four-content"
       aria-selected="false"
-      class="tabs-trigger a disabled"
+      class="tabs-trigger disabled"
       disabled=""
       id="guid-four-tab"
       role="tab"
@@ -55,7 +55,7 @@ exports[`<Tab /> snapshots renders correctly 1`] = `
     >
       Disabled
     </button>
-  </nav>
+  </div>
   <div
     class="tabs-content-container"
   >

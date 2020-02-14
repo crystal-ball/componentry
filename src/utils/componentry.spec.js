@@ -1,4 +1,4 @@
-import { actionClasses, componentry, elemArias } from './componentry'
+import { actionClasses, componentry, elemArias, navClasses } from './componentry'
 
 describe('componentry()', () => {
   test('computes libary utility classes from props', () => {
@@ -178,24 +178,33 @@ describe('componentry()', () => {
 })
 
 describe('actionClasses()', () => {
-  test('actionClasses returns computed className values for target elements', () => {
+  test('actionClasses returns computed className for passed options', () => {
     expect(
-      actionClasses({
-        variant: 'btn',
+      actionClasses('btn', {
+        active: true,
         block: true,
         color: 'primary',
         disabled: true,
         outline: 'primary',
         size: 'sm',
       }),
-    ).toEqual({
-      btn: true,
-      'btn-block': true,
-      'btn-primary': 'primary',
-      disabled: true,
-      'btn-outline-primary': 'primary',
-      'btn-sm': 'sm',
-    })
+    ).toEqual('btn btn-block btn-primary btn-outline-primary btn-sm active disabled')
+  })
+
+  test('when no truthy values are passed, then only the variant is returned', () => {
+    expect(actionClasses('btn', {})).toEqual('btn')
+  })
+})
+
+describe('navClasses()', () => {
+  test('navClasses returns computed className for passed options', () => {
+    expect(
+      navClasses('nav', { fill: true, justify: true, pills: true, vertical: true }),
+    ).toEqual('nav nav-fill nav-justified nav-pills nav-vertical')
+  })
+
+  test('when no truthy values are passed, then only the variant is returned', () => {
+    expect(navClasses('nav', {})).toEqual('nav')
   })
 })
 
@@ -215,6 +224,7 @@ describe('arias()', () => {
     const attrs = {
       active: true,
       guid: 'test',
+      arias: {},
     }
 
     const result = elemArias(attrs)

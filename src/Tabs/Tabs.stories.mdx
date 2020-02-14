@@ -8,14 +8,14 @@ import Tabs from './Tabs'
 <DocsTitle title='Tabs' experimental />
 
 <Tabs defaultActive='one' className='w-100'>
-  <Tabs.Nav fill={boolean('fill', false)} justify={boolean('justify', false)}>
+  <Tabs.TriggersContainer fill={boolean('fill', false)} justify={boolean('justify', false)}>
     <Tabs.Trigger activeId='one'>Item 1</Tabs.Trigger>
     <Tabs.Trigger activeId='two'>Tab with long name</Tabs.Trigger>
     <Tabs.Trigger activeId='three'>Item 3</Tabs.Trigger>
     <Tabs.Trigger activeId='four' disabled>
       Disabled
     </Tabs.Trigger>
-  </Tabs.Nav>
+  </Tabs.TriggersContainer>
   <Tabs.ContentContainer>
     <Tabs.Content activeId='one'>Tab 1</Tabs.Content>
     <Tabs.Content activeId='two'>Tab 2</Tabs.Content>

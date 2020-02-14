@@ -18,6 +18,8 @@
 //
 
 .dropdown-trigger {
+  @include active-trigger-element;
+
   font-size: $dropdown-font-size;
   font-weight: $dropdown-font-weight;
 }
@@ -121,7 +123,7 @@
   padding: $dropdown-item-padding-y $dropdown-item-padding-x;
   // Ensure that buttons and anchors inherit dropdown container font styles
   font-size: inherit;
-  font-weight: inherit;
+  font-weight: $font-weight-normal;
   color: $dropdown-action-item-color;
   line-height: $dropdown-item-line-height;
   white-space: nowrap; // prevent links from randomly breaking onto new lines

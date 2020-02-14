@@ -1,10 +1,11 @@
 import { boolean } from '@storybook/addon-knobs'
 
 import Nav from './Nav'
+import Anchor from '../Anchor/Anchor'
 
 <Meta title='Components/Nav' component={Nav} />
 
-<DocsTitle title="Navs" experimental/>
+<DocsTitle title="Navs"/>
 
 <div className='w-50'>
   <Nav
@@ -13,10 +14,10 @@ import Nav from './Nav'
     pills={boolean('pills', false)}
     vertical={boolean('vertical', false)}
   >
-    <Nav.Item href='#' active>
+    <Nav.Item active href='#' >
       Active
     </Nav.Item>
-    <Nav.Item href='#'>React</Nav.Item>
+    <Nav.Item href="#">React</Nav.Item>
     <Nav.Item href='#'>Redux</Nav.Item>
     <Nav.Item href='#' disabled>
       Styles

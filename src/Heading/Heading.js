@@ -18,13 +18,13 @@ const asMap = {
  * [Heading component 📝](https://componentry.design/components/heading)
  */
 export default function Heading(props) {
-  const { as, display, variant, ...rest } = {
-    variant: 'heading-1',
+  const { variant = 'heading-1', ...rest } = {
     ...useTheme('Heading'),
     ...props,
   }
+
   return elem({
-    as: as || asMap[variant],
+    as: asMap[variant],
     elemClassName: variant,
     ...rest,
   })

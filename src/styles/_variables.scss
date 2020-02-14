@@ -16,7 +16,6 @@
 // --------------------------------------------------------
 // Design system options
 
-$enable-dom-styles:    true !default;
 $enable-rounded:       true !default;
 $enable-shadows:       true !default;
 $enable-transitions:   true !default;
@@ -350,7 +349,7 @@ $btn-active-decoration: none !default;
 
 $btn-disabled-opacity: 0.65 !default;
 $btn-disabled-border-width: $btn-border-width !default;
-$btn-link-disabled-color: font-color(disabled) !default;
+$btn-link-disabled-color: typography-color(disabled) !default;
 
 $btn-padding-y-sm: 0.25rem !default;
 $btn-padding-x-sm: 0.5rem !default;
@@ -457,7 +456,7 @@ $dropdown-item-padding-x-lg: ($dropdown-item-padding-x * 1.1) !default;
 // Dropdown items are assumed to be action elements (a or btn), default styling
 // is to not override the action element styles, but user's can define dropdown
 // action item specific styles with these variables.
-$dropdown-action-item-color:        null !default;
+$dropdown-action-item-color:        typography-color(anchor) !default;
 $dropdown-action-item-hover-color:  null !default;
 $dropdown-action-item-hover-bg:     darken(theme-color(background), 7.5%) !default;
 
@@ -562,19 +561,20 @@ $list-border-radius: $border-radius !default;
 $list-item-padding-y: 0.75rem !default;
 $list-item-padding-x: 1.25rem !default;
 
-$list-hover-bg: gray('100') !default;
-$list-active-color: $active-foreground !default;
-$list-active-bg: $active-background !default;
-$list-active-border-color: $list-active-bg !default;
+$list-action-item-color: gray('700') !default;
 
-$list-disabled-color: gray('600') !default;
-$list-disabled-bg: $list-bg !default;
+$list-action-item-hover-color: $list-action-item-color !default;
+$list-action-item-hover-bg: gray('100') !default;
 
-$list-action-color: gray('700') !default;
-$list-action-hover-color: $list-action-color !default;
+$list-action-item-active-color: theme-color(foreground) !default;
+$list-action-item-active-bg: gray('200') !default;
 
-$list-action-active-color: theme-color(foreground) !default;
-$list-action-active-bg: gray('200') !default;
+$list-active-item-color: $active-foreground !default;
+$list-active-item-bg: $active-background !default;
+$list-active-item-border-color: $list-active-item-bg !default;
+
+$list-disabled-item-color: gray('600') !default;
+$list-disabled-item-bg: $list-bg !default;
 
 // --------------------------------------------------------
 // Modals

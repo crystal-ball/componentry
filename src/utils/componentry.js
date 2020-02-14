@@ -1,33 +1,117 @@
+import cx from 'classnames'
+
 /**
  * Library utility functions for working with props to className+style mappings
  * @module
  */
 
+// --------------------------------------------------------
+// Component arias generator
+
+/**
+ * Return object of aria attributes using options
+ * @param {Object} opts
+ * @param {boolean|string} opts.active
+ * @param {string} [opts.activeId]
+ * @param {string} opts.guid
+ * @param {string} [opts.type] Oneof 'trigger' or 'content'
+ * @param {Object} opts.arias
+ * @param {boolean} [opts.arias.controls]
+ * @param {boolean} [opts.arias.describedby]
+ * @param {boolean} [opts.arias.expanded]
+ * @param {boolean} [opts.arias.haspopup]
+ * @param {boolean} [opts.arias.hidden]
+ * @param {boolean} [opts.arias.id]
+ * @param {boolean} [opts.arias.labelledby]
+ * @param {string} [opts.arias.role]
+ * @param {boolean} [opts.arias.selected]
+ */
+export function elemArias({ active, activeId, guid, type, arias = {} }) {
+  const {
+    controls,
+    describedby,
+    expanded,
+    haspopup,
+    hidden,
+    id,
+    labelledby,
+    role,
+    selected,
+  } = arias
+  const _arias = {}
+
+  if (controls) _arias['aria-controls'] = guid
+  if (describedby) _arias['aria-describedby'] = guid
+  if (expanded) _arias['aria-expanded'] = String(active)
+  if (haspopup) _arias['aria-haspopup'] = 'true'
+  if (hidden) _arias['aria-hidden'] = String(!active)
+  if (id) _arias.id = guid
+  if (labelledby) _arias['aria-labelledby'] = guid
+  if (role) _arias.role = role
+  if (selected) _arias['aria-selected'] = String(active)
+
+  // For elements with multiple trigger/content groups an activeId is used to
+  // track which group is active. Aria values must include addl identifiers
+  // to ensure uniqueness
+  if (activeId && type === 'trigger') {
+    _arias.id = `${guid}-${activeId}-tab`
+    _arias['aria-controls'] = `${guid}-${activeId}-content`
+    _arias['aria-selected'] = String(active === activeId)
+  } else if (activeId && type === 'content') {
+    _arias.id = `${guid}-${activeId}-content`
+    _arias['aria-labelledby'] = `${guid}-${activeId}-trigger`
+    _arias['aria-hidden'] = String(activeId !== active)
+  }
+
+  return _arias
+}
+
 /**
  * Fn generates the classes for action elements
+ * @param {string} variant
+ * @param {Object} opts
+ * @param {boolean} [opts.active]
+ * @param {boolean} [opts.block]
+ * @param {string} [opts.color]
+ * @param {boolean} [opts.disabled]
+ * @param {string} [opts.outline]
+ * @param {string} [opts.size]
+ * @returns {string}
  */
-export function actionClasses({ block, color, disabled, outline, size, variant }) {
-  return {
+export function actionClasses(
+  variant,
+  { active, block, color, disabled, outline, size },
+) {
+  return cx({
     [variant]: true,
     [`${variant}-block`]: block,
     [`${variant}-${color}`]: color,
     [`${variant}-outline-${outline}`]: outline,
     [`${variant}-${size}`]: size,
+    active,
     // We include a disabled class AND pass disabled prop to btn element for a11y
     disabled,
-  }
+  })
 }
 
 /**
  * Function generates the classes for nav elements
+ * @param {string} variant
+ * @param {Object} opts
+ * @param {boolean} [opts.fill]
+ * @param {boolean} [opts.justify]
+ * @param {boolean} [opts.pills]
+ * @param {boolean} [opts.vertical]
+ * @returns {string}
  */
-export function navClasses({ fill, justify, pills, vertical }) {
-  return {
-    'nav-vertical': vertical,
-    'nav-pills': pills,
-    'nav-fill': fill,
-    'nav-justified': justify,
-  }
+export function navClasses(variant, { fill, justify, pills, vertical }) {
+  return cx({
+    [variant]: true,
+    [`${variant}-fill`]: fill,
+    [`${variant}-justified`]: justify,
+    [`${variant}-pills`]: pills,
+    [`${variant}-vertical`]: vertical,
+  })
 }
 
 // --------------------------------------------------------
@@ -183,50 +267,4 @@ export function componentry({
     rest,
     libraryStyles: styles,
   }
-}
-
-// --------------------------------------------------------
-// Component arias generator
-
-/**
- * Return object of aria attributes using options
- */
-export function elemArias({ active, activeId, guid, type, arias = {} }) {
-  const {
-    controls,
-    describedby,
-    expanded,
-    haspopup,
-    hidden,
-    id,
-    labelledby,
-    role,
-    selected,
-  } = arias
-  const _arias = {}
-
-  if (controls) _arias['aria-controls'] = guid
-  if (describedby) _arias['aria-describedby'] = guid
-  if (expanded) _arias['aria-expanded'] = String(active)
-  if (haspopup) _arias['aria-haspopup'] = 'true'
-  if (hidden) _arias['aria-hidden'] = String(!active)
-  if (id) _arias.id = guid
-  if (labelledby) _arias['aria-labelledby'] = guid
-  if (role) _arias.role = role
-  if (selected) _arias['aria-selected'] = String(active)
-
-  // For elements with multiple trigger/content groups an activeId is used to
-  // track which group is active. Aria values must include addl identifiers
-  // to ensure uniqueness
-  if (activeId && type === 'trigger') {
-    _arias.id = `${guid}-${activeId}-tab`
-    _arias['aria-controls'] = `${guid}-${activeId}-content`
-    _arias['aria-selected'] = String(active === activeId)
-  } else if (activeId && type === 'content') {
-    _arias.id = `${guid}-${activeId}-content`
-    _arias['aria-labelledby'] = `${guid}-${activeId}-trigger`
-    _arias['aria-hidden'] = String(activeId !== active)
-  }
-
-  return _arias
 }

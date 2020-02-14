@@ -7,13 +7,13 @@ exports[`<Tooltip /> snapshots renders correctly 1`] = `
 >
   <button
     aria-describedby="guid"
-    class="tooltip-trigger a"
+    class="tooltip-trigger"
     type="button"
   >
     Trigger
   </button>
   <div
-    class="tooltip-positioned-container"
+    class="tooltip-content-container"
   >
     <div
       aria-hidden="true"
