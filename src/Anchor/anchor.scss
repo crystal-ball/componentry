@@ -6,30 +6,9 @@
 // creates a button styled exactly like an anchor. This should be used for any
 // application actions that are not route navigations.
 .a {
-  -webkit-appearance: none !important; // Remove Chrome native button styling
-  display: inline-block;
-  padding: 0;
-  background-color: transparent;
-  cursor: pointer;
-
-  // Set anchor font styles
   color: typography-color(anchor);
-  font-family: $font-family-sans-serif;
-  font-size: $font-size-base;
-  font-weight: $font-weight-normal;
-  line-height: $line-height-base;
-  letter-spacing: 0;
-  text-transform: none;
-
-  user-select: auto;
-  vertical-align: baseline;
-  white-space: normal;
-
-  border: none;
-  border-radius: 0;
-
   text-decoration: $anchor-decoration;
-  -webkit-text-decoration-skip: objects; // Remove gaps in links underline in iOS 8+ and Safari 8+.
+  background-color: transparent;
 
   &:hover {
     color: $anchor-hover-color;
@@ -41,19 +20,14 @@
     text-decoration: $anchor-active-decoration;
   }
 
-  // When no href is passed the Anchor component will include disabled, which
-  // we use to remove the stylesof the anchor
-  // See https://github.com/twbs/bootstrap/issues/19402
   &.disabled {
     color: $anchor-disabled-color;
     text-decoration: $anchor-disabled-decoration;
   }
 }
 
-@if ($enable-dom-styles) {
-  a {
-    @extend .a;
-  }
+button.a {
+  @include reset-button;
 }
 
 // Custom color style is needed to include :hover, and :focus styles

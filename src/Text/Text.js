@@ -5,9 +5,7 @@ import { useTheme } from '../Theme/Theme'
  * [Text component 📝](https://componentry.design/components/text)
  */
 export default function Text(props) {
-  const { color, inline, size, variant, ...rest } = {
-    as: 'p',
-    variant: 'body',
+  const { variant = 'body', color, inline, size, ...rest } = {
     ...useTheme('Text'),
     ...props,
   }
@@ -16,6 +14,6 @@ export default function Text(props) {
   if (color) rest.fontColor = color
   if (size) rest.fontSize = size
 
-  return elem({ elemClassName: variant, ...rest })
+  return elem({ as: 'p', elemClassName: variant, ...rest })
 }
 Text.displayName = 'Text'

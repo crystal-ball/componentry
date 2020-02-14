@@ -23,8 +23,8 @@ Dropdown.Content = activeContent('dropdown', {
  * [Dropdown item component 📝](https://componentry.design/components/dropdown)
  */
 Dropdown.Item = activeTrigger('dropdown', {
-  baseClass: 'dropdown-item',
   displayName: 'DropdownItem',
+  variant: 'dropdown-item',
 })
 
 /**

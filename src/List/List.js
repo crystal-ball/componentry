@@ -6,13 +6,13 @@ import { useTheme } from '../Theme/Theme'
  * [List component 📝](https://componentry.design/components/list)
  */
 export default function List(props) {
+  const { flush = false, ...rest } = { ...useTheme('List'), ...props }
+
   // Lists check first child (only first child!) to see if it has actions, and
   // if it does, it's not a `li` so we render a `ul`.
   const child = Children.toArray(props.children)[0]
   // We have to be careful of children like text nodes with this check
   const childProps = child && child.props ? child.props : {}
-
-  const { flush, ...rest } = { ...useTheme('List'), ...props }
 
   return elem({
     as: childProps.href || childProps.onClick ? 'div' : 'ul',
@@ -26,7 +26,7 @@ List.displayName = 'List'
  * [List item component 📝](https://componentry.design/components/list)
  */
 List.Item = function ListItem(props) {
-  const { active, color, ...rest } = { ...useTheme('ListItem'), ...props }
+  const { active = false, color = '', ...rest } = { ...useTheme('ListItem'), ...props }
   const { href, onClick } = rest
 
   return elem({

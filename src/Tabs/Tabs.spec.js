@@ -6,7 +6,7 @@ import elementTests from '../../test/element-tests'
 
 describe('<Tab />', () => {
   elementTests(Tabs)
-  elementTests(Tabs.Nav)
+  elementTests(Tabs.TriggersContainer)
   elementTests(Tabs.Trigger)
   elementTests(Tabs.ContentContainer)
   elementTests(Tabs.Content)
@@ -18,14 +18,14 @@ describe('<Tab /> snapshots', () => {
   it('renders correctly', () => {
     const { container } = render(
       <Tabs defaultActive='one'>
-        <Tabs.Nav>
+        <Tabs.TriggersContainer>
           <Tabs.Trigger activeId='one'>Item 1</Tabs.Trigger>
           <Tabs.Trigger activeId='two'>Tab with long name</Tabs.Trigger>
           <Tabs.Trigger activeId='three'>Item 3</Tabs.Trigger>
           <Tabs.Trigger disabled activeId='four'>
             Disabled
           </Tabs.Trigger>
-        </Tabs.Nav>
+        </Tabs.TriggersContainer>
         <Tabs.ContentContainer>
           <Tabs.Content activeId='one'>Tab 1</Tabs.Content>
           <Tabs.Content activeId='two'>Tab 2</Tabs.Content>

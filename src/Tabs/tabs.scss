@@ -6,7 +6,7 @@
 
 // --- Structure
 // .tabs
-// .tabs-nav
+// .tabs-triggers-container
 // .tabs-trigger
 // .tabs-content-container
 // .tabs-content
@@ -16,21 +16,23 @@
 //
 
 // Container handles: margin between tabs and panes, and layout of tabs
-.tabs-nav {
+.tabs-triggers-container {
   display: flex;
   margin: $tabs-nav-container-margin;
   border-bottom: $tabs-nav-container-border;
   background: $tabs-nav-container-bg;
   box-shadow: $tabs-nav-container-shadow;
 
-  &.nav-fill {
+  // --- Filled
+  &.tabs-triggers-container-fill {
     .tabs-trigger {
       flex: 1 1 auto;
       text-align: center;
     }
   }
 
-  &.nav-justified {
+  // --- Justified
+  &.tabs-triggers-container-justified {
     .tabs-trigger {
       flex-basis: 0;
       flex-grow: 1;
@@ -38,9 +40,10 @@
     }
   }
 
-  // Provide ability to customize tab styles for vertical tabs, they likely look
-  // different
-  &.nav-vertical {
+  // TODO: tabs pills
+
+  // --- Vertical
+  &.tabs-triggers-container-vertical {
     margin: $tabs-nav-vertical-margin;
     border-bottom: none;
 
@@ -82,6 +85,8 @@
   padding: $tabs-tab-padding-y $tabs-tab-padding-x;
   background: $tabs-tab-bg;
   color: $tabs-tab-color;
+  font-size: $font-size-base;
+  font-weight: $font-weight-normal;
   border-style: solid;
   border-color: $tabs-tab-border-color;
   border-width: $tabs-tab-border-width;

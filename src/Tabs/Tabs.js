@@ -24,29 +24,28 @@ Tabs.ContentContainer = simpleComponent('TabsContentContainer', {
  */
 Tabs.Content = activeContent('tabs', {
   arias: { hidden: true, role: 'tabpanel' },
-  baseClass: 'tabs-content',
+  variant: 'tabs-content',
 })
 
 /**
  * [Tabs nav component 📝](https://componentry.design/components/tabs)
  */
-Tabs.Nav = function TabsNav(props) {
+Tabs.TriggersContainer = function TriggersContainer(props) {
   return elem({
-    as: 'nav',
     role: 'tablist',
-    elemClassName: ['tabs-nav', navClasses(props)],
-    ...useTheme('TabsNav'),
+    elemClassName: navClasses('tabs-triggers-container', props),
+    ...useTheme('TriggersContainer'),
     ...props,
   })
 }
-Tabs.Nav.displayName = 'TabsNav'
+Tabs.TriggersContainer.displayName = 'TriggersContainer'
 
 /**
  * [Tabs trigger component 📝](https://componentry.design/components/tabs)
  */
 Tabs.Trigger = activeTrigger('tabs', {
   arias: { selected: true, role: 'tab' },
-  baseClass: 'tabs-trigger',
+  variant: 'tabs-trigger',
   // Tabs can only activate, they never deactivate when clicked
   action: 'activate',
 })

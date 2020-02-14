@@ -24,6 +24,7 @@ export const ActiveCtx = createContext({ active: false })
  * context as the `activate` and `deactivate` handlers for subcomponents to _always_
  * use. This ensures that we can always hook into the change events for internal
  * needs like setting or removing special event listeners.
+ * @returns {import('react').FunctionComponent<any>}
  */
 export default function activeContainerFactory(name, opts = {}) {
   const themeName = `${name.slice(0, 1).toUpperCase()}${name.slice(1)}`

@@ -8,14 +8,13 @@ import { actionClasses, elemArias } from './utils/componentry'
  * Factory returns custom `<Trigger />` components defined by the fn options.
  * Componentry sets up triggers to be anchor style buttons by default, this
  * can be overridden by passing an as, type and anchor to reset the defaults.
+ * @returns {import('react').FunctionComponent<any>}
  */
 export default function activeTriggerFactory(
   name,
   {
     // Map of aria attributes to render with component
     arias = {},
-    // Component name className
-    baseClass = `${name}-trigger`,
     // Theme lookups and component display name
     displayName = `${name.slice(0, 1).toUpperCase()}${name.slice(1)}Trigger`,
     // Overrides component onClick to specified activate/deactivate action
@@ -25,6 +24,9 @@ export default function activeTriggerFactory(
 ) {
   function ActiveTrigger(props) {
     const {
+      as = 'button',
+      type = 'button',
+      variant = `${name}-trigger`,
       // --- Render elements
       children,
       decoration,
@@ -36,9 +38,6 @@ export default function activeTriggerFactory(
       deactivate,
       ...rest
     } = {
-      as: 'button',
-      type: 'button',
-      variant: 'a',
       ...opts,
       ...useTheme(displayName),
       ...useContext(ActiveCtx),
@@ -55,6 +54,8 @@ export default function activeTriggerFactory(
     else onClick = active ? deactivate : activate
 
     return elem({
+      as,
+      type,
       ...elemArias({
         active,
         activeId,
@@ -63,8 +64,7 @@ export default function activeTriggerFactory(
         arias,
       }),
       elemClassName: [
-        baseClass,
-        actionClasses(rest),
+        actionClasses(variant, rest),
         // For compound-active contexts add an active class if activeIds match
         // (eg in tabs show which tab is selected)
         { active: activeId && active === activeId },

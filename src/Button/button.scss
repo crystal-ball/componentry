@@ -31,7 +31,6 @@ $btn-states-map: map-merge($btn-defaults, $btn-states);
 
 .btn {
   -webkit-appearance: button;
-  cursor: pointer;
   border: $btn-border-width solid transparent;
   @include border-radius($btn-border-radius);
   display: inline-block;

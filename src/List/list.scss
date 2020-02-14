@@ -19,10 +19,13 @@
   position: relative;
   display: block;
   padding: $list-item-padding-y $list-item-padding-x;
-  // Place the border on the list items and negative margin up for better styling
-  margin-bottom: -$list-border-width;
   background-color: $list-bg;
   border: $list-border-width solid $list-border-color;
+
+  // For subsequent list item's remove the border top so we don't double up
+  & + .list-item {
+    border-top: 0;
+  }
 
   &:first-child {
     @include border-top-radius($list-border-radius);
@@ -33,14 +36,9 @@
     @include border-bottom-radius($list-border-radius);
   }
 
-  @include hover-focus {
-    z-index: 1; // Place hover/active items above their siblings for proper border styling
-    text-decoration: none;
-  }
-
   &.disabled {
-    color: $list-disabled-color;
-    background-color: $list-disabled-bg;
+    color: $list-disabled-item-color;
+    background-color: $list-disabled-item-bg;
   }
 }
 
@@ -52,23 +50,25 @@
 // selected items.
 
 .list-action-item {
-  @include reset-action-item;
-  width: 100%; // For `<button>`s (anchors become 100% by default though)
-  color: $list-action-color;
-  text-align: inherit; // For `<button>`s (anchors inherit)
+  color: $list-action-item-color;
+  font-size: inherit; // -> buttons
+  text-align: inherit; // -> buttons
+  text-decoration: none; // -> anchors
 
   // Hover state
-  @include hover-focus {
-    color: $list-action-hover-color;
+  &:hover,
+  &:focus {
+    z-index: 1; // Place hover/focus items above their siblings for proper border styling
+    color: $list-action-item-hover-color;
+    background-color: $list-action-item-hover-bg;
     text-decoration: none;
-    background-color: $list-hover-bg;
   }
 
   // Note that the active state is different from having the active class
   // (Class is persistent, state is for user interaction)
   &:active {
-    color: $list-action-active-color;
-    background-color: $list-action-active-bg;
+    color: $list-action-item-active-color;
+    background-color: $list-action-item-active-bg;
   }
 }
 
@@ -79,9 +79,9 @@
 // over :hover (Note this is valid for items and action items)
 .list-item.active {
   z-index: 2; // Place active items above their siblings for proper border styling
-  color: $list-active-color;
-  background-color: $list-active-bg;
-  border-color: $list-active-border-color;
+  color: $list-active-item-color;
+  background-color: $list-active-item-bg;
+  border-color: $list-active-item-border-color;
 }
 
 // --------------------------------------------------------
@@ -114,30 +114,25 @@
 
 // Add modifier classes to change text and background color on individual items.
 // (Organizationally, this must come after the `:hover` states)
-@mixin list-item-variant($state, $background, $color) {
-  .list-item-#{$state} {
+@each $color, $value in $theme-colors {
+  $background: theme-color-level($color, -9);
+  $foreground: theme-color-level($color, 6);
+
+  .list-item-#{$color} {
     color: $color;
     background-color: $background;
 
     &.list-action-item {
       @include hover-focus {
-        color: $color;
+        color: $foreground;
         background-color: darken($background, 5%);
       }
 
       &.active {
         color: theme-color(background);
-        background-color: $color;
-        border-color: $color;
+        background-color: $foreground;
+        border-color: $foreground;
       }
     }
   }
-}
-
-@each $color, $value in $theme-colors {
-  @include list-item-variant(
-    $color,
-    theme-color-level($color, -9),
-    theme-color-level($color, 6)
-  );
 }

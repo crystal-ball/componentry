@@ -12,8 +12,14 @@
   position: relative;
 }
 
+// --- Tooltip trigger ------------------------------------
+
+.tooltip-trigger {
+  @include active-trigger-element;
+}
+
 // Content container overrides the width constraints for parent element
-.tooltip-positioned-container {
+.tooltip-content-container {
   width: $tooltip-max-width;
   position: absolute;
 }

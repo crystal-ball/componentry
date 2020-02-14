@@ -1,6 +1,6 @@
 import elem from '../elem-factory'
 import { useTheme } from '../Theme/Theme'
-import { navClasses } from '../utils/componentry'
+import { actionClasses, navClasses } from '../utils/componentry'
 
 /**
  * [Nav component 📝](https://componentry.design/components/nav)
@@ -8,7 +8,8 @@ import { navClasses } from '../utils/componentry'
 export default function Nav(props) {
   return elem({
     as: 'nav',
-    elemClassName: ['nav', navClasses(props)],
+    elemClassName: navClasses('nav', props),
+    role: 'navigation',
     ...useTheme('Nav'),
     ...props,
   })
@@ -19,21 +20,15 @@ Nav.displayName = 'Nav'
  * [Nav item component 📝](https://componentry.design/components/nav)
  */
 Nav.Item = function NavItem(props) {
-  const { active, ...rest } = { ...useTheme('NavItem'), ...props }
-  const { href, onClick } = rest
+  const { variant = 'nav-item', ...merged } = {
+    ...useTheme('NavItem'),
+    ...props,
+  }
 
   return elem({
-    /* eslint-disable no-nested-ternary */
-    as: href || onClick ? (href ? 'a' : 'button') : 'li',
-    elemClassName: [
-      'nav-item',
-      {
-        'nav-item-action': href || onClick,
-        active,
-        disabled: rest.disabled,
-      },
-    ],
-    ...rest,
+    as: 'a',
+    elemClassName: actionClasses(variant, merged),
+    ...merged,
   })
 }
 Nav.Item.displayName = 'NavItem'
