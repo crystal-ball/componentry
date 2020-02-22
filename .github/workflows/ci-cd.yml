@@ -1,0 +1,71 @@
+name: CI/CD
+
+# Run action on all PRS and on change to master branch in order to test PRs for
+# continuous integration and deploy master for continuous deployment
+on:
+  pull_request:
+    types: [opened, synchronize, reopened]
+  push:
+    branches:
+      - master
+
+jobs:
+  skip:
+    name: CI Skip
+    if: contains(github.event.head_commit.message, 'skip ci')
+    runs-on: ubuntu-latest
+    steps:
+      - name: Skip CI Commit
+        run: echo "Skip CI commit success"
+  test:
+    name: Continuous Integration
+    if: contains(github.event.head_commit.message, 'skip ci') == false
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v1
+      - name: Setup Node.js
+        uses: actions/setup-node@v1
+        with:
+          node-version: '12'
+      - name: Code Climate - Setup
+        run: |
+          curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
+          chmod +x ./cc-test-reporter
+          ./cc-test-reporter before-build
+      - name: Install
+        run: npm install
+        env:
+          CI: 'true'
+      - name: Test
+        run: npm test
+      - name: Code Climate - Report
+        if: success()
+        run: |
+          export GIT_BRANCH="${GIT_BRANCH:-${GITHUB_REF:11}}"
+          ./cc-test-reporter after-build
+        env:
+          # Add required git env values for code cov reporting, ref:
+          # https://docs.codeclimate.com/docs/github-actions-test-coverage
+          GIT_COMMIT_SHA: ${{ github.event.pull_request.head.sha }}
+          GIT_BRANCH: ${{ github.head_ref }}
+          CC_TEST_REPORTER_ID: ${{ secrets.CC_TEST_REPORTER_ID }}
+  # publish:
+  #   name: Continuous Deployment
+  #   if: github.ref == 'refs/heads/master'
+  #   needs: test
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #     - uses: actions/checkout@v1
+  #     - name: Setup Node.js
+  #       uses: actions/setup-node@v1
+  #       with:
+  #         node-version: '12'
+  #     - name: Install
+  #       run: npm install
+  #       env:
+  #         CI: 'true'
+  #     - name: Semantic Release
+  #       run: npx semantic-release
+  #       env:
+  #         GH_TOKEN: ${{ secrets.SEMANTIC_GH_TOKEN }}
+  #         NPM_TOKEN: ${{ secrets.SEMANTIC_NPM_TOKEN }}
