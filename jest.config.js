@@ -12,7 +12,12 @@ module.exports = {
   // Test coverage can be enforced with a coverageThreshold
   collectCoverage: true,
   coverageReporters: ['text-summary', 'lcov'],
-  collectCoverageFrom: ['src/**/*.js', '!**/*.stories.js'],
+  collectCoverageFrom: [
+    'src/**/*.js',
+    '!**/*.stories.js',
+    '!src/storybook-resources/**',
+    '!src/{Media,Modal,Theme}/stories/**',
+  ],
 
   // Pre/Post test framework setup configs
   setupFilesAfterEnv: ['<rootDir>/test/jest-extend.js'],
