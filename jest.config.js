@@ -11,7 +11,7 @@ module.exports = {
 
   // Test coverage can be enforced with a coverageThreshold
   collectCoverage: true,
-  coverageReporters: ['text-summary'],
+  coverageReporters: ['text-summary', 'lcov'],
   collectCoverageFrom: ['src/**/*.js', '!**/*.stories.js'],
 
   // Pre/Post test framework setup configs
