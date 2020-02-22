@@ -10,8 +10,8 @@
   <a href="https://bundlephobia.com/result?p=componentry">
     <img src="https://img.shields.io/bundlephobia/minzip/componentry" alt="Bundle size" valign="text-top" />
   </a>
-  <a href="https://travis-ci.com/crystal-ball/componentry">
-    <img src="https://travis-ci.com/crystal-ball/componentry.svg" alt="Build status" valign="text-top" />
+  <a href="https://github.com/crystal-ball/componentry/actions?workflow=CI%2FCD">
+    <img src="https://github.com/crystal-ball/componentry/workflows/CI%2FCD/badge.svg" alt="Build status" valign="text-top" />
   </a>
   <a href="https://snyk.io/test/github/crystal-ball/componentry?targetFile=package.json">
     <img src="https://snyk.io/test/github/crystal-ball/componentry/badge.svg?targetFile=package.json" alt="Known vulnerabilities" valign="text-top" />
