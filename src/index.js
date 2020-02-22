@@ -29,3 +29,5 @@ export { default as Tooltip } from './Tooltip/Tooltip'
 // --- Utilities
 export { useActive, useActiveSrollReset, useNoScroll, useVisible } from './hooks'
 export { setupOutlineHandlers } from './utils/dom'
+
+export { default as Fodal } from './Fodal/Fodal'
