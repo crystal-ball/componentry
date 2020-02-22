@@ -15,8 +15,8 @@ module.exports = {
   collectCoverageFrom: [
     'src/**/*.js',
     '!**/*.stories.js',
-    '!src/storybook-resources',
-    '!src/{Media,Modal,Theme}/stories',
+    '!src/storybook-resources/**',
+    '!src/{Media,Modal,Theme}/stories/**',
   ],
 
   // Pre/Post test framework setup configs
