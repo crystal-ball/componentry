@@ -86,10 +86,17 @@ hr:not([size]) {
   }
 }
 
+// Reset margin to 0 on paragraphs
 p {
   margin-top: 0;
-  margin-bottom: $paragraph-margin-bottom;
+  margin-bottom: 0;
 }
+
+// Add a sibling selector with margin-top if desired to create spacing between
+// all sibling paragraphs:
+// p + p {
+//   margin-top: $body-gutter;
+// }
 
 small {
   font-size: $small-font-size;

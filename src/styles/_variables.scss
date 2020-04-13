@@ -91,18 +91,6 @@ $border-colors: map-merge((
 ), $border-colors);
 $border-colors: map-merge($theme-colors, $border-colors);
 
-// --- Typography colors
-
-$typography-colors: () !default;
-$typography-colors: map-merge((
-  anchor:   #17a2b8,
-  code:     #ff57ac,
-  heading:  #242424,
-  caption:  #6c757d,
-  disabled: #6c757d,
-  lead:     #242424,
-  ), $typography-colors);
-  $typography-colors: map-merge($typography-colors, $theme-colors);
 
 // ℹ️ See documentation for declaring themes with the $themes map
 
@@ -223,74 +211,15 @@ $line-height-base:     1.5  !default;
 $line-height-lg:       1.75 !default;
 $line-height-xl:       2    !default;
 
-// Headings
-$headings-font-family:     null !default;
-$headings-font-style:      null !default;
-$headings-font-weight:     $font-weight-normal !default;
-$headings-letter-spacing:  null !default;
-$headings-text-transform:  null !default;
-$headings-line-height:     1.25 !default;
-$headings-margin-bottom:   $space-sm !default;
-
-$h1: () !default;
-$h2: () !default;
-$h3: () !default;
-$h4: () !default;
-$h5: () !default;
-
-$h1-font-size:   4.5rem   !default; // 72 ~ 1.5x
-$h2-font-size:   3.0rem   !default; // 48 ~ 1.5x
-$h3-font-size:   2.0rem   !default; // 32 ~ 1.33x
-$h4-font-size:   1.5rem   !default; // 24 ~ 1.33x
-$h5-font-size:   1.125rem !default; // 20 ~ 1.125x
-
-$h1-font-weight:  $headings-font-weight !default;
-$h2-font-weight:  $headings-font-weight !default;
-$h3-font-weight:  $headings-font-weight !default;
-$h4-font-weight:  $headings-font-weight !default;
-$h5-font-weight:  $headings-font-weight !default;
-
-// Subheadings
-$subheading-font-color:   typography-color(caption) !default;
-$subheading-font-size:    80% !default;
-$subheading-font-weight:  $font-weight-normal !default;
-
-$subheading1-font-size:   ($h1-font-size * 0.8) !default;
-$subheading2-font-size:   ($h2-font-size * 0.8) !default;
-$subheading3-font-size:   ($h3-font-size * 0.8) !default;
-$subheading4-font-size:   ($h4-font-size * 0.8) !default;
-$subheading5-font-size:   ($h5-font-size * 0.8) !default;
-
-// Display headings
-$display-line-height: $headings-line-height !default;
-
-$display1-font-size:    6rem !default;
-$display2-font-size:    5rem !default;
-
-$display1-font-weight:  300 !default;
-$display2-font-weight:  300 !default;
-
-// Paragraphs
-$paragraph-margin-bottom:  1rem !default;
-$paragraph-max-width:      null !default;
-
-// Caption paragraphs
-$caption-font-size: $font-size-sm !default;
-$caption-font-weight: $font-weight-light !default;
-
-// Lead paragraphs
-$lead-font-size:    $font-size-xl !default;
-$lead-font-weight:  $font-weight-light !default;
-
 // --------------------------------------------------------
 // Anchors
 
 $anchor-decoration: none !default;
 
-$anchor-hover-color: darken(typography-color(anchor), 15%) !default;
+$anchor-hover-color: map-get($anchor-colors, hover) !default;
 $anchor-hover-decoration: underline !default;
 
-$anchor-active-color: $anchor-hover-color !default;
+$anchor-active-color: map-get($anchor-colors, active) !default;
 $anchor-active-decoration: $anchor-hover-decoration !default;
 
 // Disabled links are a weird thing, they're not technically real, but you can
@@ -607,7 +536,7 @@ $modal-header-padding: $modal-body-padding !default;
 $modal-title-font-size: $font-size-lg !default;
 $modal-title-line-height: $line-height-base !default;
 $modal-title-color: typography-color(heading) !default;
-$modal-title-font-weight: $headings-font-weight !default;
+$modal-title-font-weight: map-get($font-weights, heading) !default;
 
 $modal-footer-bg: $modal-container-bg !default;
 $modal-footer-border-color: $modal-header-border-color !default;

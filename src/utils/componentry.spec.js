@@ -3,7 +3,7 @@ import { actionClasses, componentry, elemArias, navClasses } from './componentry
 describe('componentry()', () => {
   test('computes libary utility classes from props', () => {
     // eslint-disable-next-line
-    ;['xs', 'sm', 'base', 'lg', 'xl'].forEach(size => {
+    ;['xs', 'sm', 'base', 'lg', 'xl'].forEach((size) => {
       expect(componentry({ m: size, p: size }).libClassName[1]).toEqual([
         `m-${size}`,
         `p-${size}`,
@@ -158,7 +158,7 @@ describe('componentry()', () => {
       }).libClassName[0],
     ).toEqual({
       'background-primary': 'primary',
-      border: true,
+      'border': true,
       'border-top': true,
       'border-right': true,
       'border-bottom': true,
@@ -230,7 +230,7 @@ describe('arias()', () => {
     const result = elemArias(attrs)
 
     // Every aria should be undefined
-    possibleArias.forEach(possibleAria => {
+    possibleArias.forEach((possibleAria) => {
       expect(result[possibleAria]).toEqual(undefined)
     })
   })
@@ -254,7 +254,7 @@ describe('arias()', () => {
     const result = elemArias(attrs)
 
     // Every aria should have some value
-    possibleArias.forEach(possibleAria => {
+    possibleArias.forEach((possibleAria) => {
       expect(result[possibleAria]).toEqual(undefined)
     })
   })
@@ -278,7 +278,7 @@ describe('arias()', () => {
     const result = elemArias(attrs)
 
     // Every aria should have some value
-    possibleArias.forEach(possibleAria => {
+    possibleArias.forEach((possibleAria) => {
       expect(result[possibleAria]).toBeTruthy()
     })
   })
@@ -306,7 +306,7 @@ describe('arias()', () => {
       'aria-controls': 'test',
       'aria-describedby': 'test',
       'aria-haspopup': 'true',
-      id: 'test',
+      'id': 'test',
       'aria-labelledby': 'test',
     })
   })
@@ -326,7 +326,7 @@ describe('arias()', () => {
 
     expect(elemArias(attrs)).toEqual({
       'aria-hidden': 'false',
-      id: 'test-tab1-content',
+      'id': 'test-tab1-content',
       'aria-labelledby': 'test-tab1-trigger',
     })
   })

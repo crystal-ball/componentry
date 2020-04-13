@@ -14,7 +14,7 @@ Add a border using the border utility classes.
     <Block width={100} height={15} className={`border mx-2`} background='100' />
     <small className='small ml-2'>.border</small>
   </div>
-  {['top', 'right', 'bottom', 'left'].map(border => (
+  {['top', 'right', 'bottom', 'left'].map((border) => (
     <div key={border}>
       <Block
         width={120}
@@ -34,7 +34,7 @@ Set the color of a border to any theme color as well as any color added to the
 `$border-colors` map.
 
 <div className='d-flex justify-content-center'>
-  {colors.map(color => (
+  {colors.map((color) => (
     <div key={color}>
       <Block
         width={120}
@@ -106,7 +106,7 @@ Add a border radius using the sized utility classes.
 Add a directional border radius.
 
 <div className='d-flex justify-content-center'>
-  {['top', 'right', 'bottom', 'left'].map(className => (
+  {['top', 'right', 'bottom', 'left'].map((className) => (
     <div key={className}>
       <Block
         width={100}

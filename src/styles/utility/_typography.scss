@@ -3,91 +3,50 @@
 // --------------------------------------------------------
 // Font Families
 
-.monospace {
-  font-family: $font-family-monospace;
-  font-size: $font-size-monospace;
+@each $key, $value in $font-families {
+  .font-family-#{$key} {
+    font-family: $value !important;
+  }
 }
 
 // --------------------------------------------------------
 // Colors
 
-@each $color, $value in $typography-colors {
-  .font-color-#{$color} {
+@each $key, $value in $typography-colors {
+  .font-color-#{$key} {
     color: $value !important;
   }
 }
 
+.font-color-inherit {
+  color: inherit !important;
+}
+
 // --------------------------------------------------------
-// Sizes
+// Font sizes
 
-// The .text-<size> classes are intended for regular text like p, span,
-// etc. and provide a utility for minor text adjustments when applications don't
-// want to use small headers and small dom elements to handle these types
-
-.font-size-xs {
-  font-size: $font-size-xs;
-}
-
-.font-size-sm {
-  font-size: $font-size-sm;
-}
-
-.font-size-base {
-  font-size: $font-size-base;
-}
-
-.font-size-lg {
-  font-size: $font-size-lg;
-}
-
-.font-size-xl {
-  font-size: $font-size-xl;
+@each $key, $value in $font-sizes {
+  .font-size-#{$key} {
+    font-size: $value !important;
+  }
 }
 
 // --------------------------------------------------------
 // Line heights
 
-.line-height-xs {
-  line-height: $line-height-xs;
-}
-
-.line-height-sm {
-  line-height: $line-height-sm;
-}
-
-.line-height-base {
-  line-height: $line-height-base;
-}
-
-.line-height-lg {
-  line-height: $line-height-lg;
-}
-
-.line-height-xl {
-  line-height: $line-height-xl;
-}
-
-.line-height-1 {
-  line-height: 1;
+@each $key, $value in $line-heights {
+  .line-height-#{$key} {
+    line-height: $value !important;
+  }
 }
 
 // --------------------------------------------------------
-// Weights
+// Font weights
 
-.font-weight-lighter {
-  font-weight: $font-weight-lighter !important;
-}
-.font-weight-light {
-  font-weight: $font-weight-light !important;
-}
-.font-weight-normal {
-  font-weight: $font-weight-normal !important;
-}
-.font-weight-bold {
-  font-weight: $font-weight-bold !important;
-}
-.font-weight-bolder {
-  font-weight: $font-weight-bolder !important;
+@each $key, $value in $font-weights {
+  .font-weight-#{$key} {
+    font-weight: $value !important;
+  }
 }
 
 // --------------------------------------------------------
@@ -113,6 +72,10 @@
 // --------------------------------------------------------
 // Decoration
 
+.line-through {
+  text-decoration: line-through !important;
+}
+
 .underline {
   text-decoration: underline !important;
 
@@ -122,11 +85,7 @@
   }
 }
 
-.line-through {
-  text-decoration: line-through !important;
-}
-
-.suppress-text-decoration {
+.disable-text-decoration {
   text-decoration: none !important;
 
   &:hover,
@@ -138,9 +97,9 @@
 // --------------------------------------------------------
 // Alignment
 
-@each $breakpoint in map-keys($grid-breakpoints) {
+@each $breakpoint in map-keys($breakpoints) {
   @include media-breakpoint-up($breakpoint) {
-    $infix: breakpoint-infix($breakpoint, $grid-breakpoints);
+    $infix: breakpoint-infix($breakpoint, $breakpoints);
 
     .text-align#{$infix}-left {
       text-align: left !important;
@@ -160,45 +119,28 @@
 // --------------------------------------------------------
 // Blockquotes
 
-.blockquote {
-  margin-bottom: $space-base;
-  font-size: $blockquote-font-size;
-}
+// TODO: make this a component
+// .blockquote {
+//   margin-bottom: $space-base;
+//   font-size: $blockquote-font-size;
+// }
 
-.blockquote-footer {
-  display: block;
-  font-size: 80%; // back to default font-size
-  color: $blockquote-small-color;
+// .blockquote-footer {
+//   display: block;
+//   font-size: 80%; // back to default font-size
+//   color: $blockquote-small-color;
 
-  &::before {
-    content: '\2014 \00A0'; // em dash, nbsp
-  }
-}
-
-// --------------------------------------------------------
-// Lists
-
-.list-unstyled {
-  padding-left: 0;
-  list-style: none;
-}
-
-// Inline turns list items into inline-block
-.list-inline {
-  padding-left: 0;
-  list-style: none;
-}
-
-.list-inline-item {
-  display: inline-block;
-
-  &:not(:last-child) {
-    margin-right: $list-inline-padding;
-  }
-}
+//   &::before {
+//     content: '\2014 \00A0'; // em dash, nbsp
+//   }
+// }
 
 // --------------------------------------------------------
-// Misc
+// Text wrapping
+
+.text-wrap {
+  white-space: normal !important;
+}
 
 .text-nowrap {
   white-space: nowrap !important;
@@ -210,16 +152,10 @@
   white-space: nowrap;
 }
 
-.text-hide {
-  font: 0/0 a;
-  color: transparent;
-  text-shadow: none;
-  background-color: transparent;
-  border: 0;
-}
+// --------------------------------------------------------
+// Word breaking
 
-// Builds on `abbr`
-.initialism {
-  font-size: 90%;
-  text-transform: uppercase;
+.text-break {
+  word-break: break-word !important;
+  overflow-wrap: break-word !important;
 }

@@ -32,17 +32,17 @@ export default function Alert(props) {
   const { active, visible } = useVisible(propsActive)
 
   return elem({
-    role: 'alert',
-    elemClassName: {
-      alert: true,
-      fade: dismissible, // Only include opacity transition class for disimissible alerts
+    'role': 'alert',
+    'elemClassName': {
+      'alert': true,
+      'fade': dismissible, // Only include opacity transition class for disimissible alerts
       visible,
       [`alert-${color}`]: color,
       'alert-outline': outline,
     },
     // ⚠️ Only include aria-hidden value if the alert is dismissible
     'aria-hidden': dismissible ? String(!active) : undefined,
-    children: (
+    'children': (
       <>
         {/* Provide the alert color context for screen readers */}
         <div className='sr-only'>{ariaTitle || `${color} alert`}</div>

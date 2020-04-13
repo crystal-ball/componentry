@@ -1,6 +1,23 @@
 /* ~componentry/styles/helpers/mixins */
 
 // --------------------------------------------------------
+// Map utilities
+
+/// Converts a map into a set of style rules
+@mixin stylesFromMap($map) {
+  @each $property, $value in $map {
+    #{$property}: #{$value};
+  }
+}
+
+/// Converts a map into a class rule with map contents as styles
+@mixin classFromMap($className, $map) {
+  .#{$className} {
+    @include stylesFromMap($map);
+  }
+}
+
+// --------------------------------------------------------
 // Breakpoints
 
 // Media of at least the minimum breakpoint width. No query for the smallest breakpoint.

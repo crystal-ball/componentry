@@ -7,7 +7,7 @@ import Theme from '../src/Theme/Theme'
 /**
  * Library default component requirment test suite.
  */
-const elementTests = TestComponent => {
+const elementTests = (TestComponent) => {
   const name = TestComponent.displayName
   /*
    * All components should have a display name so they can be easily debugged
@@ -66,7 +66,7 @@ const elementTests = TestComponent => {
       <Theme
         theme={{
           [TestComponent.displayName]: {
-            themeClassName: 'theme-class',
+            'themeClassName': 'theme-class',
             'data-radical': 'hecka',
           },
         }}

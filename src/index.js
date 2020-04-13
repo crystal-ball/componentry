@@ -25,6 +25,7 @@ export { default as Popover } from './Popover/Popover'
 export { default as Tabs } from './Tabs/Tabs'
 export { default as Text } from './Text/Text'
 export { default as Tooltip } from './Tooltip/Tooltip'
+export { default as Typography, default as Type } from './Typography/Typography'
 
 // --- Utilities
 export { useActive, useActiveSrollReset, useNoScroll, useVisible } from './hooks'
