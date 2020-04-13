@@ -28,7 +28,7 @@ function mountListeners(breakpoints, updateBps) {
     updateBps(calcBreakpoints(breakpoints))
   }
 
-  breakpoints.forEach(bp => {
+  breakpoints.forEach((bp) => {
     // https://developer.mozilla.org/en-US/docs/Web/CSS/Media_Queries/Testing_media_queries#Receiving_query_notifications
     const mq = window.matchMedia(`(min-width: ${bp}px)`)
     mq.addListener(setBreakpoints)

@@ -1,0 +1,287 @@
+/**
+ *                                 ⚙️ Componentry default theme specification
+ * -----------------------------------------------------------------------------
+ *
+ * Motivations & Guidelines:
+ *
+ * - Define theme domains in individual maps and compose the final theme using
+ *   those maps. This enables users to more easily override shared parts of the
+ *   theme and helps highlight which parts of the theme are shared.
+ * - Use a naming pattern `<type>-<domain>` for naming maps, eg `theme-colors`,
+ *   `border-colors`, `font-sizes`, `font-weights`
+ * - Use semantic names or generic names, eg `primary` is a good generic name
+ *   and `container` is a good semantic name. This allows users to have useful
+ *   defaults with generics and useful fine tuned customizations with semantic
+ *   names.
+ */
+
+// --- Color maps
+
+$gray-colors: () !default;
+$gray-colors: map-merge(
+  (
+    '100': #f3f3f3,
+    '200': #eaedf0,
+    '300': #dee2e6,
+    '400': #ced4da,
+    '500': #adb5bd,
+    '600': #6c757d,
+    '700': #495057,
+    '800': #282d31,
+    '900': #131416,
+    // Alphas
+      A500: #adb5bda8,
+  ),
+  $gray-colors
+);
+
+$primary-colors: () !default;
+$primary-colors: map-merge(
+  (
+    base: #fa7dd0,
+    hover: #e874c1,
+    focused: #d269af,
+    active: #d269af,
+    disabled: #e7a7d2,
+  ),
+  $primary-colors
+);
+
+$secondary-colors: () !default;
+$secondary-colors: map-merge(
+  (
+    base: #46c9fd,
+    hover: #41bbeb,
+    focused: #3cabd7,
+    active: #3cabd7,
+    disabled: #77d7fe,
+  ),
+  $secondary-colors
+);
+
+$success-colors: () !default;
+$success-colors: map-merge(
+  (
+    base: #28a745,
+    hover: #259b40,
+    focused: #228e3b,
+    active: #228e3b,
+    disabled: #32cd56,
+  ),
+  $success-colors
+);
+
+$warning-colors: () !default;
+$warning-colors: map-merge(
+  (
+    base: #ffc107,
+    hover: #edb307,
+    focused: #d9a406,
+    active: #d9a406,
+    disabled: #ffcd38,
+  ),
+  $warning-colors
+);
+
+$error-colors: () !default;
+$error-colors: map-merge(
+  (
+    base: #dc3545,
+    hover: #cd3140,
+    focused: #bb2d3b,
+    active: #bb2d3b,
+    disabled: #e35f6c,
+  ),
+  $error-colors
+);
+
+$anchor-colors: () !default;
+$anchor-colors: map-merge(
+  (
+    base: #17a2b8,
+    hover: #1597ab,
+    focused: #148a9c,
+    active: #148a9c,
+    disabled: #1cc8e3,
+  ),
+  $anchor-colors
+);
+
+// --- Semantic color maps
+$background-colors: () !default;
+
+$border-colors: () !default;
+
+$typography-colors: () !default;
+$typography-colors: map-merge(
+  (
+    // Generic
+      primary: map-get($primary-colors, base),
+    secondary: map-get($secondary-colors, base),
+    success: map-get($success-colors, base),
+    warning: map-get($warning-colors, base),
+    error: map-get($error-colors, base),
+    // Semantic
+      body: #1a1a1a,
+    code: #f72f93,
+    disabled: #828e99,
+    heading: #242424
+  ),
+  $typography-colors
+);
+
+// 🆙 Provide a mechanism for defining inverse typography colors, this could
+// be useful if you wanted to have a light theme, with some parts of it using a
+// dark background that's not the same as your dark theme, eg the Footer of Ant
+// Design
+$typography-inverse-colors: () !default;
+$typography-inverse-colors: map-merge(
+  (
+    primary: #aaa,
+    secondary: #aaa,
+    heading: #aaa,
+  ),
+  $typography-inverse-colors
+);
+
+// --- Generic typography maps
+
+$font-family-primary: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
+  'Helvetica Neue', Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
+  'Segoe UI Symbol' !default;
+$font-family-monospace: SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono',
+  'Courier New', monospace !default;
+
+/// Font families
+$font-families: () !default;
+$font-families: map-merge(
+  (
+    primary: $font-family-primary,
+    monospace: $font-family-monospace,
+  ),
+  $font-families
+);
+
+/// Font sizes
+$font-sizes: () !default;
+$font-sizes: map-merge(
+  (
+    sm: 0.875rem,
+    md: 1rem,
+    lg: 1.25rem,
+    // Semantic
+      body: 1rem,
+    small: 0.875rem,
+    code: 0.875rem,
+  ),
+  $font-sizes
+);
+
+/// Font weights
+$font-weights: () !default;
+$font-weights: map-merge(
+  (
+    // Generic
+      light: 300,
+    normal: 400,
+    bold: 700,
+    // Semantic
+      body: 400,
+    heading: 300
+  ),
+  $font-weights
+);
+
+$line-heights: () !default;
+$line-heights: map-merge(
+  (
+    single: 1,
+    heading: 1.25,
+    body: 1.5,
+  ),
+  $line-heights
+);
+
+// --- Semantic typography maps
+
+/// Heading
+$heading: () !default;
+$heading: map-merge(
+  (
+    font-family: map-get($font-families, primary),
+    font-weight: map-get($font-weights, heading),
+    line-height: map-get($line-heights, heading),
+    margin-top: 0,
+    margin-bottom: 0,
+  ),
+  $heading
+);
+
+/// Body
+$body: () !default;
+$body: map-merge(
+  (
+    font-size: map-get($font-sizes, body),
+    font-weight: map-get($font-weights, body),
+    margin-top: 0,
+    margin-bottom: 0,
+  ),
+  $body
+);
+
+// --------------------------------------------------------
+// Breakpoints
+
+// Note that breakpoints must start with a 0 value, and values must be ascending
+$breakpoints: () !default;
+$breakpoints: map-merge(
+  (
+    sm: 0,
+    md: 768px,
+    lg: 1250px,
+  ),
+  $breakpoints
+);
+
+// --------------------------------------------------------
+// Final theme
+
+$theme: () !default;
+$theme: map-merge(
+  (
+    breakpoints: $breakpoints,
+    palette: (
+      primary: $primary-colors,
+      secondary: $secondary-colors,
+      success: $success-colors,
+      warning: $warning-colors,
+      error: $error-colors,
+      anchor: $anchor-colors,
+      typography: $typography-colors,
+    ),
+    typography: (
+      heading: $heading,
+      heading-1: (
+        font-size: 3rem,
+      ),
+      heading-2: (
+        font-size: 2rem,
+      ),
+      heading-3: (
+        font-size: 1.5rem,
+      ),
+      body: $body,
+      font-families: $font-families,
+      font-weights: $font-weights,
+      font-sizes: $font-sizes,
+      line-heights: $line-heights,
+    ),
+  ),
+  $theme
+);
+
+// --------------------------------------------------------
+// 3.0 Variables
+
+// Used to set spacing between multiple paragraphs
+$body-gutter: 1rem !default;

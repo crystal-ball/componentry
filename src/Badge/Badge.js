@@ -16,7 +16,7 @@ export default function Badge(props) {
 
   return elem({
     elemClassName: {
-      badge: true,
+      'badge': true,
       [`badge-${color}`]: color,
       'badge-rounded': rounded,
     },

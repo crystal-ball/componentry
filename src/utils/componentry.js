@@ -163,9 +163,9 @@ const modifier = {
   y: ['Top', 'Bottom'],
 }
 
-Object.keys(base).forEach(b => {
+Object.keys(base).forEach((b) => {
   spacingProps[b] = 1
-  Object.keys(modifier).forEach(m => {
+  Object.keys(modifier).forEach((m) => {
     spacingProps[b + m] = 1
   })
 })
@@ -173,7 +173,7 @@ const spacingRegex = new RegExp(/([bmp])([trblxy])?/)
 
 function generateClassNames(p) {
   return {
-    border: p.border,
+    'border': p.border,
     'border-top': p.borderTop,
     'border-right': p.borderRight,
     'border-bottom': p.borderBottom,
@@ -232,7 +232,7 @@ export function componentry({
 
   // For each prop passed to any component, bucket it into a library className
   // or style set or pass through in rest
-  Object.keys(filteredProps).forEach(prop => {
+  Object.keys(filteredProps).forEach((prop) => {
     if (classNamesProps[prop]) {
       // 1. The prop maps to a utility className
       classNames[prop] = filteredProps[prop]

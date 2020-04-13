@@ -103,7 +103,7 @@ export default function activeContainerFactory(name, opts = {}) {
 
     /** Call deactivate if click event was not inside the element */
     const onClick = useCallback(
-      e => {
+      (e) => {
         if (!closest(e.target, guid)) handleDeactivate(e)
       },
       [guid, handleDeactivate],
@@ -111,7 +111,7 @@ export default function activeContainerFactory(name, opts = {}) {
 
     /** Call deactivate on keypress if `esc` (27) was pressed */
     const onKeydown = useCallback(
-      e => {
+      (e) => {
         if (e.which === 27 || e.code === 27) handleDeactivate(e)
       },
       [handleDeactivate],
@@ -119,7 +119,7 @@ export default function activeContainerFactory(name, opts = {}) {
 
     /** Handle adding/removing the component DOM event listeners */
     const updateEventListeners = useCallback(
-      updateType => {
+      (updateType) => {
         const updateListener = `${updateType}EventListener`
 
         if (escEvents) document[updateListener]('keydown', onKeydown)
@@ -165,15 +165,15 @@ export default function activeContainerFactory(name, opts = {}) {
       <ActiveCtx.Provider value={activeValues}>
         {elem({
           'data-id': guid,
-          elemClassName: [name, direction, { [`${name}-${size}`]: size }],
+          'elemClassName': [name, direction, { [`${name}-${size}`]: size }],
 
           // For elements with mouse events we need to know when the mouse event
           // occurs on the parent element, not the trigger element
-          onMouseEnter: mouseEvents ? handleActivate : undefined,
-          onMouseLeave: mouseEvents ? handleDeactivate : undefined,
+          'onMouseEnter': mouseEvents ? handleActivate : undefined,
+          'onMouseLeave': mouseEvents ? handleDeactivate : undefined,
 
           // Handle render patterns
-          children:
+          'children':
             typeof children === 'function' ? (
               children(activeValues) // Handle FaCC syntax
             ) : (

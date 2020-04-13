@@ -37,7 +37,7 @@ export const useActiveSrollReset = (active, ref) => {
  * overlay elements are activated
  * @param {boolean} active
  */
-export const useNoScroll = active => {
+export const useNoScroll = (active) => {
   useEffect(() => {
     const { classList } = window.document.body
     if (active) classList.add('no-scroll')

@@ -3,9 +3,9 @@ import { action } from '@storybook/addon-actions'
 import Active from './Active'
 import Block from '../Block/Block'
 
-<Meta title='Components/Active' component={Active} />
+<Meta title='Components/Active' />
 
-<DocsTitle title="Active" experimental/>
+<DocsTitle title='Active' experimental />
 
 ## Uncontrolled component
 
@@ -20,33 +20,41 @@ import Block from '../Block/Block'
 </Active>
 
 ## Controlled
+
 <Active activate={action('activate event')}>
   <Active.Trigger>Toggle</Active.Trigger>
   <Active.Content>Active component content</Active.Content>
 </Active>
 
 ## Default active override
+
 <Active defaultActive Trigger='Toggle' Content='Active component content' />
 
 ## Deactivate on external clicks
+
 <Active clickEvents Trigger='Toggle' Content='Active component content' />
 
 ## Deactivate on esc
+
 <Active escEvents Trigger='Toggle' Content='Active component content' />
 
 ## Handle mouse events
+
 <Active mouseEvents Trigger='Toggle' Content='Active component content' />
 
 ## Shorthand subcomponents
+
 <Active Trigger='Toggle' Content='Active component content' />
 
 ## Size and direction
+
 <Active size='sm' direction='up'>
   <Active.Trigger>Toggle</Active.Trigger>
   <Active.Content>Active component content</Active.Content>
 </Active>
 
 ## FaCC pattern
+
 <Active>
   {({ active, activate, deactivate }) => (
     <>

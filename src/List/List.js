@@ -37,7 +37,7 @@ List.Item = function ListItem(props) {
     // class added with additional required styles.
     elemClassName: {
       active,
-      disabled: rest.disabled,
+      'disabled': rest.disabled,
       'list-item': true,
       'list-action-item': href || onClick,
       [`list-item-${color}`]: color,

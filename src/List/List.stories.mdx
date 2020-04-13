@@ -6,7 +6,7 @@ import { colors } from '../storybook-resources'
 
 <Meta title='Components/List' component={List} />
 
-<DocsTitle title="List Groups" />
+<DocsTitle title='List Groups' />
 
 ## Unordered list
 
@@ -21,27 +21,35 @@ import { colors } from '../storybook-resources'
 ## Anchor list
 
 <List>
-  <List.Item active href='#'>Radical React</List.Item>
+  <List.Item active href='#'>
+    Radical React
+  </List.Item>
   <List.Item href='#'>Radical React</List.Item>
   <List.Item href='#'>Component Library</List.Item>
   <List.Item href='#'>Design System</List.Item>
-  <List.Item disabled href='#'>Radical React</List.Item>
+  <List.Item disabled href='#'>
+    Radical React
+  </List.Item>
 </List>
 
 ## Button list
 
 <List>
-  <List.Item active onClick={action('item-click')}>Radical React</List.Item>
+  <List.Item active onClick={action('item-click')}>
+    Radical React
+  </List.Item>
   <List.Item onClick={action('item-click')}>Radical React</List.Item>
   <List.Item onClick={action('item-click')}>Component Library</List.Item>
   <List.Item onClick={action('item-click')}>Design System</List.Item>
-  <List.Item disabled onClick={action('item-click')}>Radical React</List.Item>
+  <List.Item disabled onClick={action('item-click')}>
+    Radical React
+  </List.Item>
 </List>
 
 ## Theme color items
 
 <List>
-  {colors.map(color => (
+  {colors.map((color) => (
     <List.Item color={color} key={color}>
       {color} themed list item
     </List.Item>

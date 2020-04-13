@@ -136,3 +136,28 @@
     }
   }
 }
+
+// --------------------------------------------------------
+// Lists
+
+// TODO: this was part of the typography utilities, but should be part of the
+// list component
+
+// .list-unstyled {
+//   padding-left: 0;
+//   list-style: none;
+// }
+
+// // Inline turns list items into inline-block
+// .list-inline {
+//   padding-left: 0;
+//   list-style: none;
+// }
+
+// .list-inline-item {
+//   display: inline-block;
+
+//   & + .list-inline-item {
+//     margin-left: $list-inline-padding;
+//   }
+// }

@@ -1,19 +1,19 @@
 import React from 'react'
 import { render } from '@testing-library/react'
 
-import Text from './Text'
+import Typography from './Typography'
 import elementTests from '../../test/element-tests'
 
-describe('<Text/>', () => {
+describe('<Typography/>', () => {
   // Basic library element test suite
-  elementTests(Text)
+  elementTests(Typography)
 })
 
 // Snapshots
 // ---------------------------------------------------------------------------
-describe('<Text /> snapshots', () => {
+describe('<Typography /> snapshots', () => {
   it('renders correctly', () => {
-    const { container } = render(<Text>text</Text>)
+    const { container } = render(<Typography>Componentry</Typography>)
     expect(container.firstChild).toMatchSnapshot()
   })
 })

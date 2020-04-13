@@ -11,7 +11,7 @@ Set the background color to any theme color as well as any color added to the
 `$background-colors` map.
 
 <div className='d-flex justify-content-center'>
-  {colors.map(color => (
+  {colors.map((color) => (
     <div key={color}>
       <Block width={100} height={100} background={color} mx='sm' className='radius' />
       <small className='small ml-2'>.background-{color}</small>

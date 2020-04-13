@@ -21,7 +21,7 @@ A primary button:
 Pass a `color` to set a theme color background:
 
 <div className='d-flex justify-content-center btn-container-x'>
-  {colors.map(color => (
+  {colors.map((color) => (
     <Button color={color} onClick={action('button-click')} key={color}>
       Button
     </Button>
@@ -36,7 +36,7 @@ Pass a `color` to set a theme color background:
 Pass an `outline` to set a theme color outline:
 
 <div className='d-flex justify-content-center btn-container-x'>
-  {colors.map(color => (
+  {colors.map((color) => (
     <Button outline={color} onClick={action('button-click')} key={color}>
       Button
     </Button>
@@ -84,8 +84,8 @@ Create a button with anchor styles by passing `variant="a"` to a Button:
 
 <p>
   Always use a button or{' '}
-  <Button variant="a" onClick={action('anchor variant click')}>
-    anchor 
+  <Button variant='a' onClick={action('anchor variant click')}>
+    anchor
   </Button>{' '}
   for creating interaction targets 👍
 </p>

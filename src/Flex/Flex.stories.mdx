@@ -11,7 +11,7 @@ import Flex from './Flex'
 Flex components create block level flex containers:
 
 <Flex>
-  {[1, 2, 3].map(key => (
+  {[1, 2, 3].map((key) => (
     <div className='border' key={key}>
       Flex content #{key}
     </div>
@@ -23,14 +23,14 @@ Flex components create block level flex containers:
 Create inline level flex containers using the `inline` prop:
 
 <Flex inline>
-  {[1, 2].map(key => (
+  {[1, 2].map((key) => (
     <div className='border' key={key}>
       Flex content #{key}
     </div>
   ))}
 </Flex>
 <Flex inline>
-  {[1, 2].map(key => (
+  {[1, 2].map((key) => (
     <div className='border' key={key}>
       Flex content #{key}
     </div>
@@ -42,7 +42,7 @@ Create inline level flex containers using the `inline` prop:
 Override the default direction of `row` with the `direction` prop:
 
 <Flex direction='column'>
-  {[1, 2, 3].map(key => (
+  {[1, 2, 3].map((key) => (
     <div className='border' key={key}>
       Flex content #{key}
     </div>
@@ -54,7 +54,7 @@ Override the default direction of `row` with the `direction` prop:
 Set the flex items justification and alignment with the `justify` and `align` props:
 
 <Flex justify='center' align='center'>
-  {[1, 2, 3].map(key => (
+  {[1, 2, 3].map((key) => (
     <div className='border' key={key}>
       Flex content #{key}
     </div>
@@ -66,7 +66,7 @@ Set the flex items justification and alignment with the `justify` and `align` pr
 Override the flex wrap behavior with the `wrap` props:
 
 <Flex wrap='no-wrap'>
-  {[1, 2, 3].map(key => (
+  {[1, 2, 3].map((key) => (
     <div className='border' key={key}>
       Flex content #{key}
     </div>

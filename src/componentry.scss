@@ -3,6 +3,11 @@
  * Licensed under MIT: https://github.com/crystal-ball/componentry/blob/v3/LICENSE
  */
 
+// The default theme creates a $theme map for the application. The default
+// values can be customized by defining a $theme in your application before
+// importing Componentry.
+@import './styles/theme';
+
 // The theme contains only side effect free setup code including variables,
 // mixins and functions. It can be imported as a base context for users of CSS
 // modules.

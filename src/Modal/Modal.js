@@ -54,8 +54,8 @@ export default function Modal(props) {
   return (
     <ModalCtx.Provider value={{ active, deactivate, guid }}>
       {elem({
-        onClick: deactivate,
-        elemClassName: [
+        'onClick': deactivate,
+        'elemClassName': [
           'modal-overlay',
           'fade',
           `modal-${scroll}-scroll`,
@@ -65,9 +65,9 @@ export default function Modal(props) {
         ],
         'aria-hidden': String(!active),
         'aria-labelledby': guid,
-        role: 'presentation',
-        tabIndex: '-1',
-        children: (
+        'role': 'presentation',
+        'tabIndex': '-1',
+        'children': (
           /* eslint-disable jsx-a11y/no-noninteractive-element-interactions, jsx-a11y/click-events-have-key-events */
           <div ref={containerRef} className='modal-positioner'>
             {/* ℹ️ Stop propogation of clicks inside modal or they will trigger the modal background deactivate handler */}
@@ -78,7 +78,7 @@ export default function Modal(props) {
                 [`modal-${size}`]: size,
               })}
               role='dialog'
-              onClick={evt => evt.stopPropagation()}
+              onClick={(evt) => evt.stopPropagation()}
             >
               {children}
             </div>
