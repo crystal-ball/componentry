@@ -241,7 +241,7 @@ export function componentry({
       styles[prop] = filteredProps[prop]
     } else if (spacingProps[prop]) {
       // 3. The prop maps to a shorthand utility style/className
-      if (['xs', 'sm', 'base', 'lg', 'xl'].includes(filteredProps[prop])) {
+      if (['xs', 'sm', 'md', 'lg', 'xl'].includes(filteredProps[prop])) {
         // 3a. The prop value maps to a computed className, eg (pt: 'xs') -> `pt-xs`
         spacingCx.push(`${prop}-${filteredProps[prop]}`)
       } else {

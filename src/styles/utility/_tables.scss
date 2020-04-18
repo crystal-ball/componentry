@@ -138,7 +138,7 @@
     $next: breakpoint-next($breakpoint, $grid-breakpoints);
     $infix: breakpoint-infix($next, $grid-breakpoints);
 
-    &#{$infix} {
+    #{$infix}table-responsive {
       @include media-breakpoint-down($breakpoint) {
         display: block;
         width: 100%;

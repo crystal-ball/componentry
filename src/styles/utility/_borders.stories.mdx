@@ -1,5 +1,4 @@
 import Block from '../../Block/Block'
-import { colors, grayscale } from '../../storybook-resources'
 
 <Meta title='Utility Classes/Border' />
 
@@ -34,7 +33,7 @@ Set the color of a border to any theme color as well as any color added to the
 `$border-colors` map.
 
 <div className='d-flex justify-content-center'>
-  {colors.map((color) => (
+  {['demo'].map((color) => (
     <div key={color}>
       <Block
         width={120}

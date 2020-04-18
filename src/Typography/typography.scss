@@ -3,59 +3,14 @@
 // --------------------------------------------------------
 // Headings
 
-$heading-1: () !default;
-@include classFromMap(
-  heading-1,
-  map-collect(
-    map-deep-get($theme, 'typography', 'heading'),
-    map-deep-get($theme, 'typography', 'heading-1'),
-    (
-      color: map-deep-get($theme, 'palette', 'typography', 'heading'),
-    ),
-    $heading-1
-  )
-);
-
-$heading-2: () !default;
-@include classFromMap(
-  heading-2,
-  map-collect(
-    map-deep-get($theme, 'typography', 'heading'),
-    map-deep-get($theme, 'typography', 'heading-2'),
-    (
-      color: map-deep-get($theme, 'palette', 'typography', 'heading'),
-    ),
-    $heading-2
-  )
-);
-
-$heading-3: () !default;
-@include classFromMap(
-  heading-3,
-  map-collect(
-    map-deep-get($theme, 'typography', 'heading'),
-    map-deep-get($theme, 'typography', 'heading-3'),
-    (
-      color: map-deep-get($theme, 'palette', 'typography', 'heading'),
-    ),
-    $heading-3
-  )
-);
+@include classFromMap(heading-1, theme-get('typography.variants.heading-1'));
+@include classFromMap(heading-2, theme-get('typography.variants.heading-2'));
+@include classFromMap(heading-3, theme-get('typography.variants.heading-2'));
 
 // --------------------------------------------------------
 // Body
 
-$body: () !default;
-@include classFromMap(
-  body,
-  map-collect(
-    map-deep-get($theme, 'typography', 'body'),
-    (
-      color: map-deep-get($theme, 'palette', 'typography', 'body'),
-    ),
-    $body
-  )
-);
+@include classFromMap(body, theme-get('typography.variants.body'));
 
 /// Set spacing between multiple paragraphs using sibling selector and
 /// margin-top.

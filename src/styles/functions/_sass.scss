@@ -1,0 +1,111 @@
+/*
+ * Library utility SASS functions for working with maps
+ */
+
+/// Splits a string into a list by the passed substring
+/// @param {string} $string
+/// @param {string} $separator
+/// @return {List} List of sub-strings
+@function str-split($string, $separator) {
+  $strings-list: ();
+  $separator-idx: str-index($string, $separator);
+
+  @while ($separator-idx != null) {
+    // Insert substring up to next separator
+    $strings-list: append($strings-list, str-slice($string, 1, $separator-idx - 1));
+    // Remove inserted substring by advancing string to next separator idx
+    $string: str-slice($string, $separator-idx + 1);
+    // Increment separator idx using advanced string
+    $separator-idx: str-index($string, '.');
+  }
+
+  // After all substrings have been pushed, append final substring (or the entire
+  // string if there are no substring matches)
+  @if $separator-idx == null {
+    $strings-list: append($strings-list, $string);
+  }
+
+  @return $strings-list;
+}
+
+// @debug str-split('rad'); 
+// -> ('rad',)
+// @debug str-split('hecka.rad.function'); 
+// -> 'hecka', 'rad', 'function'
+
+/// Lodash style get for nested object values
+/// @param {Map} $map Base object
+/// @param {string} $path Period delimited object path
+/// @return {*} Value at object path
+@function get($map, $path) {
+  $subpaths: str-split($path, '.');
+
+  @each $subpath in $subpaths {
+    $map: map-get($map, $subpath);
+  }
+
+  @return $map;
+}
+
+// @debug get(( deeply: ( nested: ( value: 'rad'))), 'deeply.nested.value');
+// -> rad
+
+// --------------------------------------------------------
+// Map functions
+
+/// Recursively merges two maps.
+/// @param {Map} $map1
+/// @param {Map} $map2
+/// @return {Map} Recursively merged map from maps
+@function recursive-merge($map1, $map2) {
+  @each $key, $value in $map2 {
+    @if (type-of($value) != type-of(map-get($map1, $key))) {
+      // If types are not equal, second map wins
+      $map1: map-merge($map1, ($key: $value));
+    } @else if (type-of($value) == map) {
+      // For maps, recursively merge the two values and assign returned value
+      $map1: map-merge(
+        $map1, 
+        ( $key: recursive-merge(map-get($map1, $key), $value))
+      )
+    } @else if (type-of($value) == list) {
+      // For lists append map2 to map1 (!!lists aren't recursive)
+      $map1: map-merge(
+        $map1,
+        ($key: append(map-get($map1, $key), $value))
+      )
+    } @else {
+      // For all other values second map wins
+      $map1: map-merge($map1, ($key: $value));
+    }
+  }
+
+  @return $map1;
+}
+// ⚠️ Lists gotchas:
+//  1. Lists with one element evaluate to the type of that single entry!
+//  2. Lists are assumed to be one dimensional and are not recursively joined 
+
+// $base: (rad: #333, palette: (base: #333), override: 'bye', counter: (1, 2));
+// $merge: ( rad: #7461ef, palette: (rad: #7461ef), override: (0, 1024), counter: (3, 4));
+// @debug recursive-merge($base, $merge);
+// -> (rad: #7461ef, palette: (base: #333, rad: #7461ef), override: 0, 1024, counter: 1, 2, 3, 4)
+
+/// Recursively merges maps set
+/// @param {Arglist} $maps
+/// @return {Map} Recursively merged map from set 
+@function map-assign($maps...) {
+  $merged: ();
+
+  @each $map in $maps {
+    $merged: recursive-merge($merged, $map);
+  }
+
+  @return $merged;
+}
+
+// $base: ( rad: #333 );
+// $first: ( nested: ( body: 14px ));
+// $second: ( rad: #7461ef, nested: ( header: 3rem ));
+// @debug (map-assign($base, $first, $second));
+// -> (rad: #7461ef, nested: (body: 14px, header: 3rem))
