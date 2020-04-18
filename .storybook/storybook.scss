@@ -1,5 +1,24 @@
 // --- Set storybook theme
-$include-icons: true;
+
+$theme: (
+  palette: (
+    backgrounds: (
+      demo: #3d2abc,
+    ),
+    borders: (
+      demo: #3d2abc,
+    ),
+    typography: (
+      demo: #3d2abc,
+    ),
+  ),
+  borders: (
+    demo: 5px solid #3d2abc,
+  ),
+  shadows: (
+    demo: 5px 5px 15px #3d2abc,
+  ),
+);
 
 // --- Import Componentry
 @import '../src/componentry';

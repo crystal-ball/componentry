@@ -7,144 +7,19 @@
  * - Define theme domains in individual maps and compose the final theme using
  *   those maps. This enables users to more easily override shared parts of the
  *   theme and helps highlight which parts of the theme are shared.
- * - Use a naming pattern `<type>-<domain>` for naming maps, eg `theme-colors`,
- *   `border-colors`, `font-sizes`, `font-weights`
+ * - Use a naming pattern `<type>-<domain>` for naming maps, eg `theme-shades`,
+ *   `border-shades`, `font-sizes`, `font-weights`
  * - Use semantic names or generic names, eg `primary` is a good generic name
  *   and `container` is a good semantic name. This allows users to have useful
  *   defaults with generics and useful fine tuned customizations with semantic
  *   names.
  */
 
-// --- Color maps
+@import './functions/sass';
 
-$gray-colors: () !default;
-$gray-colors: map-merge(
-  (
-    '100': #f3f3f3,
-    '200': #eaedf0,
-    '300': #dee2e6,
-    '400': #ced4da,
-    '500': #adb5bd,
-    '600': #6c757d,
-    '700': #495057,
-    '800': #282d31,
-    '900': #131416,
-    // Alphas
-      A500: #adb5bda8,
-  ),
-  $gray-colors
-);
-
-$primary-colors: () !default;
-$primary-colors: map-merge(
-  (
-    base: #fa7dd0,
-    hover: #e874c1,
-    focused: #d269af,
-    active: #d269af,
-    disabled: #e7a7d2,
-  ),
-  $primary-colors
-);
-
-$secondary-colors: () !default;
-$secondary-colors: map-merge(
-  (
-    base: #46c9fd,
-    hover: #41bbeb,
-    focused: #3cabd7,
-    active: #3cabd7,
-    disabled: #77d7fe,
-  ),
-  $secondary-colors
-);
-
-$success-colors: () !default;
-$success-colors: map-merge(
-  (
-    base: #28a745,
-    hover: #259b40,
-    focused: #228e3b,
-    active: #228e3b,
-    disabled: #32cd56,
-  ),
-  $success-colors
-);
-
-$warning-colors: () !default;
-$warning-colors: map-merge(
-  (
-    base: #ffc107,
-    hover: #edb307,
-    focused: #d9a406,
-    active: #d9a406,
-    disabled: #ffcd38,
-  ),
-  $warning-colors
-);
-
-$error-colors: () !default;
-$error-colors: map-merge(
-  (
-    base: #dc3545,
-    hover: #cd3140,
-    focused: #bb2d3b,
-    active: #bb2d3b,
-    disabled: #e35f6c,
-  ),
-  $error-colors
-);
-
-$anchor-colors: () !default;
-$anchor-colors: map-merge(
-  (
-    base: #17a2b8,
-    hover: #1597ab,
-    focused: #148a9c,
-    active: #148a9c,
-    disabled: #1cc8e3,
-  ),
-  $anchor-colors
-);
-
-// --- Semantic color maps
-$background-colors: () !default;
-
-$border-colors: () !default;
-
-$typography-colors: () !default;
-$typography-colors: map-merge(
-  (
-    // Generic
-      primary: map-get($primary-colors, base),
-    secondary: map-get($secondary-colors, base),
-    success: map-get($success-colors, base),
-    warning: map-get($warning-colors, base),
-    error: map-get($error-colors, base),
-    // Semantic
-      body: #1a1a1a,
-    code: #f72f93,
-    disabled: #828e99,
-    heading: #242424
-  ),
-  $typography-colors
-);
-
-// 🆙 Provide a mechanism for defining inverse typography colors, this could
-// be useful if you wanted to have a light theme, with some parts of it using a
-// dark background that's not the same as your dark theme, eg the Footer of Ant
-// Design
-$typography-inverse-colors: () !default;
-$typography-inverse-colors: map-merge(
-  (
-    primary: #aaa,
-    secondary: #aaa,
-    heading: #aaa,
-  ),
-  $typography-inverse-colors
-);
-
-// --- Generic typography maps
+// Theme maps' defaults
+$theme: () !default;
+$headings-base: () !default;
 
 $font-family-primary: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
   'Helvetica Neue', Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
@@ -152,133 +27,133 @@ $font-family-primary: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
 $font-family-monospace: SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono',
   'Courier New', monospace !default;
 
-/// Font families
-$font-families: () !default;
-$font-families: map-merge(
-  (
-    primary: $font-family-primary,
-    monospace: $font-family-monospace,
-  ),
-  $font-families
-);
-
-/// Font sizes
-$font-sizes: () !default;
-$font-sizes: map-merge(
-  (
-    sm: 0.875rem,
-    md: 1rem,
-    lg: 1.25rem,
-    // Semantic
-      body: 1rem,
-    small: 0.875rem,
-    code: 0.875rem,
-  ),
-  $font-sizes
-);
-
-/// Font weights
-$font-weights: () !default;
-$font-weights: map-merge(
-  (
-    // Generic
-      light: 300,
-    normal: 400,
-    bold: 700,
-    // Semantic
-      body: 400,
-    heading: 300
-  ),
-  $font-weights
-);
-
-$line-heights: () !default;
-$line-heights: map-merge(
-  (
-    single: 1,
-    heading: 1.25,
-    body: 1.5,
-  ),
-  $line-heights
-);
-
-// --- Semantic typography maps
-
-/// Heading
-$heading: () !default;
-$heading: map-merge(
-  (
-    font-family: map-get($font-families, primary),
-    font-weight: map-get($font-weights, heading),
-    line-height: map-get($line-heights, heading),
-    margin-top: 0,
-    margin-bottom: 0,
-  ),
-  $heading
-);
-
-/// Body
-$body: () !default;
-$body: map-merge(
-  (
-    font-size: map-get($font-sizes, body),
-    font-weight: map-get($font-weights, body),
-    margin-top: 0,
-    margin-bottom: 0,
-  ),
-  $body
-);
-
-// --------------------------------------------------------
-// Breakpoints
-
-// Note that breakpoints must start with a 0 value, and values must be ascending
-$breakpoints: () !default;
-$breakpoints: map-merge(
-  (
+/// Theme
+$theme: map-assign((
+  // --- BREAKPOINTS
+  breakpoints: (
     sm: 0,
     md: 768px,
     lg: 1250px,
   ),
-  $breakpoints
-);
 
-// --------------------------------------------------------
-// Final theme
+  // --- SPACING
+  spacing: (
+    xs: 4px,
+    sm: 8px,
+    md: 16px,
+    lg: 24px,
+    xl: 48px,
+  ),
 
-$theme: () !default;
-$theme: map-merge(
-  (
-    breakpoints: $breakpoints,
-    palette: (
-      primary: $primary-colors,
-      secondary: $secondary-colors,
-      success: $success-colors,
-      warning: $warning-colors,
-      error: $error-colors,
-      anchor: $anchor-colors,
-      typography: $typography-colors,
+  // --- PALETTE
+  palette: (
+    gray: (
+      '100': #f3f3f3,
+      '200': #ced4da,
+      '300': #b0b8be,
+      '400': #495057,
+      '500': #495057,
+    ),
+    primary: (
+      '100': #d6d1fa,
+      '200': #7461ef,
+      '300': #4c34eb,
+      '400': #4630d8,
+      '500': #3d2abc,
+    ),
+    success: (
+      '100': #32cd56,
+      '200': #28a745,
+      '300': #259b40,
+      '400': #228e3b,
+      '500': #228e3b,
+    ),
+    warning: (
+      '100': #ffcd38,
+      '200': #ffc107,
+      '300': #edb307,
+      '400': #d9a406,
+      '500': #d9a406,
+    ),
+    error: (
+      '100': #e35f6c,
+      '200': #dc3545,
+      '300': #cd3140,
+      '400': #bb2d3b,
+      '500': #bb2d3b,
     ),
     typography: (
-      heading: $heading,
-      heading-1: (
-        font-size: 3rem,
+      body: #1a1a1a,
+      code: #ffadc0,
+    ),
+    backgrounds: (
+      body: #fff
+    ),
+    borders: (),
+    shadows: ()
+  ),
+
+  // --- TYPOGRAPHY
+  typography: (
+    font-families: (
+      body: $font-family-primary,
+      monospace: $font-family-monospace,
+    ),
+    font-sizes: (
+      sm: 0.875rem,
+      lg: 1.25rem,
+      // Semantic
+      body: 1rem,
+      small: 87.5%,
+      code: 0.875rem,
+    ),
+    font-weights: (
+      light: 300,
+      normal: 400,
+      bold: 700,
+    ),
+    line-heights: (
+      single: 1,
+      body: 1.5,
+    ),
+    variants: (
+      heading-1: map-merge((
+        font-size: 3rem
+      ), $headings-base),
+      heading-2: map-merge((
+        font-size: 2rem
+      ), $headings-base),
+      heading-3: map-merge((
+        font-size: 1.5rem
+      ), $headings-base),
+      body: (
+        font-size: 1rem,
       ),
-      heading-2: (
-        font-size: 2rem,
-      ),
-      heading-3: (
-        font-size: 1.5rem,
-      ),
-      body: $body,
-      font-families: $font-families,
-      font-weights: $font-weights,
-      font-sizes: $font-sizes,
-      line-heights: $line-heights,
     ),
   ),
-  $theme
-);
+
+  // --- BORDERS
+  borders:(
+    default: 1px solid #b0b8be,
+  ),
+  borderWidths: (),
+  borderRadii: (),
+
+  // --- SHADOWS
+  shadows: (
+    default: 0 0.5rem 1rem rgba(73, 80, 87, 0.15)
+  )
+), $theme);
+
+// --------------------------------------------------------
+// Theme functions
+
+/// Convenience function for accessing a theme value by period delimited path
+/// @param {string} $path Path to theme value
+/// @return {*} Theme value at path
+@function theme-get($path) {
+  @return get($theme, $path);
+}
 
 // --------------------------------------------------------
 // 3.0 Variables

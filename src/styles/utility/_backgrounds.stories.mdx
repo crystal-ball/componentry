@@ -1,19 +1,23 @@
 import Block from '../../Block/Block'
-import { colors, grayscale } from '../../storybook-resources'
 
 <Meta title='Utility Classes/Backgrounds' />
 
-<DocsTitle title='Backgrounds' experimental />
+<DocsTitle title='Backgrounds' />
 
 ### Background colors
 
-Set the background color to any theme color as well as any color added to the
-`$background-colors` map.
+Set the background color to any color added to the `theme.palette.background-colors` map.
 
 <div className='d-flex justify-content-center'>
-  {colors.map((color) => (
+  {['demo-map', 'demo-theme'].map((color) => (
     <div key={color}>
-      <Block width={100} height={100} background={color} mx='sm' className='radius' />
+      <Block
+        width={100}
+        height={100}
+        background={color}
+        mx='sm'
+        className='radius border'
+      />
       <small className='small ml-2'>.background-{color}</small>
     </div>
   ))}
@@ -21,4 +25,4 @@ Set the background color to any theme color as well as any color added to the
 
 ### Transparent
 
-Add `.bg-transparent` to override the background to be transparent.
+Add `.background-transparent` to override the background to be transparent.

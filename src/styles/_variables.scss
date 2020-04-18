@@ -146,23 +146,6 @@ $space-base: $space-root !default;
 $space-lg:   ($space-root * 1.5) !default;
 $space-xl:   ($space-root * 3) !default;
 
-$spacing: () !default;
-$spacing: map-merge((
-  // Utility classes suffixes
-  xs: $space-xs,
-  sm: $space-sm,
-  base: $space-base,
-  lg: $space-lg,
-  xl: $space-xl,
-  // DEPRECATED: Compatability suffixes
-  0: 0,
-  1: $space-xs,
-  2: $space-sm,
-  3: $space-base,
-  4: $space-lg,
-  5: $space-xl,
-), $spacing);
-
 $sizes: () !default;
 $sizes: map-merge((
   10: 10%,
@@ -211,15 +194,17 @@ $line-height-base:     1.5  !default;
 $line-height-lg:       1.75 !default;
 $line-height-xl:       2    !default;
 
+$typography-colors: () !default;
+
 // --------------------------------------------------------
 // Anchors
 
 $anchor-decoration: none !default;
 
-$anchor-hover-color: map-get($anchor-colors, hover) !default;
+$anchor-hover-color: #17a2b8 !default;
 $anchor-hover-decoration: underline !default;
 
-$anchor-active-color: map-get($anchor-colors, active) !default;
+$anchor-active-color: #1597ab !default;
 $anchor-active-decoration: $anchor-hover-decoration !default;
 
 // Disabled links are a weird thing, they're not technically real, but you can
@@ -536,7 +521,7 @@ $modal-header-padding: $modal-body-padding !default;
 $modal-title-font-size: $font-size-lg !default;
 $modal-title-line-height: $line-height-base !default;
 $modal-title-color: typography-color(heading) !default;
-$modal-title-font-weight: map-get($font-weights, heading) !default;
+$modal-title-font-weight: 400 !default;
 
 $modal-footer-bg: $modal-container-bg !default;
 $modal-footer-border-color: $modal-header-border-color !default;

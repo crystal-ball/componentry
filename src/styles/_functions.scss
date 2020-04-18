@@ -3,33 +3,6 @@
 // --------------------------------------------------------
 // Maps accessors
 
-/// Returns a value from the map, handling cases where key is in a nested map.
-/// @author @HugoGiraudel
-/// @param {Map} $map Map
-/// @param {Arglist} $keys Ordered set of map keys
-/// @return {*} Value accessed with keys set
-@function map-deep-get($map, $keys...) {
-  @each $key in $keys {
-    $map: map-get($map, $key);
-  }
-
-  @return $map;
-}
-
-/// Merges multiple maps together
-/// @author @bigglesrocks
-/// @param {Arglist} $maps Maps collection
-/// @return {Map} Merged maps collection
-@function map-collect($maps...) {
-  $collection: ();
-
-  @each $map in $maps {
-    $collection: map-merge($collection, $map);
-  }
-
-  @return $collection;
-}
-
 /** Return a gray value by key */
 @function gray($key: '100') {
   @return map-get($grayscale, $key);
@@ -90,7 +63,7 @@
  * @example breakpoint-infix(sm) === '-sm'
  */
 @function breakpoint-infix($breakpoint, $breakpoints: $grid-breakpoints) {
-  @return if(breakpoint-min($breakpoint, $breakpoints) == null, '', '-#{$breakpoint}');
+  @return if(breakpoint-min($breakpoint, $breakpoints) == null, '', '#{$breakpoint}\\:');
 }
 
 // --------------------------------------------------------

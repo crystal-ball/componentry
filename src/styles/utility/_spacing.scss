@@ -4,52 +4,52 @@
 // Margin and Padding
 //
 
-@each $breakpoint in map-keys($grid-breakpoints) {
+@each $breakpoint in theme-get('breakpoints') {
   @include media-breakpoint-up($breakpoint) {
-    $infix: breakpoint-infix($breakpoint, $grid-breakpoints);
+    $infix: breakpoint-infix($breakpoint, theme-get('breakpoints'));
 
     @each $prop, $abbrev in (margin: m, padding: p) {
-      @each $size, $length in $spacing {
-        .#{$abbrev}#{$infix}-#{$size} {
-          #{$prop}: $length !important;
+      @each $size, $value in theme-get('spacing') {
+        .#{$infix}#{$abbrev}-#{$size} {
+          #{$prop}: $value !important;
         }
-        .#{$abbrev}t#{$infix}-#{$size},
-        .#{$abbrev}y#{$infix}-#{$size} {
-          #{$prop}-top: $length !important;
+        .#{$infix}#{$abbrev}t-#{$size},
+        .#{$infix}#{$abbrev}y-#{$size} {
+          #{$prop}-top: $value !important;
         }
-        .#{$abbrev}r#{$infix}-#{$size},
-        .#{$abbrev}x#{$infix}-#{$size} {
-          #{$prop}-right: $length !important;
+        .#{$infix}#{$abbrev}r-#{$size},
+        .#{$infix}#{$abbrev}x-#{$size} {
+          #{$prop}-right: $value !important;
         }
-        .#{$abbrev}b#{$infix}-#{$size},
-        .#{$abbrev}y#{$infix}-#{$size} {
-          #{$prop}-bottom: $length !important;
+        .#{$infix}#{$abbrev}b-#{$size},
+        .#{$infix}#{$abbrev}y-#{$size} {
+          #{$prop}-bottom: $value !important;
         }
-        .#{$abbrev}l#{$infix}-#{$size},
-        .#{$abbrev}x#{$infix}-#{$size} {
-          #{$prop}-left: $length !important;
+        .#{$infix}#{$abbrev}l-#{$size},
+        .#{$infix}#{$abbrev}x-#{$size} {
+          #{$prop}-left: $value !important;
         }
       }
     }
 
     // Some special margin utils
-    .m#{$infix}-auto {
+    .#{$infix}m-auto {
       margin: auto !important;
     }
-    .mt#{$infix}-auto,
-    .my#{$infix}-auto {
+    .#{$infix}mt-auto,
+    .#{$infix}my-auto {
       margin-top: auto !important;
     }
-    .mr#{$infix}-auto,
-    .mx#{$infix}-auto {
+    .#{$infix}mr-auto,
+    .#{$infix}mx-auto {
       margin-right: auto !important;
     }
-    .mb#{$infix}-auto,
-    .my#{$infix}-auto {
+    .#{$infix}mb-auto,
+    .#{$infix}my-auto {
       margin-bottom: auto !important;
     }
-    .ml#{$infix}-auto,
-    .mx#{$infix}-auto {
+    .#{$infix}ml-auto,
+    .#{$infix}mx-auto {
       margin-left: auto !important;
     }
   }

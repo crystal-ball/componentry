@@ -3,7 +3,7 @@ import { actionClasses, componentry, elemArias, navClasses } from './componentry
 describe('componentry()', () => {
   test('computes libary utility classes from props', () => {
     // eslint-disable-next-line
-    ;['xs', 'sm', 'base', 'lg', 'xl'].forEach((size) => {
+    ;['xs', 'sm', 'md', 'lg', 'xl'].forEach((size) => {
       expect(componentry({ m: size, p: size }).libClassName[1]).toEqual([
         `m-${size}`,
         `p-${size}`,

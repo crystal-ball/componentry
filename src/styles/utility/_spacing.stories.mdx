@@ -10,16 +10,17 @@ Pass the library size variants to one of the library spacing props to set margin
 padding.
 
 <div>
-  <Block inline background='primary' pr='xs' mr='xs' height='8px' />
-  <Block inline background='primary' pr='sm' mr='xs' height='8px' />
-  <Block inline background='primary' pr='base' mr='xs' height='8px' />
-  <Block inline background='primary' pr='lg' mr='xs' height='8px' />
-  <Block inline background='primary' pr='xl' mr='xs' height='8px' />
+  {['xs', 'sm', 'md', 'lg', 'xl'].map((space) => (
+    <Block key={space}>
+      <small className='font-family-monospace'>{space}</small>:{' '}
+      <Block inline background='demo' pr={space} height='8px' />
+    </Block>
+  ))}
 </div>
 
-- Margin props: `m`, `mt`, `mr`, `mb`, `ml`
-- Padding props: `p`, `pt`, `pr`, `pb`, `pl`
-- Size variants: `xs`, `sm`, `base`, `lg`, `xl`
+- Margin props: `m`, `mt`, `mr`, `mb`, `ml`, `mx`, `my`
+- Padding props: `p`, `pt`, `pr`, `pb`, `pl`, `px`, `py`
+- Size variants: `xs`, `sm`, `md`, `lg`, `xl`
 
 ## Margin auto
 
@@ -28,5 +29,5 @@ Pass `'auto'` to any margin prop and it will be applied as a style.
 eg `mx='auto'`
 
 <div className='w-100'>
-  <Block background='primary' height={16} width={16} mx='auto' />
+  <Block background='demo' height={16} width={16} mx='auto' />
 </div>
