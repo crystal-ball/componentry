@@ -1,6 +1,6 @@
 import React, { createContext, useContext, useRef } from 'react'
 import cx from 'classnames'
-import nanoid from 'nanoid'
+import { nanoid } from 'nanoid'
 
 import { closeBase } from '../Close/Close'
 import { useTheme } from '../Theme/Theme'
