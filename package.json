@@ -1,6 +1,6 @@
 {
   "name": "componentry",
-  "version": "3.0.0-rc.7",
+  "version": "3.0.0-rc.8",
   "description": "React Componentry",
   "sideEffects": false,
   "main": "lib/index.js",
@@ -24,7 +24,7 @@
     "url": "https://github.com/crystal-ball/componentry.git"
   },
   "engines": {
-    "node": ">=8.11"
+    "node": "12"
   },
   "scripts": {
     "start": "start-storybook -p 6006 --ci",
