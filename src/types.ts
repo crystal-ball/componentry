@@ -1,4 +1,4 @@
-import * as React from 'react'
+import { FunctionComponent, ReactNode } from 'react'
 
 export interface AriasFlags {
   controls?: boolean
@@ -38,9 +38,9 @@ export interface ActiveContainerProps {
   /** Listener fn that will be called after deactivation */
   onDeactivated?: (evt: Event) => void
   /** Shorthand for setting the Active Content rendered JSX */
-  Content?: React.ReactNode
+  Content?: ReactNode
   /** Shorthand for setting the Active Trigger rendered JSX */
-  Trigger?: React.ReactNode
+  Trigger?: ReactNode
 }
 
 export interface ActiveContentProps {
@@ -52,7 +52,7 @@ export interface ActiveTriggerProps {
   /** Unique id for this element in compound active context */
   activeId?: string
   /** Decorative element rendered after Trigger contents */
-  decoration?: React.ReactNode
+  decoration?: ReactNode
 }
 
 export interface ActionElementProps {
@@ -165,15 +165,15 @@ export type ComponentryProps = VariantProps &
   BorderProps &
   BackgroundProps
 
-export type ActiveContentComponent = React.FunctionComponent<
+export type ActiveContentComponent = FunctionComponent<
   ActiveContentProps & ComponentryProps
 >
 
-export type ActiveTriggerComponent = React.FunctionComponent<
+export type ActiveTriggerComponent = FunctionComponent<
   ActiveTriggerProps & ComponentryProps
 >
 
-export type ActiveContainerComponent = React.FunctionComponent<
+export type ActiveContainerComponent = FunctionComponent<
   ActiveContainerProps & ComponentryProps
 > & {
   Content: ActiveContentComponent
