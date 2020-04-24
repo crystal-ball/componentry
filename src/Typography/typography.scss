@@ -1,19 +1,5 @@
 /* componentry/src/Typography/typography */
 
-// --------------------------------------------------------
-// Headings
-
-@include classFromMap(heading-1, theme-get('typography.variants.heading-1'));
-@include classFromMap(heading-2, theme-get('typography.variants.heading-2'));
-@include classFromMap(heading-3, theme-get('typography.variants.heading-2'));
-
-// --------------------------------------------------------
-// Body
-
-@include classFromMap(body, theme-get('typography.variants.body'));
-
-/// Set spacing between multiple paragraphs using sibling selector and
-/// margin-top.
-.body + .body {
-  margin-top: $body-gutter;
+@each $variant, $styles in theme-get('typography.variants') {
+  @include style-rule-from-map('.#{$variant}', $styles);
 }

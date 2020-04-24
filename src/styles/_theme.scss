@@ -17,6 +17,63 @@
 
 @import './functions/sass';
 
+// --------------------------------------------------------
+// Palette
+
+$palette: () !default;
+$palette: map-assign((
+  // ℹ️ Using gray for this key causes SASS to return null when trying to look
+  // up the value (presumably b/c gray is a color)
+  grayscale: (
+    '100': #eceff1,
+    '200': #b0bec5,
+    '300': #607d8b,
+    '400': #455a64,
+    '500': #263238,
+  ),
+  primary: (
+    '100': #d1c4e9,
+    '200': #9575cd,
+    '300': #673ab7,
+    '400': #512da8,
+    '500': #311b92,
+  ),
+  success: (
+    '100': #dcedc8,
+    '200': #aed581,
+    '300': #8bc34a,
+    '400': #689f38,
+    '500': #33691e,
+  ),
+  warning: (
+    '100': #ffecb3,
+    '200': #ffd54f,
+    '300': #ffc107,
+    '400': #ffa000,
+    '500': #ff6f00,
+  ),
+  error: (
+    '100': #ffcdd2,
+    '200': #e57373,
+    '300': #f44336,
+    '400': #d32f2f,
+    '500': #b71c1c,
+  ),
+  typography: (
+    body: #1a1a1a,
+    code: #ffadc0,
+    inverse: #f0f0f0
+  ),
+  backgrounds: (
+    body: #fff
+  ),
+  borders: (),
+  shadows: ()
+), $palette);
+
+// --------------------------------------------------------
+// Final theme
+
 // Theme maps' defaults
 $theme: () !default;
 $headings-base: () !default;
@@ -38,6 +95,7 @@ $theme: map-assign((
 
   // --- SPACING
   spacing: (
+    0: 0,
     xs: 4px,
     sm: 8px,
     md: 16px,
@@ -46,52 +104,7 @@ $theme: map-assign((
   ),
 
   // --- PALETTE
-  palette: (
-    gray: (
-      '100': #f3f3f3,
-      '200': #ced4da,
-      '300': #b0b8be,
-      '400': #495057,
-      '500': #495057,
-    ),
-    primary: (
-      '100': #d6d1fa,
-      '200': #7461ef,
-      '300': #4c34eb,
-      '400': #4630d8,
-      '500': #3d2abc,
-    ),
-    success: (
-      '100': #32cd56,
-      '200': #28a745,
-      '300': #259b40,
-      '400': #228e3b,
-      '500': #228e3b,
-    ),
-    warning: (
-      '100': #ffcd38,
-      '200': #ffc107,
-      '300': #edb307,
-      '400': #d9a406,
-      '500': #d9a406,
-    ),
-    error: (
-      '100': #e35f6c,
-      '200': #dc3545,
-      '300': #cd3140,
-      '400': #bb2d3b,
-      '500': #bb2d3b,
-    ),
-    typography: (
-      body: #1a1a1a,
-      code: #ffadc0,
-    ),
-    backgrounds: (
-      body: #fff
-    ),
-    borders: (),
-    shadows: ()
-  ),
+  palette: $palette,
 
   // --- TYPOGRAPHY
   typography: (
@@ -117,27 +130,57 @@ $theme: map-assign((
       body: 1.5,
     ),
     variants: (
+      // --- Heading 1 styles
       heading-1: map-merge((
         font-size: 3rem
       ), $headings-base),
+
+      // --- Heading 2 styles
       heading-2: map-merge((
         font-size: 2rem
       ), $headings-base),
+
+      // --- Heading 3 styles
       heading-3: map-merge((
         font-size: 1.5rem
       ), $headings-base),
+
+      // --- Body styles
       body: (
         font-size: 1rem,
+
+        // Set spacing between multiple paragraphs using sibling selector and
+        // margin-top.
+        '& + .body': (
+          margin-top: 1rem,
+        )
       ),
+
+      // --- Anchor styles
+      // ℹ️ Componentry doesn't include disabled anchor styles as a UX best
+      // practice, but if necessary it's best to define normal anchor styles
+      // using `a[href]` as the selector, and `a` as a 'disabled' anchor and
+      // then don't pass an href to create a 'placeholder link' 
+      a: (
+        color: get($palette, 'primary.300'),
+
+        '&:hover': (
+          color: get($palette, 'primary.500'),
+        ),
+      )
     ),
   ),
 
   // --- BORDERS
   borders:(
-    default: 1px solid #b0b8be,
+    default: 1px solid get($palette, 'grayscale.300'),
   ),
-  borderWidths: (),
-  borderRadii: (),
+  border-widths: (),
+  border-radii: (
+    sm: 2px,
+    default: 2px,
+    lg: 4px
+  ),
 
   // --- SHADOWS
   shadows: (
@@ -158,5 +201,3 @@ $theme: map-assign((
 // --------------------------------------------------------
 // 3.0 Variables
 
-// Used to set spacing between multiple paragraphs
-$body-gutter: 1rem !default;

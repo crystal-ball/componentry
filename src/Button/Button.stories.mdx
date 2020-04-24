@@ -2,15 +2,33 @@ import { boolean, select } from '@storybook/addon-knobs'
 import { action } from '@storybook/addon-actions'
 
 import Button from './Button'
-import { colors, sizes } from '../storybook-resources'
+import Flex from '../Flex/Flex'
 
 <Meta title='Components/Button' component={Button}></Meta>
 
 <DocsTitle title='Button'></DocsTitle>
 
-A primary button:
+A primary variant button:
 
-<Button color='primary' onClick={action('button click')}>
+<Button variant='primary' onClick={action('button click')}>
+  Button
+</Button>
+
+A secondary variant button:
+
+<Button variant='secondary' onClick={action('button click')}>
+  Button
+</Button>
+
+A text variant button:
+
+<Button variant='text' onClick={action('button click')}>
+  Button
+</Button>
+
+An anchor variant button:
+
+<Button variant='anchor' onClick={action('button click')}>
   Button
 </Button>
 
@@ -20,31 +38,44 @@ A primary button:
 
 Pass a `color` to set a theme color background:
 
-<div className='d-flex justify-content-center btn-container-x'>
-  {colors.map((color) => (
-    <Button color={color} onClick={action('button-click')} key={color}>
+<Flex>
+  {['primary', 'success', 'warning', 'error'].map((color) => (
+    <Button key={color} variant='primary' color={color} onClick={action('button click')}>
       Button
     </Button>
   ))}
-  <Button color='anchor' onClick={action('button-click')}>
-    Button
-  </Button>
-</div>
+</Flex>
 
-## Outline style
-
-Pass an `outline` to set a theme color outline:
-
-<div className='d-flex justify-content-center btn-container-x'>
-  {colors.map((color) => (
-    <Button outline={color} onClick={action('button-click')} key={color}>
+<Flex mt='md'>
+  {['primary', 'success', 'warning', 'error'].map((color) => (
+    <Button
+      key={color}
+      variant='secondary'
+      color={color}
+      onClick={action('button click')}
+    >
       Button
     </Button>
   ))}
-  <Button outline='anchor' onClick={action('button-click')}>
-    Button
-  </Button>
-</div>
+</Flex>
+
+<Flex mt='md'>
+  {['primary', 'success', 'warning', 'error'].map((color) => (
+    <Button key={color} variant='text' color={color} onClick={action('button click')}>
+      Button
+    </Button>
+  ))}
+</Flex>
+
+<Flex mt='md'>
+  {['primary', 'success', 'warning', 'error'].map((color) => (
+    <Button key={color} variant='anchor' color={color} onClick={action('button click')}>
+      Button
+    </Button>
+  ))}
+</Flex>
+
+---
 
 ## Sizes
 
@@ -52,51 +83,45 @@ Pass a `size` to set a button size:
 
 <div className='d-flex justify-content-center '>
   <div className='btn-container-x'>
-    <Button color='primary' size='sm'>
-      Button
-    </Button>
-    <Button color='primary'>Button</Button>
-    <Button color='primary' size='lg'>
-      Button
-    </Button>
+    <Button size='sm'>Button</Button>
+    <Button>Button</Button>
+    <Button size='lg'>Button</Button>
   </div>
 </div>
 
-## Block button
+## Full width buttons
 
-Pass the `block` prop to make a button fill its parent container:
+Pass `width="100%"` to make a button fill its parent container:
 
-<Button block color='primary'>
-  Button
-</Button>
+<Button width='100%'>Full width button</Button>
 
 ## Disabled
 
 Pass `disabled` to make a button disabled:
 
-<Button disabled color='primary'>
+<Button variant='primary' disabled>
   Button
 </Button>
 
-## Anchor variant
+<Button variant='secondary' disabled>
+  Button
+</Button>
 
-Create a button with anchor styles by passing `variant="a"` to a Button:
+<Button variant='text' disabled>
+  Button
+</Button>
 
-<p>
-  Always use a button or{' '}
-  <Button variant='a' onClick={action('anchor variant click')}>
-    anchor
-  </Button>{' '}
-  for creating interaction targets 👍
-</p>
+<Button variant='anchor' disabled>
+  Button
+</Button>
 
 ## Input buttons
 
 Use the `as` prop to render input elements styled as buttons:
 
 <div className='d-flex justify-content-center btn-container-x'>
-  <Button color='primary'>Button</Button>
-  <Button as='input' color='primary' value='Input' />
-  <Button as='input' color='primary' type='submit' value='Submit' />
-  <Button as='input' color='primary' type='reset' value='Reset' />
+  <Button>Button</Button>
+  <Button as='input' value='Input' />
+  <Button as='input' type='submit' value='Submit' />
+  <Button as='input' type='reset' value='Reset' />
 </div>

@@ -68,6 +68,7 @@ export function elemArias({ active, activeId, guid, type, arias = {} }) {
 
 /**
  * Fn generates the classes for action elements
+ * @param {string} base
  * @param {string} variant
  * @param {Object} opts
  * @param {boolean} [opts.active]
@@ -78,16 +79,10 @@ export function elemArias({ active, activeId, guid, type, arias = {} }) {
  * @param {string} [opts.size]
  * @returns {string}
  */
-export function actionClasses(
-  variant,
-  { active, block, color, disabled, outline, size },
-) {
-  return cx({
-    [variant]: true,
-    [`${variant}-block`]: block,
-    [`${variant}-${color}`]: color,
-    [`${variant}-outline-${outline}`]: outline,
-    [`${variant}-${size}`]: size,
+export function actionClasses(base, variant, { active, color, disabled, size }) {
+  return cx(base, `${base}-${variant}`, {
+    [`${base}-${size}`]: size,
+    [`${base}-${color}-color`]: color,
     active,
     // We include a disabled class AND pass disabled prop to btn element for a11y
     disabled,

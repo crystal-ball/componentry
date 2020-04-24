@@ -12,33 +12,23 @@ Anchor components render an anchor tag with anchor styles by default:
 
 <Anchor href='#'>Anchor element</Anchor>
 
-## Theme colors
+---
 
-Pass a `color` prop to theme the anchor font color:
+## Colors
 
-<div className='d-flex flex-column'>
+<Flex>
   {colors.map((color) => (
-    <Anchor color={color} href='#' key={color}>
+    <Anchor key={color} color={color} href='#'>
       Achor element
     </Anchor>
   ))}
-</div>
-
----
-
-## Disabled
-
-Pass `disabled` to make an anchor disabled:
-
-<Anchor disabled>Anchor element</Anchor>
-
----
+</Flex>
 
 ## Button variant
 
-Create an anchor with buttons style by passing `variant="btn"` to an Anchor:
+Create an anchor with button styles by passing `variant="btn"` to an Anchor:
 
-<Anchor variant='btn' color='danger' outline href='#'>
+<Anchor variant='btn' color='primary' href='#'>
   Go Back
 </Anchor>
 <Anchor variant='btn' color='anchor' href='#'>
