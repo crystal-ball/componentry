@@ -4,12 +4,16 @@ import { addDecorator, addParameters } from '@storybook/react'
 import { Meta } from '@storybook/addon-docs/blocks'
 import { withKnobs } from '@storybook/addon-knobs'
 
+import { setupOutlineHandlers } from '../src'
+
 // --- Load Componentry styles ---
 
 import './storybook.scss'
 import DocsTitle from './components/DocsTitle'
 
 // --- Setup global decorators --
+
+setupOutlineHandlers()
 
 // Override the Styled Components that the MDX provider uses for standard DOM
 // elements so that we can use Componentry styles classNames.

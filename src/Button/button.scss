@@ -1,192 +1,218 @@
 /* componentry/src/Button/button */
 
-$btn-defaults: ();
-@each $color, $value in $theme-colors {
-  $btn-defaults: map-merge(
-    $btn-defaults,
+// Base class: btn
+// Variants: primary, secondary
+// Sizes: sm, lg
+
+$btn: () !default;
+
+$btn-primary: () !default;
+$btn-secondary: () !default;
+
+$btn-sm: () !default;
+$btn-lg: () !default;
+
+$button-anchor-overrides: () !default;
+
+// --------------------------------------------------------
+// Normalizing anchors styled as buttons
+
+// These overrides apply to Anchor instances using a btn base class, they
+// normalize browser anchor styles to match button styles
+
+@include style-rule-from-map(
+  'a.btn',
+  map-assign(
+    $button-anchor-overrides,
     (
-      // --- Background color
-      #{$color}-bg: #{gradient-bg($value)},
-      #{$color}-hover-bg: #{gradient-bg(darken($value, 7.5%))},
-      #{$color}-active-bg: #{gradient-bg(darken($value, 10%))},
-      #{$color}-disabled-bg: #{gradient-bg($value)},
-      // --- Border color
-      #{$color}-border-color: #{$value},
-      #{$color}-hover-border-color: #{darken($value, 10%)},
-      #{$color}-active-border-color: #{darken($value, 12.5%)},
-      #{$color}-disabled-border-color: #{$value},
-      // --- Color
-      #{$color}-color: #{color-yiq($value)},
-      #{$color}-hover-color: #{color-yiq($value)},
-      #{$color}-active-color: #{color-yiq($value)},
-      #{$color}-disabled-color: #{color-yiq($value)}
+      text-decoration: none,
+    )
+  )
+);
+
+// --------------------------------------------------------
+// Base class
+
+@include style-rule-from-map(
+  '.btn',
+  map-assign(
+    (
+      display: inline-flex,
+      align-items: center,
+      justify-content: center,
+      margin: 0,
+      padding: 0.25rem 1rem,
+      font-family: inherit,
+      font-size: theme-get('typography.font-sizes.body'),
+      border-radius: theme-get('border-radii.default'),
+      // Prevent text selection on click of buttons
+        cursor: pointer,
+      user-select: none,
+      // By default button content shouldn't wrap
+        white-space: nowrap,
+    ),
+    $btn
+  )
+);
+
+// --------------------------------------------------------
+// Primary variant
+
+$btn-primary-base: (
+  background-color: theme-get('palette.grayscale.300'),
+  border: 1px solid theme-get('palette.grayscale.300'),
+  color: theme-get('palette.typography.inverse'),
+  '&:hover': (
+    background-color: theme-get('palette.grayscale.400'),
+  ),
+  '&:active': (
+    background-color: theme-get('palette.grayscale.500'),
+  ),
+  '&:disabled': (
+    border: 1px solid theme-get('palette.grayscale.200'),
+    background-color: theme-get('palette.grayscale.200'),
+  ),
+);
+
+@each $color in theme-get('palette.theme-colors') {
+  $btn-primary-base: map-merge(
+    $btn-primary-base,
+    (
+      '&.btn-color-#{$color}': (
+        background-color: theme-get('palette.#{$color}.300'),
+        border-color: theme-get('palette.#{$color}.400'),
+        '&:hover': (
+          background-color: theme-get('palette.#{$color}.400'),
+        ),
+        '&:active': (
+          background-color: theme-get('palette.#{$color}.500'),
+        ),
+        '&:disabled': (
+          background-color: theme-get('palette.#{$color}.200'),
+        ),
+      ),
     )
   );
 }
 
-$btn-states-map: map-merge($btn-defaults, $btn-states);
+@include style-rule-from-map('.btn-primary', map-assign($btn-primary-base, $btn-primary));
 
 // --------------------------------------------------------
-// Button base styles
+// Secondary variant
 
-.btn {
-  -webkit-appearance: button;
-  border: $btn-border-width solid transparent;
-  @include border-radius($btn-border-radius);
-  display: inline-block;
-  font-family: inherit;
-  font-size: $font-size-base;
-  font-weight: $btn-font-weight;
-  letter-spacing: $btn-letter-spacing;
-  line-height: $btn-line-height;
-  margin: 0;
-  padding: $btn-padding-y $btn-padding-x;
-  text-align: center;
-  text-transform: $btn-text-transform;
-  user-select: none;
-  vertical-align: middle;
-  white-space: nowrap;
-  // Setting the text-decoration is required for anchors using the btn styles
-  text-decoration: $btn-decoration;
+$btn-secondary-base: (
+  background-color: transparent,
+  border: 1px solid theme-get('palette.grayscale.300'),
+  color: theme-get('palette.grayscale.300'),
+  '&:hover': (
+    border-color: theme-get('palette.grayscale.400'),
+    color: theme-get('palette.grayscale.400'),
+  ),
+  '&:active': (
+    border-color: theme-get('palette.grayscale.500'),
+    color: theme-get('palette.grayscale.500'),
+  ),
+  '&:disabled': (
+    border-color: theme-get('palette.grayscale.200'),
+    color: theme-get('palette.grayscale.200'),
+  ),
+);
 
-  // ℹ️ The box-shadow styles remain static throughout hover/active states
-  box-shadow: box-shadow($btn-box-shadow);
-
-  // $btn-transition default includes color, background-color, border-color
-  @include transition($btn-transition);
-
-  &:hover {
-    text-decoration: $btn-hover-decoration;
-  }
-
-  &:active {
-    text-decoration: $btn-active-decoration;
-  }
-
-  &.disabled {
-    border-width: $btn-disabled-border-width;
-    opacity: $btn-disabled-opacity;
-  }
+@each $color in theme-get('palette.theme-colors') {
+  $btn-secondary-base: map-merge(
+    $btn-secondary-base,
+    (
+      '&.btn-color-#{$color}': (
+        border-color: theme-get('palette.#{$color}.300'),
+        color: theme-get('palette.#{$color}.300'),
+        '&:hover': (
+          border-color: theme-get('palette.#{$color}.400'),
+          color: theme-get('palette.#{$color}.400'),
+        ),
+        '&:active': (
+          border-color: theme-get('palette.#{$color}.500'),
+          color: theme-get('palette.#{$color}.500'),
+        ),
+        '&:disabled': (
+          border-color: theme-get('palette.#{$color}.200'),
+          color: theme-get('palette.#{$color}.200'),
+        ),
+      ),
+    )
+  );
 }
+
+@include style-rule-from-map(
+  '.btn-secondary',
+  map-assign($btn-secondary-base, $btn-secondary)
+);
 
 // --------------------------------------------------------
-// Theme color variants
+// Text variant
 
-@each $color, $value in $theme-colors {
-  // --- Theme variant
-  .btn-#{$color} {
-    background: map-get($btn-states-map, #{$color}-bg);
-    border-color: map-get($btn-states-map, #{$color}-border-color);
-    color: map-get($btn-states-map, #{$color}-color);
+// $btn-text-base: (
+//   background-color: transparent,
+//   border: 1px solid transparent,
+//   color: theme-get('palette.grayscale.300'),
+//   '&:hover': (
+//     color: theme-get('palette.grayscale.400'),
+//   ),
+//   '&:active': (
+//     color: theme-get('palette.grayscale.500'),
+//   ),
+//   '&:disabled': (
+//     color: theme-get('palette.grayscale.200'),
+//   ),
+// );
 
-    &:hover {
-      background: map-get($btn-states-map, #{$color}-hover-bg);
-      border-color: map-get($btn-states-map, #{$color}-hover-border-color);
-      color: map-get($btn-states-map, #{$color}-hover-color);
-    }
+// @each $color in theme-get('palette.theme-colors') {
+//   $btn-text-base: map-merge(
+//     $btn-text-base,
+//     (
+//       '&.btn-#{$color}-color': (
+//         color: theme-get('palette.#{$color}.300'),
+//         '&:hover': (
+//           color: theme-get('palette.#{$color}.400'),
+//         ),
+//         '&:active': (
+//           color: theme-get('palette.#{$color}.500'),
+//         ),
+//         '&:disabled': (
+//           color: theme-get('palette.#{$color}.200'),
+//         ),
+//       ),
+//     )
+//   );
+// }
 
-    &:active,
-    &.active {
-      background: map-get($btn-states-map, #{$color}-active-bg);
-      border-color: map-get($btn-states-map, #{$color}-active-border-color);
-      color: map-get($btn-states-map, #{$color}-active-color);
-    }
-
-    &.disabled {
-      background: map-get($btn-states-map, #{$color}-disabled-bg);
-      border-color: map-get($btn-states-map, #{$color}-disabled-border-color);
-      color: map-get($btn-states-map, #{$color}-disabled-color);
-    }
-  }
-
-  // --- Outline variant
-  .btn-outline-#{$color} {
-    background: transparent;
-    border-color: $value;
-    color: $value;
-
-    &:hover {
-      background: gradient-bg($value);
-      border-color: $value;
-      color: color-yiq($value);
-    }
-
-    &:active,
-    &.active {
-      background: gradient-bg(darken($value, 7.5%));
-      border-color: $value;
-      color: color-yiq($value);
-    }
-
-    &.disabled {
-      background: transparent;
-      border-color: $value;
-      color: $value;
-    }
-  }
-}
-
-// 'anchor' theme color variant has the padding and alignment of a button with
-// font styles matching anchors (can be used for things like secondary CTAs)
-.btn-anchor {
-  background: transparent;
-  color: typography-color(anchor);
-  font-weight: $font-weight-normal;
-  box-shadow: none;
-  // 🤔 Should btn-link reset the text tansform and letter spacing?
-
-  &:hover {
-    background: transparent;
-    border-color: transparent;
-    color: $anchor-hover-color;
-    text-decoration: $anchor-hover-decoration;
-  }
-
-  &:active {
-    color: $anchor-active-color;
-    text-decoration: $anchor-active-decoration;
-  }
-
-  &.disabled {
-    color: $btn-link-disabled-color;
-  }
-}
-
-.btn-outline-anchor {
-  background: transparent;
-  border-color: typography-color(anchor);
-  color: typography-color(anchor);
-  font-weight: $font-weight-normal;
-  box-shadow: none;
-}
-
-// --------------------------------------------------------
-// Block buttons
-
-.btn-block {
-  display: block;
-  width: 100%;
-}
+// @include style-rule-from-map('.btn-text', map-assign($btn-text-base, $btn-text));
 
 // --------------------------------------------------------
 // Button sizes
 
-.btn-lg {
-  @include border-radius($btn-border-radius-lg);
-  font-size: $font-size-lg;
-  letter-spacing: $btn-letter-spacing-lg;
-  line-height: $btn-line-height-lg;
-  padding: $btn-padding-y-lg $btn-padding-x-lg;
-}
+@include style-rule-from-map(
+  '.btn-sm',
+  map-assign(
+    (
+      border-radius: theme-get('border-radii.sm'),
+      font-size: theme-get('typography.font-sizes.sm'),
+      padding: 0.125rem 0.75rem,
+    ),
+    $btn-sm
+  )
+);
 
-.btn-sm {
-  @include border-radius($btn-border-radius-sm);
-  font-size: $font-size-sm;
-  letter-spacing: $btn-letter-spacing-sm;
-  line-height: $btn-line-height-sm;
-  padding: $btn-padding-y-sm $btn-padding-x-sm;
-}
-
+@include style-rule-from-map(
+  '.btn-lg',
+  map-assign(
+    (
+      border-radius: theme-get('border-radii.lg'),
+      font-size: theme-get('typography.font-sizes.lg'),
+      padding: 0.5rem 2rem,
+    ),
+    $btn-lg
+  )
+);
 
 /* ~componentry/src/ButtonGroup/button-group */
 

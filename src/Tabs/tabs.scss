@@ -25,7 +25,7 @@
 
   // --- Filled
   &.tabs-triggers-container-fill {
-    .tabs-trigger {
+    .tabs-action-primary {
       flex: 1 1 auto;
       text-align: center;
     }
@@ -33,7 +33,7 @@
 
   // --- Justified
   &.tabs-triggers-container-justified {
-    .tabs-trigger {
+    .tabs-action-primary {
       flex-basis: 0;
       flex-grow: 1;
       text-align: center;
@@ -47,7 +47,7 @@
     margin: $tabs-nav-vertical-margin;
     border-bottom: none;
 
-    .tabs-trigger {
+    .tabs-action-primary {
       margin: $tabs-tab-vertical-margin;
       border-width: $tabs-tab-vertical-border-width;
       border-color: $tabs-tab-vertical-border-color;
@@ -79,12 +79,13 @@
 //
 
 // NOTE: Tabs are assumed to be an anchor or button element for accessibility!
-.tabs-trigger {
+.tabs-action-primary {
   -webkit-appearance: none; // reset buttons
   white-space: nowrap;
   padding: $tabs-tab-padding-y $tabs-tab-padding-x;
   background: $tabs-tab-bg;
   color: $tabs-tab-color;
+  cursor: pointer;
   font-size: $font-size-base;
   font-weight: $font-weight-normal;
   border-style: solid;

@@ -7,7 +7,7 @@ exports[`<Popover /> snapshots renders correctly 1`] = `
 >
   <button
     aria-describedby="guid"
-    class="popover-trigger"
+    class="popover-action popover-action-primary"
     type="button"
   >
     Toggle

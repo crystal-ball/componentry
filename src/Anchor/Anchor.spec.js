@@ -9,16 +9,12 @@ describe('<Anchor/>', () => {
   elementTests(Anchor)
 
   test('should render type classes for anchor', () => {
-    const { getByText } = render(
-      <Anchor color='success' size='sm'>
-        Link
-      </Anchor>,
-    )
-    expect(getByText('Link')).toHaveClass('a a-success a-sm')
+    const { getByText } = render(<Anchor color='success'>Link</Anchor>)
+    expect(getByText('Link')).toHaveClass('a a-primary a-color-success')
   })
 
   test('When used to create a button styled anchor, then btn is rendered', () => {
-    const { getByText } = render(<Anchor variant='btn'>Link</Anchor>)
+    const { getByText } = render(<Anchor baseClass='btn'>Link</Anchor>)
     expect(getByText('Link')).toHaveClass('btn')
     expect(getByText('Link')).not.toHaveClass('a')
   })
@@ -35,8 +31,8 @@ describe('<Anchor /> snapshots', () => {
   it('renders btn variants correctly', () => {
     const { container } = render(
       <>
-        <Anchor variant='btn'>Link</Anchor>
-        <Anchor variant='btn' outline='success' size='sm'>
+        <Anchor baseClass='btn'>Link</Anchor>
+        <Anchor baseClass='btn' variant='secondary' size='sm'>
           Link
         </Anchor>
       </>,

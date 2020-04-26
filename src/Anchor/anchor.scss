@@ -1,42 +1,65 @@
 /* componentry/src/Anchor/anchor */
 
-// The `.btn-link` style button has the font styles of an anchor AND all of the
-// regular padding of a button. For 💯 Accessibility we want to have buttons
-// that look exactly like links for in application triggers, `anc`
-// creates a button styled exactly like an anchor. This should be used for any
-// application actions that are not route navigations.
-.a {
-  color: typography-color(anchor);
-  text-decoration: $anchor-decoration;
-  background-color: transparent;
+$a: () !default;
 
-  &:hover {
-    color: $anchor-hover-color;
-    text-decoration: $anchor-hover-decoration;
-  }
+$a-primary: () !default;
 
-  &:active {
-    color: $anchor-active-color;
-    text-decoration: $anchor-active-decoration;
-  }
+$anchor-button-overrides: () !default;
 
-  &.disabled {
-    color: $anchor-disabled-color;
-    text-decoration: $anchor-disabled-decoration;
-  }
+// --------------------------------------------------------
+// Normalizing buttons styled as anchors
+
+// These overrides apply to Button instances using an a base class, they
+// normalize browser button styles to match anchor styles
+
+@include style-rule-from-map(
+  'button.a',
+  map-assign(
+    $anchor-button-overrides,
+    (
+      border: none,
+      background-color: transparent,
+      cursor: pointer,
+      font: inherit,
+      padding: 0,
+      text-align: inherit,
+    )
+  )
+);
+
+// --------------------------------------------------------
+// Base class
+
+@include style-rule-from-map('.a', map-assign($a, ()));
+
+// --------------------------------------------------------
+// Primary variant
+
+$a-primary-base: (
+  color: get($palette, 'primary.300'),
+  '&:hover': (
+    color: get($palette, 'primary.500'),
+  ),
+);
+
+@each $color in theme-get('palette.theme-colors') {
+  $a-primary-base: map-merge(
+    $a-primary-base,
+    (
+      '&.a-color-#{$color}': (
+        color: theme-get('palette.#{$color}.300'),
+        '&:hover': (
+          color: theme-get('palette.#{$color}.400'),
+        ),
+      ),
+    )
+  );
 }
 
-button.a {
-  @include reset-button;
-}
+@include style-rule-from-map('.a-primary', map-assign($a-primary-base, $a-primary));
 
-// Custom color style is needed to include :hover, and :focus styles
-@each $color, $value in $typography-colors {
-  .a-#{$color} {
-    color: $value;
-
-    @include hover-focus {
-      color: darken($value, 10%);
-    }
-  }
-}
+// --- ℹ️ Disabled anchor styles
+// Componentry doesn't include disabled anchor styles as a UX best
+// practice, but if necessary it's best to define normal anchor styles
+// using `a[href]` as the selector, and `a` as a 'disabled' anchor and
+// then don't pass an href to create a 'placeholder link'

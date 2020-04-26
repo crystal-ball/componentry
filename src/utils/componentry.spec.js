@@ -1,4 +1,4 @@
-import { actionClasses, componentry, elemArias, navClasses } from './componentry'
+import { componentry, elemArias, navClasses } from './componentry'
 
 describe('componentry()', () => {
   test('computes libary utility classes from props', () => {
@@ -174,25 +174,6 @@ describe('componentry()', () => {
       'text-monospace': true,
       'text-uppercase': true,
     })
-  })
-})
-
-describe('actionClasses()', () => {
-  test('actionClasses returns computed className for passed options', () => {
-    expect(
-      actionClasses('btn', {
-        active: true,
-        block: true,
-        color: 'primary',
-        disabled: true,
-        outline: 'primary',
-        size: 'sm',
-      }),
-    ).toEqual('btn btn-block btn-primary btn-outline-primary btn-sm active disabled')
-  })
-
-  test('when no truthy values are passed, then only the variant is returned', () => {
-    expect(actionClasses('btn', {})).toEqual('btn')
   })
 })
 

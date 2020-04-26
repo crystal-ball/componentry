@@ -24,7 +24,7 @@ Dropdown.Content = activeContent('dropdown', {
  */
 Dropdown.Item = activeTrigger('dropdown', {
   displayName: 'DropdownItem',
-  variant: 'dropdown-item',
+  baseClass: 'dropdown-item',
 })
 
 /**

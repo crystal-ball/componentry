@@ -17,7 +17,7 @@
 // --- Trigger styles
 //
 
-.dropdown-trigger {
+.dropdown-action-primary {
   @include active-trigger-element;
 
   font-size: $dropdown-font-size;
@@ -89,7 +89,7 @@
 
 .dropdown-sm {
   .dropdown-content,
-  .dropdown-trigger {
+  .a-dropdown-trigger {
     font-size: $dropdown-font-size-sm;
     font-weight: $dropdown-font-weight-sm;
   }
@@ -101,7 +101,7 @@
 
 .dropdown-lg {
   .dropdown-content,
-  .dropdown-trigger {
+  .a-dropdown-trigger {
     font-size: $dropdown-font-size-lg;
     font-weight: $dropdown-font-weight-lg;
   }

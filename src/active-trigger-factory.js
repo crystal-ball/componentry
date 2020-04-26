@@ -2,12 +2,19 @@ import React, { useContext } from 'react'
 import elem from './elem-factory'
 import { ActiveCtx } from './active-container-factory'
 import { useTheme } from './Theme/Theme'
-import { actionClasses, elemArias } from './utils/componentry'
+import { elemArias } from './utils/componentry'
+import { actionClasses } from './utils/classes'
 
 /**
  * Factory returns custom `<Trigger />` components defined by the fn options.
  * Componentry sets up triggers to be anchor style buttons by default, this
  * can be overridden by passing an as, type and anchor to reset the defaults.
+ * @property {string} name Component display name
+ * @property {Object} opts
+ * @property {Object} opts.arias
+ * @property {string} opts.baseClass
+ * @property {string} opts.displayName
+ * @property {string} opts.displayName
  * @returns {import('react').FunctionComponent<any>}
  */
 export default function activeTriggerFactory(
@@ -25,8 +32,9 @@ export default function activeTriggerFactory(
   function ActiveTrigger(props) {
     const {
       as = 'button',
+      baseClass = `${name}-action`,
       type = 'button',
-      variant = `${name}-trigger`,
+      variant = 'primary',
       // --- Render elements
       children,
       decoration,
@@ -64,7 +72,7 @@ export default function activeTriggerFactory(
         arias,
       }),
       elemClassName: [
-        actionClasses(variant, rest),
+        actionClasses(baseClass, variant, rest),
         // For compound-active contexts add an active class if activeIds match
         // (eg in tabs show which tab is selected)
         { active: activeId && active === activeId },

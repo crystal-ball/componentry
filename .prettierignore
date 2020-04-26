@@ -6,5 +6,3 @@ src/styles/themes/_radical.scss
 src/styles/themes/_majestical.scss
 src/styles/_theme.scss
 src/styles/functions/_sass.scss
-
-src/Button/button.scss

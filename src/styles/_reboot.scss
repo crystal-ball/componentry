@@ -88,15 +88,8 @@ hr:not([size]) {
 
 // Reset margin to 0 on paragraphs
 p {
-  margin-top: 0;
-  margin-bottom: 0;
+  margin: 0;
 }
-
-// Add a sibling selector with margin-top if desired to create spacing between
-// all sibling paragraphs:
-// p + p {
-//   margin-top: $body-gutter;
-// }
 
 small {
   font-size: $small-font-size;
@@ -280,17 +273,6 @@ th {
   text-align: inherit;
 }
 
-// Work around a Firefox/IE bug where the transparent `button` background
-// results in a loss of the default `button` focus styles.
-//
-// Credit: https://github.com/suitcss/base/
-
-button:focus {
-  outline: 1px dotted;
-  outline: 5px auto -webkit-focus-ring-color;
-}
-
-button,
 input[type='button'],
 input[type='reset'],
 input[type='submit'] {
