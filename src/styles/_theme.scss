@@ -17,10 +17,13 @@
 
 @import './functions/sass';
 
+$palette: () !default;
+$headings-base: () !default;
+$theme: () !default;
+
 // --------------------------------------------------------
 // Palette
 
-$palette: () !default;
 $palette: map-assign((
   theme-colors: (primary, success, warning, error),
   // ℹ️ Using gray for this key causes SASS to return null when trying to look
@@ -74,10 +77,6 @@ $palette: map-assign((
 
 // --------------------------------------------------------
 // Final theme
-
-// Theme maps' defaults
-$theme: () !default;
-$headings-base: () !default;
 
 $font-family-primary: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
   'Helvetica Neue', Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',

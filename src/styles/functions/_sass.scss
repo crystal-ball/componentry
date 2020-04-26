@@ -72,7 +72,7 @@
       // For lists append map2 to map1 (!!lists aren't recursive)
       $map1: map-merge(
         $map1,
-        ($key: append(map-get($map1, $key), $value))
+        ($key: join(map-get($map1, $key), $value))
       )
     } @else {
       // For all other values second map wins

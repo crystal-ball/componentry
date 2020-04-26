@@ -15,7 +15,6 @@ $anchor-button-overrides: () !default;
 @include style-rule-from-map(
   'button.a',
   map-assign(
-    $anchor-button-overrides,
     (
       border: none,
       background-color: transparent,
@@ -23,14 +22,15 @@ $anchor-button-overrides: () !default;
       font: inherit,
       padding: 0,
       text-align: inherit,
-    )
+    ),
+    $anchor-button-overrides
   )
 );
 
 // --------------------------------------------------------
 // Base class
 
-@include style-rule-from-map('.a', map-assign($a, ()));
+@include style-rule-from-map('.a', map-assign((), $a));
 
 // --------------------------------------------------------
 // Primary variant

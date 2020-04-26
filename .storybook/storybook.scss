@@ -2,6 +2,16 @@
 
 $theme: (
   palette: (
+    theme-colors: (
+      'info',
+    ),
+    info: (
+      '100': #b2ebf2,
+      '200': #4dd0e1,
+      '300': #00bcd4,
+      '400': #0097a7,
+      '500': #006064,
+    ),
     backgrounds: (
       demo: #3d2abc,
     ),
