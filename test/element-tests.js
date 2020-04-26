@@ -8,12 +8,12 @@ import Theme from '../src/Theme/Theme'
  * Library default component requirment test suite.
  */
 const elementTests = (TestComponent) => {
-  const name = TestComponent.displayName
+  const componentName = TestComponent.displayName.replace('✨', '')
   /*
    * All components should have a display name so they can be easily debugged
    * even in prod builds
    */
-  test(`${name} should have a displayName`, () => {
+  test(`${componentName} should have a displayName`, () => {
     expect(TestComponent.displayName).toBeTruthy()
   })
 
@@ -23,7 +23,7 @@ const elementTests = (TestComponent) => {
    * 2. className prop is appended
    * 3. Custom attributes are passed through
    */
-  test(`${name} should handle component element requirements`, () => {
+  test(`${componentName} should handle component element requirements`, () => {
     const TestChild = () => <span>Test child content</span>
 
     const { getByTestId, getByText } = render(
@@ -46,7 +46,7 @@ const elementTests = (TestComponent) => {
    * Test that any html tag or component can be passed through the 'as' prop to
    * override the parent element the component renders
    */
-  test(`${name} should render as specified html element or component`, () => {
+  test(`${componentName} should render as specified html element or component`, () => {
     // Create a component to validate that the TestComponent returns.
     const TestAs = ({ isRad }) => <div>{isRad ? 'RAD' : null}</div> // eslint-disable-line
 
@@ -61,11 +61,11 @@ const elementTests = (TestComponent) => {
    * Also test that the `themeClassName` prop can be used to pass a className
    * by default to all component instances
    */
-  test(`${name} should merge theme and JSX props correctly`, () => {
+  test(`${componentName} should merge theme and JSX props correctly`, () => {
     const { getByTestId } = render(
       <Theme
         theme={{
-          [TestComponent.displayName]: {
+          [componentName]: {
             'themeClassName': 'theme-class',
             'data-radical': 'hecka',
           },
@@ -102,7 +102,7 @@ const elementTests = (TestComponent) => {
    * Test that a couple of the library shared className and style props are
    * computed and rendered correctly
    */
-  test(`${name} should include library classes and styles correctly`, () => {
+  test(`${componentName} should include library classes and styles correctly`, () => {
     const { getByTestId } = render(
       <TestComponent
         uppercase

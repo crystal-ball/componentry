@@ -78,7 +78,7 @@ $btn-primary-base: (
   $btn-primary-base: map-merge(
     $btn-primary-base,
     (
-      '&.btn-#{$color}-color': (
+      '&.btn-color-#{$color}': (
         background-color: theme-get('palette.#{$color}.300'),
         border-color: theme-get('palette.#{$color}.400'),
         '&:hover': (
@@ -122,7 +122,7 @@ $btn-secondary-base: (
   $btn-secondary-base: map-merge(
     $btn-secondary-base,
     (
-      '&.btn-#{$color}-color': (
+      '&.btn-color-#{$color}': (
         border-color: theme-get('palette.#{$color}.300'),
         color: theme-get('palette.#{$color}.300'),
         '&:hover': (

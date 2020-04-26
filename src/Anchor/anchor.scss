@@ -46,7 +46,7 @@ $a-primary-base: (
   $a-primary-base: map-merge(
     $a-primary-base,
     (
-      '&.a-#{$color}-color': (
+      '&.a-color-#{$color}': (
         color: theme-get('palette.#{$color}.300'),
         '&:hover': (
           color: theme-get('palette.#{$color}.400'),

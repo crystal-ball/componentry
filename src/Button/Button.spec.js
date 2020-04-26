@@ -32,65 +32,38 @@ describe('<Button/>', () => {
   })
 
   test('When `variant` is passed, then it should be used as base className value', () => {
-    const { getByText } = render(<Button variant='btn-test'>Button</Button>)
-    expect(getByText('Button')).toHaveClass('btn-test')
-    // TODO: assert only classname
-  })
-
-  test('When `block` is passed, then the block className should render', () => {
-    const { getByText } = render(
-      <>
-        <Button block>Button</Button>
-        <Button block variant='btn-test'>
-          Variant Button
-        </Button>
-      </>,
-    )
-    expect(getByText('Button')).toHaveClass('btn btn-block')
-    expect(getByText('Variant Button')).toHaveClass('btn-test btn-test-block')
+    const { getByText } = render(<Button variant='demo'>Button</Button>)
+    expect(getByText('Button')).toHaveClass('btn btn-demo')
   })
 
   test('When `color` is passed, then the color className should render', () => {
     const { getByText } = render(
       <>
         <Button color='info'>Button</Button>
-        <Button color='info' variant='btn-test'>
+        <Button variant='demo' color='info'>
           Variant Button
         </Button>
       </>,
     )
-    expect(getByText('Button')).toHaveClass('btn btn-info')
-    expect(getByText('Variant Button')).toHaveClass('btn-test btn-test-info')
-  })
-
-  test('When `outline` is passed, then the outline className should render', () => {
-    const { getByText } = render(
-      <>
-        <Button outline='info'>Button</Button>
-        <Button outline='info' variant='btn-test'>
-          Variant Button
-        </Button>
-      </>,
-    )
-    expect(getByText('Button')).toHaveClass('btn btn-outline-info')
-    expect(getByText('Variant Button')).toHaveClass('btn-test btn-test-outline-info')
+    expect(getByText('Button')).toHaveClass('btn btn-color-info')
+    expect(getByText('Variant Button')).toHaveClass('btn btn-demo btn-color-info')
   })
 
   test('When `size` is passed, then the size className should render', () => {
     const { getByText } = render(
       <>
         <Button size='sm'>Button</Button>
-        <Button size='sm' variant='btn-test'>
+        <Button variant='demo' size='sm'>
           Variant Button
         </Button>
       </>,
     )
     expect(getByText('Button')).toHaveClass('btn btn-sm')
-    expect(getByText('Variant Button')).toHaveClass('btn-test btn-test-sm')
+    expect(getByText('Variant Button')).toHaveClass('btn btn-demo btn-sm')
   })
 
   test('When used to create an anchor styled button, then anchor styles should be rendered', () => {
-    const { getByText } = render(<Button variant='a'>Button</Button>)
+    const { getByText } = render(<Button baseClass='a'>Button</Button>)
     expect(getByText('Button')).toHaveClass('a')
     expect(getByText('Button')).not.toHaveClass('btn')
   })
@@ -99,8 +72,6 @@ describe('<Button/>', () => {
 // Snapshots
 // ---------------------------------------------------------------------------
 describe('<Button /> Snapshots', () => {
-  // 📝 TODO: use enzyme tests to validate props effects, use snapshot for testing
-  // output of markup like 'type'
   test('it renders defaults correctly', () => {
     const { container } = render(<Button>Componentry</Button>)
     expect(container.firstChild).toMatchSnapshot()
@@ -116,17 +87,8 @@ describe('<Button /> Snapshots', () => {
     expect(container.firstChild).toMatchSnapshot()
   })
 
-  test('it renders outline correctly', () => {
-    const { container } = render(<Button outline='success'>Componentry</Button>)
-    expect(container.firstChild).toMatchSnapshot()
-  })
-
   test('it renders large outline correctly', () => {
-    const { container } = render(
-      <Button outline='success' size='lg'>
-        Componentry
-      </Button>,
-    )
+    const { container } = render(<Button size='lg'>Componentry</Button>)
     expect(container.firstChild).toMatchSnapshot()
   })
 })

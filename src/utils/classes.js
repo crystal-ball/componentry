@@ -15,7 +15,7 @@ import cx from 'classnames'
 export function actionClasses(base, variant, { active, color, disabled, size }) {
   return cx(base, `${base}-${variant}`, {
     [`${base}-${size}`]: size,
-    [`${base}-${color}-color`]: color,
+    [`${base}-color-${color}`]: color,
     active,
     // We include a disabled class AND pass disabled prop to btn element for a11y
     disabled,
