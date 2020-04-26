@@ -1,5 +1,3 @@
-/* eslint-env node */
-
 const { ENABLE_JEST_NOTIFICATIONS } = process.env
 
 module.exports = {

@@ -21,13 +21,4 @@ module.exports = {
     'react/prop-types': 'off',
     'react/require-default-props': 'off',
   },
-
-  overrides: [
-    {
-      files: ['**/*.ts', '**/*.tsx'],
-      rules: {
-        'spaced-comment': 'off',
-      },
-    },
-  ],
 }
