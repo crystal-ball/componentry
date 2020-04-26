@@ -9,6 +9,12 @@ import { actionClasses } from './utils/classes'
  * Factory returns custom `<Trigger />` components defined by the fn options.
  * Componentry sets up triggers to be anchor style buttons by default, this
  * can be overridden by passing an as, type and anchor to reset the defaults.
+ * @property {string} name Component display name
+ * @property {Object} opts
+ * @property {Object} opts.arias
+ * @property {string} opts.baseClass
+ * @property {string} opts.displayName
+ * @property {string} opts.displayName
  * @returns {import('react').FunctionComponent<any>}
  */
 export default function activeTriggerFactory(
@@ -26,9 +32,9 @@ export default function activeTriggerFactory(
   function ActiveTrigger(props) {
     const {
       as = 'button',
-      baseClass = 'a',
+      baseClass = `${name}-action`,
       type = 'button',
-      variant = `${name}-trigger`,
+      variant = 'primary',
       // --- Render elements
       children,
       decoration,

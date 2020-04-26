@@ -21,7 +21,7 @@ Nav.displayName = 'Nav'
  * [Nav item component 📝](https://componentry.design/components/nav)
  */
 Nav.Item = function NavItem(props) {
-  const { baseClass = 'nav-item', variant = 'nav-item', ...merged } = {
+  const { baseClass = 'nav-item', variant = 'primary', ...merged } = {
     ...useTheme('NavItem'),
     ...props,
   }

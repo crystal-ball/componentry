@@ -13,7 +13,7 @@ exports[`<Tab /> snapshots renders correctly 1`] = `
     <button
       aria-controls="guid-one-content"
       aria-selected="true"
-      class="tabs-trigger active"
+      class="tabs-action tabs-action-primary active"
       id="guid-one-tab"
       role="tab"
       type="button"
@@ -24,7 +24,7 @@ exports[`<Tab /> snapshots renders correctly 1`] = `
     <button
       aria-controls="guid-two-content"
       aria-selected="false"
-      class="tabs-trigger"
+      class="tabs-action tabs-action-primary"
       id="guid-two-tab"
       role="tab"
       type="button"
@@ -35,7 +35,7 @@ exports[`<Tab /> snapshots renders correctly 1`] = `
     <button
       aria-controls="guid-three-content"
       aria-selected="false"
-      class="tabs-trigger"
+      class="tabs-action tabs-action-primary"
       id="guid-three-tab"
       role="tab"
       type="button"
@@ -46,7 +46,7 @@ exports[`<Tab /> snapshots renders correctly 1`] = `
     <button
       aria-controls="guid-four-content"
       aria-selected="false"
-      class="tabs-trigger disabled"
+      class="tabs-action tabs-action-primary disabled"
       disabled=""
       id="guid-four-tab"
       role="tab"

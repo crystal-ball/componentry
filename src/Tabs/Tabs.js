@@ -45,7 +45,6 @@ Tabs.TriggersContainer.displayName = 'TriggersContainer'
  */
 Tabs.Trigger = activeTrigger('tabs', {
   arias: { selected: true, role: 'tab' },
-  variant: 'tabs-trigger',
   // Tabs can only activate, they never deactivate when clicked
   action: 'activate',
 })

@@ -8,7 +8,6 @@ import cx from 'classnames'
  * @param {boolean} [opts.active]
  * @param {string} [opts.color]
  * @param {boolean} [opts.disabled]
- * @param {string} [opts.outline]
  * @param {string} [opts.size]
  * @returns {string}
  */

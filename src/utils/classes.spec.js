@@ -5,15 +5,14 @@ describe('actionClasses()', () => {
     expect(
       actionClasses('btn', 'primary', {
         active: true,
-        color: 'primary',
+        color: 'info',
         disabled: true,
-        outline: 'primary',
         size: 'sm',
       }),
-    ).toEqual('btn btn-block btn-primary btn-outline-primary btn-sm active disabled')
+    ).toEqual('btn btn-primary btn-sm btn-color-info active disabled')
   })
 
-  test('when no truthy values are passed, then only the variant is returned', () => {
-    expect(actionClasses('btn', 'primary', {})).toEqual('btn')
+  test('when no truthy values are passed, then only the base and variant are returned', () => {
+    expect(actionClasses('btn', 'primary', {})).toEqual('btn btn-primary')
   })
 })
