@@ -11,6 +11,14 @@ const variantMap = {
 }
 
 /**
+ * Passed variant to element mapping will override the default library mappings
+ * @param {{ [x:string]: string}} overrides
+ */
+export function setTypographyVariantElements(overrides) {
+  Object.assign(variantMap, overrides)
+}
+
+/**
  * [Typography component 📝](https://componentry.design/components/typography)
  */
 export default function Typography(props) {
@@ -25,4 +33,4 @@ export default function Typography(props) {
     ...rest,
   })
 }
-Typography.displayName = 'Typography'
+Typography.displayName = '✨Typography'

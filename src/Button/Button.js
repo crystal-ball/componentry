@@ -6,20 +6,14 @@ import { useTheme } from '../Theme/Theme'
  * [Button component 📝](https://componentry.design/components/button)
  */
 export default function Button(props) {
-  const {
-    as = 'button',
-    baseClass = 'btn',
-    type = 'button',
-    variant = 'primary',
-    ...merged
-  } = {
+  const { baseClass = 'btn', variant = 'primary', ...merged } = {
     ...useTheme('Button'),
     ...props,
   }
 
   return elem({
-    as,
-    type,
+    as: 'button',
+    type: 'button',
     elemClassName: actionClasses(baseClass, variant, merged),
     ...merged,
   })
