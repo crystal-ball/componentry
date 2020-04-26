@@ -5,7 +5,8 @@ import { useTheme } from '../Theme/Theme'
  * [Flex component 📝](https://componentry.design/components/flex)
  */
 export default function Flex(props) {
-  const { align, direction, inline, justify, wrap, ...rest } = {
+  /** @type {{ align: string, direction: string, inline: boolean, justify: string, wrap: string }} */
+  const { align, direction, inline = false, justify, wrap, ...rest } = {
     ...useTheme('Flex'),
     ...props,
   }
@@ -26,4 +27,4 @@ export default function Flex(props) {
     ...rest,
   })
 }
-Flex.displayName = 'Flex'
+Flex.displayName = '✨Flex'
