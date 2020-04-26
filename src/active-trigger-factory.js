@@ -2,7 +2,8 @@ import React, { useContext } from 'react'
 import elem from './elem-factory'
 import { ActiveCtx } from './active-container-factory'
 import { useTheme } from './Theme/Theme'
-import { actionClasses, elemArias } from './utils/componentry'
+import { elemArias } from './utils/componentry'
+import { actionClasses } from './utils/classes'
 
 /**
  * Factory returns custom `<Trigger />` components defined by the fn options.
@@ -25,6 +26,7 @@ export default function activeTriggerFactory(
   function ActiveTrigger(props) {
     const {
       as = 'button',
+      baseClass = 'a',
       type = 'button',
       variant = `${name}-trigger`,
       // --- Render elements
@@ -64,7 +66,7 @@ export default function activeTriggerFactory(
         arias,
       }),
       elemClassName: [
-        actionClasses(variant, rest),
+        actionClasses(baseClass, variant, rest),
         // For compound-active contexts add an active class if activeIds match
         // (eg in tabs show which tab is selected)
         { active: activeId && active === activeId },

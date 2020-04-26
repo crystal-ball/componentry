@@ -1,6 +1,7 @@
 import { boolean, select } from '@storybook/addon-knobs'
 import { action } from '@storybook/addon-actions'
 
+import Anchor from '../Anchor/Anchor'
 import Button from './Button'
 import Flex from '../Flex/Flex'
 
@@ -8,27 +9,17 @@ import Flex from '../Flex/Flex'
 
 <DocsTitle title='Button'></DocsTitle>
 
-A primary variant button:
+## Variants
 
-<Button variant='primary' onClick={action('button click')}>
+A **primary** variant button:
+
+<Button base='btn' variant='primary' onClick={action('button click')}>
   Button
 </Button>
 
-A secondary variant button:
+A **secondary** variant button:
 
 <Button variant='secondary' onClick={action('button click')}>
-  Button
-</Button>
-
-A text variant button:
-
-<Button variant='text' onClick={action('button click')}>
-  Button
-</Button>
-
-An anchor variant button:
-
-<Button variant='anchor' onClick={action('button click')}>
   Button
 </Button>
 
@@ -38,42 +29,35 @@ An anchor variant button:
 
 Pass a `color` to set a theme color background:
 
-<Flex>
-  {['primary', 'success', 'warning', 'error'].map((color) => (
-    <Button key={color} variant='primary' color={color} onClick={action('button click')}>
-      Button
-    </Button>
-  ))}
-</Flex>
+<div className='d-flex'>
+  <div className='btn-container-x'>
+    {['primary', 'success', 'warning', 'error'].map((color) => (
+      <Button
+        key={color}
+        variant='primary'
+        color={color}
+        onClick={action('button click')}
+      >
+        Button
+      </Button>
+    ))}
+  </div>
+</div>
 
-<Flex mt='md'>
-  {['primary', 'success', 'warning', 'error'].map((color) => (
-    <Button
-      key={color}
-      variant='secondary'
-      color={color}
-      onClick={action('button click')}
-    >
-      Button
-    </Button>
-  ))}
-</Flex>
-
-<Flex mt='md'>
-  {['primary', 'success', 'warning', 'error'].map((color) => (
-    <Button key={color} variant='text' color={color} onClick={action('button click')}>
-      Button
-    </Button>
-  ))}
-</Flex>
-
-<Flex mt='md'>
-  {['primary', 'success', 'warning', 'error'].map((color) => (
-    <Button key={color} variant='anchor' color={color} onClick={action('button click')}>
-      Button
-    </Button>
-  ))}
-</Flex>
+<div className='d-flex mt-md'>
+  <div className='btn-container-x'>
+    {['primary', 'success', 'warning', 'error'].map((color) => (
+      <Button
+        key={color}
+        variant='secondary'
+        color={color}
+        onClick={action('button click')}
+      >
+        Button
+      </Button>
+    ))}
+  </div>
+</div>
 
 ---
 
@@ -81,7 +65,7 @@ Pass a `color` to set a theme color background:
 
 Pass a `size` to set a button size:
 
-<div className='d-flex justify-content-center '>
+<div className='d-flex'>
   <div className='btn-container-x'>
     <Button size='sm'>Button</Button>
     <Button>Button</Button>
@@ -99,19 +83,20 @@ Pass `width="100%"` to make a button fill its parent container:
 
 Pass `disabled` to make a button disabled:
 
-<Button variant='primary' disabled>
-  Button
-</Button>
+<div className='btn-container-x'>
+  <Button variant='primary' disabled>
+    Button
+  </Button>
+  <Button variant='secondary' disabled>
+    Button
+  </Button>
+</div>
 
-<Button variant='secondary' disabled>
-  Button
-</Button>
+## Buttons styled as anchors
 
-<Button variant='text' disabled>
-  Button
-</Button>
+A Button that looks like an anchor:
 
-<Button variant='anchor' disabled>
+<Button baseClass='a' onClick={action('anchor button click')}>
   Button
 </Button>
 

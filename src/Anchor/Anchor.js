@@ -1,20 +1,22 @@
 import elem from '../elem-factory'
-import { actionClasses } from '../utils/componentry'
+import { actionClasses } from '../utils/classes'
 import { useTheme } from '../Theme/Theme'
 
 /**
  * [Anchor component 📝](https://componentry.design/components/anchor)
  */
 export default function Anchor(props) {
-  const { variant = 'link', ...merged } = {
+  const { baseClass = 'a', variant = 'primary', ...merged } = {
     ...useTheme('Anchor'),
     ...props,
   }
 
   return elem({
     as: 'a',
-    elemClassName: actionClasses('a', variant, merged),
+    elemClassName: actionClasses(baseClass, variant, merged),
     ...merged,
   })
 }
-Anchor.displayName = 'Anchor'
+Anchor.displayName = '✨Anchor'
+/** Base class for creating Anchor className variants */
+Anchor.baseClass = 'a'

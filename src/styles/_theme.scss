@@ -22,6 +22,7 @@
 
 $palette: () !default;
 $palette: map-assign((
+  theme-colors: (primary, success, warning, error),
   // ℹ️ Using gray for this key causes SASS to return null when trying to look
   // up the value (presumably b/c gray is a color)
   grayscale: (
@@ -155,19 +156,6 @@ $theme: map-assign((
           margin-top: 1rem,
         )
       ),
-
-      // --- Anchor styles
-      // ℹ️ Componentry doesn't include disabled anchor styles as a UX best
-      // practice, but if necessary it's best to define normal anchor styles
-      // using `a[href]` as the selector, and `a` as a 'disabled' anchor and
-      // then don't pass an href to create a 'placeholder link' 
-      a: (
-        color: get($palette, 'primary.300'),
-
-        '&:hover': (
-          color: get($palette, 'primary.500'),
-        ),
-      )
     ),
   ),
 

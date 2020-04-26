@@ -2,35 +2,33 @@ import { boolean, select } from '@storybook/addon-knobs'
 import { action } from '@storybook/addon-actions'
 
 import Anchor from './Anchor'
-import { colors, size } from '../storybook-resources'
 
 <Meta title='Components/Anchor' component={Anchor}></Meta>
 
 <DocsTitle title='Anchors'></DocsTitle>
 
-Anchor components render an anchor tag with anchor styles by default:
+## Varaints
 
-<Anchor href='#'>Anchor element</Anchor>
+A **primary** variant anchor:
+
+<Anchor href='#'>Anchor</Anchor>
 
 ---
 
 ## Colors
 
-<Flex>
-  {colors.map((color) => (
+<div className='d-flex flex-column'>
+  {['primary', 'success', 'warning', 'error'].map((color) => (
     <Anchor key={color} color={color} href='#'>
       Achor element
     </Anchor>
   ))}
-</Flex>
+</div>
 
-## Button variant
+## Anchors styled as buttons
 
-Create an anchor with button styles by passing `variant="btn"` to an Anchor:
+An Anchor that looks like a button:
 
-<Anchor variant='btn' color='primary' href='#'>
-  Go Back
-</Anchor>
-<Anchor variant='btn' color='anchor' href='#'>
-  Anchor color button
+<Anchor baseClass='btn' href='#'>
+  Anchor
 </Anchor>

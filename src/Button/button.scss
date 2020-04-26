@@ -1,19 +1,34 @@
 /* componentry/src/Button/button */
 
 // Base class: btn
-// Included variants: primary, secondary, text, anchor
-// Included colors: primary, success, warning, error
-// Included sizes: sm, lg
+// Variants: primary, secondary
+// Sizes: sm, lg
 
 $btn: () !default;
 
 $btn-primary: () !default;
 $btn-secondary: () !default;
-$btn-text: () !default;
-$btn-anchor: () !default;
 
 $btn-sm: () !default;
 $btn-lg: () !default;
+
+$button-anchor-overrides: () !default;
+
+// --------------------------------------------------------
+// Normalizing anchors styled as buttons
+
+// These overrides apply to Anchor instances using a btn base class, they
+// normalize browser anchor styles to match button styles
+
+@include style-rule-from-map(
+  'a.btn',
+  map-assign(
+    $button-anchor-overrides,
+    (
+      text-decoration: none,
+    )
+  )
+);
 
 // --------------------------------------------------------
 // Base class
@@ -22,7 +37,6 @@ $btn-lg: () !default;
   '.btn',
   map-assign(
     (
-      -webkit-appearance: button,
       display: inline-flex,
       align-items: center,
       justify-content: center,
@@ -31,10 +45,11 @@ $btn-lg: () !default;
       font-family: inherit,
       font-size: theme-get('typography.font-sizes.body'),
       border-radius: theme-get('border-radii.default'),
-      cursor: pointer,
+      // Prevent text selection on click of buttons
+        cursor: pointer,
       user-select: none,
-      vertical-align: middle,
-      white-space: nowrap
+      // By default button content shouldn't wrap
+        white-space: nowrap,
     ),
     $btn
   )
@@ -54,11 +69,12 @@ $btn-primary-base: (
     background-color: theme-get('palette.grayscale.500'),
   ),
   '&:disabled': (
+    border: 1px solid theme-get('palette.grayscale.200'),
     background-color: theme-get('palette.grayscale.200'),
   ),
 );
 
-@each $color in (primary, success, warning, error) {
+@each $color in theme-get('palette.theme-colors') {
   $btn-primary-base: map-merge(
     $btn-primary-base,
     (
@@ -102,7 +118,7 @@ $btn-secondary-base: (
   ),
 );
 
-@each $color in (primary, success, warning, error) {
+@each $color in theme-get('palette.theme-colors') {
   $btn-secondary-base: map-merge(
     $btn-secondary-base,
     (
@@ -134,77 +150,42 @@ $btn-secondary-base: (
 // --------------------------------------------------------
 // Text variant
 
-$btn-text-base: (
-  background-color: transparent,
-  border: 1px solid transparent,
-  color: theme-get('palette.grayscale.300'),
-  '&:hover': (
-    color: theme-get('palette.grayscale.400'),
-  ),
-  '&:active': (
-    color: theme-get('palette.grayscale.500'),
-  ),
-  '&:disabled': (
-    color: theme-get('palette.grayscale.200'),
-  ),
-);
+// $btn-text-base: (
+//   background-color: transparent,
+//   border: 1px solid transparent,
+//   color: theme-get('palette.grayscale.300'),
+//   '&:hover': (
+//     color: theme-get('palette.grayscale.400'),
+//   ),
+//   '&:active': (
+//     color: theme-get('palette.grayscale.500'),
+//   ),
+//   '&:disabled': (
+//     color: theme-get('palette.grayscale.200'),
+//   ),
+// );
 
-@each $color in (primary, success, warning, error) {
-  $btn-text-base: map-merge(
-    $btn-text-base,
-    (
-      '&.btn-#{$color}-color': (
-        color: theme-get('palette.#{$color}.300'),
-        '&:hover': (
-          color: theme-get('palette.#{$color}.400'),
-        ),
-        '&:active': (
-          color: theme-get('palette.#{$color}.500'),
-        ),
-        '&:disabled': (
-          color: theme-get('palette.#{$color}.200'),
-        ),
-      ),
-    )
-  );
-}
+// @each $color in theme-get('palette.theme-colors') {
+//   $btn-text-base: map-merge(
+//     $btn-text-base,
+//     (
+//       '&.btn-#{$color}-color': (
+//         color: theme-get('palette.#{$color}.300'),
+//         '&:hover': (
+//           color: theme-get('palette.#{$color}.400'),
+//         ),
+//         '&:active': (
+//           color: theme-get('palette.#{$color}.500'),
+//         ),
+//         '&:disabled': (
+//           color: theme-get('palette.#{$color}.200'),
+//         ),
+//       ),
+//     )
+//   );
+// }
 
-@include style-rule-from-map('.btn-text', map-assign($btn-text-base, $btn-text));
-
-// --------------------------------------------------------
-// Anchor variant
-
-$btn-anchor-base: (
-  -webkit-appearance: none,
-  padding: 0,
-  font-family: inherit,
-  font-size: inherit,
-  font-weight: inherit,
-  text-align: inherit,
-  white-space: normal,
-  user-select: auto,
-  background-color: transparent,
-  border: none
-);
-
-@each $color in (primary, success, warning, error) {
-  $btn-anchor-base: map-merge(
-    $btn-anchor-base,
-    (
-      '&.btn-#{$color}-color': (
-        color: theme-get('palette.#{$color}.300'),
-        '&:hover': (
-          color: theme-get('palette.#{$color}.400'),
-        ),
-        '&:disabled': (
-          color: theme-get('palette.#{$color}.200'),
-        ),
-      ),
-    )
-  );
-}
-
-@include style-rule-from-map('.btn-anchor', map-assign($btn-anchor-base, $btn-anchor));
+// @include style-rule-from-map('.btn-text', map-assign($btn-text-base, $btn-text));
 
 // --------------------------------------------------------
 // Button sizes

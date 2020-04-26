@@ -1,3 +1,65 @@
 /* componentry/src/Anchor/anchor */
 
-// ℹ️ All anchor styles for componentry are defined in the typography variant.
+$a: () !default;
+
+$a-primary: () !default;
+
+$anchor-button-overrides: () !default;
+
+// --------------------------------------------------------
+// Normalizing buttons styled as anchors
+
+// These overrides apply to Button instances using an a base class, they
+// normalize browser button styles to match anchor styles
+
+@include style-rule-from-map(
+  'button.a',
+  map-assign(
+    $anchor-button-overrides,
+    (
+      border: none,
+      background-color: transparent,
+      cursor: pointer,
+      font: inherit,
+      padding: 0,
+      text-align: inherit,
+    )
+  )
+);
+
+// --------------------------------------------------------
+// Base class
+
+@include style-rule-from-map('.a', map-assign($a, ()));
+
+// --------------------------------------------------------
+// Primary variant
+
+$a-primary-base: (
+  color: get($palette, 'primary.300'),
+  '&:hover': (
+    color: get($palette, 'primary.500'),
+  ),
+);
+
+@each $color in theme-get('palette.theme-colors') {
+  $a-primary-base: map-merge(
+    $a-primary-base,
+    (
+      '&.a-#{$color}-color': (
+        color: theme-get('palette.#{$color}.300'),
+        '&:hover': (
+          color: theme-get('palette.#{$color}.400'),
+        ),
+      ),
+    )
+  );
+}
+
+@include style-rule-from-map('.a-primary', map-assign($a-primary-base, $a-primary));
+
+// --- ℹ️ Disabled anchor styles
+// Componentry doesn't include disabled anchor styles as a UX best
+// practice, but if necessary it's best to define normal anchor styles
+// using `a[href]` as the selector, and `a` as a 'disabled' anchor and
+// then don't pass an href to create a 'placeholder link'
