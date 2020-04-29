@@ -85,6 +85,7 @@
     "style-loader": "1.2.0",
     "typescript": "3.8.3"
   },
+  "prettier": "@crystal-ball/prettier-base",
   "config": {
     "commitizen": {
       "path": "@crystal-ball/commitizen-base"
@@ -95,5 +96,9 @@
       "prepare-commit-msg": "exec < /dev/tty && git cz --hook"
     }
   },
-  "prettier": "@crystal-ball/prettier-base"
+  "renovate": {
+    "extends": [
+      "github>crystal-ball/renovate-base:library"
+    ]
+  }
 }
