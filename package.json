@@ -57,7 +57,7 @@
     "@babel/cli": "7.8.4",
     "@babel/core": "7.9.0",
     "@babel/plugin-transform-modules-commonjs": "7.9.0",
-    "@babel/plugin-transform-runtime": "7.9.0",
+    "@babel/plugin-transform-runtime": "7.9.6",
     "@babel/preset-typescript": "7.9.0",
     "@crystal-ball/commitizen-base": "2.6.0",
     "@crystal-ball/prettier-base": "2.2.0",
