@@ -27,6 +27,7 @@
     "node": ">=8.9.0"
   },
   "scripts": {
+    "babel:watch": "BABEL_ENV=production babel src --out-dir es -w",
     "commit": "git cz",
     "start": "NODE_ENV=development webpack-dev-server --env=development",
     "test": "npm run lint && npm run test:unit",
