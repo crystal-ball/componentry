@@ -3,7 +3,7 @@ import React, { Component, createElement } from 'react'
 import type { ComponentType, Node } from 'react'
 import { func, object, shape, string } from 'prop-types'
 import classNames from 'classnames'
-import nanoid from 'nanoid'
+import { nanoid } from 'nanoid'
 
 import { closest } from '../utils/dom'
 

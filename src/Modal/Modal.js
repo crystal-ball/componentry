@@ -2,7 +2,7 @@
 import React, { Component, Fragment, type Node } from 'react'
 import { func, object, shape, string } from 'prop-types'
 import classNames from 'classnames'
-import nanoid from 'nanoid'
+import { nanoid } from 'nanoid'
 
 import withActive from '../withActive/withActive'
 import elementFactory from '../component-factories/element'
