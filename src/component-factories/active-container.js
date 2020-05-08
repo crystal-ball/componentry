@@ -224,7 +224,7 @@ export default ({
      * When `active` is passed as a prop component is the 'controlled' type and we
      * update the internal active class anytime it changes.
      */
-    componentWillReceiveProps({ active }: Props) {
+    componentDidUpdate({ active }: Props) {
       if (active !== undefined) this.activeState.setActive(active)
     }
     /**

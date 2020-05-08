@@ -89,17 +89,28 @@ export default ({
       }),
     }
 
-    state = {
-      active: defaultActive,
-      visible: defaultActive,
-    }
-
     /**
      * If this HOC is used outside the scope of a `withState` HOC, the ACTIVE
      * context will not exist. This prop makes it easy to skip context operations in
      * that case.
      */
     invalidContext: boolean = false
+
+    /**
+     * If active is passed this is a controlled component and we always use that
+     * value
+     */
+    static getDerivedStateFromProps(props) {
+      if (props.active === undefined) return null
+
+      if (transitionState) {
+        if (props.active) {
+          return { active: props.active }
+        }
+        return { visible: props.active }
+      }
+      return { active: props.active }
+    }
 
     /**
      * Set references to context and `transitionDuration` for simpler checks
@@ -115,23 +126,38 @@ export default ({
       // props has precedence to allow for single instance overrides, context
       // can be used for app wide configs, fall back to defaults
       this.transitionDuration = this.props.transitionDuration || transitionDuration
+
+      const initialActive =
+        props.active !== undefined
+          ? props.active
+          : context.ACTIVE
+            ? context.ACTIVE.getActive()
+            : defaultActive
+      this.state = {
+        active: initialActive,
+        visible: initialActive,
+      }
     }
 
     // Hooks
     // ---------------------------------------------------------------------------
     /**
-     * Ensure that state matches context before first render
+     * Ensure that state matches context before first render.
+     *
+     *  ‼️ This is now handled in the constructor. If props or context has an
+     * active value it's used, otherwise we fallback to defaultActive
      */
-    componentWillMount() {
-      if (this.props.active === undefined && this.invalidContext) return
+    // componentWillMount() {
 
-      const active =
-        this.props.active !== undefined
-          ? this.props.active
-          : this.context.ACTIVE.getActive()
+    //   if (this.props.active === undefined && this.invalidContext) return
 
-      if (this.state.active !== active) this.setState({ active, visible: active })
-    }
+    //   const active =
+    //     this.props.active !== undefined
+    //       ? this.props.active
+    //       : this.context.ACTIVE.getActive()
+
+    //   if (this.state.active !== active) this.setState({ active, visible: active })
+    // }
     /**
      * Subscribe to active state updates on mount, trigger renders with setState
      * when state changes. Typically this won't be needed b/c parent component will
@@ -148,13 +174,31 @@ export default ({
     /**
      * Handle directly passed active prop
      */
-    componentWillReceiveProps({ active }: Props) {
-      // If active is not explicitly passed, it will always be undefined, we only
-      // want to update state when a value is passed. See note on props, this is
-      // not preferred, pass active to State container component
-      if (active === undefined) return
-      if (this.state.active !== active) this.handleStateUpdate(active)
+    // componentWillReceiveProps({ active }: Props) {
+    //   // If active is not explicitly passed, it will always be undefined, we only
+    //   // want to update state when a value is passed. See note on props, this is
+    //   // not preferred, pass active to State container component
+    //   if (active === undefined) return
+    //   if (this.state.active !== active) this.handleStateUpdate(active)
+    // }
+    componentDidUpdate(prevProps, prevState) {
+      // If component changed from active to inactive
+      if (prevState.visible && !this.state.visible) {
+        setTimeout(() => {
+          this.setState({ active: false })
+        }, this.transitionDuration)
+      }
+
+      // If component changed from inactive to active
+      if (!prevState.active && this.state.active) {
+        if (transitionState) {
+          setTimeout(() => {
+            this.setState({ visible: true })
+          }, 15)
+        }
+      }
     }
+
     /**
      * Remove subscription on unmount!
      */
