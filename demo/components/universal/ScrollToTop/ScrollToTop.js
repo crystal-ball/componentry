@@ -1,7 +1,7 @@
 // @flow
 import { Component } from 'react'
 import type { Node } from 'react'
-import { withRouter } from 'react-router'
+import { withRouter } from 'react-router-dom'
 
 type Props = {
   children?: Node,

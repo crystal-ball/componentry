@@ -2,9 +2,7 @@
 import React, { Component, Fragment } from 'react'
 import { object } from 'prop-types'
 import * as Componentry from 'componentry'
-import { hot } from 'react-hot-loader'
 import { BrowserRouter, Switch, Route, Link } from 'react-router-dom'
-import DocumentTitle from 'react-document-title'
 
 // Import SVG icons used by Icon component to generate svg symbol sprite
 // TODO: Move icon imports to a project Icon component
@@ -24,6 +22,7 @@ import 'media/icons/tune.svg'
 // App Components
 import registry from 'registry'
 import AppNav from 'components/universal/AppNav'
+import DocumentTitle from 'components/universal/DocumentTitle'
 import ScrollToTop from 'components/universal/ScrollToTop'
 import routesMap from 'utils/routes-map'
 
@@ -82,7 +81,7 @@ const { setup, jetpack, concepts, components } = routesMap
  * 2. Creates the application React Router router instance
  * 3. Sets up application level routing and components
  */
-class App extends Component<{}> {
+export default class App extends Component<{}> {
   static childContextTypes = { REGISTRY: object }
 
   getChildContext() {
@@ -121,5 +120,3 @@ class App extends Component<{}> {
     )
   }
 }
-
-export default hot(module)(App)

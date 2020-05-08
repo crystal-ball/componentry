@@ -11,5 +11,6 @@ module.exports = {
     'react/require-default-props': 'off',
     'react/no-unused-prop-types': 'off',
     'react/prop-types': 'off',
+    'no-nested-ternary': 'off',
   },
 }

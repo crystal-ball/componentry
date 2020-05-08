@@ -1,7 +1,8 @@
 // @flow
 import React from 'react'
 import classNames from 'classnames'
-import DocumentTitle from 'react-document-title'
+
+import DocumentTitle from 'components/universal/DocumentTitle'
 
 type Props = {
   className?: string,

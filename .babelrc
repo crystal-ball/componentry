@@ -17,7 +17,6 @@
       ],
       "plugins": [
         "transform-react-stateless-component-name", // Give names to SFCs
-        "react-hot-loader/babel", // 🔥
         "transform-object-rest-spread", // Spread operator inside objects
         "transform-class-properties", // Class static and property initializers
         "transform-runtime" // runtime needed for generators
