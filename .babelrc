@@ -5,21 +5,20 @@
     "development": {
       "presets": [
         [
-          "env",
+          "@babel/preset-env",
           {
             "modules": false,
             "targets": {
-              "Chrome": "59"
+              "chrome": "59"
             }
           }
         ],
-        "react"
+        "@babel/preset-react"
       ],
       "plugins": [
-        "transform-react-stateless-component-name", // Give names to SFCs
-        "transform-object-rest-spread", // Spread operator inside objects
-        "transform-class-properties", // Class static and property initializers
-        "transform-runtime" // runtime needed for generators
+        "@babel/plugin-transform-flow-strip-types",
+        "@babel/plugin-proposal-class-properties", // Class static and property initializers
+        "@babel/plugin-transform-runtime" // runtime needed for generators
       ]
     },
     // Production - Bundling for ES5 AMD module and ES modules
@@ -27,36 +26,34 @@
     "production": {
       "presets": [
         [
-          "env",
+          "@babel/preset-env",
           {
             "modules": false
           }
         ],
-        "react"
+        "@babel/preset-react"
       ],
       "plugins": [
-        "transform-class-properties",
-        "transform-object-rest-spread",
-        "transform-react-remove-prop-types", // Strip propTypes declarations
-        "transform-runtime" // Library babel-helpers with import statements
+        "@babel/plugin-transform-flow-strip-types",
+        "@babel/plugin-proposal-class-properties",
+        "@babel/plugin-transform-runtime" // Library babel-helpers with import statements
       ]
     },
     // Next - Transpiled to stage 4 for package.esnext
     // ---------------------------------------------------------------------------
     "esnext": {
-      "presets": ["react"],
+      "presets": ["@babel/preset-react"],
       "plugins": [
-        "transform-class-properties",
-        "transform-object-rest-spread",
-        "transform-react-remove-prop-types",
-        "transform-runtime"
+        "@babel/plugin-transform-flow-strip-types",
+        "@babel/plugin-proposal-class-properties",
+        "@babel/plugin-transform-runtime"
       ]
     },
     // Test - Mocha setup cannot use esmodules
     // ---------------------------------------------------------------------------
     "test": {
-      "presets": ["env", "react"],
-      "plugins": ["transform-class-properties", "transform-object-rest-spread"]
+      "presets": ["@babel/preset-env", "@babel/preset-react"],
+      "plugins": ["@babel/plugin-transform-flow-strip-types","@babel/plugin-proposal-class-properties"]
     }
   }
 }

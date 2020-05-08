@@ -54,18 +54,21 @@
     "react": "^16.2"
   },
   "dependencies": {
-    "babel-runtime": "^6.26.0",
+    "@babel/runtime": "7",
     "classnames": "2",
     "nanoid": "3"
   },
   "devDependencies": {
+    "@babel/cli": "~7.8.4",
+    "@babel/core": "7.9.0",
+    "@babel/plugin-proposal-class-properties": "7.8.3",
+    "@babel/plugin-proposal-private-methods": "7.8.3",
+    "@babel/plugin-transform-flow-strip-types": "^7.9.0",
+    "@babel/plugin-transform-runtime": "7.9.0",
+    "@babel/preset-env": "7.9.5",
+    "@babel/preset-react": "7.9.4",
     "@inspirescript/webpack-configs": "3.2.0",
-    "babel-cli": "~6.26.0",
-    "babel-plugin-transform-class-properties": "~6.24.1",
-    "babel-plugin-transform-object-rest-spread": "~6.26.0",
-    "babel-plugin-transform-react-remove-prop-types": "^0.4.13",
-    "babel-plugin-transform-react-stateless-component-name": "^1.1.2",
-    "babel-plugin-transform-runtime": "~6.23.0",
+    "babel-loader": "^8.1.0",
     "bootstrap": "^4.1.1",
     "commitizen": "^2.10.1",
     "cz-customizable": "^5.2.0",
