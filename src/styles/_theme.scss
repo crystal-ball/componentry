@@ -129,33 +129,6 @@ $theme: map-assign((
       single: 1,
       body: 1.5,
     ),
-    variants: (
-      // --- Heading 1 styles
-      heading-1: map-merge((
-        font-size: 3rem
-      ), $headings-base),
-
-      // --- Heading 2 styles
-      heading-2: map-merge((
-        font-size: 2rem
-      ), $headings-base),
-
-      // --- Heading 3 styles
-      heading-3: map-merge((
-        font-size: 1.5rem
-      ), $headings-base),
-
-      // --- Body styles
-      body: (
-        font-size: 1rem,
-
-        // Set spacing between multiple paragraphs using sibling selector and
-        // margin-top.
-        '& + .body': (
-          margin-top: 1rem,
-        )
-      ),
-    ),
   ),
 
   // --- BORDERS
@@ -187,4 +160,6 @@ $theme: map-assign((
 
 // --------------------------------------------------------
 // 3.0 Variables
+
+$component-prefix: ✨ !default;
 

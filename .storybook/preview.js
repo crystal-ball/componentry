@@ -4,7 +4,7 @@ import { addDecorator, addParameters } from '@storybook/react'
 import { Meta } from '@storybook/addon-docs/blocks'
 import { withKnobs } from '@storybook/addon-knobs'
 
-import { setTypographyVariantElements, setupOutlineHandlers } from '../src'
+import { setupOutlineHandlers, setupTypographyElements } from '../src'
 
 // --- Load Componentry styles ---
 
@@ -15,7 +15,7 @@ import DocsTitle from './components/DocsTitle'
 
 setupOutlineHandlers()
 // Test overriding typography variant elements
-setTypographyVariantElements({ body: 'div' })
+// setupTypographyElements({ body: 'div' })
 
 // Override the Styled Components that the MDX provider uses for standard DOM
 // elements so that we can use Componentry styles classNames.

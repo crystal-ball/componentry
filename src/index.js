@@ -25,8 +25,8 @@ export { default as Tabs } from './Tabs/Tabs'
 export { default as Tooltip } from './Tooltip/Tooltip'
 export {
   default as Typography,
-  default as Type,
-  setTypographyVariantElements,
+  default as Text,
+  setupTypographyElements,
 } from './Typography/Typography'
 
 // --- Utilities

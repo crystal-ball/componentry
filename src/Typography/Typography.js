@@ -14,7 +14,7 @@ const variantMap = {
  * Passed variant to element mapping will override the default library mappings
  * @param {{ [x:string]: string}} overrides
  */
-export function setTypographyVariantElements(overrides) {
+export function setupTypographyElements(overrides) {
   Object.assign(variantMap, overrides)
 }
 
@@ -29,8 +29,9 @@ export default function Typography(props) {
 
   return elem({
     as: variantMap[variant],
-    elemClassName: variant,
+    elemClassName: Typography.classesPrefix + variant,
     ...rest,
   })
 }
+Typography.classesPrefix = '✨'
 Typography.displayName = '✨Typography'
