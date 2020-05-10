@@ -8,6 +8,7 @@ const variantMap = {
   'body': 'p',
   'code': 'code',
   'small': 'small',
+  'inline': 'span',
 }
 
 /**
@@ -22,14 +23,14 @@ export function setupTypographyElements(overrides) {
  * [Typography component 📝](https://componentry.design/components/typography)
  */
 export default function Typography(props) {
-  const { variant = 'body', ...rest } = {
+  const { variant = 'body', inline = false, ...rest } = {
     ...useTheme('Typography'),
     ...props,
   }
 
   return elem({
-    as: variantMap[variant],
-    elemClassName: Typography.classesPrefix + variant,
+    as: variantMap[inline ? 'inline' : variant],
+    elemClassName: inline ? null : Typography.classesPrefix + variant,
     ...rest,
   })
 }

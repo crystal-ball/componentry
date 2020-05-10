@@ -11,24 +11,28 @@ $typography-base: (
       // --- Heading 1 styles
         heading-1:
         (
+          color: theme-get('palette.typography.body'),
           font-size: 3rem,
           margin-bottom: 0,
         ),
       // --- Heading 2 styles
         heading-2:
         (
+          color: theme-get('palette.typography.body'),
           font-size: 2rem,
           margin-bottom: 0,
         ),
       // --- Heading 3 styles
         heading-3:
         (
+          color: theme-get('palette.typography.body'),
           font-size: 1.5rem,
           margin-bottom: 0,
         ),
       // --- Body styles
         body:
         (
+          color: theme-get('palette.typography.body'),
           font-size: 1rem,
           // Set spacing between multiple paragraphs using sibling selector and
             // margin-top.

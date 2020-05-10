@@ -180,6 +180,7 @@ export function componentry({
   color,
   outline,
   fill,
+  inline,
   justify,
   pills,
   variant,
