@@ -122,11 +122,11 @@ const stylesProps = {
 
 // Generate set of margin (m*), and padding (p*) spacing props
 const spacingProps = {}
-const base = {
+const spacingBase = {
   m: 'margin',
   p: 'padding',
 }
-const modifier = {
+const spacingModifier = {
   t: 'Top',
   l: 'Left',
   r: 'Right',
@@ -135,9 +135,9 @@ const modifier = {
   y: ['Top', 'Bottom'],
 }
 
-Object.keys(base).forEach((b) => {
+Object.keys(spacingBase).forEach((b) => {
   spacingProps[b] = 1
-  Object.keys(modifier).forEach((m) => {
+  Object.keys(spacingModifier).forEach((m) => {
     spacingProps[b + m] = 1
   })
 })
@@ -173,6 +173,7 @@ function generateClassNames(p) {
  * isn't mapped to 1px or 1rem.
  */
 export function componentry({
+  base,
   anchor,
   button,
   block,
@@ -222,10 +223,10 @@ export function componentry({
         const [, b, m] = spacingRegex.exec(prop)
         if (m === 'x' || m === 'y') {
           // x and y values have to be broken out into the individual direction values
-          styles[base[b] + modifier[m][0]] = filteredProps[prop]
-          styles[base[b] + modifier[m][1]] = filteredProps[prop]
+          styles[base[b] + spacingModifier[m][0]] = filteredProps[prop]
+          styles[base[b] + spacingModifier[m][1]] = filteredProps[prop]
         } else {
-          styles[base[b] + (modifier[m] || '')] = filteredProps[prop]
+          styles[base[b] + (spacingModifier[m] || '')] = filteredProps[prop]
         }
       }
     } else {

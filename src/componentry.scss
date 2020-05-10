@@ -13,10 +13,8 @@
 // modules.
 @import './styles/variables';
 
-// The initialize imports setup a consistent environment for the library using
-// the Bootstrap browser reboot and CSS variable declarations. (Note the browser
-// reboot styles are not required)
-@import './styles/reboot';
+// Normalizes foundation styles to support opting in to styles rather
+@import './styles/fundamentals';
 
 // Scoped library component styles. These styles are intended to be used only
 // with their parent components.
