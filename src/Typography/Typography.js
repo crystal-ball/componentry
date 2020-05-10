@@ -1,7 +1,7 @@
 import elem from '../elem-factory'
 import { useTheme } from '../Theme/Theme'
 
-const defaultVariantElements = {
+const defaultVariantsElements = {
   'heading-1': 'h1',
   'heading-2': 'h2',
   'heading-3': 'h3',
@@ -22,7 +22,7 @@ export default function Typography(props) {
   return elem({
     as: inline
       ? 'span'
-      : variantsElements[variant] || defaultVariantElements[variant] || 'p',
+      : variantsElements[variant] || defaultVariantsElements[variant] || 'p',
     elemClassName: inline ? null : Typography.classesPrefix + variant,
     ...rest,
   })
