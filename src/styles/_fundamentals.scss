@@ -56,25 +56,6 @@ body {
   margin: 0;
 }
 
-// Mixins
-// --------------------------------------------------------
-
-/**
- * Reset form element properties that are easy to forget to
- * style explicitly so you don't inadvertently introduce
- * styles that deviate from your design system. These styles
- * supplement a partial reset that is already applied by
- * normalize.css.
- */
-@mixin form-reset {
-  color: inherit;
-  font-family: inherit;
-  font-size: inherit;
-  line-height: inherit;
-  margin: 0;
-  padding: 0;
-}
-
 // Typography
 // --------------------------------------------------------
 
@@ -134,12 +115,17 @@ pre {
  * results in a loss of the default `button` focus styles.
  */
 button {
-  @include form-reset();
   appearance: button;
   background-color: transparent;
   background-image: none;
+  color: inherit;
   cursor: pointer;
+  font-family: inherit;
+  font-size: inherit;
+  line-height: inherit;
+  margin: 0;
   overflow: visible;
+  padding: 0;
   text-transform: none;
 }
 
@@ -159,7 +145,12 @@ fieldset {
 }
 
 input {
-  @include form-reset();
+  color: inherit;
+  font-family: inherit;
+  font-size: inherit;
+  line-height: inherit;
+  margin: 0;
+  padding: 0;
   overflow: visible;
 }
 
@@ -191,7 +182,12 @@ ul {
 }
 
 optgroup {
-  @include form-reset();
+  color: inherit;
+  font-family: inherit;
+  font-size: inherit;
+  line-height: inherit;
+  margin: 0;
+  padding: 0;
 }
 
 // Add the correct vertical alignment in Chrome, Firefox, and Opera.
@@ -200,7 +196,12 @@ progress {
 }
 
 select {
-  @include form-reset();
+  color: inherit;
+  font-family: inherit;
+  font-size: inherit;
+  line-height: inherit;
+  margin: 0;
+  padding: 0;
   text-transform: none;
   // Remove the inheritance of word-wrap in Safari.
   word-wrap: normal;
@@ -240,7 +241,12 @@ template {
 }
 
 textarea {
-  @include form-reset();
+  color: inherit;
+  font-family: inherit;
+  font-size: inherit;
+  line-height: inherit;
+  margin: 0;
+  padding: 0;
   resize: vertical;
   overflow: auto;
 }
