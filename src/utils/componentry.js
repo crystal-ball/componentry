@@ -223,10 +223,10 @@ export function componentry({
         const [, b, m] = spacingRegex.exec(prop)
         if (m === 'x' || m === 'y') {
           // x and y values have to be broken out into the individual direction values
-          styles[base[b] + spacingModifier[m][0]] = filteredProps[prop]
-          styles[base[b] + spacingModifier[m][1]] = filteredProps[prop]
+          styles[spacingBase[b] + spacingModifier[m][0]] = filteredProps[prop]
+          styles[spacingBase[b] + spacingModifier[m][1]] = filteredProps[prop]
         } else {
-          styles[base[b] + (spacingModifier[m] || '')] = filteredProps[prop]
+          styles[spacingBase[b] + (spacingModifier[m] || '')] = filteredProps[prop]
         }
       }
     } else {

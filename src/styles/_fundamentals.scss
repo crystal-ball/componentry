@@ -1,10 +1,11 @@
-/**
- *                                                Componentry Style Fundamentals
+/**                                               Componentry Style Fundamentals
  *                           ---------------------------------------------------
  * 
  *
  * The style fundamentals resets elements to a minimal state to make adding
- * styles simpler, as well as explicit.
+ * styles simpler, as well as explicit. Some resets are purposely duplicated
+ * so that each dom element type only has one reset ruleset applied to it for
+ * for streamlined styles debugging.
  * ---------------------------------------------------------------------------*/
 
 // Fundamentals includes code from:
@@ -30,20 +31,6 @@
   box-sizing: border-box;
 }
 
-// Future-proof rule: in browsers that support :focus-visible, suppress the focus outline
-// on elements that programmatically receive focus but wouldn't normally show a visible
-// focus outline. In general, this would mean that the outline is only applied if the
-// interaction that led to the element receiving programmatic focus was a keyboard interaction,
-// or the browser has somehow determined that the user is primarily a keyboard user and/or
-// wants focus outlines to always be presented.
-//
-// See https://developer.mozilla.org/en-US/docs/Web/CSS/:focus-visible
-// and https://developer.paciellogroup.com/blog/2018/03/focus-visible-and-backwards-compatibility/
-
-[tabindex='-1']:focus:not(:focus-visible) {
-  outline: 0 !important;
-}
-
 // Document styles
 // --------------------------------------------------------
 
@@ -64,10 +51,7 @@ html {
 }
 
 body {
-  background-color: theme-get('palette.backgrounds.body');
-  color: theme-get('palette.typography.body');
   font-family: theme-get('typography.font-families.primary');
-  font-size: theme-get('typography.font-sizes.body');
   line-height: theme-get('typography.line-heights.body');
   margin: 0;
 }
@@ -84,10 +68,10 @@ body {
  */
 @mixin form-reset {
   color: inherit;
-  font-family: inherit; /* 1 */
+  font-family: inherit;
   font-size: inherit;
   line-height: inherit;
-  margin: 0; /* 2 */
+  margin: 0;
   padding: 0;
 }
 
@@ -146,16 +130,6 @@ pre {
 }
 
 /**
- * 1. Remove the bottom border in Chrome 57-
- * 2. Add the correct text decoration in Chrome, Edge, IE, Opera, and Safari.
- */
-abbr[title] {
-  border-bottom: none; /* 1 */
-  text-decoration: underline; /* 2 */
-  text-decoration: underline dotted; /* 2 */
-}
-
-/**
  * Work around a Firefox/IE bug where the transparent `button` background
  * results in a loss of the default `button` focus styles.
  */
@@ -165,7 +139,6 @@ button {
   background-color: transparent;
   background-image: none;
   cursor: pointer;
-  padding: 0;
   overflow: visible;
   text-transform: none;
 }
@@ -226,33 +199,6 @@ progress {
   vertical-align: baseline;
 }
 
-/**
- * 1. Add the correct box sizing in IE 10.
- * 2. Remove the padding in IE 10.
- */
-[type='checkbox'],
-[type='radio'] {
-  box-sizing: border-box; /* 1 */
-  padding: 0; /* 2 */
-}
-
-/**
- * 1. Correct the odd appearance in Chrome and Safari.
- * 2. Correct the outline style in Safari.
- */
-[type='search'] {
-  -webkit-appearance: textfield; /* 1 */
-  outline-offset: -2px; /* 2 */
-}
-
-/**
- * Remove the inner padding in Chrome and Safari on macOS.
- */
-
-[type='search']::-webkit-search-decoration {
-  -webkit-appearance: none;
-}
-
 select {
   @include form-reset();
   text-transform: none;
@@ -302,15 +248,6 @@ textarea {
 // Always hide an element with the `hidden` HTML attribute.
 [hidden] {
   display: none !important;
-}
-
-/**
- * 1. Correct the inability to style clickable types in iOS and Safari.
- * 2. Change font properties to `inherit` in Safari.
- */
-::-webkit-file-upload-button {
-  -webkit-appearance: button; /* 1 */
-  font: inherit; /* 2 */
 }
 
 // Media elements

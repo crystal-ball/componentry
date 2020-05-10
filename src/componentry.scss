@@ -11,9 +11,11 @@
 // The theme contains only side effect free setup code including variables,
 // mixins and functions. It can be imported as a base context for users of CSS
 // modules.
+// !DEPRECATED
 @import './styles/variables';
 
-// Normalizes foundation styles to support opting in to styles rather
+// Fundamentals normalizes foundation styles across browsers to a minimal
+// starting point that supports the opting in to styles strategy
 @import './styles/fundamentals';
 
 // Scoped library component styles. These styles are intended to be used only
@@ -25,6 +27,8 @@
 @import './utility';
 
 /*
-* 🙌 Componentry extends and greatly appreciates Bootstrap
-* Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
+* 🙌 Componentry styles build on these amazing libraries:
+* Bootstrap (MIT) - https://getbootstrap.com/
+* Material-UI (MIT) - https://material-ui.com/
+* Tailwind CSS (MIT) - https://tailwindcss.com/
 */
