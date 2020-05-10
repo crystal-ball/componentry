@@ -23,11 +23,7 @@ export { default as Nav } from './Nav/Nav'
 export { default as Popover } from './Popover/Popover'
 export { default as Tabs } from './Tabs/Tabs'
 export { default as Tooltip } from './Tooltip/Tooltip'
-export {
-  default as Typography,
-  default as Text,
-  setupTypographyElements,
-} from './Typography/Typography'
+export { default as Typography, default as Text } from './Typography/Typography'
 
 // --- Utilities
 export { useActive, useActiveSrollReset, useNoScroll, useVisible } from './hooks'

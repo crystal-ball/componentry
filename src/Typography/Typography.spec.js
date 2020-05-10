@@ -1,7 +1,8 @@
 import React from 'react'
 import { render } from '@testing-library/react'
 
-import Typography, { setTypographyVariantElements } from './Typography'
+import Typography from './Typography'
+import ThemeProvider from '../Theme/Theme'
 import elementTests from '../../test/element-tests'
 
 describe('<Typography/>', () => {
@@ -9,13 +10,21 @@ describe('<Typography/>', () => {
   elementTests(Typography)
 })
 
-describe('setTypographyVariantElements()', () => {
-  test('When used, then variants are used for Typogrpahy', () => {
-    setTypographyVariantElements({ rad: 'section' })
-    const { container } = render(<Typography variant='rad'>Componentry</Typography>)
-    expect(container.firstChild).toContainHTML(
-      '<section class="rad">Componentry</section>',
+describe('Typography', () => {
+  test('When variantsElements is set in theme, then variants are used for Typogrpahy', () => {
+    const { container } = render(
+      <ThemeProvider theme={{ Typography: { variantsElements: { rad: 'section' } } }}>
+        <Typography variant='rad'>Componentry</Typography>
+      </ThemeProvider>,
     )
+    expect(container.firstChild).toContainHTML(
+      '<section class="✨rad">Componentry</section>',
+    )
+  })
+
+  test('When inline is truthy, then a span without a variant class is rendered', () => {
+    const { container } = render(<Typography inline>span content</Typography>)
+    expect(container.firstChild).toContainHTML('<span class="">span content</span>')
   })
 })
 
