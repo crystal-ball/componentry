@@ -4,7 +4,7 @@ import { addDecorator, addParameters } from '@storybook/react'
 import { Meta } from '@storybook/addon-docs/blocks'
 import { withKnobs } from '@storybook/addon-knobs'
 
-import { setTypographyVariantElements, setupOutlineHandlers } from '../src'
+import { Typography, setupOutlineHandlers } from '../src'
 
 // --- Load Componentry styles ---
 
@@ -14,8 +14,6 @@ import DocsTitle from './components/DocsTitle'
 // --- Setup global decorators --
 
 setupOutlineHandlers()
-// Test overriding typography variant elements
-setTypographyVariantElements({ body: 'div' })
 
 // Override the Styled Components that the MDX provider uses for standard DOM
 // elements so that we can use Componentry styles classNames.
@@ -26,11 +24,10 @@ addParameters({
       Meta,
       div: (props) => createElement('div', props),
       span: (props) => createElement('span', props),
-      h1: (props) => createElement('h1', props),
-      h2: (props) => createElement('h2', props),
-      h3: (props) => createElement('h3', props),
-      h4: (props) => createElement('h4', props),
-      p: (props) => createElement('p', props),
+      h1: (props) => <Typography variant='heading-1' {...props} />,
+      h2: (props) => <Typography variant='heading-2' {...props} />,
+      h3: (props) => <Typography variant='heading-3' {...props} />,
+      p: (props) => <Typography {...props} />,
       hr: (props) => createElement('hr', props),
       a: (props) => createElement('a', props),
       table: (props) => createElement('table', props),

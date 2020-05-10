@@ -1,7 +1,7 @@
 import elem from '../elem-factory'
 import { useTheme } from '../Theme/Theme'
 
-const variantMap = {
+const defaultVariantsElements = {
   'heading-1': 'h1',
   'heading-2': 'h2',
   'heading-3': 'h3',
@@ -11,26 +11,21 @@ const variantMap = {
 }
 
 /**
- * Passed variant to element mapping will override the default library mappings
- * @param {{ [x:string]: string}} overrides
- */
-export function setTypographyVariantElements(overrides) {
-  Object.assign(variantMap, overrides)
-}
-
-/**
  * [Typography component 📝](https://componentry.design/components/typography)
  */
 export default function Typography(props) {
-  const { variant = 'body', ...rest } = {
+  const { variant = 'body', inline = false, variantsElements = {}, ...rest } = {
     ...useTheme('Typography'),
     ...props,
   }
 
   return elem({
-    as: variantMap[variant],
-    elemClassName: variant,
+    as: inline
+      ? 'span'
+      : variantsElements[variant] || defaultVariantsElements[variant] || 'p',
+    elemClassName: inline ? null : Typography.classesPrefix + variant,
     ...rest,
   })
 }
+Typography.classesPrefix = '✨'
 Typography.displayName = '✨Typography'
