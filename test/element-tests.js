@@ -76,10 +76,10 @@ const elementTests = (TestComponent) => {
           JSX overrides example
         </TestComponent>
         <TestComponent
-          uppercase
           className='jsx-class'
           data-testid='merge'
           fontWeight='bold'
+          textTransform='uppercase'
         >
           Classes merging example
         </TestComponent>
@@ -93,7 +93,7 @@ const elementTests = (TestComponent) => {
     expect(getByTestId('jsx')).toHaveAttribute('data-radical', 'nope')
 
     expect(getByTestId('merge')).toHaveClass(
-      'theme-class jsx-class font-weight-bold text-uppercase',
+      'theme-class jsx-class font-weight-bold text-transform-uppercase',
     )
     expect(getByTestId('merge')).toHaveAttribute('data-radical', 'hecka')
   })
@@ -105,20 +105,20 @@ const elementTests = (TestComponent) => {
   test(`${componentName} should include library classes and styles correctly`, () => {
     const { getByTestId } = render(
       <TestComponent
-        uppercase
         className='jsx-class'
         data-testid='component'
         lineHeight={2}
         my={16}
         style={{ position: 'relative' }}
         textAlign='center'
+        textTransform='uppercase'
       >
         Test component
       </TestComponent>,
     )
 
     expect(getByTestId('component')).toHaveClass(
-      'jsx-class text-align-center text-uppercase',
+      'jsx-class text-align-center text-transform-uppercase',
     )
 
     expect(getByTestId('component')).toHaveStyle(`

@@ -127,7 +127,7 @@ describe('componentry()', () => {
 
     expect(componentry({ borderColor: 'primary' }).libClassName[0]).toEqual(
       expect.objectContaining({
-        'border-primary': 'primary',
+        'border-color-primary': 'primary',
       }),
     )
 
@@ -139,40 +139,40 @@ describe('componentry()', () => {
   test('returns library className values', () => {
     expect(
       componentry({
-        background: 'primary',
+        backgroundColor: 'primary',
         border: true,
-        borderTop: true,
-        borderRight: true,
         borderBottom: true,
-        borderLeft: true,
         borderColor: 'primary',
+        borderLeft: true,
+        borderRight: true,
+        borderTop: true,
         borderWidth: 'lg',
         fontColor: 'primary',
+        fontFamily: 'monospace',
         fontSize: 'sm',
+        fontStyle: 'italic',
         fontWeight: 'bold',
-        italic: true,
-        monospace: true,
         position: 'fixed',
         textAlign: 'center',
-        uppercase: true,
+        textTransform: 'uppercase',
       }).libClassName[0],
     ).toEqual({
-      'background-primary': 'primary',
+      'background-color-primary': 'primary',
       'border': true,
-      'border-top': true,
-      'border-right': true,
       'border-bottom': true,
+      'border-color-primary': 'primary',
       'border-left': true,
-      'border-primary': 'primary',
+      'border-right': true,
+      'border-top': true,
       'border-width-lg': 'lg',
       'font-color-primary': 'primary',
-      'font-style-italic': true,
+      'font-family-monospace': 'monospace',
       'font-size-sm': 'sm',
+      'font-style-italic': 'italic',
       'font-weight-bold': 'bold',
       'position-fixed': 'fixed',
       'text-align-center': 'center',
-      'text-monospace': true,
-      'text-uppercase': true,
+      'text-transform-uppercase': 'uppercase',
     })
   })
 })
