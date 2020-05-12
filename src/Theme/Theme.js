@@ -9,7 +9,7 @@ const ThemeCtx = createContext({})
 export default function Theme({ children, theme }) {
   return <ThemeCtx.Provider value={theme}>{children}</ThemeCtx.Provider>
 }
-Theme.displayName = 'Theme'
+Theme.displayName = '✨Theme'
 
 /**
  * [Theme hook 📝](https://componentry.design/components/theme)

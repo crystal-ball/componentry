@@ -23,31 +23,28 @@ import Icon from './Icon'
   </symbol>
 </svg>
 
-<Icon id={select('Id', ['award', 'code'], 'award')} font={boolean('Font', true)} />
+## Font variant
 
-## Inline icons
+<Icon id={select('Id', ['award', 'code'], 'award')} />
+
+## Icon alignment
 
 Center icons by wrapping them in a flex container.
 
-<h1 className='heading-1 d-flex'>
+<h1>
   <Icon id='code' />
   Great alignment yay
 </h1>
 
-<h1 className='heading-2 d-flex'>
+<h2>
   <Icon id='code' />
   Great alignment yay
-</h1>
+</h2>
 
-<h1 className='heading-3 d-flex'>
+<h3>
   <Icon id='code' />
   Great alignment yay
-</h1>
-
-<h1 className='heading-4 d-flex'>
-  <Icon id='code' />
-  Great alignment yay
-</h1>
+</h3>
 
 ## Font baseline adjustment
 
