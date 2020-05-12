@@ -6,11 +6,6 @@ import Icon from './Icon'
 
 describe('<Icon />', () => {
   elementTests(Icon)
-
-  test('should not include class font when false', () => {
-    const { getByTestId } = render(<Icon data-testid='icon' font={false} id='test' />)
-    expect(getByTestId('icon')).not.toHaveClass('font')
-  })
 })
 
 // Snapshots

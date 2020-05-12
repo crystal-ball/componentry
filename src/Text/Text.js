@@ -14,14 +14,8 @@ const defaultVariantsElements = {
  * [Text component 📝](https://componentry.design/components/text)
  */
 export default function Text(props) {
-  const {
-    variant = 'body',
-    bold = false,
-    italic = false,
-    inline = false,
-    variantsElements = {},
-    ...rest
-  } = {
+  /** @type {{ variant: string, bold: boolean, italic: boolean, inline: boolean, variantsElements: { [key: string]: string}}} */
+  const { variant = 'body', bold, italic, inline, variantsElements = {}, ...rest } = {
     ...useTheme('Text'),
     ...props,
   }

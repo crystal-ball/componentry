@@ -7,8 +7,8 @@ import { componentry } from './utils/componentry'
  * @property {string} [as] Element type of tag name, React component, or React fragment
  * @property {string} [className] Component props className
  * @property {any} [elemClassName] Library component className
- * @property {{ [x: string]: any }} [style] Inline component styles
  * @property {string} [themeClassName] Theme className
+ * @property {{ [x: string]: any }} [style] Inline component styles
  */
 
 /**

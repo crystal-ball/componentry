@@ -6,7 +6,7 @@ import { useTheme } from '../Theme/Theme'
  */
 export default function Flex(props) {
   /** @type {{ align: string, direction: string, inline: boolean, justify: string, wrap: string }} */
-  const { align, direction, inline = false, justify, wrap, ...rest } = {
+  const { align, direction, inline, justify, wrap, ...rest } = {
     ...useTheme('Flex'),
     ...props,
   }

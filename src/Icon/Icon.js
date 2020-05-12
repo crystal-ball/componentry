@@ -6,14 +6,15 @@ import { useTheme } from '../Theme/Theme'
  * [Icon component 📝](https://componentry.design/components/icon)
  */
 export default function Icon(props) {
-  const { id, font, ...rest } = { ...useTheme('Icon'), ...props }
+  /** @type {{ variant: string, id: string }} */
+  const { variant = 'font', id, ...rest } = { ...useTheme('Icon'), ...props }
 
   return elem({
     as: 'svg',
     role: 'img',
-    elemClassName: [`icon icon-${id}`, { font }],
+    elemClassName: `✨${variant} icon-${id}`,
     children: <use href={`#${id}`} xlinkHref={`#${id}`} />,
     ...rest,
   })
 }
-Icon.displayName = 'Icon'
+Icon.displayName = '✨Icon'

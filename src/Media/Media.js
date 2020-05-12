@@ -1,7 +1,11 @@
 import React, { createContext, useContext, useEffect, useState } from 'react'
 
 /** Media Context */
-const MediaCtx = createContext({})
+const MediaCtx = createContext({
+  sm: false,
+  md: false,
+  lg: false,
+})
 
 /**
  * Calculates the state for each breakpoint based on current window width
@@ -53,16 +57,16 @@ export default function Media({ children, breakpoints = [0, 768, 1250] }) {
 
   return <MediaCtx.Provider value={bps}> {children}</MediaCtx.Provider>
 }
-Media.displayName = 'Media'
+Media.displayName = '✨Media'
 
 /**
  * [Media hook 📝](https://componentry.design/components/media)
+ * @returns {{ sm: boolean, md: boolean, lg: boolean }}
  */
 export const useMedia = () => {
   const media = useContext(MediaCtx)
   if (process.env.NODE_ENV !== 'production' && !media) {
-    console.warn('useMedia used without a <Media /> provider') // eslint-disable-line
-    return null
+    throw new Error('useMedia called without a <Media /> provider')
   }
   return media
 }
