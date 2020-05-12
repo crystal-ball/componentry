@@ -1,11 +1,11 @@
 /* ~componentry/src/styles/utility/background */
 
 @each $color, $value in theme-get('palette.backgrounds') {
-  .background-#{$color} {
+  .background-color-#{$color} {
     background-color: $value !important;
   }
 }
 
-.background-transparent {
+.background-color-transparent {
   background-color: transparent !important;
 }

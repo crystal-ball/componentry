@@ -22,8 +22,8 @@ export { default as Modal } from './Modal/Modal'
 export { default as Nav } from './Nav/Nav'
 export { default as Popover } from './Popover/Popover'
 export { default as Tabs } from './Tabs/Tabs'
+export { default as Text, default as Typography } from './Text/Text'
 export { default as Tooltip } from './Tooltip/Tooltip'
-export { default as Typography, default as Text } from './Typography/Typography'
 
 // --- Utilities
 export { useActive, useActiveSrollReset, useNoScroll, useVisible } from './hooks'

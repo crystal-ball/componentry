@@ -50,22 +50,26 @@
 }
 
 // --------------------------------------------------------
-// Italic
+// Font styles
 
-.italic {
+// TODO: what's the difference and do we need inherit, initial, normal?
+.font-style-italic {
   font-style: italic !important;
+}
+.font-style-unset {
+  font-style: unset !important;
 }
 
 // --------------------------------------------------------
-// Transforms
+// Text transforms
 
-.lowercase {
+.text-transform-lowercase {
   text-transform: lowercase !important;
 }
-.uppercase {
+.text-transform-uppercase {
   text-transform: uppercase !important;
 }
-.capitalize {
+.text-transform-capitalize {
   text-transform: capitalize !important;
 }
 

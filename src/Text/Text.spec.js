@@ -1,20 +1,20 @@
 import React from 'react'
 import { render } from '@testing-library/react'
 
-import Typography from './Typography'
+import Text from './Text'
 import ThemeProvider from '../Theme/Theme'
 import elementTests from '../../test/element-tests'
 
-describe('<Typography/>', () => {
+describe('<Text/>', () => {
   // Basic library element test suite
-  elementTests(Typography)
+  elementTests(Text)
 })
 
-describe('Typography', () => {
-  test('When variantsElements is set in theme, then variants are used for Typogrpahy', () => {
+describe('Text', () => {
+  test('When variantsElements is set in theme, then variants are used for Text', () => {
     const { container } = render(
-      <ThemeProvider theme={{ Typography: { variantsElements: { rad: 'section' } } }}>
-        <Typography variant='rad'>Componentry</Typography>
+      <ThemeProvider theme={{ Text: { variantsElements: { rad: 'section' } } }}>
+        <Text variant='rad'>Componentry</Text>
       </ThemeProvider>,
     )
     expect(container.firstChild).toContainHTML(
@@ -23,16 +23,16 @@ describe('Typography', () => {
   })
 
   test('When inline is truthy, then a span without a variant class is rendered', () => {
-    const { container } = render(<Typography inline>span content</Typography>)
+    const { container } = render(<Text inline>span content</Text>)
     expect(container.firstChild).toContainHTML('<span class="">span content</span>')
   })
 })
 
 // Snapshots
 // ---------------------------------------------------------------------------
-describe('<Typography /> snapshots', () => {
+describe('<Text /> snapshots', () => {
   it('renders correctly', () => {
-    const { container } = render(<Typography>Componentry</Typography>)
+    const { container } = render(<Text>Componentry</Text>)
     expect(container.firstChild).toMatchSnapshot()
   })
 })

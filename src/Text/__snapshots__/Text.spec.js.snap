@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<Typography /> snapshots renders correctly 1`] = `
+exports[`<Text /> snapshots renders correctly 1`] = `
 <p
   class="✨body"
 >

@@ -1,16 +1,16 @@
 import React from 'react'
-import { Typography } from '../../src'
+import { Text } from '../../src'
 
 export default function DocsTitle({ title, experimental }) {
   return (
     <div>
-      <Typography variant='heading-1'>{title}</Typography>
+      <Text variant='heading-1'>{title}</Text>
       <div>
         <small>
           Status:{' '}
-          <Typography inline fontColor={experimental ? 'warning' : 'success'}>
+          <Text inline fontColor={experimental ? 'warning' : 'success'}>
             {experimental ? 'Experimental' : 'Stable'}
-          </Typography>
+          </Text>
         </small>
       </div>
       <hr />

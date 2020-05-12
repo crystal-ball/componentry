@@ -1,85 +1,17 @@
-/**
- *                                 ⚙️ Componentry default theme specification
+/*                                 ⚙️ Componentry default theme specification
  * -----------------------------------------------------------------------------
  *
  * Motivations & Guidelines:
  *
- * - Define theme domains in individual maps and compose the final theme using
- *   those maps. This enables users to more easily override shared parts of the
- *   theme and helps highlight which parts of the theme are shared.
- * - Use a naming pattern `<type>-<domain>` for naming maps, eg `theme-shades`,
- *   `border-shades`, `font-sizes`, `font-weights`
- * - Use semantic names or generic names, eg `primary` is a good generic name
+ * - Use semantic or generic names, eg `primary` is a good generic name
  *   and `container` is a good semantic name. This allows users to have useful
  *   defaults with generics and useful fine tuned customizations with semantic
  *   names.
- */
+ * -------------------------------------------------------------------------- */
 
 @import './functions/sass';
 
-$palette: () !default;
-$headings-base: () !default;
 $theme: () !default;
-
-// --------------------------------------------------------
-// Palette
-
-$palette: map-assign((
-  theme-colors: (primary, success, warning, error),
-  // ℹ️ Using gray for this key causes SASS to return null when trying to look
-  // up the value (presumably b/c gray is a color)
-  grayscale: (
-    '100': #eceff1,
-    '200': #b0bec5,
-    '300': #607d8b,
-    '400': #455a64,
-    '500': #263238,
-  ),
-  primary: (
-    '100': #d1c4e9,
-    '200': #9575cd,
-    '300': #673ab7,
-    '400': #512da8,
-    '500': #311b92,
-  ),
-  success: (
-    '100': #dcedc8,
-    '200': #aed581,
-    '300': #8bc34a,
-    '400': #689f38,
-    '500': #33691e,
-  ),
-  warning: (
-    '100': #ffecb3,
-    '200': #ffd54f,
-    '300': #ffc107,
-    '400': #ffa000,
-    '500': #ff6f00,
-  ),
-  error: (
-    '100': #ffcdd2,
-    '200': #e57373,
-    '300': #f44336,
-    '400': #d32f2f,
-    '500': #b71c1c,
-  ),
-  typography: (
-    body: #1a1a1a,
-    code: #ffadc0,
-    inverse: #f0f0f0,
-    success: #689f38,
-    warning: #ffa000,
-    error: #d32f2f
-  ),
-  backgrounds: (
-    body: #fff
-  ),
-  borders: (),
-  shadows: ()
-), $palette);
-
-// --------------------------------------------------------
-// Final theme
 
 $font-family-primary: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
   'Helvetica Neue', Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
@@ -99,15 +31,67 @@ $theme: map-assign((
   // --- SPACING
   spacing: (
     0: 0,
-    xs: 4px,
-    sm: 8px,
-    md: 16px,
-    lg: 24px,
-    xl: 48px,
+    xs: 0.25rem,
+    sm: 0.5rem,
+    md: 1rem,
+    lg: 2rem,
+    xl: 3rem,
   ),
 
   // --- PALETTE
-  palette: $palette,
+  palette: (
+    theme-colors: (primary, success, warning, error),
+    // ℹ️ Using gray for this key causes SASS to return null when trying to look
+    // up the value (presumably b/c gray is a color)
+    grayscale: (
+      '100': #eceff1,
+      '200': #b0bec5,
+      '300': #607d8b,
+      '400': #455a64,
+      '500': #263238,
+    ),
+    primary: (
+      '100': #d1c4e9,
+      '200': #9575cd,
+      '300': #673ab7,
+      '400': #512da8,
+      '500': #311b92,
+    ),
+    success: (
+      '100': #dcedc8,
+      '200': #aed581,
+      '300': #8bc34a,
+      '400': #689f38,
+      '500': #33691e,
+    ),
+    warning: (
+      '100': #ffecb3,
+      '200': #ffd54f,
+      '300': #ffc107,
+      '400': #ffa000,
+      '500': #ff6f00,
+    ),
+    error: (
+      '100': #ffcdd2,
+      '200': #e57373,
+      '300': #f44336,
+      '400': #d32f2f,
+      '500': #b71c1c,
+    ),
+    typography: (
+      body: #1a1a1a,
+      code: #ffadc0,
+      inverse: #f0f0f0,
+      success: #689f38,
+      warning: #ffa000,
+      error: #d32f2f
+    ),
+    backgrounds: (
+      body: #fff
+    ),
+    borders: (),
+    shadows: ()
+  ),
 
   // --- TYPOGRAPHY
   typography: (
@@ -117,6 +101,7 @@ $theme: map-assign((
     ),
     font-sizes: (
       sm: 0.875rem,
+      md: 1rem,
       lg: 1.25rem,
       // Semantic
       body: 1rem,
@@ -132,23 +117,25 @@ $theme: map-assign((
       single: 1,
       body: 1.5,
     ),
+    text-shadows: ()
   ),
 
   // --- BORDERS
   borders:(
-    default: 1px solid get($palette, 'grayscale.300'),
+    default: 1px solid #607d8b,
   ),
   border-widths: (),
   border-radii: (
+    default: 4px,
     sm: 2px,
-    default: 2px,
-    lg: 4px
+    md: 4px,
+    lg: 6px
   ),
 
   // --- SHADOWS
   shadows: (
     default: 0 0.5rem 1rem rgba(73, 80, 87, 0.15)
-  )
+  ),
 ), $theme);
 
 // --------------------------------------------------------
