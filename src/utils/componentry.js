@@ -90,22 +90,22 @@ export function navClasses(variant, { fill, justify, pills, vertical }) {
 // Library shared className+styles generator
 
 const classNamesProps = {
-  background: 1,
+  backgroundColor: 1,
   border: 1,
-  borderTop: 1,
-  borderRight: 1,
   borderBottom: 1,
-  borderLeft: 1,
   borderColor: 1,
+  borderLeft: 1,
+  borderRight: 1,
+  borderTop: 1,
   borderWidth: 1,
   fontColor: 1,
+  fontFamily: 1,
   fontSize: 1,
+  fontStyle: 1,
   fontWeight: 1,
-  italic: 1,
-  monospace: 1,
   position: 1,
   textAlign: 1,
-  uppercase: 1,
+  textTransform: 1,
 }
 
 const stylesProps = {
@@ -146,21 +146,21 @@ const spacingRegex = new RegExp(/([bmp])([trblxy])?/)
 function generateClassNames(p) {
   return {
     'border': p.border,
-    'border-top': p.borderTop,
-    'border-right': p.borderRight,
     'border-bottom': p.borderBottom,
     'border-left': p.borderLeft,
-    'font-style-italic': p.italic,
-    'text-monospace': p.monospace,
-    'text-uppercase': p.uppercase,
-    [`background-${p.background}`]: p.background,
-    [`border-${p.borderColor}`]: p.borderColor,
+    'border-right': p.borderRight,
+    'border-top': p.borderTop,
+    [`background-color-${p.backgroundColor}`]: p.backgroundColor,
+    [`border-color-${p.borderColor}`]: p.borderColor,
     [`border-width-${p.borderWidth}`]: p.borderWidth,
     [`font-color-${p.fontColor}`]: p.fontColor,
+    [`font-family-${p.fontFamily}`]: p.fontFamily,
     [`font-size-${p.fontSize}`]: p.fontSize,
+    [`font-style-${p.fontStyle}`]: p.fontStyle,
     [`font-weight-${p.fontWeight}`]: p.fontWeight,
     [`position-${p.position}`]: p.position,
     [`text-align-${p.textAlign}`]: p.textAlign,
+    [`text-transform-${p.textTransform}`]: p.textTransform,
   }
 }
 
@@ -207,12 +207,16 @@ export function componentry({
   // For each prop passed to any component, bucket it into a library className
   // or style set or pass through in rest
   Object.keys(filteredProps).forEach((prop) => {
-    if (classNamesProps[prop]) {
-      // 1. The prop maps to a utility className
-      classNames[prop] = filteredProps[prop]
-    } else if (stylesProps[prop]) {
-      // 2. The prop maps to a utility style
+    if (
+      stylesProps[prop] &&
+      // If a style prop has a library size, fall through to classNames check
+      !['xs', 'sm', 'md', 'lg', 'xl'].includes(filteredProps[prop])
+    ) {
+      // 1. The prop maps to a utility style
       styles[prop] = filteredProps[prop]
+    } else if (classNamesProps[prop]) {
+      // 2. The prop maps to a utility className
+      classNames[prop] = filteredProps[prop]
     } else if (spacingProps[prop]) {
       // 3. The prop maps to a shorthand utility style/className
       if (['xs', 'sm', 'md', 'lg', 'xl'].includes(filteredProps[prop])) {

@@ -28,7 +28,7 @@
 // Border colors
 
 @each $color, $value in theme-get('palette.borders') {
-  .border-#{$color} {
+  .border-color-#{$color} {
     border-color: $value !important;
   }
 }

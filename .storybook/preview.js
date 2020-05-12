@@ -4,7 +4,7 @@ import { addDecorator, addParameters } from '@storybook/react'
 import { Meta } from '@storybook/addon-docs/blocks'
 import { withKnobs } from '@storybook/addon-knobs'
 
-import { Typography, setupOutlineHandlers } from '../src'
+import { Text, setupOutlineHandlers } from '../src'
 
 // --- Load Componentry styles ---
 
@@ -24,10 +24,10 @@ addParameters({
       Meta,
       div: (props) => createElement('div', props),
       span: (props) => createElement('span', props),
-      h1: (props) => <Typography variant='heading-1' {...props} />,
-      h2: (props) => <Typography variant='heading-2' {...props} />,
-      h3: (props) => <Typography variant='heading-3' {...props} />,
-      p: (props) => <Typography {...props} />,
+      h1: (props) => <Text variant='heading-1' {...props} />,
+      h2: (props) => <Text variant='heading-2' {...props} />,
+      h3: (props) => <Text variant='heading-3' {...props} />,
+      p: (props) => <Text {...props} />,
       hr: (props) => createElement('hr', props),
       a: (props) => createElement('a', props),
       table: (props) => createElement('table', props),

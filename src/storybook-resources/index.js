@@ -1,6 +1,6 @@
 export const themeColors = ['primary', 'success', 'warning', 'error']
 
-export const typographyColors = ['heading', 'body', 'code']
+export const typographyColors = ['body', 'code', 'success', 'warning', 'error', 'inverse']
 
 export const sizes = ['sm', 'lg']
 

@@ -1,18 +1,18 @@
-/* ~componentry/styles/atomic/shadows */
+/*! ~componentry/styles/utility/shadows */
 
-//
-// Shadows
-//
+//                                           System shadows
+// --------------------------------------------------------
 
-.shadow-sm {
-  box-shadow: $box-shadow-sm !important;
+// Box shadows
+@each $key, $value in theme-get('shadows') {
+  .box-shadow-#{$key} {
+    box-shadow: $value !important;
+  }
 }
-.shadow {
-  box-shadow: $box-shadow !important;
-}
-.shadow-lg {
-  box-shadow: $box-shadow-lg !important;
-}
-.shadow-none {
-  box-shadow: none !important;
+
+// Text shadows
+@each $key, $value in theme-get('typography.shadows') {
+  .text-shadow-#{$key} {
+    text-shadow: $value !important;
+  }
 }
