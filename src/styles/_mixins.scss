@@ -220,23 +220,23 @@
   @include reset-button;
 
   // Set anchor font styles
-  color: theme-get('palette.primary.300');
+  color: theme-get('palette.primary.500');
   cursor: pointer;
 
   &:hover,
   &.hover {
-    color: theme-get('palette.primary.400');
+    color: theme-get('palette.primary.700');
     text-decoration: $anchor-hover-decoration;
   }
 
   &:active,
   &.active {
-    color: theme-get('palette.primary.500');
+    color: theme-get('palette.primary.900');
     text-decoration: $anchor-active-decoration;
   }
 
   &.disabled {
-    color: theme-get('palette.primary.200');
+    color: theme-get('palette.primary.300');
     text-decoration: $anchor-disabled-decoration;
   }
 }

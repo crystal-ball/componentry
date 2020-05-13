@@ -36,9 +36,9 @@ $anchor-button-overrides: () !default;
 // Primary variant
 
 $a-primary-base: (
-  color: theme-get('palette.primary.300'),
+  color: theme-get('palette.primary.500'),
   '&:hover': (
-    color: theme-get('palette.primary.500'),
+    color: theme-get('palette.primary.900'),
   ),
 );
 
@@ -47,9 +47,9 @@ $a-primary-base: (
     $a-primary-base,
     (
       '&.a-color-#{$color}': (
-        color: theme-get('palette.#{$color}.300'),
+        color: theme-get('palette.#{$color}.500'),
         '&:hover': (
-          color: theme-get('palette.#{$color}.400'),
+          color: theme-get('palette.#{$color}.700'),
         ),
       ),
     )

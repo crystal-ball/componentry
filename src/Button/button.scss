@@ -59,18 +59,18 @@ $button-anchor-overrides: () !default;
 // Primary variant
 
 $btn-primary-base: (
-  background-color: theme-get('palette.grayscale.300'),
-  border: 1px solid theme-get('palette.grayscale.300'),
+  background-color: theme-get('palette.grayscale.500'),
+  border: 1px solid theme-get('palette.grayscale.500'),
   color: theme-get('palette.typography.inverse'),
   '&:hover': (
-    background-color: theme-get('palette.grayscale.400'),
+    background-color: theme-get('palette.grayscale.700'),
   ),
   '&:active': (
-    background-color: theme-get('palette.grayscale.500'),
+    background-color: theme-get('palette.grayscale.900'),
   ),
   '&:disabled': (
-    border: 1px solid theme-get('palette.grayscale.200'),
-    background-color: theme-get('palette.grayscale.200'),
+    border: 1px solid theme-get('palette.grayscale.300'),
+    background-color: theme-get('palette.grayscale.300'),
   ),
 );
 
@@ -79,16 +79,16 @@ $btn-primary-base: (
     $btn-primary-base,
     (
       '&.btn-color-#{$color}': (
-        background-color: theme-get('palette.#{$color}.300'),
-        border-color: theme-get('palette.#{$color}.400'),
+        background-color: theme-get('palette.#{$color}.500'),
+        border-color: theme-get('palette.#{$color}.700'),
         '&:hover': (
-          background-color: theme-get('palette.#{$color}.400'),
+          background-color: theme-get('palette.#{$color}.700'),
         ),
         '&:active': (
-          background-color: theme-get('palette.#{$color}.500'),
+          background-color: theme-get('palette.#{$color}.900'),
         ),
         '&:disabled': (
-          background-color: theme-get('palette.#{$color}.200'),
+          background-color: theme-get('palette.#{$color}.300'),
         ),
       ),
     )
@@ -102,19 +102,19 @@ $btn-primary-base: (
 
 $btn-secondary-base: (
   background-color: transparent,
-  border: 1px solid theme-get('palette.grayscale.300'),
-  color: theme-get('palette.grayscale.300'),
+  border: 1px solid theme-get('palette.grayscale.500'),
+  color: theme-get('palette.grayscale.500'),
   '&:hover': (
-    border-color: theme-get('palette.grayscale.400'),
-    color: theme-get('palette.grayscale.400'),
+    border-color: theme-get('palette.grayscale.700'),
+    color: theme-get('palette.grayscale.700'),
   ),
   '&:active': (
-    border-color: theme-get('palette.grayscale.500'),
-    color: theme-get('palette.grayscale.500'),
+    border-color: theme-get('palette.grayscale.900'),
+    color: theme-get('palette.grayscale.900'),
   ),
   '&:disabled': (
-    border-color: theme-get('palette.grayscale.200'),
-    color: theme-get('palette.grayscale.200'),
+    border-color: theme-get('palette.grayscale.300'),
+    color: theme-get('palette.grayscale.300'),
   ),
 );
 
@@ -123,19 +123,19 @@ $btn-secondary-base: (
     $btn-secondary-base,
     (
       '&.btn-color-#{$color}': (
-        border-color: theme-get('palette.#{$color}.300'),
-        color: theme-get('palette.#{$color}.300'),
+        border-color: theme-get('palette.#{$color}.500'),
+        color: theme-get('palette.#{$color}.500'),
         '&:hover': (
-          border-color: theme-get('palette.#{$color}.400'),
-          color: theme-get('palette.#{$color}.400'),
+          border-color: theme-get('palette.#{$color}.700'),
+          color: theme-get('palette.#{$color}.700'),
         ),
         '&:active': (
-          border-color: theme-get('palette.#{$color}.500'),
-          color: theme-get('palette.#{$color}.500'),
+          border-color: theme-get('palette.#{$color}.900'),
+          color: theme-get('palette.#{$color}.900'),
         ),
         '&:disabled': (
-          border-color: theme-get('palette.#{$color}.200'),
-          color: theme-get('palette.#{$color}.200'),
+          border-color: theme-get('palette.#{$color}.300'),
+          color: theme-get('palette.#{$color}.300'),
         ),
       ),
     )
@@ -153,15 +153,15 @@ $btn-secondary-base: (
 // $btn-text-base: (
 //   background-color: transparent,
 //   border: 1px solid transparent,
-//   color: theme-get('palette.grayscale.300'),
+//   color: theme-get('palette.grayscale.500'),
 //   '&:hover': (
-//     color: theme-get('palette.grayscale.400'),
+//     color: theme-get('palette.grayscale.700'),
 //   ),
 //   '&:active': (
-//     color: theme-get('palette.grayscale.500'),
+//     color: theme-get('palette.grayscale.900'),
 //   ),
 //   '&:disabled': (
-//     color: theme-get('palette.grayscale.200'),
+//     color: theme-get('palette.grayscale.300'),
 //   ),
 // );
 
