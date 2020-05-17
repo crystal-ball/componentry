@@ -15,4 +15,4 @@ export default function Block(props) {
     ...rest,
   })
 }
-Block.displayName = '✨Block'
+Block.displayName = 'Block'

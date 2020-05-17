@@ -25,5 +25,5 @@ $_icon: (
 $icon: map-assign($_icon, $icon);
 
 @each $variant, $styles in get($icon, variants) {
-  @include style-rule-from-map('.#{$component-prefix}#{$variant}', $styles);
+  @include style-rule-from-map(componentry-class($variant), $styles);
 }

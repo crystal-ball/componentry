@@ -18,6 +18,6 @@ export default function Button(props) {
     ...merged,
   })
 }
-Button.displayName = '✨Button'
+Button.displayName = 'Button'
 /** Base class for creating Button className variants */
 Button.baseClass = 'btn'

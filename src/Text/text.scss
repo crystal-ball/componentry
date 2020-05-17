@@ -41,5 +41,5 @@ $_text: (
 $text: map-assign($_text, $text);
 
 @each $variant, $styles in get($text, variants) {
-  @include style-rule-from-map('.#{$component-prefix}#{$variant}', $styles);
+  @include style-rule-from-map(componentry-class($variant), $styles);
 }

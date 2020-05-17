@@ -41,6 +41,15 @@
 }
 
 // --------------------------------------------------------
+// Letter spacings
+
+@each $key, $value in theme-get('typography.letter-spacings') {
+  .letter-spacing-#{$key} {
+    letter-spacing: $value !important;
+  }
+}
+
+// --------------------------------------------------------
 // Line heights
 
 @each $key, $value in theme-get('typography.line-heights') {

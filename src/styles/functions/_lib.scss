@@ -1,0 +1,10 @@
+/// Returns a library class name prefixed with $classes-prefix value.
+/// @param {string} $class
+/// @returns {string} Prefixed component class name
+@function componentry-class($class) {
+  @if ($classes-prefix != null) {
+    @return '.#{$classes-prefix}-#{$class}';
+  } @else {
+    @return '.#{$class}';
+  }
+}
