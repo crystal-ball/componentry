@@ -1,4 +1,4 @@
-<h1 align="center">
+<h1 align="right">
   <img src="./docs/assets/readme-header.png" width="650" alt="Componentry" />
 </h1>
 
@@ -55,30 +55,29 @@
 
 ---
 
-Componentry is a component library built for React and Bootstrap v4.
+<h3 align="center">
+  <em>Componentry is a React component library for building radical design systems</em>
+</h3>
 
-- Feather light footprint at 12.3KB gzipped
+- Feather light footprint at <12KB gzipped
 - A++ accessibility built in to every component
 - Consistent APIs for easy usage
 - Designed for flexibility and component composition
 
-The [Componentry documentation][documentation] covers component APIs, theme
-customization, library architecture and other advanced topics.
+### Documentation
 
-## Setup
+Full documentation is available at
+[componentry.design](https://componentry.design)
 
-Getting started with Componentry can be as simple as `npm i componentry`. See
-the [Setup][setup] for details on advanced setup.
+### Version
+
+- v3.x is the current version 🎉
+- v2.5.x is the v2 branch updated for React 16.8+
+- v2.4.x is the v2 branch for React version prior to 16.8
 
 ## Contributing
 
 Componentry is an open source project that welcomes and appreciates
-contributions from everyone 🎉. Please read the [Code of Conduct][coc] and
-[Contributing][] guidelines to get started.
-
-<!-- Links -->
-
-[documentation]: https://crystal-ball.github.io/componentry/
-[setup]: https://crystal-ball.github.io/componentry/setup
-[coc]: ./CODE_OF_CONDUCT.md
-[contributing]: ./.github/CONTRIBUTING.md
+contributions from everyone 🙌. <br /> Please read the
+[Code of Conduct](./CODE_OF_CONDUCT.md) and
+[Contributing](./.github/CONTRIBUTING.md) guidelines to get started.
