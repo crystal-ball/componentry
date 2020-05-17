@@ -1,5 +1,5 @@
 <h1 align="right">
-  <img src="./docs/assets/readme-header.png" width="650" alt="Componentry" />
+  <img src="./docs/assets/library-header.png" width="850" alt="Componentry" />
 </h1>
 
 <div align="right">
