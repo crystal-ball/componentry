@@ -10,5 +10,10 @@ module.exports = {
     // throughout the library
     'react/require-default-props': 'off',
     'react/no-unused-prop-types': 'off',
+    'react/prop-types': 'off',
+    'no-nested-ternary': 'off',
+    'lines-between-class-members': 'off',
+    'react/destructuring-assignment': 'off',
+    'react/forbid-prop-types': 'off'
   },
 }

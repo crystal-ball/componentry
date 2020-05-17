@@ -27,6 +27,7 @@
     "node": ">=8.9.0"
   },
   "scripts": {
+    "babel:watch": "BABEL_ENV=production babel src --out-dir es -w",
     "commit": "git cz",
     "start": "NODE_ENV=development webpack-dev-server --env=development",
     "test": "npm run lint && npm run test:unit",
@@ -53,18 +54,21 @@
     "react": "^16.2"
   },
   "dependencies": {
-    "babel-runtime": "^6.26.0",
-    "classnames": "^2.2.5",
-    "nanoid": "^1.0.2"
+    "@babel/runtime": "7",
+    "classnames": "2",
+    "nanoid": "3"
   },
   "devDependencies": {
+    "@babel/cli": "~7.8.4",
+    "@babel/core": "7.9.0",
+    "@babel/plugin-proposal-class-properties": "7.8.3",
+    "@babel/plugin-proposal-private-methods": "7.8.3",
+    "@babel/plugin-transform-flow-strip-types": "^7.9.0",
+    "@babel/plugin-transform-runtime": "7.9.0",
+    "@babel/preset-env": "7.9.5",
+    "@babel/preset-react": "7.9.4",
     "@inspirescript/webpack-configs": "3.2.0",
-    "babel-cli": "~6.26.0",
-    "babel-plugin-transform-class-properties": "~6.24.1",
-    "babel-plugin-transform-object-rest-spread": "~6.26.0",
-    "babel-plugin-transform-react-remove-prop-types": "^0.4.13",
-    "babel-plugin-transform-react-stateless-component-name": "^1.1.2",
-    "babel-plugin-transform-runtime": "~6.23.0",
+    "babel-loader": "^8.1.0",
     "bootstrap": "^4.1.1",
     "commitizen": "^2.10.1",
     "cz-customizable": "^5.2.0",
@@ -79,12 +83,11 @@
     "prettier": "^1.13.0",
     "prop-types": "^15.6.1",
     "raf": "^3.4.0",
-    "react": "^16.4.0",
+    "react": "^16.13.1",
     "react-document-title": "^2.0.3",
-    "react-dom": "^16.4.0",
+    "react-dom": "^16.13.1",
     "react-hot-loader": "^4.2.0",
-    "react-router": "^4.2.0",
-    "react-router-dom": "^4.2.2",
+    "react-router-dom": "^5.1.2",
     "react-test-renderer": "^16.4.0",
     "semantic-release": "^15.5.0"
   },

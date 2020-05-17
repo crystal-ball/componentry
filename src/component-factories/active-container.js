@@ -3,7 +3,7 @@ import React, { Component, createElement } from 'react'
 import type { ComponentType, Node } from 'react'
 import { func, object, shape, string } from 'prop-types'
 import classNames from 'classnames'
-import nanoid from 'nanoid'
+import { nanoid } from 'nanoid'
 
 import { closest } from '../utils/dom'
 
@@ -224,7 +224,7 @@ export default ({
      * When `active` is passed as a prop component is the 'controlled' type and we
      * update the internal active class anytime it changes.
      */
-    componentWillReceiveProps({ active }: Props) {
+    componentDidUpdate({ active }: Props) {
       if (active !== undefined) this.activeState.setActive(active)
     }
     /**

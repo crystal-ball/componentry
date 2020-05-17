@@ -1,6 +1,6 @@
 import React from 'react'
-import DocumentTitle from 'react-document-title'
 
+import DocumentTitle from 'components/universal/DocumentTitle'
 import Jetpack from './Jetpack.md'
 
 export default () => (

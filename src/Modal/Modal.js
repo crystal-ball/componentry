@@ -2,7 +2,7 @@
 import React, { Component, Fragment, type Node } from 'react'
 import { func, object, shape, string } from 'prop-types'
 import classNames from 'classnames'
-import nanoid from 'nanoid'
+import { nanoid } from 'nanoid'
 
 import withActive from '../withActive/withActive'
 import elementFactory from '../component-factories/element'
@@ -70,11 +70,11 @@ class Modal extends Component<Props> {
    * Disable scrolling on the body when the modal is open to allow long modals to
    * scroll within the `.modal` container.
    */
-  componentWillReceiveProps(nextProps) {
+  componentDidUpdate(prevProps) {
     const { active } = this.props
     const { body } = window.document
-    if (!active && nextProps.active) body.classList.add('no-scroll')
-    if (active && !nextProps.active) body.classList.remove('no-scroll')
+    if (active && !prevProps.active) body.classList.add('no-scroll')
+    if (!active && prevProps.active) body.classList.remove('no-scroll')
   }
 
   /**
