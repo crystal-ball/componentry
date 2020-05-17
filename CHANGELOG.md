@@ -1,21 +1,59 @@
-# Changelog
+# componentry changelog
 
-All notable changes to this project will be documented in this file.
-
-The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
-and this project adheres to
-[Semantic Versioning](http://semver.org/spec/v2.0.0.html).
+> Changelog tags
+>
+> - 💥 - Breaking change
+> - 🔖 - Release notes
+> - 💖 - New feature
+> - ✨ - Updates
+> - 🛠 - Fixes
 
 #### [Unreleased]
 
-### BREAKING CHANGES
+## [3.0.0](https://github.com/crystal-ball/componentry/compare/v2.5.0...v3.0.0) - 2020-05-17
 
-- The `<Media />` component is removed and a new `<Media />` provider component
-  is available.
+After nearly two years of tinkering and optimizing, Componentry v3 is released 🎉
 
-### Added
+v3 is essentially a new library, so breaking changes aren't listed. The
+recommended migration path is to install both the v2 and v3 branches
+simultaneously, using a git tag for the v2 branch. The v3 components and styles
+are prefixed and shouldn't cause conflicts when both are used.
 
--
+### V3 Improvements 💖
+
+- Components are using the latest React features, including the updated context
+  API and hooks. As a result the code for handling components with active state
+  is smaller and easier to maintain.
+- Styles are fully customizeable. The library base theme and component styles
+  are now written with SASS maps and every line of component styles can be
+  overridden.
+- Component behavior and appearance styles have been split into base and variant
+  classes. A few useful variants ship with Componentry, and it's possible to add
+  additional style variants without having to figure out how to extend behaviors
+  like visibility.
+- System props provide convenience methods for setting Tailwind CSS inspired
+  utility classes. Each component accepts system props, and the utility styles
+  can be used stand-alone.
+- New Block, Flex, and Text components make creating layouts and consistent
+  text elements faster. These base components provide convenient building blocks
+  for composing custom components.
+
+### 🛣 Roadmap
+
+The initial v3 release offically includes the `Block`, `Flex`, `Icon`, `Text`,
+and `Theme` components. The remaining components can be imported, but their
+styles still need to be transitioned to SASS maps and variants so there will
+be changes.
+
+The `Anchor` and `Button` components will be released next.
+
+The active components, including `Active`, `Drawer`, `Dropdown`, `Tooltip` and
+`Popover` will be released after that.
+
+Remaining components will be queued and released after that.
+
+Build something radical 💖
+
 
 ## [3.0.0-alpha.12] - 2018-11-16
 
