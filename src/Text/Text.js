@@ -26,8 +26,11 @@ export default function Text(props) {
       : variantsElements[variant] || defaultVariantsElements[variant] || 'p',
     fontStyle: italic ? 'italic' : null,
     fontWeight: bold ? 'bold' : null,
-    elemClassName: inline ? null : `✨${variant}`,
+    elemClassName: {
+      '🅲-text': true,
+      [`🅲-${variant}`]: !inline,
+    },
     ...rest,
   })
 }
-Text.displayName = '✨Text'
+Text.displayName = 'Text'

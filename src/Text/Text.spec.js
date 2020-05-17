@@ -18,13 +18,13 @@ describe('Text', () => {
       </ThemeProvider>,
     )
     expect(container.firstChild).toContainHTML(
-      '<section class="✨rad">Componentry</section>',
+      '<section class="🅲-text 🅲-rad">Componentry</section>',
     )
   })
 
   test('When inline is truthy, then a span without a variant class is rendered', () => {
     const { container } = render(<Text inline>span content</Text>)
-    expect(container.firstChild).toContainHTML('<span class="">span content</span>')
+    expect(container.firstChild).toContainHTML('<span class="🅲-text">span content</span>')
   })
 })
 

@@ -8,7 +8,7 @@ import Theme from '../src/Theme/Theme'
  * Library default component requirment test suite.
  */
 const elementTests = (TestComponent) => {
-  const componentName = TestComponent.displayName.replace('✨', '')
+  const componentName = TestComponent.displayName
   /*
    * All components should have a display name so they can be easily debugged
    * even in prod builds

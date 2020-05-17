@@ -12,9 +12,9 @@ export default function Icon(props) {
   return elem({
     as: 'svg',
     role: 'img',
-    elemClassName: `✨${variant} icon-${id}`,
+    elemClassName: `🅲-icon 🅲-${variant} icon-${id}`,
     children: <use href={`#${id}`} xlinkHref={`#${id}`} />,
     ...rest,
   })
 }
-Icon.displayName = '✨Icon'
+Icon.displayName = 'Icon'

@@ -57,7 +57,7 @@ export default function Media({ children, breakpoints = [0, 768, 1250] }) {
 
   return <MediaCtx.Provider value={bps}> {children}</MediaCtx.Provider>
 }
-Media.displayName = '✨Media'
+Media.displayName = 'Media'
 
 /**
  * [Media hook 📝](https://componentry.design/components/media)

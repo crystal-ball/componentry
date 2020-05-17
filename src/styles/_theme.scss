@@ -10,6 +10,7 @@
  * -------------------------------------------------------------------------- */
 
 @import './functions/sass';
+@import './functions/lib';
 
 $theme: () !default;
 
@@ -133,6 +134,7 @@ $theme: map-assign((
       normal: 400,
       bold: 700,
     ),
+    letter-spacings: (),
     line-heights: (
       single: 1,
       body: 1.5,
@@ -171,5 +173,4 @@ $theme: map-assign((
 // --------------------------------------------------------
 // 3.0 Variables
 
-$component-prefix: ✨ !default;
-
+$classes-prefix: 🅲 !default;

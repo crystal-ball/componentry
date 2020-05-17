@@ -17,6 +17,6 @@ export default function Anchor(props) {
     ...merged,
   })
 }
-Anchor.displayName = '✨Anchor'
+Anchor.displayName = 'Anchor'
 /** Base class for creating Anchor className variants */
 Anchor.baseClass = 'a'

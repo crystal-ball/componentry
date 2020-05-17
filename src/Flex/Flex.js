@@ -27,4 +27,4 @@ export default function Flex(props) {
     ...rest,
   })
 }
-Flex.displayName = '✨Flex'
+Flex.displayName = 'Flex'
