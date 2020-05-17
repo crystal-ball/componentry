@@ -8,6 +8,13 @@ and this project adheres to
 
 #### [Unreleased]
 
+## [2.5.0] - 2019-05-17
+
+Componentry v2.5.0 fixes the deprecated lifecycle hook usage and updates the
+library dependencies to latest. Note this is a breaking change 💥 that requires
+React 16.8 and Nanoid v3. The changes are being published as a maintenance
+update to the v2 branch.
+
 ## [2.4.0] - 2019-04-22
 
 ### Added
