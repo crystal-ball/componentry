@@ -1,5 +1,5 @@
 import React from 'react'
-import { render } from '@testing-library/react'
+import { render, screen } from '@testing-library/react'
 
 import Dropdown from './Dropdown'
 import activationTestSuite from '../../test/activation-tests'
@@ -19,11 +19,11 @@ describe('<Dropdown />', () => {
   elementTests(Dropdown.Item)
 
   it('renders the correct directional classes using direction', () => {
-    const { getByTestId, rerender } = render(
+    const { rerender } = render(
       <Dropdown Content='Testing' data-testid='dropdown' Trigger='Toggle' />,
     )
 
-    expect(getByTestId('dropdown')).toHaveClass('dropdown bottom') // default value
+    expect(screen.getByTestId('dropdown')).toHaveClass('dropdown bottom') // default value
 
     rerender(
       <Dropdown
@@ -34,7 +34,7 @@ describe('<Dropdown />', () => {
       />,
     )
 
-    expect(getByTestId('dropdown')).toHaveClass('dropdown top') // default value
+    expect(screen.getByTestId('dropdown')).toHaveClass('dropdown top') // default value
   })
 })
 

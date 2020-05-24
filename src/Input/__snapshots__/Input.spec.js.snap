@@ -4,13 +4,13 @@ exports[`<Input /> snapshots renders correctly 1`] = `
 <div>
   <label
     class="input-label"
-    for="guid"
+    for="test-guid"
   >
     Storybook
   </label>
   <input
     class="input-field"
-    id="guid"
+    id="test-guid"
     type="text"
   />
   <div

@@ -1,5 +1,5 @@
 import React from 'react'
-import { render } from '@testing-library/react'
+import { render, screen } from '@testing-library/react'
 
 import Badge from './Badge'
 
@@ -9,13 +9,13 @@ describe('<Badge />', () => {
   elementTests(Badge)
 
   test('When color is passed, then badge-color className is rendered', () => {
-    const { getByText } = render(<Badge color='primary'>Badge</Badge>)
-    expect(getByText('Badge')).toHaveClass('badge-primary')
+    render(<Badge color='primary'>Badge</Badge>)
+    expect(screen.getByText('Badge')).toHaveClass('badge-primary')
   })
 
   test('When rounded is passed, then badge-rounded className is rendered', () => {
-    const { getByText } = render(<Badge rounded>Badge</Badge>)
-    expect(getByText('Badge')).toHaveClass('badge-rounded')
+    render(<Badge rounded>Badge</Badge>)
+    expect(screen.getByText('Badge')).toHaveClass('badge-rounded')
   })
 })
 

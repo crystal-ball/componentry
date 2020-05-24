@@ -1,3 +1,5 @@
+'use strict'
+
 module.exports = {
   env: {
     /**
@@ -6,6 +8,13 @@ module.exports = {
      */
     test: {
       presets: ['@babel/preset-env', '@babel/preset-react', '@babel/preset-typescript'],
+      plugins: [
+        [
+          '@babel/plugin-transform-runtime',
+          // https://github.com/babel/babel/issues/10261
+          { version: require('@babel/helpers/package.json').version }, // eslint-disable-line
+        ],
+      ],
     },
 
     // Publish targets

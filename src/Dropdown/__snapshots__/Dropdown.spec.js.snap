@@ -3,20 +3,20 @@
 exports[`<Dropdown /> snapshots renders correctly 1`] = `
 <div
   class="dropdown bottom"
-  data-id="guid"
+  data-id="test-guid"
 >
   <button
     aria-expanded="false"
     aria-haspopup="true"
     class="dropdown-action dropdown-action-primary"
-    id="guid"
+    id="test-guid"
     type="button"
   >
     Trigger
   </button>
   <div
     aria-hidden="true"
-    aria-labelledby="guid"
+    aria-labelledby="test-guid"
     class="dropdown-content"
   >
     <button

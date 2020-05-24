@@ -65,7 +65,7 @@ export default function activeContainerFactory(name, opts = {}) {
      * to bind together aria attributes. _(In testing use 'guid' for consistent
      * snapshots.)_
      */
-    const { current: guid } = useRef(process.env.NODE_ENV === 'test' ? 'guid' : nanoid())
+    const { current: guid } = useRef(nanoid())
 
     /**
      * Internally the container keeps a separate active state variable

@@ -1,5 +1,5 @@
 import React from 'react'
-import { render } from '@testing-library/react'
+import { render, screen } from '@testing-library/react'
 
 import Button from './Button'
 import elementTests from '../../test/element-tests'
@@ -16,12 +16,12 @@ describe('<Button/>', () => {
   // 8. Test passing disabled
 
   test('When no props are passed, then defaults should be rendered', () => {
-    const { container, getByText } = render(<Button>Button</Button>)
+    const { container } = render(<Button>Button</Button>)
 
     // By default the button should have type button for a11y
     expect(container).toContainElement(document.querySelector('button[type="button"]'))
     // By default the variant btn should be included and not anchor
-    expect(getByText('Button')).toHaveClass('btn')
+    expect(screen.getByText('Button')).toHaveClass('btn')
     // TODO: Is it possible to get the classes from the element and just check that?
     // ...there shouldn't be any other classes
   })
@@ -32,12 +32,12 @@ describe('<Button/>', () => {
   })
 
   test('When `variant` is passed, then it should be used as base className value', () => {
-    const { getByText } = render(<Button variant='demo'>Button</Button>)
-    expect(getByText('Button')).toHaveClass('btn btn-demo')
+    render(<Button variant='demo'>Button</Button>)
+    expect(screen.getByText('Button')).toHaveClass('btn btn-demo')
   })
 
   test('When `color` is passed, then the color className should render', () => {
-    const { getByText } = render(
+    render(
       <>
         <Button color='info'>Button</Button>
         <Button variant='demo' color='info'>
@@ -45,12 +45,12 @@ describe('<Button/>', () => {
         </Button>
       </>,
     )
-    expect(getByText('Button')).toHaveClass('btn btn-color-info')
-    expect(getByText('Variant Button')).toHaveClass('btn btn-demo btn-color-info')
+    expect(screen.getByText('Button')).toHaveClass('btn btn-color-info')
+    expect(screen.getByText('Variant Button')).toHaveClass('btn btn-demo btn-color-info')
   })
 
   test('When `size` is passed, then the size className should render', () => {
-    const { getByText } = render(
+    render(
       <>
         <Button size='sm'>Button</Button>
         <Button variant='demo' size='sm'>
@@ -58,14 +58,14 @@ describe('<Button/>', () => {
         </Button>
       </>,
     )
-    expect(getByText('Button')).toHaveClass('btn btn-sm')
-    expect(getByText('Variant Button')).toHaveClass('btn btn-demo btn-sm')
+    expect(screen.getByText('Button')).toHaveClass('btn btn-sm')
+    expect(screen.getByText('Variant Button')).toHaveClass('btn btn-demo btn-sm')
   })
 
   test('When used to create an anchor styled button, then anchor styles should be rendered', () => {
-    const { getByText } = render(<Button baseClass='a'>Button</Button>)
-    expect(getByText('Button')).toHaveClass('a')
-    expect(getByText('Button')).not.toHaveClass('btn')
+    render(<Button baseClass='a'>Button</Button>)
+    expect(screen.getByText('Button')).toHaveClass('a')
+    expect(screen.getByText('Button')).not.toHaveClass('btn')
   })
 })
 

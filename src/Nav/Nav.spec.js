@@ -1,5 +1,5 @@
 import React from 'react'
-import { render } from '@testing-library/react'
+import { render, screen } from '@testing-library/react'
 
 import Nav from './Nav'
 import elementTests from '../../test/element-tests'
@@ -8,21 +8,21 @@ describe('<Nav />', () => {
   elementTests(Nav)
 
   test('should render .nav-vertical when vertical is passed', () => {
-    const { getByTestId } = render(
+    render(
       <Nav vertical data-testid='nav'>
         <Nav.Item href='#'>Anchor one</Nav.Item>
       </Nav>,
     )
-    expect(getByTestId('nav')).toHaveClass('nav-vertical')
+    expect(screen.getByTestId('nav')).toHaveClass('nav-vertical')
   })
 
   test('should render .nav-pills when pills is passed', () => {
-    const { getByTestId } = render(
+    render(
       <Nav pills data-testid='nav'>
         <Nav.Item href='#'>Anchor one</Nav.Item>
       </Nav>,
     )
-    expect(getByTestId('nav')).toHaveClass('nav-pills')
+    expect(screen.getByTestId('nav')).toHaveClass('nav-pills')
   })
 })
 
@@ -30,14 +30,14 @@ describe('<Nav.Item />', () => {
   elementTests(Nav.Item)
 
   test('when active is passed, then active class should render', () => {
-    const { getByText } = render(
+    render(
       <Nav>
         <Nav.Item active href='#'>
           React
         </Nav.Item>
       </Nav>,
     )
-    expect(getByText('React')).toHaveClass('active')
+    expect(screen.getByText('React')).toHaveClass('active')
   })
 })
 

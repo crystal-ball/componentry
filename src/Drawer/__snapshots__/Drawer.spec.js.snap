@@ -3,10 +3,10 @@
 exports[`<Drawer /> snapshots renders correctly 1`] = `
 <div
   class="drawer"
-  data-id="guid"
+  data-id="test-guid"
 >
   <button
-    aria-controls="guid"
+    aria-controls="test-guid"
     aria-expanded="false"
     class="drawer-action drawer-action-primary"
     type="button"
@@ -16,7 +16,7 @@ exports[`<Drawer /> snapshots renders correctly 1`] = `
   <div
     aria-hidden="true"
     class="drawer-content"
-    id="guid"
+    id="test-guid"
   >
     Content
   </div>

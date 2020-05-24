@@ -17,7 +17,7 @@ export default function Modal(props) {
   // Guid instance property will be uniquely assigned once for each modal
   // instance, this unique id is then passed to all children through context
   // where it can be used to wire together title aria attributes
-  const { current: guid } = useRef(process.env.NODE_ENV === 'test' ? 'guid' : nanoid())
+  const { current: guid } = useRef(nanoid())
 
   const {
     active: propsActive,

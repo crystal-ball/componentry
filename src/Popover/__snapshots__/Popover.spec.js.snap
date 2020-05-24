@@ -3,10 +3,10 @@
 exports[`<Popover /> snapshots renders correctly 1`] = `
 <div
   class="popover right"
-  data-id="guid"
+  data-id="test-guid"
 >
   <button
-    aria-describedby="guid"
+    aria-describedby="test-guid"
     class="popover-action popover-action-primary"
     type="button"
   >
@@ -18,7 +18,7 @@ exports[`<Popover /> snapshots renders correctly 1`] = `
     <div
       aria-hidden="true"
       class="popover-content"
-      id="guid"
+      id="test-guid"
       role="tooltip"
     >
       <div

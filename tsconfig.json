@@ -3,7 +3,7 @@
     "target": "esnext",
     "module": "commonjs",
     "allowJs": true,
-    "checkJs": true,
+    "checkJs": false,
     "declaration": true,
     "outDir": "./types/",
     "strict": false,

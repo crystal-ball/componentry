@@ -1,13 +1,13 @@
 /* eslint-env jest */
 import React from 'react'
-import { render } from '@testing-library/react'
+import { render, screen } from '@testing-library/react'
 
 import Theme from '../src/Theme/Theme'
 
 /**
  * Library default component requirment test suite.
  */
-const elementTests = (TestComponent) => {
+export default function elementTests(TestComponent) {
   const componentName = TestComponent.displayName
   /*
    * All components should have a display name so they can be easily debugged
@@ -26,7 +26,7 @@ const elementTests = (TestComponent) => {
   test(`${componentName} should handle component element requirements`, () => {
     const TestChild = () => <span>Test child content</span>
 
-    const { getByTestId, getByText } = render(
+    render(
       <TestComponent
         className='test-custom'
         data-test='test-custom'
@@ -37,9 +37,9 @@ const elementTests = (TestComponent) => {
       </TestComponent>,
     )
 
-    getByText('Test child content') // √ children
-    expect(getByTestId('component')).toHaveClass('test-custom') // √ className
-    expect(getByTestId('component')).toHaveAttribute('data-test', 'test-custom') // √ attrs
+    expect(screen.getByText('Test child content')).toBeInTheDocument() // √ children
+    expect(screen.getByTestId('component')).toHaveClass('test-custom') // √ className
+    expect(screen.getByTestId('component')).toHaveAttribute('data-test', 'test-custom') // √ attrs
   })
 
   /*
@@ -50,9 +50,9 @@ const elementTests = (TestComponent) => {
     // Create a component to validate that the TestComponent returns.
     const TestAs = ({ isRad }) => <div>{isRad ? 'RAD' : null}</div> // eslint-disable-line
 
-    const { getByText } = render(<TestComponent isRad as={TestAs} />)
+    render(<TestComponent isRad as={TestAs} />)
 
-    getByText('RAD')
+    expect(screen.getByText('RAD')).toBeInTheDocument()
   })
 
   /*
@@ -62,7 +62,7 @@ const elementTests = (TestComponent) => {
    * by default to all component instances
    */
   test(`${componentName} should merge theme and JSX props correctly`, () => {
-    const { getByTestId } = render(
+    render(
       <Theme
         theme={{
           [componentName]: {
@@ -86,16 +86,16 @@ const elementTests = (TestComponent) => {
       </Theme>,
     )
 
-    expect(getByTestId('theme')).toHaveClass('theme-class')
-    expect(getByTestId('theme')).toHaveAttribute('data-radical', 'hecka')
+    expect(screen.getByTestId('theme')).toHaveClass('theme-class')
+    expect(screen.getByTestId('theme')).toHaveAttribute('data-radical', 'hecka')
 
-    expect(getByTestId('jsx')).not.toHaveClass('theme-class')
-    expect(getByTestId('jsx')).toHaveAttribute('data-radical', 'nope')
+    expect(screen.getByTestId('jsx')).not.toHaveClass('theme-class')
+    expect(screen.getByTestId('jsx')).toHaveAttribute('data-radical', 'nope')
 
-    expect(getByTestId('merge')).toHaveClass(
+    expect(screen.getByTestId('merge')).toHaveClass(
       'theme-class jsx-class font-weight-bold text-transform-uppercase',
     )
-    expect(getByTestId('merge')).toHaveAttribute('data-radical', 'hecka')
+    expect(screen.getByTestId('merge')).toHaveAttribute('data-radical', 'hecka')
   })
 
   /*
@@ -103,7 +103,7 @@ const elementTests = (TestComponent) => {
    * computed and rendered correctly
    */
   test(`${componentName} should include library classes and styles correctly`, () => {
-    const { getByTestId } = render(
+    render(
       <TestComponent
         className='jsx-class'
         data-testid='component'
@@ -117,11 +117,11 @@ const elementTests = (TestComponent) => {
       </TestComponent>,
     )
 
-    expect(getByTestId('component')).toHaveClass(
+    expect(screen.getByTestId('component')).toHaveClass(
       'jsx-class text-align-center text-transform-uppercase',
     )
 
-    expect(getByTestId('component')).toHaveStyle(`
+    expect(screen.getByTestId('component')).toHaveStyle(`
       line-height: 2;
       margin-left: 16;
       margin-right: 16;
@@ -129,4 +129,3 @@ const elementTests = (TestComponent) => {
     `)
   })
 }
-export default elementTests

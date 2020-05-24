@@ -1,5 +1,5 @@
 import React from 'react'
-import { render } from '@testing-library/react'
+import { render, screen } from '@testing-library/react'
 
 import Block from './Block'
 
@@ -9,13 +9,13 @@ describe('<Block />', () => {
   elementTests(Block)
 
   test('When inline is not passed, then d-block className is rendered', () => {
-    const { getByText } = render(<Block>Content</Block>)
-    expect(getByText('Content')).toHaveClass('d-block')
+    render(<Block>Content</Block>)
+    expect(screen.getByText('Content')).toHaveClass('d-block')
   })
 
   test('When inline is passed, then d-inline-block className is rendered', () => {
-    const { getByText } = render(<Block inline>Content</Block>)
-    expect(getByText('Content')).toHaveClass('d-inline-block')
+    render(<Block inline>Content</Block>)
+    expect(screen.getByText('Content')).toHaveClass('d-inline-block')
   })
 })
 

@@ -3,7 +3,7 @@
 exports[`<Tab /> snapshots renders correctly 1`] = `
 <div
   class="tabs"
-  data-id="guid"
+  data-id="test-guid"
   name="tabs"
 >
   <div
@@ -11,10 +11,10 @@ exports[`<Tab /> snapshots renders correctly 1`] = `
     role="tablist"
   >
     <button
-      aria-controls="guid-one-content"
+      aria-controls="test-guid-one-content"
       aria-selected="true"
       class="tabs-action tabs-action-primary active"
-      id="guid-one-tab"
+      id="test-guid-one-tab"
       role="tab"
       type="button"
       value="one"
@@ -22,10 +22,10 @@ exports[`<Tab /> snapshots renders correctly 1`] = `
       Item 1
     </button>
     <button
-      aria-controls="guid-two-content"
+      aria-controls="test-guid-two-content"
       aria-selected="false"
       class="tabs-action tabs-action-primary"
-      id="guid-two-tab"
+      id="test-guid-two-tab"
       role="tab"
       type="button"
       value="two"
@@ -33,10 +33,10 @@ exports[`<Tab /> snapshots renders correctly 1`] = `
       Tab with long name
     </button>
     <button
-      aria-controls="guid-three-content"
+      aria-controls="test-guid-three-content"
       aria-selected="false"
       class="tabs-action tabs-action-primary"
-      id="guid-three-tab"
+      id="test-guid-three-tab"
       role="tab"
       type="button"
       value="three"
@@ -44,11 +44,11 @@ exports[`<Tab /> snapshots renders correctly 1`] = `
       Item 3
     </button>
     <button
-      aria-controls="guid-four-content"
+      aria-controls="test-guid-four-content"
       aria-selected="false"
       class="tabs-action tabs-action-primary disabled"
       disabled=""
-      id="guid-four-tab"
+      id="test-guid-four-tab"
       role="tab"
       type="button"
       value="four"
@@ -61,36 +61,36 @@ exports[`<Tab /> snapshots renders correctly 1`] = `
   >
     <div
       aria-hidden="false"
-      aria-labelledby="guid-one-trigger"
+      aria-labelledby="test-guid-one-trigger"
       class="tabs-content"
-      id="guid-one-content"
+      id="test-guid-one-content"
       role="tabpanel"
     >
       Tab 1
     </div>
     <div
       aria-hidden="true"
-      aria-labelledby="guid-two-trigger"
+      aria-labelledby="test-guid-two-trigger"
       class="tabs-content"
-      id="guid-two-content"
+      id="test-guid-two-content"
       role="tabpanel"
     >
       Tab 2
     </div>
     <div
       aria-hidden="true"
-      aria-labelledby="guid-three-trigger"
+      aria-labelledby="test-guid-three-trigger"
       class="tabs-content"
-      id="guid-three-content"
+      id="test-guid-three-content"
       role="tabpanel"
     >
       Tab 3
     </div>
     <div
       aria-hidden="true"
-      aria-labelledby="guid-four-trigger"
+      aria-labelledby="test-guid-four-trigger"
       class="tabs-content"
-      id="guid-four-content"
+      id="test-guid-four-content"
       role="tabpanel"
     >
       This tab has been disabled

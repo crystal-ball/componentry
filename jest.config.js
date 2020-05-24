@@ -1,3 +1,5 @@
+'use strict'
+
 const { ENABLE_JEST_NOTIFICATIONS } = process.env
 
 module.exports = {
@@ -18,5 +20,5 @@ module.exports = {
   ],
 
   // Pre/Post test framework setup configs
-  setupFilesAfterEnv: ['<rootDir>/test/jest-extend.js'],
+  setupFilesAfterEnv: ['<rootDir>/test/jest-after-env-setup.js'],
 }

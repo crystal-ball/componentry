@@ -1,6 +1,6 @@
 /* eslint-env jest */
 import React from 'react'
-import { fireEvent, render } from '@testing-library/react'
+import { fireEvent, render, screen } from '@testing-library/react'
 
 /**
  * This set of activation event tests should pass for every element with active
@@ -8,7 +8,7 @@ import { fireEvent, render } from '@testing-library/react'
  * but this provides a simple high level check on if functionality is working
  * as expected for each component.
  */
-const activationTests = (TestComponent, { name, testArias } = {}) => {
+export default function ActivationTests(TestComponent, { name, testArias } = {}) {
   /**
    * Active component containers should map size prop to the component name,
    * this is how size variants can be created
@@ -29,15 +29,15 @@ const activationTests = (TestComponent, { name, testArias } = {}) => {
   /**
    * Test that the shorthand subcombonent props renders subcomponents
    */
-  test('should render components for subcomponent shorthand', () => {
-    const { getByText } = render(<TestComponent Content='Content' Trigger='Trigger' />)
+  test('should render components for subcomponent shorthand', async () => {
+    render(<TestComponent Content='Content' Trigger='Trigger' />)
 
-    getByText('Trigger')
-    getByText('Content')
-    expect(getByText('Content')).toHaveAttribute('aria-hidden', 'true')
+    expect(screen.getByText('Trigger')).toBeDefined()
+    expect(screen.getByText('Content')).toBeDefined()
+    expect(screen.getByText('Content')).toHaveAttribute('aria-hidden', 'true')
 
-    fireEvent.click(getByText('Trigger'))
-    expect(getByText('Content')).toHaveAttribute('aria-hidden', 'false')
+    await fireEvent.click(screen.getByText('Trigger'))
+    expect(screen.getByText('Content')).toHaveAttribute('aria-hidden', 'false')
   })
 
   /**
@@ -45,14 +45,14 @@ const activationTests = (TestComponent, { name, testArias } = {}) => {
    * be managed internally if not overriden with props and clicking the trigger should
    * show/hide content.
    */
-  test('should update arias when trigger is activated', () => {
+  test('should update arias when trigger is activated', async () => {
     // Components must specify which aria attrs should be tested
     const testControls = testArias.includes('controls')
     const testLabelledBy = testArias.includes('labelledby')
     const testExpanded = testArias.includes('expanded')
     // TODO: describedby
 
-    const { getByText } = render(
+    render(
       <TestComponent>
         <TestComponent.Trigger>Trigger</TestComponent.Trigger>
         <TestComponent.Content>Content</TestComponent.Content>
@@ -60,50 +60,51 @@ const activationTests = (TestComponent, { name, testArias } = {}) => {
     )
 
     // Trigger and Content should have correct attrs for a11y and hidden content
-    expect(getByText('Trigger')).toHaveAttribute('type', 'button')
-    expect(getByText('Content')).toHaveAttribute('aria-hidden', 'true')
+    expect(screen.getByText('Trigger')).toHaveAttribute('type', 'button')
+    expect(screen.getByText('Content')).toHaveAttribute('aria-hidden', 'true')
 
     if (testControls) {
       // If aria-controls, trigger should have attr pointing to id on content
-      expect(getByText('Trigger')).toHaveAttribute('aria-controls', 'guid')
-      expect(getByText('Content')).toHaveAttribute('id', 'guid')
+      expect(screen.getByText('Trigger')).toHaveAttribute('aria-controls', 'test-guid')
+      expect(screen.getByText('Content')).toHaveAttribute('id', 'test-guid')
     }
 
     if (testLabelledBy) {
       // If aria-labelledby, content should have attr pointing to id on trigger
-      expect(getByText('Trigger')).toHaveAttribute('id', 'guid')
-      expect(getByText('Content')).toHaveAttribute('aria-labelledby', 'guid')
+      expect(screen.getByText('Trigger')).toHaveAttribute('id', 'test-guid')
+      expect(screen.getByText('Content')).toHaveAttribute('aria-labelledby', 'test-guid')
     }
 
     if (testExpanded) {
       // If aria-expanded, trigger should have visible state updated in attr
-      expect(getByText('Trigger')).toHaveAttribute('aria-expanded', 'false')
+      expect(screen.getByText('Trigger')).toHaveAttribute('aria-expanded', 'false')
     }
 
-    fireEvent.click(getByText('Trigger'))
-    expect(getByText('Content')).toHaveAttribute('aria-hidden', 'false')
+    await fireEvent.click(screen.getByText('Trigger'))
+    expect(screen.getByText('Content')).toHaveAttribute('aria-hidden', 'false')
 
     if (testExpanded) {
-      expect(getByText('Trigger')).toHaveAttribute('aria-expanded', 'true')
+      expect(screen.getByText('Trigger')).toHaveAttribute('aria-expanded', 'true')
     }
 
-    fireEvent.click(getByText('Trigger'))
-    expect(getByText('Content')).toHaveAttribute('aria-hidden', 'true')
+    await fireEvent.click(screen.getByText('Trigger'))
+    expect(screen.getByText('Content')).toHaveAttribute('aria-hidden', 'true')
 
     if (testExpanded) {
-      expect(getByText('Trigger')).toHaveAttribute('aria-expanded', 'false')
+      expect(screen.getByText('Trigger')).toHaveAttribute('aria-expanded', 'false')
     }
   })
 
   /**
    * Test that all of the user hooks are being called on activation/deactivation.
    */
-  test('should call event observation hooks', () => {
+  test('should call event observation hooks', async () => {
     const onActivate = jest.fn()
     const onActivated = jest.fn()
     const onDeactivate = jest.fn()
     const onDeactivated = jest.fn()
-    const { getByText } = render(
+
+    render(
       <TestComponent
         onActivate={onActivate}
         onActivated={onActivated}
@@ -115,14 +116,14 @@ const activationTests = (TestComponent, { name, testArias } = {}) => {
       </TestComponent>,
     )
 
-    fireEvent.click(getByText('Trigger'))
+    await fireEvent.click(screen.getByText('Trigger'))
 
     expect(onActivate).toHaveBeenCalledTimes(1)
     expect(onActivated).toHaveBeenCalledTimes(1)
     expect(onDeactivate).toHaveBeenCalledTimes(0) // not yet!
     expect(onDeactivated).toHaveBeenCalledTimes(0) // not yet!
 
-    fireEvent.click(getByText('Trigger'))
+    await fireEvent.click(screen.getByText('Trigger'))
 
     expect(onActivate).toHaveBeenCalledTimes(1) // only once
     expect(onActivated).toHaveBeenCalledTimes(1) // only once
@@ -134,22 +135,22 @@ const activationTests = (TestComponent, { name, testArias } = {}) => {
    * Test setting initial active state using defaultActive prop
    */
   test('state should default to defaultActive when passed', () => {
-    const { getByText } = render(
+    render(
       <TestComponent defaultActive>
         <TestComponent.Trigger>Trigger</TestComponent.Trigger>
         <TestComponent.Content>Content</TestComponent.Content>
       </TestComponent>,
     )
 
-    expect(getByText('Content')).toHaveAttribute('aria-hidden', 'false')
+    expect(screen.getByText('Content')).toHaveAttribute('aria-hidden', 'false')
   })
 
   /**
    * Test that clicking outside of the container component will deactivate it
    * if clickHandler is true
    */
-  test('should deactivate when clickHandler is true', () => {
-    const { getByText } = render(
+  test('should deactivate when clickHandler is true', async () => {
+    render(
       <div>
         <button type='button'>External</button>
         <TestComponent clickEvents={false}>
@@ -164,27 +165,27 @@ const activationTests = (TestComponent, { name, testArias } = {}) => {
     )
 
     // Both content elements should be hidden
-    expect(getByText('No handler content')).toHaveAttribute('aria-hidden', 'true')
-    expect(getByText('Handler content')).toHaveAttribute('aria-hidden', 'true')
+    expect(screen.getByText('No handler content')).toHaveAttribute('aria-hidden', 'true')
+    expect(screen.getByText('Handler content')).toHaveAttribute('aria-hidden', 'true')
 
     // Element without click events should not close when click outside
-    fireEvent.click(getByText('No handler trigger'))
-    expect(getByText('No handler content')).toHaveAttribute('aria-hidden', 'false')
-    fireEvent.mouseUp(getByText('External'))
-    expect(getByText('No handler content')).toHaveAttribute('aria-hidden', 'false')
+    await fireEvent.click(screen.getByText('No handler trigger'))
+    expect(screen.getByText('No handler content')).toHaveAttribute('aria-hidden', 'false')
+    await fireEvent.mouseUp(screen.getByText('External'))
+    expect(screen.getByText('No handler content')).toHaveAttribute('aria-hidden', 'false')
 
     // Click outside element with click events should deactivate it
-    fireEvent.click(getByText('Handler trigger'))
-    expect(getByText('Handler content')).toHaveAttribute('aria-hidden', 'false')
-    fireEvent.mouseUp(getByText('External'))
-    expect(getByText('Handler content')).toHaveAttribute('aria-hidden', 'true')
+    await fireEvent.click(screen.getByText('Handler trigger'))
+    expect(screen.getByText('Handler content')).toHaveAttribute('aria-hidden', 'false')
+    await fireEvent.mouseUp(screen.getByText('External'))
+    expect(screen.getByText('Handler content')).toHaveAttribute('aria-hidden', 'true')
   })
 
   /**
    * Test that the esc handler works
    */
-  test('should deactivate on esc if escEvents is true', () => {
-    const { container, getByText } = render(
+  test('should deactivate on esc if escEvents is true', async () => {
+    const { container } = render(
       <div>
         <TestComponent escEvents={false}>
           <TestComponent.Trigger>No handler trigger</TestComponent.Trigger>
@@ -198,27 +199,27 @@ const activationTests = (TestComponent, { name, testArias } = {}) => {
     )
 
     // Both content elements should be hidden
-    expect(getByText('No handler content')).toHaveAttribute('aria-hidden', 'true')
-    expect(getByText('Handler content')).toHaveAttribute('aria-hidden', 'true')
+    expect(screen.getByText('No handler content')).toHaveAttribute('aria-hidden', 'true')
+    expect(screen.getByText('Handler content')).toHaveAttribute('aria-hidden', 'true')
 
     // Esc keydown should not deactivate
-    fireEvent.click(getByText('No handler trigger'))
-    expect(getByText('No handler content')).toHaveAttribute('aria-hidden', 'false')
-    fireEvent.keyDown(container, { key: 'Escape', code: 27, which: 27 })
-    expect(getByText('No handler content')).toHaveAttribute('aria-hidden', 'false')
+    await fireEvent.click(screen.getByText('No handler trigger'))
+    expect(screen.getByText('No handler content')).toHaveAttribute('aria-hidden', 'false')
+    await fireEvent.keyDown(container, { key: 'Escape', code: 27, which: 27 })
+    expect(screen.getByText('No handler content')).toHaveAttribute('aria-hidden', 'false')
 
     // Esc keydown should deactivate it
-    fireEvent.click(getByText('Handler trigger'))
-    expect(getByText('Handler content')).toHaveAttribute('aria-hidden', 'false')
-    fireEvent.keyDown(container, { key: 'Escape', code: 27, which: 27 })
-    expect(getByText('Handler content')).toHaveAttribute('aria-hidden', 'true')
+    await fireEvent.click(screen.getByText('Handler trigger'))
+    expect(screen.getByText('Handler content')).toHaveAttribute('aria-hidden', 'false')
+    await fireEvent.keyDown(container, { key: 'Escape', code: 27, which: 27 })
+    expect(screen.getByText('Handler content')).toHaveAttribute('aria-hidden', 'true')
   })
 
   /**
    * Test that the mouse events handler works
    */
-  test('should handle mouse events when mouseEvents is true', () => {
-    const { getByText } = render(
+  test('should handle mouse events when mouseEvents is true', async () => {
+    render(
       <div>
         <TestComponent mouseEvents={false}>
           <TestComponent.Trigger>No handler trigger</TestComponent.Trigger>
@@ -232,20 +233,20 @@ const activationTests = (TestComponent, { name, testArias } = {}) => {
     )
 
     // Both content elements should be hidden
-    expect(getByText('No handler content')).toHaveAttribute('aria-hidden', 'true')
-    expect(getByText('Handler content')).toHaveAttribute('aria-hidden', 'true')
+    expect(screen.getByText('No handler content')).toHaveAttribute('aria-hidden', 'true')
+    expect(screen.getByText('Handler content')).toHaveAttribute('aria-hidden', 'true')
 
     // Element without mouse events should not change
-    fireEvent.mouseEnter(getByText('No handler trigger'))
-    expect(getByText('No handler content')).toHaveAttribute('aria-hidden', 'true')
-    fireEvent.mouseLeave(getByText('No handler trigger'))
-    expect(getByText('No handler content')).toHaveAttribute('aria-hidden', 'true')
+    await fireEvent.mouseEnter(screen.getByText('No handler trigger'))
+    expect(screen.getByText('No handler content')).toHaveAttribute('aria-hidden', 'true')
+    await fireEvent.mouseLeave(screen.getByText('No handler trigger'))
+    expect(screen.getByText('No handler content')).toHaveAttribute('aria-hidden', 'true')
 
     // Element with mouse events should activate/deactivate
-    fireEvent.mouseEnter(getByText('Handler trigger'))
-    expect(getByText('Handler content')).toHaveAttribute('aria-hidden', 'false')
-    fireEvent.mouseLeave(getByText('Handler trigger'))
-    expect(getByText('Handler content')).toHaveAttribute('aria-hidden', 'true')
+    await fireEvent.mouseEnter(screen.getByText('Handler trigger'))
+    expect(screen.getByText('Handler content')).toHaveAttribute('aria-hidden', 'false')
+    await fireEvent.mouseLeave(screen.getByText('Handler trigger'))
+    expect(screen.getByText('Handler content')).toHaveAttribute('aria-hidden', 'true')
   })
 
   /**
@@ -262,20 +263,23 @@ const activationTests = (TestComponent, { name, testArias } = {}) => {
    * state hasn't changed...
    */
   test('should not use active prop when value is undefined', () => {
-    const { getByText, rerender } = render(
+    const { rerender } = render(
       <TestComponent>
         <TestComponent.Trigger>Trigger</TestComponent.Trigger>
         <TestComponent.Content>Content</TestComponent.Content>
       </TestComponent>,
     )
-    expect(getByText('Content')).toHaveAttribute('aria-hidden', 'true')
+
+    expect(screen.getByText('Content')).toHaveAttribute('aria-hidden', 'true')
+
     rerender(
       <TestComponent>
         <TestComponent.Trigger>Trigger</TestComponent.Trigger>
         <TestComponent.Content>Content</TestComponent.Content>
       </TestComponent>,
     )
-    expect(getByText('Content')).toHaveAttribute('aria-hidden', 'true')
+
+    expect(screen.getByText('Content')).toHaveAttribute('aria-hidden', 'true')
   })
 
   /**
@@ -283,30 +287,30 @@ const activationTests = (TestComponent, { name, testArias } = {}) => {
    * should override internal activate/deactivate meaning that clicking the trigger
    * for an element should only call those passed props.
    */
-  test('should use passed activate and deactivate functions', () => {
+  test('should use passed activate and deactivate functions', async () => {
     const activate = jest.fn()
     const deactivate = jest.fn()
-    const { getByText, rerender } = render(
+    const { rerender } = render(
       <TestComponent activate={activate} active={false} deactivate={deactivate}>
         <TestComponent.Trigger>Trigger</TestComponent.Trigger>
         <TestComponent.Content>Content</TestComponent.Content>
       </TestComponent>,
     )
 
-    fireEvent.click(getByText('Trigger'))
+    await fireEvent.click(screen.getByText('Trigger'))
 
     // We have overridden the activate event so content should still be hidden
     // and clicking again should call *activate* again
 
     expect(activate).toHaveBeenCalledTimes(1)
     expect(deactivate).toHaveBeenCalledTimes(0)
-    expect(getByText('Content')).toHaveAttribute('aria-hidden', 'true')
+    expect(screen.getByText('Content')).toHaveAttribute('aria-hidden', 'true')
 
-    fireEvent.click(getByText('Trigger'))
+    await fireEvent.click(screen.getByText('Trigger'))
 
     expect(activate).toHaveBeenCalledTimes(2)
     expect(deactivate).toHaveBeenCalledTimes(0)
-    expect(getByText('Content')).toHaveAttribute('aria-hidden', 'true')
+    expect(screen.getByText('Content')).toHaveAttribute('aria-hidden', 'true')
 
     // Mock controlled component being passed true, click should now ONLY call deactivate
     rerender(
@@ -315,25 +319,25 @@ const activationTests = (TestComponent, { name, testArias } = {}) => {
         <TestComponent.Content>Content</TestComponent.Content>
       </TestComponent>,
     )
-    fireEvent.click(getByText('Trigger'))
+    await fireEvent.click(screen.getByText('Trigger'))
 
     expect(activate).toHaveBeenCalledTimes(2)
     expect(deactivate).toHaveBeenCalledTimes(1)
-    expect(getByText('Content')).toHaveAttribute('aria-hidden', 'false')
+    expect(screen.getByText('Content')).toHaveAttribute('aria-hidden', 'false')
 
-    fireEvent.click(getByText('Trigger'))
+    await fireEvent.click(screen.getByText('Trigger'))
 
     expect(activate).toHaveBeenCalledTimes(2)
     expect(deactivate).toHaveBeenCalledTimes(2)
-    expect(getByText('Content')).toHaveAttribute('aria-hidden', 'false')
+    expect(screen.getByText('Content')).toHaveAttribute('aria-hidden', 'false')
   })
 
   /**
    * Test that any flavor of the `<Active />` component exposes internal state and
    * state change methods using the FaCC pattern
    */
-  test('should expose internals using FaCC pattern', () => {
-    const { getByText } = render(
+  test('should expose internals using FaCC pattern', async () => {
+    render(
       <TestComponent>
         {({ active, activate, deactivate }) => (
           <div>
@@ -349,13 +353,12 @@ const activationTests = (TestComponent, { name, testArias } = {}) => {
       </TestComponent>,
     )
 
-    getByText('false')
-    fireEvent.click(getByText('activate'))
-    getByText('true')
-    fireEvent.click(getByText('deactivate'))
-    getByText('false')
+    expect(screen.getByText('false')).toBeInTheDocument()
+    await fireEvent.click(screen.getByText('activate'))
+    expect(screen.getByText('true')).toBeInTheDocument()
+    await fireEvent.click(screen.getByText('deactivate'))
+    expect(screen.getByText('false')).toBeInTheDocument()
   })
 
   // TODO: test multi-element active components (Drawer, Tabs)
 }
-export default activationTests
