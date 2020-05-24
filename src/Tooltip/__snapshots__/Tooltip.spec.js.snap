@@ -3,10 +3,10 @@
 exports[`<Tooltip /> snapshots renders correctly 1`] = `
 <div
   class="tooltip"
-  data-id="guid"
+  data-id="test-guid"
 >
   <button
-    aria-describedby="guid"
+    aria-describedby="test-guid"
     class="tooltip-action tooltip-action-primary"
     type="button"
   >
@@ -18,7 +18,7 @@ exports[`<Tooltip /> snapshots renders correctly 1`] = `
     <div
       aria-hidden="true"
       class="tooltip-content"
-      id="guid"
+      id="test-guid"
       role="tooltip"
     >
       <div

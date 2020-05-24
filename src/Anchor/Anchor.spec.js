@@ -1,5 +1,5 @@
 import React from 'react'
-import { render } from '@testing-library/react'
+import { render, screen } from '@testing-library/react'
 
 import Anchor from './Anchor'
 import elementTests from '../../test/element-tests'
@@ -9,14 +9,14 @@ describe('<Anchor/>', () => {
   elementTests(Anchor)
 
   test('should render type classes for anchor', () => {
-    const { getByText } = render(<Anchor color='success'>Link</Anchor>)
-    expect(getByText('Link')).toHaveClass('a a-primary a-color-success')
+    render(<Anchor color='success'>Link</Anchor>)
+    expect(screen.getByText('Link')).toHaveClass('a a-primary a-color-success')
   })
 
   test('When used to create a button styled anchor, then btn is rendered', () => {
-    const { getByText } = render(<Anchor baseClass='btn'>Link</Anchor>)
-    expect(getByText('Link')).toHaveClass('btn')
-    expect(getByText('Link')).not.toHaveClass('a')
+    render(<Anchor baseClass='btn'>Link</Anchor>)
+    expect(screen.getByText('Link')).toHaveClass('btn')
+    expect(screen.getByText('Link')).not.toHaveClass('a')
   })
 })
 

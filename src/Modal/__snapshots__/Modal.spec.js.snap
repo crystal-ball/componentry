@@ -3,7 +3,7 @@
 exports[`<Close /> snapshots renders correctly 1`] = `
 <div
   aria-hidden="false"
-  aria-labelledby="guid"
+  aria-labelledby="test-guid"
   class="modal-overlay fade modal-overlay-scroll"
   role="presentation"
   tabindex="-1"
@@ -20,7 +20,7 @@ exports[`<Close /> snapshots renders correctly 1`] = `
       >
         <h2
           class="modal-title"
-          id="guid"
+          id="test-guid"
         >
           Demo uncontrolled modal
         </h2>

@@ -1,5 +1,5 @@
 import React from 'react'
-import { render } from '@testing-library/react'
+import { render, screen } from '@testing-library/react'
 
 import Popover from './Popover'
 import activationTestSuite from '../../test/activation-tests'
@@ -16,13 +16,13 @@ describe('<Popover />', () => {
   elementTests(Popover.Body)
 
   it('renders the correct directional classes using direction', () => {
-    const { getByTestId } = render(
+    render(
       <Popover data-testid='popover' direction='left'>
         <Popover.Trigger>Trigger</Popover.Trigger>
         <Popover.Content>Content</Popover.Content>
       </Popover>,
     )
-    expect(getByTestId('popover')).toHaveClass('left')
+    expect(screen.getByTestId('popover')).toHaveClass('left')
   })
 })
 

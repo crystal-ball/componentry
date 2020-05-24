@@ -1,5 +1,5 @@
 import React from 'react'
-import { fireEvent, render } from '@testing-library/react'
+import { fireEvent, render, screen } from '@testing-library/react'
 
 import Alert from './Alert'
 import elementTests from '../../test/element-tests'
@@ -17,19 +17,21 @@ describe('<Alert/>', () => {
   })
 
   test('should not render a close button if not dismissible', () => {
-    const { queryByLabelText } = render(<Alert color='danger'>Warning!</Alert>)
-    expect(queryByLabelText('close')).toBeFalsy()
+    render(<Alert color='danger'>Warning!</Alert>)
+    expect(screen.queryByLabelText('close')).toBeFalsy()
   })
 
-  test('should bind passed deactivate to close button', () => {
+  test('should bind passed deactivate to close button', async () => {
     const deactivate = jest.fn()
-    const { container, getByLabelText } = render(
+    const { container } = render(
       <Alert active dismissible color='danger' deactivate={deactivate}>
         Warning!
       </Alert>,
     )
 
-    fireEvent.click(getByLabelText('close'))
+    expect(screen.getByText('Warning!')).toBeInTheDocument()
+
+    await fireEvent.click(screen.getByLabelText('close'))
     expect(deactivate).toHaveBeenCalled()
 
     // Alert visibility state change handler has been overridden, other than calling

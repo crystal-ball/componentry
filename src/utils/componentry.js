@@ -38,32 +38,32 @@ export function elemArias({ active, activeId, guid, type, arias = {} }) {
     role,
     selected,
   } = arias
-  const _arias = {}
+  const computedArias = {}
 
-  if (controls) _arias['aria-controls'] = guid
-  if (describedby) _arias['aria-describedby'] = guid
-  if (expanded) _arias['aria-expanded'] = String(active)
-  if (haspopup) _arias['aria-haspopup'] = 'true'
-  if (hidden) _arias['aria-hidden'] = String(!active)
-  if (id) _arias.id = guid
-  if (labelledby) _arias['aria-labelledby'] = guid
-  if (role) _arias.role = role
-  if (selected) _arias['aria-selected'] = String(active)
+  if (controls) computedArias['aria-controls'] = guid
+  if (describedby) computedArias['aria-describedby'] = guid
+  if (expanded) computedArias['aria-expanded'] = String(active)
+  if (haspopup) computedArias['aria-haspopup'] = 'true'
+  if (hidden) computedArias['aria-hidden'] = String(!active)
+  if (id) computedArias.id = guid
+  if (labelledby) computedArias['aria-labelledby'] = guid
+  if (role) computedArias.role = role
+  if (selected) computedArias['aria-selected'] = String(active)
 
   // For elements with multiple trigger/content groups an activeId is used to
   // track which group is active. Aria values must include addl identifiers
   // to ensure uniqueness
   if (activeId && type === 'trigger') {
-    _arias.id = `${guid}-${activeId}-tab`
-    _arias['aria-controls'] = `${guid}-${activeId}-content`
-    _arias['aria-selected'] = String(active === activeId)
+    computedArias.id = `${guid}-${activeId}-tab`
+    computedArias['aria-controls'] = `${guid}-${activeId}-content`
+    computedArias['aria-selected'] = String(active === activeId)
   } else if (activeId && type === 'content') {
-    _arias.id = `${guid}-${activeId}-content`
-    _arias['aria-labelledby'] = `${guid}-${activeId}-trigger`
-    _arias['aria-hidden'] = String(activeId !== active)
+    computedArias.id = `${guid}-${activeId}-content`
+    computedArias['aria-labelledby'] = `${guid}-${activeId}-trigger`
+    computedArias['aria-hidden'] = String(activeId !== active)
   }
 
-  return _arias
+  return computedArias
 }
 
 /**

@@ -15,7 +15,7 @@ export default function Input({ children }) {
    * instance, this unique id is then passed to all children through context
    * where it can be used to wire together aria attributes
    */
-  const { current: guid } = useRef(process.env.NODE_ENV === 'test' ? 'guid' : nanoid())
+  const { current: guid } = useRef(nanoid())
 
   return <InputCtx.Provider value={{ guid }}>{children}</InputCtx.Provider>
 }

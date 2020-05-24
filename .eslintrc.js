@@ -1,24 +1,13 @@
 'use strict'
 
-module.exports = {
-  root: true,
-  extends: ['eloquence/react', 'eloquence/typescript'],
+const eloquence = require('eslint-config-eloquence')
 
-  parserOptions: {
-    project: './tsconfig.json',
-  },
+const configs = eloquence({ target: 'react' })
 
-  // Override the webpack resolver from react config to use the node resolver,
-  // The src files don't use any aliasing from webpack
-  settings: {
-    'import/resolver': 'node',
-  },
+// Package is allowed to access process.env
+configs.globals = { process: false }
 
-  rules: {
-    // Disable no underscore, library uses them for shadowed props
-    'no-underscore-dangle': 'off',
-    // Disable prop types checking, project has TS typings for components
-    'react/prop-types': 'off',
-    'react/require-default-props': 'off',
-  },
-}
+// Package does not export prop-types at this time
+configs.rules['react/prop-types'] = 'off'
+
+module.exports = configs

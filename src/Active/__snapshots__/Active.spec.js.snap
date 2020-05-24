@@ -3,10 +3,10 @@
 exports[`<Active /> snapshots renders correctly 1`] = `
 <div
   class="active"
-  data-id="guid"
+  data-id="test-guid"
 >
   <button
-    aria-controls="guid"
+    aria-controls="test-guid"
     class="active-action active-action-primary"
     type="button"
   >
@@ -15,7 +15,7 @@ exports[`<Active /> snapshots renders correctly 1`] = `
   <div
     aria-hidden="true"
     class="active-content"
-    id="guid"
+    id="test-guid"
   >
     Content
   </div>
