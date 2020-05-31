@@ -1,8 +1,8 @@
 import React from 'react'
 import { render, screen } from '@testing-library/react'
 
-import Button from './Button'
 import elementTests from '../../test/element-tests'
+import Button from './Button'
 
 describe('<Button/>', () => {
   // Basic library element test suite

@@ -1,9 +1,9 @@
 import React from 'react'
 import { render, screen } from '@testing-library/react'
 
-import Dropdown from './Dropdown'
 import activationTestSuite from '../../test/activation-tests'
 import elementTests from '../../test/element-tests'
+import Dropdown from './Dropdown'
 
 describe('<Dropdown />', () => {
   // Basic library activation test suite

@@ -1,9 +1,9 @@
 import React from 'react'
 import { render } from '@testing-library/react'
 
-import Tooltip from './Tooltip'
 import activationTestSuite from '../../test/activation-tests'
 import elementTests from '../../test/element-tests'
+import Tooltip from './Tooltip'
 
 describe('<Tooltip />', () => {
   // Basic library activation test suite

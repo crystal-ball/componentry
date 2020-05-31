@@ -1,9 +1,9 @@
 import React from 'react'
 import { render, screen } from '@testing-library/react'
 
-import Popover from './Popover'
 import activationTestSuite from '../../test/activation-tests'
 import elementTests from '../../test/element-tests'
+import Popover from './Popover'
 
 describe('<Popover />', () => {
   // Basic library activation test suite

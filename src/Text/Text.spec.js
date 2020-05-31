@@ -1,9 +1,9 @@
 import React from 'react'
 import { render } from '@testing-library/react'
 
-import Text from './Text'
 import ThemeProvider from '../Theme/Theme'
 import elementTests from '../../test/element-tests'
+import Text from './Text'
 
 describe('<Text/>', () => {
   // Basic library element test suite

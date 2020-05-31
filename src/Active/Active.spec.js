@@ -1,10 +1,9 @@
 import React from 'react'
 import { render } from '@testing-library/react'
 
-import Active from './Active'
-
 import activationTestSuite from '../../test/activation-tests'
 import elementTests from '../../test/element-tests'
+import Active from './Active'
 
 describe('<Active />', () => {
   activationTestSuite(Active, { name: 'active', testArias: ['controls'] })

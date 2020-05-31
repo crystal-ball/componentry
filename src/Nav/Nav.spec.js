@@ -1,8 +1,8 @@
 import React from 'react'
 import { render, screen } from '@testing-library/react'
 
-import Nav from './Nav'
 import elementTests from '../../test/element-tests'
+import Nav from './Nav'
 
 describe('<Nav />', () => {
   elementTests(Nav)

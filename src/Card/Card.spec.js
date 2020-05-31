@@ -1,8 +1,8 @@
 import React from 'react'
 import { render } from '@testing-library/react'
 
-import Card from './Card'
 import elementTests from '../../test/element-tests'
+import Card from './Card'
 
 describe('<Card />', () => {
   // Basic library element test suite
