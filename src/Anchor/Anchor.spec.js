@@ -1,8 +1,8 @@
 import React from 'react'
 import { render, screen } from '@testing-library/react'
 
-import Anchor from './Anchor'
 import elementTests from '../../test/element-tests'
+import Anchor from './Anchor'
 
 describe('<Anchor/>', () => {
   // Basic library element test suite
