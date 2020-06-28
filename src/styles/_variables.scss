@@ -196,22 +196,6 @@ $line-height-xl:       2    !default;
 
 $typography-colors: () !default;
 
-// --------------------------------------------------------
-// Anchors
-
-$anchor-decoration: none !default;
-
-$anchor-hover-color: #17a2b8 !default;
-$anchor-hover-decoration: underline !default;
-
-$anchor-active-color: #1597ab !default;
-$anchor-active-decoration: $anchor-hover-decoration !default;
-
-// Disabled links are a weird thing, they're not technically real, but you can
-// "disable" a link by removing the href which we handle by making the link
-// look like normal text...
-$anchor-disabled-color: inherit !default;
-$anchor-disabled-decoration: none !default;
 
 // --------------------------------------------------------
 // Alerts
@@ -534,7 +518,7 @@ $modal-footer-padding: $modal-body-padding !default;
 $nav-item-padding-y: 0.5rem !default;
 $nav-item-padding-x: 1rem !default;
 $nav-item-action-color: typography-color(anchor) !default;
-$nav-item-action-hover-color: $anchor-hover-color !default;
+$nav-item-action-hover-color: #17a2b8 !default;
 $nav-item-action-hover-decoration: underline !default;
 
 $nav-item-disabled-color: gray('600') !default;

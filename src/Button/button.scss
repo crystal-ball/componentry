@@ -12,42 +12,18 @@ $btn-secondary: () !default;
 $btn-sm: () !default;
 $btn-lg: () !default;
 
-$button-anchor-overrides: () !default;
-
 // --------------------------------------------------------
-// Normalizing anchors styled as buttons
-
-// These overrides apply to Anchor instances using a btn base class, they
-// normalize browser anchor styles to match button styles
-
-@include style-rule-from-map(
-  'a.btn',
-  map-assign(
-    $button-anchor-overrides,
-    (
-      text-decoration: none,
-    )
-  )
-);
-
-// --------------------------------------------------------
-// Base class
+// Base class (reset buttons for opt-in styling)
 
 @include style-rule-from-map(
   '.btn',
   map-assign(
     (
-      display: inline-flex,
       align-items: center,
+      display: inline-flex,
       justify-content: center,
-      margin: 0,
-      padding: 0.25rem 1rem,
-      font-family: inherit,
-      font-size: theme-get('typography.font-sizes.body'),
-      border-radius: theme-get('border-radii.default'),
       // Prevent text selection on click of buttons
-        cursor: pointer,
-      user-select: none,
+        user-select: none,
       // By default button content shouldn't wrap
         white-space: nowrap,
     ),
@@ -61,7 +37,10 @@ $button-anchor-overrides: () !default;
 $btn-primary-base: (
   background-color: theme-get('palette.grayscale.500'),
   border: 1px solid theme-get('palette.grayscale.500'),
+  border-radius: theme-get('border-radii.default'),
   color: theme-get('palette.typography.inverse'),
+  font-size: theme-get('typography.font-sizes.button'),
+  padding: 0.25rem 1rem,
   '&:hover': (
     background-color: theme-get('palette.grayscale.700'),
   ),
@@ -103,7 +82,10 @@ $btn-primary-base: (
 $btn-secondary-base: (
   background-color: transparent,
   border: 1px solid theme-get('palette.grayscale.500'),
+  border-radius: theme-get('border-radii.default'),
   color: theme-get('palette.grayscale.500'),
+  font-size: theme-get('typography.font-sizes.button'),
+  padding: 0.25rem 1rem,
   '&:hover': (
     border-color: theme-get('palette.grayscale.700'),
     color: theme-get('palette.grayscale.700'),

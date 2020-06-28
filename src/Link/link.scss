@@ -1,0 +1,48 @@
+/* componentry/src/Link/link */
+
+// Base class: link
+// Variants: primary
+// Colors: [palette.theme-colors]
+
+$link: () !default;
+$link-primary: () !default;
+
+// --------------------------------------------------------
+// Base class (see fundamentals for anchor resets)
+
+@include style-rule-from-map('.link', map-assign((), $link));
+
+// --------------------------------------------------------
+// Primary variant
+
+$link-primary-base: (
+  color: theme-get('palette.primary.500'),
+  '&:hover': (
+    color: theme-get('palette.primary.900'),
+  ),
+);
+
+@each $color in theme-get('palette.theme-colors') {
+  $link-primary-base: map-merge(
+    $link-primary-base,
+    (
+      '&.link-color-#{$color}': (
+        color: theme-get('palette.#{$color}.500'),
+        '&:hover': (
+          color: theme-get('palette.#{$color}.700'),
+        ),
+      ),
+    )
+  );
+}
+
+@include style-rule-from-map(
+  '.link-primary',
+  map-assign($link-primary-base, $link-primary)
+);
+
+// --- ℹ️ Disabled link styles
+// Componentry doesn't include disabled link styles as a UX best
+// practice, but if necessary it's best to define normal link styles
+// using `.link[href]` as the selector, and `link` as a 'disabled' link and
+// then don't pass an href to create a 'placeholder link'

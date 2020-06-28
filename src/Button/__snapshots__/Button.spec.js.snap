@@ -1,14 +1,5 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<Button /> Snapshots it renders anchor variants correctly 1`] = `
-<button
-  class="btn btn-a"
-  type="button"
->
-  Componentry
-</button>
-`;
-
 exports[`<Button /> Snapshots it renders brand color correctly 1`] = `
 <button
   class="btn btn-primary btn-color-success"

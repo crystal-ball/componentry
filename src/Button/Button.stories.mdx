@@ -1,9 +1,8 @@
 import { boolean, select } from '@storybook/addon-knobs'
 import { action } from '@storybook/addon-actions'
 
-import Anchor from '../Anchor/Anchor'
-import Button from './Button'
 import Flex from '../Flex/Flex'
+import Button from './Button'
 
 <Meta title='Components/Button' component={Button}></Meta>
 
@@ -92,13 +91,11 @@ Pass `disabled` to make a button disabled:
   </Button>
 </div>
 
-## Buttons styled as anchors
+## Buttons with routing
 
-A Button that looks like an anchor:
+A Button with routing handlers:
 
-<Button baseClass='a' onClick={action('anchor button click')}>
-  Button
-</Button>
+<Button href='#test'>Button</Button>
 
 ## Input buttons
 

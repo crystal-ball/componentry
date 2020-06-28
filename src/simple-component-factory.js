@@ -16,3 +16,4 @@ export default function simpleComponent(name, propsDefaults) {
 
   return Component
 }
+// TODO: StaticComponentFactory

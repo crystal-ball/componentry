@@ -1,0 +1,10 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Link /> snapshots renders correctly 1`] = `
+<a
+  class="link link-primary"
+  href="#test"
+>
+  Link
+</a>
+`;

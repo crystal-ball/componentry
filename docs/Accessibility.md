@@ -15,19 +15,22 @@ knowledge for creating accessible content.
   {' '}letting us know, or better yet submit a pull request 🎉
 </Alert>
 
-## Use the `<Button />` component
+## Use a `Button` or `Link` for interaction targets
 
-When creating interactable elements, using the correct HTML element provides
-better default accessibility attributes. The `<Button />` component can be
-configured to appear and behave the same as an anchor element by passing a
-truthy `anchor` prop. Using buttons for any element that has user interaction is
-important because button elements include important accessibility traits by
-default, such as keyboard operation.
+Any element that can be interacted with needs to be accessible. Using a `Button`
+or `Link` for these elements helps by providing default accessibility attributes
+required for tab interactions and screen readers. The `Button` and `Link`
+components will render either an `a` or `button` DOM element depending on the
+presence of an `href` or `to` prop.
 
 ```jsx
-<Button onClick={this.handleEvent} anchor>
-  Click here to trigger an event...
-</Button>
+// This will look like a link, with a `button` DOM node
+<Link onClick={this.handleEvent}>Click here to trigger an event...</Link>
+```
+
+```jsx
+// This will look like a button, with an `a` DOM node
+<Button href='/app/route'>Click her to navigate to /app/route</Button>
 ```
 
 ## Visibility utilities
