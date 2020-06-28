@@ -90,6 +90,7 @@ export function navClasses(variant, { fill, justify, pills, vertical }) {
 // Library shared className+styles generator
 
 const classNamesProps = {
+  active: 1,
   backgroundColor: 1,
   border: 1,
   borderBottom: 1,
@@ -98,6 +99,7 @@ const classNamesProps = {
   borderRight: 1,
   borderTop: 1,
   borderWidth: 1,
+  disabled: 1,
   fontColor: 1,
   fontFamily: 1,
   fontSize: 1,
@@ -106,6 +108,7 @@ const classNamesProps = {
   position: 1,
   textAlign: 1,
   textTransform: 1,
+  visible: 1,
 }
 
 const stylesProps = {
@@ -145,11 +148,14 @@ const spacingRegex = new RegExp(/([bmp])([trblxy])?/)
 
 function generateClassNames(p) {
   return {
+    'active': p.active,
     'border': p.border,
     'border-bottom': p.borderBottom,
     'border-left': p.borderLeft,
     'border-right': p.borderRight,
     'border-top': p.borderTop,
+    'disabled': p.disabled,
+    'visible': p.visible,
     [`background-color-${p.backgroundColor}`]: p.backgroundColor,
     [`border-color-${p.borderColor}`]: p.borderColor,
     [`border-width-${p.borderWidth}`]: p.borderWidth,
@@ -173,9 +179,6 @@ function generateClassNames(p) {
  * isn't mapped to 1px or 1rem.
  */
 export function componentry({
-  base,
-  anchor,
-  button,
   block,
   color,
   outline,
@@ -186,8 +189,6 @@ export function componentry({
   variant,
   vertical,
   // Component props filtered out
-  active,
-  visible,
   activate,
   deactivate,
   defaultActive,
@@ -203,6 +204,9 @@ export function componentry({
   const spacingCx = []
   const styles = {}
   const rest = {}
+
+  // We want disabled to reach final element as an HTML attr value
+  if (filteredProps.disabled) rest.disabled = true
 
   // For each prop passed to any component, bucket it into a library className
   // or style set or pass through in rest

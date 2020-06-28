@@ -1,0 +1,66 @@
+/* componentry/src/Link/link */
+
+$link: () !default;
+$link-primary: () !default;
+$link-button-overrides: () !default;
+
+// --------------------------------------------------------
+// Normalizing buttons styled as Links
+
+// These overrides apply to Link instances with a `button` base element, they
+// normalize browser button styles to match the Link base styles
+
+@include style-rule-from-map(
+  'button.link',
+  map-assign(
+    (
+      border: none,
+      background-color: transparent,
+      cursor: pointer,
+      font: inherit,
+      padding: 0,
+      text-align: inherit,
+    ),
+    $link-button-overrides
+  )
+);
+
+// --------------------------------------------------------
+// Base class
+
+@include style-rule-from-map('.link', map-assign((), $link));
+
+// --------------------------------------------------------
+// Primary variant
+
+$link-primary-base: (
+  color: theme-get('palette.primary.500'),
+  '&:hover': (
+    color: theme-get('palette.primary.900'),
+  ),
+);
+
+@each $color in theme-get('palette.theme-colors') {
+  $link-primary-base: map-merge(
+    $link-primary-base,
+    (
+      '&.link-color-#{$color}': (
+        color: theme-get('palette.#{$color}.500'),
+        '&:hover': (
+          color: theme-get('palette.#{$color}.700'),
+        ),
+      ),
+    )
+  );
+}
+
+@include style-rule-from-map(
+  '.link-primary',
+  map-assign($link-primary-base, $link-primary)
+);
+
+// --- ℹ️ Disabled link styles
+// Componentry doesn't include disabled link styles as a UX best
+// practice, but if necessary it's best to define normal link styles
+// using `.link[href]` as the selector, and `link` as a 'disabled' link and
+// then don't pass an href to create a 'placeholder link'

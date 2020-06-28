@@ -15,10 +15,10 @@ $btn-lg: () !default;
 $button-anchor-overrides: () !default;
 
 // --------------------------------------------------------
-// Normalizing anchors styled as buttons
+// Normalizing anchors styled as Buttons
 
-// These overrides apply to Anchor instances using a btn base class, they
-// normalize browser anchor styles to match button styles
+// These overrides apply to Button instances with an `a` base element, they
+// normalize browser anchor styles to match the Button base styles
 
 @include style-rule-from-map(
   'a.btn',

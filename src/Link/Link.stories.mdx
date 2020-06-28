@@ -1,0 +1,32 @@
+import { boolean, select } from '@storybook/addon-knobs'
+import { action } from '@storybook/addon-actions'
+
+import Link from './Link'
+
+<Meta title='Components/Link' component={Link}></Meta>
+
+<DocsTitle title='Links'></DocsTitle>
+
+## Variant
+
+A **primary** variant link:
+
+<Link href='#test'>Componentry link</Link>
+
+---
+
+## Colors
+
+<div className='d-flex flex-column'>
+  {['primary', 'success', 'warning', 'error', 'info'].map((color) => (
+    <Link key={color} color={color} href='#test'>
+      Componentry link
+    </Link>
+  ))}
+</div>
+
+## Links without routing
+
+An Anchor without routing:
+
+<Link onClick={action('Link click')}>Anchor</Link>

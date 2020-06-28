@@ -56,8 +56,6 @@ export interface ActiveTriggerProps {
 }
 
 export interface ActionElementProps {
-  /** Switch to style the button like an anchor */
-  anchor?: boolean
   /** Switch for a full width button that will fill its container */
   block?: boolean
   /** Sets a button fill color (theme color) */

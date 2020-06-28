@@ -121,7 +121,7 @@
   display: block;
   width: 100%;
   padding: $dropdown-item-padding-y $dropdown-item-padding-x;
-  // Ensure that buttons and anchors inherit dropdown container font styles
+  // Ensure that button and anchor elements inherit dropdown font styles
   font-size: inherit;
   font-weight: $font-weight-normal;
   color: $dropdown-action-item-color;

@@ -3,12 +3,11 @@ import elem from './elem-factory'
 import { ActiveCtx } from './active-container-factory'
 import { useTheme } from './Theme/Theme'
 import { elemArias } from './utils/componentry'
-import { actionClasses } from './utils/classes'
 
 /**
  * Factory returns custom `<Trigger />` components defined by the fn options.
- * Componentry sets up triggers to be anchor style buttons by default, this
- * can be overridden by passing an as, type and anchor to reset the defaults.
+ * Componentry sets up triggers to be buttons styled as links by default, this
+ * can be overridden by passing an as and type props for an anchor.
  * @property {string} name Component display name
  * @property {Object} opts
  * @property {Object} opts.arias
@@ -71,12 +70,13 @@ export default function activeTriggerFactory(
         type: 'trigger',
         arias,
       }),
-      elemClassName: [
-        actionClasses(baseClass, variant, rest),
+      elemClassName: {
+        [baseClass]: true,
+        [`${baseClass}-${variant}`]: true,
         // For compound-active contexts add an active class if activeIds match
         // (eg in tabs show which tab is selected)
-        { active: activeId && active === activeId },
-      ],
+        active: activeId && active === activeId,
+      },
       onClick,
       // For compound-active contexts, the value attr is to expose the activeId
       value: activeId,

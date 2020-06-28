@@ -215,29 +215,29 @@
 }
 
 // Creates default styles for all the active trigger components to look like
-// anchors
+// links
 @mixin active-trigger-element {
   @include reset-button;
 
-  // Set anchor font styles
+  // Set link font styles
   color: theme-get('palette.primary.500');
   cursor: pointer;
 
   &:hover,
   &.hover {
     color: theme-get('palette.primary.700');
-    text-decoration: $anchor-hover-decoration;
+    // text-decoration: $anchor-hover-decoration;
   }
 
   &:active,
   &.active {
     color: theme-get('palette.primary.900');
-    text-decoration: $anchor-active-decoration;
+    // text-decoration: $anchor-active-decoration;
   }
 
   &.disabled {
     color: theme-get('palette.primary.300');
-    text-decoration: $anchor-disabled-decoration;
+    // text-decoration: $anchor-disabled-decoration;
   }
 }
 

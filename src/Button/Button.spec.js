@@ -20,8 +20,8 @@ describe('<Button/>', () => {
 
     // By default the button should have type button for a11y
     expect(container).toContainElement(document.querySelector('button[type="button"]'))
-    // By default the variant btn should be included and not anchor
-    expect(screen.getByText('Button')).toHaveClass('btn')
+    // By default the variant btn
+    expect(screen.getByText('Button')).toHaveClass('btn btn-primary')
     // TODO: Is it possible to get the classes from the element and just check that?
     // ...there shouldn't be any other classes
   })
@@ -61,12 +61,6 @@ describe('<Button/>', () => {
     expect(screen.getByText('Button')).toHaveClass('btn btn-sm')
     expect(screen.getByText('Variant Button')).toHaveClass('btn btn-demo btn-sm')
   })
-
-  test('When used to create an anchor styled button, then anchor styles should be rendered', () => {
-    render(<Button baseClass='a'>Button</Button>)
-    expect(screen.getByText('Button')).toHaveClass('a')
-    expect(screen.getByText('Button')).not.toHaveClass('btn')
-  })
 })
 
 // Snapshots
@@ -79,11 +73,6 @@ describe('<Button /> Snapshots', () => {
 
   test('it renders brand color correctly', () => {
     const { container } = render(<Button color='success'>Componentry</Button>)
-    expect(container.firstChild).toMatchSnapshot()
-  })
-
-  test('it renders anchor variants correctly', () => {
-    const { container } = render(<Button variant='a'>Componentry</Button>)
     expect(container.firstChild).toMatchSnapshot()
   })
 

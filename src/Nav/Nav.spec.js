@@ -10,7 +10,7 @@ describe('<Nav />', () => {
   test('should render .nav-vertical when vertical is passed', () => {
     render(
       <Nav vertical data-testid='nav'>
-        <Nav.Item href='#'>Anchor one</Nav.Item>
+        <Nav.Item href='#'>Link one</Nav.Item>
       </Nav>,
     )
     expect(screen.getByTestId('nav')).toHaveClass('nav-vertical')
@@ -19,7 +19,7 @@ describe('<Nav />', () => {
   test('should render .nav-pills when pills is passed', () => {
     render(
       <Nav pills data-testid='nav'>
-        <Nav.Item href='#'>Anchor one</Nav.Item>
+        <Nav.Item href='#'>Link one</Nav.Item>
       </Nav>,
     )
     expect(screen.getByTestId('nav')).toHaveClass('nav-pills')
