@@ -8,20 +8,9 @@ $link: () !default;
 $link-primary: () !default;
 
 // --------------------------------------------------------
-// Base class (reset anchors for opt-in styling)
+// Base class (see fundamentals for anchor resets)
 
-@include style-rule-from-map(
-  '.link',
-  map-assign(
-    (
-      color: inherit,
-      text-decoration: inherit,
-      // Override for buttons
-        text-align: inherit,
-    ),
-    $link
-  )
-);
+@include style-rule-from-map('.link', map-assign((), $link));
 
 // --------------------------------------------------------
 // Primary variant

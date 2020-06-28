@@ -20,20 +20,8 @@ $btn-lg: () !default;
   map-assign(
     (
       align-items: center,
-      background-color: transparent,
-      background-image: none,
-      border: none,
-      color: inherit,
-      cursor: pointer,
       display: inline-flex,
-      font: inherit,
       justify-content: center,
-      line-height: inherit,
-      margin: 0,
-      overflow: visible,
-      padding: 0,
-      text-decoration: none,
-      text-transform: none,
       // Prevent text selection on click of buttons
         user-select: none,
       // By default button content shouldn't wrap

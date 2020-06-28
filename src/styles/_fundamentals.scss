@@ -75,6 +75,11 @@ p {
   margin: 0;
 }
 
+a {
+  color: inherit;
+  text-decoration: inherit;
+}
+
 pre,
 code,
 kbd,
@@ -102,6 +107,20 @@ hr,
 figure,
 pre {
   margin: 0;
+}
+
+button {
+  background-color: transparent;
+  background-image: none;
+  color: inherit;
+  cursor: pointer;
+  font: inherit;
+  line-height: inherit;
+  margin: 0;
+  overflow: visible;
+  padding: 0;
+  text-align: inherit;
+  text-transform: none;
 }
 
 [role='button'] {
