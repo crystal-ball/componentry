@@ -223,11 +223,6 @@ table {
   border-collapse: collapse;
 }
 
-// Add the correct display in IE 10+.
-template {
-  display: none;
-}
-
 textarea {
   color: inherit;
   font-family: inherit;
@@ -264,7 +259,6 @@ iframe,
 embed,
 object {
   display: block;
-  vertical-align: middle;
 }
 
 /**
