@@ -1,34 +1,27 @@
 /* componentry/src/Link/link */
 
+// Base class: link
+// Variants: primary
+// Colors: [palette.theme-colors]
+
 $link: () !default;
 $link-primary: () !default;
-$link-button-overrides: () !default;
 
 // --------------------------------------------------------
-// Normalizing buttons styled as Links
-
-// These overrides apply to Link instances with a `button` base element, they
-// normalize browser button styles to match the Link base styles
+// Base class (reset anchors for opt-in styling)
 
 @include style-rule-from-map(
-  'button.link',
+  '.link',
   map-assign(
     (
-      border: none,
-      background-color: transparent,
-      cursor: pointer,
-      font: inherit,
-      padding: 0,
-      text-align: inherit,
+      color: inherit,
+      text-decoration: inherit,
+      // Override for buttons
+        text-align: inherit,
     ),
-    $link-button-overrides
+    $link
   )
 );
-
-// --------------------------------------------------------
-// Base class
-
-@include style-rule-from-map('.link', map-assign((), $link));
 
 // --------------------------------------------------------
 // Primary variant
