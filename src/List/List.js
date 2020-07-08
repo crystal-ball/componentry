@@ -1,5 +1,5 @@
 import { Children } from 'react'
-import elem from '../elem-factory'
+import element from '../element'
 import { useTheme } from '../Theme/Theme'
 
 /**
@@ -14,9 +14,9 @@ export default function List(props) {
   // We have to be careful of children like text nodes with this check
   const childProps = child && child.props ? child.props : {}
 
-  return elem({
+  return element({
     as: childProps.href || childProps.onClick ? 'div' : 'ul',
-    elemClassName: ['list', { 'list-flush': flush }],
+    componentCx: ['list', { 'list-flush': flush }],
     ...rest,
   })
 }
@@ -29,13 +29,13 @@ List.Item = function ListItem(props) {
   const { active = false, color = '', ...rest } = { ...useTheme('ListItem'), ...props }
   const { href, onClick } = rest
 
-  return elem({
+  return element({
     /* eslint-disable no-nested-ternary */
     as: href || onClick ? (href ? 'a' : 'button') : 'li',
     // List items always have the `list-item` class, and items that are
     // actionable (buttons/anchors) have the `list-action-item` modifier
     // class added with additional required styles.
-    elemClassName: {
+    componentCx: {
       active,
       'disabled': rest.disabled,
       'list-item': true,

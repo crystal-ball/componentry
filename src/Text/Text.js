@@ -1,4 +1,4 @@
-import elem from '../elem-factory'
+import element from '../element'
 import { useTheme } from '../Theme/Theme'
 
 const defaultVariantsElements = {
@@ -20,13 +20,13 @@ export default function Text(props) {
     ...props,
   }
 
-  return elem({
+  return element({
     as: inline
       ? 'span'
       : variantsElements[variant] || defaultVariantsElements[variant] || 'p',
     fontStyle: italic ? 'italic' : null,
     fontWeight: bold ? 'bold' : null,
-    elemClassName: {
+    componentCx: {
       '🅲-text': true,
       [`🅲-${variant}`]: !inline,
     },

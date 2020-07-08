@@ -1,8 +1,8 @@
 import React from 'react'
-import elem from '../elem-factory'
+import element from '../element'
 import { closeBase } from '../Close/Close'
 import { useTheme } from '../Theme/Theme'
-import simpleComponent from '../simple-component-factory'
+import staticComponent from '../factories/static-component'
 import { useActive, useVisible } from '../hooks'
 
 /**
@@ -31,9 +31,9 @@ export default function Alert(props) {
 
   const { active, visible } = useVisible(propsActive)
 
-  return elem({
+  return element({
     'role': 'alert',
-    'elemClassName': {
+    'componentCx': {
       'alert': true,
       'fade': dismissible, // Only include opacity transition class for disimissible alerts
       visible,
@@ -67,4 +67,4 @@ Alert.displayName = 'Alert'
 /**
  * [Alert close component 📝](https://componentry.design/components/alert)
  */
-Alert.Close = simpleComponent('AlertClose', closeBase)
+Alert.Close = staticComponent('AlertClose', closeBase)

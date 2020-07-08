@@ -1,8 +1,8 @@
 import React, { createContext, useCallback, useEffect, useRef, useState } from 'react'
 import { nanoid } from 'nanoid'
-import elem from './elem-factory'
-import { useTheme } from './Theme/Theme'
-import { closest } from './utils/dom'
+import element from '../element'
+import { useTheme } from '../Theme/Theme'
+import { closest } from '../utils/dom'
 
 /**
  * Active context
@@ -163,9 +163,9 @@ export default function activeContainerFactory(name, opts = {}) {
     // TODO: only wrap elements with a `div` when the element needs it
     return (
       <ActiveCtx.Provider value={activeValues}>
-        {elem({
+        {element({
           'data-id': guid,
-          'elemClassName': [name, direction, { [`${name}-${size}`]: size }],
+          'componentCx': [name, direction, { [`${name}-${size}`]: size }],
 
           // For elements with mouse events we need to know when the mouse event
           // occurs on the parent element, not the trigger element

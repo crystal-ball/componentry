@@ -1,5 +1,5 @@
-import elem from './elem-factory'
-import { useTheme } from './Theme/Theme'
+import element from '../element'
+import { useTheme } from '../Theme/Theme'
 
 /**
  * Generate a library component with no dynamic behaviors
@@ -8,12 +8,11 @@ import { useTheme } from './Theme/Theme'
  *  then instance props
  * @returns {import('react').FunctionComponent<any>}
  */
-export default function simpleComponent(name, propsDefaults) {
+export default function staticComponent(name, propsDefaults) {
   function Component(props) {
-    return elem({ ...propsDefaults, ...useTheme(name), ...props })
+    return element({ ...propsDefaults, ...useTheme(name), ...props })
   }
   Component.displayName = name
 
   return Component
 }
-// TODO: StaticComponentFactory

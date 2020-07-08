@@ -1,4 +1,4 @@
-import elem from '../elem-factory'
+import element from '../element'
 import { useTheme } from '../Theme/Theme'
 
 /**
@@ -11,8 +11,8 @@ export default function Flex(props) {
     ...props,
   }
 
-  return elem({
-    elemClassName: {
+  return element({
+    componentCx: {
       'd-flex': !inline,
       'd-inline-flex': inline,
       // column, column-reverse, row, row-reverse

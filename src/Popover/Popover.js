@@ -1,7 +1,7 @@
-import activeContainer from '../active-container-factory'
-import activeContent from '../active-content-factory'
-import activeTrigger from '../active-trigger-factory'
-import simpleComponent from '../simple-component-factory'
+import activeContainer from '../factories/active-container-component'
+import activeContent from '../factories/active-content-component'
+import activeTrigger from '../factories/active-trigger-component'
+import staticComponent from '../factories/static-component'
 
 /**
  * [Popover component 📝](https://componentry.design/components/popover)
@@ -16,8 +16,8 @@ export default Popover
 /**
  * [Popover body component 📝](https://componentry.design/components/popover)
  */
-Popover.Body = simpleComponent('PopoverBody', {
-  elemClassName: 'popover-body',
+Popover.Body = staticComponent('PopoverBody', {
+  componentCx: 'popover-body',
 })
 
 /**
@@ -31,9 +31,9 @@ Popover.Content = activeContent('popover', {
 /**
  * [Popover heading component 📝](https://componentry.design/components/popover)
  */
-Popover.Heading = simpleComponent('PopoverHeading', {
+Popover.Heading = staticComponent('PopoverHeading', {
   as: 'h3',
-  elemClassName: 'popover-heading',
+  componentCx: 'popover-heading',
 })
 
 /**

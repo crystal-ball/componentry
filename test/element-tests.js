@@ -66,13 +66,13 @@ export default function elementTests(TestComponent) {
       <Theme
         theme={{
           [componentName]: {
-            'themeClassName': 'theme-class',
+            'themeCx': 'theme-class',
             'data-radical': 'hecka',
           },
         }}
       >
         <TestComponent data-testid='theme'>Theme values example</TestComponent>
-        <TestComponent data-radical='nope' data-testid='jsx' themeClassName={null}>
+        <TestComponent data-radical='nope' data-testid='jsx' themeCx={null}>
           JSX overrides example
         </TestComponent>
         <TestComponent

@@ -4,9 +4,9 @@ import { nanoid } from 'nanoid'
 
 import { closeBase } from '../Close/Close'
 import { useTheme } from '../Theme/Theme'
-import elem from '../elem-factory'
+import element from '../element'
 import { useActive, useActiveSrollReset, useNoScroll, useVisible } from '../hooks'
-import simpleComponent from '../simple-component-factory'
+import staticComponent from '../factories/static-component'
 
 const ModalCtx = createContext({})
 
@@ -53,9 +53,9 @@ export default function Modal(props) {
   //     div.modal-container - Contains the modal header,body,footer elements
   return (
     <ModalCtx.Provider value={{ active, deactivate, guid }}>
-      {elem({
+      {element({
         'onClick': deactivate,
-        'elemClassName': [
+        'componentCx': [
           'modal-overlay',
           'fade',
           `modal-${scroll}-scroll`,
@@ -95,7 +95,7 @@ Modal.displayName = 'Modal'
 /**
  * [Modal close component 📝](https://componentry.design/components/modal)
  */
-Modal.Close = simpleComponent('ModalClose', closeBase)
+Modal.Close = staticComponent('ModalClose', closeBase)
 
 /**
  * [Modal header component 📝](https://componentry.design/components/modal)
@@ -107,8 +107,8 @@ Modal.Header = function ModalHeader(props) {
   }
   const { deactivate } = useContext(ModalCtx)
 
-  return elem({
-    elemClassName: 'modal-header',
+  return element({
+    componentCx: 'modal-header',
     children: (
       <>
         {children}
@@ -126,10 +126,10 @@ Modal.Header.displayName = 'ModalHeader'
  * [Modal title component 📝](https://componentry.design/components/modal)
  */
 Modal.Title = function ModalTitle(props) {
-  return elem({
+  return element({
     as: 'h2',
     id: useContext(ModalCtx).guid,
-    elemClassName: 'modal-title',
+    componentCx: 'modal-title',
     ...useTheme('Modaltitle'),
     ...props,
   })
@@ -143,9 +143,9 @@ Modal.Body = function ModalBody(props) {
   const bodyRef = useRef(null)
   useActiveSrollReset(useContext(ModalCtx).active, bodyRef)
 
-  return elem({
+  return element({
     ref: bodyRef,
-    elemClassName: 'modal-body',
+    componentCx: 'modal-body',
     ...useTheme('ModalBody'),
     ...props,
   })
@@ -155,6 +155,6 @@ Modal.Body.displayName = 'ModalBody'
 /**
  * [Modal footer component 📝](https://componentry.design/components/modal)
  */
-Modal.Footer = simpleComponent('ModalFooter', {
-  elemClassName: 'modal-footer',
+Modal.Footer = staticComponent('ModalFooter', {
+  componentCx: 'modal-footer',
 })

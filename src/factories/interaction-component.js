@@ -1,6 +1,6 @@
 import cx from 'classnames'
 
-import elem from '../elem-factory'
+import element from '../element'
 import { useTheme } from '../Theme/Theme'
 
 /**
@@ -16,10 +16,10 @@ export default function interactionComponentFactory(name, baseCx) {
     // If an href or to is passed, this instance should render an anchor tag
     const anchorInstance = Boolean(merged.href || merged.to)
 
-    return elem({
+    return element({
       as: anchorInstance ? 'a' : 'button',
       type: anchorInstance ? undefined : 'button',
-      elemClassName: cx(baseCx, `${baseCx}-${variant}`, {
+      componentCx: cx(baseCx, `${baseCx}-${variant}`, {
         [`${baseCx}-${size}`]: size,
         [`${baseCx}-color-${color}`]: color,
         active,
