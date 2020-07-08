@@ -2,7 +2,7 @@ import React, { createContext, useContext, useRef } from 'react'
 import { nanoid } from 'nanoid'
 import element from '../element'
 import { useTheme } from '../Theme/Theme'
-import staticCompoent from '../factories/static-component'
+import staticComponent from '../factories/static-component'
 
 const InputCtx = createContext({ guid: null })
 
@@ -53,13 +53,13 @@ Input.Label.displayName = 'InputLabel'
 /**
  * [Input error component 📝](https://componentry.design/components/input)
  */
-Input.Error = staticCompoent('InputError', {
+Input.Error = staticComponent('InputError', {
   componentCx: 'input-error',
 })
 
 /**
  * [Input description component 📝](https://componentry.design/components/input)
  */
-Input.Description = staticCompoent('InputDescription', {
+Input.Description = staticComponent('InputDescription', {
   componentCx: 'input-description',
 })

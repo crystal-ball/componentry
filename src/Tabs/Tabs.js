@@ -2,9 +2,9 @@ import { useTheme } from '../Theme/Theme'
 import activeContainer from '../factories/active-container-component'
 import activeContent from '../factories/active-content-component'
 import activeTrigger from '../factories/active-trigger-component'
-import element from '../element'
 import staticComponent from '../factories/static-component'
 import { navClasses } from '../utils/componentry'
+import element from '../element'
 
 /**
  * [Tabs component 📝](https://componentry.design/components/tabs)
