@@ -4,7 +4,7 @@
  */
 
 import { useContext, useEffect, useLayoutEffect, useRef, useState } from 'react'
-import { ActiveCtx } from './active-container-factory'
+import { ActiveCtx } from './factories/active-container-component'
 
 // --------------------------------------------------------
 // useActive hook

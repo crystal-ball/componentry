@@ -37,9 +37,9 @@ not documentation should explain why the convention has been overridden.
 _These responsibilites inform what components should be required to manage and
 prevents creep_
 
-- `active-container-factory` generates container components for active elements.
-  Handles coordination of controlled and uncontrolled active usage, and provides
-  the active provider to set the active context for that element.
+- `active-container-component` generates container components for active
+  elements. Handles coordination of controlled and uncontrolled active usage,
+  and provides the active provider to set the active context for that element.
 - `ActiveProvider` provides context for passing+accessing active state and
   update methods at any level.
 - `withActive` passes the values and change handlers with a context consumer.

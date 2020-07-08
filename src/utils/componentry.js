@@ -203,10 +203,10 @@ export function componentry({
   const classNames = {}
   const spacingCx = []
   const styles = {}
-  const rest = {}
+  const props = {}
 
   // We want disabled to reach final element as an HTML attr value
-  if (filteredProps.disabled) rest.disabled = true
+  if (filteredProps.disabled) props.disabled = true
 
   // For each prop passed to any component, bucket it into a library className
   // or style set or pass through in rest
@@ -240,13 +240,13 @@ export function componentry({
       }
     } else {
       // 4. The prop doesn't map to a library utility prop, pass it through
-      rest[prop] = filteredProps[prop]
+      props[prop] = filteredProps[prop]
     }
   })
 
   return {
-    libClassName: [generateClassNames(classNames), spacingCx],
-    rest,
-    libraryStyles: styles,
+    props,
+    styles,
+    utilityCx: [generateClassNames(classNames), spacingCx],
   }
 }

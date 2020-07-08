@@ -1,5 +1,5 @@
 import React from 'react'
-import elem from '../elem-factory'
+import element from '../element'
 import { useTheme } from '../Theme/Theme'
 
 /**
@@ -9,10 +9,10 @@ export default function Icon(props) {
   /** @type {{ variant: string, id: string }} */
   const { variant = 'font', id, ...rest } = { ...useTheme('Icon'), ...props }
 
-  return elem({
+  return element({
     as: 'svg',
     role: 'img',
-    elemClassName: `🅲-icon 🅲-${variant} icon-${id}`,
+    componentCx: `🅲-icon 🅲-${variant} icon-${id}`,
     children: <use href={`#${id}`} xlinkHref={`#${id}`} />,
     ...rest,
   })

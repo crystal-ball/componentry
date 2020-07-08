@@ -1,8 +1,8 @@
 import React, { useContext } from 'react'
-import elem from './elem-factory'
-import { ActiveCtx } from './active-container-factory'
-import { useTheme } from './Theme/Theme'
-import { elemArias } from './utils/componentry'
+import element from '../element'
+import { useTheme } from '../Theme/Theme'
+import { elemArias } from '../utils/componentry'
+import { ActiveCtx } from './active-container-component'
 
 /**
  * Factory returns custom `<Trigger />` components defined by the fn options.
@@ -60,7 +60,7 @@ export default function activeTriggerFactory(
     else if (activeId) onClick = activeId === active ? deactivate : activate
     else onClick = active ? deactivate : activate
 
-    return elem({
+    return element({
       as,
       type,
       ...elemArias({
@@ -70,7 +70,7 @@ export default function activeTriggerFactory(
         type: 'trigger',
         arias,
       }),
-      elemClassName: {
+      componentCx: {
         [baseClass]: true,
         [`${baseClass}-${variant}`]: true,
         // For compound-active contexts add an active class if activeIds match
@@ -80,12 +80,14 @@ export default function activeTriggerFactory(
       onClick,
       // For compound-active contexts, the value attr is to expose the activeId
       value: activeId,
-      children: (
-        <>
-          {children}
-          {decoration}
-        </>
-      ),
+      /* inputs cannot have children */
+      children:
+        as === 'input' ? null : (
+          <>
+            {children}
+            {decoration}
+          </>
+        ),
       // Pass through props rest last to allow any instance overrides
       ...rest,
     })

@@ -1,8 +1,8 @@
 import React, { createContext, useContext, useRef } from 'react'
 import { nanoid } from 'nanoid'
-import elem from '../elem-factory'
+import element from '../element'
 import { useTheme } from '../Theme/Theme'
-import simpleComponent from '../simple-component-factory'
+import staticCompoent from '../factories/static-component'
 
 const InputCtx = createContext({ guid: null })
 
@@ -25,10 +25,10 @@ Input.displayName = 'Input'
  * [Input field component 📝](https://componentry.design/components/input)
  */
 Input.Field = function InputField(props) {
-  return elem({
+  return element({
     as: 'input',
     type: 'text',
-    elemClassName: 'input-field',
+    componentCx: 'input-field',
     id: useContext(InputCtx).guid, // aria -> htmlFor
     ...useTheme('InputField'),
     ...props,
@@ -40,9 +40,9 @@ Input.Field.displayName = 'InputField'
  * [Input label component 📝](https://componentry.design/components/input)
  */
 Input.Label = function InputLabel(props) {
-  return elem({
+  return element({
     as: 'label',
-    elemClassName: 'input-label',
+    componentCx: 'input-label',
     htmlFor: useContext(InputCtx).guid, // aria -> id
     ...useTheme('InputLabel'),
     ...props,
@@ -53,13 +53,13 @@ Input.Label.displayName = 'InputLabel'
 /**
  * [Input error component 📝](https://componentry.design/components/input)
  */
-Input.Error = simpleComponent('InputError', {
-  elemClassName: 'input-error',
+Input.Error = staticCompoent('InputError', {
+  componentCx: 'input-error',
 })
 
 /**
  * [Input description component 📝](https://componentry.design/components/input)
  */
-Input.Description = simpleComponent('InputDescription', {
-  elemClassName: 'input-description',
+Input.Description = staticCompoent('InputDescription', {
+  componentCx: 'input-description',
 })

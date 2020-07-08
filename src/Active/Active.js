@@ -1,6 +1,6 @@
-import activeContainer from '../active-container-factory'
-import activeContent from '../active-content-factory'
-import activeTrigger from '../active-trigger-factory'
+import activeContainer from '../factories/active-container-component'
+import activeContent from '../factories/active-content-component'
+import activeTrigger from '../factories/active-trigger-component'
 
 /**
  * [Active component 📝](https://componentry.design/components/active)

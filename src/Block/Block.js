@@ -1,4 +1,4 @@
-import elem from '../elem-factory'
+import element from '../element'
 import { useTheme } from '../Theme/Theme'
 
 /**
@@ -7,8 +7,8 @@ import { useTheme } from '../Theme/Theme'
 export default function Block(props) {
   const { inline = false, ...rest } = { ...useTheme('Block'), ...props }
 
-  return elem({
-    elemClassName: {
+  return element({
+    componentCx: {
       'd-block': !inline,
       'd-inline-block': inline,
     },

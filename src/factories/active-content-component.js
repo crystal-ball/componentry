@@ -1,8 +1,8 @@
 import React, { useContext } from 'react'
-import elem from './elem-factory'
-import { elemArias } from './utils/componentry'
-import { ActiveCtx } from './active-container-factory'
-import { useTheme } from './Theme/Theme'
+import element from '../element'
+import { elemArias } from '../utils/componentry'
+import { useTheme } from '../Theme/Theme'
+import { ActiveCtx } from './active-container-component'
 
 /**
  * Factory returns custom `<Content />` components defined by the options.
@@ -28,7 +28,7 @@ export default function ActiveContentFactory(
 
     // Create component content (return optionally wraps content in a width busting
     // container)
-    const content = elem({
+    const content = element({
       ...elemArias({
         active,
         activeId,
@@ -36,7 +36,7 @@ export default function ActiveContentFactory(
         type: 'content',
         arias,
       }),
-      elemClassName: variant,
+      componentCx: variant,
       children: (
         <>
           {positioned && (

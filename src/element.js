@@ -6,9 +6,9 @@ import { componentry } from './utils/componentry'
  * @typedef {Object} ElementFactoryOptions
  * @property {string} [as] Element type of tag name, React component, or React fragment
  * @property {string} [className] Component props className
- * @property {any} [elemClassName] Library component className
- * @property {string} [themeClassName] Theme className
+ * @property {any} [componentCx] Library component className
  * @property {{ [x: string]: any }} [style] Inline component styles
+ * @property {string} [themeCx] Theme className
  */
 
 /**
@@ -21,34 +21,26 @@ import { componentry } from './utils/componentry'
  * @param {ElementFactoryOptions} opts
  * @returns {import('react').ReactElement}
  */
-export default function elementFactory({
+export default function element({
   as = 'div',
   className,
-  elemClassName,
+  componentCx,
   style,
-  themeClassName,
+  themeCx,
   ...merged
 }) {
-  /** @type {{ [x: string]: any }} */
-  const typedMerge = merged
   // The componentry util will: filter out remaining library props, create base
   // styles, and create base classNames
-  const c = componentry(typedMerge)
-
-  // Ensure that input elements do not contain children included by default from
-  // active factories
-  if (as === 'input') {
-    delete c.rest.children
-  }
+  const { utilityCx, props, styles } = componentry(merged)
 
   return createElement(as, {
-    style: { ...c.libraryStyles, ...style },
+    style: { ...styles, ...style },
     className: cx(
-      themeClassName, // User theme cx
-      elemClassName, // Library component cx
-      className, // User JSX cx
-      c.libClassName, // Library system cx
+      themeCx,
+      componentCx,
+      className, // User supplied className
+      utilityCx,
     ),
-    ...c.rest,
+    ...props,
   })
 }

@@ -1,4 +1,4 @@
-import elem from '../elem-factory'
+import element from '../element'
 import { useTheme } from '../Theme/Theme'
 import { navClasses } from '../utils/componentry'
 
@@ -6,9 +6,9 @@ import { navClasses } from '../utils/componentry'
  * [Nav component 📝](https://componentry.design/components/nav)
  */
 export default function Nav(props) {
-  return elem({
+  return element({
     as: 'nav',
-    elemClassName: navClasses('nav', props),
+    componentCx: navClasses('nav', props),
     role: 'navigation',
     ...useTheme('Nav'),
     ...props,
@@ -25,9 +25,9 @@ Nav.Item = function NavItem(props) {
     ...props,
   }
 
-  return elem({
+  return element({
     as: 'a',
-    elemClassName: {
+    componentCx: {
       'nav-item': true,
       [`nav-item-${variant}`]: true,
     },

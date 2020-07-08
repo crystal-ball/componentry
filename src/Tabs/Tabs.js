@@ -1,9 +1,9 @@
 import { useTheme } from '../Theme/Theme'
-import activeContainer from '../active-container-factory'
-import activeContent from '../active-content-factory'
-import activeTrigger from '../active-trigger-factory'
-import elem from '../elem-factory'
-import simpleComponent from '../simple-component-factory'
+import activeContainer from '../factories/active-container-component'
+import activeContent from '../factories/active-content-component'
+import activeTrigger from '../factories/active-trigger-component'
+import element from '../element'
+import staticComponent from '../factories/static-component'
 import { navClasses } from '../utils/componentry'
 
 /**
@@ -15,8 +15,8 @@ export default Tabs
 /**
  * [Tabs content container component 📝](https://componentry.design/components/tabs)
  */
-Tabs.ContentContainer = simpleComponent('TabsContentContainer', {
-  elemClassName: 'tabs-content-container',
+Tabs.ContentContainer = staticComponent('TabsContentContainer', {
+  componentCx: 'tabs-content-container',
 })
 
 /**
@@ -31,9 +31,9 @@ Tabs.Content = activeContent('tabs', {
  * [Tabs nav component 📝](https://componentry.design/components/tabs)
  */
 Tabs.TriggersContainer = function TriggersContainer(props) {
-  return elem({
+  return element({
     role: 'tablist',
-    elemClassName: navClasses('tabs-triggers-container', props),
+    componentCx: navClasses('tabs-triggers-container', props),
     ...useTheme('TriggersContainer'),
     ...props,
   })

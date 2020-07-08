@@ -1,10 +1,10 @@
 import React from 'react'
-import simpleComponent from '../simple-component-factory'
+import staticComponent from '../factories/static-component'
 
 export const closeBase = {
   'aria-label': 'close',
   'as': 'button',
-  'elemClassName': 'close',
+  'componentCx': 'close',
   'type': 'button',
   'children': (
     <svg className='icon icon-close font' role='img'>
@@ -16,4 +16,4 @@ export const closeBase = {
 /**
  * [Close component 📝](https://componentry.design/components/close)
  */
-export default simpleComponent('Close', closeBase)
+export default staticComponent('Close', closeBase)

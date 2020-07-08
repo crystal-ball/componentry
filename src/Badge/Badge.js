@@ -1,4 +1,4 @@
-import elem from '../elem-factory'
+import element from '../element'
 import { useTheme } from '../Theme/Theme'
 
 /**
@@ -14,8 +14,8 @@ export default function Badge(props) {
   /** @type {Props} */
   const { color, rounded, ...rest } = { ...useTheme('Badge'), ...props }
 
-  return elem({
-    elemClassName: {
+  return element({
+    componentCx: {
       'badge': true,
       [`badge-${color}`]: color,
       'badge-rounded': rounded,
