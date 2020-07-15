@@ -54,10 +54,10 @@
     "nanoid": "3"
   },
   "devDependencies": {
-    "@babel/cli": "7.10.4",
-    "@babel/core": "7.10.4",
+    "@babel/cli": "7.10.5",
+    "@babel/core": "7.10.5",
     "@babel/plugin-transform-modules-commonjs": "7.10.4",
-    "@babel/plugin-transform-runtime": "7.10.4",
+    "@babel/plugin-transform-runtime": "7.10.5",
     "@babel/preset-typescript": "7.10.4",
     "@crystal-ball/commitizen-base": "2.7.1",
     "@crystal-ball/prettier-base": "2.2.0",
@@ -70,7 +70,7 @@
     "@storybook/react": "5.3.19",
     "@storybook/theming": "5.3.19",
     "@testing-library/jest-dom": "5.11.0",
-    "@testing-library/react": "10.4.4",
+    "@testing-library/react": "10.4.6",
     "@types/classnames": "2.2.10",
     "babel-loader": "8.1.0",
     "css-loader": "3.6.0",
