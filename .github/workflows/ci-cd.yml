@@ -13,23 +13,13 @@ jobs:
         uses: actions/setup-node@v1
         with:
           node-version: '12.16'
-      - name: Code Climate - Setup
-        run: |
-          curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
-          chmod +x ./cc-test-reporter
-          ./cc-test-reporter before-build
       - name: Install
         run: CI=true npm install
       - name: Test
         run: npm test
-      - name: Code Climate - Report
+      - name: Codecov
         if: success()
-        run: |
-          export GIT_BRANCH="${GIT_BRANCH:-${GITHUB_REF:11}}"
-          ./cc-test-reporter after-build
-        env:
-          CC_TEST_REPORTER_ID: ${{ secrets.CC_TEST_REPORTER_ID }}
-          GIT_BRANCH: ${{ github.head_ref }}
+        uses: codecov/codecov-action@v1
 # --- Package publishing 🚀
 # publish:
 #   name: Continuous Deployment
