@@ -8,16 +8,23 @@ jobs:
     if: contains(github.event.head_commit.message, 'skip ci') == false
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v1
-      - name: Setup Node.js
-        uses: actions/setup-node@v1
+      - uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-node@v1
         with:
           node-version: '12.16'
+      - uses: actions/cache@v2
+        with:
+          path: ~/.npm
+          key: ${{ runner.os }}-node-${{ hashFiles('heckarad-application/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-node-
       - name: Install
         run: CI=true npm install
       - name: Test
         run: npm test
-      - name: Codecov
+      - name: Codecov report
         if: success()
         uses: codecov/codecov-action@v1
 # --- Package publishing 🚀
