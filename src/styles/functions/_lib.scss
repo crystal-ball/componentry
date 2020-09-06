@@ -3,7 +3,7 @@
 /// @returns {string} Prefixed component class name
 @function componentry-class($class) {
   @if ($classes-prefix != null) {
-    @return '.#{$classes-prefix}-#{$class}';
+    @return '.#{$classes-prefix}#{$class}';
   } @else {
     @return '.#{$class}';
   }
