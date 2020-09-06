@@ -1,0 +1,98 @@
+/// Tables
+///
+/// Inventory: .🅲-table, .🅲-table-head, .🅲-table-body, .🅲-table-row, .🅲-table-header, .🅲-table-cell
+///
+/// 📝 Notes
+/// - Borders: Table head has a border bottom, and then sibling rows have border top. This
+///   keeps a border below the head for tables with body scrolling.
+
+// --------------------------------------------------------
+// Table
+
+$table: () !default;
+@include style-rule-from-map(
+  componentry-class(table),
+  map-assign(
+    (
+      display: block,
+      width: 100%,
+    ),
+    $table
+  )
+);
+
+// --------------------------------------------------------
+// Table head
+
+$table-head: () !default;
+@include style-rule-from-map(
+  componentry-class(table-head),
+  map-assign(
+    (
+      border-bottom: theme-get('borders.default'),
+    ),
+    $table-head
+  )
+);
+
+// --------------------------------------------------------
+// Table body
+
+$table-body: () !default;
+@include style-rule-from-map(
+  componentry-class(table-body),
+  map-assign((/* no styles for table body */), $table-body)
+);
+
+// --------------------------------------------------------
+// Table row
+
+$table-row: () !default;
+@include style-rule-from-map(
+  componentry-class(table-row),
+  map-assign(
+    (
+      display: grid,
+      // grid-template-columns: repeat(auto-fit, minmax(1px, 1fr));
+        // Default table row grid will be columns of even width
+        grid-auto-columns: 1fr,
+      grid-auto-flow: column,
+      // Add a border top to every row after the first one (not on first or there would
+        // be a double border at the top of the table)
+        '& + &':
+        (
+          border-top: theme-get('borders.default'),
+        ),
+    ),
+    $table-row
+  )
+);
+
+// --------------------------------------------------------
+// Table header
+
+$table-header: () !default;
+@include style-rule-from-map(
+  componentry-class(table-header),
+  map-assign(
+    (
+      font-weight: theme-get('typography.font-weights.bold'),
+      padding: theme-get('spacing.sm'),
+    ),
+    $table-header
+  )
+);
+
+// --------------------------------------------------------
+// Table cell
+
+$table-cell: () !default;
+@include style-rule-from-map(
+  componentry-class(table-cell),
+  map-assign(
+    (
+      padding: theme-get('spacing.sm'),
+    ),
+    $table-cell
+  )
+);
