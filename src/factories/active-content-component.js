@@ -8,7 +8,7 @@ import { ActiveCtx } from './active-container-component'
  * Factory returns custom `<Content />` components defined by the options.
  * @returns {import('react').FunctionComponent<any>}
  */
-export default function ActiveContentFactory(
+export default function activeContentComponent(
   name,
   {
     // Map of aria attributes to render with component

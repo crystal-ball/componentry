@@ -26,7 +26,7 @@ export const ActiveCtx = createContext({ active: false })
  * needs like setting or removing special event listeners.
  * @returns {import('react').FunctionComponent<any>}
  */
-export default function activeContainerFactory(name, opts = {}) {
+export default function activeContainerComponent(name, opts = {}) {
   const themeName = `${name.slice(0, 1).toUpperCase()}${name.slice(1)}`
   function ActiveContainer(props) {
     const {

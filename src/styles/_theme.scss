@@ -41,7 +41,7 @@ $theme: map-assign((
 
   // --- PALETTE
   palette: (
-    theme-colors: (primary, success, warning, error),
+    theme-colors: (primary, success, warning, critical),
     // ℹ️ Using gray for this key causes SASS to return null when trying to look
     // up the value (presumably b/c gray is a color)
     grayscale: (
@@ -88,7 +88,7 @@ $theme: map-assign((
       '800': #6C521C,
       '900': #483713,
     ),
-    error: (
+    critical: (
       '100': #FBEEED,
       '200': #F6D4D3,
       '300': #F0BAB9,
@@ -105,7 +105,7 @@ $theme: map-assign((
       inverse: #f0f0f0,
       success: #84B144,
       warning: #D7A538,
-      error: #C34B47
+      critical: #C34B47
     ),
     backgrounds: (
       body: #fff

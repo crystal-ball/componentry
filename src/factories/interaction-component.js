@@ -6,7 +6,7 @@ import { useTheme } from '../Theme/Theme'
 /**
  * Creates an interaction component
  */
-export default function interactionComponentFactory(name, baseCx) {
+export default function interactionComponent(name, baseCx) {
   function InteractionComponent(props) {
     const { variant = 'primary', active, color, disabled, size, ...merged } = {
       ...useTheme(name),
