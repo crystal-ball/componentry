@@ -24,42 +24,6 @@ A **secondary** variant button:
 
 ---
 
-## Theme colors
-
-Pass a `color` to set a theme color background:
-
-<div className='d-flex'>
-  <div className='btn-container-x'>
-    {['primary', 'success', 'warning', 'error', 'info'].map((color) => (
-      <Button
-        key={color}
-        variant='primary'
-        color={color}
-        onClick={action('button click')}
-      >
-        Button
-      </Button>
-    ))}
-  </div>
-</div>
-
-<div className='d-flex mt-md'>
-  <div className='btn-container-x'>
-    {['primary', 'success', 'warning', 'error', 'info'].map((color) => (
-      <Button
-        key={color}
-        variant='secondary'
-        color={color}
-        onClick={action('button click')}
-      >
-        Button
-      </Button>
-    ))}
-  </div>
-</div>
-
----
-
 ## Sizes
 
 Pass a `size` to set a button size:

@@ -1,6 +1,6 @@
-import interactionComponentFactory from '../factories/interaction-component'
+import interactionComponent from '../factories/interaction-component'
 
 /**
  * [Button component 📝](https://componentry.design/components/button)
  */
-export default interactionComponentFactory('Button', 'btn')
+export default interactionComponent('Button', 'btn')

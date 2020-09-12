@@ -28,7 +28,7 @@ export default function Text(props) {
     fontWeight: bold ? 'bold' : null,
     componentCx: {
       '🅲-text': true,
-      [`🅲-${variant}`]: !inline,
+      [`text-${variant}`]: !inline,
     },
     ...rest,
   })

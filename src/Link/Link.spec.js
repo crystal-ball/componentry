@@ -14,7 +14,7 @@ describe('<Link/>', () => {
         Link
       </Link>,
     )
-    expect(screen.getByText('Link')).toHaveClass('link link-primary link-color-success')
+    expect(screen.getByText('Link')).toHaveClass('🅲-link link-primary link-color-success')
   })
 })
 

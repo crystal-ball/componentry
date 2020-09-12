@@ -1,310 +1,84 @@
-/* componentry/src/Button/button */
+///                                       <Button /> styles
+/// -------------------------------------------------------
 
-// Base class: btn
-// Variants: primary, secondary
-// Sizes: sm, lg
+$button: () !default;
 
-$btn: () !default;
-
-$btn-primary: () !default;
-$btn-secondary: () !default;
-
-$btn-sm: () !default;
-$btn-lg: () !default;
-
-// --------------------------------------------------------
-// Base class (reset buttons for opt-in styling)
-
-@include style-rule-from-map(
-  '.btn',
-  map-assign(
+$button-defaults: (
+  base: (
+    align-items: center,
+    display: inline-flex,
+    justify-content: center,
+    // Prevent text selection on click of buttons
+      user-select: none,
+    // By default button content shouldn't wrap
+      white-space: nowrap,
+  ),
+  // --- Variants
+    variants:
     (
-      align-items: center,
-      display: inline-flex,
-      justify-content: center,
-      // Prevent text selection on click of buttons
-        user-select: none,
-      // By default button content shouldn't wrap
-        white-space: nowrap,
-    ),
-    $btn
-  )
-);
-
-// --------------------------------------------------------
-// Primary variant
-
-$btn-primary-base: (
-  background-color: theme-get('palette.grayscale.500'),
-  border: 1px solid theme-get('palette.grayscale.500'),
-  border-radius: theme-get('border-radii.default'),
-  color: theme-get('palette.typography.inverse'),
-  font-size: theme-get('typography.font-sizes.button'),
-  padding: 0.25rem 1rem,
-  '&:hover': (
-    background-color: theme-get('palette.grayscale.700'),
-  ),
-  '&:active': (
-    background-color: theme-get('palette.grayscale.900'),
-  ),
-  '&:disabled': (
-    border: 1px solid theme-get('palette.grayscale.300'),
-    background-color: theme-get('palette.grayscale.300'),
-  ),
-);
-
-@each $color in theme-get('palette.theme-colors') {
-  $btn-primary-base: map-merge(
-    $btn-primary-base,
-    (
-      '&.btn-color-#{$color}': (
-        background-color: theme-get('palette.#{$color}.500'),
-        border-color: theme-get('palette.#{$color}.700'),
+      primary: (
+        background-color: theme-get('palette.grayscale.500'),
+        border: 1px solid theme-get('palette.grayscale.500'),
+        border-radius: theme-get('border-radii.default'),
+        color: theme-get('palette.typography.inverse'),
+        font-size: theme-get('typography.font-sizes.button'),
+        padding: 0.25rem 1rem,
         '&:hover': (
-          background-color: theme-get('palette.#{$color}.700'),
+          background-color: theme-get('palette.grayscale.700'),
         ),
         '&:active': (
-          background-color: theme-get('palette.#{$color}.900'),
+          background-color: theme-get('palette.grayscale.900'),
         ),
         '&:disabled': (
-          background-color: theme-get('palette.#{$color}.300'),
+          border: 1px solid theme-get('palette.grayscale.300'),
+          background-color: theme-get('palette.grayscale.300'),
         ),
       ),
-    )
-  );
-}
-
-@include style-rule-from-map('.btn-primary', map-assign($btn-primary-base, $btn-primary));
-
-// --------------------------------------------------------
-// Secondary variant
-
-$btn-secondary-base: (
-  background-color: transparent,
-  border: 1px solid theme-get('palette.grayscale.500'),
-  border-radius: theme-get('border-radii.default'),
-  color: theme-get('palette.grayscale.500'),
-  font-size: theme-get('typography.font-sizes.button'),
-  padding: 0.25rem 1rem,
-  '&:hover': (
-    border-color: theme-get('palette.grayscale.700'),
-    color: theme-get('palette.grayscale.700'),
-  ),
-  '&:active': (
-    border-color: theme-get('palette.grayscale.900'),
-    color: theme-get('palette.grayscale.900'),
-  ),
-  '&:disabled': (
-    border-color: theme-get('palette.grayscale.300'),
-    color: theme-get('palette.grayscale.300'),
-  ),
-);
-
-@each $color in theme-get('palette.theme-colors') {
-  $btn-secondary-base: map-merge(
-    $btn-secondary-base,
-    (
-      '&.btn-color-#{$color}': (
-        border-color: theme-get('palette.#{$color}.500'),
-        color: theme-get('palette.#{$color}.500'),
+      secondary: (
+        background-color: transparent,
+        border: 1px solid theme-get('palette.grayscale.500'),
+        border-radius: theme-get('border-radii.default'),
+        color: theme-get('palette.grayscale.500'),
+        font-size: theme-get('typography.font-sizes.button'),
+        padding: 0.25rem 1rem,
         '&:hover': (
-          border-color: theme-get('palette.#{$color}.700'),
-          color: theme-get('palette.#{$color}.700'),
+          border-color: theme-get('palette.grayscale.700'),
+          color: theme-get('palette.grayscale.700'),
         ),
         '&:active': (
-          border-color: theme-get('palette.#{$color}.900'),
-          color: theme-get('palette.#{$color}.900'),
+          border-color: theme-get('palette.grayscale.900'),
+          color: theme-get('palette.grayscale.900'),
         ),
         '&:disabled': (
-          border-color: theme-get('palette.#{$color}.300'),
-          color: theme-get('palette.#{$color}.300'),
+          border-color: theme-get('palette.grayscale.300'),
+          color: theme-get('palette.grayscale.300'),
         ),
       ),
-    )
-  );
-}
-
-@include style-rule-from-map(
-  '.btn-secondary',
-  map-assign($btn-secondary-base, $btn-secondary)
-);
-
-// --------------------------------------------------------
-// Text variant
-
-// $btn-text-base: (
-//   background-color: transparent,
-//   border: 1px solid transparent,
-//   color: theme-get('palette.grayscale.500'),
-//   '&:hover': (
-//     color: theme-get('palette.grayscale.700'),
-//   ),
-//   '&:active': (
-//     color: theme-get('palette.grayscale.900'),
-//   ),
-//   '&:disabled': (
-//     color: theme-get('palette.grayscale.300'),
-//   ),
-// );
-
-// @each $color in theme-get('palette.theme-colors') {
-//   $btn-text-base: map-merge(
-//     $btn-text-base,
-//     (
-//       '&.btn-#{$color}-color': (
-//         color: theme-get('palette.#{$color}.300'),
-//         '&:hover': (
-//           color: theme-get('palette.#{$color}.400'),
-//         ),
-//         '&:active': (
-//           color: theme-get('palette.#{$color}.500'),
-//         ),
-//         '&:disabled': (
-//           color: theme-get('palette.#{$color}.200'),
-//         ),
-//       ),
-//     )
-//   );
-// }
-
-// @include style-rule-from-map('.btn-text', map-assign($btn-text-base, $btn-text));
-
-// --------------------------------------------------------
-// Button sizes
-
-@include style-rule-from-map(
-  '.btn-sm',
-  map-assign(
-    (
-      border-radius: theme-get('border-radii.sm'),
-      font-size: theme-get('typography.font-sizes.sm'),
-      padding: 0.125rem 0.75rem,
     ),
-    $btn-sm
-  )
-);
-
-@include style-rule-from-map(
-  '.btn-lg',
-  map-assign(
+  // --- Sizes
+    sizes:
     (
-      border-radius: theme-get('border-radii.lg'),
-      font-size: theme-get('typography.font-sizes.lg'),
-      padding: 0.5rem 2rem,
+      sm: (
+        border-radius: theme-get('border-radii.sm'),
+        font-size: theme-get('typography.font-sizes.sm'),
+        padding: 0.125rem 0.75rem,
+      ),
+      lg: (
+        border-radius: theme-get('border-radii.lg'),
+        font-size: theme-get('typography.font-sizes.lg'),
+        padding: 0.5rem 2rem,
+      ),
     ),
-    $btn-lg
-  )
 );
 
-/* ~componentry/src/ButtonGroup/button-group */
+$button: map-assign($button-defaults, $button);
 
-//
-// Container div
-//
+@include style-rule-from-map(componentry-class(btn), get($button, 'base'));
 
-// Make the div behave like a button
-.btn-group,
-.btn-group-vertical {
-  position: relative;
-  display: inline-flex;
-  vertical-align: middle; // match .btn alignment given font-size hack above
-  font-size: $btn-group-font-size;
-
-  > .btn {
-    position: relative;
-    flex: 0 1 auto;
-    border: none;
-    font-size: inherit;
-  }
+@each $variant, $styles in get($button, 'variants') {
+  @include style-rule-from-map('.btn-#{$variant}', $styles);
 }
 
-.btn-group {
-  > .btn:first-child {
-    margin-left: 0;
-  }
-
-  // Reset rounded corners
-  > .btn:not(:last-child) {
-    border-top-right-radius: 0;
-    border-bottom-right-radius: 0;
-  }
-  > .btn:not(:first-child) {
-    border-top-left-radius: 0;
-    border-bottom-left-radius: 0;
-  }
-}
-
-//
-// Sizes
-//
-
-.btn-group-sm {
-  font-size: $btn-group-font-size-sm;
-
-  > .btn {
-    letter-spacing: $btn-letter-spacing-sm;
-    line-height: $btn-line-height-sm;
-    padding: $btn-group-btn-padding-y-sm $btn-group-btn-padding-x-sm;
-  }
-}
-.btn-group-lg {
-  font-size: $btn-group-font-size-lg;
-
-  > .btn {
-    letter-spacing: $btn-letter-spacing-lg;
-    line-height: $btn-line-height-lg;
-    padding: $btn-group-btn-padding-y-lg $btn-group-btn-padding-x-lg;
-  }
-}
-
-//
-// Vertical button groups
-//
-
-.btn-group-vertical {
-  flex-direction: column;
-  align-items: flex-start;
-  justify-content: center;
-
-  .btn {
-    width: 100%;
-  }
-
-  > .btn + .btn {
-    margin-left: 0;
-  }
-
-  // Reset rounded corners
-  > .btn:not(:last-child) {
-    border-bottom-left-radius: 0;
-    border-bottom-right-radius: 0;
-  }
-  > .btn:not(:first-child) {
-    border-top-left-radius: 0;
-    border-top-right-radius: 0;
-  }
-}
-
-// Checkbox and radio options
-//
-// In order to support the browser's form validation feedback, powered by the
-// `required` attribute, we have to "hide" the inputs via `clip`. We cannot use
-// `display: none;` or `visibility: hidden;` as that also hides the popover.
-// Simply visually hiding the inputs via `opacity` would leave them clickable in
-// certain cases which is prevented by using `clip` and `pointer-events`.
-// This way, we ensure a DOM element is visible to position the popover from.
-//
-// See https://github.com/twbs/bootstrap/pull/12794 and
-// https://github.com/twbs/bootstrap/pull/14559 for more information.
-
-.btn-group {
-  > .btn {
-    margin-bottom: 0; // Override default `<label>` value
-
-    input[type='radio'] {
-      position: absolute;
-      clip: rect(0, 0, 0, 0);
-      pointer-events: none;
-    }
-  }
+@each $size, $styles in get($button, 'sizes') {
+  @include style-rule-from-map('.btn-#{$size}', $styles);
 }

@@ -15,18 +15,8 @@ A **primary** variant link:
 
 ---
 
-## Colors
-
-<div className='d-flex flex-column'>
-  {['primary', 'success', 'warning', 'error', 'info'].map((color) => (
-    <Link key={color} color={color} href='#test'>
-      Componentry link
-    </Link>
-  ))}
-</div>
-
 ## Links without routing
 
-An Anchor without routing:
+A Link without an `href` or a `to` prop will render a `button` element:
 
 <Link onClick={action('Link click')}>Anchor</Link>

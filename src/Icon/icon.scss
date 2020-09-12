@@ -1,11 +1,10 @@
-/*! componentry/src/Icon/icon */
-
-//                                    Icon component styles
-// --------------------------------------------------------
+///                                         <Icon /> styles
+/// -------------------------------------------------------
 
 $icon: () !default;
 
-$_icon: (
+$icon-defaults: (
+  base: (),
   variants: (
     font: (
       display: inline-flex,
@@ -22,8 +21,10 @@ $_icon: (
   ),
 );
 
-$icon: map-assign($_icon, $icon);
+$icon: map-assign($icon-defaults, $icon);
+
+@include style-rule-from-map(componentry-class(icon), get($icon, 'base'));
 
 @each $variant, $styles in get($icon, variants) {
-  @include style-rule-from-map(componentry-class($variant), $styles);
+  @include style-rule-from-map('.icon-#{$variant}', $styles);
 }
