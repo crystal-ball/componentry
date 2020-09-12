@@ -1,17 +1,13 @@
-import { select } from '@storybook/addon-knobs'
-import { action } from '@storybook/addon-actions'
-
 import { Dropdown } from './Dropdown'
-import { directions } from '../storybook-resources'
 
 <Meta title='Components/Dropdown' component={Dropdown} />
 
 <DocsTitle title='Dropdowns' experimental />
 
 <Dropdown
-  onActivate={action('activating')}
-  onDeactivate={action('deactivating')}
-  direction={select('direction', directions, 'bottom')}
+  onActivate={console.log}
+  onDeactivate={console.log}
+  direction='bottom'
 >
   <Dropdown.Trigger>Trigger</Dropdown.Trigger>
   <Dropdown.Content>
@@ -20,8 +16,8 @@ import { directions } from '../storybook-resources'
     <Dropdown.Item href='https://github.com/crystal-ball/componentry'>
       Link item
     </Dropdown.Item>
-    <Dropdown.Item onClick={action('item click')}>Button item</Dropdown.Item>
-    <Dropdown.Item onClick={action('item click')} disabled>
+    <Dropdown.Item onClick={console.log}>Button item</Dropdown.Item>
+    <Dropdown.Item onClick={console.log} disabled>
       Disabled button
     </Dropdown.Item>
     <div className='dropdown-divider' />

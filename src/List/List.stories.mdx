@@ -1,5 +1,3 @@
-import { action } from '@storybook/addon-actions'
-
 import { List } from './List'
 import { Block } from '../Block/Block'
 import { colors } from '../storybook-resources'
@@ -35,13 +33,13 @@ import { colors } from '../storybook-resources'
 ## Button list
 
 <List>
-  <List.Item active onClick={action('item-click')}>
+  <List.Item active onClick={console.log}>
     Radical React
   </List.Item>
-  <List.Item onClick={action('item-click')}>Radical React</List.Item>
-  <List.Item onClick={action('item-click')}>Component Library</List.Item>
-  <List.Item onClick={action('item-click')}>Design System</List.Item>
-  <List.Item disabled onClick={action('item-click')}>
+  <List.Item onClick={console.log}>Radical React</List.Item>
+  <List.Item onClick={console.log}>Component Library</List.Item>
+  <List.Item onClick={console.log}>Design System</List.Item>
+  <List.Item disabled onClick={console.log}>
     Radical React
   </List.Item>
 </List>

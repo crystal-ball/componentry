@@ -1,5 +1,3 @@
-import { action } from '@storybook/addon-actions'
-
 import { Active } from './Active'
 import { Block } from '../Block/Block'
 
@@ -10,10 +8,10 @@ import { Block } from '../Block/Block'
 ## Uncontrolled component
 
 <Active
-  onActivate={action('onActivate event')}
-  onActivated={action('onActivated event')}
-  onDeactivate={action('onDeactivate event')}
-  onDeactivated={action('onDeactivated event')}
+  onActivate={console.log}
+  onActivated={console.log}
+  onDeactivate={console.log}
+  onDeactivated={console.log}
 >
   <Active.Trigger>Toggle</Active.Trigger>
   <Active.Content>Active component content</Active.Content>
@@ -21,7 +19,7 @@ import { Block } from '../Block/Block'
 
 ## Controlled
 
-<Active activate={action('activate event')}>
+<Active activate={console.log}>
   <Active.Trigger>Toggle</Active.Trigger>
   <Active.Content>Active component content</Active.Content>
 </Active>

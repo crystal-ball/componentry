@@ -1,4 +1,4 @@
-import { Button, Theme, Type } from './index'
+import { Button, Theme, Text } from './index'
 
 <Meta title='Componentry/Intro' />
 
@@ -33,11 +33,11 @@ component computed class names and library computed class names._
 <Theme
   theme={{
     Button: {
-      themeClassName: 'context-class',
+      themeCx: 'context-class',
     },
   }}
 >
-  <Button className='jsx-prop-class' color='primary' uppercase>
+  <Button className='jsx-prop-class' color='primary' textTransform='uppercase'>
     ClassNames Button
   </Button>
 </Theme>

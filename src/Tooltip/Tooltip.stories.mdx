@@ -1,5 +1,3 @@
-import { action } from '@storybook/addon-actions'
-
 import { Tooltip } from './Tooltip'
 
 <Meta title='Components/Tooltip' component={Tooltip} />
@@ -7,10 +5,10 @@ import { Tooltip } from './Tooltip'
 <DocsTitle title='Tooltips' experimental />
 
 <Tooltip
-  onActivate={action('onActivate event')}
-  onActivated={action('onActivated event')}
-  onDeactivate={action('onDeactivate event')}
-  onDeactivated={action('onDeactivated event')}
+  onActivate={console.log}
+  onActivated={console.log}
+  onDeactivate={console.log}
+  onDeactivated={console.log}
 >
   <Tooltip.Trigger>Fun fact</Tooltip.Trigger>
   <Tooltip.Content>

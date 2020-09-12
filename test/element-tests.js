@@ -58,7 +58,7 @@ export function elementTests(TestComponent) {
   /*
    * Test that setting theme values for props are passed to the component, and
    * that JSX props passed to the component will override the theme defaults.
-   * Also test that the `themeClassName` prop can be used to pass a className
+   * Also test that the `themeCx` prop can be used to pass a className
    * by default to all component instances
    */
   test(`${componentName} should merge theme and JSX props correctly`, () => {

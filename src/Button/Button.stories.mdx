@@ -1,6 +1,3 @@
-import { boolean, select } from '@storybook/addon-knobs'
-import { action } from '@storybook/addon-actions'
-
 import { Flex } from '../Flex/Flex'
 import { Button } from './Button'
 
@@ -12,13 +9,13 @@ import { Button } from './Button'
 
 A **primary** variant button:
 
-<Button base='btn' variant='primary' onClick={action('button click')}>
+<Button base='btn' variant='primary' onClick={console.log}>
   Button
 </Button>
 
 A **secondary** variant button:
 
-<Button variant='secondary' onClick={action('button click')}>
+<Button variant='secondary' onClick={console.log}>
   Button
 </Button>
 

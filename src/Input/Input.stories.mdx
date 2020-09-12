@@ -1,5 +1,3 @@
-import { boolean } from '@storybook/addon-knobs'
-
 import { Input } from './Input'
 
 <Meta title='Components/Input' component={Input} />
@@ -10,10 +8,10 @@ import { Input } from './Input'
   <Input>
     <Input.Label>Storybook</Input.Label>
     <Input.Field />
-    <Input.Description aria-hidden={!boolean('Description', true)}>
+    <Input.Description >
       Really important input!
     </Input.Description>
-    <Input.Error aria-hidden={!boolean('Error', false)}>Oh no!</Input.Error>
+    <Input.Error>Oh no!</Input.Error>
   </Input>
 </div>
 
@@ -26,9 +24,9 @@ for screen readers.
   <Input>
     <Input.Label className='sr-only'>Storybook</Input.Label>
     <Input.Field />
-    <Input.Description aria-hidden={!boolean('Description', true)}>
+    <Input.Description>
       Really important input!
     </Input.Description>
-    <Input.Error aria-hidden={!boolean('Error', false)}>Oh no!</Input.Error>
+    <Input.Error>Oh no!</Input.Error>
   </Input>
 </div>

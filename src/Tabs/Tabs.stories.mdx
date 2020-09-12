@@ -1,4 +1,3 @@
-import { boolean } from '@storybook/addon-knobs'
 import { action } from '@storybook/addon-actions'
 
 import { Tabs } from './Tabs'
@@ -8,10 +7,7 @@ import { Tabs } from './Tabs'
 <DocsTitle title='Tabs' experimental />
 
 <Tabs defaultActive='one' className='w-100'>
-  <Tabs.TriggersContainer
-    fill={boolean('fill', false)}
-    justify={boolean('justify', false)}
-  >
+  <Tabs.TriggersContainer fill={false} justify={false}>
     <Tabs.Trigger activeId='one'>Item 1</Tabs.Trigger>
     <Tabs.Trigger activeId='two'>Tab with long name</Tabs.Trigger>
     <Tabs.Trigger activeId='three'>Item 3</Tabs.Trigger>

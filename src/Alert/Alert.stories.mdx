@@ -1,5 +1,3 @@
-import { boolean, select } from '@storybook/addon-knobs'
-
 import { Alert } from './Alert'
 import { Active } from '../Active/Active'
 import { colors } from '../storybook-resources'
@@ -13,7 +11,7 @@ Alert requires Componentry Active `active` and `deactivate` props, which can be 
 directly or the Alert can be nested inside of an Active component to automatically create
 an uncontrolled Alert.
 
-<Alert color='primary' outline={boolean('outline', false)}>
+<Alert color='primary'>
   <h4 className='alert-heading'>Well done!</h4>
   <p className='mb-0'>You successfully read this important alert message.</p>
   <hr className='hr' />
