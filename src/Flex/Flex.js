@@ -13,6 +13,7 @@ export default function Flex(props) {
 
   return element({
     componentCx: {
+      // ℹ️ Flex is a helper component so it doesn't have a 🅲-flex class
       'd-flex': !inline,
       'd-inline-flex': inline,
       // column, column-reverse, row, row-reverse

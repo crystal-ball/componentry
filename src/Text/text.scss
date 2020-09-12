@@ -1,11 +1,10 @@
-/*! ~componentry/src/Text/text */
-
-//                                    Text component styles
-// --------------------------------------------------------
+///                                         <Text /> styles
+/// -------------------------------------------------------
 
 $text: () !default;
 
-$_text: (
+$text-defaults: (
+  base: (),
   // A class is generated for each variant
     variants:
     (
@@ -34,12 +33,14 @@ $_text: (
             (
               margin-top: 1rem,
             ),
-        )
-    )
+        ),
+    ),
 );
 
-$text: map-assign($_text, $text);
+$text: map-assign($text-defaults, $text);
+
+@include style-rule-from-map(componentry-class(text), get($text, 'base'));
 
 @each $variant, $styles in get($text, variants) {
-  @include style-rule-from-map(componentry-class($variant), $styles);
+  @include style-rule-from-map('.text-#{$variant}', $styles);
 }

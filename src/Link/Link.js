@@ -1,6 +1,6 @@
-import interactionComponentFactory from '../factories/interaction-component'
+import interactionComponent from '../factories/interaction-component'
 
 /**
  * [Link component 📝](https://componentry.design/components/link)
  */
-export default interactionComponentFactory('Link', 'link')
+export default interactionComponent('Link', 'link')

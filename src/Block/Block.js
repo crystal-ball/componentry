@@ -9,6 +9,7 @@ export default function Block(props) {
 
   return element({
     componentCx: {
+      // ℹ️ Block is a helper component so it doesn't have a 🅲-block class
       'd-block': !inline,
       'd-inline-block': inline,
     },

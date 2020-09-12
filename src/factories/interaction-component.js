@@ -19,7 +19,8 @@ export default function interactionComponentFactory(name, baseCx) {
     return element({
       as: anchorInstance ? 'a' : 'button',
       type: anchorInstance ? undefined : 'button',
-      componentCx: cx(baseCx, `${baseCx}-${variant}`, {
+      disabled,
+      componentCx: cx(`🅲-${baseCx}`, `${baseCx}-${variant}`, {
         [`${baseCx}-${size}`]: size,
         [`${baseCx}-color-${color}`]: color,
         active,

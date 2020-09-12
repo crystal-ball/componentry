@@ -12,7 +12,7 @@ export default function Icon(props) {
   return element({
     as: 'svg',
     role: 'img',
-    componentCx: `🅲-icon 🅲-${variant} icon-${id}`,
+    componentCx: `🅲-icon icon-${variant} icon-${id}`,
     children: <use href={`#${id}`} xlinkHref={`#${id}`} />,
     ...rest,
   })
