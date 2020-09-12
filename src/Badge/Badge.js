@@ -1,5 +1,5 @@
-import element from '../element'
 import { useTheme } from '../Theme/Theme'
+import { element } from '../factories/element'
 
 /**
  * @typedef {Object} Props
@@ -10,7 +10,7 @@ import { useTheme } from '../Theme/Theme'
 /**
  * [Badge component 📝](https://componentry.design/components/badge)
  */
-export default function Badge(props) {
+export function Badge(props) {
   /** @type {Props} */
   const { color, rounded, ...rest } = { ...useTheme('Badge'), ...props }
 

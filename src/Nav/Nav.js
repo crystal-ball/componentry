@@ -1,11 +1,11 @@
-import element from '../element'
 import { useTheme } from '../Theme/Theme'
+import { element } from '../factories/element'
 import { navClasses } from '../utils/componentry'
 
 /**
  * [Nav component 📝](https://componentry.design/components/nav)
  */
-export default function Nav(props) {
+export function Nav(props) {
   return element({
     as: 'nav',
     componentCx: navClasses('nav', props),

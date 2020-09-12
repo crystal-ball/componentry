@@ -1,12 +1,11 @@
 import cx from 'classnames'
-
-import element from '../element'
 import { useTheme } from '../Theme/Theme'
+import { element } from './element'
 
 /**
  * Creates an interaction component
  */
-export default function interactionComponent(name, baseCx) {
+export function interactionComponent(name, baseCx) {
   function InteractionComponent(props) {
     const { variant = 'primary', active, color, disabled, size, ...merged } = {
       ...useTheme(name),

@@ -1,5 +1,5 @@
-import element from '../element'
 import { useTheme } from '../Theme/Theme'
+import { element } from '../factories/element'
 
 const defaultVariantsElements = {
   'heading-1': 'h1',
@@ -13,7 +13,7 @@ const defaultVariantsElements = {
 /**
  * [Text component 📝](https://componentry.design/components/text)
  */
-export default function Text(props) {
+export function Text(props) {
   /** @type {{ variant: string, bold: boolean, italic: boolean, inline: boolean, variantsElements: { [key: string]: string}}} */
   const { variant = 'body', bold, italic, inline, variantsElements = {}, ...rest } = {
     ...useTheme('Text'),

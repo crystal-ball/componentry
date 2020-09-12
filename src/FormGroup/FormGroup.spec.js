@@ -1,8 +1,8 @@
 import React from 'react'
 import { render } from '@testing-library/react'
 
-import elementTests from '../../test/element-tests'
-import FormGroup from './FormGroup'
+import { elementTests } from '../../test/element-tests'
+import { FormGroup } from './FormGroup'
 
 describe('<FormGroup />', () => {
   // Basic library element test suite

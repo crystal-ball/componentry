@@ -1,8 +1,8 @@
 import React from 'react'
 import { render, screen } from '@testing-library/react'
 
-import elementTests from '../../test/element-tests'
-import Badge from './Badge'
+import { elementTests } from '../../test/element-tests'
+import { Badge } from './Badge'
 
 describe('<Badge />', () => {
   elementTests(Badge)

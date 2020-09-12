@@ -1,7 +1,7 @@
 import React from 'react'
 import { useMedia } from '../Media'
 
-export default function MediaConsumer() {
+export function MediaConsumer() {
   const media = useMedia()
 
   return (

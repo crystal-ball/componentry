@@ -1,12 +1,12 @@
 import React from 'react'
 import { render } from '@testing-library/react'
 
-import activationTestSuite from '../../test/activation-tests'
-import elementTests from '../../test/element-tests'
-import Drawer from './Drawer'
+import { activationTests } from '../../test/activation-tests'
+import { elementTests } from '../../test/element-tests'
+import { Drawer } from './Drawer'
 
 describe('<Drawer />', () => {
-  activationTestSuite(Drawer, { name: 'drawer', testArias: ['controls', 'expanded'] })
+  activationTests(Drawer, { name: 'drawer', testArias: ['controls', 'expanded'] })
 
   elementTests(Drawer)
   elementTests(Drawer.Trigger)

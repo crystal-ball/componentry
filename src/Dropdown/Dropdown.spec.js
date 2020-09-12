@@ -1,13 +1,13 @@
 import React from 'react'
 import { render, screen } from '@testing-library/react'
 
-import activationTestSuite from '../../test/activation-tests'
-import elementTests from '../../test/element-tests'
-import Dropdown from './Dropdown'
+import { activationTests } from '../../test/activation-tests'
+import { elementTests } from '../../test/element-tests'
+import { Dropdown } from './Dropdown'
 
 describe('<Dropdown />', () => {
   // Basic library activation test suite
-  activationTestSuite(Dropdown, {
+  activationTests(Dropdown, {
     name: 'dropdown',
     testArias: ['labelledby', 'expanded'],
   })

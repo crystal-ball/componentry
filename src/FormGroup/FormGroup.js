@@ -1,8 +1,8 @@
-import staticComponent from '../factories/static-component'
+import { staticComponent } from '../factories/static-component'
 
 /**
  * [FormGroup component 📝](https://componentry.design/components/form-group)
  */
-export default staticComponent('FormGroup', {
+export const FormGroup = staticComponent('FormGroup', {
   componentCx: 'form-group',
 })

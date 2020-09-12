@@ -1,5 +1,5 @@
 import React from 'react'
-import staticComponent from '../factories/static-component'
+import { staticComponent } from '../factories/static-component'
 
 export const closeBase = {
   'aria-label': 'close',
@@ -16,4 +16,4 @@ export const closeBase = {
 /**
  * [Close component 📝](https://componentry.design/components/close)
  */
-export default staticComponent('Close', closeBase)
+export const Close = staticComponent('Close', closeBase)

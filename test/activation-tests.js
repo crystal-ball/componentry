@@ -8,7 +8,7 @@ import { fireEvent, render, screen } from '@testing-library/react'
  * but this provides a simple high level check on if functionality is working
  * as expected for each component.
  */
-export default function ActivationTests(TestComponent, { name, testArias } = {}) {
+export function activationTests(TestComponent, { name, testArias } = {}) {
   /**
    * Active component containers should map size prop to the component name,
    * this is how size variants can be created

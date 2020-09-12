@@ -1,8 +1,8 @@
 import React from 'react'
-import element from '../element'
 import { closeBase } from '../Close/Close'
 import { useTheme } from '../Theme/Theme'
-import staticComponent from '../factories/static-component'
+import { element } from '../factories/element'
+import { staticComponent } from '../factories/static-component'
 import { useActive, useVisible } from '../hooks'
 
 /**
@@ -16,7 +16,7 @@ import { useActive, useVisible } from '../hooks'
 /**
  * [Alert component 📝](https://componentry.design/components/alert)
  */
-export default function Alert(props) {
+export function Alert(props) {
   /** @type {Props} */
   const {
     children,

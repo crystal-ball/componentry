@@ -1,7 +1,7 @@
 import React from 'react'
 import { Text } from '../../src'
 
-export default function DocsTitle({ title, experimental }) {
+export function DocsTitle({ title, experimental }) {
   return (
     <div>
       <Text variant='heading-1'>{title}</Text>

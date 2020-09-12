@@ -1,8 +1,8 @@
 import React from 'react'
 import { render } from '@testing-library/react'
 
-import elementTests from '../../test/element-tests'
-import Tabs from './Tabs'
+import { elementTests } from '../../test/element-tests'
+import { Tabs } from './Tabs'
 
 describe('<Tab />', () => {
   elementTests(Tabs)

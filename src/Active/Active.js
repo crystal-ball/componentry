@@ -1,15 +1,14 @@
-import activeContainer from '../factories/active-container-component'
-import activeContent from '../factories/active-content-component'
-import activeTrigger from '../factories/active-trigger-component'
+import { activeContainerComponent } from '../factories/active-container-component'
+import { activeContentComponent } from '../factories/active-content-component'
+import { activeTriggerComponent } from '../factories/active-trigger-component'
 
 /**
  * [Active component 📝](https://componentry.design/components/active)
  */
-const Active = activeContainer('active', { escEvents: true })
-export default Active
+export const Active = activeContainerComponent('active', { escEvents: true })
 
 /** Active content component */
-Active.Content = activeContent('active', { arias: { id: true, hidden: true } })
+Active.Content = activeContentComponent('active', { arias: { id: true, hidden: true } })
 
 /** Active trigger component */
-Active.Trigger = activeTrigger('active', { arias: { controls: true } })
+Active.Trigger = activeTriggerComponent('active', { arias: { controls: true } })

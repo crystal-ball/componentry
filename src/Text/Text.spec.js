@@ -1,9 +1,9 @@
 import React from 'react'
 import { render } from '@testing-library/react'
 
-import ThemeProvider from '../Theme/Theme'
-import elementTests from '../../test/element-tests'
-import Text from './Text'
+import { Theme } from '../Theme/Theme'
+import { elementTests } from '../../test/element-tests'
+import { Text } from './Text'
 
 describe('<Text/>', () => {
   // Basic library element test suite
@@ -13,9 +13,9 @@ describe('<Text/>', () => {
 describe('Text', () => {
   test('When variantsElements is set in theme, then variants are used for Text', () => {
     const { container } = render(
-      <ThemeProvider theme={{ Text: { variantsElements: { rad: 'section' } } }}>
+      <Theme theme={{ Text: { variantsElements: { rad: 'section' } } }}>
         <Text variant='rad'>Componentry</Text>
-      </ThemeProvider>,
+      </Theme>,
     )
     expect(container.firstChild).toContainHTML(
       '<section class="🅲-text text-rad">Componentry</section>',

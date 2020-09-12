@@ -1,8 +1,8 @@
 import React, { useContext } from 'react'
-import element from '../element'
 import { useTheme } from '../Theme/Theme'
 import { elemArias } from '../utils/componentry'
 import { ActiveCtx } from './active-container-component'
+import { element } from './element'
 
 /**
  * Factory returns custom `<Trigger />` components defined by the fn options.
@@ -16,7 +16,7 @@ import { ActiveCtx } from './active-container-component'
  * @property {string} opts.displayName
  * @returns {import('react').FunctionComponent<any>}
  */
-export default function activeTriggerComponent(
+export function activeTriggerComponent(
   name,
   {
     // Map of aria attributes to render with component

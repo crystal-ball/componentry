@@ -1,10 +1,10 @@
-import element from '../element'
 import { useTheme } from '../Theme/Theme'
+import { element } from '../factories/element'
 
 /**
  * [Flex component 📝](https://componentry.design/components/flex)
  */
-export default function Flex(props) {
+export function Flex(props) {
   /** @type {{ align: string, direction: string, inline: boolean, justify: string, wrap: string }} */
   const { align, direction, inline, justify, wrap, ...rest } = {
     ...useTheme('Flex'),

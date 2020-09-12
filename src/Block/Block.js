@@ -1,10 +1,10 @@
-import element from '../element'
 import { useTheme } from '../Theme/Theme'
+import { element } from '../factories/element'
 
 /**
  * [Block component 📝](https://componentry.design/components/block)
  */
-export default function Block(props) {
+export function Block(props) {
   const { inline = false, ...rest } = { ...useTheme('Block'), ...props }
 
   return element({

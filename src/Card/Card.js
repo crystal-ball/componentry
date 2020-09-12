@@ -1,12 +1,11 @@
-import staticComponent from '../factories/static-component'
+import { staticComponent } from '../factories/static-component'
 
 /**
  * [Card component 📝](https://componentry.design/components/card)
  */
-const Card = staticComponent('Card', {
+export const Card = staticComponent('Card', {
   componentCx: 'card',
 })
-export default Card
 
 /**
  * [Card body component 📝](https://componentry.design/components/card)
