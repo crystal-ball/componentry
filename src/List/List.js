@@ -1,11 +1,11 @@
 import { Children } from 'react'
-import element from '../element'
 import { useTheme } from '../Theme/Theme'
+import { element } from '../factories/element'
 
 /**
  * [List component 📝](https://componentry.design/components/list)
  */
-export default function List(props) {
+export function List(props) {
   const { flush = false, ...rest } = { ...useTheme('List'), ...props }
 
   // Lists check first child (only first child!) to see if it has actions, and

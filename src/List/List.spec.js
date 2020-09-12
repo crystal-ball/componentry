@@ -1,8 +1,8 @@
 import React from 'react'
 import { render } from '@testing-library/react'
 
-import elementTests from '../../test/element-tests'
-import List from './List'
+import { elementTests } from '../../test/element-tests'
+import { List } from './List'
 
 describe('<List />', () => {
   // Basic library element test suite

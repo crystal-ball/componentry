@@ -1,13 +1,12 @@
-import staticComponent from '../factories/static-component'
+import { staticComponent } from '../factories/static-component'
 
 /**
  * [Table component 📝](https://componentry.design/components/table)
  */
-const Table = staticComponent('Table', {
+export const Table = staticComponent('Table', {
   componentCx: '🅲-table',
   role: 'table',
 })
-export default Table
 
 /**
  * [Table head component 📝](https://componentry.design/components/table)

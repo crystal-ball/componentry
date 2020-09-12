@@ -1,14 +1,14 @@
 import React, { useContext } from 'react'
-import element from '../element'
 import { elemArias } from '../utils/componentry'
 import { useTheme } from '../Theme/Theme'
+import { element } from './element'
 import { ActiveCtx } from './active-container-component'
 
 /**
  * Factory returns custom `<Content />` components defined by the options.
  * @returns {import('react').FunctionComponent<any>}
  */
-export default function activeContentComponent(
+export function activeContentComponent(
   name,
   {
     // Map of aria attributes to render with component

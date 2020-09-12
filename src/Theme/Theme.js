@@ -6,7 +6,7 @@ const ThemeCtx = createContext({})
 /**
  * [Theme component 📝](https://componentry.design/components/theme)
  */
-export default function Theme({ children, theme }) {
+export function Theme({ children, theme }) {
   return <ThemeCtx.Provider value={theme}>{children}</ThemeCtx.Provider>
 }
 Theme.displayName = 'Theme'

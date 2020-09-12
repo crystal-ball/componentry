@@ -1,13 +1,13 @@
 import React from 'react'
 import { render } from '@testing-library/react'
 
-import activationTestSuite from '../../test/activation-tests'
-import elementTests from '../../test/element-tests'
-import Tooltip from './Tooltip'
+import { activationTests } from '../../test/activation-tests'
+import { elementTests } from '../../test/element-tests'
+import { Tooltip } from './Tooltip'
 
 describe('<Tooltip />', () => {
   // Basic library activation test suite
-  activationTestSuite(Tooltip, { name: 'tooltip', testArias: ['describedby'] })
+  activationTests(Tooltip, { name: 'tooltip', testArias: ['describedby'] })
   // Basic library element test suite
   elementTests(Tooltip)
   elementTests(Tooltip.Trigger)

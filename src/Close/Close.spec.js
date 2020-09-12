@@ -1,8 +1,8 @@
 import React from 'react'
 import { render } from '@testing-library/react'
 
-import elementTests from '../../test/element-tests'
-import Close from './Close'
+import { elementTests } from '../../test/element-tests'
+import { Close } from './Close'
 
 describe('<Close />', () => {
   // Basic library element test suite

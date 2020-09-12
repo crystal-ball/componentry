@@ -1,7 +1,7 @@
 import React from 'react'
 import { useTheme } from '../Theme'
 
-export default function ThemeConsumer() {
+export function ThemeConsumer() {
   const theme = useTheme()
 
   return (

@@ -1,7 +1,7 @@
 import React from 'react'
-import Active from '../../Active/Active'
-import Button from '../../Button/Button'
-import Modal from '../Modal'
+import { Active } from '../../Active/Active'
+import { Button } from '../../Button/Button'
+import { Modal } from '../Modal'
 
 export const footerContent = (
   <Modal.Footer className='btn-container-x'>

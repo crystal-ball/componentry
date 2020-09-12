@@ -4,16 +4,16 @@ import { nanoid } from 'nanoid'
 
 import { closeBase } from '../Close/Close'
 import { useTheme } from '../Theme/Theme'
-import element from '../element'
 import { useActive, useActiveSrollReset, useNoScroll, useVisible } from '../hooks'
-import staticComponent from '../factories/static-component'
+import { element } from '../factories/element'
+import { staticComponent } from '../factories/static-component'
 
 const ModalCtx = createContext({})
 
 /**
  * [Modal component 📝](https://componentry.design/components/modal)
  */
-export default function Modal(props) {
+export function Modal(props) {
   // Guid instance property will be uniquely assigned once for each modal
   // instance, this unique id is then passed to all children through context
   // where it can be used to wire together title aria attributes

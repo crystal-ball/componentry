@@ -1,28 +1,27 @@
-import activeContainer from '../factories/active-container-component'
-import activeContent from '../factories/active-content-component'
-import activeTrigger from '../factories/active-trigger-component'
+import { activeContainerComponent } from '../factories/active-container-component'
+import { activeContentComponent } from '../factories/active-content-component'
+import { activeTriggerComponent } from '../factories/active-trigger-component'
 
 /**
  * [Dropdown component 📝](https://componentry.design/components/dropdown)
  */
-const Dropdown = activeContainer('dropdown', {
+export const Dropdown = activeContainerComponent('dropdown', {
   clickEvents: true,
   direction: 'bottom',
   escEvents: true,
 })
-export default Dropdown
 
 /**
  * [Dropdown content component 📝](https://componentry.design/components/dropdown)
  */
-Dropdown.Content = activeContent('dropdown', {
+Dropdown.Content = activeContentComponent('dropdown', {
   arias: { labelledby: true, hidden: true },
 })
 
 /**
  * [Dropdown item component 📝](https://componentry.design/components/dropdown)
  */
-Dropdown.Item = activeTrigger('dropdown', {
+Dropdown.Item = activeTriggerComponent('dropdown', {
   displayName: 'DropdownItem',
   baseClass: 'dropdown-item',
 })
@@ -30,6 +29,6 @@ Dropdown.Item = activeTrigger('dropdown', {
 /**
  * [Dropdown trigger component 📝](https://componentry.design/components/dropdown)
  */
-Dropdown.Trigger = activeTrigger('dropdown', {
+Dropdown.Trigger = activeTriggerComponent('dropdown', {
   arias: { expanded: true, haspopup: true, id: true },
 })

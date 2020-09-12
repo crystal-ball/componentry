@@ -2,12 +2,12 @@
 import React from 'react'
 import { render, screen } from '@testing-library/react'
 
-import Theme from '../src/Theme/Theme'
+import { Theme } from '../src/Theme/Theme'
 
 /**
  * Library default component requirment test suite.
  */
-export default function elementTests(TestComponent) {
+export function elementTests(TestComponent) {
   const componentName = TestComponent.displayName
   /*
    * All components should have a display name so they can be easily debugged

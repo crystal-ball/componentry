@@ -1,15 +1,15 @@
 import React, { createContext, useContext, useRef } from 'react'
 import { nanoid } from 'nanoid'
-import element from '../element'
 import { useTheme } from '../Theme/Theme'
-import staticComponent from '../factories/static-component'
+import { element } from '../factories/element'
+import { staticComponent } from '../factories/static-component'
 
 const InputCtx = createContext({ guid: null })
 
 /**
  * [Input component 📝](https://componentry.design/components/input)
  */
-export default function Input({ children }) {
+export function Input({ children }) {
   /**
    * Guid instance property will be uniquely assigned once for each input
    * instance, this unique id is then passed to all children through context

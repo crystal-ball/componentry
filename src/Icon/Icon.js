@@ -1,11 +1,11 @@
 import React from 'react'
-import element from '../element'
 import { useTheme } from '../Theme/Theme'
+import { element } from '../factories/element'
 
 /**
  * [Icon component 📝](https://componentry.design/components/icon)
  */
-export default function Icon(props) {
+export function Icon(props) {
   /** @type {{ variant: string, id: string }} */
   const { variant = 'font', id, ...rest } = { ...useTheme('Icon'), ...props }
 

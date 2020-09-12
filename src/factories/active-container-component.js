@@ -1,8 +1,8 @@
 import React, { createContext, useCallback, useEffect, useRef, useState } from 'react'
 import { nanoid } from 'nanoid'
-import element from '../element'
 import { useTheme } from '../Theme/Theme'
 import { closest } from '../utils/dom'
+import { element } from './element'
 
 /**
  * Active context
@@ -26,7 +26,7 @@ export const ActiveCtx = createContext({ active: false })
  * needs like setting or removing special event listeners.
  * @returns {import('react').FunctionComponent<any>}
  */
-export default function activeContainerComponent(name, opts = {}) {
+export function activeContainerComponent(name, opts = {}) {
   const themeName = `${name.slice(0, 1).toUpperCase()}${name.slice(1)}`
   function ActiveContainer(props) {
     const {

@@ -1,6 +1,6 @@
 import { createElement } from 'react'
 import cx from 'classnames'
-import { componentry } from './utils/componentry'
+import { componentry } from '../utils/componentry'
 
 /**
  * @typedef {Object} ElementFactoryOptions
@@ -21,7 +21,7 @@ import { componentry } from './utils/componentry'
  * @param {ElementFactoryOptions} opts
  * @returns {import('react').ReactElement}
  */
-export default function element({
+export function element({
   as = 'div',
   className,
   componentCx,

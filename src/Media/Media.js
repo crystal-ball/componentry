@@ -42,7 +42,7 @@ function mountListeners(breakpoints, updateBps) {
 /**
  * [Media component 📝](https://componentry.design/components/media)
  */
-export default function Media({ children, breakpoints = [0, 768, 1250] }) {
+export function Media({ children, breakpoints = [0, 768, 1250] }) {
   const [bps, updateBps] = useState(calcBreakpoints(breakpoints))
 
   // ℹ️ Call to mount media query listeners is wrapped in useEffect to prevent

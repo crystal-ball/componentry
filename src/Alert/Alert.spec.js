@@ -1,8 +1,8 @@
 import React from 'react'
 import { fireEvent, render, screen } from '@testing-library/react'
 
-import elementTests from '../../test/element-tests'
-import Alert from './Alert'
+import { elementTests } from '../../test/element-tests'
+import { Alert } from './Alert'
 
 describe('<Alert/>', () => {
   // Basic library element test suite

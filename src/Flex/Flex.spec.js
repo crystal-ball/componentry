@@ -1,8 +1,8 @@
 import React from 'react'
 import { render, screen } from '@testing-library/react'
 
-import elementTests from '../../test/element-tests'
-import Flex from './Flex'
+import { elementTests } from '../../test/element-tests'
+import { Flex } from './Flex'
 
 describe('<Flex />', () => {
   elementTests(Flex)

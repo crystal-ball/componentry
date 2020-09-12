@@ -1,13 +1,13 @@
 import React from 'react'
 import { render, screen } from '@testing-library/react'
 
-import activationTestSuite from '../../test/activation-tests'
-import elementTests from '../../test/element-tests'
-import Popover from './Popover'
+import { activationTests } from '../../test/activation-tests'
+import { elementTests } from '../../test/element-tests'
+import { Popover } from './Popover'
 
 describe('<Popover />', () => {
   // Basic library activation test suite
-  activationTestSuite(Popover, { name: 'popover', testArias: ['describedby'] })
+  activationTests(Popover, { name: 'popover', testArias: ['describedby'] })
   // Basic library element test suite
   elementTests(Popover)
   elementTests(Popover.Trigger)
