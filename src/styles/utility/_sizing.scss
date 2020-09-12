@@ -4,6 +4,7 @@
 // Width and height
 //
 
+// Generates 10, 20, 25... auto sizing classes
 @each $prop, $abbrev in (width: w, height: h) {
   @each $size, $length in $sizes {
     .#{$abbrev}-#{$size} {

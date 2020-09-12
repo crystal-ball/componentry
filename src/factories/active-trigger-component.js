@@ -16,7 +16,7 @@ import { ActiveCtx } from './active-container-component'
  * @property {string} opts.displayName
  * @returns {import('react').FunctionComponent<any>}
  */
-export default function activeTriggerFactory(
+export default function activeTriggerComponent(
   name,
   {
     // Map of aria attributes to render with component
