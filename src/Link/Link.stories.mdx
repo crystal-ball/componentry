@@ -1,6 +1,3 @@
-import { boolean, select } from '@storybook/addon-knobs'
-import { action } from '@storybook/addon-actions'
-
 import { Link } from './Link'
 
 <Meta title='Components/Link' component={Link}></Meta>
@@ -19,4 +16,4 @@ A **primary** variant link:
 
 A Link without an `href` or a `to` prop will render a `button` element:
 
-<Link onClick={action('Link click')}>Anchor</Link>
+<Link onClick={console.log}>Anchor</Link>

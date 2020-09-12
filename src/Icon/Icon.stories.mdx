@@ -1,5 +1,3 @@
-import { boolean, select } from '@storybook/addon-knobs'
-
 import { Icon } from './Icon'
 
 <Meta title='Components/Icon' component={Icon} />
@@ -25,7 +23,7 @@ import { Icon } from './Icon'
 
 ## Font variant
 
-<Icon id={select('Id', ['award', 'code'], 'award')} />
+<Icon id='award' />
 
 ## Icon alignment
 
@@ -49,6 +47,6 @@ Center icons by wrapping them in a flex container.
 ## Font baseline adjustment
 
 Checkmate... Hey, you know how I'm, like, always trying to save the planet? Here's my
-chance<Icon id="award" font />.They're using our own satellites against us. And the clock
+chance<Icon id="award" />.They're using our own satellites against us. And the clock
 is ticking. Must go faster... go, go, go, go, go! I was part of something special. Remind
 me to thank John for a lovely weekend.

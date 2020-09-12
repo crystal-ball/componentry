@@ -1,5 +1,3 @@
-import { select } from '@storybook/addon-knobs'
-
 import { Active } from '../Active/Active'
 import { Button } from '../Button/Button'
 import { Modal } from './Modal'
@@ -11,7 +9,7 @@ import { footerContent, scrollContent } from './stories/contents'
 
 <Active>
   <Active.Trigger>Open Modal</Active.Trigger>
-  <Modal size={select('Size', ['sm', 'lg', null], null)}>
+  <Modal>
     <Modal.Header close>
       <Modal.Title>Demo modal</Modal.Title>
     </Modal.Header>

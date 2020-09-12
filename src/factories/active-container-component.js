@@ -93,13 +93,18 @@ export function activeContainerComponent(name, opts = {}) {
      * Internal deactivation handler (manages active state and fires change
      * listeners)
      */
-    const handleDeactivate =
-      deactivate ||
-      function _deactivate(e) {
-        if (onDeactivate) onDeactivate(e)
-        updateActive(false)
-        if (onDeactivated) onDeactivated(e)
-      }
+    const handleDeactivate = useCallback(
+      (evt) => {
+        if (deactivate) {
+          deactivate(evt)
+        } else {
+          if (onDeactivate) onDeactivate(evt)
+          updateActive(false)
+          if (onDeactivated) onDeactivated(evt)
+        }
+      },
+      [deactivate, onDeactivate, onDeactivated],
+    )
 
     /** Call deactivate if click event was not inside the element */
     const onClick = useCallback(

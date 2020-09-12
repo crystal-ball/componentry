@@ -1,5 +1,3 @@
-import { boolean } from '@storybook/addon-knobs'
-
 import { Nav } from './Nav'
 
 <Meta title='Components/Nav' component={Nav} />
@@ -7,12 +5,7 @@ import { Nav } from './Nav'
 <DocsTitle title='Navs' experimental />
 
 <div className='w-50'>
-  <Nav
-    fill={boolean('fill', false)}
-    justify={boolean('justify', false)}
-    pills={boolean('pills', false)}
-    vertical={boolean('vertical', false)}
-  >
+  <Nav fill={false} justify={false} pills={false} vertical={false}>
     <Nav.Item active href='#'>
       Active
     </Nav.Item>
