@@ -72,7 +72,7 @@
     "@types/classnames": "2.2.10",
     "babel-loader": "8.1.0",
     "css-loader": "4.3.0",
-    "eslint-config-eloquence": "14.11.1",
+    "eslint-config-eloquence": "15.2.1",
     "husky": "4.3.0",
     "jest": "26.4.2",
     "prettier": "2.1.1",
