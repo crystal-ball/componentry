@@ -54,12 +54,12 @@ $table-row: () !default;
     (
       display: grid,
       // grid-template-columns: repeat(auto-fit, minmax(1px, 1fr));
-        // Default table row grid will be columns of even width
-        grid-auto-columns: 1fr,
+      // Default table row grid will be columns of even width
+      grid-auto-columns: 1fr,
       grid-auto-flow: column,
       // Add a border top to every row after the first one (not on first or there would
-        // be a double border at the top of the table)
-        '& + &':
+      // be a double border at the top of the table)
+      '& + &':
         (
           border-top: theme-get('borders.default'),
         ),

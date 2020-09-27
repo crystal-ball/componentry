@@ -1,14 +1,13 @@
+<!-- eslint-disable no-console -->
+
+import { DocsTitle, Meta } from '@storybook/addon-docs/blocks'
 import { Dropdown } from './Dropdown'
 
 <Meta title='Components/Dropdown' component={Dropdown} />
 
 <DocsTitle title='Dropdowns' experimental />
 
-<Dropdown
-  onActivate={console.log}
-  onDeactivate={console.log}
-  direction='bottom'
->
+<Dropdown direction='bottom' onActivate={console.log} onDeactivate={console.log}>
   <Dropdown.Trigger>Trigger</Dropdown.Trigger>
   <Dropdown.Content>
     <h4 className='dropdown-heading'>Available actions</h4>
@@ -17,7 +16,7 @@ import { Dropdown } from './Dropdown'
       Link item
     </Dropdown.Item>
     <Dropdown.Item onClick={console.log}>Button item</Dropdown.Item>
-    <Dropdown.Item onClick={console.log} disabled>
+    <Dropdown.Item disabled onClick={console.log}>
       Disabled button
     </Dropdown.Item>
     <div className='dropdown-divider' />

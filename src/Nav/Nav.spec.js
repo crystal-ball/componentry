@@ -9,7 +9,7 @@ describe('<Nav />', () => {
 
   test('should render .nav-vertical when vertical is passed', () => {
     render(
-      <Nav vertical data-testid='nav'>
+      <Nav data-testid='nav' vertical>
         <Nav.Item href='#'>Link one</Nav.Item>
       </Nav>,
     )
@@ -18,7 +18,7 @@ describe('<Nav />', () => {
 
   test('should render .nav-pills when pills is passed', () => {
     render(
-      <Nav pills data-testid='nav'>
+      <Nav data-testid='nav' pills>
         <Nav.Item href='#'>Link one</Nav.Item>
       </Nav>,
     )
@@ -32,7 +32,7 @@ describe('<Nav.Item />', () => {
   test('when active is passed, then active class should render', () => {
     render(
       <Nav>
-        <Nav.Item active href='#'>
+        <Nav.Item href='#' active>
           React
         </Nav.Item>
       </Nav>,
@@ -47,12 +47,12 @@ describe('<Nav /> snapshots', () => {
   it('renders correctly', () => {
     const { container } = render(
       <Nav>
-        <Nav.Item active href='#'>
+        <Nav.Item href='#' active>
           Active
         </Nav.Item>
         <Nav.Item href='#'>React</Nav.Item>
         <Nav.Item href='#'>Redux</Nav.Item>
-        <Nav.Item disabled href='#'>
+        <Nav.Item href='#' disabled>
           Styles
         </Nav.Item>
       </Nav>,

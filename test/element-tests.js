@@ -48,9 +48,9 @@ export function elementTests(TestComponent) {
    */
   test(`${componentName} should render as specified html element or component`, () => {
     // Create a component to validate that the TestComponent returns.
-    const TestAs = ({ isRad }) => <div>{isRad ? 'RAD' : null}</div> // eslint-disable-line
+    const TestAs = ({ isRad }) => <div>{isRad ? 'RAD' : null}</div>
 
-    render(<TestComponent isRad as={TestAs} />)
+    render(<TestComponent as={TestAs} isRad />)
 
     expect(screen.getByText('RAD')).toBeInTheDocument()
   })

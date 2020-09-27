@@ -1,5 +1,7 @@
+<!-- eslint-disable no-console -->
+
+import { DocsTitle, Meta } from '@storybook/addon-docs/blocks'
 import { Active } from './Active'
-import { Block } from '../Block/Block'
 
 <Meta title='Components/Active' />
 
@@ -26,19 +28,19 @@ import { Block } from '../Block/Block'
 
 ## Default active override
 
-<Active defaultActive Trigger='Toggle' Content='Active component content' />
+<Active Trigger='Toggle' Content='Active component content' defaultActive />
 
 ## Deactivate on external clicks
 
-<Active clickEvents Trigger='Toggle' Content='Active component content' />
+<Active Trigger='Toggle' Content='Active component content' clickEvents />
 
 ## Deactivate on esc
 
-<Active escEvents Trigger='Toggle' Content='Active component content' />
+<Active Trigger='Toggle' Content='Active component content' escEvents />
 
 ## Handle mouse events
 
-<Active mouseEvents Trigger='Toggle' Content='Active component content' />
+<Active Trigger='Toggle' Content='Active component content' mouseEvents />
 
 ## Shorthand subcomponents
 

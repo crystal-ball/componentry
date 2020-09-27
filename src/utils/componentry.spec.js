@@ -1,9 +1,10 @@
 import { componentry, elemArias, navClasses } from './componentry'
 
+const sizes = ['xs', 'sm', 'md', 'lg', 'xl']
+
 describe('componentry()', () => {
   test('computes libary utility classes from props', () => {
-    // eslint-disable-next-line
-    ;['xs', 'sm', 'md', 'lg', 'xl'].forEach((size) => {
+    sizes.forEach((size) => {
       expect(componentry({ m: size, p: size }).utilityCx[1]).toEqual([
         `m-${size}`,
         `p-${size}`,

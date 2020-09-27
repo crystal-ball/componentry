@@ -1,6 +1,7 @@
-import { Alert } from './Alert'
+import { DocsTitle, Meta } from '@storybook/addon-docs/blocks'
 import { Active } from '../Active/Active'
 import { colors } from '../storybook-resources'
+import { Alert } from './Alert'
 
 <Meta title='Components/Alert' component={Alert} />
 
@@ -15,7 +16,7 @@ an uncontrolled Alert.
   <h4 className='alert-heading'>Well done!</h4>
   <p className='mb-0'>You successfully read this important alert message.</p>
   <hr className='hr' />
-  <a href='#' className='a alert-link'>
+  <a href='#demo' className='a alert-link'>
     Go home
   </a>
 </Alert>
@@ -26,7 +27,7 @@ an uncontrolled Alert.
 
 <div>
   {colors.map((color) => (
-    <Alert color={color} key={color}>
+    <Alert key={color} color={color}>
       Themed alert
     </Alert>
   ))}
@@ -38,7 +39,7 @@ You can also create outline alerts that have only a border-left
   <h4 className='alert-heading'>Well done!</h4>
   <p className='mb-0'>You successfully read this important alert message.</p>
   <hr className='hr' />
-  <a href='#' className='a alert-link'>
+  <a href='#demo' className='a alert-link'>
     Go home
   </a>
 </Alert>
@@ -52,7 +53,7 @@ Create a dismissible alert by wrapping it in an `Active` component.
     <h4 className='alert-heading'>Well done!</h4>
     <p className='mb-0'>You successfully read this important alert message.</p>
     <hr className='hr' />
-    <a href='#' className='a alert-link'>
+    <a href='#demo' className='a alert-link'>
       Go home
     </a>.
   </Alert>

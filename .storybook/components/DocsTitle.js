@@ -8,7 +8,7 @@ export function DocsTitle({ title, experimental }) {
       <div>
         <small>
           Status:{' '}
-          <Text inline fontColor={experimental ? 'warning' : 'success'}>
+          <Text fontColor={experimental ? 'warning' : 'success'} inline>
             {experimental ? 'Experimental' : 'Stable'}
           </Text>
         </small>

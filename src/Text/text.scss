@@ -6,30 +6,30 @@ $text: () !default;
 $text-defaults: (
   base: (),
   // A class is generated for each variant
-    variants:
+  variants:
     (
       // --- Heading 1 styles
-        heading-1:
+      heading-1:
         (
           font-size: 3rem,
         ),
       // --- Heading 2 styles
-        heading-2:
+      heading-2:
         (
           font-size: 2rem,
         ),
       // --- Heading 3 styles
-        heading-3:
+      heading-3:
         (
           font-size: 1.5rem,
         ),
       // --- Body styles
-        body:
+      body:
         (
           font-size: 1rem,
           // Set spacing between multiple paragraphs using sibling selector and
-            // margin-top.
-            '& + &':
+          // margin-top.
+          '& + &':
             (
               margin-top: 1rem,
             ),

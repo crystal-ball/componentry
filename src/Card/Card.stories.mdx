@@ -1,3 +1,4 @@
+import { DocsTitle, Meta } from '@storybook/addon-docs/blocks'
 import { Link } from '../Link/Link'
 import { List } from '../List/List'
 import { Card } from './Card'
@@ -12,20 +13,17 @@ import { Card } from './Card'
     <Card.Title>Card title</Card.Title>
     <h5 className='card-subtitle'>Card subtitle</h5>
     <p className='card-text'>
-      Card.Body example content. Note: If content with the <code>card-text</code>{' '}
-      class is the last child of the body the margin will be set to 0 for whitespace
-      consistency
+      Card.Body example content. Note: If content with the <code>card-text</code> class is
+      the last child of the body the margin will be set to 0 for whitespace consistency
     </p>
-
     <p className='card-text'>
-      <Link className='card-link' href='#'>
+      <Link className='card-link' href='#demo'>
         Card link
       </Link>
-      <Link className='card-link' href='#'>
+      <Link className='card-link' href='#demo'>
         Another link
       </Link>
     </p>
-
   </Card.Body>
   <Card.Footer>2 days ago</Card.Footer>
 </Card>
@@ -55,8 +53,8 @@ import { Card } from './Card'
     <p className='card-text'>
       Must go faster... go, go, go, go, go! I was part of something special. This thing
       comes fully loaded. AM/FM radio, reclining bucket seats, and... power windows.
-      You're a very talented young man, with your own clever thoughts and ideas. Do you
-      need a manager?
+      You&apos;re a very talented young man, with your own clever thoughts and ideas. Do
+      you need a manager?
     </p>
   </Card.Body>
   <List flush>
@@ -67,12 +65,12 @@ import { Card } from './Card'
     <List.Item>Man creates Dinosaurs.</List.Item>
   </List>
   <Card.Body>
-    <a href='#' className='card-link'>
+    <a href='#demo' className='card-link'>
       Card link
     </a>
-    <a href='#' className='card-link'>
+    <a href='#demo' className='card-link'>
       Another link
     </a>
   </Card.Body>
-  <Card.Footer>God help us, we're in the hands of engineers.</Card.Footer>
+  <Card.Footer>God help us, we&apos;re in the hands of engineers.</Card.Footer>
 </Card>
