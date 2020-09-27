@@ -4,7 +4,7 @@ import { setupOutlineHandlers } from '../src'
 
 // --- Load Componentry styles ---
 
-import './storybook.scss' // eslint-disable-line -- includes application SASS
+import './storybook.scss'
 import { DocsTitle } from './components/DocsTitle'
 
 // --- Setup global decorators --

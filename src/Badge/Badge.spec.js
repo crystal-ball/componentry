@@ -25,7 +25,7 @@ describe('<Badge /> snapshots', () => {
     const { container } = render(
       <div>
         <Badge color='primary'>Badge</Badge>
-        <Badge rounded color='primary'>
+        <Badge color='primary' rounded>
           Badge
         </Badge>
       </div>,

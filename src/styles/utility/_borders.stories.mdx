@@ -1,3 +1,4 @@
+import { DocsTitle, Meta } from '@storybook/addon-docs/blocks'
 import { Block } from '../../Block/Block'
 
 <Meta title='Utility Classes/Border' />
@@ -10,7 +11,7 @@ Add a border using the border utility classes.
 
 <div className='d-flex justify-content-center'>
   <div>
-    <Block width={100} height={15} className={`border mx-2`} background='100' />
+    <Block width={100} height={15} className='border mx-2' background='100' />
     <small className='small ml-2'>.border</small>
   </div>
   {['top', 'right', 'bottom', 'left'].map((border) => (
@@ -38,10 +39,10 @@ Set the color of a border to any theme color as well as any color added to the
       <Block
         width={120}
         height={15}
-        border
         borderColor={color}
         mx='sm'
         background='100'
+        border
       />
       <small className='small ml-2'>.border-color-{color}</small>
     </div>
@@ -54,11 +55,11 @@ Increase the width of a border using the `lg` and `xl` border width classes.
 
 <div className='d-flex justify-content-center'>
   <div>
-    <Block width={120} height={15} border borderWidth='lg' mx='sm' />
+    <Block width={120} height={15} borderWidth='lg' mx='sm' border />
     <small className='small ml-2'>.border-width-lg</small>
   </div>
   <div>
-    <Block width={120} height={15} border borderWidth='xl' mx='sm' />
+    <Block width={120} height={15} borderWidth='xl' mx='sm' border />
     <small className='small ml-2'>.border-width-xl</small>
   </div>
 </div>
@@ -129,32 +130,30 @@ ratio of an element
     <Block
       width={50}
       height={50}
-      border
       className='border-radius-circle'
       mx='sm'
       background='100'
+      border
     />
     <small className='small ml-sm'>.border-radius-circle</small>
   </div>
-
-<div>
-  <Block
-    width={100}
-    height={50}
-    className='border border-radius-circle mx-2'
-    background='100'
-  />
-  <small className='small ml-2'>.border-radius-circle</small>
-</div>
-
+  <div>
+    <Block
+      width={100}
+      height={50}
+      className='border border-radius-circle mx-2'
+      background='100'
+    />
+    <small className='small ml-2'>.border-radius-circle</small>
+  </div>
   <div>
     <Block
       width={50}
       height={100}
-      border
       className='border-radius-circle'
       mx='sm'
       background='100'
+      border
     />
     <small className='small ml-2'>.border-radius-circle</small>
   </div>

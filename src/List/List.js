@@ -30,7 +30,6 @@ List.Item = function ListItem(props) {
   const { href, onClick } = rest
 
   return element({
-    /* eslint-disable no-nested-ternary */
     as: href || onClick ? (href ? 'a' : 'button') : 'li',
     // List items always have the `list-item` class, and items that are
     // actionable (buttons/anchors) have the `list-action-item` modifier

@@ -1,3 +1,4 @@
+import { DocsTitle, Meta } from '@storybook/addon-docs/blocks'
 import { Nav } from './Nav'
 
 <Meta title='Components/Nav' component={Nav} />
@@ -6,7 +7,7 @@ import { Nav } from './Nav'
 
 <div className='w-50'>
   <Nav fill={false} justify={false} pills={false} vertical={false}>
-    <Nav.Item active href='#'>
+    <Nav.Item href='#' active>
       Active
     </Nav.Item>
     <Nav.Item href='#'>React</Nav.Item>

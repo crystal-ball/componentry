@@ -1,6 +1,8 @@
-import { List } from './List'
-import { Block } from '../Block/Block'
+<!-- eslint-disable no-console -->
+
+import { DocsTitle, Meta } from '@storybook/addon-docs/blocks'
 import { colors } from '../storybook-resources'
+import { List } from './List'
 
 <Meta title='Components/List' component={List} />
 
@@ -19,13 +21,13 @@ import { colors } from '../storybook-resources'
 ## Anchor list
 
 <List>
-  <List.Item active href='#'>
+  <List.Item href='#' active>
     Radical React
   </List.Item>
   <List.Item href='#'>Radical React</List.Item>
   <List.Item href='#'>Component Library</List.Item>
   <List.Item href='#'>Design System</List.Item>
-  <List.Item disabled href='#'>
+  <List.Item href='#' disabled>
     Radical React
   </List.Item>
 </List>
@@ -48,7 +50,7 @@ import { colors } from '../storybook-resources'
 
 <List>
   {colors.map((color) => (
-    <List.Item color={color} key={color}>
+    <List.Item key={color} color={color}>
       {color} themed list item
     </List.Item>
   ))}

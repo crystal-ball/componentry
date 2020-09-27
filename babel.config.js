@@ -12,7 +12,7 @@ module.exports = {
         [
           '@babel/plugin-transform-runtime',
           // https://github.com/babel/babel/issues/10261
-          { version: require('@babel/helpers/package.json').version }, // eslint-disable-line
+          { version: require('@babel/helpers/package.json').version },
         ],
       ],
     },
@@ -28,7 +28,7 @@ module.exports = {
         [
           '@babel/plugin-transform-runtime',
           // https://github.com/babel/babel/issues/10261
-          { version: require('@babel/helpers/package.json').version }, // eslint-disable-line
+          { version: require('@babel/helpers/package.json').version },
         ],
       ],
     },
@@ -45,7 +45,7 @@ module.exports = {
           {
             useESModules: true,
             // https://github.com/babel/babel/issues/10261
-            version: require('@babel/helpers/package.json').version, // eslint-disable-line
+            version: require('@babel/helpers/package.json').version,
           },
         ],
       ],
@@ -59,7 +59,7 @@ module.exports = {
           {
             useESModules: true,
             // https://github.com/babel/babel/issues/10261
-            version: require('@babel/helpers/package.json').version, // eslint-disable-line
+            version: require('@babel/helpers/package.json').version,
           },
         ],
       ],

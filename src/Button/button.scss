@@ -9,12 +9,12 @@ $button-defaults: (
     display: inline-flex,
     justify-content: center,
     // Prevent text selection on click of buttons
-      user-select: none,
+    user-select: none,
     // By default button content shouldn't wrap
-      white-space: nowrap,
+    white-space: nowrap,
   ),
   // --- Variants
-    variants:
+  variants:
     (
       primary: (
         background-color: theme-get('palette.grayscale.500'),
@@ -56,7 +56,7 @@ $button-defaults: (
       ),
     ),
   // --- Sizes
-    sizes:
+  sizes:
     (
       sm: (
         border-radius: theme-get('border-radii.sm'),

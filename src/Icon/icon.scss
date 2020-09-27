@@ -9,13 +9,13 @@ $icon-defaults: (
     font: (
       display: inline-flex,
       // Default to use the parent color as the icon color
-        fill: currentColor,
+      fill: currentColor,
       color: inherit,
       // width + height of 1em makes icons font-sized by default 🎓
-        height: 1em,
+      height: 1em,
       width: 1em,
       // Use negative margin bottom to align icon baseline with text
-        vertical-align: unset,
+      vertical-align: unset,
       margin-bottom: -0.14em,
     ),
   ),

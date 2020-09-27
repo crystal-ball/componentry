@@ -314,7 +314,7 @@ export function activationTests(TestComponent, { name, testArias } = {}) {
 
     // Mock controlled component being passed true, click should now ONLY call deactivate
     rerender(
-      <TestComponent active activate={activate} deactivate={deactivate}>
+      <TestComponent activate={activate} deactivate={deactivate} active>
         <TestComponent.Trigger>Trigger</TestComponent.Trigger>
         <TestComponent.Content>Content</TestComponent.Content>
       </TestComponent>,

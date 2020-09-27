@@ -24,7 +24,7 @@ describe('<Alert/>', () => {
   test('should bind passed deactivate to close button', async () => {
     const deactivate = jest.fn()
     const { container } = render(
-      <Alert active dismissible color='danger' deactivate={deactivate}>
+      <Alert color='danger' deactivate={deactivate} active dismissible>
         Warning!
       </Alert>,
     )
@@ -45,7 +45,7 @@ describe('<Alert/>', () => {
 describe('<Alert /> snapshots', () => {
   test('renders correctly', () => {
     const { container } = render(
-      <Alert active dismissible color='danger' deactivate={jest.fn()}>
+      <Alert color='danger' deactivate={jest.fn()} active dismissible>
         Warning!
       </Alert>,
     )
