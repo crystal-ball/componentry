@@ -15,7 +15,7 @@ module.exports = {
   collectCoverageFrom: [
     'src/**/*.js',
     '!**/*.stories.js',
-    '!src/storybook-resources/**',
+    '!src/storybook/**',
     '!src/{Media,Modal,Theme}/stories/**',
   ],
 
