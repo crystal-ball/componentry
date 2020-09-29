@@ -4,6 +4,7 @@ const eloquence = require('eslint-config-eloquence')
 
 const configs = eloquence({
   enableMDX: true,
+  ignorePatterns: ['!.*', 'types/**/*'],
   target: 'react',
   rules: {
     // Package does not export prop-types at this time
