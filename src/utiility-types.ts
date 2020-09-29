@@ -1,7 +1,7 @@
 import React from 'react'
 
 export interface UtilityProps {
-  as?: string | React.Component | React.FunctionComponent
+  as?: string | React.ElementType
   /** margin */
   m?: string | number
   /** margin-top */

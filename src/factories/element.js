@@ -4,7 +4,7 @@ import { componentry } from '../utils/componentry'
 
 /**
  * @typedef {Object} ElementFactoryOptions
- * @property {string} [as] Element type of tag name, React component, or React fragment
+ * @property {string | import('react').ElementType} [as] Element type of tag name, React component, or React fragment
  * @property {string} [className] Component props className
  * @property {any} [componentCx] Library component className
  * @property {{ [x: string]: any }} [style] Inline component styles
