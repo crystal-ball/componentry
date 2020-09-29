@@ -4,12 +4,19 @@ import { UtilityProps } from '../utiility-types'
 import { element } from './element'
 
 interface InteractionProps extends UtilityProps {
+  /** Adds an `active` className */
   active?: boolean
+  /** Sets the display color for the variant */
   color?: 'primary' | 'secondary'
+  /** Disables the element, preventing mouse and keyboard events */
   disabled?: boolean
+  /** Sets the HTML element to an anchor */
   href?: string
+  /** Sets the display size */
   size?: 'sm' | 'lg'
+  /** Sets the HTML element to an anchor */
   to?: string
+  /** Display variant */
   variant?: string
 }
 
