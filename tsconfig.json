@@ -1,15 +1,30 @@
 {
+  "include": ["src/**/*"],
+
   "compilerOptions": {
-    "target": "esnext",
-    "module": "commonjs",
-    "allowJs": true,
-    "checkJs": false,
-    "declaration": true,
-    "outDir": "./types/",
-    "strict": false,
-    "forceConsistentCasingInFileNames": true,
-    "esModuleInterop": true,
-    "jsx": "preserve"
-  },
-  "include": ["src/**/*"]
+    "target": "esnext" /* Specify ECMAScript target version */,
+    "module": "commonjs" /* Specify module code generation */,
+    "allowJs": true /* Allow javascript files to be compiled. */,
+    "checkJs": false /* Report errors in .js files. */,
+    "declaration": true /* Generates corresponding '.d.ts' file. */,
+    "outDir": "./types/" /* Redirect output structure to the directory. */,
+    "jsx": "react" /* Specify JSX code generation: 'preserve', 'react-native', or 'react'. */,
+
+    /* Strict Type-Checking Options */
+    "strict": false /* Enable all strict type-checking options. */,
+    // "noImplicitAny": true,                 /* Raise error on expressions and declarations with an implied 'any' type. */
+    // "strictNullChecks": true,              /* Enable strict null checks. */
+    // "strictFunctionTypes": true,           /* Enable strict checking of function types. */
+    // "strictBindCallApply": true,           /* Enable strict 'bind', 'call', and 'apply' methods on functions. */
+    // "strictPropertyInitialization": true,  /* Enable strict checking of property initialization in classes. */
+    // "noImplicitThis": true,                /* Raise error on 'this' expressions with an implied 'any' type. */
+    // "alwaysStrict": true,
+
+    /* Module Resolution Options */
+    "allowSyntheticDefaultImports": true /* Allow default imports from modules with no default export. This does not affect code emit, just typechecking. */,
+    "esModuleInterop": true /* Enables emit interoperability between CommonJS and ES Modules via creation of namespace objects for all imports. Implies 'allowSyntheticDefaultImports'. */,
+
+    /* Advanced Options */
+    "forceConsistentCasingInFileNames": true /* Disallow inconsistently-cased references to the same file. */
+  }
 }

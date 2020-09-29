@@ -11,9 +11,9 @@ describe('<Text/>', () => {
 })
 
 describe('Text', () => {
-  test('When variantsElements is set in theme, then variants are used for Text', () => {
+  test('When elementsMap is set in theme, then map is used for Text', () => {
     const { container } = render(
-      <Theme theme={{ Text: { variantsElements: { rad: 'section' } } }}>
+      <Theme theme={{ Text: { elementsMap: { rad: 'section' } } }}>
         <Text variant='rad'>Componentry</Text>
       </Theme>,
     )

@@ -1,11 +1,18 @@
+import React from 'react'
 import { useTheme } from '../Theme/Theme'
 import { element } from '../factories/element'
+import { UtilityProps } from '../utiility-types'
+
+interface BlockProps extends UtilityProps {
+  /** Switches between display between an inline and block element */
+  inline?: boolean
+}
 
 /**
  * [Block component 📝](https://componentry.design/components/block)
  */
-export function Block(props) {
-  const { inline = false, ...rest } = { ...useTheme('Block'), ...props }
+export const Block: React.FC<BlockProps> = (props) => {
+  const { inline = false, ...rest } = { ...useTheme('Block'), ...props } as BlockProps
 
   return element({
     componentCx: {
