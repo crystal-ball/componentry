@@ -6,6 +6,7 @@
   "main": "lib/index.js",
   "module": "es/index.js",
   "esnext": "esnext/index.js",
+  "types": "./types/index.d.ts",
   "keywords": [
     "react",
     "components",

@@ -9,6 +9,13 @@ import { componentry } from '../utils/componentry'
  * @property {any} [componentCx] Library component className
  * @property {{ [x: string]: any }} [style] Inline component styles
  * @property {string} [themeCx] Theme className
+ *
+ * @property {'italic'} [fontStyle] Utility fontStyle value
+ * @property {'bold'} [fontWeight] Utility fontWeight value
+ * @property {'img'} [role] Aria role
+ * @property {boolean} [disabled] HTML disabled attr
+ * @property {'button'} [type] HMTL type attr
+ * @property {import('react').ReactElement} [children]
  */
 
 /**

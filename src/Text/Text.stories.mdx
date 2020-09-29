@@ -1,10 +1,12 @@
-import { Meta } from '@storybook/addon-docs/blocks'
+import { ArgsTable, Meta } from '@storybook/addon-docs/blocks'
 import { DocsTitle } from '../storybook/DocsTitle'
 import { Text } from './Text'
 
 <Meta title='Components/Text' />
 
 <DocsTitle title='Text' />
+
+<ArgsTable of={Text} />
 
 Componentry ships with support for variants: `heading-{1,3}`, `body`, `code`, and `small`.
 The `inline` prop is available to create a minimal span that can be styled with System
