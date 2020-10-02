@@ -1,9 +1,25 @@
+/* eslint-disable @typescript-eslint/no-empty-interface */
+import React from 'react'
 import { staticComponent } from '../factories/static-component'
+import { UtilityProps } from '../base-types'
+
+interface CardProps extends UtilityProps {}
+interface CardBodyProps extends UtilityProps {}
+interface CardFooterProps extends UtilityProps {}
+interface CardHeaderProps extends UtilityProps {}
+interface CardTitleProps extends UtilityProps {}
+
+interface Card extends React.FC<CardProps> {
+  Body?: React.FC<CardBodyProps>
+  Footer?: React.FC<CardFooterProps>
+  Header?: React.FC<CardHeaderProps>
+  Title?: React.FC<CardTitleProps>
+}
 
 /**
  * [Card component 📝](https://componentry.design/components/card)
  */
-export const Card = staticComponent('Card', {
+export const Card: Card = staticComponent('Card', {
   componentCx: 'card',
 })
 
