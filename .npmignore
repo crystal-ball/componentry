@@ -8,6 +8,10 @@ public
 src/**/*.js
 src/**/*.mdx
 src/**/*.snap
+types.bk
+# Storybook assets
+**/stories/**
+**/storybook/**
 
 # Output
 # -------------------------------------

@@ -10,6 +10,13 @@
 
 #### [Unreleased]
 
+## [3.1.0](https://github.com/crystal-ball/componentry/compare/v3.1.0...v3.0.0) - 2020-09-29
+
+- Button and Link components should be good
+- Experimental new Table components
+- Real types for Block, Flex, Icon, Text and Theme components
+- Continued under the hood improvements
+
 ## [3.0.0](https://github.com/crystal-ball/componentry/compare/v2.5.0...v3.0.0) - 2020-05-17
 
 After nearly two years of tinkering and optimizing, Componentry v3 is released 🎉
