@@ -1,6 +1,6 @@
 import cx from 'classnames'
 import { useTheme } from '../Theme/Theme'
-import { UtilityProps } from '../utiility-types'
+import { UtilityProps } from '../base-types'
 import { element } from './element'
 
 interface InteractionProps extends UtilityProps {

@@ -1,7 +1,7 @@
 import React from 'react'
 import { useTheme } from '../Theme/Theme'
 import { element } from '../factories/element'
-import { UtilityProps } from '../utiility-types'
+import { UtilityProps } from '../base-types'
 
 interface FlexProps extends UtilityProps {
   /** Sets an `align-items` flex style */

@@ -1,7 +1,7 @@
 import React from 'react'
 import { useTheme } from '../Theme/Theme'
 import { element } from '../factories/element'
-import { UtilityProps } from '../utiility-types'
+import { UtilityProps } from '../base-types'
 
 interface BlockProps extends UtilityProps {
   /** Switches between display between an inline and block element */
