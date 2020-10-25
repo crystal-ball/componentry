@@ -1,9 +1,11 @@
 import React from 'react'
 import { useTheme } from '../Theme/Theme'
 import { element } from '../factories/element'
-import { UtilityProps } from '../base-types'
+import { BaseProps } from '../base-types'
 
-interface BlockProps extends UtilityProps {
+export interface BlockProps
+  extends BaseProps,
+    Omit<React.ComponentPropsWithoutRef<'div'>, 'className'> {
   /** Switches between display between an inline and block element */
   inline?: boolean
 }
@@ -12,7 +14,7 @@ interface BlockProps extends UtilityProps {
  * [Block component 📝](https://componentry.design/components/block)
  */
 export const Block: React.FC<BlockProps> = (props) => {
-  const { inline = false, ...rest } = { ...useTheme('Block'), ...props } as BlockProps
+  const { inline = false, ...rest } = { ...useTheme<BlockProps>('Block'), ...props }
 
   return element({
     componentCx: {

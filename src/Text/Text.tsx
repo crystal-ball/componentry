@@ -1,9 +1,11 @@
 import React from 'react'
 import { useTheme } from '../Theme/Theme'
 import { element } from '../factories/element'
-import { UtilityProps } from '../base-types'
+import { BaseProps } from '../base-types'
 
-const defaultElementsMap = {
+type ElementsMap = Record<string, keyof JSX.IntrinsicElements>
+
+const defaultElementsMap: ElementsMap = {
   'heading-1': 'h1',
   'heading-2': 'h2',
   'heading-3': 'h3',
@@ -12,7 +14,9 @@ const defaultElementsMap = {
   'small': 'small',
 }
 
-interface TextProps extends UtilityProps {
+interface TextProps
+  extends BaseProps,
+    Omit<React.ComponentPropsWithoutRef<'div'>, 'className'> {
   /** Shorthand to set font-weight bold */
   bold?: boolean
   /** Switches between display between an inline (span) and block (div) element */
@@ -25,17 +29,24 @@ interface TextProps extends UtilityProps {
 
 interface TextContextAndProps extends TextProps {
   /** Element used for each variant */
-  elementsMap?: { [variant: string]: string }
+  elementsMap?: ElementsMap
 }
 
 /**
  * [Text component 📝](https://componentry.design/components/text)
  */
 export const Text: React.FC<TextProps> = (props) => {
-  const { variant = 'body', bold, italic, inline, elementsMap = {}, ...rest } = {
-    ...useTheme('Text'),
+  const {
+    variant = 'body',
+    bold,
+    italic,
+    inline,
+    elementsMap = {},
+    ...rest
+  }: TextContextAndProps = {
+    ...useTheme<TextProps>('Text'),
     ...props,
-  } as TextContextAndProps
+  }
 
   return element({
     as: inline ? 'span' : elementsMap[variant] || defaultElementsMap[variant] || 'p',

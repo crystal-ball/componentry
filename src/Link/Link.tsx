@@ -1,12 +1,44 @@
-import { interactionComponent } from '../factories/interaction-component'
+import cx from 'classnames'
+import { useTheme } from '../Theme/Theme'
+import { BaseProps } from '../base-types'
+import { element } from '../factories/element'
 
-interface LinkProps {
+interface LinkProps
+  extends BaseProps,
+    Omit<React.ComponentPropsWithoutRef<'a'>, 'className'> {
+  /** Toggles an active element style */
+  active?: boolean
+  /** Disables the element, preventing mouse and keyboard events */
+  disabled?: boolean
+  /** HTML element href */
+  href?: string
+  /** Routing to */
+  to?: string
   /** Display variant */
   variant?: 'primary'
-  size?: never
 }
 
 /**
  * [Link component 📝](https://componentry.design/components/link)
  */
-export const Link = interactionComponent<LinkProps>('Link', 'link')
+export const Link: React.FC<LinkProps> = (props) => {
+  const { variant = 'primary', active, disabled, ...merged } = {
+    ...useTheme<LinkProps>('Link'),
+    ...props,
+  }
+
+  // If an href or to is passed, this instance should render an anchor tag
+  const asAnchor = Boolean(merged.href || merged.to)
+
+  return element({
+    as: asAnchor ? 'a' : 'button',
+    type: asAnchor ? undefined : 'button',
+    disabled,
+    componentCx: cx('🅲-link', `link-${variant}`, {
+      active,
+      disabled, // We include a disabled class AND pass disabled prop to element for a11y
+    }),
+    ...merged,
+  })
+}
+Link.displayName = 'Link'

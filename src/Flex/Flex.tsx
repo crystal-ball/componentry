@@ -1,9 +1,11 @@
 import React from 'react'
 import { useTheme } from '../Theme/Theme'
 import { element } from '../factories/element'
-import { UtilityProps } from '../base-types'
+import { BaseProps } from '../base-types'
 
-interface FlexProps extends UtilityProps {
+interface FlexProps
+  extends BaseProps,
+    Omit<React.ComponentPropsWithoutRef<'div'>, 'className'> {
   /** Sets an `align-items` flex style */
   align?: 'start' | 'center' | 'end' | 'stretch' | 'baseline'
   /** sets a `flex-direction` flex style */
@@ -21,9 +23,9 @@ interface FlexProps extends UtilityProps {
  */
 export const Flex: React.FC<FlexProps> = (props) => {
   const { align, direction, inline = false, justify, wrap, ...rest } = {
-    ...useTheme('Flex'),
+    ...useTheme<FlexProps>('Flex'),
     ...props,
-  } as FlexProps
+  }
 
   return element({
     componentCx: {

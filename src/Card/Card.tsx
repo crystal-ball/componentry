@@ -1,53 +1,63 @@
-/* eslint-disable @typescript-eslint/no-empty-interface */
 import React from 'react'
 import { staticComponent } from '../factories/static-component'
-import { UtilityProps } from '../base-types'
+import { BaseProps } from '../base-types'
 
-interface CardProps extends UtilityProps {}
-interface CardBodyProps extends UtilityProps {}
-interface CardFooterProps extends UtilityProps {}
-interface CardHeaderProps extends UtilityProps {}
-interface CardTitleProps extends UtilityProps {}
+interface CardProps
+  extends BaseProps,
+    Omit<React.ComponentPropsWithoutRef<'div'>, 'className'> {}
+interface CardBodyProps
+  extends BaseProps,
+    Omit<React.ComponentPropsWithoutRef<'div'>, 'className'> {}
+interface CardFooterProps
+  extends BaseProps,
+    Omit<React.ComponentPropsWithoutRef<'div'>, 'className'> {}
+interface CardHeaderProps
+  extends BaseProps,
+    Omit<React.ComponentPropsWithoutRef<'div'>, 'className'> {}
+interface CardTitleProps
+  extends BaseProps,
+    Omit<React.ComponentPropsWithoutRef<'div'>, 'className'> {}
 
-interface Card extends React.FC<CardProps> {
-  Body?: React.FC<CardBodyProps>
-  Footer?: React.FC<CardFooterProps>
-  Header?: React.FC<CardHeaderProps>
-  Title?: React.FC<CardTitleProps>
+export interface Card {
+  (props: CardProps): React.ReactElement
+  displayName: 'Card'
+  /**
+   * [Card body component 📝](https://componentry.design/components/card)
+   */
+  Body: React.FC<CardBodyProps>
+  /**
+   * [Card footer component 📝](https://componentry.design/components/card)
+   */
+  Footer: React.FC<CardFooterProps>
+  /**
+   * [Card header component 📝](https://componentry.design/components/card)
+   */
+  Header: React.FC<CardHeaderProps>
+  /**
+   * [Card title component 📝](https://componentry.design/components/card)
+   */
+  Title: React.FC<CardTitleProps>
 }
 
-/**
- * [Card component 📝](https://componentry.design/components/card)
- */
-export const Card: Card = staticComponent('Card', {
+/** [Card component 📝](https://componentry.design/components/card) */
+export const Card = staticComponent('Card', {
   componentCx: 'card',
-})
+}) as Card
+Card.displayName = 'Card'
 
-/**
- * [Card body component 📝](https://componentry.design/components/card)
- */
-Card.Body = staticComponent('CardBody', {
+Card.Body = staticComponent<CardBodyProps>('CardBody', {
   componentCx: 'card-body',
 })
 
-/**
- * [Card footer component 📝](https://componentry.design/components/card)
- */
-Card.Footer = staticComponent('CardFooter', {
+Card.Footer = staticComponent<CardFooterProps>('CardFooter', {
   componentCx: 'card-footer',
 })
 
-/**
- * [Card header component 📝](https://componentry.design/components/card)
- */
-Card.Header = staticComponent('CardHeader', {
+Card.Header = staticComponent<CardHeaderProps>('CardHeader', {
   componentCx: 'card-header',
 })
 
-/**
- * [Card title component 📝](https://componentry.design/components/card)
- */
-Card.Title = staticComponent('CardTitle', {
+Card.Title = staticComponent<CardTitleProps>('CardTitle', {
   as: 'h4',
   componentCx: 'card-title',
 })

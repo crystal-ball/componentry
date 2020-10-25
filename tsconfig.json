@@ -1,5 +1,6 @@
 {
   "include": ["src/**/*"],
+  "files": ["./test/types.tsx"],
 
   "compilerOptions": {
     "target": "esnext" /* Specify ECMAScript target version */,

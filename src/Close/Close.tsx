@@ -1,7 +1,17 @@
 import React from 'react'
+import cx from 'classnames'
 import { staticComponent } from '../factories/static-component'
+import { BaseProps } from '../base-types'
 
-export const closeBase = {
+export interface CloseProps
+  extends BaseProps,
+    Omit<React.ComponentPropsWithoutRef<'button'>, 'className'> {}
+
+export interface CloseBase extends CloseProps {
+  componentCx: Parameters<typeof cx>[0]
+}
+
+export const closeBase: CloseBase = {
   'aria-label': 'close',
   'as': 'button',
   'componentCx': 'close',
@@ -16,4 +26,4 @@ export const closeBase = {
 /**
  * [Close component 📝](https://componentry.design/components/close)
  */
-export const Close = staticComponent('Close', closeBase)
+export const Close = staticComponent<CloseProps>('Close', closeBase)
