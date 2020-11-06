@@ -19,8 +19,8 @@
   <a href="https://codeclimate.com/github/crystal-ball/componentry/test_coverage">
     <img src="https://api.codeclimate.com/v1/badges/7cadedbd49251df31254/test_coverage" alt="Test coverage" valign="text-top" />
   </a>
-  <a href="https://api.codeclimate.com/v1/badges/7cadedbd49251df31254/maintainability">
-    <img src="https://api.codeclimate.com/v1/badges/70b90e52c78b35ab947a/maintainability" alt="Maintainability" valign="text-top" />
+  <a href="https://codeclimate.com/github/crystal-ball/componentry/maintainability">
+    <img src="https://api.codeclimate.com/v1/badges/7cadedbd49251df31254/maintainability" alt="Maintainability" valign="text-top"/>
   </a>
   <code>:status&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code>
 
