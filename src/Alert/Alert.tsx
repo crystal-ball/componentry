@@ -4,7 +4,7 @@ import { useTheme } from '../Theme/Theme'
 import { element } from '../factories/element'
 import { staticComponent } from '../factories/static-component'
 import { useActive, useVisible } from '../hooks'
-import { BaseProps } from '../base-types'
+import { BaseProps } from '../utils/base-types'
 
 interface CardCloseProps
   extends BaseProps,
@@ -61,7 +61,7 @@ export const Alert: Alert = (props) => {
       'alert-outline': outline,
     },
     // ⚠️ Only include aria-hidden value if the alert is dismissible
-    'aria-hidden': dismissible && !active ? 'false' : 'true',
+    'aria-hidden': dismissible ? String(!active) : undefined,
     'children': (
       <>
         {/* Provide the alert color context for screen readers */}

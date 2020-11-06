@@ -31,7 +31,7 @@ type ElementOptions<TAttrs> = TAttrs & {
  * code at the definition site)
  */
 export function element<TProps extends ElementProps>({
-  as,
+  as = 'div',
   className,
   componentCx,
   style,

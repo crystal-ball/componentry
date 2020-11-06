@@ -1,6 +1,6 @@
 import cx from 'classnames'
 import { useTheme } from '../Theme/Theme'
-import { BaseProps } from '../base-types'
+import { BaseProps } from '../utils/base-types'
 import { element } from '../factories/element'
 
 interface LinkProps
@@ -8,6 +8,8 @@ interface LinkProps
     Omit<React.ComponentPropsWithoutRef<'a'>, 'className'> {
   /** Toggles an active element style */
   active?: boolean
+  /** Link variant color */
+  color?: 'primary' | 'secondary'
   /** Disables the element, preventing mouse and keyboard events */
   disabled?: boolean
   /** HTML element href */
@@ -22,7 +24,7 @@ interface LinkProps
  * [Link component 📝](https://componentry.design/components/link)
  */
 export const Link: React.FC<LinkProps> = (props) => {
-  const { variant = 'primary', active, disabled, ...merged } = {
+  const { variant = 'primary', color, active, disabled, ...merged } = {
     ...useTheme<LinkProps>('Link'),
     ...props,
   }
@@ -35,6 +37,9 @@ export const Link: React.FC<LinkProps> = (props) => {
     type: asAnchor ? undefined : 'button',
     disabled,
     componentCx: cx('🅲-link', `link-${variant}`, {
+      // Include a color class so that users can create link colors with hover and active
+      // styles without affecting the general font color utility class
+      [`link-color-${color}`]: color,
       active,
       disabled, // We include a disabled class AND pass disabled prop to element for a11y
     }),

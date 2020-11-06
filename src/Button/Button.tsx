@@ -1,6 +1,6 @@
 import cx from 'classnames'
 import { useTheme } from '../Theme/Theme'
-import { BaseProps } from '../base-types'
+import { BaseProps } from '../utils/base-types'
 import { element } from '../factories/element'
 
 interface ButtonProps
