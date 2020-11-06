@@ -1,0 +1,9 @@
+version: '2'
+# Ref: https://docs.codeclimate.com/docs/advanced-configuration#section-default-check-configurations
+checks:
+  # Allow 75 line component functions
+  method-lines:
+    config:
+      threshold: 75
+exclude_patterns:
+  - '**/*.spec.js'
