@@ -3,6 +3,7 @@ import { useTheme } from '../Theme/Theme'
 import { element } from '../factories/element'
 import { BaseProps } from '../utils/base-types'
 
+/** Element used for each variant */
 type ElementsMap = Record<string, keyof JSX.IntrinsicElements>
 
 const defaultElementsMap: ElementsMap = {
@@ -27,24 +28,12 @@ interface TextProps
   variant?: 'heading-1' | 'heading-2' | 'heading-3' | 'body' | 'code' | 'small'
 }
 
-interface TextContextAndProps extends TextProps {
-  /** Element used for each variant */
-  elementsMap?: ElementsMap
-}
-
 /**
  * [Text component 📝](https://componentry.design/components/text)
  */
 export const Text: React.FC<TextProps> = (props) => {
-  const {
-    variant = 'body',
-    bold,
-    italic,
-    inline,
-    elementsMap = {},
-    ...rest
-  }: TextContextAndProps = {
-    ...useTheme<TextProps>('Text'),
+  const { variant = 'body', bold, italic, inline, elementsMap = {}, ...rest } = {
+    ...useTheme<TextProps & { elementsMap?: ElementsMap }>('Text'),
     ...props,
   }
 
