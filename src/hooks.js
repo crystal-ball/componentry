@@ -62,6 +62,7 @@ export const useNoScroll = (active) => {
  *   transition element opacity using css transitions
  * - Hide: Set visible false to start element opacity using css transitions,
  *   then after transition duration set active false to set display none
+ * @returns {{ active: boolean, visible: boolean }}
  */
 export const useVisible = (active, duration = 250) => {
   const mounted = useRef(true)

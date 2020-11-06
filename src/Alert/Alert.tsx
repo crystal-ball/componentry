@@ -4,20 +4,40 @@ import { useTheme } from '../Theme/Theme'
 import { element } from '../factories/element'
 import { staticComponent } from '../factories/static-component'
 import { useActive, useVisible } from '../hooks'
+import { BaseProps } from '../utils/base-types'
 
-/**
- * @typedef {Object} Props
- * @property {string} Props.ariaTitle Set a specific aria title
- * @property {string} Props.color Set the theme color of the alert
- * @property {boolean} Props.dismissible If true the alert is dismissible
- * @property {boolean} Props.outline If true, the alert will have outline styles
- */
+interface CardCloseProps
+  extends BaseProps,
+    Omit<React.ComponentPropsWithoutRef<'button'>, 'className'> {}
+
+interface AlertProps
+  extends BaseProps,
+    Omit<React.ComponentPropsWithoutRef<'div'>, 'className'> {
+  /** Sets a custom aria title */
+  ariaTitle?: string
+  /** Sets the theme color of the alert */
+  color?: 'primary' | 'success' | 'warning' | 'critical'
+  /** Deactivate handler called on click of Alert dismiss button */
+  deactivate?: (event: React.MouseEvent<HTMLButtonElement>) => void
+  /** Toggles alert dismissible feature */
+  dismissible?: boolean
+  /** Toggles alert outline styles */
+  outline?: boolean
+}
+
+interface Alert {
+  (props: AlertProps): React.ReactElement
+  displayName: 'Alert'
+  /**
+   * [Alert close component 📝](https://componentry.design/components/alert)
+   */
+  Close: React.FC<CardCloseProps>
+}
 
 /**
  * [Alert component 📝](https://componentry.design/components/alert)
  */
-export function Alert(props) {
-  /** @type {Props} */
+export const Alert: Alert = (props) => {
   const {
     children,
     active: propsActive,
@@ -27,7 +47,7 @@ export function Alert(props) {
     dismissible,
     outline,
     ...rest
-  } = { ...useTheme('Alert'), ...useActive(), ...props }
+  } = { ...useTheme<AlertProps>('Alert'), ...useActive(), ...props }
 
   const { active, visible } = useVisible(propsActive)
 
@@ -64,7 +84,4 @@ export function Alert(props) {
 }
 Alert.displayName = 'Alert'
 
-/**
- * [Alert close component 📝](https://componentry.design/components/alert)
- */
-Alert.Close = staticComponent('AlertClose', closeBase)
+Alert.Close = staticComponent<CardCloseProps>('AlertClose', closeBase)

@@ -1,3 +1,28 @@
+# Architecture
+
+- Use `React.FC` for the components, it results in nice terse Intellisense
+- User interfaces because they can be extended by consumer libs
+
+### Element factory
+
+All components use the `/factories/element` factory to call
+`React.createElement`. The abstraction standardizes setup of the `as` prop and
+processing of library props and styles.
+
+### Static Components
+
+Many of the components in Componentry are just wrappers that set a default
+`className` for some styles. The `/factories/static-component` factory abstracts
+creating these static components.
+
+### Example components
+
+These components are good examples of different patterns:
+
+1. Static component and subcomponents: Card component
+
+---
+
 Componentry's architecture is driven by two primary goals:
 
 - Make consumption of library as simple as possible

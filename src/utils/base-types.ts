@@ -1,7 +1,12 @@
 import React from 'react'
+import cx from 'classnames'
 
-export interface UtilityProps {
-  as?: string | React.ElementType
+export interface BaseProps {
+  /** Component element */
+  as?: React.ElementType
+  /** Component className, can be a string, array, or object */
+  className?: Parameters<typeof cx>[0]
+  // --- Spacing
   /** margin */
   m?: string | number
   /** margin-top */
@@ -30,4 +35,9 @@ export interface UtilityProps {
   px?: string | number
   /** padding-top && padding-bottom */
   py?: string | number
+  // --- Typography
+  /** Text font-style style */
+  fontStyle?: 'italic' | 'unset'
+  /** Text font-weight style */
+  fontWeight?: 'light' | 'normal' | 'bold'
 }

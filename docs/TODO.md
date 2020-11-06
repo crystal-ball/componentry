@@ -16,3 +16,12 @@
 
 - Add System props for `flex-grow`, and `flex-shrink`.
 - Add fullWidth prop that sets a `.min-w-full` class for 100% width
+
+## Testing
+
+- Can the `to` for Button/Link be overridden to allow things like:
+  `to={{ path: '/path' params: { status: 'rad' }}}`
+
+## Types
+
+- Can the `propsDefaults` in `element` be more defined?

@@ -1,11 +1,16 @@
 import React from 'react'
 import { useTheme } from '../Theme/Theme'
 import { element } from '../factories/element'
-import { UtilityProps } from '../utiility-types'
+import { BaseProps } from '../utils/base-types'
 
-interface IconProps extends UtilityProps {
+interface IconProps
+  extends BaseProps,
+    Omit<
+      React.ComponentPropsWithoutRef<'svg'>,
+      'className' | 'fontStyle' | 'fontWeight'
+    > {
   /** SVG id for href link */
-  id: 'string'
+  id: string
   /** Display variant */
   variant?: 'font'
 }
@@ -14,7 +19,7 @@ interface IconProps extends UtilityProps {
  * [Icon component 📝](https://componentry.design/components/icon)
  */
 export const Icon: React.FC<IconProps> = (props) => {
-  const { variant = 'font', id, ...rest } = { ...useTheme('Icon'), ...props } as IconProps
+  const { variant = 'font', id, ...rest } = { ...useTheme<IconProps>('Icon'), ...props }
 
   return element({
     as: 'svg',
