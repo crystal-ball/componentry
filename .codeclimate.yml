@@ -7,3 +7,4 @@ checks:
       threshold: 75
 exclude_patterns:
   - '**/*.spec.js'
+  - 'test/'
