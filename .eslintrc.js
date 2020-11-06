@@ -9,6 +9,9 @@ const configs = eloquence({
   rules: {
     // Package does not export prop-types at this time
     'react/prop-types': 'off',
+    // Componentry doesn't use the JSX transform yet
+    'react/jsx-uses-react': 'error',
+    'react/react-in-jsx-scope': 'error',
   },
 })
 
