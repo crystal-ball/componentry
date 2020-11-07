@@ -7,7 +7,6 @@ import {
   BaseActiveContentProps,
   BaseProps,
 } from '../utils/base-types'
-import { DrawerContentProps } from '../Drawer/Drawer'
 
 export interface DropdownProps
   extends BaseActiveContainerProps,
@@ -47,7 +46,7 @@ export interface Dropdown {
   /**
    * [Dropdown content component 📝](https://componentry.design/components/dropdown)
    */
-  Content: React.FC<DrawerContentProps>
+  Content: React.FC<DropdownContentProps>
   /**
    * [Dropdown item component 📝](https://componentry.design/components/dropdown)
    */
