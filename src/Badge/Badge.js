@@ -1,5 +1,5 @@
 import { useTheme } from '../Theme/Theme'
-import { element } from '../factories/element'
+import { element } from '../utils/element-creator'
 
 /**
  * @typedef {Object} Props

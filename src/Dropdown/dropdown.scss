@@ -6,19 +6,19 @@
 
 // The dropdown wrapper element handles creating a relative container that the
 // content is absolutely positioned off of
-.dropdown {
+.🅲-dropdown {
   position: relative;
   // Default dropdown container to inline-block so that click area is constrained
-  // to dropdown trigger
+  // to dropdown action
   display: inline-block;
 }
 
 //
-// --- Trigger styles
+// --- Action styles
 //
 
 .dropdown-action-primary {
-  @include active-trigger-element;
+  @include active-action-element;
 
   font-size: $dropdown-font-size;
   font-weight: $dropdown-font-weight;
@@ -28,7 +28,7 @@
 // --- Content styles
 //
 
-.dropdown-content {
+.🅲-dropdown-content {
   display: block;
   position: absolute;
   z-index: $zindex-dropdown;
@@ -76,7 +76,7 @@
     margin-right: $dropdown-spacer;
   }
 
-  // Aligns dropdown content to right edge of dropdown trigger instead of left
+  // Aligns dropdown content to right edge of dropdown action instead of left
   &.align-right {
     right: 0;
     left: auto;
@@ -88,25 +88,23 @@
 //
 
 .dropdown-sm {
-  .dropdown-content,
-  .a-dropdown-trigger {
+  .dropdown-content {
     font-size: $dropdown-font-size-sm;
     font-weight: $dropdown-font-weight-sm;
   }
 
-  .dropdown-item {
+  .🅲-dropdown-item {
     padding: $dropdown-item-padding-y-sm $dropdown-item-padding-x-sm;
   }
 }
 
 .dropdown-lg {
-  .dropdown-content,
-  .a-dropdown-trigger {
+  .🅲-dropdown-content {
     font-size: $dropdown-font-size-lg;
     font-weight: $dropdown-font-weight-lg;
   }
 
-  .dropdown-item {
+  .🅲-dropdown-item {
     padding: $dropdown-item-padding-y-lg $dropdown-item-padding-x-lg;
   }
 }
@@ -117,7 +115,7 @@
 
 // Dropdown items
 // `<button>`-specific styles are denoted with `// For <button>s`
-.dropdown-item {
+.🅲-dropdown-item {
   display: block;
   width: 100%;
   padding: $dropdown-item-padding-y $dropdown-item-padding-x;

@@ -30,27 +30,27 @@ Active components that support aligning content in different directions use the
 `direction` prop to include classes that set the content position.
 
 - The direction classes are added to the container component so that both the
-  trigger and content components can be easily targeted.
+  action and content components can be easily targeted.
 - Directional components have a sensible default set, so the `direction` prop
   only needs to be overridden for custom directions.
 
 ```jsx
 <Popover
-  Trigger='Open left'
-  Content='This content will be aligned left of the trigger instead of right.'
+  Action='Open left'
+  Content='This content will be aligned left of the action instead of right.'
   direction='left'
 />
 ```
 
-## `<Trigger />` and `<Content />` subcomponents
+## `<Action />` and `<Content />` subcomponents
 
-All components with active state use Trigger and Content subcomponents.
+All components with active state use Action and Content subcomponents.
 
 ```jsx
 <Tooltip>
-  <Tooltip.Trigger>Trigger</Tooltip.Trigger>
+  <Tooltip.Action>Action</Tooltip.Action>
   <Tooltip.Content>
-    The Trigger and Content subcomponents are standard for all components with
+    The Action and Content subcomponents are standard for all components with
     active state.
   </Tooltip.Content>
 </Tooltip>
@@ -70,7 +70,7 @@ component.
 
 ```jsx
 <Active>
-  <Active.Trigger>Trigger</Active.Trigger>
+  <Active.Action>Action</Active.Action>
   <Active.Content>I manage my own state.</Active.Content>
 </Active>
 ```
@@ -91,7 +91,7 @@ Component state changes can be observed by passing on event handlers:
   onDeactivate={this.doSomethingOnDeactivate}
   onDeactivated={this.doSomethingAfterDeactivation}
 >
-  <Active.Trigger>Trigger</Active.Trigger>
+  <Active.Action>Action</Active.Action>
   <Active.Content>I will let you know when my state changes.</Active.Content>
 </State>
 ```
@@ -107,14 +107,14 @@ props.
   activate={this.handleActivationChangeEvents}
   deactivate={this.handleDeactivationChangeEvents}
 >
-  <Active.Trigger>Trigger</Active.Trigger>
+  <Active.Action>Action</Active.Action>
   <Active.Content>I will follow the instructions you give me.</Active.Content>
 </Active>
 ```
 
-## Trigger decorations
+## Action decorations
 
-All Trigger components accept a `decoration` prop which is rendered after the
-Trigger children. The decoration can be set at a component level or at an
+All Action components accept a `decoration` prop which is rendered after the
+Action children. The decoration can be set at a component level or at an
 application level using the ThemeProvider. This makes it easy to add a default
-decoration to all trigger instances, eg adding an icon to all popovers.
+decoration to all action instances, eg adding an icon to all popovers.

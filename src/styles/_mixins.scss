@@ -214,9 +214,9 @@
   border-radius: 0;
 }
 
-// Creates default styles for all the active trigger components to look like
+// Creates default styles for all the active action components to look like
 // links
-@mixin active-trigger-element {
+@mixin active-action-element {
   @include reset-button;
 
   // Set link font styles

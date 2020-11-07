@@ -16,41 +16,41 @@ import { Active } from './Active'
   onDeactivate={console.log}
   onDeactivated={console.log}
 >
-  <Active.Trigger>Toggle</Active.Trigger>
+  <Active.Action>Toggle</Active.Action>
   <Active.Content>Active component content</Active.Content>
 </Active>
 
 ## Controlled
 
 <Active activate={console.log}>
-  <Active.Trigger>Toggle</Active.Trigger>
+  <Active.Action>Toggle</Active.Action>
   <Active.Content>Active component content</Active.Content>
 </Active>
 
 ## Default active override
 
-<Active Trigger='Toggle' Content='Active component content' defaultActive />
+<Active Action='Toggle' Content='Active component content' defaultActive />
 
 ## Deactivate on external clicks
 
-<Active Trigger='Toggle' Content='Active component content' clickEvents />
+<Active Action='Toggle' Content='Active component content' clickEvents />
 
 ## Deactivate on esc
 
-<Active Trigger='Toggle' Content='Active component content' escEvents />
+<Active Action='Toggle' Content='Active component content' escEvents />
 
 ## Handle mouse events
 
-<Active Trigger='Toggle' Content='Active component content' mouseEvents />
+<Active Action='Toggle' Content='Active component content' mouseEvents />
 
 ## Shorthand subcomponents
 
-<Active Trigger='Toggle' Content='Active component content' />
+<Active Action='Toggle' Content='Active component content' />
 
 ## Size and direction
 
 <Active size='sm' direction='up'>
-  <Active.Trigger>Toggle</Active.Trigger>
+  <Active.Action>Toggle</Active.Action>
   <Active.Content>Active component content</Active.Content>
 </Active>
 

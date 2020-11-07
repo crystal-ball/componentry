@@ -1,6 +1,6 @@
 import { useTheme } from '../Theme/Theme'
-import { element } from '../factories/element'
 import { navClasses } from '../utils/componentry'
+import { element } from '../utils/element-creator'
 
 /**
  * [Nav component 📝](https://componentry.design/components/nav)

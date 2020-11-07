@@ -5,18 +5,18 @@
 //
 
 // --- Structure
-// .tabs
-// .tabs-triggers-container
-// .tabs-trigger
-// .tabs-content-container
-// .tabs-content
+// .🅲-tabs
+// .tabs-actions-container
+// .🅲-tabs-action
+// .🅲-tabs-content-container
+// .🅲-tabs-content
 
 //
 // Tabs container
 //
 
 // Container handles: margin between tabs and panes, and layout of tabs
-.tabs-triggers-container {
+.tabs-actions-container {
   display: flex;
   margin: $tabs-nav-container-margin;
   border-bottom: $tabs-nav-container-border;
@@ -24,7 +24,7 @@
   box-shadow: $tabs-nav-container-shadow;
 
   // --- Filled
-  &.tabs-triggers-container-fill {
+  &.tabs-actions-container-fill {
     .tabs-action-primary {
       flex: 1 1 auto;
       text-align: center;
@@ -32,7 +32,7 @@
   }
 
   // --- Justified
-  &.tabs-triggers-container-justified {
+  &.tabs-actions-container-justified {
     .tabs-action-primary {
       flex-basis: 0;
       flex-grow: 1;
@@ -43,7 +43,7 @@
   // TODO: tabs pills
 
   // --- Vertical
-  &.tabs-triggers-container-vertical {
+  &.tabs-actions-container-vertical {
     margin: $tabs-nav-vertical-margin;
     border-bottom: none;
 
@@ -119,6 +119,6 @@
 // Tab content container
 //
 
-.tabs-content-container {
+.🅲-tabs-content-container {
   padding: $tabs-pane-container-padding;
 }

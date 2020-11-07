@@ -1,6 +1,6 @@
 import React, { createElement } from 'react'
 import cx from 'classnames'
-import { componentry } from '../utils/componentry'
+import { componentry } from './componentry'
 
 // Type used to *constrain* what props can be passed into element()
 interface ElementProps {

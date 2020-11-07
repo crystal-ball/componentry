@@ -9,7 +9,7 @@ import { Dropdown } from './Dropdown'
 <DocsTitle title='Dropdowns' experimental />
 
 <Dropdown direction='bottom' onActivate={console.log} onDeactivate={console.log}>
-  <Dropdown.Trigger>Trigger</Dropdown.Trigger>
+  <Dropdown.Action>Action</Dropdown.Action>
   <Dropdown.Content>
     <h4 className='dropdown-heading'>Available actions</h4>
     <Dropdown.Item>Dropdown Item</Dropdown.Item>
@@ -28,7 +28,7 @@ import { Dropdown } from './Dropdown'
 ## Variant
 
 <Dropdown className='d-block w-50'>
-  <Dropdown.Trigger
+  <Dropdown.Action
     as='input'
     type='text'
     variant='query-bar'

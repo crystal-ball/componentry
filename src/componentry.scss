@@ -20,11 +20,11 @@
 
 // Scoped library component styles. These styles are intended to be used only
 // with their parent components.
-@import './components';
+@import './styles/components';
 
 // Utility styles for composing custom elements leveraging a consistent design
 // system.
-@import './utility';
+@import './styles/utility';
 
 /*
 * 🙌 Componentry styles build on these amazing libraries:

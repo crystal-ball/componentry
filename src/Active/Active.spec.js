@@ -8,7 +8,7 @@ import { Active } from './Active'
 describe('<Active />', () => {
   activationTests(Active, { name: 'active', testArias: ['controls'] })
   elementTests(Active)
-  elementTests(Active.Trigger)
+  elementTests(Active.Action)
   elementTests(Active.Content)
 })
 
@@ -18,7 +18,7 @@ describe('<Active /> snapshots', () => {
   it('renders correctly', () => {
     const { container } = render(
       <Active>
-        <Active.Trigger>Trigger</Active.Trigger>
+        <Active.Action>Action</Active.Action>
         <Active.Content>Content</Active.Content>
       </Active>,
     )

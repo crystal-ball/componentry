@@ -10,7 +10,7 @@ describe('<Popover />', () => {
   activationTests(Popover, { name: 'popover', testArias: ['describedby'] })
   // Basic library element test suite
   elementTests(Popover)
-  elementTests(Popover.Trigger)
+  elementTests(Popover.Action)
   elementTests(Popover.Content)
   elementTests(Popover.Heading)
   elementTests(Popover.Body)
@@ -18,7 +18,7 @@ describe('<Popover />', () => {
   it('renders the correct directional classes using direction', () => {
     render(
       <Popover data-testid='popover' direction='left'>
-        <Popover.Trigger>Trigger</Popover.Trigger>
+        <Popover.Action>Action</Popover.Action>
         <Popover.Content>Content</Popover.Content>
       </Popover>,
     )
@@ -32,7 +32,7 @@ describe('<Popover /> snapshots', () => {
   it('renders correctly', () => {
     const { container } = render(
       <Popover>
-        <Popover.Trigger>Toggle</Popover.Trigger>
+        <Popover.Action>Toggle</Popover.Action>
         <Popover.Content>
           <Popover.Heading>Fun Fact!</Popover.Heading>
           <Popover.Body>

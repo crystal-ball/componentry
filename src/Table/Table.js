@@ -1,4 +1,4 @@
-import { staticComponent } from '../factories/static-component'
+import { staticComponent } from '../utils/static-component-builder'
 
 /**
  * [Table component 📝](https://componentry.design/components/table)

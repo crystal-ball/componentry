@@ -10,7 +10,7 @@ import { footerContent, scrollContent } from './stories/contents'
 <DocsTitle title='Modals' experimental />
 
 <Active>
-  <Active.Trigger>Open Modal</Active.Trigger>
+  <Active.Action>Open Modal</Active.Action>
   <Modal>
     <Modal.Header close>
       <Modal.Title>Demo modal</Modal.Title>
@@ -22,9 +22,9 @@ import { footerContent, scrollContent } from './stories/contents'
       </p>
     </Modal.Body>
     <Modal.Footer className='btn-container-x'>
-      <Active.Trigger variant='btn' color='anchor'>
+      <Active.Action variant='btn' color='anchor'>
         Close
-      </Active.Trigger>
+      </Active.Action>
       <Button color='primary'>Save Changes</Button>
     </Modal.Footer>
   </Modal>
@@ -33,7 +33,7 @@ import { footerContent, scrollContent } from './stories/contents'
 ## Screen top aligned modal
 
 <Active>
-  <Active.Trigger>Open Modal</Active.Trigger>
+  <Active.Action>Open Modal</Active.Action>
   <Modal>
     <Modal.Body>
       <p className='mb-0'>
@@ -47,7 +47,7 @@ import { footerContent, scrollContent } from './stories/contents'
 ## Center aligned modal
 
 <Active>
-  <Active.Trigger>Open Modal</Active.Trigger>
+  <Active.Action>Open Modal</Active.Action>
   <Modal align='center'>
     <Modal.Body>
       <p className='mb-0'>This modal will be centered in the screen</p>
@@ -58,7 +58,7 @@ import { footerContent, scrollContent } from './stories/contents'
 ## Scrolling modal
 
 <Active>
-  <Active.Trigger>Open scroll-body modal</Active.Trigger>
+  <Active.Action>Open scroll-body modal</Active.Action>
   <Modal scroll='overlay'>
     {scrollContent}
     {footerContent}
@@ -66,7 +66,7 @@ import { footerContent, scrollContent } from './stories/contents'
 </Active>
 
 <Active>
-  <Active.Trigger>Open modal-scroll modal</Active.Trigger>
+  <Active.Action>Open modal-scroll modal</Active.Action>
   <Modal scroll='container'>
     {scrollContent}
     {footerContent}
@@ -74,7 +74,7 @@ import { footerContent, scrollContent } from './stories/contents'
 </Active>
 
 <Active>
-  <Active.Trigger>Open modal-scroll modal</Active.Trigger>
+  <Active.Action>Open modal-scroll modal</Active.Action>
   <Modal scroll='body'>
     {scrollContent}
     {footerContent}

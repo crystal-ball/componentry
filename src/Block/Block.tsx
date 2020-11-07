@@ -1,7 +1,7 @@
 import React from 'react'
 import { useTheme } from '../Theme/Theme'
-import { element } from '../factories/element'
 import { BaseProps } from '../utils/base-types'
+import { element } from '../utils/element-creator'
 
 export interface BlockProps
   extends BaseProps,

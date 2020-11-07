@@ -14,27 +14,27 @@ describe('<Dropdown />', () => {
 
   // Basic library element test suite
   elementTests(Dropdown)
-  elementTests(Dropdown.Trigger)
+  elementTests(Dropdown.Action)
   elementTests(Dropdown.Content)
   elementTests(Dropdown.Item)
 
   it('renders the correct directional classes using direction', () => {
     const { rerender } = render(
-      <Dropdown Content='Testing' data-testid='dropdown' Trigger='Toggle' />,
+      <Dropdown Action='Toggle' Content='Testing' data-testid='dropdown' />,
     )
 
-    expect(screen.getByTestId('dropdown')).toHaveClass('dropdown bottom') // default value
+    expect(screen.getByTestId('dropdown')).toHaveClass('🅲-dropdown bottom') // default value
 
     rerender(
       <Dropdown
+        Action='Toggle'
         Content='Testing'
         data-testid='dropdown'
         direction='top'
-        Trigger='Toggle'
       />,
     )
 
-    expect(screen.getByTestId('dropdown')).toHaveClass('dropdown top') // default value
+    expect(screen.getByTestId('dropdown')).toHaveClass('🅲-dropdown top') // default value
   })
 })
 
@@ -44,7 +44,7 @@ describe('<Dropdown /> snapshots', () => {
   it('renders correctly', () => {
     const { container } = render(
       <Dropdown>
-        <Dropdown.Trigger>Trigger</Dropdown.Trigger>
+        <Dropdown.Action>Action</Dropdown.Action>
         <Dropdown.Content>
           <Dropdown.Item>Item 1</Dropdown.Item>
           <Dropdown.Item>Item 2</Dropdown.Item>

@@ -2,8 +2,7 @@
 
 ## Breaking
 
-1. Rename Trigger -> Action (This needs to be done before moving any of the
-   Active components to published)
+...
 
 ## Housekeeping
 
@@ -24,4 +23,4 @@
 
 ## Types
 
-- Can the `propsDefaults` in `element` be more defined?
+- Can the `defaultProps` in `element` be more defined?

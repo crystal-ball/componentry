@@ -1,20 +1,53 @@
 import React, { createContext, useCallback, useEffect, useRef, useState } from 'react'
 import { nanoid } from 'nanoid'
 import { useTheme } from '../Theme/Theme'
-import { closest } from '../utils/dom'
-import { element } from './element'
+import { BaseActiveContainerProps } from './base-types'
+import { parseBaseCx } from './class-names'
+import { closest } from './dom'
+import { element } from './element-creator'
 
-/**
- * Active context
- */
-export const ActiveCtx = createContext({ active: false })
+// --------------------------------------------------------
+// Container context
+
+export interface ActiveContext {
+  /** Multi content active components use an active id string */
+  active: boolean | string
+  /** Unique ide for this context */
+  guid: string
+  /** Called on activate events */
+  activate: (event: React.MouseEvent<HTMLButtonElement>) => void
+  /** Called on deactivate events */
+  deactivate: (event: React.MouseEvent<HTMLButtonElement>) => void
+}
+
+/** Active context */
+export const ActiveCtx = createContext<ActiveContext>({
+  active: false,
+  guid: undefined,
+  activate: undefined,
+  deactivate: undefined,
+})
+
+// --------------------------------------------------------
+// Container builder
+
+interface DefaultActiveContainerProps {
+  /** Includes click events handler */
+  clickEvents?: boolean
+  /** Default content placement direction */
+  direction?: 'top' | 'left' | 'right' | 'bottom'
+  /** Include esc events handler */
+  escEvents?: boolean
+  /** Includes mouse events handler */
+  mouseEvents?: boolean
+}
 
 /**
  * Factory returns custom `<Active />` components defined by the options. Active
  * components are responsible for:
  *
  * 1. Creating a scoped `active` value (type boolean for single set of
- *    trigger+content, string for set of triggers+content).
+ *    action+content, string for set of actions+content).
  * 2. Exposing internal `activate` and`deactivate` methods for changing `active`
  *    state.
  * 3. On `active` change add or remove configured event listeners and fire
@@ -24,40 +57,40 @@ export const ActiveCtx = createContext({ active: false })
  * context as the `activate` and `deactivate` handlers for subcomponents to _always_
  * use. This ensures that we can always hook into the change events for internal
  * needs like setting or removing special event listeners.
- * @returns {import('react').FunctionComponent<any>}
  */
-export function activeContainerComponent(name, opts = {}) {
-  const themeName = `${name.slice(0, 1).toUpperCase()}${name.slice(1)}`
-  function ActiveContainer(props) {
+export function activeContainerBuilder<TProps extends BaseActiveContainerProps>(
+  displayName: string,
+  defaultProps: DefaultActiveContainerProps = {},
+): React.FC<TProps> {
+  const baseCx = parseBaseCx(displayName)
+
+  function ActiveContainer(props: TProps) {
     const {
       // --- Render elements
-      Content, // node
-      Trigger, // node
+      Action,
+      Content,
       children,
 
       // --- Behavior configurations
-      direction = null, // 'top', 'right', 'bottom', 'left', 'overlay'
-      size, // 'sm', 'lg'
+      direction,
+      size,
 
       // --- Events configuration
-      /** When true call deactivate on click outside of element */
       clickEvents = false,
-      /** When true call deactivate on `esc` keypress */
       escEvents = false,
-      /** When true the state container will register handlers for mouse events */
       mouseEvents = false,
 
       // --- Active controls
       active,
-      defaultActive = false, // bool OR string
+      defaultActive = false,
       activate,
+      deactivate,
       onActivate,
       onActivated,
-      deactivate,
       onDeactivate,
       onDeactivated,
       ...rest
-    } = { ...opts, ...useTheme(themeName), ...props }
+    } = { ...defaultProps, ...useTheme<TProps>(displayName), ...props }
 
     /**
      * Guid instance property will be uniquely assigned once for each component
@@ -83,9 +116,10 @@ export function activeContainerComponent(name, opts = {}) {
       activate ||
       function _activate(e) {
         if (onActivate) onActivate(e)
-        // Elements that track an active string id set the id as the target value,
-        // if it's present use it otherwise use boolean.
-        updateActive(e.target.value || true)
+        // Compound active elements pass along the active id with a data attr
+        // fallback to boolean value if not present
+        // @ts-ignore not sure how to type this yet
+        updateActive(e.target.dataset.activeId || true)
         if (onActivated) onActivated(e)
       }
 
@@ -170,10 +204,13 @@ export function activeContainerComponent(name, opts = {}) {
       <ActiveCtx.Provider value={activeValues}>
         {element({
           'data-id': guid,
-          'componentCx': [name, direction, { [`${name}-${size}`]: size }],
-
+          'componentCx': {
+            [`🅲-${baseCx}`]: true,
+            [`${baseCx}-${size}`]: size,
+            [direction]: direction,
+          },
           // For elements with mouse events we need to know when the mouse event
-          // occurs on the parent element, not the trigger element
+          // occurs on the parent element, not the action element
           'onMouseEnter': mouseEvents ? handleActivate : undefined,
           'onMouseLeave': mouseEvents ? handleDeactivate : undefined,
 
@@ -183,8 +220,10 @@ export function activeContainerComponent(name, opts = {}) {
               children(activeValues) // Handle FaCC syntax
             ) : (
               <>
-                {Trigger && <ActiveContainer.Trigger>{Trigger}</ActiveContainer.Trigger>}
+                {/* @ts-ignore Not sure how to type this yet */}
+                {Action && <ActiveContainer.Action>{Action}</ActiveContainer.Action>}
                 {children}
+                {/* @ts-ignore Not sure how to type this yet */}
                 {Content && <ActiveContainer.Content>{Content}</ActiveContainer.Content>}
               </>
             ),
@@ -193,6 +232,6 @@ export function activeContainerComponent(name, opts = {}) {
       </ActiveCtx.Provider>
     )
   }
-  ActiveContainer.displayName = themeName
+  ActiveContainer.displayName = displayName
   return ActiveContainer
 }
