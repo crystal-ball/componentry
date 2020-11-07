@@ -2,7 +2,12 @@ import { activeContainerBuilder } from '../utils/active-container-component-buil
 import { activeActionComponent } from '../utils/active-action-component-builder'
 import { activeContentComponent } from '../utils/active-content-component-builder'
 import { staticComponent } from '../utils/static-component-builder'
-import { BaseActiveContainerProps, BaseProps } from '../utils/base-types'
+import {
+  BaseActiveActionProps,
+  BaseActiveContainerProps,
+  BaseActiveContentProps,
+  BaseProps,
+} from '../utils/base-types'
 
 export interface PopoverProps
   extends BaseActiveContainerProps,
@@ -10,14 +15,16 @@ export interface PopoverProps
     Omit<React.ComponentPropsWithoutRef<'div'>, 'className'> {}
 
 export interface PopoverActionProps
-  extends BaseProps,
+  extends BaseActiveActionProps,
+    BaseProps,
     Omit<React.ComponentPropsWithoutRef<'button'>, 'className'> {
   /** Display variant */
   variant?: 'primary'
 }
 
 export interface PopoverBodyProps
-  extends BaseProps,
+  extends BaseActiveContentProps,
+    BaseProps,
     Omit<React.ComponentPropsWithoutRef<'div'>, 'className'> {}
 
 export interface PopoverContentProps

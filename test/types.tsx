@@ -5,7 +5,14 @@
 /* eslint-disable */
 import React from 'react'
 import cx from 'classnames'
-import { Alert, Block, Button, Card, Close, Flex, Icon, Link, Text } from '../src'
+import { Active, Alert, Block, Button, Card, Close, Flex, Icon, Link, Text } from '../src'
+
+const testActive = (
+  <Active defaultActive={false} onDeactivated={(evt) => console.log(evt.target)}>
+    <Active.Action>Rad</Active.Action>
+    <Active.Content>Active</Active.Content>
+  </Active>
+)
 
 const testAlert = (
   <Alert color='success' outline>

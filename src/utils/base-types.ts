@@ -65,15 +65,15 @@ export interface BaseActiveContainerProps {
   /** Called to handle activate event */
   activate?: (event: React.MouseEvent<HTMLButtonElement>) => void
   /** Called to handle deactivate event */
-  deactivate: (event: React.MouseEvent<HTMLButtonElement>) => void
+  deactivate?: (event: React.MouseEvent<HTMLButtonElement>) => void
   /** Called before activate event */
-  onActivate: (event: React.MouseEvent<HTMLButtonElement>) => void
+  onActivate?: (event: React.MouseEvent<HTMLButtonElement>) => void
   /** Called after activate event */
-  onActivated: (event: React.MouseEvent<HTMLButtonElement>) => void
+  onActivated?: (event: React.MouseEvent<HTMLButtonElement>) => void
   /** Called before deactivate event */
-  onDeactivate: (event: React.MouseEvent<HTMLButtonElement>) => void
+  onDeactivate?: (event: React.MouseEvent<HTMLButtonElement>) => void
   /** Called after deactivate event */
-  onDeactivated: (event: React.MouseEvent<HTMLButtonElement>) => void
+  onDeactivated?: (event: React.MouseEvent<HTMLButtonElement>) => void
 }
 
 export interface BaseActiveActionProps {

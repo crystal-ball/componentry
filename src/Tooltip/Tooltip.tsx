@@ -1,7 +1,12 @@
 import { activeContainerBuilder } from '../utils/active-container-component-builder'
 import { activeActionComponent } from '../utils/active-action-component-builder'
 import { activeContentComponent } from '../utils/active-content-component-builder'
-import { BaseActiveContainerProps, BaseProps } from '../utils/base-types'
+import {
+  BaseActiveActionProps,
+  BaseActiveContainerProps,
+  BaseActiveContentProps,
+  BaseProps,
+} from '../utils/base-types'
 
 export interface TooltipProps
   extends BaseActiveContainerProps,
@@ -9,14 +14,16 @@ export interface TooltipProps
     Omit<React.ComponentPropsWithoutRef<'div'>, 'className'> {}
 
 export interface TooltipActionProps
-  extends BaseProps,
+  extends BaseActiveActionProps,
+    BaseProps,
     Omit<React.ComponentPropsWithoutRef<'button'>, 'className'> {
   /** Display variant */
   variant?: 'primary'
 }
 
 export interface TooltipContentProps
-  extends BaseProps,
+  extends BaseActiveContentProps,
+    BaseProps,
     Omit<React.ComponentPropsWithoutRef<'div'>, 'className'> {
   /** Display variant */
   variant?: 'primary'

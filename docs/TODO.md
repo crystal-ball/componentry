@@ -15,6 +15,7 @@
 
 - Add System props for `flex-grow`, and `flex-shrink`.
 - Add fullWidth prop that sets a `.min-w-full` class for 100% width
+- Rename direction props to `placement-<direction>`
 
 ## Testing
 

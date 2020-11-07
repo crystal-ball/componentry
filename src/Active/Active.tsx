@@ -1,7 +1,12 @@
 import { activeContainerBuilder } from '../utils/active-container-component-builder'
 import { activeActionComponent } from '../utils/active-action-component-builder'
 import { activeContentComponent } from '../utils/active-content-component-builder'
-import { BaseActiveContainerProps, BaseProps } from '../utils/base-types'
+import {
+  BaseActiveActionProps,
+  BaseActiveContainerProps,
+  BaseActiveContentProps,
+  BaseProps,
+} from '../utils/base-types'
 
 export interface ActiveProps
   extends BaseActiveContainerProps,
@@ -9,11 +14,13 @@ export interface ActiveProps
     Omit<React.ComponentPropsWithoutRef<'div'>, 'className'> {}
 
 export interface ActiveActionProps
-  extends BaseProps,
+  extends BaseActiveActionProps,
+    BaseProps,
     Omit<React.ComponentPropsWithoutRef<'button'>, 'className'> {}
 
 export interface ActiveContentProps
-  extends BaseProps,
+  extends BaseActiveContentProps,
+    BaseProps,
     Omit<React.ComponentPropsWithoutRef<'div'>, 'className'> {}
 
 export interface Active {

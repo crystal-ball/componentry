@@ -2,7 +2,12 @@ import { useTheme } from '../Theme/Theme'
 import { activeContainerBuilder } from '../utils/active-container-component-builder'
 import { activeActionComponent } from '../utils/active-action-component-builder'
 import { activeContentComponent } from '../utils/active-content-component-builder'
-import { BaseActiveContainerProps, BaseProps } from '../utils/base-types'
+import {
+  BaseActiveActionProps,
+  BaseActiveContainerProps,
+  BaseActiveContentProps,
+  BaseProps,
+} from '../utils/base-types'
 import { navClasses } from '../utils/componentry'
 import { element } from '../utils/element-creator'
 import { staticComponent } from '../utils/static-component-builder'
@@ -22,7 +27,8 @@ export interface TabsActionsContainerProps
 }
 
 export interface TabsActionProps
-  extends BaseProps,
+  extends BaseActiveActionProps,
+    BaseProps,
     Omit<React.ComponentPropsWithoutRef<'button'>, 'className'> {
   /** Display variant */
   variant?: 'primary'
@@ -33,7 +39,8 @@ export interface TabsContentContainerProps
     Omit<React.ComponentPropsWithoutRef<'div'>, 'className'> {}
 
 export interface TabsContentProps
-  extends BaseProps,
+  extends BaseActiveContentProps,
+    BaseProps,
     Omit<React.ComponentPropsWithoutRef<'div'>, 'className'> {
   /** Display variant */
   variant?: 'primary'
