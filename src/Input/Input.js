@@ -1,8 +1,8 @@
 import React, { createContext, useContext, useRef } from 'react'
 import { nanoid } from 'nanoid'
 import { useTheme } from '../Theme/Theme'
-import { element } from '../factories/element'
-import { staticComponent } from '../factories/static-component'
+import { element } from '../utils/element-creator'
+import { staticComponent } from '../utils/static-component-builder'
 
 const InputCtx = createContext({ guid: null })
 

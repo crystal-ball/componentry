@@ -1,7 +1,7 @@
 import cx from 'classnames'
 import { useTheme } from '../Theme/Theme'
 import { BaseProps } from '../utils/base-types'
-import { element } from '../factories/element'
+import { element } from '../utils/element-creator'
 
 interface LinkProps
   extends BaseProps,

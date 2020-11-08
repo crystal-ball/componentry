@@ -2,20 +2,20 @@
 
 exports[`<Drawer /> snapshots renders correctly 1`] = `
 <div
-  class="drawer"
+  class="🅲-drawer"
   data-id="test-guid"
 >
   <button
     aria-controls="test-guid"
     aria-expanded="false"
-    class="drawer-action drawer-action-primary"
+    class="🅲-drawer-action drawer-action-primary"
     type="button"
   >
-    Trigger
+    Action
   </button>
   <div
     aria-hidden="true"
-    class="drawer-content"
+    class="🅲-drawer-content drawer-content-primary"
     id="test-guid"
   >
     Content

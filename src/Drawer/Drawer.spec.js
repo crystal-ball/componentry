@@ -9,7 +9,7 @@ describe('<Drawer />', () => {
   activationTests(Drawer, { name: 'drawer', testArias: ['controls', 'expanded'] })
 
   elementTests(Drawer)
-  elementTests(Drawer.Trigger)
+  elementTests(Drawer.Action)
   elementTests(Drawer.Content)
 })
 
@@ -19,7 +19,7 @@ describe('<Drawer /> snapshots', () => {
   it('renders correctly', () => {
     const { container } = render(
       <Drawer>
-        <Drawer.Trigger>Trigger</Drawer.Trigger>
+        <Drawer.Action>Action</Drawer.Action>
         <Drawer.Content>Content</Drawer.Content>
       </Drawer>,
     )

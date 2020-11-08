@@ -2,8 +2,7 @@
 
 ## Breaking
 
-1. Rename Trigger -> Action (This needs to be done before moving any of the
-   Active components to published)
+...
 
 ## Housekeeping
 
@@ -16,6 +15,7 @@
 
 - Add System props for `flex-grow`, and `flex-shrink`.
 - Add fullWidth prop that sets a `.min-w-full` class for 100% width
+- Rename direction props to `placement-<direction>`
 
 ## Testing
 
@@ -24,4 +24,4 @@
 
 ## Types
 
-- Can the `propsDefaults` in `element` be more defined?
+- Can the `defaultProps` in `element` be more defined?

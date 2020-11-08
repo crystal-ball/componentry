@@ -1,6 +1,6 @@
 import { Children } from 'react'
 import { useTheme } from '../Theme/Theme'
-import { element } from '../factories/element'
+import { element } from '../utils/element-creator'
 
 /**
  * [List component 📝](https://componentry.design/components/list)

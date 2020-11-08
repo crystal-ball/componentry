@@ -41,3 +41,57 @@ export interface BaseProps {
   /** Text font-weight style */
   fontWeight?: 'light' | 'normal' | 'bold'
 }
+
+export interface BaseActiveContainerProps {
+  /** Shorthand prop for passing children to Action component */
+  Action?: React.ReactNode
+  /** Shorthand prop for passing children to Content component */
+  Content?: React.ReactNode
+  /** Container children */
+  children?: React.ReactNode
+
+  /** Component element */
+  as?: React.ElementType
+
+  /** Sets a container content placement direction className */
+  direction?: 'top' | 'left' | 'right' | 'bottom'
+  /** Sets a container size className */
+  size?: 'sm' | 'lg'
+
+  /** Controlled active state */
+  active?: boolean | string
+  /** Starting active state */
+  defaultActive?: boolean | string
+  /** Called to handle activate event */
+  activate?: (event: React.MouseEvent<HTMLButtonElement>) => void
+  /** Called to handle deactivate event */
+  deactivate?: (event: React.MouseEvent<HTMLButtonElement>) => void
+  /** Called before activate event */
+  onActivate?: (event: React.MouseEvent<HTMLButtonElement>) => void
+  /** Called after activate event */
+  onActivated?: (event: React.MouseEvent<HTMLButtonElement>) => void
+  /** Called before deactivate event */
+  onDeactivate?: (event: React.MouseEvent<HTMLButtonElement>) => void
+  /** Called after deactivate event */
+  onDeactivated?: (event: React.MouseEvent<HTMLButtonElement>) => void
+}
+
+export interface BaseActiveActionProps {
+  /** Component element */
+  as?: React.ElementType
+  /** Action/Content pairing id for compound active components */
+  activeId?: string
+  /** Component children */
+  children?: React.ReactNode
+  /** Component children end decoration */
+  decoration?: React.ReactNode
+}
+
+export interface BaseActiveContentProps {
+  /** Component element */
+  as?: React.ElementType
+  /** Action/Content pairing id for compound active components */
+  activeId?: string
+  /** Component children */
+  children?: React.ReactNode
+}

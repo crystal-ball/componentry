@@ -2,22 +2,22 @@
 
 exports[`<Tooltip /> snapshots renders correctly 1`] = `
 <div
-  class="tooltip"
+  class="🅲-tooltip"
   data-id="test-guid"
 >
   <button
     aria-describedby="test-guid"
-    class="tooltip-action tooltip-action-primary"
+    class="🅲-tooltip-action tooltip-action-primary"
     type="button"
   >
-    Trigger
+    Action
   </button>
   <div
     class="tooltip-content-container"
   >
     <div
       aria-hidden="true"
-      class="tooltip-content"
+      class="🅲-tooltip-content tooltip-content-primary"
       id="test-guid"
       role="tooltip"
     >

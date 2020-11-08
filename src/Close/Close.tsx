@@ -1,7 +1,7 @@
 import React from 'react'
 import cx from 'classnames'
-import { staticComponent } from '../factories/static-component'
 import { BaseProps } from '../utils/base-types'
+import { staticComponent } from '../utils/static-component-builder'
 
 export interface CloseProps
   extends BaseProps,

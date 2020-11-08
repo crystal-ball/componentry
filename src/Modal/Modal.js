@@ -5,8 +5,8 @@ import { nanoid } from 'nanoid'
 import { closeBase } from '../Close/Close'
 import { useTheme } from '../Theme/Theme'
 import { useActive, useActiveSrollReset, useNoScroll, useVisible } from '../hooks'
-import { element } from '../factories/element'
-import { staticComponent } from '../factories/static-component'
+import { element } from '../utils/element-creator'
+import { staticComponent } from '../utils/static-component-builder'
 
 const ModalCtx = createContext({})
 

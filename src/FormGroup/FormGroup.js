@@ -1,4 +1,4 @@
-import { staticComponent } from '../factories/static-component'
+import { staticComponent } from '../utils/static-component-builder'
 
 /**
  * [FormGroup component 📝](https://componentry.design/components/form-group)

@@ -7,8 +7,8 @@
 // instead of using Bootstrap's
 
 // Container Element
-.popover {
-  // Default align content to dead center of trigger, the specific content styles can
+.🅲-popover {
+  // Default align content to dead center of action the specific content styles can
   // then easily move to top/left/right/bottom where needed
   align-items: center;
   display: inline-flex; // flex instead of block for easier center alignment of content
@@ -23,7 +23,7 @@
       justify-content: center;
     }
 
-    .popover-content {
+    .🅲-popover-content {
       // Top requires bumping bottom 100% again to compensate for container not having
       // any height
       bottom: 100%;
@@ -46,7 +46,7 @@
       align-items: center;
     }
 
-    .popover-content {
+    .🅲-popover-content {
       margin-left: $popover-arrow-width;
     }
 
@@ -66,7 +66,7 @@
       justify-content: center;
     }
 
-    .popover-content {
+    .🅲-popover-content {
       margin-top: $popover-arrow-width;
     }
 
@@ -86,7 +86,7 @@
       align-items: center;
     }
 
-    .popover-content {
+    .🅲-popover-content {
       margin-right: $popover-arrow-width;
       right: 0;
     }
@@ -102,10 +102,10 @@
   }
 }
 
-// --- Popover trigger ------------------------------------
+// --- Popover action ------------------------------------
 
 .popover-action-primary {
-  @include active-trigger-element;
+  @include active-action-element;
 }
 
 // Content container overrides the width constraints for parent element
@@ -116,7 +116,7 @@
 }
 
 // Content Element - The content element should be used to wrap a body/header element
-.popover-content {
+.🅲-popover-content {
   // Reset font properties for consistent font styling regardless of cascading values
   @include reset-text();
   display: block;
@@ -166,7 +166,7 @@
 }
 
 // Body element should contain popover inner content
-.popover-body {
+.🅲-popover-body {
   padding: $popover-body-padding-y $popover-body-padding-x;
   color: $popover-body-color;
 }
@@ -174,7 +174,7 @@
 // --------------------------------------------------------
 // Heading element
 
-.popover-heading {
+.🅲-popover-heading {
   padding: $popover-header-padding-y $popover-header-padding-x;
   // Try to guarantee that spacing is correct regardless of div vs h* usage
   margin-top: 0;

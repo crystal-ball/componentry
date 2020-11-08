@@ -1,6 +1,6 @@
 import React from 'react'
-import { staticComponent } from '../factories/static-component'
 import { BaseProps } from '../utils/base-types'
+import { staticComponent } from '../utils/static-component-builder'
 
 interface CardProps
   extends BaseProps,

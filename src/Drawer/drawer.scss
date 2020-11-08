@@ -1,6 +1,6 @@
 /* componentry/src/Drawer/drawer */
 
 .drawer-action-primary {
-  @include active-trigger-element;
+  @include active-action-element;
   display: block;
 }
