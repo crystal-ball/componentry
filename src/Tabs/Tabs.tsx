@@ -1,7 +1,7 @@
 import { useTheme } from '../Theme/Theme'
 import { activeContainerBuilder } from '../utils/active-container-component-builder'
-import { activeActionComponent } from '../utils/active-action-component-builder'
-import { activeContentComponent } from '../utils/active-content-component-builder'
+import { activeActionBuilder } from '../utils/active-action-component-builder'
+import { activeContentBuilder } from '../utils/active-content-component-builder'
 import {
   BaseActiveActionProps,
   BaseActiveContainerProps,
@@ -82,7 +82,7 @@ const ActionsContainer: React.FC<TabsActionsContainerProps> = (props) => {
 ActionsContainer.displayName = 'TabsActionsContainer'
 Tabs.ActionsContainer = ActionsContainer
 
-Tabs.Action = activeActionComponent<TabsActionProps>('TabsAction', {
+Tabs.Action = activeActionBuilder<TabsActionProps>('TabsAction', {
   aria: { selected: true, role: 'tab' },
   // Tabs can only activate, they never deactivate when clicked
   action: 'activate',
@@ -95,6 +95,6 @@ Tabs.ContentContainer = staticComponent<TabsContentContainerProps>(
   },
 )
 
-Tabs.Content = activeContentComponent<TabsContentProps>('TabsContent', {
+Tabs.Content = activeContentBuilder<TabsContentProps>('TabsContent', {
   aria: { hidden: true, role: 'tabpanel' },
 })

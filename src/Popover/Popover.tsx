@@ -1,6 +1,6 @@
 import { activeContainerBuilder } from '../utils/active-container-component-builder'
-import { activeActionComponent } from '../utils/active-action-component-builder'
-import { activeContentComponent } from '../utils/active-content-component-builder'
+import { activeActionBuilder } from '../utils/active-action-component-builder'
+import { activeContentBuilder } from '../utils/active-content-component-builder'
 import { staticComponent } from '../utils/static-component-builder'
 import {
   BaseActiveActionProps,
@@ -67,7 +67,7 @@ export const Popover = activeContainerBuilder<PopoverProps>('Popover', {
   mouseEvents: true,
 }) as Popover
 
-Popover.Action = activeActionComponent('PopoverAction', {
+Popover.Action = activeActionBuilder<PopoverActionProps>('PopoverAction', {
   aria: { describedby: true },
 })
 
@@ -75,7 +75,7 @@ Popover.Body = staticComponent<PopoverBodyProps>('PopoverBody', {
   componentCx: '🅲-popover-body',
 })
 
-Popover.Content = activeContentComponent<PopoverContentProps>('PopoverContent', {
+Popover.Content = activeContentBuilder<PopoverContentProps>('PopoverContent', {
   aria: { id: true, role: 'tooltip', hidden: true },
   positioned: true,
 })

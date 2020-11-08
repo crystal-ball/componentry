@@ -19,7 +19,7 @@ interface ActiveActionBuilder {
  * Componentry sets up actions to be buttons styled as links by default, this
  * can be overridden by passing an as and type props for an anchor.
  */
-export function activeActionComponent<TProps extends BaseActiveActionProps>(
+export function activeActionBuilder<TProps extends BaseActiveActionProps>(
   displayName: string,
   { action, aria = {} }: ActiveActionBuilder = {},
 ): React.FC<TProps> {

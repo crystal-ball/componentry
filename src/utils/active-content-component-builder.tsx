@@ -16,7 +16,7 @@ interface ActiveContentBuilder {
 /**
  * Factory returns custom `<Content />` components defined by the options.
  */
-export function activeContentComponent<TProps extends BaseActiveContentProps>(
+export function activeContentBuilder<TProps extends BaseActiveContentProps>(
   displayName: string,
   { aria, positioned = false }: ActiveContentBuilder,
 ): React.FC<TProps> {

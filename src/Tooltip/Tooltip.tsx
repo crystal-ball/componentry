@@ -1,6 +1,6 @@
 import { activeContainerBuilder } from '../utils/active-container-component-builder'
-import { activeActionComponent } from '../utils/active-action-component-builder'
-import { activeContentComponent } from '../utils/active-content-component-builder'
+import { activeActionBuilder } from '../utils/active-action-component-builder'
+import { activeContentBuilder } from '../utils/active-content-component-builder'
 import {
   BaseActiveActionProps,
   BaseActiveContainerProps,
@@ -49,11 +49,11 @@ export const Tooltip = activeContainerBuilder<TooltipProps>('Tooltip', {
   mouseEvents: true,
 }) as Tooltip
 
-Tooltip.Action = activeActionComponent<TooltipActionProps>('TooltipAction', {
+Tooltip.Action = activeActionBuilder<TooltipActionProps>('TooltipAction', {
   aria: { describedby: true },
 })
 
-Tooltip.Content = activeContentComponent<TooltipContentProps>('TooltipContent', {
+Tooltip.Content = activeContentBuilder<TooltipContentProps>('TooltipContent', {
   aria: { id: true, role: 'tooltip', hidden: true },
   positioned: true,
 })

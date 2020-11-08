@@ -1,6 +1,6 @@
 import { activeContainerBuilder } from '../utils/active-container-component-builder'
-import { activeActionComponent } from '../utils/active-action-component-builder'
-import { activeContentComponent } from '../utils/active-content-component-builder'
+import { activeActionBuilder } from '../utils/active-action-component-builder'
+import { activeContentBuilder } from '../utils/active-content-component-builder'
 import {
   BaseActiveActionProps,
   BaseActiveContainerProps,
@@ -42,10 +42,10 @@ export const Active = activeContainerBuilder<ActiveProps>('Active', {
   escEvents: true,
 }) as Active
 
-Active.Action = activeActionComponent<ActiveActionProps>('ActiveAction', {
+Active.Action = activeActionBuilder<ActiveActionProps>('ActiveAction', {
   aria: { controls: true },
 })
 
-Active.Content = activeContentComponent<ActiveContentProps>('ActiveContent', {
+Active.Content = activeContentBuilder<ActiveContentProps>('ActiveContent', {
   aria: { id: true, hidden: true },
 })

@@ -1,6 +1,6 @@
 import { activeContainerBuilder } from '../utils/active-container-component-builder'
-import { activeActionComponent } from '../utils/active-action-component-builder'
-import { activeContentComponent } from '../utils/active-content-component-builder'
+import { activeActionBuilder } from '../utils/active-action-component-builder'
+import { activeContentBuilder } from '../utils/active-content-component-builder'
 import {
   BaseActiveActionProps,
   BaseActiveContainerProps,
@@ -46,10 +46,10 @@ export interface Drawer {
  */
 export const Drawer = activeContainerBuilder<DrawerProps>('Drawer') as Drawer
 
-Drawer.Action = activeActionComponent<DrawerActionProps>('DrawerAction', {
+Drawer.Action = activeActionBuilder<DrawerActionProps>('DrawerAction', {
   aria: { controls: true, expanded: true },
 })
 
-Drawer.Content = activeContentComponent<DrawerContentProps>('DrawerContent', {
+Drawer.Content = activeContentBuilder<DrawerContentProps>('DrawerContent', {
   aria: { id: true, hidden: true },
 })

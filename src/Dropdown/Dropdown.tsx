@@ -1,6 +1,6 @@
 import { activeContainerBuilder } from '../utils/active-container-component-builder'
-import { activeActionComponent } from '../utils/active-action-component-builder'
-import { activeContentComponent } from '../utils/active-content-component-builder'
+import { activeActionBuilder } from '../utils/active-action-component-builder'
+import { activeContentBuilder } from '../utils/active-content-component-builder'
 import {
   BaseActiveActionProps,
   BaseActiveContainerProps,
@@ -62,12 +62,12 @@ export const Dropdown = activeContainerBuilder<DropdownProps>('Dropdown', {
   escEvents: true,
 }) as Dropdown
 
-Dropdown.Action = activeActionComponent<DropdownActionProps>('DropdownAction', {
+Dropdown.Action = activeActionBuilder<DropdownActionProps>('DropdownAction', {
   aria: { expanded: true, haspopup: true, id: true },
 })
 
-Dropdown.Content = activeContentComponent<DropdownContentProps>('DropdownContent', {
+Dropdown.Content = activeContentBuilder<DropdownContentProps>('DropdownContent', {
   aria: { labelledby: true, hidden: true },
 })
 
-Dropdown.Item = activeActionComponent<DropdownItemProps>('DropdownItem')
+Dropdown.Item = activeActionBuilder<DropdownItemProps>('DropdownItem')
