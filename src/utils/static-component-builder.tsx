@@ -1,6 +1,5 @@
 import React from 'react'
 import cx from 'classnames'
-
 import { useTheme } from '../Theme/Theme'
 import { element } from './element-creator'
 
