@@ -27,23 +27,23 @@ let touchMoveSuppressOutline
 function onKeyTab(e) {
   if (e.keyCode === 9) {
     document.body.classList.remove('suppress-outline')
-    window.removeEventListener('keydown', onKeyTab)
+    document.removeEventListener('keydown', onKeyTab)
 
-    window.addEventListener('mousemove', mouseMoveSuppressOutline)
-    window.addEventListener('touchmove', touchMoveSuppressOutline)
+    document.addEventListener('mousemove', mouseMoveSuppressOutline)
+    document.addEventListener('touchmove', touchMoveSuppressOutline)
   }
 }
 
 mouseMoveSuppressOutline = () => {
   document.body.classList.add('suppress-outline')
-  window.removeEventListener('mousemove', mouseMoveSuppressOutline)
-  window.addEventListener('keydown', onKeyTab)
+  document.removeEventListener('mousemove', mouseMoveSuppressOutline)
+  document.addEventListener('keydown', onKeyTab)
 }
 
 touchMoveSuppressOutline = () => {
   document.body.classList.add('suppress-outline')
-  window.removeEventListener('touchmove', touchMoveSuppressOutline)
-  window.addEventListener('keydown', onKeyTab)
+  document.removeEventListener('touchmove', touchMoveSuppressOutline)
+  document.addEventListener('keydown', onKeyTab)
 }
 
 /**
@@ -52,6 +52,6 @@ touchMoveSuppressOutline = () => {
  * start navigating w/ keyboard.
  */
 export function setupOutlineHandlers() {
-  window.addEventListener('mousemove', mouseMoveSuppressOutline)
-  window.addEventListener('touchmove', touchMoveSuppressOutline)
+  document.addEventListener('mousemove', mouseMoveSuppressOutline)
+  document.addEventListener('touchmove', touchMoveSuppressOutline)
 }

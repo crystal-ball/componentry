@@ -1,4 +1,4 @@
-import { componentry, navClasses } from './componentry'
+import { componentry } from './componentry'
 
 const sizes = ['xs', 'sm', 'md', 'lg', 'xl']
 
@@ -175,17 +175,5 @@ describe('componentry()', () => {
       'text-align-center': 'center',
       'text-transform-uppercase': 'uppercase',
     })
-  })
-})
-
-describe('navClasses()', () => {
-  test('navClasses returns computed className for passed options', () => {
-    expect(
-      navClasses('nav', { fill: true, justify: true, pills: true, vertical: true }),
-    ).toEqual('nav nav-fill nav-justified nav-pills nav-vertical')
-  })
-
-  test('when no truthy values are passed, then only the variant is returned', () => {
-    expect(navClasses('nav', {})).toEqual('nav')
   })
 })

@@ -2,7 +2,7 @@ import React, { useContext } from 'react'
 import { useTheme } from '../Theme/Theme'
 import { ActiveCtx } from './active-container-component-builder'
 import { ARIAControls, computeARIA } from './aria'
-import { BaseActiveActionProps } from './base-types'
+import { ActiveActionBaseProps } from './types'
 import { parseBaseCx } from './class-names'
 import { element } from './element-creator'
 
@@ -18,7 +18,7 @@ interface ActiveActionBuilder {
  * Componentry sets up actions to be buttons styled as links by default, this
  * can be overridden by passing an as and type props for an anchor.
  */
-export function activeActionBuilder<TProps extends BaseActiveActionProps>(
+export function activeActionBuilder<TProps extends ActiveActionBaseProps>(
   displayName: string,
   { action, aria = {} }: ActiveActionBuilder = {},
 ): React.FC<TProps> {
@@ -54,7 +54,7 @@ export function activeActionBuilder<TProps extends BaseActiveActionProps>(
     else if (activeId) onClick = activeId === active ? deactivate : activate
     else onClick = active ? deactivate : activate
 
-    return element({
+    return element(displayName, {
       as,
       type,
       ...computeARIA({
@@ -64,13 +64,14 @@ export function activeActionBuilder<TProps extends BaseActiveActionProps>(
         type: 'action',
         aria,
       }),
-      'componentCx': {
-        [`🅲-${baseCx}`]: true,
-        [`${baseCx}-${variant}`]: true,
-        // For compound-active contexts add an active class if activeIds match
-        // (eg in tabs show which tab is selected)
-        active: activeId && active === activeId,
-      },
+      'componentCx': [
+        `${baseCx}-${variant}`,
+        {
+          // For compound-active contexts add an active class if activeIds match
+          // (eg in tabs show which tab is selected)
+          active: activeId && active === activeId,
+        },
+      ],
       onClick,
       // For compound-active contexts, the value attr is to expose the activeId
       'data-active-id': activeId,

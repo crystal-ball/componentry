@@ -1,14 +1,9 @@
 import React from 'react'
 import { useTheme } from '../Theme/Theme'
-import { BaseProps } from '../utils/base-types'
+import { ComponentBaseProps } from '../utils/types'
 import { element } from '../utils/element-creator'
 
-interface IconProps
-  extends BaseProps,
-    Omit<
-      React.ComponentPropsWithoutRef<'svg'>,
-      'className' | 'fontStyle' | 'fontWeight'
-    > {
+interface IconProps extends ComponentBaseProps<'svg'> {
   /** SVG id for href link */
   id: string
   /** Display variant */
@@ -21,10 +16,10 @@ interface IconProps
 export const Icon: React.FC<IconProps> = (props) => {
   const { variant = 'font', id, ...rest } = { ...useTheme<IconProps>('Icon'), ...props }
 
-  return element({
+  return element('Icon', {
     as: 'svg',
     role: 'img',
-    componentCx: `🅲-icon icon-${variant} icon-${id}`,
+    componentCx: [`icon-${variant}`, `icon-${id}`],
     children: <use href={`#${id}`} xlinkHref={`#${id}`} />,
     ...rest,
   })

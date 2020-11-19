@@ -1,17 +1,19 @@
 import React, { createContext, useContext, useEffect, useState } from 'react'
 
+export interface ApplicationMedia {
+  sm: boolean
+  md: boolean
+  lg: boolean
+}
+
 /** Media Context */
-const MediaCtx = createContext({
-  sm: false,
-  md: false,
-  lg: false,
-})
+const MediaCtx = createContext<ApplicationMedia>(null)
 
 /**
  * Calculates the state for each breakpoint based on current window width
- * @param {Array} breakpoints Set of application breakpoints
+ * @param breakpoints Set of application breakpoint values
  */
-function calcBreakpoints(breakpoints) {
+function calcBreakpoints(breakpoints: number[]): ApplicationMedia {
   const w = window.innerWidth
 
   return {
@@ -24,10 +26,13 @@ function calcBreakpoints(breakpoints) {
 /**
  * Uses `window.matchMedia` to listen for changes to window media queries and
  * updates breakpoint status on every change.
- * @param {Array} breakpoints Set of application breakpoints
- * @param {function} updateBps Hook state update function
+ * @param breakpoints Set of application breakpoints
+ * @param updateBps Hook state update function updater
  */
-function mountListeners(breakpoints, updateBps) {
+function mountListeners(
+  breakpoints: number[],
+  updateBps: (state: ApplicationMedia) => void,
+) {
   function setBreakpoints() {
     updateBps(calcBreakpoints(breakpoints))
   }
@@ -39,10 +44,17 @@ function mountListeners(breakpoints, updateBps) {
   })
 }
 
+export interface MediaProps {
+  children: React.ReactNode
+  breakpoints: number[]
+}
 /**
  * [Media component 📝](https://componentry.design/components/media)
  */
-export function Media({ children, breakpoints = [0, 768, 1250] }) {
+export function Media({
+  children,
+  breakpoints = [0, 768, 1250],
+}: MediaProps): JSX.Element {
   const [bps, updateBps] = useState(calcBreakpoints(breakpoints))
 
   // ℹ️ Call to mount media query listeners is wrapped in useEffect to prevent
@@ -61,9 +73,8 @@ Media.displayName = 'Media'
 
 /**
  * [Media hook 📝](https://componentry.design/components/media)
- * @returns {{ sm: boolean, md: boolean, lg: boolean }}
  */
-export const useMedia = () => {
+export const useMedia = (): ApplicationMedia => {
   const media = useContext(MediaCtx)
   if (process.env.NODE_ENV !== 'production' && !media) {
     throw new Error('useMedia called without a <Media /> provider')

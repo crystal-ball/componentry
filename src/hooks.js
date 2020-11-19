@@ -36,6 +36,7 @@ export const useActiveSrollReset = (active, ref) => {
  * Prevent document body scroll when active. Used for freezing app content when
  * overlay elements are activated
  * @param {boolean} active
+ * @returns {void}
  */
 export const useNoScroll = (active) => {
   useEffect(() => {

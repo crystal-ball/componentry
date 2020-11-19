@@ -5,7 +5,19 @@
 /* eslint-disable */
 import React from 'react'
 import cx from 'classnames'
-import { Active, Alert, Block, Button, Card, Close, Flex, Icon, Link, Text } from '../src'
+import {
+  Active,
+  Alert,
+  Badge,
+  Block,
+  Button,
+  Card,
+  Close,
+  Flex,
+  Icon,
+  Link,
+  Text,
+} from '../src'
 
 const testActive = (
   <Active defaultActive={false} onDeactivated={(evt) => console.log(evt.target)}>
@@ -15,10 +27,13 @@ const testActive = (
 )
 
 const testAlert = (
-  <Alert color='success' outline>
+  <Alert variant='outline' color='success'>
     Test alert
   </Alert>
 )
+
+const testBadge = <Badge variant='rounded'>77</Badge>
+
 const testBlock = <Block inline>test block</Block>
 const testButton = (
   <Button variant='primary' size='sm' active>
@@ -27,7 +42,7 @@ const testButton = (
 )
 const testCard = (
   <Card p='sm' className='rad'>
-    <Card.Body>Works</Card.Body>
+    <Card.Body mt='sm'>Works</Card.Body>
     <Card.Footer>Rad</Card.Footer>
   </Card>
 )

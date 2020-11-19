@@ -1,28 +1,3 @@
-import cx from 'classnames'
-
-/**
- * Function generates the classes for nav elements
- * @param {string} variant
- * @param {Object} opts
- * @param {boolean} [opts.fill]
- * @param {boolean} [opts.justify]
- * @param {boolean} [opts.pills]
- * @param {boolean} [opts.vertical]
- * @returns {string}
- */
-export function navClasses(variant, { fill, justify, pills, vertical }) {
-  return cx({
-    [variant]: true,
-    [`${variant}-fill`]: fill,
-    [`${variant}-justified`]: justify,
-    [`${variant}-pills`]: pills,
-    [`${variant}-vertical`]: vertical,
-  })
-}
-
-// --------------------------------------------------------
-// Library shared className+styles generator
-
 const classNamesProps = {
   active: 1,
   backgroundColor: 1,

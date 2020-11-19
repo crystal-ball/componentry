@@ -1,20 +1,13 @@
+/* eslint-disable @typescript-eslint/no-empty-interface */
 import React from 'react'
-import cx from 'classnames'
-import { BaseProps } from '../utils/base-types'
+import { ComponentBaseProps } from '../utils/types'
 import { staticComponent } from '../utils/static-component-builder'
 
-export interface CloseProps
-  extends BaseProps,
-    Omit<React.ComponentPropsWithoutRef<'button'>, 'className'> {}
+export interface CloseProps extends ComponentBaseProps<'button'> {}
 
-export interface CloseBase extends CloseProps {
-  componentCx: Parameters<typeof cx>[0]
-}
-
-export const closeBase: CloseBase = {
+export const closeBase: CloseProps = {
   'aria-label': 'close',
   'as': 'button',
-  'componentCx': 'close',
   'type': 'button',
   'children': (
     <svg className='icon icon-close font' role='img'>

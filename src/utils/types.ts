@@ -1,11 +1,10 @@
 import React from 'react'
 import cx from 'classnames'
 
-export interface BaseProps {
-  /** Component element */
-  as?: React.ElementType
-  /** Component className, can be a string, array, or object */
-  className?: Parameters<typeof cx>[0]
+/**
+ * Componentry shared utility props for using utility styles
+ */
+export interface UtilityProps {
   // --- Spacing
   /** margin */
   m?: string | number
@@ -42,7 +41,22 @@ export interface BaseProps {
   fontWeight?: 'light' | 'normal' | 'bold'
 }
 
-export interface BaseActiveContainerProps {
+/**
+ * Base props supported by all Componentry components. Includes the utility
+ * styles props and the HTML attributes for the element DOM type.
+ */
+export type ComponentBaseProps<Element extends React.ElementType> = {
+  /** Component element */
+  as?: React.ElementType
+  /** Component className, can be a string, array, or object */
+  className?: Parameters<typeof cx>[0]
+} & UtilityProps &
+  Omit<React.ComponentPropsWithoutRef<Element>, 'className'>
+
+// --------------------------------------------------------
+// Active components
+
+export interface ActiveContainerBaseProps {
   /** Shorthand prop for passing children to Action component */
   Action?: React.ReactNode
   /** Shorthand prop for passing children to Content component */
@@ -76,7 +90,7 @@ export interface BaseActiveContainerProps {
   onDeactivated?: (event: React.MouseEvent<HTMLButtonElement>) => void
 }
 
-export interface BaseActiveActionProps {
+export interface ActiveActionBaseProps {
   /** Component element */
   as?: React.ElementType
   /** Action/Content pairing id for compound active components */
@@ -87,7 +101,7 @@ export interface BaseActiveActionProps {
   decoration?: React.ReactNode
 }
 
-export interface BaseActiveContentProps {
+export interface ActiveContentBaseProps {
   /** Component element */
   as?: React.ElementType
   /** Action/Content pairing id for compound active components */
