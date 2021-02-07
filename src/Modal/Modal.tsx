@@ -126,7 +126,9 @@ export const Modal = ((props: ModalProps): JSX.Element => {
                 [`modal-${size}`]: size,
               })}
               role='dialog'
-              onClick={(evt) => evt.stopPropagation()}
+              onClick={(evt) => {
+                evt.stopPropagation()
+              }}
             >
               {children}
             </div>

@@ -32,11 +32,11 @@ export function activationTests(TestComponent, { name, testArias } = {}) {
   test('should render components for subcomponent shorthand', async () => {
     render(<TestComponent Action='Action' Content='Content' />)
 
-    expect(screen.getByText('Action')).toBeDefined()
-    expect(screen.getByText('Content')).toBeDefined()
+    expect(screen.getByText('Action')).toBeInTheDocument()
+    expect(screen.getByText('Content')).toBeInTheDocument()
     expect(screen.getByText('Content')).toHaveAttribute('aria-hidden', 'true')
 
-    await fireEvent.click(screen.getByText('Action'))
+    fireEvent.click(screen.getByText('Action'))
     expect(screen.getByText('Content')).toHaveAttribute('aria-hidden', 'false')
   })
 
@@ -80,14 +80,14 @@ export function activationTests(TestComponent, { name, testArias } = {}) {
       expect(screen.getByText('Action')).toHaveAttribute('aria-expanded', 'false')
     }
 
-    await fireEvent.click(screen.getByText('Action'))
+    fireEvent.click(screen.getByText('Action'))
     expect(screen.getByText('Content')).toHaveAttribute('aria-hidden', 'false')
 
     if (testExpanded) {
       expect(screen.getByText('Action')).toHaveAttribute('aria-expanded', 'true')
     }
 
-    await fireEvent.click(screen.getByText('Action'))
+    fireEvent.click(screen.getByText('Action'))
     expect(screen.getByText('Content')).toHaveAttribute('aria-hidden', 'true')
 
     if (testExpanded) {
@@ -116,14 +116,14 @@ export function activationTests(TestComponent, { name, testArias } = {}) {
       </TestComponent>,
     )
 
-    await fireEvent.click(screen.getByText('Action'))
+    fireEvent.click(screen.getByText('Action'))
 
     expect(onActivate).toHaveBeenCalledTimes(1)
     expect(onActivated).toHaveBeenCalledTimes(1)
     expect(onDeactivate).toHaveBeenCalledTimes(0) // not yet!
     expect(onDeactivated).toHaveBeenCalledTimes(0) // not yet!
 
-    await fireEvent.click(screen.getByText('Action'))
+    fireEvent.click(screen.getByText('Action'))
 
     expect(onActivate).toHaveBeenCalledTimes(1) // only once
     expect(onActivated).toHaveBeenCalledTimes(1) // only once
@@ -169,15 +169,15 @@ export function activationTests(TestComponent, { name, testArias } = {}) {
     expect(screen.getByText('Handler content')).toHaveAttribute('aria-hidden', 'true')
 
     // Element without click events should not close when click outside
-    await fireEvent.click(screen.getByText('No handler action'))
+    fireEvent.click(screen.getByText('No handler action'))
     expect(screen.getByText('No handler content')).toHaveAttribute('aria-hidden', 'false')
-    await fireEvent.mouseUp(screen.getByText('External'))
+    fireEvent.mouseUp(screen.getByText('External'))
     expect(screen.getByText('No handler content')).toHaveAttribute('aria-hidden', 'false')
 
     // Click outside element with click events should deactivate it
-    await fireEvent.click(screen.getByText('Handler action'))
+    fireEvent.click(screen.getByText('Handler action'))
     expect(screen.getByText('Handler content')).toHaveAttribute('aria-hidden', 'false')
-    await fireEvent.mouseUp(screen.getByText('External'))
+    fireEvent.mouseUp(screen.getByText('External'))
     expect(screen.getByText('Handler content')).toHaveAttribute('aria-hidden', 'true')
   })
 
@@ -203,15 +203,15 @@ export function activationTests(TestComponent, { name, testArias } = {}) {
     expect(screen.getByText('Handler content')).toHaveAttribute('aria-hidden', 'true')
 
     // Esc keydown should not deactivate
-    await fireEvent.click(screen.getByText('No handler action'))
+    fireEvent.click(screen.getByText('No handler action'))
     expect(screen.getByText('No handler content')).toHaveAttribute('aria-hidden', 'false')
-    await fireEvent.keyDown(container, { key: 'Escape', code: 27, which: 27 })
+    fireEvent.keyDown(container, { key: 'Escape', code: 27, which: 27 })
     expect(screen.getByText('No handler content')).toHaveAttribute('aria-hidden', 'false')
 
     // Esc keydown should deactivate it
-    await fireEvent.click(screen.getByText('Handler action'))
+    fireEvent.click(screen.getByText('Handler action'))
     expect(screen.getByText('Handler content')).toHaveAttribute('aria-hidden', 'false')
-    await fireEvent.keyDown(container, { key: 'Escape', code: 27, which: 27 })
+    fireEvent.keyDown(container, { key: 'Escape', code: 27, which: 27 })
     expect(screen.getByText('Handler content')).toHaveAttribute('aria-hidden', 'true')
   })
 
@@ -237,15 +237,15 @@ export function activationTests(TestComponent, { name, testArias } = {}) {
     expect(screen.getByText('Handler content')).toHaveAttribute('aria-hidden', 'true')
 
     // Element without mouse events should not change
-    await fireEvent.mouseEnter(screen.getByText('No handler action'))
+    fireEvent.mouseEnter(screen.getByText('No handler action'))
     expect(screen.getByText('No handler content')).toHaveAttribute('aria-hidden', 'true')
-    await fireEvent.mouseLeave(screen.getByText('No handler action'))
+    fireEvent.mouseLeave(screen.getByText('No handler action'))
     expect(screen.getByText('No handler content')).toHaveAttribute('aria-hidden', 'true')
 
     // Element with mouse events should activate/deactivate
-    await fireEvent.mouseEnter(screen.getByText('Handler action'))
+    fireEvent.mouseEnter(screen.getByText('Handler action'))
     expect(screen.getByText('Handler content')).toHaveAttribute('aria-hidden', 'false')
-    await fireEvent.mouseLeave(screen.getByText('Handler action'))
+    fireEvent.mouseLeave(screen.getByText('Handler action'))
     expect(screen.getByText('Handler content')).toHaveAttribute('aria-hidden', 'true')
   })
 
@@ -297,7 +297,7 @@ export function activationTests(TestComponent, { name, testArias } = {}) {
       </TestComponent>,
     )
 
-    await fireEvent.click(screen.getByText('Action'))
+    fireEvent.click(screen.getByText('Action'))
 
     // We have overridden the activate event so content should still be hidden
     // and clicking again should call *activate* again
@@ -306,7 +306,7 @@ export function activationTests(TestComponent, { name, testArias } = {}) {
     expect(deactivate).toHaveBeenCalledTimes(0)
     expect(screen.getByText('Content')).toHaveAttribute('aria-hidden', 'true')
 
-    await fireEvent.click(screen.getByText('Action'))
+    fireEvent.click(screen.getByText('Action'))
 
     expect(activate).toHaveBeenCalledTimes(2)
     expect(deactivate).toHaveBeenCalledTimes(0)
@@ -319,13 +319,13 @@ export function activationTests(TestComponent, { name, testArias } = {}) {
         <TestComponent.Content>Content</TestComponent.Content>
       </TestComponent>,
     )
-    await fireEvent.click(screen.getByText('Action'))
+    fireEvent.click(screen.getByText('Action'))
 
     expect(activate).toHaveBeenCalledTimes(2)
     expect(deactivate).toHaveBeenCalledTimes(1)
     expect(screen.getByText('Content')).toHaveAttribute('aria-hidden', 'false')
 
-    await fireEvent.click(screen.getByText('Action'))
+    fireEvent.click(screen.getByText('Action'))
 
     expect(activate).toHaveBeenCalledTimes(2)
     expect(deactivate).toHaveBeenCalledTimes(2)
@@ -354,9 +354,9 @@ export function activationTests(TestComponent, { name, testArias } = {}) {
     )
 
     expect(screen.getByText('false')).toBeInTheDocument()
-    await fireEvent.click(screen.getByText('activate'))
+    fireEvent.click(screen.getByText('activate'))
     expect(screen.getByText('true')).toBeInTheDocument()
-    await fireEvent.click(screen.getByText('deactivate'))
+    fireEvent.click(screen.getByText('deactivate'))
     expect(screen.getByText('false')).toBeInTheDocument()
   })
 
