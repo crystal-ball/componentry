@@ -20,8 +20,8 @@ describe('<Button/>', () => {
 
     // By default the button should have type button for a11y
     expect(container).toContainElement(document.querySelector('button[type="button"]'))
-    // By default the variant btn
-    expect(screen.getByText('Button')).toHaveClass('🅲-btn btn-primary')
+    // By default the variant primary
+    expect(screen.getByText('Button')).toHaveClass('🅲-button button-primary')
     // TODO: Is it possible to get the classes from the element and just check that?
     // ...there shouldn't be any other classes
   })
@@ -33,7 +33,7 @@ describe('<Button/>', () => {
 
   test('When `variant` is passed, then it should be used as base className value', () => {
     render(<Button variant='demo'>Button</Button>)
-    expect(screen.getByText('Button')).toHaveClass('🅲-btn btn-demo')
+    expect(screen.getByText('Button')).toHaveClass('🅲-button button-demo')
   })
 
   test('When `color` is passed, then the color className should render', () => {
@@ -45,9 +45,11 @@ describe('<Button/>', () => {
         </Button>
       </>,
     )
-    expect(screen.getByText('Button')).toHaveClass('🅲-btn btn-color-info')
+    expect(screen.getByText('Button')).toHaveClass(
+      '🅲-button button-primary button-color-info',
+    )
     expect(screen.getByText('Variant Button')).toHaveClass(
-      '🅲-btn btn-demo btn-color-info',
+      '🅲-button button-demo button-color-info',
     )
   })
 
@@ -60,8 +62,10 @@ describe('<Button/>', () => {
         </Button>
       </>,
     )
-    expect(screen.getByText('Button')).toHaveClass('🅲-btn btn-sm')
-    expect(screen.getByText('Variant Button')).toHaveClass('🅲-btn btn-demo btn-sm')
+    expect(screen.getByText('Button')).toHaveClass('🅲-button button-primary button-sm')
+    expect(screen.getByText('Variant Button')).toHaveClass(
+      '🅲-button button-demo button-sm',
+    )
   })
 })
 

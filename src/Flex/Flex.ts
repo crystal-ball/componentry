@@ -1,11 +1,9 @@
 import React from 'react'
 import { useTheme } from '../Theme/Theme'
-import { BaseProps } from '../utils/base-types'
+import { ComponentBaseProps } from '../utils/types'
 import { element } from '../utils/element-creator'
 
-interface FlexProps
-  extends BaseProps,
-    Omit<React.ComponentPropsWithoutRef<'div'>, 'className'> {
+interface FlexProps extends ComponentBaseProps<'div'> {
   /** Sets an `align-items` flex style */
   align?: 'start' | 'center' | 'end' | 'stretch' | 'baseline'
   /** sets a `flex-direction` flex style */
@@ -22,23 +20,18 @@ interface FlexProps
  * [Flex component 📝](https://componentry.design/components/flex)
  */
 export const Flex: React.FC<FlexProps> = (props) => {
-  const { align, direction, inline = false, justify, wrap, ...rest } = {
+  const { align, direction, inline, justify, wrap, ...rest } = {
     ...useTheme<FlexProps>('Flex'),
     ...props,
   }
 
-  return element({
+  return element('Flex', {
     componentCx: {
-      // ℹ️ Flex is a helper component so it doesn't have a 🅲-flex class
       'd-flex': !inline,
       'd-inline-flex': inline,
-      // column, column-reverse, row, row-reverse
       [`flex-${direction}`]: direction,
-      // wrap, wrap-reverse, nowrap
       [`flex-${wrap}`]: wrap,
-      // start, end, center, baseline, stretch
       [`align-items-${align}`]: align,
-      // start, end, center, around, between, evenly
       [`justify-content-${justify}`]: justify,
     },
     ...rest,

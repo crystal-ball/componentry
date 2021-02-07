@@ -1,9 +1,10 @@
 import React, { createElement } from 'react'
 import cx from 'classnames'
+import { parseBaseCx } from './class-names'
 import { componentry } from './componentry'
 
 // Type used to *constrain* what props can be passed into element()
-interface ElementProps {
+type ElementProps = {
   as?: React.ElementType
   className?: Parameters<typeof cx>[0]
   style?: React.CSSProperties
@@ -11,7 +12,7 @@ interface ElementProps {
 
 // Create a generic type that extends passed in element attributes with library
 // componentCx and themeCx options
-type ElementOptions<TAttrs> = TAttrs & {
+type ElementCreator<Props> = Props & {
   componentCx?: Parameters<typeof cx>[0]
   themeCx?: Parameters<typeof cx>[0]
 }
@@ -30,14 +31,17 @@ type ElementOptions<TAttrs> = TAttrs & {
  * (This lets us create elements that are very flexible with much less verbose
  * code at the definition site)
  */
-export function element<TProps extends ElementProps>({
-  as = 'div',
-  className,
-  componentCx,
-  style,
-  themeCx,
-  ...merged
-}: ElementOptions<TProps>): React.ReactElement {
+export function element<Props extends ElementProps>(
+  displayName: string,
+  {
+    as = 'div',
+    className,
+    componentCx,
+    style,
+    themeCx,
+    ...merged
+  }: ElementCreator<Props>,
+): React.ReactElement {
   // The componentry util will: filter out remaining library props, create base
   // styles, and create base classNames
   /* @ts-ignore BaseProps isn't fully typed out to match componentry() yet */
@@ -46,10 +50,11 @@ export function element<TProps extends ElementProps>({
   return createElement(as, {
     style: { ...styles, ...style },
     className: cx(
-      themeCx,
-      componentCx,
+      `🅲-${parseBaseCx(displayName)}`, // Component base className, eg '🅲-btn'
+      themeCx, // User defined default className from theme context
+      componentCx, // Library defined component specific classNames, eg 'btn-sm'
       className, // User supplied className
-      utilityCx,
+      utilityCx, // Utility classNames, eg 'mt-xl'
     ),
     ...props,
   })

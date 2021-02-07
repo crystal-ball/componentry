@@ -1,18 +1,16 @@
+/* eslint-disable @typescript-eslint/no-empty-interface */
+
 import React from 'react'
 import { closeBase } from '../Close/Close'
 import { useTheme } from '../Theme/Theme'
 import { useActive, useVisible } from '../hooks'
-import { BaseProps } from '../utils/base-types'
+import { ComponentBaseProps } from '../utils/types'
 import { element } from '../utils/element-creator'
 import { staticComponent } from '../utils/static-component-builder'
 
-interface CardCloseProps
-  extends BaseProps,
-    Omit<React.ComponentPropsWithoutRef<'button'>, 'className'> {}
+interface CardCloseProps extends ComponentBaseProps<'button'> {}
 
-interface AlertProps
-  extends BaseProps,
-    Omit<React.ComponentPropsWithoutRef<'div'>, 'className'> {
+interface AlertProps extends ComponentBaseProps<'div'> {
   /** Sets a custom aria title */
   ariaTitle?: string
   /** Sets the theme color of the alert */
@@ -22,7 +20,7 @@ interface AlertProps
   /** Toggles alert dismissible feature */
   dismissible?: boolean
   /** Toggles alert outline styles */
-  outline?: boolean
+  variant?: 'primary' | 'outline'
 }
 
 interface Alert {
@@ -45,23 +43,23 @@ export const Alert: Alert = (props) => {
     color,
     deactivate,
     dismissible,
-    outline,
+    variant = 'primary',
     ...rest
   } = { ...useTheme<AlertProps>('Alert'), ...useActive(), ...props }
 
   const { active, visible } = useVisible(propsActive)
 
-  return element({
+  return element('Alert', {
     'role': 'alert',
-    'componentCx': {
-      'alert': true,
-      'fade': dismissible, // Only include opacity transition class for disimissible alerts
-      visible,
-      [`alert-${color}`]: color,
-      'alert-outline': outline,
-    },
-    // ⚠️ Only include aria-hidden value if the alert is dismissible
-    'aria-hidden': dismissible ? String(!active) : undefined,
+    'componentCx': [
+      `alert-${variant}`,
+      {
+        [`alert-color-${color}`]: color,
+        fade: dismissible, // Only include opacity transition class for disimissible alerts
+        visible,
+      },
+    ],
+    'aria-hidden': dismissible ? String(!active) : 'false',
     'children': (
       <>
         {/* Provide the alert color context for screen readers */}
@@ -72,10 +70,7 @@ export const Alert: Alert = (props) => {
 
         {/* Render a close button or null depending on configs */}
         {dismissible && (
-          <Alert.Close
-            className={`alert-close font-color-${color}`}
-            onClick={deactivate}
-          />
+          <Alert.Close className={`font-color-${color}`} onClick={deactivate} />
         )}
       </>
     ),

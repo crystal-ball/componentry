@@ -32,7 +32,7 @@ $alert-states-map: map-merge($alert-defaults, $alert-states);
 // Generate contextual modifier classes for colorizing the alert.
 
 @each $color, $value in $theme-colors {
-  .alert-#{$color} {
+  .alert-color-#{$color} {
     background: map-get($alert-states-map, #{$color}-bg);
     border-color: map-get($alert-states-map, #{$color}-border-color);
     color: map-get($alert-states-map, #{$color}-color);

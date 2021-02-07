@@ -12,7 +12,7 @@ describe('<Alert/>', () => {
   test('should render an alert without a close button by default', () => {
     const { container } = render(<Alert color='success'>Warning!</Alert>)
 
-    expect(container.firstChild).toHaveClass('alert alert-success')
+    expect(container.firstChild).toHaveClass('🅲-alert alert-primary alert-color-success')
     expect(container.firstChild).toHaveAttribute('role', 'alert')
   })
 

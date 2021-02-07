@@ -1,11 +1,8 @@
-import cx from 'classnames'
 import { useTheme } from '../Theme/Theme'
-import { BaseProps } from '../utils/base-types'
+import { ComponentBaseProps } from '../utils/types'
 import { element } from '../utils/element-creator'
 
-interface ButtonProps
-  extends BaseProps,
-    Omit<React.ComponentPropsWithoutRef<'button'>, 'className'> {
+interface ButtonProps extends ComponentBaseProps<'button'> {
   /** Toggles an active element style */
   active?: boolean
   /** Button variant color */
@@ -34,16 +31,19 @@ export const Button: React.FC<ButtonProps> = (props) => {
   // If an href or to is passed, this instance should render an anchor tag
   const asAnchor = Boolean(merged.href || merged.to)
 
-  return element<ButtonProps>({
+  return element<ButtonProps>('Button', {
     as: asAnchor ? 'a' : 'button',
     type: asAnchor ? undefined : 'button',
     disabled,
-    componentCx: cx('🅲-btn', `btn-${variant}`, {
-      [`btn-${size}`]: size,
-      [`btn-color-${color}`]: color,
-      active,
-      disabled, // We include a disabled class AND pass disabled prop to element for a11y
-    }),
+    componentCx: [
+      `button-${variant}`,
+      {
+        [`button-${size}`]: size,
+        [`button-color-${color}`]: color,
+        active,
+        disabled, // We include a disabled class AND pass disabled prop to element for a11y
+      },
+    ],
     ...merged,
   })
 }

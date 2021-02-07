@@ -1,25 +1,21 @@
+/* eslint-disable @typescript-eslint/no-empty-interface */
 import { useTheme } from '../Theme/Theme'
 import { activeContainerBuilder } from '../utils/active-container-component-builder'
 import { activeActionBuilder } from '../utils/active-action-component-builder'
 import { activeContentBuilder } from '../utils/active-content-component-builder'
 import {
-  BaseActiveActionProps,
-  BaseActiveContainerProps,
-  BaseActiveContentProps,
-  BaseProps,
-} from '../utils/base-types'
-import { navClasses } from '../utils/componentry'
+  ActiveActionBaseProps,
+  ActiveContainerBaseProps,
+  ActiveContentBaseProps,
+  ComponentBaseProps,
+} from '../utils/types'
+import { navClasses } from '../utils/class-names'
 import { element } from '../utils/element-creator'
 import { staticComponent } from '../utils/static-component-builder'
 
-export interface TabsProps
-  extends BaseActiveContainerProps,
-    BaseProps,
-    Omit<React.ComponentPropsWithoutRef<'div'>, 'className'> {}
+export interface TabsProps extends ActiveContainerBaseProps, ComponentBaseProps<'div'> {}
 
-export interface TabsActionsContainerProps
-  extends BaseProps,
-    Omit<React.ComponentPropsWithoutRef<'div'>, 'className'> {
+export interface TabsActionsContainerProps extends ComponentBaseProps<'div'> {
   fill?: boolean
   justify?: boolean
   pills?: boolean
@@ -27,21 +23,17 @@ export interface TabsActionsContainerProps
 }
 
 export interface TabsActionProps
-  extends BaseActiveActionProps,
-    BaseProps,
-    Omit<React.ComponentPropsWithoutRef<'button'>, 'className'> {
+  extends ActiveActionBaseProps,
+    ComponentBaseProps<'button'> {
   /** Display variant */
   variant?: 'primary'
 }
 
-export interface TabsContentContainerProps
-  extends BaseProps,
-    Omit<React.ComponentPropsWithoutRef<'div'>, 'className'> {}
+export interface TabsContentContainerProps extends ComponentBaseProps<'div'> {}
 
 export interface TabsContentProps
-  extends BaseActiveContentProps,
-    BaseProps,
-    Omit<React.ComponentPropsWithoutRef<'div'>, 'className'> {
+  extends ActiveContentBaseProps,
+    ComponentBaseProps<'div'> {
   /** Display variant */
   variant?: 'primary'
 }
@@ -72,7 +64,7 @@ export interface Tabs {
 export const Tabs = activeContainerBuilder<TabsProps>('Tabs') as Tabs
 
 const ActionsContainer: React.FC<TabsActionsContainerProps> = (props) => {
-  return element({
+  return element('TabsActionsContainer', {
     role: 'tablist',
     componentCx: navClasses('tabs-actions-container', props),
     ...useTheme<TabsActionsContainerProps>('TabsActionsContainer'),
@@ -88,12 +80,7 @@ Tabs.Action = activeActionBuilder<TabsActionProps>('TabsAction', {
   action: 'activate',
 })
 
-Tabs.ContentContainer = staticComponent<TabsContentContainerProps>(
-  'TabsContentContainer',
-  {
-    componentCx: '🅲-tabs-content-container',
-  },
-)
+Tabs.ContentContainer = staticComponent<TabsContentContainerProps>('TabsContentContainer')
 
 Tabs.Content = activeContentBuilder<TabsContentProps>('TabsContent', {
   aria: { hidden: true, role: 'tabpanel' },

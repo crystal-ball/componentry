@@ -2,7 +2,7 @@ import React, { useContext } from 'react'
 import { useTheme } from '../Theme/Theme'
 import { ActiveCtx } from './active-container-component-builder'
 import { ARIAControls, computeARIA } from './aria'
-import { BaseActiveContentProps } from './base-types'
+import { ActiveContentBaseProps } from './types'
 import { parseBaseCx } from './class-names'
 import { element } from './element-creator'
 
@@ -16,7 +16,7 @@ interface ActiveContentBuilder {
 /**
  * Factory returns custom `<Content />` components defined by the options.
  */
-export function activeContentBuilder<TProps extends BaseActiveContentProps>(
+export function activeContentBuilder<TProps extends ActiveContentBaseProps>(
   displayName: string,
   { aria, positioned = false }: ActiveContentBuilder,
 ): React.FC<TProps> {
@@ -32,7 +32,7 @@ export function activeContentBuilder<TProps extends BaseActiveContentProps>(
 
     // Create component content (return optionally wraps content in a width busting
     // container)
-    const content = element({
+    const content = element(displayName, {
       ...computeARIA({
         active,
         activeId,
@@ -40,10 +40,7 @@ export function activeContentBuilder<TProps extends BaseActiveContentProps>(
         type: 'content',
         aria,
       }),
-      componentCx: {
-        [`🅲-${baseCx}`]: true,
-        [`${baseCx}-${variant}`]: true,
-      },
+      componentCx: `${baseCx}-${variant}`,
       children: (
         <>
           {positioned && (

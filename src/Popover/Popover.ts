@@ -1,42 +1,36 @@
+/* eslint-disable @typescript-eslint/no-empty-interface */
 import { activeContainerBuilder } from '../utils/active-container-component-builder'
 import { activeActionBuilder } from '../utils/active-action-component-builder'
 import { activeContentBuilder } from '../utils/active-content-component-builder'
 import { staticComponent } from '../utils/static-component-builder'
 import {
-  BaseActiveActionProps,
-  BaseActiveContainerProps,
-  BaseActiveContentProps,
-  BaseProps,
-} from '../utils/base-types'
+  ActiveActionBaseProps,
+  ActiveContainerBaseProps,
+  ActiveContentBaseProps,
+  ComponentBaseProps,
+} from '../utils/types'
 
 export interface PopoverProps
-  extends BaseActiveContainerProps,
-    BaseProps,
-    Omit<React.ComponentPropsWithoutRef<'div'>, 'className'> {}
+  extends ActiveContainerBaseProps,
+    ComponentBaseProps<'div'> {}
 
 export interface PopoverActionProps
-  extends BaseActiveActionProps,
-    BaseProps,
-    Omit<React.ComponentPropsWithoutRef<'button'>, 'className'> {
+  extends ActiveActionBaseProps,
+    ComponentBaseProps<'button'> {
   /** Display variant */
   variant?: 'primary'
 }
 
 export interface PopoverBodyProps
-  extends BaseActiveContentProps,
-    BaseProps,
-    Omit<React.ComponentPropsWithoutRef<'div'>, 'className'> {}
+  extends ActiveContentBaseProps,
+    ComponentBaseProps<'div'> {}
 
-export interface PopoverContentProps
-  extends BaseProps,
-    Omit<React.ComponentPropsWithoutRef<'div'>, 'className'> {
+export interface PopoverContentProps extends ComponentBaseProps<'div'> {
   /** Display variant */
   variant?: 'primary'
 }
 
-export interface PopoverHeadingProps
-  extends BaseProps,
-    Omit<React.ComponentPropsWithoutRef<'div'>, 'className'> {}
+export interface PopoverHeadingProps extends ComponentBaseProps<'div'> {}
 
 export interface Popover {
   (props: PopoverProps): React.ReactElement
@@ -71,9 +65,7 @@ Popover.Action = activeActionBuilder<PopoverActionProps>('PopoverAction', {
   aria: { describedby: true },
 })
 
-Popover.Body = staticComponent<PopoverBodyProps>('PopoverBody', {
-  componentCx: '🅲-popover-body',
-})
+Popover.Body = staticComponent<PopoverBodyProps>('PopoverBody')
 
 Popover.Content = activeContentBuilder<PopoverContentProps>('PopoverContent', {
   aria: { id: true, role: 'tooltip', hidden: true },
@@ -82,5 +74,4 @@ Popover.Content = activeContentBuilder<PopoverContentProps>('PopoverContent', {
 
 Popover.Heading = staticComponent<PopoverHeadingProps>('PopoverHeading', {
   as: 'h3',
-  componentCx: '🅲-popover-heading',
 })

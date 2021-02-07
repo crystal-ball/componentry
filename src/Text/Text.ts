@@ -1,6 +1,6 @@
 import React from 'react'
 import { useTheme } from '../Theme/Theme'
-import { BaseProps } from '../utils/base-types'
+import { ComponentBaseProps } from '../utils/types'
 import { element } from '../utils/element-creator'
 
 /** Element used for each variant */
@@ -15,9 +15,7 @@ const defaultElementsMap: ElementsMap = {
   'small': 'small',
 }
 
-interface TextProps
-  extends BaseProps,
-    Omit<React.ComponentPropsWithoutRef<'div'>, 'className'> {
+interface TextProps extends ComponentBaseProps<'div'> {
   /** Shorthand to set font-weight bold */
   bold?: boolean
   /** Switches between display between an inline (span) and block (div) element */
@@ -37,12 +35,11 @@ export const Text: React.FC<TextProps> = (props) => {
     ...props,
   }
 
-  return element({
+  return element('Text', {
     as: inline ? 'span' : elementsMap[variant] || defaultElementsMap[variant] || 'p',
     fontStyle: italic ? 'italic' : null,
     fontWeight: bold ? 'bold' : null,
     componentCx: {
-      '🅲-text': true,
       [`text-${variant}`]: !inline,
     },
     ...rest,

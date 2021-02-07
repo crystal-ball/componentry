@@ -1,7 +1,7 @@
 import React, { createContext, useCallback, useEffect, useRef, useState } from 'react'
 import { nanoid } from 'nanoid'
 import { useTheme } from '../Theme/Theme'
-import { BaseActiveContainerProps } from './base-types'
+import { ActiveContainerBaseProps } from './types'
 import { parseBaseCx } from './class-names'
 import { closest } from './dom'
 import { element } from './element-creator'
@@ -58,7 +58,7 @@ interface DefaultActiveContainerProps {
  * use. This ensures that we can always hook into the change events for internal
  * needs like setting or removing special event listeners.
  */
-export function activeContainerBuilder<TProps extends BaseActiveContainerProps>(
+export function activeContainerBuilder<TProps extends ActiveContainerBaseProps>(
   displayName: string,
   defaultProps: DefaultActiveContainerProps = {},
 ): React.FC<TProps> {
@@ -202,10 +202,9 @@ export function activeContainerBuilder<TProps extends BaseActiveContainerProps>(
     // TODO: only wrap elements with a `div` when the element needs it
     return (
       <ActiveCtx.Provider value={activeValues}>
-        {element({
+        {element(displayName, {
           'data-id': guid,
           'componentCx': {
-            [`🅲-${baseCx}`]: true,
             [`${baseCx}-${size}`]: size,
             [direction]: direction,
           },

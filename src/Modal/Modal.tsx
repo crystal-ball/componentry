@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-empty-interface */
 import React, { createContext, useContext, useRef } from 'react'
 import cx from 'classnames'
 import { nanoid } from 'nanoid'
@@ -5,15 +6,69 @@ import { nanoid } from 'nanoid'
 import { closeBase } from '../Close/Close'
 import { useTheme } from '../Theme/Theme'
 import { useActive, useActiveSrollReset, useNoScroll, useVisible } from '../hooks'
+import { ComponentBaseProps } from '../utils/types'
 import { element } from '../utils/element-creator'
 import { staticComponent } from '../utils/static-component-builder'
 
-const ModalCtx = createContext({})
+const ModalCtx = createContext<{
+  active: boolean
+  deactivate: (event: React.MouseEvent<HTMLButtonElement>) => void
+  guid: string
+}>(null)
+
+export interface ModalProps extends ComponentBaseProps<'div'> {
+  align?: 'center'
+
+  scroll?: 'body' | 'container' | 'overlay'
+
+  size?: 'sm' | 'lg'
+
+  transitionDuration?: number
+}
+
+export interface ModalBodyProps extends ComponentBaseProps<'div'> {}
+
+export interface ModalCloseProps extends ComponentBaseProps<'button'> {}
+
+export interface ModalFooterProps extends ComponentBaseProps<'div'> {}
+
+export interface ModalHeaderProps extends ComponentBaseProps<'div'> {
+  close?: (evt: React.MouseEvent<HTMLButtonElement>) => void
+}
+
+export interface ModalTitleProps extends ComponentBaseProps<'h2'> {
+  id?: string
+}
+
+export interface Modal {
+  (props: ModalProps): React.ReactElement
+  displayName: 'Modal'
+  /**
+   * [Modal body component 📝](https://componentry.design/components/modal)
+   */
+  Body: React.FC<ModalBodyProps>
+  /**
+   * [Modal close component 📝](https://componentry.design/components/modal)
+   */
+  Close: React.FC<ModalCloseProps>
+  /**
+   * [Modal footer component 📝](https://componentry.design/components/modal)
+   */
+  Footer: React.FC<ModalFooterProps>
+  /**
+   * [Modal header component 📝](https://componentry.design/components/modal)
+   */
+  Header: React.FC<ModalHeaderProps>
+  /**
+   * [Modal title component 📝](https://componentry.design/components/modal)
+   */
+  Title: React.FC<ModalTitleProps>
+}
 
 /**
  * [Modal component 📝](https://componentry.design/components/modal)
  */
-export function Modal(props) {
+export const Modal = ((props: ModalProps): JSX.Element => {
   // Guid instance property will be uniquely assigned once for each modal
   // instance, this unique id is then passed to all children through context
   // where it can be used to wire together title aria attributes
@@ -24,12 +79,12 @@ export function Modal(props) {
     align,
     children,
     deactivate,
-    scroll = 'overlay', // overlay, container, body
+    scroll = 'overlay',
     size,
     transitionDuration,
     ...rest
   } = {
-    ...useTheme('Modal'),
+    ...useTheme<ModalProps>('Modal'),
     ...useActive(),
     ...props,
   }
@@ -53,16 +108,9 @@ export function Modal(props) {
   //     div.modal-container - Contains the modal header,body,footer elements
   return (
     <ModalCtx.Provider value={{ active, deactivate, guid }}>
-      {element({
+      {element('ModalOverlay', {
         'onClick': deactivate,
-        'componentCx': [
-          'modal-overlay',
-          'fade',
-          `modal-${scroll}-scroll`,
-          {
-            visible,
-          },
-        ],
+        'componentCx': ['fade', `modal-${scroll}-scroll`, { visible }],
         'aria-hidden': String(!active),
         'aria-labelledby': guid,
         'role': 'presentation',
@@ -89,26 +137,25 @@ export function Modal(props) {
       })}
     </ModalCtx.Provider>
   )
-}
+}) as Modal
 Modal.displayName = 'Modal'
 
-/**
- * [Modal close component 📝](https://componentry.design/components/modal)
- */
+// --------------------------------------------------------
+// Close
+
 Modal.Close = staticComponent('ModalClose', closeBase)
 
-/**
- * [Modal header component 📝](https://componentry.design/components/modal)
- */
-Modal.Header = function ModalHeader(props) {
+// --------------------------------------------------------
+// Header
+
+Modal.Header = function ModalHeader(props: ModalHeaderProps) {
   const { children, close, ...rest } = {
-    ...useTheme('ModalHeader'),
+    ...useTheme<ModalHeaderProps>('ModalHeader'),
     ...props,
   }
   const { deactivate } = useContext(ModalCtx)
 
-  return element({
-    componentCx: 'modal-header',
+  return element('ModalHeader', {
     children: (
       <>
         {children}
@@ -122,39 +169,37 @@ Modal.Header = function ModalHeader(props) {
 }
 Modal.Header.displayName = 'ModalHeader'
 
-/**
- * [Modal title component 📝](https://componentry.design/components/modal)
- */
+// --------------------------------------------------------
+// Title
+
 Modal.Title = function ModalTitle(props) {
-  return element({
+  return element('ModalTitle', {
     as: 'h2',
     id: useContext(ModalCtx).guid,
-    componentCx: 'modal-title',
     ...useTheme('Modaltitle'),
     ...props,
   })
 }
 Modal.Title.displayName = 'ModalTitle'
 
-/**
- * [Modal body component 📝](https://componentry.design/components/modal)
- */
+// --------------------------------------------------------
+// Body
+
 Modal.Body = function ModalBody(props) {
   const bodyRef = useRef(null)
   useActiveSrollReset(useContext(ModalCtx).active, bodyRef)
 
-  return element({
+  return element('ModalBody', {
     ref: bodyRef,
-    componentCx: 'modal-body',
     ...useTheme('ModalBody'),
     ...props,
   })
 }
 Modal.Body.displayName = 'ModalBody'
 
-/**
- * [Modal footer component 📝](https://componentry.design/components/modal)
- */
-Modal.Footer = staticComponent('ModalFooter', {
+// --------------------------------------------------------
+// Footer
+
+Modal.Footer = staticComponent<ModalFooterProps>('ModalFooter', {
   componentCx: 'modal-footer',
 })

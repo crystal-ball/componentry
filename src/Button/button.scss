@@ -76,9 +76,9 @@ $button: map-assign($button-defaults, $button);
 @include style-rule-from-map(componentry-class(btn), get($button, 'base'));
 
 @each $variant, $styles in get($button, 'variants') {
-  @include style-rule-from-map('.btn-#{$variant}', $styles);
+  @include style-rule-from-map('.button-#{$variant}', $styles);
 }
 
 @each $size, $styles in get($button, 'sizes') {
-  @include style-rule-from-map('.btn-#{$size}', $styles);
+  @include style-rule-from-map('.button-#{$size}', $styles);
 }
