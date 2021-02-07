@@ -38,46 +38,11 @@ export interface Table {
  * [Table component 📝](https://componentry.design/components/table)
  */
 export const Table = staticComponent('Table', {
-  componentCx: '🅲-table',
   role: 'table',
 }) as Table
 
-// --------------------------------------------------------
-// Table.Body
-
-Table.Body = staticComponent('TableBody', {
-  componentCx: '🅲-table-body',
-  role: 'rowgroup',
-})
-
-// --------------------------------------------------------
-// Table.Head
-
-Table.Head = staticComponent('TableHead', {
-  componentCx: '🅲-table-head',
-  role: 'rowgroup',
-})
-
-// --------------------------------------------------------
-// Table.Row
-
-Table.Row = staticComponent('TableRow', {
-  componentCx: '🅲-table-row',
-  role: 'row',
-})
-
-// --------------------------------------------------------
-// Table.Header
-
-Table.Header = staticComponent('TableHeader', {
-  componentCx: '🅲-table-header',
-  role: 'columnheader',
-})
-
-// --------------------------------------------------------
-// Table.Cell
-
-Table.Cell = staticComponent('TableCell', {
-  componentCx: '🅲-table-cell',
-  role: 'cell',
-})
+Table.Body = staticComponent('TableBody', { role: 'rowgroup' })
+Table.Head = staticComponent('TableHead', { role: 'rowgroup' })
+Table.Row = staticComponent('TableRow', { role: 'row' })
+Table.Header = staticComponent('TableHeader', { role: 'columnheader' })
+Table.Cell = staticComponent('TableCell', { role: 'cell' })
