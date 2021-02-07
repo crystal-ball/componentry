@@ -25,14 +25,14 @@
     "url": "https://github.com/crystal-ball/componentry.git"
   },
   "engines": {
-    "node": "12"
+    "node": "14"
   },
   "scripts": {
     "start": "start-storybook -p 6006 --no-dll",
     "babel:watch": "BABEL_ENV=esmodules babel src --watch --out-dir es --ignore '**/*.spec.js'",
     "test": "npm run test:lint && npm run test:unit",
     "test:lint": "NODE_ENV=test eslint --format=pretty .",
-    "test:types": "tsc",
+    "test:types": "tsc --noEmit",
     "test:unit": "BABEL_ENV=test NODE_ENV=test jest",
     "test:watch": "BABEL_ENV=test NODE_ENV=test JEST_NOTIFY=true jest --watch",
     "type-check": "tsc --noEmit",
@@ -59,9 +59,9 @@
     "@babel/cli": "7.12.13",
     "@babel/core": "7.12.13",
     "@babel/plugin-transform-modules-commonjs": "7.12.13",
-    "@babel/plugin-transform-runtime": "7.12.13",
+    "@babel/plugin-transform-runtime": "7.12.15",
     "@babel/preset-typescript": "7.12.13",
-    "@crystal-ball/commitizen-base": "2.9.0",
+    "@crystal-ball/commitizen-base": "2.10.0",
     "@crystal-ball/prettier-base": "2.6.0",
     "@storybook/addon-essentials": "6.1.17",
     "@storybook/addon-links": "6.1.17",
@@ -72,11 +72,12 @@
     "@testing-library/jest-dom": "5.11.9",
     "@testing-library/react": "11.2.5",
     "@types/classnames": "2.2.11",
-    "@types/react": "16.9.56",
-    "@types/react-dom": "16.9.9",
+    "@types/nanoid": "2.1.0",
+    "@types/react": "17.0.1",
+    "@types/react-dom": "17.0.0",
     "babel-loader": "8.2.2",
     "css-loader": "5.0.1",
-    "eslint-config-eloquence": "16.6.0",
+    "eslint-config-eloquence": "17.3.0",
     "eslint-plugin-mdx": "1.8.2",
     "jest": "26.6.3",
     "prettier": "2.2.1",
@@ -87,15 +88,9 @@
     "style-loader": "2.0.0",
     "typescript": "4.1.3"
   },
-  "prettier": "@crystal-ball/prettier-base",
   "config": {
     "commitizen": {
       "path": "@crystal-ball/commitizen-base"
     }
-  },
-  "renovate": {
-    "extends": [
-      "github>crystal-ball/renovate-base:library"
-    ]
   }
 }

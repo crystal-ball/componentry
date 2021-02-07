@@ -31,7 +31,7 @@ describe('<Alert/>', () => {
 
     expect(screen.getByText('Warning!')).toBeInTheDocument()
 
-    await fireEvent.click(screen.getByLabelText('close'))
+    fireEvent.click(screen.getByLabelText('close'))
     expect(deactivate).toHaveBeenCalled()
 
     // Alert visibility state change handler has been overridden, other than calling

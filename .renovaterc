@@ -1,0 +1,13 @@
+{
+  "extends": [
+    "github>crystal-ball/renovate-base:library"
+  ],
+  "packageRules": [
+    {
+      "matchPackageNames": [
+        "sass-loader"
+      ],
+      "allowedVersions": "<=10.1"
+    }
+  ]
+}
