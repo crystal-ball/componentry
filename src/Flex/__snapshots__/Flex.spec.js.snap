@@ -3,12 +3,12 @@
 exports[`<Flex /> snapshots renders correctly 1`] = `
 <div>
   <div
-    class="d-flex"
+    class="🅲-flex d-flex"
   >
     Flex content
   </div>
   <div
-    class="d-inline-flex"
+    class="🅲-flex d-inline-flex"
   >
     Inline flex content
   </div>

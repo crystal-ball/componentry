@@ -2,29 +2,29 @@
 
 exports[`<Nav /> snapshots renders correctly 1`] = `
 <nav
-  class="nav"
+  class="🅲-nav"
   role="navigation"
 >
   <a
-    class="nav-item nav-item-primary active"
+    class="🅲-nav-item nav-item-primary active"
     href="#"
   >
     Active
   </a>
   <a
-    class="nav-item nav-item-primary"
+    class="🅲-nav-item nav-item-primary"
     href="#"
   >
     React
   </a>
   <a
-    class="nav-item nav-item-primary"
+    class="🅲-nav-item nav-item-primary"
     href="#"
   >
     Redux
   </a>
   <a
-    class="nav-item nav-item-primary disabled"
+    class="🅲-nav-item nav-item-primary disabled"
     disabled=""
     href="#"
   >

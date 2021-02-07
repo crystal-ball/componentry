@@ -3,23 +3,23 @@
 exports[`<Input /> snapshots renders correctly 1`] = `
 <div>
   <label
-    class="input-label"
+    class="🅲-input-label"
     for="test-guid"
   >
     Storybook
   </label>
   <input
-    class="input-field"
+    class="🅲-input-field"
     id="test-guid"
     type="text"
   />
   <div
-    class="input-description"
+    class="🅲-input-description"
   >
     Really important input!
   </div>
   <div
-    class="input-error"
+    class="🅲-input-error"
   >
     Oh no!
   </div>

@@ -2,6 +2,6 @@
 
 exports[`<FormGroup /> snapshots renders correctly 1`] = `
 <div
-  class="form-group"
+  class="🅲-form-group"
 />
 `;

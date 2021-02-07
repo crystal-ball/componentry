@@ -54,7 +54,7 @@ export const Alert: Alert = (props) => {
     'componentCx': [
       `alert-${variant}`,
       {
-        [`alert-${color}`]: color,
+        [`alert-color-${color}`]: color,
         fade: dismissible, // Only include opacity transition class for disimissible alerts
         visible,
       },
@@ -70,10 +70,7 @@ export const Alert: Alert = (props) => {
 
         {/* Render a close button or null depending on configs */}
         {dismissible && (
-          <Alert.Close
-            className={`alert-close font-color-${color}`}
-            onClick={deactivate}
-          />
+          <Alert.Close className={`font-color-${color}`} onClick={deactivate} />
         )}
       </>
     ),

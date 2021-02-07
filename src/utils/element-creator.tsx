@@ -50,7 +50,7 @@ export function element<Props extends ElementProps>(
   return createElement(as, {
     style: { ...styles, ...style },
     className: cx(
-      parseBaseCx(displayName), // Component base className, eg '🅲-btn'
+      `🅲-${parseBaseCx(displayName)}`, // Component base className, eg '🅲-btn'
       themeCx, // User defined default className from theme context
       componentCx, // Library defined component specific classNames, eg 'btn-sm'
       className, // User supplied className

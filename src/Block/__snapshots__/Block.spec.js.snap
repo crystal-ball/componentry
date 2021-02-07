@@ -3,12 +3,12 @@
 exports[`<Block /> snapshots renders correctly 1`] = `
 <div>
   <div
-    class="d-block"
+    class="🅲-block d-block"
   >
     Block content
   </div>
   <div
-    class="d-inline-block"
+    class="🅲-block d-inline-block"
   >
     Inline block content
   </div>

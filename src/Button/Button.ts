@@ -38,8 +38,8 @@ export const Button: React.FC<ButtonProps> = (props) => {
     componentCx: [
       `button-${variant}`,
       {
-        [`btn-${size}`]: size,
-        [`btn-color-${color}`]: color,
+        [`button-${size}`]: size,
+        [`button-color-${color}`]: color,
         active,
         disabled, // We include a disabled class AND pass disabled prop to element for a11y
       },

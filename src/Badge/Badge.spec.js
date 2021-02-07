@@ -12,8 +12,8 @@ describe('<Badge />', () => {
     expect(screen.getByText('Badge')).toHaveClass('badge-primary')
   })
 
-  test('When rounded is passed, then badge-rounded className is rendered', () => {
-    render(<Badge rounded>Badge</Badge>)
+  test('When variant is rounded, variant className is rendered', () => {
+    render(<Badge variant='rounded'>Badge</Badge>)
     expect(screen.getByText('Badge')).toHaveClass('badge-rounded')
   })
 })
@@ -25,7 +25,7 @@ describe('<Badge /> snapshots', () => {
     const { container } = render(
       <div>
         <Badge color='primary'>Badge</Badge>
-        <Badge color='primary' rounded>
+        <Badge variant='rounded' color='primary'>
           Badge
         </Badge>
       </div>,

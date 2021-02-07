@@ -6,7 +6,7 @@ exports[`<Tab /> snapshots renders correctly 1`] = `
   data-id="test-guid"
 >
   <div
-    class="tabs-actions-container"
+    class="🅲-tabs-actions-container"
     role="tablist"
   >
     <button

@@ -3,12 +3,12 @@
 exports[`<Badge /> snapshots renders correctly 1`] = `
 <div>
   <div
-    class="badge badge-primary"
+    class="🅲-badge badge-primary badge-color-primary"
   >
     Badge
   </div>
   <div
-    class="badge badge-primary badge-rounded"
+    class="🅲-badge badge-rounded badge-color-primary"
   >
     Badge
   </div>
