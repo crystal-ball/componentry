@@ -1,18 +1,16 @@
 {
-  "include": ["src/**/*"],
-  "files": ["./test/types.tsx"],
-
   "compilerOptions": {
-    "target": "esnext" /* Specify ECMAScript target version */,
-    "module": "commonjs" /* Specify module code generation */,
-    "allowJs": true /* Allow javascript files to be compiled. */,
-    "checkJs": false /* Report errors in .js files. */,
-    "declaration": true /* Generates corresponding '.d.ts' file. */,
-    "outDir": "./types/" /* Redirect output structure to the directory. */,
-    "jsx": "react" /* Specify JSX code generation: 'preserve', 'react-native', or 'react'. */,
+    // --- Code generation
+    "declaration": true, // Generate corresponding type definition files
+    "outDir": "./types/",
 
-    /* Strict Type-Checking Options */
-    "strict": false /* Enable all strict type-checking options. */,
+    // --- Type checking
+    "allowJs": true, // Allow JS files to be compiled
+    "checkJs": false, // Opt in to type checking for JS files
+    "strict": false,
+    "noUncheckedIndexedAccess": true, // Every property access with an index could be undefined
+    "skipLibCheck": true, // Skip type checking .d.ts declaration files (recommended by TS)
+    "forceConsistentCasingInFileNames": true, // Disallow inconsistently-cased references to the same file
     // "noImplicitAny": true,                 /* Raise error on expressions and declarations with an implied 'any' type. */
     // "strictNullChecks": true,              /* Enable strict null checks. */
     // "strictFunctionTypes": true,           /* Enable strict checking of function types. */
@@ -21,11 +19,14 @@
     // "noImplicitThis": true,                /* Raise error on 'this' expressions with an implied 'any' type. */
     // "alwaysStrict": true,
 
-    /* Module Resolution Options */
+    // --- Module resolution and file parsing
+    "moduleResolution": "node", // Use Node.js algorithm to resolve modules
+    "esModuleInterop": true, // Interop commonJS and ESM, fixes some issues importing commonJS (recommended by TS)
+    "isolatedModules": true, // Disallow features that require cross-file information for compilation (Babel safety check)
     "allowSyntheticDefaultImports": true /* Allow default imports from modules with no default export. This does not affect code emit, just typechecking. */,
-    "esModuleInterop": true /* Enables emit interoperability between CommonJS and ES Modules via creation of namespace objects for all imports. Implies 'allowSyntheticDefaultImports'. */,
+    "jsx": "react" /* Specify JSX code generation: 'preserve', 'react-native', or 'react'. */
+  },
 
-    /* Advanced Options */
-    "forceConsistentCasingInFileNames": true /* Disallow inconsistently-cased references to the same file. */
-  }
+  "include": ["src/**/*"],
+  "files": ["./test/types.tsx"]
 }
