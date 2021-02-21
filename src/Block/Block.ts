@@ -16,9 +16,8 @@ export const Block: React.FC<BlockProps> = (props) => {
 
   return element('Block', {
     componentCx: {
-      // ℹ️ Block is a helper component so it doesn't have a 🅲-block class
-      'd-block': !inline,
-      'd-inline-block': inline,
+      'block': !inline,
+      'inline-block': inline,
     },
     ...rest,
   })

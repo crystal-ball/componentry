@@ -4,14 +4,14 @@ import { ComponentBaseProps } from '../utils/types'
 import { element } from '../utils/element-creator'
 
 interface FlexProps extends ComponentBaseProps<'div'> {
-  /** Sets an `align-items` flex style */
-  align?: 'start' | 'center' | 'end' | 'stretch' | 'baseline'
-  /** sets a `flex-direction` flex style */
-  direction?: 'row' | 'column' | 'row-reverse' | 'column-reverse'
+  /** Sets an `align-items` style */
+  align?: 'start' | 'end' | 'center' | 'baseline' | 'stretch'
+  /** Sets a `flex-direction` flex style */
+  direction?: 'row' | 'col' | 'row-reverse' | 'col-reverse'
   /** Switches between display between an inline and block element */
   inline?: boolean
-  /** Sets a `justify-content` flex style */
-  justify?: 'start' | 'center' | 'end' | 'between' | 'around' | 'evenly'
+  /** Sets a `justify-content` style */
+  justify?: 'start' | 'end' | 'center' | 'between' | 'around' | 'evenly'
   /** Sets a `flex-wrap` flex style */
   wrap?: 'wrap' | 'nowrap' | 'wrap-reverse'
 }
@@ -27,13 +27,13 @@ export const Flex: React.FC<FlexProps> = (props) => {
 
   return element('Flex', {
     componentCx: {
-      'd-flex': !inline,
-      'd-inline-flex': inline,
+      'flex': !inline,
+      'inline-flex': inline,
       [`flex-${direction}`]: direction,
       [`flex-${wrap}`]: wrap,
-      [`align-items-${align}`]: align,
-      [`justify-content-${justify}`]: justify,
     },
+    alignItems: align,
+    justifyContent: justify,
     ...rest,
   })
 }

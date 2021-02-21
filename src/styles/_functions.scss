@@ -66,6 +66,10 @@
   @return if(breakpoint-min($breakpoint, $breakpoints) == null, '', '#{$breakpoint}\\:');
 }
 
+@function responsive-infix($breakpoint, $breakpoints: $grid-breakpoints) {
+  @return if(breakpoint-min($breakpoint, $breakpoints) == null, '', '#{$breakpoint}\\:');
+}
+
 // --------------------------------------------------------
 // String manipulations
 
