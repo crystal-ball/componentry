@@ -93,7 +93,7 @@ export function elementTests(TestComponent) {
     expect(screen.getByTestId('jsx')).toHaveAttribute('data-radical', 'nope')
 
     expect(screen.getByTestId('merge')).toHaveClass(
-      'theme-class jsx-class font-weight-bold text-transform-uppercase',
+      'theme-class jsx-class font-bold text-transform-uppercase',
     )
     expect(screen.getByTestId('merge')).toHaveAttribute('data-radical', 'hecka')
   })
