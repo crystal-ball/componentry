@@ -7,14 +7,14 @@ import { Block } from './Block'
 describe('<Block />', () => {
   elementTests(Block)
 
-  test('When inline is not passed, then d-block className is rendered', () => {
+  test('When inline is not passed, then block className is rendered', () => {
     render(<Block>Content</Block>)
-    expect(screen.getByText('Content')).toHaveClass('d-block')
+    expect(screen.getByText('Content')).toHaveClass('🅲-block block')
   })
 
-  test('When inline is passed, then d-inline-block className is rendered', () => {
+  test('When inline is passed, then inline-block className is rendered', () => {
     render(<Block inline>Content</Block>)
-    expect(screen.getByText('Content')).toHaveClass('d-inline-block')
+    expect(screen.getByText('Content')).toHaveClass('🅲-block inline-block')
   })
 })
 

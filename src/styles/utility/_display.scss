@@ -1,73 +1,49 @@
-/* ~componentry/styles/atomic/display */
+/* ~componentry/styles/utility/display */
 
-//
-// Utilities for common `display` values
-//
-
+/// Responsive display classes
 @each $breakpoint in map-keys($grid-breakpoints) {
   @include media-breakpoint-up($breakpoint) {
-    $infix: breakpoint-infix($breakpoint, $grid-breakpoints);
+    $infix: responsive-infix($breakpoint, $grid-breakpoints);
 
-    .d#{$infix}-none {
-      display: none !important;
+    .#{$infix}hidden {
+      display: none;
     }
-    .d#{$infix}-inline {
-      display: inline !important;
+    .#{$infix}inline {
+      display: inline;
     }
-    .d#{$infix}-inline-block {
-      display: inline-block !important;
+    .#{$infix}inline-block {
+      display: inline-block;
     }
-    .d#{$infix}-block {
-      display: block !important;
+    .#{$infix}block {
+      display: block;
     }
-    .d#{$infix}-table {
-      display: table !important;
+    .#{$infix}inline-flex {
+      display: inline-flex;
     }
-    .d#{$infix}-table-row {
-      display: table-row !important;
-    }
-    .d#{$infix}-table-cell {
-      display: table-cell !important;
-    }
-    .d#{$infix}-flex {
-      display: flex !important;
-    }
-    .d#{$infix}-inline-flex {
-      display: inline-flex !important;
+    .#{$infix}flex {
+      display: flex;
     }
   }
 }
 
-//
-// Utilities for toggling `display` in print
-//
-
+/// Print display classes
 @media print {
-  .d-print-none {
+  .print-hidden {
     display: none !important;
   }
-  .d-print-inline {
+  .print-inline {
     display: inline !important;
   }
-  .d-print-inline-block {
+  .print-inline-block {
     display: inline-block !important;
   }
-  .d-print-block {
+  .print-block {
     display: block !important;
   }
-  .d-print-table {
-    display: table !important;
-  }
-  .d-print-table-row {
-    display: table-row !important;
-  }
-  .d-print-table-cell {
-    display: table-cell !important;
-  }
-  .d-print-flex {
+  .print-flex {
     display: flex !important;
   }
-  .d-print-inline-flex {
+  .print-inline-flex {
     display: inline-flex !important;
   }
 }

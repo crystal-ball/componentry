@@ -1,5 +1,8 @@
 const classNamesProps = {
   active: 1,
+  alignContent: 1,
+  alignItems: 1,
+  alignSelf: 1,
   backgroundColor: 1,
   border: 1,
   borderBottom: 1,
@@ -14,6 +17,7 @@ const classNamesProps = {
   fontSize: 1,
   fontStyle: 1,
   fontWeight: 1,
+  justifyContent: 1,
   position: 1,
   textAlign: 1,
   textTransform: 1,
@@ -68,12 +72,16 @@ function generateClassNames(p) {
     [`background-color-${p.backgroundColor}`]: p.backgroundColor,
     [`border-color-${p.borderColor}`]: p.borderColor,
     [`border-width-${p.borderWidth}`]: p.borderWidth,
+    [`content-${p.alignContent}`]: p.alignContent,
     [`font-color-${p.fontColor}`]: p.fontColor,
     [`font-family-${p.fontFamily}`]: p.fontFamily,
     [`font-size-${p.fontSize}`]: p.fontSize,
     [`font-style-${p.fontStyle}`]: p.fontStyle,
     [`font-weight-${p.fontWeight}`]: p.fontWeight,
+    [`items-${p.alignItems}`]: p.alignItems,
+    [`justify-${p.justifyContent}`]: p.justifyContent,
     [`position-${p.position}`]: p.position,
+    [`self-${p.alignSelf}`]: p.alignSelf,
     [`text-align-${p.textAlign}`]: p.textAlign,
     [`text-transform-${p.textTransform}`]: p.textTransform,
   }
@@ -97,7 +105,7 @@ export function componentry({
   pills,
   variant,
   vertical,
-  // Component props filtered out
+  // ✓ Componentry props filtered out
   activate,
   deactivate,
   defaultActive,
@@ -106,7 +114,7 @@ export function componentry({
   onActivated,
   onDeactivate,
   onDeactivated,
-  // --- Library props filtered out
+  // ✓ Active props filtered out
   ...filteredProps
 }) {
   const classNames = {}
