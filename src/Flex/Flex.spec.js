@@ -7,14 +7,14 @@ import { Flex } from './Flex'
 describe('<Flex />', () => {
   elementTests(Flex)
 
-  test('When inline is not passed, then d-flex className is rendered', () => {
+  test('When inline is not passed, then flex className is rendered', () => {
     render(<Flex>Content</Flex>)
-    expect(screen.getByText('Content')).toHaveClass('d-flex')
+    expect(screen.getByText('Content')).toHaveClass('🅲-flex flex')
   })
 
-  test('When inline is passed, then d-inline-flex className is rendered', () => {
+  test('When inline is passed, then inline-flex className is rendered', () => {
     render(<Flex inline>Content</Flex>)
-    expect(screen.getByText('Content')).toHaveClass('d-inline-flex')
+    expect(screen.getByText('Content')).toHaveClass('🅲-flex inline-flex')
   })
 
   test('When modifier props are passed, then the expanded classNames are rendered', () => {
@@ -24,7 +24,7 @@ describe('<Flex />', () => {
       </Flex>,
     )
     expect(screen.getByText('Content')).toHaveClass(
-      'd-flex flex-column align-items-start flex-wrap justify-content-start',
+      '🅲-flex flex flex-column items-start flex-wrap justify-start',
     )
   })
 })
