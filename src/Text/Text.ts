@@ -30,14 +30,13 @@ interface TextProps extends ComponentBaseProps<'div'> {
  * [Text component 📝](https://componentry.design/components/text)
  */
 export const Text: React.FC<TextProps> = (props) => {
-  const { variant = 'body', bold, italic, inline, elementsMap = {}, ...rest } = {
+  const { variant = 'body', bold, inline, elementsMap = {}, ...rest } = {
     ...useTheme<TextProps & { elementsMap?: ElementsMap }>('Text'),
     ...props,
   }
 
   return element('Text', {
     as: inline ? 'span' : elementsMap[variant] || defaultElementsMap[variant] || 'p',
-    fontStyle: italic ? 'italic' : null,
     fontWeight: bold ? 'bold' : null,
     componentCx: {
       [`text-${variant}`]: !inline,

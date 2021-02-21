@@ -26,7 +26,7 @@
 // Font sizes
 
 @each $key, $value in theme-get('typography.font-sizes') {
-  .font-size-#{$key} {
+  .text-#{$key} {
     font-size: $value !important;
   }
 }
@@ -35,7 +35,7 @@
 // Font weights
 
 @each $key, $value in theme-get('typography.font-weights') {
-  .font-weight-#{$key} {
+  .font-#{$key} {
     font-weight: $value !important;
   }
 }
@@ -61,12 +61,12 @@
 // --------------------------------------------------------
 // Font styles
 
-// TODO: what's the difference and do we need inherit, initial, normal?
-.font-style-italic {
-  font-style: italic !important;
+// Tailwind
+.italic {
+  font-style: italic;
 }
-.font-style-unset {
-  font-style: unset !important;
+.not-italic {
+  font-style: normal;
 }
 
 // --------------------------------------------------------
