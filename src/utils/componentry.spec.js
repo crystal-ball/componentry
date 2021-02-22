@@ -166,13 +166,12 @@ describe('componentry()', () => {
       'border-right': true,
       'border-top': true,
       'border-width-lg': 'lg',
+      'font-bold': 'bold',
       'font-color-primary': 'primary',
       'font-family-monospace': 'monospace',
-      'font-size-sm': 'sm',
-      'font-style-italic': 'italic',
-      'font-weight-bold': 'bold',
       'position-fixed': 'fixed',
       'text-align-center': 'center',
+      'text-sm': 'sm',
       'text-transform-uppercase': 'uppercase',
     })
   })
