@@ -11,9 +11,9 @@ node_modules
 
 # Published
 # -------------------------------------
+commonjs
 es
 esnext
-lib
 types
 
 # Documentation

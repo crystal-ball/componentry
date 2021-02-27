@@ -1,8 +1,9 @@
 {
   "compilerOptions": {
     // --- Code generation
-    "declaration": true, // Generate corresponding type definition files
-    "outDir": "./types/",
+    "noEmit": true,
+    // "declaration": true, // Generate corresponding type definition files
+    // "outDir": "./types/",
 
     // --- Type checking
     "allowJs": true, // Allow JS files to be compiled
@@ -27,6 +28,5 @@
     "jsx": "react" /* Specify JSX code generation: 'preserve', 'react-native', or 'react'. */
   },
 
-  "include": ["src/**/*"],
-  "files": ["./test/types.tsx"]
+  "include": ["src/**/*", "test/**/*"]
 }

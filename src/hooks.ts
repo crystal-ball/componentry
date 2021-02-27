@@ -3,13 +3,20 @@
  * @module
  */
 
-import { useContext, useEffect, useLayoutEffect, useRef, useState } from 'react'
-import { ActiveCtx } from './utils/active-container-component-builder'
+import {
+  RefObject,
+  useContext,
+  useEffect,
+  useLayoutEffect,
+  useRef,
+  useState,
+} from 'react'
+import { ActiveContext, ActiveCtx } from './utils/active-container-component-builder'
 
 // --------------------------------------------------------
 // useActive hook
 
-export const useActive = () => useContext(ActiveCtx)
+export const useActive = (): ActiveContext => useContext(ActiveCtx)
 
 // --------------------------------------------------------
 // useActiveScrollReset hook
@@ -17,10 +24,11 @@ export const useActive = () => useContext(ActiveCtx)
 /**
  * Set the scrolltop of passed reference node to 0 when active changes to
  * truthy. Used for resetting scroll position of components on activation.
- * @param {boolean} active
- * @param {Object} ref
  */
-export const useActiveSrollReset = (active, ref) => {
+export const useActiveSrollReset = (
+  active: string | boolean,
+  ref: RefObject<HTMLElement>,
+): void => {
   useLayoutEffect(() => {
     if (active && ref.current) {
       // eslint-disable-next-line no-param-reassign
@@ -35,10 +43,8 @@ export const useActiveSrollReset = (active, ref) => {
 /**
  * Prevent document body scroll when active. Used for freezing app content when
  * overlay elements are activated
- * @param {boolean} active
- * @returns {void}
  */
-export const useNoScroll = (active) => {
+export const useNoScroll = (active: string | boolean): void => {
   useEffect(() => {
     const { classList } = window.document.body
     if (active) classList.add('no-scroll')
@@ -55,6 +61,11 @@ export const useNoScroll = (active) => {
 // --------------------------------------------------------
 // useVisible hook
 
+type VisibleState = {
+  active: string | boolean
+  visible: string | boolean
+}
+
 /**
  * Hook handles transitioning display and opacity using active and visible
  * state using the following rules:
@@ -63,9 +74,8 @@ export const useNoScroll = (active) => {
  *   transition element opacity using css transitions
  * - Hide: Set visible false to start element opacity using css transitions,
  *   then after transition duration set active false to set display none
- * @returns {{ active: boolean, visible: boolean }}
  */
-export const useVisible = (active, duration = 250) => {
+export const useVisible = (active: string | boolean, duration = 250): VisibleState => {
   const mounted = useRef(true)
   // Track when the component is unmounted so that we can prevent setting state
   // after the timeouts if the component was unmounted
@@ -83,7 +93,7 @@ export const useVisible = (active, duration = 250) => {
     // ℹ️ Although the timeout used is very short, it's possible that a
     // component could be unmounted before it's run so we keep a reference to
     // the timeout that we can cleanup
-    let timer
+    let timer: NodeJS.Timeout
 
     if (active) {
       // When activated immediately set active and transition to visible, this
