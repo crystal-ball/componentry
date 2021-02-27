@@ -1,0 +1,13 @@
+{
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "noEmit": false,
+    "emitDeclarationOnly": true,
+    "declaration": true, // Generate corresponding type definition files
+    "outDir": "./types",
+
+    "allowJs": false,
+    "checkJs": false
+  },
+  "include": ["src/**/*"]
+}

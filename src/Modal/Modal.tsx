@@ -11,7 +11,7 @@ import { element } from '../utils/element-creator'
 import { staticComponent } from '../utils/static-component-builder'
 
 const ModalCtx = createContext<{
-  active: boolean
+  active: string | boolean
   deactivate: (event: React.MouseEvent<HTMLButtonElement>) => void
   guid: string
 }>(null)

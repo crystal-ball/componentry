@@ -21,7 +21,7 @@ module.exports = {
     // ---------------------------------------------------------------------------
 
     // CommonJS - ES5 syntax with commonJS modules
-    common: {
+    commonjs: {
       presets: ['@babel/preset-env', '@babel/preset-react', '@babel/preset-typescript'],
       plugins: [
         '@babel/plugin-transform-modules-commonjs',
@@ -51,7 +51,7 @@ module.exports = {
       ],
     },
     // Next - Transpiled to stage 4 for package.esnext
-    next: {
+    esnext: {
       presets: ['@babel/preset-react', '@babel/preset-typescript'],
       plugins: [
         [
