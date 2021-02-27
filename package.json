@@ -36,14 +36,14 @@
     "type-check": "tsc --noEmit",
     "type-check:watch": "tsc --noEmit --watch",
     "format": "prettier --write . !CHANGELOG.md !coverage",
-    "prepublishOnly": "npm run clean && npm run js",
+    "prepublishOnly": "npm run clean && npm run js && npm run types",
     "postpublish": "npm run clean",
     "js": "npm run js:commonjs && npm run js:esmodules && npm run js:esnext",
     "js:commonjs": "BABEL_ENV=commonjs babel src -x '.ts,.tsx' --out-dir commonjs",
     "js:esmodules": "BABEL_ENV=esmodules babel src -x '.ts,.tsx' --out-dir es",
     "js:esnext": "BABEL_ENV=esnext babel src -x '.ts,.tsx' --out-dir esnext",
     "types": "tsc --project tsconfig.types.json",
-    "clean": "rm -rf dist monitor commonjs es esnext types"
+    "clean": "rm -rf commonjs es esnext types"
   },
   "peerDependencies": {
     "react": ">=16.8"
