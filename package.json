@@ -39,9 +39,9 @@
     "prepublishOnly": "npm run clean && npm run js",
     "postpublish": "npm run clean",
     "js": "npm run js:commonjs && npm run js:esmodules && npm run js:esnext",
-    "js:commonjs": "BABEL_ENV=common babel src -x '.js,.ts,.tsx' --out-dir commonjs --ignore '**/*.spec.js,**/storybook'",
-    "js:esmodules": "BABEL_ENV=esmodules babel src -x '.js,.ts,.tsx' --out-dir es --ignore '**/*.spec.js,**/storybook'",
-    "js:esnext": "BABEL_ENV=next babel src -x '.js,.ts,.tsx' --out-dir esnext --ignore '**/*.spec.js,**/storybook'",
+    "js:commonjs": "BABEL_ENV=commonjs babel src -x '.ts,.tsx' --out-dir commonjs --ignore '**/*.spec.js,**/storybook'",
+    "js:esmodules": "BABEL_ENV=esmodules babel src -x '.ts,.tsx' --out-dir es --ignore '**/*.spec.js,**/storybook'",
+    "js:esnext": "BABEL_ENV=esnext babel src -x '.ts,.tsx' --out-dir esnext --ignore '**/*.spec.js,**/storybook'",
     "types": "tsc --project tsconfig.types.json",
     "clean": "rm -rf dist monitor commonjs es esnext types"
   },

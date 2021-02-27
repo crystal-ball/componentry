@@ -24,6 +24,12 @@ const classNamesProps = {
   visible: 1,
 }
 
+type UtilityProps = Partial<
+  {
+    [prop in keyof typeof classNamesProps]: string | boolean
+  }
+>
+
 const stylesProps = {
   fontSize: 1,
   letterSpacing: 1,
@@ -37,7 +43,7 @@ const stylesProps = {
 }
 
 // Generate set of margin (m*), and padding (p*) spacing props
-const spacingProps = {}
+const spacingProps: { [classname: string]: number } = {}
 const spacingBase = {
   m: 'margin',
   p: 'padding',
@@ -59,7 +65,11 @@ Object.keys(spacingBase).forEach((b) => {
 })
 const spacingRegex = new RegExp(/([bmp])([trblxy])?/)
 
-function generateClassNames(p) {
+type UtilityClasses = {
+  [classname: string]: string | boolean
+}
+
+function generateClassNames(p: UtilityProps): UtilityClasses {
   return {
     'active': p.active,
     'border': p.border,
@@ -87,6 +97,16 @@ function generateClassNames(p) {
   }
 }
 
+type Props = {
+  [prop: string]: unknown
+}
+
+type ComponentryAttributes = {
+  props: Props
+  styles: React.CSSProperties
+  utilityCx: [UtilityClasses, string[]]
+}
+
 /**
  * Library utility that handles:
  * 1. filtering out library props
@@ -96,6 +116,7 @@ function generateClassNames(p) {
  * isn't mapped to 1px or 1rem.
  */
 export function componentry({
+  /* eslint-disable @typescript-eslint/no-unused-vars */
   block,
   color,
   outline,
@@ -115,12 +136,13 @@ export function componentry({
   onDeactivate,
   onDeactivated,
   // ✓ Active props filtered out
+  /* eslint-enable @typescript-eslint/no-unused-vars */
   ...filteredProps
-}) {
-  const classNames = {}
-  const spacingCx = []
-  const styles = {}
-  const props = {}
+}: Props): ComponentryAttributes {
+  const classNames: UtilityProps = {}
+  const spacingCx: string[] = []
+  const styles: React.CSSProperties = {}
+  const props: Props = {}
 
   // We want disabled to reach final element as an HTML attr value
   if (filteredProps.disabled) props.disabled = true
@@ -131,6 +153,7 @@ export function componentry({
     if (
       stylesProps[prop] &&
       // If a style prop has a library size, fall through to classNames check
+      // @ts-ignore-next-line
       !['xs', 'sm', 'md', 'lg', 'xl'].includes(filteredProps[prop])
     ) {
       // 1. The prop maps to a utility style
@@ -140,6 +163,7 @@ export function componentry({
       classNames[prop] = filteredProps[prop]
     } else if (spacingProps[prop]) {
       // 3. The prop maps to a shorthand utility style/className
+      // @ts-ignore-next-line
       if (['xs', 'sm', 'md', 'lg', 'xl'].includes(filteredProps[prop])) {
         // 3a. The prop value maps to a computed className, eg (pt: 'xs') -> `pt-xs`
         spacingCx.push(`${prop}-${filteredProps[prop]}`)

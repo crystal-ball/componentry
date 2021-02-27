@@ -13,7 +13,7 @@ module.exports = {
   collectCoverage: true,
   coverageReporters: ['text-summary', 'lcov', 'clover'],
   collectCoverageFrom: [
-    'src/**/*.js',
+    'src/**/*.{ts,tsx}',
     '!**/*.stories.js',
     '!src/storybook/**',
     '!src/{Media,Modal,Theme}/stories/**',
