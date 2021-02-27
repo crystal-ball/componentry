@@ -26,7 +26,7 @@ interactive terminal session to step through each part of the commit message
 with prompts.
 
 > ℹ️ Commitizen commit messages make it possible to use Semantic Release to
-> automatically publish packages on change to master.
+> automatically publish packages on change to main.
 
 ## Roadmap
 
