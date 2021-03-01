@@ -4,7 +4,7 @@
 
 /* eslint-disable */
 import React from 'react'
-import cx from 'classnames'
+import clsx, { ClassValue } from 'clsx'
 import {
   Active,
   Alert,
@@ -67,12 +67,12 @@ const testText = (
 interface ButtonProps
   extends Omit<React.ComponentPropsWithoutRef<'button'>, 'className'> {
   as?: React.ElementType
-  className?: Parameters<typeof cx>[0]
+  className?: ClassValue
 }
 
 const SpecialButton: React.FC<ButtonProps> = ({ children, className, ...rest }) => {
   return (
-    <button type='button' className={cx('SpecialButton', className)} {...rest}>
+    <button type='button' className={clsx('SpecialButton', className)} {...rest}>
       {children}
     </button>
   )

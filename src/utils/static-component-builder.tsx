@@ -1,10 +1,10 @@
 import React from 'react'
-import cx from 'classnames'
+import { ClassValue } from 'clsx'
 import { useTheme } from '../Theme/Theme'
 import { element } from './element-creator'
 
 type StaticOptions<Props> = Props & {
-  componentCx?: Parameters<typeof cx>[0]
+  componentCx?: ClassValue
 }
 
 /**
