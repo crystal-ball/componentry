@@ -42,5 +42,5 @@ $text: map-assign($text-defaults, $text);
 @include style-rule-from-map(componentry-class(text), get($text, 'base'));
 
 @each $variant, $styles in get($text, variants) {
-  @include style-rule-from-map('.text-#{$variant}', $styles);
+  @include style-rule-from-map('.#{$variant}-variant', $styles);
 }

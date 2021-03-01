@@ -11,8 +11,8 @@ node_modules
 
 # Published
 # -------------------------------------
-commonjs
-es
+cjs
+esm
 esnext
 types
 
