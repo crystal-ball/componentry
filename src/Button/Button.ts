@@ -21,6 +21,7 @@ interface ButtonProps extends ComponentBaseProps<'button'> {
 
 /**
  * [Button component 📝](https://componentry.design/components/button)
+ * @experimental
  */
 export const Button: React.FC<ButtonProps> = (props) => {
   const { variant = 'primary', active, color, disabled, size, ...merged } = {

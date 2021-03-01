@@ -40,6 +40,7 @@ export interface Drawer {
 
 /**
  * [Drawer component 📝](https://componentry.design/components/drawer)
+ * @experimental
  */
 export const Drawer = activeContainerBuilder<DrawerProps>('Drawer') as Drawer
 

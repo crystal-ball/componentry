@@ -40,6 +40,7 @@ export interface Tooltip {
 
 /**
  * [Tooltip component 📝](https://componentry.design/components/tooltip)
+ * @experimental
  */
 export const Tooltip = activeContainerBuilder<TooltipProps>('Tooltip', {
   escEvents: true,

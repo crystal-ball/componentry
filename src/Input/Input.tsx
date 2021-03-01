@@ -42,6 +42,7 @@ const InputCtx = createContext<{ guid: string }>({ guid: null })
 
 /**
  * [Input component 📝](https://componentry.design/components/input)
+ * @experimental
  */
 export const Input: Input = ({ children }: InputProps) => {
   /**

@@ -31,6 +31,7 @@ export interface List {
 
 /**
  * [List component 📝](https://componentry.design/components/list)
+ * @experimental
  */
 export const List: List = (props) => {
   const { flush, ...rest } = { ...useTheme('List'), ...props }

@@ -50,6 +50,7 @@ export interface MediaProps {
 }
 /**
  * [Media component 📝](https://componentry.design/components/media)
+ * @experimental
  */
 export function Media({
   children,

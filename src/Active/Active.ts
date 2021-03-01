@@ -34,6 +34,7 @@ export interface Active {
 
 /**
  * [Active component 📝](https://componentry.design/components/active)
+ * @experimental
  */
 export const Active = activeContainerBuilder<ActiveProps>('Active', {
   escEvents: true,

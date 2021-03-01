@@ -7,5 +7,6 @@ export interface FormGroupProps extends ComponentBaseProps<'div'> {}
 
 /**
  * [FormGroup component 📝](https://componentry.design/components/form-group)
+ * @experimental
  */
 export const FormGroup = staticComponent('FormGroup')

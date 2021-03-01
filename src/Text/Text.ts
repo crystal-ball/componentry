@@ -36,7 +36,7 @@ type Props = MergePropTypes<DefaultTextProps, TextProps> & ComponentBaseProps<'d
  */
 export const Text: React.FC<Props> = (props) => {
   const { variant = 'body', bold, inline, elementsMap = {}, ...rest } = {
-    ...useTheme<TextProps & { elementsMap?: ElementsMap }>('Text'),
+    ...useTheme<Props & { elementsMap?: ElementsMap }>('Text'),
     ...props,
   }
 

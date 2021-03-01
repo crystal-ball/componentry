@@ -51,6 +51,7 @@ export interface Dropdown {
 
 /**
  * [Dropdown component 📝](https://componentry.design/components/dropdown)
+ * @experimental
  */
 export const Dropdown = activeContainerBuilder<DropdownProps>('Dropdown', {
   clickEvents: true,

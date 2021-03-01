@@ -34,6 +34,7 @@ interface Alert {
 
 /**
  * [Alert component 📝](https://componentry.design/components/alert)
+ * @experimental
  */
 export const Alert: Alert = (props) => {
   const {
