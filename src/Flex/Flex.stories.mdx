@@ -69,10 +69,13 @@ Set the flex items justification and alignment with the `justify` and `align` pr
 
 Override the flex wrap behavior with the `wrap` props:
 
-<Flex wrap='nowrap'>
-  {[1, 2, 3].map((key) => (
-    <div key={key} className='border'>
-      Flex content #{key}
-    </div>
-  ))}
+<Flex wrap='wrap-reverse'>
+  {Array(12)
+    .fill(0)
+    .map((_, key) => (
+      // eslint-disable-next-line react/no-array-index-key
+      <div key={key} className='border'>
+        Flex content #{key}
+      </div>
+    ))}
 </Flex>
