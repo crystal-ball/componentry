@@ -18,5 +18,6 @@ export const closeBase: CloseProps = {
 
 /**
  * [Close component 📝](https://componentry.design/components/close)
+ * @experimental
  */
 export const Close = staticComponent<CloseProps>('Close', closeBase)

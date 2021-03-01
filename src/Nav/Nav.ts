@@ -24,6 +24,7 @@ export interface Nav {
 
 /**
  * [Nav component 📝](https://componentry.design/components/nav)
+ * @experimental
  */
 export const Nav = ((props: NavProps) => {
   return element('Nav', {

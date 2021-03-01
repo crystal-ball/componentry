@@ -3,7 +3,7 @@ import { useTheme } from '../Theme/Theme'
 import { ComponentBaseProps } from '../utils/types'
 import { element } from '../utils/element-creator'
 
-interface FlexProps extends ComponentBaseProps<'div'> {
+export interface FlexProps extends ComponentBaseProps<'div'> {
   /** Sets an `align-items` style */
   align?: 'start' | 'end' | 'center' | 'baseline' | 'stretch'
   /** Sets a `flex-direction` flex style */

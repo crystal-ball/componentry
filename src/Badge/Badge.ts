@@ -11,6 +11,7 @@ interface BadgeProps extends ComponentBaseProps<'div'> {
 
 /**
  * [Badge component 📝](https://componentry.design/components/badge)
+ * @experimental
  */
 export const Badge: React.FC<BadgeProps> = (props) => {
   const { color, variant = 'primary', ...rest } = {

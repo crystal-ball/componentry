@@ -26,5 +26,5 @@ $icon: map-assign($icon-defaults, $icon);
 @include style-rule-from-map(componentry-class(icon), get($icon, 'base'));
 
 @each $variant, $styles in get($icon, variants) {
-  @include style-rule-from-map('.icon-#{$variant}', $styles);
+  @include style-rule-from-map('.#{$variant}-variant', $styles);
 }

@@ -67,6 +67,7 @@ export interface Modal {
 
 /**
  * [Modal component 📝](https://componentry.design/components/modal)
+ * @experimental
  */
 export const Modal = ((props: ModalProps): JSX.Element => {
   // Guid instance property will be uniquely assigned once for each modal

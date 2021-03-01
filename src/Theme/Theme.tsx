@@ -10,6 +10,7 @@ interface ThemeProps {
 
 /**
  * [Theme component 📝](https://componentry.design/components/theme)
+ * @experimental
  */
 export const Theme: React.FC<ThemeProps> = ({ children, theme }) => {
   return <ThemeCtx.Provider value={theme}>{children}</ThemeCtx.Provider>

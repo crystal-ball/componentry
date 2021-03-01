@@ -36,6 +36,7 @@ export interface Table {
 
 /**
  * [Table component 📝](https://componentry.design/components/table)
+ * @experimental
  */
 export const Table = staticComponent('Table', {
   role: 'table',

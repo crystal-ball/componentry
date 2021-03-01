@@ -19,6 +19,7 @@ interface LinkProps extends ComponentBaseProps<'a'> {
 
 /**
  * [Link component 📝](https://componentry.design/components/link)
+ * @experimental
  */
 export const Link: React.FC<LinkProps> = (props) => {
   const { variant = 'primary', color, active, disabled, ...merged } = {

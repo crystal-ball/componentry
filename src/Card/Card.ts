@@ -30,7 +30,10 @@ export interface Card {
   Title: React.FC<CardTitleProps>
 }
 
-/** [Card component 📝](https://componentry.design/components/card) */
+/**
+ * [Card component 📝](https://componentry.design/components/card)
+ * @experimental
+ */
 export const Card = staticComponent('Card') as Card
 
 Card.Body = staticComponent('CardBody')

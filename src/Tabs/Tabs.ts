@@ -60,6 +60,7 @@ export interface Tabs {
 
 /**
  * [Tabs component 📝](https://componentry.design/components/tabs)
+ * @experimental
  */
 export const Tabs = activeContainerBuilder<TabsProps>('Tabs') as Tabs
 

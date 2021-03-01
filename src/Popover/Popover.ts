@@ -54,6 +54,7 @@ export interface Popover {
 
 /**
  * [Popover component 📝](https://componentry.design/components/popover)
+ * @experimental
  */
 export const Popover = activeContainerBuilder<PopoverProps>('Popover', {
   direction: 'right',
