@@ -1,5 +1,5 @@
 import React from 'react'
-import cx from 'classnames'
+import { ClassValue } from 'classnames'
 
 /**
  * Utility type used to merge default component prop types with user defined overrides.
@@ -62,7 +62,7 @@ export type ComponentBaseProps<Element extends React.ElementType> = {
   /** Component element */
   as?: React.ElementType
   /** Component className, can be a string, array, or object */
-  className?: Parameters<typeof cx>[0]
+  className?: ClassValue
 } & UtilityProps &
   Omit<React.ComponentPropsWithoutRef<Element>, 'className'>
 

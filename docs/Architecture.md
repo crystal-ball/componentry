@@ -50,9 +50,9 @@ not documentation should explain why the convention has been overridden.
   common use case. For example, modals usually have close buttons, so a modal's
   property `closeButton` should be defaulted to true. Then consumers can pass
   `closeButton={false}` only when they need to disable common behavior.
-- Use the [classnames](https://github.com/JedWatson/classnames) utility for
-  assembling component classes. This lets consumers pass in arguments for
-  `classNames` that will be computed along with the base component classes.
+- Use the [clsx](https://github.com/lukeed/clsx) utility for assembling
+  component classes. This lets consumers pass in arguments for `className` that
+  will be computed along with the base component classes.
 - Tests for the component should cover the exposed component API.
 
 ### Active components
@@ -137,7 +137,7 @@ application setup. The `Modal.Close` is a good example of this.
 
 ## Dependencies
 
-Componentry has dependencies on `classnames` (SIZE) and `nanoid` (SIZE). These
+Componentry has dependencies on `clsx` (311b) and `nanoid` (504b). These
 libraries provide utilities for computing classnames and generating unique ids
 for aria attributes. `babel-runtime` is also included as a dependency to allow
 the ESModule builds to reference only the package imports for size

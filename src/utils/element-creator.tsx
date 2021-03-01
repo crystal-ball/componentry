@@ -1,20 +1,20 @@
 import React, { createElement } from 'react'
-import cx from 'classnames'
+import clsx, { ClassValue } from 'clsx'
 import { parseBaseCx } from './class-names'
 import { componentry } from './componentry'
 
 // Type used to *constrain* what props can be passed into element()
 type ElementProps = {
   as?: React.ElementType
-  className?: Parameters<typeof cx>[0]
+  className?: ClassValue
   style?: React.CSSProperties
 }
 
 // Create a generic type that extends passed in element attributes with library
 // componentCx and themeCx options
 type ElementCreator<Props> = Props & {
-  componentCx?: Parameters<typeof cx>[0]
-  themeCx?: Parameters<typeof cx>[0]
+  componentCx?: ClassValue
+  themeCx?: ClassValue
 }
 
 // 📝 Type docs
@@ -49,7 +49,7 @@ export function element<Props extends ElementProps>(
 
   return createElement(as, {
     style: { ...styles, ...style },
-    className: cx(
+    className: clsx(
       `🅲-${parseBaseCx(displayName)}`, // Component base className, eg '🅲-btn'
       themeCx, // User defined default className from theme context
       componentCx, // Library defined component specific classNames, eg 'btn-sm'

@@ -1,4 +1,4 @@
-import cx from 'classnames'
+import clsx from 'clsx'
 
 /** Parses a base className from a component display name */
 export const parseBaseCx = (displayName: string): string =>
@@ -19,7 +19,7 @@ export const navClasses = (
   variant: string,
   { fill, justify, pills, vertical }: NavFlags,
 ): string =>
-  cx({
+  clsx({
     [`${variant}-fill`]: fill,
     [`${variant}-justified`]: justify,
     [`${variant}-pills`]: pills,

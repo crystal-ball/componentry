@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-empty-interface */
 import React, { createContext, useContext, useRef } from 'react'
-import cx from 'classnames'
+import clsx from 'clsx'
 import { nanoid } from 'nanoid'
 
 import { closeBase } from '../Close/Close'
@@ -121,7 +121,7 @@ export const Modal = ((props: ModalProps): JSX.Element => {
             {/* ℹ️ Stop propogation of clicks inside modal or they will trigger the modal background deactivate handler */}
             <div
               ref={contentRef}
-              className={cx('modal-container', align, {
+              className={clsx('modal-container', align, {
                 visible,
                 [`modal-${size}`]: size,
               })}
