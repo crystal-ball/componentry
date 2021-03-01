@@ -10,12 +10,21 @@
 
 #### [Unreleased]
 
-## [3.1.0](https://github.com/crystal-ball/componentry/compare/v3.1.0...v3.0.0) - 2020-09-29
+## [3.1.0](https://github.com/crystal-ball/componentry/compare/v3.0.0...v3.1.0) - 202-02-28
 
-- Button and Link components should be good
-- Experimental new Table components
-- Real types for Block, Flex, Icon, Text and Theme components
-- Continued under the hood improvements
+### TYPESCRIPT 🎉
+
+**Componentry is now written in TypeScript 🎉🎉🎉**
+
+Adding types has been a wishlist item for a long time. Types provide such a
+great developer experience upgrade, and increase the quality of the codebase. 
+
+_Although this is a minor release it is a little spicy 🌶 because updating to TS
+required changing every file in the library 😬._
+
+### Upgrades
+
+- The `classnames` package has been replaced with `clsx` for a performance boost.
 
 ## [3.0.0](https://github.com/crystal-ball/componentry/compare/v2.5.0...v3.0.0) - 2020-05-17
 

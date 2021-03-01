@@ -1,7 +1,7 @@
 {
   "name": "componentry",
-  "version": "3.0.0",
-  "description": "React Componentry",
+  "version": "3.1.0",
+  "description": "React component library for building custom design systems",
   "sideEffects": false,
   "main": "cjs/index.js",
   "module": "esm/index.js",
@@ -9,11 +9,11 @@
   "types": "types/index.d.ts",
   "keywords": [
     "react",
-    "components",
     "ui",
-    "508",
+    "component-library",
+    "design-system",
     "accessible",
-    "bootstrap"
+    "tailwindcss"
   ],
   "contributors": [
     "Dan Hedgecock <hedgecock.d@gmail.com>",
