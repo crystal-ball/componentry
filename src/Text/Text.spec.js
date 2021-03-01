@@ -18,7 +18,7 @@ describe('Text', () => {
       </Theme>,
     )
     expect(container.firstChild).toContainHTML(
-      '<section class="🅲-text text-rad">Componentry</section>',
+      '<section class="🅲-text rad-variant">Componentry</section>',
     )
   })
 
