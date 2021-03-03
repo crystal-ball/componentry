@@ -31,17 +31,6 @@ $zindex-fixed:     1040 !default;
 $zindex-sticky:    1050 !default;
 
 // --------------------------------------------------------
-// Breakpoints
-
-// Note that breakpoints must start with a 0 value, and values must be ascending
-$grid-breakpoints: (
-  sm: 0,
-  md: 768px,
-  lg: 1250px,
-) !default;
-
-
-// --------------------------------------------------------
 // Color system
 
 // Shade colors are used for element styles like shadows or to create shades of

@@ -4,7 +4,7 @@
 // Margin and Padding
 //
 
-@each $breakpoint in theme-get('breakpoints') {
+@each $breakpoint in map-keys(theme-get('breakpoints')) {
   @include media-breakpoint-up($breakpoint) {
     $infix: breakpoint-infix($breakpoint, theme-get('breakpoints'));
 

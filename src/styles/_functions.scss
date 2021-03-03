@@ -40,7 +40,7 @@
  * xs. Used to generate the media query values for breakpoint scoped styles.
  * @example breakpoint-min(sm) === 576px
  */
-@function breakpoint-min($name, $breakpoints: $grid-breakpoints) {
+@function breakpoint-min($name, $breakpoints: theme-get('breakpoints')) {
   $min: map-get($breakpoints, $name);
   @return if($min != 0, $min, null);
 }
@@ -50,23 +50,17 @@
  * for xl. Used to generate the media queries for breakpoint scoped styles.
  * @example breakpoint-max(sm) === 767.98px
  */
-@function breakpoint-max($name, $breakpoints: $grid-breakpoints) {
+@function breakpoint-max($name, $breakpoints: theme-get('breakpoints')) {
   $next: breakpoint-next($name, $breakpoints);
   @return if($next, breakpoint-min($next, $breakpoints) - 0.02px, null);
 }
 
-/**
- * Return the passed breakpoint prefixed with a '-' for every breakpoint but xs.
- * Used to create default styles for xs breakpoint with overrides for each
- * larger breakpoint.
- * @example breakpoint-infix(xs) === ''
- * @example breakpoint-infix(sm) === '-sm'
- */
-@function breakpoint-infix($breakpoint, $breakpoints: $grid-breakpoints) {
-  @return if(breakpoint-min($breakpoint, $breakpoints) == null, '', '#{$breakpoint}\\:');
-}
-
-@function responsive-infix($breakpoint, $breakpoints: $grid-breakpoints) {
+/// Return the passed breakpoint prefixed with a '-' for every breakpoint but xs.
+/// Used to create default styles for xs breakpoint with overrides for each
+/// larger breakpoint.
+/// @example breakpoint-infix(xs) === ''
+/// @example breakpoint-infix(sm) === '-sm'
+@function breakpoint-infix($breakpoint, $breakpoints: theme-get('breakpoints')) {
   @return if(breakpoint-min($breakpoint, $breakpoints) == null, '', '#{$breakpoint}\\:');
 }
 

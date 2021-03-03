@@ -23,10 +23,14 @@ $font-family-monospace: SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mon
 /// Theme
 $theme: map-assign((
   // --- BREAKPOINTS
+  // Componentry has a single breakpoint by default, additional breakpoints can
+  // be added. 1200px is used for the default to try and ensure all smaller
+  // desktops are included. (992, 1200, 1280 are the most common large breakpoints)
+  // For multiple breakpoints 768 and 1280 are common breakpoints for md and lg.
   breakpoints: (
+    // Breakpoints must start with a 0 value, and must be defined in ascending order
     sm: 0,
-    md: 768px,
-    lg: 1250px,
+    lg: 1200px,
   ),
 
   // --- SPACING
