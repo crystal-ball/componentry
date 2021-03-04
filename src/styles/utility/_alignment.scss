@@ -1,8 +1,8 @@
 /* ~componentry/styles/utility/alignment */
 
-@each $breakpoint in map-keys($grid-breakpoints) {
+@each $breakpoint in map-keys(theme-get('breakpoints')) {
   @include media-breakpoint-up($breakpoint) {
-    $infix: responsive-infix($breakpoint, $grid-breakpoints);
+    $infix: breakpoint-infix($breakpoint, theme-get('breakpoints'));
 
     // --- Justify content
     .#{$infix}justify-start {

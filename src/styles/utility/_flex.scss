@@ -4,53 +4,54 @@
 //
 // Custom styles for additional flex alignment options.
 
-@each $breakpoint in map-keys($grid-breakpoints) {
+@each $breakpoint in map-keys(theme-get('breakpoints')) {
   @include media-breakpoint-up($breakpoint) {
-    $infix: breakpoint-infix($breakpoint, $grid-breakpoints);
+    $infix: breakpoint-infix($breakpoint, theme-get('breakpoints'));
 
-    // Flex direction
-    .flex#{$infix}-row {
+    // --- Flex direction
+    .#{$infix}flex-row {
       flex-direction: row !important;
     }
-    .flex#{$infix}-column {
+    .#{$infix}flex-col {
       flex-direction: column !important;
     }
-    .flex#{$infix}-row-reverse {
+    .#{$infix}flex-row-reverse {
       flex-direction: row-reverse !important;
     }
-    .flex#{$infix}-column-reverse {
+    .#{$infix}flex-col-reverse {
       flex-direction: column-reverse !important;
     }
 
-    .flex#{$infix}-wrap {
+    // --- Flex wrap
+    .#{$infix}flex-wrap {
       flex-wrap: wrap !important;
     }
-    .flex#{$infix}-nowrap {
+    .#{$infix}flex-nowrap {
       flex-wrap: nowrap !important;
     }
-    .flex#{$infix}-wrap-reverse {
+    .#{$infix}flex-wrap-reverse {
       flex-wrap: wrap-reverse !important;
     }
-    .flex#{$infix}-fill {
+
+    // --- Flex
+    .#{$infix}flex-auto {
       flex: 1 1 auto !important;
     }
-    .flex#{$infix}-grow-0 {
+
+    // --- Grow
+    .#{$infix}flex-grow-0 {
       flex-grow: 0 !important;
     }
-    .flex#{$infix}-grow-1 {
+    .#{$infix}flex-grow {
       flex-grow: 1 !important;
     }
-    .flex#{$infix}-shrink-0 {
+
+    // --- Shrink
+    .#{$infix}flex-shrink-0 {
       flex-shrink: 0 !important;
     }
-    .flex#{$infix}-shrink-1 {
+    .#{$infix}flex-shrink {
       flex-shrink: 1 !important;
-    }
-    .flex#{$infix}-basis-0 {
-      flex-basis: 0 !important;
-    }
-    .flex#{$infix}-basis-1 {
-      flex-basis: 1 !important;
     }
   }
 }
