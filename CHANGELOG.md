@@ -8,9 +8,23 @@
 > - ✨ - Updates
 > - 🛠 - Fixes
 
-#### [Unreleased]
+<!--
+## Unreleased items
 
-## [3.1.0](https://github.com/crystal-ball/componentry/compare/v3.0.0...v3.1.0) - 202-02-28
+- ...
+-->
+
+## [3.2.0](https://github.com/crystal-ball/componentry/compare/v3.1.0...v3.2.0) (2020-03-10)
+
+### 💖 New
+
+- Styles only entry added at `~componentry/styles` for convenience setting up the library.
+
+### 🛠 Fixes
+
+- Responsive and flex classes mismatched between styles and component output.
+
+## [3.1.0](https://github.com/crystal-ball/componentry/compare/v3.0.0...v3.1.0) (2020-02-28)
 
 ### TYPESCRIPT 🎉
 
