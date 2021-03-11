@@ -1,0 +1,34 @@
+/*
+ * Componentry
+ * Licensed under MIT: https://github.com/crystal-ball/componentry/blob/v3/LICENSE
+ */
+
+// The default theme creates a $theme map for the application. The default
+// values can be customized by defining a $theme in your application before
+// importing Componentry.
+@import './styles/theme';
+
+// The theme contains only side effect free setup code including variables,
+// mixins and functions. It can be imported as a base context for users of CSS
+// modules.
+// !DEPRECATED
+@import './styles/variables';
+
+// Fundamentals normalizes foundation styles across browsers to a minimal
+// starting point that supports the opting in to styles strategy
+@import './styles/fundamentals';
+
+// Scoped library component styles. These styles are intended to be used only
+// with their parent components.
+@import './styles/components';
+
+// Utility styles for composing custom elements leveraging a consistent design
+// system.
+@import './styles/utility';
+
+/*
+* 🙌 Componentry styles build on these amazing libraries:
+* Bootstrap (MIT) - https://getbootstrap.com/
+* Material-UI (MIT) - https://material-ui.com/
+* Tailwind CSS (MIT) - https://tailwindcss.com/
+*/

@@ -1,4 +1,4 @@
-/* ~componentry/src/styles/utility/background */
+/* ~componentry/styles/utility/background */
 
 @each $color, $value in theme-get('palette.backgrounds') {
   .background-color-#{$color} {

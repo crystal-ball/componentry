@@ -36,17 +36,14 @@
     "type-check": "tsc --noEmit",
     "type-check:watch": "tsc --noEmit --watch",
     "format": "prettier --write . !CHANGELOG.md !coverage",
-    "prepublishOnly": "npm run clean && npm run compile && npm run types && npm run copy:styles && npm run copy:styles-index",
+    "prepublishOnly": "npm run clean && npm run compile && npm run types",
     "postpublish": "npm run clean",
     "compile": "npm run compile:commonjs && npm run compile:esmodules && npm run compile:esnext",
     "compile:commonjs": "BABEL_ENV=commonjs babel src -x '.ts,.tsx' --out-dir cjs",
     "compile:esmodules": "BABEL_ENV=esmodules babel src -x '.ts,.tsx' --out-dir esm",
     "compile:esnext": "BABEL_ENV=esnext babel src -x '.ts,.tsx' --out-dir esnext",
-    "copy": "mkdir styles && rsync -R src/*.scss src/**/*.scss styles",
-    "copy:styles": "mkdir styles && rsync -R src/*.scss src/**/*.scss styles && cp -r styles/src/ styles/ && rm -rf styles/src",
-    "copy:styles-index": "cp styles/componentry.scss styles/_index.scss",
     "types": "tsc --project tsconfig.types.json",
-    "clean": "rm -rf cjs esm esnext styles types"
+    "clean": "rm -rf cjs esm esnext types"
   },
   "peerDependencies": {
     "react": ">=16.8"
