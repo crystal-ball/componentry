@@ -6,6 +6,8 @@
 public
 # nb: src/**.scss NEEDS to be published
 src/**/*.js
+src/**/*.ts
+src/**/*.tsx
 src/**/*.mdx
 src/**/*.snap
 types.bk
@@ -28,7 +30,10 @@ false
 
 # Configs
 # -------------------------------------
+.codeclimate.yml
+.czrc
 .github
+.renovaterc
 .storybook
 .vscode
 .cz-config.js
@@ -41,6 +46,7 @@ babel.config.js
 jsconfig.json
 renovate.json
 tsconfig.json
+tsconfig.types.json
 webpack.config.js
 
 # Testing
