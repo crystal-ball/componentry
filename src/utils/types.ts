@@ -48,10 +48,35 @@ export interface UtilityProps {
   /** padding-top && padding-bottom */
   py?: string | number
   // --- Typography
+  /** Text color style */
+  fontColor?: 'anchor' | 'body' | 'heading' | 'primary'
   /** Text font-style style */
   fontStyle?: 'italic' | 'unset'
   /** Text font-weight style */
   fontWeight?: 'light' | 'normal' | 'bold'
+  /** Text text-align style */
+  textAlign?: 'left' | 'center' | 'right' | 'justify'
+  // --- Sizing
+  /** Width style */
+  width?:
+    | '0'
+    | '10'
+    | '20'
+    | '25'
+    | '30'
+    | '40'
+    | '50'
+    | '60'
+    | '70'
+    | '75'
+    | '80'
+    | '90'
+    | '100'
+  // --- Color
+  /** Background color style */
+  backgroundColor?: 'primary' | 'success' | 'warning' | 'critical'
+  /** Border color styles */
+  borderColor?: 'primary'
 }
 
 /**

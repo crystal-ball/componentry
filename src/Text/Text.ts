@@ -19,8 +19,12 @@ const defaultElementsMap: ElementsMap = {
 export interface TextProps {}
 
 interface DefaultTextProps {
+  /** Shorthand to set text-align */
+  align?: 'left' | 'center' | 'right' | 'justify'
   /** Shorthand to set font-weight bold */
   bold?: boolean
+  /** Shorthand to set font color */
+  color?: 'anchor' | 'body' | 'heading' | 'primary'
   /** Switches display between an inline (span) and block (div) element */
   inline?: boolean
   /** Shorthand to set font-style italic */
@@ -35,17 +39,19 @@ type Props = MergePropTypes<DefaultTextProps, TextProps> & ComponentBaseProps<'d
  * [Text component 📝](https://componentry.design/components/text)
  */
 export const Text: React.FC<Props> = (props) => {
-  const { variant = 'body', bold, inline, elementsMap = {}, ...rest } = {
+  const { variant = 'body', align, bold, color, inline, elementsMap = {}, ...rest } = {
     ...useTheme<Props & { elementsMap?: ElementsMap }>('Text'),
     ...props,
   }
 
   return element('Text', {
     as: inline ? 'span' : elementsMap[variant] || defaultElementsMap[variant] || 'p',
-    fontWeight: bold ? 'bold' : null,
     componentCx: {
       [`${variant}-variant`]: !inline,
     },
+    fontColor: color,
+    fontWeight: bold ? 'bold' : null,
+    textAlign: align,
     ...rest,
   })
 }
