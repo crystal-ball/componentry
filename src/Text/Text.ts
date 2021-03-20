@@ -17,7 +17,7 @@ const defaultElementsMap: ElementsMap = {
   'small': 'small',
 }
 
-// Module augmentation interface for overriding utility props' types
+// Module augmentation interface for overriding component props' types
 export interface TextProps {}
 
 interface DefaultTextProps {

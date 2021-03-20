@@ -5,7 +5,7 @@ import { useTheme } from '../Theme/Theme'
 import { ComponentBaseProps, MergePropTypes } from '../utils/types'
 import { element } from '../utils/element-creator'
 
-// Module augmentation interface for overriding utility props' types
+// Module augmentation interface for overriding component props' types
 export interface IconProps {}
 
 interface DefaultIconProps {
