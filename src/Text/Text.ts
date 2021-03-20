@@ -1,4 +1,5 @@
 /* eslint-disable @typescript-eslint/no-empty-interface */
+
 import React from 'react'
 import { useTheme } from '../Theme/Theme'
 import { ComponentBaseProps, MergePropTypes } from '../utils/types'
@@ -16,6 +17,7 @@ const defaultElementsMap: ElementsMap = {
   'small': 'small',
 }
 
+// Module augmentation interface for overriding component props' types
 export interface TextProps {}
 
 interface DefaultTextProps {

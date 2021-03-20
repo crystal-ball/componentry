@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/no-empty-interface */
+
 import React from 'react'
 import { ClassValue } from 'classnames'
 
@@ -14,10 +16,23 @@ export type MergePropTypes<Defaults, Overrides> = {
     : Defaults[Prop]
 }
 
+// Module augmentation interface for overriding utility props' types
+export interface UtilityProps {}
+
 /**
  * Componentry shared utility props for using utility styles
  */
-export interface UtilityProps {
+interface DefaultUtilityProps {
+  // --- Color
+  /** Background color style */
+  backgroundColor?: 'primary' | 'success' | 'warning' | 'critical'
+  /** Border color style */
+  borderColor?: 'primary'
+
+  // --- Sizing
+  /** Width style */
+  width?: string
+
   // --- Spacing
   /** margin */
   m?: string | number
@@ -47,6 +62,7 @@ export interface UtilityProps {
   px?: string | number
   /** padding-top && padding-bottom */
   py?: string | number
+
   // --- Typography
   /** Text color style */
   fontColor?: 'anchor' | 'body' | 'heading' | 'primary'
@@ -56,27 +72,6 @@ export interface UtilityProps {
   fontWeight?: 'light' | 'normal' | 'bold'
   /** Text text-align style */
   textAlign?: 'left' | 'center' | 'right' | 'justify'
-  // --- Sizing
-  /** Width style */
-  width?:
-    | '0'
-    | '10'
-    | '20'
-    | '25'
-    | '30'
-    | '40'
-    | '50'
-    | '60'
-    | '70'
-    | '75'
-    | '80'
-    | '90'
-    | '100'
-  // --- Color
-  /** Background color style */
-  backgroundColor?: 'primary' | 'success' | 'warning' | 'critical'
-  /** Border color styles */
-  borderColor?: 'primary'
 }
 
 /**
@@ -88,7 +83,7 @@ export type ComponentBaseProps<Element extends React.ElementType> = {
   as?: React.ElementType
   /** Component className, can be a string, array, or object */
   className?: ClassValue
-} & UtilityProps &
+} & MergePropTypes<DefaultUtilityProps, UtilityProps> &
   Omit<React.ComponentPropsWithoutRef<Element>, 'className'>
 
 // --------------------------------------------------------
