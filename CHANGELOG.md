@@ -14,6 +14,12 @@
 - ...
 -->
 
+## [3.3.1](https://github.com/crystal-ball/componentry/compare/v3.3.0...v3.3.1) (2020-03-21)
+
+### 🛠 Fixes
+
+- Flex SASS filename casing mismatch
+
 ## [3.3.0](https://github.com/crystal-ball/componentry/compare/v3.2.0...v3.3.0) (2020-03-21)
 
 ### 💖 New
