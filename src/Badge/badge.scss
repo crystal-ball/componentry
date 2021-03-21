@@ -5,7 +5,7 @@
  * Requires one of the contextual, color modifier classes for `color` and
  * `background-color`.
  */
-.badge {
+.🅲-badge {
   display: inline-block;
   padding: $badge-padding-y $badge-padding-x;
   font-size: $badge-font-size;
@@ -23,7 +23,7 @@
 }
 
 // Quick fix for badges in buttons
-.btn .badge {
+.🅲-button .🅲-badge {
   position: relative;
   top: -1px;
 }
@@ -56,7 +56,7 @@
 }
 
 @each $color, $value in $theme-colors {
-  .badge-#{$color} {
+  .badge-color-#{$color} {
     @include badge-variant($value);
   }
 }

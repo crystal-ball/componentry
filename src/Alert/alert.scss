@@ -16,7 +16,7 @@ $alert-states-map: map-merge($alert-defaults, $alert-states);
 
 // Make the alert container a flex container by default with space-between to align
 // close button to right side
-.alert {
+.🅲-alert {
   align-items: flex-start;
   border: $alert-border-width solid transparent;
   display: flex;
@@ -62,8 +62,18 @@ $alert-states-map: map-merge($alert-defaults, $alert-states);
   flex-grow: 1;
 }
 
-.alert-close {
+.🅲-alert-close {
   margin-left: $alert-close-margin-left;
+
+  // Animate close icon opacity on hover
+  .icon-close {
+    opacity: 0.6;
+    transition: $transition-fade;
+
+    @include hover-focus {
+      opacity: 1;
+    }
+  }
 }
 
 // Headings for larger alerts

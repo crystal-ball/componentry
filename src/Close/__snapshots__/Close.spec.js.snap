@@ -7,7 +7,7 @@ exports[`<Close /> snapshots renders correctly 1`] = `
   type="button"
 >
   <svg
-    class="icon icon-close font"
+    class="🅲-icon icon-close font-variant"
     role="img"
   >
     <use

@@ -4,7 +4,7 @@
 // Base styles
 //
 
-.card {
+.🅲-card {
   position: relative;
   display: flex;
   flex-direction: column;
@@ -33,14 +33,14 @@
   }
 }
 
-.card-body {
+.🅲-card-body {
   // Enable `flex-grow: 1` for decks and groups so that card blocks take up
   // as much space as possible, ensuring footers are aligned to the bottom.
   flex: 1 1 auto;
   padding: $card-spacer-x;
 }
 
-.card-title {
+.🅲-card-title {
   margin-top: 0;
   margin-bottom: $card-spacer-y;
 }
@@ -68,7 +68,7 @@
 // Optional textual caps
 //
 
-.card-header {
+.🅲-card-header {
   padding: $card-spacer-y $card-spacer-x;
   margin-bottom: 0; // Removes the default margin-bottom of <hN>
   background-color: $card-cap-bg;
@@ -85,7 +85,7 @@
   }
 }
 
-.card-footer {
+.🅲-card-footer {
   padding: $card-spacer-y $card-spacer-x;
   background-color: $card-cap-bg;
   border-top: $card-border-width solid $card-border-color;

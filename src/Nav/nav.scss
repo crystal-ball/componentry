@@ -3,7 +3,7 @@
 // --------------------------------------------------------
 // Nav container <nav>
 
-.nav {
+.🅲-nav {
   display: flex;
   flex-wrap: wrap;
   padding-left: 0;
@@ -21,11 +21,11 @@
 // Pills
 
 .nav-pills {
-  .nav-item {
+  .🅲-nav-item {
     @include border-radius($nav-pills-border-radius);
   }
 
-  .nav-item.active {
+  .🅲-nav-item.active {
     color: $nav-pills-link-active-color;
     background-color: $nav-pills-link-active-bg;
   }
@@ -35,7 +35,7 @@
 // Filled
 
 .nav-fill {
-  .nav-item {
+  .🅲-nav-item {
     flex: 1 1 auto;
     text-align: center;
   }
@@ -45,7 +45,7 @@
 // Justified
 
 .nav-justified {
-  .nav-item {
+  .🅲-nav-item {
     flex-basis: 0;
     flex-grow: 1;
     text-align: center;
@@ -55,6 +55,6 @@
 // --------------------------------------------------------
 // Nav items
 
-.nav-item {
+.🅲-nav-item {
   padding: $nav-item-padding-y $nav-item-padding-x;
 }
