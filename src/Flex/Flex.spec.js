@@ -7,22 +7,25 @@ import { Flex } from './Flex'
 describe('<Flex />', () => {
   elementTests(Flex)
 
-  test('When inline is not passed, then flex className is rendered', () => {
+  it('When inline is not passed, then flex className is rendered', () => {
     render(<Flex>Content</Flex>)
+
     expect(screen.getByText('Content')).toHaveClass('🅲-flex flex')
   })
 
-  test('When inline is passed, then inline-flex className is rendered', () => {
+  it('When inline is passed, then inline-flex className is rendered', () => {
     render(<Flex inline>Content</Flex>)
+
     expect(screen.getByText('Content')).toHaveClass('🅲-flex inline-flex')
   })
 
-  test('When modifier props are passed, then the expanded classNames are rendered', () => {
+  it('When modifier props are passed, then the expanded classNames are rendered', () => {
     render(
       <Flex align='start' direction='column' justify='start' wrap='wrap'>
         Content
       </Flex>,
     )
+
     expect(screen.getByText('Content')).toHaveClass(
       '🅲-flex flex flex-column items-start flex-wrap justify-start',
     )

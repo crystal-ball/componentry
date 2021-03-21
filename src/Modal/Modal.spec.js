@@ -31,6 +31,7 @@ describe('<Close /> snapshots', () => {
         <Modal.Footer className='btn-container-x'>Modal Footer</Modal.Footer>
       </Modal>,
     )
+
     expect(container.firstChild).toMatchSnapshot()
   })
 })

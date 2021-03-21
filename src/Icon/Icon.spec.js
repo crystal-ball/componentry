@@ -13,6 +13,7 @@ describe('<Icon />', () => {
 describe('<Icon /> snapshots', () => {
   it('renders correctly', () => {
     const { container } = render(<Icon id='test' />)
+
     expect(container.firstChild).toMatchSnapshot()
   })
 })

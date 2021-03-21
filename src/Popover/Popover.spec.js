@@ -22,6 +22,7 @@ describe('<Popover />', () => {
         <Popover.Content>Content</Popover.Content>
       </Popover>,
     )
+
     expect(screen.getByTestId('popover')).toHaveClass('left')
   })
 })

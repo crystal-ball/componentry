@@ -12,8 +12,9 @@ describe('<Card />', () => {
   elementTests(Card.Title)
   elementTests(Card.Footer)
 
-  test('should render a container div with class card by default', () => {
+  it('should render a container div with class card by default', () => {
     const { container } = render(<Card />)
+
     expect(container.firstChild).toHaveClass('🅲-card')
   })
 })

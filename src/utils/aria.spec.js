@@ -14,7 +14,7 @@ const possibleAttrs = [
 ]
 
 describe('ariaAttrs()', () => {
-  test('it does not return attributes for undefined flags', () => {
+  it('does not return attributes for undefined flags', () => {
     const opts = {
       active: true,
       guid: 'test',
@@ -25,11 +25,11 @@ describe('ariaAttrs()', () => {
 
     // Every attribute should be undefined
     possibleAttrs.forEach((possibleAttr) => {
-      expect(attrs[possibleAttr]).toEqual(undefined)
+      expect(attrs[possibleAttr]).toBeUndefined()
     })
   })
 
-  test('it does not return attributes for falsey flags', () => {
+  it('does not return attributes for falsey flags', () => {
     const attrs = computeARIA({
       active: false,
       guid: 'test',
@@ -48,11 +48,11 @@ describe('ariaAttrs()', () => {
 
     // Every attribute should be undefined
     possibleAttrs.forEach((possiblAttr) => {
-      expect(attrs[possiblAttr]).toEqual(undefined)
+      expect(attrs[possiblAttr]).toBeUndefined()
     })
   })
 
-  test('it returns attributes for truthy flags', () => {
+  it('returns attributes for truthy flags', () => {
     const attrs = computeARIA({
       active: true,
       guid: 'test',
@@ -75,13 +75,15 @@ describe('ariaAttrs()', () => {
     })
   })
 
-  test('it assigns passed role', () => {
-    expect(computeARIA({ active: true, guid: 'test', aria: { role: 'tab' } })).toEqual({
+  it('assigns passed role', () => {
+    expect(
+      computeARIA({ active: true, guid: 'test', aria: { role: 'tab' } }),
+    ).toStrictEqual({
       role: 'tab',
     })
   })
 
-  test('it assigns correct value to identifier attributes', () => {
+  it('assigns correct value to identifier attributes', () => {
     expect(
       computeARIA({
         active: true,
@@ -94,7 +96,7 @@ describe('ariaAttrs()', () => {
           labelledby: true,
         },
       }),
-    ).toEqual({
+    ).toStrictEqual({
       'aria-controls': 'test',
       'aria-describedby': 'test',
       'aria-haspopup': 'true',
@@ -103,7 +105,7 @@ describe('ariaAttrs()', () => {
     })
   })
 
-  test('it uses activeId for elements with mutli-target/content', () => {
+  it('uses activeId for elements with mutli-target/content', () => {
     expect(
       computeARIA({
         active: 'tab1',
@@ -116,14 +118,14 @@ describe('ariaAttrs()', () => {
           labelledby: true,
         },
       }),
-    ).toEqual({
+    ).toStrictEqual({
       'aria-hidden': 'false',
       'id': 'test-tab1-content',
       'aria-labelledby': 'test-tab1-action',
     })
   })
 
-  test('it assigns correct values for active true', () => {
+  it('assigns correct values for active true', () => {
     expect(
       computeARIA({
         active: true,
@@ -134,14 +136,14 @@ describe('ariaAttrs()', () => {
           selected: true,
         },
       }),
-    ).toEqual({
+    ).toStrictEqual({
       'aria-expanded': 'true',
       'aria-hidden': 'false',
       'aria-selected': 'true',
     })
   })
 
-  test('it assigns correct values for active false', () => {
+  it('assigns correct values for active false', () => {
     expect(
       computeARIA({
         active: false,
@@ -152,7 +154,7 @@ describe('ariaAttrs()', () => {
           selected: true,
         },
       }),
-    ).toEqual({
+    ).toStrictEqual({
       'aria-expanded': 'false',
       'aria-hidden': 'true',
       'aria-selected': 'false',

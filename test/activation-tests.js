@@ -13,7 +13,7 @@ export function activationTests(TestComponent, { name, testArias } = {}) {
    * Active component containers should map size prop to the component name,
    * this is how size variants can be created
    */
-  test('should include size class for container', () => {
+  it('should include size class for container', () => {
     const { container } = render(<TestComponent size='sm' />)
     expect(container.firstChild).toHaveClass(`${name}-sm`)
   })
@@ -21,7 +21,7 @@ export function activationTests(TestComponent, { name, testArias } = {}) {
   /**
    * Active containers should accept a direction prop that renders a className
    */
-  test('should include direction class for container', () => {
+  it('should include direction class for container', () => {
     const { container } = render(<TestComponent direction='overlay' />)
     expect(container.firstChild).toHaveClass('overlay')
   })
@@ -29,7 +29,7 @@ export function activationTests(TestComponent, { name, testArias } = {}) {
   /**
    * Test that the shorthand subcombonent props renders subcomponents
    */
-  test('should render components for subcomponent shorthand', async () => {
+  it('should render components for subcomponent shorthand', async () => {
     render(<TestComponent Action='Action' Content='Content' />)
 
     expect(screen.getByText('Action')).toBeInTheDocument()
@@ -45,7 +45,7 @@ export function activationTests(TestComponent, { name, testArias } = {}) {
    * be managed internally if not overriden with props and clicking the action should
    * show/hide content.
    */
-  test('should update arias when action is activated', async () => {
+  it('should update arias when action is activated', async () => {
     // Components must specify which aria attrs should be tested
     const testControls = testArias.includes('controls')
     const testLabelledBy = testArias.includes('labelledby')
@@ -98,7 +98,7 @@ export function activationTests(TestComponent, { name, testArias } = {}) {
   /**
    * Test that all of the user hooks are being called on activation/deactivation.
    */
-  test('should call event observation hooks', async () => {
+  it('should call event observation hooks', async () => {
     const onActivate = jest.fn()
     const onActivated = jest.fn()
     const onDeactivate = jest.fn()
@@ -134,7 +134,7 @@ export function activationTests(TestComponent, { name, testArias } = {}) {
   /**
    * Test setting initial active state using defaultActive prop
    */
-  test('state should default to defaultActive when passed', () => {
+  it('state should default to defaultActive when passed', () => {
     render(
       <TestComponent defaultActive>
         <TestComponent.Action>Action</TestComponent.Action>
@@ -149,7 +149,7 @@ export function activationTests(TestComponent, { name, testArias } = {}) {
    * Test that clicking outside of the container component will deactivate it
    * if clickHandler is true
    */
-  test('should deactivate when clickHandler is true', async () => {
+  it('should deactivate when clickHandler is true', async () => {
     render(
       <div>
         <button type='button'>External</button>
@@ -184,7 +184,7 @@ export function activationTests(TestComponent, { name, testArias } = {}) {
   /**
    * Test that the esc handler works
    */
-  test('should deactivate on esc if escEvents is true', async () => {
+  it('should deactivate on esc if escEvents is true', async () => {
     const { container } = render(
       <div>
         <TestComponent escEvents={false}>
@@ -218,7 +218,7 @@ export function activationTests(TestComponent, { name, testArias } = {}) {
   /**
    * Test that the mouse events handler works
    */
-  test('should handle mouse events when mouseEvents is true', async () => {
+  it('should handle mouse events when mouseEvents is true', async () => {
     render(
       <div>
         <TestComponent mouseEvents={false}>
@@ -262,7 +262,7 @@ export function activationTests(TestComponent, { name, testArias } = {}) {
    * which will cause the Active component to get rerendered and verify active
    * state hasn't changed...
    */
-  test('should not use active prop when value is undefined', () => {
+  it('should not use active prop when value is undefined', () => {
     const { rerender } = render(
       <TestComponent>
         <TestComponent.Action>Action</TestComponent.Action>
@@ -287,7 +287,7 @@ export function activationTests(TestComponent, { name, testArias } = {}) {
    * these should override internal activate/deactivate meaning that clicking
    * the action for an element should only call those passed props.
    */
-  test('should use passed activate and deactivate functions', async () => {
+  it('should use passed activate and deactivate functions', async () => {
     const activate = jest.fn()
     const deactivate = jest.fn()
     const { rerender } = render(
@@ -336,7 +336,7 @@ export function activationTests(TestComponent, { name, testArias } = {}) {
    * Test that any flavor of the `<Active />` component exposes internal state and
    * state change methods using the FaCC pattern
    */
-  test('should expose internals using FaCC pattern', async () => {
+  it('should expose internals using FaCC pattern', async () => {
     render(
       <TestComponent>
         {({ active, activate, deactivate }) => (

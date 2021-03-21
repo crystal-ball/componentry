@@ -13,7 +13,7 @@ export function elementTests(TestComponent) {
    * All components should have a display name so they can be easily debugged
    * even in prod builds
    */
-  test(`${componentName} should have a displayName`, () => {
+  it(`${componentName} should have a displayName`, () => {
     expect(TestComponent.displayName).toBeTruthy()
   })
 
@@ -23,7 +23,7 @@ export function elementTests(TestComponent) {
    * 2. className prop is appended
    * 3. Custom attributes are passed through
    */
-  test(`${componentName} should handle component element requirements`, () => {
+  it(`${componentName} should handle component element requirements`, () => {
     const TestChild = () => <span>Test child content</span>
 
     render(
@@ -46,7 +46,7 @@ export function elementTests(TestComponent) {
    * Test that any html tag or component can be passed through the 'as' prop to
    * override the parent element the component renders
    */
-  test(`${componentName} should render as specified html element or component`, () => {
+  it(`${componentName} should render as specified html element or component`, () => {
     // Create a component to validate that the TestComponent returns.
     const TestAs = ({ isRad }) => <div>{isRad ? 'RAD' : null}</div>
 
@@ -61,7 +61,7 @@ export function elementTests(TestComponent) {
    * Also test that the `themeCx` prop can be used to pass a className
    * by default to all component instances
    */
-  test(`${componentName} should merge theme and JSX props correctly`, () => {
+  it(`${componentName} should merge theme and JSX props correctly`, () => {
     render(
       <Theme
         theme={{
@@ -102,7 +102,7 @@ export function elementTests(TestComponent) {
    * Test that a couple of the library shared className and style props are
    * computed and rendered correctly
    */
-  test(`${componentName} should include library classes and styles correctly`, () => {
+  it(`${componentName} should include library classes and styles correctly`, () => {
     render(
       <TestComponent
         className='jsx-class'

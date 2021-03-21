@@ -7,13 +7,15 @@ import { Badge } from './Badge'
 describe('<Badge />', () => {
   elementTests(Badge)
 
-  test('When color is passed, then badge-color className is rendered', () => {
+  it('When color is passed, then badge-color className is rendered', () => {
     render(<Badge color='primary'>Badge</Badge>)
+
     expect(screen.getByText('Badge')).toHaveClass('badge-primary')
   })
 
-  test('When variant is rounded, variant className is rendered', () => {
+  it('When variant is rounded, variant className is rendered', () => {
     render(<Badge variant='rounded'>Badge</Badge>)
+
     expect(screen.getByText('Badge')).toHaveClass('badge-rounded')
   })
 })

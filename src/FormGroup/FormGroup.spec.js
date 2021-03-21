@@ -14,6 +14,7 @@ describe('<FormGroup />', () => {
 describe('<FormGroup /> snapshots', () => {
   it('renders correctly', () => {
     const { container } = render(<FormGroup />)
+
     expect(container.firstChild).toMatchSnapshot()
   })
 })

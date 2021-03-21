@@ -3,19 +3,19 @@ import { componentry } from './componentry'
 const sizes = ['xs', 'sm', 'md', 'lg', 'xl']
 
 describe('componentry()', () => {
-  test('computes libary utility classes from props', () => {
+  it('computes libary utility classes from props', () => {
     sizes.forEach((size) => {
-      expect(componentry({ m: size, p: size }).utilityCx[1]).toEqual([
+      expect(componentry({ m: size, p: size }).utilityCx[1]).toStrictEqual([
         `m-${size}`,
         `p-${size}`,
       ])
 
-      expect(componentry({ mx: size, px: size }).utilityCx[1]).toEqual([
+      expect(componentry({ mx: size, px: size }).utilityCx[1]).toStrictEqual([
         `mx-${size}`,
         `px-${size}`,
       ])
 
-      expect(componentry({ my: size, py: size }).utilityCx[1]).toEqual([
+      expect(componentry({ my: size, py: size }).utilityCx[1]).toStrictEqual([
         `my-${size}`,
         `py-${size}`,
       ])
@@ -31,7 +31,7 @@ describe('componentry()', () => {
           pb: size,
           pl: size,
         }).utilityCx[1],
-      ).toEqual([
+      ).toStrictEqual([
         `mt-${size}`,
         `mr-${size}`,
         `mb-${size}`,
@@ -44,102 +44,105 @@ describe('componentry()', () => {
     })
   })
 
-  test('passes through numeric margin, and padding values', () => {
-    expect(componentry({ m: 5, p: 5 }).styles).toEqual({
+  it('passes through numeric margin, and padding values', () => {
+    expect(componentry({ m: 5, p: 5 }).styles).toStrictEqual({
       margin: 5,
       padding: 5,
     })
-    expect(componentry({ mx: 5, px: 5 }).styles).toEqual({
+    expect(componentry({ mx: 5, px: 5 }).styles).toStrictEqual({
       marginLeft: 5,
       marginRight: 5,
       paddingLeft: 5,
       paddingRight: 5,
     })
-    expect(componentry({ my: 5, py: 5 }).styles).toEqual({
+    expect(componentry({ my: 5, py: 5 }).styles).toStrictEqual({
       marginTop: 5,
       marginBottom: 5,
       paddingTop: 5,
       paddingBottom: 5,
     })
-    expect(componentry({ mt: 5 }).styles).toEqual({ marginTop: 5 })
-    expect(componentry({ mr: 5 }).styles).toEqual({ marginRight: 5 })
-    expect(componentry({ mb: 5 }).styles).toEqual({ marginBottom: 5 })
-    expect(componentry({ ml: 5 }).styles).toEqual({ marginLeft: 5 })
-    expect(componentry({ pt: 5 }).styles).toEqual({ paddingTop: 5 })
-    expect(componentry({ pr: 5 }).styles).toEqual({ paddingRight: 5 })
-    expect(componentry({ pb: 5 }).styles).toEqual({ paddingBottom: 5 })
-    expect(componentry({ pl: 5 }).styles).toEqual({ paddingLeft: 5 })
+    expect(componentry({ mt: 5 }).styles).toStrictEqual({ marginTop: 5 })
+    expect(componentry({ mr: 5 }).styles).toStrictEqual({ marginRight: 5 })
+    expect(componentry({ mb: 5 }).styles).toStrictEqual({ marginBottom: 5 })
+    expect(componentry({ ml: 5 }).styles).toStrictEqual({ marginLeft: 5 })
+    expect(componentry({ pt: 5 }).styles).toStrictEqual({ paddingTop: 5 })
+    expect(componentry({ pr: 5 }).styles).toStrictEqual({ paddingRight: 5 })
+    expect(componentry({ pb: 5 }).styles).toStrictEqual({ paddingBottom: 5 })
+    expect(componentry({ pl: 5 }).styles).toStrictEqual({ paddingLeft: 5 })
   })
 
-  test('passes through string margin, and padding values', () => {
-    expect(componentry({ m: '5', p: '5' }).styles).toEqual({
+  it('passes through string margin, and padding values', () => {
+    expect(componentry({ m: '5', p: '5' }).styles).toStrictEqual({
       margin: '5',
       padding: '5',
     })
-    expect(componentry({ mx: '5', px: '5' }).styles).toEqual({
+    expect(componentry({ mx: '5', px: '5' }).styles).toStrictEqual({
       marginLeft: '5',
       marginRight: '5',
       paddingLeft: '5',
       paddingRight: '5',
     })
-    expect(componentry({ my: '5', py: '5' }).styles).toEqual({
+    expect(componentry({ my: '5', py: '5' }).styles).toStrictEqual({
       marginTop: '5',
       marginBottom: '5',
       paddingTop: '5',
       paddingBottom: '5',
     })
-    expect(componentry({ mt: '5' }).styles).toEqual({ marginTop: '5' })
-    expect(componentry({ mr: '5' }).styles).toEqual({ marginRight: '5' })
-    expect(componentry({ mb: '5' }).styles).toEqual({ marginBottom: '5' })
-    expect(componentry({ ml: '5' }).styles).toEqual({ marginLeft: '5' })
-    expect(componentry({ pt: '5' }).styles).toEqual({ paddingTop: '5' })
-    expect(componentry({ pr: '5' }).styles).toEqual({ paddingRight: '5' })
-    expect(componentry({ pb: '5' }).styles).toEqual({ paddingBottom: '5' })
-    expect(componentry({ pl: '5' }).styles).toEqual({ paddingLeft: '5' })
+    expect(componentry({ mt: '5' }).styles).toStrictEqual({ marginTop: '5' })
+    expect(componentry({ mr: '5' }).styles).toStrictEqual({ marginRight: '5' })
+    expect(componentry({ mb: '5' }).styles).toStrictEqual({ marginBottom: '5' })
+    expect(componentry({ ml: '5' }).styles).toStrictEqual({ marginLeft: '5' })
+    expect(componentry({ pt: '5' }).styles).toStrictEqual({ paddingTop: '5' })
+    expect(componentry({ pr: '5' }).styles).toStrictEqual({ paddingRight: '5' })
+    expect(componentry({ pb: '5' }).styles).toStrictEqual({ paddingBottom: '5' })
+    expect(componentry({ pl: '5' }).styles).toStrictEqual({ paddingLeft: '5' })
   })
 
-  test('border style classes are computed correctly', () => {
-    expect(componentry({ border: true }).utilityCx[0]).toEqual(
+  it('border style classes are computed correctly', () => {
+    expect(componentry({ border: true }).utilityCx[0]).toStrictEqual(
       expect.objectContaining({
         border: true,
       }),
     )
 
-    expect(componentry({ borderTop: true }).utilityCx[0]).toEqual(
+    expect(componentry({ borderTop: true }).utilityCx[0]).toStrictEqual(
       expect.objectContaining({
         'border-top': true,
       }),
     )
-    expect(componentry({ borderRight: true }).utilityCx[0]).toEqual(
+    expect(componentry({ borderRight: true }).utilityCx[0]).toStrictEqual(
       expect.objectContaining({
         'border-right': true,
       }),
     )
-    expect(componentry({ borderBottom: true }).utilityCx[0]).toEqual(
+    expect(componentry({ borderBottom: true }).utilityCx[0]).toStrictEqual(
       expect.objectContaining({
         'border-bottom': true,
       }),
     )
-    expect(componentry({ borderLeft: true }).utilityCx[0]).toEqual(
+    expect(componentry({ borderLeft: true }).utilityCx[0]).toStrictEqual(
       expect.objectContaining({
         'border-left': true,
       }),
     )
 
-    expect(componentry({ borderColor: 'primary' }).utilityCx[0]).toEqual(
+    expect(componentry({ borderColor: 'primary' }).utilityCx[0]).toStrictEqual(
       expect.objectContaining({
         'border-color-primary': 'primary',
       }),
     )
 
-    expect(componentry({ borderWidth: 'lg' }).utilityCx[0]).toEqual(
+    expect(componentry({ borderWidth: 'lg' }).utilityCx[0]).toStrictEqual(
       expect.objectContaining({ 'border-width-lg': 'lg' }),
     )
   })
 
-  test('returns library className values', () => {
+  it('returns library className values', () => {
     expect(
       componentry({
+        alignContent: 'center',
+        alignItems: 'center',
+        alignSelf: 'center',
         backgroundColor: 'primary',
         border: true,
         borderBottom: true,
@@ -153,26 +156,33 @@ describe('componentry()', () => {
         fontSize: 'sm',
         fontStyle: 'italic',
         fontWeight: 'bold',
+        justifyContent: 'center',
         position: 'fixed',
         textAlign: 'center',
         textTransform: 'uppercase',
       }).utilityCx[0],
-    ).toEqual({
-      'background-color-primary': 'primary',
-      'border': true,
-      'border-bottom': true,
-      'border-color-primary': 'primary',
-      'border-left': true,
-      'border-right': true,
-      'border-top': true,
-      'border-width-lg': 'lg',
-      'font-bold': 'bold',
-      'font-color-primary': 'primary',
-      'font-family-monospace': 'monospace',
-      'position-fixed': 'fixed',
-      'text-align-center': 'center',
-      'text-sm': 'sm',
-      'text-transform-uppercase': 'uppercase',
-    })
+    ).toStrictEqual(
+      expect.objectContaining({
+        'background-color-primary': 'primary',
+        'border': true,
+        'border-bottom': true,
+        'border-color-primary': 'primary',
+        'border-left': true,
+        'border-right': true,
+        'border-top': true,
+        'border-width-lg': 'lg',
+        'content-center': 'center',
+        'font-bold': 'bold',
+        'font-color-primary': 'primary',
+        'font-family-monospace': 'monospace',
+        'items-center': 'center',
+        'justify-center': 'center',
+        'position-fixed': 'fixed',
+        'self-center': 'center',
+        'text-align-center': 'center',
+        'text-sm': 'sm',
+        'text-transform-uppercase': 'uppercase',
+      }),
+    )
   })
 })
