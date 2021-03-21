@@ -14,6 +14,7 @@ describe('<Close />', () => {
 describe('<Close /> snapshots', () => {
   it('renders correctly', () => {
     const { container } = render(<Close />)
+
     expect(container.firstChild).toMatchSnapshot()
   })
 })

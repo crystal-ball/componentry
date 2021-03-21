@@ -27,6 +27,7 @@ describe('<Input /> snapshots', () => {
         </Input>
       </div>,
     )
+
     expect(container.firstChild).toMatchSnapshot()
   })
 })

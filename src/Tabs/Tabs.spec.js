@@ -34,6 +34,7 @@ describe('<Tab /> snapshots', () => {
         </Tabs.ContentContainer>
       </Tabs>,
     )
+
     expect(container.firstChild).toMatchSnapshot()
   })
 })

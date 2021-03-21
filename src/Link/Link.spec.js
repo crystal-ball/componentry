@@ -8,12 +8,13 @@ describe('<Link/>', () => {
   // Basic library element test suite
   elementTests(Link)
 
-  test('should render type classes for anchor', () => {
+  it('should render type classes for anchor', () => {
     render(
       <Link href='#test' color='success'>
         Link
       </Link>,
     )
+
     expect(screen.getByText('Link')).toHaveClass('🅲-link link-primary link-color-success')
   })
 })
@@ -23,6 +24,7 @@ describe('<Link/>', () => {
 describe('<Link /> snapshots', () => {
   it('renders correctly', () => {
     const { container } = render(<Link href='#test'>Link</Link>)
+
     expect(container.firstChild).toMatchSnapshot()
   })
 })

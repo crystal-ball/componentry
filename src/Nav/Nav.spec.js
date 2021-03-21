@@ -7,21 +7,23 @@ import { Nav } from './Nav'
 describe('<Nav />', () => {
   elementTests(Nav)
 
-  test('should render .nav-vertical when vertical is passed', () => {
+  it('should render .nav-vertical when vertical is passed', () => {
     render(
       <Nav data-testid='nav' vertical>
         <Nav.Item href='#'>Link one</Nav.Item>
       </Nav>,
     )
+
     expect(screen.getByTestId('nav')).toHaveClass('nav-vertical')
   })
 
-  test('should render .nav-pills when pills is passed', () => {
+  it('should render .nav-pills when pills is passed', () => {
     render(
       <Nav data-testid='nav' pills>
         <Nav.Item href='#'>Link one</Nav.Item>
       </Nav>,
     )
+
     expect(screen.getByTestId('nav')).toHaveClass('nav-pills')
   })
 })
@@ -29,7 +31,7 @@ describe('<Nav />', () => {
 describe('<Nav.Item />', () => {
   elementTests(Nav.Item)
 
-  test('when active is passed, then active class should render', () => {
+  it('when active is passed, then active class should render', () => {
     render(
       <Nav>
         <Nav.Item href='#' active>
@@ -37,6 +39,7 @@ describe('<Nav.Item />', () => {
         </Nav.Item>
       </Nav>,
     )
+
     expect(screen.getByText('React')).toHaveClass('active')
   })
 })
