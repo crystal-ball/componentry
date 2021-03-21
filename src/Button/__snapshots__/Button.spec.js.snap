@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<Button /> Snapshots it renders brand color correctly 1`] = `
+exports[`<Button /> Snapshots renders brand color correctly 1`] = `
 <button
   class="🅲-button button-primary button-color-success"
   type="button"
@@ -9,7 +9,7 @@ exports[`<Button /> Snapshots it renders brand color correctly 1`] = `
 </button>
 `;
 
-exports[`<Button /> Snapshots it renders defaults correctly 1`] = `
+exports[`<Button /> Snapshots renders defaults correctly 1`] = `
 <button
   class="🅲-button button-primary"
   type="button"
@@ -18,7 +18,7 @@ exports[`<Button /> Snapshots it renders defaults correctly 1`] = `
 </button>
 `;
 
-exports[`<Button /> Snapshots it renders large outline correctly 1`] = `
+exports[`<Button /> Snapshots renders large outline correctly 1`] = `
 <button
   class="🅲-button button-primary button-lg"
   type="button"
