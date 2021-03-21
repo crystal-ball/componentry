@@ -1,6 +1,6 @@
 /* componentry/src/Input/input */
 
-.input-field {
+.🅲-input-field {
   display: block;
   width: 100%;
   padding: $input-padding-y $input-padding-x;
@@ -64,7 +64,7 @@
 // Use :invalid with HTML and `was-validated`
 // OR use .invalid
 
-.input-field.invalid {
+.🅲-input-field.invalid {
   background: $input-invalid-bg;
   color: $input-invalid-color;
   border-color: $input-invalid-border-color;
@@ -103,7 +103,7 @@
 // --------------------------------------------------------
 // Label
 
-.input-label {
+.🅲-input-label {
   display: inline-block;
   margin-bottom: $input-label-margin-bottom;
   color: $input-label-color;
@@ -115,7 +115,7 @@
 // --------------------------------------------------------
 // Description
 
-.input-description {
+.🅲-input-description {
   display: block;
   margin: $input-description-margin-y $input-description-margin-x;
   color: $input-description-color;
@@ -126,7 +126,7 @@
 // --------------------------------------------------------
 // Error state
 
-.input-error {
+.🅲-input-error {
   background: $input-error-bg;
   padding: $input-error-padding-y $input-error-padding-x;
   color: $input-error-color;

@@ -10,7 +10,7 @@ export const closeBase: CloseProps = {
   'as': 'button',
   'type': 'button',
   'children': (
-    <svg className='icon icon-close font' role='img'>
+    <svg className='🅲-icon icon-close font-variant' role='img'>
       <use href='#close' xlinkHref='#close' />
     </svg>
   ),

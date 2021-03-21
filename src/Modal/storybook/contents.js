@@ -5,9 +5,9 @@ import { Modal } from '../Modal'
 
 export const footerContent = (
   <Modal.Footer className='btn-container-x'>
-    <Active.Action color='anchor' variant='btn'>
+    <Button as={Active.Action} variant='text' color='anchor'>
       Close
-    </Active.Action>
+    </Button>
     <Button color='primary'>Save Changes</Button>
   </Modal.Footer>
 )

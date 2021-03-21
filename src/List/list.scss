@@ -3,7 +3,7 @@
 // --------------------------------------------------------
 // Lists (<ul>, <ol>, or <div>)
 
-.list {
+.🅲-list {
   display: flex;
   flex-direction: column;
 
@@ -15,7 +15,7 @@
 // --------------------------------------------------------
 // List items (<li> or <div> within .list)
 
-.list-item {
+.🅲-list-item {
   position: relative;
   display: block;
   padding: $list-item-padding-y $list-item-padding-x;
@@ -23,7 +23,7 @@
   border: $list-border-width solid $list-border-color;
 
   // For subsequent list item's remove the border top so we don't double up
-  & + .list-item {
+  & + .🅲-list-item {
     border-top: 0;
   }
 
@@ -77,7 +77,7 @@
 
 // Must be declared after list-action-item ensure active has precedence
 // over :hover (Note this is valid for items and action items)
-.list-item.active {
+.🅲-list-item.active {
   z-index: 2; // Place active items above their siblings for proper border styling
   color: $list-active-item-color;
   background-color: $list-active-item-bg;
@@ -90,20 +90,16 @@
 // Remove borders and border-radius to keep list group items edge-to-edge. Most
 // useful within other components (e.g., cards).
 .list-flush {
-  .list-item {
+  .🅲-list-item {
     border-right: 0;
     border-left: 0;
     @include border-radius(0);
-  }
 
-  &:first-child {
-    .list-item:first-child {
+    &:first-child {
       border-top: 0;
     }
-  }
 
-  &:last-child {
-    .list-item:last-child {
+    &:last-child {
       border-bottom: 0;
     }
   }
