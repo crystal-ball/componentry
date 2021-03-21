@@ -14,6 +14,22 @@
 - ...
 -->
 
+## [3.3.0](https://github.com/crystal-ball/componentry/compare/v3.2.0...v3.3.0) (2020-03-21)
+
+### 💖 New
+
+- Text component shorthand props `align` and `color` added for setting text alignment and color.
+- Types added for all components for `fontColor`, `textAlign`, `width`, `backgroundColor` and `borderColor`.
+- Module augmentation to override utlity prop types added to library.
+
+### ✨ Updates
+
+- Styles only entry `_index.scss` added to ensure library styles can be imported as `~componentry/styles`
+
+### 🛠 Fixes
+
+- Misc className mismatches resulting from TS updates.
+
 ## [3.2.0](https://github.com/crystal-ball/componentry/compare/v3.1.0...v3.2.0) (2020-03-10)
 
 ### 💖 New

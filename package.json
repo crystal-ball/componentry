@@ -1,6 +1,6 @@
 {
   "name": "componentry",
-  "version": "3.2.0",
+  "version": "3.3.0",
   "description": "React component library for building custom design systems",
   "sideEffects": false,
   "main": "cjs/index.js",
