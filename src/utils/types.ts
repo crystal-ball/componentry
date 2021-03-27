@@ -23,14 +23,53 @@ export interface UtilityProps {}
  * Componentry shared utility props for using utility styles
  */
 interface DefaultUtilityProps {
-  // --- Color
-  /** Background color style */
+  /** Sets active style */
+  active?: boolean | string
+  /** Sets align-content style */
+  alignContent?: 'start' | 'end' | 'center' | 'between' | 'around' | 'stretch'
+  /** Sets align-items style */
+  alignItems?: 'start' | 'end' | 'center' | 'baseline' | 'stretch'
+  /** Sets align-self style */
+  alignSelf?: 'auto' | 'start' | 'end' | 'center' | 'baseline' | 'stretch'
+  /** Sets background color style */
   backgroundColor?: 'primary' | 'success' | 'warning' | 'critical'
-  /** Border color style */
+  /** Sets a border style */
+  border?: boolean
+  /** Sets a border bottom style */
+  borderBottom?: boolean
+  /** Sets border color style */
   borderColor?: 'primary'
-
-  // --- Sizing
-  /** Width style */
+  /** Sets a border left style */
+  borderLeft?: boolean
+  /** Sets a border right style */
+  borderRight?: boolean
+  /** Sets a border top style */
+  borderTop?: boolean
+  /** Sets a border width style */
+  borderWidth?: never
+  /** Sets a disabled style */
+  disabled?: boolean
+  /** Sets a text color style */
+  fontColor?: 'anchor' | 'body' | 'heading' | 'primary'
+  /** Sets a font-family style */
+  fontFamily?: 'primary' | 'monospace'
+  /** Sets a font-size style */
+  fontSize?: 'sm' | 'base' | 'lg'
+  /** Text font-weight style */
+  fontWeight?: 'light' | 'normal' | 'bold'
+  /** Sets an italic style */
+  italic?: boolean
+  /** Sets justify-content style */
+  justifyContent?: 'start' | 'end' | 'center' | 'between' | 'around' | 'evenly'
+  /** Sets position style */
+  position?: 'static' | 'relative' | 'absolute' | 'fixed' | 'sticky'
+  /** Sets text-align style */
+  textAlign?: 'left' | 'center' | 'right' | 'justify'
+  /** Sets text-transform style */
+  textTransform?: 'lowercase' | 'uppercase' | 'capitalize'
+  /** Sets visible style */
+  visible?: boolean
+  /** Sets width style */
   width?: string
 
   // --- Spacing
@@ -62,16 +101,6 @@ interface DefaultUtilityProps {
   px?: string | number
   /** padding-top && padding-bottom */
   py?: string | number
-
-  // --- Typography
-  /** Text color style */
-  fontColor?: 'anchor' | 'body' | 'heading' | 'primary'
-  /** Text font-style style */
-  fontStyle?: 'italic' | 'unset'
-  /** Text font-weight style */
-  fontWeight?: 'light' | 'normal' | 'bold'
-  /** Text text-align style */
-  textAlign?: 'left' | 'center' | 'right' | 'justify'
 }
 
 /**
