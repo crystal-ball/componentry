@@ -24,7 +24,7 @@ export interface UtilityProps {}
  */
 interface DefaultUtilityProps {
   /** Sets active style */
-  active: boolean
+  active?: boolean | string
   /** Sets align-content style */
   alignContent?: 'start' | 'end' | 'center' | 'between' | 'around' | 'stretch'
   /** Sets align-items style */
@@ -48,7 +48,7 @@ interface DefaultUtilityProps {
   /** Sets a border width style */
   borderWidth?: never
   /** Sets a disabled style */
-  disabled: boolean
+  disabled?: boolean
   /** Sets a text color style */
   fontColor?: 'anchor' | 'body' | 'heading' | 'primary'
   /** Sets a font-family style */
@@ -58,7 +58,7 @@ interface DefaultUtilityProps {
   /** Text font-weight style */
   fontWeight?: 'light' | 'normal' | 'bold'
   /** Sets an italic style */
-  italic: boolean
+  italic?: boolean
   /** Sets justify-content style */
   justifyContent?: 'start' | 'end' | 'center' | 'between' | 'around' | 'evenly'
   /** Sets position style */
