@@ -11,7 +11,7 @@
     },
     {
       "matchPackageNames": [
-        "@storybook/addon-essential"
+        "@storybook/addon-essentials"
       ],
       "allowedVersions": "<=6.1.21"
     },
