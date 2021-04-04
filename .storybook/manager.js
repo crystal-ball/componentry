@@ -6,6 +6,6 @@ addons.setConfig({
   theme: create({
     base: 'dark',
     brandTitle: 'Componentry',
-    brandImage: null,
+    brandImage: undefined,
   }),
 })

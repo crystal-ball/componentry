@@ -8,6 +8,36 @@
         "sass-loader"
       ],
       "allowedVersions": "<=10.1"
+    },
+    {
+      "matchPackageNames": [
+        "@storybook/addon-essential"
+      ],
+      "allowedVersions": "<=6.1.21"
+    },
+    {
+      "matchPackageNames": [
+        "@storybook/addon-links"
+      ],
+      "allowedVersions": "<=6.1.21"
+    },
+    {
+      "matchPackageNames": [
+        "@storybook/addons"
+      ],
+      "allowedVersions": "<=6.1.21"
+    },
+    {
+      "matchPackageNames": [
+        "@storybook/react"
+      ],
+      "allowedVersions": "<=6.1.21"
+    },
+    {
+      "matchPackageNames": [
+        "@storybook/theming"
+      ],
+      "allowedVersions": "<=6.1.21"
     }
   ]
 }
