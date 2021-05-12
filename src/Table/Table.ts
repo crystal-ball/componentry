@@ -42,8 +42,8 @@ export const Table = staticComponent('Table', {
   role: 'table',
 }) as Table
 
-Table.Body = staticComponent('TableBody', { role: 'rowgroup' })
-Table.Head = staticComponent('TableHead', { role: 'rowgroup' })
-Table.Row = staticComponent('TableRow', { role: 'row' })
-Table.Header = staticComponent('TableHeader', { role: 'columnheader' })
-Table.Cell = staticComponent('TableCell', { role: 'cell' })
+Table.Body = staticComponent<TableBodyProps>('TableBody', { role: 'rowgroup' })
+Table.Head = staticComponent<TableHeadProps>('TableHead', { role: 'rowgroup' })
+Table.Row = staticComponent<TableRowProps>('TableRow', { role: 'row' })
+Table.Header = staticComponent<TableHeaderProps>('TableHeader', { role: 'columnheader' })
+Table.Cell = staticComponent<TableCellProps>('TableCell', { role: 'cell' })
