@@ -6,7 +6,7 @@
     // --- Type checking
     "allowJs": true, // Allow JS files to be compiled
     "checkJs": false, // Opt in to type checking for JS files
-    "strict": false,
+    "strict": true,
     "noUncheckedIndexedAccess": true, // Every property access with an index could be undefined
     "skipLibCheck": true, // Skip type checking .d.ts declaration files (recommended by TS)
     "forceConsistentCasingInFileNames": true, // Disallow inconsistently-cased references to the same file
