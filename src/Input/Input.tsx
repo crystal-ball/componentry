@@ -38,7 +38,8 @@ export interface Input {
   Label: React.FC<InputLabelProps>
 }
 
-const InputCtx = createContext<{ guid: string }>({ guid: null })
+type InputCtx = { guid: string }
+const InputCtx = createContext<null | InputCtx>(null)
 
 /**
  * [Input component 📝](https://componentry.design/components/input)
@@ -67,10 +68,13 @@ Input.Error = staticComponent('InputError')
 // --- Field subcomponent ---
 
 Input.Field = function InputField(props) {
+  const ctx = useContext(InputCtx)
+  assertContext(ctx)
+
   return element('InputField', {
     as: 'input',
     type: 'text',
-    id: useContext(InputCtx).guid, // aria -> htmlFor
+    id: ctx.guid, // aria -> htmlFor
     ...useTheme<Input>('InputField'),
     ...props,
   })
@@ -80,11 +84,24 @@ Input.Field.displayName = 'InputField'
 // --- Label subcomponent ---
 
 Input.Label = function InputLabel(props) {
+  const ctx = useContext(InputCtx)
+  assertContext(ctx)
+
   return element('InputLabel', {
     as: 'label',
-    htmlFor: useContext(InputCtx).guid, // aria -> id
+    htmlFor: ctx.guid, // aria -> id
     ...useTheme('InputLabel'),
     ...props,
   })
 }
 Input.Label.displayName = 'InputLabel'
+
+// --------------------------------------------------------
+// Utils
+
+/**
+ * Utility asserts ctx presence for safe access
+ */
+function assertContext(ctx: null | InputCtx): asserts ctx is InputCtx {
+  if (!ctx) throw new Error('Input context cannot be used outside of Input component')
+}

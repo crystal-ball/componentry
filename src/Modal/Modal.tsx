@@ -10,11 +10,13 @@ import { ComponentBaseProps } from '../utils/types'
 import { element } from '../utils/element-creator'
 import { staticComponent } from '../utils/static-component-builder'
 
-const ModalCtx = createContext<{
+type ModalCtx = {
   active: string | boolean
   deactivate: (event: React.MouseEvent<HTMLButtonElement>) => void
   guid: string
-}>(null)
+}
+
+const ModalCtx = createContext<null | ModalCtx>(null)
 
 export interface ModalProps extends ComponentBaseProps<'div'> {
   align?: 'center'
@@ -156,7 +158,8 @@ Modal.Header = function ModalHeader(props: ModalHeaderProps) {
     ...useTheme<ModalHeaderProps>('ModalHeader'),
     ...props,
   }
-  const { deactivate } = useContext(ModalCtx)
+  const ctx = useContext(ModalCtx)
+  assertContext(ctx)
 
   return element('ModalHeader', {
     children: (
@@ -164,7 +167,7 @@ Modal.Header = function ModalHeader(props: ModalHeaderProps) {
         {children}
         {/* Modal header close is a shorthand for enabling the default close button,
         For custom close components, the componenent must be passed as a header child */}
-        {close && <Modal.Close onClick={deactivate} />}
+        {close && <Modal.Close onClick={ctx.deactivate} />}
       </>
     ),
     ...rest,
@@ -176,9 +179,12 @@ Modal.Header.displayName = 'ModalHeader'
 // Title
 
 Modal.Title = function ModalTitle(props) {
+  const ctx = useContext(ModalCtx)
+  assertContext(ctx)
+
   return element('ModalTitle', {
     as: 'h2',
-    id: useContext(ModalCtx).guid,
+    id: ctx.guid,
     ...useTheme('Modaltitle'),
     ...props,
   })
@@ -190,7 +196,10 @@ Modal.Title.displayName = 'ModalTitle'
 
 Modal.Body = function ModalBody(props) {
   const bodyRef = useRef(null)
-  useActiveSrollReset(useContext(ModalCtx).active, bodyRef)
+  const ctx = useContext(ModalCtx)
+  assertContext(ctx)
+
+  useActiveSrollReset(ctx.active, bodyRef)
 
   return element('ModalBody', {
     ref: bodyRef,
@@ -206,3 +215,13 @@ Modal.Body.displayName = 'ModalBody'
 Modal.Footer = staticComponent<ModalFooterProps>('ModalFooter', {
   componentCx: 'modal-footer',
 })
+
+// --------------------------------------------------------
+// Utils
+
+/**
+ * Utility asserts ctx presence for safe access
+ */
+function assertContext(ctx: null | ModalCtx): asserts ctx is ModalCtx {
+  if (!ctx) throw new Error('Modal context cannot be used outside of Modal component')
+}

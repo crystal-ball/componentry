@@ -7,7 +7,12 @@ export interface ApplicationMedia {
 }
 
 /** Media Context */
-const MediaCtx = createContext<ApplicationMedia>(null)
+const MediaCtx = createContext<null | ApplicationMedia>(null)
+
+// Default breakpoint values
+const sm = 0
+const md = 768
+const lg = 1250
 
 /**
  * Calculates the state for each breakpoint based on current window width
@@ -17,9 +22,9 @@ function calcBreakpoints(breakpoints: number[]): ApplicationMedia {
   const w = window.innerWidth
 
   return {
-    sm: w < breakpoints[1],
-    md: w >= breakpoints[1] && w < breakpoints[2],
-    lg: w >= breakpoints[2],
+    sm: w < (breakpoints[1] ?? md),
+    md: w >= (breakpoints[1] ?? md) && w < (breakpoints[2] ?? lg),
+    lg: w >= (breakpoints[2] ?? lg),
   }
 }
 
@@ -52,10 +57,7 @@ export interface MediaProps {
  * [Media component 📝](https://componentry.design/components/media)
  * @experimental
  */
-export function Media({
-  children,
-  breakpoints = [0, 768, 1250],
-}: MediaProps): JSX.Element {
+export function Media({ children, breakpoints = [sm, md, lg] }: MediaProps): JSX.Element {
   const [bps, updateBps] = useState(calcBreakpoints(breakpoints))
 
   // ℹ️ Call to mount media query listeners is wrapped in useEffect to prevent
@@ -77,8 +79,7 @@ Media.displayName = 'Media'
  */
 export const useMedia = (): ApplicationMedia => {
   const media = useContext(MediaCtx)
-  if (process.env.NODE_ENV !== 'production' && !media) {
-    throw new Error('useMedia called without a <Media /> provider')
-  }
+  if (!media) throw new Error('useMedia used outside of a <Media /> provider')
+
   return media
 }
