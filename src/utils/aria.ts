@@ -37,7 +37,7 @@ interface ComputeARIAOptions {
   activeId?: string
   guid: string
   type?: 'action' | 'content'
-  aria: ARIAControls
+  aria?: ARIAControls
 }
 
 interface ComputedARIA extends AriaAttributes {

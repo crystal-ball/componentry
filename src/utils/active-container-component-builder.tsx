@@ -23,9 +23,9 @@ export interface ActiveContext {
 /** Active context */
 export const ActiveCtx = createContext<ActiveContext>({
   active: false,
-  guid: undefined,
-  activate: undefined,
-  deactivate: undefined,
+  guid: 'DEFAULT',
+  activate: () => {}, // eslint-disable-line @typescript-eslint/no-empty-function
+  deactivate: () => {}, // eslint-disable-line @typescript-eslint/no-empty-function
 })
 
 // --------------------------------------------------------
@@ -72,7 +72,7 @@ export function activeContainerBuilder<TProps extends ActiveContainerBaseProps>(
       children,
 
       // --- Behavior configurations
-      direction,
+      direction = '',
       size,
 
       // --- Events configuration
@@ -158,8 +158,11 @@ export function activeContainerBuilder<TProps extends ActiveContainerBaseProps>(
 
     /** Handle adding/removing the component DOM event listeners */
     const updateEventListeners = useCallback(
-      (updateType) => {
-        const updateListener = `${updateType}EventListener`
+      (updateType: 'add' | 'remove') => {
+        // TODO: how to type updateListener about without a type assertion
+        const updateListener = `${updateType}EventListener` as
+          | 'addEventListener'
+          | 'removeEventListener'
 
         if (escEvents) document[updateListener]('keydown', onKeydown)
 
