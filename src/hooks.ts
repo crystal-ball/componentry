@@ -93,7 +93,7 @@ export const useVisible = (active: string | boolean, duration = 250): VisibleSta
     // ℹ️ Although the timeout used is very short, it's possible that a
     // component could be unmounted before it's run so we keep a reference to
     // the timeout that we can cleanup
-    let timer: NodeJS.Timeout
+    let timer: null | NodeJS.Timeout
 
     if (active) {
       // When activated immediately set active and transition to visible, this
@@ -115,7 +115,7 @@ export const useVisible = (active: string | boolean, duration = 250): VisibleSta
     }
 
     return function cleanup() {
-      clearTimeout(timer)
+      if (timer) clearTimeout(timer)
     }
   }, [active, duration])
 

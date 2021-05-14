@@ -42,6 +42,6 @@ Card.Footer = staticComponent('CardFooter')
 
 Card.Header = staticComponent('CardHeader')
 
-Card.Title = staticComponent('CardTitle', {
+Card.Title = staticComponent<CardTitleProps>('CardTitle', {
   as: 'h4',
 })
