@@ -30,7 +30,7 @@ type UtilityProps = Partial<
   }
 >
 
-const stylesProps = {
+const stylesProps: Partial<Record<keyof React.CSSProperties, 1>> = {
   fontSize: 1,
   letterSpacing: 1,
   lineHeight: 1,
@@ -66,7 +66,7 @@ Object.keys(spacingBase).forEach((b) => {
 const spacingRegex = new RegExp(/([bmp])([trblxy])?/)
 
 type UtilityClasses = {
-  [classname: string]: string | boolean
+  [classname: string]: string | boolean | undefined
 }
 
 function generateClassNames(p: UtilityProps): UtilityClasses {
@@ -151,31 +151,38 @@ export function componentry({
   // or style set or pass through in rest
   Object.keys(filteredProps).forEach((prop) => {
     if (
-      stylesProps[prop] &&
+      prop in stylesProps &&
       // If a style prop has a library size, fall through to classNames check
       // @ts-ignore-next-line
       !['xs', 'sm', 'md', 'lg', 'xl'].includes(filteredProps[prop])
     ) {
       // 1. The prop maps to a utility style
+      // @ts-ignore DEBT not sure how to type
       styles[prop] = filteredProps[prop]
-    } else if (classNamesProps[prop]) {
+    } else if (prop in classNamesProps) {
       // 2. The prop maps to a utility className
+      // @ts-ignore DEBT: not sure how to type
       classNames[prop] = filteredProps[prop]
     } else if (spacingProps[prop]) {
       // 3. The prop maps to a shorthand utility style/className
-      // @ts-ignore-next-line
+      // @ts-ignore DEBT: not sure how to type
       if (['xs', 'sm', 'md', 'lg', 'xl'].includes(filteredProps[prop])) {
         // 3a. The prop value maps to a computed className, eg (pt: 'xs') -> `pt-xs`
         spacingCx.push(`${prop}-${filteredProps[prop]}`)
       } else {
         // 3b. The prop value is a raw value that should be set as a style
         // attribute, eg (pt: 7) -> `paddingTop: 7`
-        const [, b, m] = spacingRegex.exec(prop)
+        const spacingMatch = spacingRegex.exec(prop)
+        if (!spacingMatch) return
+        const [, b, m] = spacingMatch
         if (m === 'x' || m === 'y') {
           // x and y values have to be broken out into the individual direction values
+          // @ts-ignore DEBT: not sure how to type
           styles[spacingBase[b] + spacingModifier[m][0]] = filteredProps[prop]
+          // @ts-ignore DEBT: not sure how to type
           styles[spacingBase[b] + spacingModifier[m][1]] = filteredProps[prop]
         } else {
+          // @ts-ignore DEBT: not sure how to type
           styles[spacingBase[b] + (spacingModifier[m] || '')] = filteredProps[prop]
         }
       }

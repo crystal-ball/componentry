@@ -28,7 +28,7 @@
     "commit": "cz",
     "start": "start-storybook -p 6006",
     "babel:watch": "BABEL_ENV=esmodules babel src --watch --out-dir es --ignore '**/*.spec.js'",
-    "test": "npm run test:lint && npm run test:unit",
+    "test": "npm run test:lint && npm run test:types && npm run test:unit",
     "test:lint": "NODE_ENV=test eslint --format=pretty . --ignore-pattern node_modules",
     "test:types": "tsc",
     "test:unit": "BABEL_ENV=test NODE_ENV=test jest",
