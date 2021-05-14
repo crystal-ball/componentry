@@ -7,7 +7,7 @@ import { Theme } from '../src/Theme/Theme'
 /**
  * Library default component requirment test suite.
  */
-export function elementTests(TestComponent) {
+export function elementTests(TestComponent, Wrapper) {
   const componentName = TestComponent.displayName
   /*
    * All components should have a display name so they can be easily debugged
@@ -35,6 +35,7 @@ export function elementTests(TestComponent) {
         Component
         <TestChild />
       </TestComponent>,
+      { wrapper: Wrapper },
     )
 
     expect(screen.getByText('Test child content')).toBeInTheDocument() // √ children
@@ -50,7 +51,7 @@ export function elementTests(TestComponent) {
     // Create a component to validate that the TestComponent returns.
     const TestAs = ({ isRad }) => <div>{isRad ? 'RAD' : null}</div>
 
-    render(<TestComponent as={TestAs} isRad />)
+    render(<TestComponent as={TestAs} isRad />, { wrapper: Wrapper })
 
     expect(screen.getByText('RAD')).toBeInTheDocument()
   })
@@ -84,6 +85,7 @@ export function elementTests(TestComponent) {
           Classes merging example
         </TestComponent>
       </Theme>,
+      { wrapper: Wrapper },
     )
 
     expect(screen.getByTestId('theme')).toHaveClass('theme-class')
@@ -115,6 +117,7 @@ export function elementTests(TestComponent) {
       >
         Test component
       </TestComponent>,
+      { wrapper: Wrapper },
     )
 
     expect(screen.getByTestId('component')).toHaveClass(

@@ -103,5 +103,5 @@ Input.Label.displayName = 'InputLabel'
  * Utility asserts ctx presence for safe access
  */
 function assertContext(ctx: null | InputCtx): asserts ctx is InputCtx {
-  if (!ctx) throw new Error('Modal context cannot be used outside of Modal component')
+  if (!ctx) throw new Error('Input context cannot be used outside of Input component')
 }

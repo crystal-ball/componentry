@@ -7,10 +7,10 @@ import { Input } from './Input'
 describe('<Input />', () => {
   // Basic library element test suite
   // elementTests(Input) - no wrapper element to test...
-  elementTests(Input.Label)
+  elementTests(Input.Label, Input)
   // elementTests(Input.Field) - TODO: cannot test Input because it cannot have children
-  elementTests(Input.Description)
-  elementTests(Input.Error)
+  elementTests(Input.Description, Input)
+  elementTests(Input.Error, Input)
 })
 
 // Snapshots
