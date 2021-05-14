@@ -14,6 +14,16 @@
 - ...
 -->
 
+## [3.4.0](https://github.com/crystal-ball/componentry/compare/v3.3.1...v3.4.0) (2020-05-14)
+
+### 💖 New
+
+- Types updated to strict type checking
+
+### 🛠 Fixes
+
+- Add missing utility prop types
+
 ## [3.3.1](https://github.com/crystal-ball/componentry/compare/v3.3.0...v3.3.1) (2020-03-21)
 
 ### 🛠 Fixes
