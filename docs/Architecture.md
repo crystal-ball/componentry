@@ -143,6 +143,14 @@ for aria attributes. `babel-runtime` is also included as a dependency to allow
 the ESModule builds to reference only the package imports for size
 optimizations.
 
+## Base class and variants
+
+Component base classes can contain the behavioral styles that apply across
+variants, eg show and hide styles.
+
+All visual styling should be defined in variants -> this enables users creating
+their own variants without having to fight with or reproduce behavioral styles.
+
 ## Library Publishing
 
 Three versions of the library source code are created by the `prepublish`

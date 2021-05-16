@@ -1,3 +1,4 @@
+import { forwardRef } from 'react'
 import { useTheme } from '../Theme/Theme'
 import { ComponentBaseProps } from '../utils/types'
 import { element } from '../utils/element-creator'
@@ -23,7 +24,7 @@ interface ButtonProps extends ComponentBaseProps<'button'> {
  * [Button component 📝](https://componentry.design/components/button)
  * @experimental
  */
-export const Button: React.FC<ButtonProps> = (props) => {
+export const Button = forwardRef<HTMLButtonElement, ButtonProps>((props, ref) => {
   const { variant = 'primary', active, color, disabled, size, ...merged } = {
     ...useTheme<ButtonProps>('Button'),
     ...props,
@@ -34,6 +35,7 @@ export const Button: React.FC<ButtonProps> = (props) => {
 
   return element<ButtonProps>('Button', {
     as: asAnchor ? 'a' : 'button',
+    ref,
     type: asAnchor ? undefined : 'button',
     disabled,
     componentCx: [
@@ -47,5 +49,5 @@ export const Button: React.FC<ButtonProps> = (props) => {
     ],
     ...merged,
   })
-}
+})
 Button.displayName = 'Button'
