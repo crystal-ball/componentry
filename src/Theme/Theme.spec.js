@@ -20,11 +20,7 @@ describe('useTheme()', () => {
   })
 
   it('should return an empty object when no provider is provided', () => {
-    const { result } = renderHook(() => useTheme('Flex'), {
-      // wrapper: ({ children }) => {
-      //   return <Theme theme={{ Button: {} }}>{children}</Theme>
-      // },
-    })
+    const { result } = renderHook(() => useTheme('Flex'))
 
     expect(result.current).toStrictEqual({})
   })
