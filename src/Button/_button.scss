@@ -17,12 +17,13 @@ $button-defaults: (
   variants:
     (
       primary: (
+        height: 2rem,
+        padding: 0 1rem,
         background-color: theme-get('palette.grayscale.500'),
         border: 1px solid theme-get('palette.grayscale.500'),
         border-radius: theme-get('border-radii.default'),
         color: theme-get('palette.typography.inverse'),
         font-size: theme-get('typography.font-sizes.button'),
-        padding: 0.25rem 1rem,
         '&:hover': (
           background-color: theme-get('palette.grayscale.700'),
         ),
@@ -35,12 +36,13 @@ $button-defaults: (
         ),
       ),
       secondary: (
+        height: 2rem,
+        padding: 0 1rem,
         background-color: transparent,
         border: 1px solid theme-get('palette.grayscale.500'),
         border-radius: theme-get('border-radii.default'),
         color: theme-get('palette.grayscale.500'),
         font-size: theme-get('typography.font-sizes.button'),
-        padding: 0.25rem 1rem,
         '&:hover': (
           border-color: theme-get('palette.grayscale.700'),
           color: theme-get('palette.grayscale.700'),
@@ -59,21 +61,23 @@ $button-defaults: (
   sizes:
     (
       sm: (
-        border-radius: theme-get('border-radii.sm'),
+        height: 1.5rem,
+        border-radius: theme-get('border-radii.md'),
         font-size: theme-get('typography.font-sizes.sm'),
-        padding: 0.125rem 0.75rem,
+        padding: 0rem 0.5rem,
       ),
       lg: (
+        height: 2.5rem,
         border-radius: theme-get('border-radii.lg'),
         font-size: theme-get('typography.font-sizes.lg'),
-        padding: 0.5rem 2rem,
+        padding: 0 2rem,
       ),
     ),
 );
 
 $button: map-assign($button-defaults, $button);
 
-@include style-rule-from-map(componentry-class(btn), get($button, 'base'));
+@include style-rule-from-map(componentry-class(button), get($button, 'base'));
 
 @each $variant, $styles in get($button, 'variants') {
   @include style-rule-from-map('.button-#{$variant}', $styles);

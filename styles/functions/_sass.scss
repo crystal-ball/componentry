@@ -53,6 +53,9 @@
 // --------------------------------------------------------
 // Map functions
 
+// List of styles that should replace instead of merging values
+$skip-merge: border, margine, padding;
+
 /// Recursively merges two maps.
 /// @param {Map} $map1
 /// @param {Map} $map2
@@ -68,6 +71,10 @@
         $map1, 
         ( $key: recursive-merge(map-get($map1, $key), $value))
       )
+    } @else if (type-of($value) == list) and (index($skip-merge, $key) != null) {
+      // padding and margin values like "8px 24px" are lists in SASS. In these cases
+      // the second value should replace the original
+      $map1: map-merge($map1, ($key: $value));
     } @else if (type-of($value) == list) {
       // For lists append map2 to map1 (!!lists aren't recursive)
       $map1: map-merge(
@@ -84,12 +91,13 @@
 }
 // ⚠️ Lists gotchas:
 //  1. Lists with one element evaluate to the type of that single entry!
-//  2. Lists are assumed to be one dimensional and are not recursively joined 
+//  2. Lists are assumed to be one dimensional and are not recursively joined
+//  3. padding/margin values can be lists (lists include sets of values separated by spaces)
 
-// $base: (rad: #333, palette: (base: #333), override: 'bye', counter: (1, 2));
-// $merge: ( rad: #7461ef, palette: (rad: #7461ef), override: (0, 1024), counter: (3, 4));
+// $base: (rad: #333, palette: (base: #333), override: 'bye', counter: (1, 2), padding: 8px 24px);
+// $merge: ( rad: #7461ef, palette: (rad: #7461ef), override: (0, 1024), counter: (3, 4), padding: 12px 36px);
 // @debug recursive-merge($base, $merge);
-// -> (rad: #7461ef, palette: (base: #333, rad: #7461ef), override: 0, 1024, counter: 1, 2, 3, 4)
+// -> (rad: #7461ef, palette: (base: #333, rad: #7461ef), override: 0, 1024, counter: 1, 2, 3, 4, padding: 12px 36px)
 
 /// Recursively merges maps set
 /// @param {Arglist} $maps

@@ -1,4 +1,4 @@
-import React, { createElement } from 'react'
+import React, { ForwardedRef, createElement } from 'react'
 import clsx, { ClassValue } from 'clsx'
 import { parseBaseCx } from './class-names'
 import { componentry } from './componentry'
@@ -14,6 +14,7 @@ type ElementProps = {
 // componentCx and themeCx options
 type ElementCreator<Props> = Props & {
   componentCx?: ClassValue
+  ref?: ForwardedRef<HTMLButtonElement>
   themeCx?: ClassValue
 }
 
