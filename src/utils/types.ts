@@ -70,7 +70,9 @@ interface DefaultUtilityProps {
   /** Sets visible style */
   visible?: boolean
   /** Sets width style */
-  width?: string
+  width?: string | number
+  /** Sets height style */
+  height?: string | number
 
   // --- Spacing
   /** margin */

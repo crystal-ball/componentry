@@ -34,7 +34,11 @@ const testAlert = (
 
 const testBadge = <Badge variant='rounded'>77</Badge>
 
-const testBlock = <Block inline>test block</Block>
+const testBlock = (
+  <Block inline width={16} height={16}>
+    test block
+  </Block>
+)
 const testButton = (
   <Button variant='primary' size='sm' active>
     Click
