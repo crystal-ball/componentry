@@ -14,6 +14,13 @@
 - ...
 -->
 
+## [3.4.1](https://github.com/crystal-ball/componentry/compare/v3.4.0...v3.4.1) (2020-05-28)
+
+### 🛠 Fixes
+
+- `useTheme` throwing errors in valid use cases.
+- Sass merge logic combining padding, margin, borders values instead of overwriting them.
+
 ## [3.4.0](https://github.com/crystal-ball/componentry/compare/v3.3.1...v3.4.0) (2020-05-14)
 
 ### 💖 New
