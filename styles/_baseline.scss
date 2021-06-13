@@ -1,11 +1,14 @@
 /*                                                   Componentry Styles Baseline
  *                           ---------------------------------------------------
  * 
+ * The browser baseline resets elements to to a minimal state to enable styling 
+ * elements with an explicit opt in process.
  *
- * Baseline resets elements to a minimal state to make adding styles simpler, as
- * well as explicit. Some resets are purposely duplicated so that each dom 
- * element type only has one reset ruleset applied to it for for streamlined
- * styles debugging.
+ * Some reset styles are purposely duplicated to provide a single baseline style
+ * block for DOM elements, this provides a nice condensed baseline when 
+ * debugging element styles.
+ * 
+ * Credits: The included styles are from Modern Normalize and Tailwind Preflight
  * ---------------------------------------------------------------------------*/
 
 // Baseline includes styles from:
