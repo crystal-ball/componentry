@@ -54,7 +54,9 @@
 // Map functions
 
 // List of styles that should replace instead of merging values
-$skip-merge: border, margine, padding;
+// border, margin padding: styles that are lists
+// body, monospace: font families list
+$skip-merge: border, margin, padding, body, monospace;
 
 /// Recursively merges two maps.
 /// @param {Map} $map1
