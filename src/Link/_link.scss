@@ -7,9 +7,9 @@ $link-defaults: (
   base: (),
   variants: (
     primary: (
-      color: theme-get('palette.primary.500'),
+      color: theme-get('colors.primary.500'),
       '&:hover': (
-        color: theme-get('palette.primary.900'),
+        color: theme-get('colors.primary.900'),
       ),
     ),
   ),

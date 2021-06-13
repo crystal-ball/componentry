@@ -71,29 +71,29 @@ type UtilityClasses = {
 
 function generateClassNames(p: UtilityProps): UtilityClasses {
   return {
-    'active': p.active,
+    'active': p.active, // Componentry
+    'disabled': p.disabled, // Componentry
     'border': p.border,
-    'border-bottom': p.borderBottom,
-    'border-left': p.borderLeft,
-    'border-right': p.borderRight,
-    'border-top': p.borderTop,
-    'disabled': p.disabled,
-    'visible': p.visible,
+    'border-b': p.borderBottom,
+    'border-l': p.borderLeft,
+    'border-r': p.borderRight,
+    'border-t': p.borderTop,
     'italic': p.italic,
-    [`background-color-${p.backgroundColor}`]: p.backgroundColor,
-    [`border-color-${p.borderColor}`]: p.borderColor,
-    [`border-width-${p.borderWidth}`]: p.borderWidth,
+    'visible': p.visible,
+    [String(p.position)]: p.position,
+    [String(p.textTransform)]: p.textTransform,
+    [`bg-${p.backgroundColor}`]: p.backgroundColor,
+    [`border-${p.borderColor}`]: p.borderColor,
+    [`border-${p.borderWidth}`]: p.borderWidth,
     [`content-${p.alignContent}`]: p.alignContent,
-    [`font-color-${p.fontColor}`]: p.fontColor,
-    [`font-family-${p.fontFamily}`]: p.fontFamily,
-    [`text-${p.fontSize}`]: p.fontSize,
+    [`font-${p.fontFamily}`]: p.fontFamily,
     [`font-${p.fontWeight}`]: p.fontWeight,
     [`items-${p.alignItems}`]: p.alignItems,
     [`justify-${p.justifyContent}`]: p.justifyContent,
-    [`position-${p.position}`]: p.position,
     [`self-${p.alignSelf}`]: p.alignSelf,
-    [`text-align-${p.textAlign}`]: p.textAlign,
-    [`text-transform-${p.textTransform}`]: p.textTransform,
+    [`text-${p.fontColor}`]: p.fontColor,
+    [`text-${p.fontSize}`]: p.fontSize,
+    [`text-${p.textAlign}`]: p.textAlign,
   }
 }
 

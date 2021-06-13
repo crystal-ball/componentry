@@ -8,3 +8,29 @@
     @return '.#{$class}';
   }
 }
+
+/// Converts a map into a style rule for the passed selector with map contents
+/// for rule properties. Nested maps are recursively converted into nested style
+/// rules.
+/// @param {string} $selector
+/// @param {Map} $map
+@mixin style-rule-from-map($selector, $map) {
+  #{$selector} {
+    @include style-properties-from-map($map);
+  }
+}
+
+/// Converts a map into a set of style rules, recursively creates rules for
+/// any properties that contain maps
+/// @param {Map} $map
+@mixin style-properties-from-map($map) {
+  @each $property, $value in $map {
+    @if (type-of($value) != map) {
+      #{$property}: #{$value};
+    } @else {
+      #{$property} {
+        @include style-properties-from-map($value);
+      }
+    }
+  }
+}

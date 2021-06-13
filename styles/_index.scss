@@ -3,27 +3,16 @@
  * Licensed under MIT: https://github.com/crystal-ball/componentry/blob/v3/LICENSE
  */
 
-// The default theme creates a $theme map for the application. The default
-// values can be customized by defining a $theme in your application before
-// importing Componentry.
+// Library theme defaults
 @import './theme';
 
-// The theme contains only side effect free setup code including variables,
-// mixins and functions. It can be imported as a base context for users of CSS
-// modules.
-// !DEPRECATED
-@import './variables';
-
-// Fundamentals normalizes foundation styles across browsers to a minimal
-// starting point that supports the opting in to styles strategy
+// Browser normalization
 @import './fundamentals';
 
-// Scoped library component styles. These styles are intended to be used only
-// with their parent components.
+// Library component styles
 @import './components';
 
-// Utility styles for composing custom elements leveraging a consistent design
-// system.
+// Library utility styles
 @import './utility';
 
 /*
