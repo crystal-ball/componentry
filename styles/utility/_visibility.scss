@@ -24,18 +24,6 @@
   overflow: hidden;
 }
 
-@mixin invisible($visibility) {
-  visibility: $visibility !important;
-}
-
-.visible {
-  @include invisible(visible);
-}
-
-.invisible {
-  @include invisible(hidden);
-}
-
 //
 // Disabled
 //
