@@ -107,33 +107,33 @@ describe('componentry()', () => {
 
     expect(componentry({ borderTop: true }).utilityCx[0]).toStrictEqual(
       expect.objectContaining({
-        'border-top': true,
+        'border-t': true,
       }),
     )
     expect(componentry({ borderRight: true }).utilityCx[0]).toStrictEqual(
       expect.objectContaining({
-        'border-right': true,
+        'border-r': true,
       }),
     )
     expect(componentry({ borderBottom: true }).utilityCx[0]).toStrictEqual(
       expect.objectContaining({
-        'border-bottom': true,
+        'border-b': true,
       }),
     )
     expect(componentry({ borderLeft: true }).utilityCx[0]).toStrictEqual(
       expect.objectContaining({
-        'border-left': true,
+        'border-l': true,
       }),
     )
 
     expect(componentry({ borderColor: 'primary' }).utilityCx[0]).toStrictEqual(
       expect.objectContaining({
-        'border-color-primary': 'primary',
+        'border-primary': 'primary',
       }),
     )
 
     expect(componentry({ borderWidth: 'lg' }).utilityCx[0]).toStrictEqual(
-      expect.objectContaining({ 'border-width-lg': 'lg' }),
+      expect.objectContaining({ 'border-lg': 'lg' }),
     )
   })
 
@@ -163,25 +163,25 @@ describe('componentry()', () => {
       }).utilityCx[0],
     ).toStrictEqual(
       expect.objectContaining({
-        'background-color-primary': 'primary',
+        'bg-primary': 'primary',
         'border': true,
-        'border-bottom': true,
-        'border-color-primary': 'primary',
-        'border-left': true,
-        'border-right': true,
-        'border-top': true,
-        'border-width-lg': 'lg',
+        'border-b': true,
+        'border-l': true,
+        'border-lg': 'lg',
+        'border-primary': 'primary',
+        'border-r': true,
+        'border-t': true,
         'content-center': 'center',
         'font-bold': 'bold',
-        'font-color-primary': 'primary',
-        'font-family-monospace': 'monospace',
+        'font-monospace': 'monospace',
         'items-center': 'center',
         'justify-center': 'center',
-        'position-fixed': 'fixed',
+        'fixed': 'fixed',
         'self-center': 'center',
-        'text-align-center': 'center',
+        'text-center': 'center',
+        'text-primary': 'primary',
         'text-sm': 'sm',
-        'text-transform-uppercase': 'uppercase',
+        'uppercase': 'uppercase',
       }),
     )
   })

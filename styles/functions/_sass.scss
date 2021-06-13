@@ -94,10 +94,10 @@ $skip-merge: border, margine, padding;
 //  2. Lists are assumed to be one dimensional and are not recursively joined
 //  3. padding/margin values can be lists (lists include sets of values separated by spaces)
 
-// $base: (rad: #333, palette: (base: #333), override: 'bye', counter: (1, 2), padding: 8px 24px);
-// $merge: ( rad: #7461ef, palette: (rad: #7461ef), override: (0, 1024), counter: (3, 4), padding: 12px 36px);
+// $base: (rad: #333, colors: (base: #333), override: 'bye', counter: (1, 2), padding: 8px 24px);
+// $merge: ( rad: #7461ef, colors: (rad: #7461ef), override: (0, 1024), counter: (3, 4), padding: 12px 36px);
 // @debug recursive-merge($base, $merge);
-// -> (rad: #7461ef, palette: (base: #333, rad: #7461ef), override: 0, 1024, counter: 1, 2, 3, 4, padding: 12px 36px)
+// -> (rad: #7461ef, colors: (base: #333, rad: #7461ef), override: 0, 1024, counter: 1, 2, 3, 4, padding: 12px 36px)
 
 /// Recursively merges maps set
 /// @param {Arglist} $maps

@@ -95,7 +95,7 @@ export function elementTests(TestComponent, Wrapper) {
     expect(screen.getByTestId('jsx')).toHaveAttribute('data-radical', 'nope')
 
     expect(screen.getByTestId('merge')).toHaveClass(
-      'theme-class jsx-class font-bold text-transform-uppercase',
+      'theme-class jsx-class font-bold uppercase',
     )
     expect(screen.getByTestId('merge')).toHaveAttribute('data-radical', 'hecka')
   })
@@ -120,9 +120,7 @@ export function elementTests(TestComponent, Wrapper) {
       { wrapper: Wrapper },
     )
 
-    expect(screen.getByTestId('component')).toHaveClass(
-      'jsx-class text-align-center text-transform-uppercase',
-    )
+    expect(screen.getByTestId('component')).toHaveClass('jsx-class text-center uppercase')
 
     expect(screen.getByTestId('component')).toHaveStyle(`
       line-height: 2;

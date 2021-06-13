@@ -13,7 +13,7 @@ export const parameters = {
   // --- Options
   options: {
     storySort: {
-      order: ['Componentry', 'Components', 'Utility Classes'],
+      order: ['Componentry', 'Components'],
     },
   },
 }
