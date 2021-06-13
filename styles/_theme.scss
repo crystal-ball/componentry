@@ -1,22 +1,8 @@
 /*                                 ⚙️ Componentry default theme specification
- * -----------------------------------------------------------------------------
- *
- * Motivations & Guidelines:
- *
- * - Use semantic or generic names, eg `primary` is a good generic name
- *   and `container` is a good semantic name. This allows users to have useful
- *   defaults with generics and useful fine tuned customizations with semantic
- *   names.
  * -------------------------------------------------------------------------- */
 
 @import './functions/sass';
 @import './functions/lib';
-
-$font-family-primary: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
-  'Helvetica Neue', Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
-  'Segoe UI Symbol' !default;
-$font-family-monospace: SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono',
-  'Courier New', monospace !default;
 
 $theme-defaults: (
   // --------------------------------------------------------
@@ -97,8 +83,26 @@ $theme-defaults: (
   typography:
     (
       font-families: (
-        primary: $font-family-primary,
-        monospace: $font-family-monospace,
+        body: (
+          system-ui,
+          -apple-system,
+          'Segoe UI',
+          Roboto,
+          Helvetica,
+          Arial,
+          sans-serif,
+          'Apple Color Emoji',
+          'Segoe UI Emoji',
+        ),
+        monospace: (
+          SFMono-Regular,
+          Menlo,
+          Monaco,
+          Consolas,
+          'Liberation Mono',
+          'Courier New',
+          monospace,
+        ),
       ),
       font-sizes: (
         sm: 0.875rem,
