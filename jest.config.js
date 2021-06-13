@@ -3,6 +3,8 @@
 const { ENABLE_JEST_NOTIFICATIONS } = process.env
 
 module.exports = {
+  testEnvironment: 'jsdom',
+
   // Provides nice test output of what's being run
   verbose: true,
 

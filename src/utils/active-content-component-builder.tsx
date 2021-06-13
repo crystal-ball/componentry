@@ -24,7 +24,13 @@ export function activeContentBuilder<TProps extends ActiveContentBaseProps>(
 
   function ActiveContent(props: TProps) {
     const { guid, ...activeCtx } = useContext(ActiveCtx)
-    const { active, activeId, children, variant = `primary`, ...rest } = {
+    const {
+      active,
+      activeId,
+      children,
+      variant = `primary`,
+      ...rest
+    } = {
       ...useTheme<TProps>(displayName),
       ...activeCtx,
       ...props,

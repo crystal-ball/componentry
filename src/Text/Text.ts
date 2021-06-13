@@ -41,7 +41,15 @@ type Props = MergePropTypes<DefaultTextProps, TextProps> & ComponentBaseProps<'d
  * [Text component 📝](https://componentry.design/components/text)
  */
 export const Text: React.FC<Props> = (props) => {
-  const { variant = 'body', align, bold, color, inline, elementsMap = {}, ...rest } = {
+  const {
+    variant = 'body',
+    align,
+    bold,
+    color,
+    inline,
+    elementsMap = {},
+    ...rest
+  } = {
     ...useTheme<Props & { elementsMap?: ElementsMap }>('Text'),
     ...props,
   }

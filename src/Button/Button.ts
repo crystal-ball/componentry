@@ -25,7 +25,14 @@ interface ButtonProps extends ComponentBaseProps<'button'> {
  * @experimental
  */
 export const Button = forwardRef<HTMLButtonElement, ButtonProps>((props, ref) => {
-  const { variant = 'primary', active, color, disabled, size, ...merged } = {
+  const {
+    variant = 'primary',
+    active,
+    color,
+    disabled,
+    size,
+    ...merged
+  } = {
     ...useTheme<ButtonProps>('Button'),
     ...props,
   }
