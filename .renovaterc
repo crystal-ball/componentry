@@ -5,12 +5,6 @@
   "packageRules": [
     {
       "matchPackageNames": [
-        "sass-loader"
-      ],
-      "allowedVersions": "<=10.1"
-    },
-    {
-      "matchPackageNames": [
         "@storybook/addon-essentials"
       ],
       "allowedVersions": "<=6.1.21"
@@ -38,6 +32,18 @@
         "@storybook/theming"
       ],
       "allowedVersions": "<=6.1.21"
+    },
+    {
+      "matchPackageNames": [
+        "sass-loader"
+      ],
+      "allowedVersions": "<=10.2.0"
+    },
+    {
+      "matchPackageNames": [
+        "typescript"
+      ],
+      "allowedVersions": "<=4.2.4"
     }
   ]
 }
