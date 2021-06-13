@@ -22,7 +22,13 @@ interface LinkProps extends ComponentBaseProps<'a'> {
  * @experimental
  */
 export const Link: React.FC<LinkProps> = (props) => {
-  const { variant = 'primary', color, active, disabled, ...merged } = {
+  const {
+    variant = 'primary',
+    color,
+    active,
+    disabled,
+    ...merged
+  } = {
     ...useTheme<LinkProps>('Link'),
     ...props,
   }

@@ -14,7 +14,11 @@ interface BadgeProps extends ComponentBaseProps<'div'> {
  * @experimental
  */
 export const Badge: React.FC<BadgeProps> = (props) => {
-  const { color, variant = 'primary', ...rest } = {
+  const {
+    color,
+    variant = 'primary',
+    ...rest
+  } = {
     ...useTheme<BadgeProps>('Badge'),
     ...props,
   }
