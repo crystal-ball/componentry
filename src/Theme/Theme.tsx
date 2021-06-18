@@ -33,6 +33,8 @@ export function useTheme<Theme>(
   // eslint-disable-next-line react-hooks/rules-of-hooks -- Library __precompile is a build time constant
   const theme = useContext(ThemeCtx)
 
+  if (!theme) return null
+
   // @ts-ignore DEBT: not sure how to type
-  return componentName in theme ? theme[componentName] : theme
+  return theme[componentName]
 }
