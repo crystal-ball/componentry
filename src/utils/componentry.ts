@@ -41,7 +41,22 @@ const stylesProps: Partial<Record<keyof React.CSSProperties, 1>> = {
 }
 
 // Generate set of margin (m*), and padding (p*) spacing props
-const spacingProps: { [classname: string]: number } = {}
+const spacingProps = {
+  m: 1,
+  mt: 1,
+  mr: 1,
+  mb: 1,
+  ml: 1,
+  mx: 1,
+  my: 1,
+  p: 1,
+  pt: 1,
+  pr: 1,
+  pb: 1,
+  pl: 1,
+  px: 1,
+  py: 1,
+}
 const spacingBase = {
   m: 'margin',
   p: 'padding',
@@ -55,12 +70,6 @@ const spacingModifier = {
   y: ['Top', 'Bottom'],
 }
 
-Object.keys(spacingBase).forEach((b) => {
-  spacingProps[b] = 1
-  Object.keys(spacingModifier).forEach((m) => {
-    spacingProps[b + m] = 1
-  })
-})
 const spacingRegex = new RegExp(/([bmp])([trblxy])?/)
 
 type UtilityClasses = {
@@ -115,6 +124,7 @@ type ComponentryAttributes = {
  */
 export function componentry({
   /* eslint-disable @typescript-eslint/no-unused-vars */
+  __precompile,
   block,
   color,
   outline,
@@ -161,7 +171,7 @@ export function componentry({
       // 2. The prop maps to a utility className
       // @ts-ignore DEBT: not sure how to type
       classNames[prop] = filteredProps[prop]
-    } else if (spacingProps[prop]) {
+    } else if (prop in spacingProps) {
       // 3. The prop maps to a shorthand utility style/className
       // @ts-ignore DEBT: not sure how to type
       if (['xs', 'sm', 'md', 'lg', 'xl'].includes(filteredProps[prop])) {
@@ -196,3 +206,19 @@ export function componentry({
     utilityCx: [generateClassNames(classNames), spacingCx],
   }
 }
+
+export const precompileProps = {
+  inline: 1,
+  variant: 1,
+  // --- Flex
+  align: 1,
+  direction: 1,
+  justify: 1,
+  wrap: 1,
+  // --- Text
+  bold: 1,
+  color: 1,
+  italic: 1,
+}
+
+export const utilityProps = { ...classNamesProps, ...stylesProps, ...spacingProps }

@@ -11,7 +11,18 @@
 <!--
 ## Unreleased items
 
-- ...
+Focus on the library, use community resources for utilities.
+
+NEW
+
+Precompile!
+
+BREAKING
+
+- Remove all utility styles, you gotta use Tailwind
+- Component styles for only Button, Link, Icon, and Text
+- Utility classNames updated to match Tailwind
+
 -->
 
 ## [3.4.1](https://github.com/crystal-ball/componentry/compare/v3.4.0...v3.4.1) (2020-05-28)

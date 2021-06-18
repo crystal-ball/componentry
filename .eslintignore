@@ -1,0 +1,7 @@
+# Plugin test fixtures
+src/plugin/__fixtures__
+
+# Publish assets
+cjs
+esm
+esnext

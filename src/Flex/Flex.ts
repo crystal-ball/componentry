@@ -7,7 +7,7 @@ export interface FlexProps extends ComponentBaseProps<'div'> {
   /** Sets an `align-items` style */
   align?: 'start' | 'end' | 'center' | 'baseline' | 'stretch'
   /** Sets a `flex-direction` flex style */
-  direction?: 'col' | 'col-reverse' | 'row-reverse' | 'row'
+  direction?: 'column' | 'column-reverse' | 'row-reverse' | 'row'
   /** Switches between display between an inline and block element */
   inline?: boolean
   /** Sets a `justify-content` style */
@@ -21,15 +21,19 @@ export interface FlexProps extends ComponentBaseProps<'div'> {
  */
 export const Flex: React.FC<FlexProps> = (props) => {
   const { align, direction, inline, justify, wrap, ...rest } = {
-    ...useTheme<FlexProps>('Flex'),
+    ...useTheme<FlexProps>('Flex', props.__precompile),
     ...props,
   }
+  // Tailwind uses a flex-col class but direction="col" is super wonky
+  // => so props use "column" and we replace with "col"
+  const computedDirection = direction?.replace('column', 'col')
 
   return element('Flex', {
     componentCx: {
       'flex': !inline,
       'inline-flex': inline,
-      [`flex-${direction}`]: direction,
+
+      [`flex-${computedDirection}`]: computedDirection,
       [`flex-${wrap}`]: wrap,
     },
     alignItems: align,

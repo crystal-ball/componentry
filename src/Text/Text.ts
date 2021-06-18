@@ -50,7 +50,7 @@ export const Text: React.FC<Props> = (props) => {
     elementsMap = defaultElementsMap,
     ...rest
   } = {
-    ...useTheme<Props & { elementsMap?: ElementsMap }>('Text'),
+    ...useTheme<Props & { elementsMap?: ElementsMap }>('Text', props.__precompile),
     ...props,
   }
 
