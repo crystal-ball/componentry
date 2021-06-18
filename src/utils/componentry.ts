@@ -117,6 +117,7 @@ type ComponentryAttributes = {
  */
 export function componentry({
   /* eslint-disable @typescript-eslint/no-unused-vars */
+  __precompile,
   block,
   color,
   outline,

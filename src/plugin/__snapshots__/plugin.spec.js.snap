@@ -1,0 +1,39 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`componentryPlugin() does not transform components with spread parameters 1`] = `
+"\\"use strict\\";
+
+var _interopRequireDefault = require(\\"@babel/runtime/helpers/interopRequireDefault\\")[\\"default\\"];
+
+var _objectSpread2 = _interopRequireDefault(require(\\"@babel/runtime/helpers/objectSpread2\\"));
+
+var _extends2 = _interopRequireDefault(require(\\"@babel/runtime/helpers/extends\\"));
+
+var _jsxRuntime = require(\\"react/jsx-runtime\\");
+
+function Demo(_ref) {
+  var rest = (0, _extends2[\\"default\\"])({}, _ref);
+  return /*#__PURE__*/(0, _jsxRuntime.jsx)(Flex, (0, _objectSpread2[\\"default\\"])((0, _objectSpread2[\\"default\\"])({}, rest), {}, {
+    children: \\"Spread Parameters\\"
+  }));
+}"
+`;
+
+exports[`componentryPlugin() transforms components to HTML elements 1`] = `
+"\\"use strict\\";
+
+var _jsxRuntime = require(\\"react/jsx-runtime\\");
+
+function Demo() {
+  return /*#__PURE__*/(0, _jsxRuntime.jsxs)(\\"div\\", {
+    className: \\"\\\\uD83C\\\\uDD72-flex flex flex-column justify-center\\",
+    children: [/*#__PURE__*/(0, _jsxRuntime.jsx)(\\"h1\\", {
+      className: \\"\\\\uD83C\\\\uDD72-text heading-1-variant\\",
+      children: \\"Componentry\\"
+    }), /*#__PURE__*/(0, _jsxRuntime.jsx)(\\"p\\", {
+      className: \\"\\\\uD83C\\\\uDD72-text body-variant\\",
+      children: \\"Precompile testing snapshot\\"
+    })]
+  });
+}"
+`;
