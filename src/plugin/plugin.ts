@@ -4,7 +4,6 @@ import * as BabelTypes from '@babel/types'
 import { Flex } from '../Flex/Flex'
 import { Block } from '../Block/Block'
 import { Text } from '../Text/Text'
-import { Children } from 'react'
 
 const components = { Block, Flex, Text }
 
@@ -23,6 +22,7 @@ const componentryPlugin: Plugin = ({ types: t }) => {
         // We are only transforming usage like: <Flex>
         if (!t.isJSXIdentifier(nameNode)) return
         // Bail early if this element isn't one of our precompile targets
+        // @ts-ignore DEBT
         if (!components[nameNode.name]) return
 
         // ✓ Componentry compile component
@@ -58,11 +58,13 @@ const componentryPlugin: Plugin = ({ types: t }) => {
         if (hasSpreadAttribute) return
 
         // Computed props for this instance
+        // @ts-ignore DEBT
         const computed = components[componentName](props)
 
         path.get('openingElement').replaceWith(
           t.jSXOpeningElement(
             t.jsxIdentifier(computed.type),
+            // @ts-ignore DEBT
             Object.keys(computed.props)
               .map((prop) => {
                 const propValue = computed.props[prop]
