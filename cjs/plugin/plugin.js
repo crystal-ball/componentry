@@ -1,13 +1,9 @@
 "use strict";
 
-var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault")["default"];
-
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
 exports["default"] = void 0;
-
-var _typeof2 = _interopRequireDefault(require("@babel/runtime/helpers/typeof"));
 
 var _Flex = require("../Flex/Flex");
 
@@ -15,91 +11,15 @@ var _Block = require("../Block/Block");
 
 var _Text = require("../Text/Text");
 
+var _parseAttributes2 = require("./parse-attributes");
+
+var _buildElements = require("./build-elements");
+
 var components = {
   Block: _Block.Block,
   Flex: _Flex.Flex,
   Text: _Text.Text
 };
-
-var componentryPlugin = function componentryPlugin(_ref) {
-  var t = _ref.types;
-  return {
-    visitor: {
-      JSXElement: function JSXElement(path, state) {
-        var _path$node = path.node,
-            closingElement = _path$node.closingElement,
-            openingElement = _path$node.openingElement;
-        var attributes = openingElement.attributes,
-            nameNode = openingElement.name; // nameNode can be one of:
-        // 1. JSXIdentifier (eg List)
-        // 2. JSXMemberExpression (eg List.Item)
-        // 3. JSXNamespacedName (eg List:Item)
-        // We are only transforming usage like: <Flex>
-
-        if (!t.isJSXIdentifier(nameNode)) return; // Bail early if this element isn't one of our precompile targets
-
-        if (!components[nameNode.name]) return; // ✓ Componentry compile component
-
-        var componentName = nameNode.name;
-        var selfClosing = Boolean(closingElement); // Bail early if there are spreadAttributes, eg <Flex {...rest}>
-
-        var hasSpreadAttribute = false;
-        var props = {
-          __precompile: true
-        };
-        attributes.forEach(function (attribute) {
-          if (t.isJSXSpreadAttribute(attribute)) {
-            hasSpreadAttribute = true;
-            return;
-          }
-
-          var key = attribute.name,
-              value = attribute.value;
-
-          if (!t.isJSXIdentifier(key)) {
-            console.info('Component attribute name is namespaced: ', key);
-            return;
-          }
-
-          if (!t.isStringLiteral(value)) {
-            console.info('Attribute value is not string literal: ', componentName, value);
-            return;
-          }
-
-          props[key.name] = value.value;
-        }); // Bail if the component has spread params, we can't convert them to props for
-        // component call yet.
-
-        if (hasSpreadAttribute) return; // Computed props for this instance
-
-        var computed = components[componentName](props);
-        path.get('openingElement').replaceWith(t.jSXOpeningElement(t.jsxIdentifier(computed.type), Object.keys(computed.props).map(function (prop) {
-          var propValue = computed.props[prop];
-
-          if ((0, _typeof2["default"])(propValue) === 'object' && propValue !== null && Object.keys(propValue).length === 0) {
-            return null;
-          }
-
-          return t.jSXAttribute(t.jSXIdentifier(prop), typeof propValue === 'string' ? t.stringLiteral(propValue) : t.jsxExpressionContainer(t.objectExpression([])));
-        }).filter(Boolean), selfClosing));
-
-        if (!selfClosing) {
-          path.get('closingElement').replaceWith(t.jSXClosingElement(t.jsxIdentifier('div')));
-        }
-      }
-    }
-  };
-};
-
-var _default = componentryPlugin; // Polishing:
-// 1. Document the flow: Precompile -> Components -> element creator -> replaceWith
-// 2. Extract utility for: Converting node attributes to a props object
-// 3. Extract utility for: Converting create element return to a JSX element
-// 4. Use an explicit opt in to conversion to skip rest attributes aaaaand....
-// 5. Test usage like <Flex as={Wrapped} passThroughProps="special">
-// 6. Include logging with filename and why skipping precompile when doing it for debugging
-// 7. Test that spread attributes get skipped
-
 /**
  * # Types Notes
  *
@@ -123,5 +43,59 @@ var _default = componentryPlugin; // Polishing:
  * 4. JSXElement (??? what)
  * 5. JSXFragment (??? what)
  */
+
+/**
+ * Componentry precompile Babel plugin
+ */
+var componentryPlugin = function componentryPlugin(_ref) {
+  var t = _ref.types;
+  return {
+    visitor: {
+      JSXElement: function JSXElement(path) {
+        // Filename is available in: state.file.opts.filename
+        var _path$node = path.node,
+            closingElement = _path$node.closingElement,
+            openingElement = _path$node.openingElement;
+        var attributes = openingElement.attributes; // We are not transforming MemberExpression or Namespaced JSXElments
+
+        if (!t.isJSXIdentifier(openingElement.name)) return; // Bail early if this element isn't one of our precompile targets
+
+        var name = openingElement.name.name;
+        if (!(name in components)) return; // ✓ This is a Componentry precompile component, handle transforming
+
+        var _parseAttributes = (0, _parseAttributes2.parseAttributes)(attributes, t, {
+          name: name
+        }),
+            parsedAttributes = _parseAttributes.parsedAttributes,
+            parseSuccess = _parseAttributes.parseSuccess; // If we weren't able to successfully parse all of the node attributes bail early
+        // TODO: Add debug and reporting for this
+
+
+        if (!parseSuccess) return; // Computed props for this instance
+        // @ts-ignore DEBT
+
+        var precompiledComponent = components[name](parsedAttributes);
+        path.get('openingElement').replaceWith((0, _buildElements.buildOpeningElement)(precompiledComponent, openingElement.selfClosing, t));
+
+        if (closingElement) {
+          path.get('closingElement').replaceWith((0, _buildElements.buildClosingElement)(precompiledComponent.type, t));
+        }
+      }
+    }
+  };
+};
+
+var _default = componentryPlugin; // Polishing:
+// 1. Document the flow: Precompile -> Components -> element creator -> replaceWith
+// 2. Extract utility for: Converting node attributes to a props object
+// 3. Extract utility for: Converting create element return to a JSX element
+// 4. Use an explicit opt in to conversion to skip rest attributes aaaaand....
+// 5. Test usage like <Flex as={Wrapped} passThroughProps="special">
+// 6. Include logging with filename and why skipping precompile when doing it for debugging
+// 7. Test that spread attributes get skipped
+// 8. Pass through refs
+// 9. Pass through fns, eg onMouseEnter
+// 10. Handle strings, numbers, booleans, arrays, objects for attribute values
+// - Only try to parse library props, passthrough others
 
 exports["default"] = _default;

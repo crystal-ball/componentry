@@ -1,13 +1,5 @@
 import { Visitor } from '@babel/core';
 import * as BabelTypes from '@babel/types';
-declare const componentryPlugin: Plugin;
-export default componentryPlugin;
-declare type PluginOptions = {
-    types: typeof BabelTypes;
-};
-declare type Plugin = (options: PluginOptions) => {
-    visitor: Visitor;
-};
 /**
  * # Types Notes
  *
@@ -31,3 +23,13 @@ declare type Plugin = (options: PluginOptions) => {
  * 4. JSXElement (??? what)
  * 5. JSXFragment (??? what)
  */
+declare type Plugin = (options: {
+    types: typeof BabelTypes;
+}) => {
+    visitor: Visitor;
+};
+/**
+ * Componentry precompile Babel plugin
+ */
+declare const componentryPlugin: Plugin;
+export default componentryPlugin;

@@ -1,7 +1,7 @@
 import React, { createContext, useContext } from 'react';
 /** Theme Context */
 
-const ThemeCtx = /*#__PURE__*/createContext(null);
+const ThemeCtx = /*#__PURE__*/createContext({});
 
 /**
  * [Theme component 📝](https://componentry.design/components/theme)
@@ -22,13 +22,10 @@ Theme.displayName = 'Theme';
  */
 
 export function useTheme(componentName, __precompile = false) {
-  if (__precompile) return null; // For the theme context, we don't warn on accessing without a provider b/c
-  // internally components use this hook to check for optionally set theme
-  // values in apps where the provider may not have been added.
-  // eslint-disable-next-line react-hooks/rules-of-hooks -- Library __precompile is a build time constant
+  // @ts-ignore DEBT: not sure how to type
+  if (__precompile) return {}; // eslint-disable-next-line react-hooks/rules-of-hooks -- Library __precompile is a build time constant
 
-  const theme = useContext(ThemeCtx);
-  if (!theme) return null; // @ts-ignore DEBT: not sure how to type
+  const theme = useContext(ThemeCtx); // @ts-ignore DEBT: not sure how to type
 
-  return theme[componentName];
+  return componentName ? theme[componentName] : theme;
 }

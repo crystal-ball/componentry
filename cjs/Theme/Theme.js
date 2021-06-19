@@ -11,7 +11,7 @@ exports.Theme = void 0;
 var _react = _interopRequireWildcard(require("react"));
 
 /** Theme Context */
-var ThemeCtx = /*#__PURE__*/(0, _react.createContext)(null);
+var ThemeCtx = /*#__PURE__*/(0, _react.createContext)({});
 
 /**
  * [Theme component 📝](https://componentry.design/components/theme)
@@ -35,13 +35,10 @@ Theme.displayName = 'Theme';
 function useTheme(componentName) {
   var __precompile = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : false;
 
-  if (__precompile) return null; // For the theme context, we don't warn on accessing without a provider b/c
-  // internally components use this hook to check for optionally set theme
-  // values in apps where the provider may not have been added.
-  // eslint-disable-next-line react-hooks/rules-of-hooks -- Library __precompile is a build time constant
+  // @ts-ignore DEBT: not sure how to type
+  if (__precompile) return {}; // eslint-disable-next-line react-hooks/rules-of-hooks -- Library __precompile is a build time constant
 
-  var theme = (0, _react.useContext)(ThemeCtx);
-  if (!theme) return null; // @ts-ignore DEBT: not sure how to type
+  var theme = (0, _react.useContext)(ThemeCtx); // @ts-ignore DEBT: not sure how to type
 
-  return theme[componentName];
+  return componentName ? theme[componentName] : theme;
 }

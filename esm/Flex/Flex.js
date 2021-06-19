@@ -17,13 +17,16 @@ export var Flex = function Flex(props) {
       inline = _useTheme$props.inline,
       justify = _useTheme$props.justify,
       wrap = _useTheme$props.wrap,
-      rest = _objectWithoutProperties(_useTheme$props, _excluded);
+      rest = _objectWithoutProperties(_useTheme$props, _excluded); // Tailwind uses a flex-col class but direction="col" is super wonky
+  // => so props use "column" and we replace with "col"
 
+
+  var computedDirection = direction === null || direction === void 0 ? void 0 : direction.replace('column', 'col');
   return element('Flex', _objectSpread({
     componentCx: (_componentCx = {
       'flex': !inline,
       'inline-flex': inline
-    }, _defineProperty(_componentCx, "flex-".concat(direction), direction), _defineProperty(_componentCx, "flex-".concat(wrap), wrap), _componentCx),
+    }, _defineProperty(_componentCx, "flex-".concat(computedDirection), computedDirection), _defineProperty(_componentCx, "flex-".concat(wrap), wrap), _componentCx),
     alignItems: align,
     justifyContent: justify
   }, rest));

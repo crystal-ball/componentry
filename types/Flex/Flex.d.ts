@@ -4,7 +4,7 @@ export interface FlexProps extends ComponentBaseProps<'div'> {
     /** Sets an `align-items` style */
     align?: 'start' | 'end' | 'center' | 'baseline' | 'stretch';
     /** Sets a `flex-direction` flex style */
-    direction?: 'col' | 'col-reverse' | 'row-reverse' | 'row';
+    direction?: 'column' | 'column-reverse' | 'row-reverse' | 'row';
     /** Switches between display between an inline and block element */
     inline?: boolean;
     /** Sets a `justify-content` style */

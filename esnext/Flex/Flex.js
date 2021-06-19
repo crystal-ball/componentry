@@ -14,12 +14,15 @@ export const Flex = props => {
     ...rest
   } = { ...useTheme('Flex', props.__precompile),
     ...props
-  };
+  }; // Tailwind uses a flex-col class but direction="col" is super wonky
+  // => so props use "column" and we replace with "col"
+
+  const computedDirection = direction?.replace('column', 'col');
   return element('Flex', {
     componentCx: {
       'flex': !inline,
       'inline-flex': inline,
-      [`flex-${direction}`]: direction,
+      [`flex-${computedDirection}`]: computedDirection,
       [`flex-${wrap}`]: wrap
     },
     alignItems: align,
