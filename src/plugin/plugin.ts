@@ -1,10 +1,12 @@
-/* eslint-disable no-console */
 import { Visitor } from '@babel/core'
 import * as BabelTypes from '@babel/types'
 
 import { Flex } from '../Flex/Flex'
 import { Block } from '../Block/Block'
 import { Text } from '../Text/Text'
+
+import { parseAttributes } from './parse-attributes'
+import { buildClosingElement, buildOpeningElement } from './build-elements'
 
 const components = { Block, Flex, Text }
 
@@ -40,82 +42,42 @@ type Plugin = (options: { types: typeof BabelTypes }) => { visitor: Visitor }
 const componentryPlugin: Plugin = ({ types: t }) => {
   return {
     visitor: {
-      JSXElement(path /* state */) {
+      JSXElement(path) {
+        // Filename is available in: state.file.opts.filename
         const { closingElement, openingElement } = path.node
-        const { attributes, name: nameNode } = openingElement
+        const { attributes } = openingElement
 
         // We are not transforming MemberExpression or Namespaced JSXElments
-        if (!t.isJSXIdentifier(nameNode)) return
+        if (!t.isJSXIdentifier(openingElement.name)) return
+
         // Bail early if this element isn't one of our precompile targets
-        if (!(nameNode.name in components)) return
+        const { name } = openingElement.name
+        if (!(name in components)) return
 
-        // ✓ Componentry compile component
-        const componentName = nameNode.name
-        const selfClosing = Boolean(closingElement)
+        // ✓ This is a Componentry precompile component, handle transforming
 
-        // Bail early if there are spreadAttributes, eg <Flex {...rest}>
-        let hasSpreadAttribute = false
-        const props: Record<string, string | number | boolean> = { __precompile: true }
-        attributes.forEach((attribute) => {
-          if (t.isJSXSpreadAttribute(attribute)) {
-            hasSpreadAttribute = true
-            return
-          }
-
-          const { name: key, value } = attribute
-
-          if (!t.isJSXIdentifier(key)) {
-            console.info('Component attribute name is namespaced: ', key)
-            return
-          }
-
-          if (!t.isStringLiteral(value)) {
-            console.info('Attribute value is not string literal: ', componentName, value)
-            return
-          }
-
-          props[key.name] = value.value
+        const { parsedAttributes, parseSuccess } = parseAttributes(attributes, t, {
+          name,
         })
 
-        // Bail if the component has spread params, we can't convert them to props for
-        // component call yet.
-        if (hasSpreadAttribute) return
+        // If we weren't able to successfully parse all of the node attributes bail early
+        // TODO: Add debug and reporting for this
+        if (!parseSuccess) return
 
         // Computed props for this instance
         // @ts-ignore DEBT
-        const computed = components[componentName](props)
+        const precompiledComponent = components[name](parsedAttributes)
 
-        path.get('openingElement').replaceWith(
-          t.jSXOpeningElement(
-            t.jsxIdentifier(computed.type),
-            // @ts-ignore DEBT
-            Object.keys(computed.props)
-              .map((prop) => {
-                const propValue = computed.props[prop]
-                if (
-                  typeof propValue === 'object' &&
-                  propValue !== null &&
-                  Object.keys(propValue).length === 0
-                ) {
-                  return null
-                }
+        path
+          .get('openingElement')
+          .replaceWith(
+            buildOpeningElement(precompiledComponent, openingElement.selfClosing, t),
+          )
 
-                return t.jSXAttribute(
-                  t.jSXIdentifier(prop),
-                  typeof propValue === 'string'
-                    ? t.stringLiteral(propValue)
-                    : t.jsxExpressionContainer(t.objectExpression([])),
-                )
-              })
-              .filter(Boolean),
-            selfClosing,
-          ),
-        )
-
-        if (!selfClosing) {
+        if (closingElement) {
           path
             .get('closingElement')
-            .replaceWith(t.jSXClosingElement(t.jsxIdentifier('div')))
+            .replaceWith(buildClosingElement(precompiledComponent.type, t))
         }
       },
     },
@@ -133,3 +95,7 @@ export default componentryPlugin
 // 5. Test usage like <Flex as={Wrapped} passThroughProps="special">
 // 6. Include logging with filename and why skipping precompile when doing it for debugging
 // 7. Test that spread attributes get skipped
+// 8. Pass through refs
+// 9. Pass through fns, eg onMouseEnter
+// 10. Handle strings, numbers, booleans, arrays, objects for attribute values
+// - Only try to parse library props, passthrough others

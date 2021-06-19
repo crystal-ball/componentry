@@ -32,6 +32,11 @@ pluginTester({
       outputFixture: '__fixtures__/complex-example/output.js',
     },
     {
+      title: 'transforms attributes with expression container values',
+      fixture: '__fixtures__/expression-containers/code.js',
+      outputFixture: '__fixtures__/expression-containers/output.js',
+    },
+    {
       title: 'skips transforming components with spread attributes',
       fixture: '__fixtures__/spread-attribute/code.js',
       outputFixture: '__fixtures__/spread-attribute/output.js',
