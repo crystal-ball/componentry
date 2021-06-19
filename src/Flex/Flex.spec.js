@@ -27,7 +27,7 @@ describe('<Flex />', () => {
     )
 
     expect(screen.getByText('Content')).toHaveClass(
-      '🅲-flex flex flex-column items-start flex-wrap justify-start',
+      '🅲-flex flex flex-col items-start flex-wrap justify-start',
     )
   })
 })

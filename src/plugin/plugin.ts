@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 import { Visitor } from '@babel/core'
 import * as BabelTypes from '@babel/types'
 
@@ -7,23 +8,46 @@ import { Text } from '../Text/Text'
 
 const components = { Block, Flex, Text }
 
+/**
+ * # Types Notes
+ *
+ * JSXOpeningElement can be a:
+ * 1. JSXIdentifier (eg List)
+ * 2. JSXMemberExpression (eg List.Item)
+ * 3. JSXNamespacedName (eg List:Item)
+ *
+ * JSXOpeningElement.attributes can contain:
+ * 1. JSXAttribute (eg <Flex radical="heck yeah">)
+ * 2. JSXSpreadAttribute (eg <Flex {...rest}>)
+ *
+ * JSXAttribute.name
+ * 1. JSXIdentifier (eg <Flex radical="heck yeah">)
+ * 2. JSXNamespacedName (eg <Flex name:spaced="attr">)
+ *
+ * JSXAttribute.value
+ * 1. StringLiteral (eg <Flex radical="heck yeah">)
+ * 2. JSXExpressionContainer (eg <Flex onRadical={() => {}}>)
+ * 3. null (eg <Flex radical>)
+ * 4. JSXElement (??? what)
+ * 5. JSXFragment (??? what)
+ */
+
+type Plugin = (options: { types: typeof BabelTypes }) => { visitor: Visitor }
+
+/**
+ * Componentry precompile Babel plugin
+ */
 const componentryPlugin: Plugin = ({ types: t }) => {
   return {
     visitor: {
-      JSXElement(path, state) {
+      JSXElement(path /* state */) {
         const { closingElement, openingElement } = path.node
-
         const { attributes, name: nameNode } = openingElement
-        // nameNode can be one of:
-        // 1. JSXIdentifier (eg List)
-        // 2. JSXMemberExpression (eg List.Item)
-        // 3. JSXNamespacedName (eg List:Item)
 
-        // We are only transforming usage like: <Flex>
+        // We are not transforming MemberExpression or Namespaced JSXElments
         if (!t.isJSXIdentifier(nameNode)) return
         // Bail early if this element isn't one of our precompile targets
-        // @ts-ignore DEBT
-        if (!components[nameNode.name]) return
+        if (!(nameNode.name in components)) return
 
         // ✓ Componentry compile component
         const componentName = nameNode.name
@@ -100,12 +124,6 @@ const componentryPlugin: Plugin = ({ types: t }) => {
 
 export default componentryPlugin
 
-type PluginOptions = {
-  types: typeof BabelTypes
-}
-
-type Plugin = (options: PluginOptions) => { visitor: Visitor }
-
 // Polishing:
 
 // 1. Document the flow: Precompile -> Components -> element creator -> replaceWith
@@ -115,27 +133,3 @@ type Plugin = (options: PluginOptions) => { visitor: Visitor }
 // 5. Test usage like <Flex as={Wrapped} passThroughProps="special">
 // 6. Include logging with filename and why skipping precompile when doing it for debugging
 // 7. Test that spread attributes get skipped
-
-/**
- * # Types Notes
- *
- * JSXOpeningElement can be a:
- * 1. JSXIdentifier (eg List)
- * 2. JSXMemberExpression (eg List.Item)
- * 3. JSXNamespacedName (eg List:Item)
- *
- * JSXOpeningElement.attributes can contain:
- * 1. JSXAttribute (eg <Flex radical="heck yeah">)
- * 2. JSXSpreadAttribute (eg <Flex {...rest}>)
- *
- * JSXAttribute.name
- * 1. JSXIdentifier (eg <Flex radical="heck yeah">)
- * 2. JSXNamespacedName (eg <Flex name:spaced="attr">)
- *
- * JSXAttribute.value
- * 1. StringLiteral (eg <Flex radical="heck yeah">)
- * 2. JSXExpressionContainer (eg <Flex onRadical={() => {}}>)
- * 3. null (eg <Flex radical>)
- * 4. JSXElement (??? what)
- * 5. JSXFragment (??? what)
- */

@@ -1,47 +1,48 @@
-const babel = require('@babel/core')
-const plugin = require('./plugin')
+/* global __filename */
+import pluginTester from 'babel-plugin-tester'
+import plugin from './plugin'
 
-describe('componentryPlugin()', () => {
-  it.todo('transforms jsx expression containers')
+// TODO:
+// transforms components with as props
+// transforms jsx expression containers
 
-  it('transforms components to HTML elements', () => {
-    const input = `
-function Demo() {
-  return (
-    <Flex direction="column" justify="center">
-      <Text variant="heading-1">Componentry</Text>
-      <Text>Precompile testing snapshot</Text>
-    </Flex>
-  )
-}
-`
+pluginTester({
+  plugin,
+  pluginName: 'componentry plugin',
+  babelOptions: {
+    presets: [
+      [
+        '@babel/preset-react',
+        {
+          runtime: 'automatic',
+          useBuiltIns: true,
+        },
+      ],
+    ],
+    plugins: [],
+  },
 
-    const transformed = babel.transformSync(input, {
-      filename: 'test.js',
-      presets: [['@babel/preset-react', { runtime: 'automatic' }]],
-      plugins: [plugin],
-    })
-
-    expect(transformed?.code).toMatchSnapshot()
-  })
-
-  it('does not transform components with spread parameters', () => {
-    const input = `
-    function Demo({ ...rest }) {
-      return (
-        <Flex {...rest}>
-          Spread Parameters
-        </Flex>
-      )
-    }
-    `
-
-    const transformed = babel.transformSync(input, {
-      filename: 'test.js',
-      presets: [['@babel/preset-react', { runtime: 'automatic' }]],
-      plugins: [plugin],
-    })
-
-    expect(transformed?.code).toMatchSnapshot()
-  })
+  // All fixture and outputFixture configs below are relative to this filename
+  filename: __filename,
+  // Array of tests format used to allow more descriptive test titles
+  tests: [
+    {
+      title: 'transforms display components',
+      fixture: '__fixtures__/complex-example/code.js',
+      outputFixture: '__fixtures__/complex-example/output.js',
+    },
+    {
+      title: 'skips transforming components with spread attributes',
+      fixture: '__fixtures__/spread-attribute/code.js',
+      outputFixture: '__fixtures__/spread-attribute/output.js',
+    },
+    {
+      title: 'only transforms display components',
+      fixture: '__fixtures__/ignores-components/code.js',
+      outputFixture: '__fixtures__/ignores-components/output.js',
+    },
+  ],
 })
+
+// Tester docs:
+// https://github.com/babel-utils/babel-plugin-tester

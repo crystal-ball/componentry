@@ -1,0 +1,5 @@
+# Plugin test output files
+**/output.js
+cjs
+esm
+esnext

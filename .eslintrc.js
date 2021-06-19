@@ -20,4 +20,15 @@ const configs = eloquence({
 // Package is allowed to access process.env
 configs.globals = { process: false }
 
+configs.overrides.push({
+  // Overrides for plugin test input code
+  files: ['src/plugin/**/code.js'],
+  rules: {
+    // Use modern React imports
+    'react/react-in-jsx-scope': 'off',
+    // Test imports don't need to be resolved
+    'import/no-unresolved': 'off',
+  },
+})
+
 module.exports = configs
