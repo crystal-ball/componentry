@@ -1,14 +1,17 @@
-import { Visitor } from '@babel/core'
-import * as BabelTypes from '@babel/types'
+/* eslint-disable no-console */
+import { PluginObj, types } from '@babel/core'
 
 import { Flex } from '../Flex/Flex'
 import { Block } from '../Block/Block'
 import { Text } from '../Text/Text'
+import { precompileProps, utilityProps } from '../utils/componentry'
 
 import { parseAttributes } from './parse-attributes'
 import { buildClosingElement, buildOpeningElement } from './build-elements'
 
 const components = { Block, Flex, Text }
+// These are the props that should be parsed to compute the component value
+const parseProps = { ...utilityProps, ...precompileProps }
 
 /**
  * # Types Notes
@@ -34,16 +37,21 @@ const components = { Block, Flex, Text }
  * 5. JSXFragment (??? what)
  */
 
-type Plugin = (options: { types: typeof BabelTypes }) => { visitor: Visitor }
+type PluginOpts = { debug?: boolean }
+type Types = typeof types
+type VisitorState = { opts: PluginOpts; filename: string }
+type BabelObj = { types: Types }
 
 /**
  * Componentry precompile Babel plugin
  */
-const componentryPlugin: Plugin = ({ types: t }) => {
+const componentryPlugin = ({ types: t }: BabelObj): PluginObj<VisitorState> => {
   return {
+    name: 'componentry-plugin',
     visitor: {
-      JSXElement(path) {
-        // Filename is available in: state.file.opts.filename
+      JSXElement(path, state) {
+        if (state.opts.debug) console.info(`--- Visiting: ${state.filename}`)
+
         const { closingElement, openingElement } = path.node
         const { attributes } = openingElement
 
@@ -57,7 +65,9 @@ const componentryPlugin: Plugin = ({ types: t }) => {
         // ✓ This is a Componentry precompile component, handle transforming
 
         const { parsedAttributes, parseSuccess } = parseAttributes(attributes, t, {
-          name,
+          componentName: name,
+          filename: state.filename,
+          parseProps,
         })
 
         // If we weren't able to successfully parse all of the node attributes bail early
@@ -88,6 +98,10 @@ export default componentryPlugin
 
 // Polishing:
 
+// - Pass through props that aren't library props, eg __self and __source
+//   Use a list of all utility props + precompile component props, skip parsing attr if not in list
+
+// - Add debug option for including `data-component="NAME"`
 // 1. Document the flow: Precompile -> Components -> element creator -> replaceWith
 // 2. Extract utility for: Converting node attributes to a props object
 // 3. Extract utility for: Converting create element return to a JSX element

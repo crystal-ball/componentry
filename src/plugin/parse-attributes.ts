@@ -6,40 +6,53 @@ type Attributes = Array<BabelTypes.JSXAttribute | BabelTypes.JSXSpreadAttribute>
 export function parseAttributes(
   attributes: Attributes,
   t: typeof BabelTypes,
-  { name }: { name: string },
+  {
+    filename,
+    componentName,
+    parseProps,
+  }: { filename: string; componentName: string; parseProps: Record<string, number> },
 ): {
   parsedAttributes: Record<string, unknown>
   parseSuccess: boolean
 } {
   let parseSuccess = true
+  const passThroughAttributes = []
   const parsedAttributes: Record<string, string | number | boolean> = {
     __precompile: true,
   }
 
   attributes.forEach((attribute) => {
+    // We can't tell what is in spread attributes, eg {...rest}, so bail if one is found
     if (t.isJSXSpreadAttribute(attribute)) {
       parseSuccess = false
       return
     }
 
-    const { name: attrName, value: attrValue } = attribute
+    const { name, value } = attribute
 
-    if (!t.isJSXIdentifier(attrName)) {
-      console.info('Component attribute name is namespaced: ', attrName)
+    if (!t.isJSXIdentifier(name)) {
+      console.info('Component attribute name is namespaced: ', name)
+      return
+    }
+
+    // If an attribute isn't one of the library props we can just pass it through, this is
+    // *required* for some React development plugins that add __source and __self attrs
+    if (!parseProps[name.name]) {
+      passThroughAttributes.push(attribute)
       return
     }
 
     let parsedValue: string | number | boolean | null = null
 
-    if (attrValue === null) {
+    if (value === null) {
       // 1. If attrValue is null, then attr is a truthy prop
       parsedValue = true
-    } else if (t.isStringLiteral(attrValue)) {
+    } else if (t.isStringLiteral(value)) {
       // 2. If attrValue is a string, then it's a string prop
-      parsedValue = attrValue.value
-    } else if (t.isJSXExpressionContainer(attrValue)) {
+      parsedValue = value.value
+    } else if (t.isJSXExpressionContainer(value)) {
       // 3. Otherwise it *should* be an expression container like: someProp={1}
-      const { expression } = attrValue
+      const { expression } = value
 
       if (t.isJSXEmptyExpression(expression)) {
         // 3a. An empty expression like someProp={} isn't valid syntax so this shouldn't hit
@@ -59,8 +72,9 @@ export function parseAttributes(
         parseSuccess = false
         console.info(
           'Attribute expression container could not be parsed: ',
-          name,
-          attrValue,
+          filename,
+          componentName,
+          value,
         )
       }
     } else {
@@ -71,11 +85,11 @@ export function parseAttributes(
       console.info(
         'Attribute value is not a string literal or expression container: ',
         name,
-        attrValue,
+        value,
       )
     }
 
-    if (parsedValue !== null) parsedAttributes[attrName.name] = parsedValue
+    if (parsedValue !== null) parsedAttributes[name.name] = parsedValue
   })
 
   return { parsedAttributes, parseSuccess }

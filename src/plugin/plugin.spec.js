@@ -46,6 +46,11 @@ pluginTester({
       fixture: '__fixtures__/ignores-components/code.js',
       outputFixture: '__fixtures__/ignores-components/output.js',
     },
+    {
+      title: 'passes through non-library props',
+      fixture: '__fixtures__/passthrough-props/code.js',
+      outputFixture: '__fixtures__/passthrough-props/output.js',
+    },
   ],
 })
 
