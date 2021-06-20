@@ -3,9 +3,11 @@ import template from '@babel/template';
 export function buildClosingElement(identifier, t) {
   return t.jSXClosingElement(t.jsxIdentifier(identifier));
 }
-export function buildOpeningElement(_ref, selfClosing, t) {
+export function buildOpeningElement(_ref, _ref2, t) {
   var props = _ref.props,
       type = _ref.type;
+  var selfClosing = _ref2.selfClosing,
+      passThroughAttributes = _ref2.passThroughAttributes;
   return t.jSXOpeningElement(t.jsxIdentifier(type), // @ts-ignore DEBT
   Object.keys(props).map(function (propName) {
     var propValue = props[propName]; // Filter out empty objects (Componentry will return an empty style object for every element)
@@ -14,7 +16,7 @@ export function buildOpeningElement(_ref, selfClosing, t) {
     return t.jsxAttribute(t.jSXIdentifier(propName), typeof propValue === 'string' ? t.stringLiteral(propValue) : // template.expression provides a convenient way to create an AST for
     // numbers, booleans, objects, and arrays
     t.jsxExpressionContainer(template.expression(JSON.stringify(propValue))()));
-  }).filter(Boolean), selfClosing);
+  }).filter(Boolean).concat(passThroughAttributes), selfClosing);
 }
 
 function isEmptyObject(maybe) {

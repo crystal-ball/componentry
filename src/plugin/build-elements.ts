@@ -10,7 +10,10 @@ export function buildClosingElement(
 
 export function buildOpeningElement(
   { props, type }: JSX.Element,
-  selfClosing: boolean,
+  {
+    selfClosing,
+    passThroughAttributes,
+  }: { selfClosing: boolean; passThroughAttributes: BabelTypes.JSXAttribute[] },
   t: typeof BabelTypes,
 ): BabelTypes.JSXOpeningElement {
   return t.jSXOpeningElement(
@@ -32,7 +35,8 @@ export function buildOpeningElement(
               t.jsxExpressionContainer(template.expression(JSON.stringify(propValue))()),
         )
       })
-      .filter(Boolean),
+      .filter(Boolean)
+      .concat(passThroughAttributes),
     selfClosing,
   )
 }

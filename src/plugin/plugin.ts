@@ -64,11 +64,15 @@ const componentryPlugin = ({ types: t }: BabelObj): PluginObj<VisitorState> => {
 
         // ✓ This is a Componentry precompile component, handle transforming
 
-        const { parsedAttributes, parseSuccess } = parseAttributes(attributes, t, {
-          componentName: name,
-          filename: state.filename,
-          parseProps,
-        })
+        const { parsedAttributes, parseSuccess, passThroughAttributes } = parseAttributes(
+          attributes,
+          t,
+          {
+            componentName: name,
+            filename: state.filename,
+            parseProps,
+          },
+        )
 
         // If we weren't able to successfully parse all of the node attributes bail early
         // TODO: Add debug and reporting for this
@@ -81,7 +85,11 @@ const componentryPlugin = ({ types: t }: BabelObj): PluginObj<VisitorState> => {
         path
           .get('openingElement')
           .replaceWith(
-            buildOpeningElement(precompiledComponent, openingElement.selfClosing, t),
+            buildOpeningElement(
+              precompiledComponent,
+              { selfClosing: openingElement.selfClosing, passThroughAttributes },
+              t,
+            ),
           )
 
         if (closingElement) {

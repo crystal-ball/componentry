@@ -1,3 +1,4 @@
+import _objectSpread from "@babel/runtime/helpers/esm/objectSpread2";
 import _slicedToArray from "@babel/runtime/helpers/esm/slicedToArray";
 import _objectWithoutProperties from "@babel/runtime/helpers/esm/objectWithoutProperties";
 import _defineProperty from "@babel/runtime/helpers/esm/defineProperty";
@@ -39,7 +40,22 @@ var stylesProps = {
   minHeight: 1
 }; // Generate set of margin (m*), and padding (p*) spacing props
 
-var spacingProps = {};
+var spacingProps = {
+  m: 1,
+  mt: 1,
+  mr: 1,
+  mb: 1,
+  ml: 1,
+  mx: 1,
+  my: 1,
+  p: 1,
+  pt: 1,
+  pr: 1,
+  pb: 1,
+  pl: 1,
+  px: 1,
+  py: 1
+};
 var spacingBase = {
   m: 'margin',
   p: 'padding'
@@ -52,12 +68,6 @@ var spacingModifier = {
   x: ['Left', 'Right'],
   y: ['Top', 'Bottom']
 };
-Object.keys(spacingBase).forEach(function (b) {
-  spacingProps[b] = 1;
-  Object.keys(spacingModifier).forEach(function (m) {
-    spacingProps[b + m] = 1;
-  });
-});
 var spacingRegex = new RegExp(/([bmp])([trblxy])?/);
 
 function generateClassNames(p) {
@@ -126,7 +136,7 @@ export function componentry(_ref2) {
       // 2. The prop maps to a utility className
       // @ts-ignore DEBT: not sure how to type
       classNames[prop] = filteredProps[prop];
-    } else if (spacingProps[prop]) {
+    } else if (prop in spacingProps) {
       // 3. The prop maps to a shorthand utility style/className
       // @ts-ignore DEBT: not sure how to type
       if (['xs', 'sm', 'md', 'lg', 'xl'].includes(filteredProps[prop])) {
@@ -164,3 +174,17 @@ export function componentry(_ref2) {
     utilityCx: [generateClassNames(classNames), spacingCx]
   };
 }
+export var precompileProps = {
+  inline: 1,
+  variant: 1,
+  // --- Flex
+  align: 1,
+  direction: 1,
+  justify: 1,
+  wrap: 1,
+  // --- Text
+  bold: 1,
+  color: 1,
+  italic: 1
+};
+export var utilityProps = _objectSpread(_objectSpread(_objectSpread({}, classNamesProps), stylesProps), spacingProps);

@@ -14,9 +14,10 @@ export function parseAttributes(
 ): {
   parsedAttributes: Record<string, unknown>
   parseSuccess: boolean
+  passThroughAttributes: BabelTypes.JSXAttribute[]
 } {
   let parseSuccess = true
-  const passThroughAttributes = []
+  const passThroughAttributes: BabelTypes.JSXAttribute[] = []
   const parsedAttributes: Record<string, string | number | boolean> = {
     __precompile: true,
   }
@@ -92,5 +93,5 @@ export function parseAttributes(
     if (parsedValue !== null) parsedAttributes[name.name] = parsedValue
   })
 
-  return { parsedAttributes, parseSuccess }
+  return { parsedAttributes, parseSuccess, passThroughAttributes }
 }

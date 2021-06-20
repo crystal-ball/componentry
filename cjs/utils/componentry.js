@@ -6,6 +6,9 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 exports.componentry = componentry;
+exports.utilityProps = exports.precompileProps = void 0;
+
+var _objectSpread2 = _interopRequireDefault(require("@babel/runtime/helpers/objectSpread2"));
 
 var _slicedToArray2 = _interopRequireDefault(require("@babel/runtime/helpers/slicedToArray"));
 
@@ -51,7 +54,22 @@ var stylesProps = {
   minHeight: 1
 }; // Generate set of margin (m*), and padding (p*) spacing props
 
-var spacingProps = {};
+var spacingProps = {
+  m: 1,
+  mt: 1,
+  mr: 1,
+  mb: 1,
+  ml: 1,
+  mx: 1,
+  my: 1,
+  p: 1,
+  pt: 1,
+  pr: 1,
+  pb: 1,
+  pl: 1,
+  px: 1,
+  py: 1
+};
 var spacingBase = {
   m: 'margin',
   p: 'padding'
@@ -64,12 +82,6 @@ var spacingModifier = {
   x: ['Left', 'Right'],
   y: ['Top', 'Bottom']
 };
-Object.keys(spacingBase).forEach(function (b) {
-  spacingProps[b] = 1;
-  Object.keys(spacingModifier).forEach(function (m) {
-    spacingProps[b + m] = 1;
-  });
-});
 var spacingRegex = new RegExp(/([bmp])([trblxy])?/);
 
 function generateClassNames(p) {
@@ -137,7 +149,7 @@ function componentry(_ref2) {
       // 2. The prop maps to a utility className
       // @ts-ignore DEBT: not sure how to type
       classNames[prop] = filteredProps[prop];
-    } else if (spacingProps[prop]) {
+    } else if (prop in spacingProps) {
       // 3. The prop maps to a shorthand utility style/className
       // @ts-ignore DEBT: not sure how to type
       if (['xs', 'sm', 'md', 'lg', 'xl'].includes(filteredProps[prop])) {
@@ -175,3 +187,20 @@ function componentry(_ref2) {
     utilityCx: [generateClassNames(classNames), spacingCx]
   };
 }
+
+var precompileProps = {
+  inline: 1,
+  variant: 1,
+  // --- Flex
+  align: 1,
+  direction: 1,
+  justify: 1,
+  wrap: 1,
+  // --- Text
+  bold: 1,
+  color: 1,
+  italic: 1
+};
+exports.precompileProps = precompileProps;
+var utilityProps = (0, _objectSpread2["default"])((0, _objectSpread2["default"])((0, _objectSpread2["default"])({}, classNamesProps), stylesProps), spacingProps);
+exports.utilityProps = utilityProps;

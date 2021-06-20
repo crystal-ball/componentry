@@ -1,5 +1,4 @@
-import { Visitor } from '@babel/core';
-import * as BabelTypes from '@babel/types';
+import { PluginObj, types } from '@babel/core';
 /**
  * # Types Notes
  *
@@ -23,13 +22,19 @@ import * as BabelTypes from '@babel/types';
  * 4. JSXElement (??? what)
  * 5. JSXFragment (??? what)
  */
-declare type Plugin = (options: {
-    types: typeof BabelTypes;
-}) => {
-    visitor: Visitor;
+declare type PluginOpts = {
+    debug?: boolean;
+};
+declare type Types = typeof types;
+declare type VisitorState = {
+    opts: PluginOpts;
+    filename: string;
+};
+declare type BabelObj = {
+    types: Types;
 };
 /**
  * Componentry precompile Babel plugin
  */
-declare const componentryPlugin: Plugin;
+declare const componentryPlugin: ({ types: t }: BabelObj) => PluginObj<VisitorState>;
 export default componentryPlugin;
