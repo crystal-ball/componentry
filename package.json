@@ -1,6 +1,6 @@
 {
-  "name": "componentry",
-  "version": "2.5.0",
+  "name": "componentry-v2",
+  "version": "2.6.0",
   "description": "React Componentry",
   "sideEffects": false,
   "main": "dist/componentry.js",
@@ -43,8 +43,8 @@
     "lint": "NODE_ENV=test eslint src demo",
     "documentation": "NODE_ENV=production webpack --env=production",
     "clean": "rm -rf dist es esnext build",
-    "js:esnext": "BABEL_ENV=esnext babel src --out-dir esnext",
-    "js:esmodules": "BABEL_ENV=production babel src --out-dir es",
+    "js:esnext": "BABEL_ENV=esnext babel src --out-dir esnext --ignore '**/*.spec.js'",
+    "js:esmodules": "BABEL_ENV=production babel src --out-dir es --ignore '**/*.spec.js'",
     "js:amdmodule": "NODE_ENV=production webpack --config webpack.config.umd.js",
     "bootstrap:copy": "cp -a ./node_modules/bootstrap/scss/* ./styles/bootstrap",
     "styles:copy": "cp -r styles/* dist"
@@ -56,7 +56,8 @@
   "dependencies": {
     "@babel/runtime": "7",
     "classnames": "2",
-    "nanoid": "3"
+    "nanoid": "3",
+    "webpack": "5.41.0"
   },
   "devDependencies": {
     "@babel/cli": "~7.8.4",
@@ -67,7 +68,6 @@
     "@babel/plugin-transform-runtime": "7.9.0",
     "@babel/preset-env": "7.9.5",
     "@babel/preset-react": "7.9.4",
-    "@inspirescript/webpack-configs": "3.2.0",
     "babel-loader": "^8.1.0",
     "bootstrap": "^4.1.1",
     "commitizen": "^2.10.1",
@@ -89,7 +89,8 @@
     "react-hot-loader": "^4.2.0",
     "react-router-dom": "^5.1.2",
     "react-test-renderer": "^16.4.0",
-    "semantic-release": "^15.5.0"
+    "semantic-release": "^15.5.0",
+    "webpack-cli": "4.7.2"
   },
   "config": {
     "commitizen": {

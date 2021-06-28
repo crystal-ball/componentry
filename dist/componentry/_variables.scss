@@ -1,0 +1,17 @@
+// ℹ️ Any variables used in the Componentry library that are not Bootstrap variables
+// are declared here. Note that additional variables should only be created to allow
+// for additional customization not provided in the Bs library.
+
+// ⚠️ These variables should be overrideable, so they should all use !default
+
+// This margin-bottom adjustment is added to every font icon to account for svg vs
+// font baseline differences
+$icon-bottom: -0.14em !default;
+
+// When true this will include background-image rules for the close and chevron
+// icons, if you have an SVG system set-up this should be false to use real SVGs
+$include-icons: true !default;
+
+// Dropdown enhancements for dropdown link triggers
+$dropdown-trigger-border-color: $link-color !default;
+$dropdown-trigger-hover-border-color: $link-hover-color !default;

@@ -1,0 +1,42 @@
+import _defineProperty from "@babel/runtime/helpers/defineProperty";
+import { Component } from 'react';
+import { number, shape } from 'prop-types';
+/**
+ * The `<ThemeProvider>` is a shorthand for setting context values that can be used
+ * for changing the default configuration values used by Componentry components.
+ * The passed theme configurations are namespaced to prevent collisions.
+ *
+ * See the theme propTypes for available configurations.
+ *
+ * Note that we don't actually set any context here for default, b/c using the
+ * ThemeProvider is entirely optional. Any theme defaults need to be handled by
+ * the component (or /utils/theme when components). This way when a user doesn't
+ * use the ThemeProvider there is still defaults.
+ * @export
+ * @class ThemeProvider
+ * @extends {Component}
+ */
+
+export default class ThemeProvider extends Component {
+  /**
+   * Return a library namespace for theme configurations to prevent name collisions
+   */
+  getChildContext() {
+    return {
+      THEME: { ...this.props.theme
+      }
+    };
+  }
+
+  render() {
+    return this.props.children;
+  }
+
+}
+
+_defineProperty(ThemeProvider, "childContextTypes", {
+  THEME: shape({
+    transitionDuration: number // Component configurations not declared, explicit declaration not necessary
+
+  })
+});
