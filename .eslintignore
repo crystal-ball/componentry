@@ -1,5 +1,7 @@
-# Plugin test output files
-**/output.js
+# Plugin test fixtures
+src/plugin/__fixtures__
+
+# Publish assets
 cjs
 esm
 esnext

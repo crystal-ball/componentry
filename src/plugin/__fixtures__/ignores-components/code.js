@@ -1,10 +1,12 @@
-import { Flex, Input, Text } from 'componentry'
+import { Button, Flex, Input } from 'componentry'
 
-export default function Demo() {
+export default function Test() {
+  // Test that:
+  // 1. Components that aren't precompile components are ignored
   return (
-    <Flex direction='column' justify='center'>
-      <Text variant='heading-1'>Componentry</Text>
+    <Flex>
       <Input value='not compiled' />
+      <Button>Not compiled</Button>
     </Flex>
   )
 }

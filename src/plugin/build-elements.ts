@@ -1,21 +1,21 @@
 import template from '@babel/template'
-import * as BabelTypes from '@babel/types'
+import * as t from '@babel/types'
 
-export function buildClosingElement(
-  identifier: string,
-  t: typeof BabelTypes,
-): BabelTypes.JSXClosingElement {
+/**
+ * Builds the JSXClosingElement for precompiled component
+ */
+export function buildClosingElement(identifier: string): t.JSXClosingElement {
   return t.jSXClosingElement(t.jsxIdentifier(identifier))
 }
 
+/**
+ * Builds the JSXOpeningElement for precompiled component
+ */
 export function buildOpeningElement(
   { props, type }: JSX.Element,
-  {
-    selfClosing,
-    passThroughAttributes,
-  }: { selfClosing: boolean; passThroughAttributes: BabelTypes.JSXAttribute[] },
-  t: typeof BabelTypes,
-): BabelTypes.JSXOpeningElement {
+  passThroughAttributes: t.JSXAttribute[],
+  { selfClosing }: { selfClosing: boolean },
+): t.JSXOpeningElement {
   return t.jSXOpeningElement(
     t.jsxIdentifier(type),
     // @ts-ignore DEBT
