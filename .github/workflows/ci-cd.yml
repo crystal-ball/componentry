@@ -43,7 +43,7 @@ jobs:
           GIT_BRANCH: ${{ github.head_ref }}
       - name: Codecov report
         if: success()
-        uses: codecov/codecov-action@v1
+        uses: codecov/codecov-action@v2
 # --- Package publishing 🚀
 # publish:
 #   name: Continuous Deployment
