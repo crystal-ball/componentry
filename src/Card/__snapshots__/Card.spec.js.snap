@@ -3,6 +3,7 @@
 exports[`<Card /> snapshots renders correctly 1`] = `
 <div
   class="🅲-card"
+  data-testid="card"
 >
   <div
     class="🅲-card-header"

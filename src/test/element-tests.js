@@ -1,8 +1,7 @@
-/* eslint-env jest */
 import React from 'react'
 import { render, screen } from '@testing-library/react'
 
-import { Theme } from '../src/Theme/Theme'
+import { Theme } from '../Theme/Theme'
 
 /**
  * Library default component requirment test suite.

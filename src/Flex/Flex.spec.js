@@ -1,7 +1,7 @@
 import React from 'react'
 import { render, screen } from '@testing-library/react'
 
-import { elementTests } from '../../test/element-tests'
+import { elementTests } from '../test/element-tests'
 import { Flex } from './Flex'
 
 describe('<Flex />', () => {
@@ -36,13 +36,8 @@ describe('<Flex />', () => {
 // ---------------------------------------------------------------------------
 describe('<Flex /> snapshots', () => {
   it('renders correctly', () => {
-    const { container } = render(
-      <div>
-        <Flex>Flex content</Flex>
-        <Flex inline>Inline flex content</Flex>
-      </div>,
-    )
+    render(<Flex data-testid='flex'>Flex content</Flex>)
 
-    expect(container.firstChild).toMatchSnapshot()
+    expect(screen.getByTestId('flex')).toMatchSnapshot()
   })
 })

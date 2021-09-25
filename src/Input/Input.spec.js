@@ -1,7 +1,7 @@
 import React from 'react'
-import { render } from '@testing-library/react'
+import { render, screen } from '@testing-library/react'
 
-import { elementTests } from '../../test/element-tests'
+import { elementTests } from '../test/element-tests'
 import { Input } from './Input'
 
 describe('<Input />', () => {
@@ -17,8 +17,8 @@ describe('<Input />', () => {
 // ---------------------------------------------------------------------------
 describe('<Input /> snapshots', () => {
   it('renders correctly', () => {
-    const { container } = render(
-      <div>
+    render(
+      <div data-testid='input'>
         <Input>
           <Input.Label>Storybook</Input.Label>
           <Input.Field />
@@ -28,6 +28,6 @@ describe('<Input /> snapshots', () => {
       </div>,
     )
 
-    expect(container.firstChild).toMatchSnapshot()
+    expect(screen.getByTestId('input')).toMatchSnapshot()
   })
 })

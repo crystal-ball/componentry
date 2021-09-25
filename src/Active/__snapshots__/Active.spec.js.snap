@@ -4,6 +4,7 @@ exports[`<Active /> snapshots renders correctly 1`] = `
 <div
   class="🅲-active"
   data-id="test-guid"
+  data-testid="active"
 >
   <button
     aria-controls="test-guid"

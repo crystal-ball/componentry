@@ -4,6 +4,7 @@ exports[`<Close /> snapshots renders correctly 1`] = `
 <button
   aria-label="close"
   class="🅲-close"
+  data-testid="close"
   type="button"
 >
   <svg

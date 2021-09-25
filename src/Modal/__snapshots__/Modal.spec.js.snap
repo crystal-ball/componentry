@@ -5,6 +5,7 @@ exports[`<Close /> snapshots renders correctly 1`] = `
   aria-hidden="false"
   aria-labelledby="test-guid"
   class="🅲-modal-overlay fade modal-overlay-scroll"
+  data-testid="modal"
   role="presentation"
   tabindex="-1"
 >

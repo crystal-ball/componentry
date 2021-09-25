@@ -18,9 +18,10 @@ module.exports = {
     'src/**/*.{ts,tsx}',
     '!**/*.stories.js',
     '!src/storybook/**',
+    '!src/test/**',
     '!src/{Media,Modal,Theme}/stories/**',
   ],
 
   // Pre/Post test framework setup configs
-  setupFilesAfterEnv: ['<rootDir>/test/jest-after-env-setup.js'],
+  setupFilesAfterEnv: ['<rootDir>/src/test/jest-after-env-setup.js'],
 }

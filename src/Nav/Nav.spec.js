@@ -1,7 +1,7 @@
 import React from 'react'
 import { render, screen } from '@testing-library/react'
 
-import { elementTests } from '../../test/element-tests'
+import { elementTests } from '../test/element-tests'
 import { Nav } from './Nav'
 
 describe('<Nav />', () => {
@@ -48,8 +48,8 @@ describe('<Nav.Item />', () => {
 // ---------------------------------------------------------------------------
 describe('<Nav /> snapshots', () => {
   it('renders correctly', () => {
-    const { container } = render(
-      <Nav>
+    render(
+      <Nav data-testid='nav'>
         <Nav.Item href='#' active>
           Active
         </Nav.Item>
@@ -61,6 +61,6 @@ describe('<Nav /> snapshots', () => {
       </Nav>,
     )
 
-    expect(container.firstChild).toMatchSnapshot()
+    expect(screen.getByTestId('nav')).toMatchSnapshot()
   })
 })

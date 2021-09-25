@@ -3,5 +3,6 @@
 exports[`<FormGroup /> snapshots renders correctly 1`] = `
 <div
   class="🅲-form-group"
+  data-testid="formgroup"
 />
 `;

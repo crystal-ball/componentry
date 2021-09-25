@@ -1,8 +1,8 @@
 import React from 'react'
-import { render } from '@testing-library/react'
+import { render, screen } from '@testing-library/react'
 
-import { activationTests } from '../../test/activation-tests'
-import { elementTests } from '../../test/element-tests'
+import { activationTests } from '../test/activation-tests'
+import { elementTests } from '../test/element-tests'
 import { Drawer } from './Drawer'
 
 describe('<Drawer />', () => {
@@ -17,13 +17,13 @@ describe('<Drawer />', () => {
 // ---------------------------------------------------------------------------
 describe('<Drawer /> snapshots', () => {
   it('renders correctly', () => {
-    const { container } = render(
-      <Drawer>
+    render(
+      <Drawer data-testid='drawer'>
         <Drawer.Action>Action</Drawer.Action>
         <Drawer.Content>Content</Drawer.Content>
       </Drawer>,
     )
 
-    expect(container.firstChild).toMatchSnapshot()
+    expect(screen.getByTestId('drawer')).toMatchSnapshot()
   })
 })

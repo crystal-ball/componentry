@@ -4,6 +4,7 @@ exports[`<Dropdown /> snapshots renders correctly 1`] = `
 <div
   class="🅲-dropdown bottom"
   data-id="test-guid"
+  data-testid="dropdown"
 >
   <button
     aria-expanded="false"

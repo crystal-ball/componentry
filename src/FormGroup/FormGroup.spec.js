@@ -1,7 +1,7 @@
 import React from 'react'
-import { render } from '@testing-library/react'
+import { render, screen } from '@testing-library/react'
 
-import { elementTests } from '../../test/element-tests'
+import { elementTests } from '../test/element-tests'
 import { FormGroup } from './FormGroup'
 
 describe('<FormGroup />', () => {
@@ -13,8 +13,8 @@ describe('<FormGroup />', () => {
 // ---------------------------------------------------------------------------
 describe('<FormGroup /> snapshots', () => {
   it('renders correctly', () => {
-    const { container } = render(<FormGroup />)
+    render(<FormGroup data-testid='formgroup' />)
 
-    expect(container.firstChild).toMatchSnapshot()
+    expect(screen.getByTestId('formgroup')).toMatchSnapshot()
   })
 })

@@ -1,7 +1,7 @@
 import React from 'react'
-import { render } from '@testing-library/react'
+import { render, screen } from '@testing-library/react'
 
-import { elementTests } from '../../test/element-tests'
+import { elementTests } from '../test/element-tests'
 import { Card } from './Card'
 
 describe('<Card />', () => {
@@ -13,9 +13,9 @@ describe('<Card />', () => {
   elementTests(Card.Footer)
 
   it('should render a container div with class card by default', () => {
-    const { container } = render(<Card />)
+    render(<Card data-testid='card' />)
 
-    expect(container.firstChild).toHaveClass('🅲-card')
+    expect(screen.getByTestId('card')).toHaveClass('🅲-card')
   })
 })
 
@@ -23,8 +23,8 @@ describe('<Card />', () => {
 // ---------------------------------------------------------------------------
 describe('<Card /> snapshots', () => {
   it('renders correctly', () => {
-    const { container } = render(
-      <Card>
+    render(
+      <Card data-testid='card'>
         <Card.Header>Header</Card.Header>
         <Card.Body>
           <Card.Title>Title</Card.Title>
@@ -34,6 +34,6 @@ describe('<Card /> snapshots', () => {
       </Card>,
     )
 
-    expect(container.firstChild).toMatchSnapshot()
+    expect(screen.getByTestId('card')).toMatchSnapshot()
   })
 })

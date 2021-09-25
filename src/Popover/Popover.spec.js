@@ -1,8 +1,8 @@
 import React from 'react'
 import { render, screen } from '@testing-library/react'
 
-import { activationTests } from '../../test/activation-tests'
-import { elementTests } from '../../test/element-tests'
+import { activationTests } from '../test/activation-tests'
+import { elementTests } from '../test/element-tests'
 import { Popover } from './Popover'
 
 describe('<Popover />', () => {
@@ -31,8 +31,8 @@ describe('<Popover />', () => {
 // ---------------------------------------------------------------------------
 describe('<Popover /> snapshots', () => {
   it('renders correctly', () => {
-    const { container } = render(
-      <Popover>
+    render(
+      <Popover data-testid='popover'>
         <Popover.Action>Toggle</Popover.Action>
         <Popover.Content>
           <Popover.Heading>Fun Fact!</Popover.Heading>
@@ -47,6 +47,6 @@ describe('<Popover /> snapshots', () => {
       </Popover>,
     )
 
-    expect(container.firstChild).toMatchSnapshot()
+    expect(screen.getByTestId('popover')).toMatchSnapshot()
   })
 })

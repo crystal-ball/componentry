@@ -24,11 +24,9 @@ const classNamesProps = {
   visible: 1,
 }
 
-type UtilityProps = Partial<
-  {
-    [prop in keyof typeof classNamesProps]: string | boolean
-  }
->
+type UtilityProps = Partial<{
+  [prop in keyof typeof classNamesProps]: string | boolean
+}>
 
 const stylesProps: Partial<Record<keyof React.CSSProperties, 1>> = {
   fontSize: 1,

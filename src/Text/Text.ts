@@ -47,7 +47,7 @@ export const Text: React.FC<Props> = (props) => {
     bold,
     color,
     inline,
-    elementsMap = {},
+    elementsMap = defaultElementsMap,
     ...rest
   } = {
     ...useTheme<Props & { elementsMap?: ElementsMap }>('Text'),
@@ -55,7 +55,7 @@ export const Text: React.FC<Props> = (props) => {
   }
 
   return element('Text', {
-    as: inline ? 'span' : elementsMap[variant] || defaultElementsMap[variant] || 'p',
+    as: inline ? 'span' : elementsMap[variant],
     componentCx: {
       [`${variant}-variant`]: !inline,
     },

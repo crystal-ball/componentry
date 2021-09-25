@@ -1,7 +1,7 @@
 import React from 'react'
 import { render, screen } from '@testing-library/react'
 
-import { elementTests } from '../../test/element-tests'
+import { elementTests } from '../test/element-tests'
 import { Button } from './Button'
 
 describe('<Button/>', () => {
@@ -16,26 +16,26 @@ describe('<Button/>', () => {
   // 8. Test passing disabled
 
   it('When no props are passed, then defaults should be rendered', () => {
-    const { container } = render(<Button>Button</Button>)
+    render(<Button>Button</Button>)
 
     // By default the button should have type button for a11y
-    expect(container).toContainElement(document.querySelector('button[type="button"]'))
+    expect(screen.getByRole('button')).toHaveAttribute('type', 'button')
     // By default the variant primary
-    expect(screen.getByText('Button')).toHaveClass('🅲-button button-primary')
+    expect(screen.getByRole('button')).toHaveClass('🅲-button button-primary')
     // TODO: Is it possible to get the classes from the element and just check that?
     // ...there shouldn't be any other classes
   })
 
-  it('When `type` is passed, then it override the default', () => {
-    const { container } = render(<Button type='reset'>Button</Button>)
+  it('When `type` is passed, then it overrides the default', () => {
+    render(<Button type='reset'>Button</Button>)
 
-    expect(container).toContainElement(document.querySelector('button[type="reset"]'))
+    expect(screen.getByRole('button')).toHaveAttribute('type', 'reset')
   })
 
   it('When `variant` is passed, then it should be used as base className value', () => {
     render(<Button variant='demo'>Button</Button>)
 
-    expect(screen.getByText('Button')).toHaveClass('🅲-button button-demo')
+    expect(screen.getByRole('button')).toHaveClass('🅲-button button-demo')
   })
 
   it('When `color` is passed, then the color className should render', () => {
@@ -48,10 +48,10 @@ describe('<Button/>', () => {
       </>,
     )
 
-    expect(screen.getByText('Button')).toHaveClass(
+    expect(screen.getByRole('button', { name: 'Button' })).toHaveClass(
       '🅲-button button-primary button-color-info',
     )
-    expect(screen.getByText('Variant Button')).toHaveClass(
+    expect(screen.getByRole('button', { name: 'Variant Button' })).toHaveClass(
       '🅲-button button-demo button-color-info',
     )
   })
@@ -66,8 +66,10 @@ describe('<Button/>', () => {
       </>,
     )
 
-    expect(screen.getByText('Button')).toHaveClass('🅲-button button-primary button-sm')
-    expect(screen.getByText('Variant Button')).toHaveClass(
+    expect(screen.getByRole('button', { name: 'Button' })).toHaveClass(
+      '🅲-button button-primary button-sm',
+    )
+    expect(screen.getByRole('button', { name: 'Variant Button' })).toHaveClass(
       '🅲-button button-demo button-sm',
     )
   })
@@ -77,20 +79,20 @@ describe('<Button/>', () => {
 // ---------------------------------------------------------------------------
 describe('<Button /> Snapshots', () => {
   it('renders defaults correctly', () => {
-    const { container } = render(<Button>Componentry</Button>)
+    render(<Button>Componentry</Button>)
 
-    expect(container.firstChild).toMatchSnapshot()
+    expect(screen.getByRole('button')).toMatchSnapshot()
   })
 
   it('renders brand color correctly', () => {
-    const { container } = render(<Button color='success'>Componentry</Button>)
+    render(<Button color='success'>Componentry</Button>)
 
-    expect(container.firstChild).toMatchSnapshot()
+    expect(screen.getByRole('button')).toMatchSnapshot()
   })
 
   it('renders large outline correctly', () => {
-    const { container } = render(<Button size='lg'>Componentry</Button>)
+    render(<Button size='lg'>Componentry</Button>)
 
-    expect(container.firstChild).toMatchSnapshot()
+    expect(screen.getByRole('button')).toMatchSnapshot()
   })
 })

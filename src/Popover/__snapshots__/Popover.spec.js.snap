@@ -4,6 +4,7 @@ exports[`<Popover /> snapshots renders correctly 1`] = `
 <div
   class="🅲-popover right"
   data-id="test-guid"
+  data-testid="popover"
 >
   <button
     aria-describedby="test-guid"

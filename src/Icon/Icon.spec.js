@@ -1,7 +1,7 @@
 import React from 'react'
-import { render } from '@testing-library/react'
+import { render, screen } from '@testing-library/react'
 
-import { elementTests } from '../../test/element-tests'
+import { elementTests } from '../test/element-tests'
 import { Icon } from './Icon'
 
 describe('<Icon />', () => {
@@ -12,8 +12,8 @@ describe('<Icon />', () => {
 // ---------------------------------------------------------------------------
 describe('<Icon /> snapshots', () => {
   it('renders correctly', () => {
-    const { container } = render(<Icon id='test' />)
+    render(<Icon id='test' data-testid='icon' />)
 
-    expect(container.firstChild).toMatchSnapshot()
+    expect(screen.getByTestId('icon')).toMatchSnapshot()
   })
 })
