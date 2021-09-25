@@ -11,7 +11,18 @@
 <!--
 ## Unreleased items
 
-- ...
+...release focuses on the library, leveraging community resources for utility
+styles instead of having them as a library responsibility.
+
+### NEW
+
+Precompile!
+
+### BREAKING
+
+- All utility styles are removed, Tailwind use encouraged/required
+- Component utility classNames have been updated to match Tailwind
+
 -->
 
 ## [3.4.1](https://github.com/crystal-ball/componentry/compare/v3.4.0...v3.4.1) (2020-05-28)

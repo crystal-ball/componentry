@@ -6,7 +6,7 @@ module.exports = {
   },
   stories: ['../src/**/*.stories.@(js|mdx)'],
   addons: ['@storybook/addon-essentials', '@storybook/addon-links'],
-  webpackFinal: async (config, { configType }) => {
+  webpackFinal: async (config) => {
     // `configType` has a value of 'DEVELOPMENT' or 'PRODUCTION'
     // You can change the configuration based on that.
     // 'PRODUCTION' is used when building the static version of storybook.

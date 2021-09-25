@@ -12,7 +12,10 @@ export interface BlockProps extends ComponentBaseProps<'div'> {
  * [Block component 📝](https://componentry.design/components/block)
  */
 export const Block: React.FC<BlockProps> = (props) => {
-  const { inline, ...rest } = { ...useTheme<BlockProps>('Block'), ...props }
+  const { inline, ...rest } = {
+    ...useTheme<BlockProps>('Block', props.__precompile),
+    ...props,
+  }
 
   return element('Block', {
     componentCx: {

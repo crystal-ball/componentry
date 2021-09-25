@@ -12,26 +12,30 @@ describe('useTheme()', () => {
   it('should return the entire theme object when no component name is passed', () => {
     const { result } = renderHook(() => useTheme(), {
       wrapper: ({ children }) => {
-        return <Theme theme={{ Button: {} }}>{children}</Theme>
+        return <Theme theme={{ Button: { variant: 'primary' } }}>{children}</Theme>
       },
     })
 
-    expect(result.current).toStrictEqual({ Button: {} })
+    expect(result.current).toStrictEqual({ Button: { variant: 'primary' } })
   })
 
-  it('should return an empty object when no provider is provided', () => {
-    const { result } = renderHook(() => useTheme('Flex'))
-
-    expect(result.current).toStrictEqual({})
-  })
-
-  it('should return an empty object when no theme value is passed', () => {
+  it('should return an empty object when no theme value is present for component', () => {
     const { result } = renderHook(() => useTheme('Flex'), {
       wrapper: ({ children }) => {
-        return <Theme theme={{ Button: {} }}>{children}</Theme>
+        return <Theme theme={{ Button: { variant: 'primary' } }}>{children}</Theme>
       },
     })
 
     expect(result.current).toStrictEqual({})
+  })
+
+  it('should return the theme value if present for component', () => {
+    const { result } = renderHook(() => useTheme('Button'), {
+      wrapper: ({ children }) => {
+        return <Theme theme={{ Button: { variant: 'primary' } }}>{children}</Theme>
+      },
+    })
+
+    expect(result.current).toStrictEqual({ variant: 'primary' })
   })
 })

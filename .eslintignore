@@ -1,0 +1,2 @@
+# Ignore plugin test fixtures, they're not lintable
+src/plugin/__fixtures__
