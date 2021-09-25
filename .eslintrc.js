@@ -27,5 +27,13 @@ module.exports = {
         'import/no-unresolved': 'off',
       },
     },
+    {
+      files: ['.babelrc.js'],
+      parserOptions: {
+        sourceType: 'script',
+      },
+
+      env: { node: true },
+    },
   ],
 }

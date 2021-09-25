@@ -1,7 +1,2 @@
-# Plugin test fixtures
+# Ignore plugin test fixtures, they're not lintable
 src/plugin/__fixtures__
-
-# Publish assets
-cjs
-esm
-esnext

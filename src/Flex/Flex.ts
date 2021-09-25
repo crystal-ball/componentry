@@ -32,7 +32,6 @@ export const Flex: React.FC<FlexProps> = (props) => {
     componentCx: {
       'flex': !inline,
       'inline-flex': inline,
-
       [`flex-${computedDirection}`]: computedDirection,
       [`flex-${wrap}`]: wrap,
     },

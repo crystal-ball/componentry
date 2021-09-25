@@ -11,17 +11,17 @@
 <!--
 ## Unreleased items
 
-Focus on the library, use community resources for utilities.
+...release focuses on the library, leveraging community resources for utility
+styles instead of having them as a library responsibility.
 
-NEW
+### NEW
 
 Precompile!
 
-BREAKING
+### BREAKING
 
-- Remove all utility styles, you gotta use Tailwind
-- Component styles for only Button, Link, Icon, and Text
-- Utility classNames updated to match Tailwind
+- All utility styles are removed, Tailwind use encouraged/required
+- Component utility classNames have been updated to match Tailwind
 
 -->
 

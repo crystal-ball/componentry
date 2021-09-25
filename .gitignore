@@ -11,10 +11,10 @@ node_modules
 
 # Published
 # -------------------------------------
-#cjs
-#esm
-#esnext
-#types
+cjs
+esm
+esnext
+types
 
 # Documentation
 # -------------------------------------
