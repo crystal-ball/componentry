@@ -1,8 +1,8 @@
 import React from 'react'
-import { render } from '@testing-library/react'
+import { render, screen } from '@testing-library/react'
 
-import { activationTests } from '../../test/activation-tests'
-import { elementTests } from '../../test/element-tests'
+import { activationTests } from '../test/activation-tests'
+import { elementTests } from '../test/element-tests'
 import { Tooltip } from './Tooltip'
 
 describe('<Tooltip />', () => {
@@ -18,13 +18,13 @@ describe('<Tooltip />', () => {
 // ---------------------------------------------------------------------------
 describe('<Tooltip /> snapshots', () => {
   it('renders correctly', () => {
-    const { container } = render(
-      <Tooltip>
+    render(
+      <Tooltip data-testid='tooltip'>
         <Tooltip.Action>Action</Tooltip.Action>
         <Tooltip.Content>Content</Tooltip.Content>
       </Tooltip>,
     )
 
-    expect(container.firstChild).toMatchSnapshot()
+    expect(screen.getByTestId('tooltip')).toMatchSnapshot()
   })
 })

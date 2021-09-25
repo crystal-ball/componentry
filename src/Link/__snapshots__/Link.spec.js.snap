@@ -3,6 +3,7 @@
 exports[`<Link /> snapshots renders correctly 1`] = `
 <a
   class="🅲-link link-primary"
+  data-testid="link"
   href="#test"
 >
   Link

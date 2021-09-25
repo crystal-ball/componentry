@@ -1,16 +1,10 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`<Badge /> snapshots renders correctly 1`] = `
-<div>
-  <div
-    class="🅲-badge badge-primary badge-color-primary"
-  >
-    Badge
-  </div>
-  <div
-    class="🅲-badge badge-rounded badge-color-primary"
-  >
-    Badge
-  </div>
+<div
+  class="🅲-badge badge-rounded badge-color-primary"
+  data-testid="badge"
+>
+  Badge
 </div>
 `;

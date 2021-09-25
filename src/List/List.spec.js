@@ -1,7 +1,8 @@
+/* eslint-disable @typescript-eslint/no-empty-function */
 import React from 'react'
-import { render } from '@testing-library/react'
+import { render, screen } from '@testing-library/react'
 
-import { elementTests } from '../../test/element-tests'
+import { elementTests } from '../test/element-tests'
 import { List } from './List'
 
 describe('<List />', () => {
@@ -14,35 +15,35 @@ describe('<List />', () => {
 // ---------------------------------------------------------------------------
 describe('<List /> snapshots', () => {
   it('renders ul list correctly', () => {
-    const { container } = render(
-      <List>
+    render(
+      <List data-testid='list'>
         <List.Item>Item 1</List.Item>
         <List.Item>Item 2</List.Item>
       </List>,
     )
 
-    expect(container.firstChild).toMatchSnapshot()
+    expect(screen.getByTestId('list')).toMatchSnapshot()
   })
 
   it('renders anchor list correctly', () => {
-    const { container } = render(
-      <List>
+    render(
+      <List data-testid='list'>
         <List.Item href='#'>Item 1</List.Item>
         <List.Item href='#'>Item 2</List.Item>
       </List>,
     )
 
-    expect(container.firstChild).toMatchSnapshot()
+    expect(screen.getByTestId('list')).toMatchSnapshot()
   })
 
   it('renders button list correctly', () => {
-    const { container } = render(
-      <List>
+    render(
+      <List data-testid='list'>
         <List.Item onClick={() => {}}>Item 1</List.Item>
         <List.Item onClick={() => {}}>Item 2</List.Item>
       </List>,
     )
 
-    expect(container.firstChild).toMatchSnapshot()
+    expect(screen.getByTestId('list')).toMatchSnapshot()
   })
 })

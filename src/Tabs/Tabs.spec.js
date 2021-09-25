@@ -1,7 +1,7 @@
 import React from 'react'
-import { render } from '@testing-library/react'
+import { render, screen } from '@testing-library/react'
 
-import { elementTests } from '../../test/element-tests'
+import { elementTests } from '../test/element-tests'
 import { Tabs } from './Tabs'
 
 describe('<Tab />', () => {
@@ -16,8 +16,8 @@ describe('<Tab />', () => {
 // ---------------------------------------------------------------------------
 describe('<Tab /> snapshots', () => {
   it('renders correctly', () => {
-    const { container } = render(
-      <Tabs defaultActive='one'>
+    render(
+      <Tabs defaultActive='one' data-testid='tabs'>
         <Tabs.ActionsContainer>
           <Tabs.Action activeId='one'>Item 1</Tabs.Action>
           <Tabs.Action activeId='two'>Tab with long name</Tabs.Action>
@@ -35,6 +35,6 @@ describe('<Tab /> snapshots', () => {
       </Tabs>,
     )
 
-    expect(container.firstChild).toMatchSnapshot()
+    expect(screen.getByTestId('tabs')).toMatchSnapshot()
   })
 })

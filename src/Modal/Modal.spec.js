@@ -1,7 +1,7 @@
 import React from 'react'
-import { render } from '@testing-library/react'
+import { render, screen } from '@testing-library/react'
 
-import { elementTests } from '../../test/element-tests'
+import { elementTests } from '../test/element-tests'
 import { Modal } from './Modal'
 
 describe('<Modal />', () => {
@@ -17,8 +17,8 @@ describe('<Modal />', () => {
 // ---------------------------------------------------------------------------
 describe('<Close /> snapshots', () => {
   it('renders correctly', () => {
-    const { container } = render(
-      <Modal>
+    render(
+      <Modal data-testid='modal'>
         <Modal.Header close>
           <Modal.Title>Demo uncontrolled modal</Modal.Title>
         </Modal.Header>
@@ -32,6 +32,6 @@ describe('<Close /> snapshots', () => {
       </Modal>,
     )
 
-    expect(container.firstChild).toMatchSnapshot()
+    expect(screen.getByTestId('modal')).toMatchSnapshot()
   })
 })

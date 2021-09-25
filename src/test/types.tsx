@@ -17,7 +17,7 @@ import {
   Icon,
   Link,
   Text,
-} from '../src'
+} from '../index'
 
 const testActive = (
   <Active defaultActive={false} onDeactivated={(evt) => console.log(evt.target)}>

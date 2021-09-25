@@ -1,7 +1,7 @@
 import React from 'react'
 import { render, screen } from '@testing-library/react'
 
-import { elementTests } from '../../test/element-tests'
+import { elementTests } from '../test/element-tests'
 import { Badge } from './Badge'
 
 describe('<Badge />', () => {
@@ -24,15 +24,12 @@ describe('<Badge />', () => {
 // ---------------------------------------------------------------------------
 describe('<Badge /> snapshots', () => {
   it('renders correctly', () => {
-    const { container } = render(
-      <div>
-        <Badge color='primary'>Badge</Badge>
-        <Badge variant='rounded' color='primary'>
-          Badge
-        </Badge>
-      </div>,
+    render(
+      <Badge variant='rounded' color='primary' data-testid='badge'>
+        Badge
+      </Badge>,
     )
 
-    expect(container.firstChild).toMatchSnapshot()
+    expect(screen.getByTestId('badge')).toMatchSnapshot()
   })
 })

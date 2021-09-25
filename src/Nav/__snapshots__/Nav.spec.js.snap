@@ -3,6 +3,7 @@
 exports[`<Nav /> snapshots renders correctly 1`] = `
 <nav
   class="🅲-nav"
+  data-testid="nav"
   role="navigation"
 >
   <a

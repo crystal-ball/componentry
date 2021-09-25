@@ -4,6 +4,7 @@ exports[`<Drawer /> snapshots renders correctly 1`] = `
 <div
   class="🅲-drawer"
   data-id="test-guid"
+  data-testid="drawer"
 >
   <button
     aria-controls="test-guid"

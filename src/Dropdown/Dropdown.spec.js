@@ -1,8 +1,8 @@
 import React from 'react'
 import { render, screen } from '@testing-library/react'
 
-import { activationTests } from '../../test/activation-tests'
-import { elementTests } from '../../test/element-tests'
+import { activationTests } from '../test/activation-tests'
+import { elementTests } from '../test/element-tests'
 import { Dropdown } from './Dropdown'
 
 describe('<Dropdown />', () => {
@@ -42,8 +42,8 @@ describe('<Dropdown />', () => {
 // ---------------------------------------------------------------------------
 describe('<Dropdown /> snapshots', () => {
   it('renders correctly', () => {
-    const { container } = render(
-      <Dropdown>
+    render(
+      <Dropdown data-testid='dropdown'>
         <Dropdown.Action>Action</Dropdown.Action>
         <Dropdown.Content>
           <Dropdown.Item>Item 1</Dropdown.Item>
@@ -52,6 +52,6 @@ describe('<Dropdown /> snapshots', () => {
       </Dropdown>,
     )
 
-    expect(container.firstChild).toMatchSnapshot()
+    expect(screen.getByTestId('dropdown')).toMatchSnapshot()
   })
 })

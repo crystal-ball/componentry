@@ -3,6 +3,7 @@
 exports[`<Icon /> snapshots renders correctly 1`] = `
 <svg
   class="🅲-icon font-variant icon-test"
+  data-testid="icon"
   role="img"
 >
   <use

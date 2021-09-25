@@ -1,7 +1,7 @@
 import React from 'react'
-import { render } from '@testing-library/react'
+import { render, screen } from '@testing-library/react'
 
-import { elementTests } from '../../test/element-tests'
+import { elementTests } from '../test/element-tests'
 import { Close } from './Close'
 
 describe('<Close />', () => {
@@ -13,8 +13,8 @@ describe('<Close />', () => {
 // ---------------------------------------------------------------------------
 describe('<Close /> snapshots', () => {
   it('renders correctly', () => {
-    const { container } = render(<Close />)
+    render(<Close data-testid='close' />)
 
-    expect(container.firstChild).toMatchSnapshot()
+    expect(screen.getByTestId('close')).toMatchSnapshot()
   })
 })

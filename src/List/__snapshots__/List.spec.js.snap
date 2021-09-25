@@ -3,6 +3,7 @@
 exports[`<List /> snapshots renders anchor list correctly 1`] = `
 <div
   class="🅲-list"
+  data-testid="list"
 >
   <a
     class="🅲-list-item"
@@ -22,6 +23,7 @@ exports[`<List /> snapshots renders anchor list correctly 1`] = `
 exports[`<List /> snapshots renders button list correctly 1`] = `
 <div
   class="🅲-list"
+  data-testid="list"
 >
   <button
     class="🅲-list-item"
@@ -39,6 +41,7 @@ exports[`<List /> snapshots renders button list correctly 1`] = `
 exports[`<List /> snapshots renders ul list correctly 1`] = `
 <div
   class="🅲-list"
+  data-testid="list"
 >
   <button
     class="🅲-list-item"

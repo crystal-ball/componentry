@@ -11,7 +11,7 @@
  * ancestor is not found returns `null`
  */
 export function closest(target: HTMLElement, guid: string): HTMLElement | null {
-  if (target.dataset && target.dataset.id === guid) return target
+  if (target.dataset.id === guid) return target
   if (target.parentNode && target.parentNode instanceof HTMLElement) {
     return closest(target.parentNode, guid)
   }

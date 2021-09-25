@@ -185,7 +185,7 @@ Modal.Title = function ModalTitle(props) {
   return element('ModalTitle', {
     as: 'h2',
     id: ctx.guid,
-    ...useTheme('Modaltitle'),
+    ...useTheme<ModalTitleProps>('Modaltitle'),
     ...props,
   })
 }
@@ -203,7 +203,7 @@ Modal.Body = function ModalBody(props) {
 
   return element('ModalBody', {
     ref: bodyRef,
-    ...useTheme('ModalBody'),
+    ...useTheme<ModalBodyProps>('ModalBody'),
     ...props,
   })
 }

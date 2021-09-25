@@ -4,6 +4,7 @@ exports[`<Tab /> snapshots renders correctly 1`] = `
 <div
   class="🅲-tabs"
   data-id="test-guid"
+  data-testid="tabs"
 >
   <div
     class="🅲-tabs-actions-container"

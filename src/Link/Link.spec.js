@@ -1,7 +1,7 @@
 import React from 'react'
 import { render, screen } from '@testing-library/react'
 
-import { elementTests } from '../../test/element-tests'
+import { elementTests } from '../test/element-tests'
 import { Link } from './Link'
 
 describe('<Link/>', () => {
@@ -23,8 +23,12 @@ describe('<Link/>', () => {
 // ---------------------------------------------------------------------------
 describe('<Link /> snapshots', () => {
   it('renders correctly', () => {
-    const { container } = render(<Link href='#test'>Link</Link>)
+    render(
+      <Link href='#test' data-testid='link'>
+        Link
+      </Link>,
+    )
 
-    expect(container.firstChild).toMatchSnapshot()
+    expect(screen.getByTestId('link')).toMatchSnapshot()
   })
 })

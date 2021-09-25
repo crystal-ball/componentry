@@ -1,7 +1,7 @@
 import React from 'react'
 import { render, screen } from '@testing-library/react'
 
-import { elementTests } from '../../test/element-tests'
+import { elementTests } from '../test/element-tests'
 import { Block } from './Block'
 
 describe('<Block />', () => {
@@ -24,13 +24,8 @@ describe('<Block />', () => {
 // ---------------------------------------------------------------------------
 describe('<Block /> snapshots', () => {
   it('renders correctly', () => {
-    const { container } = render(
-      <div>
-        <Block>Block content</Block>
-        <Block inline>Inline block content</Block>
-      </div>,
-    )
+    render(<Block data-testid='block'>Block content</Block>)
 
-    expect(container.firstChild).toMatchSnapshot()
+    expect(screen.getByTestId('block')).toMatchSnapshot()
   })
 })
