@@ -90,7 +90,7 @@ Input.Label = function InputLabel(props) {
   return element('InputLabel', {
     as: 'label',
     htmlFor: ctx.guid, // aria -> id
-    ...useTheme('InputLabel'),
+    ...useTheme<InputLabelProps>('InputLabel'),
     ...props,
   })
 }
