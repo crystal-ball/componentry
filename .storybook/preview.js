@@ -1,12 +1,8 @@
-import { setupOutlineHandlers } from '../src'
-
 // --- Load Componentry styles ---
 
 import './storybook.scss'
 
 // --- Setup global decorators --
-
-setupOutlineHandlers()
 
 export const parameters = {
   layout: 'centered',

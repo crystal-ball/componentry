@@ -4,11 +4,11 @@ describe('navClasses()', () => {
   it('returns a string of classes for passed options', () => {
     expect(
       navClasses('nav', { fill: true, justify: true, pills: true, vertical: true }),
-    ).toStrictEqual('nav-fill nav-justified nav-pills nav-vertical')
+    ).toBe('nav-fill nav-justified nav-pills nav-vertical')
   })
 
   it('returns only the variant class when flags arent truthy', () => {
-    expect(navClasses('nav', {})).toStrictEqual('')
+    expect(navClasses('nav', {})).toBe('')
   })
 })
 
