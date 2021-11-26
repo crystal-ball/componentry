@@ -3,4 +3,4 @@
 # Theme definitions
 src/styles/_variables.scss
 src/styles/_theme.scss
-src/styles/functions/_sass.scss
+styles/functions/_sass.scss

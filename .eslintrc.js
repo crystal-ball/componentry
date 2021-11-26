@@ -6,6 +6,7 @@ module.exports = {
   rules: {
     // Package does not export prop-types at this time
     'react/prop-types': 'off',
+    'react/no-unused-prop-types': 'off',
     // Componentry doesn't use the JSX transform yet
     'react/jsx-uses-react': 'error',
     'react/react-in-jsx-scope': 'error',
@@ -18,13 +19,10 @@ module.exports = {
 
   overrides: [
     {
-      // Overrides for plugin test input code
-      files: ['src/plugin/**/code.js'],
+      files: ['src/plugin/**/*', 'src/test/**/*'],
       rules: {
-        // Use modern React imports
+        'import/no-extraneous-dependencies': 'off',
         'react/react-in-jsx-scope': 'off',
-        // Test imports don't need to be resolved
-        'import/no-unresolved': 'off',
       },
     },
     {
