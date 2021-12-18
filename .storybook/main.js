@@ -6,8 +6,11 @@ module.exports = {
   core: {
     builder: 'webpack5',
   },
-  stories: ['../src/**/*.stories.@(js|mdx)'],
+  reactOptions: {
+    fastRefresh: true,
+  },
   addons: ['@storybook/addon-essentials', '@storybook/addon-links'],
+  stories: ['../src/**/*.stories.@(js|mdx)'],
 
   webpackFinal: async (config) => {
     // `configType` has a value of 'DEVELOPMENT' or 'PRODUCTION'
