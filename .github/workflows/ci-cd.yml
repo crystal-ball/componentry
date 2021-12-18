@@ -44,6 +44,37 @@ jobs:
       - name: Codecov report
         if: success()
         uses: codecov/codecov-action@v2
+  # --- Chromatic publishing 📚
+  chromatic-deployment:
+    runs-on: ubuntu-latest
+    if: contains(github.event.head_commit.message, 'skip ci') == false
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 0 # Git history required for comparing snapshots
+      - name: Setup Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: '14.18'
+      - name: NPM Cache
+        uses: actions/cache@v2
+        with:
+          path: ~/.npm
+          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-node-
+      - name: Install dependencies
+        run: CI=true npm ci
+      - name: Publish to Chromatic
+        uses: chromaui/action@v1
+        with:
+          # Project is linked to GH and Chromatic checks will update after upload so we
+          # dont need to wait for build results in this action
+          exitOnceUploaded: true
+          skip: '@(renovate/**|dependabot/**)'
+          token: ${{ secrets.GITHUB_TOKEN }}
+          projectToken: ${{ secrets.CHROMATIC_PROJECT_TOKEN }}
 # --- Package publishing 🚀
 # publish:
 #   name: Continuous Deployment
