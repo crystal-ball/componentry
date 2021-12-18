@@ -6,12 +6,12 @@
 
 $theme-defaults: (
   // --------------------------------------------------------
-  // Foundation: Colors, Spacing, Typography
-  // --- COLORS
+  // Foundation: Color, Spacing, Typography
+  // --- COLOR
   colors:
     (
-      'transparent': 'transparent',
       'current': 'currentColor',
+      'transparent': 'transparent',
       'gray': (
         '100': #eff2f3,
         '200': #d7dfe2,
@@ -33,6 +33,17 @@ $theme-defaults: (
         '700': #4b4799,
         '800': #383673,
         '900': #26244d,
+      ),
+      highlight: (
+        '100': #dbeafe,
+        '200': #bfdbfe,
+        '300': #93c5fd,
+        '400': #60a5fa,
+        '500': #3b82f6,
+        '600': #2563eb,
+        '700': #1d4ed8,
+        '800': #1e40af,
+        '900': #1e3a8a,
       ),
       success: (
         '100': #f4f9ed,
@@ -68,16 +79,17 @@ $theme-defaults: (
         '900': #411918,
       ),
     ),
-  'theme-colors': ('primary', 'success', 'warning', 'critical'),
   // --- SPACING
   spacing:
     (
-      '0': 0,
       xs: 0.25rem,
       sm: 0.5rem,
       md: 1rem,
       lg: 2rem,
       xl: 3rem,
+      '0': 0,
+      '1': 0.5rem,
+      '2': 1rem,
     ),
   // --- TYPOGRAPHY
   typography:

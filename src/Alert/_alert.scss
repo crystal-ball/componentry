@@ -1,7 +1,8 @@
 /* componentry/src/Alert/alert */
 
 $alert-defaults: ();
-@each $color, $value in $theme-colors {
+$alert-colors: ('highlight', 'success', 'warning', 'critical');
+@each $color, $value in $alert-colors {
   $alert-defaults: map-merge(
     $alert-defaults,
     (
@@ -31,7 +32,7 @@ $alert-states-map: map-merge($alert-defaults, $alert-states);
 //
 // Generate contextual modifier classes for colorizing the alert.
 
-@each $color, $value in $theme-colors {
+@each $color, $value in $alert-colors {
   .alert-color-#{$color} {
     background: map-get($alert-states-map, #{$color}-bg);
     border-color: map-get($alert-states-map, #{$color}-border-color);
