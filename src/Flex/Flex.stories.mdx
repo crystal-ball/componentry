@@ -1,10 +1,15 @@
 import { ArgsTable, Meta } from '@storybook/addon-docs'
-import { DocsTitle } from '../storybook/DocsTitle'
+import { BADGE } from '@geometricpanda/storybook-addon-badges'
+
 import { Flex } from './Flex'
 
-<Meta title='Components/Flex' component={Flex} />
+<Meta
+  title='Components/Flex'
+  component={Flex}
+  parameters={{ badges: [BADGE.EXPERIMENTAL] }}
+/>
 
-<DocsTitle title='Flex' />
+# Flex
 
 Flex is a convenience component for creating `display: flex` containers.
 

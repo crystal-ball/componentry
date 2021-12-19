@@ -6,6 +6,7 @@ import './storybook.scss'
 
 export const parameters = {
   layout: 'centered',
+  viewMode: 'docs',
   // --- Options
   options: {
     storySort: {

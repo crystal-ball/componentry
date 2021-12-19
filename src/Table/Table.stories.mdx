@@ -1,10 +1,15 @@
 import { Meta } from '@storybook/addon-docs'
-import { DocsTitle } from '../storybook/DocsTitle'
+import { BADGE } from '@geometricpanda/storybook-addon-badges'
+
 import { Table } from './Table'
 
-<Meta title='Components/Table' component={Table} />
+<Meta
+  title='Components/Table'
+  component={Table}
+  parameters={{ badges: [BADGE.EXPERIMENTAL] }}
+/>
 
-<DocsTitle title='Table' experimental />
+# Table
 
 <Table>
   <Table.Head>

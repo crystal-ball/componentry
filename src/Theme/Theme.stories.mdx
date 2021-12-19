@@ -1,12 +1,17 @@
 import { Meta } from '@storybook/addon-docs'
-import { DocsTitle } from '../storybook/DocsTitle'
+import { BADGE } from '@geometricpanda/storybook-addon-badges'
+
 import { Button } from '../Button/Button'
 import { Theme } from './Theme'
 import { ThemeConsumer } from './storybook/ThemeConsumer'
 
-<Meta title='Components/Theme' component={Theme} />
+<Meta
+  title='Components/Theme'
+  component={Theme}
+  parameters={{ badges: [BADGE.EXPERIMENTAL] }}
+/>
 
-<DocsTitle title='Theme' />
+# Theme
 
 <Theme
   theme={{

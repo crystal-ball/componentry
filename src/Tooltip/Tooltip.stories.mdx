@@ -1,12 +1,18 @@
-<!-- eslint-disable no-console -->
-
 import { Meta } from '@storybook/addon-docs'
-import { DocsTitle } from '../storybook/DocsTitle'
+import { BADGE } from '@geometricpanda/storybook-addon-badges'
+
 import { Tooltip } from './Tooltip'
 
-<Meta title='Components/Tooltip' component={Tooltip} />
+<Meta
+  title='Components/Tooltip'
+  component={Tooltip}
+  parameters={{ badges: [BADGE.EXPERIMENTAL] }}
+/>
 
-<DocsTitle title='Tooltips' experimental />
+# Tooltip
+
+Tooltip extends Active with support for mouse events and styling to match typical tooltip
+titles.
 
 <Tooltip
   onActivate={console.log}

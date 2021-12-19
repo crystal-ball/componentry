@@ -1,14 +1,19 @@
 import { Meta } from '@storybook/addon-docs'
-import { DocsTitle } from '../storybook/DocsTitle'
+import { BADGE } from '@geometricpanda/storybook-addon-badges'
+
 import { Active } from '../Active/Active'
 import { Button } from '../Button/Button'
 import { Text } from '../Text/Text'
 import { Modal } from './Modal'
 import { footerContent, scrollContent } from './storybook/contents'
 
-<Meta title='Components/Modal' component={Modal} />
+<Meta
+  title='Components/Modal'
+  component={Modal}
+  parameters={{ badges: [BADGE.EXPERIMENTAL] }}
+/>
 
-<DocsTitle title='Modals' experimental />
+# Modal
 
 <Active>
   <Active.Action>Open Modal</Active.Action>
