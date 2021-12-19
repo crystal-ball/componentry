@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-empty-interface */
 import React, { createContext, useContext, useRef } from 'react'
 import clsx from 'clsx'
 import { nanoid } from 'nanoid'

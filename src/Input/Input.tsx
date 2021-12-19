@@ -1,5 +1,3 @@
-/* eslint-disable @typescript-eslint/no-empty-interface */
-
 import React, { createContext, useContext, useRef } from 'react'
 import { nanoid } from 'nanoid'
 import { useTheme } from '../Theme/Theme'

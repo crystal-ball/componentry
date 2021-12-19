@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-empty-interface */
 import { useTheme } from '../Theme/Theme'
 import { navClasses } from '../utils/class-names'
 import { element } from '../utils/element-creator'

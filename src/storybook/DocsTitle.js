@@ -1,6 +1,7 @@
 import React from 'react'
 import { Text } from '../Text/Text'
 
+// eslint-disable-next-line react/prop-types
 export function DocsTitle({ title, experimental }) {
   return (
     <div>

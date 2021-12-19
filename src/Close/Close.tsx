@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-empty-interface */
 import React from 'react'
 import { ComponentBaseProps } from '../utils/types'
 import { staticComponent } from '../utils/static-component-builder'

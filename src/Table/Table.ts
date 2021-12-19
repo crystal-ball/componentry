@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-empty-interface */
 import { staticComponent } from '../utils/static-component-builder'
 import { ComponentBaseProps } from '../utils/types'
 

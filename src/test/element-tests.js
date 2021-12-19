@@ -1,3 +1,5 @@
+/* eslint-env jest */
+
 import React from 'react'
 import { render, screen } from '@testing-library/react'
 
@@ -48,6 +50,7 @@ export function elementTests(TestComponent, Wrapper) {
    */
   it(`${componentName} should render as specified html element or component`, () => {
     // Create a component to validate that the TestComponent returns.
+    // eslint-disable-next-line react/prop-types
     const TestAs = ({ isRad }) => <div>{isRad ? 'RAD' : null}</div>
 
     render(<TestComponent as={TestAs} isRad />, { wrapper: Wrapper })

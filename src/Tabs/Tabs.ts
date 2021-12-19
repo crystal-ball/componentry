@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-empty-interface */
 import { useTheme } from '../Theme/Theme'
 import { activeContainerBuilder } from '../utils/active-container-component-builder'
 import { activeActionBuilder } from '../utils/active-action-component-builder'
