@@ -81,7 +81,7 @@
     "babel-plugin-tester": "10.1.0",
     "chromatic": "6.2.3",
     "css-loader": "6.5.1",
-    "eslint-config-eloquence": "21.1.0",
+    "eslint-config-eloquence": "21.2.0",
     "jest": "27.4.5",
     "mini-css-extract-plugin": "2.4.5",
     "node-notifier": "10.0.0",

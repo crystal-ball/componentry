@@ -24,8 +24,12 @@ export interface ActiveContext {
 export const ActiveCtx = createContext<ActiveContext>({
   active: false,
   guid: 'DEFAULT',
-  activate: () => {}, // eslint-disable-line @typescript-eslint/no-empty-function
-  deactivate: () => {}, // eslint-disable-line @typescript-eslint/no-empty-function
+  activate: () => {
+    /* default noop handler simplifies consuming code */
+  },
+  deactivate: () => {
+    /* default noop handler simplifies consuming code */
+  },
 })
 
 // --------------------------------------------------------

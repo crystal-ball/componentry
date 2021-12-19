@@ -1,5 +1,5 @@
 import React from 'react'
-import { ClassValue } from 'clsx'
+import { type ClassValue } from 'clsx'
 import { useTheme } from '../Theme/Theme'
 import { element } from './element-creator'
 

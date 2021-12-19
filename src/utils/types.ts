@@ -1,7 +1,5 @@
-/* eslint-disable @typescript-eslint/no-empty-interface */
-
 import React from 'react'
-import { ClassValue } from 'clsx'
+import { type ClassValue } from 'clsx'
 
 /**
  * Utility type used to merge default component prop types with user defined overrides.

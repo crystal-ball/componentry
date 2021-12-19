@@ -1,5 +1,5 @@
 import React, { ForwardedRef, createElement } from 'react'
-import clsx, { ClassValue } from 'clsx'
+import clsx, { type ClassValue } from 'clsx'
 import { parseBaseCx } from './class-names'
 import { componentry } from './componentry'
 

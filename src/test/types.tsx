@@ -1,10 +1,12 @@
+/* eslint-disable no-console */
+/* eslint-disable @typescript-eslint/no-unused-vars */
+
 /**
  * Testing file for types
  */
 
-/* eslint-disable */
 import React from 'react'
-import clsx, { ClassValue } from 'clsx'
+import clsx, { type ClassValue } from 'clsx'
 import {
   Active,
   Alert,
@@ -17,10 +19,10 @@ import {
   Icon,
   Link,
   Text,
-} from '../index'
+} from '..'
 
 const testActive = (
-  <Active defaultActive={false} onDeactivated={(evt) => console.log(evt.target)}>
+  <Active defaultActive={false} onDeactivated={console.log}>
     <Active.Action>Rad</Active.Action>
     <Active.Content>Active</Active.Content>
   </Active>
@@ -35,7 +37,7 @@ const testAlert = (
 const testBadge = <Badge variant='rounded'>77</Badge>
 
 const testBlock = (
-  <Block inline width={16} height={16}>
+  <Block width={16} height={16} inline>
     test block
   </Block>
 )

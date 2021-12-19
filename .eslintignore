@@ -1,2 +1,4 @@
 # Ignore plugin test fixtures, they're not lintable
 src/plugin/__fixtures__
+# Ignore build output
+storybook-static

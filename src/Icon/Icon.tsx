@@ -1,5 +1,3 @@
-/* eslint-disable @typescript-eslint/no-empty-interface */
-
 import React from 'react'
 import { useTheme } from '../Theme/Theme'
 import { ComponentBaseProps, MergePropTypes } from '../utils/types'
