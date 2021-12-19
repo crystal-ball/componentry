@@ -1,10 +1,15 @@
 import { Meta } from '@storybook/addon-docs'
-import { DocsTitle } from '../storybook/DocsTitle'
+import { BADGE } from '@geometricpanda/storybook-addon-badges'
+
 import { Input } from './Input'
 
-<Meta title='Components/Input' component={Input} />
+<Meta
+  title='Components/Input'
+  component={Input}
+  parameters={{ badges: [BADGE.EXPERIMENTAL] }}
+/>
 
-<DocsTitle title='Inputs' experimental />
+# Input
 
 <div className='🅲-form-group'>
   <Input>

@@ -1,12 +1,17 @@
 import { Meta } from '@storybook/addon-docs'
-import { DocsTitle } from '../storybook/DocsTitle'
+import { BADGE } from '@geometricpanda/storybook-addon-badges'
+
 import { Link } from '../Link/Link'
 import { List } from '../List/List'
 import { Card } from './Card'
 
-<Meta title='Components/Card' component={Card} />
+<Meta
+  title='Components/Card'
+  component={Card}
+  parameters={{ badges: [BADGE.EXPERIMENTAL] }}
+/>
 
-<DocsTitle title='Cards' experimental />
+# Card
 
 <Card maxWidth='50%'>
   <Card.Header>Card Header</Card.Header>

@@ -1,10 +1,15 @@
 import { Meta } from '@storybook/addon-docs'
-import { DocsTitle } from '../storybook/DocsTitle'
+import { BADGE } from '@geometricpanda/storybook-addon-badges'
+
 import { Active } from './Active'
 
-<Meta title='Components/Active' />
+<Meta
+  title='Components/Active'
+  component={Active}
+  parameters={{ badges: [BADGE.EXPERIMENTAL] }}
+/>
 
-<DocsTitle title='Active' experimental />
+# Active
 
 ## Uncontrolled component
 

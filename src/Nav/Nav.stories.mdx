@@ -1,10 +1,15 @@
 import { Meta } from '@storybook/addon-docs'
-import { DocsTitle } from '../storybook/DocsTitle'
+import { BADGE } from '@geometricpanda/storybook-addon-badges'
+
 import { Nav } from './Nav'
 
-<Meta title='Components/Nav' component={Nav} />
+<Meta
+  title='Components/Nav'
+  component={Nav}
+  parameters={{ badges: [BADGE.EXPERIMENTAL] }}
+/>
 
-<DocsTitle title='Navs' experimental />
+# Nav
 
 <div className='w-50'>
   <Nav fill={false} justify={false} pills={false} vertical={false}>

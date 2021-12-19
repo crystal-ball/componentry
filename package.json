@@ -64,6 +64,7 @@
     "@babel/preset-typescript": "7.16.5",
     "@crystal-ball/commitizen-base": "2.11.0",
     "@crystal-ball/prettier-base": "2.10.0",
+    "@geometricpanda/storybook-addon-badges": "0.2.1",
     "@storybook/addon-essentials": "6.4.9",
     "@storybook/addon-links": "6.4.9",
     "@storybook/addons": "6.4.9",

@@ -1,11 +1,16 @@
 import { Meta } from '@storybook/addon-docs'
-import { DocsTitle } from '../storybook/DocsTitle'
+import { BADGE } from '@geometricpanda/storybook-addon-badges'
+
 import { Media } from './Media'
 import { MediaConsumer } from './storybook/MediaConsumer'
 
-<Meta title='Components/Media' component={Media} />
+<Meta
+  title='Components/Media'
+  component={Media}
+  parameters={{ badges: [BADGE.EXPERIMENTAL] }}
+/>
 
-<DocsTitle title='Media' experimental />
+# Media
 
 <Media>
   <MediaConsumer />

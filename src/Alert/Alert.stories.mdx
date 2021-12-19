@@ -1,5 +1,6 @@
 import { Meta } from '@storybook/addon-docs'
-import { DocsTitle } from '../storybook/DocsTitle'
+import { BADGE } from '@geometricpanda/storybook-addon-badges'
+
 import { Active } from '../Active/Active'
 import { colors } from '../storybook'
 import { Alert } from './Alert'
@@ -23,9 +24,13 @@ import { Alert } from './Alert'
   </symbol>
 </svg>
 
-<Meta title='Components/Alert' component={Alert} />
+<Meta
+  title='Components/Alert'
+  component={Alert}
+  parameters={{ badges: [BADGE.EXPERIMENTAL] }}
+/>
 
-<DocsTitle title='Alerts' experimental />
+# Alert
 
 Alerts can contain any HTML elements, and can be dismissible or static. A dismissible
 Alert requires Componentry Active `active` and `deactivate` props, which can be passed

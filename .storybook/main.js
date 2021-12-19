@@ -9,7 +9,11 @@ module.exports = {
   reactOptions: {
     fastRefresh: true,
   },
-  addons: ['@storybook/addon-essentials', '@storybook/addon-links'],
+  addons: [
+    '@storybook/addon-essentials',
+    '@storybook/addon-links',
+    '@geometricpanda/storybook-addon-badges',
+  ],
   stories: ['../src/**/*.stories.@(js|mdx)'],
 
   webpackFinal: async (config) => {

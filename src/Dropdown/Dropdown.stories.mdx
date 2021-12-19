@@ -1,12 +1,15 @@
-<!-- eslint-disable no-console -->
-
 import { Meta } from '@storybook/addon-docs'
-import { DocsTitle } from '../storybook/DocsTitle'
+import { BADGE } from '@geometricpanda/storybook-addon-badges'
+
 import { Dropdown } from './Dropdown'
 
-<Meta title='Components/Dropdown' component={Dropdown} />
+<Meta
+  title='Components/Dropdown'
+  component={Dropdown}
+  parameters={{ badges: [BADGE.EXPERIMENTAL] }}
+/>
 
-<DocsTitle title='Dropdowns' experimental />
+# Dropdown
 
 <Dropdown direction='bottom' onActivate={console.log} onDeactivate={console.log}>
   <Dropdown.Action>Action</Dropdown.Action>
