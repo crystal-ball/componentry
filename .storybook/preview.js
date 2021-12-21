@@ -1,13 +1,12 @@
-// --- Load Componentry styles ---
+// --- BASE STYLES ---
 
-import './storybook.scss'
+import './styles-componentry.scss'
+import './styles-tailwind.css'
 
-// --- Setup global decorators --
-
+// --- STORYBOOK DEFAULTS ---
 export const parameters = {
   layout: 'centered',
   viewMode: 'docs',
-  // --- Options
   options: {
     storySort: {
       order: ['Componentry', 'Components'],
