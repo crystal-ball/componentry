@@ -11,17 +11,15 @@
 <!--
 ## Unreleased items
 
-...release focuses on the library, leveraging community resources for utility
-styles instead of having them as a library responsibility.
+### New
 
-### NEW
+- Experimental support for pre-compiling begun
 
-Precompile!
+### Updates
 
-### BREAKING
+### Breaking
 
-- All utility styles are removed, Tailwind use encouraged/required
-- Component utility classNames have been updated to match Tailwind
+- Component utility classNames have been updated to match Tailwind (See src/utils/componentry.ts)
 
 -->
 

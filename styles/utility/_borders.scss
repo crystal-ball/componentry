@@ -1,0 +1,88 @@
+/* ~componentry/styles/utility/borders */
+
+// --------------------------------------------------------
+// Border addition
+
+.border {
+  border: theme-get('borders.default') !important;
+}
+@each $direction in (top, right, bottom, left) {
+  .border-#{$direction} {
+    border-#{$direction}: theme-get('borders.default') !important;
+  }
+}
+
+// --------------------------------------------------------
+// Border removal
+
+.border-none {
+  border: none !important;
+}
+@each $direction in (top, right, bottom, left) {
+  .border-#{$direction}-none {
+    border-#{$direction}: none !important;
+  }
+}
+
+// --------------------------------------------------------
+// Border colors
+
+@each $color, $value in theme-get('palette.borders') {
+  .border-color-#{$color} {
+    border-color: $value !important;
+  }
+}
+
+// --------------------------------------------------------
+// Border widths
+
+@each $width, $value in theme-get('border-widths') {
+  .border-#{$width} {
+    border-width: $value !important;
+  }
+}
+
+// --------------------------------------------------------
+// Border radii
+
+.border-radius-0 {
+  border-radius: 0 !important;
+}
+
+.border-radius {
+  border-radius: $border-radius !important;
+}
+.border-radius-sm {
+  border-radius: $border-radius-sm !important;
+}
+.border-radius-lg {
+  border-radius: $border-radius-lg !important;
+}
+
+// TODO: provide sm and lg sizes for each of the directional variations
+.border-radius-top {
+  border-top-left-radius: $border-radius !important;
+  border-top-right-radius: $border-radius !important;
+}
+.border-radius-right {
+  border-top-right-radius: $border-radius !important;
+  border-bottom-right-radius: $border-radius !important;
+}
+.border-radius-bottom {
+  border-bottom-right-radius: $border-radius !important;
+  border-bottom-left-radius: $border-radius !important;
+}
+.border-radius-left {
+  border-top-left-radius: $border-radius !important;
+  border-bottom-left-radius: $border-radius !important;
+}
+
+.border-radius-circle {
+  // Setting a very large number for the border radius will cause browsers to
+  // calculate the correct number for a completely rounded edge with no overlap
+  // https://drafts.csswg.org/css-backgrounds/#corner-overlap
+  // Corner curves must not overlap: When the sum of any two adjacent border
+  // radii exceeds the size of the border box, UAs must proportionally reduce
+  // the used values of all border radii until none of them overlap.
+  border-radius: 1000px !important;
+}

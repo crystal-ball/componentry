@@ -1,0 +1,57 @@
+/* ~componentry/styles/utility/flex */
+
+// Flex variation
+//
+// Custom styles for additional flex alignment options.
+
+@each $breakpoint in map-keys(theme-get('breakpoints')) {
+  @include media-breakpoint-up($breakpoint) {
+    $infix: breakpoint-infix($breakpoint, theme-get('breakpoints'));
+
+    // --- Flex direction
+    .#{$infix}flex-row {
+      flex-direction: row !important;
+    }
+    .#{$infix}flex-col {
+      flex-direction: column !important;
+    }
+    .#{$infix}flex-row-reverse {
+      flex-direction: row-reverse !important;
+    }
+    .#{$infix}flex-col-reverse {
+      flex-direction: column-reverse !important;
+    }
+
+    // --- Flex wrap
+    .#{$infix}flex-wrap {
+      flex-wrap: wrap !important;
+    }
+    .#{$infix}flex-nowrap {
+      flex-wrap: nowrap !important;
+    }
+    .#{$infix}flex-wrap-reverse {
+      flex-wrap: wrap-reverse !important;
+    }
+
+    // --- Flex
+    .#{$infix}flex-auto {
+      flex: 1 1 auto !important;
+    }
+
+    // --- Grow
+    .#{$infix}flex-grow-0 {
+      flex-grow: 0 !important;
+    }
+    .#{$infix}flex-grow {
+      flex-grow: 1 !important;
+    }
+
+    // --- Shrink
+    .#{$infix}flex-shrink-0 {
+      flex-shrink: 0 !important;
+    }
+    .#{$infix}flex-shrink {
+      flex-shrink: 1 !important;
+    }
+  }
+}

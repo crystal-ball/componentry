@@ -2,48 +2,5 @@
   "extends": [
     "github>crystal-ball/renovate-base:library"
   ],
-  "packageRules": [
-    {
-      "matchPackageNames": [
-        "@storybook/addon-essentials"
-      ],
-      "allowedVersions": "<=6.1.21"
-    },
-    {
-      "matchPackageNames": [
-        "@storybook/addon-links"
-      ],
-      "allowedVersions": "<=6.1.21"
-    },
-    {
-      "matchPackageNames": [
-        "@storybook/addons"
-      ],
-      "allowedVersions": "<=6.1.21"
-    },
-    {
-      "matchPackageNames": [
-        "@storybook/react"
-      ],
-      "allowedVersions": "<=6.1.21"
-    },
-    {
-      "matchPackageNames": [
-        "@storybook/theming"
-      ],
-      "allowedVersions": "<=6.1.21"
-    },
-    {
-      "matchPackageNames": [
-        "sass-loader"
-      ],
-      "allowedVersions": "<=10.2.0"
-    },
-    {
-      "matchPackageNames": [
-        "typescript"
-      ],
-      "allowedVersions": "<=4.2.4"
-    }
-  ]
+  "packageRules": []
 }
