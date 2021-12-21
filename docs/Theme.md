@@ -45,6 +45,12 @@ const themeShape = {
       // ...
       '900': #26244d,
     }
+    // Consumers that want to constrain colors can create additional patterns within the
+    // colors space, eg constraining text colors could look like adding values:
+    // textLink, textSuccess, textBody, etc.
+    // or could look like adding values:
+    // text: { link, success, body }, etc.
+    // This is a great way to improve consistency for text and border colors
   },
   spacing: {
     0: "0",
