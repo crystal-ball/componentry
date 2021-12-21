@@ -1,0 +1,10 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Grid /> snapshots renders correctly 1`] = `
+<div
+  class="🅲-grid grid"
+  data-testid="grid"
+>
+  Block content
+</div>
+`;
