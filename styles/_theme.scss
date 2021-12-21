@@ -82,41 +82,35 @@ $theme-defaults: (
   // --- SPACING
   spacing:
     (
-      xs: 0.25rem,
-      sm: 0.5rem,
-      md: 1rem,
-      lg: 2rem,
-      xl: 3rem,
       '0': 0,
+      '0.5': 0.25rem,
+      // 4px
       '1': 0.5rem,
+      // 8px
+      '1.5': 0.75rem,
+      // 12px
       '2': 1rem,
+      // 16px
+      '3': 1.5rem,
+      // 24px
+      '4': 2rem,
+      // 32px
+      '5': 2.5rem,
+      // 40px
+      '6': 3rem,
+      // 48px
     ),
   // --- TYPOGRAPHY
   typography:
     (
       font-families: (
-        body: (
-          system-ui,
-          -apple-system,
-          'Segoe UI',
-          Roboto,
-          Helvetica,
-          Arial,
-          sans-serif,
-          'Apple Color Emoji',
-          'Segoe UI Emoji',
-        ),
-        monospace: (
-          SFMono-Regular,
-          Menlo,
-          Monaco,
-          Consolas,
-          'Liberation Mono',
-          'Courier New',
-          monospace,
-        ),
+        body:
+          "system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji'",
+        monospace:
+          "SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New', monospace",
       ),
       font-sizes: (
+        button: 0.875rem,
         sm: 0.875rem,
         base: 1rem,
         lg: 1.25rem,
@@ -127,8 +121,8 @@ $theme-defaults: (
         bold: 700,
       ),
       line-heights: (
-        single: 1,
-        body: 1.5,
+        none: 1,
+        normal: 1.5,
       ),
     ),
   // --------------------------------------------------------
@@ -148,7 +142,7 @@ $theme-defaults: (
       default: 1px solid #607d8b,
     ),
   border-widths: (),
-  radii: (
+  border-radii: (
     default: 4px,
     sm: 2px,
     md: 4px,
@@ -163,7 +157,7 @@ $theme-defaults: (
   // Transitions
   transitions:
     (
-      fade: 'opacity 0.25s linear',
+      fade: 'opacity 0.2s linear',
     )
 );
 
