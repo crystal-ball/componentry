@@ -63,7 +63,7 @@
  * 4. Use a more readable tab size (opinionated).
  */
 html {
-  font-family: theme-get('typography.font-families.body'); /* 1 */
+  font-family: #{theme-get('typography.font-families.body')}; /* 1 */
   line-height: theme-get('typography.line-heights.body'); /* 2 */
   -webkit-text-size-adjust: 100%; /* 3 */
   text-size-adjust: 100%; /* 3 */
@@ -157,7 +157,7 @@ strong {
  * 3. Removes the default spacing and border for appropriate elements.
  */
 pre {
-  font-family: theme-get('typography.font-families.monospace'); /* 1 */
+  font-family: #{theme-get('typography.font-families.monospace')}; /* 1 */
   font-size: 1em; /* 2 */
   margin: 0; /* 3 */
 }
@@ -169,7 +169,7 @@ pre {
 code,
 kbd,
 samp {
-  font-family: theme-get('typography.font-families.monospace'); /* 1 */
+  font-family: #{theme-get('typography.font-families.monospace')}; /* 1 */
   font-size: 1em; /* 2 */
 }
 

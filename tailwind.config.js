@@ -2,7 +2,7 @@
 
 module.exports = {
   // Scan .ts files, all of the required Tailwind classes are included in types
-  content: ['./src/**/*.ts'],
+  content: ['./src/**/*.ts', './src/**/*.mdx'],
   theme: {
     extend: {},
   },

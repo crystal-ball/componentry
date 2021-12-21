@@ -1,6 +1,12 @@
 // --- Set storybook theme
 
-$theme: ();
+$theme: (
+  typography: (
+    font-families: (
+      monospace: "'Fira Code', monospace",
+    ),
+  ),
+);
 
 // --- Import Componentry
 @import '../styles';

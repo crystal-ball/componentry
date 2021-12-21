@@ -7,5 +7,7 @@ addons.setConfig({
     base: 'dark',
     brandTitle: 'Componentry',
     brandImage: undefined,
+
+    fontCode: "'Fira Code', monospace",
   }),
 })
