@@ -23,6 +23,12 @@
     .#{$infix}flex {
       display: flex;
     }
+    .#{$infix}inline-grid {
+      display: flex;
+    }
+    .#{$infix}grid {
+      display: flex;
+    }
   }
 }
 
@@ -45,5 +51,11 @@
   }
   .print-inline-flex {
     display: inline-flex !important;
+  }
+  .print-inline-grid {
+    display: flex;
+  }
+  .print-grid {
+    display: flex;
   }
 }
