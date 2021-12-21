@@ -1,0 +1,49 @@
+/* ~componentry/styles/utility/display */
+
+/// Responsive display classes
+@each $breakpoint in map-keys(theme-get('breakpoints')) {
+  @include media-breakpoint-up($breakpoint) {
+    $infix: breakpoint-infix($breakpoint, theme-get('breakpoints'));
+
+    .#{$infix}hidden {
+      display: none;
+    }
+    .#{$infix}inline {
+      display: inline;
+    }
+    .#{$infix}inline-block {
+      display: inline-block;
+    }
+    .#{$infix}block {
+      display: block;
+    }
+    .#{$infix}inline-flex {
+      display: inline-flex;
+    }
+    .#{$infix}flex {
+      display: flex;
+    }
+  }
+}
+
+/// Print display classes
+@media print {
+  .print-hidden {
+    display: none !important;
+  }
+  .print-inline {
+    display: inline !important;
+  }
+  .print-inline-block {
+    display: inline-block !important;
+  }
+  .print-block {
+    display: block !important;
+  }
+  .print-flex {
+    display: flex !important;
+  }
+  .print-inline-flex {
+    display: inline-flex !important;
+  }
+}
