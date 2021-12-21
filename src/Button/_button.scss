@@ -19,41 +19,47 @@ $button-defaults: (
       primary: (
         height: 2rem,
         padding: 0 1rem,
-        background-color: theme-get('colors.gray.500'),
-        border: 1px solid theme-get('colors.gray.500'),
-        border-radius: theme-get('radii.default'),
+        background-color: theme-get('colors.primary.500'),
+        border: 1px solid theme-get('colors.primary.500'),
+        border-radius: theme-get('border-radii.default'),
         color: white,
         font-size: theme-get('typography.font-sizes.button'),
-        '&:hover': (
-          background-color: theme-get('colors.gray.700'),
+        line-height: 1,
+        // ensures text is center aligned within flex layout
+        transition: background-color 0.15s linear,
+        '&:hover, &.🅲-hover': (
+          border-color: theme-get('colors.primary.500'),
+          background-color: theme-get('colors.primary.700'),
         ),
-        '&:active': (
-          background-color: theme-get('colors.gray.900'),
+        '&:active, &.🅲-active': (
+          border-color: theme-get('colors.primary.700'),
+          background-color: theme-get('colors.primary.900'),
         ),
-        '&:disabled': (
-          border: 1px solid theme-get('colors.gray.300'),
-          background-color: theme-get('colors.gray.300'),
+        '&:disabled, &.🅲-disabled': (
+          border-color: theme-get('colors.primary.300'),
+          background-color: theme-get('colors.primary.300'),
         ),
       ),
       secondary: (
         height: 2rem,
         padding: 0 1rem,
         background-color: transparent,
-        border: 1px solid theme-get('colors.gray.500'),
-        border-radius: theme-get('radii.default'),
-        color: theme-get('colors.gray.500'),
+        border: 1px solid theme-get('colors.primary.500'),
+        border-radius: theme-get('border-radii.default'),
+        color: theme-get('colors.primary.500'),
         font-size: theme-get('typography.font-sizes.button'),
-        '&:hover': (
-          border-color: theme-get('colors.gray.700'),
-          color: theme-get('colors.gray.700'),
+        transition: color 0.15s linear,
+        '&:hover, &.🅲-hover': (
+          border-color: theme-get('colors.primary.700'),
+          color: theme-get('colors.primary.700'),
         ),
-        '&:active': (
-          border-color: theme-get('colors.gray.900'),
-          color: theme-get('colors.gray.900'),
+        '&:active, &.🅲-active': (
+          border-color: theme-get('colors.primary.900'),
+          color: theme-get('colors.primary.900'),
         ),
-        '&:disabled': (
-          border-color: theme-get('colors.gray.300'),
-          color: theme-get('colors.gray.300'),
+        '&:disabled, &.🅲-disabled': (
+          border-color: theme-get('colors.primary.300'),
+          color: theme-get('colors.primary.300'),
         ),
       ),
     ),
@@ -62,13 +68,13 @@ $button-defaults: (
     (
       sm: (
         height: 1.5rem,
-        border-radius: theme-get('radii.md'),
+        border-radius: theme-get('border-radii.md'),
         font-size: theme-get('typography.font-sizes.sm'),
         padding: 0rem 0.5rem,
       ),
       lg: (
         height: 2.5rem,
-        border-radius: theme-get('radii.lg'),
+        border-radius: theme-get('border-radii.lg'),
         font-size: theme-get('typography.font-sizes.lg'),
         padding: 0 2rem,
       ),
