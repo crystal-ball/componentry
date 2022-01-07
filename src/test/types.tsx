@@ -29,7 +29,7 @@ const testActive = (
 )
 
 const testAlert = (
-  <Alert variant='outline' color='success'>
+  <Alert variant='filled' color='success'>
     Test alert
   </Alert>
 )
