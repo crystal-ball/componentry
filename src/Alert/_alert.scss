@@ -14,10 +14,10 @@ $alert-defaults: (
   // --- VARIANTS
   variants:
     (
-      primary: (
+      filled: (
         padding: theme-get('spacing.2'),
         border: 1px solid transparent,
-        border-radius: theme-get('border-radii.md'),
+        border-radius: theme-get('border-radius.md'),
       ),
     ),
 );
@@ -31,13 +31,13 @@ $alert-theme-colors: ('primary', 'info', 'success', 'warning', 'error');
   $alert-colors: map-assign(
     $alert-colors,
     (
-      '.alert-color-#{$color}.alert-primary': (
+      '.alert-filled.alert-color-#{$color}': (
         background: theme-get('colors.#{$color}.100'),
         border-color: theme-get('colors.#{$color}.300'),
         color: theme-get('colors.#{$color}.500'),
         '& .alert-link': (
           color: theme-get('colors.#{$color}.500'),
-          font-weight: theme-get('typography.font-weights.bold'),
+          font-weight: theme-get('font-weight.bold'),
         ),
         '& hr': (
           border-top-color: theme-get('colors.#{$color}.400'),
@@ -65,6 +65,7 @@ $alert: map-assign($alert-defaults, $alert);
   @include style-rule-from-map('.alert-#{$variant}', $styles);
 }
 
+@debug $alert-colors;
 @include style-properties-from-map($alert-colors);
 
 // --------------------------------------------------------
@@ -87,7 +88,7 @@ $alert: map-assign($alert-defaults, $alert);
   // Animate close icon opacity on hover
   .icon-close {
     opacity: 0.6;
-    transition: theme-get('transitions.fade');
+    transition: opacity 0.2s cubic-bezier(0.4, 0, 0.2, 1);
 
     &:hover,
     &:focus {

@@ -5,9 +5,16 @@
 @import './functions/lib';
 
 $theme-defaults: (
-  // --------------------------------------------------------
-  // Foundation: Color, Spacing, Typography
-  // --- COLOR
+  // --- SCREENS
+  screens:
+    (
+      // Componentry has a single breakpoint by default, additional breakpoints can
+      // be added. 1200px is used for the default to try and ensure all smaller
+      // desktops are included. (992, 1200, 1280 are the most common large breakpoints)
+      // For multiple breakpoints 768 and 1280 are common breakpoints for md and lg.
+      lg: 1200px
+    ),
+  // --- COLORS
   colors:
     (
       'current': 'currentColor',
@@ -101,63 +108,45 @@ $theme-defaults: (
       // 48px
     ),
   // --- TYPOGRAPHY
-  typography:
+  font-family:
     (
-      font-families: (
-        body:
-          "system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji'",
-        monospace:
-          "SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New', monospace",
-      ),
-      font-sizes: (
-        button: 0.875rem,
-        sm: 0.875rem,
-        base: 1rem,
-        lg: 1.25rem,
-      ),
-      font-weights: (
-        light: 300,
-        normal: 400,
-        bold: 700,
-      ),
-      line-heights: (
-        none: 1,
-        normal: 1.5,
-      ),
+      body:
+        "system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji'",
+      mono:
+        "SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New', monospace",
     ),
-  // --------------------------------------------------------
-  // Details: Breakpoints Borders, Shadows, etc.
-  // --- BREAKPOINTS
-  // Componentry has a single breakpoint by default, additional breakpoints can
-  // be added. 1200px is used for the default to try and ensure all smaller
-  // desktops are included. (992, 1200, 1280 are the most common large breakpoints)
-  // For multiple breakpoints 768 and 1280 are common breakpoints for md and lg.
-  breakpoints:
-    (
-      lg: 1200px,
-    ),
+  font-size: (
+    sm: 0.875rem,
+    base: 1rem,
+    lg: 1.25rem,
+  ),
+  font-weight: (
+    light: 300,
+    normal: 400,
+    bold: 700,
+  ),
+  line-height: (
+    none: 1,
+    normal: 1.5,
+  ),
   // --- BORDERS
-  borders:
+  border-width:
     (
-      default: 1px solid #607d8b,
+      DEFAULT: 1px,
     ),
-  border-widths: (),
-  border-radii: (
-    default: 4px,
+  border-color: (
+    DEFAULT: #607d8b,
+  ),
+  border-radius: (
+    DEFAULT: 4px,
     sm: 2px,
     md: 4px,
     lg: 6px,
   ),
   // --- SHADOWS
-  shadows:
+  boxShadow:
     (
-      default: 0 0.5rem 1rem rgba(73, 80, 87, 0.15),
-    ),
-  // --------------------------------------------------------
-  // Transitions
-  transitions:
-    (
-      fade: 'opacity 0.2s linear',
+      DEFAULT: 0 0.5rem 1rem rgba(73, 80, 87, 0.15),
     )
 );
 

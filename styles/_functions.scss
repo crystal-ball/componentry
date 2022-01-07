@@ -40,7 +40,7 @@
  * xs. Used to generate the media query values for breakpoint scoped styles.
  * @example breakpoint-min(sm) === 576px
  */
-@function breakpoint-min($name, $breakpoints: theme-get('breakpoints')) {
+@function breakpoint-min($name, $breakpoints: theme-get('screens')) {
   $min: map-get($breakpoints, $name);
   @return if($min != 0, $min, null);
 }
@@ -50,7 +50,7 @@
  * for xl. Used to generate the media queries for breakpoint scoped styles.
  * @example breakpoint-max(sm) === 767.98px
  */
-@function breakpoint-max($name, $breakpoints: theme-get('breakpoints')) {
+@function breakpoint-max($name, $breakpoints: theme-get('screens')) {
   $next: breakpoint-next($name, $breakpoints);
   @return if($next, breakpoint-min($next, $breakpoints) - 0.02px, null);
 }
@@ -60,7 +60,7 @@
 /// larger breakpoint.
 /// @example breakpoint-infix(xs) === ''
 /// @example breakpoint-infix(sm) === '-sm'
-@function breakpoint-infix($breakpoint, $breakpoints: theme-get('breakpoints')) {
+@function breakpoint-infix($breakpoint, $breakpoints: theme-get('screens')) {
   @return if(breakpoint-min($breakpoint, $breakpoints) == null, '', '#{$breakpoint}\\:');
 }
 

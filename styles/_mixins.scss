@@ -34,7 +34,7 @@
 
 // Media of at least the minimum breakpoint width. No query for the smallest breakpoint.
 // Makes the @content apply to the given breakpoint and wider.
-@mixin media-breakpoint-up($name, $breakpoints: theme-get('breakpoints')) {
+@mixin media-breakpoint-up($name, $breakpoints: theme-get('screens')) {
   $min: breakpoint-min($name, $breakpoints);
   @if $min {
     @media (min-width: $min) {
@@ -47,7 +47,7 @@
 
 // Media of at most the maximum breakpoint width. No query for the largest breakpoint.
 // Makes the @content apply to the given breakpoint and narrower.
-@mixin media-breakpoint-down($name, $breakpoints: theme-get('breakpoints')) {
+@mixin media-breakpoint-down($name, $breakpoints: theme-get('screens')) {
   $max: breakpoint-max($name, $breakpoints);
   @if $max {
     @media (max-width: $max) {
@@ -60,7 +60,7 @@
 
 // Media that spans multiple breakpoint widths.
 // Makes the @content apply between the min and max breakpoints
-@mixin media-breakpoint-between($lower, $upper, $breakpoints: theme-get('breakpoints')) {
+@mixin media-breakpoint-between($lower, $upper, $breakpoints: theme-get('screens')) {
   $min: breakpoint-min($lower, $breakpoints);
   $max: breakpoint-max($upper, $breakpoints);
 
@@ -82,7 +82,7 @@
 // Media between the breakpoint's minimum and maximum widths.
 // No minimum for the smallest breakpoint, and no maximum for the largest one.
 // Makes the @content apply only to the given breakpoint, not viewports any wider or narrower.
-@mixin media-breakpoint-only($name, $breakpoints: theme-get('breakpoints')) {
+@mixin media-breakpoint-only($name, $breakpoints: theme-get('screens')) {
   $min: breakpoint-min($name, $breakpoints);
   $max: breakpoint-max($name, $breakpoints);
 
@@ -220,23 +220,23 @@
   @include reset-button;
 
   // Set link font styles
-  color: theme-get('palette.primary.500');
+  color: theme-get('colors.primary.500');
   cursor: pointer;
 
   &:hover,
   &.hover {
-    color: theme-get('palette.primary.700');
+    color: theme-get('colors.primary.700');
     // text-decoration: $anchor-hover-decoration;
   }
 
   &:active,
   &.active {
-    color: theme-get('palette.primary.900');
+    color: theme-get('colors.primary.900');
     // text-decoration: $anchor-active-decoration;
   }
 
   &.disabled {
-    color: theme-get('palette.primary.300');
+    color: theme-get('colors.primary.300');
     // text-decoration: $anchor-disabled-decoration;
   }
 }

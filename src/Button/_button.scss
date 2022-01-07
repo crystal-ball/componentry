@@ -21,9 +21,9 @@ $button-defaults: (
         padding: 0 1rem,
         background-color: theme-get('colors.primary.500'),
         border: 1px solid theme-get('colors.primary.500'),
-        border-radius: theme-get('border-radii.default'),
+        border-radius: theme-get('border-radius.md'),
         color: white,
-        font-size: theme-get('typography.font-sizes.button'),
+        font-size: theme-get('font-size.sm'),
         line-height: 1,
         // ensures text is center aligned within flex layout
         transition: background-color 0.15s linear,
@@ -45,9 +45,9 @@ $button-defaults: (
         padding: 0 1rem,
         background-color: transparent,
         border: 1px solid theme-get('colors.primary.500'),
-        border-radius: theme-get('border-radii.default'),
+        border-radius: theme-get('border-radius.md'),
         color: theme-get('colors.primary.500'),
-        font-size: theme-get('typography.font-sizes.button'),
+        font-size: theme-get('font-size.sm'),
         transition: color 0.15s linear,
         '&:hover, &.🅲-hover': (
           border-color: theme-get('colors.primary.700'),
@@ -68,14 +68,14 @@ $button-defaults: (
     (
       sm: (
         height: 1.5rem,
-        border-radius: theme-get('border-radii.md'),
-        font-size: theme-get('typography.font-sizes.sm'),
+        border-radius: theme-get('border-radius.md'),
+        font-size: theme-get('font-size.sm'),
         padding: 0rem 0.5rem,
       ),
       lg: (
         height: 2.5rem,
-        border-radius: theme-get('border-radii.lg'),
-        font-size: theme-get('typography.font-sizes.lg'),
+        border-radius: theme-get('border-radius.lg'),
+        font-size: theme-get('font-size.lg'),
         padding: 0 2rem,
       ),
     ),

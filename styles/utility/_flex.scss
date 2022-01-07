@@ -4,9 +4,9 @@
 //
 // Custom styles for additional flex alignment options.
 
-@each $breakpoint in map-keys(theme-get('breakpoints')) {
+@each $breakpoint in map-keys(theme-get('screens')) {
   @include media-breakpoint-up($breakpoint) {
-    $infix: breakpoint-infix($breakpoint, theme-get('breakpoints'));
+    $infix: breakpoint-infix($breakpoint, theme-get('screens'));
 
     // --- Flex direction
     .#{$infix}flex-row {
