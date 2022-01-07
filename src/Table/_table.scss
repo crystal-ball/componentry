@@ -29,7 +29,8 @@ $table-head: () !default;
   componentry-class(table-head),
   map-assign(
     (
-      border-bottom: theme-get('borders.default'),
+      border-bottom-width: theme-get('border-width.DEFAULT'),
+      border-color: theme-get('border-color.DEFAULT'),
     ),
     $table-head
   )
@@ -61,7 +62,8 @@ $table-row: () !default;
       // be a double border at the top of the table)
       '& + &':
         (
-          border-top: theme-get('borders.default'),
+          border-top-width: theme-get('border-width.DEFAULT'),
+          border-color: theme-get('border-color.DEFAULT'),
         ),
     ),
     $table-row
@@ -76,8 +78,8 @@ $table-header: () !default;
   componentry-class(table-header),
   map-assign(
     (
-      font-weight: theme-get('typography.font-weights.bold'),
-      padding: theme-get('spacing.sm'),
+      font-weight: theme-get('font-weight.bold'),
+      padding: theme-get('spacing.1'),
     ),
     $table-header
   )
@@ -91,7 +93,7 @@ $table-cell: () !default;
   componentry-class(table-cell),
   map-assign(
     (
-      padding: theme-get('spacing.sm'),
+      padding: theme-get('spacing.1'),
     ),
     $table-cell
   )

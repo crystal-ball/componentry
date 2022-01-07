@@ -1,30 +1,51 @@
 import { ArgsTable, Canvas, Meta, Story } from '@storybook/addon-docs'
 import { Button } from './Button'
 
-<Meta title='Components/Button' component={Button} args={{ children: 'Button' }} />
+<Meta title='Components/Button' component={Button} />
 
 export const Template = (args) => <Button {...args} />
 
+# Button
+
 ## Variants
 
-Button variants
+Pass a `variant` to set a button style.
 
 <Canvas>
   <Story
-    name='PrimaryVariant'
-    args={{
-      variant: 'primary',
-    }}
+    name='Variants'
+    decorators={[
+      (Story) => (
+        <div className='grid grid-cols-4 gap-x-4 gap-y-2 items-center justify-items-center w-1/2'>
+          <div>base</div>
+          <div>hover</div>
+          <div>active</div>
+          <div>disabled</div>
+          <Story />
+        </div>
+      ),
+    ]}
   >
-    {Template.bind({})}
-  </Story>
-  <Story
-    name='SecondaryVariant'
-    args={{
-      variant: 'secondary',
-    }}
-  >
-    {Template.bind({})}
+    <Button variant='primary'>Button</Button>
+    <Button variant='primary' className='🅲-hover'>
+      Button
+    </Button>
+    <Button variant='primary' className='🅲-active'>
+      Button
+    </Button>
+    <Button variant='primary' className='🅲-disabled'>
+      Button
+    </Button>
+    <Button variant='secondary'>Button</Button>
+    <Button variant='secondary' className='🅲-hover'>
+      Button
+    </Button>
+    <Button variant='secondary' className='🅲-active'>
+      Button
+    </Button>
+    <Button variant='secondary' className='🅲-disabled'>
+      Button
+    </Button>
   </Story>
 </Canvas>
 
@@ -32,25 +53,34 @@ Button variants
 
 Pass a `size` to set a button size:
 
-<div className='d-flex'>
-  <div className='btn-container-x'>
+<Canvas>
+  <Story
+    name='Sizes'
+    decorators={[
+      (Story) => (
+        <div className='flex flex-row items-center gap-4'>
+          <Story />
+        </div>
+      ),
+    ]}
+  >
     <Button size='sm'>Button</Button>
     <Button>Button</Button>
     <Button size='lg'>Button</Button>
-  </div>
-</div>
+  </Story>
+</Canvas>
 
 ## Full width buttons
 
-Pass `width="100%"` to make a button fill its parent container:
+Pass `fullWidth` to make a button fill its parent container:
 
-<Button width='100%'>Full width button</Button>
+<Button fullWidth>Button</Button>
 
 ## Disabled
 
 Pass `disabled` to make a button disabled:
 
-<div className='btn-container-x'>
+<div className='flex flex-row items-center gap-4'>
   <Button variant='primary' disabled>
     Button
   </Button>
@@ -59,17 +89,17 @@ Pass `disabled` to make a button disabled:
   </Button>
 </div>
 
-## Buttons with routing
+## Buttons with hrefs
 
-A Button with routing handlers:
+Buttons with an `href` will be rendered as anchors:
 
 <Button href='#test'>Button</Button>
 
 ## Input buttons
 
-Use the `as` prop to render input elements styled as buttons:
+Pass an `as` prop to render input elements styled as buttons:
 
-<div className='d-flex justify-content-center btn-container-x'>
+<div className='flex flex-row items-center gap-4'>
   <Button>Button</Button>
   <Button as='input' value='Input' />
   <Button as='input' type='submit' value='Submit' />

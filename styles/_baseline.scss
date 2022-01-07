@@ -33,7 +33,7 @@
  *
  *    By default, the way the browser specifies that an element should have no
  *    border is by setting it's border-style to `none` in the user-agent
- *    stylesheet.
+ *    style sheet.
  *
  *    In order to easily add borders to elements by just setting the `border-width`
  *    property, we change the default border-style for all elements to `solid`, and
@@ -63,8 +63,8 @@
  * 4. Use a more readable tab size (opinionated).
  */
 html {
-  font-family: theme-get('typography.font-families.body'); /* 1 */
-  line-height: theme-get('typography.line-heights.body'); /* 2 */
+  font-family: #{theme-get('font-family.body')}; /* 1 */
+  line-height: theme-get('line-height.normal'); /* 2 */
   -webkit-text-size-adjust: 100%; /* 3 */
   text-size-adjust: 100%; /* 3 */
   -moz-tab-size: 4; /* 4 */
@@ -157,7 +157,7 @@ strong {
  * 3. Removes the default spacing and border for appropriate elements.
  */
 pre {
-  font-family: theme-get('typography.font-families.monospace'); /* 1 */
+  font-family: #{theme-get('font-family.monospace')}; /* 1 */
   font-size: 1em; /* 2 */
   margin: 0; /* 3 */
 }
@@ -169,7 +169,7 @@ pre {
 code,
 kbd,
 samp {
-  font-family: theme-get('typography.font-families.monospace'); /* 1 */
+  font-family: #{theme-get('font-family.monospace')}; /* 1 */
   font-size: 1em; /* 2 */
 }
 

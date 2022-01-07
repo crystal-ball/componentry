@@ -1,88 +1,98 @@
-/* componentry/src/Alert/alert */
+///                                      Componentry <Alert /> styles
+/// -----------------------------------------------------------------
 
-$alert-defaults: ();
-@each $color, $value in $theme-colors {
-  $alert-defaults: map-merge(
-    $alert-defaults,
+$alert: () !default;
+
+$alert-defaults: (
+  base: (
+    // Make the alert container a flex container by default with space-between
+    // to align close button to right side
+    display: flex,
+    align-items: flex-start,
+    justify-content: space-between,
+  ),
+  // --- VARIANTS
+  variants:
     (
-      #{$color}-bg: #{gradient-bg(theme-color-level($color, $alert-bg-level))},
-      #{$color}-border-color: #{theme-color-level($color, $alert-border-level)},
-      #{$color}-color: #{theme-color-level($color, $alert-color-level)}
+      filled: (
+        padding: theme-get('spacing.2'),
+        border: 1px solid transparent,
+        border-radius: theme-get('border-radius.md'),
+      ),
+    ),
+);
+
+// --------------------------------------------------------
+// COLORS
+
+$alert-colors: ();
+$alert-theme-colors: ('primary', 'info', 'success', 'warning', 'error');
+@each $color, $value in $alert-theme-colors {
+  $alert-colors: map-assign(
+    $alert-colors,
+    (
+      '.alert-filled.alert-color-#{$color}': (
+        background: theme-get('colors.#{$color}.100'),
+        border-color: theme-get('colors.#{$color}.300'),
+        color: theme-get('colors.#{$color}.500'),
+        '& .alert-link': (
+          color: theme-get('colors.#{$color}.500'),
+          font-weight: theme-get('font-weight.bold'),
+        ),
+        '& hr': (
+          border-top-color: theme-get('colors.#{$color}.400'),
+        ),
+      ),
     )
   );
 }
 
-$alert-states-map: map-merge($alert-defaults, $alert-states);
+$alert-defaults: map-assign(
+  $alert-defaults,
+  (
+    colors: $alert-colors,
+  )
+);
 
-// Make the alert container a flex container by default with space-between to align
-// close button to right side
-.🅲-alert {
-  align-items: flex-start;
-  border: $alert-border-width solid transparent;
-  display: flex;
-  justify-content: space-between;
-  margin-bottom: $alert-margin-bottom;
-  padding: $alert-padding-y $alert-padding-x;
-  position: relative;
-  @include border-radius($alert-border-radius);
+// --------------------------------------------------------
+// CLASSES
+
+$alert: map-assign($alert-defaults, $alert);
+
+@include style-rule-from-map(componentry-class(alert), get($alert, 'base'));
+
+@each $variant, $styles in get($alert, 'variants') {
+  @include style-rule-from-map('.alert-#{$variant}', $styles);
 }
 
-// Alternate styles
-//
-// Generate contextual modifier classes for colorizing the alert.
+@debug $alert-colors;
+@include style-properties-from-map($alert-colors);
 
-@each $color, $value in $theme-colors {
-  .alert-color-#{$color} {
-    background: map-get($alert-states-map, #{$color}-bg);
-    border-color: map-get($alert-states-map, #{$color}-border-color);
-    color: map-get($alert-states-map, #{$color}-color);
-
-    hr {
-      border-top-color: darken(theme-color-level($color, $alert-border-level), 5%);
-    }
-
-    .alert-link {
-      color: darken(theme-color-level($color, $alert-color-level), 10%);
-    }
-  }
-
-  // Outline alerts have a transparent background with a bright left side border
-  .alert-#{$color}.alert-outline {
-    background-color: transparent;
-    border-color: border-color(default);
-    border-left: 5px solid $value;
-  }
-}
-
-//
-// Alert elements
-//
+// --------------------------------------------------------
+// ELEMENTS
 
 .alert-content {
   flex-grow: 1;
+  flex-shrink: 1;
+}
+
+.alert-heading {
+  color: inherit;
+  margin-bottom: theme-get('spacing.2');
 }
 
 .🅲-alert-close {
-  margin-left: $alert-close-margin-left;
+  flex-shrink: 0;
+  margin-left: theme-get('spacing.1');
 
   // Animate close icon opacity on hover
   .icon-close {
     opacity: 0.6;
-    transition: $transition-fade;
+    transition: opacity 0.2s cubic-bezier(0.4, 0, 0.2, 1);
 
-    @include hover-focus {
+    &:hover,
+    &:focus {
       opacity: 1;
     }
   }
-}
-
-// Headings for larger alerts
-.alert-heading {
-  margin-top: 0;
-  color: inherit;
-}
-
-// Provide class for links that match alerts
-.alert-link {
-  font-weight: $alert-link-font-weight;
 }

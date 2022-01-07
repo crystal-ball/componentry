@@ -1,69 +1,47 @@
 # Theme definition
 
-- Date: 6/6/21
+- Date: 1/7/22
 
 ## Context and Problem Statement
 
-Componentry needs a theme defined by a set of design tokens that is both concise
-and flexible.
+A good theme structure is a critical resource for implementing design system
+component libraries. Users need to be able to define their design tokens in an
+organized, semantic structure.
+
+Like most design system requirements, creating a system that is both flexible
+enough for customization, but useful out of the box is really tricky. Some users
+will prefer a range of values (similar to the default theme in Tailwind), while
+others will prefer to use semantic naming conventions to constrain usage.
 
 ## Decision Drivers
 
-- Theme should be defined by a set of design tokens.
-- Theme should be concise, (themes with hundres of variables are unwieldy to
-  customize).
+- Theme should be defined by a set of design tokens, meaning the final theme is
+  a set of values only.
+- The default theme structure should be concise to improve maintainability.
 - Theme structure should be flexible, users should be able to add theme
   namespaces and values that are contextual to their systems.
 - Theme should follow common patterns defined by other design systems when
   possible.
--
 
 ## Decision Outcome
 
-_Summary: Define generic theme values, don't define semantic theme values.
-Prefer the most common, familiar, descriptive names for the generic values._
+_Summary: The Componentry default theme uses generic theme names and doesn't
+attempt to define a semantic naming system._
 
-The componentry theme is defined by a small set of foundational fields:
+The default theme structure matches the Tailwind theme structure. This meets the
+goal of a set of common, familiar, descriptive names for the generic values
+while also making it extremely easy to use a single theme value for Componentry
+styles and Tailwind utilities.
 
-- `colors`, `spacing`, `typography`
+ℹ️️ Notes: Early iterations attempted to provide helpful semantic names for
+theme values, eg a specific `borderColor` namespace for constraining a defined
+set of border colors, but this quickly started to feel prescriptive in a
+non-helpful way. These semantic namespaces can be great improvements to a design
+system, but defining them in Componentry is too hard to get right for everyone.
 
-The colors namespace will have fields for `transparent`, `current`, `gray`,
-`primary`, `success`, `warning`, and `critical`.
-
-The typography namespace will have fields for `font-families`, `font-sizes`,
-`font-weight`, `line-heights`.
-
-```javascript
-const theme = {
-  breakpoints: {},
-  colors: {
-    transparent: 'transparent',
-    current: 'currentColor',
-    gray: {},
-    primary: {},
-    success: {},
-    warning: {},
-    critical: {},
-  },
-  spacing: {},
-  typography: {
-    fontFamilies: {},
-    fontSizes: {},
-    fontWeights: {},
-    lineHeights: {},
-  },
-}
-```
-
-What Componentry does _not_ include is semantic namespaces in the theme, eg
-`colors.text` or `colors.borders`. These semantic namespaces can be great
-improvements to a design system, but defining them in Componentry is too hard to
-get right for everyone.
-
-Additional tokens for styles like borders, shadows, etc. follow the naming
-conventions defined by
-[Styled System](https://styled-system.com/theme-specification), b/c it
-consistently uses plural names.
+ℹ️️ Notes: This is a big departure from the early days of this library which
+used a large set of individual variables matching Bootstrap. This theme
+definition was difficult to document and understand relationships in.
 
 ### Positive Consequences
 
@@ -75,8 +53,8 @@ consistently uses plural names.
 
 - Users will need to define their own semantic namespaces for themes (eg decide
   if the `colors` namespace should have a `text` sub-namespace).
-- Library utility classes will be for all colors (small negative though, this
-  matches Tailwind).
+- Library utility classes will be for all colors which makes consistency across
+  larger teams more difficult.
 
 ## Background
 
@@ -101,8 +79,8 @@ Survey of names used by other design systems:
 
 - "Breakpoints" is a very familiar term, Tailwind seems to be the only library
   that refers to them as "screens".
-- "Color(s)" is the most common way to define color in design systesm (eg
-  Polaris and Atlassian), MUI seems to be the only one to use "palette".
+- "Color(s)" is the most common way to define color in design system (eg Polaris
+  and Atlassian), MUI seems to be the only one to use "palette".
 - Although most libraries don't have a namespace for their tokens, "Typography"
   is the most common way to group styles for text in design systems (eg Polaris
   and Atlassian)

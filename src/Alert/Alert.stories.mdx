@@ -1,9 +1,7 @@
-import { Meta } from '@storybook/addon-docs'
+import { ArgsTable, Canvas, Meta, Story } from '@storybook/addon-docs'
 import { BADGE } from '@geometricpanda/storybook-addon-badges'
 
-import { Active } from '../Active/Active'
-import { colors } from '../storybook'
-import { Alert } from './Alert'
+import { Active, Alert, Link, Text } from '..'
 
 <svg
   xmlns='http://www.w3.org/2000/svg'
@@ -37,52 +35,55 @@ Alert requires Componentry Active `active` and `deactivate` props, which can be 
 directly or the Alert can be nested inside of an Active component to automatically create
 an uncontrolled Alert.
 
-<Alert color='primary'>
-  <h4 className='alert-heading'>Well done!</h4>
-  <p className='mb-0'>You successfully read this important alert message.</p>
-  <hr className='hr' />
-  <a href='#demo' className='a alert-link'>
-    Go home
-  </a>
-</Alert>
-
----
-
-## Colors
-
-<div>
-  {colors.map((color) => (
-    <Alert key={color} color={color}>
-      Themed alert
+<Canvas>
+  <Story
+    name='Colors'
+    decorators={[
+      (Story) => (
+        <div className='grid gap-2'>
+          <Story />
+        </div>
+      ),
+    ]}
+  >
+    <Alert color='primary'>
+      <Text>Primary themed alert</Text>
     </Alert>
-  ))}
-</div>
+    <Alert color='info'>Info themed alert</Alert>
+    <Alert color='success'>Success themed alert</Alert>
+    <Alert color='warning'>Warning themed alert</Alert>
+    <Alert color='error'>Error themed alert</Alert>
+  </Story>
+</Canvas>
 
-You can also create outline alerts that have only a border-left
+## Alert elements
 
-<Alert color='primary' outline>
-  <h4 className='alert-heading'>Well done!</h4>
-  <p className='mb-0'>You successfully read this important alert message.</p>
-  <hr className='hr' />
-  <a href='#demo' className='a alert-link'>
+Styles are also included for: `alert-heading`, `alert-link`, and `<hr />` elements.
+
+<Alert color='primary'>
+  <Text variant='heading-3' className='alert-heading'>
+    Well done!
+  </Text>
+  <Text>You successfully read this important alert message.</Text>
+  <hr className='my-2' />
+  <Link href='#demo' className='alert-link'>
     Go home
-  </a>
+  </Link>
 </Alert>
 
 ## Dismissible
 
-Create a dismissible alert by wrapping it in an `Active` component.
+Pass `dismissible` to an Alert to show a close icon which will call the `deactivate` prop
+on click.
 
-<Active defaultActive>
-  <Alert color='primary' dismissible>
-    <h4 className='alert-heading'>Well done!</h4>
-    <p className='mb-0'>You successfully read this important alert message.</p>
-    <hr className='hr' />
-    <a href='#demo' className='a alert-link'>
-      Go home
-    </a>.
-  </Alert>
-</Active>
+<Alert color='success' dismissible>
+  <Text variant='heading-3' className='alert-heading'>
+    Success!
+  </Text>
+  <Text>You created a dismissible alert 👋</Text>
+</Alert>
+
+## Accessibility
 
 ### Aria title
 

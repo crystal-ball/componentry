@@ -5,13 +5,20 @@
 @import './functions/lib';
 
 $theme-defaults: (
-  // --------------------------------------------------------
-  // Foundation: Colors, Spacing, Typography
+  // --- SCREENS
+  screens:
+    (
+      // Componentry has a single breakpoint by default, additional breakpoints can
+      // be added. 1200px is used for the default to try and ensure all smaller
+      // desktops are included. (992, 1200, 1280 are the most common large breakpoints)
+      // For multiple breakpoints 768 and 1280 are common breakpoints for md and lg.
+      lg: 1200px
+    ),
   // --- COLORS
   colors:
     (
-      'transparent': 'transparent',
       'current': 'currentColor',
+      'transparent': 'transparent',
       'gray': (
         '100': #eff2f3,
         '200': #d7dfe2,
@@ -33,6 +40,17 @@ $theme-defaults: (
         '700': #4b4799,
         '800': #383673,
         '900': #26244d,
+      ),
+      info: (
+        '100': #dbeafe,
+        '200': #bfdbfe,
+        '300': #93c5fd,
+        '400': #60a5fa,
+        '500': #3b82f6,
+        '600': #2563eb,
+        '700': #1d4ed8,
+        '800': #1e40af,
+        '900': #1e3a8a,
       ),
       success: (
         '100': #f4f9ed,
@@ -56,7 +74,7 @@ $theme-defaults: (
         '800': #6c521c,
         '900': #483713,
       ),
-      critical: (
+      error: (
         '100': #fbeeed,
         '200': #f6d4d3,
         '300': #f0bab9,
@@ -68,90 +86,67 @@ $theme-defaults: (
         '900': #411918,
       ),
     ),
-  'theme-colors': ('primary', 'success', 'warning', 'critical'),
   // --- SPACING
   spacing:
     (
       '0': 0,
-      xs: 0.25rem,
-      sm: 0.5rem,
-      md: 1rem,
-      lg: 2rem,
-      xl: 3rem,
+      '0.5': 0.25rem,
+      // 4px
+      '1': 0.5rem,
+      // 8px
+      '1.5': 0.75rem,
+      // 12px
+      '2': 1rem,
+      // 16px
+      '3': 1.5rem,
+      // 24px
+      '4': 2rem,
+      // 32px
+      '5': 2.5rem,
+      // 40px
+      '6': 3rem,
+      // 48px
     ),
   // --- TYPOGRAPHY
-  typography:
+  font-family:
     (
-      font-families: (
-        body: (
-          system-ui,
-          -apple-system,
-          'Segoe UI',
-          Roboto,
-          Helvetica,
-          Arial,
-          sans-serif,
-          'Apple Color Emoji',
-          'Segoe UI Emoji',
-        ),
-        monospace: (
-          SFMono-Regular,
-          Menlo,
-          Monaco,
-          Consolas,
-          'Liberation Mono',
-          'Courier New',
-          monospace,
-        ),
-      ),
-      font-sizes: (
-        sm: 0.875rem,
-        base: 1rem,
-        lg: 1.25rem,
-      ),
-      font-weights: (
-        light: 300,
-        normal: 400,
-        bold: 700,
-      ),
-      line-heights: (
-        single: 1,
-        body: 1.5,
-      ),
+      body:
+        "system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji'",
+      mono:
+        "SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New', monospace",
     ),
-  // --------------------------------------------------------
-  // Details: Breakpoints Borders, Shadows, etc.
-  // --- BREAKPOINTS
-  // Componentry has a single breakpoint by default, additional breakpoints can
-  // be added. 1200px is used for the default to try and ensure all smaller
-  // desktops are included. (992, 1200, 1280 are the most common large breakpoints)
-  // For multiple breakpoints 768 and 1280 are common breakpoints for md and lg.
-  breakpoints:
-    (
-      lg: 1200px,
-    ),
+  font-size: (
+    sm: 0.875rem,
+    base: 1rem,
+    lg: 1.25rem,
+  ),
+  font-weight: (
+    light: 300,
+    normal: 400,
+    bold: 700,
+  ),
+  line-height: (
+    none: 1,
+    normal: 1.5,
+  ),
   // --- BORDERS
-  borders:
+  border-width:
     (
-      default: 1px solid #607d8b,
+      DEFAULT: 1px,
     ),
-  border-widths: (),
-  radii: (
-    default: 4px,
+  border-color: (
+    DEFAULT: #607d8b,
+  ),
+  border-radius: (
+    DEFAULT: 4px,
     sm: 2px,
     md: 4px,
     lg: 6px,
   ),
   // --- SHADOWS
-  shadows:
+  boxShadow:
     (
-      default: 0 0.5rem 1rem rgba(73, 80, 87, 0.15),
-    ),
-  // --------------------------------------------------------
-  // Transitions
-  transitions:
-    (
-      fade: 'opacity 0.25s linear',
+      DEFAULT: 0 0.5rem 1rem rgba(73, 80, 87, 0.15),
     )
 );
 

@@ -14,7 +14,7 @@ describe('<Alert/>', () => {
     render(<Alert color='success'>Warning!</Alert>)
 
     expect(screen.getByRole('alert')).toHaveClass(
-      '🅲-alert alert-primary alert-color-success',
+      '🅲-alert alert-filled alert-color-success',
     )
     expect(screen.getByRole('alert')).toHaveAttribute('role', 'alert')
   })

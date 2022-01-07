@@ -164,6 +164,24 @@ script. The different versions are created using Babel configs triggered by the
   Stage-4 features. This version can be used to by consuming projects configured
   to create their own targeted compile configurations.
 
+  ## Bootstrap enhancements
+
+Componentry enhancements to Bootstrap include:
+
+- Using the `aria-hidden` attribute to handle showing/hiding elements instead of
+  a class name. The `aria-hidden` attribute is used in all components for A++
+  accesibility, and instead of duplicating the aria status in a class name
+  Componentry extends the Bs styles to trigger off the aria status.
+- Where possible floats have been replaced with flexbox rules.
+- Included `icon` class adds base styles for font icons using SVGs.
+- Tooltips and Popovers use a relative positioned container with absolute
+  positioned children for DOM placement instead of fixed position. This removes
+  necessity of calculating fixed top/left coordinates.
+- The content container for any element with active states uses a standard
+  classname convention where a `<TYPE>-container` wraps a `<TYPE>-content`
+  class. For dropdowns, this means the `.dropdown-menu` class is normalized to
+  `dropdown-content`.
+
 <!-- Link -->
 
 [approach]: https://getbootstrap.com/docs/4.0/extend/approach/

@@ -17,8 +17,8 @@ interface AlertProps extends ComponentBaseProps<'div'> {
   deactivate?: (event: React.MouseEvent<HTMLButtonElement>) => void
   /** Toggles alert dismissible feature */
   dismissible?: boolean
-  /** Toggles alert outline styles */
-  variant?: 'primary' | 'outline'
+  /** Sets the alert variant style */
+  variant?: 'filled'
 }
 
 interface Alert {
@@ -42,7 +42,7 @@ export const Alert: Alert = (props) => {
     color,
     deactivate,
     dismissible,
-    variant = 'primary',
+    variant = 'filled',
     ...rest
   } = { ...useTheme<AlertProps>('Alert'), ...useActive(), ...props }
 
@@ -54,7 +54,7 @@ export const Alert: Alert = (props) => {
       `alert-${variant}`,
       {
         [`alert-color-${color}`]: color,
-        fade: dismissible, // Only include opacity transition class for disimissible alerts
+        fade: dismissible, // Only include opacity transition class for dismissible alerts
         visible,
       },
     ],
