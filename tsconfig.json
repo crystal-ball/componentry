@@ -26,5 +26,5 @@
     "jsx": "react" /* Specify JSX code generation: 'preserve', 'react-native', or 'react'. */
   },
 
-  "include": ["src/**/*", "test/**/*"]
+  "include": ["@types/**/*", "src/**/*"]
 }

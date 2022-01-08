@@ -19,7 +19,7 @@ module.exports = {
 
   overrides: [
     {
-      files: ['src/plugin/**/*', 'src/test/**/*'],
+      files: ['src/plugin-babel/**/*', 'src/test/**/*'],
       rules: {
         'import/no-extraneous-dependencies': 'off',
       },

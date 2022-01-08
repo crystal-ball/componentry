@@ -1,4 +1,12 @@
-# Ignore plugin test fixtures, they're not lintable
-src/plugin/__fixtures__
-# Ignore build output
+# Don't Lint Me!
+# -------------------------------------
+
+# Babel plugin fixtures aren't fully valid
+# -------------------------------------
+src/plugin-babel/__fixtures__
+
+# Build/Compile output
+# -------------------------------------
 storybook-static
+cjs
+esm

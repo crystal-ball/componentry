@@ -1,6 +1,10 @@
 # Don't Git Me!
 # -------------------------------------
 
+# Workspace
+# -------------------------------------
+.vscode/settings.json
+
 # Vendor Libraries
 # -------------------------------------
 node_modules
