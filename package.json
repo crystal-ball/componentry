@@ -54,7 +54,10 @@
   "dependencies": {
     "@babel/runtime": "7",
     "clsx": "1",
-    "nanoid": "3"
+    "nanoid": "3",
+    "postcss": "8",
+    "postcss-js": "4",
+    "postcss-nested": "5"
   },
   "devDependencies": {
     "@babel/cli": "7.16.7",

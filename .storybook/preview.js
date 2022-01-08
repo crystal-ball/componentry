@@ -1,7 +1,7 @@
 // --- BASE STYLES ---
 
 import './styles-componentry.scss'
-import './styles-tailwind.css'
+import './storybook-styles.css'
 
 // --- STORYBOOK DEFAULTS ---
 export const parameters = {
