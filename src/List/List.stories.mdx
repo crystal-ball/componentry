@@ -1,7 +1,6 @@
 import { Meta, Story } from '@storybook/addon-docs'
 import { BADGE } from '@geometricpanda/storybook-addon-badges'
 
-import { colors } from '../storybook'
 import { List } from './List'
 
 <Meta
@@ -63,7 +62,7 @@ export const Template = (args) => <List {...args} />
 ## Theme color items
 
 <List>
-  {colors.map((color) => (
+  {['primary', 'info', 'success', 'warning', 'error'].map((color) => (
     <List.Item key={color} color={color}>
       {color} themed list item
     </List.Item>

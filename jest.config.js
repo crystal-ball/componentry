@@ -16,10 +16,11 @@ module.exports = {
   coverageReporters: ['text-summary', 'lcov', 'clover'],
   collectCoverageFrom: [
     'src/**/*.{ts,tsx}',
-    '!**/*.stories.js',
-    '!src/storybook/**',
-    '!src/test/**',
-    '!src/{Media,Modal,Theme}/stories/**',
+    '!**/*.stories.js', // Ignore story files
+    '!src/{Media,Modal,Theme}/stories/**', // Ignore story files
+    '!**/*.styles.ts', // Ignore PostCSS styles
+    '!src/test/**', // Ignore test files
+    '!src/plugin-babel/__fixtures__/**', // Ignore fixture files
   ],
 
   // Pre/Post test framework setup configs
