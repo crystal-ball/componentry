@@ -33,7 +33,7 @@ export const Button: React.FC<ButtonProps> = (props) => {
     ...props,
   }
 
-  return element<ButtonProps>('Button', {
+  return element({
     // If an href is passed, this instance should render an anchor tag
     as: merged.href ? 'a' : 'button',
     type: merged.href ? undefined : 'button',
