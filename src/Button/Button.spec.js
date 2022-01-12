@@ -21,7 +21,7 @@ describe('<Button/>', () => {
     // By default the button should have type button for a11y
     expect(screen.getByRole('button')).toHaveAttribute('type', 'button')
     // By default the variant primary
-    expect(screen.getByRole('button')).toHaveClass('🅲-button button-primary')
+    expect(screen.getByRole('button')).toHaveClass('🅲Button-base 🅲Button-filled')
     // TODO: Is it possible to get the classes from the element and just check that?
     // ...there shouldn't be any other classes
   })
@@ -35,7 +35,7 @@ describe('<Button/>', () => {
   it('When `variant` is passed, then it should be used as base className value', () => {
     render(<Button variant='demo'>Button</Button>)
 
-    expect(screen.getByRole('button')).toHaveClass('🅲-button button-demo')
+    expect(screen.getByRole('button')).toHaveClass('🅲Button-base 🅲Button-demo')
   })
 
   it('When `color` is passed, then the color className should render', () => {
@@ -49,10 +49,10 @@ describe('<Button/>', () => {
     )
 
     expect(screen.getByRole('button', { name: 'Button' })).toHaveClass(
-      '🅲-button button-primary button-color-info',
+      '🅲Button-base 🅲Button-filled 🅲Button-infoColor',
     )
     expect(screen.getByRole('button', { name: 'Variant Button' })).toHaveClass(
-      '🅲-button button-demo button-color-info',
+      '🅲Button-base 🅲Button-demo 🅲Button-infoColor',
     )
   })
 
@@ -67,10 +67,10 @@ describe('<Button/>', () => {
     )
 
     expect(screen.getByRole('button', { name: 'Button' })).toHaveClass(
-      '🅲-button button-primary button-sm',
+      '🅲Button-base 🅲Button-filled 🅲Button-smSize',
     )
     expect(screen.getByRole('button', { name: 'Variant Button' })).toHaveClass(
-      '🅲-button button-demo button-sm',
+      '🅲Button-base 🅲Button-demo 🅲Button-smSize',
     )
   })
 })

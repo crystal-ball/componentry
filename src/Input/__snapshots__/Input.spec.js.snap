@@ -5,23 +5,23 @@ exports[`<Input /> snapshots renders correctly 1`] = `
   data-testid="input"
 >
   <label
-    class="🅲-input-label"
+    class=""
     for="test-guid"
   >
     Storybook
   </label>
   <input
-    class="🅲-input-field"
+    class=""
     id="test-guid"
     type="text"
   />
   <div
-    class="🅲-input-description"
+    class=""
   >
     Really important input!
   </div>
   <div
-    class="🅲-input-error"
+    class=""
   >
     Oh no!
   </div>

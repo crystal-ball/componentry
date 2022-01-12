@@ -2,7 +2,7 @@
 
 exports[`<Grid /> snapshots renders correctly 1`] = `
 <div
-  class="🅲-grid grid"
+  class="grid"
   data-testid="grid"
 >
   Block content

@@ -5,7 +5,7 @@ export default function Test() {
   // Test that:
   // 1. Components that aren't precompile components are ignored
   return /*#__PURE__*/ _jsxs('div', {
-    className: '\uD83C\uDD72-flex flex',
+    className: 'flex',
     children: [
       /*#__PURE__*/ _jsx(Input, {
         value: 'not compiled',

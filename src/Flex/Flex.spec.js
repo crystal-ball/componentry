@@ -10,13 +10,13 @@ describe('<Flex />', () => {
   it('When inline is not passed, then flex className is rendered', () => {
     render(<Flex>Content</Flex>)
 
-    expect(screen.getByText('Content')).toHaveClass('🅲-flex flex')
+    expect(screen.getByText('Content')).toHaveClass('flex')
   })
 
   it('When inline is passed, then inline-flex className is rendered', () => {
     render(<Flex inline>Content</Flex>)
 
-    expect(screen.getByText('Content')).toHaveClass('🅲-flex inline-flex')
+    expect(screen.getByText('Content')).toHaveClass('inline-flex')
   })
 
   it('When modifier props are passed, then the expanded classNames are rendered', () => {
@@ -27,7 +27,7 @@ describe('<Flex />', () => {
     )
 
     expect(screen.getByText('Content')).toHaveClass(
-      '🅲-flex flex flex-col items-start flex-wrap justify-start',
+      'flex flex-col items-start flex-wrap justify-start',
     )
   })
 })

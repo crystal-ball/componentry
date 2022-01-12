@@ -2,7 +2,7 @@
 
 exports[`<Block /> snapshots renders correctly 1`] = `
 <div
-  class="🅲-block block"
+  class="block"
   data-testid="block"
 >
   Block content
