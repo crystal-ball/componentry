@@ -1,7 +1,6 @@
 import { Meta } from '@storybook/addon-docs'
 import { BADGE } from '@geometricpanda/storybook-addon-badges'
 
-import { colors } from '../storybook'
 import { Badge } from './Badge'
 
 <Meta
@@ -21,7 +20,7 @@ Badges provide status information
 ## Colors
 
 <div className='d-flex justify-content-center'>
-  {colors.map((color) => (
+  {['primary', 'info', 'success', 'warning', 'error'].map((color) => (
     <div key={color} className='px-1'>
       <Badge color={color}>Badge</Badge>
     </div>
