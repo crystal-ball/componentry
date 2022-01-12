@@ -111,7 +111,7 @@ type Props = {
   [prop: string]: unknown
 }
 
-type ComponentryAttributes = {
+type UtilityStyles = {
   props: Props
   styles: React.CSSProperties
   utilityCx: [UtilityClasses, string[]]
@@ -125,7 +125,7 @@ type ComponentryAttributes = {
  * NB: values are passed through without additional mapping, eg the number 1
  * isn't mapped to 1px or 1rem.
  */
-export function componentry({
+export function utilityStyles({
   /* eslint-disable @typescript-eslint/no-unused-vars */
   __precompile,
   block,
@@ -148,7 +148,7 @@ export function componentry({
   // ✓ Active props filtered out
   /* eslint-enable @typescript-eslint/no-unused-vars */
   ...filteredProps
-}: Props): ComponentryAttributes {
+}: Props): UtilityStyles {
   const classNames: UtilityProps = {}
   const spacingCx: string[] = []
   const styles: React.CSSProperties = {}

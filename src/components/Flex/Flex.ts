@@ -28,7 +28,7 @@ export const Flex: React.FC<FlexProps> = (props) => {
   // => so props use "column" and we replace with "col"
   const computedDirection = direction?.replace('column', 'col')
 
-  return element('Flex', {
+  return element({
     componentCx: {
       'flex': !inline,
       'inline-flex': inline,

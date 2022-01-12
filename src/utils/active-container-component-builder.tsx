@@ -209,7 +209,7 @@ export function activeContainerBuilder<TProps extends ActiveContainerBaseProps>(
     // TODO: only wrap elements with a `div` when the element needs it
     return (
       <ActiveCtx.Provider value={activeValues}>
-        {element(displayName, {
+        {element({
           'data-id': guid,
           'componentCx': {
             [`${baseCx}-${size}`]: size,

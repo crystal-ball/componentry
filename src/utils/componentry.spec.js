@@ -1,27 +1,27 @@
-import { componentry } from './componentry'
+import { utilityStyles } from './style-utilities'
 
 const sizes = ['xs', 'sm', 'md', 'lg', 'xl']
 
-describe('componentry()', () => {
-  it('computes libary utility classes from props', () => {
+describe('utilityStyles()', () => {
+  it('computes library utility classes from props', () => {
     sizes.forEach((size) => {
-      expect(componentry({ m: size, p: size }).utilityCx[1]).toStrictEqual([
+      expect(utilityStyles({ m: size, p: size }).utilityCx[1]).toStrictEqual([
         `m-${size}`,
         `p-${size}`,
       ])
 
-      expect(componentry({ mx: size, px: size }).utilityCx[1]).toStrictEqual([
+      expect(utilityStyles({ mx: size, px: size }).utilityCx[1]).toStrictEqual([
         `mx-${size}`,
         `px-${size}`,
       ])
 
-      expect(componentry({ my: size, py: size }).utilityCx[1]).toStrictEqual([
+      expect(utilityStyles({ my: size, py: size }).utilityCx[1]).toStrictEqual([
         `my-${size}`,
         `py-${size}`,
       ])
 
       expect(
-        componentry({
+        utilityStyles({
           mt: size,
           mr: size,
           mb: size,
@@ -45,101 +45,101 @@ describe('componentry()', () => {
   })
 
   it('passes through numeric margin, and padding values', () => {
-    expect(componentry({ m: 5, p: 5 }).styles).toStrictEqual({
+    expect(utilityStyles({ m: 5, p: 5 }).styles).toStrictEqual({
       margin: 5,
       padding: 5,
     })
-    expect(componentry({ mx: 5, px: 5 }).styles).toStrictEqual({
+    expect(utilityStyles({ mx: 5, px: 5 }).styles).toStrictEqual({
       marginLeft: 5,
       marginRight: 5,
       paddingLeft: 5,
       paddingRight: 5,
     })
-    expect(componentry({ my: 5, py: 5 }).styles).toStrictEqual({
+    expect(utilityStyles({ my: 5, py: 5 }).styles).toStrictEqual({
       marginTop: 5,
       marginBottom: 5,
       paddingTop: 5,
       paddingBottom: 5,
     })
-    expect(componentry({ mt: 5 }).styles).toStrictEqual({ marginTop: 5 })
-    expect(componentry({ mr: 5 }).styles).toStrictEqual({ marginRight: 5 })
-    expect(componentry({ mb: 5 }).styles).toStrictEqual({ marginBottom: 5 })
-    expect(componentry({ ml: 5 }).styles).toStrictEqual({ marginLeft: 5 })
-    expect(componentry({ pt: 5 }).styles).toStrictEqual({ paddingTop: 5 })
-    expect(componentry({ pr: 5 }).styles).toStrictEqual({ paddingRight: 5 })
-    expect(componentry({ pb: 5 }).styles).toStrictEqual({ paddingBottom: 5 })
-    expect(componentry({ pl: 5 }).styles).toStrictEqual({ paddingLeft: 5 })
+    expect(utilityStyles({ mt: 5 }).styles).toStrictEqual({ marginTop: 5 })
+    expect(utilityStyles({ mr: 5 }).styles).toStrictEqual({ marginRight: 5 })
+    expect(utilityStyles({ mb: 5 }).styles).toStrictEqual({ marginBottom: 5 })
+    expect(utilityStyles({ ml: 5 }).styles).toStrictEqual({ marginLeft: 5 })
+    expect(utilityStyles({ pt: 5 }).styles).toStrictEqual({ paddingTop: 5 })
+    expect(utilityStyles({ pr: 5 }).styles).toStrictEqual({ paddingRight: 5 })
+    expect(utilityStyles({ pb: 5 }).styles).toStrictEqual({ paddingBottom: 5 })
+    expect(utilityStyles({ pl: 5 }).styles).toStrictEqual({ paddingLeft: 5 })
   })
 
   it('passes through string margin, and padding values', () => {
-    expect(componentry({ m: '5', p: '5' }).styles).toStrictEqual({
+    expect(utilityStyles({ m: '5', p: '5' }).styles).toStrictEqual({
       margin: '5',
       padding: '5',
     })
-    expect(componentry({ mx: '5', px: '5' }).styles).toStrictEqual({
+    expect(utilityStyles({ mx: '5', px: '5' }).styles).toStrictEqual({
       marginLeft: '5',
       marginRight: '5',
       paddingLeft: '5',
       paddingRight: '5',
     })
-    expect(componentry({ my: '5', py: '5' }).styles).toStrictEqual({
+    expect(utilityStyles({ my: '5', py: '5' }).styles).toStrictEqual({
       marginTop: '5',
       marginBottom: '5',
       paddingTop: '5',
       paddingBottom: '5',
     })
-    expect(componentry({ mt: '5' }).styles).toStrictEqual({ marginTop: '5' })
-    expect(componentry({ mr: '5' }).styles).toStrictEqual({ marginRight: '5' })
-    expect(componentry({ mb: '5' }).styles).toStrictEqual({ marginBottom: '5' })
-    expect(componentry({ ml: '5' }).styles).toStrictEqual({ marginLeft: '5' })
-    expect(componentry({ pt: '5' }).styles).toStrictEqual({ paddingTop: '5' })
-    expect(componentry({ pr: '5' }).styles).toStrictEqual({ paddingRight: '5' })
-    expect(componentry({ pb: '5' }).styles).toStrictEqual({ paddingBottom: '5' })
-    expect(componentry({ pl: '5' }).styles).toStrictEqual({ paddingLeft: '5' })
+    expect(utilityStyles({ mt: '5' }).styles).toStrictEqual({ marginTop: '5' })
+    expect(utilityStyles({ mr: '5' }).styles).toStrictEqual({ marginRight: '5' })
+    expect(utilityStyles({ mb: '5' }).styles).toStrictEqual({ marginBottom: '5' })
+    expect(utilityStyles({ ml: '5' }).styles).toStrictEqual({ marginLeft: '5' })
+    expect(utilityStyles({ pt: '5' }).styles).toStrictEqual({ paddingTop: '5' })
+    expect(utilityStyles({ pr: '5' }).styles).toStrictEqual({ paddingRight: '5' })
+    expect(utilityStyles({ pb: '5' }).styles).toStrictEqual({ paddingBottom: '5' })
+    expect(utilityStyles({ pl: '5' }).styles).toStrictEqual({ paddingLeft: '5' })
   })
 
   it('border style classes are computed correctly', () => {
-    expect(componentry({ border: true }).utilityCx[0]).toStrictEqual(
+    expect(utilityStyles({ border: true }).utilityCx[0]).toStrictEqual(
       expect.objectContaining({
         border: true,
       }),
     )
 
-    expect(componentry({ borderTop: true }).utilityCx[0]).toStrictEqual(
+    expect(utilityStyles({ borderTop: true }).utilityCx[0]).toStrictEqual(
       expect.objectContaining({
         'border-t': true,
       }),
     )
-    expect(componentry({ borderRight: true }).utilityCx[0]).toStrictEqual(
+    expect(utilityStyles({ borderRight: true }).utilityCx[0]).toStrictEqual(
       expect.objectContaining({
         'border-r': true,
       }),
     )
-    expect(componentry({ borderBottom: true }).utilityCx[0]).toStrictEqual(
+    expect(utilityStyles({ borderBottom: true }).utilityCx[0]).toStrictEqual(
       expect.objectContaining({
         'border-b': true,
       }),
     )
-    expect(componentry({ borderLeft: true }).utilityCx[0]).toStrictEqual(
+    expect(utilityStyles({ borderLeft: true }).utilityCx[0]).toStrictEqual(
       expect.objectContaining({
         'border-l': true,
       }),
     )
 
-    expect(componentry({ borderColor: 'primary' }).utilityCx[0]).toStrictEqual(
+    expect(utilityStyles({ borderColor: 'primary' }).utilityCx[0]).toStrictEqual(
       expect.objectContaining({
         'border-primary': 'primary',
       }),
     )
 
-    expect(componentry({ borderWidth: 'lg' }).utilityCx[0]).toStrictEqual(
+    expect(utilityStyles({ borderWidth: 'lg' }).utilityCx[0]).toStrictEqual(
       expect.objectContaining({ 'border-lg': 'lg' }),
     )
   })
 
   it('returns library className values', () => {
     expect(
-      componentry({
+      utilityStyles({
         alignContent: 'center',
         alignItems: 'center',
         alignSelf: 'center',

@@ -69,7 +69,7 @@ Input.Field = function InputField(props) {
   const ctx = useContext(InputCtx)
   assertContext(ctx)
 
-  return element('InputField', {
+  return element({
     as: 'input',
     type: 'text',
     id: ctx.guid, // aria -> htmlFor
@@ -85,7 +85,7 @@ Input.Label = function InputLabel(props) {
   const ctx = useContext(InputCtx)
   assertContext(ctx)
 
-  return element('InputLabel', {
+  return element({
     as: 'label',
     htmlFor: ctx.guid, // aria -> id
     ...useTheme<InputLabelProps>('InputLabel'),

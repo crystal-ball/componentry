@@ -28,7 +28,7 @@ export const Icon: React.FC<Props> = (props) => {
     ...rest
   } = { ...useTheme<Props>('Icon'), ...props }
 
-  return element('Icon', {
+  return element({
     as: 'svg',
     role: 'img',
     componentCx: [

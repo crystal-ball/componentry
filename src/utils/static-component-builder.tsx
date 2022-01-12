@@ -18,7 +18,7 @@ export function staticComponent<Props>(
   defaultProps?: StaticOptions<Props>,
 ): React.FC<Props> {
   function Component(props: Props) {
-    return element(displayName, {
+    return element({
       ...defaultProps,
       ...useTheme<Props>(displayName),
       ...props,

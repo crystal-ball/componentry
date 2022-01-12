@@ -26,7 +26,7 @@ export interface Nav {
  * @experimental
  */
 export const Nav = ((props: NavProps) => {
-  return element('Nav', {
+  return element({
     as: 'nav',
     componentCx: navClasses('nav', props),
     role: 'navigation',
@@ -42,7 +42,7 @@ Nav.Item = function NavItem(props) {
     ...props,
   }
 
-  return element('NavItem', {
+  return element({
     as: 'a',
     componentCx: `nav-item-${variant}`,
     ...merged,

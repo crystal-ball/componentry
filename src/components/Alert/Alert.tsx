@@ -48,7 +48,7 @@ export const Alert: Alert = (props) => {
 
   const { active, visible } = useVisible(propsActive)
 
-  return element('Alert', {
+  return element({
     'role': 'alert',
     'componentCx': [
       `🅲Alert-base 🅲Alert-${variant}`,

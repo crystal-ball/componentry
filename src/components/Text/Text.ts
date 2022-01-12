@@ -38,7 +38,7 @@ export const Text: React.FC<Props> = (props) => {
     ...props,
   }
 
-  return element('Text', {
+  return element({
     as: elementsMap[variant],
     componentCx: `🅲Text-base 🅲Text-${variant}`,
     ...rest,

@@ -64,7 +64,7 @@ export interface Tabs {
 export const Tabs = activeContainerBuilder<TabsProps>('Tabs') as Tabs
 
 const ActionsContainer: React.FC<TabsActionsContainerProps> = (props) => {
-  return element('TabsActionsContainer', {
+  return element({
     role: 'tablist',
     componentCx: navClasses('tabs-actions-container', props),
     ...useTheme<TabsActionsContainerProps>('TabsActionsContainer'),
