@@ -31,6 +31,8 @@ interface DefaultUtilityProps {
   alignSelf?: 'auto' | 'start' | 'end' | 'center' | 'baseline' | 'stretch'
   /** Sets background color style */
   backgroundColor?: 'primary' | 'success' | 'warning' | 'critical'
+  /** Sets a bold font weight style */
+  bold?: boolean
   /** Sets a border style */
   border?: boolean
   /** Sets a border bottom style */
@@ -48,9 +50,9 @@ interface DefaultUtilityProps {
   /** Sets a disabled style */
   disabled?: boolean
   /** Sets a text color style */
-  fontColor?: 'anchor' | 'body' | 'heading' | 'primary'
+  color?: string
   /** Sets a font-family style */
-  fontFamily?: 'primary' | 'monospace'
+  fontFamily?: 'body' | 'mono'
   /** Sets a font-size style */
   fontSize?: 'sm' | 'base' | 'lg'
   /** Text font-weight style */

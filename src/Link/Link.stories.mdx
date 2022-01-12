@@ -1,4 +1,4 @@
-import { ArgsTable, Meta } from '@storybook/addon-docs'
+import { ArgsTable, Canvas, Meta, Story } from '@storybook/addon-docs'
 import { BADGE } from '@geometricpanda/storybook-addon-badges'
 
 import { Link } from './Link'
@@ -11,18 +11,33 @@ import { Link } from './Link'
 
 # Link
 
+The Link component provides traditional link elements. Link elements without an `href` are
+rendered with button elements.
+
+## Variants
+
+A `text` variant link:
+
+<Canvas>
+  <Story
+    name='Variants'
+    decorators={[
+      (Story) => (
+        <div className='flex gap-2'>
+          <Story />
+        </div>
+      ),
+    ]}
+  >
+    <Link href='#test'>Anchor link</Link>
+    <Link onClick={console.log}>Button link</Link>
+  </Story>
+</Canvas>
+
+## Routing
+
+A default `as` prop can be configured to handle routing components like React Router.
+
+## Props
+
 <ArgsTable of={Link} />
-
-## Variant
-
-A **primary** variant link:
-
-<Link href='#test'>Componentry link</Link>
-
----
-
-## Links without routing
-
-A Link without an `href` or a `to` prop will render a `button` element:
-
-<Link onClick={console.log}>Anchor</Link>

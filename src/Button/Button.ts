@@ -1,11 +1,8 @@
-import { forwardRef } from 'react'
 import { useTheme } from '../Theme/Theme'
 import { ComponentBaseProps } from '../utils/types'
 import { element } from '../utils/element-creator'
 
 interface ButtonProps extends ComponentBaseProps<'button'> {
-  /** Toggles an active element style */
-  active?: boolean
   /** Button variant color */
   color?: 'primary'
   /** Disables the element, preventing mouse and keyboard events */
@@ -17,19 +14,17 @@ interface ButtonProps extends ComponentBaseProps<'button'> {
   /** Sets the display size */
   size?: 'sm' | 'lg'
   /** Display variant */
-  variant?: 'primary' | 'secondary'
+  variant?: 'filled' | 'outlined'
 }
 
 /**
  * [Button component 📝](https://componentry.design/components/button)
  * @experimental
  */
-export const Button = forwardRef<HTMLButtonElement, ButtonProps>((props, ref) => {
+export const Button: React.FC<ButtonProps> = (props) => {
   const {
-    variant = 'primary',
-    active,
+    variant = 'filled',
     color,
-    disabled,
     fullWidth,
     size,
     ...merged
@@ -39,22 +34,18 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>((props, ref) =>
   }
 
   return element<ButtonProps>('Button', {
-    ref,
     // If an href is passed, this instance should render an anchor tag
     as: merged.href ? 'a' : 'button',
     type: merged.href ? undefined : 'button',
-    disabled,
     componentCx: [
-      `button-${variant}`,
+      `🅲Button-base 🅲Button-${variant}`,
       {
-        [`button-${size}`]: size,
-        [`button-color-${color}`]: color,
+        [`🅲Button-${color}Color`]: color,
+        [`🅲Button-${size}Size`]: size,
         'w-full': fullWidth,
-        active,
-        disabled, // We include a disabled class AND pass disabled prop to element for a11y
       },
     ],
     ...merged,
   })
-})
+}
 Button.displayName = 'Button'

@@ -2,28 +2,23 @@ import postcss, { PluginCreator } from 'postcss'
 import postcssNested from 'postcss-nested'
 import postcssJs from 'postcss-js'
 
-import { button } from '../Button/Button.styles'
+import { alertStyles } from '../Alert/Alert.styles'
+import { buttonStyles } from '../Button/Button.styles'
+import { closeStyles } from '../Close/Close.styles'
+import { iconStyles } from '../Icon/Icon.styles'
+import { linkStyles } from '../Link/Link.styles'
+import { textStyles } from '../Text/Text.styles'
 
 const componentStyles: Record<string, Record<string, unknown>> = {
-  button,
+  alert: alertStyles,
+  button: buttonStyles,
+  close: closeStyles,
+  icon: iconStyles,
+  link: linkStyles,
+  text: textStyles,
 }
-
-// --------------------------------------------------------
-// Utils
 
 const processor = postcss([postcssNested()])
-
-// Adapted from tailwindcss/src/util/parseObjectStyles.js
-function parseComponentStyles(styles: Record<string, unknown>) {
-  const ast = processor.process(styles, {
-    parser: postcssJs,
-  })
-
-  return ast.root.nodes
-}
-
-// --------------------------------------------------------
-// Plugin
 
 /**
  * Componentry PostCSS plugin manages:
@@ -40,9 +35,14 @@ export const plugin: PluginCreator<Record<string, never>> = () => {
         const component = atRule.params // params will be the component name, eg "button" in "@componentry button;"
 
         if (component in componentStyles) {
+          // Adapted from tailwindcss/src/util/parseObjectStyles.js
+          const ast = processor.process(componentStyles[component], {
+            parser: postcssJs,
+          })
+
           // The component styles should be found, and we replace the @componentry node with
           // the final set of parsed styles
-          atRule.replaceWith(...parseComponentStyles(componentStyles[component]))
+          atRule.replaceWith(...ast.root.nodes)
         } else {
           // Fail fast for bad directives, eg "@componentry ohno;"
           throw new Error(`Unknown @componentry param: ${atRule.params}`)

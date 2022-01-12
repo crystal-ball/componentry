@@ -4,6 +4,7 @@ const classNamesProps = {
   alignItems: 1,
   alignSelf: 1,
   backgroundColor: 1,
+  bold: 1,
   border: 1,
   borderBottom: 1,
   borderColor: 1,
@@ -11,8 +12,8 @@ const classNamesProps = {
   borderRight: 1,
   borderTop: 1,
   borderWidth: 1,
+  color: 1,
   disabled: 1,
-  fontColor: 1,
   fontFamily: 1,
   fontSize: 1,
   fontWeight: 1,
@@ -30,7 +31,6 @@ type UtilityProps = Partial<{
 }>
 
 const stylesProps: Partial<Record<keyof React.CSSProperties, 1>> = {
-  fontSize: 1,
   letterSpacing: 1,
   lineHeight: 1,
   width: 1,
@@ -79,13 +79,14 @@ type UtilityClasses = {
 
 function generateClassNames(p: UtilityProps): UtilityClasses {
   return {
-    'active': p.active, // Componentry
-    'disabled': p.disabled, // Componentry
+    '🅲-active': p.active, // eg https://mui.com/customization/how-to-customize/#state-classes
+    '🅲-disabled': p.disabled,
     'border': p.border,
     'border-b': p.borderBottom,
     'border-l': p.borderLeft,
     'border-r': p.borderRight,
     'border-t': p.borderTop,
+    'font-bold': p.bold,
     'italic': p.italic,
     'visible': p.visible,
     [String(p.position)]: p.position,
@@ -100,7 +101,7 @@ function generateClassNames(p: UtilityProps): UtilityClasses {
     [`items-${p.alignItems}`]: p.alignItems,
     [`justify-${p.justifyContent}`]: p.justifyContent,
     [`self-${p.alignSelf}`]: p.alignSelf,
-    [`text-${p.fontColor}`]: p.fontColor,
+    [`text-${p.color}`]: p.color,
     [`text-${p.fontSize}`]: p.fontSize,
     [`text-${p.textAlign}`]: p.textAlign,
   }
@@ -128,7 +129,6 @@ export function componentry({
   /* eslint-disable @typescript-eslint/no-unused-vars */
   __precompile,
   block,
-  color,
   outline,
   fill,
   inline,
@@ -154,7 +154,7 @@ export function componentry({
   const styles: React.CSSProperties = {}
   const props: Props = {}
 
-  // We want disabled to reach final element as an HTML attr value
+  // Pass through disabled to final element as it's a valid HTML attribute
   if (filteredProps.disabled) props.disabled = true
 
   // For each prop passed to any component, bucket it into a library className
@@ -224,3 +224,10 @@ export const precompileProps = {
 }
 
 export const utilityProps = { ...classNamesProps, ...stylesProps, ...spacingProps }
+
+// --------------------------------------------------------
+// Tailwind classes
+
+export interface TailwindUtilityClasses {
+  fontSize: 'text-sm' | 'text-base' | 'text-lg'
+}

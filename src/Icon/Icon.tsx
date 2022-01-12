@@ -7,6 +7,8 @@ import { element } from '../utils/element-creator'
 export interface IconProps {}
 
 interface DefaultIconProps {
+  /** Adjusts the text baseline using a negative margin, this can be used to align font icons outside of flex containers */
+  baseline?: boolean
   /** SVG id for href link */
   id: string
   /** Display variant */
@@ -19,12 +21,20 @@ type Props = MergePropTypes<DefaultIconProps, IconProps> & ComponentBaseProps<'s
  * [Icon component 📝](https://componentry.design/components/icon)
  */
 export const Icon: React.FC<Props> = (props) => {
-  const { variant = 'font', id, ...rest } = { ...useTheme<Props>('Icon'), ...props }
+  const {
+    baseline,
+    variant = 'font',
+    id,
+    ...rest
+  } = { ...useTheme<Props>('Icon'), ...props }
 
   return element('Icon', {
     as: 'svg',
     role: 'img',
-    componentCx: [`${variant}-variant`, `icon-${id}`],
+    componentCx: [
+      `🅲Icon-base 🅲Icon-${variant} icon-${id}`,
+      { '🅲Icon-baseline': baseline },
+    ],
     children: <use href={`#${id}`} xlinkHref={`#${id}`} />,
     ...rest,
   })

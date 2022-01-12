@@ -3,20 +3,25 @@ import { theme } from '../theme-defaults'
 //                                        <Button /> styles
 // --------------------------------------------------------
 
-export const button = {
+export const buttonStyles = {
   // BASE
-  '.🅲-button': {
-    alignItems: 'center',
-    display: 'inline-flex',
-    justifyContent: 'center',
-    lineHeight: 1, // ensures text is center aligned within flex layout
+  '.🅲Button-base': {
+    'alignItems': 'center',
+    'display': 'inline-flex',
+    'justifyContent': 'center',
+    'lineHeight': 1, // ensures text is center aligned within flex layout
 
-    userSelect: 'none', // Prevent text selection on click of buttons
-    whiteSpace: 'nowrap', // By default button content shouldn't wrap
+    'userSelect': 'none', // Prevent text selection on click of buttons
+    'whiteSpace': 'nowrap', // By default button content shouldn't wrap
+
+    '&.🅲-disabled': {
+      cursor: 'default',
+      pointerEvents: 'none',
+    },
   },
 
   // VARIANTS
-  '.button-primary': {
+  '.🅲Button-filled': {
     'height': '2rem',
     'padding': '0 1rem',
     'backgroundColor': theme.colors.primary[500],
@@ -35,12 +40,16 @@ export const button = {
       borderColor: theme.colors.primary[700],
       backgroundColor: theme.colors.primary[900],
     },
-    '&:disabled, &.🅲-disabled': {
+    '&.🅲-disabled': {
       borderColor: theme.colors.primary[300],
       backgroundColor: theme.colors.primary[300],
     },
+
+    // For buttons with color options you'll typically define them in each variant
+    // like:
+    // '&.🅲Button-errorColor': { ... }
   },
-  '.button-secondary': {
+  '.🅲Button-outlined': {
     'height': '2rem',
     'padding': '0 1rem',
     'backgroundColor': 'transparent',
@@ -59,20 +68,20 @@ export const button = {
       borderColor: theme.colors.primary[900],
       color: theme.colors.primary[900],
     },
-    '&:disabled, &.🅲-disabled': {
+    '&.🅲-disabled': {
       borderColor: theme.colors.primary[300],
       color: theme.colors.primary[300],
     },
   },
 
   // SIZES
-  '.button-sm': {
+  '.🅲Button-smallSize': {
     height: '1.5rem',
     borderRadius: theme.borderRadius.md,
     fontSize: theme.fontSize.sm,
     padding: '0rem 0.5rem',
   },
-  '.button-lg': {
+  '.🅲Button-largeSize': {
     height: '2.5rem',
     borderRadius: theme.borderRadius.lg,
     fontSize: theme.fontSize.lg,
