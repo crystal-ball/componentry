@@ -22,10 +22,10 @@ export const useActive = (): ActiveContext => useContext(ActiveCtx)
 // useActiveScrollReset hook
 
 /**
- * Set the scrolltop of passed reference node to 0 when active changes to
+ * Set the scroll-top of passed reference node to 0 when active changes to
  * truthy. Used for resetting scroll position of components on activation.
  */
-export const useActiveSrollReset = (
+export const useActiveScrollReset = (
   active: string | boolean,
   ref: RefObject<HTMLElement>,
 ): void => {

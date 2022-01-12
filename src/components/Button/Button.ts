@@ -1,6 +1,6 @@
 import { useTheme } from '../Theme/Theme'
-import { ComponentBaseProps } from '../utils/types'
-import { element } from '../utils/element-creator'
+import { ComponentBaseProps } from '../../utils/types'
+import { element } from '../../utils/element-creator'
 
 interface ButtonProps extends ComponentBaseProps<'button'> {
   /** Button variant color */

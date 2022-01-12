@@ -2,7 +2,7 @@ import React from 'react'
 import { render, screen } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 
-import { elementTests } from '../test/element-tests'
+import { elementTests } from '../../test/element-tests'
 import { Alert } from './Alert'
 
 describe('<Alert/>', () => {

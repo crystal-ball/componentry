@@ -1,6 +1,6 @@
 import { useTheme } from '../Theme/Theme'
-import { element } from '../utils/element-creator'
-import { ComponentBaseProps } from '../utils/types'
+import { element } from '../../utils/element-creator'
+import { ComponentBaseProps } from '../../utils/types'
 
 interface BadgeProps extends ComponentBaseProps<'div'> {
   /** Variant color */

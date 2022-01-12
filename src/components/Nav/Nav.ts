@@ -1,7 +1,7 @@
 import { useTheme } from '../Theme/Theme'
-import { navClasses } from '../utils/class-names'
-import { element } from '../utils/element-creator'
-import { ComponentBaseProps } from '../utils/types'
+import { navClasses } from '../../utils/class-names'
+import { element } from '../../utils/element-creator'
+import { ComponentBaseProps } from '../../utils/types'
 
 export interface NavProps extends ComponentBaseProps<'nav'> {
   fill?: boolean

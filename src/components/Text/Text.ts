@@ -1,7 +1,7 @@
 import React from 'react'
 import { useTheme } from '../Theme/Theme'
-import { ComponentBaseProps, MergePropTypes } from '../utils/types'
-import { element } from '../utils/element-creator'
+import { ComponentBaseProps, MergePropTypes } from '../../utils/types'
+import { element } from '../../utils/element-creator'
 
 /** Element used for each variant */
 type ElementsMap = Record<string, keyof JSX.IntrinsicElements>

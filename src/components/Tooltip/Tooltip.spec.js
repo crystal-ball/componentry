@@ -1,8 +1,8 @@
 import React from 'react'
 import { render, screen } from '@testing-library/react'
 
-import { activationTests } from '../test/activation-tests'
-import { elementTests } from '../test/element-tests'
+import { activationTests } from '../../test/activation-tests'
+import { elementTests } from '../../test/element-tests'
 import { Tooltip } from './Tooltip'
 
 describe('<Tooltip />', () => {

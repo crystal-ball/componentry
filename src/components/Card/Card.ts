@@ -1,6 +1,6 @@
 import React from 'react'
-import { ComponentBaseProps } from '../utils/types'
-import { staticComponent } from '../utils/static-component-builder'
+import { ComponentBaseProps } from '../../utils/types'
+import { staticComponent } from '../../utils/static-component-builder'
 
 interface CardProps extends ComponentBaseProps<'div'> {}
 interface CardBodyProps extends ComponentBaseProps<'div'> {}

@@ -2,7 +2,7 @@ import React from 'react'
 import { render, screen } from '@testing-library/react'
 
 import { Theme } from '../Theme/Theme'
-import { elementTests } from '../test/element-tests'
+import { elementTests } from '../../test/element-tests'
 import { Text } from './Text'
 
 describe('<Text/>', () => {

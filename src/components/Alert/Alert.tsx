@@ -1,10 +1,10 @@
 import React from 'react'
 import { closeBase } from '../Close/Close'
 import { useTheme } from '../Theme/Theme'
-import { useActive, useVisible } from '../hooks'
-import { ComponentBaseProps } from '../utils/types'
-import { element } from '../utils/element-creator'
-import { staticComponent } from '../utils/static-component-builder'
+import { useActive, useVisible } from '../../hooks'
+import { ComponentBaseProps } from '../../utils/types'
+import { element } from '../../utils/element-creator'
+import { staticComponent } from '../../utils/static-component-builder'
 
 interface CardCloseProps extends ComponentBaseProps<'button'> {}
 

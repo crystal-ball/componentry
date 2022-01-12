@@ -1,7 +1,7 @@
 import React from 'react'
 import { useTheme } from '../Theme/Theme'
-import { ComponentBaseProps } from '../utils/types'
-import { element } from '../utils/element-creator'
+import { ComponentBaseProps } from '../../utils/types'
+import { element } from '../../utils/element-creator'
 
 export interface FlexProps extends ComponentBaseProps<'div'> {
   /** Sets an `align-items` style */

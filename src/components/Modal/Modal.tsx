@@ -4,10 +4,10 @@ import { nanoid } from 'nanoid'
 
 import { closeBase } from '../Close/Close'
 import { useTheme } from '../Theme/Theme'
-import { useActive, useActiveSrollReset, useNoScroll, useVisible } from '../hooks'
-import { ComponentBaseProps } from '../utils/types'
-import { element } from '../utils/element-creator'
-import { staticComponent } from '../utils/static-component-builder'
+import { useActive, useActiveScrollReset, useNoScroll, useVisible } from '../../hooks'
+import { ComponentBaseProps } from '../../utils/types'
+import { element } from '../../utils/element-creator'
+import { staticComponent } from '../../utils/static-component-builder'
 
 type ModalCtx = {
   active: string | boolean
@@ -101,8 +101,8 @@ export const Modal = ((props: ModalProps): JSX.Element => {
   // Handle resetting scrolled modal content on modal open
   const containerRef = useRef(null)
   const contentRef = useRef(null)
-  useActiveSrollReset(active, containerRef)
-  useActiveSrollReset(active, contentRef)
+  useActiveScrollReset(active, containerRef)
+  useActiveScrollReset(active, contentRef)
 
   // Modal elements structure
   // div.modal-overlay       - Modal overlay background with close handler
@@ -198,7 +198,7 @@ Modal.Body = function ModalBody(props) {
   const ctx = useContext(ModalCtx)
   assertContext(ctx)
 
-  useActiveSrollReset(ctx.active, bodyRef)
+  useActiveScrollReset(ctx.active, bodyRef)
 
   return element('ModalBody', {
     ref: bodyRef,

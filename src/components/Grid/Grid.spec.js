@@ -1,7 +1,7 @@
 import React from 'react'
 import { render, screen } from '@testing-library/react'
 
-import { elementTests } from '../test/element-tests'
+import { elementTests } from '../../test/element-tests'
 import { Grid } from './Grid'
 
 describe('<Grid />', () => {

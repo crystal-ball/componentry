@@ -1,12 +1,12 @@
-import { activeContainerBuilder } from '../utils/active-container-component-builder'
-import { activeActionBuilder } from '../utils/active-action-component-builder'
-import { activeContentBuilder } from '../utils/active-content-component-builder'
+import { activeContainerBuilder } from '../../utils/active-container-component-builder'
+import { activeActionBuilder } from '../../utils/active-action-component-builder'
+import { activeContentBuilder } from '../../utils/active-content-component-builder'
 import {
   ActiveActionBaseProps,
   ActiveContainerBaseProps,
   ActiveContentBaseProps,
   ComponentBaseProps,
-} from '../utils/types'
+} from '../../utils/types'
 
 export interface DropdownProps
   extends ActiveContainerBaseProps,

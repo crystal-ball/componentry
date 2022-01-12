@@ -1,16 +1,16 @@
 import { useTheme } from '../Theme/Theme'
-import { activeContainerBuilder } from '../utils/active-container-component-builder'
-import { activeActionBuilder } from '../utils/active-action-component-builder'
-import { activeContentBuilder } from '../utils/active-content-component-builder'
+import { activeContainerBuilder } from '../../utils/active-container-component-builder'
+import { activeActionBuilder } from '../../utils/active-action-component-builder'
+import { activeContentBuilder } from '../../utils/active-content-component-builder'
 import {
   ActiveActionBaseProps,
   ActiveContainerBaseProps,
   ActiveContentBaseProps,
   ComponentBaseProps,
-} from '../utils/types'
-import { navClasses } from '../utils/class-names'
-import { element } from '../utils/element-creator'
-import { staticComponent } from '../utils/static-component-builder'
+} from '../../utils/types'
+import { navClasses } from '../../utils/class-names'
+import { element } from '../../utils/element-creator'
+import { staticComponent } from '../../utils/static-component-builder'
 
 export interface TabsProps extends ActiveContainerBaseProps, ComponentBaseProps<'div'> {}
 

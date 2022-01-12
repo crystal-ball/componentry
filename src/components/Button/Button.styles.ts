@@ -1,4 +1,4 @@
-import { theme } from '../theme-defaults'
+import { theme } from '../../theme-defaults'
 
 //                                        <Button /> styles
 // --------------------------------------------------------

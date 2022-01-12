@@ -1,7 +1,7 @@
 import React from 'react'
 import { useTheme } from '../Theme/Theme'
-import { ComponentBaseProps } from '../utils/types'
-import { element } from '../utils/element-creator'
+import { ComponentBaseProps } from '../../utils/types'
+import { element } from '../../utils/element-creator'
 
 export interface BlockProps extends ComponentBaseProps<'div'> {
   /** Sets display between to an inline or block element */
