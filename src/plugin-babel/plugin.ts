@@ -1,9 +1,9 @@
 /* eslint-disable no-console */
 import { PluginObj, types } from '@babel/core'
 
-import { Flex } from '../Flex/Flex'
-import { Block } from '../Block/Block'
-import { Text } from '../Text/Text'
+import { Flex } from '../components/Flex/Flex'
+import { Block } from '../components/Block/Block'
+import { Text } from '../components/Text/Text'
 import { precompileProps, utilityProps } from '../utils/componentry'
 
 import { parseAttributes } from './parse-attributes'

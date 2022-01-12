@@ -2,12 +2,12 @@ import postcss, { PluginCreator } from 'postcss'
 import postcssNested from 'postcss-nested'
 import postcssJs from 'postcss-js'
 
-import { alertStyles } from '../Alert/Alert.styles'
-import { buttonStyles } from '../Button/Button.styles'
-import { closeStyles } from '../Close/Close.styles'
-import { iconStyles } from '../Icon/Icon.styles'
-import { linkStyles } from '../Link/Link.styles'
-import { textStyles } from '../Text/Text.styles'
+import { alertStyles } from '../components/Alert/Alert.styles'
+import { buttonStyles } from '../components/Button/Button.styles'
+import { closeStyles } from '../components/Close/Close.styles'
+import { iconStyles } from '../components/Icon/Icon.styles'
+import { linkStyles } from '../components/Link/Link.styles'
+import { textStyles } from '../components/Text/Text.styles'
 
 const componentStyles: Record<string, Record<string, unknown>> = {
   alert: alertStyles,
