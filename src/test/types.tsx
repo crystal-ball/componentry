@@ -42,7 +42,7 @@ const testBlock = (
   </Block>
 )
 const testButton = (
-  <Button variant='primary' size='sm' active>
+  <Button variant='filled' size='sm' active>
     Click
   </Button>
 )

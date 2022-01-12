@@ -19,15 +19,7 @@ describe('Text', () => {
     )
 
     expect(screen.getByText('Componentry')).toContainHTML(
-      '<section class="🅲-text rad-variant">Componentry</section>',
-    )
-  })
-
-  it('When inline is truthy, then a span without a variant class is rendered', () => {
-    render(<Text inline>Span content</Text>)
-
-    expect(screen.getByText('Span content')).toContainHTML(
-      '<span class="🅲-text">Span content</span>',
+      '<section class="🅲Text-base 🅲Text-rad">Componentry</section>',
     )
   })
 })

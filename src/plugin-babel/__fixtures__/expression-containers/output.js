@@ -10,17 +10,17 @@ export default function Test({ success, position }) {
   // 4. Attributes with conditional expressions are skipped
   // 5. Attributes with call expressions are skipped
   return /*#__PURE__*/ _jsxs('div', {
-    className: '\uD83C\uDD72-flex flex',
+    className: 'flex',
     children: [
       /*#__PURE__*/ _jsx('p', {
         style: {
           paddingTop: 80,
         },
-        className: '\uD83C\uDD72-text body-variant',
+        className: '\uD83C\uDD72Text-base \uD83C\uDD72Text-body',
         children: 'Expression containers test',
       }),
       /*#__PURE__*/ _jsx('p', {
-        className: '\uD83C\uDD72-text body-variant font-bold',
+        className: '\uD83C\uDD72Text-base \uD83C\uDD72Text-body font-bold',
         children: 'Expression containers test',
       }),
       /*#__PURE__*/ _jsx(Text, {

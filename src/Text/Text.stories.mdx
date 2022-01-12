@@ -1,6 +1,7 @@
-import { ArgsTable, Meta } from '@storybook/addon-docs'
+import { ArgsTable, Canvas, Meta, Story } from '@storybook/addon-docs'
 import { BADGE } from '@geometricpanda/storybook-addon-badges'
 
+import { Block } from '../Block/Block'
 import { Text } from './Text'
 
 <Meta
@@ -11,19 +12,29 @@ import { Text } from './Text'
 
 # Text
 
-<ArgsTable of={Text} />
+## Variants
 
-Componentry ships with support for variants: `heading-{1,3}`, `body`, `code`, and `small`.
-The `inline` prop is available to create a minimal span that can be styled with System
-props
+Componentry ships with support for variants: `h{1,3}`, `body`, and `small`.
 
-## Headings variants
+<Canvas>
+  <Story name='Variants'>
+    <Text variant='h1'>Heading 1</Text>
+    <Text variant='h2'>Heading 2</Text>
+    <Text variant='h3'>Heading 3</Text>
+    <Text variant='body'>
+      Life finds a way. Life finds a way. God help us, we&apos;re in the hands of
+      engineers. Life finds a way. Must go faster. Hey, you know how I&apos;m, like,
+      always trying to save the planet? Here&apos;s my chance. Eventually, you do plan to
+      have dinosaurs on your dinosaur tour, right?
+    </Text>
+    <Text variant='small'>Small copy</Text>
+  </Story>
+</Canvas>
 
-<Text variant='heading-1'>Heading 1</Text>
-<Text variant='heading-2'>Heading 2</Text>
-<Text variant='heading-3'>Heading 3</Text>
+## Body spacing
 
-## Body variant
+By default Componentry includes margin-top between sibling body elements, this can be
+configured using the `& + &` stle in the body variant styles.
 
 <Text variant='body'>
   Life finds a way. Life finds a way. God help us, we&apos;re in the hands of engineers.
@@ -38,44 +49,41 @@ props
   your dinosaur tour, right?
 </Text>
 
-## Small variant
-
-<Text variant='small'>Small copy</Text>
-
-## Code variant
-
-<Text variant='code'>Inline code content</Text>
-
-## Inline prop
+## Inline text elements
 
 <Text>
-  The{' '}
-  <Text inline bold>
+  Styling inline text elements is easiest with a Block component and the{' '}
+  <Block inline bold>
     inline
-  </Text>{' '}
-  prop is useful for creating inline text content styled with{' '}
-  <Text inline italic>
-    System
-  </Text>{' '}
-  props
+  </Block>{' '}
+  prop. This creates an inline div with access to all{' '}
+  <Block inline italic>
+    utility
+  </Block>{' '}
+  props.
 </Text>
 
-## System - fontSize
+## Utility styles - fontSize
+
+The `fontSize` prop is intended to be used with the `body` variant:
 
 <Text variant='body' fontSize='sm'>
   Small size body.
 </Text>
-<Text variant='body' fontSize='md'>
-  Medium size body.
+<Text variant='body' fontSize='base'>
+  Base size body.
 </Text>
 <Text variant='body' fontSize='lg'>
   Large size body.
 </Text>
 
-## System - italic
+## Utility styles - bold & italic
+
+Shorthand `bold` and `italic` props are available:
 
 <Text italic>Italic text</Text>
-
-## System - font weight
-
 <Text bold>Bold text</Text>
+
+## Props
+
+<ArgsTable of={Text} />

@@ -40,7 +40,7 @@ describe('<Nav.Item />', () => {
       </Nav>,
     )
 
-    expect(screen.getByText('React')).toHaveClass('active')
+    expect(screen.getByText('React')).toHaveClass('🅲-active')
   })
 })
 

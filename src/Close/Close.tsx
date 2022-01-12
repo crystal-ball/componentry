@@ -1,18 +1,19 @@
 import React from 'react'
+import { type ClassValue } from 'clsx'
 import { ComponentBaseProps } from '../utils/types'
 import { staticComponent } from '../utils/static-component-builder'
+import { Icon } from '../Icon/Icon'
 
-export interface CloseProps extends ComponentBaseProps<'button'> {}
+export interface CloseProps extends ComponentBaseProps<'button'> {
+  componentCx?: ClassValue
+}
 
 export const closeBase: CloseProps = {
   'aria-label': 'close',
   'as': 'button',
   'type': 'button',
-  'children': (
-    <svg className='🅲-icon icon-close font-variant' role='img'>
-      <use href='#close' xlinkHref='#close' />
-    </svg>
-  ),
+  'componentCx': `🅲Close-base`,
+  'children': <Icon id='close' />,
 }
 
 /**

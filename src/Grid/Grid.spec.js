@@ -10,13 +10,13 @@ describe('<Grid />', () => {
   it('When inline is not passed, then block className is rendered', () => {
     render(<Grid>Content</Grid>)
 
-    expect(screen.getByText('Content')).toHaveClass('🅲-grid grid')
+    expect(screen.getByText('Content')).toHaveClass('grid')
   })
 
   it('When inline is passed, then inline-block className is rendered', () => {
     render(<Grid inline>Content</Grid>)
 
-    expect(screen.getByText('Content')).toHaveClass('🅲-grid inline-grid')
+    expect(screen.getByText('Content')).toHaveClass('inline-grid')
   })
 })
 

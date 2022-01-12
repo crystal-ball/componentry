@@ -3,12 +3,12 @@
 exports[`<Close /> snapshots renders correctly 1`] = `
 <button
   aria-label="close"
-  class="🅲-close"
+  class="🅲Close-base"
   data-testid="close"
   type="button"
 >
   <svg
-    class="🅲-icon icon-close font-variant"
+    class="🅲Icon-base 🅲Icon-font icon-close"
     role="img"
   >
     <use

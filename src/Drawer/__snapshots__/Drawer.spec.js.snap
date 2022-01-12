@@ -2,21 +2,21 @@
 
 exports[`<Drawer /> snapshots renders correctly 1`] = `
 <div
-  class="🅲-drawer"
+  class=""
   data-id="test-guid"
   data-testid="drawer"
 >
   <button
     aria-controls="test-guid"
     aria-expanded="false"
-    class="🅲-drawer-action drawer-action-primary"
+    class="drawer-action-primary"
     type="button"
   >
     Action
   </button>
   <div
     aria-hidden="true"
-    class="🅲-drawer-content drawer-content-primary"
+    class="drawer-content-primary"
     id="test-guid"
   >
     Content

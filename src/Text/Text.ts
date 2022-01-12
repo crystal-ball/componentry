@@ -7,30 +7,20 @@ import { element } from '../utils/element-creator'
 type ElementsMap = Record<string, keyof JSX.IntrinsicElements>
 
 const defaultElementsMap: ElementsMap = {
-  'heading-1': 'h1',
-  'heading-2': 'h2',
-  'heading-3': 'h3',
-  'body': 'p',
-  'code': 'code',
-  'small': 'small',
+  h1: 'h1',
+  h2: 'h2',
+  h3: 'h3',
+  body: 'p',
+  code: 'code', // TODO: make a component?
+  small: 'small',
 }
 
 // Module augmentation interface for overriding component props' types
 export interface TextProps {}
 
 interface DefaultTextProps {
-  /** Shorthand to set text-align */
-  align?: 'left' | 'center' | 'right' | 'justify'
-  /** Shorthand to set font-weight bold */
-  bold?: boolean
-  /** Shorthand to set font color */
-  color?: 'anchor' | 'body' | 'heading' | 'primary'
-  /** Switches display between an inline (span) and block (div) element */
-  inline?: boolean
-  /** Shorthand to set font-style italic */
-  italic?: boolean
   /** Display variant */
-  variant?: 'heading-1' | 'heading-2' | 'heading-3' | 'body' | 'code' | 'small'
+  variant?: 'h1' | 'h2' | 'h3' | 'body' | 'code' | 'small'
 }
 
 type Props = MergePropTypes<DefaultTextProps, TextProps> & ComponentBaseProps<'div'>
@@ -41,10 +31,6 @@ type Props = MergePropTypes<DefaultTextProps, TextProps> & ComponentBaseProps<'d
 export const Text: React.FC<Props> = (props) => {
   const {
     variant = 'body',
-    align,
-    bold,
-    color,
-    inline,
     elementsMap = defaultElementsMap,
     ...rest
   } = {
@@ -53,13 +39,8 @@ export const Text: React.FC<Props> = (props) => {
   }
 
   return element('Text', {
-    as: inline ? 'span' : elementsMap[variant],
-    componentCx: {
-      [`${variant}-variant`]: !inline,
-    },
-    fontColor: color,
-    fontWeight: bold ? 'bold' : null,
-    textAlign: align,
+    as: elementsMap[variant],
+    componentCx: `🅲Text-base 🅲Text-${variant}`,
     ...rest,
   })
 }

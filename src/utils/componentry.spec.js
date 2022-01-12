@@ -151,7 +151,7 @@ describe('componentry()', () => {
         borderRight: true,
         borderTop: true,
         borderWidth: 'lg',
-        fontColor: 'primary',
+        color: 'primary',
         fontFamily: 'monospace',
         fontSize: 'sm',
         fontStyle: 'italic',

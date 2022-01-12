@@ -51,9 +51,9 @@ export const Alert: Alert = (props) => {
   return element('Alert', {
     'role': 'alert',
     'componentCx': [
-      `alert-${variant}`,
+      `🅲Alert-base 🅲Alert-${variant}`,
       {
-        [`alert-color-${color}`]: color,
+        [`🅲Alert-${color}Color`]: color,
         fade: dismissible, // Only include opacity transition class for dismissible alerts
         visible,
       },
@@ -65,12 +65,10 @@ export const Alert: Alert = (props) => {
         <div className='sr-only'>{ariaTitle || `${color} alert`}</div>
 
         {/* Alert contents */}
-        <div className='alert-content'>{children}</div>
+        <div className='🅲Alert-content'>{children}</div>
 
         {/* Render a close button or null depending on configs */}
-        {dismissible && (
-          <Alert.Close className={`font-color-${color}`} onClick={deactivate} />
-        )}
+        {dismissible && <Alert.Close className='🅲Alert-close' onClick={deactivate} />}
       </>
     ),
     ...rest,

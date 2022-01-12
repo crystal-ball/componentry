@@ -6,9 +6,9 @@ export default function Test() {
   // 1. as="string" works
   // 2. as={Identifier} works
   return /*#__PURE__*/ _jsx('main', {
-    className: '\uD83C\uDD72-flex flex',
+    className: 'flex',
     children: /*#__PURE__*/ _jsx(FancyText, {
-      className: '\uD83C\uDD72-text body-variant mt-md',
+      className: '\uD83C\uDD72Text-base \uD83C\uDD72Text-body mt-md',
       fancy: true,
       children: 'Precompiled for speed',
     }),

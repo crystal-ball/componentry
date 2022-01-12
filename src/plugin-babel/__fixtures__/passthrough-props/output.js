@@ -6,15 +6,15 @@ export default function Test() {
   // 1. Props that aren't library props are passed through
   // 2. Props that are arrow expressions are passed through
   return /*#__PURE__*/ _jsxs('div', {
-    className: '\uD83C\uDD72-flex flex',
+    className: 'flex',
     children: [
       /*#__PURE__*/ _jsx('p', {
-        'className': '\uD83C\uDD72-text body-variant',
+        'className': '\uD83C\uDD72Text-base \uD83C\uDD72Text-body',
         'data-skip': 'passthrough',
         'children': 'Passthrough props',
       }),
       /*#__PURE__*/ _jsx('p', {
-        className: '\uD83C\uDD72-text body-variant',
+        className: '\uD83C\uDD72Text-base \uD83C\uDD72Text-body',
         onMouseEnter: () => console.log('mouse_enter'),
         children: 'Passthrough props',
       }),

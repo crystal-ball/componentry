@@ -2,7 +2,7 @@
 
 exports[`<Link /> snapshots renders correctly 1`] = `
 <a
-  class="🅲-link link-primary"
+  class="🅲Link-base 🅲Link-text"
   data-testid="link"
   href="#test"
 >

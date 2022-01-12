@@ -1,6 +1,5 @@
 import React, { ForwardedRef, createElement } from 'react'
 import clsx, { type ClassValue } from 'clsx'
-import { parseBaseCx } from './class-names'
 import { componentry } from './componentry'
 
 // Type used to *constrain* what props can be passed into element()
@@ -51,7 +50,6 @@ export function element<Props extends ElementProps>(
   return createElement(as, {
     style: { ...styles, ...style },
     className: clsx(
-      `🅲-${parseBaseCx(displayName)}`, // Component base className, eg '🅲-btn'
       themeCx, // User defined default className from theme context
       componentCx, // Library defined component specific classNames, eg 'btn-sm'
       className, // User supplied className

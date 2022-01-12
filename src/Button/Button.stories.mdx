@@ -9,7 +9,7 @@ export const Template = (args) => <Button {...args} />
 
 ## Variants
 
-Pass a `variant` to set a button style.
+Pass a `filled` or `outlined` variant to set a button style.
 
 <Canvas>
   <Story
@@ -26,24 +26,24 @@ Pass a `variant` to set a button style.
       ),
     ]}
   >
-    <Button variant='primary'>Button</Button>
-    <Button variant='primary' className='🅲-hover'>
+    <Button variant='filled'>Button</Button>
+    <Button variant='filled' className='🅲-hover'>
       Button
     </Button>
-    <Button variant='primary' className='🅲-active'>
+    <Button variant='filled' className='🅲-active'>
       Button
     </Button>
-    <Button variant='primary' className='🅲-disabled'>
+    <Button variant='filled' disabled>
       Button
     </Button>
-    <Button variant='secondary'>Button</Button>
-    <Button variant='secondary' className='🅲-hover'>
+    <Button variant='outlined'>Button</Button>
+    <Button variant='outlined' className='🅲-hover'>
       Button
     </Button>
-    <Button variant='secondary' className='🅲-active'>
+    <Button variant='outlined' className='🅲-active'>
       Button
     </Button>
-    <Button variant='secondary' className='🅲-disabled'>
+    <Button variant='outlined' disabled>
       Button
     </Button>
   </Story>
@@ -64,9 +64,9 @@ Pass a `size` to set a button size:
       ),
     ]}
   >
-    <Button size='sm'>Button</Button>
+    <Button size='small'>Button</Button>
     <Button>Button</Button>
-    <Button size='lg'>Button</Button>
+    <Button size='large'>Button</Button>
   </Story>
 </Canvas>
 
@@ -78,13 +78,14 @@ Pass `fullWidth` to make a button fill its parent container:
 
 ## Disabled
 
-Pass `disabled` to make a button disabled:
+Pass `disabled` to make a button disabled. Disabled buttons have `pointer-events: none`
+set which will prevent user actions.
 
 <div className='flex flex-row items-center gap-4'>
-  <Button variant='primary' disabled>
+  <Button variant='filled' disabled>
     Button
   </Button>
-  <Button variant='secondary' disabled>
+  <Button variant='outlined' disabled>
     Button
   </Button>
 </div>

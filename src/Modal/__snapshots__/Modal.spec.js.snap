@@ -4,7 +4,7 @@ exports[`<Close /> snapshots renders correctly 1`] = `
 <div
   aria-hidden="false"
   aria-labelledby="test-guid"
-  class="🅲-modal-overlay fade modal-overlay-scroll"
+  class="fade modal-overlay-scroll"
   data-testid="modal"
   role="presentation"
   tabindex="-1"
@@ -17,21 +17,21 @@ exports[`<Close /> snapshots renders correctly 1`] = `
       role="dialog"
     >
       <div
-        class="🅲-modal-header"
+        class=""
       >
         <h2
-          class="🅲-modal-title"
+          class=""
           id="test-guid"
         >
           Demo uncontrolled modal
         </h2>
         <button
           aria-label="close"
-          class="🅲-modal-close"
+          class="🅲Close-base"
           type="button"
         >
           <svg
-            class="🅲-icon icon-close font-variant"
+            class="🅲Icon-base 🅲Icon-font icon-close"
             role="img"
           >
             <use
@@ -42,14 +42,14 @@ exports[`<Close /> snapshots renders correctly 1`] = `
         </button>
       </div>
       <div
-        class="🅲-modal-body"
+        class=""
       >
         <p>
           This is an uncontrolled modal that will automatically manage its active state using the parent Active component.
         </p>
       </div>
       <div
-        class="🅲-modal-footer modal-footer btn-container-x"
+        class="modal-footer btn-container-x"
       >
         Modal Footer
       </div>
