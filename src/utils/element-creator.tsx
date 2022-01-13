@@ -1,6 +1,6 @@
 import React, { ForwardedRef, createElement } from 'react'
 import clsx, { type ClassValue } from 'clsx'
-import { componentry } from './componentry'
+import { utilityStyles } from './style-utilities'
 
 // Type used to *constrain* what props can be passed into element()
 type ElementProps = {
@@ -31,21 +31,17 @@ type ElementCreator<Props> = Props & {
  * (This lets us create elements that are very flexible with much less verbose
  * code at the definition site)
  */
-export function element<Props extends ElementProps>(
-  displayName: string,
-  {
-    as = 'div',
-    className,
-    componentCx,
-    style,
-    themeCx,
-    ...merged
-  }: ElementCreator<Props>,
-): React.ReactElement {
+export function element<Props extends ElementProps>({
+  as = 'div',
+  className,
+  componentCx,
+  style,
+  themeCx,
+  ...merged
+}: ElementCreator<Props>): React.ReactElement {
   // The componentry util will: filter out remaining library props, create base
   // styles, and create base classNames
-  /* @ts-ignore BaseProps isn't fully typed out to match componentry() yet */
-  const { utilityCx, props, styles } = componentry(merged)
+  const { utilityCx, props, styles } = utilityStyles(merged)
 
   return createElement(as, {
     style: { ...styles, ...style },

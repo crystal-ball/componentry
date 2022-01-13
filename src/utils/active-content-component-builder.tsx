@@ -38,7 +38,7 @@ export function activeContentBuilder<TProps extends ActiveContentBaseProps>(
 
     // Create component content (return optionally wraps content in a width busting
     // container)
-    const content = element(displayName, {
+    const content = element({
       ...computeARIA({
         active,
         activeId,

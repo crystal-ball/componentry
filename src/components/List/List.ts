@@ -36,7 +36,7 @@ export interface List {
 export const List: List = (props) => {
   const { flush, ...rest } = { ...useTheme('List'), ...props }
 
-  return element('List', {
+  return element({
     componentCx: { 'list-flush': flush },
     ...rest,
   })
@@ -49,7 +49,7 @@ List.displayName = 'List'
 List.Item = function ListItem(props) {
   const { active, color, disabled, ...rest } = { ...useTheme('ListItem'), ...props }
 
-  return element('ListItem', {
+  return element({
     as: rest.href || rest.to ? 'a' : 'button',
     componentCx: {
       [`list-item-${color}`]: color,

@@ -17,7 +17,7 @@ export const Block: React.FC<BlockProps> = (props) => {
     ...props,
   }
 
-  return element('Block', {
+  return element({
     componentCx: {
       'block': !inline,
       'inline-block': inline,

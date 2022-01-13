@@ -23,7 +23,7 @@ export const Badge: React.FC<BadgeProps> = (props) => {
     ...props,
   }
 
-  return element('Badge', {
+  return element({
     componentCx: [`badge-${variant}`, { [`badge-color-${color}`]: color }],
     ...rest,
   })

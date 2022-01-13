@@ -23,7 +23,7 @@ export const Grid: React.FC<GridProps> = (props) => {
     ...props,
   }
 
-  return element('Grid', {
+  return element({
     componentCx: {
       'grid': !inline,
       'inline-grid': inline,

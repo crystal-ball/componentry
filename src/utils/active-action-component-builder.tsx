@@ -54,7 +54,7 @@ export function activeActionBuilder<TProps extends ActiveActionBaseProps>(
     else if (activeId) onClick = activeId === active ? deactivate : activate
     else onClick = active ? deactivate : activate
 
-    return element(displayName, {
+    return element({
       as,
       type,
       ...computeARIA({

@@ -23,7 +23,7 @@ export const Link: React.FC<LinkProps> = (props) => {
     ...props,
   }
 
-  return element('Link', {
+  return element({
     as: merged.href ? 'a' : 'button',
     type: merged.href ? undefined : 'button',
     componentCx: `🅲Link-base 🅲Link-${variant}`,

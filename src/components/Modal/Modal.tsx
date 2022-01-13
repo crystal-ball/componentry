@@ -110,7 +110,7 @@ export const Modal = ((props: ModalProps): JSX.Element => {
   //     div.modal-container - Contains the modal header,body,footer elements
   return (
     <ModalCtx.Provider value={{ active, deactivate, guid }}>
-      {element('ModalOverlay', {
+      {element({
         'onClick': deactivate,
         'componentCx': ['fade', `modal-${scroll}-scroll`, { visible }],
         'aria-hidden': String(!active),
@@ -160,7 +160,7 @@ Modal.Header = function ModalHeader(props: ModalHeaderProps) {
   const ctx = useContext(ModalCtx)
   assertContext(ctx)
 
-  return element('ModalHeader', {
+  return element({
     children: (
       <>
         {children}
@@ -181,7 +181,7 @@ Modal.Title = function ModalTitle(props) {
   const ctx = useContext(ModalCtx)
   assertContext(ctx)
 
-  return element('ModalTitle', {
+  return element({
     as: 'h2',
     id: ctx.guid,
     ...useTheme<ModalTitleProps>('Modaltitle'),
@@ -200,7 +200,7 @@ Modal.Body = function ModalBody(props) {
 
   useActiveScrollReset(ctx.active, bodyRef)
 
-  return element('ModalBody', {
+  return element({
     ref: bodyRef,
     ...useTheme<ModalBodyProps>('ModalBody'),
     ...props,
