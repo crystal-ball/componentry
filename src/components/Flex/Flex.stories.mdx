@@ -1,7 +1,11 @@
-import { ArgsTable, Meta } from '@storybook/addon-docs'
+import { ArgsTable, Canvas, Meta, Story } from '@storybook/addon-docs'
 import { BADGE } from '@geometricpanda/storybook-addon-badges'
 
 import { Flex } from './Flex'
+
+export function padNum(num) {
+  return num > 9 ? num : `0${num}`
+}
 
 <Meta
   title='Components/Flex'
@@ -11,37 +15,43 @@ import { Flex } from './Flex'
 
 # Flex
 
-Flex is a convenience component for creating `display: flex` containers.
+<Story name='Flex'>
+  <Flex gap={2} backgroundColor='primary-200' className='rounded'>
+    {[1, 2, 3].map((key) => (
+      <div
+        key={key}
+        className='bg-primary-600 text-inverse font-mono font-bold px-3 py-2 rounded'
+      >
+        #{padNum(key)}
+      </div>
+    ))}
+  </Flex>
+</Story>
 
-<ArgsTable of={Flex} />
-
-## Block containers
-
-Flex components create block level flex containers:
-
-<Flex>
-  {[1, 2, 3].map((key) => (
-    <div key={key} className='border'>
-      Flex content #{key}
-    </div>
-  ))}
-</Flex>
+Flex is a layout component with shorthand properties `align`, `direction`, `justify`, and
+`wrap` for common flex styles.
 
 ## Inline containers
 
 Create inline level flex containers using the `inline` prop:
 
-<Flex inline>
+<Flex inline gap={2} backgroundColor='primary-200' className='rounded'>
   {[1, 2].map((key) => (
-    <div key={key} className='border'>
-      Flex content #{key}
+    <div
+      key={key}
+      className='bg-primary-600 text-inverse font-mono font-bold px-3 py-2 rounded'
+    >
+      #0{key}
     </div>
   ))}
 </Flex>
-<Flex inline>
+<Flex inline gap={2} backgroundColor='primary-200' className='rounded'>
   {[1, 2].map((key) => (
-    <div key={key} className='border'>
-      Flex content #{key}
+    <div
+      key={key}
+      className='bg-primary-600 text-inverse font-mono font-bold px-3 py-2 rounded'
+    >
+      #0{key}
     </div>
   ))}
 </Flex>
@@ -50,10 +60,13 @@ Create inline level flex containers using the `inline` prop:
 
 Override the default direction of `row` with the `direction` prop:
 
-<Flex direction='row-reverse'>
+<Flex direction='row-reverse' gap={2} backgroundColor='primary-200' className='rounded'>
   {[1, 2, 3].map((key) => (
-    <div key={key} className='border'>
-      Flex content #{key}
+    <div
+      key={key}
+      className='bg-primary-600 text-inverse font-mono font-bold px-3 py-2 rounded'
+    >
+      #0{key}
     </div>
   ))}
 </Flex>
@@ -62,10 +75,19 @@ Override the default direction of `row` with the `direction` prop:
 
 Set the flex items justification and alignment with the `justify` and `align` props:
 
-<Flex justify='center' align='center'>
+<Flex
+  justify='center'
+  align='center'
+  gap={2}
+  backgroundColor='primary-200'
+  className='rounded'
+>
   {[1, 2, 3].map((key) => (
-    <div key={key} className='border'>
-      Flex content #{key}
+    <div
+      key={key}
+      className='bg-primary-600 text-inverse font-mono font-bold px-3 py-2 rounded'
+    >
+      #0{key}
     </div>
   ))}
 </Flex>
@@ -74,13 +96,20 @@ Set the flex items justification and alignment with the `justify` and `align` pr
 
 Override the flex wrap behavior with the `wrap` props:
 
-<Flex wrap='wrap-reverse'>
+<Flex wrap='wrap-reverse' gap={2} backgroundColor='primary-200' className='rounded'>
   {Array(12)
     .fill(0)
     .map((_, key) => (
       // eslint-disable-next-line react/no-array-index-key
-      <div key={key} className='border'>
-        Flex content #{key}
+      <div
+        key={key}
+        className='bg-primary-600 text-inverse font-mono font-bold px-3 py-2 rounded'
+      >
+        #{padNum(key)}
       </div>
     ))}
 </Flex>
+
+## Props
+
+<ArgsTable of={Flex} />

@@ -33,20 +33,18 @@ interface DefaultUtilityProps {
   backgroundColor?: 'primary' | 'success' | 'warning' | 'critical'
   /** Sets a bold font weight style */
   bold?: boolean
-  /** Sets a border style */
+  /** Sets a 1px border-width style */
   border?: boolean
-  /** Sets a border bottom style */
+  /** Sets a 1px border-bottom-width style */
   borderBottom?: boolean
   /** Sets border color style */
   borderColor?: 'primary'
-  /** Sets a border left style */
+  /** Sets a 1px border-left-width style */
   borderLeft?: boolean
-  /** Sets a border right style */
+  /** Sets a 1px border-right-width style */
   borderRight?: boolean
-  /** Sets a border top style */
+  /** Sets a 1px border-top-width style */
   borderTop?: boolean
-  /** Sets a border width style */
-  borderWidth?: never
   /** Sets a disabled style */
   disabled?: boolean
   /** Sets a text color style */
@@ -57,6 +55,8 @@ interface DefaultUtilityProps {
   fontSize?: 'sm' | 'base' | 'lg'
   /** Text font-weight style */
   fontWeight?: 'light' | 'normal' | 'bold'
+  /** Sets a display: none style */
+  invisible?: boolean
   /** Sets an italic style */
   italic?: boolean
   /** Sets justify-content style */
@@ -66,7 +66,7 @@ interface DefaultUtilityProps {
   /** Sets text-align style */
   textAlign?: 'left' | 'center' | 'right' | 'justify'
   /** Sets text-transform style */
-  textTransform?: 'lowercase' | 'uppercase' | 'capitalize'
+  textTransform?: 'lowercase' | 'uppercase' | 'capitalize' | 'normal-case'
   /** Sets visible style */
   visible?: boolean
   /** Sets width style */
