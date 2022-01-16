@@ -8,7 +8,7 @@ import { Dropdown } from './Dropdown'
 describe('<Dropdown />', () => {
   // Basic library activation test suite
   activationTests(Dropdown, {
-    name: 'dropdown',
+    name: 'Dropdown',
     testArias: ['labelledby', 'expanded'],
   })
 

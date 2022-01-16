@@ -6,7 +6,7 @@ import { elementTests } from '../../test/element-tests'
 import { Drawer } from './Drawer'
 
 describe('<Drawer />', () => {
-  activationTests(Drawer, { name: 'drawer', testArias: ['controls', 'expanded'] })
+  activationTests(Drawer, { name: 'Drawer', testArias: ['controls', 'expanded'] })
 
   elementTests(Drawer)
   elementTests(Drawer.Action)

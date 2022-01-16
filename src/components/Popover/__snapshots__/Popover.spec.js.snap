@@ -8,17 +8,17 @@ exports[`<Popover /> snapshots renders correctly 1`] = `
 >
   <button
     aria-describedby="test-guid"
-    class="popover-action-primary"
+    class="PopoverAction-primary"
     type="button"
   >
     Toggle
   </button>
   <div
-    class="popover-content-container"
+    class="PopoverContent-container"
   >
     <div
       aria-hidden="true"
-      class="popover-content-primary"
+      class="PopoverContent-primary"
       id="test-guid"
       role="tooltip"
     >

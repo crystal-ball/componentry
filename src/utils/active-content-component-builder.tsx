@@ -3,7 +3,6 @@ import { useTheme } from '../components/Theme/Theme'
 import { ActiveCtx } from './active-container-component-builder'
 import { ARIAControls, computeARIA } from './aria'
 import { ActiveContentBaseProps } from './types'
-import { parseBaseCx } from './class-names'
 import { element } from './element-creator'
 
 interface ActiveContentBuilder {
@@ -20,7 +19,7 @@ export function activeContentBuilder<TProps extends ActiveContentBaseProps>(
   displayName: string,
   { aria, positioned = false }: ActiveContentBuilder,
 ): React.FC<TProps> {
-  const baseCx = parseBaseCx(displayName)
+  const baseCx = displayName
 
   function ActiveContent(props: TProps) {
     const { guid, ...activeCtx } = useContext(ActiveCtx)

@@ -1,5 +1,5 @@
 import { useTheme } from '../Theme/Theme'
-import { navClasses } from '../../utils/class-names'
+import { navClasses } from '../../utils/component-classes'
 import { element } from '../../utils/element-creator'
 import { ComponentBaseProps } from '../../utils/types'
 

@@ -3,7 +3,6 @@ import { useTheme } from '../components/Theme/Theme'
 import { ActiveCtx } from './active-container-component-builder'
 import { ARIAControls, computeARIA } from './aria'
 import { ActiveActionBaseProps } from './types'
-import { parseBaseCx } from './class-names'
 import { element } from './element-creator'
 
 interface ActiveActionBuilder {
@@ -22,7 +21,7 @@ export function activeActionBuilder<TProps extends ActiveActionBaseProps>(
   displayName: string,
   { action, aria = {} }: ActiveActionBuilder = {},
 ): React.FC<TProps> {
-  const baseCx = parseBaseCx(displayName)
+  const baseCx = displayName
 
   function ActiveAction(props: TProps) {
     const { guid, ...activeCtx } = useContext(ActiveCtx)

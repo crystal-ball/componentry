@@ -8,7 +8,7 @@ import {
   ActiveContentBaseProps,
   ComponentBaseProps,
 } from '../../utils/types'
-import { navClasses } from '../../utils/class-names'
+import { navClasses } from '../../utils/component-classes'
 import { element } from '../../utils/element-creator'
 import { staticComponent } from '../../utils/static-component-builder'
 

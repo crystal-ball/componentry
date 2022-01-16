@@ -9,14 +9,14 @@ exports[`<Drawer /> snapshots renders correctly 1`] = `
   <button
     aria-controls="test-guid"
     aria-expanded="false"
-    class="drawer-action-primary"
+    class="DrawerAction-primary"
     type="button"
   >
     Action
   </button>
   <div
     aria-hidden="true"
-    class="drawer-content-primary"
+    class="DrawerContent-primary"
     id="test-guid"
   >
     Content

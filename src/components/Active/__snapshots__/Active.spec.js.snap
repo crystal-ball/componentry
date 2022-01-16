@@ -8,14 +8,14 @@ exports[`<Active /> snapshots renders correctly 1`] = `
 >
   <button
     aria-controls="test-guid"
-    class="active-action-primary"
+    class="ActiveAction-primary"
     type="button"
   >
     Action
   </button>
   <div
     aria-hidden="true"
-    class="active-content-primary"
+    class="ActiveContent-primary"
     id="test-guid"
   >
     Content

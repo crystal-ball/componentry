@@ -125,9 +125,6 @@ export function elementTests(TestComponent, Wrapper) {
     expect(screen.getByTestId('component')).toHaveClass('jsx-class text-center uppercase')
 
     expect(screen.getByTestId('component')).toHaveStyle(`
-      line-height: 2;
-      margin-left: 16;
-      margin-right: 16;
       position: relative;
     `)
   })

@@ -20,7 +20,7 @@ export interface UtilityProps {}
 /**
  * Componentry shared utility props for using utility styles
  */
-interface DefaultUtilityProps {
+export interface DefaultUtilityProps {
   /** Sets active style */
   active?: boolean | string
   /** Sets align-content style */
@@ -35,6 +35,8 @@ interface DefaultUtilityProps {
   bold?: boolean
   /** Sets a 1px border-width style */
   border?: boolean
+  /** Sets a border-width size style */
+  borderWidth?: string | number
   /** Sets a 1px border-bottom-width style */
   borderBottom?: boolean
   /** Sets border color style */
@@ -55,12 +57,26 @@ interface DefaultUtilityProps {
   fontSize?: 'sm' | 'base' | 'lg'
   /** Text font-weight style */
   fontWeight?: 'light' | 'normal' | 'bold'
+  /** Sets height style */
+  height?: 'auto' | 'full' | 'screen' | 'min' | 'max' | 'fit' | string | number
   /** Sets a display: none style */
   invisible?: boolean
   /** Sets an italic style */
   italic?: boolean
   /** Sets justify-content style */
   justifyContent?: 'start' | 'end' | 'center' | 'between' | 'around' | 'evenly'
+  /** Sets a letter-spacing style */
+  letterSpacing?: 'tighter' | 'tight' | 'normal' | 'wide' | 'wider' | 'widest'
+  /** Sets a line-height style */
+  lineHeight?: 'none' | 'tight' | 'snug' | 'normal' | 'relaxed' | 'loose' | number
+  /** Sets a max-width style */
+  maxWidth?: 'none' | 'full' | 'min' | 'max' | 'fit' | 'prose' | 0 | string
+  /** Sets a max-height style */
+  maxHeight?: 'full' | 'screen' | 'min' | 'max' | 'fit' | number
+  /** Sets a min-height style */
+  minHeight?: 'full' | 'screen' | 'min' | 'max' | 'fit' | 0
+  /** Sets a min-width style */
+  minWidth?: 'full' | 'min' | 'max' | 'fit' | 0
   /** Sets position style */
   position?: 'static' | 'relative' | 'absolute' | 'fixed' | 'sticky'
   /** Sets text-align style */
@@ -70,11 +86,11 @@ interface DefaultUtilityProps {
   /** Sets visible style */
   visible?: boolean
   /** Sets width style */
-  width?: string | number
-  /** Sets height style */
-  height?: string | number
+  width?: 'auto' | 'full' | 'screen' | 'min' | 'max' | 'fit' | string | number
 
   // --- Spacing
+
+  gap?: string | number
   /** margin */
   m?: string | number
   /** margin-top */
