@@ -13,10 +13,7 @@ export default function Test({ success, position }) {
     className: 'flex',
     children: [
       /*#__PURE__*/ _jsx('p', {
-        style: {
-          paddingTop: 80,
-        },
-        className: '\uD83C\uDD72Text-base \uD83C\uDD72Text-body',
+        className: '\uD83C\uDD72Text-base \uD83C\uDD72Text-body pt-80',
         children: 'Expression containers test',
       }),
       /*#__PURE__*/ _jsx('p', {

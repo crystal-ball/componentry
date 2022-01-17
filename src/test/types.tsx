@@ -62,7 +62,7 @@ const testFlex = (
 const testIcon = <Icon id='test' className='rad' />
 const testLink = <Link href='https://componentry.com'>A Link</Link>
 const testText = (
-  <Text className='rad' id='test'>
+  <Text className='rad' id='test' textTransform='normal-case'>
     Test the text
   </Text>
 )

@@ -4,7 +4,7 @@ import { PluginObj, types } from '@babel/core'
 import { Flex } from '../components/Flex/Flex'
 import { Block } from '../components/Block/Block'
 import { Text } from '../components/Text/Text'
-import { precompileProps, utilityProps } from '../utils/style-utilities'
+import { precompileProps, utilityProps } from '../utils/utility-classes'
 
 import { parseAttributes } from './parse-attributes'
 import { buildClosingElement, buildOpeningElement } from './build-elements'
@@ -56,7 +56,7 @@ const componentryPlugin = ({ types: t }: BabelObj): PluginObj<VisitorState> => {
 
         if (opts.debug) console.info(`--- Visiting: ${filename}`)
 
-        // We are not transforming MemberExpression or Namespaced JSXElments
+        // We are not transforming MemberExpression or Namespaced JSXElements
         if (!t.isJSXIdentifier(openingElement.name)) return
 
         // Bail early if this element isn't one of our precompile targets
@@ -77,7 +77,7 @@ const componentryPlugin = ({ types: t }: BabelObj): PluginObj<VisitorState> => {
         )
 
         // If the dataFlag option is truthy add a data attribute signifying the element
-        // has been precompiled
+        // has been pre-compiled
         if (opts.dataFlag) {
           parsedAttributes['data-component'] = name
         }
@@ -87,12 +87,12 @@ const componentryPlugin = ({ types: t }: BabelObj): PluginObj<VisitorState> => {
         if (!parseSuccess) return
 
         // @ts-ignore DEBT
-        // Call the component with the parsed attributes to create the precompiled result
-        const precompiledResult = components[name](parsedAttributes)
+        // Call the component with the parsed attributes to create the pre-compiled result
+        const preCompiledResult = components[name](parsedAttributes)
 
-        // 🎉 Replace the elements opening and closing elements with our precompiled result
+        // 🎉 Replace the elements opening and closing elements with our pre-compiled result
         path.get('openingElement').replaceWith(
-          buildOpeningElement(precompiledResult, passThroughAttributes, {
+          buildOpeningElement(preCompiledResult, passThroughAttributes, {
             selfClosing: openingElement.selfClosing,
           }),
         )
@@ -100,7 +100,7 @@ const componentryPlugin = ({ types: t }: BabelObj): PluginObj<VisitorState> => {
         if (closingElement) {
           path
             .get('closingElement')
-            .replaceWith(buildClosingElement(precompiledResult.type))
+            .replaceWith(buildClosingElement(preCompiledResult.type))
         }
       },
     },

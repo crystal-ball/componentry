@@ -21,6 +21,8 @@ export interface TextProps {}
 interface DefaultTextProps {
   /** Display variant */
   variant?: 'h1' | 'h2' | 'h3' | 'body' | 'code' | 'small'
+  /** Sets a bold font-weight style */
+  bold?: boolean
 }
 
 type Props = MergePropTypes<DefaultTextProps, TextProps> & ComponentBaseProps<'div'>
@@ -32,6 +34,7 @@ export const Text: React.FC<Props> = (props) => {
   const {
     variant = 'body',
     elementsMap = defaultElementsMap,
+    bold,
     ...rest
   } = {
     ...useTheme<Props & { elementsMap?: ElementsMap }>('Text', props.__precompile),
@@ -41,6 +44,7 @@ export const Text: React.FC<Props> = (props) => {
   return element({
     as: elementsMap[variant],
     componentCx: `🅲Text-base 🅲Text-${variant}`,
+    fontWeight: bold ? 'bold' : undefined,
     ...rest,
   })
 }

@@ -1,4 +1,4 @@
-import { navClasses, parseBaseCx } from './class-names'
+import { navClasses } from './component-classes'
 
 describe('navClasses()', () => {
   it('returns a string of classes for passed options', () => {
@@ -9,12 +9,5 @@ describe('navClasses()', () => {
 
   it('returns only the variant class when flags arent truthy', () => {
     expect(navClasses('nav', {})).toBe('')
-  })
-})
-
-describe('parseBaseCx()', () => {
-  it('returns a base class for the display name', () => {
-    expect(parseBaseCx('Active')).toBe('active')
-    expect(parseBaseCx('ActiveAction')).toBe('active-action')
   })
 })

@@ -7,7 +7,7 @@ import { Tooltip } from './Tooltip'
 
 describe('<Tooltip />', () => {
   // Basic library activation test suite
-  activationTests(Tooltip, { name: 'tooltip', testArias: ['describedby'] })
+  activationTests(Tooltip, { name: 'Tooltip', testArias: ['describedby'] })
   // Basic library element test suite
   elementTests(Tooltip)
   elementTests(Tooltip.Action)

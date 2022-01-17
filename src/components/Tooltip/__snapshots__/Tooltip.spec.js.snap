@@ -8,17 +8,17 @@ exports[`<Tooltip /> snapshots renders correctly 1`] = `
 >
   <button
     aria-describedby="test-guid"
-    class="tooltip-action-primary"
+    class="TooltipAction-primary"
     type="button"
   >
     Action
   </button>
   <div
-    class="tooltip-content-container"
+    class="TooltipContent-container"
   >
     <div
       aria-hidden="true"
-      class="tooltip-content-primary"
+      class="TooltipContent-primary"
       id="test-guid"
       role="tooltip"
     >

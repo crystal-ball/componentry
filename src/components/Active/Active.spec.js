@@ -6,7 +6,7 @@ import { elementTests } from '../../test/element-tests'
 import { Active } from './Active'
 
 describe('<Active />', () => {
-  activationTests(Active, { name: 'active', testArias: ['controls'] })
+  activationTests(Active, { name: 'Active', testArias: ['controls'] })
   elementTests(Active)
   elementTests(Active.Action)
   elementTests(Active.Content)

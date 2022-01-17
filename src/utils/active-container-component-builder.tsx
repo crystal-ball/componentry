@@ -2,7 +2,6 @@ import React, { createContext, useCallback, useEffect, useRef, useState } from '
 import { nanoid } from 'nanoid'
 import { useTheme } from '../components/Theme/Theme'
 import { ActiveContainerBaseProps } from './types'
-import { parseBaseCx } from './class-names'
 import { closest } from './dom'
 import { element } from './element-creator'
 
@@ -58,7 +57,7 @@ interface DefaultActiveContainerProps {
  *    change listeners.
  *
  * NOTE: The `handleActivate` and `handleDeactivate` methods are passed through
- * context as the `activate` and `deactivate` handlers for subcomponents to _always_
+ * context as the `activate` and `deactivate` handlers for sub-components to _always_
  * use. This ensures that we can always hook into the change events for internal
  * needs like setting or removing special event listeners.
  */
@@ -66,7 +65,7 @@ export function activeContainerBuilder<TProps extends ActiveContainerBaseProps>(
   displayName: string,
   defaultProps: DefaultActiveContainerProps = {},
 ): React.FC<TProps> {
-  const baseCx = parseBaseCx(displayName)
+  const baseCx = displayName
 
   function ActiveContainer(props: TProps) {
     const {

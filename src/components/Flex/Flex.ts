@@ -41,11 +41,3 @@ export const Flex: React.FC<FlexProps> = (props) => {
   })
 }
 Flex.displayName = 'Flex'
-
-// --------------------------------------------------------
-// Tailwind classes
-
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
-interface TailwindFlexClasses {
-  flexDirection: 'flex-row' | 'flex-row-reverse' | 'flex-col' | 'flex-col-reverse'
-}

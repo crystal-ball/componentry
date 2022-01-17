@@ -7,7 +7,7 @@ import { Popover } from './Popover'
 
 describe('<Popover />', () => {
   // Basic library activation test suite
-  activationTests(Popover, { name: 'popover', testArias: ['describedby'] })
+  activationTests(Popover, { name: 'Popover', testArias: ['describedby'] })
   // Basic library element test suite
   elementTests(Popover)
   elementTests(Popover.Action)
