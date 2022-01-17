@@ -54,6 +54,8 @@
   "dependencies": {
     "@babel/runtime": "7",
     "clsx": "1",
+    "cosmiconfig": "7.0",
+    "deepmerge": "4.2",
     "nanoid": "3",
     "postcss": "8",
     "postcss-js": "4",

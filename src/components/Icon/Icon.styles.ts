@@ -1,7 +1,7 @@
 //                                         <Icon /> styles
 // -------------------------------------------------------
 
-export const iconStyles = {
+export const Icon = {
   // BASE
   '.🅲Icon-base': {},
 

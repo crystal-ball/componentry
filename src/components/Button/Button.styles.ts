@@ -1,9 +1,11 @@
-import { theme } from '../../theme-defaults'
+import { getMergedConfig } from '../../plugin-postcss/configs'
+
+const { theme } = getMergedConfig()
 
 //                                        <Button /> styles
 // --------------------------------------------------------
 
-export const buttonStyles = {
+export const Button = {
   // BASE
   '.🅲Button-base': {
     'alignItems': 'center',
