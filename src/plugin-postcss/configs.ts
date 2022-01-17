@@ -10,7 +10,7 @@ const explorerSync = cosmiconfigSync('componentry')
 
 const configSearchResults = explorerSync.search()
 
-const userConfig = configSearchResults?.isEmpty ? {} : configSearchResults?.config
+const userConfig = configSearchResults?.config ?? {}
 
 const mergedConfig = {
   theme,
