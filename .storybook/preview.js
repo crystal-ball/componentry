@@ -1,6 +1,5 @@
 // --- BASE STYLES ---
 
-import './styles-componentry.scss'
 import './storybook-styles.css'
 
 // --- STORYBOOK DEFAULTS ---
