@@ -1,9 +1,11 @@
-import { theme } from '../../theme-defaults'
+import { getMergedConfig } from '../../plugin-postcss/configs'
+
+const { theme } = getMergedConfig()
 
 //                                         <Link /> styles
 // -------------------------------------------------------
 
-export const linkStyles = {
+export const Link = {
   // BASE
   '.🅲Link-base': {},
 

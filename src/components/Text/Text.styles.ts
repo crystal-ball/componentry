@@ -1,7 +1,7 @@
 //                                         <Text /> styles
 // -------------------------------------------------------
 
-export const textStyles = {
+export const Text = {
   // BASE
   '.🅲Text-base': {},
 

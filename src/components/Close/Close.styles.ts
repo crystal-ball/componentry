@@ -1,4 +1,6 @@
-import { theme } from '../../theme-defaults'
+import { getMergedConfig } from '../../plugin-postcss/configs'
+
+const { theme } = getMergedConfig()
 
 //                                        <Button /> styles
 // --------------------------------------------------------
@@ -10,7 +12,7 @@ import { theme } from '../../theme-defaults'
 // The 🅲Close classes allows for targeted styles for the close buttons. The .icon-close
 // can also be styled for close buttons only using that as a target
 // ℹ️ The background image styles for close icons is located in `/styles/componentry/icons`
-export const closeStyles = {
+export const Close = {
   '.🅲Close-base': {
     // Layout
     'alignItems': 'center',

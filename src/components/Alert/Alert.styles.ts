@@ -1,9 +1,11 @@
-import { theme } from '../../theme-defaults'
+import { getMergedConfig } from '../../plugin-postcss/configs'
+
+const { theme } = getMergedConfig()
 
 //                                      Componentry <Alert /> styles
 // -----------------------------------------------------------------
 
-export const alertStyles: Record<string, unknown> = {
+export const Alert: Record<string, unknown> = {
   // BASE
   '.🅲Alert-base': {
     // Make the alert container a flex container by default with space-between
@@ -42,7 +44,7 @@ export const alertStyles: Record<string, unknown> = {
 
 const themeColors = ['primary', 'info', 'success', 'warning', 'error'] as const
 themeColors.forEach((color) => {
-  alertStyles[`.🅲Alert-filled.🅲Alert-${color}Color`] = {
+  Alert[`.🅲Alert-filled.🅲Alert-${color}Color`] = {
     'background': theme.colors[color][100],
     'borderColor': theme.colors[color][300],
     'color': theme.colors[color][500],

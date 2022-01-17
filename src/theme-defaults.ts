@@ -4,13 +4,13 @@
 export const theme = {
   prefix: '🅲-',
   // --- SCREENS
-  screens: {
-    // Componentry has a single breakpoint by default, additional breakpoints can
-    // be added. 1200px is used for the default to try and ensure all smaller
-    // desktops are included. (992, 1200, 1280 are the most common large breakpoints)
-    // For multiple breakpoints 768 and 1280 are common breakpoints for md and lg.
-    lg: '1200px',
-  },
+  // screens: {
+  //   Componentry has a single breakpoint by default, additional breakpoints can
+  //   be added. 1200px is used for the default to try and ensure all smaller
+  //   desktops are included. (992, 1200, 1280 are the most common large breakpoints)
+  //   For multiple breakpoints 768 and 1280 are common breakpoints for md and lg.
+  //   lg: '1200px',
+  // },
   // --- COLORS
   colors: {
     current: 'currentColor',
