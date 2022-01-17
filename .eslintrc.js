@@ -6,6 +6,7 @@ module.exports = {
   rules: {
     // Componentry uses empty interfaces for type configurations
     '@typescript-eslint/no-empty-interface': 'off',
+    '@typescript-eslint/explicit-module-boundary-types': 'off',
     // Props my be defined for documentation purposes
     'react/no-unused-prop-types': 'off',
 

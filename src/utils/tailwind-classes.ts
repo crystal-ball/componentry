@@ -1,6 +1,8 @@
 // --------------------------------------------------------
 // Tailwind classes
 
+// Provides string matches for default set of Tailwind classes
+
 export interface TailwindUtilityClasses {
   // LAYOUT
   display: 'block' | 'inline-block' | 'flex' | 'inline-flex' | 'grid' | 'inline-grid'
@@ -30,7 +32,7 @@ export interface TailwindUtilityClasses {
     | 'self-baseline'
   flexDirection: 'flex-row' | 'flex-row-reverse' | 'flex-col' | 'flex-col-reverse'
   flexWrap: 'flex-wrap' | 'flex-wrap-reverse' | 'flex-nowrap'
-  // gap: gap-{...spacing?}
+  // gap: { pattern: /gap(-[xy])?-([\d.]+|px)/ }
   justifyContent:
     | 'justify-start'
     | 'justify-end'
@@ -40,8 +42,8 @@ export interface TailwindUtilityClasses {
     | 'justify-evenly'
 
   // SPACING
-  // margin: m-...
-  // padding: p-...
+  // margin: { pattern: /m[trblxy]?-([\d.]+|px)/ }
+  // padding: { pattern: /p[trblxy]?-([\d.]+|px)/ }
 
   // TYPOGRAPHY
   fontFamily: 'font-body' | 'font-mono' | 'font-sans' | 'font-serif'
@@ -50,12 +52,12 @@ export interface TailwindUtilityClasses {
   fontWeight: 'font-light' | 'font-normal' | 'font-medium' | 'font-semibold' | 'font-bold'
   textAlign: 'text-left' | 'text-center' | 'text-right' | 'text-justify'
   textTransform: 'uppercase' | 'lowercase' | 'capitalize' | 'normal-case'
-  // textColor: text-{...colors?}
+  // textColor: { pattern: /text-(primary|info|success|inverse)[-\d.]+?/ }
 
   // BACKGROUNDS
-  // backgroundColor: bg-{...colors?}
+  // backgroundColor: { pattern: /bg-(primary|info|success)-[\d.]+/ }
 
   // BORDERS
   borderWidth: 'border' | 'border-t' | 'border-r' | 'border-b' | 'border-l'
-  // borderColor: border-{...colors?}
+  // borderColor: { pattern: /border-(primary|info|success)-[\d.]+/ }
 }

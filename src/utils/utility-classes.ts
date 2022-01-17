@@ -123,15 +123,6 @@ function generateClassNames<Props extends DefaultUtilityProps>(
   }
 }
 
-type ComponentProps = {
-  [prop: string]: unknown
-}
-
-type UtilityClasses = {
-  passThroughProps: ComponentProps
-  utilityCx: ClassDictionary
-}
-
 /**
  * utilityClasses filters out Componentry component and utility props, returning
  * a set of utility styles and final passthrough props for underlying component
@@ -160,7 +151,7 @@ export function utilityClasses({
   // ✓ Active props filtered out
   /* eslint-enable @typescript-eslint/no-unused-vars */
   ...filteredProps
-}: ComponentProps & DefaultUtilityProps): UtilityClasses {
+}: ComponentProps & DefaultUtilityProps) {
   const passThroughProps: ComponentProps = {}
 
   // Pass through disabled to final element as it's a valid HTML attribute
@@ -177,6 +168,10 @@ export function utilityClasses({
     passThroughProps,
     utilityCx: generateClassNames(filteredProps),
   }
+}
+
+type ComponentProps = {
+  [prop: string]: unknown
 }
 
 // --------------------------------------------------------
