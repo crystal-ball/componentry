@@ -13,6 +13,7 @@
     "accessibility",
     "component-library",
     "design-system",
+    "postcss-plugin",
     "react",
     "tailwindcss",
     "ui"
@@ -49,7 +50,8 @@
     "clean": "rm -rf cjs esm esnext types"
   },
   "peerDependencies": {
-    "react": ">=16.8"
+    "react": ">=16.8",
+    "postcss": "8"
   },
   "dependencies": {
     "@babel/runtime": "7",
@@ -57,7 +59,6 @@
     "cosmiconfig": "7.0",
     "deepmerge": "4.2",
     "nanoid": "3",
-    "postcss": "8",
     "postcss-js": "4",
     "postcss-nested": "5"
   },
