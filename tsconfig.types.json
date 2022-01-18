@@ -9,5 +9,5 @@
     "allowJs": false,
     "checkJs": false
   },
-  "include": ["src/**/*"]
+  "include": ["@types/**/*", "src/**/*"]
 }
