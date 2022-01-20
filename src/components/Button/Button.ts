@@ -1,3 +1,4 @@
+import { forwardRef } from 'react'
 import { useTheme } from '../Theme/Theme'
 import { ComponentBaseProps } from '../../utils/types'
 import { element } from '../../utils/element-creator'
@@ -21,7 +22,7 @@ interface ButtonProps extends ComponentBaseProps<'button'> {
  * [Button component 📝](https://componentry.design/components/button)
  * @experimental
  */
-export const Button: React.FC<ButtonProps> = (props) => {
+export const Button = forwardRef<HTMLButtonElement, ButtonProps>((props, ref) => {
   const {
     variant = 'filled',
     color,
@@ -34,6 +35,7 @@ export const Button: React.FC<ButtonProps> = (props) => {
   }
 
   return element({
+    ref,
     // If an href is passed, this instance should render an anchor tag
     as: merged.href ? 'a' : 'button',
     type: merged.href ? undefined : 'button',
@@ -47,5 +49,5 @@ export const Button: React.FC<ButtonProps> = (props) => {
     ],
     ...merged,
   })
-}
+})
 Button.displayName = 'Button'
