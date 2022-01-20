@@ -1,3 +1,4 @@
+import { forwardRef } from 'react'
 import { useTheme } from '../Theme/Theme'
 import { ComponentBaseProps } from '../../utils/types'
 import { element } from '../../utils/element-creator'
@@ -17,17 +18,18 @@ interface LinkProps extends ComponentBaseProps<'a'> {
  * [Link component 📝](https://componentry.design/components/link)
  * @experimental
  */
-export const Link: React.FC<LinkProps> = (props) => {
+export const Link = forwardRef<HTMLAnchorElement, LinkProps>((props, ref) => {
   const { variant = 'text', ...merged } = {
     ...useTheme<LinkProps>('Link'),
     ...props,
   }
 
   return element({
+    ref,
     as: merged.href ? 'a' : 'button',
     type: merged.href ? undefined : 'button',
     componentCx: `🅲Link-base 🅲Link-${variant}`,
     ...merged,
   })
-}
+})
 Link.displayName = 'Link'
