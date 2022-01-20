@@ -2,13 +2,14 @@ import React from 'react'
 import { closeBase } from '../Close/Close'
 import { useTheme } from '../Theme/Theme'
 import { useActive, useVisible } from '../../hooks'
-import { ComponentBaseProps } from '../../utils/types'
+import { ComponentBaseProps, MergePropTypes } from '../../utils/types'
 import { element } from '../../utils/element-creator'
 import { staticComponent } from '../../utils/static-component-builder'
 
-interface CardCloseProps extends ComponentBaseProps<'button'> {}
+// Module augmentation interface for overriding component props' types
+export interface AlertProps {}
 
-interface AlertProps extends ComponentBaseProps<'div'> {
+interface DefaultAlertProps {
   /** Sets a custom aria title */
   ariaTitle?: string
   /** Sets the theme color of the alert */
@@ -21,13 +22,17 @@ interface AlertProps extends ComponentBaseProps<'div'> {
   variant?: 'filled'
 }
 
+type Props = MergePropTypes<DefaultAlertProps, AlertProps> & ComponentBaseProps<'div'>
+
+interface AlertCloseProps extends ComponentBaseProps<'button'> {}
+
 interface Alert {
-  (props: AlertProps): React.ReactElement
+  (props: Props): React.ReactElement
   displayName: 'Alert'
   /**
    * [Alert close component 📝](https://componentry.design/components/alert)
    */
-  Close: React.FC<CardCloseProps>
+  Close: React.FC<AlertCloseProps>
 }
 
 /**
@@ -76,4 +81,4 @@ export const Alert: Alert = (props) => {
 }
 Alert.displayName = 'Alert'
 
-Alert.Close = staticComponent<CardCloseProps>('AlertClose', closeBase)
+Alert.Close = staticComponent<AlertCloseProps>('AlertClose', closeBase)

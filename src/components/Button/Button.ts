@@ -1,9 +1,12 @@
 import { forwardRef } from 'react'
 import { useTheme } from '../Theme/Theme'
-import { ComponentBaseProps } from '../../utils/types'
+import { ComponentBaseProps, MergePropTypes } from '../../utils/types'
 import { element } from '../../utils/element-creator'
 
-interface ButtonProps extends ComponentBaseProps<'button'> {
+// Module augmentation interface for overriding component props' types
+export interface ButtonProps {}
+
+interface DefaultButtonProps {
   /** Button variant color */
   color?: 'primary'
   /** Disables the element, preventing mouse and keyboard events */
@@ -18,11 +21,14 @@ interface ButtonProps extends ComponentBaseProps<'button'> {
   variant?: 'filled' | 'outlined'
 }
 
+type Props = MergePropTypes<DefaultButtonProps, ButtonProps> &
+  ComponentBaseProps<'button'>
+
 /**
  * [Button component 📝](https://componentry.design/components/button)
  * @experimental
  */
-export const Button = forwardRef<HTMLButtonElement, ButtonProps>((props, ref) => {
+export const Button = forwardRef<HTMLButtonElement, Props>((props, ref) => {
   const {
     variant = 'filled',
     color,
