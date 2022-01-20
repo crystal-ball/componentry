@@ -17,40 +17,21 @@ directly or the Alert can be nested inside of an Active component to automatical
 an uncontrolled Alert.
 
 <Canvas>
-  <Story
-    name='Colors'
-    decorators={[
-      (Story) => (
-        <div className='grid gap-2'>
-          <Story />
-        </div>
-      ),
-    ]}
-  >
+  <Story name='Alert'>
     <Alert color='primary'>
-      <Text>Primary themed alert</Text>
+      <Text variant='h3' className='🅲Alert-heading'>
+        Well done!
+      </Text>
+      <Text>You successfully read this important alert message.</Text>
+      <hr className='my-2' />
+      <Link href='#demo' className='🅲Alert-link'>
+        Go home
+      </Link>
     </Alert>
-    <Alert color='info'>Info themed alert</Alert>
-    <Alert color='success'>Success themed alert</Alert>
-    <Alert color='warning'>Warning themed alert</Alert>
-    <Alert color='error'>Error themed alert</Alert>
   </Story>
 </Canvas>
 
-## Alert elements
-
 Styles are also included for: `alert-heading`, `alert-link`, and `<hr />` elements.
-
-<Alert color='primary'>
-  <Text variant='h3' className='🅲Alert-heading'>
-    Well done!
-  </Text>
-  <Text>You successfully read this important alert message.</Text>
-  <hr className='my-2' />
-  <Link href='#demo' className='🅲Alert-link'>
-    Go home
-  </Link>
-</Alert>
 
 ## Dismissible
 

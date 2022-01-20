@@ -13,7 +13,7 @@ export const Link = {
   '.🅲Link-text': {
     'color': theme.colors.primary[500],
     '&:hover': {
-      color: theme.colors.primary[900],
+      color: theme.colors.primary[700],
     },
   },
 }
