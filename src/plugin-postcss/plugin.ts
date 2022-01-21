@@ -4,22 +4,28 @@ import postcssJs from 'postcss-js'
 import merge from 'deepmerge'
 
 import { Alert } from '../components/Alert/Alert.styles'
+import { Badge } from '../components/Badge/Badge.styles'
 import { Button } from '../components/Button/Button.styles'
+import { Card } from '../components/Card/Card.styles'
 import { Close } from '../components/Close/Close.styles'
 import { Icon } from '../components/Icon/Icon.styles'
 import { Link } from '../components/Link/Link.styles'
+import { FormGroup } from '../components/FormGroup/FormGroup.styles'
 import { Text } from '../components/Text/Text.styles'
 import { getMergedConfig } from './configs'
 
 const { components } = getMergedConfig()
 
 const componentStyles: Record<string, Record<string, unknown>> = {
-  alert: merge(Alert, components.Alert ?? {}),
-  button: merge(Button, components.Button ?? {}),
-  close: merge(Close, components.Close ?? {}),
-  icon: merge(Icon, components.Icon ?? {}),
-  link: merge(Link, components.Link ?? {}),
-  text: merge(Text, components.Text ?? {}),
+  Alert: merge(Alert, components.Alert ?? {}),
+  Badge: merge(Badge, components.Badge ?? {}),
+  Button: merge(Button, components.Button ?? {}),
+  Card: merge(Card, components.Card ?? {}),
+  Close: merge(Close, components.Close ?? {}),
+  Icon: merge(Icon, components.Icon ?? {}),
+  FormGroup: merge(FormGroup, components.FormGroup ?? {}),
+  Link: merge(Link, components.Link ?? {}),
+  Text: merge(Text, components.Text ?? {}),
 }
 
 const processor = postcss([postcssNested()])

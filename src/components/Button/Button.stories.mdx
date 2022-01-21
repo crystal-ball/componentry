@@ -11,64 +11,51 @@ export const Template = (args) => <Button {...args} />
 
 Pass a `filled` or `outlined` variant to set a button style.
 
-<Canvas>
-  <Story
-    name='Variants'
-    decorators={[
-      (Story) => (
-        <div className='grid grid-cols-4 gap-x-4 gap-y-2 items-center justify-items-center w-1/2'>
-          <div>base</div>
-          <div>hover</div>
-          <div>active</div>
-          <div>disabled</div>
-          <Story />
-        </div>
-      ),
-    ]}
-  >
-    <Button variant='filled'>Button</Button>
-    <Button variant='filled' className='🅲-hover'>
-      Button
-    </Button>
-    <Button variant='filled' className='🅲-active'>
-      Button
-    </Button>
-    <Button variant='filled' disabled>
-      Button
-    </Button>
-    <Button variant='outlined'>Button</Button>
-    <Button variant='outlined' className='🅲-hover'>
-      Button
-    </Button>
-    <Button variant='outlined' className='🅲-active'>
-      Button
-    </Button>
-    <Button variant='outlined' disabled>
-      Button
-    </Button>
-  </Story>
-</Canvas>
+<Story
+  name='Button'
+  decorators={[
+    (Story) => (
+      <div className='grid grid-cols-4 gap-x-4 gap-y-2 items-center justify-items-center w-1/2'>
+        <div>base</div>
+        <div>hover</div>
+        <div>active</div>
+        <div>disabled</div>
+        <Story />
+      </div>
+    ),
+  ]}
+>
+  <Button variant='filled'>Button</Button>
+  <Button variant='filled' className='🅲-hover'>
+    Button
+  </Button>
+  <Button variant='filled' className='🅲-active'>
+    Button
+  </Button>
+  <Button variant='filled' disabled>
+    Button
+  </Button>
+  <Button variant='outlined'>Button</Button>
+  <Button variant='outlined' className='🅲-hover'>
+    Button
+  </Button>
+  <Button variant='outlined' className='🅲-active'>
+    Button
+  </Button>
+  <Button variant='outlined' disabled>
+    Button
+  </Button>
+</Story>
 
 ## Sizes
 
 Pass a `size` to set a button size:
 
-<Canvas>
-  <Story
-    name='Sizes'
-    decorators={[
-      (Story) => (
-        <div className='flex flex-row items-center gap-4'>
-          <Story />
-        </div>
-      ),
-    ]}
-  >
-    <Button size='small'>Button</Button>
-    <Button>Button</Button>
-    <Button size='large'>Button</Button>
-  </Story>
-</Canvas>
+<div className='flex flex-row items-center gap-4'>
+  <Button size='small'>Button</Button>
+  <Button>Button</Button>
+  <Button size='large'>Button</Button>
+</div>
 
 ## Full width buttons
 

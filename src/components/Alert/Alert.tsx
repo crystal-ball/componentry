@@ -70,10 +70,10 @@ export const Alert: Alert = (props) => {
         <div className='sr-only'>{ariaTitle || `${color} alert`}</div>
 
         {/* Alert contents */}
-        <div className='🅲Alert-content'>{children}</div>
+        <div className='🅲AlertContent'>{children}</div>
 
         {/* Render a close button or null depending on configs */}
-        {dismissible && <Alert.Close className='🅲Alert-close' onClick={deactivate} />}
+        {dismissible && <Alert.Close className='🅲AlertClose' onClick={deactivate} />}
       </>
     ),
     ...rest,

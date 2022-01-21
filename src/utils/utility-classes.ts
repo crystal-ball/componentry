@@ -15,6 +15,7 @@ export const utilityProps = {
   'borderTop': 1,
   'color': 1,
   'disabled': 1,
+  'display': 1,
   'fontFamily': 1,
   'fontSize': 1,
   'fontWeight': 1,
@@ -58,6 +59,7 @@ function generateClassNames<Props extends DefaultUtilityProps>(
   return {
     // LAYOUT
     [p.position ?? 'position']: p.position,
+    [p.display ?? 'display']: p.display,
     'invisible': p.invisible,
     'visible': p.visible,
 

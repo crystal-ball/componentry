@@ -49,6 +49,19 @@ export interface DefaultUtilityProps {
   borderTop?: boolean
   /** Sets a disabled style */
   disabled?: boolean
+  /** Sets a display style */
+  display?:
+    | 'block'
+    | 'inline-block'
+    | 'inline'
+    | 'flex'
+    | 'inline-flex'
+    | 'flow-root'
+    | 'grid'
+    | 'inline-grid'
+    | 'contents'
+    | 'list-item'
+    | 'hidden'
   /** Sets a text color style */
   color?: string
   /** Sets a font-family style */

@@ -19,6 +19,7 @@ export function staticComponent<Props>(
 ): React.FC<Props> {
   function Component(props: Props) {
     return element({
+      componentCx: `🅲${displayName}`,
       ...defaultProps,
       ...useTheme<Props>(displayName),
       ...props,
