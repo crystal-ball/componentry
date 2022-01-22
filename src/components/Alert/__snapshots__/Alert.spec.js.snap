@@ -12,13 +12,13 @@ exports[`<Alert /> snapshots renders correctly 1`] = `
     danger alert
   </div>
   <div
-    class="🅲Alert-content"
+    class="🅲AlertContent"
   >
     Warning!
   </div>
   <button
     aria-label="close"
-    class="🅲Close-base 🅲Alert-close"
+    class="🅲Close-base 🅲AlertClose"
     type="button"
   >
     <svg

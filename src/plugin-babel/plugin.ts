@@ -17,9 +17,9 @@ const parseProps = { as: 1, className: 1, ...utilityProps, ...precompileProps }
  * # Types Notes
  *
  * JSXOpeningElement can be a:
- * 1. JSXIdentifier (eg List)
- * 2. JSXMemberExpression (eg List.Item)
- * 3. JSXNamespacedName (eg List:Item)
+ * 1. JSXIdentifier (eg Table)
+ * 2. JSXMemberExpression (eg Table.Cell)
+ * 3. JSXNamespacedName (eg Table.Cell)
  *
  * JSXOpeningElement.attributes can contain:
  * 1. JSXAttribute (eg <Flex radical="heck yeah">)

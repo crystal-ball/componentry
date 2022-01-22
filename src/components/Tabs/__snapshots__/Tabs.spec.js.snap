@@ -7,7 +7,7 @@ exports[`<Tab /> snapshots renders correctly 1`] = `
   data-testid="tabs"
 >
   <div
-    class=""
+    class="🅲TabsContainer"
     role="tablist"
   >
     <button
@@ -57,7 +57,7 @@ exports[`<Tab /> snapshots renders correctly 1`] = `
     </button>
   </div>
   <div
-    class=""
+    class="🅲TabsContentContainer"
   >
     <div
       aria-hidden="false"

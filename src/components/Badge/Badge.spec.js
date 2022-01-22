@@ -10,13 +10,7 @@ describe('<Badge />', () => {
   it('When color is passed, then badge-color className is rendered', () => {
     render(<Badge color='primary'>Badge</Badge>)
 
-    expect(screen.getByText('Badge')).toHaveClass('badge-primary')
-  })
-
-  it('When variant is rounded, variant className is rendered', () => {
-    render(<Badge variant='rounded'>Badge</Badge>)
-
-    expect(screen.getByText('Badge')).toHaveClass('badge-rounded')
+    expect(screen.getByText('Badge')).toHaveClass('🅲Badge-primaryColor')
   })
 })
 
@@ -25,7 +19,7 @@ describe('<Badge />', () => {
 describe('<Badge /> snapshots', () => {
   it('renders correctly', () => {
     render(
-      <Badge variant='rounded' color='primary' data-testid='badge'>
+      <Badge variant='filled' color='primary' data-testid='badge'>
         Badge
       </Badge>,
     )

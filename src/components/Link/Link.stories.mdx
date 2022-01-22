@@ -1,6 +1,7 @@
 import { ArgsTable, Canvas, Meta, Story } from '@storybook/addon-docs'
 import { BADGE } from '@geometricpanda/storybook-addon-badges'
 
+import { Text } from '../Text/Text'
 import { Link } from './Link'
 
 <Meta
@@ -18,21 +19,31 @@ rendered with button elements.
 
 A `text` variant link:
 
-<Canvas>
-  <Story
-    name='Variants'
-    decorators={[
-      (Story) => (
-        <div className='flex gap-2'>
-          <Story />
-        </div>
-      ),
-    ]}
-  >
-    <Link href='#test'>Anchor link</Link>
-    <Link onClick={console.log}>Button link</Link>
-  </Story>
-</Canvas>
+<Story
+  name='Link'
+  decorators={[
+    (Story) => (
+      <div className='flex flex-col gap-2 items-start'>
+        <Story />
+      </div>
+    ),
+  ]}
+>
+  <Link href='#test'>Text link</Link>
+  <Text variant='h2'>
+    The inherit variant can be used for a{' '}
+    <Link variant='inherit' href='#test'>
+      Link
+    </Link>{' '}
+    inside of some text.
+  </Text>
+</Story>
+
+## Button links
+
+Links without an href are rendered as buttons.
+
+<Link onClick={console.log}>Button link</Link>
 
 ## Routing
 

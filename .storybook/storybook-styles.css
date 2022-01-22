@@ -2,11 +2,23 @@
 
 @tailwind components;
 
-@componentry alert;
-@componentry button;
-@componentry close;
-@componentry icon;
-@componentry link;
-@componentry text;
+/* oh no - close styles order conflict with CloseBase */
+@componentry Close;
+
+@componentry Alert;
+@componentry Badge;
+@componentry Button;
+@componentry Card;
+@componentry Icon;
+@componentry Input;
+@componentry FormGroup;
+@componentry Link;
+@componentry Table;
+@componentry Text;
+
+.sbdocs-h2 {
+  /* Storybook is setting this to 0 between stories, give them some space */
+  margin-top: 20px !important;
+}
 
 @tailwind utilities;

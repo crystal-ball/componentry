@@ -6,7 +6,7 @@ interface BadgeProps extends ComponentBaseProps<'div'> {
   /** Variant color */
   color?: 'primary'
   /** Display variant */
-  variant?: 'primary' | 'rounded'
+  variant?: 'filled'
 }
 
 /**
@@ -16,7 +16,7 @@ interface BadgeProps extends ComponentBaseProps<'div'> {
 export const Badge: React.FC<BadgeProps> = (props) => {
   const {
     color,
-    variant = 'primary',
+    variant = 'filled',
     ...rest
   } = {
     ...useTheme<BadgeProps>('Badge'),
@@ -24,7 +24,7 @@ export const Badge: React.FC<BadgeProps> = (props) => {
   }
 
   return element({
-    componentCx: [`badge-${variant}`, { [`badge-color-${color}`]: color }],
+    componentCx: [`🅲Badge-base 🅲Badge-${variant}`, { [`🅲Badge-${color}Color`]: color }],
     ...rest,
   })
 }

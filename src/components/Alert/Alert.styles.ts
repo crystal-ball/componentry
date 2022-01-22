@@ -24,7 +24,7 @@ export const Alert: Record<string, unknown> = {
     'borderRadius': theme.borderRadius.md,
     'borderColor': theme.colors.primary[300],
 
-    '& .🅲Alert-link': {
+    '& .🅲AlertLink': {
       fontWeight: theme.fontWeight.bold,
     },
 
@@ -34,17 +34,17 @@ export const Alert: Record<string, unknown> = {
   },
 
   // ELEMENTS
-  '.🅲Alert-content': {
+  '.🅲AlertContent': {
     flexGrow: 1,
     flexShrink: 1,
   },
 
-  '.🅲Alert-heading': {
+  '.🅲AlertHeading': {
     color: 'inherit',
     marginBottom: theme.spacing[2],
   },
 
-  '.🅲Alert-close': {
+  '.🅲AlertClose': {
     flexShrink: 0,
     marginLeft: theme.spacing[1],
     color: 'inherit',

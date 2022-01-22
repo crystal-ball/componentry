@@ -1,6 +1,7 @@
-import { Meta } from '@storybook/addon-docs'
+import { Meta, Story } from '@storybook/addon-docs'
 import { BADGE } from '@geometricpanda/storybook-addon-badges'
 
+import { Text } from '../Text/Text'
 import { Badge } from './Badge'
 
 <Meta
@@ -11,32 +12,14 @@ import { Badge } from './Badge'
 
 # Badge
 
-Badges provide status information
+Badges provide status information.
 
-<Badge color='primary'>Badge</Badge>
+<Story name='Badge'>
+  <Badge>Badge</Badge>
+</Story>
 
----
+## Empty badges
 
-## Colors
+The `:empty` selector is used to hide empty badges by default:
 
-<div className='d-flex justify-content-center'>
-  {['primary', 'info', 'success', 'warning', 'error'].map((color) => (
-    <div key={color} className='px-1'>
-      <Badge color={color}>Badge</Badge>
-    </div>
-  ))}
-</div>
-
-## Rounded badges
-
-Pass the `rounded` prop to make a badge rounded:
-
-<Badge color='primary' rounded>
-  Badge
-</Badge>
-
-## Routing with badges
-
-<Badge as='a' color='primary' href='http://componentry.design'>
-  Componentry
-</Badge>
+<Badge />

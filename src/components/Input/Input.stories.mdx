@@ -1,4 +1,4 @@
-import { Meta } from '@storybook/addon-docs'
+import { Meta, Story } from '@storybook/addon-docs'
 import { BADGE } from '@geometricpanda/storybook-addon-badges'
 
 import { Input } from './Input'
@@ -11,16 +11,23 @@ import { Input } from './Input'
 
 # Input
 
-<div className='🅲-form-group'>
+<Story name='Input'>
   <Input>
-    <Input.Label>Storybook</Input.Label>
-    <Input.Field />
+    <Input.Label>Componentry input</Input.Label>
+    <Input.Field placeholder='type in me!' />
     <Input.Description>Really important input!</Input.Description>
-    <Input.Error>Oh no!</Input.Error>
   </Input>
-</div>
+</Story>
 
-## Hidden labels
+## Error state
+
+<Input>
+  <Input.Label>Componentry input</Input.Label>
+  <Input.Field invalid required />
+  <Input.Error>Oh no!</Input.Error>
+</Input>
+
+## Screen reader labels
 
 Try to always include a label for inputs, they can be hidden using the `.sr-only` class
 for screen readers.
@@ -29,7 +36,5 @@ for screen readers.
   <Input>
     <Input.Label className='sr-only'>Storybook</Input.Label>
     <Input.Field />
-    <Input.Description>Really important input!</Input.Description>
-    <Input.Error>Oh no!</Input.Error>
   </Input>
 </div>

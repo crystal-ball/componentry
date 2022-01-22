@@ -37,6 +37,10 @@ and small size:
 </button>
 ```
 
+Classes for sub-components do not have `-base`, eg for Card, there are classes
+`🅲CardHeader`, `🅲CardFooter`, etc. This pattern is intended to direct styles and
+usage towards using a single variant for each component style.
+
 ## Considered Options
 
 ### Decision - Variants

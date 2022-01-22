@@ -15,6 +15,7 @@ export const theme = {
   colors: {
     current: 'currentColor',
     transparent: 'transparent',
+    background: '#fff',
     inverse: '#eff',
     gray: {
       100: '#eff2f3',
@@ -102,9 +103,13 @@ export const theme = {
     mono: "SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New', monospace",
   },
   fontSize: {
+    base: '1rem', // HTML base size
     sm: '0.875rem',
-    base: '1rem',
     lg: '1.25rem',
+    h1: '3rem',
+    h2: '2rem',
+    h3: '1.5rem',
+    body: '1rem',
   },
   fontWeight: {
     light: 300,

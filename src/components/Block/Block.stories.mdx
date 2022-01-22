@@ -3,6 +3,10 @@ import { BADGE } from '@geometricpanda/storybook-addon-badges'
 
 import { Block } from './Block'
 
+export function padNum(num) {
+  return num > 9 ? num : `0${num}`
+}
+
 <Meta
   title='Components/Block'
   component={Block}
@@ -11,28 +15,35 @@ import { Block } from './Block'
 
 # Block
 
-Block is a convenience component for creating `display: block` containers.
+<Story name='Block'>
+  <Block backgroundColor='primary-200' className='rounded'>
+    {[1, 2, 3].map((key) => (
+      <div
+        key={key}
+        className='bg-primary-600 text-inverse font-mono font-bold px-3 py-2 rounded'
+      >
+        #{padNum(key)}
+      </div>
+    ))}
+  </Block>
+</Story>
 
-<ArgsTable of={Block} />
-
-## Block elements
-
-Block components create block level containers:
-
-<div>
-  <Block border>Block content</Block>
-  <Block border>Block content</Block>
-</div>
+Block is a layout component for common block styles.
 
 ## Inline block elements
 
 Pass A truthy `inline` prop to create an block element with `display: inline-block`:
 
-<div>
-  <Block inline border>
-    Block content
-  </Block>
-  <Block inline border>
-    Block content
-  </Block>
-</div>
+<Block backgroundColor='primary-200' className='rounded'>
+  {[1, 2, 3].map((key) => (
+    <Block
+      inline
+      key={key}
+      className='bg-primary-600 text-inverse font-mono font-bold px-3 py-2 rounded'
+    >
+      #{padNum(key)}
+    </Block>
+  ))}
+</Block>
+
+<ArgsTable of={Block} />

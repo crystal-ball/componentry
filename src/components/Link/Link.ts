@@ -11,7 +11,7 @@ interface LinkProps extends ComponentBaseProps<'a'> {
   /** Routing to */
   to?: string
   /** Display variant */
-  variant?: 'text'
+  variant?: 'text' | 'inherit'
 }
 
 /**

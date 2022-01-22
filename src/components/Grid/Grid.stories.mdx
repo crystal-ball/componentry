@@ -1,7 +1,11 @@
-import { ArgsTable, Meta } from '@storybook/addon-docs'
+import { ArgsTable, Meta, Story } from '@storybook/addon-docs'
 import { BADGE } from '@geometricpanda/storybook-addon-badges'
 
 import { Grid } from './Grid'
+
+export function padNum(num) {
+  return num > 9 ? num : `0${num}`
+}
 
 <Meta
   title='Components/Grid'
@@ -11,24 +15,35 @@ import { Grid } from './Grid'
 
 # Grid
 
-Grid is a convenience component for creating `display: grid` containers.
+<Story name='Grid'>
+  <Grid gap={2} backgroundColor='primary-200' className='rounded grid-cols-2'>
+    {[1, 2].map((key) => (
+      <div
+        key={key}
+        className='bg-primary-600 text-inverse font-mono font-bold px-3 py-2 rounded'
+      >
+        #{padNum(key)}
+      </div>
+    ))}
+  </Grid>
+</Story>
 
-## Block elements
-
-Grid components create block level containers:
-
-<Grid className='grid-cols-2' gap={4}>
-  <div className='border'>Grid item</div>
-  <div className='border'>Grid item</div>
-</Grid>
+Grid is a layout component with shorthand properties `align`, and `justify` for common
+alignment styles.
 
 ## Inline block elements
 
-Pass A truthy `inline` prop to create an element with `display: inline-grid`:
+Create inline grid containers using the `inline` prop:
 
-<Grid inline className='grid-cols-2' gap={4}>
-  <div className='border'>Grid item</div>
-  <div className='border'>Grid item</div>
+<Grid inline gap={2} backgroundColor='primary-200' className='rounded grid-cols-2'>
+  {[1, 2].map((key) => (
+    <div
+      key={key}
+      className='bg-primary-600 text-inverse font-mono font-bold px-3 py-2 rounded'
+    >
+      #{padNum(key)}
+    </div>
+  ))}
 </Grid>
 
 <ArgsTable of={Grid} />

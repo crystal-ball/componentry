@@ -30,12 +30,12 @@ exports[`<Popover /> snapshots renders correctly 1`] = `
         />
       </div>
       <h3
-        class=""
+        class="🅲PopoverHeading"
       >
         Fun Fact!
       </h3>
       <div
-        class=""
+        class="🅲PopoverBody"
       >
         <span>
           The new Texas Instrument calculators have ABC keyboards because if they had QWERTY keyboards, they would be considered computers and wouldn’t be allowed for standardized test taking.
