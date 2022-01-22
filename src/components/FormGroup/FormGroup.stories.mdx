@@ -1,6 +1,7 @@
-import { Meta } from '@storybook/addon-docs'
+import { Meta, Story } from '@storybook/addon-docs'
 import { BADGE } from '@geometricpanda/storybook-addon-badges'
 
+import { Input } from '../Input/Input'
 import { FormGroup } from './FormGroup'
 
 <Meta
@@ -11,4 +12,21 @@ import { FormGroup } from './FormGroup'
 
 # FormGroup
 
-<FormGroup>Form groups provide the wrapper class for spacing in forms</FormGroup>
+Form groups provide a control point for standardizing spacing within forms.
+
+<Story name='FormGroup'>
+  <div className='w-1/2'>
+    <FormGroup>
+      <Input>
+        <Input.Label>Name</Input.Label>
+        <Input.Field placeholder='' />
+      </Input>
+    </FormGroup>
+    <FormGroup>
+      <Input>
+        <Input.Label>Email</Input.Label>
+        <Input.Field placeholder='' />
+      </Input>
+    </FormGroup>
+  </div>
+</Story>

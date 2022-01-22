@@ -9,8 +9,10 @@ import { Button } from '../components/Button/Button.styles'
 import { Card } from '../components/Card/Card.styles'
 import { Close } from '../components/Close/Close.styles'
 import { Icon } from '../components/Icon/Icon.styles'
+import { inputStyles } from '../components/Input/Input.styles'
 import { Link } from '../components/Link/Link.styles'
 import { FormGroup } from '../components/FormGroup/FormGroup.styles'
+import { tableStyles } from '../components/Table/Table.styles'
 import { Text } from '../components/Text/Text.styles'
 import { getMergedConfig } from './configs'
 
@@ -23,8 +25,10 @@ const componentStyles: Record<string, Record<string, unknown>> = {
   Card: merge(Card, components.Card ?? {}),
   Close: merge(Close, components.Close ?? {}),
   Icon: merge(Icon, components.Icon ?? {}),
+  Input: merge(inputStyles, components.Input ?? {}),
   FormGroup: merge(FormGroup, components.FormGroup ?? {}),
   Link: merge(Link, components.Link ?? {}),
+  Table: merge(tableStyles, components.Table ?? {}),
   Text: merge(Text, components.Text ?? {}),
 }
 

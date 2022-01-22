@@ -34,7 +34,7 @@ const testAlert = (
   </Alert>
 )
 
-const testBadge = <Badge variant='rounded'>77</Badge>
+const testBadge = <Badge variant='filled'>77</Badge>
 
 const testBlock = (
   <Block width={16} height={16} inline>

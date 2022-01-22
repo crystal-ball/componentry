@@ -1,9 +1,8 @@
-import { Meta } from '@storybook/addon-docs'
+import { Meta, Story } from '@storybook/addon-docs'
 import { BADGE } from '@geometricpanda/storybook-addon-badges'
 
 import { Flex } from '../Flex/Flex'
 import { Link } from '../Link/Link'
-import { List } from '../List/List'
 import { Text } from '../Text/Text'
 import { Card } from './Card'
 
@@ -15,28 +14,30 @@ import { Card } from './Card'
 
 # Card
 
-<Card maxWidth='50%'>
-  <Card.Header>
-    <Text>Card Header</Text>
-  </Card.Header>
-  <Card.Body>
-    <Card.Title>Card title</Card.Title>
-    <Card.Subtitle>Card subtitle</Card.Subtitle>
-    <Text mt={2}>
-      God help us, we're in the hands of engineers. So you two dig up, dig up dinosaurs?
-      Checkmate... Do you have any idea how long it takes those cups to decompose. God
-      help us, we're in the hands of engineers. You really think you can fly that thing?
-      They're using our own satellites against us. And the clock is ticking.
-    </Text>
-    <Flex gap={2} mt={2}>
-      <Link href='#demo'>Card link</Link>
-      <Link href='#demo'>Another link</Link>
-    </Flex>
-  </Card.Body>
-  <Card.Footer>
-    <Text>2 days ago</Text>
-  </Card.Footer>
-</Card>
+<Story name='Card'>
+  <Card maxWidth='50%'>
+    <Card.Header>
+      <Text>Card Header</Text>
+    </Card.Header>
+    <Card.Body>
+      <Card.Title>Card title</Card.Title>
+      <Card.Subtitle>Card subtitle</Card.Subtitle>
+      <Text mt={2}>
+        God help us, we're in the hands of engineers. So you two dig up, dig up dinosaurs?
+        Checkmate... Do you have any idea how long it takes those cups to decompose. God
+        help us, we're in the hands of engineers. You really think you can fly that thing?
+        They're using our own satellites against us. And the clock is ticking.
+      </Text>
+      <Flex gap={2} mt={2}>
+        <Link href='#demo'>Card link</Link>
+        <Link href='#demo'>Another link</Link>
+      </Flex>
+    </Card.Body>
+    <Card.Footer>
+      <Text>2 days ago</Text>
+    </Card.Footer>
+  </Card>
+</Story>
 
 ## Card elements
 
@@ -67,13 +68,6 @@ import { Card } from './Card'
       They're using our own satellites against us. And the clock is ticking.
     </Text>
   </Card.Body>
-  <List flush>
-    <List.Item>God creates dinosaurs.</List.Item>
-    <List.Item>God destroys dinosaurs.</List.Item>
-    <List.Item>God creates Man.</List.Item>
-    <List.Item>Man destroys God.</List.Item>
-    <List.Item>Man creates Dinosaurs.</List.Item>
-  </List>
   <Card.Body display='flex' gap={2}>
     <Link href='#demo'>Card link</Link>
     <Link href='#demo'>Another link</Link>

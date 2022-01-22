@@ -53,6 +53,7 @@ export const Card = ((props) => {
     ...rest,
   })
 }) as Card
+Card.displayName = 'Card'
 
 Card.Body = staticComponent('CardBody')
 

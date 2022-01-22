@@ -2,7 +2,7 @@
 
 exports[`<Badge /> snapshots renders correctly 1`] = `
 <div
-  class="badge-rounded badge-color-primary"
+  class="🅲Badge-base 🅲Badge-filled 🅲Badge-primaryColor"
   data-testid="badge"
 >
   Badge

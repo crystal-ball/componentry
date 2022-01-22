@@ -8,17 +8,14 @@ import {
   ActiveContentBaseProps,
   ComponentBaseProps,
 } from '../../utils/types'
-import { navClasses } from '../../utils/component-classes'
 import { element } from '../../utils/element-creator'
 import { staticComponent } from '../../utils/static-component-builder'
 
 export interface TabsProps extends ActiveContainerBaseProps, ComponentBaseProps<'div'> {}
 
 export interface TabsActionsContainerProps extends ComponentBaseProps<'div'> {
-  fill?: boolean
-  justify?: boolean
-  pills?: boolean
-  vertical?: boolean
+  /** Pill style tabs */
+  pills?: boolean // TODO: This should be a variant on Tabs
 }
 
 export interface TabsActionProps
@@ -64,11 +61,20 @@ export interface Tabs {
 export const Tabs = activeContainerBuilder<TabsProps>('Tabs') as Tabs
 
 const ActionsContainer: React.FC<TabsActionsContainerProps> = (props) => {
-  return element({
-    role: 'tablist',
-    componentCx: navClasses('tabs-actions-container', props),
+  const { pills, ...rest } = {
     ...useTheme<TabsActionsContainerProps>('TabsActionsContainer'),
     ...props,
+  }
+
+  return element({
+    role: 'tablist',
+    componentCx: [
+      '🅲TabsContainer',
+      {
+        '🅲TabsContainer-pills': pills,
+      },
+    ],
+    ...rest,
   })
 }
 ActionsContainer.displayName = 'TabsActionsContainer'

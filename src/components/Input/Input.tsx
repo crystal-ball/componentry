@@ -11,7 +11,9 @@ export interface InputDescriptionProps extends ComponentBaseProps<'div'> {}
 
 export interface InputErrorProps extends ComponentBaseProps<'div'> {}
 
-export interface InputFieldProps extends ComponentBaseProps<'input'> {}
+export interface InputFieldProps extends ComponentBaseProps<'input'> {
+  invalid?: boolean
+}
 
 export interface InputLabelProps extends ComponentBaseProps<'label'> {}
 
@@ -55,31 +57,38 @@ export const Input: Input = ({ children }: InputProps) => {
 }
 Input.displayName = 'Input'
 
-// --- Description subcomponent ---
+// --- Description sub-component ---
 
 Input.Description = staticComponent('InputDescription')
 
-// --- Error subcomponent ---
+// --- Error sub-component ---
 
 Input.Error = staticComponent('InputError')
 
-// --- Field subcomponent ---
+// --- Field sub-component ---
 
 Input.Field = function InputField(props) {
   const ctx = useContext(InputCtx)
   assertContext(ctx)
 
+  const { invalid = false } = { ...useTheme<InputFieldProps>('InputField'), ...props }
+
   return element({
     as: 'input',
     type: 'text',
     id: ctx.guid, // aria -> htmlFor
-    ...useTheme<Input>('InputField'),
-    ...props,
+    invalid: invalid ? true : undefined,
+    componentCx: [
+      '🅲InputField',
+      {
+        '🅲-invalid': invalid,
+      },
+    ],
   })
 }
 Input.Field.displayName = 'InputField'
 
-// --- Label subcomponent ---
+// --- Label sub-component ---
 
 Input.Label = function InputLabel(props) {
   const ctx = useContext(InputCtx)
@@ -88,6 +97,7 @@ Input.Label = function InputLabel(props) {
   return element({
     as: 'label',
     htmlFor: ctx.guid, // aria -> id
+    componentCx: '🅲InputLabel',
     ...useTheme<InputLabelProps>('InputLabel'),
     ...props,
   })

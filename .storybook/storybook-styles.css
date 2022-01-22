@@ -10,8 +10,10 @@
 @componentry Button;
 @componentry Card;
 @componentry Icon;
+@componentry Input;
 @componentry FormGroup;
 @componentry Link;
+@componentry Table;
 @componentry Text;
 
 .sbdocs-h2 {
