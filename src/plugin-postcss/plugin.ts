@@ -1,4 +1,4 @@
-import postcss, { PluginCreator } from 'postcss'
+import postcss, { ChildNode, PluginCreator } from 'postcss'
 import postcssNested from 'postcss-nested'
 import postcssJs from 'postcss-js'
 import merge from 'deepmerge'
@@ -58,6 +58,21 @@ export const plugin: PluginCreator<Record<string, never>> = () => {
           // The component styles should be found, and we replace the @componentry node with
           // the final set of parsed styles
           atRule.replaceWith(...ast.root.nodes)
+        } else if (component === 'components') {
+          // Convenience rule for including all component styles, iterate through
+          // style object to assemble all nodes
+          let nodes: ChildNode[] = []
+
+          Object.values(componentStyles).forEach((styles) => {
+            // Adapted from tailwindcss/src/util/parseObjectStyles.js
+            const ast = processor.process(styles, {
+              parser: postcssJs,
+            })
+
+            nodes = nodes.concat(ast.root.nodes)
+          })
+
+          atRule.replaceWith(...nodes)
         } else {
           // Fail fast for bad directives, eg "@componentry ohno;"
           throw new Error(`Unknown @componentry param: ${atRule.params}`)

@@ -1,4 +1,4 @@
-import { ArgsTable, Canvas, Meta, Story } from '@storybook/addon-docs'
+import { ArgsTable, Meta, Story } from '@storybook/addon-docs'
 import { BADGE } from '@geometricpanda/storybook-addon-badges'
 
 import { Close } from './Close'
@@ -15,8 +15,6 @@ The Close component wraps an instance of Icon to create an accessible close elem
 the Alert and Modal components. The `🅲Close-base` class provides a target for custom
 styling when needed.
 
-<Canvas>
-  <Story name='Close'>
-    <Close onClick={console.log} />
-  </Story>
-</Canvas>
+<Story name='Close'>
+  <Close onClick={console.log} />
+</Story>
