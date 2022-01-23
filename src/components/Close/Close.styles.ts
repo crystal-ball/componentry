@@ -1,24 +1,23 @@
-import { getMergedConfig } from '../../plugin-postcss/configs'
-
-const { theme } = getMergedConfig()
-
-//                                        <Button /> styles
+//                                        <Close /> styles
 // --------------------------------------------------------
 
-// Componentry supports using an SVG icon so that applications can choose a close
-// icon that fits their theme, as well as using flexbox on containers with close
-// buttons instead of floats.
-
-// The 🅲Close classes allows for targeted styles for the close buttons. The .icon-close
-// can also be styled for close buttons only using that as a target
-// ℹ️ The background image styles for close icons is located in `/styles/componentry/icons`
+// The 🅲Close-base class allows for targeted styles for close buttons. The
+// .icon-close can also be styled for SVG customizations.
+//
+// 📝 Close originally included a `color` and `fontSize` style, but due to
+// ordering these styles would override Alert close customizations so they were
+// removed to keep this element as flexible as possible. -> The intent is that
+// this building block will be used in other design system elements, and those
+// elements can customize size/color as needed
+//
+// ℹ️ The background image styles for close icons is located in the Icon styles
 export const Close = {
   '.🅲Close-base': {
     // Layout
     'alignItems': 'center',
     'display': 'inline-flex',
     'justifyContent': 'center',
-    'lineHeight': 1, // ensures text is center aligned within flex layout
+    'lineHeight': 1, // ensures icon is center aligned within flex layout
 
     // Button resets
     'appearance': 'none', // Remove Chrome native button styling
@@ -26,11 +25,7 @@ export const Close = {
     'backgroundColor': 'transparent',
     'border': 'none',
     'borderRadius': 0,
-
-    'color': theme.colors.gray[500],
-    'fontSize': theme.fontSize.base,
-
-    'userSelect': 'auto',
+    'userSelect': 'none',
 
     // Animate close icon opacity on hover
     'opacity': 0.6,

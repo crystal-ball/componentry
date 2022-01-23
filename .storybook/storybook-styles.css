@@ -1,20 +1,7 @@
 @tailwind base;
 
 @tailwind components;
-
-/* oh no - close styles order conflict with CloseBase */
-@componentry Close;
-
-@componentry Alert;
-@componentry Badge;
-@componentry Button;
-@componentry Card;
-@componentry Icon;
-@componentry Input;
-@componentry FormGroup;
-@componentry Link;
-@componentry Table;
-@componentry Text;
+@componentry components;
 
 .sbdocs-h2 {
   /* Storybook is setting this to 0 between stories, give them some space */
