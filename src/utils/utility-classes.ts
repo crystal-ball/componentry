@@ -126,13 +126,20 @@ function generateClassNames<Props extends DefaultUtilityProps>(
 }
 
 /**
- * utilityClasses filters out Componentry component and utility props, returning
- * a set of utility styles and final passthrough props for underlying component
- * elements.
+ * `utilityClasses` filters and transforms the Componentry utility props into
+ * utility styles.
+ *
+ * *IMPORTANT* - the returned `utilityCx` must be evaluated by a className
+ * generator like `clsx` or `classnames` before it can be used as a `className`
+ * prop value.
+ * @example
+ * const { passThroughProps, utilityCx } = utilityClasses(props)
+ * return (
+ *   <div className={clsx(utilityCX)} {...passThroughProps}>{children}</div>
+ * )
  */
 export function utilityClasses({
   /* eslint-disable @typescript-eslint/no-unused-vars */
-  __precompile,
   block,
   outline,
   fill,
@@ -141,6 +148,7 @@ export function utilityClasses({
   pills,
   variant,
   vertical,
+  __precompile,
   // ✓ Componentry props filtered out
   activate,
   deactivate,
