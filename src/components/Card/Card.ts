@@ -44,7 +44,7 @@ export interface Card {
  */
 export const Card = ((props) => {
   const { variant = 'outlined', ...rest } = {
-    ...useTheme<CardProps>('Card', props.__precompile),
+    ...useTheme<CardProps>('Card'),
     ...props,
   }
 

@@ -3,7 +3,7 @@
 /* eslint-disable import/extensions */
 
 module.exports = {
-  // Base configsa are used by ESLint babel parser
+  // Base configs are used by ESLint babel parser
   presets: ['@babel/preset-react', '@babel/preset-typescript'],
 
   env: {

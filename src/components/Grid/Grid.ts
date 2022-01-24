@@ -19,7 +19,7 @@ export interface GridProps extends ComponentBaseProps<'div'> {
  */
 export const Grid: React.FC<GridProps> = (props) => {
   const { align, gap, inline, justify, ...rest } = {
-    ...useTheme<GridProps>('Grid', props.__precompile),
+    ...useTheme<GridProps>('Grid'),
     ...props,
   }
 

@@ -13,7 +13,7 @@ export interface BlockProps extends ComponentBaseProps<'div'> {
  */
 export const Block: React.FC<BlockProps> = (props) => {
   const { inline, ...rest } = {
-    ...useTheme<BlockProps>('Block', props.__precompile),
+    ...useTheme<BlockProps>('Block'),
     ...props,
   }
 
