@@ -37,7 +37,7 @@ export const Text: React.FC<Props> = (props) => {
     bold,
     ...rest
   } = {
-    ...useTheme<Props & { elementsMap?: ElementsMap }>('Text', props.__precompile),
+    ...useTheme<Props & { elementsMap?: ElementsMap }>('Text'),
     ...props,
   }
 

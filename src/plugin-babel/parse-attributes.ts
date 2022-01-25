@@ -18,9 +18,7 @@ export function parseAttributes(
 } {
   let parseSuccess = true
   const passThroughAttributes: t.JSXAttribute[] = []
-  const parsedAttributes: Record<string, string | number | boolean> = {
-    __precompile: true,
-  }
+  const parsedAttributes: Record<string, string | number | boolean> = {}
 
   attributes.forEach((attribute) => {
     // We can't tell what is in spread attributes, eg {...rest}, so bail if one is found

@@ -148,7 +148,6 @@ export function utilityClasses({
   pills,
   variant,
   vertical,
-  __precompile,
   // ✓ Componentry props filtered out
   activate,
   deactivate,

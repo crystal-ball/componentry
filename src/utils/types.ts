@@ -143,8 +143,6 @@ export type ComponentBaseProps<Element extends React.ElementType> = {
   as?: React.ElementType
   /** Component className, can be a string, array, or object */
   className?: ClassValue
-  /** Internal flag for switching between runtime and precompile modes */
-  __precompile?: boolean
 } & MergePropTypes<DefaultUtilityProps, UtilityProps> &
   Omit<React.ComponentPropsWithoutRef<Element>, 'className'>
 

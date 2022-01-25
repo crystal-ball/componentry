@@ -17,17 +17,7 @@ export const Theme: React.FC<ThemeProps> = ({ children, theme }) => {
 }
 Theme.displayName = 'Theme'
 
-/**
- * [Theme hook 📝](https://componentry.design/components/theme)
- * @param componentName Library component name, eg Button, Dropdown, Modal, etc.
- */
-export function useTheme<Theme>(componentName: string, __precompile = false): Theme {
-  // @ts-ignore DEBT: not sure how to type
-  if (__precompile) return {}
-
-  // eslint-disable-next-line react-hooks/rules-of-hooks -- Library __precompile is a build time constant
-  const theme = useContext(ThemeCtx)
-
+function getThemeValue(theme: any, componentName: string | undefined) {
   // For the theme context, we don't warn on accessing without a provider b/c
   // internally components use this hook to check for optionally set theme
   // values in apps where the provider may not have been added.
@@ -40,4 +30,31 @@ export function useTheme<Theme>(componentName: string, __precompile = false): Th
 
   // @ts-ignore DEBT: not sure how to type
   return componentName in theme ? theme[componentName] : {}
+}
+
+let preCompileMode = false
+let preCompileThemeValue = {}
+
+export function initializePreCompileMode(theme: any) {
+  preCompileMode = true
+  preCompileThemeValue = theme
+}
+
+function useContextTheme(componentName: string) {
+  const theme = useContext(ThemeCtx)
+  return getThemeValue(theme, componentName)
+}
+
+/**
+ * [Theme hook 📝](https://componentry.design/components/theme)
+ * @param componentName Library component name, eg Button, Dropdown, Modal, etc.
+ */
+export function useTheme<Theme>(componentName: string): Theme {
+  if (preCompileMode) {
+    return getThemeValue(preCompileThemeValue, componentName)
+  }
+  // During Babel pre-compiling `preCompileMode` will always be true, during
+  // runtime execution it will always be false
+  // eslint-disable-next-line react-hooks/rules-of-hooks
+  return useContextTheme(componentName)
 }

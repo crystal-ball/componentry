@@ -21,7 +21,7 @@ export interface FlexProps extends ComponentBaseProps<'div'> {
  */
 export const Flex: React.FC<FlexProps> = (props) => {
   const { align, direction, inline, justify, wrap, ...rest } = {
-    ...useTheme<FlexProps>('Flex', props.__precompile),
+    ...useTheme<FlexProps>('Flex'),
     ...props,
   }
   // Tailwind uses a flex-col class but direction="col" is super wonky
