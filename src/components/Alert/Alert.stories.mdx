@@ -38,12 +38,14 @@ Styles are also included for: `alert-heading`, `alert-link`, and `<hr />` elemen
 Pass `dismissible` to an Alert to show a close icon which will call the `deactivate` prop
 on click.
 
-<Alert color='success' dismissible>
-  <Text variant='h3' className='🅲AlertHeading'>
-    Success!
-  </Text>
-  <Text>You created a dismissible alert 👋</Text>
-</Alert>
+<Active defaultActive>
+  <Alert color='primary' dismissible>
+    <Text variant='h3' className='🅲AlertHeading'>
+      Success!
+    </Text>
+    <Text>You created a dismissible alert 👋</Text>
+  </Alert>
+</Active>
 
 ## Accessibility
 

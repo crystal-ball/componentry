@@ -18,6 +18,14 @@ interface DefaultAlertProps {
   deactivate?: (event: React.MouseEvent<HTMLButtonElement>) => void
   /** Toggles alert dismissible feature */
   dismissible?: boolean
+  /**
+   * Controls when the component content is mounted where:
+   * - `'always'` - The content will be mounted when the element is both visible
+   *   and not visible
+   * - `'visible'` - The content will only be mounted when visible, when not
+   *   visible the contents are not rendered for performance.
+   */
+  mounted?: 'always' | 'visible'
   /** Sets the alert variant style */
   variant?: 'filled'
 }
@@ -27,7 +35,7 @@ type Props = MergePropTypes<DefaultAlertProps, AlertProps> & ComponentBaseProps<
 interface AlertCloseProps extends ComponentBaseProps<'button'> {}
 
 interface Alert {
-  (props: Props): React.ReactElement
+  (props: Props): React.ReactElement | null
   displayName: 'Alert'
   /**
    * [Alert close component 📝](https://componentry.design/components/alert)
@@ -42,16 +50,19 @@ interface Alert {
 export const Alert: Alert = (props) => {
   const {
     children,
-    active: propsActive,
+    active: _active,
     ariaTitle,
     color,
     deactivate,
+    mounted = 'visible',
     dismissible,
     variant = 'filled',
     ...rest
   } = { ...useTheme<AlertProps>('Alert'), ...useActive(), ...props }
 
-  const { active, visible } = useVisible(propsActive)
+  const { active, visible } = useVisible(_active)
+
+  if (dismissible && !active && mounted === 'visible') return null
 
   return element({
     'role': 'alert',
@@ -59,8 +70,8 @@ export const Alert: Alert = (props) => {
       `🅲Alert-base 🅲Alert-${variant}`,
       {
         [`🅲Alert-${color}Color`]: color,
-        fade: dismissible, // Only include opacity transition class for dismissible alerts
-        visible,
+        '🅲Alert-dismissible': dismissible,
+        '🅲Alert-dismissed': dismissible && !visible,
       },
     ],
     'aria-hidden': dismissible ? String(!active) : 'false',

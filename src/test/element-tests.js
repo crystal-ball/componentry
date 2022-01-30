@@ -1,4 +1,5 @@
 /* eslint-env jest */
+/* eslint-disable react/prop-types */
 
 import React from 'react'
 import { render, screen } from '@testing-library/react'
@@ -6,10 +7,11 @@ import { render, screen } from '@testing-library/react'
 import { Theme } from '../components/Theme/Theme'
 
 /**
- * Library default component requirment test suite.
+ * Library default component requirement test suite.
  */
-export function elementTests(TestComponent, Wrapper) {
+export function elementTests(TestComponent, testProps) {
   const componentName = TestComponent.displayName
+
   /*
    * All components should have a display name so they can be easily debugged
    * even in prod builds
@@ -29,6 +31,7 @@ export function elementTests(TestComponent, Wrapper) {
 
     render(
       <TestComponent
+        {...testProps}
         className='test-custom'
         data-test='test-custom'
         data-testid='component'
@@ -36,7 +39,6 @@ export function elementTests(TestComponent, Wrapper) {
         Component
         <TestChild />
       </TestComponent>,
-      { wrapper: Wrapper },
     )
 
     expect(screen.getByText('Test child content')).toBeInTheDocument() // √ children
@@ -50,10 +52,9 @@ export function elementTests(TestComponent, Wrapper) {
    */
   it(`${componentName} should render as specified html element or component`, () => {
     // Create a component to validate that the TestComponent returns.
-    // eslint-disable-next-line react/prop-types
     const TestAs = ({ isRad }) => <div>{isRad ? 'RAD' : null}</div>
 
-    render(<TestComponent as={TestAs} isRad />, { wrapper: Wrapper })
+    render(<TestComponent {...testProps} as={TestAs} isRad />)
 
     expect(screen.getByText('RAD')).toBeInTheDocument()
   })
@@ -65,20 +66,36 @@ export function elementTests(TestComponent, Wrapper) {
    * by default to all component instances
    */
   it(`${componentName} should merge theme and JSX props correctly`, () => {
+    function ThemeWrapper({ children }) {
+      return (
+        <Theme
+          theme={{
+            [componentName]: {
+              'themeCx': 'theme-class',
+              'data-radical': 'hecka',
+            },
+          }}
+        >
+          {children}
+        </Theme>
+      )
+    }
+
     render(
-      <Theme
-        theme={{
-          [componentName]: {
-            'themeCx': 'theme-class',
-            'data-radical': 'hecka',
-          },
-        }}
-      >
-        <TestComponent data-testid='theme'>Theme values example</TestComponent>
-        <TestComponent data-radical='nope' data-testid='jsx' themeCx={null}>
+      <>
+        <TestComponent {...testProps} data-testid='theme'>
+          Theme values example
+        </TestComponent>
+        <TestComponent
+          {...testProps}
+          data-radical='nope'
+          data-testid='jsx'
+          themeCx={null}
+        >
           JSX overrides example
         </TestComponent>
         <TestComponent
+          {...testProps}
           className='jsx-class'
           data-testid='merge'
           fontWeight='bold'
@@ -86,8 +103,8 @@ export function elementTests(TestComponent, Wrapper) {
         >
           Classes merging example
         </TestComponent>
-      </Theme>,
-      { wrapper: Wrapper },
+      </>,
+      { wrapper: ThemeWrapper },
     )
 
     expect(screen.getByTestId('theme')).toHaveClass('theme-class')
@@ -109,6 +126,7 @@ export function elementTests(TestComponent, Wrapper) {
   it(`${componentName} should include library classes and styles correctly`, () => {
     render(
       <TestComponent
+        {...testProps}
         className='jsx-class'
         data-testid='component'
         lineHeight={2}
@@ -119,7 +137,6 @@ export function elementTests(TestComponent, Wrapper) {
       >
         Test component
       </TestComponent>,
-      { wrapper: Wrapper },
     )
 
     expect(screen.getByTestId('component')).toHaveClass('jsx-class text-center uppercase')

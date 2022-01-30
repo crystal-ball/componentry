@@ -9,7 +9,7 @@ describe('<Tab />', () => {
   elementTests(Tabs.ActionsContainer)
   elementTests(Tabs.Action)
   elementTests(Tabs.ContentContainer)
-  elementTests(Tabs.Content)
+  elementTests(Tabs.Content, { mounted: 'always' })
 })
 
 // Snapshots
@@ -27,10 +27,18 @@ describe('<Tab /> snapshots', () => {
           </Tabs.Action>
         </Tabs.ActionsContainer>
         <Tabs.ContentContainer>
-          <Tabs.Content activeId='one'>Tab 1</Tabs.Content>
-          <Tabs.Content activeId='two'>Tab 2</Tabs.Content>
-          <Tabs.Content activeId='three'>Tab 3</Tabs.Content>
-          <Tabs.Content activeId='four'>This tab has been disabled</Tabs.Content>
+          <Tabs.Content activeId='one' mounted='always'>
+            Tab 1
+          </Tabs.Content>
+          <Tabs.Content activeId='two' mounted='always'>
+            Tab 2
+          </Tabs.Content>
+          <Tabs.Content activeId='three' mounted='always'>
+            Tab 3
+          </Tabs.Content>
+          <Tabs.Content activeId='four' mounted='always'>
+            This tab has been disabled
+          </Tabs.Content>
         </Tabs.ContentContainer>
       </Tabs>,
     )

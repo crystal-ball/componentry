@@ -11,6 +11,9 @@ export const theme = {
   //   For multiple breakpoints 768 and 1280 are common breakpoints for md and lg.
   //   lg: '1200px',
   // },
+  zIndex: {
+    modal: 10,
+  },
   // --- COLORS
   colors: {
     current: 'currentColor',

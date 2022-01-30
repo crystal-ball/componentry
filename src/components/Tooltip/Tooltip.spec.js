@@ -11,7 +11,7 @@ describe('<Tooltip />', () => {
   // Basic library element test suite
   elementTests(Tooltip)
   elementTests(Tooltip.Action)
-  elementTests(Tooltip.Content)
+  elementTests(Tooltip.Content, { mounted: 'always' })
 })
 
 // Snapshots
@@ -21,7 +21,7 @@ describe('<Tooltip /> snapshots', () => {
     render(
       <Tooltip data-testid='tooltip'>
         <Tooltip.Action>Action</Tooltip.Action>
-        <Tooltip.Content>Content</Tooltip.Content>
+        <Tooltip.Content mounted='always'>Content</Tooltip.Content>
       </Tooltip>,
     )
 

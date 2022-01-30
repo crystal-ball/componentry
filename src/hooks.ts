@@ -75,8 +75,9 @@ type VisibleState = {
  * - Hide: Set visible false to start element opacity using css transitions,
  *   then after transition duration set active false to set display none
  */
-export const useVisible = (active: string | boolean, duration = 250): VisibleState => {
+export const useVisible = (active: string | boolean, duration = 200): VisibleState => {
   const mounted = useRef(true)
+  const isFirst = useRef(true)
   // Track when the component is unmounted so that we can prevent setting state
   // after the timeouts if the component was unmounted
   useEffect(
@@ -90,12 +91,17 @@ export const useVisible = (active: string | boolean, duration = 250): VisibleSta
   const [state, updateState] = useState({ active, visible: active })
 
   useEffect(() => {
-    // ℹ️ Although the timeout used is very short, it's possible that a
-    // component could be unmounted before it's run so we keep a reference to
-    // the timeout that we can cleanup
     let timer: null | NodeJS.Timeout
+    if (isFirst.current) {
+      // Effect will be called once after initial render and updating state
+      // based on active can result in a flicker (repro with Modal and default
+      // not visible)
+      isFirst.current = false
+    } else if (active) {
+      // ℹ️ Although the timeout used is very short, it's possible that a
+      // component could be unmounted before it's run so we keep a reference to
+      // the timeout that we can cleanup
 
-    if (active) {
       // When activated immediately set active and transition to visible, this
       // will ensure the DOM element is rendered, and then add visible classes for
       // transitions on the next possible paint cycle

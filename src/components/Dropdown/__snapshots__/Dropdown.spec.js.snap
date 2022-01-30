@@ -2,14 +2,14 @@
 
 exports[`<Dropdown /> snapshots renders correctly 1`] = `
 <div
-  class="bottom"
+  class="🅲Dropdown-base 🅲Dropdown-bottom"
   data-id="test-guid"
   data-testid="dropdown"
 >
   <button
     aria-expanded="false"
     aria-haspopup="true"
-    class="DropdownAction-primary"
+    class="🅲Button-base 🅲Button-filled 🅲DropdownAction"
     id="test-guid"
     type="button"
   >
@@ -18,20 +18,18 @@ exports[`<Dropdown /> snapshots renders correctly 1`] = `
   <div
     aria-hidden="true"
     aria-labelledby="test-guid"
-    class="DropdownContent-primary"
+    class="🅲DropdownContent"
   >
-    <button
-      class="DropdownItem-primary"
-      type="button"
+    <div
+      class="🅲DropdownItem"
     >
       Item 1
-    </button>
-    <button
-      class="DropdownItem-primary"
-      type="button"
+    </div>
+    <div
+      class="🅲DropdownItem"
     >
       Item 2
-    </button>
+    </div>
   </div>
 </div>
 `;

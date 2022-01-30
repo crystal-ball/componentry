@@ -18,12 +18,26 @@ type ModalCtx = {
 const ModalCtx = createContext<null | ModalCtx>(null)
 
 export interface ModalProps extends ComponentBaseProps<'div'> {
+  /** Sets modal screen alignment to centered */
   align?: 'center'
-
-  scroll?: 'body' | 'container' | 'overlay'
-
+  /**
+   * Controls the Modal overflow scrolling.
+   * - `overlay` - modal scrolls within the screen overlay
+   * - `container` - modal contents scroll inside modal container, including the header and footer
+   * - `body` - modal body only scrolls header and footer remain visible
+   */
+  scroll?: 'overlay' | 'container' | 'body'
+  /** Sets modal width */
   size?: 'sm' | 'lg'
-
+  /**
+   * Controls when the component content is mounted where:
+   * - `'always'` - The content will be mounted when the element is both visible
+   *   and not visible
+   * - `'visible'` - The content will only be mounted when visible, when not
+   *   visible the contents are not rendered for performance.
+   */
+  mounted?: 'always' | 'visible'
+  /** Controls modal transition duration timing */
   transitionDuration?: number
 }
 
@@ -42,7 +56,7 @@ export interface ModalTitleProps extends ComponentBaseProps<'h2'> {
 }
 
 export interface Modal {
-  (props: ModalProps): React.ReactElement
+  (props: ModalProps): React.ReactElement | null
   displayName: 'Modal'
   /**
    * [Modal body component 📝](https://componentry.design/components/modal)
@@ -70,7 +84,7 @@ export interface Modal {
  * [Modal component 📝](https://componentry.design/components/modal)
  * @experimental
  */
-export const Modal = ((props: ModalProps): JSX.Element => {
+export const Modal = ((props: ModalProps) => {
   // Guid instance property will be uniquely assigned once for each modal
   // instance, this unique id is then passed to all children through context
   // where it can be used to wire together title aria attributes
@@ -81,10 +95,10 @@ export const Modal = ((props: ModalProps): JSX.Element => {
     align,
     children,
     deactivate,
+    mounted,
     scroll = 'overlay',
     size,
     transitionDuration,
-    ...rest
   } = {
     ...useTheme<ModalProps>('Modal'),
     ...useActive(),
@@ -104,41 +118,42 @@ export const Modal = ((props: ModalProps): JSX.Element => {
   useActiveScrollReset(active, containerRef)
   useActiveScrollReset(active, contentRef)
 
-  // Modal elements structure
-  // div.modal-overlay       - Modal overlay background with close handler
-  //   div.modal-positioner  - Manages positioning of modal container
-  //     div.modal-container - Contains the modal header,body,footer elements
+  if (!active && mounted === 'visible') return null
+
+  // Elements structure
+  // div.ModalOverlay      - Modal overlay background with close handler
+  // div.ModalPositioner   - Manages positioning of modal container
+  //   div.ModalContainer  - Contains the modal header,body,footer elements
   return (
     <ModalCtx.Provider value={{ active, deactivate, guid }}>
-      {element({
-        'onClick': deactivate,
-        'componentCx': ['fade', `modal-${scroll}-scroll`, { visible }],
-        'aria-hidden': String(!active),
-        'aria-labelledby': guid,
-        'role': 'presentation',
-        'tabIndex': '-1',
-        'children': (
-          /* eslint-disable jsx-a11y/no-noninteractive-element-interactions, jsx-a11y/click-events-have-key-events */
-          <div ref={containerRef} className='modal-positioner'>
-            {/* ℹ️ Stop propogation of clicks inside modal or they will trigger the modal background deactivate handler */}
-            <div
-              ref={contentRef}
-              className={clsx('modal-container', align, {
-                visible,
-                [`modal-${size}`]: size,
-              })}
-              role='dialog'
-              onClick={(evt) => {
-                evt.stopPropagation()
-              }}
-            >
-              {children}
-            </div>
-          </div>
-          /* eslint-enable jsx-a11y/no-noninteractive-element-interactions, jsx-a11y/click-events-have-key-events */
-        ),
-        ...rest,
-      })}
+      <div className={clsx('🅲ModalOverlay', { '🅲-active': visible })} />
+      <div
+        ref={containerRef}
+        className={clsx(`🅲ModalPositioner 🅲Modal-${scroll}Scroll`, {
+          '🅲-active': visible,
+        })}
+        role='presentation'
+        tabIndex={-1}
+        onClick={deactivate}
+      >
+        {/* eslint-disable-next-line jsx-a11y/no-noninteractive-element-interactions, jsx-a11y/click-events-have-key-events -- onClick for stopPropagation only */}
+        <div
+          ref={contentRef}
+          aria-hidden={!active}
+          aria-labelledby={guid}
+          className={clsx('🅲ModalContainer', align, {
+            '🅲-active': visible,
+            [`🅲ModalContainer-${size}Size`]: size,
+          })}
+          role='dialog'
+          onClick={(evt) => {
+            // Prevent clicks bubbling to the Positioner which will close the modal
+            evt.stopPropagation()
+          }}
+        >
+          {children}
+        </div>
+      </div>
     </ModalCtx.Provider>
   )
 }) as Modal
@@ -161,11 +176,12 @@ Modal.Header = function ModalHeader(props: ModalHeaderProps) {
   assertContext(ctx)
 
   return element({
+    componentCx: '🅲ModalHeader',
     children: (
       <>
         {children}
         {/* Modal header close is a shorthand for enabling the default close button,
-        For custom close components, the componenent must be passed as a header child */}
+        For custom close components, the component must be passed as a header child */}
         {close && <Modal.Close onClick={ctx.deactivate} />}
       </>
     ),
@@ -184,7 +200,8 @@ Modal.Title = function ModalTitle(props) {
   return element({
     as: 'h2',
     id: ctx.guid,
-    ...useTheme<ModalTitleProps>('Modaltitle'),
+    componentCx: '🅲ModalTitle',
+    ...useTheme<ModalTitleProps>('ModalTitle'),
     ...props,
   })
 }
@@ -202,6 +219,7 @@ Modal.Body = function ModalBody(props) {
 
   return element({
     ref: bodyRef,
+    componentCx: '🅲ModalBody',
     ...useTheme<ModalBodyProps>('ModalBody'),
     ...props,
   })
@@ -211,9 +229,7 @@ Modal.Body.displayName = 'ModalBody'
 // --------------------------------------------------------
 // Footer
 
-Modal.Footer = staticComponent<ModalFooterProps>('ModalFooter', {
-  componentCx: 'modal-footer',
-})
+Modal.Footer = staticComponent<ModalFooterProps>('ModalFooter')
 
 // --------------------------------------------------------
 // Utils

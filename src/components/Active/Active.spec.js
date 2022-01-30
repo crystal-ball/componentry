@@ -9,7 +9,7 @@ describe('<Active />', () => {
   activationTests(Active, { name: 'Active', testArias: ['controls'] })
   elementTests(Active)
   elementTests(Active.Action)
-  elementTests(Active.Content)
+  elementTests(Active.Content, { mounted: 'always' })
 })
 
 // Snapshots
@@ -19,7 +19,7 @@ describe('<Active /> snapshots', () => {
     render(
       <Active data-testid='active'>
         <Active.Action>Action</Active.Action>
-        <Active.Content>Content</Active.Content>
+        <Active.Content mounted='always'>Content</Active.Content>
       </Active>,
     )
 

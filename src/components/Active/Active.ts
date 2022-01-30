@@ -7,6 +7,7 @@ import {
   ActiveContentBaseProps,
   ComponentBaseProps,
 } from '../../utils/types'
+import { Link } from '../Link/Link'
 
 export interface ActiveProps
   extends ActiveContainerBaseProps,
@@ -42,6 +43,7 @@ export const Active = activeContainerBuilder<ActiveProps>('Active', {
 
 Active.Action = activeActionBuilder<ActiveActionProps>('ActiveAction', {
   aria: { controls: true },
+  defaultAs: Link,
 })
 
 Active.Content = activeContentBuilder<ActiveContentProps>('ActiveContent', {

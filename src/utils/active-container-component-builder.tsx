@@ -14,9 +14,9 @@ export interface ActiveContext {
   /** Unique ide for this context */
   guid: string
   /** Called on activate events */
-  activate: (event: React.MouseEvent<HTMLButtonElement>) => void
+  activate: (event: React.MouseEvent<HTMLElement>) => void
   /** Called on deactivate events */
-  deactivate: (event: React.MouseEvent<HTMLButtonElement>) => void
+  deactivate: (event: React.MouseEvent<HTMLElement>) => void
 }
 
 /** Active context */
@@ -65,18 +65,15 @@ export function activeContainerBuilder<TProps extends ActiveContainerBaseProps>(
   displayName: string,
   defaultProps: DefaultActiveContainerProps = {},
 ): React.FC<TProps> {
-  const baseCx = displayName
-
   function ActiveContainer(props: TProps) {
     const {
       // --- Render elements
-      Action,
-      Content,
       children,
 
       // --- Behavior configurations
       direction = '',
       size,
+      // variant, TODO
 
       // --- Events configuration
       clickEvents = false,
@@ -115,23 +112,28 @@ export function activeContainerBuilder<TProps extends ActiveContainerBaseProps>(
      * Internal activation handler (manages active state and fires change
      * listeners)
      */
-    const handleActivate =
-      activate ||
-      function _activate(e) {
-        if (onActivate) onActivate(e)
-        // Compound active elements pass along the active id with a data attr
-        // fallback to boolean value if not present
-        // @ts-ignore not sure how to type this yet
-        updateActive(e.target.dataset.activeId || true)
-        if (onActivated) onActivated(e)
-      }
+    const handleActivate = useCallback(
+      (evt: React.MouseEvent<HTMLElement>) => {
+        if (activate) {
+          activate(evt)
+        } else {
+          if (onActivate) onActivate(evt)
+          // Compound active elements pass along the active id with a data attr
+          // fallback to boolean value if not present
+          // @ts-ignore not sure how to type this yet
+          updateActive(evt.target.dataset.activeId || true)
+          if (onActivated) onActivated(evt)
+        }
+      },
+      [activate, onActivate, onActivated],
+    )
 
     /**
      * Internal deactivation handler (manages active state and fires change
      * listeners)
      */
     const handleDeactivate = useCallback(
-      (evt) => {
+      (evt: React.MouseEvent<HTMLElement>) => {
         if (deactivate) {
           deactivate(evt)
         } else {
@@ -210,10 +212,13 @@ export function activeContainerBuilder<TProps extends ActiveContainerBaseProps>(
       <ActiveCtx.Provider value={activeValues}>
         {element({
           'data-id': guid,
-          'componentCx': {
-            [`${baseCx}-${size}`]: size,
-            [direction]: direction,
-          },
+          'componentCx': [
+            `🅲${displayName}-base`,
+            {
+              [`🅲${displayName}-${size}Size`]: size,
+              [`🅲${displayName}-${direction}`]: direction,
+            },
+          ],
           // For elements with mouse events we need to know when the mouse event
           // occurs on the parent element, not the action element
           'onMouseEnter': mouseEvents ? handleActivate : undefined,
@@ -221,17 +226,9 @@ export function activeContainerBuilder<TProps extends ActiveContainerBaseProps>(
 
           // Handle render patterns
           'children':
-            typeof children === 'function' ? (
-              children(activeValues) // Handle FaCC syntax
-            ) : (
-              <>
-                {/* @ts-ignore Not sure how to type this yet */}
-                {Action && <ActiveContainer.Action>{Action}</ActiveContainer.Action>}
-                {children}
-                {/* @ts-ignore Not sure how to type this yet */}
-                {Content && <ActiveContainer.Content>{Content}</ActiveContainer.Content>}
-              </>
-            ),
+            typeof children === 'function'
+              ? children(activeValues) // Handle FaCC syntax
+              : children,
           ...rest,
         })}
       </ActiveCtx.Provider>

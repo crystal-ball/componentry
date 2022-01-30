@@ -1,3 +1,4 @@
+/* eslint-disable react/no-unescaped-entities */
 import React from 'react'
 import { render, screen } from '@testing-library/react'
 
@@ -11,7 +12,7 @@ describe('<Popover />', () => {
   // Basic library element test suite
   elementTests(Popover)
   elementTests(Popover.Action)
-  elementTests(Popover.Content)
+  elementTests(Popover.Content, { mounted: 'always' })
   elementTests(Popover.Heading)
   elementTests(Popover.Body)
 
@@ -23,7 +24,7 @@ describe('<Popover />', () => {
       </Popover>,
     )
 
-    expect(screen.getByTestId('popover')).toHaveClass('left')
+    expect(screen.getByTestId('popover')).toHaveClass('🅲Popover-left')
   })
 })
 
@@ -34,12 +35,12 @@ describe('<Popover /> snapshots', () => {
     render(
       <Popover data-testid='popover'>
         <Popover.Action>Toggle</Popover.Action>
-        <Popover.Content>
+        <Popover.Content mounted='always'>
           <Popover.Heading>Fun Fact!</Popover.Heading>
           <Popover.Body>
             <span>
               The new Texas Instrument calculators have ABC keyboards because if they had
-              QWERTY keyboards, they would be considered computers and wouldn’t be allowed
+              QWERTY keyboards, they would be considered computers and wouldn't be allowed
               for standardized test taking.
             </span>
           </Popover.Body>
