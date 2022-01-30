@@ -10,7 +10,7 @@ describe('<Drawer />', () => {
 
   elementTests(Drawer)
   elementTests(Drawer.Action)
-  elementTests(Drawer.Content)
+  elementTests(Drawer.Content, { mounted: 'always' })
 })
 
 // Snapshots
@@ -20,7 +20,7 @@ describe('<Drawer /> snapshots', () => {
     render(
       <Drawer data-testid='drawer'>
         <Drawer.Action>Action</Drawer.Action>
-        <Drawer.Content>Content</Drawer.Content>
+        <Drawer.Content mounted='always'>Content</Drawer.Content>
       </Drawer>,
     )
 

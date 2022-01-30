@@ -1,26 +1,26 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<Close /> snapshots renders correctly 1`] = `
-<div
-  aria-hidden="false"
-  aria-labelledby="test-guid"
-  class="fade modal-overlay-scroll"
-  data-testid="modal"
-  role="presentation"
-  tabindex="-1"
->
+exports[`<Modal /> snapshots renders correctly 1`] = `
+HTMLCollection [
   <div
-    class="modal-positioner"
+    class="🅲ModalOverlay 🅲-active"
+  />,
+  <div
+    class="🅲ModalPositioner 🅲Modal-overlayScroll 🅲-active"
+    role="presentation"
+    tabindex="-1"
   >
     <div
-      class="modal-container"
+      aria-hidden="false"
+      aria-labelledby="test-guid"
+      class="🅲ModalContainer 🅲-active"
       role="dialog"
     >
       <div
-        class=""
+        class="🅲ModalHeader"
       >
         <h2
-          class=""
+          class="🅲ModalTitle"
           id="test-guid"
         >
           Demo uncontrolled modal
@@ -42,18 +42,18 @@ exports[`<Close /> snapshots renders correctly 1`] = `
         </button>
       </div>
       <div
-        class=""
+        class="🅲ModalBody"
       >
         <p>
           This is an uncontrolled modal that will automatically manage its active state using the parent Active component.
         </p>
       </div>
       <div
-        class="modal-footer btn-container-x"
+        class="🅲ModalFooter btn-container-x"
       >
         Modal Footer
       </div>
     </div>
-  </div>
-</div>
+  </div>,
+]
 `;

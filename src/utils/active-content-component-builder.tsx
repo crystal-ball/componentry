@@ -1,5 +1,6 @@
 import React, { useContext } from 'react'
 import { useTheme } from '../components/Theme/Theme'
+import { useVisible } from '../hooks'
 import { ActiveCtx } from './active-container-component-builder'
 import { ARIAControls, computeARIA } from './aria'
 import { ActiveContentBaseProps } from './types'
@@ -8,8 +9,8 @@ import { element } from './element-creator'
 interface ActiveContentBuilder {
   /** Map of aria attributes to render with component */
   aria?: ARIAControls
-  /** Switch to include an absolute positioned wrapper for positioning+width styles */
-  positioned?: boolean
+  defaultAs?: React.ElementType
+  defaultRenderArrow?: boolean
 }
 
 /**
@@ -17,17 +18,14 @@ interface ActiveContentBuilder {
  */
 export function activeContentBuilder<TProps extends ActiveContentBaseProps>(
   displayName: string,
-  { aria, positioned = false }: ActiveContentBuilder,
+  { aria, defaultAs }: ActiveContentBuilder,
 ): React.FC<TProps> {
-  const baseCx = displayName
-
   function ActiveContent(props: TProps) {
     const { guid, ...activeCtx } = useContext(ActiveCtx)
     const {
-      active,
+      active: _active,
       activeId,
-      children,
-      variant = `primary`,
+      mounted = 'visible',
       ...rest
     } = {
       ...useTheme<TProps>(displayName),
@@ -35,33 +33,23 @@ export function activeContentBuilder<TProps extends ActiveContentBaseProps>(
       ...props,
     }
 
-    // Create component content (return optionally wraps content in a width busting
-    // container)
-    const content = element({
+    const { active, visible } = useVisible(_active)
+
+    if (!active && mounted === 'visible') return null
+
+    return element({
+      as: defaultAs,
+      active: visible,
+      componentCx: `🅲${displayName}`,
       ...computeARIA({
         active,
         activeId,
+        aria,
         guid,
         type: 'content',
-        aria,
       }),
-      componentCx: `${baseCx}-${variant}`,
-      children: (
-        <>
-          {positioned && (
-            <div className='tip-container'>
-              <div className='tip' />
-            </div>
-          )}
-          {children}
-        </>
-      ),
       ...rest,
     })
-
-    // If the element is a popper, wrap it in a content container, this is used to
-    // bust width of parent element
-    return positioned ? <div className={`${baseCx}-container`}>{content}</div> : content
   }
   ActiveContent.displayName = displayName
   return ActiveContent

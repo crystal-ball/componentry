@@ -4,6 +4,7 @@ import { BADGE } from '@geometricpanda/storybook-addon-badges'
 import { Active } from '../Active/Active'
 import { Button } from '../Button/Button'
 import { Text } from '../Text/Text'
+import { Tooltip } from '../Tooltip/Tooltip'
 import { Modal } from './Modal'
 import { footerContent, scrollContent } from './storybook/contents'
 
@@ -15,8 +16,11 @@ import { footerContent, scrollContent } from './storybook/contents'
 
 # Modal
 
+Modals are used in `Active` contexts and have subcomponents for `Header`, `Title`, `Body`,
+and `Footer`.
+
 <Active>
-  <Active.Action>Open Modal</Active.Action>
+  <Active.Action>Open</Active.Action>
   <Modal>
     <Modal.Header close>
       <Modal.Title>Demo modal</Modal.Title>
@@ -26,8 +30,15 @@ import { footerContent, scrollContent } from './storybook/contents'
         This is an uncontrolled modal that will automatically manage its active state
         using the parent Active component.
       </Text>
+      <Tooltip>
+        <Tooltip.Action>Z-Index and Modal stacking</Tooltip.Action>
+        <Tooltip.Content>
+          You can use tooltips and dropdowns in Modals and they will be placed in the
+          modal's stacking context, overlaying elements as you'd expect.
+        </Tooltip.Content>
+      </Tooltip>
     </Modal.Body>
-    <Modal.Footer className='btn-container-x'>
+    <Modal.Footer gap={2}>
       <Button as={Active.Action} variant='text' color='anchor'>
         Close
       </Button>
@@ -36,24 +47,13 @@ import { footerContent, scrollContent } from './storybook/contents'
   </Modal>
 </Active>
 
-## Screen top aligned modal
+## Screen center aligned modal
+
+By default modals are `theme.spacing[6]` from the top of the screen. Passing
+`align='center'` will center the modal in the screen.
 
 <Active>
-  <Active.Action>Open Modal</Active.Action>
-  <Modal>
-    <Modal.Body>
-      <Text>
-        This is an uncontrolled modal that will automatically manage its active state
-        using the parent Active component.
-      </Text>
-    </Modal.Body>
-  </Modal>
-</Active>
-
-## Center aligned modal
-
-<Active>
-  <Active.Action>Open Modal</Active.Action>
+  <Active.Action>Open</Active.Action>
   <Modal align='center'>
     <Modal.Body>
       <Text>This modal will be centered in the screen</Text>
@@ -61,47 +61,42 @@ import { footerContent, scrollContent } from './storybook/contents'
   </Modal>
 </Active>
 
-## Scrolling modal
+## Modal scrolling
+
+There are three options for modal scrolling: `overlay`, `container`, and `body`.
+
+### Overlay scrolling
+
+The modal scrolls within the screen overlay
 
 <Active>
-  <Active.Action>Open scroll-body modal</Active.Action>
+  <Active.Action>Open</Active.Action>
   <Modal scroll='overlay'>
     {scrollContent}
     {footerContent}
   </Modal>
 </Active>
 
+### Container scrolling
+
+The entire modal contents scroll
+
 <Active>
-  <Active.Action>Open modal-scroll modal</Active.Action>
+  <Active.Action>Open</Active.Action>
   <Modal scroll='container'>
     {scrollContent}
     {footerContent}
   </Modal>
 </Active>
 
+### Body scrolling
+
+Only the modal body scrolls, if the modal has a header or footer they will remain visible.
+
 <Active>
-  <Active.Action>Open modal-scroll modal</Active.Action>
+  <Active.Action>Open</Active.Action>
   <Modal scroll='body'>
     {scrollContent}
     {footerContent}
   </Modal>
 </Active>
-
-<svg
-  xmlns='http://www.w3.org/2000/svg'
-  xmlnsXlink='http://www.w3.org/1999/xlink'
-  style={{ position: 'absolute', width: 0, height: 0 }}
->
-  <symbol
-    viewBox='0 0 24 24'
-    id='close'
-    stroke='currentColor'
-    strokeWidth='2'
-    fill='none'
-    strokeLinecap='round'
-    strokeLinejoin='round'
-  >
-    <line x1='18' y1='6' x2='6' y2='18' />
-    <line x1='6' y1='6' x2='18' y2='18' />
-  </symbol>
-</svg>

@@ -4,13 +4,22 @@ import { render, screen } from '@testing-library/react'
 import { elementTests } from '../../test/element-tests'
 import { Input } from './Input'
 
+function LabelTest(testProps) {
+  return (
+    <Input>
+      <Input.Label {...testProps} />
+    </Input>
+  )
+}
+LabelTest.displayName = Input.Label.displayName
+
 describe('<Input />', () => {
   // Basic library element test suite
   // elementTests(Input) - no wrapper element to test...
-  elementTests(Input.Label, Input)
+  elementTests(LabelTest)
   // elementTests(Input.Field) - TODO: cannot test Input because it cannot have children
-  elementTests(Input.Description, Input)
-  elementTests(Input.Error, Input)
+  elementTests(Input.Description)
+  elementTests(Input.Error)
 })
 
 // Snapshots

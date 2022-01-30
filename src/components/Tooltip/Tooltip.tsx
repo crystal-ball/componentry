@@ -1,12 +1,15 @@
+import React from 'react'
+
 import { activeContainerBuilder } from '../../utils/active-container-component-builder'
 import { activeActionBuilder } from '../../utils/active-action-component-builder'
 import { activeContentBuilder } from '../../utils/active-content-component-builder'
 import {
-  ActiveActionBaseProps,
-  ActiveContainerBaseProps,
-  ActiveContentBaseProps,
-  ComponentBaseProps,
+  type ActiveActionBaseProps,
+  type ActiveContainerBaseProps,
+  type ActiveContentBaseProps,
+  type ComponentBaseProps,
 } from '../../utils/types'
+import { Link } from '../Link/Link'
 
 export interface TooltipProps
   extends ActiveContainerBaseProps,
@@ -49,9 +52,29 @@ export const Tooltip = activeContainerBuilder<TooltipProps>('Tooltip', {
 
 Tooltip.Action = activeActionBuilder<TooltipActionProps>('TooltipAction', {
   aria: { describedby: true },
+  defaultAs: Link,
 })
 
-Tooltip.Content = activeContentBuilder<TooltipContentProps>('TooltipContent', {
-  aria: { id: true, role: 'tooltip', hidden: true },
-  positioned: true,
-})
+Tooltip.Content = activeContentBuilder<TooltipContentProps & { renderArrow?: boolean }>(
+  'TooltipContent',
+  {
+    aria: { id: true, role: 'tooltip', hidden: true },
+    defaultAs: TooltipContentElement,
+  },
+)
+
+function TooltipContentElement({
+  children,
+  renderArrow = true,
+  ...rest
+}: {
+  children: React.ReactNode
+  renderArrow: boolean
+}) {
+  return (
+    <div {...rest}>
+      {renderArrow && <div className='🅲TooltipContentArrow' />}
+      <div className='🅲TooltipContentContents'>{children}</div>
+    </div>
+  )
+}

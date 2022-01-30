@@ -7,6 +7,7 @@ import {
   ActiveContentBaseProps,
   ComponentBaseProps,
 } from '../../utils/types'
+import { Link } from '../Link/Link'
 
 export interface DrawerProps
   extends ActiveContainerBaseProps,
@@ -46,6 +47,7 @@ export const Drawer = activeContainerBuilder<DrawerProps>('Drawer') as Drawer
 
 Drawer.Action = activeActionBuilder<DrawerActionProps>('DrawerAction', {
   aria: { controls: true, expanded: true },
+  defaultAs: Link,
 })
 
 Drawer.Content = activeContentBuilder<DrawerContentProps>('DrawerContent', {

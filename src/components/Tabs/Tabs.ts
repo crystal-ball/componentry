@@ -10,6 +10,7 @@ import {
 } from '../../utils/types'
 import { element } from '../../utils/element-creator'
 import { staticComponent } from '../../utils/static-component-builder'
+import { Link } from '../Link/Link'
 
 export interface TabsProps extends ActiveContainerBaseProps, ComponentBaseProps<'div'> {}
 
@@ -84,6 +85,7 @@ Tabs.Action = activeActionBuilder<TabsActionProps>('TabsAction', {
   aria: { selected: true, role: 'tab' },
   // Tabs can only activate, they never deactivate when clicked
   action: 'activate',
+  defaultAs: Link,
 })
 
 Tabs.ContentContainer = staticComponent<TabsContentContainerProps>('TabsContentContainer')

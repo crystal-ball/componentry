@@ -1,6 +1,11 @@
 /* eslint-env jest */
 import React from 'react'
-import { fireEvent, render, screen } from '@testing-library/react'
+import {
+  fireEvent,
+  render,
+  screen,
+  waitForElementToBeRemoved,
+} from '@testing-library/react'
 
 /**
  * This set of activation event tests should pass for every element with active
@@ -15,7 +20,7 @@ export function activationTests(TestComponent, { name, testArias } = {}) {
    */
   it('should include size class for container', () => {
     const { container } = render(<TestComponent size='sm' />)
-    expect(container.firstChild).toHaveClass(`${name}-sm`)
+    expect(container.firstChild).toHaveClass(`🅲${name}-smSize`)
   })
 
   /**
@@ -23,26 +28,12 @@ export function activationTests(TestComponent, { name, testArias } = {}) {
    */
   it('should include direction class for container', () => {
     const { container } = render(<TestComponent direction='overlay' />)
-    expect(container.firstChild).toHaveClass('overlay')
-  })
-
-  /**
-   * Test that the shorthand subcombonent props renders subcomponents
-   */
-  it('should render components for subcomponent shorthand', async () => {
-    render(<TestComponent Action='Action' Content='Content' />)
-
-    expect(screen.getByText('Action')).toBeInTheDocument()
-    expect(screen.getByText('Content')).toBeInTheDocument()
-    expect(screen.getByText('Content')).toHaveAttribute('aria-hidden', 'true')
-
-    fireEvent.click(screen.getByText('Action'))
-    expect(screen.getByText('Content')).toHaveAttribute('aria-hidden', 'false')
+    expect(container.firstChild).toHaveClass(`🅲${name}-overlay`)
   })
 
   /**
    * Test that the default uncontrolled state scenario works. The active state should
-   * be managed internally if not overriden with props and clicking the action should
+   * be managed internally if not overridden with props and clicking the action should
    * show/hide content.
    */
   it('should update arias when action is activated', async () => {
@@ -53,7 +44,7 @@ export function activationTests(TestComponent, { name, testArias } = {}) {
     // TODO: describedby
 
     render(
-      <TestComponent>
+      <TestComponent active>
         <TestComponent.Action>Action</TestComponent.Action>
         <TestComponent.Content>Content</TestComponent.Content>
       </TestComponent>,
@@ -61,7 +52,7 @@ export function activationTests(TestComponent, { name, testArias } = {}) {
 
     // Action and Content should have correct attrs for a11y and hidden content
     expect(screen.getByText('Action')).toHaveAttribute('type', 'button')
-    expect(screen.getByText('Content')).toHaveAttribute('aria-hidden', 'true')
+    expect(screen.queryByText('Content')).toBeInTheDocument()
 
     if (testControls) {
       // If aria-controls, action should have attr pointing to id on content
@@ -77,21 +68,21 @@ export function activationTests(TestComponent, { name, testArias } = {}) {
 
     if (testExpanded) {
       // If aria-expanded, action should have visible state updated in attr
-      expect(screen.getByText('Action')).toHaveAttribute('aria-expanded', 'false')
-    }
-
-    fireEvent.click(screen.getByText('Action'))
-    expect(screen.getByText('Content')).toHaveAttribute('aria-hidden', 'false')
-
-    if (testExpanded) {
       expect(screen.getByText('Action')).toHaveAttribute('aria-expanded', 'true')
     }
 
     fireEvent.click(screen.getByText('Action'))
-    expect(screen.getByText('Content')).toHaveAttribute('aria-hidden', 'true')
+    await waitForElementToBeRemoved(() => screen.queryByText('Content')) // visible transition requires waitFor
 
     if (testExpanded) {
       expect(screen.getByText('Action')).toHaveAttribute('aria-expanded', 'false')
+    }
+
+    fireEvent.click(screen.getByText('Action'))
+    expect(screen.queryByText('Content')).toBeInTheDocument()
+
+    if (testExpanded) {
+      expect(screen.getByText('Action')).toHaveAttribute('aria-expanded', 'true')
     }
   })
 
@@ -142,7 +133,7 @@ export function activationTests(TestComponent, { name, testArias } = {}) {
       </TestComponent>,
     )
 
-    expect(screen.getByText('Content')).toHaveAttribute('aria-hidden', 'false')
+    expect(screen.queryByText('Content')).toBeInTheDocument()
   })
 
   /**
@@ -165,20 +156,20 @@ export function activationTests(TestComponent, { name, testArias } = {}) {
     )
 
     // Both content elements should be hidden
-    expect(screen.getByText('No handler content')).toHaveAttribute('aria-hidden', 'true')
-    expect(screen.getByText('Handler content')).toHaveAttribute('aria-hidden', 'true')
+    expect(screen.queryByText('No handler content')).not.toBeInTheDocument()
+    expect(screen.queryByText('Handler content')).not.toBeInTheDocument()
 
     // Element without click events should not close when click outside
     fireEvent.click(screen.getByText('No handler action'))
-    expect(screen.getByText('No handler content')).toHaveAttribute('aria-hidden', 'false')
+    expect(screen.queryByText('No handler content')).toBeInTheDocument()
     fireEvent.mouseUp(screen.getByText('External'))
-    expect(screen.getByText('No handler content')).toHaveAttribute('aria-hidden', 'false')
+    expect(screen.queryByText('No handler content')).toBeInTheDocument()
 
     // Click outside element with click events should deactivate it
     fireEvent.click(screen.getByText('Handler action'))
-    expect(screen.getByText('Handler content')).toHaveAttribute('aria-hidden', 'false')
+    expect(screen.queryByText('Handler content')).toBeInTheDocument()
     fireEvent.mouseUp(screen.getByText('External'))
-    expect(screen.getByText('Handler content')).toHaveAttribute('aria-hidden', 'true')
+    await waitForElementToBeRemoved(() => screen.queryByText('Handler content')) // visible transition requires waitFor
   })
 
   /**
@@ -199,20 +190,20 @@ export function activationTests(TestComponent, { name, testArias } = {}) {
     )
 
     // Both content elements should be hidden
-    expect(screen.getByText('No handler content')).toHaveAttribute('aria-hidden', 'true')
-    expect(screen.getByText('Handler content')).toHaveAttribute('aria-hidden', 'true')
+    expect(screen.queryByText('No handler content')).not.toBeInTheDocument()
+    expect(screen.queryByText('Handler content')).not.toBeInTheDocument()
 
     // Esc keydown should not deactivate
     fireEvent.click(screen.getByText('No handler action'))
-    expect(screen.getByText('No handler content')).toHaveAttribute('aria-hidden', 'false')
+    expect(screen.queryByText('No handler content')).toBeInTheDocument()
     fireEvent.keyDown(container, { key: 'Escape', code: 27, which: 27 })
-    expect(screen.getByText('No handler content')).toHaveAttribute('aria-hidden', 'false')
+    expect(screen.queryByText('No handler content')).toBeInTheDocument()
 
     // Esc keydown should deactivate it
     fireEvent.click(screen.getByText('Handler action'))
-    expect(screen.getByText('Handler content')).toHaveAttribute('aria-hidden', 'false')
+    expect(screen.queryByText('Handler content')).toBeInTheDocument()
     fireEvent.keyDown(container, { key: 'Escape', code: 27, which: 27 })
-    expect(screen.getByText('Handler content')).toHaveAttribute('aria-hidden', 'true')
+    await waitForElementToBeRemoved(() => screen.queryByText('Handler content')) // visible transition requires waitFor
   })
 
   /**
@@ -233,20 +224,20 @@ export function activationTests(TestComponent, { name, testArias } = {}) {
     )
 
     // Both content elements should be hidden
-    expect(screen.getByText('No handler content')).toHaveAttribute('aria-hidden', 'true')
-    expect(screen.getByText('Handler content')).toHaveAttribute('aria-hidden', 'true')
+    expect(screen.queryByText('No handler content')).not.toBeInTheDocument()
+    expect(screen.queryByText('Handler content')).not.toBeInTheDocument()
 
     // Element without mouse events should not change
     fireEvent.mouseEnter(screen.getByText('No handler action'))
-    expect(screen.getByText('No handler content')).toHaveAttribute('aria-hidden', 'true')
+    expect(screen.queryByText('No handler content')).not.toBeInTheDocument()
     fireEvent.mouseLeave(screen.getByText('No handler action'))
-    expect(screen.getByText('No handler content')).toHaveAttribute('aria-hidden', 'true')
+    expect(screen.queryByText('No handler content')).not.toBeInTheDocument()
 
     // Element with mouse events should activate/deactivate
     fireEvent.mouseEnter(screen.getByText('Handler action'))
-    expect(screen.getByText('Handler content')).toHaveAttribute('aria-hidden', 'false')
+    expect(screen.queryByText('Handler content')).toBeInTheDocument()
     fireEvent.mouseLeave(screen.getByText('Handler action'))
-    expect(screen.getByText('Handler content')).toHaveAttribute('aria-hidden', 'true')
+    await waitForElementToBeRemoved(() => screen.queryByText('Handler content')) // visible transition requires waitFor
   })
 
   /**
@@ -270,7 +261,7 @@ export function activationTests(TestComponent, { name, testArias } = {}) {
       </TestComponent>,
     )
 
-    expect(screen.getByText('Content')).toHaveAttribute('aria-hidden', 'true')
+    expect(screen.queryByText('Content')).not.toBeInTheDocument()
 
     rerender(
       <TestComponent>
@@ -279,7 +270,7 @@ export function activationTests(TestComponent, { name, testArias } = {}) {
       </TestComponent>,
     )
 
-    expect(screen.getByText('Content')).toHaveAttribute('aria-hidden', 'true')
+    expect(screen.queryByText('Content')).not.toBeInTheDocument()
   })
 
   /**
@@ -304,13 +295,13 @@ export function activationTests(TestComponent, { name, testArias } = {}) {
 
     expect(activate).toHaveBeenCalledTimes(1)
     expect(deactivate).toHaveBeenCalledTimes(0)
-    expect(screen.getByText('Content')).toHaveAttribute('aria-hidden', 'true')
+    expect(screen.queryByText('Content')).not.toBeInTheDocument()
 
     fireEvent.click(screen.getByText('Action'))
 
     expect(activate).toHaveBeenCalledTimes(2)
     expect(deactivate).toHaveBeenCalledTimes(0)
-    expect(screen.getByText('Content')).toHaveAttribute('aria-hidden', 'true')
+    expect(screen.queryByText('Content')).not.toBeInTheDocument()
 
     // Mock controlled component being passed true, click should now ONLY call deactivate
     rerender(
@@ -323,13 +314,13 @@ export function activationTests(TestComponent, { name, testArias } = {}) {
 
     expect(activate).toHaveBeenCalledTimes(2)
     expect(deactivate).toHaveBeenCalledTimes(1)
-    expect(screen.getByText('Content')).toHaveAttribute('aria-hidden', 'false')
+    expect(screen.queryByText('Content')).toBeInTheDocument()
 
     fireEvent.click(screen.getByText('Action'))
 
     expect(activate).toHaveBeenCalledTimes(2)
     expect(deactivate).toHaveBeenCalledTimes(2)
-    expect(screen.getByText('Content')).toHaveAttribute('aria-hidden', 'false')
+    expect(screen.queryByText('Content')).toBeInTheDocument()
   })
 
   /**

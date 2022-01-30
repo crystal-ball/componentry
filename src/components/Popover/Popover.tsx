@@ -1,3 +1,6 @@
+import React from 'react'
+
+import { Button } from '../Button/Button'
 import { activeContainerBuilder } from '../../utils/active-container-component-builder'
 import { activeActionBuilder } from '../../utils/active-action-component-builder'
 import { activeContentBuilder } from '../../utils/active-content-component-builder'
@@ -63,15 +66,32 @@ export const Popover = activeContainerBuilder<PopoverProps>('Popover', {
 
 Popover.Action = activeActionBuilder<PopoverActionProps>('PopoverAction', {
   aria: { describedby: true },
+  defaultAs: Button,
 })
 
-Popover.Body = staticComponent<PopoverBodyProps>('PopoverBody')
+function PopoverContentElement({
+  children,
+  // renderArrow = false, TODO
+  ...rest
+}: {
+  children: React.ReactNode
+  // renderArrow?: boolean
+}) {
+  return (
+    <div {...rest}>
+      {/* {renderArrow && <div className='🅲PopoverArrow' />} */}
+      <div className='🅲PopoverContentContents'>{children}</div>
+    </div>
+  )
+}
 
 Popover.Content = activeContentBuilder<PopoverContentProps>('PopoverContent', {
   aria: { id: true, role: 'tooltip', hidden: true },
-  positioned: true,
+  defaultAs: PopoverContentElement,
 })
 
 Popover.Heading = staticComponent<PopoverHeadingProps>('PopoverHeading', {
   as: 'h3',
 })
+
+Popover.Body = staticComponent<PopoverBodyProps>('PopoverBody')

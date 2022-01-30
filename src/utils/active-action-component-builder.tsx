@@ -10,6 +10,7 @@ interface ActiveActionBuilder {
   action?: 'activate' | 'deactivate'
   /** Map of aria attributes to render with component */
   aria?: ARIAControls
+  defaultAs?: React.ElementType
 }
 
 /**
@@ -19,26 +20,11 @@ interface ActiveActionBuilder {
  */
 export function activeActionBuilder<TProps extends ActiveActionBaseProps>(
   displayName: string,
-  { action, aria = {} }: ActiveActionBuilder = {},
+  { action, aria = {}, defaultAs }: ActiveActionBuilder = {},
 ): React.FC<TProps> {
-  const baseCx = displayName
-
   function ActiveAction(props: TProps) {
     const { guid, ...activeCtx } = useContext(ActiveCtx)
-    const {
-      activeId,
-      as = 'button',
-      type = 'button',
-      variant = 'primary',
-      // --- Render elements
-      children,
-      decoration,
-      // --- Active context
-      active,
-      activate,
-      deactivate,
-      ...rest
-    } = {
+    const { activeId, active, activate, deactivate, ...rest } = {
       ...useTheme<TProps>(displayName),
       ...activeCtx,
       ...props,
@@ -49,13 +35,17 @@ export function activeActionBuilder<TProps extends ActiveActionBaseProps>(
     // 2. else if in a compound-active context check if this activeId is active
     // 3. else use opposite of active status
     let onClick
-    if (action) onClick = action === 'activate' ? activate : deactivate
-    else if (activeId) onClick = activeId === active ? deactivate : activate
-    else onClick = active ? deactivate : activate
+    if (action) {
+      onClick = action === 'activate' ? activate : deactivate
+    } else if (activeId) {
+      onClick = activeId === active ? deactivate : activate
+    } else {
+      onClick = active ? deactivate : activate
+    }
 
     return element({
-      as,
-      type,
+      'as': defaultAs,
+      'componentCx': `🅲${displayName}`,
       ...computeARIA({
         active,
         activeId,
@@ -63,26 +53,9 @@ export function activeActionBuilder<TProps extends ActiveActionBaseProps>(
         type: 'action',
         aria,
       }),
-      'componentCx': [
-        `${baseCx}-${variant}`,
-        {
-          // For compound-active contexts add an active class if activeIds match
-          // (eg in tabs show which tab is selected)
-          active: activeId && active === activeId,
-        },
-      ],
       onClick,
       // For compound-active contexts, the value attr is to expose the activeId
       'data-active-id': activeId,
-      /* inputs cannot have children */
-      'children':
-        as === 'input' ? null : (
-          <>
-            {children}
-            {decoration}
-          </>
-        ),
-      // Pass through props rest last to allow any instance overrides
       ...rest,
     })
   }

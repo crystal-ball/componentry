@@ -2,33 +2,26 @@
 
 exports[`<Popover /> snapshots renders correctly 1`] = `
 <div
-  class="right"
+  class="🅲Popover-base 🅲Popover-right"
   data-id="test-guid"
   data-testid="popover"
 >
   <button
     aria-describedby="test-guid"
-    class="PopoverAction-primary"
+    class="🅲Button-base 🅲Button-filled 🅲PopoverAction"
     type="button"
   >
     Toggle
   </button>
   <div
-    class="PopoverContent-container"
+    aria-hidden="true"
+    class="🅲PopoverContent"
+    id="test-guid"
+    role="tooltip"
   >
     <div
-      aria-hidden="true"
-      class="PopoverContent-primary"
-      id="test-guid"
-      role="tooltip"
+      class="🅲PopoverContentContents"
     >
-      <div
-        class="tip-container"
-      >
-        <div
-          class="tip"
-        />
-      </div>
       <h3
         class="🅲PopoverHeading"
       >
@@ -38,7 +31,7 @@ exports[`<Popover /> snapshots renders correctly 1`] = `
         class="🅲PopoverBody"
       >
         <span>
-          The new Texas Instrument calculators have ABC keyboards because if they had QWERTY keyboards, they would be considered computers and wouldn’t be allowed for standardized test taking.
+          The new Texas Instrument calculators have ABC keyboards because if they had QWERTY keyboards, they would be considered computers and wouldn't be allowed for standardized test taking.
         </span>
       </div>
     </div>

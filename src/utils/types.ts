@@ -150,10 +150,6 @@ export type ComponentBaseProps<Element extends React.ElementType> = {
 // Active components
 
 export interface ActiveContainerBaseProps {
-  /** Shorthand prop for passing children to Action component */
-  Action?: React.ReactNode
-  /** Shorthand prop for passing children to Content component */
-  Content?: React.ReactNode
   /** Container children */
   children?: React.ReactNode
 
@@ -170,17 +166,17 @@ export interface ActiveContainerBaseProps {
   /** Starting active state */
   defaultActive?: boolean | string
   /** Called to handle activate event */
-  activate?: (event: React.MouseEvent<HTMLButtonElement>) => void
+  activate?: (event: React.MouseEvent<HTMLElement>) => void
   /** Called to handle deactivate event */
-  deactivate?: (event: React.MouseEvent<HTMLButtonElement>) => void
+  deactivate?: (event: React.MouseEvent<HTMLElement>) => void
   /** Called before activate event */
-  onActivate?: (event: React.MouseEvent<HTMLButtonElement>) => void
+  onActivate?: (event: React.MouseEvent<HTMLElement>) => void
   /** Called after activate event */
-  onActivated?: (event: React.MouseEvent<HTMLButtonElement>) => void
+  onActivated?: (event: React.MouseEvent<HTMLElement>) => void
   /** Called before deactivate event */
-  onDeactivate?: (event: React.MouseEvent<HTMLButtonElement>) => void
+  onDeactivate?: (event: React.MouseEvent<HTMLElement>) => void
   /** Called after deactivate event */
-  onDeactivated?: (event: React.MouseEvent<HTMLButtonElement>) => void
+  onDeactivated?: (event: React.MouseEvent<HTMLElement>) => void
 }
 
 export interface ActiveActionBaseProps {
@@ -190,8 +186,6 @@ export interface ActiveActionBaseProps {
   activeId?: string
   /** Component children */
   children?: React.ReactNode
-  /** Component children end decoration */
-  decoration?: React.ReactNode
 }
 
 export interface ActiveContentBaseProps {
@@ -201,4 +195,12 @@ export interface ActiveContentBaseProps {
   activeId?: string
   /** Component children */
   children?: React.ReactNode
+  /**
+   * Controls when the component content is mounted where:
+   * - `'always'` - The content will be mounted when the element is both visible
+   *   and not visible
+   * - `'visible'` - The content will only be mounted when visible, when not
+   *   visible the contents are not rendered for performance.
+   */
+  mounted?: 'always' | 'visible'
 }

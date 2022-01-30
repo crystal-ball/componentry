@@ -3,7 +3,7 @@
 exports[`<Alert /> snapshots renders correctly 1`] = `
 <div
   aria-hidden="false"
-  class="🅲Alert-base 🅲Alert-filled 🅲Alert-dangerColor fade"
+  class="🅲Alert-base 🅲Alert-filled 🅲Alert-dangerColor 🅲Alert-dismissible"
   role="alert"
 >
   <div

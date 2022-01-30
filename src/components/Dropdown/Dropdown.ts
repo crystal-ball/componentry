@@ -7,6 +7,7 @@ import {
   ActiveContentBaseProps,
   ComponentBaseProps,
 } from '../../utils/types'
+import { Button } from '../Button/Button'
 
 export interface DropdownProps
   extends ActiveContainerBaseProps,
@@ -61,6 +62,7 @@ export const Dropdown = activeContainerBuilder<DropdownProps>('Dropdown', {
 
 Dropdown.Action = activeActionBuilder<DropdownActionProps>('DropdownAction', {
   aria: { expanded: true, haspopup: true, id: true },
+  defaultAs: Button,
 })
 
 Dropdown.Content = activeContentBuilder<DropdownContentProps>('DropdownContent', {

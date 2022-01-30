@@ -15,26 +15,27 @@ describe('<Dropdown />', () => {
   // Basic library element test suite
   elementTests(Dropdown)
   elementTests(Dropdown.Action)
-  elementTests(Dropdown.Content)
+  elementTests(Dropdown.Content, { mounted: 'always' })
   elementTests(Dropdown.Item)
 
   it('renders the correct directional classes using direction', () => {
     const { rerender } = render(
-      <Dropdown Action='Toggle' Content='Testing' data-testid='dropdown' />,
+      <Dropdown data-testid='dropdown' direction='bottom'>
+        <Dropdown.Action>Toggle</Dropdown.Action>
+        <Dropdown.Content>Testing</Dropdown.Content>
+      </Dropdown>,
     )
 
-    expect(screen.getByTestId('dropdown')).toHaveClass('bottom') // default value
+    expect(screen.getByTestId('dropdown')).toHaveClass('🅲Dropdown-bottom') // default value
 
     rerender(
-      <Dropdown
-        Action='Toggle'
-        Content='Testing'
-        data-testid='dropdown'
-        direction='top'
-      />,
+      <Dropdown data-testid='dropdown' direction='top'>
+        <Dropdown.Action>Toggle</Dropdown.Action>
+        <Dropdown.Content>Testing</Dropdown.Content>
+      </Dropdown>,
     )
 
-    expect(screen.getByTestId('dropdown')).toHaveClass('top') // default value
+    expect(screen.getByTestId('dropdown')).toHaveClass('🅲Dropdown-top') // default value
   })
 })
 
@@ -45,7 +46,7 @@ describe('<Dropdown /> snapshots', () => {
     render(
       <Dropdown data-testid='dropdown'>
         <Dropdown.Action>Action</Dropdown.Action>
-        <Dropdown.Content>
+        <Dropdown.Content mounted='always'>
           <Dropdown.Item>Item 1</Dropdown.Item>
           <Dropdown.Item>Item 2</Dropdown.Item>
         </Dropdown.Content>

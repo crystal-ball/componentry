@@ -71,7 +71,10 @@ Input.Field = function InputField(props) {
   const ctx = useContext(InputCtx)
   assertContext(ctx)
 
-  const { invalid = false } = { ...useTheme<InputFieldProps>('InputField'), ...props }
+  const { invalid = false, ...rest } = {
+    ...useTheme<InputFieldProps>('InputField'),
+    ...props,
+  }
 
   return element({
     as: 'input',
@@ -84,6 +87,7 @@ Input.Field = function InputField(props) {
         '🅲-invalid': invalid,
       },
     ],
+    ...rest,
   })
 }
 Input.Field.displayName = 'InputField'

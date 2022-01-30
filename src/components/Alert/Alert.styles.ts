@@ -15,6 +15,14 @@ export const Alert: Record<string, unknown> = {
     justifyContent: 'space-between',
   },
 
+  '.🅲Alert-dismissible': {
+    opacity: 1,
+    transition: 'opacity 0.2s cubic-bezier(0.4, 0, 0.2, 1)',
+  },
+  '.🅲Alert-dismissed': {
+    opacity: 0,
+  },
+
   // VARIANTS
   '.🅲Alert-filled': {
     'padding': theme.spacing[2],
