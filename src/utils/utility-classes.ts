@@ -1,5 +1,5 @@
 import { type ClassDictionary } from 'clsx'
-import { DefaultUtilityProps } from './types'
+import { type UtilityProps } from './types'
 
 export const utilityProps = {
   'active': 1,
@@ -53,9 +53,7 @@ export const utilityProps = {
   'width': 1,
 }
 
-function generateClassNames<Props extends DefaultUtilityProps>(
-  p: Props,
-): ClassDictionary {
+function generateClassNames<Props extends UtilityProps>(p: Props): ClassDictionary {
   return {
     // LAYOUT
     [p.position ?? 'position']: p.position,
@@ -160,7 +158,7 @@ export function utilityClasses({
   // ✓ Active props filtered out
   /* eslint-enable @typescript-eslint/no-unused-vars */
   ...filteredProps
-}: ComponentProps & DefaultUtilityProps) {
+}: ComponentProps & UtilityProps) {
   const passThroughProps: ComponentProps = {}
 
   // Pass through disabled to final element as it's a valid HTML attribute

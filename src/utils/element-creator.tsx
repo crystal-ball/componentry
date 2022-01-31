@@ -1,7 +1,7 @@
 import React, { createElement } from 'react'
 import clsx, { type ClassValue } from 'clsx'
 import { utilityClasses } from './utility-classes'
-import { DefaultUtilityProps } from './types'
+import { UtilityProps } from './types'
 
 /**
  * ElementProps includes the shared props _including internal componentCx prop_
@@ -12,7 +12,7 @@ type ElementProps = {
   className?: ClassValue
   componentCx?: ClassValue
   themeCx?: ClassValue
-} & DefaultUtilityProps
+} & UtilityProps
 
 /**
  * element de-duplicates component code for merging classNames and providing a

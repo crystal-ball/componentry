@@ -6,10 +6,10 @@ import { activeActionBuilder } from '../../utils/active-action-component-builder
 import { activeContentBuilder } from '../../utils/active-content-component-builder'
 import { staticComponent } from '../../utils/static-component-builder'
 import {
-  ActiveActionBaseProps,
-  ActiveContainerBaseProps,
-  ActiveContentBaseProps,
-  ComponentBaseProps,
+  type ActiveActionBaseProps,
+  type ActiveContainerBaseProps,
+  type ActiveContentBaseProps,
+  type ComponentBaseProps,
 } from '../../utils/types'
 
 export interface PopoverProps

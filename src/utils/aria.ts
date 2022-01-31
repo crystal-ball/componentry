@@ -3,7 +3,7 @@
  * @module
  */
 
-import { AriaAttributes } from 'react'
+import { type AriaAttributes } from 'react'
 
 type StringBoolean = 'true' | 'false'
 

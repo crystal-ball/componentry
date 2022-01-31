@@ -1,12 +1,12 @@
 import React from 'react'
 import { useTheme } from '../Theme/Theme'
-import { ComponentBaseProps, MergePropTypes } from '../../utils/types'
+import { type ComponentBaseProps, type MergePropTypes } from '../../utils/types'
 import { element } from '../../utils/element-creator'
 
 // Module augmentation interface for overriding component props' types
-export interface IconProps {}
+export interface IconPropsOverrides {}
 
-interface DefaultIconProps {
+interface IconPropsDefaults {
   /** Adjusts the text baseline using a negative margin, this can be used to align font icons outside of flex containers */
   baseline?: boolean
   /** SVG id for href link */
@@ -15,18 +15,19 @@ interface DefaultIconProps {
   variant?: 'font'
 }
 
-type Props = MergePropTypes<DefaultIconProps, IconProps> & ComponentBaseProps<'svg'>
+type IconProps = MergePropTypes<IconPropsDefaults, IconPropsOverrides> &
+  ComponentBaseProps<'svg'>
 
 /**
  * [Icon component 📝](https://componentry.design/components/icon)
  */
-export const Icon: React.FC<Props> = (props) => {
+export const Icon: React.FC<IconProps> = (props) => {
   const {
     baseline,
     variant = 'font',
     id,
     ...rest
-  } = { ...useTheme<Props>('Icon'), ...props }
+  } = { ...useTheme<IconProps>('Icon'), ...props }
 
   return element({
     as: 'svg',

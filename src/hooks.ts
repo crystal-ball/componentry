@@ -4,14 +4,14 @@
  */
 
 import {
-  RefObject,
+  type RefObject,
   useContext,
   useEffect,
   useLayoutEffect,
   useRef,
   useState,
 } from 'react'
-import { ActiveContext, ActiveCtx } from './utils/active-container-component-builder'
+import { type ActiveContext, ActiveCtx } from './utils/active-container-component-builder'
 
 // --------------------------------------------------------
 // useActive hook

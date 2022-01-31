@@ -1,7 +1,7 @@
 import React, { createContext, useContext, useRef } from 'react'
 import { nanoid } from 'nanoid'
 import { useTheme } from '../Theme/Theme'
-import { ComponentBaseProps } from '../../utils/types'
+import { type ComponentBaseProps } from '../../utils/types'
 import { element } from '../../utils/element-creator'
 import { staticComponent } from '../../utils/static-component-builder'
 

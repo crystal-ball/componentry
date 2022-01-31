@@ -1,6 +1,6 @@
 import { forwardRef } from 'react'
 import { useTheme } from '../Theme/Theme'
-import { ComponentBaseProps } from '../../utils/types'
+import { type ComponentBaseProps } from '../../utils/types'
 import { element } from '../../utils/element-creator'
 
 interface LinkProps extends ComponentBaseProps<'a'> {
