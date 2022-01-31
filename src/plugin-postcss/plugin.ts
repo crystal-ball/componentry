@@ -3,6 +3,7 @@ import postcssNested from 'postcss-nested'
 import postcssJs from 'postcss-js'
 import merge from 'deepmerge'
 
+import { foundationsStyles } from '../utils/foundation.styles'
 import { Alert } from '../components/Alert/Alert.styles'
 import { Badge } from '../components/Badge/Badge.styles'
 import { Button } from '../components/Button/Button.styles'
@@ -19,9 +20,10 @@ import { Text } from '../components/Text/Text.styles'
 import { tooltipStyles } from '../components/Tooltip/Tooltip.styles'
 import { getMergedConfig } from './configs'
 
-const { components } = getMergedConfig()
+const { components, foundation } = getMergedConfig()
 
 const componentStyles: Record<string, Record<string, unknown>> = {
+  foundation: merge(foundationsStyles, foundation ?? {}),
   Alert: merge(Alert, components.Alert ?? {}),
   Badge: merge(Badge, components.Badge ?? {}),
   Button: merge(Button, components.Button ?? {}),
@@ -69,7 +71,8 @@ export const plugin: PluginCreator<Record<string, never>> = () => {
           // style object to assemble all nodes
           let nodes: ChildNode[] = []
 
-          Object.values(componentStyles).forEach((styles) => {
+          Object.entries(componentStyles).forEach(([key, styles]) => {
+            if (key === 'foundation') return
             // Adapted from tailwindcss/src/util/parseObjectStyles.js
             const ast = processor.process(styles, {
               parser: postcssJs,

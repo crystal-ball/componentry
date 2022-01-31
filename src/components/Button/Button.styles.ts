@@ -30,7 +30,7 @@ export const Button = {
     'border': `1px solid ${theme.colors.primary[500]}`,
     'borderRadius': theme.borderRadius.md,
     'color': theme.colors.inverse,
-    'fontSize': theme.fontSize.sm,
+    'fontSize': theme.fontSize.small,
 
     'transition': 'background-color 0.15s linear',
 
@@ -58,7 +58,7 @@ export const Button = {
     'border': `1px solid ${theme.colors.primary[500]}`,
     'borderRadius': theme.borderRadius.md,
     'color': theme.colors.primary[500],
-    'fontSize': theme.fontSize.sm,
+    'fontSize': theme.fontSize.small,
 
     'transition': 'color 0.15s linear',
 
@@ -80,13 +80,13 @@ export const Button = {
   '.🅲Button-smallSize': {
     height: '1.5rem',
     borderRadius: theme.borderRadius.md,
-    fontSize: theme.fontSize.sm,
+    fontSize: theme.fontSize.small,
     padding: '0rem 0.5rem',
   },
   '.🅲Button-largeSize': {
     height: '2.5rem',
     borderRadius: theme.borderRadius.lg,
-    fontSize: theme.fontSize.lg,
+    fontSize: theme.fontSize.large,
     padding: '0 2rem',
   },
 }

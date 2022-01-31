@@ -54,7 +54,9 @@ module.exports = {
       6: '3rem', // 48px
     },
   },
-  corePlugins: {},
+  corePlugins: {
+    preflight: false,
+  },
   plugins: [],
   safelist: [
     // margin, padding, gap

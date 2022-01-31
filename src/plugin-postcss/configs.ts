@@ -15,6 +15,7 @@ const userConfig = configSearchResults?.config ?? {}
 const mergedConfig = {
   theme,
   components: userConfig.components ?? {},
+  foundation: userConfig.foundation ?? {},
 }
 
 // Extend

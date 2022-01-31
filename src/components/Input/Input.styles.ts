@@ -67,7 +67,7 @@ export const inputStyles = {
     display: 'block',
     margin: theme.spacing[0.5],
     color: theme.colors.gray[700],
-    fontSize: theme.fontSize.sm,
+    fontSize: theme.fontSize.small,
   },
 
   // Error
@@ -75,7 +75,7 @@ export const inputStyles = {
     display: 'block',
     margin: theme.spacing[0.5],
     color: theme.colors.error[500],
-    fontSize: theme.fontSize.sm,
+    fontSize: theme.fontSize.small,
   },
 }
 
