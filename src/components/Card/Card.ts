@@ -2,7 +2,7 @@ import React from 'react'
 import { useTheme } from '../Theme/Theme'
 import { element } from '../../utils/element-creator'
 import { staticComponent } from '../../utils/static-component-builder'
-import { ComponentBaseProps } from '../../utils/types'
+import { type ComponentBaseProps } from '../../utils/types'
 
 interface CardProps extends ComponentBaseProps<'div'> {
   variant?: 'outlined'

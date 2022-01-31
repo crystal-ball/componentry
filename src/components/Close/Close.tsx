@@ -1,6 +1,6 @@
 import React from 'react'
 import { type ClassValue } from 'clsx'
-import { ComponentBaseProps } from '../../utils/types'
+import { type ComponentBaseProps } from '../../utils/types'
 import { staticComponent } from '../../utils/static-component-builder'
 import { Icon } from '../Icon/Icon'
 

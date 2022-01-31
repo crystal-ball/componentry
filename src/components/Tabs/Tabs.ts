@@ -3,10 +3,10 @@ import { activeContainerBuilder } from '../../utils/active-container-component-b
 import { activeActionBuilder } from '../../utils/active-action-component-builder'
 import { activeContentBuilder } from '../../utils/active-content-component-builder'
 import {
-  ActiveActionBaseProps,
-  ActiveContainerBaseProps,
-  ActiveContentBaseProps,
-  ComponentBaseProps,
+  type ActiveActionBaseProps,
+  type ActiveContainerBaseProps,
+  type ActiveContentBaseProps,
+  type ComponentBaseProps,
 } from '../../utils/types'
 import { element } from '../../utils/element-creator'
 import { staticComponent } from '../../utils/static-component-builder'

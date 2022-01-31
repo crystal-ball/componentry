@@ -22,10 +22,11 @@ export { Modal } from './components/Modal/Modal'
 export { Popover } from './components/Popover/Popover'
 export { Table } from './components/Table/Table'
 export { Tabs } from './components/Tabs/Tabs'
-export { Text, Text as Typography } from './components/Text/Text'
+export { Text } from './components/Text/Text'
 export { Tooltip } from './components/Tooltip/Tooltip'
 
 // --- Utilities
 export { useActive, useActiveScrollReset, useNoScroll, useVisible } from './hooks'
 export { setupOutlineHandlers } from './utils/dom'
 export { utilityClasses } from './utils/utility-classes'
+export { type UtilityProps } from './utils/types'

@@ -1,4 +1,9 @@
-import React from 'react'
+import {
+  type ComponentPropsWithoutRef,
+  type ElementType,
+  type MouseEvent,
+  type ReactNode,
+} from 'react'
 import { type ClassValue } from 'clsx'
 
 /**
@@ -15,12 +20,12 @@ export type MergePropTypes<Defaults, Overrides> = {
 }
 
 // Module augmentation interface for overriding utility props' types
-export interface UtilityProps {}
+export interface UtilityPropsOverrides {}
 
 /**
  * Componentry shared utility props for using utility styles
  */
-export interface DefaultUtilityProps {
+interface UtilityPropsDefaults {
   /** Sets active style */
   active?: boolean | string
   /** Sets align-content style */
@@ -134,27 +139,29 @@ export interface DefaultUtilityProps {
   py?: string | number
 }
 
+export type UtilityProps = MergePropTypes<UtilityPropsDefaults, UtilityPropsOverrides>
+
 /**
  * Base props supported by all Componentry components. Includes the utility
  * styles props and the HTML attributes for the element DOM type.
  */
-export type ComponentBaseProps<Element extends React.ElementType> = {
+export type ComponentBaseProps<Element extends ElementType> = {
   /** Component element */
-  as?: React.ElementType
+  as?: ElementType
   /** Component className, can be a string, array, or object */
   className?: ClassValue
-} & MergePropTypes<DefaultUtilityProps, UtilityProps> &
-  Omit<React.ComponentPropsWithoutRef<Element>, 'className'>
+} & UtilityProps &
+  Omit<ComponentPropsWithoutRef<Element>, 'className'>
 
 // --------------------------------------------------------
 // Active components
 
 export interface ActiveContainerBaseProps {
   /** Container children */
-  children?: React.ReactNode
+  children?: ReactNode
 
   /** Component element */
-  as?: React.ElementType
+  as?: ElementType
 
   /** Sets a container content placement direction className */
   direction?: 'top' | 'left' | 'right' | 'bottom'
@@ -166,35 +173,35 @@ export interface ActiveContainerBaseProps {
   /** Starting active state */
   defaultActive?: boolean | string
   /** Called to handle activate event */
-  activate?: (event: React.MouseEvent<HTMLElement>) => void
+  activate?: (event: MouseEvent<HTMLElement>) => void
   /** Called to handle deactivate event */
-  deactivate?: (event: React.MouseEvent<HTMLElement>) => void
+  deactivate?: (event: MouseEvent<HTMLElement>) => void
   /** Called before activate event */
-  onActivate?: (event: React.MouseEvent<HTMLElement>) => void
+  onActivate?: (event: MouseEvent<HTMLElement>) => void
   /** Called after activate event */
-  onActivated?: (event: React.MouseEvent<HTMLElement>) => void
+  onActivated?: (event: MouseEvent<HTMLElement>) => void
   /** Called before deactivate event */
-  onDeactivate?: (event: React.MouseEvent<HTMLElement>) => void
+  onDeactivate?: (event: MouseEvent<HTMLElement>) => void
   /** Called after deactivate event */
-  onDeactivated?: (event: React.MouseEvent<HTMLElement>) => void
+  onDeactivated?: (event: MouseEvent<HTMLElement>) => void
 }
 
 export interface ActiveActionBaseProps {
   /** Component element */
-  as?: React.ElementType
+  as?: ElementType
   /** Action/Content pairing id for compound active components */
   activeId?: string
   /** Component children */
-  children?: React.ReactNode
+  children?: ReactNode
 }
 
 export interface ActiveContentBaseProps {
   /** Component element */
-  as?: React.ElementType
+  as?: ElementType
   /** Action/Content pairing id for compound active components */
   activeId?: string
   /** Component children */
-  children?: React.ReactNode
+  children?: ReactNode
   /**
    * Controls when the component content is mounted where:
    * - `'always'` - The content will be mounted when the element is both visible

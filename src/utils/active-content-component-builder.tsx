@@ -2,8 +2,8 @@ import React, { useContext } from 'react'
 import { useTheme } from '../components/Theme/Theme'
 import { useVisible } from '../hooks'
 import { ActiveCtx } from './active-container-component-builder'
-import { ARIAControls, computeARIA } from './aria'
-import { ActiveContentBaseProps } from './types'
+import { type ARIAControls, computeARIA } from './aria'
+import { type ActiveContentBaseProps } from './types'
 import { element } from './element-creator'
 
 interface ActiveContentBuilder {

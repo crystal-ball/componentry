@@ -5,7 +5,7 @@ import { nanoid } from 'nanoid'
 import { closeBase } from '../Close/Close'
 import { useTheme } from '../Theme/Theme'
 import { useActive, useActiveScrollReset, useNoScroll, useVisible } from '../../hooks'
-import { ComponentBaseProps } from '../../utils/types'
+import { type ComponentBaseProps } from '../../utils/types'
 import { element } from '../../utils/element-creator'
 import { staticComponent } from '../../utils/static-component-builder'
 

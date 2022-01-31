@@ -2,14 +2,14 @@ import React from 'react'
 import { closeBase } from '../Close/Close'
 import { useTheme } from '../Theme/Theme'
 import { useActive, useVisible } from '../../hooks'
-import { ComponentBaseProps, MergePropTypes } from '../../utils/types'
+import { type ComponentBaseProps, type MergePropTypes } from '../../utils/types'
 import { element } from '../../utils/element-creator'
 import { staticComponent } from '../../utils/static-component-builder'
 
 // Module augmentation interface for overriding component props' types
-export interface AlertProps {}
+export interface AlertPropsOverrides {}
 
-interface DefaultAlertProps {
+interface AlertPropsDefaults {
   /** Sets a custom aria title */
   ariaTitle?: string
   /** Sets the theme color of the alert */
@@ -30,12 +30,13 @@ interface DefaultAlertProps {
   variant?: 'filled'
 }
 
-type Props = MergePropTypes<DefaultAlertProps, AlertProps> & ComponentBaseProps<'div'>
+type AlertProps = MergePropTypes<AlertPropsDefaults, AlertPropsOverrides> &
+  ComponentBaseProps<'div'>
 
 interface AlertCloseProps extends ComponentBaseProps<'button'> {}
 
 interface Alert {
-  (props: Props): React.ReactElement | null
+  (props: AlertProps): React.ReactElement | null
   displayName: 'Alert'
   /**
    * [Alert close component 📝](https://componentry.design/components/alert)
