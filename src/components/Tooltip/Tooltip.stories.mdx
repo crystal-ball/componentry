@@ -1,4 +1,4 @@
-import { Meta } from '@storybook/addon-docs'
+import { Meta, Story } from '@storybook/addon-docs'
 import { BADGE } from '@geometricpanda/storybook-addon-badges'
 
 import { Tooltip } from './Tooltip'
@@ -14,16 +14,14 @@ import { Tooltip } from './Tooltip'
 Tooltip extends Active with support for mouse events and styling to match typical tooltip
 titles.
 
-<Tooltip
-  onActivate={console.log}
-  onActivated={console.log}
-  onDeactivate={console.log}
-  onDeactivated={console.log}
->
-  <Tooltip.Action>Fun fact</Tooltip.Action>
-  <Tooltip.Content>
-    Only 8% of the world's currency is physical money, the rest only exists on computers.
-  </Tooltip.Content>
-</Tooltip>
+<Story name='Tooltip'>
+  <Tooltip active>
+    <Tooltip.Action>Fun fact</Tooltip.Action>
+    <Tooltip.Content>
+      Only 8% of the world's currency is physical money, the rest only exists on
+      computers.
+    </Tooltip.Content>
+  </Tooltip>
+</Story>
 
 <div>Content for stacking testing</div>
