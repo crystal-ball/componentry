@@ -25,7 +25,7 @@ export interface UtilityPropsOverrides {}
 /**
  * Componentry shared utility props for using utility styles
  */
-interface UtilityPropsDefaults {
+export interface UtilityPropsDefaults {
   /** Sets active style */
   active?: boolean | string
   /** Sets align-content style */
