@@ -44,7 +44,6 @@ __mocks__
 test
 jest.config.js
 postcss.config.js
-postcss.js
 tailwind.config.js
 
 # Documentation
