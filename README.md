@@ -1,6 +1,7 @@
-<h1 align="right">
-  <img src="./docs/assets/library-header.png" width="850" alt="Componentry" />
-</h1>
+<div align="center">
+  <img src="./docs/assets/icon.png" width="360" alt="circuits" />  
+</div>
+<h1 align="center">Componentry</h1>
 
 <div align="right">
   <!-- prettier-ignore-start -->
@@ -9,9 +10,6 @@
   </a>
   <a href="https://bundlephobia.com/result?p=componentry">
     <img src="https://img.shields.io/bundlephobia/minzip/componentry" alt="Bundle size" valign="text-top" />
-  </a>
-  <a href="https://github.com/crystal-ball/componentry/actions?workflow=CI%2FCD">
-    <img src="https://github.com/crystal-ball/componentry/workflows/CI%2FCD/badge.svg" alt="Build status" valign="text-top" />
   </a>
   <a href="https://snyk.io/test/github/crystal-ball/componentry?targetFile=package.json">
     <img src="https://snyk.io/test/github/crystal-ball/componentry/badge.svg?targetFile=package.json" alt="Known vulnerabilities" valign="text-top" />
@@ -56,7 +54,7 @@
 ---
 
 <h3 align="center">
-  <em>Componentry is a React component library for building radical design systems</em>
+  <em>Componentry is a React component library for building custom design systems.</em>
 </h3>
 
 - Feather light footprint at <12KB gzipped
