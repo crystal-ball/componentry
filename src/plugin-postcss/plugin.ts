@@ -56,26 +56,19 @@ export const plugin: PluginCreator<Record<string, never>> = () => {
       // Transforms at-rules like `@componentry button;` into component styles
       componentry: (atRule) => {
         const component = atRule.params // params will be the component name, eg "button" in "@componentry button;"
+        let nodes: ChildNode[] = []
 
         if (component in componentStyles) {
+          // The component styles should be found, and we replace the
+          // @componentry node with the final set of parsed styles
           // Adapted from tailwindcss/src/util/parseObjectStyles.js
           const ast = processor.process(componentStyles[component], {
             parser: postcssJs,
           })
-
-          ast.root.nodes.forEach((node) => {
-            // eslint-disable-next-line no-param-reassign
-            node.source = atRule.source
-          })
-
-          // The component styles should be found, and we replace the @componentry node with
-          // the final set of parsed styles
-          atRule.replaceWith(...ast.root.nodes)
+          nodes = ast.root.nodes // eslint-disable-line prefer-destructuring
         } else if (component === 'components') {
           // Convenience rule for including all component styles, iterate through
           // style object to assemble all nodes
-          let nodes: ChildNode[] = []
-
           Object.entries(componentStyles).forEach(([key, styles]) => {
             if (key === 'foundation') return
             // Adapted from tailwindcss/src/util/parseObjectStyles.js
@@ -85,12 +78,18 @@ export const plugin: PluginCreator<Record<string, never>> = () => {
 
             nodes = nodes.concat(ast.root.nodes)
           })
-
-          atRule.replaceWith(...nodes)
         } else {
           // Fail fast for bad directives, eg "@componentry ohno;"
           throw new Error(`Unknown @componentry param: ${atRule.params}`)
         }
+
+        // Attach @rule source for proper source map handling
+        // https://github.com/postcss/postcss/blob/main/docs/guidelines/plugin.md#24-set-nodesource-for-new-nodes
+        nodes.forEach((node) => {
+          node.source = atRule.source // eslint-disable-line no-param-reassign
+        })
+
+        atRule.replaceWith(...nodes)
       },
     },
   }

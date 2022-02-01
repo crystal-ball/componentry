@@ -16,7 +16,7 @@ interface ButtonPropsDefaults {
   /** HTML element href */
   href?: string
   /** Sets the display size */
-  size?: 'sm' | 'lg'
+  size?: 'small' | 'large'
   /** Display variant */
   variant?: 'filled' | 'outlined'
 }

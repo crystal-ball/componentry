@@ -53,6 +53,17 @@ export const utilityProps = {
   'width': 1,
 }
 
+const activeProps = {
+  activate: 1,
+  deactivate: 1,
+  defaultActive: 1,
+  guid: 1,
+  onActivate: 1,
+  onActivated: 1,
+  onDeactivate: 1,
+  onDeactivated: 1,
+}
+
 function generateClassNames<Props extends UtilityProps>(p: Props): ClassDictionary {
   return {
     // LAYOUT
@@ -136,49 +147,23 @@ function generateClassNames<Props extends UtilityProps>(p: Props): ClassDictiona
  *   <div className={clsx(utilityCX)} {...passThroughProps}>{children}</div>
  * )
  */
-export function utilityClasses({
-  /* eslint-disable @typescript-eslint/no-unused-vars */
-  block,
-  outline,
-  fill,
-  inline,
-  justify,
-  pills,
-  variant,
-  vertical,
-  // ✓ Componentry props filtered out
-  activate,
-  deactivate,
-  defaultActive,
-  guid,
-  onActivate,
-  onActivated,
-  onDeactivate,
-  onDeactivated,
-  // ✓ Active props filtered out
-  /* eslint-enable @typescript-eslint/no-unused-vars */
-  ...filteredProps
-}: ComponentProps & UtilityProps) {
-  const passThroughProps: ComponentProps = {}
+export function utilityClasses<Props extends { [prop: string]: any }>(props: Props) {
+  const passThroughProps: { [prop: string]: any } = {}
 
   // Pass through disabled to final element as it's a valid HTML attribute
-  if (filteredProps.disabled) passThroughProps.disabled = true
+  if (props.disabled) passThroughProps.disabled = true
 
-  Object.keys(filteredProps).forEach((prop) => {
-    if (!(prop in utilityProps)) {
+  Object.keys(props).forEach((prop) => {
+    if (!(prop in utilityProps) && !(prop in activeProps)) {
       // The prop doesn't map to a library utility prop, pass it through
-      passThroughProps[prop] = filteredProps[prop]
+      passThroughProps[prop] = props[prop]
     }
   })
 
   return {
     passThroughProps,
-    utilityCx: generateClassNames(filteredProps),
+    utilityCx: generateClassNames(props),
   }
-}
-
-type ComponentProps = {
-  [prop: string]: unknown
 }
 
 // --------------------------------------------------------
