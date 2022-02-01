@@ -15,8 +15,7 @@ export const tableStyles = {
     // 📝 Notes
     // - Borders: Table head has a border bottom, and then sibling rows have border top. This
     //   keeps a border below the head for tables with body scrolling.
-    borderBottomWidth: theme.borderWidth.DEFAULT,
-    borderColor: theme.borderColor.DEFAULT,
+    borderBottom: `${theme.borderWidth.DEFAULT} solid ${theme.borderColor.DEFAULT}`,
   },
 
   '.🅲TableHeader': {
@@ -35,8 +34,7 @@ export const tableStyles = {
     // Add a border top to every row after the first one (not on first or there would
     // be a double border at the top of the table)
     '& + &': {
-      borderTopWidth: theme.borderWidth.DEFAULT,
-      borderColor: theme.borderColor.DEFAULT,
+      borderTop: `${theme.borderWidth.DEFAULT} solid ${theme.borderColor.DEFAULT}`,
     },
   },
 

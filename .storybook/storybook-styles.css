@@ -1,7 +1,17 @@
+@componentry foundation;
 @tailwind base;
 
-@tailwind components;
+@media screen and (-webkit-min-device-pixel-ratio: 2),
+  screen and (min-resolution: 2dppx) {
+  /* Include font smoothing in screens that support it */
+  html {
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-font-smoothing: antialiased;
+  }
+}
+
 @componentry components;
+@tailwind components;
 
 .sbdocs-h2 {
   /* Storybook is setting this to 0 between stories, give them some space */

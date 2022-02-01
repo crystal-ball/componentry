@@ -1,8 +1,3 @@
 # Skip formatting files generated or managed by other tools
 
 CHANGELOG.md
-
-# Theme definitions
-src/styles/_variables.scss
-src/styles/_theme.scss
-styles/functions/_sass.scss

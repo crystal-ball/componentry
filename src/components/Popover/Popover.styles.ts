@@ -121,7 +121,7 @@ export const popoverStyles = {
     backgroundClip: 'padding-box',
     backgroundColor: theme.colors.background,
     border: `${theme.borderWidth.DEFAULT} solid ${theme.borderColor.DEFAULT}`,
-    fontSize: theme.fontSize.sm,
+    fontSize: theme.fontSize.small,
     // Allow breaking very long words so they don't overflow the popover's bounds
     wordWrap: 'break-word',
 
@@ -170,7 +170,7 @@ export const popoverStyles = {
     // Try to guarantee that spacing is correct regardless of div vs h* usage
     marginTop: 0,
     marginBottom: 0,
-    fontSize: theme.fontSize.lg,
+    fontSize: theme.fontSize.large,
     color: theme.colors.gray[900],
     borderBottom: `${theme.borderWidth.DEFAULT} solid ${theme.borderColor.DEFAULT}`,
   },

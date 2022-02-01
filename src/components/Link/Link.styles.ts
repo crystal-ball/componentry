@@ -7,7 +7,10 @@ const { theme } = getMergedConfig()
 
 export const Link = {
   // BASE
-  '.🅲Link-base': {},
+  '.🅲Link-base': {
+    // Reset browser defaults for when Link renders a button element
+    border: 'none',
+  },
 
   // VARIANTS
   '.🅲Link-text': {
