@@ -9,12 +9,12 @@
   "types": "types/index.d.ts",
   "keywords": [
     "accessibility",
-    "component-library",
-    "design-system",
+    "components-library",
+    "design-systems",
     "postcss-plugin",
     "react",
     "tailwindcss",
-    "ui"
+    "typescript"
   ],
   "contributors": [
     "Dan Hedgecock <hedgecock.d@gmail.com>",
