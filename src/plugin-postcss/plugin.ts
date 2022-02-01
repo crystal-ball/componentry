@@ -63,6 +63,11 @@ export const plugin: PluginCreator<Record<string, never>> = () => {
             parser: postcssJs,
           })
 
+          ast.root.nodes.forEach((node) => {
+            // eslint-disable-next-line no-param-reassign
+            node.source = atRule.source
+          })
+
           // The component styles should be found, and we replace the @componentry node with
           // the final set of parsed styles
           atRule.replaceWith(...ast.root.nodes)
