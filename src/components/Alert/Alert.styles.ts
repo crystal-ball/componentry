@@ -36,9 +36,8 @@ export const Alert: Record<string, unknown> = {
       fontWeight: theme.fontWeight.bold,
     },
 
-    '& hr': {
-      borderTopColor: theme.colors.primary[300],
-    },
+    // TODO: Recreate this with a Divider component
+    // '& hr': { borderTopColor: theme.colors.primary[300] },
   },
 
   // ELEMENTS

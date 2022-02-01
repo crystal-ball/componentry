@@ -107,7 +107,6 @@ export const foundationStyles = {
     height: 0, // Add the correct height in Firefox.
     margin: 0, // Remove default spacing
     color: 'inherit', // Correct the inheritance of border color in Firefox. (https://bugzilla.mozilla.org/show_bug.cgi?id=190655)
-    borderTopWidth: '1px', // Ensure horizontal rules are visible by default.
   },
 
   'sub': {
