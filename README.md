@@ -1,5 +1,7 @@
+<br />
+<br />
 <div align="center">
-  <img src="./docs/assets/icon.png" width="360" alt="circuits" />  
+  <img src="./docs/assets/icon.png" width="240" alt="circuits" />  
 </div>
 <h1 align="center">Componentry</h1>
 
