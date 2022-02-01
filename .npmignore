@@ -4,16 +4,7 @@
 # Source
 # -------------------------------------
 public
-# nb: src/**.scss NEEDS to be published
-src/**/*.js
-src/**/*.ts
-src/**/*.tsx
-src/**/*.mdx
-src/**/*.snap
-types.bk
-# Storybook assets
-**/stories/**
-**/storybook/**
+src
 
 # Output
 # -------------------------------------
@@ -30,30 +21,31 @@ false
 
 # Configs
 # -------------------------------------
+.babelrc.js
 .codeclimate.yml
 .czrc
 .github
-.renovaterc
 .storybook
 .vscode
-.cz-config.js
 .eslintignore
 .eslintrc.js
 .prettierignore
 .prettierrc
-.travis.yml
-babel.config.js
-jsconfig.json
-renovate.json
+.renovaterc
 tsconfig.json
 tsconfig.types.json
 webpack.config.js
+tsconfig.json
+tsconfig.types.json
 
 # Testing
 # -------------------------------------
 __mocks__
 test
 jest.config.js
+postcss.config.js
+postcss.js
+tailwind.config.js
 
 # Documentation
 # -------------------------------------
