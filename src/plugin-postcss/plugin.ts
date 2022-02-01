@@ -3,7 +3,7 @@ import postcssNested from 'postcss-nested'
 import postcssJs from 'postcss-js'
 import merge from 'deepmerge'
 
-import { foundationsStyles } from '../utils/foundation.styles'
+import { foundationStyles } from '../utils/foundation.styles'
 import { Alert } from '../components/Alert/Alert.styles'
 import { Badge } from '../components/Badge/Badge.styles'
 import { Button } from '../components/Button/Button.styles'
@@ -23,7 +23,7 @@ import { getMergedConfig } from './configs'
 const { components, foundation } = getMergedConfig()
 
 const componentStyles: Record<string, Record<string, unknown>> = {
-  foundation: merge(foundationsStyles, foundation ?? {}),
+  foundation: merge(foundationStyles, foundation ?? {}),
   Alert: merge(Alert, components.Alert ?? {}),
   Badge: merge(Badge, components.Badge ?? {}),
   Button: merge(Button, components.Button ?? {}),

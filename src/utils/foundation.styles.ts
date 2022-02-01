@@ -44,7 +44,7 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 */
 
-export const foundationsStyles = {
+export const foundationStyles = {
   '*, ::before, ::after': {
     // Prevent padding and border from affecting element width.
     // (https://github.com/mozdevs/cssremedy/issues/4)
