@@ -1,6 +1,8 @@
-<h1 align="right">
-  <img src="./docs/assets/library-header.png" width="850" alt="Componentry" />
-</h1>
+<br />
+<div align="center">
+  <img src="./docs/assets/icon.png" width="240" alt="circuits" />  
+</div>
+<h1 align="center">Componentry</h1>
 
 <div align="right">
   <!-- prettier-ignore-start -->
@@ -9,9 +11,6 @@
   </a>
   <a href="https://bundlephobia.com/result?p=componentry">
     <img src="https://img.shields.io/bundlephobia/minzip/componentry" alt="Bundle size" valign="text-top" />
-  </a>
-  <a href="https://github.com/crystal-ball/componentry/actions?workflow=CI%2FCD">
-    <img src="https://github.com/crystal-ball/componentry/workflows/CI%2FCD/badge.svg" alt="Build status" valign="text-top" />
   </a>
   <a href="https://snyk.io/test/github/crystal-ball/componentry?targetFile=package.json">
     <img src="https://snyk.io/test/github/crystal-ball/componentry/badge.svg?targetFile=package.json" alt="Known vulnerabilities" valign="text-top" />
@@ -30,12 +29,6 @@
   </a>
   <a href="https://commitizen.github.io/cz-cli/">
     <img src="https://img.shields.io/badge/Commitizen-%E2%9C%93%20friendly-10e67b" alt="Commitizen friendly" valign="text-top" />
-  </a>
-  <a href="https://github.com/crystal-ball/componentry#workspaces/-projects-5b88b5c9af3c0a2186966767/board?repos=85410774">
-    <img src="https://img.shields.io/badge/ZenHub-managed-5e60ba.svg" alt="ZenHub" valign="text-top" />
-  </a>
-  <a href="https://semantic-release.gitbook.io/semantic-release/">
-    <img src="https://img.shields.io/badge/%F0%9F%93%A6%F0%9F%9A%80-semantic_release-e10079.svg" alt="Semantic Release" valign="text-top"/>
   </a>
   <a href="./CODE_OF_CONDUCT.md">
     <img src="https://img.shields.io/badge/Contributor%20Covenant-v2.0-de8cf2.svg" alt="Contributor Covenant" valign="text-top" />
@@ -56,7 +49,7 @@
 ---
 
 <h3 align="center">
-  <em>Componentry is a React component library for building radical design systems</em>
+  <em>Componentry is a React component library for building custom design systems.</em>
 </h3>
 
 - Feather light footprint at <12KB gzipped
