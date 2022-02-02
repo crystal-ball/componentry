@@ -4,14 +4,10 @@
 </div>
 
 <h4 align="center">
-  <em>A React component library for building custom design systems.</em>
+  <em>A React component library for building highly performant, completely customizable design systems.</em>
 </h4>
 
-<br />
-
 ---
-
-<br />
 
 ### Features
 
