@@ -11,7 +11,7 @@
 
 ### Features
 
-- Feather light footprint at <12KB gzipped
+- Feather light footprint of <12KB gzipped
 - A++ accessibility built in to every component
 - Consistent APIs for easy usage
 - Designed for flexibility and component composition
