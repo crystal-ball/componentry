@@ -1,56 +1,19 @@
 <br />
 <div align="center">
-  <img src="./docs/assets/icon.png" width="240" alt="circuits" />  
+  <img src="./docs/assets/componentry.png" width="727" alt="Componentry" />  
 </div>
-<h1 align="center">Componentry</h1>
 
-<div align="right">
-  <!-- prettier-ignore-start -->
-  <a href="https://www.npmjs.com/package/componentry">
-    <img src="https://img.shields.io/npm/v/componentry" alt="Package version" valign="text-top"/>
-  </a>
-  <a href="https://bundlephobia.com/result?p=componentry">
-    <img src="https://img.shields.io/bundlephobia/minzip/componentry" alt="Bundle size" valign="text-top" />
-  </a>
-  <a href="https://snyk.io/test/github/crystal-ball/componentry?targetFile=package.json">
-    <img src="https://snyk.io/test/github/crystal-ball/componentry/badge.svg?targetFile=package.json" alt="Known vulnerabilities" valign="text-top" />
-  </a>
-  <a href="https://codeclimate.com/github/crystal-ball/componentry/test_coverage">
-    <img src="https://api.codeclimate.com/v1/badges/7cadedbd49251df31254/test_coverage" alt="Test coverage" valign="text-top" />
-  </a>
-  <a href="https://codeclimate.com/github/crystal-ball/componentry/maintainability">
-    <img src="https://api.codeclimate.com/v1/badges/7cadedbd49251df31254/maintainability" alt="Maintainability" valign="text-top"/>
-  </a>
-  <code>:status&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code>
+<h4 align="center">
+  <em>A React component library for building custom design systems.</em>
+</h4>
 
-  <br />
-  <a href="https://renovatebot.com/">
-    <img src="https://img.shields.io/badge/Renovate-enabled-32c3c2.svg" alt="Renovate" valign="text-top" />
-  </a>
-  <a href="https://commitizen.github.io/cz-cli/">
-    <img src="https://img.shields.io/badge/Commitizen-%E2%9C%93%20friendly-10e67b" alt="Commitizen friendly" valign="text-top" />
-  </a>
-  <a href="./CODE_OF_CONDUCT.md">
-    <img src="https://img.shields.io/badge/Contributor%20Covenant-v2.0-de8cf2.svg" alt="Contributor Covenant" valign="text-top" />
-  </a>
-  <code>:integrations</code>
-
-  <br />
-  <a href="https://github.com/crystal-ball">
-    <img src="https://img.shields.io/badge/%F0%9F%94%AE%E2%9C%A8-contains_magic-D831D7.svg" alt="Contains magic" valign="text-top" />
-  </a>
-  <a href="https://github.com/crystal-ball/crystal-ball.github.io">
-    <img src="https://img.shields.io/badge/%F0%9F%92%96%F0%9F%8C%88-full_of_love-F5499E.svg" alt="Full of love" valign="text-top" />
-  </a>
-  <code>:flair&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code>
-  <!-- prettier-ignore-end -->
-</div>
+<br />
 
 ---
 
-<h3 align="center">
-  <em>Componentry is a React component library for building custom design systems.</em>
-</h3>
+<br />
+
+### Features
 
 - Feather light footprint at <12KB gzipped
 - A++ accessibility built in to every component
@@ -68,7 +31,7 @@ Full documentation is available at
 - v2.5.x is the v2 branch updated for React 16.8+
 - v2.4.x is the v2 branch for React version prior to 16.8
 
-## Contributing
+### Contributing
 
 Componentry is an open source project that welcomes and appreciates
 contributions from everyone 🙌. <br /> Please read the
