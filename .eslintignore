@@ -8,5 +8,4 @@ src/plugin-babel/__fixtures__
 # Build/Compile output
 # -------------------------------------
 storybook-static
-cjs
-esm
+dist

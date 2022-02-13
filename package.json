@@ -3,10 +3,16 @@
   "version": "4.0.0-beta.2",
   "description": "React component library for building custom design systems",
   "sideEffects": false,
-  "main": "cjs/index.js",
-  "module": "esm/index.js",
-  "esnext": "esnext/index.js",
+  "type": "module",
   "types": "types/index.d.ts",
+  "exports": {
+    "browser": "./dist/browser/index.js",
+    "node": {
+      "module": "./dist/browser/index.js",
+      "require": "./dist/commonjs/index.cjs"
+    },
+    "default": "./dist/browser/index.js"
+  },
   "keywords": [
     "accessibility",
     "components-library",
@@ -28,7 +34,7 @@
   "scripts": {
     "commit": "cz",
     "start": "start-storybook -p 6006 --no-open",
-    "babel:watch": "BABEL_ENV=esmodules babel src --watch --out-dir es --ignore '**/*.spec.js'",
+    "babel:watch": "BABEL_ENV=browser babel src --watch --out-dir dist/browser --ignore '**/*.spec.js'",
     "build-storybook": "build-storybook",
     "test": "npm run test:lint && npm run test:types && npm run test:unit",
     "test:lint": "NODE_ENV=test eslint --format=pretty .",
@@ -40,19 +46,18 @@
     "format": "prettier --write . !CHANGELOG.md !coverage",
     "prepublishOnly": "npm run clean && npm run compile && npm run types",
     "postpublish": "npm run clean",
-    "compile": "npm run compile:commonjs && npm run compile:esmodules && npm run compile:esnext",
-    "compile:commonjs": "BABEL_ENV=commonjs babel src -x '.ts,.tsx' --out-dir cjs",
-    "compile:esmodules": "BABEL_ENV=esmodules babel src -x '.ts,.tsx' --out-dir esm",
-    "compile:esnext": "BABEL_ENV=esnext babel src -x '.ts,.tsx' --out-dir esnext",
+    "compile": "npm run compile:browser && npm run compile:commonjs",
+    "compile:browser": "BABEL_ENV=browser babel src -x '.ts,.tsx' --out-dir dist/browser",
+    "compile:commonjs": "BABEL_ENV=commonjs babel src -x '.ts,.tsx' --out-dir dist/commonjs",
     "types": "tsc --project tsconfig.types.json",
-    "clean": "rm -rf cjs esm esnext types"
+    "clean": "rm -rf dist types"
   },
   "peerDependencies": {
-    "react": ">=16.8",
-    "postcss": "8"
+    "postcss": "8",
+    "react": ">=16.8"
   },
   "dependencies": {
-    "@babel/runtime": "7",
+    "@babel/runtime": "7.17",
     "clsx": "1.1",
     "cosmiconfig": "7.0",
     "deepmerge": "4.2",
@@ -90,8 +95,8 @@
     "eslint-config-eloquence": "21.2.0",
     "jest": "27.5.1",
     "node-notifier": "10.0.1",
-    "prettier": "2.5.1",
     "postcss": "8.4.6",
+    "prettier": "2.5.1",
     "react": "17.0.2",
     "react-dom": "17.0.2",
     "tailwindcss": "3.0.22",

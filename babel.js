@@ -5,4 +5,4 @@
  * after publishing. For local development of the Babel plugin use the plugin
  * test file with `npx jest src/plugin`
  */
-module.exports = require('./cjs/plugin/plugin')
+module.exports = require('./dist/commonjs/plugin-babel/plugin')
