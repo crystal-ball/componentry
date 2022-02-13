@@ -7,14 +7,14 @@ import { Flex } from './Flex'
 describe('<Flex />', () => {
   elementTests(Flex)
 
-  it('When inline is not passed, then flex className is rendered', () => {
+  it('Renders class flex by default', () => {
     render(<Flex>Content</Flex>)
 
     expect(screen.getByText('Content')).toHaveClass('flex')
   })
 
-  it('When inline is passed, then inline-flex className is rendered', () => {
-    render(<Flex inline>Content</Flex>)
+  it('When display is passed, then class flex is overridden', () => {
+    render(<Flex display='inline-flex'>Content</Flex>)
 
     expect(screen.getByText('Content')).toHaveClass('inline-flex')
   })

@@ -7,14 +7,14 @@ import { Grid } from './Grid'
 describe('<Grid />', () => {
   elementTests(Grid)
 
-  it('When inline is not passed, then block className is rendered', () => {
+  it('Renders class grid by default', () => {
     render(<Grid>Content</Grid>)
 
     expect(screen.getByText('Content')).toHaveClass('grid')
   })
 
-  it('When inline is passed, then inline-block className is rendered', () => {
-    render(<Grid inline>Content</Grid>)
+  it('When display is passed, then class flex is overridden', () => {
+    render(<Grid display='inline-grid'>Content</Grid>)
 
     expect(screen.getByText('Content')).toHaveClass('inline-grid')
   })
