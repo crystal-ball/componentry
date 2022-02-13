@@ -12,14 +12,12 @@ module.exports = {
      * doesn't support ESModules and operates directly on source code.
      */
     test: {
-      presets: ['@babel/preset-env', '@babel/preset-react', '@babel/preset-typescript'],
-      plugins: [
-        [
-          '@babel/plugin-transform-runtime',
-          // https://github.com/babel/babel/issues/10261
-          { version: require('@babel/helpers/package.json').version },
-        ],
+      presets: [
+        ['@babel/preset-env', { modules: 'commonjs', targets: 'node 16' }],
+        '@babel/preset-react',
+        '@babel/preset-typescript',
       ],
+      plugins: [],
     },
 
     // Publish targets
@@ -41,7 +39,6 @@ module.exports = {
         '@babel/preset-typescript',
       ],
       plugins: [
-        '@babel/plugin-transform-modules-commonjs',
         [
           '@babel/plugin-transform-runtime',
 
@@ -50,8 +47,7 @@ module.exports = {
             helpers: true,
             regenerator: true,
             useESModules: false,
-            // https://github.com/babel/babel/issues/10261
-            version: '^7.17.0',
+            version: '^7.17.0', // Include version for smaller bundle
           },
         ],
       ],

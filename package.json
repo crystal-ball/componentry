@@ -68,7 +68,6 @@
   "devDependencies": {
     "@babel/cli": "7.17.0",
     "@babel/core": "7.17.2",
-    "@babel/plugin-transform-modules-commonjs": "7.16.8",
     "@babel/plugin-transform-runtime": "7.17.0",
     "@babel/preset-typescript": "7.16.7",
     "@crystal-ball/commitizen-base": "2.11.0",
