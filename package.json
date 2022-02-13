@@ -3,7 +3,6 @@
   "version": "4.0.0-beta.2",
   "description": "React component library for building custom design systems",
   "sideEffects": false,
-  "type": "module",
   "types": "types/index.d.ts",
   "exports": {
     "browser": "./dist/browser/index.js",

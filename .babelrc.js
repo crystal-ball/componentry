@@ -74,6 +74,7 @@ module.exports = {
             corejs: '3',
             helpers: true,
             regenerator: true,
+            useESModules: true,
             version: '^7.17.0', // Include version for smaller bundle
           },
         ],
