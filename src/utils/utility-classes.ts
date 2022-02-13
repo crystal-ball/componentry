@@ -1,5 +1,5 @@
 import { type ClassDictionary } from 'clsx'
-import { type UtilityProps } from './types'
+import { type UtilityProps } from './utility-props'
 
 export const utilityProps = {
   'active': 1,
@@ -7,6 +7,7 @@ export const utilityProps = {
   'alignItems': 1,
   'alignSelf': 1,
   'backgroundColor': 1,
+  'bold': 1,
   'border': 1,
   'borderBottom': 1,
   'borderColor': 1,
@@ -16,6 +17,8 @@ export const utilityProps = {
   'color': 1,
   'disabled': 1,
   'display': 1,
+  'flexDirection': 1,
+  'flexWrap': 1,
   'fontFamily': 1,
   'fontSize': 1,
   'fontWeight': 1,
@@ -65,6 +68,11 @@ const activeProps = {
 }
 
 function generateClassNames<Props extends UtilityProps>(p: Props): ClassDictionary {
+  // Tailwind expects a `flex-col` for direction which breaks the pattern of specifying
+  // the style value
+  const computedDir = p.flexDirection?.replace('column', 'col')
+  // Support shorthand bold everywhere to match shorthand italic for easy text styles
+  const computedFontWeight = p.bold ? 'bold' : p.fontWeight
   return {
     // LAYOUT
     [p.position ?? 'position']: p.position,
@@ -74,6 +82,9 @@ function generateClassNames<Props extends UtilityProps>(p: Props): ClassDictiona
 
     // FLEXBOX+GRID
     [`content-${p.alignContent}`]: p.alignContent,
+
+    [`flex-${computedDir}`]: computedDir,
+    [`flex-${p.flexWrap}`]: p.flexWrap,
     [`items-${p.alignItems}`]: p.alignItems,
     [`justify-${p.justifyContent}`]: p.justifyContent,
     [`self-${p.alignSelf}`]: p.alignSelf,
@@ -108,7 +119,7 @@ function generateClassNames<Props extends UtilityProps>(p: Props): ClassDictiona
     // TYPOGRAPHY
     [p.textTransform ?? 'textTransform']: p.textTransform,
     [`font-${p.fontFamily}`]: p.fontFamily,
-    [`font-${p.fontWeight}`]: p.fontWeight,
+    [`font-${computedFontWeight}`]: computedFontWeight,
     [`leading-${p.lineHeight}`]: p.lineHeight,
     [`text-${p.color}`]: p.color,
     [`text-${p.fontSize}`]: p.fontSize,

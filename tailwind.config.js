@@ -7,6 +7,19 @@ module.exports = {
     extend: {},
     colors: {
       inverse: '#eff',
+      gray: {
+        // Tailwind Gray - https://tailwindcss.com/docs/customizing-colors
+        50: '#f9fafb',
+        100: '#f3f4f6',
+        200: '#e5e7eb',
+        300: '#d1d5db',
+        400: '#9ca3af',
+        500: '#6b7280',
+        600: '#4b5563',
+        700: '#374151',
+        800: '#1f2937',
+        900: '#111827',
+      },
       primary: {
         100: '#f2f1ff',
         200: '#dfddff',
@@ -67,6 +80,6 @@ module.exports = {
     // backgroundColor, borderColor, textColor
     { pattern: /bg-(primary|info|success)-[\d.]+/ },
     { pattern: /border-(primary|info|success)-[\d.]+/ },
-    { pattern: /text-(primary|info|success|inverse)[-\d.]+?/ },
+    { pattern: /text-(gray|primary|info|success|inverse)[-\d.]+?/ },
   ],
 }

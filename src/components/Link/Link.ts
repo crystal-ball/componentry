@@ -1,9 +1,13 @@
 import { forwardRef } from 'react'
 import { useTheme } from '../Theme/Theme'
-import { type ComponentBaseProps } from '../../utils/types'
+import { type ComponentBaseProps } from '../../utils/base-types'
+import { type MergePropTypes } from '../../utils/types'
 import { element } from '../../utils/element-creator'
 
-interface LinkProps extends ComponentBaseProps<'a'> {
+// Module augmentation interface for overriding component props' types
+export interface LinkPropsOverrides {}
+
+interface LinkPropsDefaults {
   /** Disables the element, preventing mouse and keyboard events */
   disabled?: boolean
   /** HTML element href */
@@ -13,6 +17,9 @@ interface LinkProps extends ComponentBaseProps<'a'> {
   /** Display variant */
   variant?: 'text' | 'inherit'
 }
+
+type LinkProps = MergePropTypes<LinkPropsDefaults, LinkPropsOverrides> &
+  ComponentBaseProps<'a'>
 
 /**
  * [Link component 📝](https://componentry.design/components/link)

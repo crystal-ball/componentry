@@ -31,31 +31,6 @@ export function padNum(num) {
 Flex is a layout component with shorthand properties `align`, `direction`, `justify`, and
 `wrap` for common flex styles.
 
-## Inline containers
-
-Create inline level flex containers using the `inline` prop:
-
-<Flex inline gap={2} backgroundColor='primary-200' className='rounded'>
-  {[1, 2].map((key) => (
-    <div
-      key={key}
-      className='bg-primary-600 text-inverse font-mono font-bold px-3 py-2 rounded'
-    >
-      #0{key}
-    </div>
-  ))}
-</Flex>
-<Flex inline gap={2} backgroundColor='primary-200' className='rounded'>
-  {[1, 2].map((key) => (
-    <div
-      key={key}
-      className='bg-primary-600 text-inverse font-mono font-bold px-3 py-2 rounded'
-    >
-      #0{key}
-    </div>
-  ))}
-</Flex>
-
 ## Flex direction
 
 Override the default direction of `row` with the `direction` prop:

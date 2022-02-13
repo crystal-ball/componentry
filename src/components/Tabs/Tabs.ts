@@ -7,7 +7,7 @@ import {
   type ActiveContainerBaseProps,
   type ActiveContentBaseProps,
   type ComponentBaseProps,
-} from '../../utils/types'
+} from '../../utils/base-types'
 import { element } from '../../utils/element-creator'
 import { staticComponent } from '../../utils/static-component-builder'
 import { Link } from '../Link/Link'

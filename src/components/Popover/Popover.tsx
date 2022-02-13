@@ -10,7 +10,7 @@ import {
   type ActiveContainerBaseProps,
   type ActiveContentBaseProps,
   type ComponentBaseProps,
-} from '../../utils/types'
+} from '../../utils/base-types'
 
 export interface PopoverProps
   extends ActiveContainerBaseProps,

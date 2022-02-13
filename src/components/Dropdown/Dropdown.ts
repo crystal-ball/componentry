@@ -6,7 +6,7 @@ import {
   type ActiveContainerBaseProps,
   type ActiveContentBaseProps,
   type ComponentBaseProps,
-} from '../../utils/types'
+} from '../../utils/base-types'
 import { Button } from '../Button/Button'
 
 export interface DropdownProps

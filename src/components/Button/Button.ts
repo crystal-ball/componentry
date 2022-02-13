@@ -1,6 +1,7 @@
 import { forwardRef } from 'react'
 import { useTheme } from '../Theme/Theme'
-import { type ComponentBaseProps, type MergePropTypes } from '../../utils/types'
+import { type ComponentBaseProps } from '../../utils/base-types'
+import { type MergePropTypes } from '../../utils/types'
 import { element } from '../../utils/element-creator'
 
 // Module augmentation interface for overriding component props' types

@@ -6,18 +6,6 @@ import { Block } from './Block'
 
 describe('<Block />', () => {
   elementTests(Block)
-
-  it('When inline is not passed, then block className is rendered', () => {
-    render(<Block>Content</Block>)
-
-    expect(screen.getByText('Content')).toHaveClass('block')
-  })
-
-  it('When inline is passed, then inline-block className is rendered', () => {
-    render(<Block inline>Content</Block>)
-
-    expect(screen.getByText('Content')).toHaveClass('inline-block')
-  })
 })
 
 // Snapshots
