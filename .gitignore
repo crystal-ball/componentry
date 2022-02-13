@@ -15,15 +15,8 @@ node_modules
 
 # Published
 # -------------------------------------
-cjs
-esm
-esnext
-types
-
-# Documentation
-# -------------------------------------
 dist
-monitor
+types
 
 # Testing
 # -------------------------------------
