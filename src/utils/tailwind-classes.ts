@@ -4,6 +4,8 @@
 // Provides string matches for default set of Tailwind classes
 
 export interface TailwindUtilityClasses {
+  // SCREEN READERS
+  sr: 'sr-only'
   // LAYOUT
   display: 'block' | 'inline-block' | 'flex' | 'inline-flex' | 'grid' | 'inline-grid'
   position: 'static' | 'fixed' | 'absolute' | 'relative' | 'sticky'

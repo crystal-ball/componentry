@@ -1,6 +1,5 @@
 /**
- * Library hooks
- * @module
+ * @file Library hooks
  */
 
 import {

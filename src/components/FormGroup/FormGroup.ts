@@ -1,4 +1,4 @@
-import { type ComponentBaseProps } from '../../utils/types'
+import { type ComponentBaseProps } from '../../utils/base-types'
 import { staticComponent } from '../../utils/static-component-builder'
 
 export interface FormGroupProps extends ComponentBaseProps<'div'> {}

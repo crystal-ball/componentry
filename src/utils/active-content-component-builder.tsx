@@ -3,7 +3,7 @@ import { useTheme } from '../components/Theme/Theme'
 import { useVisible } from '../hooks'
 import { ActiveCtx } from './active-container-component-builder'
 import { type ARIAControls, computeARIA } from './aria'
-import { type ActiveContentBaseProps } from './types'
+import { type ActiveContentBaseProps } from './base-types'
 import { element } from './element-creator'
 
 interface ActiveContentBuilder {

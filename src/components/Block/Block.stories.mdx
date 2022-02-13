@@ -28,22 +28,6 @@ export function padNum(num) {
   </Block>
 </Story>
 
-Block is a layout component for common block styles.
-
-## Inline block elements
-
-Pass A truthy `inline` prop to create an block element with `display: inline-block`:
-
-<Block backgroundColor='primary-200' className='rounded'>
-  {[1, 2, 3].map((key) => (
-    <Block
-      inline
-      key={key}
-      className='bg-primary-600 text-inverse font-mono font-bold px-3 py-2 rounded'
-    >
-      #{padNum(key)}
-    </Block>
-  ))}
-</Block>
+Block is a layout component that renders a div.
 
 <ArgsTable of={Block} />

@@ -7,7 +7,7 @@ export const Icon = {
 
   // VARIANTS
   '.🅲Icon-font': {
-    display: 'inline-block',
+    display: 'inline', // default disregard any margin/paddings
     alignSelf: 'center',
     flexShrink: 0,
     verticalAlign: 'unset',

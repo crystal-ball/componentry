@@ -1,7 +1,7 @@
 import React, { createElement } from 'react'
 import clsx, { type ClassValue } from 'clsx'
 import { utilityClasses } from './utility-classes'
-import { UtilityProps } from './types'
+import { UtilityProps } from './utility-props'
 
 /**
  * ElementProps includes the shared props _including internal componentCx prop_
