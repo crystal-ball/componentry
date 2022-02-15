@@ -1,85 +1,49 @@
 'use strict'
 
-/* eslint-disable import/extensions */
+/**
+ * @file Compilation configuration
+ *
+ * Library is compiled to two targets before publishing, a CommonJS version and
+ * an ESModules version. Both are compiled to work across the maximum number of
+ * active browsers using Browserslist "defaults" target
+ * (https://github.com/browserslist/browserslist#best-practices).
+ *
+ * Polyfills are _not_ included in the compilation: There is no clear guidance
+ * on whether they should be included and most libraries do not include them.
+ * This is probably because most current frameworks, like Next.js and Create
+ * React App, include their own set of sensible polyfills.
+ */
+
+const { BABEL_ENV } = process.env
+
+const targets = BABEL_ENV === 'test' ? 'node 16' : 'defaults' // Testing runs in Node
+const useESM = BABEL_ENV === 'browser'
 
 module.exports = {
   // Base configs are used by ESLint babel parser
-  presets: ['@babel/preset-react', '@babel/preset-typescript'],
-
-  env: {
-    /**
-     * Test env mimics production, but uses commonjs modules because Jest
-     * doesn't support ESModules and operates directly on source code.
-     */
-    test: {
-      presets: [
-        ['@babel/preset-env', { modules: 'commonjs', targets: 'node 16' }],
-        '@babel/preset-react',
-        '@babel/preset-typescript',
-      ],
-      plugins: [],
-    },
-
-    // Publish targets
-    // ---------------------------------------------------------------------------
-
-    // CommonJS - ES5 syntax with commonJS modules
-    commonjs: {
-      presets: [
-        [
-          '@babel/preset-env',
-          {
-            corejs: '3',
-            modules: 'commonjs',
-            targets: 'node 14',
-            useBuiltIns: 'usage',
-          },
+  presets: [
+    [
+      '@babel/preset-env',
+      {
+        bugfixes: true,
+        modules: useESM ? false : 'commonjs',
+        targets,
+        exclude: [
+          'transform-typeof-symbol', // https://github.com/facebook/create-react-app/issues/5277
         ],
-        '@babel/preset-react',
-        '@babel/preset-typescript',
-      ],
-      plugins: [
-        [
-          '@babel/plugin-transform-runtime',
+      },
+    ],
+    ['@babel/preset-react', { runtime: 'automatic' }],
+    '@babel/preset-typescript',
+  ],
 
-          {
-            corejs: '3',
-            helpers: true,
-            regenerator: true,
-            useESModules: false,
-            version: '^7.17.0', // Include version for smaller bundle
-          },
-        ],
-      ],
-    },
-    // ESM - ES5 syntax with ESModules
-    browser: {
-      presets: [
-        [
-          '@babel/preset-env',
-          {
-            corejs: '3',
-            modules: false,
-            targets: 'defaults',
-            useBuiltIns: 'usage',
-          },
-        ],
-        '@babel/preset-react',
-        '@babel/preset-typescript',
-      ],
-      plugins: [
-        [
-          '@babel/plugin-transform-runtime',
-          {
-            corejs: '3',
-            helpers: true,
-            regenerator: true,
-            useESModules: true,
-            version: '^7.17.0', // Include version for smaller bundle
-          },
-        ],
-      ],
-    },
-    // ℹ️ Local dev uses the default Storybook Babel configs
-  },
+  plugins: [
+    [
+      '@babel/plugin-transform-runtime',
+      {
+        useESModules: useESM,
+        version: '^7.17.0', // Default is 7.0, include current version for smaller bundle improvements
+      },
+    ],
+  ],
 }
