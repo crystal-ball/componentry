@@ -9,7 +9,7 @@ import {
   type ReactNode,
 } from 'react'
 import { type ClassValue } from 'clsx'
-import { UtilityProps } from './utility-classes'
+import { type UtilityProps } from './utility-classes'
 
 /**
  * Base props supported by all Componentry components. Includes the utility
