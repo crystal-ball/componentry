@@ -4,12 +4,16 @@
   "description": "React component library for building custom design systems",
   "sideEffects": false,
   "exports": {
-    "browser": "./dist/browser/index.js",
-    "node": {
-      "module": "./dist/browser/index.js",
-      "require": "./dist/commonjs/index.js"
-    },
-    "default": "./dist/browser/index.js"
+    "./babel": "./babel.js",
+    "./postcss": "./postcss.js",
+    ".": {
+      "browser": "./dist/browser/index.js",
+      "node": {
+        "module": "./dist/browser/index.js",
+        "require": "./dist/commonjs/index.js"
+      },
+      "default": "./dist/browser/index.js"
+    }
   },
   "main": "./dist/commonjs/index.js",
   "module": "./dist/browser/index.js",
