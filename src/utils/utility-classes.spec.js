@@ -1,11 +1,11 @@
-import { utilityClasses } from './utility-classes'
+import { createUtilityClasses } from './utility-classes'
 
 const sizes = ['xs', 'sm', 'md', 'lg', 'xl']
 
-describe('utilityClasses()', () => {
+describe('createUtilityClasses()', () => {
   it('computes library utility classes from props', () => {
     sizes.forEach((size) => {
-      const computed = utilityClasses({ m: size, p: size })
+      const computed = createUtilityClasses({ m: size, p: size })
 
       expect(computed.utilityCx[`m-${size}`]).toBeTruthy()
       expect(computed.utilityCx[`p-${size}`]).toBeTruthy()
@@ -13,47 +13,47 @@ describe('utilityClasses()', () => {
   })
 
   it('border style classes are computed correctly', () => {
-    expect(utilityClasses({ border: true }).utilityCx).toStrictEqual(
+    expect(createUtilityClasses({ border: true }).utilityCx).toStrictEqual(
       expect.objectContaining({
         border: true,
       }),
     )
 
-    expect(utilityClasses({ borderTop: true }).utilityCx).toStrictEqual(
+    expect(createUtilityClasses({ borderTop: true }).utilityCx).toStrictEqual(
       expect.objectContaining({
         'border-t': true,
       }),
     )
-    expect(utilityClasses({ borderRight: true }).utilityCx).toStrictEqual(
+    expect(createUtilityClasses({ borderRight: true }).utilityCx).toStrictEqual(
       expect.objectContaining({
         'border-r': true,
       }),
     )
-    expect(utilityClasses({ borderBottom: true }).utilityCx).toStrictEqual(
+    expect(createUtilityClasses({ borderBottom: true }).utilityCx).toStrictEqual(
       expect.objectContaining({
         'border-b': true,
       }),
     )
-    expect(utilityClasses({ borderLeft: true }).utilityCx).toStrictEqual(
+    expect(createUtilityClasses({ borderLeft: true }).utilityCx).toStrictEqual(
       expect.objectContaining({
         'border-l': true,
       }),
     )
 
-    expect(utilityClasses({ borderColor: 'primary' }).utilityCx).toStrictEqual(
+    expect(createUtilityClasses({ borderColor: 'primary' }).utilityCx).toStrictEqual(
       expect.objectContaining({
         'border-primary': 'primary',
       }),
     )
 
-    expect(utilityClasses({ borderWidth: 'lg' }).utilityCx).toStrictEqual(
+    expect(createUtilityClasses({ borderWidth: 'lg' }).utilityCx).toStrictEqual(
       expect.objectContaining({ 'border-lg': 'lg' }),
     )
   })
 
   it('returns library className values', () => {
     expect(
-      utilityClasses({
+      createUtilityClasses({
         alignContent: 'center',
         alignItems: 'center',
         alignSelf: 'center',
