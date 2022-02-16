@@ -1,7 +1,6 @@
 import React, { createElement } from 'react'
 import clsx, { type ClassValue } from 'clsx'
-import { utilityClasses } from './utility-classes'
-import { UtilityProps } from './utility-props'
+import { type UtilityProps, createUtilityClasses } from './utility-classes'
 
 /**
  * ElementProps includes the shared props _including internal componentCx prop_
@@ -34,15 +33,15 @@ export function element<Props extends ElementProps>({
   ...merged
 }: Props): React.ReactElement {
   // Shared filter point to convert utility props to utility classes
-  const { utilityCx, passThroughProps } = utilityClasses(merged)
+  const { filteredProps, utilityClasses } = createUtilityClasses(merged)
 
   return createElement(as, {
     className: clsx(
       themeCx, // User defined default className from theme context
       componentCx, // Library defined component specific classNames, eg 'btn-sm'
       className, // User supplied className
-      utilityCx, // Utility classNames, eg 'mt-xl'
+      utilityClasses, // Utility classNames, eg 'mt-xl'
     ),
-    ...passThroughProps,
+    ...filteredProps,
   })
 }

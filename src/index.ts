@@ -28,5 +28,4 @@ export { Tooltip } from './components/Tooltip/Tooltip'
 // --- Utilities
 export { useActive, useActiveScrollReset, useNoScroll, useVisible } from './hooks'
 export { setupOutlineHandlers } from './utils/dom'
-export { utilityClasses } from './utils/utility-classes'
-export { type UtilityProps } from './utils/utility-props'
+export { createUtilityClasses, type UtilityProps } from './utils/utility-classes'
