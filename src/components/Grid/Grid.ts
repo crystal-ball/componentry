@@ -6,8 +6,8 @@ import { element } from '../../utils/element-creator'
 export interface GridProps extends ComponentBaseProps<'div'> {
   /** Sets an `align-items` style */
   align?: 'start' | 'end' | 'center' | 'baseline' | 'stretch'
-  /** Sets a `justify-content` style */
-  justify?: 'start' | 'end' | 'center' | 'between' | 'around' | 'evenly'
+  /** Sets a `justify-items` style */
+  justify?: 'start' | 'end' | 'center' | 'stretch'
 }
 
 /**
@@ -22,7 +22,7 @@ export const Grid: React.FC<GridProps> = (props) => {
   return element({
     display: 'grid',
     alignItems: align,
-    justifyContent: justify,
+    justifyItems: justify,
     ...rest,
   })
 }
