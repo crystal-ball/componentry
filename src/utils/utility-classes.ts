@@ -79,6 +79,10 @@ export interface UtilityPropsDefaults {
   'italic'?: boolean
   /** Sets justify-content style */
   'justifyContent'?: 'start' | 'end' | 'center' | 'between' | 'around' | 'evenly'
+  /** Sets a `justify-items` style with a `justify-items-{value}` class */
+  'justifyItems'?: 'start' | 'end' | 'center' | 'stretch'
+  /** Sets a `justify-self` style with a `justify-self-{value}` class */
+  'justifySelf'?: 'auto' | 'start' | 'end' | 'center' | 'stretch'
   /** Sets a letter-spacing style */
   'letterSpacing'?: 'tighter' | 'tight' | 'normal' | 'wide' | 'wider' | 'widest'
   /** Sets a line-height style */
@@ -173,6 +177,8 @@ export const utilityProps: { [Prop in keyof UtilityPropsDefaults]: 1 } = {
   'invisible': 1,
   'italic': 1,
   'justifyContent': 1,
+  'justifyItems': 1,
+  'justifySelf': 1,
   'letterSpacing': 1,
   'lineHeight': 1,
   'm': 1,
@@ -226,11 +232,12 @@ function generateClassNames<Props extends UtilityProps>(p: Props): string {
 
     // FLEXBOX+GRID
     [`content-${p.alignContent}`]: p.alignContent,
-
     [`flex-${computedDir}`]: computedDir,
     [`flex-${p.flexWrap}`]: p.flexWrap,
     [`items-${p.alignItems}`]: p.alignItems,
     [`justify-${p.justifyContent}`]: p.justifyContent,
+    [`justify-items-${p.justifyItems}`]: p.justifyItems,
+    [`justify-${p.justifySelf}`]: p.justifySelf,
     [`self-${p.alignSelf}`]: p.alignSelf,
 
     // SPACING
@@ -249,8 +256,8 @@ function generateClassNames<Props extends UtilityProps>(p: Props): string {
     [`px-${p.px}`]: p.px,
     [`py-${p.py}`]: p.py,
     [`gap-${p.gap}`]: p.gap,
-    // [`gap-x-${}`]: 1,
-    // [`gap-y-${}`]: 1,
+    [`gap-x-${p['gap-x']}`]: p['gap-x'],
+    [`gap-y-${p['gap-y']}`]: p['gap-y'],
 
     // SIZING
     [`h-${p.height}`]: p.height,
