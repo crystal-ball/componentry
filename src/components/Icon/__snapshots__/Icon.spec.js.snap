@@ -2,13 +2,13 @@
 
 exports[`<Icon /> snapshots renders correctly 1`] = `
 <svg
+  aria-label="test"
   class="🅲Icon-base 🅲Icon-font icon-test"
   data-testid="icon"
   role="img"
 >
   <use
     href="#test"
-    xlink:href="#test"
   />
 </svg>
 `;

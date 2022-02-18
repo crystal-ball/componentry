@@ -8,9 +8,9 @@ import { element } from '../../utils/element-creator'
 export interface IconPropsOverrides {}
 
 interface IconPropsDefaults {
-  /** Adjusts the text baseline using a negative margin, this can be used to align font icons outside of flex containers */
-  baseline?: boolean
-  /** SVG id for href link */
+  /** External path to symbol sprite  */
+  externalURI?: string
+  /** ID for the `iconElementsMap` or href attribute for symbol sprites */
   id: string
   /** Display variant */
   variant?: 'font'
@@ -19,26 +19,33 @@ interface IconPropsDefaults {
 type IconProps = MergePropTypes<IconPropsDefaults, IconPropsOverrides> &
   ComponentBaseProps<'svg'>
 
+type ElementsMap = { [ID: string]: () => JSX.Element }
+let iconElementsMap: ElementsMap = {}
+
 /**
  * [Icon component 📝](https://componentry.design/components/icon)
  */
 export const Icon: React.FC<IconProps> = (props) => {
   const {
-    baseline,
-    variant = 'font',
+    externalURI = '',
     id,
+    variant = 'font',
     ...rest
   } = { ...useTheme<IconProps>('Icon'), ...props }
 
+  const hasMappedElement = id in iconElementsMap
+
   return element({
-    as: 'svg',
+    as: hasMappedElement ? iconElementsMap[id] : 'svg',
+    children: hasMappedElement ? undefined : <use href={`${externalURI}#${id}`} />,
+    componentCx: `🅲Icon-base 🅲Icon-${variant} icon-${id}`,
     role: 'img',
-    componentCx: [
-      `🅲Icon-base 🅲Icon-${variant} icon-${id}`,
-      { '🅲Icon-baseline': baseline },
-    ],
-    children: <use href={`#${id}`} xlinkHref={`#${id}`} />,
+    'aria-label': id,
     ...rest,
   })
 }
 Icon.displayName = 'Icon'
+
+export function configureIconElementsMap(newIconElementsMap: ElementsMap) {
+  iconElementsMap = newIconElementsMap
+}

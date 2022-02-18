@@ -21,7 +21,9 @@ Componentry ships with a single `font` variant which creates font icons:
 
 ## Icon alignment
 
-Center icons by wrapping them in a flex container.
+Icons are center aligned in flex and text contexts by default for convenience:
+
+In flex containers icons are centered with `self-align: center`:
 
 <h1 className='flex gap-0.5'>
   <Icon id='code' />
@@ -38,12 +40,24 @@ Center icons by wrapping them in a flex container.
   Flex alignment
 </h3>
 
-## Font baseline adjustment
+In text elements icons are centered with `vertical-align: -0.15em`:
+
+<h1>
+  <Icon id='code' /> Flex alignment
+</h1>
+
+<h2>
+  <Icon id='code' /> Flex alignment
+</h2>
+
+<h3>
+  <Icon id='code' /> Flex alignment
+</h3>
 
 Checkmate... Hey, you know how I'm, like, always trying to save the planet? Here's my
-chance <Icon id="coffee" baseline />.They're using our own satellites against us. And the
-clock is ticking. Must go faster... go, go, go, go, go! I was part of something special.
-Remind me to thank John for a lovely weekend.
+chance <Icon id="code" matchTextBaseline />.They're using our own satellites against us.
+And the clock is ticking. Must go faster... go, go, go, go, go! I was part of something
+special. Remind me to thank John for a lovely weekend.
 
 ## Props
 
