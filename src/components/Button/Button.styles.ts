@@ -8,13 +8,13 @@ const { theme } = getMergedConfig()
 export const Button = {
   // BASE
   '.🅲Button-base': {
-    'alignItems': 'center',
-    'display': 'inline-flex',
-    'justifyContent': 'center',
-    'lineHeight': 1, // ensures text is center aligned within flex layout
+    alignItems: 'center',
+    display: 'inline-flex',
+    justifyContent: 'center',
+    lineHeight: 1, // ensures text is center aligned within flex layout
 
-    'userSelect': 'none', // Prevent text selection on click of buttons
-    'whiteSpace': 'nowrap', // By default button content shouldn't wrap
+    userSelect: 'none', // Prevent text selection on click of buttons
+    whiteSpace: 'nowrap', // By default button content shouldn't wrap
 
     '&.🅲-disabled': {
       cursor: 'default',
@@ -24,15 +24,15 @@ export const Button = {
 
   // VARIANTS
   '.🅲Button-filled': {
-    'height': '2rem',
-    'padding': '0 1rem',
-    'backgroundColor': theme.colors.primary[500],
-    'border': `1px solid ${theme.colors.primary[500]}`,
-    'borderRadius': theme.borderRadius.md,
-    'color': theme.colors.inverse,
-    'fontSize': theme.fontSize.small,
+    height: '2rem',
+    padding: '0 1rem',
+    backgroundColor: theme.colors.primary[500],
+    border: `1px solid ${theme.colors.primary[500]}`,
+    borderRadius: theme.borderRadius.md,
+    color: theme.colors.inverse,
+    fontSize: theme.fontSize.small,
 
-    'transition': 'background-color 0.15s linear',
+    transition: 'background-color 0.15s linear',
 
     '&:hover, &.🅲-hover': {
       borderColor: theme.colors.primary[500],
@@ -52,15 +52,15 @@ export const Button = {
     // '&.🅲Button-errorColor': { ... }
   },
   '.🅲Button-outlined': {
-    'height': '2rem',
-    'padding': '0 1rem',
-    'backgroundColor': 'transparent',
-    'border': `1px solid ${theme.colors.primary[500]}`,
-    'borderRadius': theme.borderRadius.md,
-    'color': theme.colors.primary[500],
-    'fontSize': theme.fontSize.small,
+    height: '2rem',
+    padding: '0 1rem',
+    backgroundColor: 'transparent',
+    border: `1px solid ${theme.colors.primary[500]}`,
+    borderRadius: theme.borderRadius.md,
+    color: theme.colors.primary[500],
+    fontSize: theme.fontSize.small,
 
-    'transition': 'color 0.15s linear',
+    transition: 'color 0.15s linear',
 
     '&:hover, &.🅲-hover': {
       borderColor: theme.colors.primary[700],

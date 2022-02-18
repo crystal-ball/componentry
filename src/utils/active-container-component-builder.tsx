@@ -212,7 +212,7 @@ export function activeContainerBuilder<TProps extends ActiveContainerBaseProps>(
       <ActiveCtx.Provider value={activeValues}>
         {element({
           'data-id': guid,
-          'componentCx': [
+          componentCx: [
             `🅲${displayName}-base`,
             {
               [`🅲${displayName}-${size}Size`]: size,
@@ -221,11 +221,11 @@ export function activeContainerBuilder<TProps extends ActiveContainerBaseProps>(
           ],
           // For elements with mouse events we need to know when the mouse event
           // occurs on the parent element, not the action element
-          'onMouseEnter': mouseEvents ? handleActivate : undefined,
-          'onMouseLeave': mouseEvents ? handleDeactivate : undefined,
+          onMouseEnter: mouseEvents ? handleActivate : undefined,
+          onMouseLeave: mouseEvents ? handleDeactivate : undefined,
 
           // Handle render patterns
-          'children':
+          children:
             typeof children === 'function'
               ? children(activeValues) // Handle FaCC syntax
               : children,

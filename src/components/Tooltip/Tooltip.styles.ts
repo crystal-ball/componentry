@@ -20,10 +20,10 @@ export const tooltipStyles = {
   // --- CONTENT POSITIONER
   '.🅲TooltipContent': {
     // Content container overrides the width constraints for parent element
-    'width': '300px',
-    'position': 'absolute',
-    'opacity': 0,
-    'transition': 'opacity 0.2s cubic-bezier(0.4, 0, 0.2, 1)',
+    width: '300px',
+    position: 'absolute',
+    opacity: 0,
+    transition: 'opacity 0.2s cubic-bezier(0.4, 0, 0.2, 1)',
 
     '&.🅲-active': {
       opacity: 1,
@@ -47,13 +47,13 @@ export const tooltipStyles = {
 
   // --- ARROW
   '.🅲TooltipContentArrow': {
-    'height': tooltipArrowWidth * 2 + 'px',
-    'left': '0.5rem',
-    'overflow': 'hidden',
-    'pointerEvents': 'none', // Prevents mouseenter of tip that slightly overlaps action
-    'position': 'absolute',
-    'top': tooltipArrowWidth * -1 + 'px',
-    'width': tooltipArrowWidth * 2 + 'px',
+    height: tooltipArrowWidth * 2 + 'px',
+    left: '0.5rem',
+    overflow: 'hidden',
+    pointerEvents: 'none', // Prevents mouseenter of tip that slightly overlaps action
+    position: 'absolute',
+    top: tooltipArrowWidth * -1 + 'px',
+    width: tooltipArrowWidth * 2 + 'px',
 
     '&:after': {
       background: theme.colors.gray[800],

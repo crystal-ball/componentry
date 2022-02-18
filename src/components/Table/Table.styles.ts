@@ -26,11 +26,11 @@ export const tableStyles = {
   '.🅲TableBody': {},
 
   '.🅲TableRow': {
-    'display': 'grid',
+    display: 'grid',
     // grid-template-columns: repeat(auto-fit, minmax(1px, 1fr));
     // Default table row grid will be columns of even width
-    'gridAutoColumns': '1fr',
-    'gridAutoFlow': 'column',
+    gridAutoColumns: '1fr',
+    gridAutoFlow: 'column',
     // Add a border top to every row after the first one (not on first or there would
     // be a double border at the top of the table)
     '& + &': {

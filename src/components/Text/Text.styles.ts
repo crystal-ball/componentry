@@ -23,8 +23,8 @@ export const Text = {
     color: theme.colors.gray[900],
   },
   '.🅲Text-body': {
-    'fontSize': theme.fontSize.body,
-    'color': theme.colors.gray[800],
+    fontSize: theme.fontSize.body,
+    color: theme.colors.gray[800],
 
     // Set spacing between multiple paragraphs using sibling selector and
     // margin-top.

@@ -9,11 +9,10 @@ export interface CloseProps extends ComponentBaseProps<'button'> {
 }
 
 export const closeBase: CloseProps = {
-  'aria-label': 'close',
-  'as': 'button',
-  'type': 'button',
-  'componentCx': `🅲Close-base`,
-  'children': <Icon id='close' />,
+  as: 'button',
+  type: 'button',
+  componentCx: `🅲Close-base`,
+  children: <Icon id='close' />,
 }
 
 /**

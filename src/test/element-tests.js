@@ -71,7 +71,7 @@ export function elementTests(TestComponent, testProps) {
         <Theme
           theme={{
             [componentName]: {
-              'themeCx': 'theme-class',
+              themeCx: 'theme-class',
               'data-radical': 'hecka',
             },
           }}

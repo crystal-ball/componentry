@@ -1,6 +1,8 @@
 # Don't Lint Me!
 # -------------------------------------
 
+.prettierrc.js
+
 # Babel plugin fixtures aren't fully valid
 # -------------------------------------
 src/plugin-babel/__fixtures__

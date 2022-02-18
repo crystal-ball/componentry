@@ -8,18 +8,18 @@ const { theme } = getMergedConfig()
 export const inputStyles = {
   // FIELD
   '.🅲InputField': {
-    'display': 'block',
-    'width': '100%',
-    'padding': `${theme.spacing[1]} ${theme.spacing[2]}`,
-    'fontSize': theme.fontSize.body,
-    'lineHeight': 1,
-    'color': theme.colors.gray[700],
-    'backgroundColor': theme.colors.background,
-    'backgroundClip': 'padding-box',
-    'border': `${theme.borderWidth.DEFAULT} solid ${theme.borderColor.DEFAULT}`,
-    'borderRadius': theme.borderRadius.md, // Note: This has no effect on <select>s in some browsers, due to the limited style-ability of `<select>`s in CSS.
+    display: 'block',
+    width: '100%',
+    padding: `${theme.spacing[1]} ${theme.spacing[2]}`,
+    fontSize: theme.fontSize.body,
+    lineHeight: 1,
+    color: theme.colors.gray[700],
+    backgroundColor: theme.colors.background,
+    backgroundClip: 'padding-box',
+    border: `${theme.borderWidth.DEFAULT} solid ${theme.borderColor.DEFAULT}`,
+    borderRadius: theme.borderRadius.md, // Note: This has no effect on <select>s in some browsers, due to the limited style-ability of `<select>`s in CSS.
 
-    'transition': 'borderColor 0.2s linear',
+    transition: 'borderColor 0.2s linear',
 
     // Customize the `:focus` state to imitate native WebKit styles.
     '&:focus': {

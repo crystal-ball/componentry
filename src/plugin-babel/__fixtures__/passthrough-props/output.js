@@ -9,9 +9,9 @@ export default function Test() {
     className: 'flex',
     children: [
       /*#__PURE__*/ _jsx('p', {
-        'className': '\uD83C\uDD72Text-base \uD83C\uDD72Text-body',
+        className: '\uD83C\uDD72Text-base \uD83C\uDD72Text-body',
         'data-skip': 'passthrough',
-        'children': 'Passthrough props',
+        children: 'Passthrough props',
       }),
       /*#__PURE__*/ _jsx('p', {
         className: '\uD83C\uDD72Text-base \uD83C\uDD72Text-body',

@@ -14,19 +14,19 @@ export const Link = {
 
   // VARIANTS
   '.🅲Link-text': {
-    'fontSize': theme.fontSize.body,
-    'color': theme.colors.primary[500],
-    'textDecoration': 'underline',
+    fontSize: theme.fontSize.body,
+    color: theme.colors.primary[500],
+    textDecoration: 'underline',
     '&:hover': {
       color: theme.colors.primary[700],
     },
   },
 
   '.🅲Link-inherit': {
-    'fontSize': 'inherit',
-    'fontWeight': 'inherit',
-    'color': theme.colors.primary[500],
-    'textDecoration': 'underline',
+    fontSize: 'inherit',
+    fontWeight: 'inherit',
+    color: theme.colors.primary[500],
+    textDecoration: 'underline',
     '&:hover': {
       color: theme.colors.primary[700],
     },

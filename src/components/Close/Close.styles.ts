@@ -14,22 +14,22 @@
 export const Close = {
   '.🅲Close-base': {
     // Layout
-    'alignItems': 'center',
-    'display': 'inline-flex',
-    'justifyContent': 'center',
-    'lineHeight': 1, // ensures icon is center aligned within flex layout
+    alignItems: 'center',
+    display: 'inline-flex',
+    justifyContent: 'center',
+    lineHeight: 1, // ensures icon is center aligned within flex layout
 
     // Button resets
-    'appearance': 'none', // Remove Chrome native button styling
-    'padding': 0,
-    'backgroundColor': 'transparent',
-    'border': 'none',
-    'borderRadius': 0,
-    'userSelect': 'none',
+    appearance: 'none', // Remove Chrome native button styling
+    padding: 0,
+    backgroundColor: 'transparent',
+    border: 'none',
+    borderRadius: 0,
+    userSelect: 'none',
 
     // Animate close icon opacity on hover
-    'opacity': 0.6,
-    'transition': 'opacity 0.2s cubic-bezier(0.4, 0, 0.2, 1)',
+    opacity: 0.6,
+    transition: 'opacity 0.2s cubic-bezier(0.4, 0, 0.2, 1)',
 
     '&:hover,&:focus': {
       opacity: 1,

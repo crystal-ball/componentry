@@ -17,17 +17,16 @@ exports[`<Alert /> snapshots renders correctly 1`] = `
     Warning!
   </div>
   <button
-    aria-label="close"
     class="🅲Close-base 🅲AlertClose"
     type="button"
   >
     <svg
+      aria-label="close"
       class="🅲Icon-base 🅲Icon-font icon-close"
       role="img"
     >
       <use
         href="#close"
-        xlink:href="#close"
       />
     </svg>
   </button>

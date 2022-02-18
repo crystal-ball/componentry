@@ -51,7 +51,7 @@ export const foundationStyles = {
     boxSizing: 'border-box',
   },
 
-  'html': {
+  html: {
     lineHeight: theme.lineHeight.normal, // Use a consistent sensible line-height in all browsers.
     tabSize: 4, // Use a more readable tab size.
     fontFamily: theme.fontFamily.body, // Use the user's configured `sans` font-family by default.
@@ -59,7 +59,7 @@ export const foundationStyles = {
     // '-webkit-text-size-adjust': '100%' /* Prevent adjustments of font size after orientation changes in iOS. */,
   },
 
-  'body': {
+  body: {
     margin: 0, // Remove the margin in all browsers.
     lineHeight: 'inherit', // Inherit line-height from `html` so users can set them as a class directly on the `html` element.
   },
@@ -71,7 +71,7 @@ export const foundationStyles = {
     margin: 0,
   },
 
-  'p': {
+  p: {
     margin: 0,
   },
 
@@ -79,7 +79,7 @@ export const foundationStyles = {
     margin: 0,
   },
 
-  'a': {
+  a: {
     // Reset links to optimize for opt-in styling instead of opt-out.
     color: 'inherit',
     textDecoration: 'inherit',
@@ -90,7 +90,7 @@ export const foundationStyles = {
     fontWeight: 'bolder',
   },
 
-  'small': {
+  small: {
     // Add the correct font size in all browsers.
     fontSize: '80%',
   },
@@ -99,21 +99,21 @@ export const foundationStyles = {
     fontFamily: theme.fontFamily.monospace, // Use the user's configured `mono` font family by default.
     fontSize: '1em', // Correct the odd `em` font sizing in all browsers.
   },
-  'pre': {
+  pre: {
     margin: 0,
   },
 
-  'hr': {
+  hr: {
     height: 0, // Add the correct height in Firefox.
     margin: 0, // Remove default spacing
     color: 'inherit', // Correct the inheritance of border color in Firefox. (https://bugzilla.mozilla.org/show_bug.cgi?id=190655)
   },
 
-  'sub': {
+  sub: {
     bottom: '-0.25em',
   },
 
-  'sup': {
+  sup: {
     top: '-0.5em',
   },
 
@@ -130,24 +130,24 @@ export const foundationStyles = {
     textDecoration: 'underline dotted',
   },
 
-  'table': {
+  table: {
     textIndent: 0, // Remove text indentation from table contents in Chrome and Safari. (https://bugs.chromium.org/p/chromium/issues/detail?id=999088, https://bugs.webkit.org/show_bug.cgi?id=201297)
     borderColor: 'inherit', // Correct table border color inheritance in all Chrome and Safari. (https://bugs.chromium.org/p/chromium/issues/detail?id=935729, https://bugs.webkit.org/show_bug.cgi?id=195016)
     borderCollapse: 'collapse', // Remove gaps between table borders by default.
   },
 
-  'button': {
+  button: {
     '-webkit-appearance': 'button', // Correct the inability to style clickable types in iOS and Safari.
-    'backgroundColor': 'transparent', // Remove default button styles.
-    'backgroundImage': 'none', // Remove default button styles.
-    'color': 'inherit', // Change the font styles in all browsers.
-    'cursor': 'pointer', // Set the default cursor for buttons.
-    'fontFamily': 'inherit', // Change the font styles in all browsers.
-    'fontSize': '100%', // Change the font styles in all browsers.
-    'lineHeight': 'inherit', // Change the font styles in all browsers.
-    'margin': 0, // Remove the margin in Firefox and Safari.
-    'padding': 0, // Remove default padding in all browsers.
-    'textTransform': 'none', // Remove the inheritance of text transform in Edge and Firefox.
+    backgroundColor: 'transparent', // Remove default button styles.
+    backgroundImage: 'none', // Remove default button styles.
+    color: 'inherit', // Change the font styles in all browsers.
+    cursor: 'pointer', // Set the default cursor for buttons.
+    fontFamily: 'inherit', // Change the font styles in all browsers.
+    fontSize: '100%', // Change the font styles in all browsers.
+    lineHeight: 'inherit', // Change the font styles in all browsers.
+    margin: 0, // Remove the margin in Firefox and Safari.
+    padding: 0, // Remove default padding in all browsers.
+    textTransform: 'none', // Remove the inheritance of text transform in Edge and Firefox.
   },
 
   "[role='button']": {
@@ -166,7 +166,7 @@ export const foundationStyles = {
     margin: 0, // Remove the margin in Firefox and Safari.
     padding: 0, // Remove default padding in all browsers.
   },
-  'select': {
+  select: {
     textTransform: 'none', // Remove the inheritance of text transform in Edge and Firefox.
   },
 
@@ -178,7 +178,7 @@ export const foundationStyles = {
     boxShadow: 'none', // Remove the additional `:invalid` styles in Firefox. (https://github.com/mozilla/gecko-dev/blob/2f9eacd9d3d995c937b4251a5557d95d494c9be1/layout/style/res/forms.css#L728-L737)
   },
 
-  'progress': {
+  progress: {
     verticalAlign: 'baseline', // Add the correct vertical alignment in Chrome and Firefox.
   },
 
@@ -188,7 +188,7 @@ export const foundationStyles = {
 
   "[type='search']": {
     '-webkit-appearance': 'textfield', // Correct the odd appearance in Chrome and Safari.
-    'outlineOffset': '-2px', // Correct the outline style in Safari.
+    outlineOffset: '-2px', // Correct the outline style in Safari.
   },
 
   '::-webkit-search-decoration': {
@@ -197,19 +197,19 @@ export const foundationStyles = {
 
   '::-webkit-file-upload-button': {
     '-webkit-appearance': 'button', // Correct the inability to style clickable types in iOS and Safari.
-    'font': 'inherit', // Change font properties to `inherit` in Safari.
+    font: 'inherit', // Change font properties to `inherit` in Safari.
   },
 
-  'summary': {
+  summary: {
     display: 'list-item', // Add the correct display in Chrome and Safari.
   },
 
-  'fieldset': {
+  fieldset: {
     margin: 0,
     padding: 0,
   },
 
-  'legend': {
+  legend: {
     padding: 0,
   },
 
@@ -219,7 +219,7 @@ export const foundationStyles = {
     padding: 0,
   },
 
-  'textarea': {
+  textarea: {
     resize: 'vertical', // Prevent resizing textareas horizontally by default.
   },
 

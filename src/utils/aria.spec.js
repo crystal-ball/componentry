@@ -100,7 +100,7 @@ describe('ariaAttrs()', () => {
       'aria-controls': 'test',
       'aria-describedby': 'test',
       'aria-haspopup': 'true',
-      'id': 'test',
+      id: 'test',
       'aria-labelledby': 'test',
     })
   })
@@ -120,7 +120,7 @@ describe('ariaAttrs()', () => {
       }),
     ).toStrictEqual({
       'aria-hidden': 'false',
-      'id': 'test-tab1-content',
+      id: 'test-tab1-content',
       'aria-labelledby': 'test-tab1-action',
     })
   })

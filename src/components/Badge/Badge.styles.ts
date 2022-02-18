@@ -7,9 +7,9 @@ const { theme } = getMergedConfig()
 
 export const Badge = {
   '.🅲Badge-base': {
-    'display': 'inline-flex',
-    'alignItems': 'center',
-    'whiteSpace': 'nowrap',
+    display: 'inline-flex',
+    alignItems: 'center',
+    whiteSpace: 'nowrap',
 
     // Empty badges collapse automatically
     '&:empty': {

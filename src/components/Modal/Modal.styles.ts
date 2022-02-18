@@ -13,15 +13,15 @@ const { theme } = getMergedConfig()
 
 export const modalStyles = {
   '.🅲ModalOverlay': {
-    'position': 'fixed',
-    'top': 0,
-    'right': 0,
-    'bottom': 0,
-    'left': 0,
-    'zIndex': theme.zIndex.modal,
-    'background': '#3a4b53',
-    'opacity': 0,
-    'transition': 'opacity 0.2s cubic-bezier(0.4, 0, 0.2, 1)',
+    position: 'fixed',
+    top: 0,
+    right: 0,
+    bottom: 0,
+    left: 0,
+    zIndex: theme.zIndex.modal,
+    background: '#3a4b53',
+    opacity: 0,
+    transition: 'opacity 0.2s cubic-bezier(0.4, 0, 0.2, 1)',
 
     '&.🅲-active': {
       opacity: 0.7,
@@ -29,22 +29,22 @@ export const modalStyles = {
   },
 
   '.🅲ModalPositioner': {
-    'position': 'fixed',
-    'top': 0,
-    'right': 0,
-    'bottom': 0,
-    'left': 0,
-    'zIndex': theme.zIndex.modal,
-    'height': '100vh',
-    'display': 'flex',
-    'justifyContent': 'center',
-    'alignItems': 'flex-start',
+    position: 'fixed',
+    top: 0,
+    right: 0,
+    bottom: 0,
+    left: 0,
+    zIndex: theme.zIndex.modal,
+    height: '100vh',
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'flex-start',
     // Providing padding in positioner simplifies layout for long modals
-    'paddingTop': theme.spacing[6],
-    'paddingBottom': theme.spacing[6],
+    paddingTop: theme.spacing[6],
+    paddingBottom: theme.spacing[6],
 
-    'opacity': 0.5,
-    'transition': 'opacity 0.2s cubic-bezier(0.4, 0, 0.2, 1)',
+    opacity: 0.5,
+    transition: 'opacity 0.2s cubic-bezier(0.4, 0, 0.2, 1)',
 
     '&.🅲-active': {
       opacity: 1,
@@ -52,19 +52,19 @@ export const modalStyles = {
   },
 
   '.🅲ModalContainer': {
-    'display': 'flex',
-    'flexDirection': 'column',
-    'backgroundColor': theme.colors.background,
-    'maxWidth': '750px',
+    display: 'flex',
+    flexDirection: 'column',
+    backgroundColor: theme.colors.background,
+    maxWidth: '750px',
     // Prevent inner element bgs from overlaying border style
-    'backgroundClip': 'padding-box',
-    'border': `${theme.borderWidth.DEFAULT} solid ${theme.borderColor.DEFAULT}`,
+    backgroundClip: 'padding-box',
+    border: `${theme.borderWidth.DEFAULT} solid ${theme.borderColor.DEFAULT}`,
     // boxShadow: box-shadow($modal-container-box-shadow),
-    'borderRadius': theme.borderRadius.md,
+    borderRadius: theme.borderRadius.md,
 
     // Horizontally center the content
-    'marginLeft': 'auto',
-    'marginRight': 'auto',
+    marginLeft: 'auto',
+    marginRight: 'auto',
 
     '&.center': {
       margin: 'auto',

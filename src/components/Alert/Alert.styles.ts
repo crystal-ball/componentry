@@ -25,12 +25,12 @@ export const Alert: Record<string, unknown> = {
 
   // VARIANTS
   '.🅲Alert-filled': {
-    'padding': theme.spacing[2],
-    'background': theme.colors.primary[100],
-    'color': theme.colors.primary[500],
-    'border': '1px solid transparent',
-    'borderRadius': theme.borderRadius.md,
-    'borderColor': theme.colors.primary[300],
+    padding: theme.spacing[2],
+    background: theme.colors.primary[100],
+    color: theme.colors.primary[500],
+    border: '1px solid transparent',
+    borderRadius: theme.borderRadius.md,
+    borderColor: theme.colors.primary[300],
 
     '& .🅲AlertLink': {
       fontWeight: theme.fontWeight.bold,

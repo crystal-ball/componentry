@@ -12,10 +12,10 @@ export const popoverStyles = {
   '.🅲Popover-base': {
     // Default align content to dead center of action the specific content styles can
     // then easily move to top/left/right/bottom where needed
-    'alignItems': 'center',
-    'display': 'inline-flex', // flex instead of block for easier center alignment of content
-    'justifyContent': 'center',
-    'position': 'relative',
+    alignItems: 'center',
+    display: 'inline-flex', // flex instead of block for easier center alignment of content
+    justifyContent: 'center',
+    position: 'relative',
 
     // Directional styles
 
@@ -141,9 +141,9 @@ export const popoverStyles = {
   // tip with overflow hidden. Then inside that container we create a square of the
   // same dimensions, and rotate it 45 degrees to create the tip effect
   '.🅲PopoverArrow': {
-    'height': `${arrowWidth}px`,
-    'overflow': 'hidden',
-    'width': `${arrowWidth}px`,
+    height: `${arrowWidth}px`,
+    overflow: 'hidden',
+    width: `${arrowWidth}px`,
 
     '&:after': {
       border: `${theme.borderWidth.DEFAULT} solid ${theme.borderColor.DEFAULT}`,

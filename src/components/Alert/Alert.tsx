@@ -67,8 +67,8 @@ export const Alert: Alert = (props) => {
   if (dismissible && !active && mounted === 'visible') return null
 
   return element({
-    'role': 'alert',
-    'componentCx': [
+    role: 'alert',
+    componentCx: [
       `🅲Alert-base 🅲Alert-${variant}`,
       {
         [`🅲Alert-${color}Color`]: color,
@@ -77,7 +77,7 @@ export const Alert: Alert = (props) => {
       },
     ],
     'aria-hidden': dismissible ? String(!active) : 'false',
-    'children': (
+    children: (
       <>
         {/* Provide the alert color context for screen readers */}
         <div className='sr-only'>{ariaTitle || `${color} alert`}</div>

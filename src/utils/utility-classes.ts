@@ -19,35 +19,35 @@ export interface UtilityPropsOverrides {}
  */
 export interface UtilityPropsDefaults {
   /** Sets active style */
-  'active'?: boolean | string
+  active?: boolean | string
   /** Sets align-content style */
-  'alignContent'?: 'start' | 'end' | 'center' | 'between' | 'around' | 'stretch'
+  alignContent?: 'start' | 'end' | 'center' | 'between' | 'around' | 'stretch'
   /** Sets align-items style */
-  'alignItems'?: 'start' | 'end' | 'center' | 'baseline' | 'stretch'
+  alignItems?: 'start' | 'end' | 'center' | 'baseline' | 'stretch'
   /** Sets align-self style */
-  'alignSelf'?: 'auto' | 'start' | 'end' | 'center' | 'baseline' | 'stretch'
+  alignSelf?: 'auto' | 'start' | 'end' | 'center' | 'baseline' | 'stretch'
   /** Sets background color style */
-  'backgroundColor'?: 'primary' | 'success' | 'warning' | 'critical'
+  backgroundColor?: 'primary' | 'success' | 'warning' | 'critical'
   /** Sets a bold font weight style */
-  'bold'?: boolean
+  bold?: boolean
   /** Sets a 1px border-width style */
-  'border'?: boolean
+  border?: boolean
   /** Sets a border-width size style */
-  'borderWidth'?: string | number
+  borderWidth?: string | number
   /** Sets a 1px border-bottom-width style */
-  'borderBottom'?: boolean
+  borderBottom?: boolean
   /** Sets border color style */
-  'borderColor'?: 'primary'
+  borderColor?: 'primary'
   /** Sets a 1px border-left-width style */
-  'borderLeft'?: boolean
+  borderLeft?: boolean
   /** Sets a 1px border-right-width style */
-  'borderRight'?: boolean
+  borderRight?: boolean
   /** Sets a 1px border-top-width style */
-  'borderTop'?: boolean
+  borderTop?: boolean
   /** Sets a disabled style */
-  'disabled'?: boolean
+  disabled?: boolean
   /** Sets a display style */
-  'display'?:
+  display?:
     | 'block'
     | 'inline-block'
     | 'inline'
@@ -60,87 +60,87 @@ export interface UtilityPropsDefaults {
     | 'list-item'
     | 'hidden'
   /** Sets a text color style */
-  'color'?: string
+  color?: string
   /** Sets a `flex-direction` flex style */
-  'flexDirection'?: 'column' | 'column-reverse' | 'row-reverse' | 'row'
+  flexDirection?: 'column' | 'column-reverse' | 'row-reverse' | 'row'
   /** Sets a `flex-wrap` flex style */
-  'flexWrap'?: 'wrap' | 'nowrap' | 'wrap-reverse'
+  flexWrap?: 'wrap' | 'nowrap' | 'wrap-reverse'
   /** Sets a font-family style */
-  'fontFamily'?: 'body' | 'mono'
+  fontFamily?: 'body' | 'mono'
   /** Sets a font-size style */
-  'fontSize'?: 'sm' | 'base' | 'lg'
+  fontSize?: 'sm' | 'base' | 'lg'
   /** Text font-weight style */
-  'fontWeight'?: 'light' | 'normal' | 'bold'
+  fontWeight?: 'light' | 'normal' | 'bold'
   /** Sets height style */
-  'height'?: 'auto' | 'full' | 'screen' | 'min' | 'max' | 'fit' | string | number
+  height?: 'auto' | 'full' | 'screen' | 'min' | 'max' | 'fit' | string | number
   /** Sets a display: none style */
-  'invisible'?: boolean
+  invisible?: boolean
   /** Sets an italic style */
-  'italic'?: boolean
+  italic?: boolean
   /** Sets justify-content style */
-  'justifyContent'?: 'start' | 'end' | 'center' | 'between' | 'around' | 'evenly'
+  justifyContent?: 'start' | 'end' | 'center' | 'between' | 'around' | 'evenly'
   /** Sets a `justify-items` style with a `justify-items-{value}` class */
-  'justifyItems'?: 'start' | 'end' | 'center' | 'stretch'
+  justifyItems?: 'start' | 'end' | 'center' | 'stretch'
   /** Sets a `justify-self` style with a `justify-self-{value}` class */
-  'justifySelf'?: 'auto' | 'start' | 'end' | 'center' | 'stretch'
+  justifySelf?: 'auto' | 'start' | 'end' | 'center' | 'stretch'
   /** Sets a letter-spacing style */
-  'letterSpacing'?: 'tighter' | 'tight' | 'normal' | 'wide' | 'wider' | 'widest'
+  letterSpacing?: 'tighter' | 'tight' | 'normal' | 'wide' | 'wider' | 'widest'
   /** Sets a line-height style */
-  'lineHeight'?: 'none' | 'tight' | 'snug' | 'normal' | 'relaxed' | 'loose' | number
+  lineHeight?: 'none' | 'tight' | 'snug' | 'normal' | 'relaxed' | 'loose' | number
   /** Sets a max-width style */
-  'maxWidth'?: 'none' | 'full' | 'min' | 'max' | 'fit' | 'prose' | 0 | string
+  maxWidth?: 'none' | 'full' | 'min' | 'max' | 'fit' | 'prose' | 0 | string
   /** Sets a max-height style */
-  'maxHeight'?: 'full' | 'screen' | 'min' | 'max' | 'fit' | number
+  maxHeight?: 'full' | 'screen' | 'min' | 'max' | 'fit' | number
   /** Sets a min-height style */
-  'minHeight'?: 'full' | 'screen' | 'min' | 'max' | 'fit' | 0
+  minHeight?: 'full' | 'screen' | 'min' | 'max' | 'fit' | 0
   /** Sets a min-width style */
-  'minWidth'?: 'full' | 'min' | 'max' | 'fit' | 0
+  minWidth?: 'full' | 'min' | 'max' | 'fit' | 0
   /** Sets position style */
-  'position'?: 'static' | 'relative' | 'absolute' | 'fixed' | 'sticky'
+  position?: 'static' | 'relative' | 'absolute' | 'fixed' | 'sticky'
   /** Sets text-align style */
-  'textAlign'?: 'left' | 'center' | 'right' | 'justify'
+  textAlign?: 'left' | 'center' | 'right' | 'justify'
   /** Sets text-transform style */
-  'textTransform'?: 'lowercase' | 'uppercase' | 'capitalize' | 'normal-case'
+  textTransform?: 'lowercase' | 'uppercase' | 'capitalize' | 'normal-case'
   /** Sets visible style */
-  'visible'?: boolean
+  visible?: boolean
   /** Sets width style */
-  'width'?: 'auto' | 'full' | 'screen' | 'min' | 'max' | 'fit' | string | number
+  width?: 'auto' | 'full' | 'screen' | 'min' | 'max' | 'fit' | string | number
 
   // --- Spacing
   /** Sets a `gap` style */
-  'gap'?: string | number
+  gap?: string | number
   /** Sets a column-gap style */
   'gap-x'?: string | number
   /** Sets a row-gap style */
   'gap-y'?: string | number
   /** margin */
-  'm'?: string | number
+  m?: string | number
   /** margin-top */
-  'mt'?: string | number
+  mt?: string | number
   /** margin-right */
-  'mr'?: string | number
+  mr?: string | number
   /** margin-bottom */
-  'mb'?: string | number
+  mb?: string | number
   /** margin-left */
-  'ml'?: string | number
+  ml?: string | number
   /** margin-left && margin-right */
-  'mx'?: string | number
+  mx?: string | number
   /** margin-top && margin-bottom  */
-  'my'?: string | number
+  my?: string | number
   /** padding */
-  'p'?: string | number
+  p?: string | number
   /** padding-top */
-  'pt'?: string | number
+  pt?: string | number
   /** padding-right */
-  'pr'?: string | number
+  pr?: string | number
   /** padding-bottom */
-  'pb'?: string | number
+  pb?: string | number
   /** padding-left */
-  'pl'?: string | number
+  pl?: string | number
   /** padding-left && padding-right */
-  'px'?: string | number
+  px?: string | number
   /** padding-top && padding-bottom */
-  'py'?: string | number
+  py?: string | number
 }
 
 /**
@@ -150,60 +150,60 @@ export type UtilityProps = MergePropTypes<UtilityPropsDefaults, UtilityPropsOver
 
 // Map of utility props for quickly filtering out Componentry props from user props
 export const utilityProps: { [Prop in keyof UtilityPropsDefaults]: 1 } = {
-  'active': 1,
-  'alignContent': 1,
-  'alignItems': 1,
-  'alignSelf': 1,
-  'backgroundColor': 1,
-  'bold': 1,
-  'border': 1,
-  'borderBottom': 1,
-  'borderColor': 1,
-  'borderLeft': 1,
-  'borderRight': 1,
-  'borderTop': 1,
-  'color': 1,
-  'disabled': 1,
-  'display': 1,
-  'flexDirection': 1,
-  'flexWrap': 1,
-  'fontFamily': 1,
-  'fontSize': 1,
-  'fontWeight': 1,
-  'gap': 1,
+  active: 1,
+  alignContent: 1,
+  alignItems: 1,
+  alignSelf: 1,
+  backgroundColor: 1,
+  bold: 1,
+  border: 1,
+  borderBottom: 1,
+  borderColor: 1,
+  borderLeft: 1,
+  borderRight: 1,
+  borderTop: 1,
+  color: 1,
+  disabled: 1,
+  display: 1,
+  flexDirection: 1,
+  flexWrap: 1,
+  fontFamily: 1,
+  fontSize: 1,
+  fontWeight: 1,
+  gap: 1,
   'gap-x': 1,
   'gap-y': 1,
-  'height': 1,
-  'invisible': 1,
-  'italic': 1,
-  'justifyContent': 1,
-  'justifyItems': 1,
-  'justifySelf': 1,
-  'letterSpacing': 1,
-  'lineHeight': 1,
-  'm': 1,
-  'maxHeight': 1,
-  'maxWidth': 1,
-  'mb': 1,
-  'minHeight': 1,
-  'minWidth': 1,
-  'ml': 1,
-  'mr': 1,
-  'mt': 1,
-  'mx': 1,
-  'my': 1,
-  'p': 1,
-  'pb': 1,
-  'pl': 1,
-  'position': 1,
-  'pr': 1,
-  'pt': 1,
-  'px': 1,
-  'py': 1,
-  'textAlign': 1,
-  'textTransform': 1,
-  'visible': 1,
-  'width': 1,
+  height: 1,
+  invisible: 1,
+  italic: 1,
+  justifyContent: 1,
+  justifyItems: 1,
+  justifySelf: 1,
+  letterSpacing: 1,
+  lineHeight: 1,
+  m: 1,
+  maxHeight: 1,
+  maxWidth: 1,
+  mb: 1,
+  minHeight: 1,
+  minWidth: 1,
+  ml: 1,
+  mr: 1,
+  mt: 1,
+  mx: 1,
+  my: 1,
+  p: 1,
+  pb: 1,
+  pl: 1,
+  position: 1,
+  pr: 1,
+  pt: 1,
+  px: 1,
+  py: 1,
+  textAlign: 1,
+  textTransform: 1,
+  visible: 1,
+  width: 1,
 }
 
 const activeProps = {
@@ -227,8 +227,8 @@ function generateClassNames<Props extends UtilityProps>(p: Props): string {
     // LAYOUT
     [p.position ?? 'position']: p.position,
     [p.display ?? 'display']: p.display,
-    'invisible': p.invisible,
-    'visible': p.visible,
+    invisible: p.invisible,
+    visible: p.visible,
 
     // FLEXBOX+GRID
     [`content-${p.alignContent}`]: p.alignContent,
@@ -276,13 +276,13 @@ function generateClassNames<Props extends UtilityProps>(p: Props): string {
     [`text-${p.fontSize}`]: p.fontSize,
     [`text-${p.textAlign}`]: p.textAlign,
     [`tracking-${p.letterSpacing}`]: p.letterSpacing,
-    'italic': p.italic,
+    italic: p.italic,
 
     // BACKGROUNDS
     [`bg-${p.backgroundColor}`]: p.backgroundColor,
 
     // BORDERS
-    'border': p.border, // 1px borderWidth
+    border: p.border, // 1px borderWidth
     'border-b': p.borderBottom, // 1px borderWidth
     'border-l': p.borderLeft, // 1px borderWidth
     'border-r': p.borderRight, // 1px borderWidth
