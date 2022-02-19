@@ -70,14 +70,6 @@ export const plugin: PluginCreator<Record<string, never>> = () => {
             parser: postcssJs,
           })
           nodes = ast.root.nodes // eslint-disable-line prefer-destructuring
-        } else if (directiveTarget in components) {
-          // The component styles should be found, and we replace the
-          // @componentry node with the final set of parsed styles
-          // Adapted from tailwindcss/src/util/parseObjectStyles.js
-          const ast = processor.process(components[directiveTarget], {
-            parser: postcssJs,
-          })
-          nodes = ast.root.nodes // eslint-disable-line prefer-destructuring
         } else if (directiveTarget === 'components') {
           // Convenience rule for including all component styles, iterate through
           // style object to assemble all nodes
@@ -88,6 +80,14 @@ export const plugin: PluginCreator<Record<string, never>> = () => {
             })
             nodes = nodes.concat(ast.root.nodes)
           })
+        } else if (directiveTarget in components) {
+          // The component styles should be found, and we replace the
+          // @componentry node with the final set of parsed styles
+          // Adapted from tailwindcss/src/util/parseObjectStyles.js
+          const ast = processor.process(components[directiveTarget], {
+            parser: postcssJs,
+          })
+          nodes = ast.root.nodes // eslint-disable-line prefer-destructuring
         } else {
           // Fail fast for bad directives, eg "@componentry ohno;"
           throw new Error(`Unknown @componentry param: ${atRule.params}`)
