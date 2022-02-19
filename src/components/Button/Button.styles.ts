@@ -5,7 +5,7 @@ const { theme } = getMergedConfig()
 //                                        <Button /> styles
 // --------------------------------------------------------
 
-export const Button = {
+export const buttonStyles = {
   // BASE
   '.🅲Button-base': {
     alignItems: 'center',

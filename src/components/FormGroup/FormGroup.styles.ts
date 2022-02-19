@@ -5,7 +5,7 @@ const { theme } = getMergedConfig()
 //                                     <FormGroup /> styles
 // --------------------------------------------------------
 
-export const FormGroup = {
+export const formGroupStyles = {
   '.🅲FormGroup': {
     marginBottom: theme.spacing[2],
   },

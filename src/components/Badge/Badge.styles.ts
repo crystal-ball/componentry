@@ -5,7 +5,7 @@ const { theme } = getMergedConfig()
 //                                         <Badge /> styles
 // --------------------------------------------------------
 
-export const Badge = {
+export const badgeStyles = {
   '.🅲Badge-base': {
     display: 'inline-flex',
     alignItems: 'center',

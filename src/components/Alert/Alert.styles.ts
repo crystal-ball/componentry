@@ -5,7 +5,7 @@ const { theme } = getMergedConfig()
 //                                      Componentry <Alert /> styles
 // -----------------------------------------------------------------
 
-export const Alert: Record<string, unknown> = {
+export const alertStyles: Record<string, unknown> = {
   // BASE
   '.🅲Alert-base': {
     // Make the alert container a flex container by default with space-between
