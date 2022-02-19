@@ -13,6 +13,13 @@
 @componentry components;
 @tailwind components;
 
+// Normally this would be an override in theme, but we don't have a theme for this
+// Storybook for simplicity -> Feather icons use stroke, not fill.
+.🅲Icon-font {
+  fill: none;
+  stroke: currentColor;
+}
+
 .sbdocs-h2 {
   /* Storybook is setting this to 0 between stories, give them some space */
   margin-top: 20px !important;
