@@ -46,6 +46,20 @@ export const Icon: React.FC<IconProps> = (props) => {
 }
 Icon.displayName = 'Icon'
 
-export function configureIconElementsMap(newIconElementsMap: ElementsMap) {
-  iconElementsMap = newIconElementsMap
+/**
+ * Configuration method for defining the elements to render for each Icon ID.
+ * @remarks
+ * Configuring an icon elements map isn't necessary if you've setup an SVG
+ * symbol sprite.
+ * @example
+ * import Info from './info.svg'
+ * import Coffee from './coffee.svg'
+ *
+ * configureIconElementsMap({
+ *   info: Info,
+ *   coffee: Coffee
+ * })
+ */
+export function configureIconElementsMap(elementsMap: ElementsMap) {
+  iconElementsMap = elementsMap
 }
