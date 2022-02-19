@@ -5,7 +5,7 @@ const { theme } = getMergedConfig()
 //                                         <Link /> styles
 // -------------------------------------------------------
 
-export const Link = {
+export const linkStyles = {
   // BASE
   '.🅲Link-base': {
     // Reset browser defaults for when Link renders a button element

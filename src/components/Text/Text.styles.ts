@@ -5,7 +5,7 @@ const { theme } = getMergedConfig()
 //                                         <Text /> styles
 // -------------------------------------------------------
 
-export const Text = {
+export const textStyles = {
   // BASE
   '.🅲Text-base': {},
 

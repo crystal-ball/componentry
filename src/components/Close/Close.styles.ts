@@ -11,7 +11,7 @@
 // elements can customize size/color as needed
 //
 // ℹ️ The background image styles for close icons is located in the Icon styles
-export const Close = {
+export const closeStyles = {
   '.🅲Close-base': {
     // Layout
     alignItems: 'center',

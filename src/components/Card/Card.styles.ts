@@ -5,7 +5,7 @@ const { theme } = getMergedConfig()
 //                                          <Card /> styles
 // --------------------------------------------------------
 
-export const Card = {
+export const cardStyles = {
   '.🅲Card-base': {
     position: 'relative',
     display: 'flex',

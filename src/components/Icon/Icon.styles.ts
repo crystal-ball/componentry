@@ -1,7 +1,7 @@
 //                                         <Icon /> styles
 // -------------------------------------------------------
 
-export const Icon = {
+export const iconStyles = {
   // BASE
   '.🅲Icon-base': {
     display: 'inline-block',
