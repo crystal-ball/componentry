@@ -49,7 +49,7 @@ export const Card = ((props) => {
   }
 
   return element({
-    componentCx: `🅲Card-base 🅲Card-${variant}`,
+    componentCx: `C9Y-Card-base C9Y-Card-${variant}`,
     ...rest,
   })
 }) as Card

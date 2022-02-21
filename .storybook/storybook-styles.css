@@ -15,7 +15,7 @@
 
 /* Normally this would be an override in theme, but we don't have a theme for this
  Storybook for simplicity -> Feather icons use stroke, not fill. */
-.🅲Icon-font {
+.C9Y-Icon-font {
   fill: none;
   stroke: currentColor;
 }

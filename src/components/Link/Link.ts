@@ -35,7 +35,7 @@ export const Link = forwardRef<HTMLAnchorElement, LinkProps>((props, ref) => {
     ref,
     as: merged.href ? 'a' : 'button',
     type: merged.href ? undefined : 'button',
-    componentCx: `🅲Link-base 🅲Link-${variant}`,
+    componentCx: `C9Y-Link-base C9Y-Link-${variant}`,
     ...merged,
   })
 })

@@ -45,7 +45,7 @@ export const Icon: FC<IconProps> = (props) => {
   return element({
     as: hasMappedElement ? iconElementsMap[id] : 'svg',
     children: hasMappedElement ? undefined : <use href={`${externalURI}#${id}`} />,
-    componentCx: `🅲Icon-base 🅲Icon-${variant} icon-${id}`,
+    componentCx: `C9Y-Icon-base C9Y-Icon-${variant} icon-${id}`,
     role: 'img',
     'aria-label': id,
     ...rest,

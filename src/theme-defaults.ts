@@ -2,7 +2,6 @@
  * -------------------------------------------------------------------------- */
 
 export const theme = {
-  prefix: '🅲-',
   // --- SCREENS
   // screens: {
   //   Componentry has a single breakpoint by default, additional breakpoints can

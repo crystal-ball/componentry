@@ -45,7 +45,7 @@ export function activeActionBuilder<TProps extends ActiveActionBaseProps>(
 
     return element({
       as: defaultAs,
-      componentCx: `🅲${displayName}`,
+      componentCx: `C9Y-${displayName}`,
       ...computeARIA({
         active,
         activeId,

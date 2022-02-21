@@ -8,7 +8,7 @@ export default function Test() {
   return /*#__PURE__*/ _jsx('main', {
     className: 'flex',
     children: /*#__PURE__*/ _jsx(FancyText, {
-      className: '\uD83C\uDD72Text-base \uD83C\uDD72Text-body mt-md',
+      className: 'C9Y-Text-base C9Y-Text-body mt-md',
       fancy: true,
       children: 'Precompiled for speed',
     }),

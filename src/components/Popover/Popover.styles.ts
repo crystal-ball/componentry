@@ -9,7 +9,7 @@ const arrowWidth = 4 // in pixels
 
 export const popoverStyles = {
   // --- CONTAINER
-  '.🅲Popover-base': {
+  '.C9Y-Popover-base': {
     // Default align content to dead center of action the specific content styles can
     // then easily move to top/left/right/bottom where needed
     alignItems: 'center',
@@ -19,20 +19,20 @@ export const popoverStyles = {
 
     // Directional styles
 
-    '&.🅲Popover-top': {
-      '.🅲PopoverContent': {
+    '&.C9Y-Popover-top': {
+      '.C9Y-PopoverContent': {
         bottom: '100%',
         justifyContent: 'center',
       },
 
-      '.🅲PopoverContentContents': {
+      '.C9Y-PopoverContentContents': {
         // Top requires bumping bottom 100% again to compensate for container not having
         // any height
         bottom: '100%',
         marginBottom: `${arrowWidth}px`,
       },
 
-      '.🅲PopoverArrow:after': {
+      '.C9Y-PopoverArrow:after': {
         // top: 100%,
         // width: 100%,
         // }
@@ -40,33 +40,33 @@ export const popoverStyles = {
       },
     },
 
-    '&.🅲Popover-right': {
-      '.🅲PopoverContent': {
+    '&.C9Y-Popover-right': {
+      '.C9Y-PopoverContent': {
         left: '100%',
         alignItems: 'center',
       },
 
-      '.🅲PopoverContentContents': {
+      '.C9Y-PopoverContentContents': {
         marginLeft: `${arrowWidth}px`,
       },
 
-      // '.🅲PopoverArrow': {
+      // '.C9Y-PopoverArrow': {
       //   height: '100%',
       //   right: '100%',
       // },
 
-      '.🅲PopoverArrow:after': {
+      '.C9Y-PopoverArrow:after': {
         left: `${arrowWidth * 0.5}px`,
       },
     },
 
-    '&.🅲Popover-bottom': {
-      '.🅲PopoverContent': {
+    '&.C9Y-Popover-bottom': {
+      '.C9Y-PopoverContent': {
         top: '100%',
         justifyContent: 'center',
       },
 
-      '.🅲PopoverContentContents': {
+      '.C9Y-PopoverContentContents': {
         marginTop: `${arrowWidth}px`,
       },
 
@@ -75,18 +75,18 @@ export const popoverStyles = {
       //   width: '100%',
       // },
 
-      '.🅲PopoverArrow:after': {
+      '.C9Y-PopoverArrow:after': {
         top: `${arrowWidth * 0.5}px`,
       },
     },
 
-    '&.🅲Popover-left': {
-      '.🅲PopoverContent': {
+    '&.C9Y-Popover-left': {
+      '.C9Y-PopoverContent': {
         right: '100%',
         alignItems: 'center',
       },
 
-      '.🅲PopoverContentContents': {
+      '.C9Y-PopoverContentContents': {
         marginRight: `${arrowWidth}px`,
         right: 0,
       },
@@ -96,7 +96,7 @@ export const popoverStyles = {
       //   left: '100%',
       // },
 
-      '.🅲PopoverArrow:after': {
+      '.C9Y-PopoverArrow:after': {
         right: `${arrowWidth * 0.5}px`,
       },
     },
@@ -104,17 +104,17 @@ export const popoverStyles = {
 
   // --- Popover action ------------------------------------
 
-  '.🅲PopoverAction': {},
+  '.C9Y-PopoverAction': {},
 
   // Content container overrides the width constraints for parent element
-  '.🅲PopoverContent': {
+  '.C9Y-PopoverContent': {
     width: '300px',
     position: 'absolute',
     display: 'inline-flex',
   },
 
   // Content Element - The content element should be used to wrap a body/header element
-  '.🅲PopoverContentContents': {
+  '.C9Y-PopoverContentContents': {
     display: 'block',
     position: 'absolute',
     maxWidth: '300px',
@@ -140,7 +140,7 @@ export const popoverStyles = {
   // The .tip container creates a containing box of the same height and width as the
   // tip with overflow hidden. Then inside that container we create a square of the
   // same dimensions, and rotate it 45 degrees to create the tip effect
-  '.🅲PopoverArrow': {
+  '.C9Y-PopoverArrow': {
     height: `${arrowWidth}px`,
     overflow: 'hidden',
     width: `${arrowWidth}px`,
@@ -159,13 +159,13 @@ export const popoverStyles = {
 
   // --- BODY
   // Body element should contain popover inner content
-  '.🅲PopoverBody': {
+  '.C9Y-PopoverBody': {
     padding: theme.spacing[2],
     color: theme.colors.gray[700],
   },
 
   // --- HEADING
-  '.🅲PopoverHeading': {
+  '.C9Y-PopoverHeading': {
     padding: theme.spacing[1],
     // Try to guarantee that spacing is correct regardless of div vs h* usage
     marginTop: 0,

@@ -3,35 +3,35 @@
 exports[`<Modal /> snapshots renders correctly 1`] = `
 HTMLCollection [
   <div
-    class="🅲ModalOverlay 🅲-active"
+    class="C9Y-ModalOverlay C9Y-active"
   />,
   <div
-    class="🅲ModalPositioner 🅲Modal-overlayScroll 🅲-active"
+    class="C9Y-ModalPositioner C9Y-Modal-overlayScroll C9Y-active"
     role="presentation"
     tabindex="-1"
   >
     <div
       aria-hidden="false"
       aria-labelledby="test-guid"
-      class="🅲ModalContainer 🅲-active"
+      class="C9Y-ModalContainer C9Y-active"
       role="dialog"
     >
       <div
-        class="🅲ModalHeader"
+        class="C9Y-ModalHeader"
       >
         <h2
-          class="🅲ModalTitle"
+          class="C9Y-ModalTitle"
           id="test-guid"
         >
           Demo uncontrolled modal
         </h2>
         <button
-          class="🅲Close-base"
+          class="C9Y-Close-base"
           type="button"
         >
           <svg
             aria-label="close"
-            class="🅲Icon-base 🅲Icon-font icon-close"
+            class="C9Y-Icon-base C9Y-Icon-font icon-close"
             role="img"
           >
             <use
@@ -41,14 +41,14 @@ HTMLCollection [
         </button>
       </div>
       <div
-        class="🅲ModalBody"
+        class="C9Y-ModalBody"
       >
         <p>
           This is an uncontrolled modal that will automatically manage its active state using the parent Active component.
         </p>
       </div>
       <div
-        class="🅲ModalFooter btn-container-x"
+        class="C9Y-ModalFooter btn-container-x"
       >
         Modal Footer
       </div>

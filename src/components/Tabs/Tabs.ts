@@ -70,9 +70,9 @@ const ActionsContainer: React.FC<TabsActionsContainerProps> = (props) => {
   return element({
     role: 'tablist',
     componentCx: [
-      '🅲TabsContainer',
+      'C9Y-TabsContainer',
       {
-        '🅲TabsContainer-pills': pills,
+        'C9Y-TabsContainer-pills': pills,
       },
     ],
     ...rest,

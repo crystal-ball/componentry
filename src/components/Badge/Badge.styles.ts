@@ -6,7 +6,7 @@ const { theme } = getMergedConfig()
 // --------------------------------------------------------
 
 export const badgeStyles = {
-  '.🅲Badge-base': {
+  '.C9Y-Badge-base': {
     display: 'inline-flex',
     alignItems: 'center',
     whiteSpace: 'nowrap',
@@ -17,7 +17,7 @@ export const badgeStyles = {
     },
   },
 
-  '.🅲Badge-filled': {
+  '.C9Y-Badge-filled': {
     padding: '4px 8px',
     color: theme.colors.inverse,
     backgroundColor: theme.colors.gray[700],

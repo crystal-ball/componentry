@@ -10,7 +10,7 @@ describe('<Badge />', () => {
   it('When color is passed, then badge-color className is rendered', () => {
     render(<Badge color='primary'>Badge</Badge>)
 
-    expect(screen.getByText('Badge')).toHaveClass('🅲Badge-primaryColor')
+    expect(screen.getByText('Badge')).toHaveClass('C9Y-Badge-primaryColor')
   })
 })
 

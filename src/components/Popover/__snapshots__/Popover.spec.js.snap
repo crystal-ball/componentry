@@ -2,33 +2,33 @@
 
 exports[`<Popover /> snapshots renders correctly 1`] = `
 <div
-  class="🅲Popover-base 🅲Popover-right"
+  class="C9Y-Popover-base C9Y-Popover-right"
   data-id="test-guid"
   data-testid="popover"
 >
   <button
     aria-describedby="test-guid"
-    class="🅲Button-base 🅲Button-filled 🅲PopoverAction"
+    class="C9Y-Button-base C9Y-Button-filled C9Y-PopoverAction"
     type="button"
   >
     Toggle
   </button>
   <div
     aria-hidden="true"
-    class="🅲PopoverContent"
+    class="C9Y-PopoverContent"
     id="test-guid"
     role="tooltip"
   >
     <div
-      class="🅲PopoverContentContents"
+      class="C9Y-PopoverContentContents"
     >
       <h3
-        class="🅲PopoverHeading"
+        class="C9Y-PopoverHeading"
       >
         Fun Fact!
       </h3>
       <div
-        class="🅲PopoverBody"
+        class="C9Y-PopoverBody"
       >
         <span>
           The new Texas Instrument calculators have ABC keyboards because if they had QWERTY keyboards, they would be considered computers and wouldn't be allowed for standardized test taking.

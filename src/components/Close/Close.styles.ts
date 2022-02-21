@@ -1,7 +1,7 @@
 //                                        <Close /> styles
 // --------------------------------------------------------
 
-// The 🅲Close-base class allows for targeted styles for close buttons. The
+// The C9Y-Close-base class allows for targeted styles for close buttons. The
 // .icon-close can also be styled for SVG customizations.
 //
 // 📝 Close originally included a `color` and `fontSize` style, but due to
@@ -12,7 +12,7 @@
 //
 // ℹ️ The background image styles for close icons is located in the Icon styles
 export const closeStyles = {
-  '.🅲Close-base': {
+  '.C9Y-Close-base': {
     // Layout
     alignItems: 'center',
     display: 'inline-flex',

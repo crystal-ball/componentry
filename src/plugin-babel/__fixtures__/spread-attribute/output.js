@@ -8,7 +8,7 @@ export default function Test(props) {
     justify: 'center',
     ...props,
     children: /*#__PURE__*/ _jsx('p', {
-      className: '\uD83C\uDD72Text-base \uD83C\uDD72Text-body',
+      className: 'C9Y-Text-base C9Y-Text-body',
       children: 'Precompile testing',
     }),
   })

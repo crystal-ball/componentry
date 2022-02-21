@@ -213,10 +213,10 @@ export function activeContainerBuilder<TProps extends ActiveContainerBaseProps>(
         {element({
           'data-id': guid,
           componentCx: [
-            `🅲${displayName}-base`,
+            `C9Y-${displayName}-base`,
             {
-              [`🅲${displayName}-${size}Size`]: size,
-              [`🅲${displayName}-${direction}`]: direction,
+              [`C9Y-${displayName}-${size}Size`]: size,
+              [`C9Y-${displayName}-${direction}`]: direction,
             },
           ],
           // For elements with mouse events we need to know when the mouse event

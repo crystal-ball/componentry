@@ -2,18 +2,18 @@
 
 exports[`<Tab /> snapshots renders correctly 1`] = `
 <div
-  class="🅲Tabs-base"
+  class="C9Y-Tabs-base"
   data-id="test-guid"
   data-testid="tabs"
 >
   <div
-    class="🅲TabsContainer"
+    class="C9Y-TabsContainer"
     role="tablist"
   >
     <button
       aria-controls="test-guid-one-content"
       aria-selected="true"
-      class="🅲Link-base 🅲Link-text 🅲TabsAction"
+      class="C9Y-Link-base C9Y-Link-text C9Y-TabsAction"
       data-active-id="one"
       id="test-guid-one-tab"
       role="tab"
@@ -24,7 +24,7 @@ exports[`<Tab /> snapshots renders correctly 1`] = `
     <button
       aria-controls="test-guid-two-content"
       aria-selected="false"
-      class="🅲Link-base 🅲Link-text 🅲TabsAction"
+      class="C9Y-Link-base C9Y-Link-text C9Y-TabsAction"
       data-active-id="two"
       id="test-guid-two-tab"
       role="tab"
@@ -35,7 +35,7 @@ exports[`<Tab /> snapshots renders correctly 1`] = `
     <button
       aria-controls="test-guid-three-content"
       aria-selected="false"
-      class="🅲Link-base 🅲Link-text 🅲TabsAction"
+      class="C9Y-Link-base C9Y-Link-text C9Y-TabsAction"
       data-active-id="three"
       id="test-guid-three-tab"
       role="tab"
@@ -46,7 +46,7 @@ exports[`<Tab /> snapshots renders correctly 1`] = `
     <button
       aria-controls="test-guid-four-content"
       aria-selected="false"
-      class="🅲Link-base 🅲Link-text 🅲TabsAction 🅲-disabled 🅲-disabled"
+      class="C9Y-Link-base C9Y-Link-text C9Y-TabsAction C9Y-disabled C9Y-disabled"
       data-active-id="four"
       disabled=""
       id="test-guid-four-tab"
@@ -57,12 +57,12 @@ exports[`<Tab /> snapshots renders correctly 1`] = `
     </button>
   </div>
   <div
-    class="🅲TabsContentContainer"
+    class="C9Y-TabsContentContainer"
   >
     <div
       aria-hidden="false"
       aria-labelledby="test-guid-one-action"
-      class="🅲TabsContent 🅲-active"
+      class="C9Y-TabsContent C9Y-active"
       id="test-guid-one-content"
       role="tabpanel"
     >
@@ -71,7 +71,7 @@ exports[`<Tab /> snapshots renders correctly 1`] = `
     <div
       aria-hidden="true"
       aria-labelledby="test-guid-two-action"
-      class="🅲TabsContent 🅲-active"
+      class="C9Y-TabsContent C9Y-active"
       id="test-guid-two-content"
       role="tabpanel"
     >
@@ -80,7 +80,7 @@ exports[`<Tab /> snapshots renders correctly 1`] = `
     <div
       aria-hidden="true"
       aria-labelledby="test-guid-three-action"
-      class="🅲TabsContent 🅲-active"
+      class="C9Y-TabsContent C9Y-active"
       id="test-guid-three-content"
       role="tabpanel"
     >
@@ -89,7 +89,7 @@ exports[`<Tab /> snapshots renders correctly 1`] = `
     <div
       aria-hidden="true"
       aria-labelledby="test-guid-four-action"
-      class="🅲TabsContent 🅲-active"
+      class="C9Y-TabsContent C9Y-active"
       id="test-guid-four-content"
       role="tabpanel"
     >

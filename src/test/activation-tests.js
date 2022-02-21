@@ -20,7 +20,7 @@ export function activationTests(TestComponent, { name, testArias } = {}) {
    */
   it('should include size class for container', () => {
     const { container } = render(<TestComponent size='sm' />)
-    expect(container.firstChild).toHaveClass(`🅲${name}-smSize`)
+    expect(container.firstChild).toHaveClass(`C9Y-${name}-smSize`)
   })
 
   /**
@@ -28,7 +28,7 @@ export function activationTests(TestComponent, { name, testArias } = {}) {
    */
   it('should include direction class for container', () => {
     const { container } = render(<TestComponent direction='overlay' />)
-    expect(container.firstChild).toHaveClass(`🅲${name}-overlay`)
+    expect(container.firstChild).toHaveClass(`C9Y-${name}-overlay`)
   })
 
   /**

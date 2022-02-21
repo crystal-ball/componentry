@@ -6,26 +6,26 @@ const { theme } = getMergedConfig()
 // --------------------------------------------------------
 
 export const tableStyles = {
-  '.🅲Table-base': {
+  '.C9Y-Table-base': {
     display: 'block',
     width: '100%',
   },
 
-  '.🅲TableHead': {
+  '.C9Y-TableHead': {
     // 📝 Notes
     // - Borders: Table head has a border bottom, and then sibling rows have border top. This
     //   keeps a border below the head for tables with body scrolling.
     borderBottom: `${theme.borderWidth.DEFAULT} solid ${theme.borderColor.DEFAULT}`,
   },
 
-  '.🅲TableHeader': {
+  '.C9Y-TableHeader': {
     fontWeight: theme.fontWeight.bold,
     padding: theme.spacing[1],
   },
 
-  '.🅲TableBody': {},
+  '.C9Y-TableBody': {},
 
-  '.🅲TableRow': {
+  '.C9Y-TableRow': {
     display: 'grid',
     // grid-template-columns: repeat(auto-fit, minmax(1px, 1fr));
     // Default table row grid will be columns of even width
@@ -38,7 +38,7 @@ export const tableStyles = {
     },
   },
 
-  '.🅲TableCell': {
+  '.C9Y-TableCell': {
     padding: theme.spacing[1],
   },
 }

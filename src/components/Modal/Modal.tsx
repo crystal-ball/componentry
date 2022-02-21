@@ -126,11 +126,11 @@ export const Modal = ((props: ModalProps) => {
   //   div.ModalContainer  - Contains the modal header,body,footer elements
   return (
     <ModalCtx.Provider value={{ active, deactivate, guid }}>
-      <div className={clsx('🅲ModalOverlay', { '🅲-active': visible })} />
+      <div className={clsx('C9Y-ModalOverlay', { 'C9Y-active': visible })} />
       <div
         ref={containerRef}
-        className={clsx(`🅲ModalPositioner 🅲Modal-${scroll}Scroll`, {
-          '🅲-active': visible,
+        className={clsx(`C9Y-ModalPositioner C9Y-Modal-${scroll}Scroll`, {
+          'C9Y-active': visible,
         })}
         role='presentation'
         tabIndex={-1}
@@ -141,9 +141,9 @@ export const Modal = ((props: ModalProps) => {
           ref={contentRef}
           aria-hidden={!active}
           aria-labelledby={guid}
-          className={clsx('🅲ModalContainer', align, {
-            '🅲-active': visible,
-            [`🅲ModalContainer-${size}Size`]: size,
+          className={clsx('C9Y-ModalContainer', align, {
+            'C9Y-active': visible,
+            [`C9Y-ModalContainer-${size}Size`]: size,
           })}
           role='dialog'
           onClick={(evt) => {
@@ -176,7 +176,7 @@ Modal.Header = function ModalHeader(props: ModalHeaderProps) {
   assertContext(ctx)
 
   return element({
-    componentCx: '🅲ModalHeader',
+    componentCx: 'C9Y-ModalHeader',
     children: (
       <>
         {children}
@@ -200,7 +200,7 @@ Modal.Title = function ModalTitle(props) {
   return element({
     as: 'h2',
     id: ctx.guid,
-    componentCx: '🅲ModalTitle',
+    componentCx: 'C9Y-ModalTitle',
     ...useTheme<ModalTitleProps>('ModalTitle'),
     ...props,
   })
@@ -219,7 +219,7 @@ Modal.Body = function ModalBody(props) {
 
   return element({
     ref: bodyRef,
-    componentCx: '🅲ModalBody',
+    componentCx: 'C9Y-ModalBody',
     ...useTheme<ModalBodyProps>('ModalBody'),
     ...props,
   })
