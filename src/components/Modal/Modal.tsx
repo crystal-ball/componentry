@@ -126,11 +126,11 @@ export const Modal = ((props: ModalProps) => {
   //   div.ModalContainer  - Contains the modal header,body,footer elements
   return (
     <ModalCtx.Provider value={{ active, deactivate, guid }}>
-      <div className={clsx('C9Y-ModalOverlay', { 'C9Y--active': visible })} />
+      <div className={clsx('C9Y-ModalOverlay', { 'C9Y-active': visible })} />
       <div
         ref={containerRef}
         className={clsx(`C9Y-ModalPositioner C9Y-Modal-${scroll}Scroll`, {
-          'C9Y--active': visible,
+          'C9Y-active': visible,
         })}
         role='presentation'
         tabIndex={-1}
@@ -142,7 +142,7 @@ export const Modal = ((props: ModalProps) => {
           aria-hidden={!active}
           aria-labelledby={guid}
           className={clsx('C9Y-ModalContainer', align, {
-            'C9Y--active': visible,
+            'C9Y-active': visible,
             [`C9Y-ModalContainer-${size}Size`]: size,
           })}
           role='dialog'

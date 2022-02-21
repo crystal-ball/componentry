@@ -23,7 +23,7 @@ export const modalStyles = {
     opacity: 0,
     transition: 'opacity 0.2s cubic-bezier(0.4, 0, 0.2, 1)',
 
-    '&.C9Y--active': {
+    '&.C9Y-active': {
       opacity: 0.7,
     },
   },
@@ -46,7 +46,7 @@ export const modalStyles = {
     opacity: 0.5,
     transition: 'opacity 0.2s cubic-bezier(0.4, 0, 0.2, 1)',
 
-    '&.C9Y--active': {
+    '&.C9Y-active': {
       opacity: 1,
     },
   },

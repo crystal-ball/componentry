@@ -84,7 +84,7 @@ Input.Field = function InputField(props) {
     componentCx: [
       'C9Y-InputField',
       {
-        'C9Y--invalid': invalid,
+        'C9Y-invalid': invalid,
       },
     ],
     ...rest,

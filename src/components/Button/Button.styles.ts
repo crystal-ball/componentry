@@ -16,7 +16,7 @@ export const buttonStyles = {
     userSelect: 'none', // Prevent text selection on click of buttons
     whiteSpace: 'nowrap', // By default button content shouldn't wrap
 
-    '&.C9Y--disabled': {
+    '&.C9Y-disabled': {
       cursor: 'default',
       pointerEvents: 'none',
     },
@@ -34,15 +34,15 @@ export const buttonStyles = {
 
     transition: 'background-color 0.15s linear',
 
-    '&:hover, &.C9Y--hover': {
+    '&:hover, &.C9Y-over': {
       borderColor: theme.colors.primary[500],
       backgroundColor: theme.colors.primary[700],
     },
-    '&:active, &.C9Y--active': {
+    '&:active, &.C9Y-active': {
       borderColor: theme.colors.primary[700],
       backgroundColor: theme.colors.primary[900],
     },
-    '&.C9Y--disabled': {
+    '&.C9Y-disabled': {
       borderColor: theme.colors.primary[300],
       backgroundColor: theme.colors.primary[300],
     },
@@ -62,15 +62,15 @@ export const buttonStyles = {
 
     transition: 'color 0.15s linear',
 
-    '&:hover, &.C9Y--hover': {
+    '&:hover, &.C9Y-hover': {
       borderColor: theme.colors.primary[700],
       color: theme.colors.primary[700],
     },
-    '&:active, &.C9Y--active': {
+    '&:active, &.C9Y-active': {
       borderColor: theme.colors.primary[900],
       color: theme.colors.primary[900],
     },
-    '&.C9Y--disabled': {
+    '&.C9Y-disabled': {
       borderColor: theme.colors.primary[300],
       color: theme.colors.primary[300],
     },

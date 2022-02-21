@@ -47,7 +47,7 @@ export const inputStyles = {
     },
 
     // Invalid inputs
-    '&:invalid, &.C9Y--invalid': {
+    '&:invalid, &.C9Y-invalid': {
       background: theme.colors.error[100],
       color: theme.colors.error[500],
       borderColor: theme.colors.error[500],

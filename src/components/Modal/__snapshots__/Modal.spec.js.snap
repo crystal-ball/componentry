@@ -3,17 +3,17 @@
 exports[`<Modal /> snapshots renders correctly 1`] = `
 HTMLCollection [
   <div
-    class="C9Y-ModalOverlay C9Y--active"
+    class="C9Y-ModalOverlay C9Y-active"
   />,
   <div
-    class="C9Y-ModalPositioner C9Y-Modal-overlayScroll C9Y--active"
+    class="C9Y-ModalPositioner C9Y-Modal-overlayScroll C9Y-active"
     role="presentation"
     tabindex="-1"
   >
     <div
       aria-hidden="false"
       aria-labelledby="test-guid"
-      class="C9Y-ModalContainer C9Y--active"
+      class="C9Y-ModalContainer C9Y-active"
       role="dialog"
     >
       <div
