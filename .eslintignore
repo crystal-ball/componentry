@@ -2,6 +2,7 @@
 # -------------------------------------
 
 .prettierrc.js
+node_modules
 
 # Babel plugin fixtures aren't fully valid
 # -------------------------------------
@@ -11,3 +12,4 @@ src/plugin-babel/__fixtures__
 # -------------------------------------
 storybook-static
 dist
+types
