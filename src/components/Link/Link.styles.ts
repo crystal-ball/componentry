@@ -7,13 +7,13 @@ const { theme } = getMergedConfig()
 
 export const linkStyles = {
   // BASE
-  '.🅲Link-base': {
+  '.C9Y-Link-base': {
     // Reset browser defaults for when Link renders a button element
     border: 'none',
   },
 
   // VARIANTS
-  '.🅲Link-text': {
+  '.C9Y-Link-text': {
     fontSize: theme.fontSize.body,
     color: theme.colors.primary[500],
     textDecoration: 'underline',
@@ -22,7 +22,7 @@ export const linkStyles = {
     },
   },
 
-  '.🅲Link-inherit': {
+  '.C9Y-Link-inherit': {
     fontSize: 'inherit',
     fontWeight: 'inherit',
     color: theme.colors.primary[500],

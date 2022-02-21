@@ -6,7 +6,7 @@ const { theme } = getMergedConfig()
 // --------------------------------------------------------
 
 export const cardStyles = {
-  '.🅲Card-base': {
+  '.C9Y-Card-base': {
     position: 'relative',
     display: 'flex',
     flexDirection: 'column',
@@ -15,14 +15,14 @@ export const cardStyles = {
     backgroundClip: 'border-box',
   },
 
-  '.🅲Card-outlined': {
+  '.C9Y-Card-outlined': {
     backgroundColor: theme.colors.background,
     border: `${theme.borderWidth.DEFAULT} solid ${theme.borderColor.DEFAULT}`,
     borderRadius: theme.borderRadius.md,
   },
 
   // --- BODY SUB-COMPONENT
-  '.🅲CardBody': {
+  '.C9Y-CardBody': {
     // Enable `flex-grow: 1` for decks and groups so that card blocks take up
     // as much space as possible, ensuring footers are aligned to the bottom.
     flex: '1 1 auto',
@@ -30,7 +30,7 @@ export const cardStyles = {
   },
 
   // --- HEADER SUB-COMPONENT
-  '.🅲CardHeader': {
+  '.C9Y-CardHeader': {
     padding: theme.spacing[2],
     //   margin-bottom: 0; // Removes the default margin-bottom of <hN>
     backgroundColor: theme.colors.background,
@@ -42,7 +42,7 @@ export const cardStyles = {
   },
 
   // --- FOOTER SUB-COMPONENT
-  '.🅲CardFooter': {
+  '.C9Y-CardFooter': {
     padding: theme.spacing[2],
     backgroundColor: theme.colors.background,
     borderTop: `${theme.borderWidth.DEFAULT} solid ${theme.borderColor.DEFAULT}`,
@@ -53,11 +53,11 @@ export const cardStyles = {
   },
 
   // --- TITLE SUB-COMPONENT
-  '.🅲CardTitle': {
+  '.C9Y-CardTitle': {
     fontSize: theme.fontSize.h3,
     color: theme.colors.gray[900], // Matches default header color
   },
-  '.🅲CardSubtitle': {
+  '.C9Y-CardSubtitle': {
     fontSize: theme.fontSize.small,
     color: theme.colors.gray[600],
   },

@@ -2,20 +2,20 @@
 
 exports[`<Active /> snapshots renders correctly 1`] = `
 <div
-  class="🅲Active-base"
+  class="C9Y-Active-base"
   data-id="test-guid"
   data-testid="active"
 >
   <button
     aria-controls="test-guid"
-    class="🅲Link-base 🅲Link-text 🅲ActiveAction"
+    class="C9Y-Link-base C9Y-Link-text C9Y-ActiveAction"
     type="button"
   >
     Action
   </button>
   <div
     aria-hidden="true"
-    class="🅲ActiveContent"
+    class="C9Y-ActiveContent"
     id="test-guid"
   >
     Content

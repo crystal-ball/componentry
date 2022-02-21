@@ -2,7 +2,7 @@
 
 exports[`<Button /> Snapshots renders brand color correctly 1`] = `
 <button
-  class="🅲Button-base 🅲Button-filled 🅲Button-successColor"
+  class="C9Y-Button-base C9Y-Button-filled C9Y-Button-successColor"
   type="button"
 >
   Componentry
@@ -11,7 +11,7 @@ exports[`<Button /> Snapshots renders brand color correctly 1`] = `
 
 exports[`<Button /> Snapshots renders defaults correctly 1`] = `
 <button
-  class="🅲Button-base 🅲Button-filled"
+  class="C9Y-Button-base C9Y-Button-filled"
   type="button"
 >
   Componentry
@@ -20,7 +20,7 @@ exports[`<Button /> Snapshots renders defaults correctly 1`] = `
 
 exports[`<Button /> Snapshots renders large outline correctly 1`] = `
 <button
-  class="🅲Button-base 🅲Button-filled 🅲Button-lgSize"
+  class="C9Y-Button-base C9Y-Button-filled C9Y-Button-lgSize"
   type="button"
 >
   Componentry

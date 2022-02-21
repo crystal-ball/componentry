@@ -40,7 +40,7 @@ export function activeContentBuilder<TProps extends ActiveContentBaseProps>(
     return element({
       as: defaultAs,
       active: visible,
-      componentCx: `🅲${displayName}`,
+      componentCx: `C9Y-${displayName}`,
       ...computeARIA({
         active,
         activeId,

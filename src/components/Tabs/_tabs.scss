@@ -5,18 +5,18 @@
 //
 
 // --- Structure
-// .🅲-tabs
-// .🅲-tabs-actions-container
-// .🅲-tabs-action
-// .🅲-tabs-content-container
-// .🅲-tabs-content
+// .C9Y--tabs
+// .C9Y--tabs-actions-container
+// .C9Y--tabs-action
+// .C9Y--tabs-content-container
+// .C9Y--tabs-content
 
 //
 // Tabs container
 //
 
 // Container handles: margin between tabs and panes, and layout of tabs
-.🅲-tabs-actions-container {
+.C9Y--tabs-actions-container {
   display: flex;
   margin: $tabs-nav-container-margin;
   border-bottom: $tabs-nav-container-border;
@@ -119,6 +119,6 @@
 // Tab content container
 //
 
-.🅲-tabs-content-container {
+.C9Y--tabs-content-container {
   padding: $tabs-pane-container-padding;
 }

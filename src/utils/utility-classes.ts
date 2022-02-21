@@ -286,8 +286,8 @@ function generateClassNames<Props extends UtilityProps>(p: Props): string {
     [`border-${p.borderColor}`]: p.borderColor,
 
     // STATES (eg https://mui.com/customization/how-to-customize/#state-classes)
-    '🅲-active': p.active,
-    '🅲-disabled': p.disabled,
+    'C9Y--active': p.active,
+    'C9Y--disabled': p.disabled,
   })
 }
 

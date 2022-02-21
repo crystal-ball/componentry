@@ -9,29 +9,29 @@ const { theme } = getMergedConfig()
 const tooltipArrowWidth = 10 // in pixels
 
 export const tooltipStyles = {
-  '.🅲Tooltip-base': {
+  '.C9Y-Tooltip-base': {
     display: 'inline-block',
     position: 'relative',
   },
 
   // --- ACTION
-  '.🅲TooltipAction': {},
+  '.C9Y-TooltipAction': {},
 
   // --- CONTENT POSITIONER
-  '.🅲TooltipContent': {
+  '.C9Y-TooltipContent': {
     // Content container overrides the width constraints for parent element
     width: '300px',
     position: 'absolute',
     opacity: 0,
     transition: 'opacity 0.2s cubic-bezier(0.4, 0, 0.2, 1)',
 
-    '&.🅲-active': {
+    '&.C9Y--active': {
       opacity: 1,
     },
   },
 
   // --- CONTENT
-  '.🅲TooltipContentContents': {
+  '.C9Y-TooltipContentContents': {
     backgroundColor: theme.colors.gray[800],
     borderRadius: theme.borderRadius.md,
     color: theme.colors.inverse,
@@ -46,7 +46,7 @@ export const tooltipStyles = {
   },
 
   // --- ARROW
-  '.🅲TooltipContentArrow': {
+  '.C9Y-TooltipContentArrow': {
     height: tooltipArrowWidth * 2 + 'px',
     left: '0.5rem',
     overflow: 'hidden',

@@ -3,7 +3,7 @@
 exports[`<Icon /> snapshots renders correctly 1`] = `
 <svg
   aria-label="test"
-  class="🅲Icon-base 🅲Icon-font icon-test"
+  class="C9Y-Icon-base C9Y-Icon-font icon-test"
   data-testid="icon"
   role="img"
 >

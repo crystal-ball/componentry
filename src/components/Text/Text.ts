@@ -60,7 +60,7 @@ export const Text: FC<TextProps> = (props) => {
 
   return element({
     as: textElementMap[variant],
-    componentCx: `🅲Text-base 🅲Text-${variant}`,
+    componentCx: `C9Y-Text-base C9Y-Text-${variant}`,
     ...rest,
   })
 }

@@ -7,7 +7,7 @@ const { theme } = getMergedConfig()
 
 export const inputStyles = {
   // FIELD
-  '.🅲InputField': {
+  '.C9Y-InputField': {
     display: 'block',
     width: '100%',
     padding: `${theme.spacing[1]} ${theme.spacing[2]}`,
@@ -47,7 +47,7 @@ export const inputStyles = {
     },
 
     // Invalid inputs
-    '&:invalid, &.🅲-invalid': {
+    '&:invalid, &.C9Y--invalid': {
       background: theme.colors.error[100],
       color: theme.colors.error[500],
       borderColor: theme.colors.error[500],
@@ -55,7 +55,7 @@ export const inputStyles = {
   },
 
   // LABEL
-  '.🅲InputLabel': {
+  '.C9Y-InputLabel': {
     display: 'inline-block',
     marginBottom: theme.spacing[0.5],
     color: theme.colors.gray[700],
@@ -63,7 +63,7 @@ export const inputStyles = {
   },
 
   // DESCRIPTION
-  '.🅲InputDescription': {
+  '.C9Y-InputDescription': {
     display: 'block',
     margin: theme.spacing[0.5],
     color: theme.colors.gray[700],
@@ -71,7 +71,7 @@ export const inputStyles = {
   },
 
   // Error
-  '.🅲InputError': {
+  '.C9Y-InputError': {
     display: 'block',
     margin: theme.spacing[0.5],
     color: theme.colors.error[500],

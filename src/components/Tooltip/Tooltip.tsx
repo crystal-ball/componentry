@@ -73,8 +73,8 @@ function TooltipContentElement({
 }) {
   return (
     <div {...rest}>
-      {renderArrow && <div className='🅲TooltipContentArrow' />}
-      <div className='🅲TooltipContentContents'>{children}</div>
+      {renderArrow && <div className='C9Y-TooltipContentArrow' />}
+      <div className='C9Y-TooltipContentContents'>{children}</div>
     </div>
   )
 }

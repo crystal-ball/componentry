@@ -7,7 +7,7 @@ const { theme } = getMergedConfig()
 
 export const buttonStyles = {
   // BASE
-  '.🅲Button-base': {
+  '.C9Y-Button-base': {
     alignItems: 'center',
     display: 'inline-flex',
     justifyContent: 'center',
@@ -16,14 +16,14 @@ export const buttonStyles = {
     userSelect: 'none', // Prevent text selection on click of buttons
     whiteSpace: 'nowrap', // By default button content shouldn't wrap
 
-    '&.🅲-disabled': {
+    '&.C9Y--disabled': {
       cursor: 'default',
       pointerEvents: 'none',
     },
   },
 
   // VARIANTS
-  '.🅲Button-filled': {
+  '.C9Y-Button-filled': {
     height: '2rem',
     padding: '0 1rem',
     backgroundColor: theme.colors.primary[500],
@@ -34,24 +34,24 @@ export const buttonStyles = {
 
     transition: 'background-color 0.15s linear',
 
-    '&:hover, &.🅲-hover': {
+    '&:hover, &.C9Y--hover': {
       borderColor: theme.colors.primary[500],
       backgroundColor: theme.colors.primary[700],
     },
-    '&:active, &.🅲-active': {
+    '&:active, &.C9Y--active': {
       borderColor: theme.colors.primary[700],
       backgroundColor: theme.colors.primary[900],
     },
-    '&.🅲-disabled': {
+    '&.C9Y--disabled': {
       borderColor: theme.colors.primary[300],
       backgroundColor: theme.colors.primary[300],
     },
 
     // For buttons with color options you'll typically define them in each variant
     // like:
-    // '&.🅲Button-errorColor': { ... }
+    // '&.C9Y-Button-errorColor': { ... }
   },
-  '.🅲Button-outlined': {
+  '.C9Y-Button-outlined': {
     height: '2rem',
     padding: '0 1rem',
     backgroundColor: 'transparent',
@@ -62,28 +62,28 @@ export const buttonStyles = {
 
     transition: 'color 0.15s linear',
 
-    '&:hover, &.🅲-hover': {
+    '&:hover, &.C9Y--hover': {
       borderColor: theme.colors.primary[700],
       color: theme.colors.primary[700],
     },
-    '&:active, &.🅲-active': {
+    '&:active, &.C9Y--active': {
       borderColor: theme.colors.primary[900],
       color: theme.colors.primary[900],
     },
-    '&.🅲-disabled': {
+    '&.C9Y--disabled': {
       borderColor: theme.colors.primary[300],
       color: theme.colors.primary[300],
     },
   },
 
   // SIZES
-  '.🅲Button-smallSize': {
+  '.C9Y-Button-smallSize': {
     height: '1.5rem',
     borderRadius: theme.borderRadius.md,
     fontSize: theme.fontSize.small,
     padding: '0rem 0.5rem',
   },
-  '.🅲Button-largeSize': {
+  '.C9Y-Button-largeSize': {
     height: '2.5rem',
     borderRadius: theme.borderRadius.lg,
     fontSize: theme.fontSize.large,

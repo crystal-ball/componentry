@@ -47,10 +47,10 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>((props, ref) =>
     as: merged.href ? 'a' : 'button',
     type: merged.href ? undefined : 'button',
     componentCx: [
-      `🅲Button-base 🅲Button-${variant}`,
+      `C9Y-Button-base C9Y-Button-${variant}`,
       {
-        [`🅲Button-${color}Color`]: color,
-        [`🅲Button-${size}Size`]: size,
+        [`C9Y-Button-${color}Color`]: color,
+        [`C9Y-Button-${size}Size`]: size,
         'w-full': fullWidth,
       },
     ],

@@ -11,7 +11,7 @@ export interface CloseProps extends ComponentBaseProps<'button'> {
 export const closeBase: CloseProps = {
   as: 'button',
   type: 'button',
-  componentCx: `🅲Close-base`,
+  componentCx: `C9Y-Close-base`,
   children: <Icon id='close' />,
 }
 

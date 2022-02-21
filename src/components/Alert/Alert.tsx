@@ -69,11 +69,11 @@ export const Alert: Alert = (props) => {
   return element({
     role: 'alert',
     componentCx: [
-      `🅲Alert-base 🅲Alert-${variant}`,
+      `C9Y-Alert-base C9Y-Alert-${variant}`,
       {
-        [`🅲Alert-${color}Color`]: color,
-        '🅲Alert-dismissible': dismissible,
-        '🅲Alert-dismissed': dismissible && !visible,
+        [`C9Y-Alert-${color}Color`]: color,
+        'C9Y-Alert-dismissible': dismissible,
+        'C9Y-Alert-dismissed': dismissible && !visible,
       },
     ],
     'aria-hidden': dismissible ? String(!active) : 'false',
@@ -83,10 +83,10 @@ export const Alert: Alert = (props) => {
         <div className='sr-only'>{ariaTitle || `${color} alert`}</div>
 
         {/* Alert contents */}
-        <div className='🅲AlertContent'>{children}</div>
+        <div className='C9Y-AlertContent'>{children}</div>
 
         {/* Render a close button or null depending on configs */}
-        {dismissible && <Alert.Close className='🅲AlertClose' onClick={deactivate} />}
+        {dismissible && <Alert.Close className='C9Y-AlertClose' onClick={deactivate} />}
       </>
     ),
     ...rest,

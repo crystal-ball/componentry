@@ -3,7 +3,7 @@
 exports[`<Alert /> snapshots renders correctly 1`] = `
 <div
   aria-hidden="false"
-  class="🅲Alert-base 🅲Alert-filled 🅲Alert-dangerColor 🅲Alert-dismissible"
+  class="C9Y-Alert-base C9Y-Alert-filled C9Y-Alert-dangerColor C9Y-Alert-dismissible"
   role="alert"
 >
   <div
@@ -12,17 +12,17 @@ exports[`<Alert /> snapshots renders correctly 1`] = `
     danger alert
   </div>
   <div
-    class="🅲AlertContent"
+    class="C9Y-AlertContent"
   >
     Warning!
   </div>
   <button
-    class="🅲Close-base 🅲AlertClose"
+    class="C9Y-Close-base C9Y-AlertClose"
     type="button"
   >
     <svg
       aria-label="close"
-      class="🅲Icon-base 🅲Icon-font icon-close"
+      class="C9Y-Icon-base C9Y-Icon-font icon-close"
       role="img"
     >
       <use

@@ -15,7 +15,9 @@ describe('<Link/>', () => {
       </Link>,
     )
 
-    expect(screen.getByText('Link')).toHaveClass('🅲Link-base 🅲Link-text text-success')
+    expect(screen.getByText('Link')).toHaveClass(
+      'C9Y-Link-base C9Y-Link-text text-success',
+    )
   })
 })
 

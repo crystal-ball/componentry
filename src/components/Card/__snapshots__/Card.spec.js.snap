@@ -2,26 +2,26 @@
 
 exports[`<Card /> snapshots renders correctly 1`] = `
 <div
-  class="🅲Card-base 🅲Card-outlined"
+  class="C9Y-Card-base C9Y-Card-outlined"
   data-testid="card"
 >
   <div
-    class="🅲CardHeader"
+    class="C9Y-CardHeader"
   >
     Header
   </div>
   <div
-    class="🅲CardBody"
+    class="C9Y-CardBody"
   >
     <h4
-      class="🅲CardTitle"
+      class="C9Y-CardTitle"
     >
       Title
     </h4>
     Body
   </div>
   <div
-    class="🅲CardFooter"
+    class="C9Y-CardFooter"
   >
     Footer
   </div>

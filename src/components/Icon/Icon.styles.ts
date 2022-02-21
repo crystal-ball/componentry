@@ -5,13 +5,13 @@ import { StylesDefinition } from '../../utils/types'
 
 export const iconStyles: IconStyles = {
   // BASE
-  '.🅲Icon-base': {
+  '.C9Y-Icon-base': {
     display: 'inline-block',
     userSelect: 'none',
   },
 
   // VARIANTS
-  '.🅲Icon-font': {
+  '.C9Y-Icon-font': {
     // 1em width+height makes icons font-sized by default 🔮
     height: '1em',
     width: '1em',
@@ -31,7 +31,7 @@ export const iconStyles: IconStyles = {
 
 export type IconStyles = {
   /** Base class applied to all variants for shared structural styles */
-  '.🅲Icon-base': StylesDefinition
+  '.C9Y-Icon-base': StylesDefinition
   /** Variant class applied when `variant="font"` */
-  '.🅲Icon-font': StylesDefinition
+  '.C9Y-Icon-font': StylesDefinition
 }

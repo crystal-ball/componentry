@@ -26,7 +26,7 @@ describe('<Dropdown />', () => {
       </Dropdown>,
     )
 
-    expect(screen.getByTestId('dropdown')).toHaveClass('🅲Dropdown-bottom') // default value
+    expect(screen.getByTestId('dropdown')).toHaveClass('C9Y-Dropdown-bottom') // default value
 
     rerender(
       <Dropdown data-testid='dropdown' direction='top'>
@@ -35,7 +35,7 @@ describe('<Dropdown />', () => {
       </Dropdown>,
     )
 
-    expect(screen.getByTestId('dropdown')).toHaveClass('🅲Dropdown-top') // default value
+    expect(screen.getByTestId('dropdown')).toHaveClass('C9Y-Dropdown-top') // default value
   })
 })
 

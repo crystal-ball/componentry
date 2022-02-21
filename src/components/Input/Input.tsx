@@ -82,9 +82,9 @@ Input.Field = function InputField(props) {
     id: ctx.guid, // aria -> htmlFor
     invalid: invalid ? true : undefined,
     componentCx: [
-      '🅲InputField',
+      'C9Y-InputField',
       {
-        '🅲-invalid': invalid,
+        'C9Y--invalid': invalid,
       },
     ],
     ...rest,
@@ -101,7 +101,7 @@ Input.Label = function InputLabel(props) {
   return element({
     as: 'label',
     htmlFor: ctx.guid, // aria -> id
-    componentCx: '🅲InputLabel',
+    componentCx: 'C9Y-InputLabel',
     ...useTheme<InputLabelProps>('InputLabel'),
     ...props,
   })

@@ -2,7 +2,7 @@
 
 exports[`<Text /> snapshots renders correctly 1`] = `
 <p
-  class="🅲Text-base 🅲Text-body"
+  class="C9Y-Text-base C9Y-Text-body"
 >
   Componentry
 </p>

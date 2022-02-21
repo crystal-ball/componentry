@@ -12,7 +12,7 @@ const { theme } = getMergedConfig()
 //     div.ModalBody     - Contains modal content
 
 export const modalStyles = {
-  '.🅲ModalOverlay': {
+  '.C9Y-ModalOverlay': {
     position: 'fixed',
     top: 0,
     right: 0,
@@ -23,12 +23,12 @@ export const modalStyles = {
     opacity: 0,
     transition: 'opacity 0.2s cubic-bezier(0.4, 0, 0.2, 1)',
 
-    '&.🅲-active': {
+    '&.C9Y--active': {
       opacity: 0.7,
     },
   },
 
-  '.🅲ModalPositioner': {
+  '.C9Y-ModalPositioner': {
     position: 'fixed',
     top: 0,
     right: 0,
@@ -46,12 +46,12 @@ export const modalStyles = {
     opacity: 0.5,
     transition: 'opacity 0.2s cubic-bezier(0.4, 0, 0.2, 1)',
 
-    '&.🅲-active': {
+    '&.C9Y--active': {
       opacity: 1,
     },
   },
 
-  '.🅲ModalContainer': {
+  '.C9Y-ModalContainer': {
     display: 'flex',
     flexDirection: 'column',
     backgroundColor: theme.colors.background,
@@ -73,43 +73,43 @@ export const modalStyles = {
 
   // --- SIZES
   // 🤔 How to allow users to make modals 100% width for small breakpoints?
-  '.🅲ModalContainer-smSize': {
+  '.C9Y-ModalContainer-smSize': {
     maxWidth: '450px',
   },
 
-  '.🅲ModalContainer-lgSize': {
+  '.C9Y-ModalContainer-lgSize': {
     maxWidth: '900px',
   },
 
   // --- SCROLLING
 
   // Modal overlay scrolling
-  '.🅲ModalPositioner.🅲Modal-overlayScroll': {
+  '.C9Y-ModalPositioner.C9Y-Modal-overlayScroll': {
     overflowX: 'hidden',
     overflowY: 'auto',
   },
 
   // Modal container scrolling
-  '.🅲ModalPositioner.🅲Modal-containerScroll': {
-    '.🅲ModalContainer': {
+  '.C9Y-ModalPositioner.C9Y-Modal-containerScroll': {
+    '.C9Y-ModalContainer': {
       maxHeight: '100%',
       overflowY: 'scroll',
     },
   },
 
   // Modal body scrolling
-  '.🅲ModalPositioner.🅲Modal-bodyScroll': {
-    '.🅲ModalContainer': {
+  '.C9Y-ModalPositioner.C9Y-Modal-bodyScroll': {
+    '.C9Y-ModalContainer': {
       maxHeight: '100%',
     },
 
-    '.🅲ModalBody': {
+    '.C9Y-ModalBody': {
       overflowY: 'scroll',
     },
   },
 
   // --- HEADER
-  '.🅲ModalHeader': {
+  '.C9Y-ModalHeader': {
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'space-between', // Put modal header elements (title and dismiss) on opposite ends
@@ -121,7 +121,7 @@ export const modalStyles = {
   },
 
   // --- TITLE
-  '.🅲ModalTitle': {
+  '.C9Y-ModalTitle': {
     marginTop: 0,
     marginBottom: 0,
     lineHeight: theme.lineHeight.none,
@@ -131,7 +131,7 @@ export const modalStyles = {
   },
 
   // --- BODY
-  '.🅲ModalBody': {
+  '.C9Y-ModalBody': {
     position: 'relative',
     // Enable `flex-grow: 1` so that the body take up as much space as possible
     // when should there be a fixed height on `.modal-container`.
@@ -140,7 +140,7 @@ export const modalStyles = {
   },
 
   // --- FOOTER
-  '.🅲ModalFooter': {
+  '.C9Y-ModalFooter': {
     display: 'flex',
     justifyContent: 'center',
     alignItems: 'center',

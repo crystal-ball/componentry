@@ -24,7 +24,7 @@ describe('<Popover />', () => {
       </Popover>,
     )
 
-    expect(screen.getByTestId('popover')).toHaveClass('🅲Popover-left')
+    expect(screen.getByTestId('popover')).toHaveClass('C9Y-Popover-left')
   })
 })
 

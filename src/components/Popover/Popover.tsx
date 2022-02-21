@@ -79,8 +79,8 @@ function PopoverContentElement({
 }) {
   return (
     <div {...rest}>
-      {/* {renderArrow && <div className='🅲PopoverArrow' />} */}
-      <div className='🅲PopoverContentContents'>{children}</div>
+      {/* {renderArrow && <div className='C9Y-PopoverArrow' />} */}
+      <div className='C9Y-PopoverContentContents'>{children}</div>
     </div>
   )
 }

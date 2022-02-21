@@ -31,7 +31,7 @@ describe('Text', () => {
     render(<Text variant='rad'>Componentry</Text>)
 
     expect(screen.getByText('Componentry')).toContainHTML(
-      '<section class="🅲Text-base 🅲Text-rad">Componentry</section>',
+      '<section class="C9Y-Text-base C9Y-Text-rad">Componentry</section>',
     )
   })
 })

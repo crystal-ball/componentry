@@ -2,7 +2,7 @@
 
 exports[`<FormGroup /> snapshots renders correctly 1`] = `
 <div
-  class="🅲FormGroup"
+  class="C9Y-FormGroup"
   data-testid="formgroup"
 />
 `;

@@ -6,7 +6,7 @@
 
 // The dropdown wrapper element handles creating a relative container that the
 // content is absolutely positioned off of
-.🅲-dropdown {
+.C9Y--dropdown {
   position: relative;
   // Default dropdown container to inline-block so that click area is constrained
   // to dropdown action
@@ -28,7 +28,7 @@
 // --- Content styles
 //
 
-.🅲-dropdown-content {
+.C9Y--dropdown-content {
   display: block;
   position: absolute;
   z-index: $zindex-dropdown;
@@ -88,23 +88,23 @@
 //
 
 .dropdown-sm {
-  .🅲-dropdown-content {
+  .C9Y--dropdown-content {
     font-size: $dropdown-font-size-sm;
     font-weight: $dropdown-font-weight-sm;
   }
 
-  .🅲-dropdown-item {
+  .C9Y--dropdown-item {
     padding: $dropdown-item-padding-y-sm $dropdown-item-padding-x-sm;
   }
 }
 
 .dropdown-lg {
-  .🅲-dropdown-content {
+  .C9Y--dropdown-content {
     font-size: $dropdown-font-size-lg;
     font-weight: $dropdown-font-weight-lg;
   }
 
-  .🅲-dropdown-item {
+  .C9Y--dropdown-item {
     padding: $dropdown-item-padding-y-lg $dropdown-item-padding-x-lg;
   }
 }
@@ -115,7 +115,7 @@
 
 // Dropdown items
 // `<button>`-specific styles are denoted with `// For <button>s`
-.🅲-dropdown-item {
+.C9Y--dropdown-item {
   display: block;
   width: 100%;
   padding: $dropdown-item-padding-y $dropdown-item-padding-x;
