@@ -13,11 +13,11 @@ export default function Test({ success, position }) {
     className: 'flex',
     children: [
       /*#__PURE__*/ _jsx('p', {
-        className: '\uD83C\uDD72Text-base \uD83C\uDD72Text-body pt-80',
+        className: 'C9Y-Text-base C9Y-Text-body pt-80',
         children: 'Expression containers test',
       }),
       /*#__PURE__*/ _jsx('p', {
-        className: '\uD83C\uDD72Text-base \uD83C\uDD72Text-body font-bold',
+        className: 'C9Y-Text-base C9Y-Text-body font-bold',
         children: 'Expression containers test',
       }),
       /*#__PURE__*/ _jsx(Text, {
