@@ -1,4 +1,3 @@
-import React from 'react'
 import { render, screen } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 
@@ -40,7 +39,7 @@ describe('<Alert/>', () => {
     expect(deactivate).toHaveBeenCalledTimes(1)
 
     // Alert visibility state change handler has been overridden, other than calling
-    // passed deactivate Alert should still be visible & unchanved
+    // passed deactivate Alert should still be visible & unchanged
     expect(screen.getByRole('alert')).toHaveAttribute('aria-hidden', 'false')
   })
 

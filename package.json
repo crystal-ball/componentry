@@ -17,7 +17,7 @@
   },
   "main": "./dist/commonjs/index.js",
   "module": "./dist/browser/index.js",
-  "types": "./dist/browser/index.d.ts",
+  "types": "./types/index.d.ts",
   "keywords": [
     "accessibility",
     "components-library",
@@ -56,7 +56,7 @@
     "compile:commonjs": "BABEL_ENV=commonjs babel src -x '.ts,.tsx' --out-dir dist/commonjs",
     "types": "tsc",
     "typedoc": "typedoc ./src/api-types.ts --json dist/api-doc.json",
-    "clean": "rm -rf dist"
+    "clean": "rm -rf dist types"
   },
   "peerDependencies": {
     "postcss": "8",
