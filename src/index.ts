@@ -6,23 +6,33 @@ export { Media, useMedia } from './components/Media/Media'
 export { Active } from './components/Active/Active'
 export { Alert } from './components/Alert/Alert'
 export { Badge } from './components/Badge/Badge'
-export { Block } from './components/Block/Block'
+export { Block, type BlockProps } from './components/Block/Block'
 export { Button } from './components/Button/Button'
 export { Card } from './components/Card/Card'
 export { Close } from './components/Close/Close'
 export { Drawer } from './components/Drawer/Drawer'
 export { Dropdown } from './components/Dropdown/Dropdown'
-export { Flex } from './components/Flex/Flex'
+export { Flex, type FlexProps } from './components/Flex/Flex'
 export { FormGroup } from './components/FormGroup/FormGroup'
-export { Grid } from './components/Grid/Grid'
-export { Icon, configureIconElementsMap } from './components/Icon/Icon'
+export { Grid, type GridProps } from './components/Grid/Grid'
+export {
+  Icon,
+  configureIconElementsMap,
+  type IconElementsMap,
+  type IconProps,
+} from './components/Icon/Icon'
 export { Input } from './components/Input/Input'
 export { Link } from './components/Link/Link'
 export { Modal } from './components/Modal/Modal'
 export { Popover } from './components/Popover/Popover'
 export { Table } from './components/Table/Table'
 export { Tabs } from './components/Tabs/Tabs'
-export { Text, configureTextElementsMap } from './components/Text/Text'
+export {
+  Text,
+  configureTextElementsMap,
+  type TextElementsMap,
+  type TextProps,
+} from './components/Text/Text'
 export { Tooltip } from './components/Tooltip/Tooltip'
 
 // --- Utilities

@@ -7,10 +7,10 @@ import { type MergePropTypes } from '../../utils/types'
 import { element } from '../../utils/element-creator'
 import { staticComponent } from '../../utils/static-component-builder'
 
-// Module augmentation interface for overriding component props' types
+/** Module augmentation interface for overriding component props' types */
 export interface AlertPropsOverrides {}
 
-interface AlertPropsDefaults {
+interface AlertPropsBase {
   /** Sets a custom aria title */
   ariaTitle?: string
   /** Sets the theme color of the alert */
@@ -31,12 +31,12 @@ interface AlertPropsDefaults {
   variant?: 'filled'
 }
 
-type AlertProps = MergePropTypes<AlertPropsDefaults, AlertPropsOverrides> &
+export type AlertProps = MergePropTypes<AlertPropsBase, AlertPropsOverrides> &
   ComponentBaseProps<'div'>
 
 interface AlertCloseProps extends ComponentBaseProps<'button'> {}
 
-interface Alert {
+export interface Alert {
   (props: AlertProps): React.ReactElement | null
   displayName: 'Alert'
   /**
@@ -47,7 +47,7 @@ interface Alert {
 
 /**
  * [Alert component 📝](https://componentry.design/components/alert)
- * @experimental
+ * @alpha
  */
 export const Alert: Alert = (props) => {
   const {

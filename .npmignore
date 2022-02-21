@@ -11,8 +11,6 @@ src
 build
 coverage
 monitor
-types/test
-types/**/*.spec.d.ts
 
 # Logs and caches
 # -------------------------------------

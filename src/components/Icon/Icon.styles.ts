@@ -1,7 +1,9 @@
+import { StylesDefinition } from '../../utils/types'
+
 //                                         <Icon /> styles
 // -------------------------------------------------------
 
-export const iconStyles = {
+export const iconStyles: IconStyles = {
   // BASE
   '.🅲Icon-base': {
     display: 'inline-block',
@@ -25,4 +27,11 @@ export const iconStyles = {
 
   // SIZES
   // ...coming soon
+}
+
+export type IconStyles = {
+  /** Base class applied to all variants for shared structural styles */
+  '.🅲Icon-base': StylesDefinition
+  /** Variant class applied when `variant="font"` */
+  '.🅲Icon-font': StylesDefinition
 }

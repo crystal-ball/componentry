@@ -17,7 +17,7 @@
   },
   "main": "./dist/commonjs/index.js",
   "module": "./dist/browser/index.js",
-  "types": "./types/index.d.ts",
+  "types": "./dist/browser/index.d.ts",
   "keywords": [
     "accessibility",
     "components-library",
@@ -49,17 +49,18 @@
     "type-check": "tsc --noEmit",
     "type-check:watch": "tsc --noEmit --watch",
     "format": "prettier --write . !CHANGELOG.md !coverage",
-    "prepublishOnly": "npm run clean && npm run compile && npm run types",
+    "prepublishOnly": "npm run clean && npm run compile && npm run types && npm run typedoc",
     "postpublish": "npm run clean",
     "compile": "npm run compile:browser && npm run compile:commonjs",
     "compile:browser": "BABEL_ENV=browser babel src -x '.ts,.tsx' --out-dir dist/browser",
     "compile:commonjs": "BABEL_ENV=commonjs babel src -x '.ts,.tsx' --out-dir dist/commonjs",
-    "types": "tsc --project tsconfig.types.json",
-    "clean": "rm -rf dist types"
+    "types": "tsc",
+    "typedoc": "typedoc ./src/api-types.ts --json dist/api-doc.json",
+    "clean": "rm -rf dist"
   },
   "peerDependencies": {
     "postcss": "8",
-    "react": ">=16.8"
+    "react": ">=16.14"
   },
   "dependencies": {
     "@babel/runtime": "^7.17",
@@ -104,6 +105,7 @@
     "react": "17.0.2",
     "react-dom": "17.0.2",
     "tailwindcss": "3.0.23",
+    "typedoc": "0.22.11",
     "typescript": "4.5.5",
     "webpack": "5.69.1"
   }

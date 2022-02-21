@@ -16,7 +16,7 @@ const lg = 1250
 
 /**
  * Calculates the state for each breakpoint based on current window width
- * @param breakpoints Set of application breakpoint values
+ * @param breakpoints - Set of application breakpoint values
  */
 function calcBreakpoints(breakpoints: number[]): ApplicationMedia {
   const w = window.innerWidth
@@ -31,8 +31,8 @@ function calcBreakpoints(breakpoints: number[]): ApplicationMedia {
 /**
  * Uses `window.matchMedia` to listen for changes to window media queries and
  * updates breakpoint status on every change.
- * @param breakpoints Set of application breakpoints
- * @param updateBps Hook state update function updater
+ * @param breakpoints - Set of application breakpoints
+ * @param updateBps - Hook state update function updater
  */
 function mountListeners(
   breakpoints: number[],

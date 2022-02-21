@@ -1,6 +1,7 @@
 /**
- * Library utility functions for working with props to className+style mappings
- * @module
+ * @file
+ * Library utility functions for working with props to className+style
+ * mappings
  */
 
 import { type AriaAttributes } from 'react'
