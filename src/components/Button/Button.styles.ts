@@ -34,7 +34,7 @@ export const buttonStyles = {
 
     transition: 'background-color 0.15s linear',
 
-    '&:hover, &.C9Y-over': {
+    '&:hover, &.C9Y-hover': {
       borderColor: theme.colors.primary[500],
       backgroundColor: theme.colors.primary[700],
     },
