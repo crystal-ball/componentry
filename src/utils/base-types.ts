@@ -1,5 +1,6 @@
 /**
- * @file Defines the base types used for component prop type definitions.
+ * @file
+ * Base types used for component prop type definitions.
  */
 
 import {

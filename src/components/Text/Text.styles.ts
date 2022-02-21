@@ -1,11 +1,12 @@
 import { getMergedConfig } from '../../plugin-postcss/configs'
-
-const { theme } = getMergedConfig()
+import { StylesDefinition } from '../../utils/types'
 
 //                                         <Text /> styles
 // -------------------------------------------------------
 
-export const textStyles = {
+const { theme } = getMergedConfig()
+
+export const textStyles: TextStyles = {
   // BASE
   '.🅲Text-base': {},
 
@@ -32,4 +33,21 @@ export const textStyles = {
       marginTop: theme.spacing[2],
     },
   },
+}
+
+/** @public */
+export type TextStyles = {
+  /** Base class applied to all variants for shared structural styles */
+  '.🅲Text-base': StylesDefinition
+  /** Variant class applied when `variant="h1"` */
+  '.🅲Text-h1': StylesDefinition
+  /** Variant class applied when `variant="h2"` */
+  '.🅲Text-h2': StylesDefinition
+  /** Variant class applied when `variant="h3"` */
+  '.🅲Text-h3': StylesDefinition
+  /** Variant class applied when `variant="body"` */
+  '.🅲Text-body': {
+    /** Sibling selector for auto-spacing multiple body elements */
+    '& + &': StylesDefinition
+  } & StylesDefinition
 }

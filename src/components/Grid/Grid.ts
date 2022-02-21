@@ -1,4 +1,4 @@
-import React from 'react'
+import { type FC } from 'react'
 import { useTheme } from '../Theme/Theme'
 import { type ComponentBaseProps } from '../../utils/base-types'
 import { element } from '../../utils/element-creator'
@@ -11,9 +11,18 @@ export interface GridProps extends ComponentBaseProps<'div'> {
 }
 
 /**
- * [Grid component 📝](https://componentry.design/components/grid)
+ * **[📝 Grid docs](https://componentry.design/docs/components/grid)**
+ *
+ * `Grid` provides consistent CSS grid layouts using a grid container with
+ * utility props.
+ * @example
+ * ```tsx
+ * <Flex gap={2}>
+ *   ...
+ * </Flex>
+ * ```
  */
-export const Grid: React.FC<GridProps> = (props) => {
+export const Grid: FC<GridProps> = (props) => {
   const { align, justify, ...rest } = {
     ...useTheme<GridProps>('Grid'),
     ...props,

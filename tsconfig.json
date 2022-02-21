@@ -1,7 +1,13 @@
 {
   "compilerOptions": {
     // --- Code generation
-    "noEmit": true,
+    "emitDeclarationOnly": true,
+    "declaration": true, // Generate corresponding type definition files
+    "declarationMap": true,
+    "outDir": "./dist/browser",
+    "importHelpers": true,
+
+    "lib": ["DOM", "ESNext"],
 
     // --- Type checking
     "allowJs": true, // Allow JS files to be compiled
@@ -23,7 +29,7 @@
     "esModuleInterop": true, // Interop commonJS and ESM, fixes some issues importing commonJS (recommended by TS)
     "isolatedModules": true, // Disallow features that require cross-file information for compilation (Babel safety check)
     "allowSyntheticDefaultImports": true /* Allow default imports from modules with no default export. This does not affect code emit, just typechecking. */,
-    "jsx": "react" /* Specify JSX code generation: 'preserve', 'react-native', or 'react'. */
+    "jsx": "react-jsx" /* Specify JSX code generation: 'preserve', 'react-native', or 'react'. */
   },
 
   "include": ["@types/**/*", "src/**/*"]

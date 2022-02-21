@@ -10,8 +10,8 @@ type StaticOptions<Props> = Props & {
 /**
  * Generates a static component. Used for components that just set a className
  * and HTML attributes
- * @param displayName Component name
- * @param defaultProps Componentry library default prop values
+ * @param displayName - Component name
+ * @param defaultProps - Componentry library default prop values
  */
 export function staticComponent<Props>(
   displayName: string,

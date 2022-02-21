@@ -1,13 +1,13 @@
-import React from 'react'
+import { type ComponentType, type FC } from 'react'
 import { useTheme } from '../Theme/Theme'
 import { type ComponentBaseProps } from '../../utils/base-types'
 import { type MergePropTypes } from '../../utils/types'
 import { element } from '../../utils/element-creator'
 
-// Module augmentation interface for overriding component props' types
+/** Module augmentation interface for overriding component props' types */
 export interface IconPropsOverrides {}
 
-interface IconPropsDefaults {
+export interface IconPropsBase {
   /** External path to symbol sprite  */
   externalURI?: string
   /** ID for the `iconElementsMap` or href attribute for symbol sprites */
@@ -16,16 +16,23 @@ interface IconPropsDefaults {
   variant?: 'font'
 }
 
-type IconProps = MergePropTypes<IconPropsDefaults, IconPropsOverrides> &
+export type IconProps = MergePropTypes<IconPropsBase, IconPropsOverrides> &
   ComponentBaseProps<'svg'>
 
-type ElementsMap = { [ID: string]: () => JSX.Element }
-let iconElementsMap: ElementsMap = {}
+/** Mapping of icon IDs to components rendered by Icon */
+export type IconElementsMap = { [ID: string]: ComponentType<any> }
+let iconElementsMap: IconElementsMap = {}
 
 /**
- * [Icon component 📝](https://componentry.design/components/icon)
+ * **[📝 Icon docs](https://componentry.design/docs/components/icon)**
+ *
+ * `Icon` provides consistent iconography using SVG icons.
+ * @example
+ * ```tsx
+ * <Icon id="coffee" />
+ * ```
  */
-export const Icon: React.FC<IconProps> = (props) => {
+export const Icon: FC<IconProps> = (props) => {
   const {
     externalURI = '',
     id,
@@ -52,6 +59,7 @@ Icon.displayName = 'Icon'
  * Configuring an icon elements map isn't necessary if you've setup an SVG
  * symbol sprite.
  * @example
+ * ```ts
  * import Info from './info.svg'
  * import Coffee from './coffee.svg'
  *
@@ -59,7 +67,8 @@ Icon.displayName = 'Icon'
  *   info: Info,
  *   coffee: Coffee
  * })
+ * ```
  */
-export function configureIconElementsMap(elementsMap: ElementsMap) {
+export function configureIconElementsMap(elementsMap: IconElementsMap) {
   iconElementsMap = elementsMap
 }

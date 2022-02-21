@@ -47,7 +47,7 @@ function useContextTheme(componentName: string) {
 
 /**
  * [Theme hook 📝](https://componentry.design/components/theme)
- * @param componentName Library component name, eg Button, Dropdown, Modal, etc.
+ * @param componentName - Library component name, eg Button, Dropdown, Modal, etc.
  */
 export function useTheme<Theme>(componentName: string): Theme {
   if (preCompileMode) {

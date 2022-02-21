@@ -1,10 +1,10 @@
 /**
- * DOM manipulation and inspection utility fns
- * @module
+ * @file
+ * DOM manipulation and inspection utility fns.
  */
 
 // --------------------------------------------------------
-// closest handler
+// Closest handler
 
 /**
  * Find the closest DOM parent with the a `data-id` matching `guid`. If a matching

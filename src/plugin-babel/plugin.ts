@@ -14,7 +14,7 @@ const components = { Block, Flex, Text }
 // These are the props that should be parsed to compute the component value
 const parseProps = { as: 1, className: 1, ...utilityProps, ...precompileProps }
 
-/**
+/*
  * # Types Notes
  *
  * JSXOpeningElement can be a:

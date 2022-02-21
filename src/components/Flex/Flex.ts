@@ -1,4 +1,4 @@
-import React from 'react'
+import { type FC } from 'react'
 import { useTheme } from '../Theme/Theme'
 import { type ComponentBaseProps } from '../../utils/base-types'
 import { element } from '../../utils/element-creator'
@@ -15,9 +15,18 @@ export interface FlexProps extends ComponentBaseProps<'div'> {
 }
 
 /**
- * [Flex component 📝](https://componentry.design/components/flex)
+ * **[📝 Flex docs](https://componentry.design/docs/components/flex)**
+ *
+ * `Flex` provides consistent flexbox layouts using a flex container with
+ * utility props.
+ * @example
+ * ```tsx
+ * <Flex align="center" gap={2}>
+ *   ...
+ * </Flex>
+ * ```
  */
-export const Flex: React.FC<FlexProps> = (props) => {
+export const Flex: FC<FlexProps> = (props) => {
   const { align, direction, justify, wrap, ...rest } = {
     ...useTheme<FlexProps>('Flex'),
     ...props,

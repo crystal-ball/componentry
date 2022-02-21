@@ -1,5 +1,6 @@
 /**
- * @file Resource for cleaning Componentry props and creating utility classes.
+ * @file
+ * Resource for cleaning Componentry props and creating utility classes.
  * @remarks
  * This file is used for module augmentation of utility props, eg:
  *
@@ -9,15 +10,11 @@
 import clsx from 'clsx'
 import { MergePropTypes } from './types'
 
-/**
- * Module augmentation interface for overriding default utility props' types
- */
+/** Module augmentation interface for overriding default utility props' types */
 export interface UtilityPropsOverrides {}
 
-/**
- * Default utility prop types, customizable with UtilityPropsOverrides
- */
-export interface UtilityPropsDefaults {
+/** Default utility prop types, customizable with UtilityPropsOverrides */
+export interface UtilityPropsBase {
   /** Sets active style */
   active?: boolean | string
   /** Sets align-content style */
@@ -143,13 +140,11 @@ export interface UtilityPropsDefaults {
   py?: string | number
 }
 
-/**
- * Componentry utility props for including utility styles.
- */
-export type UtilityProps = MergePropTypes<UtilityPropsDefaults, UtilityPropsOverrides>
+/** Componentry utility props for including utility styles. */
+export type UtilityProps = MergePropTypes<UtilityPropsBase, UtilityPropsOverrides>
 
 // Map of utility props for quickly filtering out Componentry props from user props
-export const utilityProps: { [Prop in keyof UtilityPropsDefaults]: 1 } = {
+export const utilityProps: { [Prop in keyof UtilityPropsBase]: 1 } = {
   active: 1,
   alignContent: 1,
   alignItems: 1,
@@ -300,12 +295,14 @@ function generateClassNames<Props extends UtilityProps>(p: Props): string {
  * `createUtilityClasses` filters and transforms Componentry utility props into
  * utility classes.
  * @example
+ * ```tsx
  * const { filteredProps, utilityClasses } = createUtilityClasses(props)
  * return (
  *   <div className={clsx('some-custom-class', utilityClasses)} {...filteredProps}>
  *     {children}
  *   </div>
  * )
+ * ```
  */
 export function createUtilityClasses<Props extends { [prop: string]: any }>(
   props: Props,
@@ -331,6 +328,7 @@ export function createUtilityClasses<Props extends { [prop: string]: any }>(
 // --------------------------------------------------------
 // PRECOMPILE
 
+/** @internal */
 export const precompileProps = {
   inline: 1,
   variant: 1,
