@@ -1,0 +1,29 @@
+import { Meta } from '@storybook/addon-docs'
+
+<Meta title='Decision Records/Publishing' />
+
+# Publishing notes
+
+### Babel compilation
+
+Source code is compiled using `preset-env` to ensure that any modern syntax is compiled to
+browserslist `"defaults"` option, this should ensure the library can be included in any
+application without having to be compiled.
+
+#### Polyfills
+
+No language features are polyfilled, this seems to match the setup of most other packages.
+On the plus side this means no unnecessary polyfills are included in the final
+distribution. On the cons side it means users must ensure their applications polyfills for
+browser (instead of polyfills for just application use).
+
+### Types
+
+Type declaration files are output in `/types` instead of `/dist` so that module
+augmentation paths are more intuitive, eg:
+
+`declare module 'componentry/types/components/Text/Text'`
+
+vs =>
+
+`declare module 'componentry/dist/browser/components/Text/Text'`

@@ -1,12 +1,10 @@
 {
   "compilerOptions": {
     // --- Code generation
+    "declaration": true,
     "emitDeclarationOnly": true,
-    "declaration": true, // Generate corresponding type definition files
-    "declarationMap": true,
-    "outDir": "./dist/browser",
+    "outDir": "./types",
     "importHelpers": true,
-
     "lib": ["DOM", "ESNext"],
 
     // --- Type checking
@@ -32,5 +30,6 @@
     "jsx": "react-jsx" /* Specify JSX code generation: 'preserve', 'react-native', or 'react'. */
   },
 
-  "include": ["@types/**/*", "src/**/*"]
+  "include": ["@types/**/*", "src/**/*"],
+  "exclude": ["src/**/*.spec.js"]
 }

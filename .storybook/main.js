@@ -21,5 +21,5 @@ module.exports = {
     },
     '@geometricpanda/storybook-addon-badges',
   ],
-  stories: ['../src/**/*.stories.@(js|mdx)'],
+  stories: ['../src/**/*.stories.@(js|mdx)', '../docs/**/*.stories.mdx'],
 }
