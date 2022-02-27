@@ -3,12 +3,14 @@ import { useTheme } from '../Theme/Theme'
 import { type ComponentBaseProps } from '../../utils/base-types'
 import { element } from '../../utils/element-creator'
 
-export interface GridProps extends ComponentBaseProps<'div'> {
+export interface GridPropsBase {
   /** Sets an `align-items` style */
   align?: 'start' | 'end' | 'center' | 'baseline' | 'stretch'
   /** Sets a `justify-items` style */
   justify?: 'start' | 'end' | 'center' | 'stretch'
 }
+
+export type GridProps = GridPropsBase & ComponentBaseProps<'div'>
 
 /**
  * **[📝 Grid docs](https://componentry.design/docs/components/grid)**

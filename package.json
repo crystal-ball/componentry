@@ -6,6 +6,7 @@
   "exports": {
     "./babel": "./babel.js",
     "./postcss": "./postcss.js",
+    "./api-docs": "./dist/api-docs.json",
     ".": {
       "browser": "./dist/browser/index.js",
       "node": {
@@ -55,7 +56,7 @@
     "compile:browser": "BABEL_ENV=browser babel src -x '.ts,.tsx' --out-dir dist/browser",
     "compile:commonjs": "BABEL_ENV=commonjs babel src -x '.ts,.tsx' --out-dir dist/commonjs",
     "types": "tsc",
-    "typedoc": "typedoc ./src/api-types.ts --json dist/api-doc.json",
+    "typedoc": "typedoc ./src/api-types.ts --json dist/api-docs.json",
     "clean": "rm -rf dist types"
   },
   "peerDependencies": {

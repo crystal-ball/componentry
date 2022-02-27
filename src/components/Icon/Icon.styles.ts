@@ -29,7 +29,7 @@ export const iconStyles: IconStyles = {
   // ...coming soon
 }
 
-export type IconStyles = {
+export interface IconStyles {
   /** Base class applied to all variants for shared structural styles */
   '.C9Y-Icon-base': StylesDefinition
   /** Variant class applied when `variant="font"` */
