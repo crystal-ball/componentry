@@ -70,19 +70,17 @@ Text.displayName = 'Text'
  * Configuration method for defining the elements to render for each text
  * variant.
  * @remarks
- * When used the initial elements are overridden, so be sure to define a
- * complete mapping.
+ * Configured elements are merged with the library default values.
  * @example
  * ```ts
+ * // Add a title variant that renders an h1, and render a div instead of a p
+ * // for body variants.
  * configureTextElementsMap({
- *   h1: 'h1',
- *   h2: 'h2',
- *   h3: 'h3',
- *   subtitle: 'h4',
+ *   title: 'h1',
  *   body: 'div',
  * })
  * ```
  */
 export function configureTextElementsMap(elementsMap: TextElementsMap) {
-  textElementMap = elementsMap
+  textElementMap = { ...textElementMap, ...elementsMap }
 }
