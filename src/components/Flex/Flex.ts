@@ -3,7 +3,7 @@ import { useTheme } from '../Theme/Theme'
 import { type ComponentBaseProps } from '../../utils/base-types'
 import { element } from '../../utils/element-creator'
 
-export interface FlexProps extends ComponentBaseProps<'div'> {
+export interface FlexPropsBase {
   /** Sets an `align-items` style */
   align?: 'start' | 'end' | 'center' | 'baseline' | 'stretch'
   /** Sets a `flex-direction` flex style */
@@ -13,6 +13,8 @@ export interface FlexProps extends ComponentBaseProps<'div'> {
   /** Sets a `flex-wrap` flex style */
   wrap?: 'wrap' | 'nowrap' | 'wrap-reverse'
 }
+
+export type FlexProps = FlexPropsBase & ComponentBaseProps<'div'>
 
 /**
  * **[📝 Flex docs](https://componentry.design/docs/components/flex)**

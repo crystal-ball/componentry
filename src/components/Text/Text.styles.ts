@@ -35,8 +35,7 @@ export const textStyles: TextStyles = {
   },
 }
 
-/** @public */
-export type TextStyles = {
+export interface TextStyles {
   /** Base class applied to all variants for shared structural styles */
   '.C9Y-Text-base': StylesDefinition
   /** Variant class applied when `variant="h1"` */
