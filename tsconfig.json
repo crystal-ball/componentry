@@ -31,5 +31,9 @@
   },
 
   "include": ["@types/**/*", "src/**/*"],
-  "exclude": ["src/**/*.spec.js"]
+  "exclude": [
+    "src/plugin-postcss/index.ts",
+    "src/plugin-babel/index.ts",
+    "src/**/*.spec.js"
+  ]
 }

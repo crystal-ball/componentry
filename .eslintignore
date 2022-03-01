@@ -4,6 +4,11 @@
 .prettierrc.js
 node_modules
 
+# CommonJS entry files
+# -------------------------------------
+src/plugin-babel/index.ts
+src/plugin-postcss/index.ts
+
 # Babel plugin fixtures aren't fully valid
 # -------------------------------------
 src/plugin-babel/__fixtures__

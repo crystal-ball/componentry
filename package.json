@@ -21,8 +21,8 @@
   },
   "license": "MIT",
   "exports": {
-    "./babel": "./babel.js",
-    "./postcss": "./postcss.js",
+    "./babel": "./dist/commonjs/plugin-babel/index.js",
+    "./postcss": "./dist/commonjs/plugin-postcss/index.js",
     "./api-docs": "./dist/api-docs.json",
     ".": {
       "browser": "./dist/browser/index.js",
@@ -33,6 +33,8 @@
       "default": "./dist/browser/index.js"
     }
   },
+  "main": "./dist/commonjs/index.js",
+  "module": "./dist/browser/index.js",
   "types": "./types/index.d.ts",
   "sideEffects": false,
   "scripts": {
