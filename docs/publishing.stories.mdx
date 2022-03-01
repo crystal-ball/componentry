@@ -4,6 +4,15 @@ import { Meta } from '@storybook/addon-docs'
 
 # Publishing notes
 
+### package.json fields
+
+1. `exports` provides the 'modern' way to explicitly define exports, and has the advantage
+   of being able to define a set of mapped paths for cleaner imports by users. It is the
+   preferred field and is supported by webpack.
+2. `main` and `module` are included for tools that don't support `exports` yet, which
+   includes `eslint-plugin-import`.
+3. `types` defines the type definitions path.
+
 ### Babel compilation
 
 Source code is compiled using `preset-env` to ensure that any modern syntax is compiled to
