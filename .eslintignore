@@ -2,6 +2,7 @@
 # -------------------------------------
 
 .prettierrc.js
+postcss.config.js
 node_modules
 
 # CommonJS entry files
