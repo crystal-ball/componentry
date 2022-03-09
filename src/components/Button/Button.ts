@@ -7,7 +7,7 @@ import { element } from '../../utils/element-creator'
 // Module augmentation interface for overriding component props' types
 export interface ButtonPropsOverrides {}
 
-interface ButtonPropsDefaults {
+export interface ButtonPropsDefaults {
   /** Button variant color */
   color?: 'primary'
   /** Disables the element, preventing mouse and keyboard events */
@@ -22,7 +22,7 @@ interface ButtonPropsDefaults {
   variant?: 'filled' | 'outlined'
 }
 
-type ButtonProps = MergePropTypes<ButtonPropsDefaults, ButtonPropsOverrides> &
+export type ButtonProps = MergePropTypes<ButtonPropsDefaults, ButtonPropsOverrides> &
   ComponentBaseProps<'button'>
 
 /**
