@@ -7,7 +7,7 @@ import { element } from '../../utils/element-creator'
 // Module augmentation interface for overriding component props' types
 export interface LinkPropsOverrides {}
 
-interface LinkPropsDefaults {
+export interface LinkPropsDefaults {
   /** Disables the element, preventing mouse and keyboard events */
   disabled?: boolean
   /** HTML element href */
@@ -18,7 +18,7 @@ interface LinkPropsDefaults {
   variant?: 'text' | 'inherit'
 }
 
-type LinkProps = MergePropTypes<LinkPropsDefaults, LinkPropsOverrides> &
+export type LinkProps = MergePropTypes<LinkPropsDefaults, LinkPropsOverrides> &
   ComponentBaseProps<'a'>
 
 /**
