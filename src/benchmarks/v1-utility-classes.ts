@@ -1,4 +1,3 @@
-/* eslint-disable prefer-template */
 /**
  * @file
  * Resource for cleaning Componentry props and creating utility classes.
@@ -8,7 +7,8 @@
  * `declare module 'componentry/types/utils/utility-classes' { }`
  */
 
-import { MergePropTypes } from './types'
+import clsx from 'clsx'
+import { MergePropTypes } from '../utils/types'
 
 /** Module augmentation interface for overriding default utility props' types */
 export interface UtilityPropsOverrides {}
@@ -143,6 +143,64 @@ export interface UtilityPropsBase {
 /** Componentry utility props for including utility styles. */
 export type UtilityProps = MergePropTypes<UtilityPropsBase, UtilityPropsOverrides>
 
+// Map of utility props for quickly filtering out Componentry props from user props
+export const utilityProps: { [Prop in keyof UtilityPropsBase]: 1 } = {
+  active: 1,
+  alignContent: 1,
+  alignItems: 1,
+  alignSelf: 1,
+  backgroundColor: 1,
+  bold: 1,
+  border: 1,
+  borderBottom: 1,
+  borderColor: 1,
+  borderLeft: 1,
+  borderRight: 1,
+  borderTop: 1,
+  color: 1,
+  disabled: 1,
+  display: 1,
+  flexDirection: 1,
+  flexWrap: 1,
+  fontFamily: 1,
+  fontSize: 1,
+  fontWeight: 1,
+  gap: 1,
+  'gap-x': 1,
+  'gap-y': 1,
+  height: 1,
+  invisible: 1,
+  italic: 1,
+  justifyContent: 1,
+  justifyItems: 1,
+  justifySelf: 1,
+  letterSpacing: 1,
+  lineHeight: 1,
+  m: 1,
+  maxHeight: 1,
+  maxWidth: 1,
+  mb: 1,
+  minHeight: 1,
+  minWidth: 1,
+  ml: 1,
+  mr: 1,
+  mt: 1,
+  mx: 1,
+  my: 1,
+  p: 1,
+  pb: 1,
+  pl: 1,
+  position: 1,
+  pr: 1,
+  pt: 1,
+  px: 1,
+  py: 1,
+  textAlign: 1,
+  textTransform: 1,
+  visible: 1,
+  width: 1,
+}
+
 const activeProps = {
   activate: 1,
   deactivate: 1,
@@ -152,6 +210,85 @@ const activeProps = {
   onActivated: 1,
   onDeactivate: 1,
   onDeactivated: 1,
+}
+
+function generateClassNames<Props extends UtilityProps>(p: Props): string {
+  // Tailwind expects a `flex-col` for direction which breaks the pattern of specifying
+  // the style value
+  const computedDir = p.flexDirection?.replace('column', 'col')
+  // Support shorthand bold everywhere to match shorthand italic for easy text styles
+  const computedFontWeight = p.bold ? 'bold' : p.fontWeight
+  return clsx({
+    // LAYOUT
+    [p.position ?? 'position']: p.position,
+    [p.display ?? 'display']: p.display,
+    invisible: p.invisible,
+    visible: p.visible,
+
+    // FLEXBOX+GRID
+    [`content-${p.alignContent}`]: p.alignContent,
+    [`flex-${computedDir}`]: computedDir,
+    [`flex-${p.flexWrap}`]: p.flexWrap,
+    [`items-${p.alignItems}`]: p.alignItems,
+    [`justify-${p.justifyContent}`]: p.justifyContent,
+    [`justify-items-${p.justifyItems}`]: p.justifyItems,
+    [`justify-${p.justifySelf}`]: p.justifySelf,
+    [`self-${p.alignSelf}`]: p.alignSelf,
+
+    // SPACING
+    [`m-${p.m}`]: p.m,
+    [`mt-${p.mt}`]: p.mt,
+    [`mr-${p.mr}`]: p.mr,
+    [`mb-${p.mb}`]: p.mb,
+    [`ml-${p.ml}`]: p.ml,
+    [`mx-${p.mx}`]: p.mx,
+    [`my-${p.my}`]: p.my,
+    [`p-${p.p}`]: p.p,
+    [`pt-${p.pt}`]: p.pt,
+    [`pr-${p.pr}`]: p.pr,
+    [`pb-${p.pb}`]: p.pb,
+    [`pl-${p.pl}`]: p.pl,
+    [`px-${p.px}`]: p.px,
+    [`py-${p.py}`]: p.py,
+    [`gap-${p.gap}`]: p.gap,
+    [`gap-x-${p['gap-x']}`]: p['gap-x'],
+    [`gap-y-${p['gap-y']}`]: p['gap-y'],
+
+    // SIZING
+    [`h-${p.height}`]: p.height,
+    [`min-h-${p.minHeight}`]: p.minHeight,
+    [`max-h-${p.maxHeight}`]: p.maxHeight,
+    [`w-${p.width}`]: p.width,
+    [`min-w-${p.minWidth}`]: p.minWidth,
+    [`max-w-${p.maxWidth}`]: p.maxWidth,
+
+    // TYPOGRAPHY
+    [p.textTransform ?? 'textTransform']: p.textTransform,
+    [`font-${p.fontFamily}`]: p.fontFamily,
+    [`font-${computedFontWeight}`]: computedFontWeight,
+    [`leading-${p.lineHeight}`]: p.lineHeight,
+    [`text-${p.color}`]: p.color,
+    [`text-${p.fontSize}`]: p.fontSize,
+    [`text-${p.textAlign}`]: p.textAlign,
+    [`tracking-${p.letterSpacing}`]: p.letterSpacing,
+    italic: p.italic,
+
+    // BACKGROUNDS
+    [`bg-${p.backgroundColor}`]: p.backgroundColor,
+
+    // BORDERS
+    border: p.border, // 1px borderWidth
+    'border-b': p.borderBottom, // 1px borderWidth
+    'border-l': p.borderLeft, // 1px borderWidth
+    'border-r': p.borderRight, // 1px borderWidth
+    'border-t': p.borderTop, // 1px borderWidth
+    [`border-${p.borderWidth}`]: p.borderWidth,
+    [`border-${p.borderColor}`]: p.borderColor,
+
+    // STATES (eg https://mui.com/customization/how-to-customize/#state-classes)
+    'C9Y-active': p.active,
+    'C9Y-disabled': p.disabled,
+  })
 }
 
 /**
@@ -171,205 +308,35 @@ export function createUtilityClasses<Props extends { [prop: string]: any }>(
   props: Props,
 ) {
   const filteredProps: { [prop: string]: any } = {}
-  const classes: string[] = []
+
+  // Pass through disabled to final element as it's a valid HTML attribute
+  if (props.disabled) filteredProps.disabled = true
 
   Object.keys(props).forEach((prop) => {
-    const value = props[prop]
-    // If a props has a key, but the prop value is undefined or false we can bail early
-    if (value === undefined || value === false) return
-
-    switch (prop) {
-      // LAYOUT
-      case 'position':
-      case 'display':
-        classes.push(value)
-        break
-      case 'invisible':
-        classes.push('invisible')
-        break
-      case 'visible':
-        classes.push('visible')
-        break
-
-      // FLEXBOX/GRID
-      case 'alignContent':
-        classes.push('content-' + value)
-        break
-      case 'flexDirection':
-        classes.push('flex-' + value.replace('column', 'col'))
-        break
-      case 'flexWrap':
-        classes.push('flex-' + value)
-        break
-      case 'alignItems':
-        classes.push('items-' + value)
-        break
-      case 'justifyContent':
-        classes.push('justify-' + value)
-        break
-      case 'justifyItems':
-        classes.push('justify-items-' + value)
-        break
-      case 'justifySelf':
-        classes.push('justify-' + value)
-        break
-      case 'alignSelf':
-        classes.push('self-' + value)
-        break
-
-      // SPACING
-      case 'm':
-        classes.push('m-' + value)
-        break
-      case 'mt':
-        classes.push('mt-' + value)
-        break
-      case 'mr':
-        classes.push('mr-' + value)
-        break
-      case 'mb':
-        classes.push('mb-' + value)
-        break
-      case 'ml':
-        classes.push('ml-' + value)
-        break
-      case 'mx':
-        classes.push('mx-' + value)
-        break
-      case 'my':
-        classes.push('my-' + value)
-        break
-      case 'p':
-        classes.push('p-' + value)
-        break
-      case 'pt':
-        classes.push('pt-' + value)
-        break
-      case 'pr':
-        classes.push('pr-' + value)
-        break
-      case 'pb':
-        classes.push('pb-' + value)
-        break
-      case 'pl':
-        classes.push('pl-' + value)
-        break
-      case 'px':
-        classes.push('px-' + value)
-        break
-      case 'py':
-        classes.push('py-' + value)
-        break
-      case 'gap':
-        classes.push('gap-' + value)
-        break
-      case 'gap-x':
-        classes.push('gap-x-' + value)
-        break
-      case 'gap-y':
-        classes.push('gap-y-' + value)
-        break
-
-      // SIZING
-      case 'height':
-        classes.push('h-' + value)
-        break
-      case 'minHeight':
-        classes.push('min-h-' + value)
-        break
-      case 'maxHeight':
-        classes.push('max-h-' + value)
-        break
-      case 'width':
-        classes.push('w-' + value)
-        break
-      case 'minWidth':
-        classes.push('min-w-' + value)
-        break
-      case 'maxWidth':
-        classes.push('max-w-' + value)
-        break
-
-      // TYPOGRAPHY
-      case 'bold':
-        classes.push('font-bold')
-        break
-      case 'italic':
-        classes.push('italic')
-        break
-      case 'fontFamily':
-        classes.push('font-' + value)
-        break
-      case 'fontWeight':
-        classes.push('font-' + value)
-        break
-      case 'lineHeight':
-        classes.push('leading-' + value)
-        break
-      case 'color':
-        classes.push('text-' + value)
-        break
-      case 'fontSize':
-        classes.push('text-' + value)
-        break
-      case 'textAlign':
-        classes.push('text-' + value)
-        break
-      case 'letterSpacing':
-        classes.push('tracking-' + value)
-        break
-      case 'textTransform':
-        classes.push(value)
-        break
-
-      // BACKGROUNDS
-      case 'backgroundColor':
-        classes.push('bg-' + value)
-        break
-
-      // BORDERS
-      case 'border':
-        classes.push('border') // 1px borderWidth
-        break
-      case 'borderBottom':
-        classes.push('border-b') // 1px borderWidth
-        break
-      case 'borderLeft':
-        classes.push('border-l') // 1px borderWidth
-        break
-      case 'borderRight':
-        classes.push('border-r') // 1px borderWidth
-        break
-      case 'borderTop':
-        classes.push('border-t') // 1px borderWidth
-        break
-      case 'borderWidth':
-        classes.push('border-' + value)
-        break
-      case 'borderColor':
-        classes.push('border-' + value)
-        break
-
-      // STATES (eg https://mui.com/customization/how-to-customize/#state-classes)
-      case 'active':
-        classes.push('C9Y-active')
-        break
-      case 'disabled':
-        classes.push('C9Y-disabled')
-        // Pass through disabled to final element as it's a valid HTML attribute
-        filteredProps.disabled = true
-        break
-
-      default:
-        if (!(prop in activeProps)) {
-          // The prop doesn't map to a library utility prop, pass it through
-          filteredProps[prop] = props[prop]
-        }
+    if (!(prop in utilityProps) && !(prop in activeProps)) {
+      // The prop doesn't map to a library utility prop, pass it through
+      filteredProps[prop] = props[prop]
     }
   })
 
   return {
     filteredProps,
-    utilityClasses: classes.join(' '),
+    utilityClasses: generateClassNames(props),
   }
+}
+
+// --------------------------------------------------------
+// PRECOMPILE
+
+/** @internal */
+export const precompileProps = {
+  inline: 1,
+  variant: 1,
+  // --- Flex
+  align: 1,
+  direction: 1,
+  justify: 1,
+  wrap: 1,
+  // --- Text
+  bold: 1,
 }

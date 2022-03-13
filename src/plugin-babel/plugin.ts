@@ -5,14 +5,79 @@ import { Flex } from '../components/Flex/Flex'
 import { Block } from '../components/Block/Block'
 import { Text } from '../components/Text/Text'
 import { initializePreCompileMode } from '../components/Theme/Theme'
-import { precompileProps, utilityProps } from '../utils/utility-classes'
 
 import { parseAttributes } from './parse-attributes'
 import { buildClosingElement, buildOpeningElement } from './build-elements'
 
 const components = { Block, Flex, Text }
 // These are the props that should be parsed to compute the component value
-const parseProps = { as: 1, className: 1, ...utilityProps, ...precompileProps }
+const parseProps = {
+  as: 1,
+  className: 1,
+  active: 1,
+  alignContent: 1,
+  alignItems: 1,
+  alignSelf: 1,
+  backgroundColor: 1,
+  bold: 1,
+  border: 1,
+  borderBottom: 1,
+  borderColor: 1,
+  borderLeft: 1,
+  borderRight: 1,
+  borderTop: 1,
+  color: 1,
+  disabled: 1,
+  display: 1,
+  flexDirection: 1,
+  flexWrap: 1,
+  fontFamily: 1,
+  fontSize: 1,
+  fontWeight: 1,
+  gap: 1,
+  'gap-x': 1,
+  'gap-y': 1,
+  height: 1,
+  invisible: 1,
+  italic: 1,
+  justifyContent: 1,
+  justifyItems: 1,
+  justifySelf: 1,
+  letterSpacing: 1,
+  lineHeight: 1,
+  m: 1,
+  maxHeight: 1,
+  maxWidth: 1,
+  mb: 1,
+  minHeight: 1,
+  minWidth: 1,
+  ml: 1,
+  mr: 1,
+  mt: 1,
+  mx: 1,
+  my: 1,
+  p: 1,
+  pb: 1,
+  pl: 1,
+  position: 1,
+  pr: 1,
+  pt: 1,
+  px: 1,
+  py: 1,
+  textAlign: 1,
+  textTransform: 1,
+  visible: 1,
+  width: 1,
+  // PRECOMPILE
+  inline: 1,
+  variant: 1,
+  // --- Flex
+  align: 1,
+  direction: 1,
+  justify: 1,
+  wrap: 1,
+  // --- Text
+}
 
 /*
  * # Types Notes
