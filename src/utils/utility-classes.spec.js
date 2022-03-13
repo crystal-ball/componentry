@@ -1,57 +1,175 @@
 import { createUtilityClasses } from './utility-classes'
 
-const sizes = ['xs', 'sm', 'md', 'lg', 'xl']
-
 describe('createUtilityClasses()', () => {
-  it('computes spacing utility classes', () => {
-    sizes.forEach((size) => {
-      const computed = createUtilityClasses({ m: size, p: size })
+  it('does not compute undefined values', () => {
+    expect(createUtilityClasses({}).utilityClasses).toBe('')
+  })
 
-      expect(computed.utilityClasses.includes(`m-${size}`)).toBeTruthy()
-      expect(computed.utilityClasses.includes(`p-${size}`)).toBeTruthy()
+  it('computes layout classes', () => {
+    expect(
+      createUtilityClasses({
+        position: 'fixed',
+        display: 'grid',
+        invisible: true,
+        visible: true,
+      }).utilityClasses,
+    ).toBe('fixed grid invisible visible')
+
+    expect(
+      createUtilityClasses({
+        position: undefined,
+        display: undefined,
+        invisible: false,
+        visible: false,
+      }).utilityClasses,
+    ).toBe('')
+  })
+
+  it('computes spacing utility classes', () => {
+    const spacings = [0, 0.5, 1, 2, 3]
+    spacings.forEach((spacing) => {
+      const computed = createUtilityClasses({
+        m: spacing,
+        mt: spacing,
+        mr: spacing,
+        mb: spacing,
+        ml: spacing,
+        mx: spacing,
+        my: spacing,
+      })
+
+      expect(computed.utilityClasses).toBe(
+        `m-${spacing} mt-${spacing} mr-${spacing} mb-${spacing} ml-${spacing} mx-${spacing} my-${spacing}`,
+      )
+    })
+
+    spacings.forEach((spacing) => {
+      const computed = createUtilityClasses({
+        p: spacing,
+        pt: spacing,
+        pr: spacing,
+        pb: spacing,
+        pl: spacing,
+        px: spacing,
+        py: spacing,
+      })
+
+      expect(computed.utilityClasses).toBe(
+        `p-${spacing} pt-${spacing} pr-${spacing} pb-${spacing} pl-${spacing} px-${spacing} py-${spacing}`,
+      )
     })
   })
 
-  it('computes border utility classes', () => {
-    expect(createUtilityClasses({ border: true }).utilityClasses).toBe('border')
-
-    expect(createUtilityClasses({ borderTop: true }).utilityClasses).toBe('border-t')
-    expect(createUtilityClasses({ borderRight: true }).utilityClasses).toBe('border-r')
-    expect(createUtilityClasses({ borderBottom: true }).utilityClasses).toBe('border-b')
-    expect(createUtilityClasses({ borderLeft: true }).utilityClasses).toBe('border-l')
-
-    expect(createUtilityClasses({ borderWidth: 'lg' }).utilityClasses).toBe('border-lg')
-    expect(createUtilityClasses({ borderColor: 'primary' }).utilityClasses).toBe(
-      'border-primary',
-    )
-  })
-
-  it('computes all utility classes', () => {
+  it('computes sizing utility classes', () => {
     expect(
       createUtilityClasses({
-        alignContent: 'center',
-        alignItems: 'center',
-        alignSelf: 'center',
-        backgroundColor: 'primary',
-        border: true,
-        borderBottom: true,
-        borderColor: 'primary',
-        borderLeft: true,
-        borderRight: true,
-        borderTop: true,
-        borderWidth: 'lg',
-        color: 'primary',
-        fontFamily: 'monospace',
+        height: 'screen',
+        minHeight: 'screen',
+        maxHeight: 'screen',
+        width: 'full',
+        minWidth: 'full',
+        maxWidth: 'full',
+      }).utilityClasses,
+    ).toBe('h-screen min-h-screen max-h-screen w-full min-w-full max-w-full')
+
+    expect(
+      createUtilityClasses({
+        height: undefined,
+        minHeight: undefined,
+        maxHeight: undefined,
+        width: undefined,
+        minWidth: undefined,
+        maxWidth: undefined,
+      }).utilityClasses,
+    ).toBe('')
+  })
+
+  it('computes typography utility classes', () => {
+    expect(
+      createUtilityClasses({
+        bold: true,
+        italic: true,
+        fontFamily: 'mono',
+        fontWeight: 'normal',
+        lineHeight: 'none',
+        color: 'heading',
         fontSize: 'sm',
-        fontStyle: 'italic',
-        fontWeight: 'light',
-        justifyContent: 'center',
-        position: 'fixed',
         textAlign: 'center',
+        letterSpacing: 'tighter',
         textTransform: 'uppercase',
       }).utilityClasses,
     ).toBe(
-      'fixed content-center items-center justify-center self-center uppercase font-monospace font-light text-primary text-sm text-center bg-primary border border-b border-l border-r border-t border-lg border-primary',
+      'font-bold italic font-mono font-normal leading-none text-heading text-sm text-center tracking-tighter uppercase',
+    )
+
+    expect(
+      createUtilityClasses({
+        bold: false,
+        italic: false,
+        fontFamily: undefined,
+        fontWeight: undefined,
+        lineHeight: undefined,
+        color: undefined,
+        fontSize: undefined,
+        textAlign: undefined,
+        letterSpacing: undefined,
+        textTransform: undefined,
+      }).utilityClasses,
+    ).toBe('')
+  })
+
+  it('computes background color utility classes', () => {
+    expect(
+      createUtilityClasses({
+        backgroundColor: 'primary-100',
+      }).utilityClasses,
+    ).toBe('bg-primary-100')
+
+    expect(
+      createUtilityClasses({
+        backgroundColor: undefined,
+      }).utilityClasses,
+    ).toBe('')
+  })
+
+  it('computes border utility classes', () => {
+    expect(
+      createUtilityClasses({
+        border: true,
+        borderTop: true,
+        borderRight: true,
+        borderBottom: true,
+        borderLeft: true,
+        borderWidth: 'lg',
+        borderColor: 'primary',
+      }).utilityClasses,
+    ).toBe('border border-t border-r border-b border-l border-lg border-primary')
+
+    expect(
+      createUtilityClasses({
+        border: false,
+        borderTop: false,
+        borderRight: false,
+        borderBottom: false,
+        borderLeft: false,
+        borderWidth: undefined,
+        borderColor: undefined,
+      }).utilityClasses,
+    ).toBe('')
+  })
+
+  it('computes state classes', () => {
+    expect(createUtilityClasses({ active: true, disabled: true }).utilityClasses).toBe(
+      'C9Y-active C9Y-disabled',
+    )
+    expect(
+      createUtilityClasses({ active: true, disabled: true }).filteredProps,
+    ).toStrictEqual({
+      disabled: true,
+    })
+
+    expect(createUtilityClasses({ active: false, disabled: false }).utilityClasses).toBe(
+      '',
     )
   })
 })

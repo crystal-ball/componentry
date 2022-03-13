@@ -8,7 +8,7 @@ module.exports = {
   // Provides nice test output of what's being run
   verbose: true,
 
-  // OS notifications of test results is an opt in for funesies
+  // OS notifications of test results is an opt in for funsies
   notify: Boolean(ENABLE_JEST_NOTIFICATIONS),
 
   // Test coverage can be enforced with a coverageThreshold
@@ -17,6 +17,7 @@ module.exports = {
   collectCoverageFrom: [
     'src/**/*.{ts,tsx}',
     '!**/*.stories.js', // Ignore story files
+    '!src/benchmarks/**', // Ignore perf testing files
     '!src/{Media,Modal,Theme}/stories/**', // Ignore story files
     '!**/*.styles.ts', // Ignore PostCSS styles
     '!src/test/**', // Ignore test files
