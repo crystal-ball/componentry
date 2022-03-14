@@ -1,6 +1,6 @@
 import { cosmiconfigSync } from 'cosmiconfig'
-import merge from 'deepmerge'
 
+import { merge } from '../utils/merge'
 import { theme } from '../theme-defaults'
 
 const explorerSync = cosmiconfigSync('componentry')
