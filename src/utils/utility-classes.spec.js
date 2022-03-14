@@ -12,8 +12,9 @@ describe('createUtilityClasses()', () => {
         display: 'grid',
         invisible: true,
         visible: true,
+        zIndex: 50,
       }).utilityClasses,
-    ).toBe('fixed grid invisible visible')
+    ).toBe('fixed grid invisible visible z-50')
 
     expect(
       createUtilityClasses({
@@ -21,8 +22,28 @@ describe('createUtilityClasses()', () => {
         display: undefined,
         invisible: false,
         visible: false,
+        zIndex: undefined,
       }).utilityClasses,
     ).toBe('')
+  })
+
+  it('computes flex/grid classes', () => {
+    expect(
+      createUtilityClasses({
+        alignContent: 'center',
+        flexDirection: 'column',
+        flexGrow: 0,
+        flexShrink: 0,
+        flexWrap: 'wrap-reverse',
+        alignItems: 'center',
+        justifyContent: 'center',
+        justifyItems: 'center',
+        justifySelf: 'start',
+        alignSelf: 'start',
+      }).utilityClasses,
+    ).toBe(
+      'content-center flex-col grow-0 shrink-0 flex-wrap-reverse items-center justify-center justify-items-center justify-self-start self-start',
+    )
   })
 
   it('computes spacing utility classes', () => {
@@ -56,6 +77,18 @@ describe('createUtilityClasses()', () => {
 
       expect(computed.utilityClasses).toBe(
         `p-${spacing} pt-${spacing} pr-${spacing} pb-${spacing} pl-${spacing} px-${spacing} py-${spacing}`,
+      )
+    })
+
+    spacings.forEach((spacing) => {
+      const computed = createUtilityClasses({
+        gap: spacing,
+        columnGap: spacing,
+        rowGap: spacing,
+      })
+
+      expect(computed.utilityClasses).toBe(
+        `gap-${spacing} gap-x-${spacing} gap-y-${spacing}`,
       )
     })
   })
@@ -122,12 +155,14 @@ describe('createUtilityClasses()', () => {
     expect(
       createUtilityClasses({
         backgroundColor: 'primary-100',
+        boxShadow: true,
       }).utilityClasses,
-    ).toBe('bg-primary-100')
+    ).toBe('bg-primary-100 shadow')
 
     expect(
       createUtilityClasses({
         backgroundColor: undefined,
+        boxShadow: undefined,
       }).utilityClasses,
     ).toBe('')
   })
@@ -142,8 +177,11 @@ describe('createUtilityClasses()', () => {
         borderLeft: true,
         borderWidth: 'lg',
         borderColor: 'primary',
+        borderRadius: 'full',
       }).utilityClasses,
-    ).toBe('border border-t border-r border-b border-l border-lg border-primary')
+    ).toBe(
+      'border border-t border-r border-b border-l border-lg border-primary rounded-full',
+    )
 
     expect(
       createUtilityClasses({
@@ -154,6 +192,7 @@ describe('createUtilityClasses()', () => {
         borderLeft: false,
         borderWidth: undefined,
         borderColor: undefined,
+        borderRadius: undefined,
       }).utilityClasses,
     ).toBe('')
   })

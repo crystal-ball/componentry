@@ -29,6 +29,8 @@ export interface UtilityPropsBase {
   bold?: boolean
   /** Sets a 1px border-width style */
   border?: boolean
+  /** Sets a `border-radius` style */
+  borderRadius?: true | 'none' | 'full' | 'sm' | 'md' | 'lg' | 'xl' | '2xl' | '3xl'
   /** Sets a border-width size style */
   borderWidth?: string | number
   /** Sets a 1px border-bottom-width style */
@@ -41,6 +43,8 @@ export interface UtilityPropsBase {
   borderRight?: boolean
   /** Sets a 1px border-top-width style */
   borderTop?: boolean
+  /** Sets a `box-shadow` style */
+  boxShadow?: true | 'none' | 'inner' | 'sm' | 'md' | 'lg' | 'xl' | '2xl'
   /** Sets a disabled style */
   disabled?: boolean
   /** Sets a display style */
@@ -60,6 +64,10 @@ export interface UtilityPropsBase {
   color?: string
   /** Sets a `flex-direction` flex style */
   flexDirection?: 'column' | 'column-reverse' | 'row-reverse' | 'row'
+  /** Sets a `flex-grow` flex style */
+  flexGrow?: true | 0
+  /** Sets a `flex-shrink` flex style */
+  flexShrink?: true | 0
   /** Sets a `flex-wrap` flex style */
   flexWrap?: 'wrap' | 'nowrap' | 'wrap-reverse'
   /** Sets a font-family style */
@@ -107,9 +115,9 @@ export interface UtilityPropsBase {
   /** Sets a `gap` style */
   gap?: string | number
   /** Sets a column-gap style */
-  'gap-x'?: string | number
+  columnGap?: string | number
   /** Sets a row-gap style */
-  'gap-y'?: string | number
+  rowGap?: string | number
   /** margin */
   m?: string | number
   /** margin-top */
@@ -138,6 +146,8 @@ export interface UtilityPropsBase {
   px?: string | number
   /** padding-top && padding-bottom */
   py?: string | number
+  /** Sets a z-index style */
+  zIndex?: 0 | 10 | 20 | 30 | 40 | 50 | 'auto'
 }
 
 /** Componentry utility props for including utility styles. */
@@ -190,6 +200,9 @@ export function createUtilityClasses<Props extends { [prop: string]: any }>(
       case 'visible':
         classes.push('visible')
         break
+      case 'zIndex':
+        classes.push('z-' + value)
+        break
 
       // FLEXBOX/GRID
       case 'alignContent':
@@ -197,6 +210,12 @@ export function createUtilityClasses<Props extends { [prop: string]: any }>(
         break
       case 'flexDirection':
         classes.push('flex-' + value.replace('column', 'col'))
+        break
+      case 'flexGrow':
+        classes.push(value === true ? 'grow' : 'grow-' + value)
+        break
+      case 'flexShrink':
+        classes.push(value === true ? 'shrink' : 'shrink-' + value)
         break
       case 'flexWrap':
         classes.push('flex-' + value)
@@ -211,7 +230,7 @@ export function createUtilityClasses<Props extends { [prop: string]: any }>(
         classes.push('justify-items-' + value)
         break
       case 'justifySelf':
-        classes.push('justify-' + value)
+        classes.push('justify-self-' + value)
         break
       case 'alignSelf':
         classes.push('self-' + value)
@@ -263,10 +282,10 @@ export function createUtilityClasses<Props extends { [prop: string]: any }>(
       case 'gap':
         classes.push('gap-' + value)
         break
-      case 'gap-x':
+      case 'columnGap':
         classes.push('gap-x-' + value)
         break
-      case 'gap-y':
+      case 'rowGap':
         classes.push('gap-y-' + value)
         break
 
@@ -326,6 +345,9 @@ export function createUtilityClasses<Props extends { [prop: string]: any }>(
       case 'backgroundColor':
         classes.push('bg-' + value)
         break
+      case 'boxShadow':
+        classes.push(value === true ? 'shadow' : 'shadow-' + value)
+        break
 
       // BORDERS
       case 'border':
@@ -348,6 +370,9 @@ export function createUtilityClasses<Props extends { [prop: string]: any }>(
         break
       case 'borderColor':
         classes.push('border-' + value)
+        break
+      case 'borderRadius':
+        classes.push(value === true ? 'rounded' : 'rounded-' + value)
         break
 
       // STATES (eg https://mui.com/customization/how-to-customize/#state-classes)

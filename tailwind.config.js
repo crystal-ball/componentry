@@ -53,6 +53,14 @@ module.exports = {
         800: '#425922',
         900: '#2c3b17',
       },
+
+      // Typography
+      body: '#1f2937',
+      link: '#7d77ff',
+
+      // Borders
+      container: '#d1d5db',
+      modal: '#374151',
     },
     spacing: {
       0: 0,
@@ -79,7 +87,7 @@ module.exports = {
 
     // backgroundColor, borderColor, textColor
     { pattern: /bg-(primary|info|success)-[\d.]+/ },
-    { pattern: /border-(primary|info|success)-[\d.]+/ },
-    { pattern: /text-(gray|primary|info|success|inverse)[-\d.]+?/ },
+    { pattern: /border-(container|modal)/ },
+    { pattern: /text-(body|link)/ },
   ],
 }
