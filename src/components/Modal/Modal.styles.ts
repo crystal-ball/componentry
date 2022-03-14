@@ -14,6 +14,7 @@ const { theme } = getMergedConfig()
 export const modalStyles = {
   '.C9Y-ModalOverlay': {
     position: 'fixed',
+    pointerEvents: 'none',
     top: 0,
     right: 0,
     bottom: 0,
@@ -30,6 +31,7 @@ export const modalStyles = {
 
   '.C9Y-ModalPositioner': {
     position: 'fixed',
+    pointerEvents: 'none',
     top: 0,
     right: 0,
     bottom: 0,
@@ -43,10 +45,14 @@ export const modalStyles = {
     paddingTop: theme.spacing[6],
     paddingBottom: theme.spacing[6],
 
-    opacity: 0.5,
+    opacity: 0,
     transition: 'opacity 0.2s cubic-bezier(0.4, 0, 0.2, 1)',
 
     '&.C9Y-active': {
+      pointerEvents: 'auto',
+      opacity: 0.5,
+    },
+    '&.C9Y-visible': {
       opacity: 1,
     },
   },
