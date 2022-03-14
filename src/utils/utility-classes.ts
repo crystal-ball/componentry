@@ -8,6 +8,8 @@
  * `declare module 'componentry/types/utils/utility-classes' { }`
  */
 
+import { type CSSProperties } from 'react'
+import { theme } from '../theme-defaults'
 import { MergePropTypes } from './types'
 
 /** Module augmentation interface for overriding default utility props' types */
@@ -16,7 +18,7 @@ export interface UtilityPropsOverrides {}
 /** Default utility prop types, customizable with UtilityPropsOverrides */
 export interface UtilityPropsBase {
   /** Sets active style */
-  active?: boolean | string
+  active?: true | string
   /** Sets align-content style */
   alignContent?: 'start' | 'end' | 'center' | 'between' | 'around' | 'stretch'
   /** Sets align-items style */
@@ -24,19 +26,29 @@ export interface UtilityPropsBase {
   /** Sets align-self style */
   alignSelf?: 'auto' | 'start' | 'end' | 'center' | 'baseline' | 'stretch'
   /** Sets background color style */
-  backgroundColor?: 'primary' | 'success' | 'warning' | 'critical'
+  backgroundColor?: string
   /** Sets a bold font weight style */
-  bold?: boolean
+  bold?: true
   /** Sets a 1px border-width style */
-  border?: boolean
+  border?: true
   /** Sets a `border-radius` style */
-  borderRadius?: true | 'none' | 'full' | 'sm' | 'md' | 'lg' | 'xl' | '2xl' | '3xl'
+  borderRadius?:
+    | true
+    | 'none'
+    | 'full'
+    | 'sm'
+    | 'md'
+    | 'lg'
+    | 'xl'
+    | '2xl'
+    | '3xl'
+    | number
   /** Sets a border-width size style */
-  borderWidth?: string | number
+  borderWidth?: true | 0 | 2 | 4 | 8 | number
   /** Sets a 1px border-bottom-width style */
   borderBottom?: boolean
   /** Sets border color style */
-  borderColor?: 'primary'
+  borderColor?: 'primary' | string
   /** Sets a 1px border-left-width style */
   borderLeft?: boolean
   /** Sets a 1px border-right-width style */
@@ -44,7 +56,7 @@ export interface UtilityPropsBase {
   /** Sets a 1px border-top-width style */
   borderTop?: boolean
   /** Sets a `box-shadow` style */
-  boxShadow?: true | 'none' | 'inner' | 'sm' | 'md' | 'lg' | 'xl' | '2xl'
+  boxShadow?: true | 'none' | 'inner' | 'sm' | 'md' | 'lg' | 'xl' | '2xl' | string
   /** Sets a disabled style */
   disabled?: boolean
   /** Sets a display style */
@@ -65,23 +77,23 @@ export interface UtilityPropsBase {
   /** Sets a `flex-direction` flex style */
   flexDirection?: 'column' | 'column-reverse' | 'row-reverse' | 'row'
   /** Sets a `flex-grow` flex style */
-  flexGrow?: true | 0
+  flexGrow?: true | 0 | number
   /** Sets a `flex-shrink` flex style */
-  flexShrink?: true | 0
+  flexShrink?: true | 0 | number
   /** Sets a `flex-wrap` flex style */
   flexWrap?: 'wrap' | 'nowrap' | 'wrap-reverse'
   /** Sets a font-family style */
-  fontFamily?: 'body' | 'mono'
+  fontFamily?: 'body' | 'mono' | string
   /** Sets a font-size style */
-  fontSize?: 'sm' | 'base' | 'lg'
+  fontSize?: 'sm' | 'base' | 'lg' | number
   /** Text font-weight style */
-  fontWeight?: 'light' | 'normal' | 'bold'
+  fontWeight?: 'light' | 'normal' | 'bold' | number
   /** Sets height style */
   height?: 'auto' | 'full' | 'screen' | 'min' | 'max' | 'fit' | string | number
   /** Sets a display: none style */
-  invisible?: boolean
+  invisible?: true
   /** Sets an italic style */
-  italic?: boolean
+  italic?: true
   /** Sets justify-content style */
   justifyContent?: 'start' | 'end' | 'center' | 'between' | 'around' | 'evenly'
   /** Sets a `justify-items` style with a `justify-items-{value}` class */
@@ -89,9 +101,25 @@ export interface UtilityPropsBase {
   /** Sets a `justify-self` style with a `justify-self-{value}` class */
   justifySelf?: 'auto' | 'start' | 'end' | 'center' | 'stretch'
   /** Sets a letter-spacing style */
-  letterSpacing?: 'tighter' | 'tight' | 'normal' | 'wide' | 'wider' | 'widest'
+  letterSpacing?:
+    | 'tighter'
+    | 'tight'
+    | 'normal'
+    | 'wide'
+    | 'wider'
+    | 'widest'
+    | number
+    | string
   /** Sets a line-height style */
-  lineHeight?: 'none' | 'tight' | 'snug' | 'normal' | 'relaxed' | 'loose' | number
+  lineHeight?:
+    | 'none'
+    | 'tight'
+    | 'snug'
+    | 'normal'
+    | 'relaxed'
+    | 'loose'
+    | number
+    | string
   /** Sets a max-width style */
   maxWidth?: 'none' | 'full' | 'min' | 'max' | 'fit' | 'prose' | 0 | string
   /** Sets a max-height style */
@@ -107,7 +135,7 @@ export interface UtilityPropsBase {
   /** Sets text-transform style */
   textTransform?: 'lowercase' | 'uppercase' | 'capitalize' | 'normal-case'
   /** Sets visible style */
-  visible?: boolean
+  visible?: true
   /** Sets width style */
   width?: 'auto' | 'full' | 'screen' | 'min' | 'max' | 'fit' | string | number
 
@@ -147,7 +175,7 @@ export interface UtilityPropsBase {
   /** padding-top && padding-bottom */
   py?: string | number
   /** Sets a z-index style */
-  zIndex?: 0 | 10 | 20 | 30 | 40 | 50 | 'auto'
+  zIndex?: 'auto' | 0 | 10 | 20 | 30 | 40 | 50 | number
 }
 
 /** Componentry utility props for including utility styles. */
@@ -169,9 +197,13 @@ const activeProps = {
  * utility classes.
  * @example
  * ```tsx
- * const { filteredProps, utilityClasses } = createUtilityClasses(props)
+ * const { filteredProps, utilityClasses, utilityStyles } = createUtilityClasses(props)
  * return (
- *   <div className={clsx('some-custom-class', utilityClasses)} {...filteredProps}>
+ *   <div
+ *     className={clsx('some-custom-class', utilityClasses)}
+ *     styles={utilityStyles}
+ *     {...filteredProps}
+ *   >
  *     {children}
  *   </div>
  * )
@@ -180,8 +212,9 @@ const activeProps = {
 export function createUtilityClasses<Props extends { [prop: string]: any }>(
   props: Props,
 ) {
-  const filteredProps: { [prop: string]: any } = {}
   const classes: string[] = []
+  const styles: CSSProperties = {}
+  const filteredProps: { [prop: string]: any } = {}
 
   Object.keys(props).forEach((prop) => {
     const value = props[prop]
@@ -238,60 +271,82 @@ export function createUtilityClasses<Props extends { [prop: string]: any }>(
 
       // SPACING
       case 'm':
-        classes.push('m-' + value)
+        if (value in theme.spacing) classes.push('m-' + value)
+        else styles.margin = value
         break
       case 'mt':
-        classes.push('mt-' + value)
+        if (value in theme.spacing) classes.push('mt-' + value)
+        else styles.marginTop = value
         break
       case 'mr':
-        classes.push('mr-' + value)
+        if (value in theme.spacing) classes.push('mr-' + value)
+        else styles.marginRight = value
         break
       case 'mb':
-        classes.push('mb-' + value)
+        if (value in theme.spacing) classes.push('mb-' + value)
+        else styles.marginBottom = value
         break
       case 'ml':
-        classes.push('ml-' + value)
+        if (value in theme.spacing) classes.push('ml-' + value)
+        else styles.marginLeft = value
         break
       case 'mx':
-        classes.push('mx-' + value)
+        if (value in theme.spacing) classes.push('mx-' + value)
+        else styles.marginLeft = value
+        styles.marginRight = value
         break
       case 'my':
-        classes.push('my-' + value)
+        if (value in theme.spacing) classes.push('my-' + value)
+        else styles.marginTop = value
+        styles.marginBottom = value
         break
       case 'p':
-        classes.push('p-' + value)
+        if (value in theme.spacing) classes.push('p-' + value)
+        else styles.padding = value
         break
       case 'pt':
-        classes.push('pt-' + value)
+        if (value in theme.spacing) classes.push('pt-' + value)
+        else styles.paddingTop = value
         break
       case 'pr':
-        classes.push('pr-' + value)
+        if (value in theme.spacing) classes.push('pr-' + value)
+        else styles.paddingRight = value
         break
       case 'pb':
-        classes.push('pb-' + value)
+        if (value in theme.spacing) classes.push('pb-' + value)
+        else styles.paddingBottom = value
         break
       case 'pl':
-        classes.push('pl-' + value)
+        if (value in theme.spacing) classes.push('pl-' + value)
+        else styles.paddingLeft = value
         break
       case 'px':
-        classes.push('px-' + value)
+        if (value in theme.spacing) classes.push('px-' + value)
+        else styles.paddingLeft = value
+        styles.paddingRight = value
         break
       case 'py':
-        classes.push('py-' + value)
+        if (value in theme.spacing) classes.push('py-' + value)
+        else styles.paddingTop = value
+        styles.paddingBottom = value
         break
       case 'gap':
-        classes.push('gap-' + value)
+        if (value in theme.spacing) classes.push('gap-' + value)
+        else styles.gap = value
         break
       case 'columnGap':
-        classes.push('gap-x-' + value)
+        if (value in theme.spacing) classes.push('gap-x-' + value)
+        else styles.columnGap = value
         break
       case 'rowGap':
-        classes.push('gap-y-' + value)
+        if (value in theme.spacing) classes.push('gap-y-' + value)
+        else styles.rowGap = value
         break
 
       // SIZING
       case 'height':
-        classes.push('h-' + value)
+        if (value in theme.spacing || value in theme.height) classes.push('h-' + value)
+        else styles.height = value
         break
       case 'minHeight':
         classes.push('min-h-' + value)
@@ -300,7 +355,8 @@ export function createUtilityClasses<Props extends { [prop: string]: any }>(
         classes.push('max-h-' + value)
         break
       case 'width':
-        classes.push('w-' + value)
+        if (value in theme.spacing || value in theme.height) classes.push('w-' + value)
+        else styles.width = value
         break
       case 'minWidth':
         classes.push('min-w-' + value)
@@ -372,7 +428,9 @@ export function createUtilityClasses<Props extends { [prop: string]: any }>(
         classes.push('border-' + value)
         break
       case 'borderRadius':
-        classes.push(value === true ? 'rounded' : 'rounded-' + value)
+        if (value === true || value in theme.borderRadius)
+          classes.push(value === true ? 'rounded' : 'rounded-' + value)
+        else styles.borderRadius = value
         break
 
       // STATES (eg https://mui.com/customization/how-to-customize/#state-classes)
@@ -396,5 +454,6 @@ export function createUtilityClasses<Props extends { [prop: string]: any }>(
   return {
     filteredProps,
     utilityClasses: classes.join(' '),
+    utilityStyles: Object.keys(styles).length === 0 ? undefined : styles,
   }
 }
