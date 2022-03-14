@@ -67,7 +67,6 @@
     "@babel/runtime": "^7.17",
     "clsx": "^1.1",
     "cosmiconfig": "^7.0",
-    "deepmerge": "^4.2",
     "nanoid": "^3.2",
     "postcss-js": "^4.0",
     "postcss-nested": "^5.0"
