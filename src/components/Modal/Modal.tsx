@@ -95,7 +95,7 @@ export const Modal = ((props: ModalProps) => {
     align,
     children,
     deactivate,
-    mounted,
+    mounted = 'visible',
     scroll = 'overlay',
     size,
     transitionDuration,
@@ -130,7 +130,8 @@ export const Modal = ((props: ModalProps) => {
       <div
         ref={containerRef}
         className={clsx(`C9Y-ModalPositioner C9Y-Modal-${scroll}Scroll`, {
-          'C9Y-active': visible,
+          'C9Y-active': active,
+          'C9Y-visible': visible,
         })}
         role='presentation'
         tabIndex={-1}

@@ -6,7 +6,7 @@ HTMLCollection [
     class="C9Y-ModalOverlay C9Y-active"
   />,
   <div
-    class="C9Y-ModalPositioner C9Y-Modal-overlayScroll C9Y-active"
+    class="C9Y-ModalPositioner C9Y-Modal-overlayScroll C9Y-active C9Y-visible"
     role="presentation"
     tabindex="-1"
   >
