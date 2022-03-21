@@ -66,7 +66,7 @@ export const modalStyles = {
     backgroundClip: 'padding-box',
     border: `${theme.borderWidth.DEFAULT} solid ${theme.borderColor.DEFAULT}`,
     // boxShadow: box-shadow($modal-container-box-shadow),
-    borderRadius: theme.borderRadius.md,
+    borderRadius: theme.borderRadius.DEFAULT,
 
     // Horizontally center the content
     marginLeft: 'auto',
@@ -122,8 +122,8 @@ export const modalStyles = {
     padding: theme.spacing[4],
     backgroundColor: theme.colors.background,
     borderBottom: `${theme.borderWidth.DEFAULT} solid ${theme.borderColor.DEFAULT}`,
-    borderTopLeftRadius: theme.borderRadius.md,
-    borderTopRightRadius: theme.borderRadius.md,
+    borderTopLeftRadius: theme.borderRadius.DEFAULT,
+    borderTopRightRadius: theme.borderRadius.DEFAULT,
   },
 
   // --- TITLE
@@ -153,8 +153,8 @@ export const modalStyles = {
     padding: theme.spacing[4],
     backgroundColor: theme.colors.background,
     borderTop: `${theme.borderWidth.DEFAULT} solid ${theme.borderColor.DEFAULT}`,
-    borderBottomLeftRadius: theme.borderRadius.md,
-    borderBottomRightRadius: theme.borderRadius.md,
+    borderBottomLeftRadius: theme.borderRadius.DEFAULT,
+    borderBottomRightRadius: theme.borderRadius.DEFAULT,
   },
 
   // // Measure scrollbar width for padding body during modal show/hide
