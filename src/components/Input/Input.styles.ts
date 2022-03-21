@@ -10,7 +10,7 @@ export const inputStyles = {
   '.C9Y-InputField': {
     display: 'block',
     width: '100%',
-    padding: `${theme.spacing[4]} ${theme.spacing[8]}`,
+    padding: `${theme.spacing[2]} ${theme.spacing[4]}`,
     fontSize: theme.fontSize.body,
     lineHeight: 1,
     color: theme.colors.gray[700],
