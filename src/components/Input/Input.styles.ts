@@ -10,14 +10,14 @@ export const inputStyles = {
   '.C9Y-InputField': {
     display: 'block',
     width: '100%',
-    padding: `${theme.spacing[1]} ${theme.spacing[2]}`,
+    padding: `${theme.spacing[4]} ${theme.spacing[8]}`,
     fontSize: theme.fontSize.body,
     lineHeight: 1,
     color: theme.colors.gray[700],
     backgroundColor: theme.colors.background,
     backgroundClip: 'padding-box',
     border: `${theme.borderWidth.DEFAULT} solid ${theme.borderColor.DEFAULT}`,
-    borderRadius: theme.borderRadius.md, // Note: This has no effect on <select>s in some browsers, due to the limited style-ability of `<select>`s in CSS.
+    borderRadius: theme.borderRadius.DEFAULT, // Note: This has no effect on <select>s in some browsers, due to the limited style-ability of `<select>`s in CSS.
 
     transition: 'borderColor 0.2s linear',
 
@@ -57,7 +57,7 @@ export const inputStyles = {
   // LABEL
   '.C9Y-InputLabel': {
     display: 'inline-block',
-    marginBottom: theme.spacing[0.5],
+    marginBottom: theme.spacing[1],
     color: theme.colors.gray[700],
     fontSize: theme.fontSize.body,
   },
@@ -65,7 +65,7 @@ export const inputStyles = {
   // DESCRIPTION
   '.C9Y-InputDescription': {
     display: 'block',
-    margin: theme.spacing[0.5],
+    margin: theme.spacing[1],
     color: theme.colors.gray[700],
     fontSize: theme.fontSize.small,
   },
@@ -73,7 +73,7 @@ export const inputStyles = {
   // Error
   '.C9Y-InputError': {
     display: 'block',
-    margin: theme.spacing[0.5],
+    margin: theme.spacing[1],
     color: theme.colors.error[500],
     fontSize: theme.fontSize.small,
   },

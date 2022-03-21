@@ -126,7 +126,7 @@ export const popoverStyles = {
     wordWrap: 'break-word',
 
     // box-shadow: box-shadow($popover-box-shadow),
-    borderRadius: theme.borderRadius.md,
+    borderRadius: theme.borderRadius.DEFAULT,
 
     // '.tip-container': {
     //   alignItems: 'center',
@@ -160,13 +160,13 @@ export const popoverStyles = {
   // --- BODY
   // Body element should contain popover inner content
   '.C9Y-PopoverBody': {
-    padding: theme.spacing[2],
+    padding: theme.spacing[4],
     color: theme.colors.gray[700],
   },
 
   // --- HEADING
   '.C9Y-PopoverHeading': {
-    padding: theme.spacing[1],
+    padding: theme.spacing[2],
     // Try to guarantee that spacing is correct regardless of div vs h* usage
     marginTop: 0,
     marginBottom: 0,

@@ -25,11 +25,11 @@ export const alertStyles: Record<string, unknown> = {
 
   // VARIANTS
   '.C9Y-Alert-filled': {
-    padding: theme.spacing[2],
+    padding: theme.spacing[4],
     background: theme.colors.primary[100],
     color: theme.colors.primary[500],
     border: '1px solid transparent',
-    borderRadius: theme.borderRadius.md,
+    borderRadius: theme.borderRadius.DEFAULT,
     borderColor: theme.colors.primary[300],
 
     '& .C9Y-AlertLink': {
@@ -48,12 +48,12 @@ export const alertStyles: Record<string, unknown> = {
 
   '.C9Y-AlertHeading': {
     color: 'inherit',
-    marginBottom: theme.spacing[2],
+    marginBottom: theme.spacing[4],
   },
 
   '.C9Y-AlertClose': {
     flexShrink: 0,
-    marginLeft: theme.spacing[1],
+    marginLeft: theme.spacing[2],
     color: 'inherit',
   },
 }

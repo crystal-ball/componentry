@@ -42,8 +42,8 @@ export const modalStyles = {
     justifyContent: 'center',
     alignItems: 'flex-start',
     // Providing padding in positioner simplifies layout for long modals
-    paddingTop: theme.spacing[6],
-    paddingBottom: theme.spacing[6],
+    paddingTop: theme.spacing[12],
+    paddingBottom: theme.spacing[12],
 
     opacity: 0,
     transition: 'opacity 0.2s cubic-bezier(0.4, 0, 0.2, 1)',
@@ -119,7 +119,7 @@ export const modalStyles = {
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'space-between', // Put modal header elements (title and dismiss) on opposite ends
-    padding: theme.spacing[2],
+    padding: theme.spacing[4],
     backgroundColor: theme.colors.background,
     borderBottom: `${theme.borderWidth.DEFAULT} solid ${theme.borderColor.DEFAULT}`,
     borderTopLeftRadius: theme.borderRadius.md,
@@ -142,7 +142,7 @@ export const modalStyles = {
     // Enable `flex-grow: 1` so that the body take up as much space as possible
     // when should there be a fixed height on `.modal-container`.
     flex: '1 1 auto',
-    padding: theme.spacing[2],
+    padding: theme.spacing[4],
   },
 
   // --- FOOTER
@@ -150,7 +150,7 @@ export const modalStyles = {
     display: 'flex',
     justifyContent: 'center',
     alignItems: 'center',
-    padding: theme.spacing[2],
+    padding: theme.spacing[4],
     backgroundColor: theme.colors.background,
     borderTop: `${theme.borderWidth.DEFAULT} solid ${theme.borderColor.DEFAULT}`,
     borderBottomLeftRadius: theme.borderRadius.md,

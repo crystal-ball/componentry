@@ -7,6 +7,6 @@ const { theme } = getMergedConfig()
 
 export const formGroupStyles = {
   '.C9Y-FormGroup': {
-    marginBottom: theme.spacing[2],
+    marginBottom: theme.spacing[4],
   },
 }
