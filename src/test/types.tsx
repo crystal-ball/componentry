@@ -36,19 +36,15 @@ const testAlert = (
 
 const testBadge = <Badge variant='filled'>77</Badge>
 
-const testBlock = (
-  <Block width={16} height={16}>
-    test block
-  </Block>
-)
+const testBlock = <Block>test block</Block>
 const testButton = (
   <Button variant='filled' size='small' active>
     Click
   </Button>
 )
 const testCard = (
-  <Card p='sm' className='rad'>
-    <Card.Body mt='sm'>Works</Card.Body>
+  <Card p={2} className='rad'>
+    <Card.Body mt={1.5}>Works</Card.Body>
     <Card.Footer>Rad</Card.Footer>
   </Card>
 )

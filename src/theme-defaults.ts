@@ -36,7 +36,7 @@ const spacing = {
   72: '18rem', // 288px
   80: '20rem', // 320px
   96: '24rem', // 384px
-} as const
+}
 
 export const theme = {
   // --- SCREENS
@@ -126,6 +126,7 @@ export const theme = {
 
   // --- SPACING
   spacing,
+  spacingRatio: undefined as undefined | ((base: number) => string),
 
   // --- SIZING
   height: {
@@ -192,4 +193,4 @@ export const theme = {
   boxShadow: {
     DEFAULT: '0 0.5rem 1rem rgba(73, 80, 87, 0.15)',
   },
-} as const
+}
