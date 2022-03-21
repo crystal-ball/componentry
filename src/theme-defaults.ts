@@ -126,6 +126,18 @@ export const theme = {
 
   // --- SPACING
   spacing,
+  /**
+   * spacingRatio allows defining a spacing conversion function for computing
+   * spacing values.
+   * @remarks
+   * This is useful when using Componentry with other component libraries that
+   * depend on computing spacing values.
+   * @example
+   * {
+   *   // Convert any arbitrary value to an 8px grid value
+   *   spacingRatio: base => `${base * 8}px`
+   * }
+   */
   spacingRatio: undefined as undefined | ((base: number) => string),
 
   // --- SIZING

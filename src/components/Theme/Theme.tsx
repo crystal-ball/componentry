@@ -15,6 +15,8 @@ interface ThemeProps {
  * @experimental
  */
 export function Theme({ children, theme }: ThemeProps) {
+  // Internal convenience helper: if user has provided a theme value initialize
+  // the utility classes module with it for them
   useEffect(() => {
     if (theme.theme) initializeUtilityClassesTheme(theme.theme)
   }, [theme.theme])

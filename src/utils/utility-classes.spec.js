@@ -199,6 +199,20 @@ describe('createUtilityClasses()', () => {
 
     expect(
       createUtilityClasses({
+        height: 32,
+        width: 32,
+      }).utilityClasses,
+    ).toBe('h-32 w-32')
+
+    expect(
+      createUtilityClasses({
+        height: 42,
+        width: 42,
+      }).utilityStyles,
+    ).toStrictEqual({ height: 42, width: 42 })
+
+    expect(
+      createUtilityClasses({
         height: undefined,
         minHeight: undefined,
         maxHeight: undefined,

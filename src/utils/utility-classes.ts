@@ -80,7 +80,7 @@ export interface UtilityPropsBase {
   /** Text font-weight style */
   fontWeight?: 'light' | 'normal' | 'bold'
   /** Sets height style */
-  height?: 'auto' | 'full' | 'screen' | 'min' | 'max' | 'fit'
+  height?: 'auto' | 'full' | 'screen' | 'min' | 'max' | 'fit' | Spacing
   /** Sets a display: none style */
   invisible?: boolean
   /** Sets an italic style */
@@ -112,7 +112,7 @@ export interface UtilityPropsBase {
   /** Sets visible style */
   visible?: boolean
   /** Sets width style */
-  width?: 'auto' | 'full' | 'screen' | 'min' | 'max' | 'fit'
+  width?: 'auto' | 'full' | 'screen' | 'min' | 'max' | 'fit' | Spacing
 
   // --- Spacing
   /**
