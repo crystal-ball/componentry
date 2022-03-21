@@ -19,12 +19,10 @@ export function buildOpeningElement(
   return t.jSXOpeningElement(
     t.jsxIdentifier(type),
     // @ts-ignore DEBT
-    Object.keys(props)
-      .map((propName) => {
-        const propValue = props[propName]
-
+    Object.entries(props)
+      .map(([propName, propValue]) => {
         // Filter out empty objects (Componentry will return an empty style object for every element)
-        if (isEmptyObject(propValue)) return null
+        if (propValue === undefined || isEmptyObject(propValue)) return null
 
         return t.jsxAttribute(
           t.jSXIdentifier(propName),

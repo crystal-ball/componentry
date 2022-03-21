@@ -20,7 +20,7 @@ export const tableStyles = {
 
   '.C9Y-TableHeader': {
     fontWeight: theme.fontWeight.bold,
-    padding: theme.spacing[1],
+    padding: theme.spacing[2],
   },
 
   '.C9Y-TableBody': {},
@@ -39,6 +39,6 @@ export const tableStyles = {
   },
 
   '.C9Y-TableCell': {
-    padding: theme.spacing[1],
+    padding: theme.spacing[2],
   },
 }

@@ -22,7 +22,7 @@ export const badgeStyles = {
     color: theme.colors.inverse,
     backgroundColor: theme.colors.gray[700],
     fontWeight: theme.fontWeight.bold,
-    borderRadius: theme.borderRadius.md,
+    borderRadius: theme.borderRadius.DEFAULT,
     fontSize: theme.fontSize.small,
     lineHeight: 1,
     // 💡 Use em with font-size and padding to auto-scale with text

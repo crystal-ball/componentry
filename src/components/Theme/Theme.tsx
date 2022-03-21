@@ -1,9 +1,11 @@
-import React, { createContext, useContext } from 'react'
+import { type ReactElement, createContext, useContext, useEffect } from 'react'
+import { initializeUtilityClassesTheme } from '../../utils/utility-classes'
 
 /** Theme Context */
 const ThemeCtx = createContext<null | Record<string, unknown>>(null)
 
 interface ThemeProps {
+  children: ReactElement
   /** Default component props overrides */
   theme: Record<string, unknown>
 }
@@ -12,7 +14,13 @@ interface ThemeProps {
  * [Theme component 📝](https://componentry.design/components/theme)
  * @experimental
  */
-export const Theme: React.FC<ThemeProps> = ({ children, theme }) => {
+export function Theme({ children, theme }: ThemeProps) {
+  // Internal convenience helper: if user has provided a theme value initialize
+  // the utility classes module with it for them
+  useEffect(() => {
+    if (theme.theme) initializeUtilityClassesTheme(theme.theme)
+  }, [theme.theme])
+
   return <ThemeCtx.Provider value={theme}>{children}</ThemeCtx.Provider>
 }
 Theme.displayName = 'Theme'

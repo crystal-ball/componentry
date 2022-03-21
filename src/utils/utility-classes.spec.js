@@ -64,6 +64,44 @@ describe('createUtilityClasses()', () => {
       )
     })
 
+    expect(
+      createUtilityClasses({
+        m: 42,
+        mt: 42,
+        mr: 42,
+        mb: 42,
+        ml: 42,
+        mx: 42,
+        my: 42,
+      }),
+    ).toStrictEqual({
+      filteredProps: {},
+      utilityClasses: '',
+      utilityStyles: {
+        margin: 42,
+        marginTop: 42,
+        marginRight: 42,
+        marginBottom: 42,
+        marginLeft: 42,
+      },
+    })
+
+    expect(
+      createUtilityClasses({
+        mx: '1rem',
+        my: '2em',
+      }),
+    ).toStrictEqual({
+      filteredProps: {},
+      utilityClasses: '',
+      utilityStyles: {
+        marginTop: '2em',
+        marginRight: '1rem',
+        marginBottom: '2em',
+        marginLeft: '1rem',
+      },
+    })
+
     spacings.forEach((spacing) => {
       const computed = createUtilityClasses({
         p: spacing,
@@ -80,6 +118,44 @@ describe('createUtilityClasses()', () => {
       )
     })
 
+    expect(
+      createUtilityClasses({
+        p: 42,
+        pt: 42,
+        pr: 42,
+        pb: 42,
+        pl: 42,
+        px: 42,
+        py: 42,
+      }),
+    ).toStrictEqual({
+      filteredProps: {},
+      utilityClasses: '',
+      utilityStyles: {
+        padding: 42,
+        paddingTop: 42,
+        paddingRight: 42,
+        paddingBottom: 42,
+        paddingLeft: 42,
+      },
+    })
+
+    expect(
+      createUtilityClasses({
+        px: '1rem',
+        py: '2em',
+      }),
+    ).toStrictEqual({
+      filteredProps: {},
+      utilityClasses: '',
+      utilityStyles: {
+        paddingTop: '2em',
+        paddingRight: '1rem',
+        paddingBottom: '2em',
+        paddingLeft: '1rem',
+      },
+    })
+
     spacings.forEach((spacing) => {
       const computed = createUtilityClasses({
         gap: spacing,
@@ -90,6 +166,22 @@ describe('createUtilityClasses()', () => {
       expect(computed.utilityClasses).toBe(
         `gap-${spacing} gap-x-${spacing} gap-y-${spacing}`,
       )
+    })
+
+    expect(
+      createUtilityClasses({
+        gap: 42,
+        columnGap: 42,
+        rowGap: 42,
+      }),
+    ).toStrictEqual({
+      filteredProps: {},
+      utilityClasses: '',
+      utilityStyles: {
+        gap: 42,
+        columnGap: 42,
+        rowGap: 42,
+      },
     })
   })
 
@@ -104,6 +196,20 @@ describe('createUtilityClasses()', () => {
         maxWidth: 'full',
       }).utilityClasses,
     ).toBe('h-screen min-h-screen max-h-screen w-full min-w-full max-w-full')
+
+    expect(
+      createUtilityClasses({
+        height: 32,
+        width: 32,
+      }).utilityClasses,
+    ).toBe('h-32 w-32')
+
+    expect(
+      createUtilityClasses({
+        height: 42,
+        width: 42,
+      }).utilityStyles,
+    ).toStrictEqual({ height: 42, width: 42 })
 
     expect(
       createUtilityClasses({

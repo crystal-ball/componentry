@@ -1,4 +1,9 @@
-import React, { createElement } from 'react'
+import {
+  type CSSProperties,
+  type ElementType,
+  type ReactElement,
+  createElement,
+} from 'react'
 import clsx, { type ClassValue } from 'clsx'
 import { type UtilityProps, createUtilityClasses } from './utility-classes'
 
@@ -7,9 +12,10 @@ import { type UtilityProps, createUtilityClasses } from './utility-classes'
  * for all library components.
  */
 type ElementProps = {
-  as?: React.ElementType
+  as?: ElementType
   className?: ClassValue
   componentCx?: ClassValue
+  style?: CSSProperties
   themeCx?: ClassValue
 } & UtilityProps
 
@@ -29,11 +35,12 @@ export function element<Props extends ElementProps>({
   as = 'div',
   className,
   componentCx,
+  style,
   themeCx,
   ...merged
-}: Props): React.ReactElement {
+}: Props): ReactElement {
   // Shared filter point to convert utility props to utility classes
-  const { filteredProps, utilityClasses } = createUtilityClasses(merged)
+  const { filteredProps, utilityClasses, utilityStyles } = createUtilityClasses(merged)
 
   return createElement(as, {
     className: clsx(
@@ -42,6 +49,8 @@ export function element<Props extends ElementProps>({
       className, // User supplied className
       utilityClasses, // Utility classNames, eg 'mt-xl'
     ),
+    // Only create a merged styles object if there's styles included
+    style: utilityStyles || style ? { ...utilityStyles, ...style } : undefined,
     ...filteredProps,
   })
 }

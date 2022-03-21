@@ -33,7 +33,7 @@ export const tooltipStyles = {
   // --- CONTENT
   '.C9Y-TooltipContentContents': {
     backgroundColor: theme.colors.gray[800],
-    borderRadius: theme.borderRadius.md,
+    borderRadius: theme.borderRadius.DEFAULT,
     color: theme.colors.inverse,
     fontSize: theme.fontSize.small,
     marginTop: tooltipArrowWidth + 'px',

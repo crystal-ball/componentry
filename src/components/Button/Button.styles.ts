@@ -28,7 +28,7 @@ export const buttonStyles = {
     padding: '0 1rem',
     backgroundColor: theme.colors.primary[500],
     border: `1px solid ${theme.colors.primary[500]}`,
-    borderRadius: theme.borderRadius.md,
+    borderRadius: theme.borderRadius.DEFAULT,
     color: theme.colors.inverse,
     fontSize: theme.fontSize.small,
 
@@ -56,7 +56,7 @@ export const buttonStyles = {
     padding: '0 1rem',
     backgroundColor: 'transparent',
     border: `1px solid ${theme.colors.primary[500]}`,
-    borderRadius: theme.borderRadius.md,
+    borderRadius: theme.borderRadius.DEFAULT,
     color: theme.colors.primary[500],
     fontSize: theme.fontSize.small,
 
@@ -79,13 +79,13 @@ export const buttonStyles = {
   // SIZES
   '.C9Y-Button-smallSize': {
     height: '1.5rem',
-    borderRadius: theme.borderRadius.md,
+    borderRadius: theme.borderRadius.DEFAULT,
     fontSize: theme.fontSize.small,
     padding: '0rem 0.5rem',
   },
   '.C9Y-Button-largeSize': {
     height: '2.5rem',
-    borderRadius: theme.borderRadius.lg,
+    borderRadius: theme.borderRadius.md,
     fontSize: theme.fontSize.large,
     padding: '0 2rem',
   },

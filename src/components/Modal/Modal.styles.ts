@@ -42,8 +42,8 @@ export const modalStyles = {
     justifyContent: 'center',
     alignItems: 'flex-start',
     // Providing padding in positioner simplifies layout for long modals
-    paddingTop: theme.spacing[6],
-    paddingBottom: theme.spacing[6],
+    paddingTop: theme.spacing[12],
+    paddingBottom: theme.spacing[12],
 
     opacity: 0,
     transition: 'opacity 0.2s cubic-bezier(0.4, 0, 0.2, 1)',
@@ -66,7 +66,7 @@ export const modalStyles = {
     backgroundClip: 'padding-box',
     border: `${theme.borderWidth.DEFAULT} solid ${theme.borderColor.DEFAULT}`,
     // boxShadow: box-shadow($modal-container-box-shadow),
-    borderRadius: theme.borderRadius.md,
+    borderRadius: theme.borderRadius.DEFAULT,
 
     // Horizontally center the content
     marginLeft: 'auto',
@@ -119,11 +119,11 @@ export const modalStyles = {
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'space-between', // Put modal header elements (title and dismiss) on opposite ends
-    padding: theme.spacing[2],
+    padding: theme.spacing[4],
     backgroundColor: theme.colors.background,
     borderBottom: `${theme.borderWidth.DEFAULT} solid ${theme.borderColor.DEFAULT}`,
-    borderTopLeftRadius: theme.borderRadius.md,
-    borderTopRightRadius: theme.borderRadius.md,
+    borderTopLeftRadius: theme.borderRadius.DEFAULT,
+    borderTopRightRadius: theme.borderRadius.DEFAULT,
   },
 
   // --- TITLE
@@ -142,7 +142,7 @@ export const modalStyles = {
     // Enable `flex-grow: 1` so that the body take up as much space as possible
     // when should there be a fixed height on `.modal-container`.
     flex: '1 1 auto',
-    padding: theme.spacing[2],
+    padding: theme.spacing[4],
   },
 
   // --- FOOTER
@@ -150,11 +150,11 @@ export const modalStyles = {
     display: 'flex',
     justifyContent: 'center',
     alignItems: 'center',
-    padding: theme.spacing[2],
+    padding: theme.spacing[4],
     backgroundColor: theme.colors.background,
     borderTop: `${theme.borderWidth.DEFAULT} solid ${theme.borderColor.DEFAULT}`,
-    borderBottomLeftRadius: theme.borderRadius.md,
-    borderBottomRightRadius: theme.borderRadius.md,
+    borderBottomLeftRadius: theme.borderRadius.DEFAULT,
+    borderBottomRightRadius: theme.borderRadius.DEFAULT,
   },
 
   // // Measure scrollbar width for padding body during modal show/hide

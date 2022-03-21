@@ -8,6 +8,9 @@
  * `declare module 'componentry/types/utils/utility-classes' { }`
  */
 
+import { type CSSProperties } from 'react'
+import { theme as themeDefaults } from '../theme-defaults'
+import { merge } from './merge'
 import { MergePropTypes } from './types'
 
 /** Module augmentation interface for overriding default utility props' types */
@@ -24,19 +27,19 @@ export interface UtilityPropsBase {
   /** Sets align-self style */
   alignSelf?: 'auto' | 'start' | 'end' | 'center' | 'baseline' | 'stretch'
   /** Sets background color style */
-  backgroundColor?: 'primary' | 'success' | 'warning' | 'critical'
+  backgroundColor?: string
   /** Sets a bold font weight style */
   bold?: boolean
   /** Sets a 1px border-width style */
   border?: boolean
   /** Sets a `border-radius` style */
-  borderRadius?: true | 'none' | 'full' | 'sm' | 'md' | 'lg' | 'xl' | '2xl' | '3xl'
+  borderRadius?: boolean | 'none' | 'full' | 'sm' | 'md' | 'lg' | 'xl' | '2xl' | '3xl'
   /** Sets a border-width size style */
-  borderWidth?: string | number
+  borderWidth?: boolean | 0 | 2 | 4 | 8
   /** Sets a 1px border-bottom-width style */
   borderBottom?: boolean
   /** Sets border color style */
-  borderColor?: 'primary'
+  borderColor?: string
   /** Sets a 1px border-left-width style */
   borderLeft?: boolean
   /** Sets a 1px border-right-width style */
@@ -44,7 +47,7 @@ export interface UtilityPropsBase {
   /** Sets a 1px border-top-width style */
   borderTop?: boolean
   /** Sets a `box-shadow` style */
-  boxShadow?: true | 'none' | 'inner' | 'sm' | 'md' | 'lg' | 'xl' | '2xl'
+  boxShadow?: boolean | 'none' | 'inner' | 'sm' | 'md' | 'lg' | 'xl' | '2xl'
   /** Sets a disabled style */
   disabled?: boolean
   /** Sets a display style */
@@ -65,9 +68,9 @@ export interface UtilityPropsBase {
   /** Sets a `flex-direction` flex style */
   flexDirection?: 'column' | 'column-reverse' | 'row-reverse' | 'row'
   /** Sets a `flex-grow` flex style */
-  flexGrow?: true | 0
+  flexGrow?: boolean | 0
   /** Sets a `flex-shrink` flex style */
-  flexShrink?: true | 0
+  flexShrink?: boolean | 0
   /** Sets a `flex-wrap` flex style */
   flexWrap?: 'wrap' | 'nowrap' | 'wrap-reverse'
   /** Sets a font-family style */
@@ -77,7 +80,7 @@ export interface UtilityPropsBase {
   /** Text font-weight style */
   fontWeight?: 'light' | 'normal' | 'bold'
   /** Sets height style */
-  height?: 'auto' | 'full' | 'screen' | 'min' | 'max' | 'fit' | string | number
+  height?: 'auto' | 'full' | 'screen' | 'min' | 'max' | 'fit' | Spacing
   /** Sets a display: none style */
   invisible?: boolean
   /** Sets an italic style */
@@ -91,11 +94,11 @@ export interface UtilityPropsBase {
   /** Sets a letter-spacing style */
   letterSpacing?: 'tighter' | 'tight' | 'normal' | 'wide' | 'wider' | 'widest'
   /** Sets a line-height style */
-  lineHeight?: 'none' | 'tight' | 'snug' | 'normal' | 'relaxed' | 'loose' | number
+  lineHeight?: 'none' | 'tight' | 'snug' | 'normal' | 'relaxed' | 'loose'
   /** Sets a max-width style */
-  maxWidth?: 'none' | 'full' | 'min' | 'max' | 'fit' | 'prose' | 0 | string
+  maxWidth?: 'none' | 'full' | 'min' | 'max' | 'fit' | 'prose' | 0
   /** Sets a max-height style */
-  maxHeight?: 'full' | 'screen' | 'min' | 'max' | 'fit' | number
+  maxHeight?: 'full' | 'screen' | 'min' | 'max' | 'fit'
   /** Sets a min-height style */
   minHeight?: 'full' | 'screen' | 'min' | 'max' | 'fit' | 0
   /** Sets a min-width style */
@@ -109,45 +112,96 @@ export interface UtilityPropsBase {
   /** Sets visible style */
   visible?: boolean
   /** Sets width style */
-  width?: 'auto' | 'full' | 'screen' | 'min' | 'max' | 'fit' | string | number
+  width?: 'auto' | 'full' | 'screen' | 'min' | 'max' | 'fit' | Spacing
 
   // --- Spacing
-  /** Sets a `gap` style */
-  gap?: string | number
-  /** Sets a column-gap style */
-  columnGap?: string | number
-  /** Sets a row-gap style */
-  rowGap?: string | number
-  /** margin */
-  m?: string | number
-  /** margin-top */
-  mt?: string | number
-  /** margin-right */
-  mr?: string | number
-  /** margin-bottom */
-  mb?: string | number
-  /** margin-left */
-  ml?: string | number
-  /** margin-left && margin-right */
-  mx?: string | number
-  /** margin-top && margin-bottom  */
-  my?: string | number
-  /** padding */
-  p?: string | number
-  /** padding-top */
-  pt?: string | number
-  /** padding-right */
-  pr?: string | number
-  /** padding-bottom */
-  pb?: string | number
-  /** padding-left */
-  pl?: string | number
-  /** padding-left && padding-right */
-  px?: string | number
-  /** padding-top && padding-bottom */
-  py?: string | number
+  /**
+   * Sets a `gap` style
+   * @arbitraryValuesSupport
+   */
+  gap?: Spacing
+  /**
+   * Sets a `column-gap` style
+   * @arbitraryValuesSupport
+   */
+  columnGap?: Spacing
+  /**
+   * Sets a `row-gap` style
+   * @arbitraryValuesSupport
+   */
+  rowGap?: Spacing
+  /**
+   * margin
+   * @arbitraryValuesSupport
+   */
+  m?: Spacing
+  /**
+   * margin-top
+   * @arbitraryValuesSupport
+   */
+  mt?: Spacing
+  /**
+   * margin-right
+   * @arbitraryValuesSupport
+   */
+  mr?: Spacing
+  /**
+   * margin-bottom
+   * @arbitraryValuesSupport
+   */
+  mb?: Spacing
+  /**
+   * margin-left
+   * @arbitraryValuesSupport
+   */
+  ml?: Spacing
+  /**
+   * margin-left && margin-right
+   * @arbitraryValuesSupport
+   */
+  mx?: Spacing
+  /**
+   * margin-top && margin-bottom
+   * @arbitraryValuesSupport
+   */
+  my?: Spacing
+  /**
+   * padding
+   * @arbitraryValuesSupport
+   */
+  p?: Spacing
+  /**
+   * padding-top
+   * @arbitraryValuesSupport
+   */
+  pt?: Spacing
+  /**
+   * padding-right
+   * @arbitraryValuesSupport
+   */
+  pr?: Spacing
+  /**
+   * padding-bottom
+   * @arbitraryValuesSupport
+   */
+  pb?: Spacing
+  /**
+   * padding-left
+   * @arbitraryValuesSupport
+   */
+  pl?: Spacing
+  /**
+   * padding-left && padding-right
+   * @arbitraryValuesSupport
+   */
+  px?: Spacing
+  /**
+   * padding-top && padding-bottom
+   * @arbitraryValuesSupport
+   */
+  py?: Spacing
   /** Sets a z-index style */
-  zIndex?: 0 | 10 | 20 | 30 | 40 | 50 | 'auto'
+  zIndex?: 'auto' | 0 | 10 | 20 | 30 | 40 | 50
 }
 
 /** Componentry utility props for including utility styles. */
@@ -164,14 +218,42 @@ const activeProps = {
   onDeactivated: 1,
 }
 
+const spacingCSSProperties = {
+  m: 'margin',
+  mt: 'marginTop',
+  mr: 'marginRight',
+  mb: 'marginBottom',
+  ml: 'marginLeft',
+  p: 'padding',
+  pt: 'paddingTop',
+  pr: 'paddingRight',
+  pb: 'paddingBottom',
+  pl: 'paddingLeft',
+} as const
+
+let theme = themeDefaults
+
+/**
+ * Setup function for initializing the utility classes with a custom theme.
+ * @remarks
+ * This setup is only required if you're not using the Theme provider.
+ */
+export function initializeUtilityClassesTheme(themeOverrides: any) {
+  theme = merge(themeDefaults, themeOverrides)
+}
+
 /**
  * `createUtilityClasses` filters and transforms Componentry utility props into
  * utility classes.
  * @example
  * ```tsx
- * const { filteredProps, utilityClasses } = createUtilityClasses(props)
+ * const { filteredProps, utilityClasses, utilityStyles } = createUtilityClasses(props)
  * return (
- *   <div className={clsx('some-custom-class', utilityClasses)} {...filteredProps}>
+ *   <div
+ *     className={clsx('some-custom-class', utilityClasses)}
+ *     styles={utilityStyles}
+ *     {...filteredProps}
+ *   >
  *     {children}
  *   </div>
  * )
@@ -180,8 +262,9 @@ const activeProps = {
 export function createUtilityClasses<Props extends { [prop: string]: any }>(
   props: Props,
 ) {
-  const filteredProps: { [prop: string]: any } = {}
   const classes: string[] = []
+  const styles: CSSProperties = {}
+  const filteredProps: { [prop: string]: any } = {}
 
   Object.keys(props).forEach((prop) => {
     const value = props[prop]
@@ -238,60 +321,80 @@ export function createUtilityClasses<Props extends { [prop: string]: any }>(
 
       // SPACING
       case 'm':
-        classes.push('m-' + value)
-        break
       case 'mt':
-        classes.push('mt-' + value)
-        break
       case 'mr':
-        classes.push('mr-' + value)
-        break
       case 'mb':
-        classes.push('mb-' + value)
-        break
       case 'ml':
-        classes.push('ml-' + value)
+      case 'p':
+      case 'pt':
+      case 'pr':
+      case 'pb':
+      case 'pl':
+        if (value in theme.spacing) classes.push(`${prop}-${value}`)
+        else if (theme.spacingRatio)
+          styles[spacingCSSProperties[prop]] = theme.spacingRatio(value)
+        else styles[spacingCSSProperties[prop]] = value
         break
       case 'mx':
-        classes.push('mx-' + value)
+        if (value in theme.spacing) classes.push('mx-' + value)
+        else if (theme.spacingRatio) {
+          styles.marginLeft = theme.spacingRatio(value)
+          styles.marginRight = theme.spacingRatio(value)
+        } else {
+          styles.marginLeft = value
+          styles.marginRight = value
+        }
         break
       case 'my':
-        classes.push('my-' + value)
-        break
-      case 'p':
-        classes.push('p-' + value)
-        break
-      case 'pt':
-        classes.push('pt-' + value)
-        break
-      case 'pr':
-        classes.push('pr-' + value)
-        break
-      case 'pb':
-        classes.push('pb-' + value)
-        break
-      case 'pl':
-        classes.push('pl-' + value)
+        if (value in theme.spacing) classes.push('my-' + value)
+        else if (theme.spacingRatio) {
+          styles.marginTop = theme.spacingRatio(value)
+          styles.marginBottom = theme.spacingRatio(value)
+        } else {
+          styles.marginTop = value
+          styles.marginBottom = value
+        }
         break
       case 'px':
-        classes.push('px-' + value)
+        if (value in theme.spacing) classes.push('px-' + value)
+        else if (theme.spacingRatio) {
+          styles.paddingLeft = theme.spacingRatio(value)
+          styles.paddingRight = theme.spacingRatio(value)
+        } else {
+          styles.paddingLeft = value
+          styles.paddingRight = value
+        }
         break
       case 'py':
-        classes.push('py-' + value)
+        if (value in theme.spacing) classes.push('py-' + value)
+        else if (theme.spacingRatio) {
+          styles.paddingTop = theme.spacingRatio(value)
+          styles.paddingBottom = theme.spacingRatio(value)
+        } else {
+          styles.paddingTop = value
+          styles.paddingBottom = value
+        }
         break
       case 'gap':
-        classes.push('gap-' + value)
+        if (value in theme.spacing) classes.push('gap-' + value)
+        else if (theme.spacingRatio) styles.gap = theme.spacingRatio(value)
+        else styles.gap = value
         break
       case 'columnGap':
-        classes.push('gap-x-' + value)
+        if (value in theme.spacing) classes.push('gap-x-' + value)
+        else if (theme.spacingRatio) styles.columnGap = theme.spacingRatio(value)
+        else styles.columnGap = value
         break
       case 'rowGap':
-        classes.push('gap-y-' + value)
+        if (value in theme.spacing) classes.push('gap-y-' + value)
+        else if (theme.spacingRatio) styles.rowGap = theme.spacingRatio(value)
+        else styles.rowGap = value
         break
 
       // SIZING
       case 'height':
-        classes.push('h-' + value)
+        if (value in theme.spacing || value in theme.height) classes.push('h-' + value)
+        else styles.height = value
         break
       case 'minHeight':
         classes.push('min-h-' + value)
@@ -300,7 +403,8 @@ export function createUtilityClasses<Props extends { [prop: string]: any }>(
         classes.push('max-h-' + value)
         break
       case 'width':
-        classes.push('w-' + value)
+        if (value in theme.spacing || value in theme.height) classes.push('w-' + value)
+        else styles.width = value
         break
       case 'minWidth':
         classes.push('min-w-' + value)
@@ -372,7 +476,9 @@ export function createUtilityClasses<Props extends { [prop: string]: any }>(
         classes.push('border-' + value)
         break
       case 'borderRadius':
-        classes.push(value === true ? 'rounded' : 'rounded-' + value)
+        if (value === true) classes.push('rounded')
+        else if (value in theme.borderRadius) classes.push('rounded-' + value)
+        else styles.borderRadius = value
         break
 
       // STATES (eg https://mui.com/customization/how-to-customize/#state-classes)
@@ -396,5 +502,43 @@ export function createUtilityClasses<Props extends { [prop: string]: any }>(
   return {
     filteredProps,
     utilityClasses: classes.join(' '),
+    utilityStyles: Object.keys(styles).length === 0 ? undefined : styles,
   }
 }
+
+/** Theme-supported spacing values */
+export type Spacing =
+  | 'px'
+  | 0
+  | 0.5
+  | 1
+  | 1.5
+  | 2
+  | 2.5
+  | 3
+  | 3.5
+  | 4
+  | 5
+  | 6
+  | 7
+  | 8
+  | 9
+  | 10
+  | 12
+  | 14
+  | 16
+  | 20
+  | 24
+  | 28
+  | 32
+  | 36
+  | 40
+  | 44
+  | 48
+  | 52
+  | 56
+  | 60
+  | 64
+  | 72
+  | 80
+  | 96

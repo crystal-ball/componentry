@@ -30,7 +30,7 @@ export const textStyles: TextStyles = {
     // Set spacing between multiple paragraphs using sibling selector and
     // margin-top.
     '& + &': {
-      marginTop: theme.spacing[2],
+      marginTop: theme.spacing[4],
     },
   },
 }

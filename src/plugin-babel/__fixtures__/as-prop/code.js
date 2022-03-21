@@ -7,7 +7,7 @@ export default function Test() {
   // 2. as={Identifier} works
   return (
     <Flex as='main'>
-      <Text as={FancyText} mt='md' fancy>
+      <Text as={FancyText} mt={3} fancy>
         Precompiled for speed
       </Text>
     </Flex>
