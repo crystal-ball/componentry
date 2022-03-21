@@ -117,87 +117,87 @@ export interface UtilityPropsBase {
   // --- Spacing
   /**
    * Sets a `gap` style
-   * @arbitrarySupport
+   * @arbitraryValuesSupport
    */
   gap?: Spacing
   /**
    * Sets a `column-gap` style
-   * @arbitrarySupport
+   * @arbitraryValuesSupport
    */
   columnGap?: Spacing
   /**
    * Sets a `row-gap` style
-   * @arbitrarySupport
+   * @arbitraryValuesSupport
    */
   rowGap?: Spacing
   /**
    * margin
-   * @arbitrarySupport
+   * @arbitraryValuesSupport
    */
   m?: Spacing
   /**
    * margin-top
-   * @arbitrarySupport
+   * @arbitraryValuesSupport
    */
   mt?: Spacing
   /**
    * margin-right
-   * @arbitrarySupport
+   * @arbitraryValuesSupport
    */
   mr?: Spacing
   /**
    * margin-bottom
-   * @arbitrarySupport
+   * @arbitraryValuesSupport
    */
   mb?: Spacing
   /**
    * margin-left
-   * @arbitrarySupport
+   * @arbitraryValuesSupport
    */
   ml?: Spacing
   /**
    * margin-left && margin-right
-   * @arbitrarySupport
+   * @arbitraryValuesSupport
    */
   mx?: Spacing
   /**
    * margin-top && margin-bottom
-   * @arbitrarySupport
+   * @arbitraryValuesSupport
    */
   my?: Spacing
   /**
    * padding
-   * @arbitrarySupport
+   * @arbitraryValuesSupport
    */
   p?: Spacing
   /**
    * padding-top
-   * @arbitrarySupport
+   * @arbitraryValuesSupport
    */
   pt?: Spacing
   /**
    * padding-right
-   * @arbitrarySupport
+   * @arbitraryValuesSupport
    */
   pr?: Spacing
   /**
    * padding-bottom
-   * @arbitrarySupport
+   * @arbitraryValuesSupport
    */
   pb?: Spacing
   /**
    * padding-left
-   * @arbitrarySupport
+   * @arbitraryValuesSupport
    */
   pl?: Spacing
   /**
    * padding-left && padding-right
-   * @arbitrarySupport
+   * @arbitraryValuesSupport
    */
   px?: Spacing
   /**
    * padding-top && padding-bottom
-   * @arbitrarySupport
+   * @arbitraryValuesSupport
    */
   py?: Spacing
   /** Sets a z-index style */
