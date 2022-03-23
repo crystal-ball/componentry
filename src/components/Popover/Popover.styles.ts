@@ -120,7 +120,7 @@ export const popoverStyles = {
     maxWidth: '300px',
     backgroundClip: 'padding-box',
     backgroundColor: theme.colors.background,
-    border: `${theme.borderWidth.DEFAULT} solid ${theme.borderColor.DEFAULT}`,
+    border: theme.border.DEFAULT,
     fontSize: theme.fontSize.small,
     // Allow breaking very long words so they don't overflow the popover's bounds
     wordWrap: 'break-word',
@@ -146,7 +146,7 @@ export const popoverStyles = {
     width: `${arrowWidth}px`,
 
     '&:after': {
-      border: `${theme.borderWidth.DEFAULT} solid ${theme.borderColor.DEFAULT}`,
+      border: theme.border.DEFAULT,
       // box-shadow: $popover-box-shadow,
       background: theme.colors.background,
       content: "''",
@@ -172,6 +172,6 @@ export const popoverStyles = {
     marginBottom: 0,
     fontSize: theme.fontSize.large,
     color: theme.colors.gray[900],
-    borderBottom: `${theme.borderWidth.DEFAULT} solid ${theme.borderColor.DEFAULT}`,
+    borderBottom: theme.border.DEFAULT,
   },
 }

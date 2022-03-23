@@ -1,5 +1,7 @@
 'use strict'
 
+const plugin = require('tailwindcss/plugin')
+
 module.exports = {
   // Scan .ts files, all of the required Tailwind classes are included in types
   content: ['./src/**/*.ts', './src/**/*.mdx'],
@@ -74,11 +76,16 @@ module.exports = {
       5: '2.5rem', // 40px
       6: '3rem', // 48px
     },
+
+    border: {
+      DEFAULT: '1px solid #607d8b', // example easy 'default' border setup
+      focused: '1px solid #bfdbfe', // example semantic border
+    },
   },
   corePlugins: {
     preflight: false,
   },
-  plugins: [],
+
   safelist: [
     // margin, padding, gap
     { pattern: /m[trblxy]?-([\d.]+|px)/ },
@@ -87,7 +94,32 @@ module.exports = {
 
     // backgroundColor, borderColor, textColor
     { pattern: /bg-(primary|info|success)-[\d.]+/ },
-    { pattern: /border-(container|modal)/ },
+    { pattern: /border(-focused)?/ },
     { pattern: /text-(body|link)/ },
+  ],
+
+  plugins: [
+    plugin(function ({ matchUtilities, theme }) {
+      matchUtilities(
+        {
+          border: (value) => ({
+            border: value,
+          }),
+          'border-t': (value) => ({
+            'border-top': value,
+          }),
+          'border-r': (value) => ({
+            'border-right': value,
+          }),
+          'border-b': (value) => ({
+            'border-bottom': value,
+          }),
+          'border-l': (value) => ({
+            'border-left': value,
+          }),
+        },
+        { values: theme('border') },
+      )
+    }),
   ],
 }

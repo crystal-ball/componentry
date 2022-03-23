@@ -64,7 +64,7 @@ export const modalStyles = {
     maxWidth: '750px',
     // Prevent inner element bgs from overlaying border style
     backgroundClip: 'padding-box',
-    border: `${theme.borderWidth.DEFAULT} solid ${theme.borderColor.DEFAULT}`,
+    border: theme.border.DEFAULT,
     // boxShadow: box-shadow($modal-container-box-shadow),
     borderRadius: theme.borderRadius.DEFAULT,
 
@@ -121,7 +121,7 @@ export const modalStyles = {
     justifyContent: 'space-between', // Put modal header elements (title and dismiss) on opposite ends
     padding: theme.spacing[4],
     backgroundColor: theme.colors.background,
-    borderBottom: `${theme.borderWidth.DEFAULT} solid ${theme.borderColor.DEFAULT}`,
+    borderBottom: theme.border.DEFAULT,
     borderTopLeftRadius: theme.borderRadius.DEFAULT,
     borderTopRightRadius: theme.borderRadius.DEFAULT,
   },
@@ -152,7 +152,7 @@ export const modalStyles = {
     alignItems: 'center',
     padding: theme.spacing[4],
     backgroundColor: theme.colors.background,
-    borderTop: `${theme.borderWidth.DEFAULT} solid ${theme.borderColor.DEFAULT}`,
+    borderTop: theme.border.DEFAULT,
     borderBottomLeftRadius: theme.borderRadius.DEFAULT,
     borderBottomRightRadius: theme.borderRadius.DEFAULT,
   },
