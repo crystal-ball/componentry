@@ -31,15 +31,15 @@ export interface UtilityPropsBase {
   /** Sets a bold font weight style */
   bold?: boolean
   /** Sets a `border` style */
-  border?: boolean | 0 | 1 | 2 | 4 | 8
+  border?: boolean
   /** Sets a `border-bottom` style */
-  borderBottom?: boolean | 0 | 1 | 2 | 4 | 8
+  borderBottom?: boolean
   /** Sets a `border-left` style */
-  borderLeft?: boolean | 0 | 1 | 2 | 4 | 8
+  borderLeft?: boolean
   /** Sets `border-right` style */
-  borderRight?: boolean | 0 | 1 | 2 | 4 | 8
+  borderRight?: boolean
   /** Sets a `border-top` style */
-  borderTop?: boolean | 0 | 1 | 2 | 4 | 8
+  borderTop?: boolean
   /** Sets a `border-color` style */
   borderColor?: string
   /** Sets a `border-style` style */
