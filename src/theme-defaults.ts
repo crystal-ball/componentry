@@ -38,6 +38,18 @@ const spacing = {
   96: '24rem', // 384px
 }
 
+const gray = {
+  100: '#eff2f3',
+  200: '#d7dfe2',
+  300: '#bfcbd1',
+  400: '#90a4ae',
+  500: '#607d8b',
+  600: '#56717d',
+  700: '#3a4b53',
+  800: '#2b383f',
+  900: '#1d262a',
+}
+
 export const theme = {
   // --- SCREENS
   // screens: {
@@ -56,17 +68,7 @@ export const theme = {
     transparent: 'transparent',
     background: '#fff',
     inverse: '#eff',
-    gray: {
-      100: '#eff2f3',
-      200: '#d7dfe2',
-      300: '#bfcbd1',
-      400: '#90a4ae',
-      500: '#607d8b',
-      600: '#56717d',
-      700: '#3a4b53',
-      800: '#2b383f',
-      900: '#1d262a',
-    },
+    gray,
     primary: {
       100: '#f2f1ff',
       200: '#dfddff',
@@ -159,6 +161,7 @@ export const theme = {
     fit: 'fit-content',
     ...spacing,
   },
+
   // --- TYPOGRAPHY
   fontFamily: {
     body: "system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji'",
@@ -183,12 +186,16 @@ export const theme = {
     none: 1,
     normal: 1.5,
   },
+  textColor: {
+    placeholder: gray[400],
+  },
+
   // --- BORDERS
-  borderWidth: {
-    DEFAULT: '1px',
+  border: {
+    DEFAULT: '1px solid #607d8b', // matches gray.500
   },
   borderColor: {
-    DEFAULT: '#607d8b', // matches gray.500
+    /* Semantic border colors */
   },
   borderRadius: {
     DEFAULT: '0.25rem', // 4px
@@ -201,6 +208,22 @@ export const theme = {
     '2xl': '1rem', // 16px
     '3xl': '1.5rem', // 24px
   },
+  borderStyle: {
+    dashed: 'dashed',
+    dotted: 'dotted',
+    double: 'double',
+    hidden: 'hidden',
+    none: 'none',
+    solid: 'solid',
+  },
+  borderWidth: {
+    0: 0,
+    1: '1px',
+    2: '2px',
+    4: '4px',
+    8: '8px',
+  },
+
   // --- SHADOWS
   boxShadow: {
     DEFAULT: '0 0.5rem 1rem rgba(73, 80, 87, 0.15)',

@@ -16,7 +16,7 @@ export const inputStyles = {
     color: theme.colors.gray[700],
     backgroundColor: theme.colors.background,
     backgroundClip: 'padding-box',
-    border: `${theme.borderWidth.DEFAULT} solid ${theme.borderColor.DEFAULT}`,
+    border: theme.border.DEFAULT,
     borderRadius: theme.borderRadius.DEFAULT, // Note: This has no effect on <select>s in some browsers, due to the limited style-ability of `<select>`s in CSS.
 
     transition: 'borderColor 0.2s linear',

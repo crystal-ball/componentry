@@ -30,22 +30,24 @@ export interface UtilityPropsBase {
   backgroundColor?: string
   /** Sets a bold font weight style */
   bold?: boolean
-  /** Sets a 1px border-width style */
-  border?: boolean
+  /** Sets a `border` style */
+  border?: boolean | 0 | 1 | 2 | 4 | 8
+  /** Sets a `border-bottom` style */
+  borderBottom?: boolean | 0 | 1 | 2 | 4 | 8
+  /** Sets a `border-left` style */
+  borderLeft?: boolean | 0 | 1 | 2 | 4 | 8
+  /** Sets `border-right` style */
+  borderRight?: boolean | 0 | 1 | 2 | 4 | 8
+  /** Sets a `border-top` style */
+  borderTop?: boolean | 0 | 1 | 2 | 4 | 8
+  /** Sets a `border-color` style */
+  borderColor?: string
+  /** Sets a `border-style` style */
+  borderStyle?: 'solid' | 'dashed' | 'dotted' | 'double' | 'hidden' | 'none'
+  /** Sets a `border-width` style */
+  borderWidth?: 0 | 1 | 2 | 4 | 8
   /** Sets a `border-radius` style */
   borderRadius?: boolean | 'none' | 'full' | 'sm' | 'md' | 'lg' | 'xl' | '2xl' | '3xl'
-  /** Sets a border-width size style */
-  borderWidth?: boolean | 0 | 2 | 4 | 8
-  /** Sets a 1px border-bottom-width style */
-  borderBottom?: boolean
-  /** Sets border color style */
-  borderColor?: string
-  /** Sets a 1px border-left-width style */
-  borderLeft?: boolean
-  /** Sets a 1px border-right-width style */
-  borderRight?: boolean
-  /** Sets a 1px border-top-width style */
-  borderTop?: boolean
   /** Sets a `box-shadow` style */
   boxShadow?: boolean | 'none' | 'inner' | 'sm' | 'md' | 'lg' | 'xl' | '2xl'
   /** Sets a disabled style */
@@ -455,19 +457,19 @@ export function createUtilityClasses<Props extends { [prop: string]: any }>(
 
       // BORDERS
       case 'border':
-        classes.push('border') // 1px borderWidth
+        classes.push(value === true ? 'border' : 'border-' + value)
         break
       case 'borderBottom':
-        classes.push('border-b') // 1px borderWidth
+        classes.push(value === true ? 'border-b' : 'border-b-' + value)
         break
       case 'borderLeft':
-        classes.push('border-l') // 1px borderWidth
+        classes.push(value === true ? 'border-l' : 'border-l-' + value)
         break
       case 'borderRight':
-        classes.push('border-r') // 1px borderWidth
+        classes.push(value === true ? 'border-r' : 'border-r-' + value)
         break
       case 'borderTop':
-        classes.push('border-t') // 1px borderWidth
+        classes.push(value === true ? 'border-t' : 'border-t-' + value)
         break
       case 'borderWidth':
         classes.push('border-' + value)

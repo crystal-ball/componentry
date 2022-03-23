@@ -17,7 +17,7 @@ export const cardStyles = {
 
   '.C9Y-Card-outlined': {
     backgroundColor: theme.colors.background,
-    border: `${theme.borderWidth.DEFAULT} solid ${theme.borderColor.DEFAULT}`,
+    border: theme.border.DEFAULT,
     borderRadius: theme.borderRadius.DEFAULT,
   },
 
@@ -34,7 +34,7 @@ export const cardStyles = {
     padding: theme.spacing[4],
     //   margin-bottom: 0; // Removes the default margin-bottom of <hN>
     backgroundColor: theme.colors.background,
-    borderBottom: `${theme.borderWidth.DEFAULT} solid ${theme.borderColor.DEFAULT}`,
+    borderBottom: theme.border.DEFAULT,
 
     '&:first-child': {
       borderRadius: `3px 3px 0 0`, // 🤔 To properly handle layout this value needs to be: card borderRadius - card borderWidth
@@ -45,7 +45,7 @@ export const cardStyles = {
   '.C9Y-CardFooter': {
     padding: theme.spacing[4],
     backgroundColor: theme.colors.background,
-    borderTop: `${theme.borderWidth.DEFAULT} solid ${theme.borderColor.DEFAULT}`,
+    borderTop: theme.border.DEFAULT,
 
     '&:last-child': {
       borderRadius: `0 0 3px 3px`, // 🤔 To properly handle layout this value needs to be: card borderRadius - card borderWidth
