@@ -1,7 +1,6 @@
 import { cosmiconfigSync } from 'cosmiconfig'
 
-import { merge } from '../utils/merge'
-import { theme } from '../theme-defaults'
+import { createTheme } from '../utils/create-theme'
 
 const explorerSync = cosmiconfigSync('componentry')
 
@@ -13,24 +12,9 @@ const configSearchResults = explorerSync.search()
 const userConfig = configSearchResults?.config ?? {}
 
 const mergedConfig = {
-  theme,
+  theme: createTheme(userConfig.theme ?? {}),
   components: userConfig.components ?? {},
   foundation: userConfig.foundation ?? {},
-}
-
-// Extend
-if (userConfig.theme?.extend) {
-  mergedConfig.theme = merge(mergedConfig.theme, userConfig.theme.extend)
-}
-
-// Override
-if (userConfig.theme) {
-  Object.entries(userConfig.theme).forEach(([key, value]) => {
-    if (key !== 'extend') {
-      // @ts-ignore Fix Me
-      mergedConfig.theme[key] = value
-    }
-  })
 }
 
 export const getMergedConfig = () => mergedConfig

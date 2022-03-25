@@ -50,7 +50,7 @@ const gray = {
   900: '#1d262a',
 }
 
-export const theme = {
+export const themeDefaults = {
   // --- SCREENS
   // screens: {
   //   Componentry has a single breakpoint by default, additional breakpoints can
@@ -126,6 +126,9 @@ export const theme = {
     },
   },
 
+  // Optional semantic background colors definition
+  backgroundColor: undefined as { [Color: string]: string } | undefined,
+
   // --- SPACING
   spacing,
   /**
@@ -186,16 +189,13 @@ export const theme = {
     none: 1,
     normal: 1.5,
   },
-  textColor: {
-    placeholder: gray[400],
-  },
+
+  // Optional semantic typography colors definition
+  textColor: undefined as { [Color: string]: string } | undefined,
 
   // --- BORDERS
   border: {
-    DEFAULT: '1px solid #607d8b', // matches gray.500
-  },
-  borderColor: {
-    /* Semantic border colors */
+    DEFAULT: `1px solid ${gray[500]}`,
   },
   borderRadius: {
     DEFAULT: '0.25rem', // 4px
@@ -223,6 +223,9 @@ export const theme = {
     4: '4px',
     8: '8px',
   },
+
+  // Optional semantic border colors definition
+  borderColor: undefined as { [Color: string]: string } | undefined,
 
   // --- SHADOWS
   boxShadow: {

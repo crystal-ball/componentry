@@ -225,7 +225,6 @@ export const foundationStyles = {
 
   'input::placeholder, textarea::placeholder': {
     opacity: 1, // Reset the default placeholder opacity in Firefox. (https://github.com/tailwindlabs/tailwindcss/issues/3300)
-    color: theme.textColor.placeholder, // Set the default placeholder color to the user's configured gray 400 color.
   },
 
   'svg, canvas, audio, iframe, embed, object': {

@@ -1,9 +1,18 @@
-import { createUtilityClasses } from './utility-classes'
+import { themeDefaults } from '../theme-defaults'
+import { createTheme } from './create-theme'
+import { createUtilityClasses, initializeUtilityClassesTheme } from './utility-classes'
 
 describe('createUtilityClasses()', () => {
+  beforeEach(() => {
+    initializeUtilityClassesTheme(themeDefaults)
+  })
+
   it('does not compute undefined values', () => {
     expect(createUtilityClasses({}).utilityClasses).toBe('')
   })
+
+  // --------------------------------------------------------
+  // LAYOUT
 
   it('computes layout classes', () => {
     expect(
@@ -27,6 +36,9 @@ describe('createUtilityClasses()', () => {
     ).toBe('')
   })
 
+  // --------------------------------------------------------
+  // FLEXBOX/GRID
+
   it('computes flex/grid classes', () => {
     expect(
       createUtilityClasses({
@@ -45,6 +57,9 @@ describe('createUtilityClasses()', () => {
       'content-center flex-col grow-0 shrink-0 flex-wrap-reverse items-center justify-center justify-items-center justify-self-start self-start',
     )
   })
+
+  // --------------------------------------------------------
+  // SPACING
 
   it('computes spacing utility classes', () => {
     const spacings = [0, 0.5, 1, 2, 3]
@@ -185,6 +200,9 @@ describe('createUtilityClasses()', () => {
     })
   })
 
+  // --------------------------------------------------------
+  // SIZING
+
   it('computes sizing utility classes', () => {
     expect(
       createUtilityClasses({
@@ -223,6 +241,9 @@ describe('createUtilityClasses()', () => {
     ).toBe('')
   })
 
+  // --------------------------------------------------------
+  // TYPOGRAPHY
+
   it('computes typography utility classes', () => {
     expect(
       createUtilityClasses({
@@ -257,21 +278,80 @@ describe('createUtilityClasses()', () => {
     ).toBe('')
   })
 
-  it('computes background color utility classes', () => {
+  // --------------------------------------------------------
+  // BACKGROUNDS
+
+  it('computes background utility classes', () => {
+    expect(
+      createUtilityClasses({
+        backgroundColor: 'primary.100',
+      }).utilityClasses,
+    ).toBe('bg-primary-100')
+
     expect(
       createUtilityClasses({
         backgroundColor: 'primary-100',
-        boxShadow: true,
       }).utilityClasses,
-    ).toBe('bg-primary-100 shadow')
+    ).toBe('bg-primary-100')
+
+    expect(
+      createUtilityClasses({
+        backgroundColor: '#ff428e',
+      }).utilityStyles,
+    ).toStrictEqual({
+      backgroundColor: '#ff428e',
+    })
+
+    expect(
+      createUtilityClasses({
+        backgroundColor: 'primary.oops',
+      }),
+    ).toStrictEqual({
+      utilityClasses: '',
+      utilityStyles: { backgroundColor: 'primary.oops' },
+      filteredProps: {},
+    })
 
     expect(
       createUtilityClasses({
         backgroundColor: undefined,
-        boxShadow: undefined,
       }).utilityClasses,
     ).toBe('')
   })
+
+  it('looks up background utility classes', () => {
+    const theme = createTheme({
+      backgroundColor: {
+        surface: '#eee',
+      },
+    })
+    initializeUtilityClassesTheme(theme)
+
+    expect(
+      createUtilityClasses({
+        backgroundColor: 'surface',
+      }),
+    ).toStrictEqual({
+      utilityClasses: 'bg-surface',
+      utilityStyles: undefined,
+      filteredProps: {},
+    })
+
+    // Assert that theme has colors, but that theme.backgroundColor is preferred
+    expect(theme.colors.primary[100]).toBeTruthy()
+    expect(
+      createUtilityClasses({
+        backgroundColor: 'primary.100',
+      }),
+    ).toStrictEqual({
+      utilityClasses: '',
+      utilityStyles: { backgroundColor: 'primary.100' },
+      filteredProps: {},
+    })
+  })
+
+  // --------------------------------------------------------
+  // BORDERS
 
   it('computes border utility classes', () => {
     expect(
@@ -302,6 +382,26 @@ describe('createUtilityClasses()', () => {
       }).utilityClasses,
     ).toBe('')
   })
+
+  // --------------------------------------------------------
+  // EFFECTS
+
+  it('computes effects utility classes', () => {
+    expect(
+      createUtilityClasses({
+        boxShadow: true,
+      }).utilityClasses,
+    ).toBe('shadow')
+
+    expect(
+      createUtilityClasses({
+        boxShadow: undefined,
+      }).utilityClasses,
+    ).toBe('')
+  })
+
+  // --------------------------------------------------------
+  // STATE
 
   it('computes state classes', () => {
     expect(createUtilityClasses({ active: true, disabled: true }).utilityClasses).toBe(

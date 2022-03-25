@@ -9,8 +9,7 @@
  */
 
 import { type CSSProperties } from 'react'
-import { theme as themeDefaults } from '../theme-defaults'
-import { merge } from './merge'
+import { themeDefaults } from '../theme-defaults'
 import { MergePropTypes } from './types'
 
 /** Module augmentation interface for overriding default utility props' types */
@@ -240,8 +239,8 @@ let theme = themeDefaults
  * @remarks
  * This setup is only required if you're not using the Theme provider.
  */
-export function initializeUtilityClassesTheme(themeOverrides: any) {
-  theme = merge(themeDefaults, themeOverrides)
+export function initializeUtilityClassesTheme(customTheme: any) {
+  theme = customTheme
 }
 
 /**
@@ -270,6 +269,9 @@ export function createUtilityClasses<Props extends { [prop: string]: any }>(
 
   Object.keys(props).forEach((prop) => {
     const value = props[prop]
+    // Variable for assigning nested theme value lookups while in switch statement
+    let lookupValue: string | undefined
+
     // If a props has a key, but the prop value is undefined or false we can bail early
     if (value === undefined || value === false) return
 
@@ -449,7 +451,10 @@ export function createUtilityClasses<Props extends { [prop: string]: any }>(
 
       // BACKGROUNDS
       case 'backgroundColor':
-        classes.push('bg-' + value)
+        lookupValue = accessColor(theme.backgroundColor ?? theme.colors, value)
+
+        if (lookupValue) classes.push('bg-' + value.replace('.', '-'))
+        else styles.backgroundColor = value
         break
       case 'boxShadow':
         classes.push(value === true ? 'shadow' : 'shadow-' + value)
@@ -506,6 +511,15 @@ export function createUtilityClasses<Props extends { [prop: string]: any }>(
     utilityClasses: classes.join(' '),
     utilityStyles: Object.keys(styles).length === 0 ? undefined : styles,
   }
+}
+
+function accessColor(base: any, path: string): string | undefined {
+  const pathParts = path.split(/[.-]/)
+
+  return pathParts.reduce((prev, curr) => {
+    if (prev && prev[curr]) return prev[curr]
+    return undefined
+  }, base)
 }
 
 /** Theme-supported spacing values */

@@ -2,7 +2,7 @@ import postcss, { ChildNode, PluginCreator } from 'postcss'
 import postcssNested from 'postcss-nested'
 import postcssJs from 'postcss-js'
 
-import { merge } from '../utils/merge'
+import { deepMerge } from '../utils/create-theme'
 import { foundationStyles } from '../utils/foundation.styles'
 import { alertStyles } from '../components/Alert/Alert.styles'
 import { badgeStyles } from '../components/Badge/Badge.styles'
@@ -39,7 +39,7 @@ const componentStyles = {
   Tooltip: tooltipStyles,
 }
 
-const { components, foundation } = merge(
+const { components, foundation } = deepMerge(
   {
     components: componentStyles,
     foundation: foundationStyles,
