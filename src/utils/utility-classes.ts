@@ -288,7 +288,8 @@ export function createUtilityClasses<Props extends { [prop: string]: any }>(
         classes.push('visible')
         break
       case 'zIndex':
-        classes.push('z-' + value)
+        if (value in theme.zIndex) classes.push('z-' + value)
+        else styles.zIndex = value
         break
 
       // FLEXBOX/GRID
@@ -299,10 +300,14 @@ export function createUtilityClasses<Props extends { [prop: string]: any }>(
         classes.push('flex-' + value.replace('column', 'col'))
         break
       case 'flexGrow':
-        classes.push(value === true ? 'grow' : 'grow-' + value)
+        if (value === true) classes.push('grow')
+        if (value in theme.flexGrow) classes.push('grow-' + value)
+        else styles.flexGrow = value
         break
       case 'flexShrink':
-        classes.push(value === true ? 'shrink' : 'shrink-' + value)
+        if (value === true) classes.push('shrink')
+        if (value in theme.flexShrink) classes.push('shrink-' + value)
+        else styles.flexShrink = value
         break
       case 'flexWrap':
         classes.push('flex-' + value)
@@ -397,24 +402,28 @@ export function createUtilityClasses<Props extends { [prop: string]: any }>(
 
       // SIZING
       case 'height':
-        if (value in theme.spacing || value in theme.height) classes.push('h-' + value)
+        if (value in theme.height) classes.push('h-' + value)
         else styles.height = value
         break
       case 'minHeight':
-        classes.push('min-h-' + value)
+        if (value in theme.height) classes.push('min-h-' + value)
+        else styles.minHeight = value
         break
       case 'maxHeight':
-        classes.push('max-h-' + value)
+        if (value in theme.height) classes.push('max-h-' + value)
+        else styles.maxHeight = value
         break
       case 'width':
-        if (value in theme.spacing || value in theme.height) classes.push('w-' + value)
+        if (value in theme.width) classes.push('w-' + value)
         else styles.width = value
         break
       case 'minWidth':
-        classes.push('min-w-' + value)
+        if (value in theme.width) classes.push('min-w-' + value)
+        else styles.minWidth = value
         break
       case 'maxWidth':
-        classes.push('max-w-' + value)
+        if (value in theme.width) classes.push('max-w-' + value)
+        else styles.maxWidth = value
         break
 
       // TYPOGRAPHY
@@ -424,26 +433,33 @@ export function createUtilityClasses<Props extends { [prop: string]: any }>(
       case 'italic':
         classes.push('italic')
         break
-      case 'fontFamily':
-        classes.push('font-' + value)
-        break
-      case 'fontWeight':
-        classes.push('font-' + value)
-        break
-      case 'lineHeight':
-        classes.push('leading-' + value)
-        break
       case 'color':
-        classes.push('text-' + value)
+        lookupValue = accessColor(theme.textColor ?? theme.colors, value)
+        if (lookupValue) classes.push('text-' + value.replace('.', '-'))
+        else styles.color = value
+        break
+      case 'fontFamily':
+        if (value in theme.fontFamily) classes.push('font-' + value)
+        else styles.fontFamily = value
         break
       case 'fontSize':
-        classes.push('text-' + value)
+        if (value in theme.fontSize) classes.push('text-' + value)
+        else styles.fontSize = value
+        break
+      case 'fontWeight':
+        if (value in theme.fontWeight) classes.push('font-' + value)
+        else styles.fontWeight = value
+        break
+      case 'letterSpacing':
+        if (value in theme.letterSpacing) classes.push('tracking-' + value)
+        else styles.letterSpacing = value
+        break
+      case 'lineHeight':
+        if (value in theme.lineHeight) classes.push('leading-' + value)
+        else styles.lineHeight = value
         break
       case 'textAlign':
         classes.push('text-' + value)
-        break
-      case 'letterSpacing':
-        classes.push('tracking-' + value)
         break
       case 'textTransform':
         classes.push(value)
@@ -452,40 +468,56 @@ export function createUtilityClasses<Props extends { [prop: string]: any }>(
       // BACKGROUNDS
       case 'backgroundColor':
         lookupValue = accessColor(theme.backgroundColor ?? theme.colors, value)
-
         if (lookupValue) classes.push('bg-' + value.replace('.', '-'))
         else styles.backgroundColor = value
-        break
-      case 'boxShadow':
-        classes.push(value === true ? 'shadow' : 'shadow-' + value)
         break
 
       // BORDERS
       case 'border':
-        classes.push(value === true ? 'border' : 'border-' + value)
+        if (value === true) classes.push('border')
+        if (value === true || value in theme.border) classes.push('border-' + value)
+        else styles.border = value
         break
       case 'borderBottom':
-        classes.push(value === true ? 'border-b' : 'border-b-' + value)
+        if (value === true) classes.push('border-b')
+        if (value in theme.border) classes.push('border-b-' + value)
+        else styles.borderBottom = value
         break
       case 'borderLeft':
-        classes.push(value === true ? 'border-l' : 'border-l-' + value)
+        if (value === true) classes.push('border-l')
+        if (value in theme.border) classes.push('border-l-' + value)
+        else styles.borderLeft = value
         break
       case 'borderRight':
-        classes.push(value === true ? 'border-r' : 'border-r-' + value)
+        if (value === true) classes.push('border-r')
+        if (value in theme.border) classes.push('border-r-' + value)
+        else styles.borderRight = value
         break
       case 'borderTop':
-        classes.push(value === true ? 'border-t' : 'border-t-' + value)
+        if (value === true) classes.push('border-t')
+        if (value in theme.border) classes.push('border-t-' + value)
+        else styles.borderTop = value
         break
       case 'borderWidth':
-        classes.push('border-' + value)
+        if (value in theme.borderWidth) classes.push('border-' + value)
+        else styles.borderWidth = value
         break
       case 'borderColor':
-        classes.push('border-' + value)
+        lookupValue = accessColor(theme.borderColor ?? theme.colors, value)
+        if (lookupValue) classes.push('border-' + value.replace('.', '-'))
+        else styles.borderColor = value
         break
       case 'borderRadius':
         if (value === true) classes.push('rounded')
         else if (value in theme.borderRadius) classes.push('rounded-' + value)
         else styles.borderRadius = value
+        break
+
+      // EFFECTS
+      case 'boxShadow':
+        if (value === true) classes.push('shadow')
+        if (value in theme.boxShadow) classes.push('shadow-' + value)
+        else styles.boxShadow = value
         break
 
       // STATES (eg https://mui.com/customization/how-to-customize/#state-classes)
