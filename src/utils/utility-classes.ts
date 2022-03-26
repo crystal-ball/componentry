@@ -269,8 +269,6 @@ export function createUtilityClasses<Props extends { [prop: string]: any }>(
 
   Object.keys(props).forEach((prop) => {
     const value = props[prop]
-    // Variable for assigning nested theme value lookups while in switch statement
-    let lookupValue: string | undefined
 
     // If a props has a key, but the prop value is undefined or false we can bail early
     if (value === undefined || value === false) return
@@ -434,9 +432,9 @@ export function createUtilityClasses<Props extends { [prop: string]: any }>(
         classes.push('italic')
         break
       case 'color':
-        lookupValue = accessColor(theme.textColor ?? theme.colors, value)
-        if (lookupValue) classes.push('text-' + value.replace('.', '-'))
-        else styles.color = value
+        if (accessColor(theme.textColor ?? theme.colors, value)) {
+          classes.push('text-' + value.replace('.', '-'))
+        } else styles.color = value
         break
       case 'fontFamily':
         if (value in theme.fontFamily) classes.push('font-' + value)
@@ -467,9 +465,9 @@ export function createUtilityClasses<Props extends { [prop: string]: any }>(
 
       // BACKGROUNDS
       case 'backgroundColor':
-        lookupValue = accessColor(theme.backgroundColor ?? theme.colors, value)
-        if (lookupValue) classes.push('bg-' + value.replace('.', '-'))
-        else styles.backgroundColor = value
+        if (accessColor(theme.backgroundColor ?? theme.colors, value)) {
+          classes.push('bg-' + value.replace('.', '-'))
+        } else styles.backgroundColor = value
         break
 
       // BORDERS
@@ -503,9 +501,9 @@ export function createUtilityClasses<Props extends { [prop: string]: any }>(
         else styles.borderWidth = value
         break
       case 'borderColor':
-        lookupValue = accessColor(theme.borderColor ?? theme.colors, value)
-        if (lookupValue) classes.push('border-' + value.replace('.', '-'))
-        else styles.borderColor = value
+        if (accessColor(theme.borderColor ?? theme.colors, value)) {
+          classes.push('border-' + value.replace('.', '-'))
+        } else styles.borderColor = value
         break
       case 'borderRadius':
         if (value === true) classes.push('rounded')
