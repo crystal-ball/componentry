@@ -178,7 +178,7 @@ module.exports = {
     fontWeight: {
       light: 300,
       normal: 400,
-      bold: 700,
+      bold: 600,
     },
     letterSpacing: {
       tighter: '-0.05em',
@@ -193,11 +193,25 @@ module.exports = {
       normal: 1.5,
     },
 
-    textColor: {},
+    textColor: {
+      inverse: '#eff',
+    },
 
     // --- BACKGROUND
 
-    backgroundColor: {},
+    backgroundColor: {
+      primary: {
+        100: '#f2f1ff',
+        200: '#dfddff',
+        300: '#cbc9ff',
+        400: '#a4a0ff',
+        500: '#7d77ff',
+        600: '#716be6',
+        700: '#4b4799',
+        800: '#383673',
+        900: '#26244d',
+      },
+    },
 
     // --- BORDERS
     border: {
@@ -248,7 +262,7 @@ module.exports = {
     { pattern: /gap(-[xy])?-([\d.]+|px)/ },
 
     // backgroundColor, borderColor, textColor
-    // { pattern: /bg-(primary|info|success)-[\d.]+/ },
+    { pattern: /bg-(primary|info|success)-[\d.]+/ },
     // { pattern: /border(-focused)?/ },
     // { pattern: /text-(body|link)/ },
   ],

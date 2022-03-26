@@ -16,11 +16,11 @@ export function padNum(num) {
 # Flex
 
 <Story name='Flex'>
-  <Flex gap={2} backgroundColor='primary-200' className='rounded'>
+  <Flex gap={4} backgroundColor='primary-200' className='rounded'>
     {[1, 2, 3].map((key) => (
       <div
         key={key}
-        className='bg-primary-600 text-inverse font-mono font-bold px-3 py-2 rounded'
+        className='bg-primary-600 text-inverse font-mono font-bold px-6 py-4 rounded'
       >
         #{padNum(key)}
       </div>
@@ -35,11 +35,11 @@ Flex is a layout component with shorthand properties `align`, `direction`, `just
 
 Override the default direction of `row` with the `direction` prop:
 
-<Flex direction='row-reverse' gap={2} backgroundColor='primary-200' className='rounded'>
+<Flex direction='row-reverse' gap={4} backgroundColor='primary-200' className='rounded'>
   {[1, 2, 3].map((key) => (
     <div
       key={key}
-      className='bg-primary-600 text-inverse font-mono font-bold px-3 py-2 rounded'
+      className='bg-primary-600 text-inverse font-mono font-bold px-6 py-4 rounded'
     >
       #0{key}
     </div>
@@ -53,14 +53,14 @@ Set the flex items justification and alignment with the `justify` and `align` pr
 <Flex
   justify='center'
   align='center'
-  gap={2}
+  gap={4}
   backgroundColor='primary-200'
   className='rounded'
 >
   {[1, 2, 3].map((key) => (
     <div
       key={key}
-      className='bg-primary-600 text-inverse font-mono font-bold px-3 py-2 rounded'
+      className='bg-primary-600 text-inverse font-mono font-bold px-6 py-4 rounded'
     >
       #0{key}
     </div>
@@ -71,14 +71,14 @@ Set the flex items justification and alignment with the `justify` and `align` pr
 
 Override the flex wrap behavior with the `wrap` props:
 
-<Flex wrap='wrap-reverse' gap={2} backgroundColor='primary-200' className='rounded'>
+<Flex wrap='wrap-reverse' gap={4} backgroundColor='primary-200' className='rounded'>
   {Array(12)
     .fill(0)
     .map((_, key) => (
       // eslint-disable-next-line react/no-array-index-key
       <div
         key={key}
-        className='bg-primary-600 text-inverse font-mono font-bold px-3 py-2 rounded'
+        className='bg-primary-600 text-inverse font-mono font-bold px-6 py-4 rounded'
       >
         #{padNum(key)}
       </div>
