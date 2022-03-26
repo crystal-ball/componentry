@@ -16,11 +16,11 @@ export function padNum(num) {
 # Grid
 
 <Story name='Grid'>
-  <Grid gap={2} backgroundColor='primary-200' className='rounded grid-cols-2'>
+  <Grid gap={4} backgroundColor='primary-200' className='rounded grid-cols-2'>
     {[1, 2].map((key) => (
       <div
         key={key}
-        className='bg-primary-600 text-inverse font-mono font-bold px-3 py-2 rounded'
+        className='bg-primary-600 text-inverse font-mono font-bold px-6 py-4 rounded'
       >
         #{padNum(key)}
       </div>

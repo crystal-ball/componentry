@@ -96,7 +96,7 @@ export const foundationStyles = {
   },
 
   'code, kbd, samp, pre': {
-    fontFamily: theme.fontFamily.monospace, // Use the user's configured `mono` font family by default.
+    fontFamily: theme.fontFamily.mono, // Use the user's configured `mono` font family by default.
     fontSize: '1em', // Correct the odd `em` font sizing in all browsers.
   },
   pre: {
@@ -225,7 +225,6 @@ export const foundationStyles = {
 
   'input::placeholder, textarea::placeholder': {
     opacity: 1, // Reset the default placeholder opacity in Firefox. (https://github.com/tailwindlabs/tailwindcss/issues/3300)
-    color: theme.textColor.placeholder, // Set the default placeholder color to the user's configured gray 400 color.
   },
 
   'svg, canvas, audio, iframe, embed, object': {

@@ -1,43 +1,6 @@
 /*                                 ⚙️ Componentry default theme specification
  * -------------------------------------------------------------------------- */
 
-const spacing = {
-  0: 0,
-  px: '1px',
-  0.5: '0.125rem', // 2px
-  1: '0.25rem', // 4px
-  1.5: '0.375rem', // 6px
-  2: '0.5rem', // 8px
-  2.5: '0.625rem', // 10px
-  3: '0.75rem', // 12px
-  3.5: '0.875rem', // 14px
-  4: '1rem', // 16px
-  5: '1.25rem', // 20px
-  6: '1.5rem', // 24px
-  7: '1.75rem', // 28px
-  8: '2rem', // 32px
-  9: '2.25rem', // 36px
-  10: '2.5rem', // 40px
-  12: '3rem', // 48px
-  14: '3.5rem', // 56px
-  16: '4rem', // 64px
-  20: '5rem', // 80px
-  24: '6rem', // 96px
-  28: '7rem', // 112px
-  32: '8rem', // 128px
-  36: '9rem', // 144px
-  40: '10rem', // 160px
-  44: '11rem', // 176px
-  48: '12rem', // 192px
-  52: '13rem', // 208px
-  56: '14rem', // 224px
-  60: '15rem', // 240px
-  64: '16rem', // 256px
-  72: '18rem', // 288px
-  80: '20rem', // 320px
-  96: '24rem', // 384px
-}
-
 const gray = {
   100: '#eff2f3',
   200: '#d7dfe2',
@@ -50,18 +13,16 @@ const gray = {
   900: '#1d262a',
 }
 
-export const theme = {
+export const themeDefaults = {
   // --- SCREENS
-  // screens: {
-  //   Componentry has a single breakpoint by default, additional breakpoints can
-  //   be added. 1200px is used for the default to try and ensure all smaller
-  //   desktops are included. (992, 1200, 1280 are the most common large breakpoints)
-  //   For multiple breakpoints 768 and 1280 are common breakpoints for md and lg.
-  //   lg: '1200px',
-  // },
-  zIndex: {
-    modal: 10,
+  screens: {
+    //   Componentry has a single breakpoint by default, additional breakpoints can
+    //   be added. 1200px is used for the default to try and ensure all smaller
+    //   desktops are included. (992, 1200, 1280 are the most common large breakpoints)
+    //   For multiple breakpoints 768 and 1280 are common breakpoints for md and lg.
+    lg: '1200px',
   },
+
   // --- COLORS
   colors: {
     current: 'currentColor',
@@ -126,8 +87,40 @@ export const theme = {
     },
   },
 
+  // --- LAYOUT
+  zIndex: {
+    modal: 10,
+  },
+
+  // --- FLEX/GRID
+  flexGrow: { 0: 0 },
+  flexShrink: { 0: 0 },
+
   // --- SPACING
-  spacing,
+  spacing: {
+    0: 0,
+    px: '1px',
+    0.5: '0.125rem', // 2px
+    1: '0.25rem', // 4px
+    1.5: '0.375rem', // 6px
+    2: '0.5rem', // 8px
+    2.5: '0.625rem', // 10px
+    3: '0.75rem', // 12px
+    4: '1rem', // 16px
+    5: '1.25rem', // 20px
+    6: '1.5rem', // 24px
+    7: '1.75rem', // 28px
+    8: '2rem', // 32px
+    10: '2.5rem', // 40px
+    12: '3rem', // 48px
+    14: '3.5rem', // 56px
+    16: '4rem', // 64px
+    20: '5rem', // 80px
+    24: '6rem', // 96px
+    32: '8rem', // 128px
+    48: '12rem', // 192px
+    64: '16rem', // 256px
+  },
   /**
    * spacingRatio allows defining a spacing conversion function for computing
    * spacing values.
@@ -144,34 +137,34 @@ export const theme = {
 
   // --- SIZING
   height: {
+    0: 0,
     auto: 'auto',
     full: '100%',
     screen: '100vh',
     min: 'min-content',
     max: 'max-content',
     fit: 'fit-content',
-    ...spacing,
   },
   width: {
+    0: 0,
     auto: 'auto',
     full: '100%',
     screen: '100vw',
     min: 'min-content',
     max: 'max-content',
     fit: 'fit-content',
-    ...spacing,
+    prose: '65ch',
   },
 
   // --- TYPOGRAPHY
   fontFamily: {
     body: "system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji'",
-    monospace:
-      "SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New', monospace",
+    mono: "SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New', monospace",
   },
   fontSize: {
     base: '1rem', // HTML base size
-    small: '0.875rem',
-    large: '1.25rem',
+    sm: '0.875rem',
+    lg: '1.25rem',
     h1: '3rem',
     h2: '2rem',
     h3: '1.5rem',
@@ -182,20 +175,28 @@ export const theme = {
     normal: 400,
     bold: 700,
   },
+  letterSpacing: {
+    tighter: '-0.05em',
+    tight: '-0.025em',
+    normal: '0em',
+    wide: '0.025em',
+    wider: '0.05em',
+    widest: '0.1em',
+  },
   lineHeight: {
     none: 1,
     normal: 1.5,
   },
-  textColor: {
-    placeholder: gray[400],
-  },
+
+  textColor: undefined as { [Color: string]: string } | undefined, // Optional semantic typography colors definition
+
+  // --- BACKGROUND
+
+  backgroundColor: undefined as { [Color: string]: string } | undefined, // Optional semantic background colors definition
 
   // --- BORDERS
   border: {
-    DEFAULT: '1px solid #607d8b', // matches gray.500
-  },
-  borderColor: {
-    /* Semantic border colors */
+    DEFAULT: `1px solid ${gray[500]}`,
   },
   borderRadius: {
     DEFAULT: '0.25rem', // 4px
@@ -224,7 +225,9 @@ export const theme = {
     8: '8px',
   },
 
-  // --- SHADOWS
+  borderColor: undefined as { [Color: string]: string } | undefined, // Optional semantic border colors definition
+
+  // --- EFFECTS
   boxShadow: {
     DEFAULT: '0 0.5rem 1rem rgba(73, 80, 87, 0.15)',
   },

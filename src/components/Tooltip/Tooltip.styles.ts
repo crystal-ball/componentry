@@ -35,7 +35,7 @@ export const tooltipStyles = {
     backgroundColor: theme.colors.gray[800],
     borderRadius: theme.borderRadius.DEFAULT,
     color: theme.colors.inverse,
-    fontSize: theme.fontSize.small,
+    fontSize: theme.fontSize.sm,
     marginTop: tooltipArrowWidth + 'px',
     maxWidth: '300px',
     padding: '0.25rem 0.5rem',
