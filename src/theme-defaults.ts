@@ -159,13 +159,12 @@ export const themeDefaults = {
   // --- TYPOGRAPHY
   fontFamily: {
     body: "system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji'",
-    monospace:
-      "SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New', monospace",
+    mono: "SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New', monospace",
   },
   fontSize: {
     base: '1rem', // HTML base size
-    small: '0.875rem',
-    large: '1.25rem',
+    sm: '0.875rem',
+    lg: '1.25rem',
     h1: '3rem',
     h2: '2rem',
     h3: '1.5rem',

@@ -21,9 +21,9 @@ describe('createUtilityClasses()', () => {
         display: 'grid',
         invisible: true,
         visible: true,
-        zIndex: 50,
+        zIndex: 'modal',
       }).utilityClasses,
-    ).toBe('fixed grid invisible visible z-50')
+    ).toBe('fixed grid invisible visible z-modal')
 
     expect(
       createUtilityClasses({
@@ -217,13 +217,6 @@ describe('createUtilityClasses()', () => {
 
     expect(
       createUtilityClasses({
-        height: 32,
-        width: 32,
-      }).utilityClasses,
-    ).toBe('h-32 w-32')
-
-    expect(
-      createUtilityClasses({
         height: 42,
         width: 42,
       }).utilityStyles,
@@ -252,14 +245,14 @@ describe('createUtilityClasses()', () => {
         fontFamily: 'mono',
         fontWeight: 'normal',
         lineHeight: 'none',
-        color: 'heading',
+        color: 'primary.100',
         fontSize: 'sm',
         textAlign: 'center',
         letterSpacing: 'tighter',
         textTransform: 'uppercase',
       }).utilityClasses,
     ).toBe(
-      'font-bold italic font-mono font-normal leading-none text-heading text-sm text-center tracking-tighter uppercase',
+      'font-bold italic font-mono font-normal leading-none text-primary-100 text-sm text-center tracking-tighter uppercase',
     )
 
     expect(
@@ -361,12 +354,12 @@ describe('createUtilityClasses()', () => {
         borderRight: true,
         borderBottom: true,
         borderLeft: true,
-        borderWidth: 'lg',
+        borderWidth: 8,
         borderColor: 'primary',
         borderRadius: 'full',
       }).utilityClasses,
     ).toBe(
-      'border border-t border-r border-b border-l border-lg border-primary rounded-full',
+      'border border-t border-r border-b border-l border-8 border-primary rounded-full',
     )
 
     expect(

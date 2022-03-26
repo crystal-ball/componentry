@@ -475,7 +475,7 @@ export function createUtilityClasses<Props extends { [prop: string]: any }>(
       // BORDERS
       case 'border':
         if (value === true) classes.push('border')
-        if (value === true || value in theme.border) classes.push('border-' + value)
+        if (value in theme.border) classes.push('border-' + value)
         else styles.border = value
         break
       case 'borderBottom':

@@ -58,7 +58,7 @@ export const cardStyles = {
     color: theme.colors.gray[900], // Matches default header color
   },
   '.C9Y-CardSubtitle': {
-    fontSize: theme.fontSize.small,
+    fontSize: theme.fontSize.sm,
     color: theme.colors.gray[600],
   },
 }

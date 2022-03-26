@@ -96,7 +96,7 @@ export const foundationStyles = {
   },
 
   'code, kbd, samp, pre': {
-    fontFamily: theme.fontFamily.monospace, // Use the user's configured `mono` font family by default.
+    fontFamily: theme.fontFamily.mono, // Use the user's configured `mono` font family by default.
     fontSize: '1em', // Correct the odd `em` font sizing in all browsers.
   },
   pre: {

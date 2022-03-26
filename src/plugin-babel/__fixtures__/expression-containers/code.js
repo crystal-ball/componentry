@@ -10,7 +10,7 @@ export default function Test({ success, position }) {
   // 5. Attributes with call expressions are skipped
   return (
     <Flex>
-      <Text pt={80}>Expression containers test</Text>
+      <Text pt={20}>Expression containers test</Text>
       <Text bold>Expression containers test</Text>
       <Text position={position}>Expression containers test</Text>
       <Text color={success ? 'success' : 'error'}>Expression containers test</Text>
