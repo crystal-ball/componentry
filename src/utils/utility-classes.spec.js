@@ -42,19 +42,19 @@ describe('createUtilityClasses()', () => {
   it('computes flex/grid classes', () => {
     expect(
       createUtilityClasses({
-        alignContent: 'center',
+        alignContent: 'space-between',
         flexDirection: 'column',
         flexGrow: 0,
         flexShrink: 0,
         flexWrap: 'wrap-reverse',
         alignItems: 'center',
-        justifyContent: 'center',
+        justifyContent: 'space-around',
         justifyItems: 'center',
         justifySelf: 'start',
         alignSelf: 'start',
       }).utilityClasses,
     ).toBe(
-      'content-center flex-col grow-0 shrink-0 flex-wrap-reverse items-center justify-center justify-items-center justify-self-start self-start',
+      'content-between flex-col grow-0 shrink-0 flex-wrap-reverse items-center justify-around justify-items-center justify-self-start self-start',
     )
   })
 

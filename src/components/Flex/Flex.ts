@@ -9,7 +9,7 @@ export interface FlexPropsBase {
   /** Sets a `flex-direction` flex style */
   direction?: 'column' | 'column-reverse' | 'row-reverse' | 'row'
   /** Sets a `justify-content` style */
-  justify?: 'start' | 'end' | 'center' | 'between' | 'around' | 'evenly'
+  justify?: 'start' | 'end' | 'center' | 'space-between' | 'space-around' | 'space-evenly'
   /** Sets a `flex-wrap` flex style */
   wrap?: 'wrap' | 'nowrap' | 'wrap-reverse'
 }
