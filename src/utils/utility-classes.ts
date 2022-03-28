@@ -20,7 +20,7 @@ export interface UtilityPropsBase {
   /** Sets active style */
   active?: boolean | string
   /** Sets align-content style */
-  alignContent?: 'start' | 'end' | 'center' | 'between' | 'around' | 'stretch'
+  alignContent?: 'start' | 'end' | 'center' | 'stretch' | 'space-between' | 'space-around'
   /** Sets align-items style */
   alignItems?: 'start' | 'end' | 'center' | 'baseline' | 'stretch'
   /** Sets align-self style */
@@ -87,7 +87,13 @@ export interface UtilityPropsBase {
   /** Sets an italic style */
   italic?: boolean
   /** Sets justify-content style */
-  justifyContent?: 'start' | 'end' | 'center' | 'between' | 'around' | 'evenly'
+  justifyContent?:
+    | 'start'
+    | 'end'
+    | 'center'
+    | 'space-between'
+    | 'space-around'
+    | 'space-evenly'
   /** Sets a `justify-items` style with a `justify-items-{value}` class */
   justifyItems?: 'start' | 'end' | 'center' | 'stretch'
   /** Sets a `justify-self` style with a `justify-self-{value}` class */
@@ -292,7 +298,7 @@ export function createUtilityClasses<Props extends { [prop: string]: any }>(
 
       // FLEXBOX/GRID
       case 'alignContent':
-        classes.push('content-' + value)
+        classes.push('content-' + value.replace('space-', ''))
         break
       case 'flexDirection':
         classes.push('flex-' + value.replace('column', 'col'))
@@ -314,7 +320,7 @@ export function createUtilityClasses<Props extends { [prop: string]: any }>(
         classes.push('items-' + value)
         break
       case 'justifyContent':
-        classes.push('justify-' + value)
+        classes.push('justify-' + value.replace('space-', ''))
         break
       case 'justifyItems':
         classes.push('justify-items-' + value)
