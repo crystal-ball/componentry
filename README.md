@@ -11,21 +11,15 @@
 
 ### Features
 
-- Feather light footprint of <12KB gzipped
+- Feather light 12kB footprint
+- Zero runtime, 100% customizable component styles
 - A++ accessibility built in to every component
-- Consistent APIs for easy usage
 - Designed for flexibility and component composition
 
 ### Documentation
 
 Full documentation is available at
 [componentry.design](https://componentry.design)
-
-### Version
-
-- v3.x is the current version 🎉
-- v2.5.x is the v2 branch updated for React 16.8+
-- v2.4.x is the v2 branch for React version prior to 16.8
 
 ### Contributing
 
