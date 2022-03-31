@@ -17,18 +17,141 @@ export interface UtilityPropsOverrides {}
 
 /** Default utility prop types, customizable with UtilityPropsOverrides */
 export interface UtilityPropsBase {
-  /** Sets active style */
-  active?: boolean | string
-  /** Sets align-content style */
-  alignContent?: 'start' | 'end' | 'center' | 'stretch' | 'space-between' | 'space-around'
-  /** Sets align-items style */
+  // ---LAYOUT
+  /** Sets a `display` style */
+  display?:
+    | 'block'
+    | 'contents'
+    | 'flex'
+    | 'flow-root'
+    | 'grid'
+    | 'hidden'
+    | 'inline'
+    | 'inline-block'
+    | 'inline-flex'
+    | 'inline-grid'
+    | 'list-item'
+  /** Sets a `visibility: hidden` style */
+  invisible?: boolean
+  /** Sets a `position` style */
+  position?: 'absolute' | 'fixed' | 'relative' | 'static' | 'sticky'
+  /** Sets a `visibility: visible` style */
+  visible?: boolean
+  /** Sets a `z-index` style */
+  zIndex?: 0 | 10 | 20 | 30 | 40 | 50 | 'auto'
+
+  // --- FLEXBOX+GRID
+  /** Sets an `align-content` style */
+  alignContent?:
+    | 'start'
+    | 'end'
+    | 'center'
+    | 'stretch'
+    | 'space-between'
+    | 'space-around'
+    | 'space-evenly'
+  /** Sets an `align-items` style */
   alignItems?: 'start' | 'end' | 'center' | 'baseline' | 'stretch'
-  /** Sets align-self style */
-  alignSelf?: 'auto' | 'start' | 'end' | 'center' | 'baseline' | 'stretch'
-  /** Sets background color style */
-  backgroundColor?: string
+  /** Sets an `align-self` style */
+  alignSelf?: 'start' | 'end' | 'center' | 'baseline' | 'stretch' | 'auto'
+  /** Sets a `flex-direction` style */
+  flexDirection?: 'column' | 'column-reverse' | 'row-reverse' | 'row'
+  /** Sets a `flex-grow` style */
+  flexGrow?: boolean | 0
+  /** Sets a `flex-shrink` style */
+  flexShrink?: boolean | 0
+  /** Sets a `flex-wrap` style */
+  flexWrap?: 'wrap' | 'nowrap' | 'wrap-reverse'
+  /** Sets a `justify-content` style */
+  justifyContent?:
+    | 'start'
+    | 'end'
+    | 'center'
+    | 'space-between'
+    | 'space-around'
+    | 'space-evenly'
+  /** Sets a `justify-items` style */
+  justifyItems?: 'start' | 'end' | 'center' | 'stretch'
+  /** Sets a `justify-self` style */
+  justifySelf?: 'start' | 'end' | 'center' | 'stretch' | 'auto'
+
+  // --- SPACING
+  /** Sets a `gap` style */
+  gap?: Spacing
+  /** Sets a `column-gap` style */
+  columnGap?: Spacing
+  /** Sets a `row-gap` style */
+  rowGap?: Spacing
+  /** sets a 'margin' style */
+  m?: Spacing
+  /** Sets a `margin-top` style */
+  mt?: Spacing
+  /** Sets a `margin-right` style */
+  mr?: Spacing
+  /** Sets a `margin-bottom` style */
+  mb?: Spacing
+  /** Sets a `margin-left` style */
+  ml?: Spacing
+  /** Sets `margin-left` + `margin-right` styles */
+  mx?: Spacing
+  /** Sets `margin-top` + `margin-bottom` styles */
+  my?: Spacing
+  /** Sets a `padding` style */
+  p?: Spacing
+  /** Sets a `padding-top` style */
+  pt?: Spacing
+  /** Sets a `padding-right` style */
+  pr?: Spacing
+  /** Sets a `padding-bottom` style */
+  pb?: Spacing
+  /** Sets a `padding-left` style */
+  pl?: Spacing
+  /** Sets `padding-left` + `padding-right` styles */
+  px?: Spacing
+  /** Sets `padding-top` + `padding-bottom` styles */
+  py?: Spacing
+
+  // --- SIZING
+  /** Sets a `height` style */
+  height?: 'full' | 'screen' | 'min' | 'max' | 'fit' | 'auto'
+  /** Sets a `min-height` style */
+  minHeight?: 'full' | 'screen' | 'min' | 'max' | 'fit'
+  /** Sets a `max-height` style */
+  maxHeight?: 'full' | 'screen' | 'min' | 'max' | 'fit'
+  /** Sets a `width` style */
+  width?: 'full' | 'screen' | 'min' | 'max' | 'fit' | 'auto'
+  /** Sets a `min-width` style */
+  minWidth?: 'full' | 'min' | 'max' | 'fit'
+  /** Sets a `max-width` style */
+  maxWidth?: 'full' | 'min' | 'max' | 'fit' | 'prose' | 'none'
+
+  // --- TYPOGRAPHY
   /** Sets a bold font weight style */
   bold?: boolean
+  /** Sets a `color` style */
+  color?: string
+  /** Sets a `font-family` style */
+  fontFamily?: 'body' | 'mono'
+  /** Sets a `font-size` style */
+  fontSize?: 'sm' | 'base' | 'lg'
+  /** Sets a `font-weight` style */
+  fontWeight?: 'light' | 'normal' | 'bold'
+  /** Sets an italic style */
+  italic?: boolean
+  /** Sets a `letter-spacing` style */
+  letterSpacing?: 'tighter' | 'tight' | 'normal' | 'wide' | 'wider' | 'widest'
+  /** Sets a `line-height` style */
+  lineHeight?: 'none' | 'tight' | 'snug' | 'normal' | 'relaxed' | 'loose'
+  /** Sets a `text-align` style */
+  textAlign?: 'left' | 'center' | 'right' | 'justify'
+  /** Sets a `text-transform` style */
+  textTransform?: 'lowercase' | 'uppercase' | 'capitalize' | 'normal-case'
+
+  // --- BACKGROUNDS
+  /** Sets a `background-color` style */
+  backgroundColor?: string
+
+  // --- BORDERS
   /** Sets a `border` style */
   border?: boolean
   /** Sets a `border-bottom` style */
@@ -47,168 +170,16 @@ export interface UtilityPropsBase {
   borderWidth?: 0 | 1 | 2 | 4 | 8
   /** Sets a `border-radius` style */
   borderRadius?: boolean | 'none' | 'full' | 'sm' | 'md' | 'lg' | 'xl' | '2xl' | '3xl'
+
+  // --- EFFECTS
   /** Sets a `box-shadow` style */
   boxShadow?: boolean | 'none' | 'inner' | 'sm' | 'md' | 'lg' | 'xl' | '2xl'
+
+  // --- STATES
+  /** Sets an active style */
+  active?: boolean | string
   /** Sets a disabled style */
   disabled?: boolean
-  /** Sets a display style */
-  display?:
-    | 'block'
-    | 'inline-block'
-    | 'inline'
-    | 'flex'
-    | 'inline-flex'
-    | 'flow-root'
-    | 'grid'
-    | 'inline-grid'
-    | 'contents'
-    | 'list-item'
-    | 'hidden'
-  /** Sets a text color style */
-  color?: string
-  /** Sets a `flex-direction` flex style */
-  flexDirection?: 'column' | 'column-reverse' | 'row-reverse' | 'row'
-  /** Sets a `flex-grow` flex style */
-  flexGrow?: boolean | 0
-  /** Sets a `flex-shrink` flex style */
-  flexShrink?: boolean | 0
-  /** Sets a `flex-wrap` flex style */
-  flexWrap?: 'wrap' | 'nowrap' | 'wrap-reverse'
-  /** Sets a font-family style */
-  fontFamily?: 'body' | 'mono'
-  /** Sets a font-size style */
-  fontSize?: 'sm' | 'base' | 'lg'
-  /** Text font-weight style */
-  fontWeight?: 'light' | 'normal' | 'bold'
-  /** Sets height style */
-  height?: 'auto' | 'full' | 'screen' | 'min' | 'max' | 'fit' | Spacing
-  /** Sets a display: none style */
-  invisible?: boolean
-  /** Sets an italic style */
-  italic?: boolean
-  /** Sets justify-content style */
-  justifyContent?:
-    | 'start'
-    | 'end'
-    | 'center'
-    | 'space-between'
-    | 'space-around'
-    | 'space-evenly'
-  /** Sets a `justify-items` style with a `justify-items-{value}` class */
-  justifyItems?: 'start' | 'end' | 'center' | 'stretch'
-  /** Sets a `justify-self` style with a `justify-self-{value}` class */
-  justifySelf?: 'auto' | 'start' | 'end' | 'center' | 'stretch'
-  /** Sets a letter-spacing style */
-  letterSpacing?: 'tighter' | 'tight' | 'normal' | 'wide' | 'wider' | 'widest'
-  /** Sets a line-height style */
-  lineHeight?: 'none' | 'tight' | 'snug' | 'normal' | 'relaxed' | 'loose'
-  /** Sets a max-width style */
-  maxWidth?: 'none' | 'full' | 'min' | 'max' | 'fit' | 'prose' | 0
-  /** Sets a max-height style */
-  maxHeight?: 'full' | 'screen' | 'min' | 'max' | 'fit'
-  /** Sets a min-height style */
-  minHeight?: 'full' | 'screen' | 'min' | 'max' | 'fit' | 0
-  /** Sets a min-width style */
-  minWidth?: 'full' | 'min' | 'max' | 'fit' | 0
-  /** Sets position style */
-  position?: 'static' | 'relative' | 'absolute' | 'fixed' | 'sticky'
-  /** Sets text-align style */
-  textAlign?: 'left' | 'center' | 'right' | 'justify'
-  /** Sets text-transform style */
-  textTransform?: 'lowercase' | 'uppercase' | 'capitalize' | 'normal-case'
-  /** Sets visible style */
-  visible?: boolean
-  /** Sets width style */
-  width?: 'auto' | 'full' | 'screen' | 'min' | 'max' | 'fit' | Spacing
-
-  // --- Spacing
-  /**
-   * Sets a `gap` style
-   * @arbitraryValuesSupport
-   */
-  gap?: Spacing
-  /**
-   * Sets a `column-gap` style
-   * @arbitraryValuesSupport
-   */
-  columnGap?: Spacing
-  /**
-   * Sets a `row-gap` style
-   * @arbitraryValuesSupport
-   */
-  rowGap?: Spacing
-  /**
-   * margin
-   * @arbitraryValuesSupport
-   */
-  m?: Spacing
-  /**
-   * margin-top
-   * @arbitraryValuesSupport
-   */
-  mt?: Spacing
-  /**
-   * margin-right
-   * @arbitraryValuesSupport
-   */
-  mr?: Spacing
-  /**
-   * margin-bottom
-   * @arbitraryValuesSupport
-   */
-  mb?: Spacing
-  /**
-   * margin-left
-   * @arbitraryValuesSupport
-   */
-  ml?: Spacing
-  /**
-   * margin-left && margin-right
-   * @arbitraryValuesSupport
-   */
-  mx?: Spacing
-  /**
-   * margin-top && margin-bottom
-   * @arbitraryValuesSupport
-   */
-  my?: Spacing
-  /**
-   * padding
-   * @arbitraryValuesSupport
-   */
-  p?: Spacing
-  /**
-   * padding-top
-   * @arbitraryValuesSupport
-   */
-  pt?: Spacing
-  /**
-   * padding-right
-   * @arbitraryValuesSupport
-   */
-  pr?: Spacing
-  /**
-   * padding-bottom
-   * @arbitraryValuesSupport
-   */
-  pb?: Spacing
-  /**
-   * padding-left
-   * @arbitraryValuesSupport
-   */
-  pl?: Spacing
-  /**
-   * padding-left && padding-right
-   * @arbitraryValuesSupport
-   */
-  px?: Spacing
-  /**
-   * padding-top && padding-bottom
-   * @arbitraryValuesSupport
-   */
-  py?: Spacing
-  /** Sets a z-index style */
-  zIndex?: 'auto' | 0 | 10 | 20 | 30 | 40 | 50
 }
 
 /** Componentry utility props for including utility styles. */
@@ -568,29 +539,17 @@ export type Spacing =
   | 2
   | 2.5
   | 3
-  | 3.5
   | 4
   | 5
   | 6
   | 7
   | 8
-  | 9
   | 10
   | 12
   | 14
   | 16
   | 20
   | 24
-  | 28
   | 32
-  | 36
-  | 40
-  | 44
   | 48
-  | 52
-  | 56
-  | 60
   | 64
-  | 72
-  | 80
-  | 96
