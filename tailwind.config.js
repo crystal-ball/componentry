@@ -22,17 +22,7 @@ module.exports = {
       inverse: '#eff',
     },
     backgroundColor: {
-      primary: {
-        100: '#f2f1ff',
-        200: '#dfddff',
-        300: '#cbc9ff',
-        400: '#a4a0ff',
-        500: '#7d77ff',
-        600: '#716be6',
-        700: '#4b4799',
-        800: '#383673',
-        900: '#26244d',
-      },
+      primary: themeValues.colors.primary,
     },
   },
 
