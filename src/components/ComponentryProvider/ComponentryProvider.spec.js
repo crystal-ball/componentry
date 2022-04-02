@@ -1,5 +1,5 @@
 import { renderHook } from '@testing-library/react-hooks'
-import { Theme, useTheme } from './Theme'
+import { ComponentryProvider, useTheme } from './ComponentryProvider'
 
 describe('useTheme()', () => {
   it('should return an empty object when no provider is present', () => {
@@ -11,7 +11,11 @@ describe('useTheme()', () => {
   it('should return the entire theme object when no component name is passed', () => {
     const { result } = renderHook(() => useTheme(), {
       wrapper: ({ children }) => {
-        return <Theme theme={{ Button: { variant: 'primary' } }}>{children}</Theme>
+        return (
+          <ComponentryProvider theme={{ Button: { variant: 'primary' } }}>
+            {children}
+          </ComponentryProvider>
+        )
       },
     })
 
@@ -21,7 +25,11 @@ describe('useTheme()', () => {
   it('should return an empty object when no theme value is present for component', () => {
     const { result } = renderHook(() => useTheme('Flex'), {
       wrapper: ({ children }) => {
-        return <Theme theme={{ Button: { variant: 'primary' } }}>{children}</Theme>
+        return (
+          <ComponentryProvider theme={{ Button: { variant: 'primary' } }}>
+            {children}
+          </ComponentryProvider>
+        )
       },
     })
 
@@ -31,7 +39,11 @@ describe('useTheme()', () => {
   it('should return the theme value if present for component', () => {
     const { result } = renderHook(() => useTheme('Button'), {
       wrapper: ({ children }) => {
-        return <Theme theme={{ Button: { variant: 'primary' } }}>{children}</Theme>
+        return (
+          <ComponentryProvider theme={{ Button: { variant: 'primary' } }}>
+            {children}
+          </ComponentryProvider>
+        )
       },
     })
 

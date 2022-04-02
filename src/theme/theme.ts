@@ -1,4 +1,12 @@
-import { themeDefaults } from '../theme-defaults'
+import { deepMerge } from '../utils/deep-merge'
+import { MergePropTypes } from '../utils/types'
+import { themeDefaults } from './theme-defaults'
+
+/** Module augmentation interface for overriding default theme values */
+export interface ThemeOverrides {}
+
+/** Application theme values */
+export type Theme = MergePropTypes<typeof themeDefaults, ThemeOverrides>
 
 /**
  * createTheme merges the passed custom theme values with the Componentry default values
@@ -20,7 +28,7 @@ import { themeDefaults } from '../theme-defaults'
  * })
  * ```
  */
-export function createTheme(themeCustomizations: any) {
+export function createTheme(themeCustomizations: any): Theme {
   // Extend
   let theme: typeof themeDefaults = JSON.parse(JSON.stringify(themeDefaults))
   if (themeCustomizations.extend) {
@@ -36,23 +44,4 @@ export function createTheme(themeCustomizations: any) {
   })
 
   return theme
-}
-
-export function deepMerge(base: any, overrides: any) {
-  const merged = JSON.parse(JSON.stringify(base))
-
-  Object.keys(overrides).forEach((key) => {
-    if (!(key in merged)) {
-      // If base doesn't have this key we can just assign the entire override
-      merged[key] = overrides[key]
-    } else if (typeof overrides[key] !== 'object') {
-      // Else if it's a value the override wins over base
-      merged[key] = overrides[key]
-    } else {
-      // Else if it's an object then recursively deep-merge it
-      merged[key] = deepMerge(merged[key], overrides[key])
-    }
-  })
-
-  return merged
 }

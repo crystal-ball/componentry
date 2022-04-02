@@ -1,4 +1,4 @@
-import { useTheme } from '../Theme/Theme'
+import { useTheme } from '../ComponentryProvider/ComponentryProvider'
 import { activeContainerBuilder } from '../../utils/active-container-component-builder'
 import { activeActionBuilder } from '../../utils/active-action-component-builder'
 import { activeContentBuilder } from '../../utils/active-content-component-builder'

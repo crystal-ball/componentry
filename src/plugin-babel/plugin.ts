@@ -4,7 +4,7 @@ import { PluginObj, types } from '@babel/core'
 import { Flex } from '../components/Flex/Flex'
 import { Block } from '../components/Block/Block'
 import { Text } from '../components/Text/Text'
-import { initializePreCompileMode } from '../components/Theme/Theme'
+import { initializePreCompileMode } from '../components/ComponentryProvider/ComponentryProvider'
 
 import { parseAttributes } from './parse-attributes'
 import { buildClosingElement, buildOpeningElement } from './build-elements'

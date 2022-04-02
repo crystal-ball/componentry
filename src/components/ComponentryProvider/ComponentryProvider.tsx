@@ -1,29 +1,29 @@
 import { type ReactElement, createContext, useContext, useEffect } from 'react'
 import { initializeUtilityClassesTheme } from '../../utils/utility-classes'
 
-/** Theme Context */
-const ThemeCtx = createContext<null | Record<string, unknown>>(null)
+/** Componentry Context */
+const ComponentryCtx = createContext<null | Record<string, unknown>>(null)
 
-interface ThemeProps {
+interface ComponentryProviderProps {
   children: ReactElement
   /** Default component props overrides */
   theme: Record<string, unknown>
 }
 
 /**
- * [Theme component 📝](https://componentry.design/components/theme)
+ * [Componentry Context Provider component 📝](https://componentry.design/components/componentryprovider)
  * @experimental
  */
-export function Theme({ children, theme }: ThemeProps) {
+export function ComponentryProvider({ children, theme }: ComponentryProviderProps) {
   // Internal convenience helper: if user has provided a theme value initialize
   // the utility classes module with it for them
   useEffect(() => {
     if (theme.theme) initializeUtilityClassesTheme(theme.theme)
   }, [theme.theme])
 
-  return <ThemeCtx.Provider value={theme}>{children}</ThemeCtx.Provider>
+  return <ComponentryCtx.Provider value={theme}>{children}</ComponentryCtx.Provider>
 }
-Theme.displayName = 'Theme'
+ComponentryProvider.displayName = 'Theme'
 
 function getThemeValue(theme: any, componentName: string | undefined) {
   // For the theme context, we don't warn on accessing without a provider b/c
@@ -48,8 +48,8 @@ export function initializePreCompileMode(theme: any) {
   preCompileThemeValue = theme
 }
 
-function useContextTheme(componentName: string) {
-  const theme = useContext(ThemeCtx)
+function useContextTheme(componentName?: string) {
+  const theme = useContext(ComponentryCtx)
   return getThemeValue(theme, componentName)
 }
 
@@ -57,7 +57,7 @@ function useContextTheme(componentName: string) {
  * [Theme hook 📝](https://componentry.design/components/theme)
  * @param componentName - Library component name, eg Button, Dropdown, Modal, etc.
  */
-export function useTheme<Theme>(componentName: string): Theme {
+export function useTheme<Theme>(componentName?: string): Theme {
   if (preCompileMode) {
     return getThemeValue(preCompileThemeValue, componentName)
   }

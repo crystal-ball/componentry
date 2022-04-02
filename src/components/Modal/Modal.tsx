@@ -3,7 +3,7 @@ import clsx from 'clsx'
 import { nanoid } from 'nanoid'
 
 import { closeBase } from '../Close/Close'
-import { useTheme } from '../Theme/Theme'
+import { useTheme } from '../ComponentryProvider/ComponentryProvider'
 import { useActive, useActiveScrollReset, useNoScroll, useVisible } from '../../hooks'
 import { type ComponentBaseProps } from '../../utils/base-types'
 import { element } from '../../utils/element-creator'

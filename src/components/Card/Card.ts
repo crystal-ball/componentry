@@ -1,5 +1,5 @@
 import React from 'react'
-import { useTheme } from '../Theme/Theme'
+import { useTheme } from '../ComponentryProvider/ComponentryProvider'
 import { element } from '../../utils/element-creator'
 import { staticComponent } from '../../utils/static-component-builder'
 import { type ComponentBaseProps } from '../../utils/base-types'

@@ -1,5 +1,5 @@
 import React, { useContext } from 'react'
-import { useTheme } from '../components/Theme/Theme'
+import { useTheme } from '../components/ComponentryProvider/ComponentryProvider'
 import { ActiveCtx } from './active-container-component-builder'
 import { type ARIAControls, computeARIA } from './aria'
 import { type ActiveActionBaseProps } from './base-types'

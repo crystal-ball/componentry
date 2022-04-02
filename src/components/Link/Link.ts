@@ -1,5 +1,5 @@
 import { forwardRef } from 'react'
-import { useTheme } from '../Theme/Theme'
+import { useTheme } from '../ComponentryProvider/ComponentryProvider'
 import { type ComponentBaseProps } from '../../utils/base-types'
 import { type MergePropTypes } from '../../utils/types'
 import { element } from '../../utils/element-creator'

@@ -1,6 +1,6 @@
 import React, { createContext, useCallback, useEffect, useRef, useState } from 'react'
 import { nanoid } from 'nanoid'
-import { useTheme } from '../components/Theme/Theme'
+import { useTheme } from '../components/ComponentryProvider/ComponentryProvider'
 import { type ActiveContainerBaseProps } from './base-types'
 import { closest } from './dom'
 import { element } from './element-creator'

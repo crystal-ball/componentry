@@ -4,7 +4,7 @@
 import React from 'react'
 import { render, screen } from '@testing-library/react'
 
-import { Theme } from '../components/Theme/Theme'
+import { ComponentryProvider } from '../components/ComponentryProvider/ComponentryProvider'
 
 /**
  * Library default component requirement test suite.
@@ -66,9 +66,9 @@ export function elementTests(TestComponent, testProps) {
    * by default to all component instances
    */
   it(`${componentName} should merge theme and JSX props correctly`, () => {
-    function ThemeWrapper({ children }) {
+    function ProviderWrapper({ children }) {
       return (
-        <Theme
+        <ComponentryProvider
           theme={{
             [componentName]: {
               themeCx: 'theme-class',
@@ -77,7 +77,7 @@ export function elementTests(TestComponent, testProps) {
           }}
         >
           {children}
-        </Theme>
+        </ComponentryProvider>
       )
     }
 
@@ -104,7 +104,7 @@ export function elementTests(TestComponent, testProps) {
           Classes merging example
         </TestComponent>
       </>,
-      { wrapper: ThemeWrapper },
+      { wrapper: ProviderWrapper },
     )
 
     expect(screen.getByTestId('theme')).toHaveClass('theme-class')

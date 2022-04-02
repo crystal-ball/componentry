@@ -231,4 +231,4 @@ export const themeDefaults = {
   boxShadow: {
     DEFAULT: '0 0.5rem 1rem rgba(73, 80, 87, 0.15)',
   },
-}
+} as const

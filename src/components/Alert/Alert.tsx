@@ -1,6 +1,6 @@
 import React from 'react'
 import { closeBase } from '../Close/Close'
-import { useTheme } from '../Theme/Theme'
+import { useTheme } from '../ComponentryProvider/ComponentryProvider'
 import { useActive, useVisible } from '../../hooks'
 import { type ComponentBaseProps } from '../../utils/base-types'
 import { type MergePropTypes } from '../../utils/types'

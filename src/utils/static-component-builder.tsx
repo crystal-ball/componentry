@@ -1,6 +1,6 @@
 import React from 'react'
 import { type ClassValue } from 'clsx'
-import { useTheme } from '../components/Theme/Theme'
+import { useTheme } from '../components/ComponentryProvider/ComponentryProvider'
 import { element } from './element-creator'
 
 type StaticOptions<Props> = Props & {
