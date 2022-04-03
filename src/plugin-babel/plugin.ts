@@ -4,7 +4,7 @@ import { PluginObj, types } from '@babel/core'
 import { Flex } from '../components/Flex/Flex'
 import { Block } from '../components/Block/Block'
 import { Text } from '../components/Text/Text'
-import { initializePreCompileMode } from '../components/ComponentryProvider/ComponentryProvider'
+import { __initializePreCompileMode } from '../components/Provider/Provider'
 
 import { parseAttributes } from './parse-attributes'
 import { buildClosingElement, buildOpeningElement } from './build-elements'
@@ -112,7 +112,7 @@ type BabelObj = { types: Types }
  * Componentry precompile Babel plugin
  */
 const componentryPlugin = ({ types: t }: BabelObj): PluginObj<VisitorState> => {
-  initializePreCompileMode({}) // TODO: Accept theme through options
+  __initializePreCompileMode({}) // TODO: Accept prop overrides through options
   return {
     name: 'componentry-plugin',
     visitor: {

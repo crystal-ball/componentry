@@ -1,5 +1,5 @@
 import React, { useContext } from 'react'
-import { useTheme } from '../components/ComponentryProvider/ComponentryProvider'
+import { type Components, useCtxProps } from '../components/Provider/Provider'
 import { ActiveCtx } from './active-container-component-builder'
 import { type ARIAControls, computeARIA } from './aria'
 import { type ActiveActionBaseProps } from './base-types'
@@ -19,13 +19,13 @@ interface ActiveActionBuilder {
  * can be overridden by passing an as and type props for an anchor.
  */
 export function activeActionBuilder<TProps extends ActiveActionBaseProps>(
-  displayName: string,
+  displayName: keyof Components,
   { action, aria = {}, defaultAs }: ActiveActionBuilder = {},
 ): React.FC<TProps> {
   function ActiveAction(props: TProps) {
     const { guid, ...activeCtx } = useContext(ActiveCtx)
     const { activeId, active, activate, deactivate, ...rest } = {
-      ...useTheme<TProps>(displayName),
+      ...useCtxProps(displayName),
       ...activeCtx,
       ...props,
     }

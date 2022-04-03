@@ -3,7 +3,7 @@ import clsx from 'clsx'
 import { nanoid } from 'nanoid'
 
 import { closeBase } from '../Close/Close'
-import { useTheme } from '../ComponentryProvider/ComponentryProvider'
+import { useCtxProps } from '../Provider/Provider'
 import { useActive, useActiveScrollReset, useNoScroll, useVisible } from '../../hooks'
 import { type ComponentBaseProps } from '../../utils/base-types'
 import { element } from '../../utils/element-creator'
@@ -100,7 +100,7 @@ export const Modal = ((props: ModalProps) => {
     size,
     transitionDuration,
   } = {
-    ...useTheme<ModalProps>('Modal'),
+    ...useCtxProps('Modal'),
     ...useActive(),
     ...props,
   }
@@ -170,7 +170,7 @@ Modal.Close = staticComponent('ModalClose', closeBase)
 
 Modal.Header = function ModalHeader(props: ModalHeaderProps) {
   const { children, close, ...rest } = {
-    ...useTheme<ModalHeaderProps>('ModalHeader'),
+    ...useCtxProps('ModalHeader'),
     ...props,
   }
   const ctx = useContext(ModalCtx)
@@ -202,7 +202,7 @@ Modal.Title = function ModalTitle(props) {
     as: 'h2',
     id: ctx.guid,
     componentCx: 'C9Y-ModalTitle',
-    ...useTheme<ModalTitleProps>('ModalTitle'),
+    ...useCtxProps('ModalTitle'),
     ...props,
   })
 }
@@ -221,7 +221,7 @@ Modal.Body = function ModalBody(props) {
   return element({
     ref: bodyRef,
     componentCx: 'C9Y-ModalBody',
-    ...useTheme<ModalBodyProps>('ModalBody'),
+    ...useCtxProps('ModalBody'),
     ...props,
   })
 }

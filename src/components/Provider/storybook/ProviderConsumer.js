@@ -1,5 +1,5 @@
 import React from 'react'
-import { useTheme } from '../ComponentryProvider'
+import { useTheme } from '../Provider'
 
 export function ProviderConsumer() {
   const theme = useTheme()

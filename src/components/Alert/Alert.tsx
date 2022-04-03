@@ -1,6 +1,6 @@
 import React from 'react'
 import { closeBase } from '../Close/Close'
-import { useTheme } from '../ComponentryProvider/ComponentryProvider'
+import { useCtxProps } from '../Provider/Provider'
 import { useActive, useVisible } from '../../hooks'
 import { type ComponentBaseProps } from '../../utils/base-types'
 import { type MergePropTypes } from '../../utils/types'
@@ -60,7 +60,7 @@ export const Alert: Alert = (props) => {
     dismissible,
     variant = 'filled',
     ...rest
-  } = { ...useTheme<AlertProps>('Alert'), ...useActive(), ...props }
+  } = { ...useCtxProps('Alert'), ...useActive(), ...props }
 
   const { active, visible } = useVisible(_active)
 

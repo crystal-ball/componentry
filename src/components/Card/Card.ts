@@ -1,10 +1,10 @@
 import React from 'react'
-import { useTheme } from '../ComponentryProvider/ComponentryProvider'
+import { useCtxProps } from '../Provider/Provider'
 import { element } from '../../utils/element-creator'
 import { staticComponent } from '../../utils/static-component-builder'
 import { type ComponentBaseProps } from '../../utils/base-types'
 
-interface CardProps extends ComponentBaseProps<'div'> {
+export interface CardProps extends ComponentBaseProps<'div'> {
   variant?: 'outlined'
 }
 interface CardBodyProps extends ComponentBaseProps<'div'> {}
@@ -44,7 +44,7 @@ export interface Card {
  */
 export const Card = ((props) => {
   const { variant = 'outlined', ...rest } = {
-    ...useTheme<CardProps>('Card'),
+    ...useCtxProps('Card'),
     ...props,
   }
 

@@ -1,4 +1,4 @@
-import { useTheme } from '../ComponentryProvider/ComponentryProvider'
+import { useCtxProps } from '../Provider/Provider'
 import { activeContainerBuilder } from '../../utils/active-container-component-builder'
 import { activeActionBuilder } from '../../utils/active-action-component-builder'
 import { activeContentBuilder } from '../../utils/active-content-component-builder'
@@ -63,7 +63,7 @@ export const Tabs = activeContainerBuilder<TabsProps>('Tabs') as Tabs
 
 const ActionsContainer: React.FC<TabsActionsContainerProps> = (props) => {
   const { pills, ...rest } = {
-    ...useTheme<TabsActionsContainerProps>('TabsActionsContainer'),
+    ...useCtxProps('TabsActionsContainer'),
     ...props,
   }
 

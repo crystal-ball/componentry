@@ -1,8 +1,5 @@
 // --- Providers
-export {
-  ComponentryProvider,
-  useTheme,
-} from './components/ComponentryProvider/ComponentryProvider'
+export { ComponentryProvider, useTheme } from './components/Provider/Provider'
 export { Media, useMedia } from './components/Media/Media'
 
 // --- Components

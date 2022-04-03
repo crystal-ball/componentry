@@ -4,7 +4,7 @@
 import React from 'react'
 import { render, screen } from '@testing-library/react'
 
-import { ComponentryProvider } from '../components/ComponentryProvider/ComponentryProvider'
+import { ComponentryProvider } from '../components/Provider/Provider'
 
 /**
  * Library default component requirement test suite.
@@ -69,7 +69,7 @@ export function elementTests(TestComponent, testProps) {
     function ProviderWrapper({ children }) {
       return (
         <ComponentryProvider
-          theme={{
+          components={{
             [componentName]: {
               themeCx: 'theme-class',
               'data-radical': 'hecka',
