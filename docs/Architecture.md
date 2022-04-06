@@ -72,7 +72,7 @@ prevents creep_
 ### Computing props
 
 Every library component can have default props configured using the
-`<ThemeProvider />`. The default configurations are accessed by individual
+`<ComponentryProvider />`. The default configurations are accessed by individual
 components using context, but these values are **defaults** and will be
 overriden by component instance props values. This computed props value is
 handled in each component by merging the context values and props values. Note

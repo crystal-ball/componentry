@@ -1,5 +1,5 @@
 import { forwardRef } from 'react'
-import { useTheme } from '../Theme/Theme'
+import { useThemeProps } from '../Provider/Provider'
 import { type ComponentBaseProps } from '../../utils/base-types'
 import { type MergePropTypes } from '../../utils/types'
 import { element } from '../../utils/element-creator'
@@ -37,7 +37,7 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>((props, ref) =>
     size,
     ...merged
   } = {
-    ...useTheme<ButtonProps>('Button'),
+    ...useThemeProps('Button'),
     ...props,
   }
 

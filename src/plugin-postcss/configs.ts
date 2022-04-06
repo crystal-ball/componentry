@@ -1,6 +1,6 @@
 import { cosmiconfigSync } from 'cosmiconfig'
 
-import { createTheme } from '../utils/create-theme'
+import { createTheme } from '../theme/theme'
 
 const explorerSync = cosmiconfigSync('componentry')
 

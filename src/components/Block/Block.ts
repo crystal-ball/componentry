@@ -1,5 +1,5 @@
 import { type FC } from 'react'
-import { useTheme } from '../Theme/Theme'
+import { useThemeProps } from '../Provider/Provider'
 import { type ComponentBaseProps } from '../../utils/base-types'
 import { element } from '../../utils/element-creator'
 
@@ -18,7 +18,7 @@ export interface BlockProps extends ComponentBaseProps<'div'> {}
  */
 export const Block: FC<BlockProps> = (props) => {
   const rest = {
-    ...useTheme<BlockProps>('Block'),
+    ...useThemeProps('Block'),
     ...props,
   }
 

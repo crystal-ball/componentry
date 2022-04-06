@@ -19,7 +19,14 @@ import {
   Icon,
   Link,
   Text,
+  useTheme,
 } from '..'
+
+// Verify that the theme value accessed with theme hook is typed
+function ThemedComponent() {
+  const theme = useTheme()
+  return <div style={{ color: theme.colors.inverse }}>THEME</div>
+}
 
 const testActive = (
   <Active defaultActive={false} onDeactivated={console.log}>

@@ -1,6 +1,6 @@
 import React from 'react'
 import { type ClassValue } from 'clsx'
-import { useTheme } from '../components/Theme/Theme'
+import { useThemeProps } from '../components/Provider/Provider'
 import { element } from './element-creator'
 
 type StaticOptions<Props> = Props & {
@@ -21,7 +21,9 @@ export function staticComponent<Props>(
     return element({
       componentCx: `C9Y-${displayName}`,
       ...defaultProps,
-      ...useTheme<Props>(displayName),
+      // @ts-expect-error -- TODO: can update displayName type to keyof components, but
+      // that requires adding _every_ subcomponent to the Components map
+      ...useThemeProps(displayName),
       ...props,
     })
   }

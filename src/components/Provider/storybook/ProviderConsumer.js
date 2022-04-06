@@ -1,7 +1,7 @@
 import React from 'react'
-import { useTheme } from '../Theme'
+import { useTheme } from '../Provider'
 
-export function ThemeConsumer() {
+export function ProviderConsumer() {
   const theme = useTheme()
 
   return (

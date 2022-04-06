@@ -1,5 +1,5 @@
 // --- Providers
-export { Theme, useTheme } from './components/Theme/Theme'
+export { ComponentryProvider, useTheme } from './components/Provider/Provider'
 export { Media, useMedia } from './components/Media/Media'
 
 // --- Components
@@ -37,7 +37,7 @@ export { Tooltip } from './components/Tooltip/Tooltip'
 
 // --- Utilities
 export { useActive, useActiveScrollReset, useNoScroll, useVisible } from './hooks'
-export { themeDefaults } from './theme-defaults'
+export { type Theme, createTheme } from './theme/theme'
 export { setupOutlineHandlers } from './utils/dom'
 export { borderPlugin } from './utils/tailwind-plugins'
 export {

@@ -1,8 +1,8 @@
-import { useTheme } from '../Theme/Theme'
+import { useThemeProps } from '../Provider/Provider'
 import { element } from '../../utils/element-creator'
 import { type ComponentBaseProps } from '../../utils/base-types'
 
-interface BadgeProps extends ComponentBaseProps<'div'> {
+export interface BadgeProps extends ComponentBaseProps<'div'> {
   /** Variant color */
   color?: 'primary'
   /** Display variant */
@@ -19,7 +19,7 @@ export const Badge: React.FC<BadgeProps> = (props) => {
     variant = 'filled',
     ...rest
   } = {
-    ...useTheme<BadgeProps>('Badge'),
+    ...useThemeProps('Badge'),
     ...props,
   }
 

@@ -9,7 +9,7 @@
  */
 
 import { type CSSProperties } from 'react'
-import { themeDefaults } from '../theme-defaults'
+import { themeDefaults } from '../theme/theme-defaults'
 import { MergePropTypes } from './types'
 
 /** Module augmentation interface for overriding default utility props' types */

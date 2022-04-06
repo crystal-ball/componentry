@@ -1,5 +1,5 @@
 import { type FC } from 'react'
-import { useTheme } from '../Theme/Theme'
+import { useThemeProps } from '../Provider/Provider'
 import { type ComponentBaseProps } from '../../utils/base-types'
 import { element } from '../../utils/element-creator'
 
@@ -26,7 +26,7 @@ export type GridProps = GridPropsBase & ComponentBaseProps<'div'>
  */
 export const Grid: FC<GridProps> = (props) => {
   const { align, justify, ...rest } = {
-    ...useTheme<GridProps>('Grid'),
+    ...useThemeProps('Grid'),
     ...props,
   }
 

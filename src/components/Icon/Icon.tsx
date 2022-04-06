@@ -1,5 +1,5 @@
 import { type ComponentType, type FC } from 'react'
-import { useTheme } from '../Theme/Theme'
+import { useThemeProps } from '../Provider/Provider'
 import { type ComponentBaseProps } from '../../utils/base-types'
 import { type MergePropTypes } from '../../utils/types'
 import { element } from '../../utils/element-creator'
@@ -38,7 +38,7 @@ export const Icon: FC<IconProps> = (props) => {
     id,
     variant = 'font',
     ...rest
-  } = { ...useTheme<IconProps>('Icon'), ...props }
+  } = { ...useThemeProps('Icon'), ...props }
 
   const hasMappedElement = id in iconElementsMap
 

@@ -2,7 +2,7 @@ import postcss, { ChildNode, PluginCreator } from 'postcss'
 import postcssNested from 'postcss-nested'
 import postcssJs from 'postcss-js'
 
-import { deepMerge } from '../utils/create-theme'
+import { deepMerge } from '../utils/deep-merge'
 import { foundationStyles } from '../utils/foundation.styles'
 import { alertStyles } from '../components/Alert/Alert.styles'
 import { badgeStyles } from '../components/Badge/Badge.styles'
