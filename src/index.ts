@@ -38,7 +38,6 @@ export { Tooltip } from './components/Tooltip/Tooltip'
 // --- Utilities
 export { useActive, useActiveScrollReset, useNoScroll, useVisible } from './hooks'
 export { type Theme, createTheme } from './theme/theme'
-export { themeDefaults } from './theme/theme-defaults'
 export { setupOutlineHandlers } from './utils/dom'
 export { borderPlugin } from './utils/tailwind-plugins'
 export {

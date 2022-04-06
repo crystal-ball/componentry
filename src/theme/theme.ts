@@ -28,20 +28,23 @@ export type Theme = MergePropTypes<typeof themeDefaults, ThemeOverrides>
  * })
  * ```
  */
-export function createTheme(themeCustomizations: any): Theme {
+export function createTheme(themeCustomizations?: any): Theme {
   // Extend
   let theme: typeof themeDefaults = JSON.parse(JSON.stringify(themeDefaults))
-  if (themeCustomizations.extend) {
-    theme = deepMerge(theme, themeCustomizations.extend)
-  }
 
-  // Overrides
-  Object.entries(themeCustomizations).forEach(([key, value]) => {
-    if (key !== 'extend') {
-      // @ts-expect-error -- Need to type the theme properly and include index access definition
-      theme[key] = value
+  if (themeCustomizations) {
+    if (themeCustomizations.extend) {
+      theme = deepMerge(theme, themeCustomizations.extend)
     }
-  })
+
+    // Overrides
+    Object.entries(themeCustomizations).forEach(([key, value]) => {
+      if (key !== 'extend') {
+        // @ts-expect-error -- Need to type the theme properly and include index access definition
+        theme[key] = value
+      }
+    })
+  }
 
   return theme
 }

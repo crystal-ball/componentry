@@ -2,19 +2,15 @@ import { Meta } from '@storybook/addon-docs'
 import { BADGE } from '@geometricpanda/storybook-addon-badges'
 
 import { Button } from '../Button/Button'
-import { Provider } from './ComponentryProvider'
+import { ComponentryProvider } from './Provider'
 import { ProviderConsumer } from './storybook/ProviderConsumer'
 
-<Meta
-  title='Components/Theme'
-  component={Theme}
-  parameters={{ badges: [BADGE.EXPERIMENTAL] }}
-/>
+<Meta title='Components/ComponentryProvider' component={ComponentryProvider} />
 
 # Theme
 
-<Provider
-  theme={{
+<ComponentryProvider
+  components={{
     Button: {
       color: 'success',
       size: 'lg',
@@ -25,4 +21,4 @@ import { ProviderConsumer } from './storybook/ProviderConsumer'
     <Button>A large successful button!</Button>
     <ProviderConsumer />
   </div>
-</Provider>
+</ComponentryProvider>
