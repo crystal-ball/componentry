@@ -1,5 +1,5 @@
 import React, { useContext } from 'react'
-import { type Components, useCtxProps } from '../components/Provider/Provider'
+import { type Components, useThemeProps } from '../components/Provider/Provider'
 import { ActiveCtx } from './active-container-component-builder'
 import { type ARIAControls, computeARIA } from './aria'
 import { type ActiveActionBaseProps } from './base-types'
@@ -25,7 +25,7 @@ export function activeActionBuilder<TProps extends ActiveActionBaseProps>(
   function ActiveAction(props: TProps) {
     const { guid, ...activeCtx } = useContext(ActiveCtx)
     const { activeId, active, activate, deactivate, ...rest } = {
-      ...useCtxProps(displayName),
+      ...useThemeProps(displayName),
       ...activeCtx,
       ...props,
     }

@@ -157,7 +157,7 @@ function useContextProps<Name extends keyof Components>(
 /**
  * Internal function for accessing component default props through context.
  */
-export function useCtxProps<Name extends keyof Components>(
+export function useThemeProps<Name extends keyof Components>(
   componentName: Name,
 ): Components[Name] {
   if (preCompileMode) {

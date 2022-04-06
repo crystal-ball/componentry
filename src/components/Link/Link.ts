@@ -1,5 +1,5 @@
 import { forwardRef } from 'react'
-import { useCtxProps } from '../Provider/Provider'
+import { useThemeProps } from '../Provider/Provider'
 import { type ComponentBaseProps } from '../../utils/base-types'
 import { type MergePropTypes } from '../../utils/types'
 import { element } from '../../utils/element-creator'
@@ -27,7 +27,7 @@ export type LinkProps = MergePropTypes<LinkPropsDefaults, LinkPropsOverrides> &
  */
 export const Link = forwardRef<HTMLAnchorElement, LinkProps>((props, ref) => {
   const { variant = 'text', ...merged } = {
-    ...useCtxProps('Link'),
+    ...useThemeProps('Link'),
     ...props,
   }
 

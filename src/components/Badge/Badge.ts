@@ -1,4 +1,4 @@
-import { useCtxProps } from '../Provider/Provider'
+import { useThemeProps } from '../Provider/Provider'
 import { element } from '../../utils/element-creator'
 import { type ComponentBaseProps } from '../../utils/base-types'
 
@@ -19,7 +19,7 @@ export const Badge: React.FC<BadgeProps> = (props) => {
     variant = 'filled',
     ...rest
   } = {
-    ...useCtxProps('Badge'),
+    ...useThemeProps('Badge'),
     ...props,
   }
 

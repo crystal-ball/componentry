@@ -1,15 +1,15 @@
 import { renderHook } from '@testing-library/react-hooks'
-import { ComponentryProvider, useCtxProps } from './Provider'
+import { ComponentryProvider, useThemeProps } from './Provider'
 
-describe('useCtxProps()', () => {
+describe('useThemeProps()', () => {
   it('should return undefined when no Provider is present', () => {
-    const { result } = renderHook(() => useCtxProps('Button'))
+    const { result } = renderHook(() => useThemeProps('Button'))
 
     expect(result.current).toBeUndefined()
   })
 
   it('should return an empty object when no value is configured for component', () => {
-    const { result } = renderHook(() => useCtxProps('Flex'), {
+    const { result } = renderHook(() => useThemeProps('Flex'), {
       wrapper: ({ children }) => {
         return (
           <ComponentryProvider components={{ Button: { variant: 'filled' } }}>
@@ -23,7 +23,7 @@ describe('useCtxProps()', () => {
   })
 
   it('should return the prop values if present for component', () => {
-    const { result } = renderHook(() => useCtxProps('Button'), {
+    const { result } = renderHook(() => useThemeProps('Button'), {
       wrapper: ({ children }) => {
         return (
           <ComponentryProvider components={{ Button: { variant: 'filled' } }}>

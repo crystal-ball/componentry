@@ -1,6 +1,6 @@
 import React, { createContext, useContext, useRef } from 'react'
 import { nanoid } from 'nanoid'
-import { useCtxProps } from '../Provider/Provider'
+import { useThemeProps } from '../Provider/Provider'
 import { type ComponentBaseProps } from '../../utils/base-types'
 import { element } from '../../utils/element-creator'
 import { staticComponent } from '../../utils/static-component-builder'
@@ -72,7 +72,7 @@ Input.Field = function InputField(props) {
   assertContext(ctx)
 
   const { invalid = false, ...rest } = {
-    ...useCtxProps('InputField'),
+    ...useThemeProps('InputField'),
     ...props,
   }
 
@@ -102,7 +102,7 @@ Input.Label = function InputLabel(props) {
     as: 'label',
     htmlFor: ctx.guid, // aria -> id
     componentCx: 'C9Y-InputLabel',
-    ...useCtxProps('InputLabel'),
+    ...useThemeProps('InputLabel'),
     ...props,
   })
 }

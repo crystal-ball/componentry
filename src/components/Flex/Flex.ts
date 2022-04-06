@@ -1,5 +1,5 @@
 import { type FC } from 'react'
-import { useCtxProps } from '../Provider/Provider'
+import { useThemeProps } from '../Provider/Provider'
 import { type ComponentBaseProps } from '../../utils/base-types'
 import { element } from '../../utils/element-creator'
 
@@ -30,7 +30,7 @@ export type FlexProps = FlexPropsBase & ComponentBaseProps<'div'>
  */
 export const Flex: FC<FlexProps> = (props) => {
   const { align, direction, justify, wrap, ...rest } = {
-    ...useCtxProps('Flex'),
+    ...useThemeProps('Flex'),
     ...props,
   }
 

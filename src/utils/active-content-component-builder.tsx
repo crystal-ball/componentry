@@ -1,5 +1,5 @@
 import React, { useContext } from 'react'
-import { type Components, useCtxProps } from '../components/Provider/Provider'
+import { type Components, useThemeProps } from '../components/Provider/Provider'
 import { useVisible } from '../hooks'
 import { ActiveCtx } from './active-container-component-builder'
 import { type ARIAControls, computeARIA } from './aria'
@@ -28,7 +28,7 @@ export function activeContentBuilder<TProps extends ActiveContentBaseProps>(
       mounted = 'visible',
       ...rest
     } = {
-      ...useCtxProps(displayName),
+      ...useThemeProps(displayName),
       ...activeCtx,
       ...props,
     }

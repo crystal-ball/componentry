@@ -1,5 +1,5 @@
 import React from 'react'
-import { useCtxProps } from '../Provider/Provider'
+import { useThemeProps } from '../Provider/Provider'
 import { element } from '../../utils/element-creator'
 import { staticComponent } from '../../utils/static-component-builder'
 import { type ComponentBaseProps } from '../../utils/base-types'
@@ -44,7 +44,7 @@ export interface Card {
  */
 export const Card = ((props) => {
   const { variant = 'outlined', ...rest } = {
-    ...useCtxProps('Card'),
+    ...useThemeProps('Card'),
     ...props,
   }
 

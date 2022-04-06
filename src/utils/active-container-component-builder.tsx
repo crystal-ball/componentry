@@ -1,6 +1,6 @@
 import React, { createContext, useCallback, useEffect, useRef, useState } from 'react'
 import { nanoid } from 'nanoid'
-import { type Components, useCtxProps } from '../components/Provider/Provider'
+import { type Components, useThemeProps } from '../components/Provider/Provider'
 import { type ActiveContainerBaseProps } from './base-types'
 import { closest } from './dom'
 import { element } from './element-creator'
@@ -90,7 +90,7 @@ export function activeContainerBuilder<TProps extends ActiveContainerBaseProps>(
       onDeactivate,
       onDeactivated,
       ...rest
-    } = { ...defaultProps, ...useCtxProps(displayName), ...props }
+    } = { ...defaultProps, ...useThemeProps(displayName), ...props }
 
     /**
      * Guid instance property will be uniquely assigned once for each component

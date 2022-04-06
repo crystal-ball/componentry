@@ -1,5 +1,5 @@
 import { type FC } from 'react'
-import { useCtxProps } from '../Provider/Provider'
+import { useThemeProps } from '../Provider/Provider'
 import { type ComponentBaseProps } from '../../utils/base-types'
 import { element } from '../../utils/element-creator'
 
@@ -18,7 +18,7 @@ export interface BlockProps extends ComponentBaseProps<'div'> {}
  */
 export const Block: FC<BlockProps> = (props) => {
   const rest = {
-    ...useCtxProps('Block'),
+    ...useThemeProps('Block'),
     ...props,
   }
 
