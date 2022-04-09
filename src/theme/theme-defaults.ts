@@ -109,7 +109,6 @@ export const themeDefaults = {
     4: '1rem', // 16px
     5: '1.25rem', // 20px
     6: '1.5rem', // 24px
-    7: '1.75rem', // 28px
     8: '2rem', // 32px
     10: '2.5rem', // 40px
     12: '3rem', // 48px
