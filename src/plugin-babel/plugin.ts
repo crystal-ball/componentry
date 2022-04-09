@@ -1,13 +1,13 @@
 /* eslint-disable no-console */
 import { PluginObj, types } from '@babel/core'
 
-import { Flex } from '../components/Flex/Flex'
 import { Block } from '../components/Block/Block'
-import { Text } from '../components/Text/Text'
+import { Flex } from '../components/Flex/Flex'
 import { __initializePreCompileMode } from '../components/Provider/Provider'
+import { Text } from '../components/Text/Text'
 
-import { parseAttributes } from './parse-attributes'
 import { buildClosingElement, buildOpeningElement } from './build-elements'
+import { parseAttributes } from './parse-attributes'
 
 const components = { Block, Flex, Text }
 // These are the props that should be parsed to compute the component value

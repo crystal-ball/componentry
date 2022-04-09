@@ -1,4 +1,3 @@
-/* eslint-disable react/no-unescaped-entities */
 import { render, screen } from '@testing-library/react'
 
 import { activationTests } from '../../test/activation-tests'

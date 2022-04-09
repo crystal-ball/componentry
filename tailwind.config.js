@@ -1,5 +1,3 @@
-/* eslint-disable import/no-unresolved */
-
 'use strict'
 
 const plugin = require('tailwindcss/plugin')

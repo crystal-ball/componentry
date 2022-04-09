@@ -3,13 +3,13 @@
  * Base types used for component prop type definitions.
  */
 
+import { type ClassValue } from 'clsx'
 import {
   type ComponentPropsWithoutRef,
   type ElementType,
   type MouseEvent,
   type ReactNode,
 } from 'react'
-import { type ClassValue } from 'clsx'
 import { type UtilityProps } from './utility-classes'
 
 /**

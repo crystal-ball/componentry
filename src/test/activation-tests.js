@@ -1,11 +1,11 @@
 /* eslint-env jest */
-import React from 'react'
 import {
   fireEvent,
   render,
   screen,
   waitForElementToBeRemoved,
 } from '@testing-library/react'
+import React from 'react'
 
 /**
  * This set of activation event tests should pass for every element with active

@@ -1,6 +1,5 @@
-import { useThemeProps } from '../Provider/Provider'
-import { activeContainerBuilder } from '../../utils/active-container-component-builder'
 import { activeActionBuilder } from '../../utils/active-action-component-builder'
+import { activeContainerBuilder } from '../../utils/active-container-component-builder'
 import { activeContentBuilder } from '../../utils/active-content-component-builder'
 import {
   type ActiveActionBaseProps,
@@ -11,6 +10,7 @@ import {
 import { element } from '../../utils/element-creator'
 import { staticComponent } from '../../utils/static-component-builder'
 import { Link } from '../Link/Link'
+import { useThemeProps } from '../Provider/Provider'
 
 export interface TabsProps extends ActiveContainerBaseProps, ComponentBaseProps<'div'> {}
 

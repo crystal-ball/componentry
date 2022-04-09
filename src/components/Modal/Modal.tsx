@@ -1,13 +1,13 @@
-import React, { createContext, useContext, useRef } from 'react'
 import clsx from 'clsx'
 import { nanoid } from 'nanoid'
+import React, { createContext, useContext, useRef } from 'react'
 
-import { closeBase } from '../Close/Close'
-import { useThemeProps } from '../Provider/Provider'
 import { useActive, useActiveScrollReset, useNoScroll, useVisible } from '../../hooks'
 import { type ComponentBaseProps } from '../../utils/base-types'
 import { element } from '../../utils/element-creator'
 import { staticComponent } from '../../utils/static-component-builder'
+import { closeBase } from '../Close/Close'
+import { useThemeProps } from '../Provider/Provider'
 
 type ModalCtx = {
   active: string | boolean

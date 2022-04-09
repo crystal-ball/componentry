@@ -1,5 +1,5 @@
-import { themeDefaults } from '../theme/theme-defaults'
 import { createTheme } from '../theme/theme'
+import { themeDefaults } from '../theme/theme-defaults'
 import { createUtilityClasses, initializeUtilityClassesTheme } from './utility-classes'
 
 describe('createUtilityClasses()', () => {

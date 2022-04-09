@@ -1,7 +1,7 @@
 import { type FC } from 'react'
-import { useThemeProps } from '../Provider/Provider'
 import { type ComponentBaseProps } from '../../utils/base-types'
 import { element } from '../../utils/element-creator'
+import { useThemeProps } from '../Provider/Provider'
 
 export interface FlexPropsBase {
   /** Sets an `align-items` style */

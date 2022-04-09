@@ -1,5 +1,5 @@
-import React from 'react'
 import { type ClassValue } from 'clsx'
+import React from 'react'
 import { type ComponentBaseProps } from '../../utils/base-types'
 import { staticComponent } from '../../utils/static-component-builder'
 import { Icon } from '../Icon/Icon'

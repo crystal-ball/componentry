@@ -4,9 +4,8 @@ module.exports = {
   extends: 'eloquence/react',
 
   rules: {
-    // Componentry uses empty interfaces for type configurations
+    // Componentry uses empty interfaces frequently for module augmentation
     '@typescript-eslint/no-empty-interface': 'off',
-    '@typescript-eslint/explicit-module-boundary-types': 'off',
   },
 
   overrides: [
@@ -17,10 +16,10 @@ module.exports = {
       },
     },
     {
-      files: ['src/**/*.spec.js'],
-      parser: '@babel/eslint-parser',
+      files: ['*.ts', '*.tsx'],
       parserOptions: {
-        requireConfigFile: false,
+        tsconfigRootDir: __dirname,
+        project: ['tsconfig.json'],
       },
     },
   ],
