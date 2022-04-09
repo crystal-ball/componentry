@@ -1,5 +1,5 @@
-import { themeDefaults } from './theme-defaults'
 import { createTheme } from './theme'
+import { themeDefaults } from './theme-defaults'
 
 describe('merge()', () => {
   it('merges theme values', () => {

@@ -1,5 +1,5 @@
-import React, { createContext, useCallback, useEffect, useRef, useState } from 'react'
 import { nanoid } from 'nanoid'
+import React, { createContext, useCallback, useEffect, useRef, useState } from 'react'
 import { type Components, useThemeProps } from '../components/Provider/Provider'
 import { type ActiveContainerBaseProps } from './base-types'
 import { closest } from './dom'

@@ -1,8 +1,8 @@
 import { type ComponentType, type FC } from 'react'
-import { useThemeProps } from '../Provider/Provider'
 import { type ComponentBaseProps } from '../../utils/base-types'
-import { type MergePropTypes } from '../../utils/types'
 import { element } from '../../utils/element-creator'
+import { type MergePropTypes } from '../../utils/types'
+import { useThemeProps } from '../Provider/Provider'
 
 /** Module augmentation interface for overriding component props' types */
 export interface IconPropsOverrides {}

@@ -1,11 +1,11 @@
 import React from 'react'
-import { closeBase } from '../Close/Close'
-import { useThemeProps } from '../Provider/Provider'
 import { useActive, useVisible } from '../../hooks'
 import { type ComponentBaseProps } from '../../utils/base-types'
-import { type MergePropTypes } from '../../utils/types'
 import { element } from '../../utils/element-creator'
 import { staticComponent } from '../../utils/static-component-builder'
+import { type MergePropTypes } from '../../utils/types'
+import { closeBase } from '../Close/Close'
+import { useThemeProps } from '../Provider/Provider'
 
 /** Module augmentation interface for overriding component props' types */
 export interface AlertPropsOverrides {}

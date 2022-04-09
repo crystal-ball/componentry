@@ -5,8 +5,8 @@
  * Testing file for types
  */
 
-import React from 'react'
 import clsx, { type ClassValue } from 'clsx'
+import React from 'react'
 import {
   Active,
   Alert,

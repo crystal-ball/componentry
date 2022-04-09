@@ -1,10 +1,10 @@
+import clsx, { type ClassValue } from 'clsx'
 import {
   type CSSProperties,
   type ElementType,
   type ReactElement,
   createElement,
 } from 'react'
-import clsx, { type ClassValue } from 'clsx'
 import { type UtilityProps, createUtilityClasses } from './utility-classes'
 
 /**

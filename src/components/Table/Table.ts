@@ -1,5 +1,5 @@
-import { staticComponent } from '../../utils/static-component-builder'
 import { type ComponentBaseProps } from '../../utils/base-types'
+import { staticComponent } from '../../utils/static-component-builder'
 
 export interface TableProps extends ComponentBaseProps<'div'> {}
 export interface TableBodyProps extends ComponentBaseProps<'div'> {}

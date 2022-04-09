@@ -1,9 +1,9 @@
-import React, { createContext, useContext, useRef } from 'react'
 import { nanoid } from 'nanoid'
-import { useThemeProps } from '../Provider/Provider'
+import React, { createContext, useContext, useRef } from 'react'
 import { type ComponentBaseProps } from '../../utils/base-types'
 import { element } from '../../utils/element-creator'
 import { staticComponent } from '../../utils/static-component-builder'
+import { useThemeProps } from '../Provider/Provider'
 
 export interface InputProps extends ComponentBaseProps<'input'> {}
 

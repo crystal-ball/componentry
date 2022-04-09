@@ -1,16 +1,16 @@
 import React from 'react'
 
-import { Button } from '../Button/Button'
-import { activeContainerBuilder } from '../../utils/active-container-component-builder'
 import { activeActionBuilder } from '../../utils/active-action-component-builder'
+import { activeContainerBuilder } from '../../utils/active-container-component-builder'
 import { activeContentBuilder } from '../../utils/active-content-component-builder'
-import { staticComponent } from '../../utils/static-component-builder'
 import {
   type ActiveActionBaseProps,
   type ActiveContainerBaseProps,
   type ActiveContentBaseProps,
   type ComponentBaseProps,
 } from '../../utils/base-types'
+import { staticComponent } from '../../utils/static-component-builder'
+import { Button } from '../Button/Button'
 
 export interface PopoverProps
   extends ActiveContainerBaseProps,
