@@ -83,33 +83,33 @@ export interface UtilityPropsBase {
   /** Sets a `row-gap` style */
   rowGap?: Spacing
   /** sets a 'margin' style */
-  m?: Spacing
+  m?: Spacing | 'auto'
   /** Sets a `margin-top` style */
-  mt?: Spacing
+  mt?: Spacing | 'auto'
   /** Sets a `margin-right` style */
-  mr?: Spacing
+  mr?: Spacing | 'auto'
   /** Sets a `margin-bottom` style */
-  mb?: Spacing
+  mb?: Spacing | 'auto'
   /** Sets a `margin-left` style */
-  ml?: Spacing
+  ml?: Spacing | 'auto'
   /** Sets `margin-left` + `margin-right` styles */
-  mx?: Spacing
+  mx?: Spacing | 'auto'
   /** Sets `margin-top` + `margin-bottom` styles */
-  my?: Spacing
+  my?: Spacing | 'auto'
   /** Sets a `padding` style */
-  p?: Spacing
+  p?: Spacing | 'auto'
   /** Sets a `padding-top` style */
-  pt?: Spacing
+  pt?: Spacing | 'auto'
   /** Sets a `padding-right` style */
-  pr?: Spacing
+  pr?: Spacing | 'auto'
   /** Sets a `padding-bottom` style */
-  pb?: Spacing
+  pb?: Spacing | 'auto'
   /** Sets a `padding-left` style */
-  pl?: Spacing
+  pl?: Spacing | 'auto'
   /** Sets `padding-left` + `padding-right` styles */
-  px?: Spacing
+  px?: Spacing | 'auto'
   /** Sets `padding-top` + `padding-bottom` styles */
-  py?: Spacing
+  py?: Spacing | 'auto'
 
   // --- SIZING
   /** Sets a `height` style */

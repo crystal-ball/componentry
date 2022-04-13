@@ -62,7 +62,10 @@ describe('createUtilityClasses()', () => {
   // SPACING
 
   it('computes spacing utility classes', () => {
-    const spacings = [0, 0.5, 1, 2, 3]
+    const spacings = ['px', 'auto', 0, 0.5, 1, 2, 3]
+
+    // --- MARGIN
+    // Theme values should become classes
     spacings.forEach((spacing) => {
       const computed = createUtilityClasses({
         m: spacing,
@@ -79,6 +82,7 @@ describe('createUtilityClasses()', () => {
       )
     })
 
+    // Non-theme numbers should become styles
     expect(
       createUtilityClasses({
         m: 42,
@@ -101,6 +105,7 @@ describe('createUtilityClasses()', () => {
       },
     })
 
+    // Non-theme strings should also be styles
     expect(
       createUtilityClasses({
         mx: '1rem',
@@ -117,6 +122,8 @@ describe('createUtilityClasses()', () => {
       },
     })
 
+    // --- PADDING
+    // Theme values should become classes
     spacings.forEach((spacing) => {
       const computed = createUtilityClasses({
         p: spacing,
@@ -133,6 +140,7 @@ describe('createUtilityClasses()', () => {
       )
     })
 
+    // Non-theme numbers should become styles
     expect(
       createUtilityClasses({
         p: 42,
@@ -155,6 +163,7 @@ describe('createUtilityClasses()', () => {
       },
     })
 
+    // Non-theme strings should also be styles
     expect(
       createUtilityClasses({
         px: '1rem',
@@ -171,6 +180,8 @@ describe('createUtilityClasses()', () => {
       },
     })
 
+    // --- GAP
+    // Theme values should become classes
     spacings.forEach((spacing) => {
       const computed = createUtilityClasses({
         gap: spacing,
@@ -183,6 +194,7 @@ describe('createUtilityClasses()', () => {
       )
     })
 
+    // Non-theme numbers should become styles
     expect(
       createUtilityClasses({
         gap: 42,

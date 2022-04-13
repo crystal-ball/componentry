@@ -98,8 +98,9 @@ export const themeDefaults = {
 
   // --- SPACING
   spacing: {
-    0: 0,
+    auto: 'auto',
     px: '1px',
+    0: 0,
     0.5: '0.125rem', // 2px
     1: '0.25rem', // 4px
     1.5: '0.375rem', // 6px
