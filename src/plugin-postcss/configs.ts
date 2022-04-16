@@ -12,7 +12,7 @@ const configSearchResults = explorerSync.search()
 const userConfig = configSearchResults?.config ?? {}
 
 const mergedConfig = {
-  theme: createTheme(userConfig.theme ?? {}),
+  theme: userConfig.theme ?? createTheme(),
   components: userConfig.components ?? {},
   foundation: userConfig.foundation ?? {},
 }
