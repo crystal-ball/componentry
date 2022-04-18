@@ -21,6 +21,10 @@
 Full documentation is available at
 [componentry.design](https://componentry.design)
 
+<a href="https://vercel.com/?utm_source=crystal-ball&utm_campaign=oss" alt="Powered by Vercel">
+  <img src="https://www.datocms-assets.com/31049/1618983297-powered-by-vercel.svg">
+</a>
+
 ### Contributing
 
 Componentry is an open source project that welcomes and appreciates
