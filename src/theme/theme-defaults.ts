@@ -93,8 +93,8 @@ export const themeDefaults = {
   },
 
   // --- FLEX/GRID
-  flexGrow: { 0: 0 },
-  flexShrink: { 0: 0 },
+  flexGrow: { DEFAULT: 1, 0: 0 },
+  flexShrink: { DEFAULT: 1, 0: 0 },
 
   // --- SPACING
   spacing: {
