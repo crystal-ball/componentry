@@ -72,27 +72,8 @@ jobs:
         uses: chromaui/action@v1
         with:
           # Project is linked to GH and Chromatic checks will update after upload so we
-          # dont need to wait for build results in this action
+          # don't need to wait for build results in this action
           exitOnceUploaded: true
           skip: '@(renovate/**|dependabot/**)'
           token: ${{ secrets.GITHUB_TOKEN }}
           projectToken: ${{ secrets.CHROMATIC_PROJECT_TOKEN }}
-# --- Package publishing 🚀
-# publish:
-#   name: Continuous Deployment
-#   if: github.ref == 'refs/heads/main'
-#   needs: test
-#   runs-on: ubuntu-latest
-#   steps:
-#     - uses: actions/checkout@v2
-#     - name: Setup Node.js
-#       uses: actions/setup-node@v3
-#       with:
-#         node-version: '16.14'
-#     - name: Install
-#       run: CI=true npm ci
-#     - name: Semantic Release
-#       run: npx semantic-release
-#       env:
-#         GH_TOKEN: ${{ secrets.SEMANTIC_GH_TOKEN }}
-#         NPM_TOKEN: ${{ secrets.SEMANTIC_NPM_TOKEN }}

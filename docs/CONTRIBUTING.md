@@ -20,14 +20,6 @@ npm run format
 npm run test:lint
 ```
 
-Commit messages are generated with [Commitizen][] to make writing consistent
-commit messages easy. On commit a Husky pre-commit hook will start an
-interactive terminal session to step through each part of the commit message
-with prompts.
-
-> ℹ️ Commitizen commit messages make it possible to use Semantic Release to
-> automatically publish packages on change to main.
-
 ## Roadmap
 
 _ℹ️ Roadmap items track long term project goals, see the [ZenHub board][] for
@@ -44,7 +36,5 @@ ready to work issues._
 
 <!-- Links -->
 <!-- prettier-ignore-start -->
-[Commitizen]:https://commitizen.github.io/cz-cli/
 [Code of Conduct]:../CODE_OF_CONDUCT.md
-[ZenHub board]:https://github.com/crystal-ball/crystal-ball.github.io#workspaces/-projects-5b88b5c9af3c0a2186966767/board?repos=131720045
 <!-- prettier-ignore-end -->
