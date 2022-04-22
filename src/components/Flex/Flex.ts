@@ -1,4 +1,5 @@
-import { type FC } from 'react'
+/* eslint-disable react/no-unused-prop-types */
+import { type FC, forwardRef } from 'react'
 import { type ComponentBaseProps } from '../../utils/base-types'
 import { element } from '../../utils/element-creator'
 import { useThemeProps } from '../Provider/Provider'
@@ -44,3 +45,32 @@ export const Flex: FC<FlexProps> = (props) => {
   })
 }
 Flex.displayName = 'Flex'
+
+/**
+ * **[📝 RefFlex docs](https://componentry.design/docs/components/flex)**
+ *
+ * `RefFlex` provides a ref-able `Flex` element.
+ * @example
+ * ```tsx
+ * <RefFlex ref={ref} align="center" gap={2}>
+ *   ...
+ * </RefFlex>
+ * ```
+ */
+export const RefFlex = forwardRef<HTMLDivElement, FlexProps>((props, ref) => {
+  const { align, direction, justify, wrap, ...rest } = {
+    ...useThemeProps('Flex'),
+    ...props,
+  }
+
+  return element({
+    ref,
+    display: 'flex',
+    alignItems: align,
+    flexDirection: direction,
+    flexWrap: wrap,
+    justifyContent: justify,
+    ...rest,
+  })
+})
+RefFlex.displayName = 'RefFlex'

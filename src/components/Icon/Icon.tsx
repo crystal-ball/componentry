@@ -69,6 +69,6 @@ Icon.displayName = 'Icon'
  * })
  * ```
  */
-export function configureIconElementsMap(elementsMap: IconElementsMap) {
+export function configureIconElementsMap(elementsMap: IconElementsMap): void {
   iconElementsMap = elementsMap
 }

@@ -1,4 +1,4 @@
-import { type FC } from 'react'
+import { type FC, forwardRef } from 'react'
 import { type ComponentBaseProps } from '../../utils/base-types'
 import { element } from '../../utils/element-creator'
 import { useThemeProps } from '../Provider/Provider'
@@ -17,11 +17,29 @@ export interface BlockProps extends ComponentBaseProps<'div'> {}
  * ```
  */
 export const Block: FC<BlockProps> = (props) => {
-  const rest = {
+  return element({
     ...useThemeProps('Block'),
     ...props,
-  }
-
-  return element(rest)
+  })
 }
 Block.displayName = 'Block'
+
+/**
+ * **[📝 RefBlock docs](https://componentry.design/docs/components/block)**
+ *
+ * `RefBlock` provides a ref-able `Block` element.
+ * @example
+ * ```tsx
+ * <RefBlock ref={ref} mt={2} mx={3}>
+ *   ...
+ * </RefBlock>
+ * ```
+ */
+export const RefBlock = forwardRef<HTMLDivElement, BlockProps>((props, ref) => {
+  return element({
+    ref,
+    ...useThemeProps('Block'),
+    ...props,
+  })
+})
+RefBlock.displayName = 'RefBlock'

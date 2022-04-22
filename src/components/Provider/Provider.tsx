@@ -142,7 +142,7 @@ export function useTheme(): Theme {
 let preCompileMode = false
 let preCompileComponentsValue: Components = {}
 
-export function __initializePreCompileMode(components: Components) {
+export function __initializePreCompileMode(components: Components): void {
   preCompileMode = true
   preCompileComponentsValue = components
 }
