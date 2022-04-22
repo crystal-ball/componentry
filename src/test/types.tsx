@@ -6,7 +6,7 @@
  */
 
 import clsx, { type ClassValue } from 'clsx'
-import React from 'react'
+import React, { useRef } from 'react'
 import {
   Active,
   Alert,
@@ -18,9 +18,12 @@ import {
   Flex,
   Icon,
   Link,
+  RefBlock,
   Text,
   useTheme,
 } from '..'
+import { RefFlex } from '../components/Flex/Flex'
+import { RefGrid } from '../components/Grid/Grid'
 
 // Verify that the theme value accessed with theme hook is typed
 function ThemedComponent() {
@@ -93,6 +96,20 @@ const specialButton = (
     Special
   </SpecialButton>
 )
+
+function TestRef() {
+  const blockRef = useRef<HTMLDivElement>(null)
+  const flexRef = useRef<HTMLDivElement>(null)
+  const gridRef = useRef<HTMLDivElement>(null)
+
+  return (
+    <>
+      <RefBlock ref={blockRef}>w/Ref</RefBlock>
+      <RefFlex ref={flexRef}>w/Ref</RefFlex>
+      <RefGrid ref={flexRef}>w/Ref</RefGrid>
+    </>
+  )
+}
 
 // Wrapping an HTML el: https://react-typescript-cheatsheet.netlify.app/docs/advanced/patterns_by_usecase#wrappingmirroring
 // Polymorphic component: https://react-typescript-cheatsheet.netlify.app/docs/advanced/patterns_by_usecase#polymorphic-components-eg-with-as-props
