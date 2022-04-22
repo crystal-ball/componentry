@@ -1,4 +1,4 @@
-import { type ComponentType, type FC } from 'react'
+import { type ComponentType, forwardRef } from 'react'
 import { type ComponentBaseProps } from '../../utils/base-types'
 import { element } from '../../utils/element-creator'
 import { type MergePropTypes } from '../../utils/types'
@@ -52,18 +52,19 @@ let textElementMap: TextElementsMap = {
  * </Text>
  * ```
  */
-export const Text: FC<TextProps> = (props) => {
+export const Text = forwardRef<HTMLElement, TextProps>((props, ref) => {
   const { variant = 'body', ...rest } = {
     ...useThemeProps('Text'),
     ...props,
   }
 
   return element({
+    ref,
     as: textElementMap[variant],
     componentCx: `C9Y-Text-base C9Y-Text-${variant}`,
     ...rest,
   })
-}
+})
 Text.displayName = 'Text'
 
 /**
@@ -81,6 +82,6 @@ Text.displayName = 'Text'
  * })
  * ```
  */
-export function configureTextElementsMap(elementsMap: TextElementsMap) {
+export function configureTextElementsMap(elementsMap: TextElementsMap): void {
   textElementMap = { ...textElementMap, ...elementsMap }
 }

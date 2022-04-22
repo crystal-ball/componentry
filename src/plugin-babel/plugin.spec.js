@@ -18,6 +18,16 @@ pluginTester({
   // Array of tests format used to allow more descriptive test titles
   tests: [
     {
+      title: 'transforms components',
+      fixture: '__fixtures__/basics/code.js',
+      outputFixture: '__fixtures__/basics/output.js',
+    },
+    {
+      title: 'passes through refs',
+      fixture: '__fixtures__/refs/code.js',
+      outputFixture: '__fixtures__/refs/output.js',
+    },
+    {
       title: 'transforms as prop',
       fixture: '__fixtures__/as-prop/code.js',
       outputFixture: '__fixtures__/as-prop/output.js',

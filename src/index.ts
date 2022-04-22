@@ -6,15 +6,15 @@ export { Media, useMedia } from './components/Media/Media'
 export { Active } from './components/Active/Active'
 export { Alert } from './components/Alert/Alert'
 export { Badge } from './components/Badge/Badge'
-export { Block, type BlockProps, RefBlock } from './components/Block/Block'
+export { Block, type BlockProps } from './components/Block/Block'
 export { Button, type ButtonProps } from './components/Button/Button'
 export { Card } from './components/Card/Card'
 export { Close } from './components/Close/Close'
 export { Drawer } from './components/Drawer/Drawer'
 export { Dropdown } from './components/Dropdown/Dropdown'
-export { Flex, type FlexProps, RefFlex } from './components/Flex/Flex'
+export { Flex, type FlexProps } from './components/Flex/Flex'
 export { FormGroup } from './components/FormGroup/FormGroup'
-export { Grid, type GridProps, RefGrid } from './components/Grid/Grid'
+export { Grid, type GridProps } from './components/Grid/Grid'
 export {
   Icon,
   configureIconElementsMap,

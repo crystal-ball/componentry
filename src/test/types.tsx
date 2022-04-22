@@ -16,14 +16,12 @@ import {
   Card,
   Close,
   Flex,
+  Grid,
   Icon,
   Link,
-  RefBlock,
   Text,
   useTheme,
 } from '..'
-import { RefFlex } from '../components/Flex/Flex'
-import { RefGrid } from '../components/Grid/Grid'
 
 // Verify that the theme value accessed with theme hook is typed
 function ThemedComponent() {
@@ -104,9 +102,9 @@ function TestRef() {
 
   return (
     <>
-      <RefBlock ref={blockRef}>w/Ref</RefBlock>
-      <RefFlex ref={flexRef}>w/Ref</RefFlex>
-      <RefGrid ref={flexRef}>w/Ref</RefGrid>
+      <Block ref={blockRef}>w/Ref</Block>
+      <Flex ref={flexRef}>w/Ref</Flex>
+      <Grid ref={flexRef}>w/Ref</Grid>
     </>
   )
 }

@@ -3,13 +3,18 @@ import { PluginObj, types } from '@babel/core'
 
 import { Block } from '../components/Block/Block'
 import { Flex } from '../components/Flex/Flex'
+import { Grid } from '../components/Grid/Grid'
 import { __initializePreCompileMode } from '../components/Provider/Provider'
 import { Text } from '../components/Text/Text'
 
 import { buildClosingElement, buildOpeningElement } from './build-elements'
 import { parseAttributes } from './parse-attributes'
 
-const components = { Block, Flex, Text }
+const components = { Block, Flex, Grid, Text } as unknown as Record<string, RefComponent>
+
+/** Internally this is a gross reduction of component types to define how they are rendered */
+type RefComponent = ((props: any) => any) | { render: (props: any) => any }
+
 // These are the props that should be parsed to compute the component value
 const parseProps = {
   as: 1,
@@ -153,9 +158,10 @@ const componentryPlugin = ({ types: t }: BabelObj): PluginObj<VisitorState> => {
         // TODO: Add debug and reporting for this
         if (!parseSuccess) return
 
-        // @ts-ignore DEBT
         // Call the component with the parsed attributes to create the pre-compiled result
-        const preCompiledResult = components[name](parsedAttributes)
+        const component = components[name]
+        const renderer = typeof component === 'function' ? component : component.render
+        const preCompiledResult = renderer(parsedAttributes)
 
         // 🎉 Replace the elements opening and closing elements with our pre-compiled result
         path.get('openingElement').replaceWith(
@@ -175,6 +181,3 @@ const componentryPlugin = ({ types: t }: BabelObj): PluginObj<VisitorState> => {
 }
 
 export default componentryPlugin
-
-// Polishing:
-// [] Pass through refs
