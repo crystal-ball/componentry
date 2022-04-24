@@ -4,7 +4,7 @@ import { type ComponentBaseProps } from '../../utils/base-types'
 import { element } from '../../utils/element-creator'
 import { useThemeProps } from '../Provider/Provider'
 
-export interface FlexPropsBase {
+export interface FlexPropsDefaults {
   /** Sets an `align-items` style */
   align?: 'start' | 'end' | 'center' | 'baseline' | 'stretch'
   /** Sets a `flex-direction` flex style */
@@ -15,7 +15,7 @@ export interface FlexPropsBase {
   wrap?: 'wrap' | 'nowrap' | 'wrap-reverse'
 }
 
-export type FlexProps = FlexPropsBase & ComponentBaseProps<'div'>
+export type FlexProps = FlexPropsDefaults & ComponentBaseProps<'div'>
 
 /**
  * **[📝 Flex docs](https://componentry.design/docs/components/flex)**

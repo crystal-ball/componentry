@@ -7,12 +7,12 @@ import { useThemeProps } from '../Provider/Provider'
 /** Module augmentation interface for overriding component props' types */
 export interface TextPropsOverrides {}
 
-export interface TextPropsBase {
+export interface TextPropsDefaults {
   /** Display variant */
   variant?: 'h1' | 'h2' | 'h3' | 'body' | 'code' | 'small'
 }
 
-export type TextProps = MergePropTypes<TextPropsBase, TextPropsOverrides> &
+export type TextProps = MergePropTypes<TextPropsDefaults, TextPropsOverrides> &
   ComponentBaseProps<'div'>
 
 /**
@@ -26,7 +26,7 @@ export type TextProps = MergePropTypes<TextPropsBase, TextPropsOverrides> &
  * ```
  */
 export type TextElementsMap = {
-  [Variant: string]: keyof JSX.IntrinsicElements | ComponentType<any>
+  [Variant: string]: keyof JSX.IntrinsicElements | ComponentType<unknown>
 }
 /**
  * Internal map used for final rendering

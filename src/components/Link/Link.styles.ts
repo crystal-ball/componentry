@@ -1,11 +1,12 @@
 import { getMergedConfig } from '../../plugin-postcss/configs'
+import { StylesDefinition } from '../../utils/types'
 
 const { theme } = getMergedConfig()
 
 //                                         <Link /> styles
 // -------------------------------------------------------
 
-export const linkStyles = {
+export const linkStyles: LinkStyles = {
   // BASE
   '.C9Y-Link-base': {
     // Reset browser defaults for when Link renders a button element
@@ -31,6 +32,19 @@ export const linkStyles = {
       color: theme.colors.primary[700],
     },
   },
+}
+
+export interface LinkStyles {
+  /** Base class applied to all variants for shared structural styles */
+  '.C9Y-Link-base': StylesDefinition
+  /** Variant class applied when `variant="text"` */
+  '.C9Y-Link-text': {
+    '&:hover': StylesDefinition
+  } & StylesDefinition
+  /** Variant class applied when `variant="inherit"` */
+  '.C9Y-Link-inherit': {
+    '&:hover': StylesDefinition
+  } & StylesDefinition
 }
 
 // --- ℹ️ Disabled link styles
