@@ -4,11 +4,18 @@
  * creating documentation.
  */
 
-export { type FlexPropsBase } from './components/Flex/Flex'
-export { type GridPropsBase } from './components/Grid/Grid'
-export { type IconPropsBase, type IconPropsOverrides } from './components/Icon/Icon'
+export {
+  type ButtonPropsDefaults,
+  type ButtonPropsOverrides,
+} from './components/Button/Button'
+export { type ButtonStyles } from './components/Button/Button.styles'
+export { type FlexPropsDefaults } from './components/Flex/Flex'
+export { type GridPropsDefaults } from './components/Grid/Grid'
+export { type IconPropsDefaults, type IconPropsOverrides } from './components/Icon/Icon'
 export { type IconStyles } from './components/Icon/Icon.styles'
-export { type TextPropsBase, type TextPropsOverrides } from './components/Text/Text'
+export { type LinkPropsDefaults, type LinkPropsOverrides } from './components/Link/Link'
+export { type LinkStyles } from './components/Link/Link.styles'
+export { type TextPropsDefaults, type TextPropsOverrides } from './components/Text/Text'
 export { type TextStyles } from './components/Text/Text.styles'
 
 export {

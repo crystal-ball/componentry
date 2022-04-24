@@ -7,7 +7,7 @@ import { useThemeProps } from '../Provider/Provider'
 /** Module augmentation interface for overriding component props' types */
 export interface IconPropsOverrides {}
 
-export interface IconPropsBase {
+export interface IconPropsDefaults {
   /** External path to symbol sprite  */
   externalURI?: string
   /** ID for the `iconElementsMap` or href attribute for symbol sprites */
@@ -16,11 +16,11 @@ export interface IconPropsBase {
   variant?: 'font'
 }
 
-export type IconProps = MergePropTypes<IconPropsBase, IconPropsOverrides> &
+export type IconProps = MergePropTypes<IconPropsDefaults, IconPropsOverrides> &
   ComponentBaseProps<'svg'>
 
 /** Mapping of icon IDs to components rendered by Icon */
-export type IconElementsMap = { [ID: string]: ComponentType<any> }
+export type IconElementsMap = { [ID: string]: ComponentType<unknown> }
 let iconElementsMap: IconElementsMap = {}
 
 /**

@@ -1,11 +1,12 @@
 import { getMergedConfig } from '../../plugin-postcss/configs'
+import { StylesDefinition } from '../../utils/types'
 
 const { theme } = getMergedConfig()
 
 //                                        <Button /> styles
 // --------------------------------------------------------
 
-export const buttonStyles = {
+export const buttonStyles: ButtonStyles = {
   // BASE
   '.C9Y-Button-base': {
     alignItems: 'center',
@@ -89,4 +90,25 @@ export const buttonStyles = {
     fontSize: theme.fontSize.lg,
     padding: '0 2rem',
   },
+}
+
+export interface ButtonStyles {
+  /** Base class applied to all variants for shared structural styles */
+  '.C9Y-Button-base': { '&.C9Y-disabled': StylesDefinition } & StylesDefinition
+  /** Variant class applied when `variant="filled"` */
+  '.C9Y-Button-filled': {
+    '&:hover, &.C9Y-hover': StylesDefinition
+    '&:active, &.C9Y-active': StylesDefinition
+    '&.C9Y-disabled': StylesDefinition
+  } & StylesDefinition
+  /** Variant class applied when `variant="outlined"` */
+  '.C9Y-Button-outlined': {
+    '&:hover, &.C9Y-hover': StylesDefinition
+    '&:active, &.C9Y-active': StylesDefinition
+    '&.C9Y-disabled': StylesDefinition
+  } & StylesDefinition
+  /** Sizing class applied when `size="small"` */
+  '.C9Y-Button-smallSize': StylesDefinition
+  /** Sizing class applied when `size="large"` */
+  '.C9Y-Button-largeSize': StylesDefinition
 }
