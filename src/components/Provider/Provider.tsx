@@ -99,7 +99,7 @@ const ComponentryCtx = createContext<null | { components: Components; theme: The
   null,
 )
 
-interface ProviderProps {
+interface ComponentryProviderProps {
   children: ReactElement
   /** Component default props */
   components?: Components
@@ -107,10 +107,29 @@ interface ProviderProps {
   theme?: Theme
 }
 
+export interface ComponentryProvider {
+  (props: ComponentryProviderProps): JSX.Element
+  displayName?: string
+}
+
 /**
- * [Componentry context provider 📝](https://componentry.design/components/provider)
+ * #### [📝 ComponentryProvider](https://componentry.design/components/provider)
+ *
+ * Provider for the application theme and default component props.
+ * @example
+ * const appTheme = {}
+ * const defaultProps = {}
+ * ```tsx
+ * <ComponentryProvider theme={appTheme} components={defaultProps}>
+ *  <App />
+ * </ComponentryProvider>
+ * ```
  */
-export function ComponentryProvider({ children, components, theme }: ProviderProps) {
+export const ComponentryProvider: ComponentryProvider = ({
+  children,
+  components,
+  theme,
+}) => {
   const contextValue = useMemo(() => {
     return { components: components ?? {}, theme: theme ?? themeDefaults }
   }, [components, theme])
