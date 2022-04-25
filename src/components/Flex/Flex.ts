@@ -1,7 +1,7 @@
-/* eslint-disable react/no-unused-prop-types */
 import { forwardRef } from 'react'
 import { type ComponentBaseProps } from '../../utils/base-types'
 import { element } from '../../utils/element-creator'
+
 import { useThemeProps } from '../Provider/Provider'
 
 export interface FlexPropsDefaults {
@@ -17,10 +17,16 @@ export interface FlexPropsDefaults {
 
 export type FlexProps = FlexPropsDefaults & ComponentBaseProps<'div'>
 
+// ✨ Nice display type for IntelliSense
+export interface Flex {
+  (props: FlexProps & { ref?: React.ForwardedRef<unknown> }): React.ReactElement | null
+  displayName?: string
+}
+
 /**
- * **[📝 Flex docs](https://componentry.design/docs/components/flex)**
+ * #### [📝 Flex](https://componentry.design/docs/components/flex)
  *
- * `Flex` provides consistent flexbox layouts using a flex container with
+ * Flex provides consistent flexbox layouts using a flex container with
  * utility props.
  * @example
  * ```tsx
@@ -29,7 +35,7 @@ export type FlexProps = FlexPropsDefaults & ComponentBaseProps<'div'>
  * </Flex>
  * ```
  */
-export const Flex = forwardRef<HTMLDivElement, FlexProps>((props, ref) => {
+export const Flex: Flex = forwardRef((props, ref) => {
   const { align, direction, justify, wrap, ...rest } = {
     ...useThemeProps('Flex'),
     ...props,

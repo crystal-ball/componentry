@@ -1,4 +1,3 @@
-/* eslint-disable react/no-unused-prop-types */
 import { forwardRef } from 'react'
 import { type ComponentBaseProps } from '../../utils/base-types'
 import { element } from '../../utils/element-creator'
@@ -13,10 +12,16 @@ export interface GridPropsDefaults {
 
 export type GridProps = GridPropsDefaults & ComponentBaseProps<'div'>
 
+// ✨ Nice display type for IntelliSense
+export interface Grid {
+  (props: GridProps & { ref?: React.ForwardedRef<unknown> }): React.ReactElement | null
+  displayName?: string
+}
+
 /**
- * **[📝 Grid docs](https://componentry.design/docs/components/grid)**
+ * #### [📝 Grid](https://componentry.design/docs/components/grid)
  *
- * `Grid` provides consistent CSS grid layouts using a grid container with
+ * Grid provides consistent CSS grid layouts using a grid container with
  * utility props.
  * @example
  * ```tsx
@@ -25,7 +30,7 @@ export type GridProps = GridPropsDefaults & ComponentBaseProps<'div'>
  * </Grid>
  * ```
  */
-export const Grid = forwardRef<HTMLDivElement, GridProps>((props, ref) => {
+export const Grid: Grid = forwardRef((props, ref) => {
   const { align, justify, ...rest } = {
     ...useThemeProps('Grid'),
     ...props,

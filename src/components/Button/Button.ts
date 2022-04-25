@@ -25,11 +25,24 @@ export interface ButtonPropsDefaults {
 export type ButtonProps = MergePropTypes<ButtonPropsDefaults, ButtonPropsOverrides> &
   ComponentBaseProps<'button'>
 
+// ✨ Nice display type for IntelliSense
+export interface Button {
+  (props: ButtonProps & { ref?: React.ForwardedRef<unknown> }): React.ReactElement | null
+  displayName?: string
+}
+
 /**
- * [Button component 📝](https://componentry.design/components/button)
- * @experimental
+ * #### [📝 Button](https://componentry.design/docs/components/button)
+ *
+ * Button provides actionable elements for creating accessible user interactions.
+ * @example
+ * ```tsx
+ * <Button onClick={() => buildRadical()}>
+ *   Build something radical
+ * </Button>
+ * ```
  */
-export const Button = forwardRef<HTMLButtonElement, ButtonProps>((props, ref) => {
+export const Button: Button = forwardRef((props, ref) => {
   const {
     variant = 'filled',
     color,

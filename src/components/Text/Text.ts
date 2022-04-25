@@ -4,16 +4,8 @@ import { element } from '../../utils/element-creator'
 import { type MergePropTypes } from '../../utils/types'
 import { useThemeProps } from '../Provider/Provider'
 
-/** Module augmentation interface for overriding component props' types */
-export interface TextPropsOverrides {}
-
-export interface TextPropsDefaults {
-  /** Display variant */
-  variant?: 'h1' | 'h2' | 'h3' | 'body' | 'code' | 'small'
-}
-
-export type TextProps = MergePropTypes<TextPropsDefaults, TextPropsOverrides> &
-  ComponentBaseProps<'div'>
+// --------------------------------------------------------
+// TEXT ELEMENTS MAP
 
 /**
  * Mapping of Text variants to rendered elements
@@ -42,32 +34,6 @@ let textElementMap: TextElementsMap = {
 }
 
 /**
- * **[📝 Text docs](https://componentry.design/docs/components/text)**
- *
- * `Text` provides consistently themed typography elements.
- * @example
- * ```tsx
- * <Text variant="h1">
- *   Componentry
- * </Text>
- * ```
- */
-export const Text = forwardRef<HTMLElement, TextProps>((props, ref) => {
-  const { variant = 'body', ...rest } = {
-    ...useThemeProps('Text'),
-    ...props,
-  }
-
-  return element({
-    ref,
-    as: textElementMap[variant],
-    componentCx: `C9Y-Text-base C9Y-Text-${variant}`,
-    ...rest,
-  })
-})
-Text.displayName = 'Text'
-
-/**
  * Configuration method for defining the elements to render for each text
  * variant.
  * @remarks
@@ -85,3 +51,49 @@ Text.displayName = 'Text'
 export function configureTextElementsMap(elementsMap: TextElementsMap): void {
   textElementMap = { ...textElementMap, ...elementsMap }
 }
+
+// --------------------------------------------------------
+// TEXT COMPONENT
+
+/** Module augmentation interface for overriding component props' types */
+export interface TextPropsOverrides {}
+
+export interface TextPropsDefaults {
+  /** Display variant */
+  variant?: 'h1' | 'h2' | 'h3' | 'body' | 'code' | 'small'
+}
+
+export type TextProps = MergePropTypes<TextPropsDefaults, TextPropsOverrides> &
+  ComponentBaseProps<'div'>
+
+// ✨ Nice display type for IntelliSense
+export interface Text {
+  (props: TextProps & { ref?: React.ForwardedRef<unknown> }): React.ReactElement | null
+  displayName?: string
+}
+
+/**
+ * #### [📝 Text docs](https://componentry.design/docs/components/text)
+ *
+ * Text provides consistently themed typography elements.
+ * @example
+ * ```tsx
+ * <Text variant="h1">
+ *   Componentry
+ * </Text>
+ * ```
+ */
+export const Text: Text = forwardRef((props, ref) => {
+  const { variant = 'body', ...rest } = {
+    ...useThemeProps('Text'),
+    ...props,
+  }
+
+  return element({
+    ref,
+    as: textElementMap[variant],
+    componentCx: `C9Y-Text-base C9Y-Text-${variant}`,
+    ...rest,
+  })
+})
+Text.displayName = 'Text'

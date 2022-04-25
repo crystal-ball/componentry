@@ -15,6 +15,7 @@ import {
   Button,
   Card,
   Close,
+  ComponentryProvider,
   Flex,
   Grid,
   Icon,
@@ -28,6 +29,12 @@ function ThemedComponent() {
   const theme = useTheme()
   return <div style={{ color: theme.colors.inverse }}>THEME</div>
 }
+
+const provider = (
+  <ComponentryProvider>
+    <div>the app</div>
+  </ComponentryProvider>
+)
 
 const testActive = (
   <Active defaultActive={false} onDeactivated={console.log}>
@@ -99,12 +106,14 @@ function TestRef() {
   const blockRef = useRef<HTMLDivElement>(null)
   const flexRef = useRef<HTMLDivElement>(null)
   const gridRef = useRef<HTMLDivElement>(null)
+  const svgRef = useRef<SVGSVGElement>(null)
 
   return (
     <>
       <Block ref={blockRef}>w/Ref</Block>
       <Flex ref={flexRef}>w/Ref</Flex>
-      <Grid ref={flexRef}>w/Ref</Grid>
+      <Grid ref={gridRef}>w/Ref</Grid>
+      <Icon ref={svgRef} id='test' />
     </>
   )
 }

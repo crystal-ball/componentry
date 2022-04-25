@@ -21,11 +21,24 @@ export interface LinkPropsDefaults {
 export type LinkProps = MergePropTypes<LinkPropsDefaults, LinkPropsOverrides> &
   ComponentBaseProps<'a'>
 
+// ✨ Nice display type for IntelliSense
+export interface Link {
+  (props: LinkProps & { ref?: React.ForwardedRef<unknown> }): React.ReactElement | null
+  displayName?: string
+}
+
 /**
- * [Link component 📝](https://componentry.design/components/link)
- * @experimental
+ * #### [📝 Link component](https://componentry.design/docs/components/link)
+ *
+ * Link provides actionable elements in the style of hyperlinks.
+ * @example
+ * ```tsx
+ * <Link to="/">
+ *   Home
+ * <Link>
+ * ```
  */
-export const Link = forwardRef<HTMLAnchorElement, LinkProps>((props, ref) => {
+export const Link: Link = forwardRef((props, ref) => {
   const { variant = 'text', ...merged } = {
     ...useThemeProps('Link'),
     ...props,
