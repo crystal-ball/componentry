@@ -9,11 +9,22 @@
  */
 
 import { type CSSProperties } from 'react'
+import { type Theme } from '../theme/theme'
 import { themeDefaults } from '../theme/theme-defaults'
-import { MergePropTypes } from './types'
+import { type MergePropTypes, type UtilityPropsForTheme } from './types'
 
 /** Module augmentation interface for overriding default utility props' types */
 export interface UtilityPropsOverrides {}
+
+export type SpacingBase = keyof UtilityPropsForTheme<Theme['spacing']>
+// Provide base height exports to simplify adding number or string type for
+// arbitrary sizing values
+export type HeightBase = 'full' | 'screen' | 'min' | 'max' | 'fit' | 'auto'
+export type MinHeightBase = 'full' | 'screen' | 'min' | 'max' | 'fit'
+export type MaxHeightBase = 'full' | 'screen' | 'min' | 'max' | 'fit'
+export type WidthBase = 'full' | 'screen' | 'min' | 'max' | 'fit' | 'auto'
+export type MinWidthBase = 'full' | 'min' | 'max' | 'fit'
+export type MaxWidthBase = 'full' | 'min' | 'max' | 'fit' | 'prose' | 'none'
 
 /** Default utility prop types, customizable with UtilityPropsOverrides */
 export interface UtilityPropsBase {
@@ -38,7 +49,7 @@ export interface UtilityPropsBase {
   /** Sets a `visibility: visible` style */
   visible?: boolean
   /** Sets a `z-index` style */
-  zIndex?: 0 | 10 | 20 | 30 | 40 | 50 | 'auto'
+  zIndex?: keyof UtilityPropsForTheme<Theme['zIndex']>
 
   // --- FLEXBOX+GRID
   /** Sets an `align-content` style */
@@ -57,9 +68,9 @@ export interface UtilityPropsBase {
   /** Sets a `flex-direction` style */
   flexDirection?: 'column' | 'column-reverse' | 'row-reverse' | 'row'
   /** Sets a `flex-grow` style */
-  flexGrow?: boolean | 0
+  flexGrow?: keyof UtilityPropsForTheme<Theme['flexGrow']>
   /** Sets a `flex-shrink` style */
-  flexShrink?: boolean | 0
+  flexShrink?: keyof UtilityPropsForTheme<Theme['flexShrink']>
   /** Sets a `flex-wrap` style */
   flexWrap?: 'wrap' | 'nowrap' | 'wrap-reverse'
   /** Sets a `justify-content` style */
@@ -77,53 +88,53 @@ export interface UtilityPropsBase {
 
   // --- SPACING
   /** Sets a `gap` style */
-  gap?: Spacing
+  gap?: Exclude<SpacingBase, 'auto'>
   /** Sets a `column-gap` style */
-  columnGap?: Spacing
+  columnGap?: Exclude<SpacingBase, 'auto'>
   /** Sets a `row-gap` style */
-  rowGap?: Spacing
+  rowGap?: Exclude<SpacingBase, 'auto'>
   /** sets a 'margin' style */
-  m?: Spacing | 'auto'
+  m?: SpacingBase
   /** Sets a `margin-top` style */
-  mt?: Spacing | 'auto'
+  mt?: SpacingBase
   /** Sets a `margin-right` style */
-  mr?: Spacing | 'auto'
+  mr?: SpacingBase
   /** Sets a `margin-bottom` style */
-  mb?: Spacing | 'auto'
+  mb?: SpacingBase
   /** Sets a `margin-left` style */
-  ml?: Spacing | 'auto'
+  ml?: SpacingBase
   /** Sets `margin-left` + `margin-right` styles */
-  mx?: Spacing | 'auto'
+  mx?: SpacingBase
   /** Sets `margin-top` + `margin-bottom` styles */
-  my?: Spacing | 'auto'
+  my?: SpacingBase
   /** Sets a `padding` style */
-  p?: Spacing | 'auto'
+  p?: SpacingBase
   /** Sets a `padding-top` style */
-  pt?: Spacing | 'auto'
+  pt?: SpacingBase
   /** Sets a `padding-right` style */
-  pr?: Spacing | 'auto'
+  pr?: SpacingBase
   /** Sets a `padding-bottom` style */
-  pb?: Spacing | 'auto'
+  pb?: SpacingBase
   /** Sets a `padding-left` style */
-  pl?: Spacing | 'auto'
+  pl?: SpacingBase
   /** Sets `padding-left` + `padding-right` styles */
-  px?: Spacing | 'auto'
+  px?: SpacingBase
   /** Sets `padding-top` + `padding-bottom` styles */
-  py?: Spacing | 'auto'
+  py?: SpacingBase
 
   // --- SIZING
   /** Sets a `height` style */
-  height?: 'full' | 'screen' | 'min' | 'max' | 'fit' | 'auto'
+  height?: HeightBase
   /** Sets a `min-height` style */
-  minHeight?: 'full' | 'screen' | 'min' | 'max' | 'fit'
+  minHeight?: MinHeightBase
   /** Sets a `max-height` style */
-  maxHeight?: 'full' | 'screen' | 'min' | 'max' | 'fit'
+  maxHeight?: MaxHeightBase
   /** Sets a `width` style */
-  width?: 'full' | 'screen' | 'min' | 'max' | 'fit' | 'auto'
+  width?: WidthBase
   /** Sets a `min-width` style */
-  minWidth?: 'full' | 'min' | 'max' | 'fit'
+  minWidth?: MinWidthBase
   /** Sets a `max-width` style */
-  maxWidth?: 'full' | 'min' | 'max' | 'fit' | 'prose' | 'none'
+  maxWidth?: MaxWidthBase
 
   // --- TYPOGRAPHY
   /** Sets a bold font weight style */
@@ -131,17 +142,17 @@ export interface UtilityPropsBase {
   /** Sets a `color` style */
   color?: string
   /** Sets a `font-family` style */
-  fontFamily?: 'body' | 'mono'
+  fontFamily?: keyof UtilityPropsForTheme<Theme['fontFamily']>
   /** Sets a `font-size` style */
-  fontSize?: 'sm' | 'base' | 'lg'
+  fontSize?: keyof UtilityPropsForTheme<Theme['fontSize']>
   /** Sets a `font-weight` style */
-  fontWeight?: 'light' | 'normal' | 'bold'
+  fontWeight?: keyof UtilityPropsForTheme<Theme['fontWeight']>
   /** Sets an italic style */
   italic?: boolean
   /** Sets a `letter-spacing` style */
-  letterSpacing?: 'tighter' | 'tight' | 'normal' | 'wide' | 'wider' | 'widest'
+  letterSpacing?: keyof UtilityPropsForTheme<Theme['letterSpacing']>
   /** Sets a `line-height` style */
-  lineHeight?: 'none' | 'tight' | 'snug' | 'normal' | 'relaxed' | 'loose'
+  lineHeight?: keyof UtilityPropsForTheme<Theme['lineHeight']>
   /** Sets a `text-align` style */
   textAlign?: 'left' | 'center' | 'right' | 'justify'
   /** Sets a `text-transform` style */
@@ -153,27 +164,27 @@ export interface UtilityPropsBase {
 
   // --- BORDERS
   /** Sets a `border` style */
-  border?: boolean
+  border?: keyof UtilityPropsForTheme<Theme['border']>
   /** Sets a `border-bottom` style */
-  borderBottom?: boolean
+  borderBottom?: keyof UtilityPropsForTheme<Theme['border']>
   /** Sets a `border-left` style */
-  borderLeft?: boolean
+  borderLeft?: keyof UtilityPropsForTheme<Theme['border']>
   /** Sets `border-right` style */
-  borderRight?: boolean
+  borderRight?: keyof UtilityPropsForTheme<Theme['border']>
   /** Sets a `border-top` style */
-  borderTop?: boolean
+  borderTop?: keyof UtilityPropsForTheme<Theme['border']>
   /** Sets a `border-color` style */
-  borderColor?: string
+  borderColor?: keyof UtilityPropsForTheme<Theme['borderColor']>
   /** Sets a `border-style` style */
   borderStyle?: 'solid' | 'dashed' | 'dotted' | 'double' | 'hidden' | 'none'
   /** Sets a `border-width` style */
-  borderWidth?: 0 | 1 | 2 | 4 | 8
+  borderWidth?: keyof UtilityPropsForTheme<Theme['borderWidth']>
   /** Sets a `border-radius` style */
-  borderRadius?: boolean | 'none' | 'full' | 'sm' | 'md' | 'lg' | 'xl' | '2xl' | '3xl'
+  borderRadius?: keyof UtilityPropsForTheme<Theme['borderRadius']>
 
   // --- EFFECTS
   /** Sets a `box-shadow` style */
-  boxShadow?: boolean | 'none' | 'inner' | 'sm' | 'md' | 'lg' | 'xl' | '2xl'
+  boxShadow?: keyof UtilityPropsForTheme<Theme['boxShadow']>
 
   // --- STATES
   /** Sets an active style */
@@ -528,27 +539,3 @@ function accessColor(base: any, path: string): string | undefined {
     return undefined
   }, base)
 }
-
-/** Theme-supported spacing values */
-export type Spacing =
-  | 'px'
-  | 0
-  | 0.5
-  | 1
-  | 1.5
-  | 2
-  | 2.5
-  | 3
-  | 4
-  | 5
-  | 6
-  | 8
-  | 10
-  | 12
-  | 14
-  | 16
-  | 20
-  | 24
-  | 32
-  | 48
-  | 64
