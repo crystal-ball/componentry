@@ -89,6 +89,7 @@ export const themeDefaults = {
 
   // --- LAYOUT
   zIndex: {
+    auto: 'auto',
     modal: 10,
   },
 
