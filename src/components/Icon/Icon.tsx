@@ -1,4 +1,4 @@
-import { forwardRef, type ComponentType } from 'react'
+import { type ComponentType, forwardRef } from 'react'
 import { type ComponentBaseProps } from '../../utils/base-types'
 import { element } from '../../utils/element-creator'
 import { type MergePropTypes } from '../../utils/types'
