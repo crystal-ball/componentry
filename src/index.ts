@@ -39,9 +39,12 @@ export { Tooltip } from './components/Tooltip/Tooltip'
 export { useActive, useActiveScrollReset, useNoScroll, useVisible } from './hooks'
 export { type Theme, createTheme } from './theme/theme'
 export { setupOutlineHandlers } from './utils/dom'
-export { borderPlugin } from './utils/tailwind-plugins'
 export {
   createUtilityClasses,
   initializeUtilityClassesTheme,
   type UtilityProps,
 } from './utils/utility-classes'
+
+// --- Tailwind utilities
+export { borderPlugin } from './utils/tailwind-plugins'
+export { tailwindSafelist } from './utils/tailwind-safelist'
