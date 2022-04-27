@@ -60,15 +60,15 @@
   },
   "peerDependencies": {
     "postcss": "8",
+    "postcss-js": "4",
+    "postcss-nested": "5",
     "react": ">=16.14"
   },
   "dependencies": {
     "@babel/runtime": "^7.17",
     "clsx": "^1.1",
-    "cosmiconfig": "^7.0",
-    "nanoid": "^3.2",
-    "postcss-js": "^4.0",
-    "postcss-nested": "^5.0"
+    "lilconfig": "^2.0",
+    "nanoid": "^3.2"
   },
   "devDependencies": {
     "@babel/cli": "7.17.6",
