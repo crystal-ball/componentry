@@ -60,9 +60,9 @@
   },
   "peerDependencies": {
     "postcss": "8",
-    "react": ">=16.14",
     "postcss-js": "4",
-    "postcss-nested": "5"
+    "postcss-nested": "5",
+    "react": ">=16.14"
   },
   "dependencies": {
     "@babel/runtime": "^7.17",
