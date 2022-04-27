@@ -1,13 +1,13 @@
-import { cosmiconfigSync } from 'cosmiconfig'
+import { lilconfigSync } from 'lilconfig'
 
 import { createTheme } from '../theme/theme'
 
-const explorerSync = cosmiconfigSync('componentry')
+const explorer = lilconfigSync('componentry')
 
 // --------------------------------------------------------
 // Config
 
-const configSearchResults = explorerSync.search()
+const configSearchResults = explorer.search()
 
 const userConfig = configSearchResults?.config ?? {}
 
