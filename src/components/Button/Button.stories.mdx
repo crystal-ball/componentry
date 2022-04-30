@@ -65,16 +65,56 @@ Pass `fullWidth` to make a button fill its parent container:
 
 ## Disabled
 
-Pass `disabled` to make a button disabled. Disabled buttons have `pointer-events: none`
-set which will prevent user actions.
+- Controlled by `disabled` prop
+- Adds `disabled` attribute to element and `.C9Y-Disabled` class
+- Adds `pointer-events: none` to prevent user actions
+- Prop `wrapWhenDisabled` controls wrapping disabled buttons with a span to support
+  accessing a ref (eg for tooltip) and to support setting `cursor: not-allowed` which has
+  no effect on `pointer-events: none` button element
 
-<div className='flex flex-row items-center gap-4'>
-  <Button variant='filled' disabled>
-    Button
-  </Button>
-  <Button variant='outlined' disabled>
-    Button
-  </Button>
+<div className='flex flex-col items-center'>
+  <div className='flex flex-row items-center gap-4'>
+    <Button variant='filled' disabled>
+      Button
+    </Button>
+    <Button variant='outlined' disabled>
+      Button
+    </Button>
+  </div>
+</div>
+
+## Icons
+
+- Button supports `startIcon` and `endIcon` props
+- Icon sizes are defined with a single level selector (important for ability to easily
+  override by consumer)
+- Button spacing is defaulted with `gap`
+
+<div className='flex flex-col items-center gap-4'>
+  <div className='flex gap-4'>
+    <Button variant='filled' startIcon='code' size='small'>
+      Button
+    </Button>
+    <Button variant='filled' endIcon='code' size='small'>
+      Button
+    </Button>
+  </div>
+  <div className='flex gap-4'>
+    <Button variant='filled' startIcon='code'>
+      Button
+    </Button>
+    <Button variant='filled' endIcon='code'>
+      Button
+    </Button>
+  </div>
+  <div className='flex gap-4'>
+    <Button variant='filled' startIcon='code' size='large'>
+      Button
+    </Button>
+    <Button variant='filled' endIcon='code' size='large'>
+      Button
+    </Button>
+  </div>
 </div>
 
 ## Buttons with hrefs
@@ -82,16 +122,5 @@ set which will prevent user actions.
 Buttons with an `href` will be rendered as anchors:
 
 <Button href='#test'>Button</Button>
-
-## Input buttons
-
-Pass an `as` prop to render input elements styled as buttons:
-
-<div className='flex flex-row items-center gap-4'>
-  <Button>Button</Button>
-  <Button as='input' value='Input' />
-  <Button as='input' type='submit' value='Submit' />
-  <Button as='input' type='reset' value='Reset' />
-</div>
 
 <ArgsTable of={Button} />
