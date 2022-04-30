@@ -1,5 +1,4 @@
 import { ArgsTable, Meta, Story } from '@storybook/addon-docs'
-import { BADGE } from '@geometricpanda/storybook-addon-badges'
 
 import { Grid } from './Grid'
 
@@ -7,11 +6,7 @@ export function padNum(num) {
   return num > 9 ? num : `0${num}`
 }
 
-<Meta
-  title='Components/Grid'
-  component={Grid}
-  parameters={{ badges: [BADGE.EXPERIMENTAL] }}
-/>
+<Meta title='Components/Grid' component={Grid} />
 
 # Grid
 
