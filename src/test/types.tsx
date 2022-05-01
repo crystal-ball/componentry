@@ -53,9 +53,14 @@ const testBadge = <Badge variant='filled'>77</Badge>
 
 const testBlock = <Block>test block</Block>
 const testButton = (
-  <Button variant='filled' size='small' active>
-    Click
-  </Button>
+  <>
+    <Button variant='filled' size='small' startIcon='code' active>
+      Click
+    </Button>
+    <Button variant='filled' size='small' startIcon={<Icon id='code' />} active>
+      Click
+    </Button>
+  </>
 )
 const testCard = (
   <Card p={2} className='rad'>

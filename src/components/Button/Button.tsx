@@ -1,5 +1,5 @@
 import clsx from 'clsx'
-import { ForwardedRef, JSXElementConstructor, ReactElement, forwardRef } from 'react'
+import { type ForwardedRef, type ReactElement, type ReactNode, forwardRef } from 'react'
 import { type ComponentBaseProps } from '../../utils/base-types'
 import { element } from '../../utils/element-creator'
 import { type MergePropTypes } from '../../utils/types'
@@ -10,15 +10,13 @@ import { useThemeProps } from '../Provider/Provider'
 export interface ButtonPropsOverrides {}
 
 export interface ButtonPropsDefaults {
-  children: ReactElement
+  children: ReactNode
   /** Button variant color */
   color?: 'primary'
   /** Disables the element, preventing mouse and keyboard events */
   disabled?: boolean
   /** Icon positioned after button content */
-  endIcon?:
-    | string
-    | JSXElementConstructor<{ className?: string; [Prop: string]: unknown }>
+  endIcon?: string | JSX.Element
   /** Toggles full width element layout */
   fullWidth?: boolean
   /** HTML element href */
@@ -26,9 +24,7 @@ export interface ButtonPropsDefaults {
   /** Sets the display size */
   size?: 'small' | 'large'
   /** Icon positioned before button content */
-  startIcon?:
-    | string
-    | JSXElementConstructor<{ className?: string; [Prop: string]: unknown }>
+  startIcon?: string | JSX.Element
   /** Indicates whether buttons in a disabled state should be wrapped with a span */
   wrapWhenDisabled?: boolean
   /** Display variant */
@@ -60,8 +56,8 @@ export const Button: Button = forwardRef((props, ref) => {
     variant = 'filled',
     children,
     disabled,
-    startIcon: StartIcon,
-    endIcon: EndIcon,
+    startIcon,
+    endIcon,
     color,
     fullWidth,
     size,
@@ -74,17 +70,17 @@ export const Button: Button = forwardRef((props, ref) => {
 
   const iconCx = clsx('C9Y-Button-Icon', { [`C9Y-Button-Icon-${size}Size`]: size })
   const decoratedStartIcon =
-    StartIcon === undefined ? null : typeof StartIcon === 'string' ? (
-      <Icon id={StartIcon} className={iconCx} />
+    startIcon === undefined ? null : typeof startIcon === 'string' ? (
+      <Icon id={startIcon} className={iconCx} />
     ) : (
-      <StartIcon className={iconCx} />
+      <span className={iconCx}>{startIcon}</span>
     )
 
   const decoratedEndIcon =
-    EndIcon === undefined ? null : typeof EndIcon === 'string' ? (
-      <Icon id={EndIcon} className={iconCx} />
+    endIcon === undefined ? null : typeof endIcon === 'string' ? (
+      <Icon id={endIcon} className={iconCx} />
     ) : (
-      <EndIcon className={iconCx} />
+      <span className={iconCx}>{endIcon}</span>
     )
 
   const contents = element({
@@ -112,7 +108,9 @@ export const Button: Button = forwardRef((props, ref) => {
   })
 
   return disabled && wrapWhenDisabled ? (
-    <span className='C9Y-Button-DisabledWrapper'>{contents}</span>
+    <span className={clsx('C9Y-Button-DisabledWrapper', { 'w-full': fullWidth })}>
+      {contents}
+    </span>
   ) : (
     contents
   )

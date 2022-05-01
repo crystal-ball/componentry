@@ -72,7 +72,7 @@ Pass `fullWidth` to make a button fill its parent container:
   accessing a ref (eg for tooltip) and to support setting `cursor: not-allowed` which has
   no effect on `pointer-events: none` button element
 
-<div className='flex flex-col items-center'>
+<div className='flex flex-col items-center gap-4'>
   <div className='flex flex-row items-center gap-4'>
     <Button variant='filled' disabled>
       Button
@@ -81,6 +81,9 @@ Pass `fullWidth` to make a button fill its parent container:
       Button
     </Button>
   </div>
+  <Button disabled fullWidth>
+    Button
+  </Button>
 </div>
 
 ## Icons
@@ -121,6 +124,11 @@ Pass `fullWidth` to make a button fill its parent container:
 
 Buttons with an `href` will be rendered as anchors:
 
-<Button href='#test'>Button</Button>
+<div className='flex flex-col items-center gap-4'>
+  <Button href='#test'>Button</Button>
+  <Button disabled href='#test'>
+    Button
+  </Button>
+</div>
 
 <ArgsTable of={Button} />
