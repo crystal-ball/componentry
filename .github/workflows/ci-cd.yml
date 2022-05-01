@@ -43,7 +43,7 @@ jobs:
           GIT_BRANCH: ${{ github.head_ref }}
       - name: Codecov report
         if: success()
-        uses: codecov/codecov-action@v2
+        uses: codecov/codecov-action@v3
   # --- Chromatic publishing 📚
   chromatic-deployment:
     runs-on: ubuntu-latest
