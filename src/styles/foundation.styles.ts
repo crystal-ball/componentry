@@ -51,6 +51,13 @@ export const foundationStyles = {
     boxSizing: 'border-box',
   },
 
+  // Modern browser focus styles for keyboard users: Will add a focus outline for elements
+  // like buttons when keyboard activated only
+  ':focus-visible': {
+    outline: `${theme.colors.primary[500]} solid 2px`,
+    outlineOffset: '2px',
+  },
+
   html: {
     lineHeight: theme.lineHeight.normal, // Use a consistent sensible line-height in all browsers.
     tabSize: 4, // Use a more readable tab size.
@@ -152,10 +159,6 @@ export const foundationStyles = {
 
   "[role='button']": {
     cursor: 'pointer', // Set the default cursor for buttons.
-  },
-
-  ':disabled': {
-    cursor: 'default', // Make sure disabled buttons don't get the pointer cursor.
   },
 
   'input, optgroup, select, textarea': {

@@ -16,8 +16,9 @@ import { popoverStyles } from '../components/Popover/Popover.styles'
 import { tableStyles } from '../components/Table/Table.styles'
 import { textStyles } from '../components/Text/Text.styles'
 import { tooltipStyles } from '../components/Tooltip/Tooltip.styles'
+import { foundationStyles } from '../styles/foundation.styles'
+import { states } from '../styles/states.styles'
 import { deepMerge } from '../utils/deep-merge'
-import { foundationStyles } from '../utils/foundation.styles'
 import { getMergedConfig } from './configs'
 
 const userConfigs = getMergedConfig()
@@ -39,10 +40,15 @@ const componentStyles = {
   Tooltip: tooltipStyles,
 }
 
-const { components, foundation } = deepMerge(
+const utilityStyles = {
+  states,
+}
+
+const { components, foundation, utilities } = deepMerge(
   {
-    components: componentStyles,
     foundation: foundationStyles,
+    components: componentStyles,
+    utilities: utilityStyles,
   },
   userConfigs,
 )
@@ -69,7 +75,17 @@ export const plugin: PluginCreator<Record<string, never>> = () => {
           const ast = processor.process(foundation, {
             parser: postcssJs,
           })
-          nodes = ast.root.nodes // eslint-disable-line prefer-destructuring
+          ;({ nodes } = ast.root)
+        } else if (directiveTarget === 'utilities') {
+          // Convenience rule for including all utility styles, iterate through
+          // style object to assemble all nodes
+          Object.values(utilities).forEach((styles) => {
+            // @ts-expect-error -- Need to type everything for this to work
+            const ast = processor.process(styles, {
+              parser: postcssJs,
+            })
+            nodes = nodes.concat(ast.root.nodes)
+          })
         } else if (directiveTarget === 'components') {
           // Convenience rule for including all component styles, iterate through
           // style object to assemble all nodes
@@ -87,7 +103,7 @@ export const plugin: PluginCreator<Record<string, never>> = () => {
           const ast = processor.process(components[directiveTarget], {
             parser: postcssJs,
           })
-          nodes = ast.root.nodes // eslint-disable-line prefer-destructuring
+          ;({ nodes } = ast.root)
         } else {
           // Fail fast for bad directives, eg "@componentry ohno;"
           throw new Error(`Unknown @componentry param: ${atRule.params}`)
