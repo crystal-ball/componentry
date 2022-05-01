@@ -19,10 +19,6 @@ export const buttonStyles: ButtonStyles = {
     border: 'none', // reset borders for easier opt-in styling
     userSelect: 'none', // Prevent text selection on click of buttons
     whiteSpace: 'nowrap', // By default button content shouldn't wrap
-
-    '&.C9Y-disabled': {
-      pointerEvents: 'none',
-    },
   },
 
   '.C9Y-Button-DisabledWrapper': {
@@ -105,7 +101,7 @@ export const buttonStyles: ButtonStyles = {
 
 export interface ButtonStyles {
   /** Base class applied to all variants for shared structural styles */
-  '.C9Y-Button-base': { '&.C9Y-disabled': StylesDefinition } & StylesDefinition
+  '.C9Y-Button-base': StylesDefinition
   /** Class applied to disabled button wrapper element */
   '.C9Y-Button-DisabledWrapper': StylesDefinition
   /** Base class applied to all Button Icons */
