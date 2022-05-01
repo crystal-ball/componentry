@@ -16,8 +16,10 @@
 /* Normally this would be an override in theme, but we don't have a theme for this
  Storybook for simplicity -> Feather icons use stroke, not fill. */
 .C9Y-Icon-font {
+  /* Storybook uses Feather icons -> which use a 2px stroke instead of a fill */
   fill: none;
   stroke: currentColor;
+  stroke-width: 2px;
 }
 
 .sbdocs-h2 {
