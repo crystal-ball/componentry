@@ -13,23 +13,23 @@ export const linkStyles: LinkStyles = {
     border: 'none',
   },
 
-  // VARIANTS
-  '.C9Y-Link-text': {
-    fontSize: theme.fontSize.body,
-    color: theme.colors.primary[500],
-    textDecoration: 'underline',
-    '&:hover': {
-      color: theme.colors.primary[700],
-    },
+  '.C9Y-Link-DisabledWrapper': {
+    cursor: 'not-allowed',
   },
 
-  '.C9Y-Link-inherit': {
+  // VARIANTS
+  '.C9Y-Link-text': {
     fontSize: 'inherit',
-    fontWeight: 'inherit',
     color: theme.colors.primary[500],
     textDecoration: 'underline',
-    '&:hover': {
+    '&:hover, .C9Y-hover': {
       color: theme.colors.primary[700],
+    },
+    '&:active, &.C9Y-active': {
+      color: theme.colors.primary[900],
+    },
+    '&:disabled, &.C9Y-disabled': {
+      color: theme.colors.primary[300],
     },
   },
 }
@@ -37,18 +37,12 @@ export const linkStyles: LinkStyles = {
 export interface LinkStyles {
   /** Base class applied to all variants for shared structural styles */
   '.C9Y-Link-base': StylesDefinition
+  /** Class applied to disabled links' wrapper element */
+  '.C9Y-Link-DisabledWrapper': StylesDefinition
   /** Variant class applied when `variant="text"` */
   '.C9Y-Link-text': {
-    '&:hover': StylesDefinition
-  } & StylesDefinition
-  /** Variant class applied when `variant="inherit"` */
-  '.C9Y-Link-inherit': {
-    '&:hover': StylesDefinition
+    '&:hover, .C9Y-hover': StylesDefinition
+    '&:active, &.C9Y-active': StylesDefinition
+    '&:disabled, &.C9Y-disabled': StylesDefinition
   } & StylesDefinition
 }
-
-// --- ℹ️ Disabled link styles
-// Componentry doesn't include disabled link styles as a UX best
-// practice, but if necessary it's best to define normal link styles
-// using `.link[href]` as the selector, and `link` as a 'disabled' link and
-// then don't pass an href to create a 'placeholder link'

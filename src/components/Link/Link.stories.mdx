@@ -7,12 +7,11 @@ import { Link } from './Link'
 
 # Link
 
-The Link component provides traditional link elements. Link elements without an `href` are
-rendered with button elements.
+The Link component provides traditional link elements.
 
 ## Variants
 
-A `text` variant link:
+Link has a single variant, `text`, that can be used inside any text element:
 
 <Story
   name='Link'
@@ -26,23 +25,35 @@ A `text` variant link:
 >
   <Link href='#test'>Text link</Link>
   <Text variant='h2'>
-    The inherit variant can be used for a{' '}
-    <Link variant='inherit' href='#test'>
-      Link
+    Link can be used inside{' '}
+    <Link fontSize='inherit' href='#test'>
+      headings
     </Link>{' '}
-    inside of some text.
+    .
   </Text>
 </Story>
 
 ## Button links
 
-Links without an href are rendered as buttons.
+Link elements without an `href` are rendered with button elements.
 
 <Link onClick={console.log}>Button link</Link>
 
+## Disabled
+
+<div className='flex flex-col items-center gap-4'>
+  <Link disabled href='#test'>
+    Text link
+  </Link>
+  <Link disabled onClick={console.log}>
+    Button link
+  </Link>
+</div>
+
 ## Routing
 
-A default `as` prop can be configured to handle routing components like React Router.
+The `as` prop can be configured to handle routing components like React Router, using the
+theme to set as default.
 
 ## Props
 
