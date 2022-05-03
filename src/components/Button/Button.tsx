@@ -25,10 +25,10 @@ export interface ButtonPropsDefaults {
   size?: 'small' | 'large'
   /** Icon positioned before button content */
   startIcon?: string | JSX.Element
-  /** Indicates whether buttons in a disabled state should be wrapped with a span */
-  wrapWhenDisabled?: boolean
   /** Display variant */
   variant?: 'filled' | 'outlined'
+  /** Indicates whether buttons in a disabled state should be wrapped with a span */
+  wrapWhenDisabled?: boolean
 }
 
 export type ButtonProps = MergePropTypes<ButtonPropsDefaults, ButtonPropsOverrides> &

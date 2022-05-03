@@ -15,7 +15,9 @@ export interface LinkPropsDefaults {
   /** Routing to */
   to?: string
   /** Display variant */
-  variant?: 'text' | 'inherit'
+  variant?: 'text'
+  /** Indicates whether buttons in a disabled state should be wrapped with a span */
+  wrapWhenDisabled?: boolean
 }
 
 export type LinkProps = MergePropTypes<LinkPropsDefaults, LinkPropsOverrides> &
@@ -39,17 +41,28 @@ export interface Link {
  * ```
  */
 export const Link: Link = forwardRef((props, ref) => {
-  const { variant = 'text', ...merged } = {
+  const {
+    disabled,
+    variant = 'text',
+    wrapWhenDisabled = true,
+    ...merged
+  } = {
     ...useThemeProps('Link'),
     ...props,
   }
 
-  return element({
+  const contents = element({
     ref,
     as: merged.href ? 'a' : 'button',
     type: merged.href ? undefined : 'button',
     componentCx: `C9Y-Link-base C9Y-Link-${variant}`,
     ...merged,
   })
+
+  return disabled && wrapWhenDisabled ? (
+    <span className='C9Y-Link-DisabledWrapper'>{contents}</span>
+  ) : (
+    contents
+  )
 })
 Link.displayName = 'Link'

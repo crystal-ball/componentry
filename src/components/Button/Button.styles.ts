@@ -41,7 +41,7 @@ export const buttonStyles: ButtonStyles = {
     '&:active, &.C9Y-active': {
       backgroundColor: theme.colors.primary[900],
     },
-    '&.C9Y-disabled': {
+    '&:disabled, &.C9Y-disabled': {
       backgroundColor: theme.colors.primary[300],
     },
 
@@ -67,7 +67,7 @@ export const buttonStyles: ButtonStyles = {
       borderColor: theme.colors.primary[900],
       color: theme.colors.primary[900],
     },
-    '&.C9Y-disabled': {
+    '&:disabled, &.C9Y-disabled': {
       borderColor: theme.colors.primary[300],
       color: theme.colors.primary[300],
     },
@@ -102,7 +102,7 @@ export const buttonStyles: ButtonStyles = {
 export interface ButtonStyles {
   /** Base class applied to all variants for shared structural styles */
   '.C9Y-Button-base': StylesDefinition
-  /** Class applied to disabled button wrapper element */
+  /** Class applied to disabled buttons' wrapper element */
   '.C9Y-Button-DisabledWrapper': StylesDefinition
   /** Base class applied to all Button Icons */
   '.C9Y-Button-Icon': StylesDefinition
@@ -110,13 +110,13 @@ export interface ButtonStyles {
   '.C9Y-Button-filled': {
     '&:hover, &.C9Y-hover': StylesDefinition
     '&:active, &.C9Y-active': StylesDefinition
-    '&.C9Y-disabled': StylesDefinition
+    '&:disabled, &.C9Y-disabled': StylesDefinition
   } & StylesDefinition
   /** Variant class applied when `variant="outlined"` */
   '.C9Y-Button-outlined': {
     '&:hover, &.C9Y-hover': StylesDefinition
     '&:active, &.C9Y-active': StylesDefinition
-    '&.C9Y-disabled': StylesDefinition
+    '&:disabled, &.C9Y-disabled': StylesDefinition
   } & StylesDefinition
   /** Sizing class applied when `size="small"` */
   '.C9Y-Button-smallSize': StylesDefinition

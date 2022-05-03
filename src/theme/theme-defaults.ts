@@ -28,6 +28,7 @@ export const themeDefaults = {
     current: 'currentColor',
     transparent: 'transparent',
     background: '#fff',
+    inherit: 'inherit',
     inverse: '#eff',
     gray,
     primary: {
@@ -163,6 +164,7 @@ export const themeDefaults = {
     mono: "SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New', monospace",
   },
   fontSize: {
+    inherit: 'inherit',
     base: '1rem', // HTML base size
     sm: '0.875rem',
     lg: '1.25rem',
