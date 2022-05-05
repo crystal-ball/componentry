@@ -65,6 +65,8 @@ export const tailwindSafelist = [
   'lowercase',
   'capitalize',
   'normal-case',
+  // overflow
+  'truncate',
 
   // BACKGROUNDS
   { pattern: /^bg.*/ }, // backgroundColor
