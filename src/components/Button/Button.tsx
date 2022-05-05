@@ -46,7 +46,7 @@ export interface Button {
  * Button provides actionable elements for creating accessible user interactions.
  * @example
  * ```tsx
- * <Button onClick={() => buildRadical()}>
+ * <Button onClick={() => buildSomethingRadical()}>
  *   Build something radical
  * </Button>
  * ```

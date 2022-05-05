@@ -6,9 +6,9 @@ const { theme } = getMergedConfig()
 //                                        <Button /> styles
 // --------------------------------------------------------
 
-export const buttonStyles: ButtonStyles = {
+export const iconButtonStyles: IconButtonStyles = {
   // BASE
-  '.C9Y-Button-base': {
+  '.C9Y-IconButton-base': {
     alignItems: 'center',
     display: 'inline-flex',
     justifyContent: 'center',
@@ -21,14 +21,14 @@ export const buttonStyles: ButtonStyles = {
     whiteSpace: 'nowrap', // By default button content shouldn't wrap
   },
 
-  '.C9Y-Button-DisabledWrapper': {
+  '.C9Y-IconButton-DisabledWrapper': {
     cursor: 'not-allowed',
   },
 
   // VARIANTS
-  '.C9Y-Button-filled': {
+  '.C9Y-IconButton-filled': {
     height: '2rem',
-    padding: '0 1rem',
+    width: '2rem',
     backgroundColor: theme.colors.primary[500],
     borderRadius: theme.borderRadius.DEFAULT,
     color: theme.colors.inverse,
@@ -44,14 +44,11 @@ export const buttonStyles: ButtonStyles = {
     '&:disabled, &.C9Y-disabled': {
       backgroundColor: theme.colors.primary[300],
     },
-
-    // For buttons with color options you'll typically define them in each variant
-    // like:
-    // '&.C9Y-Button-errorColor': { ... }
   },
-  '.C9Y-Button-outlined': {
+
+  '.C9Y-IconButton-outlined': {
     height: '2rem',
-    padding: '0 1rem',
+    width: '2rem',
     backgroundColor: 'transparent',
     border: `1px solid ${theme.colors.primary[500]}`,
     borderRadius: theme.borderRadius.DEFAULT,
@@ -74,56 +71,38 @@ export const buttonStyles: ButtonStyles = {
   },
 
   // SIZES
-  '.C9Y-Button-smallSize': {
+  '.C9Y-IconButton-smallSize': {
     height: '1.5rem',
-    borderRadius: theme.borderRadius.DEFAULT,
+    width: '1.5rem',
     fontSize: '0.75rem',
-    padding: '0rem 0.5rem',
   },
-  '.C9Y-Button-largeSize': {
+  '.C9Y-IconButton-largeSize': {
     height: '2.5rem',
-    borderRadius: theme.borderRadius.md,
+    width: '2.5rem',
     fontSize: '1rem',
-    padding: '0 2rem',
-  },
-
-  // ICONS
-  '.C9Y-Button-Icon': {
-    fontSize: '1rem',
-  },
-  '.C9Y-Button-Icon-smallSize': {
-    fontSize: '0.75rem',
-  },
-  '.C9Y-Button-Icon-largeSize': {
-    fontSize: '1.25rem',
   },
 }
 
-export interface ButtonStyles {
+export interface IconButtonStyles {
   /** Base class applied to all variants for shared structural styles */
-  '.C9Y-Button-base': StylesDefinition
+  '.C9Y-IconButton-base': StylesDefinition
   /** Class applied to disabled button wrapper element */
-  '.C9Y-Button-DisabledWrapper': StylesDefinition
-  /** Base class applied to all Button Icons */
-  '.C9Y-Button-Icon': StylesDefinition
-  /** Variant class applied when `variant="filled"` */
-  '.C9Y-Button-filled': {
+  '.C9Y-IconButton-DisabledWrapper': StylesDefinition
+
+  /** Variant class applied when `variant="transparent"` */
+  '.C9Y-IconButton-filled': {
     '&:hover, &.C9Y-hover': StylesDefinition
     '&:active, &.C9Y-active': StylesDefinition
     '&:disabled, &.C9Y-disabled': StylesDefinition
   } & StylesDefinition
   /** Variant class applied when `variant="outlined"` */
-  '.C9Y-Button-outlined': {
+  '.C9Y-IconButton-outlined': {
     '&:hover, &.C9Y-hover': StylesDefinition
     '&:active, &.C9Y-active': StylesDefinition
     '&:disabled, &.C9Y-disabled': StylesDefinition
   } & StylesDefinition
   /** Sizing class applied when `size="small"` */
-  '.C9Y-Button-smallSize': StylesDefinition
+  '.C9Y-IconButton-smallSize': StylesDefinition
   /** Sizing class applied when `size="large"` */
-  '.C9Y-Button-largeSize': StylesDefinition
-  /** Sizing class applied to Button Icons when `size="small"` */
-  '.C9Y-Button-Icon-smallSize': StylesDefinition
-  /** Sizing class applied Button Icons when `size="large"` */
-  '.C9Y-Button-Icon-largeSize': StylesDefinition
+  '.C9Y-IconButton-largeSize': StylesDefinition
 }

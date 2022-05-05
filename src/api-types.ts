@@ -13,6 +13,11 @@ export { type FlexPropsDefaults } from './components/Flex/Flex'
 export { type GridPropsDefaults } from './components/Grid/Grid'
 export { type IconPropsDefaults, type IconPropsOverrides } from './components/Icon/Icon'
 export { type IconStyles } from './components/Icon/Icon.styles'
+export {
+  type IconButtonPropsDefaults,
+  type IconButtonPropsOverrides,
+} from './components/IconButton/IconButton'
+export { type IconButtonStyles } from './components/IconButton/IconButton.styles'
 export { type LinkPropsDefaults, type LinkPropsOverrides } from './components/Link/Link'
 export { type LinkStyles } from './components/Link/Link.styles'
 export { type TextPropsDefaults, type TextPropsOverrides } from './components/Text/Text'

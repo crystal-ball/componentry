@@ -9,6 +9,7 @@ import { cardStyles } from '../components/Card/Card.styles'
 import { closeStyles } from '../components/Close/Close.styles'
 import { formGroupStyles } from '../components/FormGroup/FormGroup.styles'
 import { iconStyles } from '../components/Icon/Icon.styles'
+import { iconButtonStyles } from '../components/IconButton/IconButton.styles'
 import { inputStyles } from '../components/Input/Input.styles'
 import { linkStyles } from '../components/Link/Link.styles'
 import { modalStyles } from '../components/Modal/Modal.styles'
@@ -30,6 +31,7 @@ const componentStyles = {
   Card: cardStyles,
   Close: closeStyles,
   Icon: iconStyles,
+  IconButton: iconButtonStyles,
   Input: inputStyles,
   FormGroup: formGroupStyles,
   Link: linkStyles,
