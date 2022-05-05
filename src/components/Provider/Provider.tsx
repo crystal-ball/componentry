@@ -29,6 +29,7 @@ import {
 import { type FlexProps } from '../Flex/Flex'
 import { type GridProps } from '../Grid/Grid'
 import { type IconProps } from '../Icon/Icon'
+import { type IconButtonProps } from '../IconButton/IconButton'
 import { type InputFieldProps, type InputLabelProps } from '../Input/Input'
 import { type LinkProps } from '../Link/Link'
 import {
@@ -74,6 +75,7 @@ export type Components = {
   Flex?: FlexProps
   Grid?: GridProps
   Icon?: IconProps
+  IconButton?: IconButtonProps
   InputField?: InputFieldProps
   InputLabel?: InputLabelProps
   Link?: LinkProps

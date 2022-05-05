@@ -26,50 +26,50 @@ describe('<Button/>', () => {
   })
 
   it('When `type` is passed, then it overrides the default', () => {
-    render(<Button type='reset'>Button</Button>)
+    render(<Button type='submit'>Button</Button>)
 
-    expect(screen.getByRole('button')).toHaveAttribute('type', 'reset')
+    expect(screen.getByRole('button')).toHaveAttribute('type', 'submit')
   })
 
   it('When `variant` is passed, then it should be used as base className value', () => {
-    render(<Button variant='demo'>Button</Button>)
+    render(<Button variant='outlined'>Button</Button>)
 
-    expect(screen.getByRole('button')).toHaveClass('C9Y-Button-base C9Y-Button-demo')
+    expect(screen.getByRole('button')).toHaveClass('C9Y-Button-base C9Y-Button-outlined')
   })
 
   it('When `color` is passed, then the color className should render', () => {
     render(
       <>
-        <Button color='info'>Button</Button>
-        <Button variant='demo' color='info'>
-          Variant Button
+        <Button color='primary'>Button</Button>
+        <Button variant='outlined' color='primary'>
+          Outlined Button
         </Button>
       </>,
     )
 
     expect(screen.getByRole('button', { name: 'Button' })).toHaveClass(
-      'C9Y-Button-base C9Y-Button-filled C9Y-Button-infoColor',
+      'C9Y-Button-base C9Y-Button-filled C9Y-Button-primaryColor',
     )
-    expect(screen.getByRole('button', { name: 'Variant Button' })).toHaveClass(
-      'C9Y-Button-base C9Y-Button-demo C9Y-Button-infoColor',
+    expect(screen.getByRole('button', { name: 'Outlined Button' })).toHaveClass(
+      'C9Y-Button-base C9Y-Button-outlined C9Y-Button-primaryColor',
     )
   })
 
   it('When `size` is passed, then the size className should render', () => {
     render(
       <>
-        <Button size='sm'>Button</Button>
-        <Button variant='demo' size='sm'>
-          Variant Button
+        <Button size='small'>Button</Button>
+        <Button variant='outlined' size='small'>
+          Outlined Button
         </Button>
       </>,
     )
 
     expect(screen.getByRole('button', { name: 'Button' })).toHaveClass(
-      'C9Y-Button-base C9Y-Button-filled C9Y-Button-smSize',
+      'C9Y-Button-base C9Y-Button-filled C9Y-Button-smallSize',
     )
-    expect(screen.getByRole('button', { name: 'Variant Button' })).toHaveClass(
-      'C9Y-Button-base C9Y-Button-demo C9Y-Button-smSize',
+    expect(screen.getByRole('button', { name: 'Outlined Button' })).toHaveClass(
+      'C9Y-Button-base C9Y-Button-outlined C9Y-Button-smallSize',
     )
   })
 })
@@ -79,18 +79,6 @@ describe('<Button/>', () => {
 describe('<Button /> Snapshots', () => {
   it('renders defaults correctly', () => {
     render(<Button>Componentry</Button>)
-
-    expect(screen.getByRole('button')).toMatchSnapshot()
-  })
-
-  it('renders brand color correctly', () => {
-    render(<Button color='success'>Componentry</Button>)
-
-    expect(screen.getByRole('button')).toMatchSnapshot()
-  })
-
-  it('renders large outline correctly', () => {
-    render(<Button size='lg'>Componentry</Button>)
 
     expect(screen.getByRole('button')).toMatchSnapshot()
   })

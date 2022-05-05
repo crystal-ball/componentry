@@ -1,26 +1,8 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<Button /> Snapshots renders brand color correctly 1`] = `
-<button
-  class="C9Y-Button-base C9Y-Button-filled C9Y-Button-successColor"
-  type="button"
->
-  Componentry
-</button>
-`;
-
 exports[`<Button /> Snapshots renders defaults correctly 1`] = `
 <button
   class="C9Y-Button-base C9Y-Button-filled"
-  type="button"
->
-  Componentry
-</button>
-`;
-
-exports[`<Button /> Snapshots renders large outline correctly 1`] = `
-<button
-  class="C9Y-Button-base C9Y-Button-filled C9Y-Button-lgSize"
   type="button"
 >
   Componentry
