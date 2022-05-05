@@ -59,8 +59,11 @@ export function configureTextElementsMap(elementsMap: TextElementsMap): void {
 export interface TextPropsOverrides {}
 
 export interface TextPropsDefaults {
+  htmlFor?: string // DEBT: This should be computed from the "as='label'"
   /** Display variant */
   variant?: 'h1' | 'h2' | 'h3' | 'body' | 'code' | 'small'
+  /** Truncates overflowing text with an ellipses */
+  truncate?: boolean
 }
 
 export type TextProps = MergePropTypes<TextPropsDefaults, TextPropsOverrides> &
@@ -84,7 +87,11 @@ export interface Text {
  * ```
  */
 export const Text: Text = forwardRef((props, ref) => {
-  const { variant = 'body', ...rest } = {
+  const {
+    truncate = false,
+    variant = 'body',
+    ...rest
+  } = {
     ...useThemeProps('Text'),
     ...props,
   }
@@ -92,7 +99,7 @@ export const Text: Text = forwardRef((props, ref) => {
   return element({
     ref,
     as: textElementMap[variant],
-    componentCx: `C9Y-Text-base C9Y-Text-${variant}`,
+    componentCx: [`C9Y-Text-base C9Y-Text-${variant}`, { truncate }],
     ...rest,
   })
 })

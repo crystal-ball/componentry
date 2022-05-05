@@ -82,6 +82,11 @@ const testText = (
     Test the text
   </Text>
 )
+const testTextAsAssertion = (
+  <Text as='label' htmlFor='test'>
+    Test the text
+  </Text>
+)
 
 // --------------------------------------------------------
 // Testing extending html attrs with classnames className
