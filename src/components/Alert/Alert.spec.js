@@ -34,7 +34,8 @@ describe('<Alert/>', () => {
 
     expect(screen.getByText('Warning!')).toBeInTheDocument()
 
-    userEvent.click(screen.getByLabelText('close'))
+    // eslint-disable-next-line testing-library/no-await-sync-events
+    await userEvent.click(screen.getByLabelText('close'))
 
     expect(deactivate).toHaveBeenCalledTimes(1)
 

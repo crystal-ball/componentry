@@ -10,7 +10,9 @@
  * Find the closest DOM parent with the a `data-id` matching `guid`. If a matching
  * ancestor is not found returns `null`
  */
-export function closest(target: HTMLElement, guid: string): HTMLElement | null {
+export function closest(target: EventTarget | null, guid: string): EventTarget | null {
+  if (!target || !(target instanceof HTMLElement)) return null
+
   if (target.dataset.id === guid) return target
   if (target.parentNode && target.parentNode instanceof HTMLElement) {
     return closest(target.parentNode, guid)

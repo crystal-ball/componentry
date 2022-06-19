@@ -14,9 +14,9 @@ export interface ActiveContext {
   /** Unique ide for this context */
   guid: string
   /** Called on activate events */
-  activate: (event: React.MouseEvent<HTMLElement>) => void
+  activate: (event: KeyboardEvent | MouseEvent | TouchEvent | React.MouseEvent) => void
   /** Called on deactivate events */
-  deactivate: (event: React.MouseEvent<HTMLElement>) => void
+  deactivate: (event: KeyboardEvent | MouseEvent | TouchEvent | React.MouseEvent) => void
 }
 
 /** Active context */
@@ -113,7 +113,7 @@ export function activeContainerBuilder<TProps extends ActiveContainerBaseProps>(
      * listeners)
      */
     const handleActivate = useCallback(
-      (evt: React.MouseEvent<HTMLElement>) => {
+      (evt: KeyboardEvent | MouseEvent | TouchEvent | React.MouseEvent) => {
         if (activate) {
           activate(evt)
         } else {
@@ -133,7 +133,7 @@ export function activeContainerBuilder<TProps extends ActiveContainerBaseProps>(
      * listeners)
      */
     const handleDeactivate = useCallback(
-      (evt: React.MouseEvent<HTMLElement>) => {
+      (evt: KeyboardEvent | MouseEvent | TouchEvent | React.MouseEvent) => {
         if (deactivate) {
           deactivate(evt)
         } else {
@@ -147,7 +147,7 @@ export function activeContainerBuilder<TProps extends ActiveContainerBaseProps>(
 
     /** Call deactivate if click event was not inside the element */
     const onClick = useCallback(
-      (e) => {
+      (e: MouseEvent | TouchEvent) => {
         if (!closest(e.target, guid)) handleDeactivate(e)
       },
       [guid, handleDeactivate],
@@ -155,8 +155,8 @@ export function activeContainerBuilder<TProps extends ActiveContainerBaseProps>(
 
     /** Call deactivate on keypress if `esc` (27) was pressed */
     const onKeydown = useCallback(
-      (e) => {
-        if (e.which === 27 || e.code === 27) handleDeactivate(e)
+      (e: KeyboardEvent) => {
+        if (e.code === 'Escape' || e.which === 27) handleDeactivate(e)
       },
       [handleDeactivate],
     )
@@ -164,17 +164,23 @@ export function activeContainerBuilder<TProps extends ActiveContainerBaseProps>(
     /** Handle adding/removing the component DOM event listeners */
     const updateEventListeners = useCallback(
       (updateType: 'add' | 'remove') => {
-        // TODO: how to type updateListener about without a type assertion
-        const updateListener = `${updateType}EventListener` as
-          | 'addEventListener'
-          | 'removeEventListener'
-
-        if (escEvents) document[updateListener]('keydown', onKeydown)
+        if (escEvents) {
+          if (updateType === 'add') {
+            document.addEventListener('keydown', onKeydown)
+          } else {
+            document.removeEventListener('keydown', onKeydown)
+          }
+        }
 
         if (clickEvents) {
           // TODO: are these the best events to listen to??
-          document[updateListener]('mouseup', onClick)
-          document[updateListener]('touchend', onClick)
+          if (updateType === 'add') {
+            document.addEventListener('mouseup', onClick)
+            document.addEventListener('touchend', onClick)
+          } else {
+            document.removeEventListener('mouseup', onClick)
+            document.removeEventListener('touchend', onClick)
+          }
         }
       },
       [clickEvents, escEvents, onClick, onKeydown],
@@ -225,10 +231,7 @@ export function activeContainerBuilder<TProps extends ActiveContainerBaseProps>(
           onMouseLeave: mouseEvents ? handleDeactivate : undefined,
 
           // Handle render patterns
-          children:
-            typeof children === 'function'
-              ? children(activeValues) // Handle FaCC syntax
-              : children,
+          children,
           ...rest,
         })}
       </ActiveCtx.Provider>
