@@ -69,26 +69,13 @@ export const Button: Button = forwardRef((props, ref) => {
   }
 
   const iconCx = clsx('C9Y-Button-Icon', { [`C9Y-Button-Icon-${size}Size`]: size })
-  const decoratedStartIcon =
-    startIcon === undefined ? null : typeof startIcon === 'string' ? (
-      <Icon id={startIcon} className={iconCx} />
-    ) : (
-      <span className={iconCx}>{startIcon}</span>
-    )
-
-  const decoratedEndIcon =
-    endIcon === undefined ? null : typeof endIcon === 'string' ? (
-      <Icon id={endIcon} className={iconCx} />
-    ) : (
-      <span className={iconCx}>{endIcon}</span>
-    )
-
   const contents = element({
     ref,
     disabled,
     // If an href is passed, this instance should render an anchor tag
     as: merged.href ? 'a' : 'button',
-    type: merged.href ? undefined : 'button',
+    // @ts-expect-error - Ensure button works for router library usage even though to isn't in props
+    type: merged.href || merged.to ? undefined : 'button',
     componentCx: [
       `C9Y-Button-base C9Y-Button-${variant}`,
       {
@@ -99,9 +86,17 @@ export const Button: Button = forwardRef((props, ref) => {
     ],
     children: (
       <>
-        {decoratedStartIcon}
+        {startIcon && (
+          <span className={iconCx}>
+            {typeof startIcon === 'string' ? <Icon id={startIcon} /> : startIcon}
+          </span>
+        )}
         {children}
-        {decoratedEndIcon}
+        {endIcon && (
+          <span className={iconCx}>
+            {typeof endIcon === 'string' ? <Icon id={endIcon} /> : endIcon}
+          </span>
+        )}
       </>
     ),
     ...merged,
