@@ -4,12 +4,7 @@
  */
 
 import { type ClassValue } from 'clsx'
-import {
-  type ComponentPropsWithoutRef,
-  type ElementType,
-  type MouseEvent,
-  type ReactNode,
-} from 'react'
+import { type ComponentPropsWithoutRef, type ElementType, type ReactNode } from 'react'
 import { type UtilityProps } from './utility-classes'
 
 /**
@@ -44,17 +39,23 @@ export interface ActiveContainerBaseProps {
   /** Starting active state */
   defaultActive?: boolean | string
   /** Called to handle activate event */
-  activate?: (event: MouseEvent<HTMLElement>) => void
+  activate?: (event: KeyboardEvent | MouseEvent | TouchEvent | React.MouseEvent) => void
   /** Called to handle deactivate event */
-  deactivate?: (event: MouseEvent<HTMLElement>) => void
+  deactivate?: (event: KeyboardEvent | MouseEvent | TouchEvent | React.MouseEvent) => void
   /** Called before activate event */
-  onActivate?: (event: MouseEvent<HTMLElement>) => void
+  onActivate?: (event: KeyboardEvent | MouseEvent | TouchEvent | React.MouseEvent) => void
   /** Called after activate event */
-  onActivated?: (event: MouseEvent<HTMLElement>) => void
+  onActivated?: (
+    event: KeyboardEvent | MouseEvent | TouchEvent | React.MouseEvent,
+  ) => void
   /** Called before deactivate event */
-  onDeactivate?: (event: MouseEvent<HTMLElement>) => void
+  onDeactivate?: (
+    event: KeyboardEvent | MouseEvent | TouchEvent | React.MouseEvent,
+  ) => void
   /** Called after deactivate event */
-  onDeactivated?: (event: MouseEvent<HTMLElement>) => void
+  onDeactivated?: (
+    event: KeyboardEvent | MouseEvent | TouchEvent | React.MouseEvent,
+  ) => void
 }
 
 export interface ActiveActionBaseProps {

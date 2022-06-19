@@ -11,7 +11,7 @@ import { useThemeProps } from '../Provider/Provider'
 
 type ModalCtx = {
   active: string | boolean
-  deactivate: (event: React.MouseEvent<HTMLButtonElement>) => void
+  deactivate: (event: KeyboardEvent | MouseEvent | TouchEvent | React.MouseEvent) => void
   guid: string
 }
 

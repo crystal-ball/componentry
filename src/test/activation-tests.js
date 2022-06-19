@@ -323,33 +323,5 @@ export function activationTests(TestComponent, { name, testArias } = {}) {
     expect(screen.queryByText('Content')).toBeInTheDocument()
   })
 
-  /**
-   * Test that any flavor of the `<Active />` component exposes internal state and
-   * state change methods using the FaCC pattern
-   */
-  it('should expose internals using FaCC pattern', async () => {
-    render(
-      <TestComponent>
-        {({ active, activate, deactivate }) => (
-          <div>
-            <span>{String(active)}</span>
-            <button type='button' onClick={activate}>
-              activate
-            </button>
-            <button type='button' onClick={deactivate}>
-              deactivate
-            </button>
-          </div>
-        )}
-      </TestComponent>,
-    )
-
-    expect(screen.getByText('false')).toBeInTheDocument()
-    fireEvent.click(screen.getByText('activate'))
-    expect(screen.getByText('true')).toBeInTheDocument()
-    fireEvent.click(screen.getByText('deactivate'))
-    expect(screen.getByText('false')).toBeInTheDocument()
-  })
-
   // TODO: test multi-element active components (Drawer, Tabs)
 }
