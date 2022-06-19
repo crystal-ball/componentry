@@ -12,8 +12,6 @@ export interface LinkPropsDefaults {
   disabled?: boolean
   /** HTML element href */
   href?: string
-  /** Routing to */
-  to?: string
   /** Display variant */
   variant?: 'text'
   /** Indicates whether buttons in a disabled state should be wrapped with a span */
@@ -54,7 +52,8 @@ export const Link: Link = forwardRef((props, ref) => {
   const contents = element({
     ref,
     as: merged.href ? 'a' : 'button',
-    type: merged.href ? undefined : 'button',
+    // @ts-expect-error - Ensure button works for router library usage even though to isn't in props
+    type: merged.href || merged.to ? undefined : 'button',
     componentCx: `C9Y-Link-base C9Y-Link-${variant}`,
     ...merged,
   })
