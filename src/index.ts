@@ -24,6 +24,7 @@ export {
 export { Input } from './components/Input/Input'
 export { Link, type LinkProps } from './components/Link/Link'
 export { Modal } from './components/Modal/Modal'
+export { Paper, type PaperProps } from './components/Paper/Paper'
 export { Popover } from './components/Popover/Popover'
 export { Table } from './components/Table/Table'
 export { Tabs } from './components/Tabs/Tabs'
