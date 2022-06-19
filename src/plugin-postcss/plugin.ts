@@ -13,6 +13,7 @@ import { iconButtonStyles } from '../components/IconButton/IconButton.styles'
 import { inputStyles } from '../components/Input/Input.styles'
 import { linkStyles } from '../components/Link/Link.styles'
 import { modalStyles } from '../components/Modal/Modal.styles'
+import { paperStyles } from '../components/Paper/Paper.styles'
 import { popoverStyles } from '../components/Popover/Popover.styles'
 import { tableStyles } from '../components/Table/Table.styles'
 import { textStyles } from '../components/Text/Text.styles'
@@ -36,6 +37,7 @@ const componentStyles = {
   FormGroup: formGroupStyles,
   Link: linkStyles,
   Modal: modalStyles,
+  Paper: paperStyles,
   Popover: popoverStyles,
   Table: tableStyles,
   Text: textStyles,

@@ -38,6 +38,7 @@ import {
   type ModalProps,
   type ModalTitleProps,
 } from '../Modal/Modal'
+import { type PaperProps } from '../Paper/Paper'
 import {
   type PopoverActionProps,
   type PopoverContentProps,
@@ -83,6 +84,7 @@ export type Components = {
   ModalBody?: ModalBodyProps
   ModalHeader?: ModalHeaderProps
   ModalTitle?: ModalTitleProps
+  Paper?: PaperProps
   Popover?: PopoverProps
   PopoverAction?: PopoverActionProps
   PopoverContent?: PopoverContentProps
