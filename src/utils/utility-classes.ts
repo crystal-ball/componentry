@@ -8,10 +8,10 @@
  * `declare module 'componentry/types/utils/utility-classes' { }`
  */
 
-import { type CSSProperties, type ElementType } from 'react'
-import { type Theme } from '../theme/theme'
+import React from 'react'
+import { Theme } from '../theme/theme'
 import { themeDefaults } from '../theme/theme-defaults'
-import { type MergeTypes, type Resolve, type UtilityPropsForTheme } from './types'
+import { MergeTypes, Resolve, UtilityPropsForTheme } from './types'
 
 /** Module augmentation interface for overriding default utility props' types */
 export interface UtilityPropsOverrides {}
@@ -29,7 +29,7 @@ export type MaxWidthBase = 'full' | 'min' | 'max' | 'fit' | 'prose' | 'none'
 /** Default utility prop types, customizable with UtilityPropsOverrides */
 export interface UtilityPropsBase {
   /** Component element */
-  as?: ElementType
+  as?: React.ElementType
 
   // ---LAYOUT
   /** Sets a `display` style */
@@ -255,7 +255,7 @@ export function createUtilityClasses<Props extends { [prop: string]: any }>(
   props: Props,
 ) {
   const classes: string[] = []
-  const styles: CSSProperties = {}
+  const styles: React.CSSProperties = {}
   const filteredProps: { [prop: string]: any } = {}
 
   Object.keys(props).forEach((prop) => {

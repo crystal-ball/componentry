@@ -1,8 +1,8 @@
 import React, { useContext } from 'react'
-import { type Components, useThemeProps } from '../components/Provider/Provider'
+import { Components, useThemeProps } from '../components/Provider/Provider'
 import { ActiveCtx } from './active-container-component-builder'
-import { type ARIAControls, computeARIA } from './aria'
-import { type ActiveActionBaseProps } from './base-types'
+import { ARIAControls, computeARIA } from './aria'
+import { ActiveActionBaseProps } from './base-types'
 import { element } from './element-creator'
 
 interface ActiveActionBuilder {

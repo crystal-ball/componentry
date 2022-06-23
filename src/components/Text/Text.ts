@@ -1,4 +1,4 @@
-import { type ComponentPropsWithRef, type ComponentType, forwardRef } from 'react'
+import React, { forwardRef } from 'react'
 import { element } from '../../utils/element-creator'
 import { MergeTypes, Resolve } from '../../utils/types'
 import { UtilityProps } from '../../utils/utility-classes'
@@ -18,7 +18,7 @@ import { useThemeProps } from '../Provider/Provider'
  * ```
  */
 export type TextElementsMap = {
-  [Variant: string]: keyof JSX.IntrinsicElements | ComponentType<unknown>
+  [Variant: string]: keyof JSX.IntrinsicElements | React.ComponentType<unknown>
 }
 /**
  * Internal map used for final rendering
@@ -68,7 +68,7 @@ export interface TextPropsDefaults {
 
 export type TextProps = Resolve<MergeTypes<TextPropsDefaults, TextPropsOverrides>> &
   UtilityProps &
-  ComponentPropsWithRef<'div'>
+  React.ComponentPropsWithRef<'div'>
 
 // ✨ Nice display type for IntelliSense
 export interface Text {

@@ -1,10 +1,5 @@
 import { nanoid } from 'nanoid'
-import React, {
-  type ComponentPropsWithoutRef,
-  createContext,
-  useContext,
-  useRef,
-} from 'react'
+import React, { createContext, useContext, useRef } from 'react'
 import { element } from '../../utils/element-creator'
 import { staticComponent } from '../../utils/static-component-builder'
 import { UtilityProps } from '../../utils/utility-classes'
@@ -12,23 +7,25 @@ import { useThemeProps } from '../Provider/Provider'
 
 export interface InputProps
   extends UtilityProps,
-    Omit<ComponentPropsWithoutRef<'input'>, 'height' | 'width'> {}
+    Omit<React.ComponentPropsWithoutRef<'input'>, 'height' | 'width'> {}
 
 export interface InputDescriptionProps
   extends UtilityProps,
-    ComponentPropsWithoutRef<'div'> {}
+    React.ComponentPropsWithoutRef<'div'> {}
 
-export interface InputErrorProps extends UtilityProps, ComponentPropsWithoutRef<'div'> {}
+export interface InputErrorProps
+  extends UtilityProps,
+    React.ComponentPropsWithoutRef<'div'> {}
 
 export interface InputFieldProps
   extends UtilityProps,
-    Omit<ComponentPropsWithoutRef<'input'>, 'height' | 'width'> {
+    Omit<React.ComponentPropsWithoutRef<'input'>, 'height' | 'width'> {
   invalid?: boolean
 }
 
 export interface InputLabelProps
   extends UtilityProps,
-    ComponentPropsWithoutRef<'label'> {}
+    React.ComponentPropsWithoutRef<'label'> {}
 
 export interface Input {
   (props: InputProps): React.ReactElement

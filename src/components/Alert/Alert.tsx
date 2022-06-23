@@ -1,4 +1,4 @@
-import React, { ComponentPropsWithoutRef } from 'react'
+import React from 'react'
 import { useActive, useVisible } from '../../hooks'
 import { element } from '../../utils/element-creator'
 import { staticComponent } from '../../utils/static-component-builder'
@@ -33,11 +33,11 @@ export interface AlertPropsBase {
 
 export type AlertProps = Resolve<MergeTypes<AlertPropsBase, AlertPropsOverrides>> &
   UtilityProps &
-  ComponentPropsWithoutRef<'div'>
+  React.ComponentPropsWithoutRef<'div'>
 
 export interface AlertCloseProps
   extends UtilityProps,
-    ComponentPropsWithoutRef<'button'> {}
+    React.ComponentPropsWithoutRef<'button'> {}
 
 export interface Alert {
   (props: AlertProps): React.ReactElement | null

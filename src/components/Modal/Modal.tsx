@@ -1,11 +1,6 @@
 import clsx from 'clsx'
 import { nanoid } from 'nanoid'
-import React, {
-  type ComponentPropsWithoutRef,
-  createContext,
-  useContext,
-  useRef,
-} from 'react'
+import React, { createContext, useContext, useRef } from 'react'
 
 import { useActive, useActiveScrollReset, useNoScroll, useVisible } from '../../hooks'
 import { element } from '../../utils/element-creator'
@@ -22,7 +17,7 @@ type ModalCtx = {
 
 const ModalCtx = createContext<null | ModalCtx>(null)
 
-export interface ModalProps extends UtilityProps, ComponentPropsWithoutRef<'div'> {
+export interface ModalProps extends UtilityProps, React.ComponentPropsWithoutRef<'div'> {
   /** Sets modal screen alignment to centered */
   align?: 'center'
   /**
@@ -46,19 +41,27 @@ export interface ModalProps extends UtilityProps, ComponentPropsWithoutRef<'div'
   transitionDuration?: number
 }
 
-export interface ModalBodyProps extends UtilityProps, ComponentPropsWithoutRef<'div'> {}
+export interface ModalBodyProps
+  extends UtilityProps,
+    React.ComponentPropsWithoutRef<'div'> {}
 
 export interface ModalCloseProps
   extends UtilityProps,
-    ComponentPropsWithoutRef<'button'> {}
+    React.ComponentPropsWithoutRef<'button'> {}
 
-export interface ModalFooterProps extends UtilityProps, ComponentPropsWithoutRef<'div'> {}
+export interface ModalFooterProps
+  extends UtilityProps,
+    React.ComponentPropsWithoutRef<'div'> {}
 
-export interface ModalHeaderProps extends UtilityProps, ComponentPropsWithoutRef<'div'> {
+export interface ModalHeaderProps
+  extends UtilityProps,
+    React.ComponentPropsWithoutRef<'div'> {
   close?: (evt: React.MouseEvent<HTMLButtonElement>) => void
 }
 
-export interface ModalTitleProps extends UtilityProps, ComponentPropsWithoutRef<'h2'> {
+export interface ModalTitleProps
+  extends UtilityProps,
+    React.ComponentPropsWithoutRef<'h2'> {
   id?: string
 }
 

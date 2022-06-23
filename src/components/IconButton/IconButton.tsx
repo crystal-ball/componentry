@@ -1,4 +1,4 @@
-import { type ComponentPropsWithRef, type ReactElement, forwardRef } from 'react'
+import React, { forwardRef } from 'react'
 import { element } from '../../utils/element-creator'
 import { MergeTypes, Resolve } from '../../utils/types'
 import { UtilityProps } from '../../utils/utility-classes'
@@ -31,11 +31,11 @@ export type IconButtonProps = Resolve<
   MergeTypes<IconButtonPropsDefaults, IconButtonPropsOverrides>
 > &
   UtilityProps &
-  ComponentPropsWithRef<'button'>
+  React.ComponentPropsWithRef<'button'>
 
 // ✨ Nice display type for IntelliSense
 export interface IconButton {
-  (props: IconButtonProps): ReactElement | null
+  (props: IconButtonProps): React.ReactElement | null
   displayName?: string
 }
 

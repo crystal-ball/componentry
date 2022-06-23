@@ -4,7 +4,7 @@
  * mappings
  */
 
-import { type AriaAttributes } from 'react'
+import { AriaAttributes } from 'react'
 
 type StringBoolean = 'true' | 'false'
 

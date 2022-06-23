@@ -1,10 +1,5 @@
 import clsx from 'clsx'
-import {
-  type ComponentPropsWithRef,
-  type ReactElement,
-  type ReactNode,
-  forwardRef,
-} from 'react'
+import React, { forwardRef } from 'react'
 import { element } from '../../utils/element-creator'
 import { MergeTypes, Resolve } from '../../utils/types'
 import { UtilityProps } from '../../utils/utility-classes'
@@ -15,7 +10,7 @@ import { useThemeProps } from '../Provider/Provider'
 export interface ButtonPropsOverrides {}
 
 export interface ButtonPropsDefaults {
-  children: ReactNode
+  children: React.ReactNode
   /** Button variant color */
   color?: 'primary'
   /** Disables the element, preventing mouse and keyboard events */
@@ -38,11 +33,11 @@ export interface ButtonPropsDefaults {
 
 export type ButtonProps = Resolve<MergeTypes<ButtonPropsDefaults, ButtonPropsOverrides>> &
   UtilityProps &
-  ComponentPropsWithRef<'button'>
+  React.ComponentPropsWithRef<'button'>
 
 // ✨ Nice display type for IntelliSense
 export interface Button {
-  (props: ButtonProps): ReactElement | null
+  (props: ButtonProps): React.ReactElement | null
   displayName?: string
 }
 

@@ -3,14 +3,14 @@
  * Base types used for component prop type definitions.
  */
 
-import { type ReactNode } from 'react'
+import React from 'react'
 
 // --------------------------------------------------------
 // Active components
 
 export interface ActiveContainerBaseProps {
   /** Container children */
-  children?: ReactNode
+  children?: React.ReactNode
 
   /** Sets a container content placement direction className */
   direction?: 'top' | 'left' | 'right' | 'bottom'
@@ -45,14 +45,14 @@ export interface ActiveActionBaseProps {
   /** Action/Content pairing id for compound active components */
   activeId?: string
   /** Component children */
-  children?: ReactNode
+  children?: React.ReactNode
 }
 
 export interface ActiveContentBaseProps {
   /** Action/Content pairing id for compound active components */
   activeId?: string
   /** Component children */
-  children?: ReactNode
+  children?: React.ReactNode
   /**
    * Controls when the component content is mounted where:
    * - `'always'` - The content will be mounted when the element is both visible

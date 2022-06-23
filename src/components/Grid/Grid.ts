@@ -1,4 +1,4 @@
-import { type ComponentPropsWithRef, forwardRef } from 'react'
+import React, { forwardRef } from 'react'
 import { element } from '../../utils/element-creator'
 import { MergeTypes, Resolve } from '../../utils/types'
 import { UtilityProps } from '../../utils/utility-classes'
@@ -16,7 +16,7 @@ export interface GridPropsDefaults {
 
 export type GridProps = Resolve<MergeTypes<GridPropsDefaults, GridPropsOverrides>> &
   UtilityProps &
-  ComponentPropsWithRef<'div'>
+  React.ComponentPropsWithRef<'div'>
 
 // ✨ Nice display type for IntelliSense
 export interface Grid {

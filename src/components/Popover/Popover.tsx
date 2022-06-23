@@ -1,11 +1,11 @@
-import React, { type ComponentPropsWithoutRef } from 'react'
+import React from 'react'
 import { activeActionBuilder } from '../../utils/active-action-component-builder'
 import { activeContainerBuilder } from '../../utils/active-container-component-builder'
 import { activeContentBuilder } from '../../utils/active-content-component-builder'
 import {
-  type ActiveActionBaseProps,
-  type ActiveContainerBaseProps,
-  type ActiveContentBaseProps,
+  ActiveActionBaseProps,
+  ActiveContainerBaseProps,
+  ActiveContentBaseProps,
 } from '../../utils/base-types'
 import { staticComponent } from '../../utils/static-component-builder'
 import { UtilityProps } from '../../utils/utility-classes'
@@ -14,12 +14,12 @@ import { Button } from '../Button/Button'
 export interface PopoverProps
   extends ActiveContainerBaseProps,
     UtilityProps,
-    ComponentPropsWithoutRef<'div'> {}
+    React.ComponentPropsWithoutRef<'div'> {}
 
 export interface PopoverActionProps
   extends ActiveActionBaseProps,
     UtilityProps,
-    ComponentPropsWithoutRef<'button'> {
+    React.ComponentPropsWithoutRef<'button'> {
   /** Display variant */
   variant?: 'primary'
 }
@@ -27,18 +27,18 @@ export interface PopoverActionProps
 export interface PopoverBodyProps
   extends ActiveContentBaseProps,
     UtilityProps,
-    ComponentPropsWithoutRef<'div'> {}
+    React.ComponentPropsWithoutRef<'div'> {}
 
 export interface PopoverContentProps
   extends UtilityProps,
-    ComponentPropsWithoutRef<'div'> {
+    React.ComponentPropsWithoutRef<'div'> {
   /** Display variant */
   variant?: 'primary'
 }
 
 export interface PopoverHeadingProps
   extends UtilityProps,
-    ComponentPropsWithoutRef<'div'> {}
+    React.ComponentPropsWithoutRef<'div'> {}
 
 export interface Popover {
   (props: PopoverProps): React.ReactElement

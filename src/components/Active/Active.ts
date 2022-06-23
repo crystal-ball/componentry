@@ -1,11 +1,11 @@
-import { ComponentPropsWithoutRef } from 'react'
+import React from 'react'
 import { activeActionBuilder } from '../../utils/active-action-component-builder'
 import { activeContainerBuilder } from '../../utils/active-container-component-builder'
 import { activeContentBuilder } from '../../utils/active-content-component-builder'
 import {
-  type ActiveActionBaseProps,
-  type ActiveContainerBaseProps,
-  type ActiveContentBaseProps,
+  ActiveActionBaseProps,
+  ActiveContainerBaseProps,
+  ActiveContentBaseProps,
 } from '../../utils/base-types'
 import { UtilityProps } from '../../utils/utility-classes'
 import { Link } from '../Link/Link'
@@ -13,17 +13,17 @@ import { Link } from '../Link/Link'
 export interface ActiveProps
   extends ActiveContainerBaseProps,
     UtilityProps,
-    ComponentPropsWithoutRef<'div'> {}
+    React.ComponentPropsWithoutRef<'div'> {}
 
 export interface ActiveActionProps
   extends ActiveActionBaseProps,
     UtilityProps,
-    ComponentPropsWithoutRef<'button'> {}
+    React.ComponentPropsWithoutRef<'button'> {}
 
 export interface ActiveContentProps
   extends ActiveContentBaseProps,
     UtilityProps,
-    ComponentPropsWithoutRef<'div'> {}
+    React.ComponentPropsWithoutRef<'div'> {}
 
 export interface Active {
   (props: ActiveProps): React.ReactElement

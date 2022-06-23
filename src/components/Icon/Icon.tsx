@@ -1,4 +1,4 @@
-import { type ComponentPropsWithRef, type ComponentType, forwardRef } from 'react'
+import React, { forwardRef } from 'react'
 import { element } from '../../utils/element-creator'
 import { MergeTypes, Resolve } from '../../utils/types'
 import { UtilityProps } from '../../utils/utility-classes'
@@ -8,7 +8,7 @@ import { useThemeProps } from '../Provider/Provider'
 // ICON ELEMENTS MAP
 
 /** Mapping of icon IDs to components rendered by Icon */
-export type IconElementsMap = { [ID: string]: ComponentType<unknown> }
+export type IconElementsMap = { [ID: string]: React.ComponentType<unknown> }
 
 let iconElementsMap: IconElementsMap = {}
 
@@ -49,7 +49,7 @@ export interface IconPropsDefaults {
 
 export type IconProps = Resolve<MergeTypes<IconPropsDefaults, IconPropsOverrides>> &
   UtilityProps &
-  ComponentPropsWithRef<'svg'>
+  React.ComponentPropsWithRef<'svg'>
 
 // ✨ Nice display type for IntelliSense
 export interface Icon {

@@ -1,4 +1,4 @@
-import { type ComponentPropsWithoutRef } from 'react'
+import React from 'react'
 import { staticComponent } from '../../utils/static-component-builder'
 import { MergeTypes, Resolve } from '../../utils/types'
 import { UtilityProps } from '../../utils/utility-classes'
@@ -11,7 +11,7 @@ export interface ClosePropsDefaults {}
 
 export type CloseProps = Resolve<MergeTypes<ClosePropsDefaults, ClosePropsOverrides>> &
   UtilityProps &
-  ComponentPropsWithoutRef<'button'>
+  React.ComponentPropsWithoutRef<'button'>
 
 export const closeBase: CloseProps & { componentCx: string } = {
   as: 'button',

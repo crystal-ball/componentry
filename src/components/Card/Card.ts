@@ -1,4 +1,4 @@
-import React, { type ComponentPropsWithoutRef } from 'react'
+import React from 'react'
 import { element } from '../../utils/element-creator'
 import { staticComponent } from '../../utils/static-component-builder'
 import { MergeTypes, Resolve } from '../../utils/types'
@@ -14,12 +14,12 @@ export interface CardPropsDefaults {
 
 export type CardProps = Resolve<MergeTypes<CardPropsDefaults, CardPropsOverrides>> &
   UtilityProps &
-  ComponentPropsWithoutRef<'div'>
-interface CardBodyProps extends UtilityProps, ComponentPropsWithoutRef<'div'> {}
-interface CardFooterProps extends UtilityProps, ComponentPropsWithoutRef<'div'> {}
-interface CardHeaderProps extends UtilityProps, ComponentPropsWithoutRef<'div'> {}
-interface CardTitleProps extends UtilityProps, ComponentPropsWithoutRef<'h4'> {}
-interface CardSubtitleProps extends UtilityProps, ComponentPropsWithoutRef<'h5'> {}
+  React.ComponentPropsWithoutRef<'div'>
+interface CardBodyProps extends UtilityProps, React.ComponentPropsWithoutRef<'div'> {}
+interface CardFooterProps extends UtilityProps, React.ComponentPropsWithoutRef<'div'> {}
+interface CardHeaderProps extends UtilityProps, React.ComponentPropsWithoutRef<'div'> {}
+interface CardTitleProps extends UtilityProps, React.ComponentPropsWithoutRef<'h4'> {}
+interface CardSubtitleProps extends UtilityProps, React.ComponentPropsWithoutRef<'h5'> {}
 
 export interface Card {
   (props: CardProps): React.ReactElement

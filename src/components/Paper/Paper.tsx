@@ -1,4 +1,4 @@
-import { type ComponentPropsWithRef, forwardRef } from 'react'
+import { forwardRef } from 'react'
 import { element } from '../../utils/element-creator'
 import { MergeTypes, Resolve } from '../../utils/types'
 import { UtilityProps } from '../../utils/utility-classes'
@@ -13,7 +13,7 @@ export interface PaperPropsDefaults {
 
 export type PaperProps = Resolve<MergeTypes<PaperPropsDefaults, PaperPropsOverrides>> &
   UtilityProps &
-  ComponentPropsWithRef<'div'>
+  React.ComponentPropsWithRef<'div'>
 
 // ✨ Nice display type for IntelliSense
 export interface Paper {
