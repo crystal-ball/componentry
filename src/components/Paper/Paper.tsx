@@ -8,6 +8,7 @@ import { useThemeProps } from '../Provider/Provider'
 export interface PaperPropsOverrides {}
 
 export interface PaperPropsDefaults {
+  /** Display variant */
   variant?: 'flat'
 }
 
