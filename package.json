@@ -1,6 +1,6 @@
 {
   "name": "componentry",
-  "version": "4.6.1",
+  "version": "4.7.0-beta.0",
   "description": "React component library for building custom design systems",
   "keywords": [
     "accessibility",
