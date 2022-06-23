@@ -1,21 +1,16 @@
-import clsx, { type ClassValue } from 'clsx'
-import {
-  type CSSProperties,
-  type ElementType,
-  type ReactElement,
-  createElement,
-} from 'react'
-import { type UtilityProps, createUtilityClasses } from './utility-classes'
+import clsx, { ClassValue } from 'clsx'
+import React, { createElement } from 'react'
+import { UtilityProps, createUtilityClasses } from './utility-classes'
 
 /**
  * ElementProps includes the shared props _including internal componentCx prop_
  * for all library components.
  */
 type ElementProps = {
-  as?: ElementType
+  as?: React.ElementType
   className?: ClassValue
   componentCx?: ClassValue
-  style?: CSSProperties
+  style?: React.CSSProperties
   themeCx?: ClassValue
 } & UtilityProps
 
@@ -38,7 +33,7 @@ export function element<Props extends ElementProps>({
   style,
   themeCx,
   ...merged
-}: Props): ReactElement {
+}: Props): React.ReactElement {
   // Shared filter point to convert utility props to utility classes
   const { filteredProps, utilityClasses, utilityStyles } = createUtilityClasses(merged)
 

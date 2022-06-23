@@ -1,17 +1,25 @@
 import React from 'react'
-import { type ComponentBaseProps } from '../../utils/base-types'
 import { element } from '../../utils/element-creator'
 import { staticComponent } from '../../utils/static-component-builder'
+import { MergeTypes, Resolve } from '../../utils/types'
+import { UtilityProps } from '../../utils/utility-classes'
 import { useThemeProps } from '../Provider/Provider'
 
-export interface CardProps extends ComponentBaseProps<'div'> {
+// Module augmentation interface for overriding component props' types
+export interface CardPropsOverrides {}
+
+export interface CardPropsDefaults {
   variant?: 'outlined'
 }
-interface CardBodyProps extends ComponentBaseProps<'div'> {}
-interface CardFooterProps extends ComponentBaseProps<'div'> {}
-interface CardHeaderProps extends ComponentBaseProps<'div'> {}
-interface CardTitleProps extends ComponentBaseProps<'h4'> {}
-interface CardSubtitleProps extends ComponentBaseProps<'h5'> {}
+
+export type CardProps = Resolve<MergeTypes<CardPropsDefaults, CardPropsOverrides>> &
+  UtilityProps &
+  React.ComponentPropsWithoutRef<'div'>
+interface CardBodyProps extends UtilityProps, React.ComponentPropsWithoutRef<'div'> {}
+interface CardFooterProps extends UtilityProps, React.ComponentPropsWithoutRef<'div'> {}
+interface CardHeaderProps extends UtilityProps, React.ComponentPropsWithoutRef<'div'> {}
+interface CardTitleProps extends UtilityProps, React.ComponentPropsWithoutRef<'h4'> {}
+interface CardSubtitleProps extends UtilityProps, React.ComponentPropsWithoutRef<'h5'> {}
 
 export interface Card {
   (props: CardProps): React.ReactElement

@@ -1,14 +1,19 @@
-import { type ClassValue } from 'clsx'
 import React from 'react'
-import { type ComponentBaseProps } from '../../utils/base-types'
 import { staticComponent } from '../../utils/static-component-builder'
+import { MergeTypes, Resolve } from '../../utils/types'
+import { UtilityProps } from '../../utils/utility-classes'
 import { Icon } from '../Icon/Icon'
 
-export interface CloseProps extends ComponentBaseProps<'button'> {
-  componentCx?: ClassValue
-}
+// Module augmentation interface for overriding component props' types
+export interface ClosePropsOverrides {}
 
-export const closeBase: CloseProps = {
+export interface ClosePropsDefaults {}
+
+export type CloseProps = Resolve<MergeTypes<ClosePropsDefaults, ClosePropsOverrides>> &
+  UtilityProps &
+  React.ComponentPropsWithoutRef<'button'>
+
+export const closeBase: CloseProps & { componentCx: string } = {
   as: 'button',
   type: 'button',
   componentCx: `C9Y-Close-base`,

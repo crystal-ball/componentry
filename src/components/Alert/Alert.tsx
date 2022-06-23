@@ -1,16 +1,16 @@
 import React from 'react'
 import { useActive, useVisible } from '../../hooks'
-import { type ComponentBaseProps } from '../../utils/base-types'
 import { element } from '../../utils/element-creator'
 import { staticComponent } from '../../utils/static-component-builder'
-import { type MergePropTypes } from '../../utils/types'
+import { MergeTypes, Resolve } from '../../utils/types'
+import { UtilityProps } from '../../utils/utility-classes'
 import { closeBase } from '../Close/Close'
 import { useThemeProps } from '../Provider/Provider'
 
 /** Module augmentation interface for overriding component props' types */
 export interface AlertPropsOverrides {}
 
-interface AlertPropsBase {
+export interface AlertPropsBase {
   /** Sets a custom aria title */
   ariaTitle?: string
   /** Sets the theme color of the alert */
@@ -31,10 +31,13 @@ interface AlertPropsBase {
   variant?: 'filled'
 }
 
-export type AlertProps = MergePropTypes<AlertPropsBase, AlertPropsOverrides> &
-  ComponentBaseProps<'div'>
+export type AlertProps = Resolve<MergeTypes<AlertPropsBase, AlertPropsOverrides>> &
+  UtilityProps &
+  React.ComponentPropsWithoutRef<'div'>
 
-interface AlertCloseProps extends ComponentBaseProps<'button'> {}
+export interface AlertCloseProps
+  extends UtilityProps,
+    React.ComponentPropsWithoutRef<'button'> {}
 
 export interface Alert {
   (props: AlertProps): React.ReactElement | null

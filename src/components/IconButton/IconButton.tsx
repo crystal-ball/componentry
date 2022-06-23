@@ -1,7 +1,7 @@
-import { type ForwardedRef, type ReactElement, forwardRef } from 'react'
-import { type ComponentBaseProps } from '../../utils/base-types'
+import React, { forwardRef } from 'react'
 import { element } from '../../utils/element-creator'
-import { type MergePropTypes } from '../../utils/types'
+import { MergeTypes, Resolve } from '../../utils/types'
+import { UtilityProps } from '../../utils/utility-classes'
 import { Icon } from '../Icon/Icon'
 import { useThemeProps } from '../Provider/Provider'
 
@@ -27,15 +27,15 @@ export interface IconButtonPropsDefaults {
   variant?: 'transparent' | 'outlined'
 }
 
-export type IconButtonProps = MergePropTypes<
-  IconButtonPropsDefaults,
-  IconButtonPropsOverrides
+export type IconButtonProps = Resolve<
+  MergeTypes<IconButtonPropsDefaults, IconButtonPropsOverrides>
 > &
-  ComponentBaseProps<'button'>
+  UtilityProps &
+  React.ComponentPropsWithRef<'button'>
 
 // ✨ Nice display type for IntelliSense
 export interface IconButton {
-  (props: IconButtonProps & { ref?: ForwardedRef<unknown> }): ReactElement | null
+  (props: IconButtonProps): React.ReactElement | null
   displayName?: string
 }
 

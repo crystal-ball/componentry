@@ -1,12 +1,23 @@
-import { type ComponentBaseProps } from '../../utils/base-types'
+import React from 'react'
 import { staticComponent } from '../../utils/static-component-builder'
+import { UtilityProps } from '../../utils/utility-classes'
 
-export interface TableProps extends ComponentBaseProps<'div'> {}
-export interface TableBodyProps extends ComponentBaseProps<'div'> {}
-export interface TableCellProps extends ComponentBaseProps<'div'> {}
-export interface TableHeadProps extends ComponentBaseProps<'div'> {}
-export interface TableHeaderProps extends ComponentBaseProps<'div'> {}
-export interface TableRowProps extends ComponentBaseProps<'div'> {}
+export interface TableProps extends UtilityProps, React.ComponentPropsWithoutRef<'div'> {}
+export interface TableBodyProps
+  extends UtilityProps,
+    React.ComponentPropsWithoutRef<'div'> {}
+export interface TableCellProps
+  extends UtilityProps,
+    React.ComponentPropsWithoutRef<'div'> {}
+export interface TableHeadProps
+  extends UtilityProps,
+    React.ComponentPropsWithoutRef<'div'> {}
+export interface TableHeaderProps
+  extends UtilityProps,
+    React.ComponentPropsWithoutRef<'div'> {}
+export interface TableRowProps
+  extends UtilityProps,
+    React.ComponentPropsWithoutRef<'div'> {}
 
 export interface Table {
   (props: TableProps): React.ReactElement

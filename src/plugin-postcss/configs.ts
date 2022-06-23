@@ -1,6 +1,6 @@
 import { lilconfigSync } from 'lilconfig'
 
-import { type Theme, createTheme } from '../theme/theme'
+import { Theme, createTheme } from '../theme/theme'
 
 const explorer = lilconfigSync('componentry')
 

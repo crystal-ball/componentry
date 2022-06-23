@@ -2,15 +2,8 @@
  * @file Library hooks
  */
 
-import {
-  type RefObject,
-  useContext,
-  useEffect,
-  useLayoutEffect,
-  useRef,
-  useState,
-} from 'react'
-import { type ActiveContext, ActiveCtx } from './utils/active-container-component-builder'
+import React, { useContext, useEffect, useLayoutEffect, useRef, useState } from 'react'
+import { ActiveContext, ActiveCtx } from './utils/active-container-component-builder'
 
 // --------------------------------------------------------
 // useActive hook
@@ -26,7 +19,7 @@ export const useActive = (): ActiveContext => useContext(ActiveCtx)
  */
 export const useActiveScrollReset = (
   active: string | boolean,
-  ref: RefObject<HTMLElement>,
+  ref: React.RefObject<HTMLElement>,
 ): void => {
   useLayoutEffect(() => {
     if (active && ref.current) {

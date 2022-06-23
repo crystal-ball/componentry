@@ -1,14 +1,14 @@
-import { type ComponentType, forwardRef } from 'react'
-import { type ComponentBaseProps } from '../../utils/base-types'
+import React, { forwardRef } from 'react'
 import { element } from '../../utils/element-creator'
-import { type MergePropTypes } from '../../utils/types'
+import { MergeTypes, Resolve } from '../../utils/types'
+import { UtilityProps } from '../../utils/utility-classes'
 import { useThemeProps } from '../Provider/Provider'
 
 // --------------------------------------------------------
 // ICON ELEMENTS MAP
 
 /** Mapping of icon IDs to components rendered by Icon */
-export type IconElementsMap = { [ID: string]: ComponentType<unknown> }
+export type IconElementsMap = { [ID: string]: React.ComponentType<unknown> }
 
 let iconElementsMap: IconElementsMap = {}
 
@@ -47,14 +47,13 @@ export interface IconPropsDefaults {
   variant?: 'font'
 }
 
-export type IconProps = MergePropTypes<IconPropsDefaults, IconPropsOverrides> &
-  ComponentBaseProps<'svg'>
+export type IconProps = Resolve<MergeTypes<IconPropsDefaults, IconPropsOverrides>> &
+  UtilityProps &
+  React.ComponentPropsWithRef<'svg'>
 
 // ✨ Nice display type for IntelliSense
 export interface Icon {
-  (
-    props: IconProps & { ref?: React.ForwardedRef<SVGSVGElement> },
-  ): React.ReactElement | null
+  (props: IconProps): React.ReactElement | null
   displayName?: string
 }
 

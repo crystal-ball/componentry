@@ -1,7 +1,11 @@
-import { forwardRef } from 'react'
-import { type ComponentBaseProps } from '../../utils/base-types'
+import React, { forwardRef } from 'react'
 import { element } from '../../utils/element-creator'
+import { MergeTypes, Resolve } from '../../utils/types'
+import { UtilityProps } from '../../utils/utility-classes'
 import { useThemeProps } from '../Provider/Provider'
+
+// Module augmentation interface for overriding component props' types
+export interface GridPropsOverrides {}
 
 export interface GridPropsDefaults {
   /** Sets an `align-items` style */
@@ -10,11 +14,13 @@ export interface GridPropsDefaults {
   justify?: 'start' | 'end' | 'center' | 'stretch'
 }
 
-export type GridProps = GridPropsDefaults & ComponentBaseProps<'div'>
+export type GridProps = Resolve<MergeTypes<GridPropsDefaults, GridPropsOverrides>> &
+  UtilityProps &
+  React.ComponentPropsWithRef<'div'>
 
 // ✨ Nice display type for IntelliSense
 export interface Grid {
-  (props: GridProps & { ref?: React.ForwardedRef<unknown> }): React.ReactElement | null
+  (props: GridProps): React.ReactElement | null
   displayName?: string
 }
 

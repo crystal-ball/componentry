@@ -1,23 +1,25 @@
+/* eslint-disable @typescript-eslint/ban-types */
 /**
  * @file
  * Utilities for working with complex TS types.
  */
 
 /**
- * Utility type used to merge default component prop types with user defined
- * overrides.
+ * Type display utility
+ * @see https://effectivetypescript.com/2022/02/25/gentips-4-display/
+ */
+export type Resolve<T> = T extends Function ? T : { [K in keyof T]: T[K] }
+
+/**
+ * Utility type used to merge two types with user defined overrides.
  * @example
  * ```ts
  * export interface ExampleProps {}
  * interface DefaultExampleProps { radical: boolean }
- * type Props = MergePropTypes<DefaultExampleProps, ExampleProps>
+ * type Props = MergeTypes<DefaultExampleProps, ExampleProps>
  * ```
  */
-export type MergePropTypes<Defaults, Overrides> = {
-  [Prop in keyof Defaults]: Prop extends keyof Overrides
-    ? Overrides[Prop]
-    : Defaults[Prop]
-}
+export type MergeTypes<Base, Overrides> = Omit<Base, keyof Overrides> & Overrides
 
 /**
  * Convenience type for reducing boilerplate documenting component style APIs.

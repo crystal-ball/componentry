@@ -5,7 +5,7 @@
  * Testing file for types
  */
 
-import clsx, { type ClassValue } from 'clsx'
+import clsx, { ClassValue } from 'clsx'
 import React, { useRef } from 'react'
 import {
   Active,

@@ -1,19 +1,34 @@
-import { type ComponentBaseProps } from '../../utils/base-types'
+import React from 'react'
 import { element } from '../../utils/element-creator'
+import { MergeTypes, Resolve } from '../../utils/types'
+import { UtilityProps } from '../../utils/utility-classes'
 import { useThemeProps } from '../Provider/Provider'
 
-export interface BadgeProps extends ComponentBaseProps<'div'> {
+// Module augmentation interface for overriding component props' types
+export interface BadgePropsOverrides {}
+
+export interface BadgePropsDefaults {
   /** Variant color */
   color?: 'primary'
   /** Display variant */
   variant?: 'filled'
 }
 
+export type BadgeProps = Resolve<MergeTypes<BadgePropsDefaults, BadgePropsOverrides>> &
+  UtilityProps &
+  React.ComponentPropsWithoutRef<'div'>
+
+// ✨ Nice display type for IntelliSense
+export interface Badge {
+  (props: BadgeProps): React.ReactElement | null
+  displayName?: string
+}
+
 /**
  * [Badge component 📝](https://componentry.design/components/badge)
  * @experimental
  */
-export const Badge: React.FC<BadgeProps> = (props) => {
+export const Badge: Badge = (props) => {
   const {
     color,
     variant = 'filled',

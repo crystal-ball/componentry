@@ -1,7 +1,7 @@
 /* eslint-disable no-underscore-dangle */
-import { type ReactElement, createContext, useContext, useMemo } from 'react'
+import React, { createContext, useContext, useMemo } from 'react'
 
-import { type Theme } from '../../theme/theme'
+import { Theme } from '../../theme/theme'
 import { themeDefaults } from '../../theme/theme-defaults'
 import { initializeUtilityClassesTheme } from '../../utils/utility-classes'
 
@@ -104,7 +104,7 @@ const ComponentryCtx = createContext<null | { components: Components; theme: The
 )
 
 interface ComponentryProviderProps {
-  children: ReactElement
+  children: React.ReactElement
   /** Component default props */
   components?: Components
   /** Application theme values */

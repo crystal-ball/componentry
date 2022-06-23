@@ -1,7 +1,7 @@
 import { forwardRef } from 'react'
-import { type ComponentBaseProps } from '../../utils/base-types'
 import { element } from '../../utils/element-creator'
-import { type MergePropTypes } from '../../utils/types'
+import { MergeTypes, Resolve } from '../../utils/types'
+import { UtilityProps } from '../../utils/utility-classes'
 import { useThemeProps } from '../Provider/Provider'
 
 // Module augmentation interface for overriding component props' types
@@ -11,12 +11,13 @@ export interface PaperPropsDefaults {
   variant?: 'flat'
 }
 
-export type PaperProps = MergePropTypes<PaperPropsDefaults, PaperPropsOverrides> &
-  ComponentBaseProps<'div'>
+export type PaperProps = Resolve<MergeTypes<PaperPropsDefaults, PaperPropsOverrides>> &
+  UtilityProps &
+  React.ComponentPropsWithRef<'div'>
 
 // ✨ Nice display type for IntelliSense
 export interface Paper {
-  (props: PaperProps & { ref?: React.ForwardedRef<unknown> }): React.ReactElement | null
+  (props: PaperProps): React.ReactElement | null
   displayName?: string
 }
 

@@ -1,25 +1,29 @@
+import React from 'react'
 import { activeActionBuilder } from '../../utils/active-action-component-builder'
 import { activeContainerBuilder } from '../../utils/active-container-component-builder'
 import { activeContentBuilder } from '../../utils/active-content-component-builder'
 import {
-  type ActiveActionBaseProps,
-  type ActiveContainerBaseProps,
-  type ActiveContentBaseProps,
-  type ComponentBaseProps,
+  ActiveActionBaseProps,
+  ActiveContainerBaseProps,
+  ActiveContentBaseProps,
 } from '../../utils/base-types'
+import { UtilityProps } from '../../utils/utility-classes'
 import { Link } from '../Link/Link'
 
 export interface ActiveProps
   extends ActiveContainerBaseProps,
-    ComponentBaseProps<'div'> {}
+    UtilityProps,
+    React.ComponentPropsWithoutRef<'div'> {}
 
 export interface ActiveActionProps
   extends ActiveActionBaseProps,
-    ComponentBaseProps<'button'> {}
+    UtilityProps,
+    React.ComponentPropsWithoutRef<'button'> {}
 
 export interface ActiveContentProps
   extends ActiveContentBaseProps,
-    ComponentBaseProps<'div'> {}
+    UtilityProps,
+    React.ComponentPropsWithoutRef<'div'> {}
 
 export interface Active {
   (props: ActiveProps): React.ReactElement
