@@ -1,8 +1,13 @@
 import clsx from 'clsx'
-import { type ForwardedRef, type ReactElement, type ReactNode, forwardRef } from 'react'
-import { type ComponentBaseProps } from '../../utils/base-types'
+import {
+  type ComponentPropsWithRef,
+  type ReactElement,
+  type ReactNode,
+  forwardRef,
+} from 'react'
 import { element } from '../../utils/element-creator'
-import { type MergePropTypes } from '../../utils/types'
+import { MergeTypes, Resolve } from '../../utils/types'
+import { UtilityProps } from '../../utils/utility-classes'
 import { Icon } from '../Icon/Icon'
 import { useThemeProps } from '../Provider/Provider'
 
@@ -31,12 +36,13 @@ export interface ButtonPropsDefaults {
   wrapWhenDisabled?: boolean
 }
 
-export type ButtonProps = MergePropTypes<ButtonPropsDefaults, ButtonPropsOverrides> &
-  ComponentBaseProps<'button'>
+export type ButtonProps = Resolve<MergeTypes<ButtonPropsDefaults, ButtonPropsOverrides>> &
+  UtilityProps &
+  ComponentPropsWithRef<'button'>
 
 // ✨ Nice display type for IntelliSense
 export interface Button {
-  (props: ButtonProps & { ref?: ForwardedRef<unknown> }): ReactElement | null
+  (props: ButtonProps): ReactElement | null
   displayName?: string
 }
 

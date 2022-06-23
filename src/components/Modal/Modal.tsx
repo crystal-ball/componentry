@@ -1,11 +1,16 @@
 import clsx from 'clsx'
 import { nanoid } from 'nanoid'
-import React, { createContext, useContext, useRef } from 'react'
+import React, {
+  type ComponentPropsWithoutRef,
+  createContext,
+  useContext,
+  useRef,
+} from 'react'
 
 import { useActive, useActiveScrollReset, useNoScroll, useVisible } from '../../hooks'
-import { type ComponentBaseProps } from '../../utils/base-types'
 import { element } from '../../utils/element-creator'
 import { staticComponent } from '../../utils/static-component-builder'
+import { UtilityProps } from '../../utils/utility-classes'
 import { closeBase } from '../Close/Close'
 import { useThemeProps } from '../Provider/Provider'
 
@@ -17,7 +22,7 @@ type ModalCtx = {
 
 const ModalCtx = createContext<null | ModalCtx>(null)
 
-export interface ModalProps extends ComponentBaseProps<'div'> {
+export interface ModalProps extends UtilityProps, ComponentPropsWithoutRef<'div'> {
   /** Sets modal screen alignment to centered */
   align?: 'center'
   /**
@@ -41,17 +46,19 @@ export interface ModalProps extends ComponentBaseProps<'div'> {
   transitionDuration?: number
 }
 
-export interface ModalBodyProps extends ComponentBaseProps<'div'> {}
+export interface ModalBodyProps extends UtilityProps, ComponentPropsWithoutRef<'div'> {}
 
-export interface ModalCloseProps extends ComponentBaseProps<'button'> {}
+export interface ModalCloseProps
+  extends UtilityProps,
+    ComponentPropsWithoutRef<'button'> {}
 
-export interface ModalFooterProps extends ComponentBaseProps<'div'> {}
+export interface ModalFooterProps extends UtilityProps, ComponentPropsWithoutRef<'div'> {}
 
-export interface ModalHeaderProps extends ComponentBaseProps<'div'> {
+export interface ModalHeaderProps extends UtilityProps, ComponentPropsWithoutRef<'div'> {
   close?: (evt: React.MouseEvent<HTMLButtonElement>) => void
 }
 
-export interface ModalTitleProps extends ComponentBaseProps<'h2'> {
+export interface ModalTitleProps extends UtilityProps, ComponentPropsWithoutRef<'h2'> {
   id?: string
 }
 
@@ -163,7 +170,7 @@ Modal.displayName = 'Modal'
 // --------------------------------------------------------
 // Close
 
-Modal.Close = staticComponent('ModalClose', closeBase)
+Modal.Close = staticComponent<ModalCloseProps>('ModalClose', closeBase)
 
 // --------------------------------------------------------
 // Header

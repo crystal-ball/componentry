@@ -1,12 +1,12 @@
 import { deepMerge } from '../utils/deep-merge'
-import { MergePropTypes } from '../utils/types'
+import { MergeTypes, Resolve } from '../utils/types'
 import { themeDefaults } from './theme-defaults'
 
 /** Module augmentation interface for overriding default theme values */
 export interface ThemeOverrides {}
 
 /** Application theme values */
-export type Theme = MergePropTypes<typeof themeDefaults, ThemeOverrides>
+export type Theme = Resolve<MergeTypes<typeof themeDefaults, ThemeOverrides>>
 
 /**
  * createTheme merges the passed custom theme values with the Componentry default values

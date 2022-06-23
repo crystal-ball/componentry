@@ -20,6 +20,11 @@ export {
 export { type IconButtonStyles } from './components/IconButton/IconButton.styles'
 export { type LinkPropsDefaults, type LinkPropsOverrides } from './components/Link/Link'
 export { type LinkStyles } from './components/Link/Link.styles'
+export {
+  type PaperPropsDefaults,
+  type PaperPropsOverrides,
+} from './components/Paper/Paper'
+export { type PaperStyles } from './components/Paper/Paper.styles'
 export { type TextPropsDefaults, type TextPropsOverrides } from './components/Text/Text'
 export { type TextStyles } from './components/Text/Text.styles'
 

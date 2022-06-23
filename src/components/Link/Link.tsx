@@ -1,7 +1,7 @@
-import { forwardRef } from 'react'
-import { type ComponentBaseProps } from '../../utils/base-types'
+import { type ComponentPropsWithRef, forwardRef } from 'react'
 import { element } from '../../utils/element-creator'
-import { type MergePropTypes } from '../../utils/types'
+import { MergeTypes, Resolve } from '../../utils/types'
+import { UtilityProps } from '../../utils/utility-classes'
 import { useThemeProps } from '../Provider/Provider'
 
 // Module augmentation interface for overriding component props' types
@@ -18,12 +18,13 @@ export interface LinkPropsDefaults {
   wrapWhenDisabled?: boolean
 }
 
-export type LinkProps = MergePropTypes<LinkPropsDefaults, LinkPropsOverrides> &
-  ComponentBaseProps<'a'>
+export type LinkProps = Resolve<MergeTypes<LinkPropsDefaults, LinkPropsOverrides>> &
+  UtilityProps &
+  ComponentPropsWithRef<'a'>
 
 // ✨ Nice display type for IntelliSense
 export interface Link {
-  (props: LinkProps & { ref?: React.ForwardedRef<unknown> }): React.ReactElement | null
+  (props: LinkProps): React.ReactElement | null
   displayName?: string
 }
 

@@ -1,5 +1,4 @@
-import React from 'react'
-
+import React, { type ComponentPropsWithoutRef } from 'react'
 import { activeActionBuilder } from '../../utils/active-action-component-builder'
 import { activeContainerBuilder } from '../../utils/active-container-component-builder'
 import { activeContentBuilder } from '../../utils/active-content-component-builder'
@@ -7,24 +6,27 @@ import {
   type ActiveActionBaseProps,
   type ActiveContainerBaseProps,
   type ActiveContentBaseProps,
-  type ComponentBaseProps,
 } from '../../utils/base-types'
+import { UtilityProps } from '../../utils/utility-classes'
 import { Link } from '../Link/Link'
 
 export interface TooltipProps
   extends ActiveContainerBaseProps,
-    ComponentBaseProps<'div'> {}
+    UtilityProps,
+    ComponentPropsWithoutRef<'div'> {}
 
 export interface TooltipActionProps
   extends ActiveActionBaseProps,
-    ComponentBaseProps<'button'> {
+    UtilityProps,
+    ComponentPropsWithoutRef<'button'> {
   /** Display variant */
   variant?: 'primary'
 }
 
 export interface TooltipContentProps
   extends ActiveContentBaseProps,
-    ComponentBaseProps<'div'> {
+    UtilityProps,
+    ComponentPropsWithoutRef<'div'> {
   /** Display variant */
   variant?: 'primary'
 }

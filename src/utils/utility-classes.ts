@@ -8,10 +8,10 @@
  * `declare module 'componentry/types/utils/utility-classes' { }`
  */
 
-import { type CSSProperties } from 'react'
+import { type CSSProperties, type ElementType } from 'react'
 import { type Theme } from '../theme/theme'
 import { themeDefaults } from '../theme/theme-defaults'
-import { type MergePropTypes, type UtilityPropsForTheme } from './types'
+import { type MergeTypes, type Resolve, type UtilityPropsForTheme } from './types'
 
 /** Module augmentation interface for overriding default utility props' types */
 export interface UtilityPropsOverrides {}
@@ -28,6 +28,9 @@ export type MaxWidthBase = 'full' | 'min' | 'max' | 'fit' | 'prose' | 'none'
 
 /** Default utility prop types, customizable with UtilityPropsOverrides */
 export interface UtilityPropsBase {
+  /** Component element */
+  as?: ElementType
+
   // ---LAYOUT
   /** Sets a `display` style */
   display?:
@@ -194,7 +197,7 @@ export interface UtilityPropsBase {
 }
 
 /** Componentry utility props for including utility styles. */
-export type UtilityProps = MergePropTypes<UtilityPropsBase, UtilityPropsOverrides>
+export type UtilityProps = Resolve<MergeTypes<UtilityPropsBase, UtilityPropsOverrides>>
 
 const activeProps = {
   activate: 1,

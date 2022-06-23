@@ -1,13 +1,21 @@
-import { forwardRef } from 'react'
-import { type ComponentBaseProps } from '../../utils/base-types'
+import { type ComponentPropsWithRef, forwardRef } from 'react'
 import { element } from '../../utils/element-creator'
+import { MergeTypes, Resolve } from '../../utils/types'
+import { UtilityProps } from '../../utils/utility-classes'
 import { useThemeProps } from '../Provider/Provider'
 
-export interface BlockProps extends ComponentBaseProps<'div'> {}
+// Module augmentation interface for overriding component props' types
+export interface BlockPropsOverrides {}
+
+export interface BlockPropsDefaults {}
+
+export type BlockProps = Resolve<MergeTypes<BlockPropsDefaults, BlockPropsOverrides>> &
+  UtilityProps &
+  ComponentPropsWithRef<'div'>
 
 // ✨ Nice display type for IntelliSense
 export interface Block {
-  (props: BlockProps & { ref?: React.ForwardedRef<unknown> }): React.ReactElement | null
+  (props: BlockProps): React.ReactElement | null
   displayName?: string
 }
 

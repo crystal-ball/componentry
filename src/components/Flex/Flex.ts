@@ -1,8 +1,12 @@
-import { forwardRef } from 'react'
-import { type ComponentBaseProps } from '../../utils/base-types'
+import { type ComponentPropsWithRef, forwardRef } from 'react'
 import { element } from '../../utils/element-creator'
+import { MergeTypes, Resolve } from '../../utils/types'
+import { UtilityProps } from '../../utils/utility-classes'
 
 import { useThemeProps } from '../Provider/Provider'
+
+// Module augmentation interface for overriding component props' types
+export interface FlexPropsOverrides {}
 
 export interface FlexPropsDefaults {
   /** Sets an `align-items` style */
@@ -15,11 +19,13 @@ export interface FlexPropsDefaults {
   wrap?: 'wrap' | 'nowrap' | 'wrap-reverse'
 }
 
-export type FlexProps = FlexPropsDefaults & ComponentBaseProps<'div'>
+export type FlexProps = Resolve<MergeTypes<FlexPropsDefaults, FlexPropsOverrides>> &
+  UtilityProps &
+  ComponentPropsWithRef<'div'>
 
 // ✨ Nice display type for IntelliSense
 export interface Flex {
-  (props: FlexProps & { ref?: React.ForwardedRef<unknown> }): React.ReactElement | null
+  (props: FlexProps): React.ReactElement | null
   displayName?: string
 }
 

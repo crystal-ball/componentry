@@ -8,7 +8,7 @@
  */
 
 import clsx from 'clsx'
-import { MergePropTypes } from '../utils/types'
+import { MergeTypes } from '../utils/types'
 
 /** Module augmentation interface for overriding default utility props' types */
 export interface UtilityPropsOverrides {}
@@ -141,7 +141,7 @@ export interface UtilityPropsBase {
 }
 
 /** Componentry utility props for including utility styles. */
-export type UtilityProps = MergePropTypes<UtilityPropsBase, UtilityPropsOverrides>
+export type UtilityProps = MergeTypes<UtilityPropsBase, UtilityPropsOverrides>
 
 // Map of utility props for quickly filtering out Componentry props from user props
 export const utilityProps: { [Prop in keyof UtilityPropsBase]: 1 } = {

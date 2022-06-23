@@ -1,3 +1,4 @@
+import { type ComponentPropsWithoutRef } from 'react'
 import { activeActionBuilder } from '../../utils/active-action-component-builder'
 import { activeContainerBuilder } from '../../utils/active-container-component-builder'
 import { activeContentBuilder } from '../../utils/active-content-component-builder'
@@ -5,32 +6,41 @@ import {
   type ActiveActionBaseProps,
   type ActiveContainerBaseProps,
   type ActiveContentBaseProps,
-  type ComponentBaseProps,
 } from '../../utils/base-types'
 import { element } from '../../utils/element-creator'
 import { staticComponent } from '../../utils/static-component-builder'
+import { UtilityProps } from '../../utils/utility-classes'
 import { Link } from '../Link/Link'
 import { useThemeProps } from '../Provider/Provider'
 
-export interface TabsProps extends ActiveContainerBaseProps, ComponentBaseProps<'div'> {}
+export interface TabsProps
+  extends ActiveContainerBaseProps,
+    UtilityProps,
+    ComponentPropsWithoutRef<'div'> {}
 
-export interface TabsActionsContainerProps extends ComponentBaseProps<'div'> {
+export interface TabsActionsContainerProps
+  extends UtilityProps,
+    ComponentPropsWithoutRef<'div'> {
   /** Pill style tabs */
   pills?: boolean // TODO: This should be a variant on Tabs
 }
 
 export interface TabsActionProps
   extends ActiveActionBaseProps,
-    ComponentBaseProps<'button'> {
+    UtilityProps,
+    ComponentPropsWithoutRef<'button'> {
   /** Display variant */
   variant?: 'primary'
 }
 
-export interface TabsContentContainerProps extends ComponentBaseProps<'div'> {}
+export interface TabsContentContainerProps
+  extends UtilityProps,
+    ComponentPropsWithoutRef<'div'> {}
 
 export interface TabsContentProps
   extends ActiveContentBaseProps,
-    ComponentBaseProps<'div'> {
+    UtilityProps,
+    ComponentPropsWithoutRef<'div'> {
   /** Display variant */
   variant?: 'primary'
 }

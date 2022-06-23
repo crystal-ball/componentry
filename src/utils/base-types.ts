@@ -3,21 +3,7 @@
  * Base types used for component prop type definitions.
  */
 
-import { type ClassValue } from 'clsx'
-import { type ComponentPropsWithoutRef, type ElementType, type ReactNode } from 'react'
-import { type UtilityProps } from './utility-classes'
-
-/**
- * Base props supported by all Componentry components. Includes the utility
- * styles' props and the HTML attributes for the element DOM type.
- */
-export type ComponentBaseProps<Element extends ElementType> = {
-  /** Component element */
-  as?: ElementType
-  /** Component className, can be a string, array, or object */
-  className?: ClassValue
-} & UtilityProps &
-  Omit<ComponentPropsWithoutRef<Element>, 'className'>
+import { type ReactNode } from 'react'
 
 // --------------------------------------------------------
 // Active components
@@ -25,9 +11,6 @@ export type ComponentBaseProps<Element extends ElementType> = {
 export interface ActiveContainerBaseProps {
   /** Container children */
   children?: ReactNode
-
-  /** Component element */
-  as?: ElementType
 
   /** Sets a container content placement direction className */
   direction?: 'top' | 'left' | 'right' | 'bottom'
@@ -59,8 +42,6 @@ export interface ActiveContainerBaseProps {
 }
 
 export interface ActiveActionBaseProps {
-  /** Component element */
-  as?: ElementType
   /** Action/Content pairing id for compound active components */
   activeId?: string
   /** Component children */
@@ -68,8 +49,6 @@ export interface ActiveActionBaseProps {
 }
 
 export interface ActiveContentBaseProps {
-  /** Component element */
-  as?: ElementType
   /** Action/Content pairing id for compound active components */
   activeId?: string
   /** Component children */
