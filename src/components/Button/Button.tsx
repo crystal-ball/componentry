@@ -69,7 +69,6 @@ export const Button: Button = forwardRef((props, ref) => {
     ...props,
   }
 
-  const iconCx = clsx('C9Y-Button-Icon', { [`C9Y-Button-Icon-${size}Size`]: size })
   const contents = element({
     ref,
     disabled,
@@ -88,13 +87,21 @@ export const Button: Button = forwardRef((props, ref) => {
     children: (
       <>
         {startIcon && (
-          <span className={iconCx}>
+          <span
+            className={clsx('C9Y-Button-Icon', 'C9Y-Button-Icon-startIcon', {
+              [`C9Y-Button-Icon-${size}Size`]: size,
+            })}
+          >
             {typeof startIcon === 'string' ? <Icon id={startIcon} /> : startIcon}
           </span>
         )}
         {children}
         {endIcon && (
-          <span className={iconCx}>
+          <span
+            className={clsx('C9Y-Button-Icon', 'C9Y-Button-Icon-endIcon', {
+              [`C9Y-Button-Icon-${size}Size`]: size,
+            })}
+          >
             {typeof endIcon === 'string' ? <Icon id={endIcon} /> : endIcon}
           </span>
         )}
