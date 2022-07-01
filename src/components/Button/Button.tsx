@@ -3,7 +3,6 @@ import React, { forwardRef } from 'react'
 import { element } from '../../utils/element-creator'
 import { MergeTypes, Resolve } from '../../utils/types'
 import { UtilityProps } from '../../utils/utility-classes'
-import { Icon } from '../Icon/Icon'
 import { useThemeProps } from '../Provider/Provider'
 
 // Module augmentation interface for overriding component props' types
@@ -16,7 +15,7 @@ export interface ButtonPropsDefaults {
   /** Disables the element, preventing mouse and keyboard events */
   disabled?: boolean
   /** Icon positioned after button content */
-  endIcon?: string | JSX.Element
+  endIcon?: React.ReactElement
   /** Toggles full width element layout */
   fullWidth?: boolean
   /** HTML element href */
@@ -24,7 +23,7 @@ export interface ButtonPropsDefaults {
   /** Sets the display size */
   size?: 'small' | 'large'
   /** Icon positioned before button content */
-  startIcon?: string | JSX.Element
+  startIcon?: React.ReactElement
   /** Display variant */
   variant?: 'filled' | 'outlined'
   /** Indicates whether buttons in a disabled state should be wrapped with a span */
@@ -88,21 +87,21 @@ export const Button: Button = forwardRef((props, ref) => {
       <>
         {startIcon && (
           <span
-            className={clsx('C9Y-Button-Icon', 'C9Y-Button-Icon-startIcon', {
-              [`C9Y-Button-Icon-${size}Size`]: size,
+            className={clsx('C9Y-Button-icon C9Y-Button-startIcon', {
+              [`C9Y-Button-${size}SizeIcon`]: size,
             })}
           >
-            {typeof startIcon === 'string' ? <Icon id={startIcon} /> : startIcon}
+            {startIcon}
           </span>
         )}
         {children}
         {endIcon && (
           <span
-            className={clsx('C9Y-Button-Icon', 'C9Y-Button-Icon-endIcon', {
-              [`C9Y-Button-Icon-${size}Size`]: size,
+            className={clsx('C9Y-Button-icon C9Y-Button-endIcon', {
+              [`C9Y-Button-${size}SizeIcon`]: size,
             })}
           >
-            {typeof endIcon === 'string' ? <Icon id={endIcon} /> : endIcon}
+            {endIcon}
           </span>
         )}
       </>

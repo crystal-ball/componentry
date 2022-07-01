@@ -1,4 +1,5 @@
 import { ArgsTable, Canvas, Meta, Story } from '@storybook/addon-docs'
+import { Icon } from '../Icon/Icon'
 import { Button } from './Button'
 
 <Meta title='Components/Button' component={Button} />
@@ -95,26 +96,26 @@ Pass `fullWidth` to make a button fill its parent container:
 
 <div className='flex flex-col items-center gap-4'>
   <div className='flex gap-4'>
-    <Button variant='filled' startIcon='code' size='small'>
+    <Button variant='filled' startIcon={<Icon id='code' />} size='small'>
       Button
     </Button>
-    <Button variant='filled' endIcon='code' size='small'>
-      Button
-    </Button>
-  </div>
-  <div className='flex gap-4'>
-    <Button variant='filled' startIcon='code'>
-      Button
-    </Button>
-    <Button variant='filled' endIcon='code'>
+    <Button variant='filled' endIcon={<Icon id='code' />} size='small'>
       Button
     </Button>
   </div>
   <div className='flex gap-4'>
-    <Button variant='filled' startIcon='code' size='large'>
+    <Button variant='filled' startIcon={<Icon id='code' />}>
       Button
     </Button>
-    <Button variant='filled' endIcon='code' size='large'>
+    <Button variant='filled' endIcon={<Icon id='code' />}>
+      Button
+    </Button>
+  </div>
+  <div className='flex gap-4'>
+    <Button variant='filled' startIcon={<Icon id='code' />} size='large'>
+      Button
+    </Button>
+    <Button variant='filled' endIcon={<Icon id='code' />} size='large'>
       Button
     </Button>
   </div>

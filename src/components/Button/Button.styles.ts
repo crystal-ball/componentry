@@ -88,13 +88,13 @@ export const buttonStyles: ButtonStyles = {
   },
 
   // ICONS
-  '.C9Y-Button-Icon': {
+  '.C9Y-Button-icon': {
     fontSize: '1rem',
   },
-  '.C9Y-Button-Icon-smallSize': {
+  '.C9Y-Button-smallSizeIcon': {
     fontSize: '0.75rem',
   },
-  '.C9Y-Button-Icon-largeSize': {
+  '.C9Y-Button-largeSizeIcon': {
     fontSize: '1.25rem',
   },
 }
@@ -104,8 +104,7 @@ export interface ButtonStyles {
   '.C9Y-Button-base': StylesDefinition
   /** Class applied to disabled buttons' wrapper element */
   '.C9Y-Button-DisabledWrapper': StylesDefinition
-  /** Base class applied to all Button Icons */
-  '.C9Y-Button-Icon': StylesDefinition
+
   /** Variant class applied when `variant="filled"` */
   '.C9Y-Button-filled': {
     '&:hover, &.C9Y-hover': StylesDefinition
@@ -118,12 +117,16 @@ export interface ButtonStyles {
     '&:active, &.C9Y-active': StylesDefinition
     '&:disabled, &.C9Y-disabled': StylesDefinition
   } & StylesDefinition
+
   /** Sizing class applied when `size="small"` */
   '.C9Y-Button-smallSize': StylesDefinition
   /** Sizing class applied when `size="large"` */
   '.C9Y-Button-largeSize': StylesDefinition
+
+  /** Base class applied to all Button Icons */
+  '.C9Y-Button-icon': StylesDefinition
   /** Sizing class applied to Button Icons when `size="small"` */
-  '.C9Y-Button-Icon-smallSize': StylesDefinition
+  '.C9Y-Button-smallSizeIcon': StylesDefinition
   /** Sizing class applied Button Icons when `size="large"` */
-  '.C9Y-Button-Icon-largeSize': StylesDefinition
+  '.C9Y-Button-largeSizeIcon': StylesDefinition
 }
