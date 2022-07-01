@@ -21,6 +21,7 @@ export {
   type IconElementsMap,
   type IconProps,
 } from './components/Icon/Icon'
+export { IconButton, type IconButtonProps } from './components/IconButton/IconButton'
 export { Input } from './components/Input/Input'
 export { Link, type LinkProps } from './components/Link/Link'
 export { Modal } from './components/Modal/Modal'

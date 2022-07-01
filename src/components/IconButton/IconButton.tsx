@@ -2,7 +2,6 @@ import React, { forwardRef } from 'react'
 import { element } from '../../utils/element-creator'
 import { MergeTypes, Resolve } from '../../utils/types'
 import { UtilityProps } from '../../utils/utility-classes'
-import { Icon } from '../Icon/Icon'
 import { useThemeProps } from '../Provider/Provider'
 
 // Module augmentation interface for overriding component props' types
@@ -14,7 +13,7 @@ export interface IconButtonPropsDefaults {
   /** Disables the element, preventing mouse and keyboard events */
   disabled?: boolean
   /** Button content */
-  icon: string | JSX.Element
+  icon: React.ReactElement
   /** Toggles full width element layout */
   fullWidth?: boolean
   /** HTML element href */
@@ -24,7 +23,7 @@ export interface IconButtonPropsDefaults {
   /** Indicates whether buttons in a disabled state should be wrapped with a span */
   wrapWhenDisabled?: boolean
   /** Display variant */
-  variant?: 'transparent' | 'outlined'
+  variant?: 'filled' | 'outlined'
 }
 
 export type IconButtonProps = Resolve<
@@ -67,7 +66,8 @@ export const IconButton: IconButton = forwardRef((props, ref) => {
     disabled,
     // If an href is passed, this instance should render an anchor tag
     as: merged.href ? 'a' : 'button',
-    type: merged.href ? undefined : 'button',
+    // @ts-expect-error - Ensure button works for router library usage even though to isn't in props
+    type: merged.href || merged.to ? undefined : 'button',
     componentCx: [
       `C9Y-IconButton-base C9Y-IconButton-${variant}`,
       {
@@ -75,7 +75,7 @@ export const IconButton: IconButton = forwardRef((props, ref) => {
         [`C9Y-IconButton-${size}Size`]: size,
       },
     ],
-    children: typeof icon === 'string' ? <Icon id={icon} /> : icon,
+    children: icon,
     ...merged,
   })
 

@@ -1,4 +1,5 @@
 import { ArgsTable, Canvas, Meta, Story } from '@storybook/addon-docs'
+import { Icon } from '../Icon/Icon'
 import { IconButton } from './IconButton'
 
 <Meta title='Components/IconButton' component={IconButton} />
@@ -25,14 +26,14 @@ Pass a `filled` or `outlined` variant to set a button style.
     ),
   ]}
 >
-  <IconButton variant='filled' icon='code' />
-  <IconButton variant='filled' icon='code' className='C9Y-hover' />
-  <IconButton variant='filled' icon='code' className='C9Y-active' />
-  <IconButton variant='filled' icon='code' disabled />
-  <IconButton variant='outlined' icon='code' />
-  <IconButton variant='outlined' icon='code' className='C9Y-hover' />
-  <IconButton variant='outlined' icon='code' className='C9Y-active' />
-  <IconButton variant='outlined' icon='code' disabled />
+  <IconButton variant='filled' icon={<Icon id='code' />} />
+  <IconButton variant='filled' icon={<Icon id='code' />} className='C9Y-hover' />
+  <IconButton variant='filled' icon={<Icon id='code' />} className='C9Y-active' />
+  <IconButton variant='filled' icon={<Icon id='code' />} disabled />
+  <IconButton variant='outlined' icon={<Icon id='code' />} />
+  <IconButton variant='outlined' icon={<Icon id='code' />} className='C9Y-hover' />
+  <IconButton variant='outlined' icon={<Icon id='code' />} className='C9Y-active' />
+  <IconButton variant='outlined' icon={<Icon id='code' />} disabled />
 </Story>
 
 ## Sizes
@@ -41,14 +42,14 @@ Pass a `size` to set a button size:
 
 <div className='flex flex-col gap-4 justify-center'>
   <div className='flex flex-row items-center gap-4'>
-    <IconButton variant='filled' icon='code' size='small' />
-    <IconButton variant='filled' icon='code' />
-    <IconButton variant='filled' icon='code' size='large' />
+    <IconButton variant='filled' icon={<Icon id='code' />} size='small' />
+    <IconButton variant='filled' icon={<Icon id='code' />} />
+    <IconButton variant='filled' icon={<Icon id='code' />} size='large' />
   </div>
   <div className='flex flex-row items-center gap-4'>
-    <IconButton variant='outlined' icon='code' size='small' />
-    <IconButton variant='outlined' icon='code' />
-    <IconButton variant='outlined' icon='code' size='large' />
+    <IconButton variant='outlined' icon={<Icon id='code' />} size='small' />
+    <IconButton variant='outlined' icon={<Icon id='code' />} />
+    <IconButton variant='outlined' icon={<Icon id='code' />} size='large' />
   </div>
 </div>
 
@@ -62,7 +63,7 @@ Pass a `size` to set a button size:
   no effect on `pointer-events: none` button element
 
 <div className='flex items-center gap-4'>
-  <IconButton icon='code' disabled />
+  <IconButton icon={<Icon id='code' />} disabled />
 </div>
 
 ## IconButtons with hrefs
@@ -70,8 +71,8 @@ Pass a `size` to set a button size:
 IconButtons with an `href` will be rendered as anchors:
 
 <div className='flex flex-col items-center gap-4'>
-  <IconButton icon='code' href='#test' />
-  <IconButton disabled icon='code' href='#test' />
+  <IconButton icon={<Icon id='code' />} href='#test' />
+  <IconButton disabled icon={<Icon id='code' />} href='#test' />
 </div>
 
 <ArgsTable of={IconButton} />
