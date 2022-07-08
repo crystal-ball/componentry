@@ -57,7 +57,13 @@ const testButton = (
     <Button variant='filled' size='small' startIcon={<Icon id='code' />} active>
       Click
     </Button>
-    <Button variant='filled' size='small' endIcon={<Icon id='code' />} active>
+    <Button
+      variant='filled'
+      color='primary'
+      size='small'
+      endIcon={<Icon id='code' />}
+      active
+    >
       Click
     </Button>
   </>

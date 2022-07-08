@@ -31,7 +31,7 @@ export interface ButtonPropsDefaults {
 }
 
 export type ButtonProps = Resolve<MergeTypes<ButtonPropsDefaults, ButtonPropsOverrides>> &
-  UtilityProps &
+  Omit<UtilityProps, 'color'> &
   React.ComponentPropsWithRef<'button'>
 
 // ✨ Nice display type for IntelliSense

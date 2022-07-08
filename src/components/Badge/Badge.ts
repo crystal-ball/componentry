@@ -15,7 +15,7 @@ export interface BadgePropsDefaults {
 }
 
 export type BadgeProps = Resolve<MergeTypes<BadgePropsDefaults, BadgePropsOverrides>> &
-  UtilityProps &
+  Omit<UtilityProps, 'color'> &
   React.ComponentPropsWithoutRef<'div'>
 
 // ✨ Nice display type for IntelliSense

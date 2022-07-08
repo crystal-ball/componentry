@@ -32,7 +32,7 @@ export interface AlertPropsBase {
 }
 
 export type AlertProps = Resolve<MergeTypes<AlertPropsBase, AlertPropsOverrides>> &
-  UtilityProps &
+  Omit<UtilityProps, 'color'> &
   React.ComponentPropsWithoutRef<'div'>
 
 export interface AlertCloseProps
