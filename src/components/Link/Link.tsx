@@ -14,8 +14,6 @@ export interface LinkPropsDefaults {
   href?: string
   /** Display variant */
   variant?: 'text'
-  /** Indicates whether buttons in a disabled state should be wrapped with a span */
-  wrapWhenDisabled?: boolean
 }
 
 export type LinkProps = Resolve<MergeTypes<LinkPropsDefaults, LinkPropsOverrides>> &
@@ -43,26 +41,20 @@ export const Link: Link = forwardRef((props, ref) => {
   const {
     disabled,
     variant = 'text',
-    wrapWhenDisabled = true,
     ...merged
   } = {
     ...useThemeProps('Link'),
     ...props,
   }
 
-  const contents = element({
+  return element({
     ref,
+    disabled,
     as: merged.href ? 'a' : 'button',
     // @ts-expect-error - Ensure button works for router library usage even though to isn't in props
     type: merged.href || merged.to ? undefined : 'button',
     componentCx: `C9Y-Link-base C9Y-Link-${variant}`,
     ...merged,
   })
-
-  return disabled && wrapWhenDisabled ? (
-    <span className='C9Y-Link-DisabledWrapper'>{contents}</span>
-  ) : (
-    contents
-  )
 })
 Link.displayName = 'Link'
