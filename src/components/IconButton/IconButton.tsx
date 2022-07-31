@@ -20,8 +20,6 @@ export interface IconButtonPropsDefaults {
   href?: string
   /** Sets the display size */
   size?: 'small' | 'large'
-  /** Indicates whether buttons in a disabled state should be wrapped with a span */
-  wrapWhenDisabled?: boolean
   /** Display variant */
   variant?: 'filled' | 'outlined'
 }
@@ -54,14 +52,13 @@ export const IconButton: IconButton = forwardRef((props, ref) => {
     disabled,
     icon,
     size,
-    wrapWhenDisabled = true,
     ...merged
   } = {
     ...useThemeProps('IconButton'),
     ...props,
   }
 
-  const contents = element({
+  return element({
     ref,
     disabled,
     // If an href is passed, this instance should render an anchor tag
@@ -78,11 +75,5 @@ export const IconButton: IconButton = forwardRef((props, ref) => {
     children: icon,
     ...merged,
   })
-
-  return disabled && wrapWhenDisabled ? (
-    <span className='C9Y-IconButton-DisabledWrapper'>{contents}</span>
-  ) : (
-    contents
-  )
 })
 IconButton.displayName = 'IconButton'

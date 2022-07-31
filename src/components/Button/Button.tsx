@@ -26,8 +26,6 @@ export interface ButtonPropsDefaults {
   startIcon?: React.ReactElement
   /** Display variant */
   variant?: 'filled' | 'outlined'
-  /** Indicates whether buttons in a disabled state should be wrapped with a span */
-  wrapWhenDisabled?: boolean
 }
 
 export type ButtonProps = Resolve<MergeTypes<ButtonPropsDefaults, ButtonPropsOverrides>> &
@@ -61,14 +59,13 @@ export const Button: Button = forwardRef((props, ref) => {
     color,
     fullWidth,
     size,
-    wrapWhenDisabled = true,
     ...merged
   } = {
     ...useThemeProps('Button'),
     ...props,
   }
 
-  const contents = element({
+  return element({
     ref,
     disabled,
     // If an href is passed, this instance should render an anchor tag
@@ -108,13 +105,5 @@ export const Button: Button = forwardRef((props, ref) => {
     ),
     ...merged,
   })
-
-  return disabled && wrapWhenDisabled ? (
-    <span className={clsx('C9Y-Button-DisabledWrapper', { 'w-full': fullWidth })}>
-      {contents}
-    </span>
-  ) : (
-    contents
-  )
 })
 Button.displayName = 'Button'
