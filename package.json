@@ -25,9 +25,12 @@
     "./postcss": "./dist/commonjs/plugin-postcss/index.js",
     "./api-docs": "./dist/api-docs.json",
     ".": {
-      "browser": "./dist/browser/index.js",
+      "browser": {
+        "import": "./dist/browser/index.js",
+        "require": "./dist/commonjs/index.js"
+      },
       "node": {
-        "module": "./dist/browser/index.js",
+        "import": "./dist/browser/index.js",
         "require": "./dist/commonjs/index.js"
       },
       "default": "./dist/browser/index.js"
