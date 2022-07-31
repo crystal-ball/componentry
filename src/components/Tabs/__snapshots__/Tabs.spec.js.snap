@@ -43,21 +43,18 @@ exports[`<Tab /> snapshots renders correctly 1`] = `
     >
       Item 3
     </button>
-    <span
-      class="C9Y-Link-DisabledWrapper"
+    <button
+      aria-controls="test-guid-four-content"
+      aria-selected="false"
+      class="C9Y-Link-base C9Y-Link-text C9Y-TabsAction C9Y-disabled C9Y-disabled"
+      data-active-id="four"
+      disabled=""
+      id="test-guid-four-tab"
+      role="tab"
+      type="button"
     >
-      <button
-        aria-controls="test-guid-four-content"
-        aria-selected="false"
-        class="C9Y-Link-base C9Y-Link-text C9Y-TabsAction C9Y-disabled"
-        data-active-id="four"
-        id="test-guid-four-tab"
-        role="tab"
-        type="button"
-      >
-        Disabled
-      </button>
-    </span>
+      Disabled
+    </button>
   </div>
   <div
     class="C9Y-TabsContentContainer"
