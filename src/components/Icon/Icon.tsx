@@ -47,26 +47,29 @@ export interface IconPropsDefaults {
   variant?: 'font'
 }
 
-export type IconProps = Resolve<MergeTypes<IconPropsDefaults, IconPropsOverrides>> &
+export type IconProps<Elem extends React.ElementType = 'svg'> = Resolve<
+  MergeTypes<IconPropsDefaults, IconPropsOverrides>
+> &
   UtilityProps &
-  React.ComponentPropsWithRef<'svg'>
+  React.ComponentPropsWithRef<Elem> & { as?: Elem }
 
 // ✨ Nice display type for IntelliSense
 export interface Icon {
-  (props: IconProps): React.ReactElement | null
+  <Elem extends React.ElementType = 'svg'>(
+    props: IconProps<Elem>,
+  ): React.ReactElement | null
   displayName?: string
 }
 
 /**
- * #### [📝 Icon](https://componentry.design/docs/components/icon)
- *
- * Icon provides consistent iconography using SVG icons.
+ * Icon provides consistently themed iconography elements.
  * @example
  * ```tsx
  * <Icon id="coffee" />
  * ```
+ * @see [📝 Icon](https://componentry.design/docs/components/icon)
  */
-export const Icon: Icon = forwardRef((props, ref) => {
+export const Icon: Icon = forwardRef<HTMLElement, IconProps>((props, ref) => {
   const {
     externalURI = '',
     id,

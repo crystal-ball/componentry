@@ -6,7 +6,7 @@ export default function Test() {
   return /*#__PURE__*/ _jsx('div', {
     className: 'flex',
     'data-component': 'Flex',
-    children: /*#__PURE__*/ _jsx('p', {
+    children: /*#__PURE__*/ _jsx('div', {
       className: 'C9Y-Text-base C9Y-Text-body',
       'data-component': 'Text',
       children: 'Precompiled for speed',

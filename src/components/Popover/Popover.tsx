@@ -38,7 +38,9 @@ export interface PopoverContentProps
 
 export interface PopoverHeadingProps
   extends UtilityProps,
-    React.ComponentPropsWithoutRef<'div'> {}
+    React.ComponentPropsWithoutRef<'div'> {
+  as?: React.ElementType
+}
 
 export interface Popover {
   (props: PopoverProps): React.ReactElement

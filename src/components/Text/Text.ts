@@ -28,8 +28,8 @@ let textElementMap: TextElementsMap = {
   h1: 'h1',
   h2: 'h2',
   h3: 'h3',
-  body: 'p',
-  code: 'code', // TODO: make a component?
+  body: 'div',
+  code: 'code',
   small: 'small',
 }
 
@@ -59,35 +59,36 @@ export function configureTextElementsMap(elementsMap: TextElementsMap): void {
 export interface TextPropsOverrides {}
 
 export interface TextPropsDefaults {
-  htmlFor?: string // DEBT: This should be computed from the "as='label'"
-  /** Display variant */
   variant?: 'h1' | 'h2' | 'h3' | 'body' | 'code' | 'small'
   /** Truncates overflowing text with an ellipses */
   truncate?: boolean
 }
 
-export type TextProps = Resolve<MergeTypes<TextPropsDefaults, TextPropsOverrides>> &
+export type TextProps<Elem extends React.ElementType = 'div'> = Resolve<
+  MergeTypes<TextPropsDefaults, TextPropsOverrides>
+> &
   UtilityProps &
-  React.ComponentPropsWithRef<'div'>
+  React.ComponentPropsWithRef<Elem> & { as?: Elem }
 
 // ✨ Nice display type for IntelliSense
 export interface Text {
-  (props: TextProps): React.ReactElement | null
+  <Elem extends React.ElementType = 'div'>(
+    props: TextProps<Elem>,
+  ): React.ReactElement | null
   displayName?: string
 }
 
 /**
- * #### [📝 Text docs](https://componentry.design/docs/components/text)
- *
  * Text provides consistently themed typography elements.
  * @example
  * ```tsx
  * <Text variant="h1">
- *   Componentry
+ *   Build something delightful!
  * </Text>
  * ```
+ * @see [📝 Text docs](https://componentry.design/docs/components/text)
  */
-export const Text: Text = forwardRef((props, ref) => {
+export const Text: Text = forwardRef<HTMLDivElement, TextProps>((props, ref) => {
   const {
     truncate = false,
     variant = 'body',

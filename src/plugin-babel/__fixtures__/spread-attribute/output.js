@@ -7,7 +7,7 @@ export default function Test(props) {
     direction: 'column',
     justify: 'center',
     ...props,
-    children: /*#__PURE__*/ _jsx('p', {
+    children: /*#__PURE__*/ _jsx('div', {
       className: 'C9Y-Text-base C9Y-Text-body',
       children: 'Precompile testing',
     }),

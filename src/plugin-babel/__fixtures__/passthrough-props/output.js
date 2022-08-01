@@ -8,12 +8,12 @@ export default function Test() {
   return /*#__PURE__*/ _jsxs('div', {
     className: 'flex',
     children: [
-      /*#__PURE__*/ _jsx('p', {
+      /*#__PURE__*/ _jsx('div', {
         className: 'C9Y-Text-base C9Y-Text-body',
         'data-skip': 'passthrough',
         children: 'Passthrough props',
       }),
-      /*#__PURE__*/ _jsx('p', {
+      /*#__PURE__*/ _jsx('div', {
         className: 'C9Y-Text-base C9Y-Text-body',
         onMouseEnter: () => console.log('mouse_enter'),
         children: 'Passthrough props',

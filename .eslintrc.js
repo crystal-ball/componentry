@@ -4,6 +4,10 @@ module.exports = {
   extends: 'eloquence/react',
 
   rules: {
+    // Link and Button work for either
+    'jsx-a11y/anchor-is-valid': 'off',
+    // If a prop is defined it's supposed to be there 😁
+    'react/no-unused-prop-types': 'off',
     // Componentry uses empty interfaces frequently for module augmentation
     '@typescript-eslint/no-empty-interface': 'off',
   },

@@ -15,11 +15,21 @@ export interface CardPropsDefaults {
 export type CardProps = Resolve<MergeTypes<CardPropsDefaults, CardPropsOverrides>> &
   UtilityProps &
   React.ComponentPropsWithoutRef<'div'>
-interface CardBodyProps extends UtilityProps, React.ComponentPropsWithoutRef<'div'> {}
-interface CardFooterProps extends UtilityProps, React.ComponentPropsWithoutRef<'div'> {}
-interface CardHeaderProps extends UtilityProps, React.ComponentPropsWithoutRef<'div'> {}
-interface CardTitleProps extends UtilityProps, React.ComponentPropsWithoutRef<'h4'> {}
-interface CardSubtitleProps extends UtilityProps, React.ComponentPropsWithoutRef<'h5'> {}
+interface CardBodyProps extends UtilityProps, React.ComponentPropsWithoutRef<'div'> {
+  as?: React.ElementType
+}
+interface CardFooterProps extends UtilityProps, React.ComponentPropsWithoutRef<'div'> {
+  as?: React.ElementType
+}
+interface CardHeaderProps extends UtilityProps, React.ComponentPropsWithoutRef<'div'> {
+  as?: React.ElementType
+}
+interface CardTitleProps extends UtilityProps, React.ComponentPropsWithoutRef<'h4'> {
+  as?: React.ElementType
+}
+interface CardSubtitleProps extends UtilityProps, React.ComponentPropsWithoutRef<'h5'> {
+  as?: React.ElementType
+}
 
 export interface Card {
   (props: CardProps): React.ReactElement

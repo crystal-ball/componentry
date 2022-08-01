@@ -5,11 +5,10 @@ import { MergeTypes, Resolve } from '../../utils/types'
 import { UtilityProps } from '../../utils/utility-classes'
 import { useThemeProps } from '../Provider/Provider'
 
-// Module augmentation interface for overriding component props' types
+/** Module augmentation interface for overriding component props' types */
 export interface ButtonPropsOverrides {}
 
 export interface ButtonPropsDefaults {
-  children: React.ReactNode
   /** Button variant color */
   color?: 'primary'
   /** Disables the element, preventing mouse and keyboard events */
@@ -28,28 +27,31 @@ export interface ButtonPropsDefaults {
   variant?: 'filled' | 'outlined'
 }
 
-export type ButtonProps = Resolve<MergeTypes<ButtonPropsDefaults, ButtonPropsOverrides>> &
+export type ButtonProps<Elem extends React.ElementType = 'button'> = Resolve<
+  MergeTypes<ButtonPropsDefaults, ButtonPropsOverrides>
+> &
   Omit<UtilityProps, 'color'> &
-  React.ComponentPropsWithRef<'button'>
+  React.ComponentPropsWithRef<Elem> & { as?: Elem }
 
 // ✨ Nice display type for IntelliSense
 export interface Button {
-  (props: ButtonProps): React.ReactElement | null
+  <Elem extends React.ElementType = 'button'>(
+    props: ButtonProps<Elem>,
+  ): React.ReactElement | null
   displayName?: string
 }
 
 /**
- * #### [📝 Button](https://componentry.design/docs/components/button)
- *
- * Button provides actionable elements for creating accessible user interactions.
+ * Button provides action elements styled as buttons.
  * @example
  * ```tsx
- * <Button onClick={() => buildSomethingRadical()}>
- *   Build something radical
+ * <Button onClick={() => buildSomethingDelightful()}>
+ *   Componentry
  * </Button>
  * ```
+ * @see [📝 Button](https://componentry.design/docs/components/button)
  */
-export const Button: Button = forwardRef((props, ref) => {
+export const Button: Button = forwardRef<HTMLElement, ButtonProps>((props, ref) => {
   const {
     variant = 'filled',
     children,

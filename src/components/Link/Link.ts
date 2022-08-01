@@ -4,7 +4,7 @@ import { MergeTypes, Resolve } from '../../utils/types'
 import { UtilityProps } from '../../utils/utility-classes'
 import { useThemeProps } from '../Provider/Provider'
 
-// Module augmentation interface for overriding component props' types
+/** Module augmentation interface for overriding component props' types */
 export interface LinkPropsOverrides {}
 
 export interface LinkPropsDefaults {
@@ -16,28 +16,31 @@ export interface LinkPropsDefaults {
   variant?: 'text'
 }
 
-export type LinkProps = Resolve<MergeTypes<LinkPropsDefaults, LinkPropsOverrides>> &
+export type LinkProps<Elem extends React.ElementType = 'a'> = Resolve<
+  MergeTypes<LinkPropsDefaults, LinkPropsOverrides>
+> &
   UtilityProps &
-  React.ComponentPropsWithRef<'a'>
+  React.ComponentPropsWithRef<Elem> & { as?: Elem }
 
 // ✨ Nice display type for IntelliSense
 export interface Link {
-  (props: LinkProps): React.ReactElement | null
+  <Elem extends React.ElementType = 'a'>(
+    props: LinkProps<Elem>,
+  ): React.ReactElement | null
   displayName?: string
 }
 
 /**
- * #### [📝 Link component](https://componentry.design/docs/components/link)
- *
- * Link provides actionable elements in the style of hyperlinks.
+ * Link provides action elements styled as links.
  * @example
  * ```tsx
  * <Link to="/">
- *   Home
+ *   Componentry
  * <Link>
  * ```
+ * @see [📝 Link component](https://componentry.design/docs/components/link)
  */
-export const Link: Link = forwardRef((props, ref) => {
+export const Link: Link = forwardRef<HTMLElement, LinkProps>((props, ref) => {
   const {
     disabled,
     variant = 'text',

@@ -117,17 +117,16 @@ export interface ComponentryProvider {
 }
 
 /**
- * #### [📝 ComponentryProvider](https://componentry.design/components/provider)
- *
  * Provider for the application theme and default component props.
  * @example
+ * ```tsx
  * const appTheme = {}
  * const defaultProps = {}
- * ```tsx
  * <ComponentryProvider theme={appTheme} components={defaultProps}>
  *  <App />
  * </ComponentryProvider>
  * ```
+ * @see [📝 ComponentryProvider](https://componentry.design/components/provider)
  */
 export const ComponentryProvider: ComponentryProvider = ({
   children,

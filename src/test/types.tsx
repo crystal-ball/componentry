@@ -1,12 +1,11 @@
+/**
+ * @file TS types testing
+ */
+
 /* eslint-disable no-console */
 /* eslint-disable @typescript-eslint/no-unused-vars */
 
-/**
- * Testing file for types
- */
-
-import clsx, { ClassValue } from 'clsx'
-import React, { useRef } from 'react'
+import { useRef } from 'react'
 import {
   Active,
   Alert,
@@ -19,10 +18,15 @@ import {
   Flex,
   Grid,
   Icon,
+  IconButton,
   Link,
+  Paper,
   Text,
   useTheme,
 } from '..'
+
+// --------------------------------------------------------
+// THEME TYPES
 
 // Verify that the theme value accessed with theme hook is typed
 function ThemedComponent() {
@@ -30,11 +34,162 @@ function ThemedComponent() {
   return <div style={{ color: theme.colors.inverse }}>THEME</div>
 }
 
+// --------------------------------------------------------
+// POLYMORPHIC TYPES
+
+// Text defaults to p, which does not have htmlFor so there should be an error here:
+const assertComponentAsProp = (
+  <>
+    {/* ✅ Rendering a "label" element should support htmlFor attribute */}
+    <Text as='label' htmlFor='test'>
+      Huzzah
+    </Text>
+    {/* @ts-expect-error -- ❌ Default "div" element does not support htmlFor attribute */}
+    <Text htmlFor='test'>Oh no</Text>
+
+    {/* ✅ TestAs supports a specialProp */}
+    <Text as={TestAs} specialProp={100} />
+    {/* @ts-expect-error -- ❌ TestAs component does not support htmlFor attribute */}
+    <Text as={TestAs} htmlFor='test' />
+    {/* @ts-expect-error -- ❌ TestAs component does not support children */}
+    <Text as={TestAs}>Error</Text>
+  </>
+)
+
+function TestAs({ specialProp }: { specialProp: number }): JSX.Element {
+  return <div>Test passing component as {specialProp}</div>
+}
+
+// --------------------------------------------------------
+// REFS
+
+function TestRef() {
+  const blockRef = useRef<HTMLDivElement>(null)
+  const flexRef = useRef<HTMLDivElement>(null)
+  const gridRef = useRef<HTMLDivElement>(null)
+  const svgRef = useRef<SVGSVGElement>(null)
+
+  const preRef = useRef<HTMLPreElement>(null)
+
+  return (
+    <>
+      <Block ref={blockRef}>w/Ref</Block>
+      <Flex ref={flexRef}>w/Ref</Flex>
+      <Grid ref={gridRef}>w/Ref</Grid>
+      <Icon ref={svgRef} id='test' />
+
+      {/* ✅ as type matches ref type */}
+      <Block ref={preRef} as='pre'>
+        pre block
+      </Block>
+      {/* @ts-expect-error -- ❌ ref type doesn't match default as type of div */}
+      <Block ref={preRef}>pre block</Block>
+    </>
+  )
+}
+
+// --------------------------------------------------------
+// COMPONENT TYPES
+
 const provider = (
   <ComponentryProvider>
     <div>the app</div>
   </ComponentryProvider>
 )
+
+const testBlock = (
+  <>
+    <Block mt={4}>test block</Block>
+    {/* @ts-expect-error -- ❌ invalid prop ohno */}
+    <Block ohno>test block</Block>
+  </>
+)
+
+const testButton = (
+  <>
+    <Button
+      variant='filled'
+      color='primary'
+      size='small'
+      startIcon={<Icon id='code' />}
+      active
+    >
+      Click
+    </Button>
+    <Button href='https://componentry.design/'>Click</Button>
+    {/* @ts-expect-error -- ❌ invalid prop ohno */}
+    <Button ohno>Click</Button>
+  </>
+)
+
+const testFlex = (
+  <>
+    <Flex justify='center' mt='px'>
+      test flex
+    </Flex>
+    {/* @ts-expect-error -- ❌ invalid prop ohno */}
+    <Flex ohno>test flex</Flex>
+  </>
+)
+
+const testIcon = (
+  <>
+    <Icon id='test' className='rad' />
+    {/* @ts-expect-error -- ❌ invalid prop ohno */}
+    <Icon id='test' ohno />
+  </>
+)
+
+const testIconButton = (
+  <>
+    <IconButton icon={<Icon id='test' className='rad' />} onClick={console.log} />
+    <IconButton
+      icon={<Icon id='test' className='rad' />}
+      href='https://componentry.design'
+    />
+    {/* @ts-expect-error -- ❌ invalid prop ohno */}
+    <IconButton ohno />
+  </>
+)
+
+const testGrid = (
+  <>
+    <Grid justify='center' gap={3}>
+      test grid
+    </Grid>
+    {/* @ts-expect-error -- ❌ invalid prop ohno */}
+    <Grid ohno>test grid</Grid>
+  </>
+)
+
+const testLink = (
+  <>
+    <Link href='https://componentry.com'>Click</Link>
+    <Link onClick={console.log}>Click</Link>
+    {/* @ts-expect-error -- ❌ invalid prop ohno */}
+    <Link ohno>Click</Link>
+  </>
+)
+
+const testPaper = (
+  <>
+    <Paper variant='flat'>test paper</Paper>
+    {/* @ts-expect-error -- ❌ invalid prop ohno */}
+    <Paper ohno>test paper</Paper>
+  </>
+)
+
+const testText = (
+  <>
+    <Text className='rad' id='test' textTransform='normal-case'>
+      test text
+    </Text>
+    {/* @ts-expect-error -- ❌ invalid prop ohno */}
+    <Text ohno>test flex</Text>
+  </>
+)
+
+// --- EXPERIMENTAL
 
 const testActive = (
   <Active defaultActive={false} onDeactivated={console.log}>
@@ -51,23 +206,6 @@ const testAlert = (
 
 const testBadge = <Badge variant='filled'>77</Badge>
 
-const testBlock = <Block>test block</Block>
-const testButton = (
-  <>
-    <Button variant='filled' size='small' startIcon={<Icon id='code' />} active>
-      Click
-    </Button>
-    <Button
-      variant='filled'
-      color='primary'
-      size='small'
-      endIcon={<Icon id='code' />}
-      active
-    >
-      Click
-    </Button>
-  </>
-)
 const testCard = (
   <Card p={2} className='rad'>
     <Card.Body mt={1.5}>Works</Card.Body>
@@ -75,64 +213,3 @@ const testCard = (
   </Card>
 )
 const testClose = <Close onClick={() => console.log} />
-const testFlex = (
-  <Flex justify='center'>
-    <div>Hey</div>
-    <div>Hey</div>
-  </Flex>
-)
-const testIcon = <Icon id='test' className='rad' />
-const testLink = <Link href='https://componentry.com'>A Link</Link>
-const testText = (
-  <Text className='rad' id='test' textTransform='normal-case'>
-    Test the text
-  </Text>
-)
-const testTextAsAssertion = (
-  <Text as='label' htmlFor='test'>
-    Test the text
-  </Text>
-)
-
-// --------------------------------------------------------
-// Testing extending html attrs with classnames className
-
-interface ButtonProps
-  extends Omit<React.ComponentPropsWithoutRef<'button'>, 'className'> {
-  as?: React.ElementType
-  className?: ClassValue
-}
-
-const SpecialButton: React.FC<ButtonProps> = ({ children, className, ...rest }) => {
-  return (
-    <button type='button' className={clsx('SpecialButton', className)} {...rest}>
-      {children}
-    </button>
-  )
-}
-
-const specialColor = 'primary'
-const specialButton = (
-  <SpecialButton as='div' className='very-special'>
-    Special
-  </SpecialButton>
-)
-
-function TestRef() {
-  const blockRef = useRef<HTMLDivElement>(null)
-  const flexRef = useRef<HTMLDivElement>(null)
-  const gridRef = useRef<HTMLDivElement>(null)
-  const svgRef = useRef<SVGSVGElement>(null)
-
-  return (
-    <>
-      <Block ref={blockRef}>w/Ref</Block>
-      <Flex ref={flexRef}>w/Ref</Flex>
-      <Grid ref={gridRef}>w/Ref</Grid>
-      <Icon ref={svgRef} id='test' />
-    </>
-  )
-}
-
-// Wrapping an HTML el: https://react-typescript-cheatsheet.netlify.app/docs/advanced/patterns_by_usecase#wrappingmirroring
-// Polymorphic component: https://react-typescript-cheatsheet.netlify.app/docs/advanced/patterns_by_usecase#polymorphic-components-eg-with-as-props

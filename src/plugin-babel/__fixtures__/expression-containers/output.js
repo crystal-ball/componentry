@@ -12,11 +12,11 @@ export default function Test({ success, position }) {
   return /*#__PURE__*/ _jsxs('div', {
     className: 'flex',
     children: [
-      /*#__PURE__*/ _jsx('p', {
+      /*#__PURE__*/ _jsx('div', {
         className: 'C9Y-Text-base C9Y-Text-body pt-20',
         children: 'Expression containers test',
       }),
-      /*#__PURE__*/ _jsx('p', {
+      /*#__PURE__*/ _jsx('div', {
         className: 'C9Y-Text-base C9Y-Text-body font-bold',
         children: 'Expression containers test',
       }),
