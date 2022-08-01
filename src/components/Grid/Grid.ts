@@ -4,7 +4,7 @@ import { MergeTypes, Resolve } from '../../utils/types'
 import { UtilityProps } from '../../utils/utility-classes'
 import { useThemeProps } from '../Provider/Provider'
 
-// Module augmentation interface for overriding component props' types
+/** Module augmentation interface for overriding component props' types */
 export interface GridPropsOverrides {}
 
 export interface GridPropsDefaults {
@@ -14,29 +14,31 @@ export interface GridPropsDefaults {
   justify?: 'start' | 'end' | 'center' | 'stretch'
 }
 
-export type GridProps = Resolve<MergeTypes<GridPropsDefaults, GridPropsOverrides>> &
+export type GridProps<Elem extends React.ElementType = 'div'> = Resolve<
+  MergeTypes<GridPropsDefaults, GridPropsOverrides>
+> &
   UtilityProps &
-  React.ComponentPropsWithRef<'div'>
+  React.ComponentPropsWithRef<Elem> & { as?: Elem }
 
 // ✨ Nice display type for IntelliSense
 export interface Grid {
-  (props: GridProps): React.ReactElement | null
+  <Elem extends React.ElementType = 'div'>(
+    props: GridProps<Elem>,
+  ): React.ReactElement | null
   displayName?: string
 }
 
 /**
- * #### [📝 Grid](https://componentry.design/docs/components/grid)
- *
- * Grid provides consistent CSS grid layouts using a grid container with
- * utility props.
+ * Grid provides CSS grid layout elements
  * @example
  * ```tsx
  * <Grid gap={2}>
  *   ...
  * </Grid>
  * ```
+ * @see [📝 Grid](https://componentry.design/docs/components/grid)
  */
-export const Grid: Grid = forwardRef((props, ref) => {
+export const Grid: Grid = forwardRef<HTMLElement, GridProps>((props, ref) => {
   const { align, justify, ...rest } = {
     ...useThemeProps('Grid'),
     ...props,

@@ -4,7 +4,7 @@ import { MergeTypes, Resolve } from '../../utils/types'
 import { UtilityProps } from '../../utils/utility-classes'
 import { useThemeProps } from '../Provider/Provider'
 
-// Module augmentation interface for overriding component props' types
+/** Module augmentation interface for overriding component props' types */
 export interface PaperPropsOverrides {}
 
 export interface PaperPropsDefaults {
@@ -12,19 +12,21 @@ export interface PaperPropsDefaults {
   variant?: 'flat'
 }
 
-export type PaperProps = Resolve<MergeTypes<PaperPropsDefaults, PaperPropsOverrides>> &
+export type PaperProps<Elem extends React.ElementType = 'div'> = Resolve<
+  MergeTypes<PaperPropsDefaults, PaperPropsOverrides>
+> &
   UtilityProps &
-  React.ComponentPropsWithRef<'div'>
+  React.ComponentPropsWithRef<Elem> & { as?: Elem }
 
 // ✨ Nice display type for IntelliSense
 export interface Paper {
-  (props: PaperProps): React.ReactElement | null
+  <Elem extends React.ElementType = 'div'>(
+    props: PaperProps<Elem>,
+  ): React.ReactElement | null
   displayName?: string
 }
 
 /**
- * #### [📝 Paper](https://componentry.design/docs/components/paper)
- *
  * Paper provides containers for custom elements.
  * @example
  * ```tsx
@@ -32,8 +34,9 @@ export interface Paper {
  *   ...
  * </Paper>
  * ```
+ * @see [📝 Paper](https://componentry.design/docs/components/paper)
  */
-export const Paper: Paper = forwardRef((props, ref) => {
+export const Paper: Paper = forwardRef<HTMLElement, PaperProps>((props, ref) => {
   const { variant = 'flat', ...rest } = {
     ...useThemeProps('Paper'),
     ...props,

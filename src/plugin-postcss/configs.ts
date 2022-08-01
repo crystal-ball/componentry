@@ -23,4 +23,5 @@ const mergedConfig: Config = {
   foundation: userConfig.foundation ?? {},
 }
 
+// TODO: VALIDATE ALL FIELDS ARE PRESENT, SET TO EMPTY OBJECTS IF MISSING
 export const getMergedConfig = (): Config => mergedConfig

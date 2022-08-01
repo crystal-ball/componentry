@@ -2,10 +2,9 @@ import React, { forwardRef } from 'react'
 import { element } from '../../utils/element-creator'
 import { MergeTypes, Resolve } from '../../utils/types'
 import { UtilityProps } from '../../utils/utility-classes'
-
 import { useThemeProps } from '../Provider/Provider'
 
-// Module augmentation interface for overriding component props' types
+/** Module augmentation interface for overriding component props' types */
 export interface FlexPropsOverrides {}
 
 export interface FlexPropsDefaults {
@@ -19,29 +18,31 @@ export interface FlexPropsDefaults {
   wrap?: 'wrap' | 'nowrap' | 'wrap-reverse'
 }
 
-export type FlexProps = Resolve<MergeTypes<FlexPropsDefaults, FlexPropsOverrides>> &
+export type FlexProps<Elem extends React.ElementType = 'div'> = Resolve<
+  MergeTypes<FlexPropsDefaults, FlexPropsOverrides>
+> &
   UtilityProps &
-  React.ComponentPropsWithRef<'div'>
+  React.ComponentPropsWithRef<Elem> & { as?: Elem }
 
 // ✨ Nice display type for IntelliSense
 export interface Flex {
-  (props: FlexProps): React.ReactElement | null
+  <Elem extends React.ElementType = 'div'>(
+    props: FlexProps<Elem>,
+  ): React.ReactElement | null
   displayName?: string
 }
 
 /**
- * #### [📝 Flex](https://componentry.design/docs/components/flex)
- *
- * Flex provides consistent flexbox layouts using a flex container with
- * utility props.
+ * Flex provides flexbox layout elements.
  * @example
  * ```tsx
  * <Flex align="center" gap={2}>
  *   ...
  * </Flex>
  * ```
+ * @see [📝 Flex](https://componentry.design/docs/components/flex)
  */
-export const Flex: Flex = forwardRef((props, ref) => {
+export const Flex: Flex = forwardRef<HTMLElement, FlexProps>((props, ref) => {
   const { align, direction, justify, wrap, ...rest } = {
     ...useThemeProps('Flex'),
     ...props,

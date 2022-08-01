@@ -1,9 +1,9 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`<Text /> snapshots renders correctly 1`] = `
-<p
+<div
   class="C9Y-Text-base C9Y-Text-body"
 >
   Componentry
-</p>
+</div>
 `;

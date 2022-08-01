@@ -11,7 +11,7 @@ export interface ClosePropsDefaults {}
 
 export type CloseProps = Resolve<MergeTypes<ClosePropsDefaults, ClosePropsOverrides>> &
   UtilityProps &
-  React.ComponentPropsWithoutRef<'button'>
+  React.ComponentPropsWithoutRef<'button'> & { as?: React.ElementType }
 
 export const closeBase: CloseProps & { componentCx: string } = {
   as: 'button',

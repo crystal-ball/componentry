@@ -28,9 +28,6 @@ export type MaxWidthBase = 'full' | 'min' | 'max' | 'fit' | 'prose' | 'none'
 
 /** Default utility prop types, customizable with UtilityPropsOverrides */
 export interface UtilityPropsBase {
-  /** Component element */
-  as?: React.ElementType
-
   // ---LAYOUT
   /** Sets a `display` style */
   display?:
