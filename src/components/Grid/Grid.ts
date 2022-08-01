@@ -20,14 +20,6 @@ export type GridProps<Elem extends React.ElementType = 'div'> = Resolve<
   UtilityProps &
   React.ComponentPropsWithRef<Elem> & { as?: Elem }
 
-// ✨ Nice display type for IntelliSense
-export interface Grid {
-  <Elem extends React.ElementType = 'div'>(
-    props: GridProps<Elem>,
-  ): React.ReactElement | null
-  displayName?: string
-}
-
 /**
  * Grid provides CSS grid layout elements
  * @example
@@ -38,6 +30,13 @@ export interface Grid {
  * ```
  * @see [📝 Grid](https://componentry.design/docs/components/grid)
  */
+export interface Grid {
+  <Elem extends React.ElementType = 'div'>(
+    props: GridProps<Elem>,
+  ): React.ReactElement | null
+  displayName?: string
+}
+
 export const Grid: Grid = forwardRef<HTMLElement, GridProps>((props, ref) => {
   const { align, justify, ...rest } = {
     ...useThemeProps('Grid'),

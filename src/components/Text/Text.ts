@@ -70,14 +70,6 @@ export type TextProps<Elem extends React.ElementType = 'div'> = Resolve<
   UtilityProps &
   React.ComponentPropsWithRef<Elem> & { as?: Elem }
 
-// ✨ Nice display type for IntelliSense
-export interface Text {
-  <Elem extends React.ElementType = 'div'>(
-    props: TextProps<Elem>,
-  ): React.ReactElement | null
-  displayName?: string
-}
-
 /**
  * Text provides consistently themed typography elements.
  * @example
@@ -88,6 +80,13 @@ export interface Text {
  * ```
  * @see [📝 Text docs](https://componentry.design/docs/components/text)
  */
+export interface Text {
+  <Elem extends React.ElementType = 'div'>(
+    props: TextProps<Elem>,
+  ): React.ReactElement | null
+  displayName?: string
+}
+
 export const Text: Text = forwardRef<HTMLDivElement, TextProps>((props, ref) => {
   const {
     truncate = false,

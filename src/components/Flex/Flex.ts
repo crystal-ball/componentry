@@ -24,14 +24,6 @@ export type FlexProps<Elem extends React.ElementType = 'div'> = Resolve<
   UtilityProps &
   React.ComponentPropsWithRef<Elem> & { as?: Elem }
 
-// ✨ Nice display type for IntelliSense
-export interface Flex {
-  <Elem extends React.ElementType = 'div'>(
-    props: FlexProps<Elem>,
-  ): React.ReactElement | null
-  displayName?: string
-}
-
 /**
  * Flex provides flexbox layout elements.
  * @example
@@ -42,6 +34,13 @@ export interface Flex {
  * ```
  * @see [📝 Flex](https://componentry.design/docs/components/flex)
  */
+export interface Flex {
+  <Elem extends React.ElementType = 'div'>(
+    props: FlexProps<Elem>,
+  ): React.ReactElement | null
+  displayName?: string
+}
+
 export const Flex: Flex = forwardRef<HTMLElement, FlexProps>((props, ref) => {
   const { align, direction, justify, wrap, ...rest } = {
     ...useThemeProps('Flex'),

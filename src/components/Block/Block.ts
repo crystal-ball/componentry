@@ -15,14 +15,6 @@ export type BlockProps<Elem extends React.ElementType = 'div'> = Resolve<
   UtilityProps &
   React.ComponentPropsWithRef<Elem> & { as?: Elem }
 
-// ✨ Nice display type for IntelliSense
-export interface Block {
-  <Elem extends React.ElementType = 'div'>(
-    props: BlockProps<Elem>,
-  ): React.ReactElement | null
-  displayName?: string
-}
-
 /**
  * Block provides block layout elements.
  * @example
@@ -33,6 +25,13 @@ export interface Block {
  * ```
  * @see [📝 Block](https://componentry.design/docs/components/block)
  */
+export interface Block {
+  <Elem extends React.ElementType = 'div'>(
+    props: BlockProps<Elem>,
+  ): React.ReactElement | null
+  displayName?: string
+}
+
 export const Block: Block = forwardRef<HTMLElement, BlockProps>((props, ref) => {
   return element({
     ref,

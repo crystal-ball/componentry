@@ -31,14 +31,6 @@ export type IconButtonProps<Elem extends React.ElementType = 'button'> = Resolve
   Omit<UtilityProps, 'color'> &
   React.ComponentPropsWithRef<Elem> & { as?: Elem }
 
-// ✨ Nice display type for IntelliSense
-export interface IconButton {
-  <Elem extends React.ElementType = 'button'>(
-    props: IconButtonProps<Elem>,
-  ): React.ReactElement | null
-  displayName?: string
-}
-
 /**
  * IconButton provides action elements using icons.
  * @example
@@ -47,6 +39,13 @@ export interface IconButton {
  * ```
  * @see [📝 IconButton](https://componentry.design/docs/components/iconbutton)
  */
+export interface IconButton {
+  <Elem extends React.ElementType = 'button'>(
+    props: IconButtonProps<Elem>,
+  ): React.ReactElement | null
+  displayName?: string
+}
+
 export const IconButton: IconButton = forwardRef<HTMLElement, IconButtonProps>(
   (props, ref) => {
     const {
