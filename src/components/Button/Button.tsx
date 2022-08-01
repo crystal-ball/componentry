@@ -34,14 +34,6 @@ export type ButtonProps<Elem extends React.ElementType = 'button'> = Resolve<
   Omit<UtilityProps, 'color'> &
   React.ComponentPropsWithRef<Elem> & { as?: Elem }
 
-// ✨ Nice display type for IntelliSense
-export interface Button {
-  <Elem extends React.ElementType = 'button'>(
-    props: ButtonProps<Elem>,
-  ): React.ReactElement | null
-  displayName?: string
-}
-
 /**
  * Button provides action elements styled as buttons.
  * @example
@@ -52,6 +44,13 @@ export interface Button {
  * ```
  * @see [📝 Button](https://componentry.design/docs/components/button)
  */
+export interface Button {
+  <Elem extends React.ElementType = 'button'>(
+    props: ButtonProps<Elem>,
+  ): React.ReactElement | null
+  displayName?: string
+}
+
 export const Button: Button = forwardRef<HTMLElement, ButtonProps>((props, ref) => {
   const {
     variant = 'filled',

@@ -53,14 +53,6 @@ export type IconProps<Elem extends React.ElementType = 'svg'> = Resolve<
   UtilityProps &
   React.ComponentPropsWithRef<Elem> & { as?: Elem }
 
-// ✨ Nice display type for IntelliSense
-export interface Icon {
-  <Elem extends React.ElementType = 'svg'>(
-    props: IconProps<Elem>,
-  ): React.ReactElement | null
-  displayName?: string
-}
-
 /**
  * Icon provides consistently themed iconography elements.
  * @example
@@ -69,6 +61,13 @@ export interface Icon {
  * ```
  * @see [📝 Icon](https://componentry.design/docs/components/icon)
  */
+export interface Icon {
+  <Elem extends React.ElementType = 'svg'>(
+    props: IconProps<Elem>,
+  ): React.ReactElement | null
+  displayName?: string
+}
+
 export const Icon: Icon = forwardRef<HTMLElement, IconProps>((props, ref) => {
   const {
     externalURI = '',

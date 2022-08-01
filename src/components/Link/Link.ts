@@ -22,14 +22,6 @@ export type LinkProps<Elem extends React.ElementType = 'a'> = Resolve<
   UtilityProps &
   React.ComponentPropsWithRef<Elem> & { as?: Elem }
 
-// ✨ Nice display type for IntelliSense
-export interface Link {
-  <Elem extends React.ElementType = 'a'>(
-    props: LinkProps<Elem>,
-  ): React.ReactElement | null
-  displayName?: string
-}
-
 /**
  * Link provides action elements styled as links.
  * @example
@@ -40,6 +32,13 @@ export interface Link {
  * ```
  * @see [📝 Link component](https://componentry.design/docs/components/link)
  */
+export interface Link {
+  <Elem extends React.ElementType = 'a'>(
+    props: LinkProps<Elem>,
+  ): React.ReactElement | null
+  displayName?: string
+}
+
 export const Link: Link = forwardRef<HTMLElement, LinkProps>((props, ref) => {
   const {
     disabled,

@@ -18,14 +18,6 @@ export type PaperProps<Elem extends React.ElementType = 'div'> = Resolve<
   UtilityProps &
   React.ComponentPropsWithRef<Elem> & { as?: Elem }
 
-// ✨ Nice display type for IntelliSense
-export interface Paper {
-  <Elem extends React.ElementType = 'div'>(
-    props: PaperProps<Elem>,
-  ): React.ReactElement | null
-  displayName?: string
-}
-
 /**
  * Paper provides containers for custom elements.
  * @example
@@ -36,6 +28,13 @@ export interface Paper {
  * ```
  * @see [📝 Paper](https://componentry.design/docs/components/paper)
  */
+export interface Paper {
+  <Elem extends React.ElementType = 'div'>(
+    props: PaperProps<Elem>,
+  ): React.ReactElement | null
+  displayName?: string
+}
+
 export const Paper: Paper = forwardRef<HTMLElement, PaperProps>((props, ref) => {
   const { variant = 'flat', ...rest } = {
     ...useThemeProps('Paper'),
