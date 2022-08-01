@@ -2,6 +2,7 @@ import React, { forwardRef } from 'react'
 import { element } from '../../utils/element-creator'
 import { MergeTypes, Resolve } from '../../utils/types'
 import { UtilityProps } from '../../utils/utility-classes'
+import { Icon } from '../Icon/Icon'
 import { useThemeProps } from '../Provider/Provider'
 
 /** Module augmentation interface for overriding component props' types */
@@ -13,7 +14,7 @@ export interface IconButtonPropsDefaults {
   /** Disables the element, preventing mouse and keyboard events */
   disabled?: boolean
   /** Button content */
-  icon: React.ReactElement
+  icon: string | React.ReactElement
   /** Toggles full width element layout */
   fullWidth?: boolean
   /** HTML element href */
@@ -74,7 +75,7 @@ export const IconButton: IconButton = forwardRef<HTMLElement, IconButtonProps>(
           [`C9Y-IconButton-${size}Size`]: size,
         },
       ],
-      children: icon,
+      children: typeof icon === 'string' ? <Icon id={icon} /> : icon,
       ...merged,
     })
   },

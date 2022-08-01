@@ -107,13 +107,7 @@ const testBlock = (
 
 const testButton = (
   <>
-    <Button
-      variant='filled'
-      color='primary'
-      size='small'
-      startIcon={<Icon id='code' />}
-      active
-    >
+    <Button variant='filled' color='primary' size='small' startIcon='coffee' active>
       Click
     </Button>
     <Button href='https://componentry.design/'>Click</Button>
