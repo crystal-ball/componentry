@@ -1,6 +1,7 @@
 import { render, screen } from '@testing-library/react'
 
 import { elementTests } from '../../test/element-tests'
+import { Icon } from '../Icon/Icon'
 import { Button } from './Button'
 
 describe('<Button/>', () => {
@@ -74,9 +75,35 @@ describe('<Button/>', () => {
   })
 })
 
+describe('<Button /> - Icons', () => {
+  it('Renders React elements passed as buttons', () => {
+    render(
+      <Button
+        startIcon={<Icon id='code' data-special='very' data-testid='custom-one' />}
+        endIcon={<Icon id='code' data-awesome='much' data-testid='custom-two' />}
+      >
+        Componentry
+      </Button>,
+    )
+
+    expect(screen.getByTestId('custom-one').dataset.special).toBe('very')
+    expect(screen.getByTestId('custom-two').dataset.awesome).toBe('much')
+  })
+
+  it('Renders Icon components for string values', () => {
+    render(
+      <Button startIcon='code' endIcon='code'>
+        Componentry
+      </Button>,
+    )
+
+    expect(screen.getAllByLabelText('code')).toHaveLength(2)
+  })
+})
+
 // Snapshots
 // ---------------------------------------------------------------------------
-describe('<Button /> Snapshots', () => {
+describe('<Button /> - Snapshots', () => {
   it('renders defaults correctly', () => {
     render(<Button>Componentry</Button>)
 
