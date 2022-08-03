@@ -46,3 +46,9 @@ export type StylesDefinition = {
 export type UtilityPropsForTheme<ThemeValue> = {
   [Key in keyof ThemeValue as Key extends 'DEFAULT' ? boolean : Key]: ThemeValue[Key]
 }
+
+/**
+ * Distributive conditional type utility for using Omit with a union of types,
+ * where K will be omitted from every type in the union.
+ */
+export type DistributiveOmit<T, K extends keyof any> = T extends any ? Omit<T, K> : never

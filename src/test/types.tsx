@@ -22,6 +22,7 @@ import {
   Link,
   Paper,
   Text,
+  TextProps,
   useTheme,
 } from '..'
 
@@ -58,6 +59,63 @@ const assertComponentAsProp = (
 
 function TestAs({ specialProp }: { specialProp: number }): JSX.Element {
   return <div>Test passing component as {specialProp}</div>
+}
+
+// --------------------------------------------------------
+// EXTENDING COMPONENTS
+
+function ExtendedText(props: TextProps) {
+  return <Text {...props} className='OVERRIDE' />
+}
+
+// Should be able to "extend" a component by wrapping it and using the exported props' type
+function GenericExtendedText<Elem extends React.ElementType = 'div'>(
+  props: TextProps<Elem>,
+) {
+  return <Text {...props} className='OVERRIDE' />
+}
+function ExtendedUsage() {
+  return (
+    <>
+      {/* ✅ Extended component should have types for component props and utility props */}
+      <ExtendedText variant='h1' mt={3}>
+        Huzzah
+      </ExtendedText>
+      {/* @ts-expect-error -- ❌ Invalid props should throw a type error */}
+      <ExtendedText variant='h1' mt={3} oops>
+        Error
+      </ExtendedText>
+      {/* @ts-expect-error -- ❌ Invalid props for the default as should throw a type error */}
+      <ExtendedText htmlFor='id'>Error</ExtendedText>
+      {/* @ts-expect-error -- ❌ Non-generic extends doesn't accept as prop */}
+      <ExtendedText as='label' htmlFor='id'>
+        Huzzah
+      </ExtendedText>
+      {/* @ts-expect-error -- ❌ Invalid props should throw a type error when as has been overridden */}
+      <ExtendedText as='label' htmlFor='id' oops>
+        Huzzah
+      </ExtendedText>
+
+      {/* ✅ Extended component should have types for component props and utility props */}
+      <GenericExtendedText variant='h1' mt={3}>
+        Huzzah
+      </GenericExtendedText>
+      {/* @ts-expect-error -- ❌ Invalid props should throw a type error */}
+      <GenericExtendedText variant='h1' mt={3} oops>
+        Error
+      </GenericExtendedText>
+      {/* @ts-expect-error -- ❌ Invalid props for the default as should throw a type error */}
+      <GenericExtendedText htmlFor='id'>Error</GenericExtendedText>
+      {/* ✅ Extended component as should determine supported props */}
+      <GenericExtendedText as='label' htmlFor='id'>
+        Huzzah
+      </GenericExtendedText>
+      {/* @ts-expect-error -- ❌ Invalid props should throw a type error when as has been overridden */}
+      <GenericExtendedText as='label' htmlFor='id' oops>
+        Huzzah
+      </GenericExtendedText>
+    </>
+  )
 }
 
 // --------------------------------------------------------

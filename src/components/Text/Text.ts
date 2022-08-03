@@ -1,6 +1,6 @@
 import React, { forwardRef } from 'react'
 import { element } from '../../utils/element-creator'
-import { MergeTypes, Resolve } from '../../utils/types'
+import { DistributiveOmit, MergeTypes } from '../../utils/types'
 import { UtilityProps } from '../../utils/utility-classes'
 import { useThemeProps } from '../Provider/Provider'
 
@@ -64,11 +64,11 @@ export interface TextPropsDefaults {
   truncate?: boolean
 }
 
-export type TextProps<Elem extends React.ElementType = 'div'> = Resolve<
-  MergeTypes<TextPropsDefaults, TextPropsOverrides>
-> &
-  UtilityProps &
-  React.ComponentPropsWithRef<Elem> & { as?: Elem }
+export type TextPropsBase<Elem extends React.ElementType = 'div'> = UtilityProps &
+  MergeTypes<TextPropsDefaults, TextPropsOverrides> & { as?: Elem }
+
+export type TextProps<Elem extends React.ElementType = 'div'> = TextPropsBase<Elem> &
+  DistributiveOmit<React.ComponentPropsWithRef<Elem>, keyof TextPropsBase<Elem>>
 
 /**
  * Text provides consistently themed typography elements.
@@ -87,7 +87,7 @@ export interface Text {
   displayName?: string
 }
 
-export const Text: Text = forwardRef<HTMLDivElement, TextProps>((props, ref) => {
+export const Text = forwardRef<HTMLDivElement, TextProps>((props, ref) => {
   const {
     truncate = false,
     variant = 'body',
@@ -103,5 +103,5 @@ export const Text: Text = forwardRef<HTMLDivElement, TextProps>((props, ref) => 
     componentCx: [`C9Y-Text-base C9Y-Text-${variant}`, { truncate }],
     ...rest,
   })
-})
+}) as Text
 Text.displayName = 'Text'

@@ -1,6 +1,6 @@
 import { forwardRef } from 'react'
 import { element } from '../../utils/element-creator'
-import { MergeTypes, Resolve } from '../../utils/types'
+import { DistributiveOmit, MergeTypes } from '../../utils/types'
 import { UtilityProps } from '../../utils/utility-classes'
 import { useThemeProps } from '../Provider/Provider'
 
@@ -12,11 +12,11 @@ export interface PaperPropsDefaults {
   variant?: 'flat'
 }
 
-export type PaperProps<Elem extends React.ElementType = 'div'> = Resolve<
-  MergeTypes<PaperPropsDefaults, PaperPropsOverrides>
-> &
-  UtilityProps &
-  React.ComponentPropsWithRef<Elem> & { as?: Elem }
+export type PaperPropsBase<Elem extends React.ElementType = 'div'> = UtilityProps &
+  MergeTypes<PaperPropsDefaults, PaperPropsOverrides> & { as?: Elem }
+
+export type PaperProps<Elem extends React.ElementType = 'div'> = PaperPropsBase<Elem> &
+  DistributiveOmit<React.ComponentPropsWithRef<Elem>, keyof PaperPropsBase<Elem>>
 
 /**
  * Paper provides containers for custom elements.
@@ -35,7 +35,7 @@ export interface Paper {
   displayName?: string
 }
 
-export const Paper: Paper = forwardRef<HTMLElement, PaperProps>((props, ref) => {
+export const Paper = forwardRef<HTMLElement, PaperProps>((props, ref) => {
   const { variant = 'flat', ...rest } = {
     ...useThemeProps('Paper'),
     ...props,
@@ -46,5 +46,5 @@ export const Paper: Paper = forwardRef<HTMLElement, PaperProps>((props, ref) => 
     componentCx: ['C9Y-Paper-base', `C9Y-Paper-${variant}`],
     ...rest,
   })
-})
+}) as Paper
 Paper.displayName = 'Paper'
