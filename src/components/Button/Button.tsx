@@ -1,7 +1,7 @@
 import clsx from 'clsx'
 import React, { forwardRef } from 'react'
 import { element } from '../../utils/element-creator'
-import { MergeTypes, Resolve } from '../../utils/types'
+import { DistributiveOmit, MergeTypes } from '../../utils/types'
 import { UtilityProps } from '../../utils/utility-classes'
 import { Icon } from '../Icon/Icon'
 import { useThemeProps } from '../Provider/Provider'
@@ -28,11 +28,12 @@ export interface ButtonPropsDefaults {
   variant?: 'filled' | 'outlined'
 }
 
-export type ButtonProps<Elem extends React.ElementType = 'button'> = Resolve<
-  MergeTypes<ButtonPropsDefaults, ButtonPropsOverrides>
-> &
-  Omit<UtilityProps, 'color'> &
-  React.ComponentPropsWithRef<Elem> & { as?: Elem }
+export type ButtonPropsBase<Elem extends React.ElementType = 'button'> = UtilityProps &
+  MergeTypes<ButtonPropsDefaults, ButtonPropsOverrides> & { as?: Elem }
+
+export type ButtonProps<Elem extends React.ElementType = 'button'> =
+  ButtonPropsBase<Elem> &
+    DistributiveOmit<React.ComponentPropsWithRef<Elem>, keyof ButtonPropsBase<Elem>>
 
 /**
  * Button provides action elements styled as buttons.
@@ -51,7 +52,7 @@ export interface Button {
   displayName?: string
 }
 
-export const Button: Button = forwardRef<HTMLElement, ButtonProps>((props, ref) => {
+export const Button = forwardRef<HTMLElement, ButtonProps>((props, ref) => {
   const {
     variant = 'filled',
     children,
@@ -107,5 +108,5 @@ export const Button: Button = forwardRef<HTMLElement, ButtonProps>((props, ref) 
     ),
     ...merged,
   })
-})
+}) as Button
 Button.displayName = 'Button'

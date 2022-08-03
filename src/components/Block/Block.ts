@@ -1,6 +1,6 @@
 import React, { forwardRef } from 'react'
 import { element } from '../../utils/element-creator'
-import { MergeTypes, Resolve } from '../../utils/types'
+import { DistributiveOmit, MergeTypes } from '../../utils/types'
 import { UtilityProps } from '../../utils/utility-classes'
 import { useThemeProps } from '../Provider/Provider'
 
@@ -9,11 +9,11 @@ export interface BlockPropsOverrides {}
 
 export interface BlockPropsDefaults {}
 
-export type BlockProps<Elem extends React.ElementType = 'div'> = Resolve<
-  MergeTypes<BlockPropsDefaults, BlockPropsOverrides>
-> &
-  UtilityProps &
-  React.ComponentPropsWithRef<Elem> & { as?: Elem }
+export type BlockPropsBase<Elem extends React.ElementType = 'div'> = UtilityProps &
+  MergeTypes<BlockPropsDefaults, BlockPropsOverrides> & { as?: Elem }
+
+export type BlockProps<Elem extends React.ElementType = 'div'> = BlockPropsBase<Elem> &
+  DistributiveOmit<React.ComponentPropsWithRef<Elem>, keyof BlockPropsBase<Elem>>
 
 /**
  * Block provides block layout elements.
@@ -32,11 +32,11 @@ export interface Block {
   displayName?: string
 }
 
-export const Block: Block = forwardRef<HTMLElement, BlockProps>((props, ref) => {
+export const Block = forwardRef<HTMLElement, BlockProps>((props, ref) => {
   return element({
     ref,
     ...useThemeProps('Block'),
     ...props,
   })
-})
+}) as Block
 Block.displayName = 'Block'

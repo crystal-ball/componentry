@@ -1,6 +1,6 @@
 import React, { forwardRef } from 'react'
 import { element } from '../../utils/element-creator'
-import { MergeTypes, Resolve } from '../../utils/types'
+import { DistributiveOmit, MergeTypes } from '../../utils/types'
 import { UtilityProps } from '../../utils/utility-classes'
 import { useThemeProps } from '../Provider/Provider'
 
@@ -16,11 +16,11 @@ export interface LinkPropsDefaults {
   variant?: 'text'
 }
 
-export type LinkProps<Elem extends React.ElementType = 'a'> = Resolve<
-  MergeTypes<LinkPropsDefaults, LinkPropsOverrides>
-> &
-  UtilityProps &
-  React.ComponentPropsWithRef<Elem> & { as?: Elem }
+export type LinkPropsBase<Elem extends React.ElementType = 'a'> = UtilityProps &
+  MergeTypes<LinkPropsDefaults, LinkPropsOverrides> & { as?: Elem }
+
+export type LinkProps<Elem extends React.ElementType = 'a'> = LinkPropsBase<Elem> &
+  DistributiveOmit<React.ComponentPropsWithRef<Elem>, keyof LinkPropsBase<Elem>>
 
 /**
  * Link provides action elements styled as links.
@@ -39,7 +39,7 @@ export interface Link {
   displayName?: string
 }
 
-export const Link: Link = forwardRef<HTMLElement, LinkProps>((props, ref) => {
+export const Link = forwardRef<HTMLElement, LinkProps>((props, ref) => {
   const {
     disabled,
     variant = 'text',
@@ -58,5 +58,5 @@ export const Link: Link = forwardRef<HTMLElement, LinkProps>((props, ref) => {
     componentCx: `C9Y-Link-base C9Y-Link-${variant}`,
     ...merged,
   })
-})
+}) as Link
 Link.displayName = 'Link'

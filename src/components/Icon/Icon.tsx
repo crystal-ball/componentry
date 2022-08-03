@@ -1,6 +1,6 @@
 import React, { forwardRef } from 'react'
 import { element } from '../../utils/element-creator'
-import { MergeTypes, Resolve } from '../../utils/types'
+import { DistributiveOmit, MergeTypes } from '../../utils/types'
 import { UtilityProps } from '../../utils/utility-classes'
 import { useThemeProps } from '../Provider/Provider'
 
@@ -47,11 +47,11 @@ export interface IconPropsDefaults {
   variant?: 'font'
 }
 
-export type IconProps<Elem extends React.ElementType = 'svg'> = Resolve<
-  MergeTypes<IconPropsDefaults, IconPropsOverrides>
-> &
-  UtilityProps &
-  React.ComponentPropsWithRef<Elem> & { as?: Elem }
+export type IconPropsBase<Elem extends React.ElementType = 'svg'> = UtilityProps &
+  MergeTypes<IconPropsDefaults, IconPropsOverrides> & { as?: Elem }
+
+export type IconProps<Elem extends React.ElementType = 'svg'> = IconPropsBase<Elem> &
+  DistributiveOmit<React.ComponentPropsWithRef<Elem>, keyof IconPropsBase<Elem>>
 
 /**
  * Icon provides consistently themed iconography elements.
@@ -68,7 +68,7 @@ export interface Icon {
   displayName?: string
 }
 
-export const Icon: Icon = forwardRef<HTMLElement, IconProps>((props, ref) => {
+export const Icon = forwardRef<HTMLElement, IconProps>((props, ref) => {
   const {
     externalURI = '',
     id,
@@ -87,5 +87,5 @@ export const Icon: Icon = forwardRef<HTMLElement, IconProps>((props, ref) => {
     'aria-label': id,
     ...rest,
   })
-})
+}) as Icon
 Icon.displayName = 'Icon'

@@ -1,6 +1,6 @@
 import React, { forwardRef } from 'react'
 import { element } from '../../utils/element-creator'
-import { MergeTypes, Resolve } from '../../utils/types'
+import { DistributiveOmit, MergeTypes } from '../../utils/types'
 import { UtilityProps } from '../../utils/utility-classes'
 import { useThemeProps } from '../Provider/Provider'
 
@@ -18,11 +18,11 @@ export interface FlexPropsDefaults {
   wrap?: 'wrap' | 'nowrap' | 'wrap-reverse'
 }
 
-export type FlexProps<Elem extends React.ElementType = 'div'> = Resolve<
-  MergeTypes<FlexPropsDefaults, FlexPropsOverrides>
-> &
-  UtilityProps &
-  React.ComponentPropsWithRef<Elem> & { as?: Elem }
+export type FlexPropsBase<Elem extends React.ElementType = 'div'> = UtilityProps &
+  MergeTypes<FlexPropsDefaults, FlexPropsOverrides> & { as?: Elem }
+
+export type FlexProps<Elem extends React.ElementType = 'div'> = FlexPropsBase<Elem> &
+  DistributiveOmit<React.ComponentPropsWithRef<Elem>, keyof FlexPropsBase<Elem>>
 
 /**
  * Flex provides flexbox layout elements.
@@ -41,7 +41,7 @@ export interface Flex {
   displayName?: string
 }
 
-export const Flex: Flex = forwardRef<HTMLElement, FlexProps>((props, ref) => {
+export const Flex = forwardRef<HTMLElement, FlexProps>((props, ref) => {
   const { align, direction, justify, wrap, ...rest } = {
     ...useThemeProps('Flex'),
     ...props,
@@ -56,5 +56,5 @@ export const Flex: Flex = forwardRef<HTMLElement, FlexProps>((props, ref) => {
     justifyContent: justify,
     ...rest,
   })
-})
+}) as Flex
 Flex.displayName = 'Flex'
