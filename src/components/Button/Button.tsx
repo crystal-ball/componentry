@@ -28,7 +28,10 @@ export interface ButtonPropsDefaults {
   variant?: 'filled' | 'outlined'
 }
 
-export type ButtonPropsBase<Elem extends React.ElementType = 'button'> = UtilityProps &
+export type ButtonPropsBase<Elem extends React.ElementType = 'button'> = Omit<
+  UtilityProps,
+  'color'
+> &
   MergeTypes<ButtonPropsDefaults, ButtonPropsOverrides> & { as?: Elem }
 
 export type ButtonProps<Elem extends React.ElementType = 'button'> =

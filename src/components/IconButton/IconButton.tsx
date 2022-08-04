@@ -25,9 +25,11 @@ export interface IconButtonPropsDefaults {
   variant?: 'filled' | 'outlined'
 }
 
-export type IconButtonPropsBase<Elem extends React.ElementType = 'button'> =
-  UtilityProps &
-    MergeTypes<IconButtonPropsDefaults, IconButtonPropsOverrides> & { as?: Elem }
+export type IconButtonPropsBase<Elem extends React.ElementType = 'button'> = Omit<
+  UtilityProps,
+  'color'
+> &
+  MergeTypes<IconButtonPropsDefaults, IconButtonPropsOverrides> & { as?: Elem }
 
 export type IconButtonProps<Elem extends React.ElementType = 'button'> =
   IconButtonPropsBase<Elem> &
