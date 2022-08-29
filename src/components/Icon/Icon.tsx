@@ -8,7 +8,7 @@ import { useThemeProps } from '../Provider/Provider'
 // ICON ELEMENTS MAP
 
 /** Mapping of icon IDs to components rendered by Icon */
-export type IconElementsMap = { [ID: string]: React.ComponentType<unknown> }
+export type IconElementsMap = { [ID: string]: React.ComponentType }
 
 let iconElementsMap: IconElementsMap = {}
 
