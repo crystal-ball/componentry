@@ -4,11 +4,13 @@ export default function Test() {
   // Test that:
   // 1. Basic component transform works
   return (
-    <Grid>
-      <Flex p={2}>
-        <Text variant='h3'>Precompiled for</Text>
-      </Flex>
-      <Block>SPEED</Block>
-    </Grid>
+    <Paper>
+      <Grid>
+        <Flex>
+          <Text>Precompiled for</Text>
+        </Flex>
+        <Block>SPEED</Block>
+      </Grid>
+    </Paper>
   )
 }
