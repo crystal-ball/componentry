@@ -29,9 +29,7 @@ export type PaperProps<Elem extends React.ElementType = 'div'> = PaperPropsBase<
  * @see [📝 Paper](https://componentry.design/docs/components/paper)
  */
 export interface Paper {
-  <Elem extends React.ElementType = 'div'>(
-    props: PaperProps<Elem>,
-  ): React.ReactElement | null
+  <Elem extends React.ElementType = 'div'>(props: PaperProps<Elem>): React.ReactElement
   displayName?: string
 }
 

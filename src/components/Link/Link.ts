@@ -33,9 +33,7 @@ export type LinkProps<Elem extends React.ElementType = 'a'> = LinkPropsBase<Elem
  * @see [📝 Link component](https://componentry.design/docs/components/link)
  */
 export interface Link {
-  <Elem extends React.ElementType = 'a'>(
-    props: LinkProps<Elem>,
-  ): React.ReactElement | null
+  <Elem extends React.ElementType = 'a'>(props: LinkProps<Elem>): React.ReactElement
   displayName?: string
 }
 

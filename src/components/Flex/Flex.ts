@@ -35,9 +35,7 @@ export type FlexProps<Elem extends React.ElementType = 'div'> = FlexPropsBase<El
  * @see [📝 Flex](https://componentry.design/docs/components/flex)
  */
 export interface Flex {
-  <Elem extends React.ElementType = 'div'>(
-    props: FlexProps<Elem>,
-  ): React.ReactElement | null
+  <Elem extends React.ElementType = 'div'>(props: FlexProps<Elem>): React.ReactElement
   displayName?: string
 }
 
