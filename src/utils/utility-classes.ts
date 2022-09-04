@@ -461,27 +461,27 @@ export function createUtilityClasses<Props extends { [prop: string]: any }>(
       // BORDERS
       case 'border':
         if (value === true) classes.push('border')
-        if (value in theme.border) classes.push('border-' + value)
+        else if (value in theme.border) classes.push('border-' + value)
         else styles.border = value
         break
       case 'borderBottom':
         if (value === true) classes.push('border-b')
-        if (value in theme.border) classes.push('border-b-' + value)
+        else if (value in theme.border) classes.push('border-b-' + value)
         else styles.borderBottom = value
         break
       case 'borderLeft':
         if (value === true) classes.push('border-l')
-        if (value in theme.border) classes.push('border-l-' + value)
+        else if (value in theme.border) classes.push('border-l-' + value)
         else styles.borderLeft = value
         break
       case 'borderRight':
         if (value === true) classes.push('border-r')
-        if (value in theme.border) classes.push('border-r-' + value)
+        else if (value in theme.border) classes.push('border-r-' + value)
         else styles.borderRight = value
         break
       case 'borderTop':
         if (value === true) classes.push('border-t')
-        if (value in theme.border) classes.push('border-t-' + value)
+        else if (value in theme.border) classes.push('border-t-' + value)
         else styles.borderTop = value
         break
       case 'borderWidth':
@@ -502,7 +502,7 @@ export function createUtilityClasses<Props extends { [prop: string]: any }>(
       // EFFECTS
       case 'boxShadow':
         if (value === true) classes.push('shadow')
-        if (value in theme.boxShadow) classes.push('shadow-' + value)
+        else if (value in theme.boxShadow) classes.push('shadow-' + value)
         else styles.boxShadow = value
         break
 
