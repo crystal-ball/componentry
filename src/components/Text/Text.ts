@@ -81,9 +81,7 @@ export type TextProps<Elem extends React.ElementType = 'div'> = TextPropsBase<El
  * @see [📝 Text docs](https://componentry.design/docs/components/text)
  */
 export interface Text {
-  <Elem extends React.ElementType = 'div'>(
-    props: TextProps<Elem>,
-  ): React.ReactElement | null
+  <Elem extends React.ElementType = 'div'>(props: TextProps<Elem>): React.ReactElement
   displayName?: string
 }
 

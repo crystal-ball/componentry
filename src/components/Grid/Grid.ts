@@ -31,9 +31,7 @@ export type GridProps<Elem extends React.ElementType = 'div'> = GridPropsBase<El
  * @see [📝 Grid](https://componentry.design/docs/components/grid)
  */
 export interface Grid {
-  <Elem extends React.ElementType = 'div'>(
-    props: GridProps<Elem>,
-  ): React.ReactElement | null
+  <Elem extends React.ElementType = 'div'>(props: GridProps<Elem>): React.ReactElement
   displayName?: string
 }
 

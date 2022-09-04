@@ -51,7 +51,7 @@ export type ButtonProps<Elem extends React.ElementType = 'button'> =
 export interface Button {
   <Elem extends React.ElementType = 'button'>(
     props: ButtonProps<Elem>,
-  ): React.ReactElement | null
+  ): React.ReactElement
   displayName?: string
 }
 

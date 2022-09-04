@@ -26,9 +26,7 @@ export type BlockProps<Elem extends React.ElementType = 'div'> = BlockPropsBase<
  * @see [📝 Block](https://componentry.design/docs/components/block)
  */
 export interface Block {
-  <Elem extends React.ElementType = 'div'>(
-    props: BlockProps<Elem>,
-  ): React.ReactElement | null
+  <Elem extends React.ElementType = 'div'>(props: BlockProps<Elem>): React.ReactElement
   displayName?: string
 }
 

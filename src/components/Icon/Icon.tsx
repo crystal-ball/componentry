@@ -62,9 +62,7 @@ export type IconProps<Elem extends React.ElementType = 'svg'> = IconPropsBase<El
  * @see [📝 Icon](https://componentry.design/docs/components/icon)
  */
 export interface Icon {
-  <Elem extends React.ElementType = 'svg'>(
-    props: IconProps<Elem>,
-  ): React.ReactElement | null
+  <Elem extends React.ElementType = 'svg'>(props: IconProps<Elem>): React.ReactElement
   displayName?: string
 }
 
