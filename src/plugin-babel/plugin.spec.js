@@ -33,6 +33,11 @@ pluginTester({
       outputFixture: '__fixtures__/prop-types/output.js',
     },
     {
+      title: 'transforms styles props and merges styles props',
+      fixture: '__fixtures__/styles-props/code.js',
+      outputFixture: '__fixtures__/styles-props/output.js',
+    },
+    {
       title: 'transforms components individual props',
       fixture: '__fixtures__/component-props/code.js',
       outputFixture: '__fixtures__/component-props/output.js',
