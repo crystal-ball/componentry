@@ -19,20 +19,15 @@ export function prepareAttributes(
     .map(([propName, propValue]) =>
       t.jsxAttribute(
         t.jSXIdentifier(propName),
-        typeof propValue === 'string'
-          ? t.stringLiteral(propValue)
-          : // template.expression provides a convenient way to create an AST for
-            // numbers, booleans, objects, and arrays
-            t.jsxExpressionContainer(template.expression(JSON.stringify(propValue))()),
+        // template.expression provides a convenient way to create an AST node
+        // for values like strings, numbers, booleans, etc.
+        t.jsxExpressionContainer(template.expression(JSON.stringify(propValue))()),
       ),
     )
 
   /** --- MANAGE CLASSNAMES --- */
 
   if (preCompiledClassName && passThroughClassName?.value) {
-    // When library className and passed className are present merge them into a
-    // BinaryExpression, eg: 'C9Y-Text-Base ' + 'passed-class-name'
-
     // Safety-check: Bail on any invalid JSX prop values
     if (
       t.isJSXElement(passThroughClassName.value) ||
@@ -55,6 +50,8 @@ export function prepareAttributes(
     preparedAttributes.push(
       t.jsxAttribute(
         t.jSXIdentifier('className'),
+        // When library className and passed className are present merge them into a
+        // BinaryExpression, eg: 'C9Y-Text-Base ' + 'passed-class-name'
         t.jsxExpressionContainer(
           t.binaryExpression(
             '+',
