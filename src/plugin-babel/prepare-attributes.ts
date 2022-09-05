@@ -1,7 +1,7 @@
 import { types as t, template } from '@babel/core'
 
 export function prepareAttributes(
-  preCompiledAttributes: { [propName: string]: string | number | boolean | undefined },
+  preCompiledAttributes: JSX.Element['props'],
   passThroughAttributes: t.JSXAttribute[],
 ): t.JSXAttribute[] {
   const { className: preCompiledClassName, ...classNameLessPreCompiledAttributes } =
