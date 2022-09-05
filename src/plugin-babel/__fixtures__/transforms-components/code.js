@@ -1,4 +1,4 @@
-import { Block, Flex, Grid, Text } from 'componentry'
+import { Block, Flex, Grid, Paper, Text } from 'componentry'
 
 export default function Test() {
   // Test that:

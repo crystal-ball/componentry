@@ -1,4 +1,4 @@
-import { Block, Flex, Grid, Text } from 'componentry'
+import { Block, Flex, Grid, Paper, Text } from 'componentry'
 import { jsx as _jsx } from 'react/jsx-runtime'
 import { jsxs as _jsxs } from 'react/jsx-runtime'
 export default function Test() {

@@ -4,8 +4,8 @@ export default function Test() {
   // Test that:
   // 1. Plugin option `dataFlag` results in a `data-precompiled` flag included
   return /*#__PURE__*/ _jsx('div', {
-    className: 'C9Y-Text-base C9Y-Text-body',
     'data-component': 'Text',
+    className: 'C9Y-Text-base C9Y-Text-body',
     children: 'Precompiled for speed',
   })
 }

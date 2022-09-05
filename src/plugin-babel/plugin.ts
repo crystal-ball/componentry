@@ -51,7 +51,7 @@ export default function plugin(): PluginObj {
           const preCompiledElement = components[name].render(parsedAttributes)
           const componentName = getComponentName(parsedComponentAs, preCompiledElement)
           const preparedAttributes = prepareAttributes(
-            preCompiledElement,
+            preCompiledElement.props,
             passThroughAttributes,
           )
 
