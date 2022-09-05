@@ -43,6 +43,11 @@ pluginTester({
       outputFixture: '__fixtures__/as-prop/output.js',
     },
     {
+      title: 'transforms className prop',
+      fixture: '__fixtures__/classname-props/code.js',
+      outputFixture: '__fixtures__/classname-props/output.js',
+    },
+    {
       title: 'passes through refs',
       fixture: '__fixtures__/refs/code.js',
       outputFixture: '__fixtures__/refs/output.js',
