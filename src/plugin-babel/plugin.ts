@@ -1,87 +1,107 @@
-/* eslint-disable no-console */
-import { PluginObj, types } from '@babel/core'
+import { NodePath, PluginObj, PluginPass, types as t } from '@babel/core'
 
 import { Block } from '../components/Block/Block'
 import { Flex } from '../components/Flex/Flex'
 import { Grid } from '../components/Grid/Grid'
+import { Paper } from '../components/Paper/Paper'
 import { __initializePreCompileMode } from '../components/Provider/Provider'
 import { Text } from '../components/Text/Text'
 
-import { buildClosingElement, buildOpeningElement } from './build-elements'
 import { parseAttributes } from './parse-attributes'
+import { prepareAttributes } from './prepare-attributes'
 
-const components = { Block, Flex, Grid, Text } as unknown as Record<string, RefComponent>
+const components = { Block, Flex, Grid, Paper, Text } as unknown as {
+  [component: string]: EvaluatedForwardRef
+}
 
-/** Internally this is a gross reduction of component types to define how they are rendered */
-type RefComponent = ((props: any) => any) | { render: (props: any) => any }
+/** Plugin customization options */
+type PluginOpts = { debug?: boolean; dataFlag?: boolean }
 
-// These are the props that should be parsed to compute the component value
-const parseProps = {
-  as: 1,
-  className: 1,
-  active: 1,
-  alignContent: 1,
-  alignItems: 1,
-  alignSelf: 1,
-  backgroundColor: 1,
-  bold: 1,
-  border: 1,
-  borderBottom: 1,
-  borderColor: 1,
-  borderLeft: 1,
-  borderRight: 1,
-  borderTop: 1,
-  color: 1,
-  disabled: 1,
-  display: 1,
-  flexDirection: 1,
-  flexWrap: 1,
-  fontFamily: 1,
-  fontSize: 1,
-  fontWeight: 1,
-  gap: 1,
-  'gap-x': 1,
-  'gap-y': 1,
-  height: 1,
-  invisible: 1,
-  italic: 1,
-  justifyContent: 1,
-  justifyItems: 1,
-  justifySelf: 1,
-  letterSpacing: 1,
-  lineHeight: 1,
-  m: 1,
-  maxHeight: 1,
-  maxWidth: 1,
-  mb: 1,
-  minHeight: 1,
-  minWidth: 1,
-  ml: 1,
-  mr: 1,
-  mt: 1,
-  mx: 1,
-  my: 1,
-  p: 1,
-  pb: 1,
-  pl: 1,
-  position: 1,
-  pr: 1,
-  pt: 1,
-  px: 1,
-  py: 1,
-  textAlign: 1,
-  textTransform: 1,
-  visible: 1,
-  width: 1,
-  // PRECOMPILE
-  inline: 1,
-  variant: 1,
-  // --- Flex
-  align: 1,
-  direction: 1,
-  justify: 1,
-  wrap: 1,
-  // --- Text
+/**
+ * Componentry Babel plugin for pre-compiling display components
+ */
+export default function plugin(): PluginObj {
+  __initializePreCompileMode({}) // TODO: Accept prop overrides through options
+
+  return {
+    name: 'componentry-plugin',
+    visitor: {
+      JSXElement(path: NodePath<t.JSXElement>, state: PluginPass & { opts: PluginOpts }) {
+        const { opts, filename } = state
+        const { closingElement, openingElement } = path.node
+
+        // We can immediately bail for elements like Table.Cell or Table:Cell
+        if (!t.isJSXIdentifier(openingElement.name)) return
+
+        try {
+          const { name } = openingElement.name
+
+          // Bail early if this element isn't one of our precompile targets
+          if (!(name in components)) return
+
+          // ✓ At this point we know this is a Componentry pre-compile component,
+          // parse the opening element's attributes to determine the prop values
+          const { parsedComponentAs, parsedAttributes, passThroughAttributes } =
+            parseAttributes(openingElement)
+
+          // Handle option for including a data-component attribute for debugging
+          if (opts.dataFlag) parsedAttributes['data-component'] = name
+
+          // Call the component with the parsed attributes to create the pre-compiled result
+          const preCompiledElement = components[name].render(parsedAttributes)
+          const componentName = getComponentName(parsedComponentAs, preCompiledElement)
+          const preparedAttributes = prepareAttributes(
+            preCompiledElement,
+            passThroughAttributes,
+          )
+
+          // 🎉 Replace the elements opening and closing elements with our pre-compiled result
+          path
+            .get('openingElement')
+            .replaceWith(
+              t.jSXOpeningElement(
+                t.jsxIdentifier(componentName),
+                preparedAttributes,
+                openingElement.selfClosing,
+              ),
+            )
+
+          if (closingElement) {
+            path
+              .get('closingElement')
+              .replaceWith(t.jSXClosingElement(t.jsxIdentifier(componentName)))
+          }
+        } catch (err) {
+          if (opts.debug) {
+            // eslint-disable-next-line no-console -- plugin logging support
+            console.info(
+              // @ts-expect-error -- How to check if message is in type object?
+              `Skipping precompile for ${openingElement.name.name} in ${filename} for reason: ${err?.message}`,
+            )
+          }
+        }
+      },
+    },
+  }
+}
+
+function getComponentName(
+  parsedComponentAs: string,
+  preCompiledElement: React.ReactElement,
+): string {
+  if (parsedComponentAs.length) {
+    return parsedComponentAs
+  }
+  if (typeof preCompiledElement.type === 'string') {
+    return preCompiledElement.type
+  }
+  throw new Error('Unsupported precompile component type')
+}
+
+/** The actual compiled value of a forwardRef component */
+type EvaluatedForwardRef = {
+  $$typeof: symbol
+  render: <Props, Ref>(props?: Props, ref?: Ref) => React.ReactElement
 }
 
 /*
@@ -107,77 +127,3 @@ const parseProps = {
  * 4. JSXElement (??? what)
  * 5. JSXFragment (??? what)
  */
-
-type PluginOpts = { debug?: boolean; dataFlag?: boolean }
-type Types = typeof types
-type VisitorState = { opts: PluginOpts; filename: string }
-type BabelObj = { types: Types }
-
-/**
- * Componentry precompile Babel plugin
- */
-const componentryPlugin = ({ types: t }: BabelObj): PluginObj<VisitorState> => {
-  __initializePreCompileMode({}) // TODO: Accept prop overrides through options
-  return {
-    name: 'componentry-plugin',
-    visitor: {
-      JSXElement(path, state) {
-        const { opts, filename } = state
-        const { closingElement, openingElement } = path.node
-        const { attributes } = openingElement
-
-        if (opts.debug) console.info(`--- Visiting: ${filename}`)
-
-        // We are not transforming MemberExpression or Namespaced JSXElements
-        if (!t.isJSXIdentifier(openingElement.name)) return
-
-        // Bail early if this element isn't one of our precompile targets
-        const { name } = openingElement.name
-        if (!(name in components)) return
-
-        // --- ✅ This is a Componentry precompile component, handle transforming
-
-        // Parse the opening element's attributes to determine the prop values
-        const { parsedAttributes, parseSuccess, passThroughAttributes } = parseAttributes(
-          attributes,
-          {
-            debug: opts.debug ?? false,
-            componentName: name,
-            filename,
-            parseProps,
-          },
-        )
-
-        // If the dataFlag option is truthy add a data attribute signifying the element
-        // has been pre-compiled
-        if (opts.dataFlag) {
-          parsedAttributes['data-component'] = name
-        }
-
-        // If we weren't able to successfully parse all of the node attributes bail early
-        // TODO: Add debug and reporting for this
-        if (!parseSuccess) return
-
-        // Call the component with the parsed attributes to create the pre-compiled result
-        const component = components[name]
-        const renderer = typeof component === 'function' ? component : component.render
-        const preCompiledResult = renderer(parsedAttributes)
-
-        // 🎉 Replace the elements opening and closing elements with our pre-compiled result
-        path.get('openingElement').replaceWith(
-          buildOpeningElement(preCompiledResult, passThroughAttributes, {
-            selfClosing: openingElement.selfClosing,
-          }),
-        )
-
-        if (closingElement) {
-          path
-            .get('closingElement')
-            .replaceWith(buildClosingElement(preCompiledResult.type))
-        }
-      },
-    },
-  }
-}
-
-export default componentryPlugin

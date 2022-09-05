@@ -3,7 +3,7 @@ import pluginTester from 'babel-plugin-tester'
 import plugin from './plugin'
 
 // 📝 Tester docs:
-// https://github.com/babel-utils/babel-plugin-teste
+// https://github.com/babel-utils/babel-plugin-tester
 
 pluginTester({
   plugin,
@@ -19,13 +19,23 @@ pluginTester({
   tests: [
     {
       title: 'transforms components',
-      fixture: '__fixtures__/basics/code.js',
-      outputFixture: '__fixtures__/basics/output.js',
+      fixture: '__fixtures__/transforms-components/code.js',
+      outputFixture: '__fixtures__/transforms-components/output.js',
     },
     {
-      title: 'passes through refs',
-      fixture: '__fixtures__/refs/code.js',
-      outputFixture: '__fixtures__/refs/output.js',
+      title: 'ignores non-precompile components',
+      fixture: '__fixtures__/ignores-components/code.js',
+      outputFixture: '__fixtures__/ignores-components/output.js',
+    },
+    {
+      title: 'transforms supported types of props',
+      fixture: '__fixtures__/prop-types/code.js',
+      outputFixture: '__fixtures__/prop-types/output.js',
+    },
+    {
+      title: 'transforms components individual props',
+      fixture: '__fixtures__/component-props/code.js',
+      outputFixture: '__fixtures__/component-props/output.js',
     },
     {
       title: 'transforms as prop',
@@ -33,25 +43,14 @@ pluginTester({
       outputFixture: '__fixtures__/as-prop/output.js',
     },
     {
-      title: 'transforms attributes with expression container values',
-      fixture: '__fixtures__/expression-containers/code.js',
-      outputFixture: '__fixtures__/expression-containers/output.js',
-    },
-
-    {
-      title: 'skips non-precompile components',
-      fixture: '__fixtures__/ignores-components/code.js',
-      outputFixture: '__fixtures__/ignores-components/output.js',
+      title: 'passes through refs',
+      fixture: '__fixtures__/refs/code.js',
+      outputFixture: '__fixtures__/refs/output.js',
     },
     {
       title: 'passes through non-library props',
       fixture: '__fixtures__/passthrough-props/code.js',
       outputFixture: '__fixtures__/passthrough-props/output.js',
-    },
-    {
-      title: 'skips transforming components with spread attributes',
-      fixture: '__fixtures__/spread-attribute/code.js',
-      outputFixture: '__fixtures__/spread-attribute/output.js',
     },
     {
       title: 'includes a data-precompiled flag when plugin option is used',
@@ -63,3 +62,10 @@ pluginTester({
     },
   ],
 })
+
+/**
+ * TODO
+ *
+ * 1. Test styles merging with something like mt={999} style={{ overflow: 'hidden' }}
+ * 2. Test className merging
+ */
