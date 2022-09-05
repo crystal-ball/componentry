@@ -1,6 +1,4 @@
-/* eslint-disable no-console */
-import { PluginObj, PluginPass, types as t } from '@babel/core'
-import { NodePath } from '@babel/traverse'
+import { NodePath, PluginObj, PluginPass, types as t } from '@babel/core'
 
 import { Block } from '../components/Block/Block'
 import { Flex } from '../components/Flex/Flex'
@@ -9,25 +7,18 @@ import { Paper } from '../components/Paper/Paper'
 import { __initializePreCompileMode } from '../components/Provider/Provider'
 import { Text } from '../components/Text/Text'
 
-import { buildClosingElement, buildOpeningElement } from './build-elements'
 import { parseAttributes } from './parse-attributes'
-
-type EvaluatedForwardRef = {
-  $$typeof: symbol
-  render: <Props, Ref>(props?: Props, ref?: Ref) => React.ReactElement
-}
+import { prepareAttributes } from './prepare-attributes'
 
 const components = { Block, Flex, Grid, Paper, Text } as unknown as {
   [component: string]: EvaluatedForwardRef
 }
 
+/** Plugin customization options */
 type PluginOpts = { debug?: boolean; dataFlag?: boolean }
 
 /**
- * Componentry precompile Babel plugin
- * TODO:
- * 1. Check for `as` prop
- * 2. Check for `className` prop
+ * Componentry Babel plugin for pre-compiling display components
  */
 export default function plugin(): PluginObj {
   __initializePreCompileMode({}) // TODO: Accept prop overrides through options
@@ -59,24 +50,30 @@ export default function plugin(): PluginObj {
           // Call the component with the parsed attributes to create the pre-compiled result
           const preCompiledElement = components[name].render(parsedAttributes)
           const componentName = getComponentName(parsedComponentAs, preCompiledElement)
+          const preparedAttributes = prepareAttributes(
+            preCompiledElement,
+            passThroughAttributes,
+          )
 
           // 🎉 Replace the elements opening and closing elements with our pre-compiled result
           path
             .get('openingElement')
             .replaceWith(
-              buildOpeningElement(
-                componentName,
-                preCompiledElement,
-                passThroughAttributes,
+              t.jSXOpeningElement(
+                t.jsxIdentifier(componentName),
+                preparedAttributes,
                 openingElement.selfClosing,
               ),
             )
 
           if (closingElement) {
-            path.get('closingElement').replaceWith(buildClosingElement(componentName))
+            path
+              .get('closingElement')
+              .replaceWith(t.jSXClosingElement(t.jsxIdentifier(componentName)))
           }
         } catch (err) {
           if (opts.debug) {
+            // eslint-disable-next-line no-console -- plugin logging support
             console.info(
               // @ts-expect-error -- How to check if message is in type object?
               `Skipping precompile for ${openingElement.name.name} in ${filename} for reason: ${err?.message}`,
@@ -99,6 +96,12 @@ function getComponentName(
     return preCompiledElement.type
   }
   throw new Error('Unsupported precompile component type')
+}
+
+/** The actual compiled value of a forwardRef component */
+type EvaluatedForwardRef = {
+  $$typeof: symbol
+  render: <Props, Ref>(props?: Props, ref?: Ref) => React.ReactElement
 }
 
 /*

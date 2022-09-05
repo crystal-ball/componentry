@@ -1,25 +1,10 @@
-/* eslint-disable max-params */
-import template from '@babel/template'
-import * as t from '@babel/types'
+import { types as t, template } from '@babel/core'
 
-/**
- * Builds the JSXClosingElement for precompiled component
- */
-export function buildClosingElement(componentName: string): t.JSXClosingElement {
-  return t.jSXClosingElement(t.jsxIdentifier(componentName))
-}
-
-/**
- * Builds the JSXOpeningElement for precompiled component
- */
-export function buildOpeningElement(
-  componentName: string,
+export function prepareAttributes(
   preCompiledElement: JSX.Element,
   passThroughAttributes: t.JSXAttribute[],
-  selfClosing: boolean,
-): t.JSXOpeningElement {
-  return t.jSXOpeningElement(
-    t.jsxIdentifier(componentName),
+): t.JSXAttribute[] {
+  return (
     Object.entries(preCompiledElement.props)
       // Filter out empty objects (Componentry will return an undefined 'style' prop when there are no inline styles)
       .filter(([, propValue]) => propValue)
@@ -33,7 +18,6 @@ export function buildOpeningElement(
               t.jsxExpressionContainer(template.expression(JSON.stringify(propValue))()),
         ),
       )
-      .concat(passThroughAttributes),
-    selfClosing,
+      .concat(passThroughAttributes)
   )
 }

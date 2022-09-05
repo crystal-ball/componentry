@@ -3,7 +3,7 @@ import pluginTester from 'babel-plugin-tester'
 import plugin from './plugin'
 
 // 📝 Tester docs:
-// https://github.com/babel-utils/babel-plugin-testerc
+// https://github.com/babel-utils/babel-plugin-tester
 
 pluginTester({
   plugin,
