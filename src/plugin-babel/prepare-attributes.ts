@@ -29,9 +29,11 @@ export function prepareAttributes(
 
   /** --- MANAGE CLASSNAMES --- */
 
-  // When library className and passed className are present merge them into a
-  // BinaryExpression, eg: 'C9Y-Text-Base ' + 'passed-class-name'
   if (preCompiledClassName && passThroughClassName?.value) {
+    // When library className and passed className are present merge them into a
+    // BinaryExpression, eg: 'C9Y-Text-Base ' + 'passed-class-name'
+
+    // Safety-check: Bail on any invalid JSX prop values
     if (
       t.isJSXElement(passThroughClassName.value) ||
       t.isJSXFragment(passThroughClassName.value)
@@ -45,6 +47,7 @@ export function prepareAttributes(
       ? passThroughClassName.value
       : passThroughClassName.value.expression
 
+    // Safety-check: Bail on any invalid empty expressions
     if (t.isJSXEmptyExpression(passThroughValue)) {
       throw new Error(`Unsupported node type "EmptyExpression" for prop "className"`)
     }
@@ -62,6 +65,7 @@ export function prepareAttributes(
       ),
     )
   } else if (preCompiledClassName) {
+    // Safety-check: Ensure library className is a string
     if (typeof preCompiledClassName !== 'string') {
       throw new Error(
         `Unexpected precompiled className of type ${typeof preCompiledClassName}`,

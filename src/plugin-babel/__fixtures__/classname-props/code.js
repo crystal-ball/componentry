@@ -17,7 +17,7 @@ export default function Test({ className, success }) {
         Call expression className test
       </Text>
       {/* ✓ Conditional expression is merged with clsx with library classes */}
-      {/* @Remarks - Known bug where a conditional className like this case could result in 'undefined' as a className */}
+      {/* @remarks - Known bug where a conditional className like this case could result in 'undefined' as a className */}
       <Text className={success ? 'success-class' : undefined} truncate>
         Conditional expression className test
       </Text>
