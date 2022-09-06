@@ -1,29 +1,23 @@
 import { types as t, template } from '@babel/core'
 
 export function prepareAttributes(
-  preCompiledAttributes: JSX.Element['props'],
+  preCompiledAttributes: React.ReactElement<PreCompiledProps>['props'],
   passThroughAttributes: t.JSXAttribute[],
 ): t.JSXAttribute[] {
-  const { className: preCompiledClassName, ...classNameLessPreCompiledAttributes } =
-    preCompiledAttributes
-  const [classNameLessPassThroughAttributes, passThroughClassName] = extractAttribute(
-    passThroughAttributes,
-    'className',
-  )
+  const {
+    className: preCompiledClassName,
+    style: preCompiledStyle,
+    ...restPreCompiledAttributes
+  } = preCompiledAttributes
+  const passThroughClassName = extractAttribute(passThroughAttributes, 'className')
+  const passThroughStyle = extractAttribute(passThroughAttributes, 'style')
 
   /** --- TRANSFORM PRECOMPILED --- */
 
-  const preparedAttributes = Object.entries(classNameLessPreCompiledAttributes)
+  const preparedAttributes = Object.entries(restPreCompiledAttributes)
     // Filter out empty objects (Componentry will return an undefined 'style' prop when there are no inline styles)
     .filter(([, propValue]) => propValue)
-    .map(([propName, propValue]) =>
-      t.jsxAttribute(
-        t.jSXIdentifier(propName),
-        // template.expression provides a convenient way to create an AST node
-        // for values like strings, numbers, booleans, etc.
-        t.jsxExpressionContainer(template.expression(JSON.stringify(propValue))()),
-      ),
-    )
+    .map(([propName, propValue]) => createPrimitiveAttribute(propName, propValue))
 
   /** --- MANAGE CLASSNAMES --- */
 
@@ -75,22 +69,67 @@ export function prepareAttributes(
     preparedAttributes.push(passThroughClassName)
   }
 
+  /** --- MANAGE STYLES --- */
+
+  if (preCompiledStyle && passThroughStyle?.value) {
+    // Safety-check: Ensure passThrough 'style' is an object literal
+    if (
+      !t.isJSXExpressionContainer(passThroughStyle.value) ||
+      t.isJSXEmptyExpression(passThroughStyle.value.expression) ||
+      !t.isObjectExpression(passThroughStyle.value.expression)
+    ) {
+      throw new Error(`Unsupported node type "${passThroughStyle.type}" for prop "style"`)
+    }
+
+    Object.entries(preCompiledStyle).forEach(([propName, propValue]) => {
+      // @remarks - unshift includes library generated styles before user props' styles,
+      // in cases where there is overlap between a library style and a user style this
+      // should result in the user prop style having precedence (future improvement to
+      // skip inserting library style if user style exists possible)
+      // @ts-expect-error -- Type assertions on style expression lost in .forEach block for some reason??
+      passThroughStyle.value.expression.properties.unshift(
+        t.objectProperty(
+          t.identifier(propName),
+          template.expression(JSON.stringify(propValue))(),
+        ),
+      )
+    })
+
+    preparedAttributes.push(passThroughStyle)
+  } else if (preCompiledStyle) {
+    preparedAttributes.push(createPrimitiveAttribute('style', preCompiledStyle))
+  } else if (passThroughStyle) {
+    preparedAttributes.push(passThroughStyle)
+  }
+
   /** --- ✓ SUCCESS --- */
 
-  return preparedAttributes.concat(classNameLessPassThroughAttributes)
+  return preparedAttributes.concat(passThroughAttributes)
 }
 
 // --------------------------------------------------------
 // Helpers
 
+type PreCompiledProps = {
+  className?: string
+  style?: Record<string, string | number>
+}
+
+function createPrimitiveAttribute(name: string, value: any): t.JSXAttribute {
+  return t.jsxAttribute(
+    t.jSXIdentifier(name),
+    t.jsxExpressionContainer(template.expression(JSON.stringify(value))()),
+  )
+}
+
 function extractAttribute(
   attrs: t.JSXAttribute[],
   propName: string,
-): [attrsList: t.JSXAttribute[], extracted?: t.JSXAttribute] {
+): t.JSXAttribute | undefined {
   const extractIdx = attrs.findIndex(({ name }) => name.name === propName)
 
   // NOTE - this both extracts the requested attribute AND removes it from the passed in array
   const extracted = extractIdx !== -1 ? attrs.splice(extractIdx, 1)[0] : undefined
 
-  return [attrs, extracted]
+  return extracted
 }

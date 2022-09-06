@@ -1,29 +1,31 @@
 import { Flex, Text } from 'componentry'
 import { jsx as _jsx } from 'react/jsx-runtime'
 import { jsxs as _jsxs } from 'react/jsx-runtime'
-export default function Test({ success }) {
-  // Test that:
-  // 1. Props without theme values are compiled to inline styles
-  // 2. Inline styles are merged correctly with prop values
-  // 3. Skipped components are unaffected
+export default function Test() {
   return /*#__PURE__*/ _jsxs('div', {
-    className: 'flex',
-    style: {
-      marginTop: 99,
-    },
     children: [
       /*#__PURE__*/ _jsx('div', {
+        className: 'flex',
         style: {
+          marginTop: 99,
+        },
+        children: 'Inline styles',
+      }),
+      /*#__PURE__*/ _jsx('div', {
+        className: 'C9Y-Text-base C9Y-Text-body',
+        style: {
+          color: 'hotpink',
           overflow: 'hidden',
-          marginTop: '19px',
+          marginTop: '20px',
         },
         children: 'Styles prop test',
       }),
-      /*#__PURE__*/ _jsx(Text, {
-        mt: success ? 19 : 21,
+      /*#__PURE__*/ _jsx('div', {
+        className: 'C9Y-Text-base C9Y-Text-body',
         style: {
+          marginTop: 17,
           overflow: 'hidden',
-          marginTop: '19px',
+          marginTop: '20px',
         },
         children: 'Styles prop test',
       }),
