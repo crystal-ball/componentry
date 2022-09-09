@@ -1,3 +1,5 @@
+import { Theme } from '../../theme/theme'
+
 //                                        <Close /> styles
 // --------------------------------------------------------
 
@@ -11,7 +13,7 @@
 // elements can customize size/color as needed
 //
 // ℹ️ The background image styles for close icons is located in the Icon styles
-export const closeStyles = {
+export const closeStyles = (theme: Theme) => ({
   '.C9Y-Close-base': {
     // Layout
     alignItems: 'center',
@@ -35,4 +37,4 @@ export const closeStyles = {
       opacity: 1,
     },
   },
-}
+})

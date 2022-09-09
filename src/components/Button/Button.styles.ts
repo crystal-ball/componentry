@@ -1,12 +1,10 @@
-import { getMergedConfig } from '../../plugin-postcss/configs'
-import { StylesDefinition } from '../../utils/types'
-
-const { theme } = getMergedConfig()
+import { type CSSProperties } from 'react'
+import { Theme } from '../../theme/theme'
 
 //                                        <Button /> styles
 // --------------------------------------------------------
 
-export const buttonStyles: ButtonStyles = {
+export const buttonStyles = (theme: Theme): ButtonStyles => ({
   // BASE
   '.C9Y-Button-base': {
     alignItems: 'center',
@@ -19,10 +17,10 @@ export const buttonStyles: ButtonStyles = {
     border: 'none', // reset borders for easier opt-in styling
     userSelect: 'none', // Prevent text selection on click of buttons
     whiteSpace: 'nowrap', // By default button content shouldn't wrap
-  },
 
-  '.C9Y-Button-DisabledWrapper': {
-    cursor: 'not-allowed',
+    '&:disabled, &.C9Y-disabled': {
+      cursor: 'not-allowed',
+    },
   },
 
   // VARIANTS
@@ -97,36 +95,34 @@ export const buttonStyles: ButtonStyles = {
   '.C9Y-Button-largeSizeIcon': {
     fontSize: '1.25rem',
   },
-}
+})
 
 export interface ButtonStyles {
   /** Base class applied to all variants for shared structural styles */
-  '.C9Y-Button-base': StylesDefinition
-  /** Class applied to disabled buttons' wrapper element */
-  '.C9Y-Button-DisabledWrapper': StylesDefinition
+  '.C9Y-Button-base': { '&:disabled, &.C9Y-disabled': CSSProperties } & CSSProperties
 
   /** Variant class applied when `variant="filled"` */
   '.C9Y-Button-filled': {
-    '&:hover, &.C9Y-hover': StylesDefinition
-    '&:active, &.C9Y-active': StylesDefinition
-    '&:disabled, &.C9Y-disabled': StylesDefinition
-  } & StylesDefinition
+    '&:hover, &.C9Y-hover': CSSProperties
+    '&:active, &.C9Y-active': CSSProperties
+    '&:disabled, &.C9Y-disabled': CSSProperties
+  } & CSSProperties
   /** Variant class applied when `variant="outlined"` */
   '.C9Y-Button-outlined': {
-    '&:hover, &.C9Y-hover': StylesDefinition
-    '&:active, &.C9Y-active': StylesDefinition
-    '&:disabled, &.C9Y-disabled': StylesDefinition
-  } & StylesDefinition
+    '&:hover, &.C9Y-hover': CSSProperties
+    '&:active, &.C9Y-active': CSSProperties
+    '&:disabled, &.C9Y-disabled': CSSProperties
+  } & CSSProperties
 
   /** Sizing class applied when `size="small"` */
-  '.C9Y-Button-smallSize': StylesDefinition
+  '.C9Y-Button-smallSize': CSSProperties
   /** Sizing class applied when `size="large"` */
-  '.C9Y-Button-largeSize': StylesDefinition
+  '.C9Y-Button-largeSize': CSSProperties
 
   /** Base class applied to all Button Icons */
-  '.C9Y-Button-icon': StylesDefinition
+  '.C9Y-Button-icon': CSSProperties
   /** Sizing class applied to Button Icons when `size="small"` */
-  '.C9Y-Button-smallSizeIcon': StylesDefinition
+  '.C9Y-Button-smallSizeIcon': CSSProperties
   /** Sizing class applied Button Icons when `size="large"` */
-  '.C9Y-Button-largeSizeIcon': StylesDefinition
+  '.C9Y-Button-largeSizeIcon': CSSProperties
 }

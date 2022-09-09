@@ -1,20 +1,18 @@
-import { getMergedConfig } from '../../plugin-postcss/configs'
-import { StylesDefinition } from '../../utils/types'
-
-const { theme } = getMergedConfig()
+import { type CSSProperties } from 'react'
+import { Theme } from '../../theme/theme'
 
 //                                         <Link /> styles
 // -------------------------------------------------------
 
-export const linkStyles: LinkStyles = {
+export const linkStyles = (theme: Theme): LinkStyles => ({
   // BASE
   '.C9Y-Link-base': {
     // Reset browser defaults for when Link renders a button element
     border: 'none',
-  },
 
-  '.C9Y-Link-DisabledWrapper': {
-    cursor: 'not-allowed',
+    '&:disabled, &.C9Y-disabled': {
+      cursor: 'not-allowed',
+    },
   },
 
   // VARIANTS
@@ -32,17 +30,16 @@ export const linkStyles: LinkStyles = {
       color: theme.colors.primary[300],
     },
   },
-}
+})
 
 export interface LinkStyles {
   /** Base class applied to all variants for shared structural styles */
-  '.C9Y-Link-base': StylesDefinition
-  /** Class applied to disabled links' wrapper element */
-  '.C9Y-Link-DisabledWrapper': StylesDefinition
+  '.C9Y-Link-base': { '&:disabled, &.C9Y-disabled': CSSProperties } & CSSProperties
+
   /** Variant class applied when `variant="text"` */
   '.C9Y-Link-text': {
-    '&:hover, .C9Y-hover': StylesDefinition
-    '&:active, &.C9Y-active': StylesDefinition
-    '&:disabled, &.C9Y-disabled': StylesDefinition
-  } & StylesDefinition
+    '&:hover, .C9Y-hover': CSSProperties
+    '&:active, &.C9Y-active': CSSProperties
+    '&:disabled, &.C9Y-disabled': CSSProperties
+  } & CSSProperties
 }

@@ -1,12 +1,10 @@
-import { getMergedConfig } from '../../plugin-postcss/configs'
-import { StylesDefinition } from '../../utils/types'
+import { type CSSProperties } from 'react'
+import { Theme } from '../../theme/theme'
 
 //                                         <Text /> styles
 // -------------------------------------------------------
 
-const { theme } = getMergedConfig()
-
-export const textStyles: TextStyles = {
+export const textStyles = (theme: Theme): TextStyles => ({
   // BASE
   '.C9Y-Text-base': {},
 
@@ -33,20 +31,20 @@ export const textStyles: TextStyles = {
       marginTop: theme.spacing[4],
     },
   },
-}
+})
 
 export interface TextStyles {
   /** Base class applied to all variants for shared structural styles */
-  '.C9Y-Text-base': StylesDefinition
+  '.C9Y-Text-base': CSSProperties
   /** Variant class applied when `variant="h1"` */
-  '.C9Y-Text-h1': StylesDefinition
+  '.C9Y-Text-h1': CSSProperties
   /** Variant class applied when `variant="h2"` */
-  '.C9Y-Text-h2': StylesDefinition
+  '.C9Y-Text-h2': CSSProperties
   /** Variant class applied when `variant="h3"` */
-  '.C9Y-Text-h3': StylesDefinition
+  '.C9Y-Text-h3': CSSProperties
   /** Variant class applied when `variant="body"` */
   '.C9Y-Text-body': {
     /** Sibling selector for auto-spacing multiple body elements */
-    '& + &': StylesDefinition
-  } & StylesDefinition
+    '& + &': CSSProperties
+  } & CSSProperties
 }

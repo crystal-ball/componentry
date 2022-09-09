@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/ban-types */
 /**
  * @file
  * Utilities for working with complex TS types.
@@ -20,14 +19,6 @@ export type Resolve<T> = T extends Function ? T : { [K in keyof T]: T[K] }
  * ```
  */
 export type MergeTypes<Base, Overrides> = Omit<Base, keyof Overrides> & Overrides
-
-/**
- * Convenience type for reducing boilerplate documenting component style APIs.
- * @internal
- */
-export type StylesDefinition = {
-  [Rule: string]: any
-}
 
 /**
  * Utility type converts a theme definition to version that can be used with

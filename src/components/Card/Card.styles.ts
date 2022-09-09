@@ -1,11 +1,9 @@
-import { getMergedConfig } from '../../plugin-postcss/configs'
-
-const { theme } = getMergedConfig()
+import { Theme } from '../../theme/theme'
 
 //                                          <Card /> styles
 // --------------------------------------------------------
 
-export const cardStyles = {
+export const cardStyles = (theme: Theme) => ({
   '.C9Y-Card-base': {
     position: 'relative',
     display: 'flex',
@@ -61,4 +59,4 @@ export const cardStyles = {
     fontSize: theme.fontSize.sm,
     color: theme.colors.gray[600],
   },
-}
+})

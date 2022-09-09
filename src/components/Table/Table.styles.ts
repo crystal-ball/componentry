@@ -1,11 +1,9 @@
-import { getMergedConfig } from '../../plugin-postcss/configs'
+import { Theme } from '../../theme/theme'
 
-const { theme } = getMergedConfig()
-
-//                                        <Input /> styles
+//                                        <Table /> styles
 // --------------------------------------------------------
 
-export const tableStyles = {
+export const tableStyles = (theme: Theme) => ({
   '.C9Y-Table-base': {
     display: 'block',
     width: '100%',
@@ -41,4 +39,4 @@ export const tableStyles = {
   '.C9Y-TableCell': {
     padding: theme.spacing[2],
   },
-}
+})

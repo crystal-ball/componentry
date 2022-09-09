@@ -1,114 +1,18 @@
 /* eslint-disable no-underscore-dangle */
-import React, { createContext, useContext, useMemo } from 'react'
+import React, { createContext, useContext } from 'react'
 
+import { Config } from '../../config/config'
 import { Theme } from '../../theme/theme'
 import { themeDefaults } from '../../theme/theme-defaults'
 import { initializeUtilityClassesTheme } from '../../utils/utility-classes'
 
-import {
-  type ActiveActionProps,
-  type ActiveContentProps,
-  type ActiveProps,
-} from '../Active/Active'
-import { type AlertProps } from '../Alert/Alert'
-import { type BadgeProps } from '../Badge/Badge'
-import { type BlockProps } from '../Block/Block'
-import { type ButtonProps } from '../Button/Button'
-import { type CardProps } from '../Card/Card'
-import {
-  type DrawerActionProps,
-  type DrawerContentProps,
-  type DrawerProps,
-} from '../Drawer/Drawer'
-import {
-  type DropdownActionProps,
-  type DropdownContentProps,
-  type DropdownItemProps,
-  type DropdownProps,
-} from '../Dropdown/Dropdown'
-import { type FlexProps } from '../Flex/Flex'
-import { type GridProps } from '../Grid/Grid'
-import { type IconProps } from '../Icon/Icon'
-import { type IconButtonProps } from '../IconButton/IconButton'
-import { type InputFieldProps, type InputLabelProps } from '../Input/Input'
-import { type LinkProps } from '../Link/Link'
-import {
-  type ModalBodyProps,
-  type ModalHeaderProps,
-  type ModalProps,
-  type ModalTitleProps,
-} from '../Modal/Modal'
-import { type PaperProps } from '../Paper/Paper'
-import {
-  type PopoverActionProps,
-  type PopoverContentProps,
-  type PopoverProps,
-} from '../Popover/Popover'
-import {
-  type TabsActionProps,
-  type TabsActionsContainerProps,
-  type TabsContentProps,
-  type TabsProps,
-} from '../Tabs/Tabs'
-import { type TextProps } from '../Text/Text'
-import {
-  type TooltipActionProps,
-  type TooltipContentProps,
-  type TooltipProps,
-} from '../Tooltip/Tooltip'
-
-export type Components = {
-  Active?: ActiveProps
-  ActiveAction?: ActiveActionProps
-  ActiveContent?: ActiveContentProps
-  Alert?: AlertProps
-  Badge?: BadgeProps
-  Block?: BlockProps
-  Button?: ButtonProps
-  Card?: CardProps
-  Drawer?: DrawerProps
-  DrawerAction?: DrawerActionProps
-  DrawerContent?: DrawerContentProps
-  Dropdown?: DropdownProps
-  DropdownItem?: DropdownItemProps
-  DropdownAction?: DropdownActionProps
-  DropdownContent?: DropdownContentProps
-  Flex?: FlexProps
-  Grid?: GridProps
-  Icon?: IconProps
-  IconButton?: IconButtonProps
-  InputField?: InputFieldProps
-  InputLabel?: InputLabelProps
-  Link?: LinkProps
-  Modal?: ModalProps
-  ModalBody?: ModalBodyProps
-  ModalHeader?: ModalHeaderProps
-  ModalTitle?: ModalTitleProps
-  Paper?: PaperProps
-  Popover?: PopoverProps
-  PopoverAction?: PopoverActionProps
-  PopoverContent?: PopoverContentProps
-  Tabs?: TabsProps
-  TabsAction?: TabsActionProps
-  TabsContent?: TabsContentProps
-  TabsActionsContainer?: TabsActionsContainerProps
-  Text?: TextProps
-  Tooltip?: TooltipProps
-  TooltipAction?: TooltipActionProps
-  TooltipContent?: TooltipContentProps
-}
-
 /** Componentry Context */
-const ComponentryCtx = createContext<null | { components: Components; theme: Theme }>(
-  null,
-)
+const ComponentryCtx = createContext<Config | undefined>(undefined)
 
 interface ComponentryProviderProps {
   children: React.ReactElement
   /** Component default props */
-  components?: Components
-  /** Application theme values */
-  theme?: Theme
+  config: Config
 }
 
 export interface ComponentryProvider {
@@ -128,22 +32,14 @@ export interface ComponentryProvider {
  * ```
  * @see [📝 ComponentryProvider](https://componentry.design/components/provider)
  */
-export const ComponentryProvider: ComponentryProvider = ({
-  children,
-  components,
-  theme,
-}) => {
-  const contextValue = useMemo(() => {
-    return { components: components ?? {}, theme: theme ?? themeDefaults }
-  }, [components, theme])
-
+export const ComponentryProvider: ComponentryProvider = ({ children, config }) => {
   // Internal convenience helper: if user has provided a theme value initialize
   // the utility classes module with it for them
-  initializeUtilityClassesTheme(contextValue.theme)
+  if (config.theme) {
+    initializeUtilityClassesTheme(config.theme)
+  }
 
-  return (
-    <ComponentryCtx.Provider value={contextValue}>{children}</ComponentryCtx.Provider>
-  )
+  return <ComponentryCtx.Provider value={config}>{children}</ComponentryCtx.Provider>
 }
 ComponentryProvider.displayName = 'ComponentryProvider'
 
@@ -155,39 +51,50 @@ ComponentryProvider.displayName = 'ComponentryProvider'
  */
 export function useTheme(): Theme {
   const ctx = useContext(ComponentryCtx)
-  return ctx ? ctx.theme : themeDefaults
+  return ctx?.theme ?? themeDefaults
 }
 
 // --------------------------------------------------------
 // PROPS
 
 let preCompileMode = false
-let preCompileComponentsValue: Components = {}
+let preCompileContext: Config | undefined
 
-export function __initializePreCompileMode(components: Components): void {
+export function __initializePreCompileMode(config: Config): void {
   preCompileMode = true
-  preCompileComponentsValue = components
+  preCompileContext = config
+
+  if (config.theme) {
+    initializeUtilityClassesTheme(config.theme)
+  }
 }
 
-function useContextProps<Name extends keyof Components>(
-  componentName: Name,
-): Components[Name] {
-  const ctx = useContext(ComponentryCtx)
-  return ctx ? ctx.components[componentName] : undefined
-}
+type ComponentDefaultProps = NonNullable<Config['defaultProps']>
 
 /**
  * Internal function for accessing component default props through context.
  */
-export function useThemeProps<Name extends keyof Components>(
+export function useThemeProps<Name extends keyof ComponentDefaultProps>(
   componentName: Name,
-): Components[Name] {
+): ComponentDefaultProps[Name] | undefined {
   if (preCompileMode) {
-    return preCompileComponentsValue[componentName]
+    return preCompileContext?.defaultProps?.[componentName]
   }
 
   // During Babel pre-compiling `preCompileMode` will always be true, during
   // runtime execution it will always be false
   // eslint-disable-next-line react-hooks/rules-of-hooks
   return useContextProps(componentName)
+}
+
+/**
+ * @remarks This must be a separate fn or useContext will error during Babel
+ * precompilation
+ * @remarks IS THAT RIGHT??
+ */
+function useContextProps<Name extends keyof ComponentDefaultProps>(
+  componentName: Name,
+): ComponentDefaultProps[Name] | undefined {
+  const ctx = useContext(ComponentryCtx)
+  return ctx?.defaultProps?.[componentName]
 }

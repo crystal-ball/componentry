@@ -2,60 +2,12 @@ import postcss, { ChildNode, PluginCreator } from 'postcss'
 import postcssJs from 'postcss-js'
 import postcssNested from 'postcss-nested'
 
-import { alertStyles } from '../components/Alert/Alert.styles'
-import { badgeStyles } from '../components/Badge/Badge.styles'
-import { buttonStyles } from '../components/Button/Button.styles'
-import { cardStyles } from '../components/Card/Card.styles'
-import { closeStyles } from '../components/Close/Close.styles'
-import { formGroupStyles } from '../components/FormGroup/FormGroup.styles'
-import { iconStyles } from '../components/Icon/Icon.styles'
-import { iconButtonStyles } from '../components/IconButton/IconButton.styles'
-import { inputStyles } from '../components/Input/Input.styles'
-import { linkStyles } from '../components/Link/Link.styles'
-import { modalStyles } from '../components/Modal/Modal.styles'
-import { paperStyles } from '../components/Paper/Paper.styles'
-import { popoverStyles } from '../components/Popover/Popover.styles'
-import { tableStyles } from '../components/Table/Table.styles'
-import { textStyles } from '../components/Text/Text.styles'
-import { tooltipStyles } from '../components/Tooltip/Tooltip.styles'
-import { foundationStyles } from '../styles/foundation.styles'
-import { states } from '../styles/states.styles'
-import { deepMerge } from '../utils/deep-merge'
-import { getMergedConfig } from './configs'
+import { loadConfig } from '../config/load-config'
 
-const userConfigs = getMergedConfig()
+const config = loadConfig()
 
-const componentStyles = {
-  Alert: alertStyles,
-  Badge: badgeStyles,
-  Button: buttonStyles,
-  Card: cardStyles,
-  Close: closeStyles,
-  Icon: iconStyles,
-  IconButton: iconButtonStyles,
-  Input: inputStyles,
-  FormGroup: formGroupStyles,
-  Link: linkStyles,
-  Modal: modalStyles,
-  Paper: paperStyles,
-  Popover: popoverStyles,
-  Table: tableStyles,
-  Text: textStyles,
-  Tooltip: tooltipStyles,
-}
-
-const utilityStyles = {
-  states,
-}
-
-const { components, foundation, utilities } = deepMerge(
-  {
-    foundation: foundationStyles,
-    components: componentStyles,
-    utilities: utilityStyles,
-  },
-  userConfigs,
-)
+const { foundation, states, ...components } = config.styles
+const utilities = { states }
 
 const processor = postcss([postcssNested()])
 
@@ -76,7 +28,7 @@ export const plugin: PluginCreator<Record<string, never>> = () => {
         let nodes: ChildNode[] = []
 
         if (directiveTarget === 'foundation') {
-          const ast = processor.process(foundation, {
+          const ast = processor.process(foundation!, {
             parser: postcssJs,
           })
           ;({ nodes } = ast.root)

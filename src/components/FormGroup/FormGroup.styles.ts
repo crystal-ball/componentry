@@ -1,12 +1,10 @@
-import { getMergedConfig } from '../../plugin-postcss/configs'
-
-const { theme } = getMergedConfig()
+import { Theme } from '../../theme/theme'
 
 //                                     <FormGroup /> styles
 // --------------------------------------------------------
 
-export const formGroupStyles = {
+export const formGroupStyles = (theme: Theme) => ({
   '.C9Y-FormGroup': {
     marginBottom: theme.spacing[4],
   },
-}
+})

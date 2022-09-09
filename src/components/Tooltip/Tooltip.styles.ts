@@ -1,14 +1,11 @@
-/* eslint-disable prefer-template */
-import { getMergedConfig } from '../../plugin-postcss/configs'
-
-const { theme } = getMergedConfig()
+import { Theme } from '../../theme/theme'
 
 //                                       <Tooltip /> styles
 // --------------------------------------------------------
 
 const tooltipArrowWidth = 10 // in pixels
 
-export const tooltipStyles = {
+export const tooltipStyles = (theme: Theme) => ({
   '.C9Y-Tooltip-base': {
     display: 'inline-block',
     position: 'relative',
@@ -36,7 +33,7 @@ export const tooltipStyles = {
     borderRadius: theme.borderRadius.DEFAULT,
     color: theme.colors.inverse,
     fontSize: theme.fontSize.sm,
-    marginTop: tooltipArrowWidth + 'px',
+    marginTop: `${tooltipArrowWidth}px`,
     maxWidth: '300px',
     padding: '0.25rem 0.5rem',
     position: 'relative',
@@ -47,23 +44,23 @@ export const tooltipStyles = {
 
   // --- ARROW
   '.C9Y-TooltipContentArrow': {
-    height: tooltipArrowWidth * 2 + 'px',
+    height: `${tooltipArrowWidth * 2}px`,
     left: '0.5rem',
     overflow: 'hidden',
     pointerEvents: 'none', // Prevents mouseenter of tip that slightly overlaps action
     position: 'absolute',
-    top: tooltipArrowWidth * -1 + 'px',
-    width: tooltipArrowWidth * 2 + 'px',
+    top: `${tooltipArrowWidth * -1}px`,
+    width: `${tooltipArrowWidth * 2}px`,
 
     '&:after': {
       background: theme.colors.gray[800],
       content: `''`,
       height: tooltipArrowWidth,
-      left: tooltipArrowWidth / 2 + 'px',
+      left: `${tooltipArrowWidth / 2}px`,
       position: 'absolute',
-      top: tooltipArrowWidth * 1.5 + 'px',
+      top: `${tooltipArrowWidth * 1.5}px`,
       transform: 'rotate(45deg)',
       width: tooltipArrowWidth,
     },
   },
-}
+})

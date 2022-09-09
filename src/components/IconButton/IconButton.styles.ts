@@ -1,12 +1,10 @@
-import { getMergedConfig } from '../../plugin-postcss/configs'
-import { StylesDefinition } from '../../utils/types'
+import { type CSSProperties } from 'react'
+import { Theme } from '../../theme/theme'
 
-const { theme } = getMergedConfig()
-
-//                                        <Button /> styles
+//                                    <IconButton /> styles
 // --------------------------------------------------------
 
-export const iconButtonStyles: IconButtonStyles = {
+export const iconButtonStyles = (theme: Theme): IconButtonStyles => ({
   // BASE
   '.C9Y-IconButton-base': {
     alignItems: 'center',
@@ -19,10 +17,9 @@ export const iconButtonStyles: IconButtonStyles = {
     border: 'none', // reset borders for easier opt-in styling
     userSelect: 'none', // Prevent text selection on click of buttons
     whiteSpace: 'nowrap', // By default button content shouldn't wrap
-  },
-
-  '.C9Y-IconButton-DisabledWrapper': {
-    cursor: 'not-allowed',
+    '&:disabled, &.C9Y-disabled': {
+      cursor: 'not-allowed',
+    },
   },
 
   // VARIANTS
@@ -81,28 +78,26 @@ export const iconButtonStyles: IconButtonStyles = {
     width: '2.5rem',
     fontSize: '1rem',
   },
-}
+})
 
 export interface IconButtonStyles {
   /** Base class applied to all variants for shared structural styles */
-  '.C9Y-IconButton-base': StylesDefinition
-  /** Class applied to disabled button wrapper element */
-  '.C9Y-IconButton-DisabledWrapper': StylesDefinition
+  '.C9Y-IconButton-base': { '&:disabled, &.C9Y-disabled': CSSProperties } & CSSProperties
 
   /** Variant class applied when `variant="transparent"` */
   '.C9Y-IconButton-filled': {
-    '&:hover, &.C9Y-hover': StylesDefinition
-    '&:active, &.C9Y-active': StylesDefinition
-    '&:disabled, &.C9Y-disabled': StylesDefinition
-  } & StylesDefinition
+    '&:hover, &.C9Y-hover': CSSProperties
+    '&:active, &.C9Y-active': CSSProperties
+    '&:disabled, &.C9Y-disabled': CSSProperties
+  } & CSSProperties
   /** Variant class applied when `variant="outlined"` */
   '.C9Y-IconButton-outlined': {
-    '&:hover, &.C9Y-hover': StylesDefinition
-    '&:active, &.C9Y-active': StylesDefinition
-    '&:disabled, &.C9Y-disabled': StylesDefinition
-  } & StylesDefinition
+    '&:hover, &.C9Y-hover': CSSProperties
+    '&:active, &.C9Y-active': CSSProperties
+    '&:disabled, &.C9Y-disabled': CSSProperties
+  } & CSSProperties
   /** Sizing class applied when `size="small"` */
-  '.C9Y-IconButton-smallSize': StylesDefinition
+  '.C9Y-IconButton-smallSize': CSSProperties
   /** Sizing class applied when `size="large"` */
-  '.C9Y-IconButton-largeSize': StylesDefinition
+  '.C9Y-IconButton-largeSize': CSSProperties
 }

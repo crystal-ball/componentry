@@ -1,13 +1,11 @@
-import { getMergedConfig } from '../../plugin-postcss/configs'
-
-const { theme } = getMergedConfig()
+import { Theme } from '../../theme/theme'
 
 //                                       <Popover /> styles
 // --------------------------------------------------------
 
 const arrowWidth = 4 // in pixels
 
-export const popoverStyles = {
+export const popoverStyles = (theme: Theme) => ({
   // --- CONTAINER
   '.C9Y-Popover-base': {
     // Default align content to dead center of action the specific content styles can
@@ -174,4 +172,4 @@ export const popoverStyles = {
     color: theme.colors.gray[900],
     borderBottom: theme.border.DEFAULT,
   },
-}
+})
