@@ -12,7 +12,9 @@ describe('useThemeProps()', () => {
     const { result } = renderHook(() => useThemeProps('Flex'), {
       wrapper: ({ children }) => {
         return (
-          <ComponentryProvider components={{ Button: { variant: 'filled' } }}>
+          <ComponentryProvider
+            config={{ defaultProps: { Button: { variant: 'filled' } } }}
+          >
             {children}
           </ComponentryProvider>
         )
@@ -26,7 +28,9 @@ describe('useThemeProps()', () => {
     const { result } = renderHook(() => useThemeProps('Button'), {
       wrapper: ({ children }) => {
         return (
-          <ComponentryProvider components={{ Button: { variant: 'filled' } }}>
+          <ComponentryProvider
+            config={{ defaultProps: { Button: { variant: 'filled' } } }}
+          >
             {children}
           </ComponentryProvider>
         )

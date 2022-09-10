@@ -1,5 +1,6 @@
 import React, { useContext } from 'react'
-import { Components, useThemeProps } from '../components/Provider/Provider'
+import { useThemeProps } from '../components/Provider/Provider'
+import { ComponentName } from '../config/config'
 import { useVisible } from '../hooks'
 import { ActiveCtx } from './active-container-component-builder'
 import { ARIAControls, computeARIA } from './aria'
@@ -16,11 +17,11 @@ interface ActiveContentBuilder {
 /**
  * Factory returns custom `<Content />` components defined by the options.
  */
-export function activeContentBuilder<TProps extends ActiveContentBaseProps>(
-  displayName: keyof Components,
-  { aria, defaultAs }: ActiveContentBuilder,
-): React.FC<TProps> {
-  function ActiveContent(props: TProps) {
+export function activeContentBuilder<
+  Name extends ComponentName,
+  Props extends ActiveContentBaseProps,
+>(displayName: Name, { aria, defaultAs }: ActiveContentBuilder): React.FC<Props> {
+  function ActiveContent(props: Props) {
     const { guid, ...activeCtx } = useContext(ActiveCtx)
     const {
       active: _active,

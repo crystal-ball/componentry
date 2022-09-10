@@ -59,19 +59,19 @@ export interface Dropdown {
  * [Dropdown component 📝](https://componentry.design/components/dropdown)
  * @experimental
  */
-export const Dropdown = activeContainerBuilder<DropdownProps>('Dropdown', {
+export const Dropdown = activeContainerBuilder('Dropdown', {
   clickEvents: true,
   direction: 'bottom',
   escEvents: true,
 }) as Dropdown
 
-Dropdown.Action = activeActionBuilder<DropdownActionProps>('DropdownAction', {
+Dropdown.Action = activeActionBuilder('DropdownAction', {
   aria: { expanded: true, haspopup: true, id: true },
   defaultAs: Button,
 })
 
-Dropdown.Content = activeContentBuilder<DropdownContentProps>('DropdownContent', {
+Dropdown.Content = activeContentBuilder('DropdownContent', {
   aria: { labelledby: true, hidden: true },
 })
 
-Dropdown.Item = activeActionBuilder<DropdownItemProps>('DropdownItem')
+Dropdown.Item = activeActionBuilder('DropdownItem')

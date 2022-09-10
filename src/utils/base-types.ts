@@ -42,10 +42,16 @@ export interface ActiveContainerBaseProps {
 }
 
 export interface ActiveActionBaseProps {
+  /** Controlled active state */
+  active?: boolean | string
   /** Action/Content pairing id for compound active components */
   activeId?: string
   /** Component children */
   children?: React.ReactNode
+  /** Called to handle activate event */
+  activate?: (event: KeyboardEvent | MouseEvent | TouchEvent | React.MouseEvent) => void
+  /** Called to handle deactivate event */
+  deactivate?: (event: KeyboardEvent | MouseEvent | TouchEvent | React.MouseEvent) => void
 }
 
 export interface ActiveContentBaseProps {

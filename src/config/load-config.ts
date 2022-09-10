@@ -18,20 +18,20 @@ import { textStyles } from '../components/Text/Text.styles'
 import { tooltipStyles } from '../components/Tooltip/Tooltip.styles'
 import { foundationStyles } from '../styles/foundation.styles'
 import { statesStyles } from '../styles/states.styles'
-import { createTheme } from '../theme/theme'
+import { Theme, createTheme } from '../theme/theme'
 import { deepMerge } from '../utils/deep-merge'
 
-import { type Config } from './config'
+import { type ComponentProps, type ComponentStyles } from './config'
 
-let config: Required<Config> | undefined
-
-export const loadConfig = (): Required<Config> => {
-  if (config) return config
-
+export const loadConfig = (): {
+  theme: Theme
+  styles: ComponentStyles
+  defaultProps: ComponentProps
+} => {
   const userConfig = lilconfigSync('componentry').search()?.config ?? {}
   const theme = createTheme(userConfig.theme)
 
-  config = {
+  return {
     theme,
     styles: deepMerge(
       {
@@ -42,8 +42,8 @@ export const loadConfig = (): Required<Config> => {
         Badge: badgeStyles(theme),
         Button: buttonStyles(theme),
         Card: cardStyles(theme),
-        Close: closeStyles(theme),
-        Icon: iconStyles(theme),
+        Close: closeStyles(),
+        Icon: iconStyles(),
         FormGroup: formGroupStyles(theme),
         IconButton: iconButtonStyles(theme),
         Input: inputStyles(theme),
@@ -55,11 +55,10 @@ export const loadConfig = (): Required<Config> => {
         Text: textStyles(theme),
         Tooltip: tooltipStyles(theme),
         // UTILITIES
-        states: statesStyles(theme),
+        states: statesStyles(),
       },
       userConfig.styles ?? {},
     ),
     defaultProps: userConfig.defaultProps ?? {},
   }
-  return config
 }

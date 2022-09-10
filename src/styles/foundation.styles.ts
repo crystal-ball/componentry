@@ -143,7 +143,7 @@ export const foundationStyles = (theme: Theme): FoundationStyles => ({
   },
 
   button: {
-    '-webkit-appearance': 'button', // Correct the inability to style clickable types in iOS and Safari.
+    appearance: 'button', // Correct the inability to style clickable types in iOS and Safari.
     backgroundColor: 'transparent', // Remove default button styles.
     backgroundImage: 'none', // Remove default button styles.
     color: 'inherit', // Change the font styles in all browsers.
@@ -189,16 +189,16 @@ export const foundationStyles = (theme: Theme): FoundationStyles => ({
   },
 
   "[type='search']": {
-    '-webkit-appearance': 'textfield', // Correct the odd appearance in Chrome and Safari.
+    appearance: 'textfield', // Correct the odd appearance in Chrome and Safari.
     outlineOffset: '-2px', // Correct the outline style in Safari.
   },
 
   '::-webkit-search-decoration': {
-    '-webkit-appearance': 'none', // Remove the inner padding in Chrome and Safari on macOS.
+    appearance: 'none', // Remove the inner padding in Chrome and Safari on macOS.
   },
 
   '::-webkit-file-upload-button': {
-    '-webkit-appearance': 'button', // Correct the inability to style clickable types in iOS and Safari.
+    appearance: 'button', // Correct the inability to style clickable types in iOS and Safari.
     font: 'inherit', // Change font properties to `inherit` in Safari.
   },
 

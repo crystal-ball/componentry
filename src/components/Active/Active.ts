@@ -41,15 +41,15 @@ export interface Active {
  * [Active component 📝](https://componentry.design/components/active)
  * @experimental
  */
-export const Active = activeContainerBuilder<ActiveProps>('Active', {
+export const Active = activeContainerBuilder('Active', {
   escEvents: true,
 }) as Active
 
-Active.Action = activeActionBuilder<ActiveActionProps>('ActiveAction', {
+Active.Action = activeActionBuilder('ActiveAction', {
   aria: { controls: true },
   defaultAs: Link,
 })
 
-Active.Content = activeContentBuilder<ActiveContentProps>('ActiveContent', {
+Active.Content = activeContentBuilder('ActiveContent', {
   aria: { id: true, hidden: true },
 })

@@ -47,13 +47,13 @@ export interface Drawer {
  * [Drawer component 📝](https://componentry.design/components/drawer)
  * @experimental
  */
-export const Drawer = activeContainerBuilder<DrawerProps>('Drawer') as Drawer
+export const Drawer = activeContainerBuilder('Drawer') as Drawer
 
-Drawer.Action = activeActionBuilder<DrawerActionProps>('DrawerAction', {
+Drawer.Action = activeActionBuilder('DrawerAction', {
   aria: { controls: true, expanded: true },
   defaultAs: Link,
 })
 
-Drawer.Content = activeContentBuilder<DrawerContentProps>('DrawerContent', {
+Drawer.Content = activeContentBuilder('DrawerContent', {
   aria: { id: true, hidden: true },
 })

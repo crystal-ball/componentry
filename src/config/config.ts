@@ -63,64 +63,70 @@ import { Theme } from '../theme/theme'
 
 export type Config = {
   theme?: Theme
-  styles?: {
-    foundation?: FoundationStyles
-    Alert?: any
-    Badge?: any
-    Button?: ButtonStyles
-    Card?: any
-    Close?: any
-    FormGroup?: any
-    Icon?: IconStyles
-    IconButton?: IconButtonStyles
-    Input?: any
-    Link?: LinkStyles
-    Modal?: any
-    Paper?: PaperStyles
-    Popover?: any
-    Table?: any
-    Text?: TextStyles
-    Tooltip?: any
-    states?: StatesStyles
-  }
-  defaultProps?: {
-    Active?: ActiveProps
-    ActiveAction?: ActiveActionProps
-    ActiveContent?: ActiveContentProps
-    Alert?: AlertProps
-    Badge?: BadgeProps
-    Block?: BlockProps
-    Button?: ButtonProps
-    Card?: CardProps
-    Drawer?: DrawerProps
-    DrawerAction?: DrawerActionProps
-    DrawerContent?: DrawerContentProps
-    Dropdown?: DropdownProps
-    DropdownItem?: DropdownItemProps
-    DropdownAction?: DropdownActionProps
-    DropdownContent?: DropdownContentProps
-    Flex?: FlexProps
-    Grid?: GridProps
-    Icon?: IconProps
-    IconButton?: IconButtonProps
-    InputField?: InputFieldProps
-    InputLabel?: InputLabelProps
-    Link?: LinkProps
-    Modal?: ModalProps
-    ModalBody?: ModalBodyProps
-    ModalHeader?: ModalHeaderProps
-    ModalTitle?: ModalTitleProps
-    Paper?: PaperProps
-    Popover?: PopoverProps
-    PopoverAction?: PopoverActionProps
-    PopoverContent?: PopoverContentProps
-    Tabs?: TabsProps
-    TabsAction?: TabsActionProps
-    TabsContent?: TabsContentProps
-    TabsActionsContainer?: TabsActionsContainerProps
-    Text?: TextProps
-    Tooltip?: TooltipProps
-    TooltipAction?: TooltipActionProps
-    TooltipContent?: TooltipContentProps
-  }
+  styles?: Partial<ComponentStyles>
+  defaultProps?: Partial<ComponentProps>
 }
+
+export type ComponentStyles = {
+  foundation: FoundationStyles
+  Alert: any
+  Badge: any
+  Button: ButtonStyles
+  Card: any
+  Close: any
+  FormGroup: any
+  Icon: IconStyles
+  IconButton: IconButtonStyles
+  Input: any
+  Link: LinkStyles
+  Modal: any
+  Paper: PaperStyles
+  Popover: any
+  Table: any
+  Text: TextStyles
+  Tooltip: any
+  states: StatesStyles
+}
+
+export type ComponentProps = {
+  Active: ActiveProps
+  ActiveAction: ActiveActionProps
+  ActiveContent: ActiveContentProps
+  Alert: AlertProps
+  Badge: BadgeProps
+  Block: BlockProps
+  Button: ButtonProps
+  Card: CardProps
+  Drawer: DrawerProps
+  DrawerAction: DrawerActionProps
+  DrawerContent: DrawerContentProps
+  Dropdown: DropdownProps
+  DropdownItem: DropdownItemProps
+  DropdownAction: DropdownActionProps
+  DropdownContent: DropdownContentProps
+  Flex: FlexProps
+  Grid: GridProps
+  Icon: IconProps
+  IconButton: IconButtonProps
+  InputField: InputFieldProps
+  InputLabel: InputLabelProps
+  Link: LinkProps
+  Modal: ModalProps
+  ModalBody: ModalBodyProps
+  ModalHeader: ModalHeaderProps
+  ModalTitle: ModalTitleProps
+  Paper: PaperProps
+  Popover: PopoverProps
+  PopoverAction: PopoverActionProps
+  PopoverContent: PopoverContentProps
+  Tabs: TabsProps
+  TabsAction: TabsActionProps
+  TabsContent: TabsContentProps
+  TabsActionsContainer: TabsActionsContainerProps
+  Text: TextProps
+  Tooltip: TooltipProps
+  TooltipAction: TooltipActionProps
+  TooltipContent: TooltipContentProps
+}
+
+export type ComponentName = keyof ComponentProps

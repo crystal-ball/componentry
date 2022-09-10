@@ -66,13 +66,13 @@ export interface Popover {
  * [Popover component 📝](https://componentry.design/components/popover)
  * @experimental
  */
-export const Popover = activeContainerBuilder<PopoverProps>('Popover', {
+export const Popover = activeContainerBuilder('Popover', {
   direction: 'right',
   escEvents: true,
   mouseEvents: true,
 }) as Popover
 
-Popover.Action = activeActionBuilder<PopoverActionProps>('PopoverAction', {
+Popover.Action = activeActionBuilder('PopoverAction', {
   aria: { describedby: true },
   defaultAs: Button,
 })
@@ -93,7 +93,7 @@ function PopoverContentElement({
   )
 }
 
-Popover.Content = activeContentBuilder<PopoverContentProps>('PopoverContent', {
+Popover.Content = activeContentBuilder('PopoverContent', {
   aria: { id: true, role: 'tooltip', hidden: true },
   defaultAs: PopoverContentElement,
 })

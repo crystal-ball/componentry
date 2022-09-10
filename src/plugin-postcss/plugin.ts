@@ -28,7 +28,7 @@ export const plugin: PluginCreator<Record<string, never>> = () => {
         let nodes: ChildNode[] = []
 
         if (directiveTarget === 'foundation') {
-          const ast = processor.process(foundation!, {
+          const ast = processor.process(foundation, {
             parser: postcssJs,
           })
           ;({ nodes } = ast.root)
@@ -36,7 +36,6 @@ export const plugin: PluginCreator<Record<string, never>> = () => {
           // Convenience rule for including all utility styles, iterate through
           // style object to assemble all nodes
           Object.values(utilities).forEach((styles) => {
-            // @ts-expect-error -- Need to type everything for this to work
             const ast = processor.process(styles, {
               parser: postcssJs,
             })
@@ -46,7 +45,6 @@ export const plugin: PluginCreator<Record<string, never>> = () => {
           // Convenience rule for including all component styles, iterate through
           // style object to assemble all nodes
           Object.values(components).forEach((styles) => {
-            // @ts-expect-error -- Need to type everything for this to work
             const ast = processor.process(styles, {
               parser: postcssJs,
             })
@@ -56,6 +54,7 @@ export const plugin: PluginCreator<Record<string, never>> = () => {
           // The component styles should be found, and we replace the
           // @componentry node with the final set of parsed styles
           // Adapted from tailwindcss/src/util/parseObjectStyles.js
+          // @ts-expect-error -- in type guard
           const ast = processor.process(components[directiveTarget], {
             parser: postcssJs,
           })

@@ -47,23 +47,20 @@ export interface Tooltip {
  * [Tooltip component 📝](https://componentry.design/components/tooltip)
  * @experimental
  */
-export const Tooltip = activeContainerBuilder<TooltipProps>('Tooltip', {
+export const Tooltip = activeContainerBuilder('Tooltip', {
   escEvents: true,
   mouseEvents: true,
 }) as Tooltip
 
-Tooltip.Action = activeActionBuilder<TooltipActionProps>('TooltipAction', {
+Tooltip.Action = activeActionBuilder('TooltipAction', {
   aria: { describedby: true },
   defaultAs: Link,
 })
 
-Tooltip.Content = activeContentBuilder<TooltipContentProps & { renderArrow?: boolean }>(
-  'TooltipContent',
-  {
-    aria: { id: true, role: 'tooltip', hidden: true },
-    defaultAs: TooltipContentElement,
-  },
-)
+Tooltip.Content = activeContentBuilder('TooltipContent', {
+  aria: { id: true, role: 'tooltip', hidden: true },
+  defaultAs: TooltipContentElement,
+})
 
 function TooltipContentElement({
   children,

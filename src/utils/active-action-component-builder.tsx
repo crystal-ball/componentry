@@ -1,5 +1,6 @@
 import React, { useContext } from 'react'
-import { Components, useThemeProps } from '../components/Provider/Provider'
+import { useThemeProps } from '../components/Provider/Provider'
+import { ComponentName } from '../config/config'
 import { ActiveCtx } from './active-container-component-builder'
 import { ARIAControls, computeARIA } from './aria'
 import { ActiveActionBaseProps } from './base-types'
@@ -18,11 +19,14 @@ interface ActiveActionBuilder {
  * Componentry sets up actions to be buttons styled as links by default, this
  * can be overridden by passing an as and type props for an anchor.
  */
-export function activeActionBuilder<TProps extends ActiveActionBaseProps>(
-  displayName: keyof Components,
+export function activeActionBuilder<
+  Name extends ComponentName,
+  Props extends ActiveActionBaseProps,
+>(
+  displayName: Name,
   { action, aria = {}, defaultAs }: ActiveActionBuilder = {},
-): React.FC<TProps> {
-  function ActiveAction(props: TProps) {
+): React.FC<Props> {
+  function ActiveAction(props: Props) {
     const { guid, ...activeCtx } = useContext(ActiveCtx)
     const { activeId, active, activate, deactivate, ...rest } = {
       ...useThemeProps(displayName),

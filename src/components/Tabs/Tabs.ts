@@ -69,7 +69,7 @@ export interface Tabs {
  * [Tabs component 📝](https://componentry.design/components/tabs)
  * @experimental
  */
-export const Tabs = activeContainerBuilder<TabsProps>('Tabs') as Tabs
+export const Tabs = activeContainerBuilder('Tabs') as Tabs
 
 const ActionsContainer: React.FC<TabsActionsContainerProps> = (props) => {
   const { pills, ...rest } = {
@@ -91,7 +91,7 @@ const ActionsContainer: React.FC<TabsActionsContainerProps> = (props) => {
 ActionsContainer.displayName = 'TabsActionsContainer'
 Tabs.ActionsContainer = ActionsContainer
 
-Tabs.Action = activeActionBuilder<TabsActionProps>('TabsAction', {
+Tabs.Action = activeActionBuilder('TabsAction', {
   aria: { selected: true, role: 'tab' },
   // Tabs can only activate, they never deactivate when clicked
   action: 'activate',
@@ -100,6 +100,6 @@ Tabs.Action = activeActionBuilder<TabsActionProps>('TabsAction', {
 
 Tabs.ContentContainer = staticComponent<TabsContentContainerProps>('TabsContentContainer')
 
-Tabs.Content = activeContentBuilder<TabsContentProps>('TabsContent', {
+Tabs.Content = activeContentBuilder('TabsContent', {
   aria: { hidden: true, role: 'tabpanel' },
 })

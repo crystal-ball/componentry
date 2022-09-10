@@ -1,7 +1,7 @@
 /* eslint-disable no-underscore-dangle */
 import React, { createContext, useContext } from 'react'
 
-import { Config } from '../../config/config'
+import { ComponentName, ComponentProps, Config } from '../../config/config'
 import { Theme } from '../../theme/theme'
 import { themeDefaults } from '../../theme/theme-defaults'
 import { initializeUtilityClassesTheme } from '../../utils/utility-classes'
@@ -69,14 +69,12 @@ export function __initializePreCompileMode(config: Config): void {
   }
 }
 
-type ComponentDefaultProps = NonNullable<Config['defaultProps']>
-
 /**
  * Internal function for accessing component default props through context.
  */
-export function useThemeProps<Name extends keyof ComponentDefaultProps>(
+export function useThemeProps<Name extends ComponentName>(
   componentName: Name,
-): ComponentDefaultProps[Name] | undefined {
+): ComponentProps[Name] | undefined {
   if (preCompileMode) {
     return preCompileContext?.defaultProps?.[componentName]
   }
@@ -84,17 +82,6 @@ export function useThemeProps<Name extends keyof ComponentDefaultProps>(
   // During Babel pre-compiling `preCompileMode` will always be true, during
   // runtime execution it will always be false
   // eslint-disable-next-line react-hooks/rules-of-hooks
-  return useContextProps(componentName)
-}
-
-/**
- * @remarks This must be a separate fn or useContext will error during Babel
- * precompilation
- * @remarks IS THAT RIGHT??
- */
-function useContextProps<Name extends keyof ComponentDefaultProps>(
-  componentName: Name,
-): ComponentDefaultProps[Name] | undefined {
   const ctx = useContext(ComponentryCtx)
   return ctx?.defaultProps?.[componentName]
 }
