@@ -150,7 +150,7 @@ function TestRef() {
 // COMPONENT TYPES
 
 const provider = (
-  <ComponentryProvider>
+  <ComponentryProvider config={{}}>
     <div>the app</div>
   </ComponentryProvider>
 )

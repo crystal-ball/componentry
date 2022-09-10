@@ -227,7 +227,9 @@ let theme = themeDefaults
  * @remarks
  * This setup is only required if you're not using the Theme provider.
  */
-export function initializeUtilityClassesTheme(customTheme: any) {
+export function initializeUtilityClassesTheme<CustomTheme extends Theme>(
+  customTheme: CustomTheme,
+): void {
   theme = customTheme
 }
 

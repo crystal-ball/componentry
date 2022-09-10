@@ -1,11 +1,9 @@
-import { getMergedConfig } from '../../plugin-postcss/configs'
-
-const { theme } = getMergedConfig()
+import { Theme } from '../../theme/theme'
 
 //                                         <Badge /> styles
 // --------------------------------------------------------
 
-export const badgeStyles = {
+export const badgeStyles = (theme: Theme) => ({
   '.C9Y-Badge-base': {
     display: 'inline-flex',
     alignItems: 'center',
@@ -27,4 +25,4 @@ export const badgeStyles = {
     lineHeight: 1,
     // 💡 Use em with font-size and padding to auto-scale with text
   },
-}
+})

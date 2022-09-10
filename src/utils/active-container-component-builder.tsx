@@ -1,6 +1,7 @@
 import { nanoid } from 'nanoid'
 import React, { createContext, useCallback, useEffect, useRef, useState } from 'react'
-import { Components, useThemeProps } from '../components/Provider/Provider'
+import { useThemeProps } from '../components/Provider/Provider'
+import { ComponentName } from '../config/config'
 import { ActiveContainerBaseProps } from './base-types'
 import { closest } from './dom'
 import { element } from './element-creator'
@@ -61,11 +62,11 @@ interface DefaultActiveContainerProps {
  * use. This ensures that we can always hook into the change events for internal
  * needs like setting or removing special event listeners.
  */
-export function activeContainerBuilder<TProps extends ActiveContainerBaseProps>(
-  displayName: keyof Components,
-  defaultProps: DefaultActiveContainerProps = {},
-): React.FC<TProps> {
-  function ActiveContainer(props: TProps) {
+export function activeContainerBuilder<
+  Name extends ComponentName,
+  Props extends ActiveContainerBaseProps,
+>(displayName: Name, defaultProps: DefaultActiveContainerProps = {}): React.FC<Props> {
+  function ActiveContainer(props: Props) {
     const {
       // --- Render elements
       children,

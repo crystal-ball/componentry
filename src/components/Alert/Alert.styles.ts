@@ -1,11 +1,9 @@
-import { getMergedConfig } from '../../plugin-postcss/configs'
-
-const { theme } = getMergedConfig()
+import { Theme } from '../../theme/theme'
 
 //                                      Componentry <Alert /> styles
 // -----------------------------------------------------------------
 
-export const alertStyles: Record<string, unknown> = {
+export const alertStyles = (theme: Theme): Record<string, unknown> => ({
   // BASE
   '.C9Y-Alert-base': {
     // Make the alert container a flex container by default with space-between
@@ -56,7 +54,7 @@ export const alertStyles: Record<string, unknown> = {
     marginLeft: theme.spacing[2],
     color: 'inherit',
   },
-}
+})
 
 // --------------------------------------------------------
 // COLORS

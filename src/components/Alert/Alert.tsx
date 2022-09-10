@@ -16,7 +16,7 @@ export interface AlertPropsBase {
   /** Sets the theme color of the alert */
   color?: 'primary' | 'success' | 'warning' | 'critical'
   /** Deactivate handler called on click of Alert dismiss button */
-  deactivate?: (event: React.MouseEvent<HTMLButtonElement>) => void
+  deactivate?: (event: KeyboardEvent | MouseEvent | TouchEvent | React.MouseEvent) => void
   /** Toggles alert dismissible feature */
   dismissible?: boolean
   /**

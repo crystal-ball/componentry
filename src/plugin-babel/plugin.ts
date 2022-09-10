@@ -6,6 +6,7 @@ import { Grid } from '../components/Grid/Grid'
 import { Paper } from '../components/Paper/Paper'
 import { __initializePreCompileMode } from '../components/Provider/Provider'
 import { Text } from '../components/Text/Text'
+import { loadConfig } from '../config/load-config'
 
 import { parseAttributes } from './parse-attributes'
 import { prepareAttributes } from './prepare-attributes'
@@ -14,6 +15,8 @@ const components = { Block, Flex, Grid, Paper, Text } as unknown as {
   [component: string]: EvaluatedForwardRef
 }
 
+const config = loadConfig()
+
 /** Plugin customization options */
 type PluginOpts = { debug?: boolean; dataFlag?: boolean }
 
@@ -21,7 +24,8 @@ type PluginOpts = { debug?: boolean; dataFlag?: boolean }
  * Componentry Babel plugin for pre-compiling display components
  */
 export default function plugin(): PluginObj {
-  __initializePreCompileMode({}) // TODO: Accept prop overrides through options
+  // Set up user defined default props and theme values for pre-compilation
+  __initializePreCompileMode(config)
 
   return {
     name: 'componentry-plugin',

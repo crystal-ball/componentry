@@ -1,9 +1,9 @@
-import { StylesDefinition } from '../../utils/types'
+import { type CSSProperties } from 'react'
 
 //                                         <Icon /> styles
 // -------------------------------------------------------
 
-export const iconStyles: IconStyles = {
+export const iconStyles = (): IconStyles => ({
   // BASE
   '.C9Y-Icon-base': {
     display: 'inline-block',
@@ -27,11 +27,11 @@ export const iconStyles: IconStyles = {
 
   // SIZES
   // ...coming soon
-}
+})
 
 export interface IconStyles {
   /** Base class applied to all variants for shared structural styles */
-  '.C9Y-Icon-base': StylesDefinition
+  '.C9Y-Icon-base': CSSProperties
   /** Variant class applied when `variant="font"` */
-  '.C9Y-Icon-font': StylesDefinition
+  '.C9Y-Icon-font': CSSProperties
 }

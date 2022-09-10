@@ -1,6 +1,5 @@
-import { getMergedConfig } from '../plugin-postcss/configs'
-
-const { theme } = getMergedConfig()
+import { type CSSProperties } from 'react'
+import { Theme } from '../theme/theme'
 
 /*                                                Componentry Styles Foundations
  * -----------------------------------------------------------------------------
@@ -44,7 +43,7 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 */
 
-export const foundationStyles = {
+export const foundationStyles = (theme: Theme): FoundationStyles => ({
   '*, ::before, ::after': {
     // Prevent padding and border from affecting element width.
     // (https://github.com/mozdevs/cssremedy/issues/4)
@@ -144,7 +143,7 @@ export const foundationStyles = {
   },
 
   button: {
-    '-webkit-appearance': 'button', // Correct the inability to style clickable types in iOS and Safari.
+    appearance: 'button', // Correct the inability to style clickable types in iOS and Safari.
     backgroundColor: 'transparent', // Remove default button styles.
     backgroundImage: 'none', // Remove default button styles.
     color: 'inherit', // Change the font styles in all browsers.
@@ -190,16 +189,16 @@ export const foundationStyles = {
   },
 
   "[type='search']": {
-    '-webkit-appearance': 'textfield', // Correct the odd appearance in Chrome and Safari.
+    appearance: 'textfield', // Correct the odd appearance in Chrome and Safari.
     outlineOffset: '-2px', // Correct the outline style in Safari.
   },
 
   '::-webkit-search-decoration': {
-    '-webkit-appearance': 'none', // Remove the inner padding in Chrome and Safari on macOS.
+    appearance: 'none', // Remove the inner padding in Chrome and Safari on macOS.
   },
 
   '::-webkit-file-upload-button': {
-    '-webkit-appearance': 'button', // Correct the inability to style clickable types in iOS and Safari.
+    appearance: 'button', // Correct the inability to style clickable types in iOS and Safari.
     font: 'inherit', // Change font properties to `inherit` in Safari.
   },
 
@@ -245,4 +244,45 @@ export const foundationStyles = {
   '[hidden]': {
     display: 'none', // Ensure the default browser behavior of the `hidden` attribute.
   },
+})
+
+export interface FoundationStyles {
+  '*, ::before, ::after': CSSProperties
+  ':focus-visible': CSSProperties
+  html: CSSProperties
+  body: CSSProperties
+  'h1, h2, h3, h4, h5, h6': CSSProperties
+  p: CSSProperties
+  'blockquote, dl, dd, figure': CSSProperties
+  a: CSSProperties
+  'b, strong': CSSProperties
+  small: CSSProperties
+  'code, kbd, samp, pre': CSSProperties
+  pre: CSSProperties
+  hr: CSSProperties
+  sub: CSSProperties
+  sup: CSSProperties
+  'sub, sup': CSSProperties
+  'abbr:where([title])': CSSProperties
+  table: CSSProperties
+  button: CSSProperties
+  "[role='button']": CSSProperties
+  'input, optgroup, select, textarea': CSSProperties
+  select: CSSProperties
+  ':-moz-focusring': CSSProperties
+  ':-moz-ui-invalid': CSSProperties
+  progress: CSSProperties
+  '::-webkit-inner-spin-button, ::-webkit-outer-spin-button': CSSProperties
+  "[type='search']": CSSProperties
+  '::-webkit-search-decoration': CSSProperties
+  '::-webkit-file-upload-button': CSSProperties
+  summary: CSSProperties
+  fieldset: CSSProperties
+  legend: CSSProperties
+  'ol, ul, menu': CSSProperties
+  textarea: CSSProperties
+  'input::placeholder, textarea::placeholder': CSSProperties
+  'svg, canvas, audio, iframe, embed, object': CSSProperties
+  'img, video': CSSProperties
+  '[hidden]': CSSProperties
 }

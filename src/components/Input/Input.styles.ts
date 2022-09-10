@@ -1,11 +1,9 @@
-import { getMergedConfig } from '../../plugin-postcss/configs'
-
-const { theme } = getMergedConfig()
+import { Theme } from '../../theme/theme'
 
 //                                        <Input /> styles
 // --------------------------------------------------------
 
-export const inputStyles = {
+export const inputStyles = (theme: Theme) => ({
   // FIELD
   '.C9Y-InputField': {
     display: 'block',
@@ -77,7 +75,7 @@ export const inputStyles = {
     color: theme.colors.error[500],
     fontSize: theme.fontSize.sm,
   },
-}
+})
 
 // // --------------------------------------------------------
 // // Sizes

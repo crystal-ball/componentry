@@ -69,10 +69,12 @@ export function elementTests(TestComponent, testProps) {
     function ProviderWrapper({ children }) {
       return (
         <ComponentryProvider
-          components={{
-            [componentName]: {
-              themeCx: 'theme-class',
-              'data-radical': 'hecka',
+          config={{
+            defaultProps: {
+              [componentName]: {
+                themeCx: 'theme-class',
+                'data-radical': 'hecka',
+              },
             },
           }}
         >

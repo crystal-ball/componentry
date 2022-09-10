@@ -1,6 +1,4 @@
-import { getMergedConfig } from '../../plugin-postcss/configs'
-
-const { theme } = getMergedConfig()
+import { Theme } from '../../theme/theme'
 
 //                                      Componentry <Modal /> styles
 // -----------------------------------------------------------------
@@ -11,7 +9,7 @@ const { theme } = getMergedConfig()
 //   div.ModalContainer  - Contains the modal header,body,footer elements
 //     div.ModalBody     - Contains modal content
 
-export const modalStyles = {
+export const modalStyles = (theme: Theme) => ({
   '.C9Y-ModalOverlay': {
     position: 'fixed',
     pointerEvents: 'none',
@@ -166,4 +164,4 @@ export const modalStyles = {
   //   height: 50px,
   //   overflow: scroll,
   // }
-}
+})
