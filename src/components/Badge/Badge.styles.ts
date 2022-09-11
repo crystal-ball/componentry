@@ -1,9 +1,10 @@
+import { type CSSProperties } from 'react'
 import { Theme } from '../../theme/theme'
 
 //                                         <Badge /> styles
 // --------------------------------------------------------
 
-export const badgeStyles = (theme: Theme) => ({
+export const badgeStyles = (theme: Theme): BadgeStyles => ({
   '.C9Y-Badge-base': {
     display: 'inline-flex',
     alignItems: 'center',
@@ -26,3 +27,10 @@ export const badgeStyles = (theme: Theme) => ({
     // 💡 Use em with font-size and padding to auto-scale with text
   },
 })
+
+export interface BadgeStyles {
+  '.C9Y-Badge-base': {
+    '&:empty': CSSProperties
+  } & CSSProperties
+  '.C9Y-Badge-filled': CSSProperties
+}

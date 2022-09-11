@@ -1,9 +1,10 @@
+import { type CSSProperties } from 'react'
 import { Theme } from '../../theme/theme'
 
 //                                        <Input /> styles
 // --------------------------------------------------------
 
-export const inputStyles = (theme: Theme) => ({
+export const inputStyles = (theme: Theme): InputStyles => ({
   // FIELD
   '.C9Y-InputField': {
     display: 'block',
@@ -93,3 +94,15 @@ export const inputStyles = (theme: Theme) => ({
 //   line-height: $input-line-height-lg,
 //   @include border-radius($input-border-radius-lg),
 // }
+
+export interface InputStyles {
+  '.C9Y-InputField': {
+    '&:focus': CSSProperties
+    '&::placeholder': CSSProperties
+    '&:disabled, &[readonly]': CSSProperties
+    '&:invalid, &.C9Y-invalid': CSSProperties
+  } & CSSProperties
+  '.C9Y-InputLabel': CSSProperties
+  '.C9Y-InputDescription': CSSProperties
+  '.C9Y-InputError': CSSProperties
+}

@@ -1,9 +1,10 @@
+import { type CSSProperties } from 'react'
 import { Theme } from '../../theme/theme'
 
 //                                      Componentry <Alert /> styles
 // -----------------------------------------------------------------
 
-export const alertStyles = (theme: Theme): Record<string, unknown> => ({
+export const alertStyles = (theme: Theme): AlertStyles => ({
   // BASE
   '.C9Y-Alert-base': {
     // Make the alert container a flex container by default with space-between
@@ -77,3 +78,15 @@ export const alertStyles = (theme: Theme): Record<string, unknown> => ({
 //     },
 //   }
 // })
+
+export interface AlertStyles {
+  '.C9Y-Alert-base': CSSProperties
+  '.C9Y-Alert-dismissible': CSSProperties
+  '.C9Y-Alert-dismissed': CSSProperties
+  '.C9Y-Alert-filled': {
+    '& .C9Y-AlertLink': CSSProperties
+  } & CSSProperties
+  '.C9Y-AlertContent': CSSProperties
+  '.C9Y-AlertHeading': CSSProperties
+  '.C9Y-AlertClose': CSSProperties
+}

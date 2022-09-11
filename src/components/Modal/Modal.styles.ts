@@ -1,6 +1,7 @@
+import { type CSSProperties } from 'react'
 import { Theme } from '../../theme/theme'
 
-//                                      Componentry <Modal /> styles
+//                                                  <Modal /> styles
 // -----------------------------------------------------------------
 
 // Elements structure
@@ -9,7 +10,7 @@ import { Theme } from '../../theme/theme'
 //   div.ModalContainer  - Contains the modal header,body,footer elements
 //     div.ModalBody     - Contains modal content
 
-export const modalStyles = (theme: Theme) => ({
+export const modalStyles = (theme: Theme): ModalStyles => ({
   '.C9Y-ModalOverlay': {
     position: 'fixed',
     pointerEvents: 'none',
@@ -165,3 +166,31 @@ export const modalStyles = (theme: Theme) => ({
   //   overflow: scroll,
   // }
 })
+
+export interface ModalStyles {
+  '.C9Y-ModalOverlay': {
+    '&.C9Y-active': CSSProperties
+  } & CSSProperties
+  '.C9Y-ModalPositioner': {
+    '&.C9Y-active': CSSProperties
+    '&.C9Y-visible': CSSProperties
+  } & CSSProperties
+  '.C9Y-ModalContainer': {
+    '&.center': CSSProperties
+  } & CSSProperties
+  '.C9Y-ModalContainer-smSize': CSSProperties
+  '.C9Y-ModalContainer-lgSize': CSSProperties
+  '.C9Y-ModalPositioner.C9Y-Modal-overlayScroll': CSSProperties
+  '.C9Y-ModalPositioner.C9Y-Modal-containerScroll': {
+    '.C9Y-ModalContainer': CSSProperties
+  } & CSSProperties
+  '.C9Y-ModalPositioner.C9Y-Modal-bodyScroll': {
+    '.C9Y-ModalContainer': CSSProperties
+
+    '.C9Y-ModalBody': CSSProperties
+  } & CSSProperties
+  '.C9Y-ModalHeader': CSSProperties
+  '.C9Y-ModalTitle': CSSProperties
+  '.C9Y-ModalBody': CSSProperties
+  '.C9Y-ModalFooter': CSSProperties
+}

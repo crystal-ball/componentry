@@ -4,11 +4,15 @@ import {
   type ActiveProps,
 } from '../components/Active/Active'
 import { type AlertProps } from '../components/Alert/Alert'
+import { AlertStyles } from '../components/Alert/Alert.styles'
 import { type BadgeProps } from '../components/Badge/Badge'
+import { BadgeStyles } from '../components/Badge/Badge.styles'
 import { type BlockProps } from '../components/Block/Block'
 import { type ButtonProps } from '../components/Button/Button'
 import { ButtonStyles } from '../components/Button/Button.styles'
 import { type CardProps } from '../components/Card/Card'
+import { CardStyles } from '../components/Card/Card.styles'
+import { CloseStyles } from '../components/Close/Close.styles'
 import {
   type DrawerActionProps,
   type DrawerContentProps,
@@ -21,28 +25,32 @@ import {
   type DropdownProps,
 } from '../components/Dropdown/Dropdown'
 import { type FlexProps } from '../components/Flex/Flex'
+import { FormGroupStyles } from '../components/FormGroup/FormGroup.styles'
 import { type GridProps } from '../components/Grid/Grid'
 import { type IconProps } from '../components/Icon/Icon'
-import { type IconStyles } from '../components/Icon/Icon.styles'
+import { IconStyles } from '../components/Icon/Icon.styles'
 import { type IconButtonProps } from '../components/IconButton/IconButton'
-import { type IconButtonStyles } from '../components/IconButton/IconButton.styles'
+import { IconButtonStyles } from '../components/IconButton/IconButton.styles'
 import { type InputFieldProps, type InputLabelProps } from '../components/Input/Input'
-
+import { InputStyles } from '../components/Input/Input.styles'
 import { type LinkProps } from '../components/Link/Link'
-import { type LinkStyles } from '../components/Link/Link.styles'
+import { LinkStyles } from '../components/Link/Link.styles'
 import {
   type ModalBodyProps,
   type ModalHeaderProps,
   type ModalProps,
   type ModalTitleProps,
 } from '../components/Modal/Modal'
+import { ModalStyles } from '../components/Modal/Modal.styles'
 import { type PaperProps } from '../components/Paper/Paper'
-import { type PaperStyles } from '../components/Paper/Paper.styles'
+import { PaperStyles } from '../components/Paper/Paper.styles'
 import {
   type PopoverActionProps,
   type PopoverContentProps,
   type PopoverProps,
 } from '../components/Popover/Popover'
+import { PopoverStyles } from '../components/Popover/Popover.styles'
+import { TableStyles } from '../components/Table/Table.styles'
 import {
   type TabsActionProps,
   type TabsActionsContainerProps,
@@ -50,15 +58,16 @@ import {
   type TabsProps,
 } from '../components/Tabs/Tabs'
 import { type TextProps } from '../components/Text/Text'
-import { type TextStyles } from '../components/Text/Text.styles'
+import { TextStyles } from '../components/Text/Text.styles'
 import {
   type TooltipActionProps,
   type TooltipContentProps,
   type TooltipProps,
 } from '../components/Tooltip/Tooltip'
+import { TooltipStyles } from '../components/Tooltip/Tooltip.styles'
 
-import { type FoundationStyles } from '../styles/foundation.styles'
-import { type StatesStyles } from '../styles/states.styles'
+import { FoundationStyles } from '../styles/foundation.styles'
+import { StatesStyles } from '../styles/states.styles'
 import { Theme } from '../theme/theme'
 
 export type Config = {
@@ -69,22 +78,22 @@ export type Config = {
 
 export type ComponentStyles = {
   foundation: FoundationStyles
-  Alert: any
-  Badge: any
+  Alert: AlertStyles
+  Badge: BadgeStyles
   Button: ButtonStyles
-  Card: any
-  Close: any
-  FormGroup: any
+  Card: CardStyles
+  Close: CloseStyles
+  FormGroup: FormGroupStyles
   Icon: IconStyles
   IconButton: IconButtonStyles
-  Input: any
+  Input: InputStyles
   Link: LinkStyles
-  Modal: any
+  Modal: ModalStyles
   Paper: PaperStyles
-  Popover: any
-  Table: any
+  Popover: PopoverStyles
+  Table: TableStyles
   Text: TextStyles
-  Tooltip: any
+  Tooltip: TooltipStyles
   states: StatesStyles
 }
 

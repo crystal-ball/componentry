@@ -1,3 +1,4 @@
+import { CSSProperties } from 'react'
 import { Theme } from '../../theme/theme'
 
 //                                       <Popover /> styles
@@ -5,7 +6,7 @@ import { Theme } from '../../theme/theme'
 
 const arrowWidth = 4 // in pixels
 
-export const popoverStyles = (theme: Theme) => ({
+export const popoverStyles = (theme: Theme): PopoverStyles => ({
   // --- CONTAINER
   '.C9Y-Popover-base': {
     // Default align content to dead center of action the specific content styles can
@@ -173,3 +174,36 @@ export const popoverStyles = (theme: Theme) => ({
     borderBottom: theme.border.DEFAULT,
   },
 })
+
+export interface PopoverStyles {
+  '.C9Y-Popover-base': {
+    '&.C9Y-Popover-top': {
+      '.C9Y-PopoverContent': CSSProperties
+      '.C9Y-PopoverContentContents': CSSProperties
+      '.C9Y-PopoverArrow:after': CSSProperties
+    } & CSSProperties
+    '&.C9Y-Popover-right': {
+      '.C9Y-PopoverContent': CSSProperties
+      '.C9Y-PopoverContentContents': CSSProperties
+      '.C9Y-PopoverArrow:after': CSSProperties
+    } & CSSProperties
+    '&.C9Y-Popover-bottom': {
+      '.C9Y-PopoverContent': CSSProperties
+      '.C9Y-PopoverContentContents': CSSProperties
+      '.C9Y-PopoverArrow:after': CSSProperties
+    } & CSSProperties
+    '&.C9Y-Popover-left': {
+      '.C9Y-PopoverContent': CSSProperties
+      '.C9Y-PopoverContentContents': CSSProperties
+      '.C9Y-PopoverArrow:after': CSSProperties
+    } & CSSProperties
+  } & CSSProperties
+  '.C9Y-PopoverAction': CSSProperties
+  '.C9Y-PopoverContent': CSSProperties
+  '.C9Y-PopoverContentContents': CSSProperties
+  '.C9Y-PopoverArrow': {
+    '&:after': CSSProperties
+  } & CSSProperties
+  '.C9Y-PopoverBody': CSSProperties
+  '.C9Y-PopoverHeading': CSSProperties
+}
