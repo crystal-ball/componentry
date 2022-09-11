@@ -1,9 +1,10 @@
+import { type CSSProperties } from 'react'
 import { Theme } from '../../theme/theme'
 
 //                                          <Card /> styles
 // --------------------------------------------------------
 
-export const cardStyles = (theme: Theme) => ({
+export const cardStyles = (theme: Theme): CardStyles => ({
   '.C9Y-Card-base': {
     position: 'relative',
     display: 'flex',
@@ -60,3 +61,17 @@ export const cardStyles = (theme: Theme) => ({
     color: theme.colors.gray[600],
   },
 })
+
+export interface CardStyles {
+  '.C9Y-Card-base': CSSProperties
+  '.C9Y-Card-outlined': CSSProperties
+  '.C9Y-CardBody': CSSProperties
+  '.C9Y-CardHeader': {
+    '&:first-child': CSSProperties
+  } & CSSProperties
+  '.C9Y-CardFooter': {
+    '&:last-child': CSSProperties
+  } & CSSProperties
+  '.C9Y-CardTitle': CSSProperties
+  '.C9Y-CardSubtitle': CSSProperties
+}

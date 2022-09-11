@@ -1,9 +1,10 @@
+import { type CSSProperties } from 'react'
 import { Theme } from '../../theme/theme'
 
-//                                        <Table /> styles
+//                                         <Table /> styles
 // --------------------------------------------------------
 
-export const tableStyles = (theme: Theme) => ({
+export const tableStyles = (theme: Theme): TableStyles => ({
   '.C9Y-Table-base': {
     display: 'block',
     width: '100%',
@@ -40,3 +41,12 @@ export const tableStyles = (theme: Theme) => ({
     padding: theme.spacing[2],
   },
 })
+
+export interface TableStyles {
+  '.C9Y-Table-base': CSSProperties
+  '.C9Y-TableHead': CSSProperties
+  '.C9Y-TableHeader': CSSProperties
+  '.C9Y-TableBody': CSSProperties
+  '.C9Y-TableRow': { '& + &': CSSProperties } & CSSProperties
+  '.C9Y-TableCell': CSSProperties
+}

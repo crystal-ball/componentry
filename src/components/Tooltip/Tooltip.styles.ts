@@ -1,3 +1,4 @@
+import { CSSProperties } from 'react'
 import { Theme } from '../../theme/theme'
 
 //                                       <Tooltip /> styles
@@ -5,7 +6,7 @@ import { Theme } from '../../theme/theme'
 
 const tooltipArrowWidth = 10 // in pixels
 
-export const tooltipStyles = (theme: Theme) => ({
+export const tooltipStyles = (theme: Theme): TooltipStyles => ({
   '.C9Y-Tooltip-base': {
     display: 'inline-block',
     position: 'relative',
@@ -64,3 +65,15 @@ export const tooltipStyles = (theme: Theme) => ({
     },
   },
 })
+
+export interface TooltipStyles {
+  '.C9Y-Tooltip-base': CSSProperties
+  '.C9Y-TooltipAction': CSSProperties
+  '.C9Y-TooltipContent': {
+    '&.C9Y-active': CSSProperties
+  } & CSSProperties
+  '.C9Y-TooltipContentContents': CSSProperties
+  '.C9Y-TooltipContentArrow': {
+    '&:after': CSSProperties
+  } & CSSProperties
+}

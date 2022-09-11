@@ -1,7 +1,7 @@
 import { type CSSProperties } from 'react'
 import { Theme } from '../../theme/theme'
 
-//                                         <Paper /> styles
+//                                        <Paper /> styles
 // -------------------------------------------------------
 
 export const paperStyles = (theme: Theme): PaperStyles => ({
