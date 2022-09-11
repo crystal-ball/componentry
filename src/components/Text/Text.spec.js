@@ -1,7 +1,8 @@
 import { render, screen } from '@testing-library/react'
 
 import { elementTests } from '../../test/element-tests'
-import { Text, configureTextElementsMap } from './Text'
+import { ComponentryProvider } from '../Provider/Provider'
+import { Text } from './Text'
 
 describe('<Text/>', () => {
   // Basic library element test suite
@@ -22,12 +23,22 @@ describe('<Text /> snapshots', () => {
 // Configuration
 
 describe('Text', () => {
-  it('configureTextElementsMap allows configuring variant render elements', () => {
-    configureTextElementsMap({
-      rad: 'section',
-    })
-
-    render(<Text variant='rad'>Componentry</Text>)
+  it('ComponentryProvider allows configuring variant render elements', () => {
+    render(
+      <ComponentryProvider
+        config={{
+          defaultProps: {
+            Text: {
+              textElementMap: {
+                rad: 'section',
+              },
+            },
+          },
+        }}
+      >
+        <Text variant='rad'>Componentry</Text>
+      </ComponentryProvider>,
+    )
 
     expect(screen.getByText('Componentry')).toContainHTML(
       '<section class="C9Y-Text-base C9Y-Text-rad">Componentry</section>',

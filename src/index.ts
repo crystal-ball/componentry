@@ -29,17 +29,15 @@ export { Paper, type PaperProps } from './components/Paper/Paper'
 export { Popover } from './components/Popover/Popover'
 export { Table } from './components/Table/Table'
 export { Tabs } from './components/Tabs/Tabs'
-export {
-  Text,
-  configureTextElementsMap,
-  type TextElementsMap,
-  type TextProps,
-} from './components/Text/Text'
+export { Text, type TextProps } from './components/Text/Text'
 export { Tooltip } from './components/Tooltip/Tooltip'
+
+// --- THEME
+export { type TextElementMap } from './theme/theme-defaults'
+export { type Theme, createTheme } from './theme/theme'
 
 // --- Utilities
 export { useActive, useActiveScrollReset, useNoScroll, useVisible } from './hooks'
-export { type Theme, createTheme } from './theme/theme'
 export { setupOutlineHandlers } from './utils/dom'
 export {
   createUtilityClasses,

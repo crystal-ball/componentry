@@ -97,8 +97,9 @@ const paperPropsLookup: {
 const textPropsLookup: {
   [key in keyof TextPropsDefaults]-?: 1
 } = {
-  variant: 1,
+  textElementMap: 1,
   truncate: 1,
+  variant: 1,
 }
 
 const componentPropsLookup: { [component: string]: PropLookup } = {

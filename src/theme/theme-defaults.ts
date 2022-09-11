@@ -159,6 +159,9 @@ export const themeDefaults = {
   },
 
   // --- TYPOGRAPHY
+  // remarks: including the text element map in the theme can make it easy to
+  // define the value in a place that is importable by Babel for pre-compiling
+  textElementMap: undefined as undefined | TextElementMap,
   fontFamily: {
     body: "system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji'",
     mono: "SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New', monospace",
@@ -235,3 +238,17 @@ export const themeDefaults = {
     DEFAULT: '0 0.5rem 1rem rgba(73, 80, 87, 0.15)',
   },
 } as const
+
+/**
+ * Mapping of Text variants to rendered elements
+ * @example
+ * ```ts
+ * const textElementsMap: TextElementsMap = {
+ *   h1: 'h1',
+ *   body: 'p',
+ * }
+ * ```
+ */
+export interface TextElementMap {
+  [Variant: string]: keyof JSX.IntrinsicElements | React.ComponentType
+}
