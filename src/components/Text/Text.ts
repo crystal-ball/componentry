@@ -1,4 +1,5 @@
 import React, { forwardRef } from 'react'
+import { TextElementMap } from '../../theme/theme-defaults'
 import { element } from '../../utils/element-creator'
 import { DistributiveOmit, MergeTypes } from '../../utils/types'
 import { UtilityProps } from '../../utils/utility-classes'
@@ -7,21 +8,8 @@ import { useThemeProps } from '../Provider/Provider'
 // --------------------------------------------------------
 // TEXT ELEMENTS MAP
 
-/**
- * Mapping of Text variants to rendered elements
- * @example
- * ```ts
- * const textElementsMap: TextElementsMap = {
- *   h1: 'h1',
- *   body: 'p',
- * }
- * ```
- */
-export type TextElementsMap = {
-  [Variant: string]: keyof JSX.IntrinsicElements | React.ComponentType<unknown>
-}
 /** Default element map */
-const defaulTextElementMap: TextElementsMap = {
+const defaulTextElementMap: TextElementMap = {
   h1: 'h1',
   h2: 'h2',
   h3: 'h3',
@@ -38,7 +26,7 @@ export interface TextPropsOverrides {}
 
 export interface TextPropsDefaults {
   /** Mapping of Text variants to rendered elements */
-  textElementMap?: TextElementsMap
+  textElementMap?: TextElementMap
   /** Truncates overflowing text with an ellipses */
   truncate?: boolean
   /** Display variant */
