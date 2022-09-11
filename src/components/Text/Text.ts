@@ -20,36 +20,14 @@ import { useThemeProps } from '../Provider/Provider'
 export type TextElementsMap = {
   [Variant: string]: keyof JSX.IntrinsicElements | React.ComponentType<unknown>
 }
-/**
- * Internal map used for final rendering
- * @see {@link configureTextElementsMap}
- */
-let textElementMap: TextElementsMap = {
+/** Default element map */
+const defaulTextElementMap: TextElementsMap = {
   h1: 'h1',
   h2: 'h2',
   h3: 'h3',
   body: 'div',
   code: 'code',
   small: 'small',
-}
-
-/**
- * Configuration method for defining the elements to render for each text
- * variant.
- * @remarks
- * Configured elements are merged with the library default values.
- * @example
- * ```ts
- * // Add a title variant that renders an h1, and render a div instead of a p
- * // for body variants.
- * configureTextElementsMap({
- *   title: 'h1',
- *   body: 'div',
- * })
- * ```
- */
-export function configureTextElementsMap(elementsMap: TextElementsMap): void {
-  textElementMap = { ...textElementMap, ...elementsMap }
 }
 
 // --------------------------------------------------------
@@ -59,9 +37,12 @@ export function configureTextElementsMap(elementsMap: TextElementsMap): void {
 export interface TextPropsOverrides {}
 
 export interface TextPropsDefaults {
-  variant?: 'h1' | 'h2' | 'h3' | 'body' | 'code' | 'small'
+  /** Mapping of Text variants to rendered elements */
+  textElementMap?: TextElementsMap
   /** Truncates overflowing text with an ellipses */
   truncate?: boolean
+  /** Display variant */
+  variant?: 'h1' | 'h2' | 'h3' | 'body' | 'code' | 'small'
 }
 
 export type TextPropsBase<Elem extends React.ElementType = 'div'> = UtilityProps &
@@ -87,6 +68,7 @@ export interface Text {
 
 export const Text = forwardRef<HTMLDivElement, TextProps>((props, ref) => {
   const {
+    textElementMap = defaulTextElementMap,
     truncate = false,
     variant = 'body',
     ...rest

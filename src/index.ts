@@ -29,12 +29,7 @@ export { Paper, type PaperProps } from './components/Paper/Paper'
 export { Popover } from './components/Popover/Popover'
 export { Table } from './components/Table/Table'
 export { Tabs } from './components/Tabs/Tabs'
-export {
-  Text,
-  configureTextElementsMap,
-  type TextElementsMap,
-  type TextProps,
-} from './components/Text/Text'
+export { Text, type TextElementsMap, type TextProps } from './components/Text/Text'
 export { Tooltip } from './components/Tooltip/Tooltip'
 
 // --- Utilities
