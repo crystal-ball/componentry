@@ -1,3 +1,8 @@
+// --- Config/Theme
+export { type Config } from './config/config'
+export { type TextElementMap } from './theme/theme-defaults'
+export { type Theme, createTheme } from './theme/theme'
+
 // --- Providers
 export { ComponentryProvider, useTheme } from './components/Provider/Provider'
 export { Media, useMedia } from './components/Media/Media'
@@ -32,10 +37,6 @@ export { Tabs } from './components/Tabs/Tabs'
 export { Text, type TextProps } from './components/Text/Text'
 export { Tooltip } from './components/Tooltip/Tooltip'
 
-// --- THEME
-export { type TextElementMap } from './theme/theme-defaults'
-export { type Theme, createTheme } from './theme/theme'
-
 // --- Utilities
 export { useActive, useActiveScrollReset, useNoScroll, useVisible } from './hooks'
 export { setupOutlineHandlers } from './utils/dom'
@@ -45,6 +46,6 @@ export {
   type UtilityProps,
 } from './utils/utility-classes'
 
-// --- Tailwind utilities
+// --- Tailwind
 export { borderPlugin } from './utils/tailwind-plugins'
 export { tailwindSafelist } from './utils/tailwind-safelist'
