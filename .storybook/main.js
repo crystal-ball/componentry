@@ -21,5 +21,5 @@ module.exports = {
       },
     },
   ],
-  stories: ['../src/**/*.stories.@(js|mdx)', '../docs/**/*.stories.mdx'],
+  stories: ['../src/**/*.stories.@(tsx|mdx)', '../docs/**/*.stories.mdx'],
 }

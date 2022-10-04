@@ -50,6 +50,7 @@ import {
   type PopoverProps,
 } from '../components/Popover/Popover'
 import { PopoverStyles } from '../components/Popover/Popover.styles'
+import { type TableProps } from '../components/Table/Table'
 import { TableStyles } from '../components/Table/Table.styles'
 import {
   type TabsActionProps,
@@ -128,6 +129,7 @@ export type ComponentProps = {
   Popover: PopoverProps
   PopoverAction: PopoverActionProps
   PopoverContent: PopoverContentProps
+  Table: TableProps
   Tabs: TabsProps
   TabsAction: TabsActionProps
   TabsContent: TabsContentProps

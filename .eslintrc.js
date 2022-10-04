@@ -16,7 +16,7 @@ module.exports = {
 
   overrides: [
     {
-      files: ['src/plugin-babel/**/*', 'src/test/**/*'],
+      files: ['src/plugin-babel/**/*', 'src/test/**/*', 'src/**/*.stories.tsx'],
       rules: {
         'no-console': 'off',
         'import/no-extraneous-dependencies': 'off',
