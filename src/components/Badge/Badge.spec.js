@@ -6,10 +6,16 @@ import { Badge } from './Badge'
 describe('<Badge />', () => {
   elementTests(Badge)
 
-  it('When color is passed, then badge-color className is rendered', () => {
+  it('When color is passed, then badge color className is rendered', () => {
     render(<Badge color='primary'>Badge</Badge>)
 
     expect(screen.getByText('Badge')).toHaveClass('C9Y-Badge-primaryColor')
+  })
+
+  it('When size is passed, then badge size className is rendered', () => {
+    render(<Badge size='large'>Badge</Badge>)
+
+    expect(screen.getByText('Badge')).toHaveClass('C9Y-Badge-largeSize')
   })
 })
 

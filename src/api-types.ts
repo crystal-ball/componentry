@@ -5,6 +5,11 @@
  */
 
 export {
+  type BadgePropsDefaults,
+  type BadgePropsOverrides,
+} from './components/Badge/Badge'
+export { type BadgeStyles } from './components/Badge/Badge.styles'
+export {
   type ButtonPropsDefaults,
   type ButtonPropsOverrides,
 } from './components/Button/Button'

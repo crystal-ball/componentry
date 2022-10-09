@@ -13,8 +13,12 @@ Badges provide status information.
   <Badge>Badge</Badge>
 </Story>
 
-## Empty badges
+## Sizes
 
-The `:empty` selector is used to hide empty badges by default:
+Pass a `size` to set a badge size:
 
-<Badge />
+<div className='flex flex-row items-center gap-4'>
+  <Badge size='small'>Badge</Badge>
+  <Badge>Badge</Badge>
+  <Badge size='large'>Badge</Badge>
+</div>

@@ -1,4 +1,4 @@
-import { Block, Flex, Grid, Paper, Text } from 'componentry'
+import { Badge, Block, Flex, Grid, Paper, Text } from 'componentry'
 import { jsx as _jsx } from 'react/jsx-runtime'
 import { jsxs as _jsxs } from 'react/jsx-runtime'
 export default function Test() {
@@ -18,6 +18,10 @@ export default function Test() {
         }),
         /*#__PURE__*/ _jsx('div', {
           children: 'SPEED',
+        }),
+        /*#__PURE__*/ _jsx('div', {
+          className: 'C9Y-Badge-base C9Y-Badge-filled',
+          children: 'Delightful',
         }),
       ],
     }),
