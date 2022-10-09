@@ -1,36 +1,47 @@
-import React from 'react'
+import React, { forwardRef } from 'react'
 import { element } from '../../utils/element-creator'
-import { MergeTypes, Resolve } from '../../utils/types'
+import { DistributiveOmit, MergeTypes } from '../../utils/types'
 import { UtilityProps } from '../../utils/utility-classes'
 import { useThemeProps } from '../Provider/Provider'
 
-// Module augmentation interface for overriding component props' types
+/** Module augmentation interface for overriding component props' types */
 export interface BadgePropsOverrides {}
 
 export interface BadgePropsDefaults {
-  /** Variant color */
   color?: 'primary'
-  /** Display variant */
+  size?: 'small' | 'large'
+  /** Display style */
   variant?: 'filled'
 }
 
-export type BadgeProps = Resolve<MergeTypes<BadgePropsDefaults, BadgePropsOverrides>> &
-  Omit<UtilityProps, 'color'> &
-  React.ComponentPropsWithoutRef<'div'>
+export type BadgePropsBase<Elem extends React.ElementType = 'div'> = Omit<
+  UtilityProps,
+  'color'
+> &
+  MergeTypes<BadgePropsDefaults, BadgePropsOverrides> & { as?: Elem }
 
-// ✨ Nice display type for IntelliSense
+export type BadgeProps<Elem extends React.ElementType = 'div'> = BadgePropsBase<Elem> &
+  DistributiveOmit<React.ComponentPropsWithRef<Elem>, keyof BadgePropsBase<Elem>>
+
+/**
+ * Badge provides a label for describing elements.
+ * @example
+ * ```tsx
+ * <Badge color="success">
+ *   Delightful
+ * </Badge>
+ * ```
+ * @see [📝 Badge docs](https://componentry.design/docs/components/badge)
+ */
 export interface Badge {
   (props: BadgeProps): React.ReactElement | null
   displayName?: string
 }
 
-/**
- * [Badge component 📝](https://componentry.design/components/badge)
- * @experimental
- */
-export const Badge: Badge = (props) => {
+export const Badge = forwardRef<HTMLDivElement, BadgeProps>((props, ref) => {
   const {
     color,
+    size,
     variant = 'filled',
     ...rest
   } = {
@@ -39,11 +50,15 @@ export const Badge: Badge = (props) => {
   }
 
   return element({
+    ref,
     componentCx: [
       `C9Y-Badge-base C9Y-Badge-${variant}`,
-      { [`C9Y-Badge-${color}Color`]: color },
+      {
+        [`C9Y-Badge-${color}Color`]: color,
+        [`C9Y-Badge-${size}Size`]: size,
+      },
     ],
     ...rest,
   })
-}
+}) as Badge
 Badge.displayName = 'Badge'

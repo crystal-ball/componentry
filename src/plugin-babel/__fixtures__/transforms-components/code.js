@@ -1,4 +1,4 @@
-import { Block, Flex, Grid, Paper, Text } from 'componentry'
+import { Badge, Block, Flex, Grid, Paper, Text } from 'componentry'
 
 export default function Test() {
   // Test that:
@@ -10,6 +10,7 @@ export default function Test() {
           <Text>Precompiled for</Text>
         </Flex>
         <Block>SPEED</Block>
+        <Badge>Delightful</Badge>
       </Grid>
     </Paper>
   )

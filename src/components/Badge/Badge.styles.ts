@@ -5,17 +5,14 @@ import { Theme } from '../../theme/theme'
 // --------------------------------------------------------
 
 export const badgeStyles = (theme: Theme): BadgeStyles => ({
+  // BASE
   '.C9Y-Badge-base': {
     display: 'inline-flex',
     alignItems: 'center',
     whiteSpace: 'nowrap',
-
-    // Empty badges collapse automatically
-    '&:empty': {
-      display: 'none',
-    },
   },
 
+  // VARIANTS
   '.C9Y-Badge-filled': {
     padding: '4px 8px',
     color: theme.colors.inverse,
@@ -26,11 +23,21 @@ export const badgeStyles = (theme: Theme): BadgeStyles => ({
     lineHeight: 1,
     // 💡 Use em with font-size and padding to auto-scale with text
   },
+
+  // SIZES
+  '.C9Y-Badge-smallSize': {
+    fontSize: theme.fontSize.sm,
+    padding: '2px 6px',
+  },
+  '.C9Y-Badge-largeSize': {
+    fontSize: theme.fontSize.body,
+    padding: '6px 12px',
+  },
 })
 
 export interface BadgeStyles {
-  '.C9Y-Badge-base': {
-    '&:empty': CSSProperties
-  } & CSSProperties
+  '.C9Y-Badge-base': CSSProperties
   '.C9Y-Badge-filled': CSSProperties
+  '.C9Y-Badge-smallSize': CSSProperties
+  '.C9Y-Badge-largeSize': CSSProperties
 }

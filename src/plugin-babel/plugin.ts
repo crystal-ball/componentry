@@ -1,5 +1,6 @@
 import { NodePath, PluginObj, PluginPass, types as t } from '@babel/core'
 
+import { Badge } from '../components/Badge/Badge'
 import { Block } from '../components/Block/Block'
 import { Flex } from '../components/Flex/Flex'
 import { Grid } from '../components/Grid/Grid'
@@ -11,7 +12,7 @@ import { loadConfig } from '../config/load-config'
 import { parseAttributes } from './parse-attributes'
 import { prepareAttributes } from './prepare-attributes'
 
-const components = { Block, Flex, Grid, Paper, Text } as unknown as {
+const components = { Badge, Block, Flex, Grid, Paper, Text } as unknown as {
   [component: string]: EvaluatedForwardRef
 }
 
