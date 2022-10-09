@@ -34,7 +34,7 @@ export type BadgeProps<Elem extends React.ElementType = 'div'> = BadgePropsBase<
  * @see [📝 Badge docs](https://componentry.design/docs/components/badge)
  */
 export interface Badge {
-  (props: BadgeProps): React.ReactElement | null
+  <Elem extends React.ElementType = 'div'>(props: BadgeProps<Elem>): React.ReactElement
   displayName?: string
 }
 
