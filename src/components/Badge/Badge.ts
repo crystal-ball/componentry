@@ -8,7 +8,9 @@ import { useThemeProps } from '../Provider/Provider'
 export interface BadgePropsOverrides {}
 
 export interface BadgePropsDefaults {
+  /** Theme color for display variant */
   color?: 'primary'
+  /** Display size */
   size?: 'small' | 'large'
   /** Display style */
   variant?: 'filled'
@@ -24,7 +26,7 @@ export type BadgeProps<Elem extends React.ElementType = 'div'> = BadgePropsBase<
   DistributiveOmit<React.ComponentPropsWithRef<Elem>, keyof BadgePropsBase<Elem>>
 
 /**
- * Badge provides a label for describing elements.
+ * Badge provides a short label for describing elements.
  * @example
  * ```tsx
  * <Badge color="success">

@@ -10,7 +10,7 @@ import { useThemeProps } from '../Provider/Provider'
 export interface ButtonPropsOverrides {}
 
 export interface ButtonPropsDefaults {
-  /** Button variant color */
+  /** Theme color for display variant */
   color?: 'primary'
   /** Disables the element, preventing mouse and keyboard events */
   disabled?: boolean
@@ -20,11 +20,11 @@ export interface ButtonPropsDefaults {
   fullWidth?: boolean
   /** HTML element href */
   href?: string
-  /** Sets the display size */
+  /** Display size */
   size?: 'small' | 'large'
   /** Icon positioned before button content */
   startIcon?: string | React.ReactElement
-  /** Display variant */
+  /** Display style */
   variant?: 'filled' | 'outlined'
 }
 

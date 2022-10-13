@@ -36,8 +36,12 @@ export const badgeStyles = (theme: Theme): BadgeStyles => ({
 })
 
 export interface BadgeStyles {
+  /** Base class applied to all variants for shared structural styles */
   '.C9Y-Badge-base': CSSProperties
+  /** Variant class applied when `variant="filled"` */
   '.C9Y-Badge-filled': CSSProperties
+  /** Sizing class applied when `size="small"` */
   '.C9Y-Badge-smallSize': CSSProperties
+  /** Sizing class applied when `size="large"` */
   '.C9Y-Badge-largeSize': CSSProperties
 }
