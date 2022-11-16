@@ -19,21 +19,51 @@ const components = { Badge, Block, Flex, Grid, Paper, Text } as unknown as {
 const config = loadConfig()
 
 /** Plugin customization options */
-type PluginOpts = { debug?: boolean; dataFlag?: boolean }
+type PluginOptions = { debug?: boolean; dataFlag?: boolean }
+type ComponentryPlugin = PluginObj<
+  PluginPass & {
+    opts: PluginOptions
+    stats: { elementsVisited: number; elementsTransformed: number }
+  }
+>
+
+let debugEnabled = false
 
 /**
  * Componentry Babel plugin for pre-compiling display components
  */
-export default function plugin(): PluginObj {
+export default function componentryPlugin(): ComponentryPlugin {
   // Set up user defined default props and theme values for pre-compilation
   __initializePreCompileMode(config)
 
-  return {
+  const pluginObj: ComponentryPlugin = {
     name: 'componentry-plugin',
+    pre() {
+      this.stats = {
+        elementsVisited: 0,
+        elementsTransformed: 0,
+      }
+    },
+    post(this) {
+      const { elementsTransformed, elementsVisited } = this.stats
+      const filename = this.filename?.replace(this.cwd || '', '')
+
+      if (debugEnabled) {
+        console.info(
+          `Componentry compile rate for ${filename}: ${
+            100 * (elementsTransformed / elementsVisited)
+          }% (${elementsVisited} elements visited, ${elementsTransformed} elements transformed)`,
+        )
+      }
+    },
     visitor: {
-      JSXElement(path: NodePath<t.JSXElement>, state: PluginPass & { opts: PluginOpts }) {
+      JSXElement(path: NodePath<t.JSXElement>, state) {
         const { opts, filename } = state
         const { closingElement, openingElement } = path.node
+
+        if (state.opts.debug && !debugEnabled) {
+          debugEnabled = true
+        }
 
         // We can immediately bail for elements like Table.Cell or Table:Cell
         if (!t.isJSXIdentifier(openingElement.name)) return
@@ -43,6 +73,8 @@ export default function plugin(): PluginObj {
 
           // Bail early if this element isn't one of our precompile targets
           if (!(name in components)) return
+
+          this.stats.elementsVisited += 1
 
           // ✓ At this point we know this is a Componentry pre-compile component,
           // parse the opening element's attributes to determine the prop values
@@ -76,9 +108,10 @@ export default function plugin(): PluginObj {
               .get('closingElement')
               .replaceWith(t.jSXClosingElement(t.jsxIdentifier(componentName)))
           }
+
+          this.stats.elementsTransformed += 1
         } catch (err) {
           if (opts.debug) {
-            // eslint-disable-next-line no-console -- plugin logging support
             console.info(
               // @ts-expect-error -- How to check if message is in type object?
               `Skipping precompile for ${openingElement.name.name} in ${filename} for reason: ${err?.message}`,
@@ -88,6 +121,7 @@ export default function plugin(): PluginObj {
       },
     },
   }
+  return pluginObj
 }
 
 function getComponentName(
@@ -108,6 +142,10 @@ type EvaluatedForwardRef = {
   $$typeof: symbol
   render: <Props, Ref>(props?: Props, ref?: Ref) => React.ReactElement
 }
+
+// 1. check each import declaration
+// 2. if it comes from Componentry precompile it
+// 3.
 
 /*
  * # Types Notes
