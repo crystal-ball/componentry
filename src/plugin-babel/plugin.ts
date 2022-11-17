@@ -1,4 +1,4 @@
-import { NodePath, PluginObj, PluginPass, types as t } from '@babel/core'
+import { PluginObj, PluginPass, types as t } from '@babel/core'
 
 import { Badge } from '../components/Badge/Badge'
 import { Block } from '../components/Block/Block'
@@ -12,16 +12,29 @@ import { loadConfig } from '../config/load-config'
 import { parseAttributes } from './parse-attributes'
 import { prepareAttributes } from './prepare-attributes'
 
+// Precompile enabled components - note the type assertion needed as the actual
+// evaluated component forwardRef is different from the library types
 const components = { Badge, Block, Flex, Grid, Paper, Text } as unknown as {
-  [component: string]: EvaluatedForwardRef
+  [component: string]: {
+    $$typeof: symbol
+    render: <Props, Ref>(props?: Props, ref?: Ref) => React.ReactElement
+  }
 }
 
 const config = loadConfig()
 
 /** Plugin customization options */
-type PluginOptions = { debug?: boolean; dataFlag?: boolean }
+type PluginOptions = {
+  debug?: boolean
+  dataFlag?: boolean
+  /** Additional import path that should qualify components imported as precompilable */
+  customImportPath: string
+}
 type ComponentryPlugin = PluginObj<
   PluginPass & {
+    /** Tracking for whether JSXElement's were imported from Componentry */
+    componentryImports: Record<string, true>
+    /** Plugin options */
     opts: PluginOptions
     stats: { elementsVisited: number; elementsTransformed: number }
   }
@@ -38,17 +51,20 @@ export default function componentryPlugin(): ComponentryPlugin {
 
   const pluginObj: ComponentryPlugin = {
     name: 'componentry-plugin',
+    /** Initialize plugin state */
     pre() {
       this.stats = {
         elementsVisited: 0,
         elementsTransformed: 0,
       }
+      this.componentryImports = {}
     },
+    /** Report plugin compile stats */
     post(this) {
-      const { elementsTransformed, elementsVisited } = this.stats
-      const filename = this.filename?.replace(this.cwd || '', '')
-
       if (debugEnabled) {
+        const { elementsTransformed, elementsVisited } = this.stats
+        const filename = this.filename?.replace(this.cwd || '', '')
+
         console.info(
           `Componentry compile rate for ${filename}: ${
             100 * (elementsTransformed / elementsVisited)
@@ -56,12 +72,38 @@ export default function componentryPlugin(): ComponentryPlugin {
         )
       }
     },
+
+    // --------------------------------------------------------
+    // NODE VISITORS
+
     visitor: {
-      JSXElement(path: NodePath<t.JSXElement>, state) {
+      /**
+       * ImportDeclaration nodes are checked to determine if JSX elements were
+       * imported from Componentry
+       */
+      ImportDeclaration(path, state) {
+        const importPath = path.node.source.value
+        if (
+          importPath === 'componentry' ||
+          importPath.endsWith(state.opts.customImportPath)
+        ) {
+          path.node.specifiers.forEach((specifier) => {
+            if (t.isImportSpecifier(specifier)) {
+              this.componentryImports[specifier.local.name] = true
+            }
+          })
+        }
+      },
+      /**
+       * JSXElement nodes are compiled to HTML elements with classnames whenever
+       * possible
+       */
+      JSXElement(path, state) {
         const { opts, filename } = state
         const { closingElement, openingElement } = path.node
 
         if (state.opts.debug && !debugEnabled) {
+          // Is there a way to access plugin options in plugin post?
           debugEnabled = true
         }
 
@@ -71,8 +113,9 @@ export default function componentryPlugin(): ComponentryPlugin {
         try {
           const { name } = openingElement.name
 
-          // Bail early if this element isn't one of our precompile targets
-          if (!(name in components)) return
+          // Bail early if this element isn't one of our precompile targets, or
+          // if it wasn't imported from componentry
+          if (!(name in components) || !(name in this.componentryImports)) return
 
           this.stats.elementsVisited += 1
 
@@ -124,6 +167,9 @@ export default function componentryPlugin(): ComponentryPlugin {
   return pluginObj
 }
 
+// --------------------------------------------------------
+// UTILS
+
 function getComponentName(
   parsedComponentAs: string,
   preCompiledElement: React.ReactElement,
@@ -136,16 +182,6 @@ function getComponentName(
   }
   throw new Error('Unsupported precompile component type')
 }
-
-/** The actual compiled value of a forwardRef component */
-type EvaluatedForwardRef = {
-  $$typeof: symbol
-  render: <Props, Ref>(props?: Props, ref?: Ref) => React.ReactElement
-}
-
-// 1. check each import declaration
-// 2. if it comes from Componentry precompile it
-// 3.
 
 /*
  * # Types Notes

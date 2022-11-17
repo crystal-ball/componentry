@@ -18,9 +18,12 @@ pluginTester({
   // Array of tests format used to allow more descriptive test titles
   tests: [
     {
-      title: 'transforms components',
-      fixture: '__fixtures__/transforms-components/code.js',
-      outputFixture: '__fixtures__/transforms-components/output.js',
+      title: 'checks component import paths',
+      fixture: '__fixtures__/checks-import-paths/code.js',
+      outputFixture: '__fixtures__/checks-import-paths/output.js',
+      pluginOptions: {
+        customImportPath: 'componentry_path',
+      },
     },
     {
       title: 'ignores non-precompile components',
