@@ -28,7 +28,7 @@ type PluginOptions = {
   debug?: boolean
   dataFlag?: boolean
   /** Additional import path that should qualify components imported as precompilable */
-  customImportPath: string
+  customImportPath?: string
 }
 type ComponentryPlugin = PluginObj<
   PluginPass & {
@@ -83,9 +83,11 @@ export default function componentryPlugin(): ComponentryPlugin {
        */
       ImportDeclaration(path, state) {
         const importPath = path.node.source.value
+        const { customImportPath } = state.opts
+
         if (
           importPath === 'componentry' ||
-          importPath.endsWith(state.opts.customImportPath)
+          (customImportPath && importPath.endsWith(customImportPath))
         ) {
           path.node.specifiers.forEach((specifier) => {
             if (t.isImportSpecifier(specifier)) {
