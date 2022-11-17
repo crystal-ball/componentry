@@ -18,6 +18,7 @@ module.exports = {
     {
       files: ['src/plugin-babel/**/*', 'src/test/**/*'],
       rules: {
+        'no-console': 'off',
         'import/no-extraneous-dependencies': 'off',
       },
     },
