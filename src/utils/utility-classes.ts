@@ -181,6 +181,8 @@ export interface UtilityPropsBase {
   borderWidth?: keyof UtilityPropsForTheme<Theme['borderWidth']>
   /** Sets a `border-radius` style */
   borderRadius?: keyof UtilityPropsForTheme<Theme['borderRadius']>
+  /** Sets a `border-radius` style */
+  radius?: keyof UtilityPropsForTheme<Theme['borderRadius']>
 
   // --- EFFECTS
   /** Sets a `box-shadow` style */
@@ -496,6 +498,7 @@ export function createUtilityClasses<Props extends { [prop: string]: any }>(
         } else styles.borderColor = value
         break
       case 'borderRadius':
+      case 'radius':
         if (value === true) classes.push('rounded')
         else if (value in theme.borderRadius) classes.push('rounded-' + value)
         else styles.borderRadius = value

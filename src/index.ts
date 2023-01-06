@@ -10,7 +10,7 @@ export { Media, useMedia } from './components/Media/Media'
 // --- Components
 export { Active } from './components/Active/Active'
 export { Alert } from './components/Alert/Alert'
-export { Badge } from './components/Badge/Badge'
+export { Badge, type BadgeProps } from './components/Badge/Badge'
 export { Block, type BlockProps } from './components/Block/Block'
 export { Button, type ButtonProps } from './components/Button/Button'
 export { Card } from './components/Card/Card'

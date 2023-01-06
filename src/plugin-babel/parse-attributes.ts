@@ -1,5 +1,6 @@
 import { types as t } from '@babel/core'
 
+import { BadgePropsDefaults } from '../components/Badge/Badge'
 import { FlexPropsDefaults } from '../components/Flex/Flex'
 import { GridPropsDefaults } from '../components/Grid/Grid'
 import { PaperPropsDefaults } from '../components/Paper/Paper'
@@ -64,12 +65,21 @@ const utilityPropsLookup: {
   pt: 1,
   px: 1,
   py: 1,
+  radius: 1,
   rowGap: 1,
   textAlign: 1,
   textTransform: 1,
   visible: 1,
   width: 1,
   zIndex: 1,
+}
+
+const badgePropsLookup: {
+  [key in keyof BadgePropsDefaults]-?: 1
+} = {
+  color: 1,
+  size: 1,
+  variant: 1,
 }
 
 const flexPropsLookup: {
@@ -103,6 +113,7 @@ const textPropsLookup: {
 }
 
 const componentPropsLookup: { [component: string]: PropLookup } = {
+  Badge: badgePropsLookup,
   Flex: flexPropsLookup,
   Grid: gridPropsLookup,
   Paper: paperPropsLookup,
