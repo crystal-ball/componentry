@@ -1,10 +1,13 @@
-import { Block, Flex, Grid, Paper, Text } from 'componentry'
+import { Badge, Block, Flex, Grid, Paper, Text } from 'componentry'
 
 export default function Test() {
   // Test that:
   // 1. Individual component props are transformed correctly
   return (
     <div>
+      <Badge variant='outlined' color='primary' size='small'>
+        Test Badge component
+      </Badge>
       <Block>Test Block component</Block>
       <Flex align='center' direction='column' justify='center' wrap='wrap'>
         Test Flex component

@@ -369,9 +369,10 @@ describe('createUtilityClasses()', () => {
         borderWidth: 8,
         borderColor: 'primary',
         borderRadius: 'full',
+        radius: 'lg',
       }).utilityClasses,
     ).toBe(
-      'border border-t border-r border-b border-l border-8 border-primary rounded-full',
+      'border border-t border-r border-b border-l border-8 border-primary rounded-full rounded-lg',
     )
 
     expect(
@@ -384,6 +385,7 @@ describe('createUtilityClasses()', () => {
         borderWidth: undefined,
         borderColor: undefined,
         borderRadius: undefined,
+        radius: undefined,
       }).utilityClasses,
     ).toBe('')
   })
