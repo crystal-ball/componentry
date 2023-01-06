@@ -36,7 +36,10 @@ export default function Test({ success, position, ...rest }) {
         mt: computeMargin(position),
         children: 'Call expression test',
       }),
-      /*#__PURE__*/ _jsx(Text, { ...rest, children: 'Spread expression test' }),
+      /*#__PURE__*/ _jsx(Text, {
+        ...rest,
+        children: 'Spread expression test',
+      }),
     ],
   })
 }

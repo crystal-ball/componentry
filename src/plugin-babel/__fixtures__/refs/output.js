@@ -2,9 +2,10 @@ import { useRef } from 'react'
 import { Flex, Text } from 'componentry'
 import { jsx as _jsx } from 'react/jsx-runtime'
 export default function Test() {
-  const ref = useRef(null) // Test that:
-  // 1. Refs are passed through
+  const ref = useRef(null)
 
+  // Test that:
+  // 1. Refs are passed through
   return /*#__PURE__*/ _jsx('div', {
     className: 'flex p-2',
     ref: ref,
