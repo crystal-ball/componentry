@@ -23,12 +23,13 @@ false
 .codeclimate.yml
 .czrc
 .github
+.gitattributes
 .storybook
 .vscode
 .eslintignore
 .eslintrc.js
 .prettierignore
-.prettierrc
+.prettierrc.js
 .renovaterc
 tsconfig.json
 tsconfig.types.json

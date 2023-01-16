@@ -15,13 +15,12 @@ module.exports = {
   collectCoverage: true,
   coverageReporters: ['text-summary', 'lcov', 'clover'],
   collectCoverageFrom: [
-    'src/**/*.{ts,tsx}',
     '!**/*.stories.js', // Ignore story files
-    '!src/benchmarks/**', // Ignore perf testing files
-    '!src/{Media,Modal,Theme}/stories/**', // Ignore story files
     '!**/*.styles.ts', // Ignore PostCSS styles
-    '!src/test/**', // Ignore test files
     '!src/plugin-babel/__fixtures__/**', // Ignore fixture files
+    '!src/test/**', // Ignore test files
+    '!src/{Media,Modal,Theme}/stories/**', // Ignore story files
+    'src/**/*.{ts,tsx}',
   ],
 
   // Pre/Post test framework setup configs
