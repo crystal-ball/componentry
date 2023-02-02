@@ -25,8 +25,12 @@ const config = loadConfig()
 
 /** Plugin customization options */
 type PluginOptions = {
+  /** Log additional info for plugin debugging */
   debug?: boolean
+  /** Flag to include data-<component> attributes on precompiled components */
   dataFlag?: boolean
+  /** Components that should be excluded from pre-compilation */
+  exclude?: string[]
   /** Additional import path that should qualify components imported as precompilable */
   customImportPath?: string
 }
@@ -118,6 +122,9 @@ export default function componentryPlugin(): ComponentryPlugin {
           // Bail early if this element isn't one of our precompile targets, or
           // if it wasn't imported from componentry
           if (!(name in components) || !(name in this.componentryImports)) return
+
+          // Bail early if this element has been excluded from pre-compiling
+          if (state.opts.exclude && state.opts.exclude.includes(name)) return
 
           this.stats.elementsVisited += 1
 
