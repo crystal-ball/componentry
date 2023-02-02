@@ -1,5 +1,6 @@
 /* global __filename */
-import pluginTester from 'babel-plugin-tester'
+// eslint-disable-next-line import/no-unresolved
+import { pluginTester } from 'babel-plugin-tester'
 import plugin from './plugin'
 
 // 📝 Tester docs:
