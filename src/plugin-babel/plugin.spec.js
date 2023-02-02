@@ -19,14 +19,6 @@ pluginTester({
   // Array of tests format used to allow more descriptive test titles
   tests: [
     {
-      title: 'checks component import paths',
-      fixture: '__fixtures__/checks-import-paths/code.js',
-      outputFixture: '__fixtures__/checks-import-paths/output.js',
-      pluginOptions: {
-        customImportPath: 'componentry_path',
-      },
-    },
-    {
       title: 'ignores non-precompile components',
       fixture: '__fixtures__/ignores-components/code.js',
       outputFixture: '__fixtures__/ignores-components/output.js',
@@ -66,12 +58,30 @@ pluginTester({
       fixture: '__fixtures__/passthrough-props/code.js',
       outputFixture: '__fixtures__/passthrough-props/output.js',
     },
+    // --------------------------------------------------------
+    // OPTIONS
     {
       title: 'includes a data-precompiled flag when plugin option is used',
       fixture: '__fixtures__/data-precompiled/code.js',
       outputFixture: '__fixtures__/data-precompiled/output.js',
       pluginOptions: {
         dataFlag: true,
+      },
+    },
+    {
+      title: 'checks component import paths',
+      fixture: '__fixtures__/checks-import-paths/code.js',
+      outputFixture: '__fixtures__/checks-import-paths/output.js',
+      pluginOptions: {
+        customImportPath: 'componentry_path',
+      },
+    },
+    {
+      title: 'skips excluded components',
+      fixture: '__fixtures__/exclude_option/code.js',
+      outputFixture: '__fixtures__/exclude_option/output.js',
+      pluginOptions: {
+        exclude: ['Badge'],
       },
     },
   ],
