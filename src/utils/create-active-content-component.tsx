@@ -7,7 +7,7 @@ import { ARIAControls, computeARIA } from './aria'
 import { ActiveCtx } from './create-active-container-component'
 import { createElement } from './create-element'
 
-interface createActiveContent {
+interface ActiveContentDefaults {
   /** Map of aria attributes to render with component */
   aria?: ARIAControls
   defaultAs?: React.ElementType
@@ -20,7 +20,10 @@ interface createActiveContent {
 export function createActiveContent<
   Name extends ComponentName,
   Props extends ActiveContentBaseProps,
->(displayName: Name, { aria, defaultAs }: createActiveContent): React.FC<Props> {
+>(
+  displayName: Name,
+  { aria = {}, defaultAs }: ActiveContentDefaults = {},
+): React.FC<Props> {
   function ActiveContent(props: Props) {
     const { guid, ...activeCtx } = useContext(ActiveCtx)
     const {

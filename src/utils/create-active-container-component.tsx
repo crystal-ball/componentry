@@ -35,7 +35,7 @@ export const ActiveCtx = createContext<ActiveContext>({
 // --------------------------------------------------------
 // Container builder
 
-interface DefaultActiveContainerProps {
+interface ActiveContainerDefaults {
   /** Includes click events handler */
   clickEvents?: boolean
   /** Default content placement direction */
@@ -65,7 +65,7 @@ interface DefaultActiveContainerProps {
 export function createActiveContainer<
   Name extends ComponentName,
   Props extends ActiveContainerBaseProps,
->(displayName: Name, defaultProps: DefaultActiveContainerProps = {}): React.FC<Props> {
+>(displayName: Name, defaultProps: ActiveContainerDefaults = {}): React.FC<Props> {
   function ActiveContainer(props: Props) {
     const {
       // --- Render elements

@@ -6,7 +6,7 @@ import { ARIAControls, computeARIA } from './aria'
 import { ActiveCtx } from './create-active-container-component'
 import { createElement } from './create-element'
 
-interface createActiveAction {
+interface ActiveActionDefaults {
   /** Overrides component onClick to specified activate/deactivate action */
   action?: 'activate' | 'deactivate'
   /** Map of aria attributes to render with component */
@@ -24,7 +24,7 @@ export function createActiveAction<
   Props extends ActiveActionBaseProps,
 >(
   displayName: Name,
-  { action, aria = {}, defaultAs }: createActiveAction = {},
+  { action, aria = {}, defaultAs }: ActiveActionDefaults = {},
 ): React.FC<Props> {
   function ActiveAction(props: Props) {
     const { guid, ...activeCtx } = useContext(ActiveCtx)
