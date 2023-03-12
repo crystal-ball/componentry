@@ -1,8 +1,8 @@
 import React from 'react'
-import { element } from '../../utils/element-creator'
-import { staticComponent } from '../../utils/static-component-builder'
+import { createElement } from '../../utils/create-element'
+import { createStaticComponent } from '../../utils/create-static-component'
 import { MergeTypes, Resolve } from '../../utils/types'
-import { UtilityProps } from '../../utils/utility-classes'
+import { UtilityProps } from '../../utils/utility-props'
 import { useThemeProps } from '../Provider/Provider'
 
 // Module augmentation interface for overriding component props' types
@@ -66,23 +66,23 @@ export const Card = ((props) => {
     ...props,
   }
 
-  return element({
-    componentCx: `C9Y-Card-base C9Y-Card-${variant}`,
+  return createElement({
+    componentClassName: `C9Y-Card-base C9Y-Card-${variant}`,
     ...rest,
   })
 }) as Card
 Card.displayName = 'Card'
 
-Card.Body = staticComponent('CardBody')
+Card.Body = createStaticComponent('CardBody')
 
-Card.Footer = staticComponent('CardFooter')
+Card.Footer = createStaticComponent('CardFooter')
 
-Card.Header = staticComponent('CardHeader')
+Card.Header = createStaticComponent('CardHeader')
 
-Card.Title = staticComponent<CardTitleProps>('CardTitle', {
+Card.Title = createStaticComponent<CardTitleProps>('CardTitle', {
   as: 'h4',
 })
 
-Card.Subtitle = staticComponent<CardSubtitleProps>('CardSubtitle', {
+Card.Subtitle = createStaticComponent<CardSubtitleProps>('CardSubtitle', {
   as: 'h5',
 })

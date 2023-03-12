@@ -3,9 +3,9 @@ import { nanoid } from 'nanoid'
 import React, { createContext, useContext, useRef } from 'react'
 
 import { useActive, useActiveScrollReset, useNoScroll, useVisible } from '../../hooks'
-import { element } from '../../utils/element-creator'
-import { staticComponent } from '../../utils/static-component-builder'
-import { UtilityProps } from '../../utils/utility-classes'
+import { createElement } from '../../utils/create-element'
+import { createStaticComponent } from '../../utils/create-static-component'
+import { UtilityProps } from '../../utils/utility-props'
 import { closeBase } from '../Close/Close'
 import { useThemeProps } from '../Provider/Provider'
 
@@ -173,7 +173,7 @@ Modal.displayName = 'Modal'
 // --------------------------------------------------------
 // Close
 
-Modal.Close = staticComponent<ModalCloseProps>('ModalClose', closeBase)
+Modal.Close = createStaticComponent<ModalCloseProps>('ModalClose', closeBase)
 
 // --------------------------------------------------------
 // Header
@@ -186,8 +186,8 @@ Modal.Header = function ModalHeader(props: ModalHeaderProps) {
   const ctx = useContext(ModalCtx)
   assertContext(ctx)
 
-  return element({
-    componentCx: 'C9Y-ModalHeader',
+  return createElement({
+    componentClassName: 'C9Y-ModalHeader',
     children: (
       <>
         {children}
@@ -208,10 +208,10 @@ Modal.Title = function ModalTitle(props) {
   const ctx = useContext(ModalCtx)
   assertContext(ctx)
 
-  return element({
+  return createElement({
     as: 'h2',
     id: ctx.guid,
-    componentCx: 'C9Y-ModalTitle',
+    componentClassName: 'C9Y-ModalTitle',
     ...useThemeProps('ModalTitle'),
     ...props,
   })
@@ -228,9 +228,9 @@ Modal.Body = function ModalBody(props) {
 
   useActiveScrollReset(ctx.active, bodyRef)
 
-  return element({
+  return createElement({
     ref: bodyRef,
-    componentCx: 'C9Y-ModalBody',
+    componentClassName: 'C9Y-ModalBody',
     ...useThemeProps('ModalBody'),
     ...props,
   })
@@ -240,7 +240,7 @@ Modal.Body.displayName = 'ModalBody'
 // --------------------------------------------------------
 // Footer
 
-Modal.Footer = staticComponent<ModalFooterProps>('ModalFooter')
+Modal.Footer = createStaticComponent<ModalFooterProps>('ModalFooter')
 
 // --------------------------------------------------------
 // Utils

@@ -1,7 +1,7 @@
 import React, { forwardRef } from 'react'
-import { element } from '../../utils/element-creator'
+import { createElement } from '../../utils/create-element'
 import { DistributiveOmit, MergeTypes } from '../../utils/types'
-import { UtilityProps } from '../../utils/utility-classes'
+import { UtilityProps } from '../../utils/utility-props'
 import { useThemeProps } from '../Provider/Provider'
 
 /** Module augmentation interface for overriding component props' types */
@@ -47,13 +47,13 @@ export const Link = forwardRef<HTMLElement, LinkProps>((props, ref) => {
     ...props,
   }
 
-  return element({
+  return createElement({
     ref,
     disabled,
     as: merged.href ? 'a' : 'button',
     // @ts-expect-error - Ensure button works for router library usage even though to isn't in props
     type: merged.href || merged.to ? undefined : 'button',
-    componentCx: `C9Y-Link-base C9Y-Link-${variant}`,
+    componentClassName: `C9Y-Link-base C9Y-Link-${variant}`,
     ...merged,
   })
 }) as Link

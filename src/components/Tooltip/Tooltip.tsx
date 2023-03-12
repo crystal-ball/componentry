@@ -1,13 +1,13 @@
 import React from 'react'
-import { activeActionBuilder } from '../../utils/active-action-component-builder'
-import { activeContainerBuilder } from '../../utils/active-container-component-builder'
-import { activeContentBuilder } from '../../utils/active-content-component-builder'
+import { createActiveAction } from '../../utils/create-active-action-component'
+import { createActiveContainer } from '../../utils/create-active-container-component'
+import { createActiveContent } from '../../utils/create-active-content-component'
+import { UtilityProps } from '../../utils/utility-props'
 import {
   ActiveActionBaseProps,
   ActiveContainerBaseProps,
   ActiveContentBaseProps,
-} from '../../utils/base-types'
-import { UtilityProps } from '../../utils/utility-classes'
+} from '../Active/active-types'
 import { Link } from '../Link/Link'
 
 export interface TooltipProps
@@ -47,17 +47,17 @@ export interface Tooltip {
  * [Tooltip component 📝](https://componentry.design/components/tooltip)
  * @experimental
  */
-export const Tooltip = activeContainerBuilder('Tooltip', {
+export const Tooltip = createActiveContainer('Tooltip', {
   escEvents: true,
   mouseEvents: true,
 }) as Tooltip
 
-Tooltip.Action = activeActionBuilder('TooltipAction', {
+Tooltip.Action = createActiveAction('TooltipAction', {
   aria: { describedby: true },
   defaultAs: Link,
 })
 
-Tooltip.Content = activeContentBuilder('TooltipContent', {
+Tooltip.Content = createActiveContent('TooltipContent', {
   aria: { id: true, role: 'tooltip', hidden: true },
   defaultAs: TooltipContentElement,
 })

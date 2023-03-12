@@ -62,7 +62,7 @@ export function elementTests(TestComponent, testProps) {
   /*
    * Test that setting theme values for props are passed to the component, and
    * that JSX props passed to the component will override the theme defaults.
-   * Also test that the `themeCx` prop can be used to pass a className
+   * Also test that the `themeClassName` prop can be used to pass a className
    * by default to all component instances
    */
   it(`${componentName} should merge theme and JSX props correctly`, () => {
@@ -72,7 +72,7 @@ export function elementTests(TestComponent, testProps) {
           config={{
             defaultProps: {
               [componentName]: {
-                themeCx: 'theme-class',
+                themeClassName: 'theme-class',
                 'data-radical': 'hecka',
               },
             },
@@ -92,7 +92,7 @@ export function elementTests(TestComponent, testProps) {
           {...testProps}
           data-radical='nope'
           data-testid='jsx'
-          themeCx={null}
+          themeClassName={null}
         >
           JSX overrides example
         </TestComponent>

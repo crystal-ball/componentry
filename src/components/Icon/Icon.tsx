@@ -1,7 +1,7 @@
 import React, { forwardRef } from 'react'
-import { element } from '../../utils/element-creator'
+import { createElement } from '../../utils/create-element'
 import { DistributiveOmit, MergeTypes } from '../../utils/types'
-import { UtilityProps } from '../../utils/utility-classes'
+import { UtilityProps } from '../../utils/utility-props'
 import { useThemeProps } from '../Provider/Provider'
 
 // --------------------------------------------------------
@@ -76,11 +76,11 @@ export const Icon = forwardRef<HTMLElement, IconProps>((props, ref) => {
 
   const hasMappedElement = id in iconElementsMap
 
-  return element({
+  return createElement({
     ref,
     as: hasMappedElement ? iconElementsMap[id] : 'svg',
     children: hasMappedElement ? undefined : <use href={`${externalURI}#${id}`} />,
-    componentCx: `C9Y-Icon-base C9Y-Icon-${variant} icon-${id}`,
+    componentClassName: `C9Y-Icon-base C9Y-Icon-${variant} icon-${id}`,
     role: 'img',
     'aria-label': id,
     ...rest,

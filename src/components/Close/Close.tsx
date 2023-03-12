@@ -1,7 +1,7 @@
 import React from 'react'
-import { staticComponent } from '../../utils/static-component-builder'
+import { createStaticComponent } from '../../utils/create-static-component'
 import { MergeTypes, Resolve } from '../../utils/types'
-import { UtilityProps } from '../../utils/utility-classes'
+import { UtilityProps } from '../../utils/utility-props'
 import { Icon } from '../Icon/Icon'
 
 // Module augmentation interface for overriding component props' types
@@ -13,10 +13,10 @@ export type CloseProps = Resolve<MergeTypes<ClosePropsDefaults, ClosePropsOverri
   UtilityProps &
   React.ComponentPropsWithoutRef<'button'> & { as?: React.ElementType }
 
-export const closeBase: CloseProps & { componentCx: string } = {
+export const closeBase: CloseProps & { componentClassName: string } = {
   as: 'button',
   type: 'button',
-  componentCx: `C9Y-Close-base`,
+  componentClassName: `C9Y-Close-base`,
   children: <Icon id='close' />,
 }
 
@@ -24,4 +24,4 @@ export const closeBase: CloseProps & { componentCx: string } = {
  * [Close component 📝](https://componentry.design/components/close)
  * @experimental
  */
-export const Close = staticComponent<CloseProps>('Close', closeBase)
+export const Close = createStaticComponent<CloseProps>('Close', closeBase)

@@ -1,8 +1,8 @@
 import React, { forwardRef } from 'react'
 import { TextElementMap } from '../../theme/theme-defaults'
-import { element } from '../../utils/element-creator'
+import { createElement } from '../../utils/create-element'
 import { DistributiveOmit, MergeTypes } from '../../utils/types'
-import { UtilityProps } from '../../utils/utility-classes'
+import { UtilityProps } from '../../utils/utility-props'
 import { useThemeProps } from '../Provider/Provider'
 
 // --------------------------------------------------------
@@ -65,10 +65,10 @@ export const Text = forwardRef<HTMLDivElement, TextProps>((props, ref) => {
     ...props,
   }
 
-  return element({
+  return createElement({
     ref,
     as: textElementMap[variant],
-    componentCx: [`C9Y-Text-base C9Y-Text-${variant}`, { truncate }],
+    componentClassName: [`C9Y-Text-base C9Y-Text-${variant}`, { truncate }],
     ...rest,
   })
 }) as Text

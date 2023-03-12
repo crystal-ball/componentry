@@ -1,10 +1,10 @@
 import { nanoid } from 'nanoid'
 import React, { createContext, useCallback, useEffect, useRef, useState } from 'react'
+import { ActiveContainerBaseProps } from '../components/Active/active-types'
 import { useThemeProps } from '../components/Provider/Provider'
 import { ComponentName } from '../config/config'
-import { ActiveContainerBaseProps } from './base-types'
+import { createElement } from './create-element'
 import { closest } from './dom'
-import { element } from './element-creator'
 
 // --------------------------------------------------------
 // Container context
@@ -62,7 +62,7 @@ interface DefaultActiveContainerProps {
  * use. This ensures that we can always hook into the change events for internal
  * needs like setting or removing special event listeners.
  */
-export function activeContainerBuilder<
+export function createActiveContainer<
   Name extends ComponentName,
   Props extends ActiveContainerBaseProps,
 >(displayName: Name, defaultProps: DefaultActiveContainerProps = {}): React.FC<Props> {
@@ -217,9 +217,9 @@ export function activeContainerBuilder<
     // TODO: only wrap elements with a `div` when the element needs it
     return (
       <ActiveCtx.Provider value={activeValues}>
-        {element({
+        {createElement({
           'data-id': guid,
-          componentCx: [
+          componentClassName: [
             `C9Y-${displayName}-base`,
             {
               [`C9Y-${displayName}-${size}Size`]: size,

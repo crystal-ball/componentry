@@ -41,7 +41,7 @@
   "types": "./types/index.d.ts",
   "sideEffects": false,
   "scripts": {
-    "start": "start-storybook -p 6006 --no-open",
+    "start": "npm run compile && start-storybook -p 6006 --no-open",
     "babel:watch": "BABEL_ENV=browser babel src --watch --out-dir dist/browser --ignore '**/*.spec.js'",
     "build-storybook": "build-storybook",
     "test": "npm run test:lint && npm run test:types && npm run test:unit",

@@ -4,7 +4,7 @@ import React, { createContext, useContext } from 'react'
 import { ComponentName, ComponentProps, Config } from '../../config/config'
 import { Theme } from '../../theme/theme'
 import { themeDefaults } from '../../theme/theme-defaults'
-import { initializeUtilityClassesTheme } from '../../utils/utility-classes'
+import { initializeUtilityPropsTheme } from '../../utils/utility-props'
 
 /** Componentry Context */
 const ComponentryCtx = createContext<Config | undefined>(undefined)
@@ -36,7 +36,7 @@ export const ComponentryProvider: ComponentryProvider = ({ children, config }) =
   // Internal convenience helper: if user has provided a theme value initialize
   // the utility classes module with it for them
   if (config.theme) {
-    initializeUtilityClassesTheme(config.theme)
+    initializeUtilityPropsTheme(config.theme)
   }
 
   return <ComponentryCtx.Provider value={config}>{children}</ComponentryCtx.Provider>
@@ -65,7 +65,7 @@ export function __initializePreCompileMode(config: Config): void {
   preCompileContext = config
 
   if (config.theme) {
-    initializeUtilityClassesTheme(config.theme)
+    initializeUtilityPropsTheme(config.theme)
   }
 }
 

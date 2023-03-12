@@ -1,12 +1,12 @@
 import React, { useContext } from 'react'
+import { ActiveActionBaseProps } from '../components/Active/active-types'
 import { useThemeProps } from '../components/Provider/Provider'
 import { ComponentName } from '../config/config'
-import { ActiveCtx } from './active-container-component-builder'
 import { ARIAControls, computeARIA } from './aria'
-import { ActiveActionBaseProps } from './base-types'
-import { element } from './element-creator'
+import { ActiveCtx } from './create-active-container-component'
+import { createElement } from './create-element'
 
-interface ActiveActionBuilder {
+interface createActiveAction {
   /** Overrides component onClick to specified activate/deactivate action */
   action?: 'activate' | 'deactivate'
   /** Map of aria attributes to render with component */
@@ -19,12 +19,12 @@ interface ActiveActionBuilder {
  * Componentry sets up actions to be buttons styled as links by default, this
  * can be overridden by passing an as and type props for an anchor.
  */
-export function activeActionBuilder<
+export function createActiveAction<
   Name extends ComponentName,
   Props extends ActiveActionBaseProps,
 >(
   displayName: Name,
-  { action, aria = {}, defaultAs }: ActiveActionBuilder = {},
+  { action, aria = {}, defaultAs }: createActiveAction = {},
 ): React.FC<Props> {
   function ActiveAction(props: Props) {
     const { guid, ...activeCtx } = useContext(ActiveCtx)
@@ -47,9 +47,9 @@ export function activeActionBuilder<
       onClick = active ? deactivate : activate
     }
 
-    return element({
+    return createElement({
       as: defaultAs,
-      componentCx: `C9Y-${displayName}`,
+      componentClassName: `C9Y-${displayName}`,
       ...computeARIA({
         active,
         activeId,

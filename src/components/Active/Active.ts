@@ -1,14 +1,14 @@
 import React from 'react'
-import { activeActionBuilder } from '../../utils/active-action-component-builder'
-import { activeContainerBuilder } from '../../utils/active-container-component-builder'
-import { activeContentBuilder } from '../../utils/active-content-component-builder'
+import { createActiveAction } from '../../utils/create-active-action-component'
+import { createActiveContainer } from '../../utils/create-active-container-component'
+import { createActiveContent } from '../../utils/create-active-content-component'
+import { UtilityProps } from '../../utils/utility-props'
+import { Link } from '../Link/Link'
 import {
   ActiveActionBaseProps,
   ActiveContainerBaseProps,
   ActiveContentBaseProps,
-} from '../../utils/base-types'
-import { UtilityProps } from '../../utils/utility-classes'
-import { Link } from '../Link/Link'
+} from './active-types'
 
 export interface ActiveProps
   extends ActiveContainerBaseProps,
@@ -41,15 +41,15 @@ export interface Active {
  * [Active component 📝](https://componentry.design/components/active)
  * @experimental
  */
-export const Active = activeContainerBuilder('Active', {
+export const Active = createActiveContainer('Active', {
   escEvents: true,
 }) as Active
 
-Active.Action = activeActionBuilder('ActiveAction', {
+Active.Action = createActiveAction('ActiveAction', {
   aria: { controls: true },
   defaultAs: Link,
 })
 
-Active.Content = activeContentBuilder('ActiveContent', {
+Active.Content = createActiveContent('ActiveContent', {
   aria: { id: true, hidden: true },
 })

@@ -1,15 +1,15 @@
 import React from 'react'
-import { activeActionBuilder } from '../../utils/active-action-component-builder'
-import { activeContainerBuilder } from '../../utils/active-container-component-builder'
-import { activeContentBuilder } from '../../utils/active-content-component-builder'
+import { createActiveAction } from '../../utils/create-active-action-component'
+import { createActiveContainer } from '../../utils/create-active-container-component'
+import { createActiveContent } from '../../utils/create-active-content-component'
+import { createElement } from '../../utils/create-element'
+import { createStaticComponent } from '../../utils/create-static-component'
+import { UtilityProps } from '../../utils/utility-props'
 import {
   ActiveActionBaseProps,
   ActiveContainerBaseProps,
   ActiveContentBaseProps,
-} from '../../utils/base-types'
-import { element } from '../../utils/element-creator'
-import { staticComponent } from '../../utils/static-component-builder'
-import { UtilityProps } from '../../utils/utility-classes'
+} from '../Active/active-types'
 import { Link } from '../Link/Link'
 import { useThemeProps } from '../Provider/Provider'
 
@@ -69,7 +69,7 @@ export interface Tabs {
  * [Tabs component 📝](https://componentry.design/components/tabs)
  * @experimental
  */
-export const Tabs = activeContainerBuilder('Tabs') as Tabs
+export const Tabs = createActiveContainer('Tabs') as Tabs
 
 const ActionsContainer: React.FC<TabsActionsContainerProps> = (props) => {
   const { pills, ...rest } = {
@@ -77,9 +77,9 @@ const ActionsContainer: React.FC<TabsActionsContainerProps> = (props) => {
     ...props,
   }
 
-  return element({
+  return createElement({
     role: 'tablist',
-    componentCx: [
+    componentClassName: [
       'C9Y-TabsContainer',
       {
         'C9Y-TabsContainer-pills': pills,
@@ -91,15 +91,16 @@ const ActionsContainer: React.FC<TabsActionsContainerProps> = (props) => {
 ActionsContainer.displayName = 'TabsActionsContainer'
 Tabs.ActionsContainer = ActionsContainer
 
-Tabs.Action = activeActionBuilder('TabsAction', {
+Tabs.Action = createActiveAction('TabsAction', {
   aria: { selected: true, role: 'tab' },
   // Tabs can only activate, they never deactivate when clicked
   action: 'activate',
   defaultAs: Link,
 })
 
-Tabs.ContentContainer = staticComponent<TabsContentContainerProps>('TabsContentContainer')
+Tabs.ContentContainer =
+  createStaticComponent<TabsContentContainerProps>('TabsContentContainer')
 
-Tabs.Content = activeContentBuilder('TabsContent', {
+Tabs.Content = createActiveContent('TabsContent', {
   aria: { hidden: true, role: 'tabpanel' },
 })

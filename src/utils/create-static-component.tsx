@@ -1,25 +1,19 @@
-import { ClassValue } from 'clsx'
 import React from 'react'
 import { useThemeProps } from '../components/Provider/Provider'
-import { element } from './element-creator'
-
-type StaticOptions<Props> = Props & {
-  componentCx?: ClassValue
-}
+import { createElement } from './create-element'
 
 /**
- * Generates a static component. Used for components that just set a className
- * and HTML attributes
+ * Convenience function for creating components with only static props
  * @param displayName - Component name
  * @param defaultProps - Componentry library default prop values
  */
-export function staticComponent<Props>(
+export function createStaticComponent<Props>(
   displayName: string,
-  defaultProps?: StaticOptions<Props>,
+  defaultProps?: Props,
 ): React.FC<Props> {
   function Component(props: Props) {
-    return element({
-      componentCx: `C9Y-${displayName}`,
+    return createElement({
+      componentClassName: `C9Y-${displayName}`,
       ...defaultProps,
       // @ts-expect-error -- TODO: can update displayName type to keyof components, but
       // that requires adding _every_ subcomponent to the Components map
