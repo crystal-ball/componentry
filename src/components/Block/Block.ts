@@ -1,7 +1,7 @@
 import React, { forwardRef } from 'react'
 import { createElement } from '../../utils/create-element'
-import { DistributiveOmit, MergeTypes } from '../../utils/types'
-import { UtilityProps } from '../../utils/utility-props'
+import { MergeTypes, Resolve } from '../../utils/types'
+import { ElementTypeProps, UtilityProps } from '../../utils/utility-props'
 import { useThemeProps } from '../Provider/Provider'
 
 /** Module augmentation interface for overriding component props' types */
@@ -9,11 +9,10 @@ export interface BlockPropsOverrides {}
 
 export interface BlockPropsDefaults {}
 
-export type BlockPropsBase<Elem extends React.ElementType = 'div'> = UtilityProps &
-  MergeTypes<BlockPropsDefaults, BlockPropsOverrides> & { as?: Elem }
-
-export type BlockProps<Elem extends React.ElementType = 'div'> = BlockPropsBase<Elem> &
-  DistributiveOmit<React.ComponentPropsWithRef<Elem>, keyof BlockPropsBase<Elem>>
+export type BlockProps<As extends React.ElementType = 'div'> = Resolve<
+  MergeTypes<BlockPropsDefaults, BlockPropsOverrides> & { as?: As } & UtilityProps
+> &
+  ElementTypeProps<As>
 
 /**
  * Block provides block layout elements.
@@ -26,7 +25,7 @@ export type BlockProps<Elem extends React.ElementType = 'div'> = BlockPropsBase<
  * @see [📝 Block](https://componentry.design/docs/components/block)
  */
 export interface Block {
-  <Elem extends React.ElementType = 'div'>(props: BlockProps<Elem>): React.ReactElement
+  <As extends React.ElementType = 'div'>(props: BlockProps<As>): React.ReactElement
   displayName?: string
 }
 

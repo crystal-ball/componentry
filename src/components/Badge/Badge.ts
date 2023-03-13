@@ -1,29 +1,28 @@
 import React, { forwardRef } from 'react'
 import { createElement } from '../../utils/create-element'
-import { DistributiveOmit, MergeTypes } from '../../utils/types'
-import { UtilityProps } from '../../utils/utility-props'
+import { MergeTypes, Resolve } from '../../utils/types'
+import { ElementTypeProps, UtilityProps } from '../../utils/utility-props'
 import { useThemeProps } from '../Provider/Provider'
 
 /** Module augmentation interface for overriding component props' types */
 export interface BadgePropsOverrides {}
 
 export interface BadgePropsDefaults {
+  /** Display style */
+  variant?: 'filled'
   /** Theme color for display variant */
   color?: 'primary'
   /** Display size */
   size?: 'small' | 'large'
-  /** Display style */
-  variant?: 'filled'
 }
 
-export type BadgePropsBase<Elem extends React.ElementType = 'div'> = Omit<
-  UtilityProps,
-  'color'
+export type BadgeProps<As extends React.ElementType = 'div'> = Resolve<
+  MergeTypes<BadgePropsDefaults, BadgePropsOverrides> & { as?: As } & Omit<
+      UtilityProps,
+      'color'
+    >
 > &
-  MergeTypes<BadgePropsDefaults, BadgePropsOverrides> & { as?: Elem }
-
-export type BadgeProps<Elem extends React.ElementType = 'div'> = BadgePropsBase<Elem> &
-  DistributiveOmit<React.ComponentPropsWithRef<Elem>, keyof BadgePropsBase<Elem>>
+  ElementTypeProps<As>
 
 /**
  * Badge provides a short label for describing elements.
@@ -36,7 +35,7 @@ export type BadgeProps<Elem extends React.ElementType = 'div'> = BadgePropsBase<
  * @see [📝 Badge docs](https://componentry.design/docs/components/badge)
  */
 export interface Badge {
-  <Elem extends React.ElementType = 'div'>(props: BadgeProps<Elem>): React.ReactElement
+  <As extends React.ElementType = 'div'>(props: BadgeProps<As>): React.ReactElement
   displayName?: string
 }
 

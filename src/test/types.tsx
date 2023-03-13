@@ -2,7 +2,6 @@
  * @file TS types testing
  */
 
-/* eslint-disable no-console */
 /* eslint-disable @typescript-eslint/no-unused-vars */
 
 import { useRef } from 'react'

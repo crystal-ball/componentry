@@ -1,7 +1,7 @@
 import React, { forwardRef } from 'react'
 import { createElement } from '../../utils/create-element'
-import { DistributiveOmit, MergeTypes } from '../../utils/types'
-import { UtilityProps } from '../../utils/utility-props'
+import { MergeTypes, Resolve } from '../../utils/types'
+import { ElementTypeProps, UtilityProps } from '../../utils/utility-props'
 import { useThemeProps } from '../Provider/Provider'
 
 /** Module augmentation interface for overriding component props' types */
@@ -14,11 +14,10 @@ export interface GridPropsDefaults {
   justify?: 'start' | 'end' | 'center' | 'stretch'
 }
 
-export type GridPropsBase<Elem extends React.ElementType = 'div'> = UtilityProps &
-  MergeTypes<GridPropsDefaults, GridPropsOverrides> & { as?: Elem }
-
-export type GridProps<Elem extends React.ElementType = 'div'> = GridPropsBase<Elem> &
-  DistributiveOmit<React.ComponentPropsWithRef<Elem>, keyof GridPropsBase<Elem>>
+export type GridProps<As extends React.ElementType = 'div'> = Resolve<
+  MergeTypes<GridPropsDefaults, GridPropsOverrides> & { as?: As } & UtilityProps
+> &
+  ElementTypeProps<As>
 
 /**
  * Grid provides CSS grid layout elements
@@ -31,7 +30,7 @@ export type GridProps<Elem extends React.ElementType = 'div'> = GridPropsBase<El
  * @see [📝 Grid](https://componentry.design/docs/components/grid)
  */
 export interface Grid {
-  <Elem extends React.ElementType = 'div'>(props: GridProps<Elem>): React.ReactElement
+  <As extends React.ElementType = 'div'>(props: GridProps<As>): React.ReactElement
   displayName?: string
 }
 

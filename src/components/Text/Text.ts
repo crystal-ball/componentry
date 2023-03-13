@@ -1,8 +1,8 @@
 import React, { forwardRef } from 'react'
 import { TextElementMap } from '../../theme/theme-defaults'
 import { createElement } from '../../utils/create-element'
-import { DistributiveOmit, MergeTypes } from '../../utils/types'
-import { UtilityProps } from '../../utils/utility-props'
+import { MergeTypes, Resolve } from '../../utils/types'
+import { ElementTypeProps, UtilityProps } from '../../utils/utility-props'
 import { useThemeProps } from '../Provider/Provider'
 
 // --------------------------------------------------------
@@ -25,19 +25,18 @@ const defaulTextElementMap: TextElementMap = {
 export interface TextPropsOverrides {}
 
 export interface TextPropsDefaults {
-  /** Mapping of Text variants to rendered elements */
-  textElementMap?: TextElementMap
-  /** Truncates overflowing text with an ellipses */
-  truncate?: boolean
   /** Display variant */
   variant?: 'h1' | 'h2' | 'h3' | 'body' | 'code' | 'small'
+  /** Truncates overflowing text with an ellipses */
+  truncate?: boolean
+  /** Mapping of Text variants to rendered elements */
+  textElementMap?: TextElementMap
 }
 
-export type TextPropsBase<Elem extends React.ElementType = 'div'> = UtilityProps &
-  MergeTypes<TextPropsDefaults, TextPropsOverrides> & { as?: Elem }
-
-export type TextProps<Elem extends React.ElementType = 'div'> = TextPropsBase<Elem> &
-  DistributiveOmit<React.ComponentPropsWithRef<Elem>, keyof TextPropsBase<Elem>>
+export type TextProps<As extends React.ElementType = 'div'> = Resolve<
+  MergeTypes<TextPropsDefaults, TextPropsOverrides> & { as?: As } & UtilityProps
+> &
+  ElementTypeProps<As>
 
 /**
  * Text provides consistently themed typography elements.
@@ -50,7 +49,7 @@ export type TextProps<Elem extends React.ElementType = 'div'> = TextPropsBase<El
  * @see [📝 Text docs](https://componentry.design/docs/components/text)
  */
 export interface Text {
-  <Elem extends React.ElementType = 'div'>(props: TextProps<Elem>): React.ReactElement
+  <As extends React.ElementType = 'div'>(props: TextProps<As>): React.ReactElement
   displayName?: string
 }
 
