@@ -39,11 +39,13 @@ export { Tooltip } from './components/Tooltip/Tooltip'
 
 // --- Utilities
 export { useActive, useActiveScrollReset, useNoScroll, useVisible } from './hooks'
-export { setupOutlineHandlers } from './utils/dom'
 export { createElement } from './utils/create-element'
+export { setupOutlineHandlers } from './utils/dom'
+export { type MergeTypes } from './utils/types'
 export {
   createUtilityProps,
   initializeUtilityPropsTheme,
+  type ElementTypeProps,
   type UtilityProps,
 } from './utils/utility-props'
 

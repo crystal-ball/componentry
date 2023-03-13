@@ -1,7 +1,7 @@
 import React, { forwardRef } from 'react'
 import { createElement } from '../../utils/create-element'
-import { DistributiveOmit, MergeTypes } from '../../utils/types'
-import { UtilityProps } from '../../utils/utility-props'
+import { MergeTypes, Resolve } from '../../utils/types'
+import { ElementTypeProps, UtilityProps } from '../../utils/utility-props'
 import { Icon } from '../Icon/Icon'
 import { useThemeProps } from '../Provider/Provider'
 
@@ -9,6 +9,8 @@ import { useThemeProps } from '../Provider/Provider'
 export interface IconButtonPropsOverrides {}
 
 export interface IconButtonPropsDefaults {
+  /** Display variant */
+  variant?: 'filled' | 'outlined'
   /** Display variant color */
   color?: 'primary'
   /** Disables the element, preventing mouse and keyboard events */
@@ -21,19 +23,15 @@ export interface IconButtonPropsDefaults {
   href?: string
   /** Sets the display size */
   size?: 'small' | 'large'
-  /** Display variant */
-  variant?: 'filled' | 'outlined'
 }
 
-export type IconButtonPropsBase<Elem extends React.ElementType = 'button'> = Omit<
-  UtilityProps,
-  'color'
+export type IconButtonProps<As extends React.ElementType = 'button'> = Resolve<
+  MergeTypes<IconButtonPropsDefaults, IconButtonPropsOverrides> & { as?: As } & Omit<
+      UtilityProps,
+      'color'
+    >
 > &
-  MergeTypes<IconButtonPropsDefaults, IconButtonPropsOverrides> & { as?: Elem }
-
-export type IconButtonProps<Elem extends React.ElementType = 'button'> =
-  IconButtonPropsBase<Elem> &
-    DistributiveOmit<React.ComponentPropsWithRef<Elem>, keyof IconButtonPropsBase<Elem>>
+  ElementTypeProps<As>
 
 /**
  * IconButton provides action elements using icons.
@@ -44,8 +42,8 @@ export type IconButtonProps<Elem extends React.ElementType = 'button'> =
  * @see [📝 IconButton](https://componentry.design/docs/components/iconbutton)
  */
 export interface IconButton {
-  <Elem extends React.ElementType = 'button'>(
-    props: IconButtonProps<Elem>,
+  <As extends React.ElementType = 'button'>(
+    props: IconButtonProps<As>,
   ): React.ReactElement
   displayName?: string
 }

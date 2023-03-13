@@ -1,7 +1,7 @@
 import React, { forwardRef } from 'react'
 import { createElement } from '../../utils/create-element'
-import { DistributiveOmit, MergeTypes } from '../../utils/types'
-import { UtilityProps } from '../../utils/utility-props'
+import { MergeTypes, Resolve } from '../../utils/types'
+import { ElementTypeProps, UtilityProps } from '../../utils/utility-props'
 import { useThemeProps } from '../Provider/Provider'
 
 /** Module augmentation interface for overriding component props' types */
@@ -18,11 +18,10 @@ export interface FlexPropsDefaults {
   wrap?: 'wrap' | 'nowrap' | 'wrap-reverse'
 }
 
-export type FlexPropsBase<Elem extends React.ElementType = 'div'> = UtilityProps &
-  MergeTypes<FlexPropsDefaults, FlexPropsOverrides> & { as?: Elem }
-
-export type FlexProps<Elem extends React.ElementType = 'div'> = FlexPropsBase<Elem> &
-  DistributiveOmit<React.ComponentPropsWithRef<Elem>, keyof FlexPropsBase<Elem>>
+export type FlexProps<As extends React.ElementType = 'div'> = Resolve<
+  MergeTypes<FlexPropsDefaults, FlexPropsOverrides> & { as?: As } & UtilityProps
+> &
+  ElementTypeProps<As>
 
 /**
  * Flex provides flexbox layout elements.
@@ -35,7 +34,7 @@ export type FlexProps<Elem extends React.ElementType = 'div'> = FlexPropsBase<El
  * @see [📝 Flex](https://componentry.design/docs/components/flex)
  */
 export interface Flex {
-  <Elem extends React.ElementType = 'div'>(props: FlexProps<Elem>): React.ReactElement
+  <As extends React.ElementType = 'div'>(props: FlexProps<As>): React.ReactElement
   displayName?: string
 }
 

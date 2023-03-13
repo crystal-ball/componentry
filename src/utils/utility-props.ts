@@ -11,7 +11,7 @@
 import React from 'react'
 import { Theme } from '../theme/theme'
 import { themeDefaults } from '../theme/theme-defaults'
-import { MergeTypes, Resolve, UtilityPropsForTheme } from './types'
+import { MergeTypes, Resolve } from './types'
 
 /** Module augmentation interface for overriding default utility props' types */
 export interface UtilityPropsOverrides {}
@@ -542,3 +542,44 @@ function accessColor(base: any, path: string): string | undefined {
     return undefined
   }, base)
 }
+
+// --------------------------------------------------------
+// UTILITY TYPES
+
+/**
+ * Utility type converts a theme definition to version that can be used with
+ * `keyof` to extract the appropriate props for that theme value.
+ * @remarks
+ * Tailwind's pattern of declaring a base utility class with `'DEFAULT'`
+ * requires this type manipulation to provide the correct set of prop values in
+ * autocomplete, eg for flexGrow:
+ *
+ * ```tsx
+ * interface Theme {
+ *   flexGrow: { DEFAULT: 1; 0: 0; }
+ * }
+ * ```
+ * The correct utility prop type of `boolean | 0 | undefined` can be extracted
+ * as:
+ * ```tsx
+ * type FlexGrowProp = keyof UtilityPropsForTheme<Theme['flexGrow']>
+ * ```
+ */
+type UtilityPropsForTheme<ThemeNamespace> = {
+  [Key in keyof ThemeNamespace as Key extends 'DEFAULT'
+    ? boolean
+    : Key]: ThemeNamespace[Key]
+}
+
+/**
+ * Utility type for component "as" element props.
+ * @remarks
+ * The UtilityProps type has property declarations that shadow DOM element props
+ * like color, or height. This is problematic because extending two types
+ * requires their property declarations all have the same type, if they are
+ * different the resulting type will be never or something similarly unusable.
+ */
+export type ElementTypeProps<Element extends React.ElementType = 'div'> = Omit<
+  React.ComponentPropsWithRef<Element>,
+  keyof UtilityProps
+>

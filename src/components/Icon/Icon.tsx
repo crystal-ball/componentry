@@ -1,7 +1,7 @@
 import React, { forwardRef } from 'react'
 import { createElement } from '../../utils/create-element'
-import { DistributiveOmit, MergeTypes } from '../../utils/types'
-import { UtilityProps } from '../../utils/utility-props'
+import { MergeTypes, Resolve } from '../../utils/types'
+import { ElementTypeProps, UtilityProps } from '../../utils/utility-props'
 import { useThemeProps } from '../Provider/Provider'
 
 // --------------------------------------------------------
@@ -39,19 +39,18 @@ export function configureIconElementsMap(elementsMap: IconElementsMap): void {
 export interface IconPropsOverrides {}
 
 export interface IconPropsDefaults {
+  /** Display variant */
+  variant?: 'font'
   /** External path to symbol sprite  */
   externalURI?: string
   /** ID for the `iconElementsMap` or href attribute for symbol sprites */
   id: string
-  /** Display variant */
-  variant?: 'font'
 }
 
-export type IconPropsBase<Elem extends React.ElementType = 'svg'> = UtilityProps &
-  MergeTypes<IconPropsDefaults, IconPropsOverrides> & { as?: Elem }
-
-export type IconProps<Elem extends React.ElementType = 'svg'> = IconPropsBase<Elem> &
-  DistributiveOmit<React.ComponentPropsWithRef<Elem>, keyof IconPropsBase<Elem>>
+export type IconProps<As extends React.ElementType = 'svg'> = Resolve<
+  MergeTypes<IconPropsDefaults, IconPropsOverrides> & { as?: As } & UtilityProps
+> &
+  ElementTypeProps<As>
 
 /**
  * Icon provides consistently themed iconography elements.
@@ -62,7 +61,7 @@ export type IconProps<Elem extends React.ElementType = 'svg'> = IconPropsBase<El
  * @see [📝 Icon](https://componentry.design/docs/components/icon)
  */
 export interface Icon {
-  <Elem extends React.ElementType = 'svg'>(props: IconProps<Elem>): React.ReactElement
+  <As extends React.ElementType = 'svg'>(props: IconProps<As>): React.ReactElement
   displayName?: string
 }
 

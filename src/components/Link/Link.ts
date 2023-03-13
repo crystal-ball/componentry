@@ -1,26 +1,25 @@
 import React, { forwardRef } from 'react'
 import { createElement } from '../../utils/create-element'
-import { DistributiveOmit, MergeTypes } from '../../utils/types'
-import { UtilityProps } from '../../utils/utility-props'
+import { MergeTypes, Resolve } from '../../utils/types'
+import { ElementTypeProps, UtilityProps } from '../../utils/utility-props'
 import { useThemeProps } from '../Provider/Provider'
 
 /** Module augmentation interface for overriding component props' types */
 export interface LinkPropsOverrides {}
 
 export interface LinkPropsDefaults {
+  /** Display variant */
+  variant?: 'text'
   /** Disables the element, preventing mouse and keyboard events */
   disabled?: boolean
   /** HTML element href */
   href?: string
-  /** Display variant */
-  variant?: 'text'
 }
 
-export type LinkPropsBase<Elem extends React.ElementType = 'a'> = UtilityProps &
-  MergeTypes<LinkPropsDefaults, LinkPropsOverrides> & { as?: Elem }
-
-export type LinkProps<Elem extends React.ElementType = 'a'> = LinkPropsBase<Elem> &
-  DistributiveOmit<React.ComponentPropsWithRef<Elem>, keyof LinkPropsBase<Elem>>
+export type LinkProps<As extends React.ElementType = 'a'> = Resolve<
+  MergeTypes<LinkPropsDefaults, LinkPropsOverrides> & { as?: As } & UtilityProps
+> &
+  ElementTypeProps<As>
 
 /**
  * Link provides action elements styled as links.
@@ -33,7 +32,7 @@ export type LinkProps<Elem extends React.ElementType = 'a'> = LinkPropsBase<Elem
  * @see [📝 Link component](https://componentry.design/docs/components/link)
  */
 export interface Link {
-  <Elem extends React.ElementType = 'a'>(props: LinkProps<Elem>): React.ReactElement
+  <As extends React.ElementType = 'a'>(props: LinkProps<As>): React.ReactElement
   displayName?: string
 }
 

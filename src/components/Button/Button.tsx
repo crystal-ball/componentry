@@ -1,8 +1,8 @@
 import clsx from 'clsx'
 import React, { forwardRef } from 'react'
 import { createElement } from '../../utils/create-element'
-import { DistributiveOmit, MergeTypes } from '../../utils/types'
-import { UtilityProps } from '../../utils/utility-props'
+import { MergeTypes, Resolve } from '../../utils/types'
+import { ElementTypeProps, UtilityProps } from '../../utils/utility-props'
 import { Icon } from '../Icon/Icon'
 import { useThemeProps } from '../Provider/Provider'
 
@@ -10,6 +10,8 @@ import { useThemeProps } from '../Provider/Provider'
 export interface ButtonPropsOverrides {}
 
 export interface ButtonPropsDefaults {
+  /** Display style */
+  variant?: 'filled' | 'outlined'
   /** Theme color for display variant */
   color?: 'primary'
   /** Disables the element, preventing mouse and keyboard events */
@@ -24,19 +26,15 @@ export interface ButtonPropsDefaults {
   size?: 'small' | 'large'
   /** Icon positioned before button content */
   startIcon?: string | React.ReactElement
-  /** Display style */
-  variant?: 'filled' | 'outlined'
 }
 
-export type ButtonPropsBase<Elem extends React.ElementType = 'button'> = Omit<
-  UtilityProps,
-  'color'
+export type ButtonProps<As extends React.ElementType = 'button'> = Resolve<
+  MergeTypes<ButtonPropsDefaults, ButtonPropsOverrides> & { as?: As } & Omit<
+      UtilityProps,
+      'color'
+    >
 > &
-  MergeTypes<ButtonPropsDefaults, ButtonPropsOverrides> & { as?: Elem }
-
-export type ButtonProps<Elem extends React.ElementType = 'button'> =
-  ButtonPropsBase<Elem> &
-    DistributiveOmit<React.ComponentPropsWithRef<Elem>, keyof ButtonPropsBase<Elem>>
+  ElementTypeProps<As>
 
 /**
  * Button provides action elements styled as buttons.
@@ -49,9 +47,7 @@ export type ButtonProps<Elem extends React.ElementType = 'button'> =
  * @see [📝 Button](https://componentry.design/docs/components/button)
  */
 export interface Button {
-  <Elem extends React.ElementType = 'button'>(
-    props: ButtonProps<Elem>,
-  ): React.ReactElement
+  <As extends React.ElementType = 'button'>(props: ButtonProps<As>): React.ReactElement
   displayName?: string
 }
 
