@@ -17,10 +17,7 @@ export interface LinkPropsDefaults {
 }
 
 export type LinkProps<As extends React.ElementType = 'a'> = Resolve<
-  MergeTypes<LinkPropsDefaults, LinkPropsOverrides> & { as?: As } & Omit<
-      UtilityProps,
-      'color'
-    >
+  MergeTypes<LinkPropsDefaults, LinkPropsOverrides> & { as?: As } & UtilityProps
 > &
   ElementTypeProps<As>
 
