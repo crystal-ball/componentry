@@ -66,6 +66,7 @@ export const IconButton = forwardRef<HTMLElement, IconButtonProps>((props, ref) 
     disabled,
     // If an href is passed, this instance should render an anchor tag
     as: merged.href ? 'a' : 'button',
+    // @ts-expect-error - Ensure button works for router library usage even though to isn't in props
     type: merged.href || merged.to ? undefined : 'button',
     componentClassName: [
       `C9Y-IconButton-base C9Y-IconButton-${variant}`,
