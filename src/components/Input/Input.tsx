@@ -1,8 +1,8 @@
 import { nanoid } from 'nanoid'
 import React, { createContext, useContext, useRef } from 'react'
-import { element } from '../../utils/element-creator'
-import { staticComponent } from '../../utils/static-component-builder'
-import { UtilityProps } from '../../utils/utility-classes'
+import { createElement } from '../../utils/create-element'
+import { createStaticComponent } from '../../utils/create-static-component'
+import { UtilityProps } from '../../utils/utility-props'
 import { useThemeProps } from '../Provider/Provider'
 
 export interface InputProps
@@ -69,11 +69,11 @@ Input.displayName = 'Input'
 
 // --- Description sub-component ---
 
-Input.Description = staticComponent('InputDescription')
+Input.Description = createStaticComponent('InputDescription')
 
 // --- Error sub-component ---
 
-Input.Error = staticComponent('InputError')
+Input.Error = createStaticComponent('InputError')
 
 // --- Field sub-component ---
 
@@ -86,12 +86,12 @@ Input.Field = function InputField(props) {
     ...props,
   }
 
-  return element({
+  return createElement({
     as: 'input',
     type: 'text',
     id: ctx.guid, // aria -> htmlFor
     invalid: invalid ? true : undefined,
-    componentCx: [
+    componentClassName: [
       'C9Y-InputField',
       {
         'C9Y-invalid': invalid,
@@ -108,10 +108,10 @@ Input.Label = function InputLabel(props) {
   const ctx = useContext(InputCtx)
   assertContext(ctx)
 
-  return element({
+  return createElement({
     as: 'label',
     htmlFor: ctx.guid, // aria -> id
-    componentCx: 'C9Y-InputLabel',
+    componentClassName: 'C9Y-InputLabel',
     ...useThemeProps('InputLabel'),
     ...props,
   })

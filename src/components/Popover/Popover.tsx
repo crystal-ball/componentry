@@ -1,14 +1,14 @@
 import React from 'react'
-import { activeActionBuilder } from '../../utils/active-action-component-builder'
-import { activeContainerBuilder } from '../../utils/active-container-component-builder'
-import { activeContentBuilder } from '../../utils/active-content-component-builder'
+import { createActiveAction } from '../../utils/create-active-action-component'
+import { createActiveContainer } from '../../utils/create-active-container-component'
+import { createActiveContent } from '../../utils/create-active-content-component'
+import { createStaticComponent } from '../../utils/create-static-component'
+import { UtilityProps } from '../../utils/utility-props'
 import {
   ActiveActionBaseProps,
   ActiveContainerBaseProps,
   ActiveContentBaseProps,
-} from '../../utils/base-types'
-import { staticComponent } from '../../utils/static-component-builder'
-import { UtilityProps } from '../../utils/utility-classes'
+} from '../Active/active-types'
 import { Button } from '../Button/Button'
 
 export interface PopoverProps
@@ -66,13 +66,13 @@ export interface Popover {
  * [Popover component 📝](https://componentry.design/components/popover)
  * @experimental
  */
-export const Popover = activeContainerBuilder('Popover', {
+export const Popover = createActiveContainer('Popover', {
   direction: 'right',
   escEvents: true,
   mouseEvents: true,
 }) as Popover
 
-Popover.Action = activeActionBuilder('PopoverAction', {
+Popover.Action = createActiveAction('PopoverAction', {
   aria: { describedby: true },
   defaultAs: Button,
 })
@@ -93,13 +93,13 @@ function PopoverContentElement({
   )
 }
 
-Popover.Content = activeContentBuilder('PopoverContent', {
+Popover.Content = createActiveContent('PopoverContent', {
   aria: { id: true, role: 'tooltip', hidden: true },
   defaultAs: PopoverContentElement,
 })
 
-Popover.Heading = staticComponent<PopoverHeadingProps>('PopoverHeading', {
+Popover.Heading = createStaticComponent<PopoverHeadingProps>('PopoverHeading', {
   as: 'h3',
 })
 
-Popover.Body = staticComponent<PopoverBodyProps>('PopoverBody')
+Popover.Body = createStaticComponent<PopoverBodyProps>('PopoverBody')

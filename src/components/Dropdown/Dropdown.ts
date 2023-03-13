@@ -1,13 +1,13 @@
 import React from 'react'
-import { activeActionBuilder } from '../../utils/active-action-component-builder'
-import { activeContainerBuilder } from '../../utils/active-container-component-builder'
-import { activeContentBuilder } from '../../utils/active-content-component-builder'
+import { createActiveAction } from '../../utils/create-active-action-component'
+import { createActiveContainer } from '../../utils/create-active-container-component'
+import { createActiveContent } from '../../utils/create-active-content-component'
+import { UtilityProps } from '../../utils/utility-props'
 import {
   ActiveActionBaseProps,
   ActiveContainerBaseProps,
   ActiveContentBaseProps,
-} from '../../utils/base-types'
-import { UtilityProps } from '../../utils/utility-classes'
+} from '../Active/active-types'
 import { Button } from '../Button/Button'
 
 export interface DropdownProps
@@ -59,19 +59,19 @@ export interface Dropdown {
  * [Dropdown component 📝](https://componentry.design/components/dropdown)
  * @experimental
  */
-export const Dropdown = activeContainerBuilder('Dropdown', {
+export const Dropdown = createActiveContainer('Dropdown', {
   clickEvents: true,
   direction: 'bottom',
   escEvents: true,
 }) as Dropdown
 
-Dropdown.Action = activeActionBuilder('DropdownAction', {
+Dropdown.Action = createActiveAction('DropdownAction', {
   aria: { expanded: true, haspopup: true, id: true },
   defaultAs: Button,
 })
 
-Dropdown.Content = activeContentBuilder('DropdownContent', {
+Dropdown.Content = createActiveContent('DropdownContent', {
   aria: { labelledby: true, hidden: true },
 })
 
-Dropdown.Item = activeActionBuilder('DropdownItem')
+Dropdown.Item = createActiveAction('DropdownItem')

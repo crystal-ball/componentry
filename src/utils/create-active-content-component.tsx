@@ -1,13 +1,13 @@
 import React, { useContext } from 'react'
+import { ActiveContentBaseProps } from '../components/Active/active-types'
 import { useThemeProps } from '../components/Provider/Provider'
 import { ComponentName } from '../config/config'
 import { useVisible } from '../hooks'
-import { ActiveCtx } from './active-container-component-builder'
 import { ARIAControls, computeARIA } from './aria'
-import { ActiveContentBaseProps } from './base-types'
-import { element } from './element-creator'
+import { ActiveCtx } from './create-active-container-component'
+import { createElement } from './create-element'
 
-interface ActiveContentBuilder {
+interface ActiveContentDefaults {
   /** Map of aria attributes to render with component */
   aria?: ARIAControls
   defaultAs?: React.ElementType
@@ -17,10 +17,13 @@ interface ActiveContentBuilder {
 /**
  * Factory returns custom `<Content />` components defined by the options.
  */
-export function activeContentBuilder<
+export function createActiveContent<
   Name extends ComponentName,
   Props extends ActiveContentBaseProps,
->(displayName: Name, { aria, defaultAs }: ActiveContentBuilder): React.FC<Props> {
+>(
+  displayName: Name,
+  { aria = {}, defaultAs }: ActiveContentDefaults = {},
+): React.FC<Props> {
   function ActiveContent(props: Props) {
     const { guid, ...activeCtx } = useContext(ActiveCtx)
     const {
@@ -38,10 +41,10 @@ export function activeContentBuilder<
 
     if (!active && mounted === 'visible') return null
 
-    return element({
+    return createElement({
       as: defaultAs,
       active: visible,
-      componentCx: `C9Y-${displayName}`,
+      componentClassName: `C9Y-${displayName}`,
       ...computeARIA({
         active,
         activeId,

@@ -5,7 +5,7 @@ import { FlexPropsDefaults } from '../components/Flex/Flex'
 import { GridPropsDefaults } from '../components/Grid/Grid'
 import { PaperPropsDefaults } from '../components/Paper/Paper'
 import { TextPropsDefaults } from '../components/Text/Text'
-import { UtilityPropsBase } from '../utils/utility-classes'
+import { UtilityPropsBase } from '../utils/utility-props'
 
 const utilityPropsLookup: {
   [key in keyof UtilityPropsBase]-?: 1

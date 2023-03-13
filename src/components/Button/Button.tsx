@@ -1,8 +1,8 @@
 import clsx from 'clsx'
 import React, { forwardRef } from 'react'
-import { element } from '../../utils/element-creator'
+import { createElement } from '../../utils/create-element'
 import { DistributiveOmit, MergeTypes } from '../../utils/types'
-import { UtilityProps } from '../../utils/utility-classes'
+import { UtilityProps } from '../../utils/utility-props'
 import { Icon } from '../Icon/Icon'
 import { useThemeProps } from '../Provider/Provider'
 
@@ -71,14 +71,14 @@ export const Button = forwardRef<HTMLElement, ButtonProps>((props, ref) => {
     ...props,
   }
 
-  return element({
+  return createElement({
     ref,
     disabled,
     // If an href is passed, this instance should render an anchor tag
     as: merged.href ? 'a' : 'button',
     // @ts-expect-error - Ensure button works for router library usage even though to isn't in props
     type: merged.href || merged.to ? undefined : 'button',
-    componentCx: [
+    componentClassName: [
       `C9Y-Button-base C9Y-Button-${variant}`,
       {
         [`C9Y-Button-${color}Color`]: color,

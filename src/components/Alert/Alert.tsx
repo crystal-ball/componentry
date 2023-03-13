@@ -1,9 +1,9 @@
 import React from 'react'
 import { useActive, useVisible } from '../../hooks'
-import { element } from '../../utils/element-creator'
-import { staticComponent } from '../../utils/static-component-builder'
+import { createElement } from '../../utils/create-element'
+import { createStaticComponent } from '../../utils/create-static-component'
 import { MergeTypes, Resolve } from '../../utils/types'
-import { UtilityProps } from '../../utils/utility-classes'
+import { UtilityProps } from '../../utils/utility-props'
 import { closeBase } from '../Close/Close'
 import { useThemeProps } from '../Provider/Provider'
 
@@ -69,9 +69,9 @@ export const Alert: Alert = (props) => {
 
   if (dismissible && !active && mounted === 'visible') return null
 
-  return element({
+  return createElement({
     role: 'alert',
-    componentCx: [
+    componentClassName: [
       `C9Y-Alert-base C9Y-Alert-${variant}`,
       {
         [`C9Y-Alert-${color}Color`]: color,
@@ -97,4 +97,4 @@ export const Alert: Alert = (props) => {
 }
 Alert.displayName = 'Alert'
 
-Alert.Close = staticComponent<AlertCloseProps>('AlertClose', closeBase)
+Alert.Close = createStaticComponent<AlertCloseProps>('AlertClose', closeBase)

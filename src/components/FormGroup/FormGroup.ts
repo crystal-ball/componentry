@@ -1,6 +1,6 @@
 import React from 'react'
-import { staticComponent } from '../../utils/static-component-builder'
-import { UtilityProps } from '../../utils/utility-classes'
+import { createStaticComponent } from '../../utils/create-static-component'
+import { UtilityProps } from '../../utils/utility-props'
 
 export interface FormGroupProps
   extends UtilityProps,
@@ -10,4 +10,4 @@ export interface FormGroupProps
  * [FormGroup component 📝](https://componentry.design/components/form-group)
  * @experimental
  */
-export const FormGroup = staticComponent('FormGroup')
+export const FormGroup = createStaticComponent('FormGroup')

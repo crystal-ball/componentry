@@ -1,13 +1,13 @@
 import React from 'react'
-import { activeActionBuilder } from '../../utils/active-action-component-builder'
-import { activeContainerBuilder } from '../../utils/active-container-component-builder'
-import { activeContentBuilder } from '../../utils/active-content-component-builder'
+import { createActiveAction } from '../../utils/create-active-action-component'
+import { createActiveContainer } from '../../utils/create-active-container-component'
+import { createActiveContent } from '../../utils/create-active-content-component'
+import { UtilityProps } from '../../utils/utility-props'
 import {
   ActiveActionBaseProps,
   ActiveContainerBaseProps,
   ActiveContentBaseProps,
-} from '../../utils/base-types'
-import { UtilityProps } from '../../utils/utility-classes'
+} from '../Active/active-types'
 import { Link } from '../Link/Link'
 
 export interface DrawerProps
@@ -47,13 +47,13 @@ export interface Drawer {
  * [Drawer component 📝](https://componentry.design/components/drawer)
  * @experimental
  */
-export const Drawer = activeContainerBuilder('Drawer') as Drawer
+export const Drawer = createActiveContainer('Drawer') as Drawer
 
-Drawer.Action = activeActionBuilder('DrawerAction', {
+Drawer.Action = createActiveAction('DrawerAction', {
   aria: { controls: true, expanded: true },
   defaultAs: Link,
 })
 
-Drawer.Content = activeContentBuilder('DrawerContent', {
+Drawer.Content = createActiveContent('DrawerContent', {
   aria: { id: true, hidden: true },
 })

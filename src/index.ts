@@ -40,11 +40,12 @@ export { Tooltip } from './components/Tooltip/Tooltip'
 // --- Utilities
 export { useActive, useActiveScrollReset, useNoScroll, useVisible } from './hooks'
 export { setupOutlineHandlers } from './utils/dom'
+export { createElement } from './utils/create-element'
 export {
-  createUtilityClasses,
-  initializeUtilityClassesTheme,
+  createUtilityProps,
+  initializeUtilityPropsTheme,
   type UtilityProps,
-} from './utils/utility-classes'
+} from './utils/utility-props'
 
 // --- Tailwind
 export { borderPlugin } from './utils/tailwind-plugins'

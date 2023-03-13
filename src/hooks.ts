@@ -3,7 +3,7 @@
  */
 
 import React, { useContext, useEffect, useLayoutEffect, useRef, useState } from 'react'
-import { ActiveContext, ActiveCtx } from './utils/active-container-component-builder'
+import { ActiveContext, ActiveCtx } from './utils/create-active-container-component'
 
 // --------------------------------------------------------
 // useActive hook

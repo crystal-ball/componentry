@@ -1,7 +1,7 @@
 import { forwardRef } from 'react'
-import { element } from '../../utils/element-creator'
+import { createElement } from '../../utils/create-element'
 import { DistributiveOmit, MergeTypes } from '../../utils/types'
-import { UtilityProps } from '../../utils/utility-classes'
+import { UtilityProps } from '../../utils/utility-props'
 import { useThemeProps } from '../Provider/Provider'
 
 /** Module augmentation interface for overriding component props' types */
@@ -39,9 +39,9 @@ export const Paper = forwardRef<HTMLElement, PaperProps>((props, ref) => {
     ...props,
   }
 
-  return element({
+  return createElement({
     ref,
-    componentCx: ['C9Y-Paper-base', `C9Y-Paper-${variant}`],
+    componentClassName: ['C9Y-Paper-base', `C9Y-Paper-${variant}`],
     ...rest,
   })
 }) as Paper

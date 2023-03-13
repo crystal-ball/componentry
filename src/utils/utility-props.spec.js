@@ -1,14 +1,14 @@
 import { createTheme } from '../theme/theme'
 import { themeDefaults } from '../theme/theme-defaults'
-import { createUtilityClasses, initializeUtilityClassesTheme } from './utility-classes'
+import { createUtilityProps, initializeUtilityPropsTheme } from './utility-props'
 
-describe('createUtilityClasses()', () => {
+describe('createUtilityProps()', () => {
   beforeEach(() => {
-    initializeUtilityClassesTheme(themeDefaults)
+    initializeUtilityPropsTheme(themeDefaults)
   })
 
   it('does not compute undefined values', () => {
-    expect(createUtilityClasses({}).utilityClasses).toBe('')
+    expect(createUtilityProps({}).utilityClassName).toBe('')
   })
 
   // --------------------------------------------------------
@@ -16,23 +16,23 @@ describe('createUtilityClasses()', () => {
 
   it('computes layout classes', () => {
     expect(
-      createUtilityClasses({
+      createUtilityProps({
         position: 'fixed',
         display: 'grid',
         invisible: true,
         visible: true,
         zIndex: 'modal',
-      }).utilityClasses,
+      }).utilityClassName,
     ).toBe('fixed grid invisible visible z-modal')
 
     expect(
-      createUtilityClasses({
+      createUtilityProps({
         position: undefined,
         display: undefined,
         invisible: false,
         visible: false,
         zIndex: undefined,
-      }).utilityClasses,
+      }).utilityClassName,
     ).toBe('')
   })
 
@@ -41,7 +41,7 @@ describe('createUtilityClasses()', () => {
 
   it('computes flex/grid classes', () => {
     expect(
-      createUtilityClasses({
+      createUtilityProps({
         alignContent: 'space-between',
         flexDirection: 'column',
         flexGrow: 0,
@@ -52,7 +52,7 @@ describe('createUtilityClasses()', () => {
         justifyItems: 'center',
         justifySelf: 'start',
         alignSelf: 'start',
-      }).utilityClasses,
+      }).utilityClassName,
     ).toBe(
       'content-between flex-col grow-0 shrink-0 flex-wrap-reverse items-center justify-around justify-items-center justify-self-start self-start',
     )
@@ -67,7 +67,7 @@ describe('createUtilityClasses()', () => {
     // --- MARGIN
     // Theme values should become classes
     spacings.forEach((spacing) => {
-      const computed = createUtilityClasses({
+      const computed = createUtilityProps({
         m: spacing,
         mt: spacing,
         mr: spacing,
@@ -77,14 +77,14 @@ describe('createUtilityClasses()', () => {
         my: spacing,
       })
 
-      expect(computed.utilityClasses).toBe(
+      expect(computed.utilityClassName).toBe(
         `m-${spacing} mt-${spacing} mr-${spacing} mb-${spacing} ml-${spacing} mx-${spacing} my-${spacing}`,
       )
     })
 
     // Non-theme numbers should become styles
     expect(
-      createUtilityClasses({
+      createUtilityProps({
         m: 42,
         mt: 42,
         mr: 42,
@@ -95,8 +95,8 @@ describe('createUtilityClasses()', () => {
       }),
     ).toStrictEqual({
       filteredProps: {},
-      utilityClasses: '',
-      utilityStyles: {
+      utilityClassName: '',
+      utilityStyle: {
         margin: 42,
         marginTop: 42,
         marginRight: 42,
@@ -107,14 +107,14 @@ describe('createUtilityClasses()', () => {
 
     // Non-theme strings should also be styles
     expect(
-      createUtilityClasses({
+      createUtilityProps({
         mx: '1rem',
         my: '2em',
       }),
     ).toStrictEqual({
       filteredProps: {},
-      utilityClasses: '',
-      utilityStyles: {
+      utilityClassName: '',
+      utilityStyle: {
         marginTop: '2em',
         marginRight: '1rem',
         marginBottom: '2em',
@@ -125,7 +125,7 @@ describe('createUtilityClasses()', () => {
     // --- PADDING
     // Theme values should become classes
     spacings.forEach((spacing) => {
-      const computed = createUtilityClasses({
+      const computed = createUtilityProps({
         p: spacing,
         pt: spacing,
         pr: spacing,
@@ -135,14 +135,14 @@ describe('createUtilityClasses()', () => {
         py: spacing,
       })
 
-      expect(computed.utilityClasses).toBe(
+      expect(computed.utilityClassName).toBe(
         `p-${spacing} pt-${spacing} pr-${spacing} pb-${spacing} pl-${spacing} px-${spacing} py-${spacing}`,
       )
     })
 
     // Non-theme numbers should become styles
     expect(
-      createUtilityClasses({
+      createUtilityProps({
         p: 42,
         pt: 42,
         pr: 42,
@@ -153,8 +153,8 @@ describe('createUtilityClasses()', () => {
       }),
     ).toStrictEqual({
       filteredProps: {},
-      utilityClasses: '',
-      utilityStyles: {
+      utilityClassName: '',
+      utilityStyle: {
         padding: 42,
         paddingTop: 42,
         paddingRight: 42,
@@ -165,14 +165,14 @@ describe('createUtilityClasses()', () => {
 
     // Non-theme strings should also be styles
     expect(
-      createUtilityClasses({
+      createUtilityProps({
         px: '1rem',
         py: '2em',
       }),
     ).toStrictEqual({
       filteredProps: {},
-      utilityClasses: '',
-      utilityStyles: {
+      utilityClassName: '',
+      utilityStyle: {
         paddingTop: '2em',
         paddingRight: '1rem',
         paddingBottom: '2em',
@@ -183,28 +183,28 @@ describe('createUtilityClasses()', () => {
     // --- GAP
     // Theme values should become classes
     spacings.forEach((spacing) => {
-      const computed = createUtilityClasses({
+      const computed = createUtilityProps({
         gap: spacing,
         columnGap: spacing,
         rowGap: spacing,
       })
 
-      expect(computed.utilityClasses).toBe(
+      expect(computed.utilityClassName).toBe(
         `gap-${spacing} gap-x-${spacing} gap-y-${spacing}`,
       )
     })
 
     // Non-theme numbers should become styles
     expect(
-      createUtilityClasses({
+      createUtilityProps({
         gap: 42,
         columnGap: 42,
         rowGap: 42,
       }),
     ).toStrictEqual({
       filteredProps: {},
-      utilityClasses: '',
-      utilityStyles: {
+      utilityClassName: '',
+      utilityStyle: {
         gap: 42,
         columnGap: 42,
         rowGap: 42,
@@ -217,32 +217,32 @@ describe('createUtilityClasses()', () => {
 
   it('computes sizing utility classes', () => {
     expect(
-      createUtilityClasses({
+      createUtilityProps({
         height: 'screen',
         minHeight: 'screen',
         maxHeight: 'screen',
         width: 'full',
         minWidth: 'full',
         maxWidth: 'full',
-      }).utilityClasses,
+      }).utilityClassName,
     ).toBe('h-screen min-h-screen max-h-screen w-full min-w-full max-w-full')
 
     expect(
-      createUtilityClasses({
+      createUtilityProps({
         height: 42,
         width: 42,
-      }).utilityStyles,
+      }).utilityStyle,
     ).toStrictEqual({ height: 42, width: 42 })
 
     expect(
-      createUtilityClasses({
+      createUtilityProps({
         height: undefined,
         minHeight: undefined,
         maxHeight: undefined,
         width: undefined,
         minWidth: undefined,
         maxWidth: undefined,
-      }).utilityClasses,
+      }).utilityClassName,
     ).toBe('')
   })
 
@@ -251,7 +251,7 @@ describe('createUtilityClasses()', () => {
 
   it('computes typography utility classes', () => {
     expect(
-      createUtilityClasses({
+      createUtilityProps({
         bold: true,
         italic: true,
         fontFamily: 'mono',
@@ -262,13 +262,13 @@ describe('createUtilityClasses()', () => {
         textAlign: 'center',
         letterSpacing: 'tighter',
         textTransform: 'uppercase',
-      }).utilityClasses,
+      }).utilityClassName,
     ).toBe(
       'font-bold italic font-mono font-normal leading-none text-primary-100 text-sm text-center tracking-tighter uppercase',
     )
 
     expect(
-      createUtilityClasses({
+      createUtilityProps({
         bold: false,
         italic: false,
         fontFamily: undefined,
@@ -279,7 +279,7 @@ describe('createUtilityClasses()', () => {
         textAlign: undefined,
         letterSpacing: undefined,
         textTransform: undefined,
-      }).utilityClasses,
+      }).utilityClassName,
     ).toBe('')
   })
 
@@ -288,39 +288,39 @@ describe('createUtilityClasses()', () => {
 
   it('computes background utility classes', () => {
     expect(
-      createUtilityClasses({
+      createUtilityProps({
         backgroundColor: 'primary.100',
-      }).utilityClasses,
+      }).utilityClassName,
     ).toBe('bg-primary-100')
 
     expect(
-      createUtilityClasses({
+      createUtilityProps({
         backgroundColor: 'primary-100',
-      }).utilityClasses,
+      }).utilityClassName,
     ).toBe('bg-primary-100')
 
     expect(
-      createUtilityClasses({
+      createUtilityProps({
         backgroundColor: '#ff428e',
-      }).utilityStyles,
+      }).utilityStyle,
     ).toStrictEqual({
       backgroundColor: '#ff428e',
     })
 
     expect(
-      createUtilityClasses({
+      createUtilityProps({
         backgroundColor: 'primary.oops',
       }),
     ).toStrictEqual({
-      utilityClasses: '',
-      utilityStyles: { backgroundColor: 'primary.oops' },
+      utilityClassName: '',
+      utilityStyle: { backgroundColor: 'primary.oops' },
       filteredProps: {},
     })
 
     expect(
-      createUtilityClasses({
+      createUtilityProps({
         backgroundColor: undefined,
-      }).utilityClasses,
+      }).utilityClassName,
     ).toBe('')
   })
 
@@ -330,27 +330,27 @@ describe('createUtilityClasses()', () => {
         surface: '#eee',
       },
     })
-    initializeUtilityClassesTheme(theme)
+    initializeUtilityPropsTheme(theme)
 
     expect(
-      createUtilityClasses({
+      createUtilityProps({
         backgroundColor: 'surface',
       }),
     ).toStrictEqual({
-      utilityClasses: 'bg-surface',
-      utilityStyles: undefined,
+      utilityClassName: 'bg-surface',
+      utilityStyle: undefined,
       filteredProps: {},
     })
 
     // Assert that theme has colors, but that theme.backgroundColor is preferred
     expect(theme.colors.primary[100]).toBeTruthy()
     expect(
-      createUtilityClasses({
+      createUtilityProps({
         backgroundColor: 'primary.100',
       }),
     ).toStrictEqual({
-      utilityClasses: '',
-      utilityStyles: { backgroundColor: 'primary.100' },
+      utilityClassName: '',
+      utilityStyle: { backgroundColor: 'primary.100' },
       filteredProps: {},
     })
   })
@@ -360,7 +360,7 @@ describe('createUtilityClasses()', () => {
 
   it('computes border utility classes', () => {
     expect(
-      createUtilityClasses({
+      createUtilityProps({
         border: true,
         borderTop: true,
         borderRight: true,
@@ -370,13 +370,13 @@ describe('createUtilityClasses()', () => {
         borderColor: 'primary',
         borderRadius: 'full',
         radius: 'lg',
-      }).utilityClasses,
+      }).utilityClassName,
     ).toBe(
       'border border-t border-r border-b border-l border-8 border-primary rounded-full rounded-lg',
     )
 
     expect(
-      createUtilityClasses({
+      createUtilityProps({
         border: false,
         borderTop: false,
         borderRight: false,
@@ -386,7 +386,7 @@ describe('createUtilityClasses()', () => {
         borderColor: undefined,
         borderRadius: undefined,
         radius: undefined,
-      }).utilityClasses,
+      }).utilityClassName,
     ).toBe('')
   })
 
@@ -395,15 +395,15 @@ describe('createUtilityClasses()', () => {
 
   it('computes effects utility classes', () => {
     expect(
-      createUtilityClasses({
+      createUtilityProps({
         boxShadow: true,
-      }).utilityClasses,
+      }).utilityClassName,
     ).toBe('shadow')
 
     expect(
-      createUtilityClasses({
+      createUtilityProps({
         boxShadow: undefined,
-      }).utilityClasses,
+      }).utilityClassName,
     ).toBe('')
   })
 
@@ -411,16 +411,16 @@ describe('createUtilityClasses()', () => {
   // STATE
 
   it('computes state classes', () => {
-    expect(createUtilityClasses({ active: true, disabled: true }).utilityClasses).toBe(
+    expect(createUtilityProps({ active: true, disabled: true }).utilityClassName).toBe(
       'C9Y-active C9Y-disabled',
     )
     expect(
-      createUtilityClasses({ active: true, disabled: true }).filteredProps,
+      createUtilityProps({ active: true, disabled: true }).filteredProps,
     ).toStrictEqual({
       disabled: true,
     })
 
-    expect(createUtilityClasses({ active: false, disabled: false }).utilityClasses).toBe(
+    expect(createUtilityProps({ active: false, disabled: false }).utilityClassName).toBe(
       '',
     )
   })

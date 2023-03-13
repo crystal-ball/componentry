@@ -5,7 +5,7 @@
  * @remarks
  * This file is used for module augmentation of utility props, eg:
  *
- * `declare module 'componentry/types/utils/utility-classes' { }`
+ * `declare module 'componentry/types/utils/utility-props' { }`
  */
 
 import React from 'react'
@@ -225,26 +225,26 @@ const spacingCSSProperties = {
 let theme = themeDefaults
 
 /**
- * Setup function for initializing the utility classes with a custom theme.
+ * Setup function for defining the theme referenced by the utility props module.
  * @remarks
  * This setup is only required if you're not using the Theme provider.
  */
-export function initializeUtilityClassesTheme<CustomTheme extends Theme>(
+export function initializeUtilityPropsTheme<CustomTheme extends Theme>(
   customTheme: CustomTheme,
 ): void {
   theme = customTheme
 }
 
 /**
- * `createUtilityClasses` filters and transforms Componentry utility props into
- * utility classes.
+ * `createUtilityProps` filters and transforms any props into
+ * Componentry utility classes and styles.
  * @example
  * ```tsx
- * const { filteredProps, utilityClasses, utilityStyles } = createUtilityClasses(props)
+ * const { filteredProps, utilityClassName, utilityStyle } = createUtilityProps(props)
  * return (
  *   <div
- *     className={clsx('some-custom-class', utilityClasses)}
- *     styles={utilityStyles}
+ *     className={clsx('some-custom-class', utilityClassName)}
+ *     styles={utilityStyle}
  *     {...filteredProps}
  *   >
  *     {children}
@@ -252,9 +252,7 @@ export function initializeUtilityClassesTheme<CustomTheme extends Theme>(
  * )
  * ```
  */
-export function createUtilityClasses<Props extends { [prop: string]: any }>(
-  props: Props,
-) {
+export function createUtilityProps<Props extends { [prop: string]: any }>(props: Props) {
   const classes: string[] = []
   const styles: React.CSSProperties = {}
   const filteredProps: { [prop: string]: any } = {}
@@ -531,8 +529,8 @@ export function createUtilityClasses<Props extends { [prop: string]: any }>(
 
   return {
     filteredProps,
-    utilityClasses: classes.join(' '),
-    utilityStyles: Object.keys(styles).length === 0 ? undefined : styles,
+    utilityClassName: classes.join(' '),
+    utilityStyle: Object.keys(styles).length === 0 ? undefined : styles,
   }
 }
 

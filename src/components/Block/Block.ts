@@ -1,7 +1,7 @@
 import React, { forwardRef } from 'react'
-import { element } from '../../utils/element-creator'
+import { createElement } from '../../utils/create-element'
 import { DistributiveOmit, MergeTypes } from '../../utils/types'
-import { UtilityProps } from '../../utils/utility-classes'
+import { UtilityProps } from '../../utils/utility-props'
 import { useThemeProps } from '../Provider/Provider'
 
 /** Module augmentation interface for overriding component props' types */
@@ -31,7 +31,7 @@ export interface Block {
 }
 
 export const Block = forwardRef<HTMLElement, BlockProps>((props, ref) => {
-  return element({
+  return createElement({
     ref,
     ...useThemeProps('Block'),
     ...props,

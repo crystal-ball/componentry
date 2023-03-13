@@ -33,7 +33,4 @@ export { type PaperStyles } from './components/Paper/Paper.styles'
 export { type TextPropsDefaults, type TextPropsOverrides } from './components/Text/Text'
 export { type TextStyles } from './components/Text/Text.styles'
 
-export {
-  type UtilityPropsBase,
-  type UtilityPropsOverrides,
-} from './utils/utility-classes'
+export { type UtilityPropsBase, type UtilityPropsOverrides } from './utils/utility-props'

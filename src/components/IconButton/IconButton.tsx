@@ -1,7 +1,7 @@
 import React, { forwardRef } from 'react'
-import { element } from '../../utils/element-creator'
+import { createElement } from '../../utils/create-element'
 import { DistributiveOmit, MergeTypes } from '../../utils/types'
-import { UtilityProps } from '../../utils/utility-classes'
+import { UtilityProps } from '../../utils/utility-props'
 import { Icon } from '../Icon/Icon'
 import { useThemeProps } from '../Provider/Provider'
 
@@ -63,14 +63,14 @@ export const IconButton = forwardRef<HTMLElement, IconButtonProps>((props, ref) 
     ...props,
   }
 
-  return element({
+  return createElement({
     ref,
     disabled,
     // If an href is passed, this instance should render an anchor tag
     as: merged.href ? 'a' : 'button',
     // @ts-expect-error - Ensure button works for router library usage even though to isn't in props
     type: merged.href || merged.to ? undefined : 'button',
-    componentCx: [
+    componentClassName: [
       `C9Y-IconButton-base C9Y-IconButton-${variant}`,
       {
         [`C9Y-IconButton-${color}Color`]: color,
