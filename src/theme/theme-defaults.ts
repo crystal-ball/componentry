@@ -95,8 +95,24 @@ export const themeDefaults = {
   },
 
   // --- FLEX/GRID
+  flexBasis: { auto: 'auto', px: 'px', full: 'full' },
   flexGrow: { DEFAULT: 1, 0: 0 },
   flexShrink: { DEFAULT: 1, 0: 0 },
+  gridColumn: {
+    auto: 'auto',
+    'span-full': 'span-full',
+    'start-auto': 'start-auto',
+    'end-auto': 'end-auto',
+  },
+  gridRow: {
+    auto: 'auto',
+    'span-full': 'span-full',
+    'start-auto': 'start-auto',
+    'end-auto': 'end-auto',
+  },
+  gridTemplateColumns: { none: 'none' },
+  gridTemplateRows: { none: 'none' },
+  order: { first: 'first', last: 'last', none: 'none' },
 
   // --- SPACING
   spacing: {

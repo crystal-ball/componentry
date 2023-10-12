@@ -65,6 +65,8 @@ export interface UtilityPropsBase {
   alignItems?: 'start' | 'end' | 'center' | 'baseline' | 'stretch'
   /** Sets an `align-self` style */
   alignSelf?: 'start' | 'end' | 'center' | 'baseline' | 'stretch' | 'auto'
+  /** Sets a `flex-basis` style */
+  flexBasis?: 'auto' | 'px' | 'full'
   /** Sets a `flex-direction` style */
   flexDirection?: 'column' | 'column-reverse' | 'row-reverse' | 'row'
   /** Sets a `flex-grow` style */
@@ -73,6 +75,14 @@ export interface UtilityPropsBase {
   flexShrink?: keyof UtilityPropsForTheme<Theme['flexShrink']>
   /** Sets a `flex-wrap` style */
   flexWrap?: 'wrap' | 'nowrap' | 'wrap-reverse'
+  /** Sets a `grid-template-columns` style */
+  gridTemplateColumns?: string
+  /** Sets a `grid-column` style */
+  gridColumn?: string
+  /** Sets a `grid-template-rows` style */
+  gridTemplateRows?: string
+  /** Sets a `grid-row` style */
+  gridRow?: string
   /** Sets a `justify-content` style */
   justifyContent?:
     | 'start'
@@ -85,6 +95,8 @@ export interface UtilityPropsBase {
   justifyItems?: 'start' | 'end' | 'center' | 'stretch'
   /** Sets a `justify-self` style */
   justifySelf?: 'start' | 'end' | 'center' | 'stretch' | 'auto'
+  /** Sets an `order` style */
+  order?: 'first' | 'last' | 'none'
 
   // --- SPACING
   /** Sets a `gap` style */
@@ -284,6 +296,17 @@ export function createUtilityProps<Props extends { [prop: string]: any }>(props:
       case 'alignContent':
         classes.push('content-' + value.replace('space-', ''))
         break
+      case 'alignItems':
+        classes.push('items-' + value)
+        break
+      case 'alignSelf':
+        classes.push('self-' + value)
+        break
+
+      case 'flexBasis':
+        if (value in theme.flexBasis) classes.push('basis-' + value)
+        else styles.flexBasis = value
+        break
       case 'flexDirection':
         classes.push('flex-' + value.replace('column', 'col'))
         break
@@ -300,9 +323,24 @@ export function createUtilityProps<Props extends { [prop: string]: any }>(props:
       case 'flexWrap':
         classes.push('flex-' + value)
         break
-      case 'alignItems':
-        classes.push('items-' + value)
+
+      case 'gridColumn':
+        if (value in theme.gridColumn) classes.push('col-' + value)
+        else styles.gridColumn = value
         break
+      case 'gridRow':
+        if (value in theme.gridRow) classes.push('row-' + value)
+        else styles.gridRow = value
+        break
+      case 'gridTemplateColumns':
+        if (value in theme.gridTemplateColumns) classes.push('grid-cols-' + value)
+        else styles.gridTemplateColumns = value
+        break
+      case 'gridTemplateRows':
+        if (value in theme.gridTemplateRows) classes.push('grid-rows-' + value)
+        else styles.gridTemplateRows = value
+        break
+
       case 'justifyContent':
         classes.push('justify-' + value.replace('space-', ''))
         break
@@ -312,8 +350,10 @@ export function createUtilityProps<Props extends { [prop: string]: any }>(props:
       case 'justifySelf':
         classes.push('justify-self-' + value)
         break
-      case 'alignSelf':
-        classes.push('self-' + value)
+
+      case 'order':
+        if (value in theme.order) classes.push('order-' + value)
+        else styles.order = value
         break
 
       // SPACING
