@@ -43,19 +43,49 @@ describe('createUtilityProps()', () => {
     expect(
       createUtilityProps({
         alignContent: 'space-between',
+        alignItems: 'center',
+        alignSelf: 'start',
+        flexBasis: 'auto',
         flexDirection: 'column',
         flexGrow: 0,
         flexShrink: 0,
         flexWrap: 'wrap-reverse',
-        alignItems: 'center',
+        gridColumn: 'auto',
+        gridRow: 'auto',
+        gridTemplateColumns: 'none',
+        gridTemplateRows: 'none',
         justifyContent: 'space-around',
         justifyItems: 'center',
         justifySelf: 'start',
-        alignSelf: 'start',
+        order: 'first',
       }).utilityClassName,
     ).toBe(
-      'content-between flex-col grow-0 shrink-0 flex-wrap-reverse items-center justify-around justify-items-center justify-self-start self-start',
+      'content-between items-center self-start basis-auto flex-col grow-0 shrink-0 flex-wrap-reverse col-auto row-auto grid-cols-none grid-rows-none justify-around justify-items-center justify-self-start order-first',
     )
+  })
+
+  it('computes flex/grid classes with numeric values', () => {
+    expect(
+      createUtilityProps({
+        flexBasis: 5,
+        flexGrow: 5,
+        flexShrink: 5,
+        gridColumn: '1 / 3',
+        gridRow: '1 / 3',
+        gridTemplateColumns: 'repeat(3, 1fr)',
+        gridTemplateRows: 'repeat(3, 1fr)',
+        order: 1,
+      }).utilityStyle,
+    ).toStrictEqual({
+      flexBasis: 5,
+      flexGrow: 5,
+      flexShrink: 5,
+      gridColumn: '1 / 3',
+      gridRow: '1 / 3',
+      gridTemplateColumns: 'repeat(3, 1fr)',
+      gridTemplateRows: 'repeat(3, 1fr)',
+      order: 1,
+    })
   })
 
   // --------------------------------------------------------
