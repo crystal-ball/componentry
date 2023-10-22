@@ -441,17 +441,39 @@ describe('createUtilityProps()', () => {
   // STATE
 
   it('computes state classes', () => {
-    expect(createUtilityProps({ active: true, disabled: true }).utilityClassName).toBe(
-      'C9Y-active C9Y-disabled',
-    )
     expect(
-      createUtilityProps({ active: true, disabled: true }).filteredProps,
+      createUtilityProps({
+        active: true,
+        disabled: true,
+        focused: true,
+        hovered: true,
+        pressed: true,
+        selected: true,
+      }).utilityClassName,
+    ).toBe('C9Y-active C9Y-disabled C9Y-focused C9Y-hovered C9Y-pressed C9Y-selected')
+    expect(
+      createUtilityProps({
+        active: true,
+        disabled: true,
+        focused: true,
+        hovered: true,
+        pressed: true,
+        selected: true,
+      }).filteredProps,
     ).toStrictEqual({
       disabled: true,
+      selected: true,
     })
 
-    expect(createUtilityProps({ active: false, disabled: false }).utilityClassName).toBe(
-      '',
-    )
+    expect(
+      createUtilityProps({
+        active: false,
+        disabled: false,
+        focused: false,
+        hovered: false,
+        pressed: false,
+        selected: false,
+      }).utilityClassName,
+    ).toBe('')
   })
 })

@@ -201,10 +201,18 @@ export interface UtilityPropsBase {
   boxShadow?: keyof UtilityPropsForTheme<Theme['boxShadow']>
 
   // --- STATES
-  /** Sets an active style */
+  /** @deprecated Use `pressed` */
   active?: boolean | string
   /** Sets a disabled style */
   disabled?: boolean
+  /** Sets a focused style */
+  focused?: boolean
+  /** Sets a hovered style */
+  hovered?: boolean
+  /** Sets a pressed style */
+  pressed?: boolean
+  /** Sets a selected style */
+  selected?: boolean
 }
 
 /** Componentry utility props for including utility styles. */
@@ -549,14 +557,26 @@ export function createUtilityProps<Props extends { [prop: string]: any }>(props:
         else styles.boxShadow = value
         break
 
-      // STATES (eg https://mui.com/customization/how-to-customize/#state-classes)
+      // STATES (see styles/states.styles.ts)
       case 'active':
         classes.push('C9Y-active')
         break
       case 'disabled':
         classes.push('C9Y-disabled')
-        // Pass through disabled to final element as it's a valid HTML attribute
-        filteredProps.disabled = true
+        filteredProps.disabled = true // Pass through selected to final element for HTML attributes
+        break
+      case 'focused':
+        classes.push('C9Y-focused')
+        break
+      case 'hovered':
+        classes.push('C9Y-hovered')
+        break
+      case 'pressed':
+        classes.push('C9Y-pressed')
+        break
+      case 'selected':
+        classes.push('C9Y-selected')
+        filteredProps.selected = true // Pass through selected to final element for HTML attributes
         break
 
       default:
