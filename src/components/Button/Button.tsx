@@ -1,9 +1,7 @@
-import clsx from 'clsx'
-import React, { forwardRef } from 'react'
+import React, { Children, forwardRef } from 'react'
 import { createElement } from '../../utils/create-element'
 import { MergeTypes, Resolve } from '../../utils/types'
 import { ElementTypeProps, UtilityProps } from '../../utils/utility-props'
-import { Icon } from '../Icon/Icon'
 import { useThemeProps } from '../Provider/Provider'
 
 /** Module augmentation interface for overriding component props' types */
@@ -14,18 +12,8 @@ export interface ButtonPropsDefaults {
   variant?: 'filled' | 'outlined'
   /** Theme color for display variant */
   color?: 'primary'
-  /** Disables the element, preventing mouse and keyboard events */
-  disabled?: boolean
-  /** Icon positioned after button content */
-  endIcon?: string | React.ReactElement
-  /** @deprecated use `width="full" */
-  fullWidth?: boolean
-  /** HTML element href */
-  href?: string
   /** Display size */
   size?: 'small' | 'large'
-  /** Icon positioned before button content */
-  startIcon?: string | React.ReactElement
 }
 
 export type ButtonProps<As extends React.ElementType = 'button'> = Resolve<
@@ -55,11 +43,7 @@ export const Button = forwardRef<HTMLElement, ButtonProps>((props, ref) => {
   const {
     variant = 'filled',
     children,
-    disabled,
-    startIcon,
-    endIcon,
     color,
-    fullWidth,
     size,
     ...merged
   } = {
@@ -69,42 +53,19 @@ export const Button = forwardRef<HTMLElement, ButtonProps>((props, ref) => {
 
   return createElement({
     ref,
-    disabled,
-    // If an href is passed, this instance should render an anchor tag
-    as: merged.href ? 'a' : 'button',
-    // @ts-expect-error - Ensure button works for router library usage even though to isn't in props
-    type: merged.href || merged.to ? undefined : 'button',
+    as: 'button',
+    type: 'button',
     componentClassName: [
       `C9Y-Button-base C9Y-Button-${variant}`,
       {
         [`C9Y-Button-${color}Color`]: color,
         [`C9Y-Button-${size}Size`]: size,
-        'w-full': fullWidth,
       },
     ],
-    children: (
-      <>
-        {startIcon && (
-          <span
-            className={clsx('C9Y-Button-icon C9Y-Button-startIcon', {
-              [`C9Y-Button-${size}SizeIcon`]: size,
-            })}
-          >
-            {typeof startIcon === 'string' ? <Icon id={startIcon} /> : startIcon}
-          </span>
-        )}
-        {children}
-        {endIcon && (
-          <span
-            className={clsx('C9Y-Button-icon C9Y-Button-endIcon', {
-              [`C9Y-Button-${size}SizeIcon`]: size,
-            })}
-          >
-            {typeof endIcon === 'string' ? <Icon id={endIcon} /> : endIcon}
-          </span>
-        )}
-      </>
-    ),
+    children: Children.map(children, (child) => {
+      // Wrap string children in a span so that CSS child selectors work
+      return typeof child === 'string' ? <span>{child}</span> : child
+    }),
     ...merged,
   })
 }) as Button
