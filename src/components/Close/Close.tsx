@@ -21,7 +21,8 @@ export const closeBase: CloseProps & { componentClassName: string } = {
 }
 
 /**
- * [Close component 📝](https://componentry.design/components/close)
+ * Close provides an accessible close target for the Alert and Modal components.
  * @experimental
+ * @see [Close component 📝](https://componentry.design/components/close)
  */
 export const Close = createStaticComponent<CloseProps>('Close', closeBase)

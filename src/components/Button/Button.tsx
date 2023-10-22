@@ -18,7 +18,7 @@ export interface ButtonPropsDefaults {
   disabled?: boolean
   /** Icon positioned after button content */
   endIcon?: string | React.ReactElement
-  /** Toggles full width element layout */
+  /** @deprecated use `width="full" */
   fullWidth?: boolean
   /** HTML element href */
   href?: string

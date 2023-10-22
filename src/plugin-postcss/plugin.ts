@@ -1,4 +1,4 @@
-import postcss, { ChildNode, PluginCreator } from 'postcss'
+import postcss, { ChildNode, PluginCreator, Root } from 'postcss'
 import postcssJs from 'postcss-js'
 import postcssNested from 'postcss-nested'
 
@@ -25,13 +25,13 @@ export const plugin: PluginCreator<Record<string, never>> = () => {
       // Transforms at-rules like `@componentry button;` into component styles
       componentry: (atRule) => {
         const directiveTarget = atRule.params // params will be the component name, eg "button" in "@componentry button;"
-        let nodes: ChildNode[] = []
+        let processedNodes: Array<ChildNode | Root> = []
 
         if (directiveTarget === 'foundation') {
           const ast = processor.process(foundation, {
             parser: postcssJs,
           })
-          ;({ nodes } = ast.root)
+          processedNodes = ast.root.nodes
         } else if (directiveTarget === 'utilities') {
           // Convenience rule for including all utility styles, iterate through
           // style object to assemble all nodes
@@ -39,7 +39,7 @@ export const plugin: PluginCreator<Record<string, never>> = () => {
             const ast = processor.process(styles, {
               parser: postcssJs,
             })
-            nodes = nodes.concat(ast.root.nodes)
+            processedNodes = processedNodes.concat(ast.root.nodes)
           })
         } else if (directiveTarget === 'components') {
           // Convenience rule for including all component styles, iterate through
@@ -48,7 +48,7 @@ export const plugin: PluginCreator<Record<string, never>> = () => {
             const ast = processor.process(styles, {
               parser: postcssJs,
             })
-            nodes = nodes.concat(ast.root.nodes)
+            processedNodes = processedNodes.concat(ast.root.nodes)
           })
         } else if (directiveTarget in components) {
           // The component styles should be found, and we replace the
@@ -58,7 +58,7 @@ export const plugin: PluginCreator<Record<string, never>> = () => {
           const ast = processor.process(components[directiveTarget], {
             parser: postcssJs,
           })
-          ;({ nodes } = ast.root)
+          processedNodes = ast.root.nodes
         } else {
           // Fail fast for bad directives, eg "@componentry ohno;"
           throw new Error(`Unknown @componentry param: ${atRule.params}`)
@@ -66,11 +66,11 @@ export const plugin: PluginCreator<Record<string, never>> = () => {
 
         // Attach @rule source for proper source map handling
         // https://github.com/postcss/postcss/blob/main/docs/guidelines/plugin.md#24-set-nodesource-for-new-nodes
-        nodes.forEach((node) => {
+        processedNodes.forEach((node) => {
           node.source = atRule.source // eslint-disable-line no-param-reassign
         })
 
-        atRule.replaceWith(...nodes)
+        atRule.replaceWith(...processedNodes)
       },
     },
   }

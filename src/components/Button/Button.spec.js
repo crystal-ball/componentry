@@ -15,7 +15,7 @@ describe('<Button/>', () => {
   // 7. Test passing size provides $variant-size
   // 8. Test passing disabled
 
-  it('When no props are passed, then defaults should be rendered', () => {
+  it('when no props are passed, then defaults should be rendered', () => {
     render(<Button>Button</Button>)
 
     // By default the button should have type button for a11y
@@ -26,19 +26,19 @@ describe('<Button/>', () => {
     // ...there shouldn't be any other classes
   })
 
-  it('When `type` is passed, then it overrides the default', () => {
+  it('when `type` is passed, then it overrides the default', () => {
     render(<Button type='submit'>Button</Button>)
 
     expect(screen.getByRole('button')).toHaveAttribute('type', 'submit')
   })
 
-  it('When `variant` is passed, then it should be used as base className value', () => {
+  it('when `variant` is passed, then it should be used as base className value', () => {
     render(<Button variant='outlined'>Button</Button>)
 
     expect(screen.getByRole('button')).toHaveClass('C9Y-Button-base C9Y-Button-outlined')
   })
 
-  it('When `color` is passed, then the color className should render', () => {
+  it('when `color` is passed, then the color className should render', () => {
     render(
       <>
         <Button color='primary'>Button</Button>
@@ -56,7 +56,7 @@ describe('<Button/>', () => {
     )
   })
 
-  it('When `size` is passed, then the size className should render', () => {
+  it('when `size` is passed, then the size className should render', () => {
     render(
       <>
         <Button size='small'>Button</Button>
@@ -76,7 +76,7 @@ describe('<Button/>', () => {
 })
 
 describe('<Button /> - Icons', () => {
-  it('Renders React elements passed as buttons', () => {
+  it('renders React elements passed as buttons', () => {
     render(
       <Button
         startIcon={<Icon id='code' data-special='very' data-testid='custom-one' />}
@@ -90,7 +90,7 @@ describe('<Button /> - Icons', () => {
     expect(screen.getByTestId('custom-two').dataset.awesome).toBe('much')
   })
 
-  it('Renders Icon components for string values', () => {
+  it('renders Icon components for string values', () => {
     render(
       <Button startIcon='code' endIcon='code'>
         Componentry

@@ -9,7 +9,7 @@ describe('<IconButton/>', () => {
   elementTests(IconButton)
 
   // --- RENDER
-  it('Renders React element values', () => {
+  it('renders React element values', () => {
     render(
       <IconButton
         icon={<Icon id='code' data-special='very' data-testid='custom-element' />}
@@ -19,7 +19,7 @@ describe('<IconButton/>', () => {
     expect(screen.getByTestId('custom-element').dataset.special).toBe('very')
   })
 
-  it('Renders Icon components for string values', () => {
+  it('renders Icon components for string values', () => {
     render(<IconButton icon='code' />)
 
     expect(screen.getByLabelText('code')).toHaveClass(
@@ -28,7 +28,7 @@ describe('<IconButton/>', () => {
   })
 
   // --- BUTTON ATTRS
-  it('When no props are passed, then defaults should be rendered', () => {
+  it('when no props are passed, then defaults should be rendered', () => {
     render(<IconButton icon='code' />)
 
     // By default the button should have type button for a11y
@@ -39,13 +39,13 @@ describe('<IconButton/>', () => {
     )
   })
 
-  it('When `type` is passed, then it overrides the default', () => {
+  it('when `type` is passed, then it overrides the default', () => {
     render(<IconButton icon='code' type='submit' />)
 
     expect(screen.getByRole('button')).toHaveAttribute('type', 'submit')
   })
 
-  it('When `variant` is passed, then it should be used as base className value', () => {
+  it('when `variant` is passed, then it should be used as base className value', () => {
     render(<IconButton variant='outlined' icon='code' />)
 
     expect(screen.getByRole('button')).toHaveClass(
@@ -53,7 +53,7 @@ describe('<IconButton/>', () => {
     )
   })
 
-  it('When `color` is passed, then the color className should render', () => {
+  it('when `color` is passed, then the color className should render', () => {
     render(<IconButton icon='code' color='primary' />)
 
     expect(screen.getByRole('button')).toHaveClass(
@@ -61,7 +61,7 @@ describe('<IconButton/>', () => {
     )
   })
 
-  it('When `size` is passed, then the size className should render', () => {
+  it('when `size` is passed, then the size className should render', () => {
     render(<IconButton icon='code' size='small' />)
 
     expect(screen.getByRole('button')).toHaveClass(

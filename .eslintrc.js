@@ -1,7 +1,7 @@
 'use strict'
 
 module.exports = {
-  extends: 'eloquence/react',
+  extends: ['eloquence/react', 'plugin:storybook/recommended'],
 
   rules: {
     // Link and Button work for either
@@ -16,10 +16,26 @@ module.exports = {
 
   overrides: [
     {
-      files: ['src/plugin-babel/**/*', 'src/test/**/*'],
+      files: ['src/plugin-babel/**/*'],
       rules: {
         'no-console': 'off',
         'import/no-extraneous-dependencies': 'off',
+      },
+    },
+    {
+      files: ['src/test/**/*', 'src/**/*.spec.js'],
+      rules: {
+        'no-console': 'off',
+        'import/no-extraneous-dependencies': 'off',
+        'jest/max-expects': 'off',
+        'jest/no-hooks': 'off',
+        'jest/require-hook': 'off',
+      },
+    },
+    {
+      files: ['src/**/*.stories.tsx'],
+      rules: {
+        'no-console': 'off',
       },
     },
     {

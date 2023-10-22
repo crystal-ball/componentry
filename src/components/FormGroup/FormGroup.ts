@@ -7,7 +7,8 @@ export interface FormGroupProps
     React.ComponentPropsWithoutRef<'div'> {}
 
 /**
- * [FormGroup component 📝](https://componentry.design/components/form-group)
+ * Form groups provide a control point for standardizing spacing within forms.
  * @experimental
+ * @see [FormGroup component 📝](https://componentry.design/components/form-group)
  */
 export const FormGroup = createStaticComponent('FormGroup')
