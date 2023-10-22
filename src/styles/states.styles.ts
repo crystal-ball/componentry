@@ -1,39 +1,53 @@
 import { type CSSProperties } from 'react'
 
 /**
- * Classes that _MAY_ be applied to components to represent their current state.
+ * Global states styles
  *
- * NOTE - Componentry does not yet consistently apply these classes for all states,
- * but they are provided here to document what classes _should_ be used to represent
- * these states.
- *
- * Ref:
- * - https://developer.mozilla.org/en-US/docs/Web/CSS/Pseudo-classes
- * - https://developer.mozilla.org/en-US/docs/Web/CSS/:focus-visible
+ * Individual components may use these styles to represent their current state.
+ * The global styles are provided here to document what styles _should_ be used.
  */
 export const statesStyles = (): StatesStyles => ({
+  // Actions states
+  '.C9Y-disabled': {},
+  '.C9Y-focused': {},
+  '.C9Y-hovered': {},
+  '.C9Y-pressed': {},
+  '.C9Y-selected': {},
+
+  // Validation states
+  '.C9Y-valid': {},
+  '.C9Y-invalid': {},
+
+  // Deprecated
   '.C9Y-active': {},
   '.C9Y-hover': {},
   '.C9Y-focus': {},
-  '.C9Y-invalid': {},
-  '.C9Y-disabled': {},
   '.C9Y-checked': {},
-  '.C9Y-selected': {},
 })
 
 export interface StatesStyles {
-  /** Class applied when element is being clicked  */
-  '.C9Y-active': CSSProperties
-  /** Class applied when element is being hovered */
-  '.C9Y-hover': CSSProperties
-  /** Class applied when element has been clicked */
-  '.C9Y-focus': CSSProperties
-  /** Class applied when an element whose contents fail to validate */
-  '.C9Y-invalid': CSSProperties
-  /** Class applied when an element can't be activated or receive focus */
+  /** Indicates element interactions are disabled  */
   '.C9Y-disabled': CSSProperties
-  /** Class applied when element has been checked or toggled to an on state */
-  '.C9Y-checked': CSSProperties
-  /** Class applied when element has been selected */
+  /** Indicates an element has focus */
+  '.C9Y-focused': CSSProperties
+  /** Indicates an element is being hovered */
+  '.C9Y-hovered': CSSProperties
+  /** Indicates an element is being clicked or pressed  */
+  '.C9Y-pressed': CSSProperties
+  /** Indicates an element an element has been selected */
   '.C9Y-selected': CSSProperties
+
+  /** Indicates an element's contents failed to validate */
+  '.C9Y-invalid': CSSProperties
+  /** Indicates an element's contents validated successfully */
+  '.C9Y-valid': CSSProperties
+
+  /** @deprecated use C9Y-pressed  */
+  '.C9Y-active': CSSProperties
+  /** @deprecated use C9Y-hovered */
+  '.C9Y-hover': CSSProperties
+  /** @deprecated use C9Y-focused */
+  '.C9Y-focus': CSSProperties
+  /** @deprecated use C9Y-selected */
+  '.C9Y-checked': CSSProperties
 }
