@@ -6,13 +6,13 @@ import { Grid } from './Grid'
 describe('<Grid />', () => {
   elementTests(Grid)
 
-  it('Renders class grid by default', () => {
+  it('renders class grid by default', () => {
     render(<Grid>Content</Grid>)
 
     expect(screen.getByText('Content')).toHaveClass('grid')
   })
 
-  it('When display is passed, then class flex is overridden', () => {
+  it('overrides display class when passed', () => {
     render(<Grid display='inline-grid'>Content</Grid>)
 
     expect(screen.getByText('Content')).toHaveClass('inline-grid')

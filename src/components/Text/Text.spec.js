@@ -7,23 +7,8 @@ import { Text } from './Text'
 describe('<Text/>', () => {
   // Basic library element test suite
   elementTests(Text)
-})
 
-// Snapshots
-// ---------------------------------------------------------------------------
-describe('<Text /> snapshots', () => {
-  it('renders correctly', () => {
-    render(<Text>Componentry</Text>)
-
-    expect(screen.getByText('Componentry')).toMatchSnapshot()
-  })
-})
-
-// --------------------------------------------------------
-// Configuration
-
-describe('Text', () => {
-  it('ComponentryProvider allows configuring variant render elements', () => {
+  it('allows configuring variant render elements with ComponentryProvider', () => {
     render(
       <ComponentryProvider
         config={{
@@ -43,5 +28,15 @@ describe('Text', () => {
     expect(screen.getByText('Componentry')).toContainHTML(
       '<section class="C9Y-Text-base C9Y-Text-rad">Componentry</section>',
     )
+  })
+})
+
+// Snapshots
+// ---------------------------------------------------------------------------
+describe('<Text /> snapshots', () => {
+  it('renders correctly', () => {
+    render(<Text>Componentry</Text>)
+
+    expect(screen.getByText('Componentry')).toMatchSnapshot()
   })
 })

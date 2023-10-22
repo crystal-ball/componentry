@@ -5,14 +5,18 @@
 const plugin = require('tailwindcss/plugin')
 const { borderPlugin, createTheme, tailwindSafelist } = require('./dist/commonjs')
 
-const { height, width, ...themeValues } = createTheme()
+const theme = createTheme()
+delete theme.height
+delete theme.width
+delete theme.gridTemplateColumns
+delete theme.gridTemplateRows
 
 module.exports = {
-  content: ['./src/**/*.ts', './src/**/*.mdx'],
+  content: ['./src/**/*.ts', './src/**/*.tsx', './src/**/*.mdx'],
   corePlugins: {
     preflight: false,
   },
+  theme,
   plugins: [plugin(borderPlugin)],
-  theme: themeValues,
   safelist: tailwindSafelist,
 }

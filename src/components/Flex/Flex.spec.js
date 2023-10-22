@@ -6,19 +6,19 @@ import { Flex } from './Flex'
 describe('<Flex />', () => {
   elementTests(Flex)
 
-  it('Renders class flex by default', () => {
+  it('renders class flex by default', () => {
     render(<Flex>Content</Flex>)
 
     expect(screen.getByText('Content')).toHaveClass('flex')
   })
 
-  it('When display is passed, then class flex is overridden', () => {
+  it('when display is passed, then class flex is overridden', () => {
     render(<Flex display='inline-flex'>Content</Flex>)
 
     expect(screen.getByText('Content')).toHaveClass('inline-flex')
   })
 
-  it('When modifier props are passed, then the expanded classNames are rendered', () => {
+  it('when modifier props are passed, then the expanded classNames are rendered', () => {
     render(
       <Flex align='start' direction='column' justify='start' wrap='wrap'>
         Content

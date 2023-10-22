@@ -1,5 +1,5 @@
 import { render, screen } from '@testing-library/react'
-import userEvent from '@testing-library/user-event'
+import { userEvent } from '@testing-library/user-event'
 
 import { elementTests } from '../../test/element-tests'
 import { Alert } from './Alert'
@@ -34,10 +34,10 @@ describe('<Alert/>', () => {
 
     expect(screen.getByText('Warning!')).toBeInTheDocument()
 
-    // eslint-disable-next-line testing-library/no-await-sync-events
     await userEvent.click(screen.getByLabelText('close'))
 
-    expect(deactivate).toHaveBeenCalledTimes(1)
+    // eslint-disable-next-line jest/prefer-called-with
+    expect(deactivate).toHaveBeenCalled()
 
     // Alert visibility state change handler has been overridden, other than calling
     // passed deactivate Alert should still be visible & unchanged

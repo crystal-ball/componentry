@@ -20,8 +20,8 @@ describe('<Icon /> snapshots', () => {
 // --------------------------------------------------------
 // Configuration
 
-describe('Text', () => {
-  it('configureIconElementsMap allows configuring icon render elements', () => {
+describe('configureIconElementsMap', () => {
+  it('allows configuring icon render elements', () => {
     configureIconElementsMap({
       test: () => (
         <svg>

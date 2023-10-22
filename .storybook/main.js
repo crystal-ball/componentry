@@ -1,25 +1,38 @@
 'use strict'
 
 module.exports = {
-  core: {
-    builder: 'webpack5',
-    disableTelemetry: true,
+  framework: {
+    name: '@storybook/react-webpack5',
+
+    options: {
+      fastRefresh: true,
+    },
   },
-  reactOptions: {
-    fastRefresh: true,
-  },
+
+  stories: ['../docs/**/*.mdx', '../src/**/*.mdx', '../src/**/*.stories.tsx'],
+
   addons: [
     '@storybook/addon-essentials',
     '@storybook/addon-links',
+    '@storybook/addon-mdx-gfm',
     {
-      name: '@storybook/addon-postcss',
+      name: '@storybook/addon-styling-webpack',
       options: {
-        // Override postcss version to use v8 for Tailwind
-        postcssLoaderOptions: {
-          implementation: require('postcss'),
-        },
+        rules: [
+          {
+            test: /\.css$/,
+            use: ['style-loader', 'css-loader', 'postcss-loader'],
+          },
+        ],
       },
     },
   ],
-  stories: ['../src/**/*.stories.@(js|mdx)', '../docs/**/*.stories.mdx'],
+
+  core: {
+    disableTelemetry: true,
+  },
+
+  docs: {
+    autodocs: true,
+  },
 }
