@@ -1,0 +1,24 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`<Active /> snapshots > renders correctly 1`] = `
+<div
+  class="C9Y-Active-base"
+  data-id="test-guid"
+  data-testid="active"
+>
+  <button
+    aria-controls="test-guid"
+    class="C9Y-Link-base C9Y-Link-text C9Y-ActiveAction"
+    type="button"
+  >
+    Action
+  </button>
+  <div
+    aria-hidden="true"
+    class="C9Y-ActiveContent"
+    id="test-guid"
+  >
+    Content
+  </div>
+</div>
+`;

@@ -1,0 +1,18 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`<IconButton /> Snapshots > renders defaults correctly 1`] = `
+<button
+  class="C9Y-IconButton-base C9Y-IconButton-filled"
+  type="button"
+>
+  <svg
+    aria-label="code"
+    class="C9Y-Icon-base C9Y-Icon-font icon-code"
+    role="img"
+  >
+    <use
+      href="#code"
+    />
+  </svg>
+</button>
+`;

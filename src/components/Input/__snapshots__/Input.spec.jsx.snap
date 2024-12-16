@@ -1,0 +1,29 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`<Input /> snapshots > renders correctly 1`] = `
+<div
+  data-testid="input"
+>
+  <label
+    class="C9Y-InputLabel"
+    for="test-guid"
+  >
+    Storybook
+  </label>
+  <input
+    class="C9Y-InputField"
+    id="test-guid"
+    type="text"
+  />
+  <div
+    class="C9Y-InputDescription"
+  >
+    Really important input!
+  </div>
+  <div
+    class="C9Y-InputError"
+  >
+    Oh no!
+  </div>
+</div>
+`;

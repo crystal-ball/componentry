@@ -1,0 +1,9 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`<Text /> snapshots > renders correctly 1`] = `
+<div
+  class="C9Y-Text-base C9Y-Text-body"
+>
+  Componentry
+</div>
+`;

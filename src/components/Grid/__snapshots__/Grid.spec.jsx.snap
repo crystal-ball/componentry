@@ -1,0 +1,10 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`<Grid /> snapshots > renders correctly 1`] = `
+<div
+  class="grid"
+  data-testid="grid"
+>
+  Block content
+</div>
+`;

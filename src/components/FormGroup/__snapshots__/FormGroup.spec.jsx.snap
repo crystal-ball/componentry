@@ -1,0 +1,8 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`<FormGroup /> snapshots > renders correctly 1`] = `
+<div
+  class="C9Y-FormGroup"
+  data-testid="formgroup"
+/>
+`;

@@ -1,8 +1,0 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
-
-exports[`<FormGroup /> snapshots renders correctly 1`] = `
-<div
-  class="C9Y-FormGroup"
-  data-testid="formgroup"
-/>
-`;

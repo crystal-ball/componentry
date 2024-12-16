@@ -1,0 +1,34 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`<Alert /> snapshots > renders correctly 1`] = `
+<div
+  aria-hidden="false"
+  class="C9Y-Alert-base C9Y-Alert-filled C9Y-Alert-dangerColor C9Y-Alert-dismissible"
+  role="alert"
+>
+  <div
+    class="sr-only"
+  >
+    danger alert
+  </div>
+  <div
+    class="C9Y-AlertContent"
+  >
+    Warning!
+  </div>
+  <button
+    class="C9Y-Close-base C9Y-AlertClose"
+    type="button"
+  >
+    <svg
+      aria-label="close"
+      class="C9Y-Icon-base C9Y-Icon-font icon-close"
+      role="img"
+    >
+      <use
+        href="#close"
+      />
+    </svg>
+  </button>
+</div>
+`;

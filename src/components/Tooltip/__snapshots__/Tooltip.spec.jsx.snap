@@ -1,0 +1,32 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`<Tooltip /> snapshots > renders correctly 1`] = `
+<div
+  class="C9Y-Tooltip-base"
+  data-id="test-guid"
+  data-testid="tooltip"
+>
+  <button
+    aria-describedby="test-guid"
+    class="C9Y-Link-base C9Y-Link-text C9Y-TooltipAction"
+    type="button"
+  >
+    Action
+  </button>
+  <div
+    aria-hidden="true"
+    class="C9Y-TooltipContent"
+    id="test-guid"
+    role="tooltip"
+  >
+    <div
+      class="C9Y-TooltipContentArrow"
+    />
+    <div
+      class="C9Y-TooltipContentContents"
+    >
+      Content
+    </div>
+  </div>
+</div>
+`;

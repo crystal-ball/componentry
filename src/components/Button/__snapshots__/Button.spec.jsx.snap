@@ -1,0 +1,10 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`<Button /> - Snapshots > renders defaults correctly 1`] = `
+<button
+  class="C9Y-Button-base C9Y-Button-filled"
+  type="button"
+>
+  Componentry
+</button>
+`;
