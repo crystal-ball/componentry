@@ -99,6 +99,7 @@
     "@typescript-eslint/eslint-plugin": "6.8.0",
     "@typescript-eslint/parser": "6.8.0",
     "@vitejs/plugin-react": "4.3.4",
+    "@vitest/coverage-v8": "2.1.8",
     "autoprefixer": "10.4.16",
     "babel-plugin-tester": "11.0.4",
     "chromatic": "7.4.0",
