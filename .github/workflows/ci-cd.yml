@@ -8,29 +8,26 @@ jobs:
     if: contains(github.event.head_commit.message, 'skip ci') == false
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
         with:
           fetch-depth: 0
+      - uses: pnpm/action-setup@v4
+        with:
+          version: 9
       - name: Setup Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: '16.14'
-      - name: NPM Cache
-        uses: actions/cache@v3
-        with:
-          path: ~/.npm
-          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
-          restore-keys: |
-            ${{ runner.os }}-node-
+          node-version: '22.12'
+          cache: 'pnpm'
       - name: Code Climate - Setup
         run: |
           curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
           chmod +x ./cc-test-reporter
           ./cc-test-reporter before-build
       - name: Install
-        run: CI=true npm ci
+        run: pnpm install
       - name: Test
-        run: npm test
+        run: pnpm run test
       - name: Code Climate - Report
         if: success()
         run: |
@@ -50,24 +47,18 @@ jobs:
     if: contains(github.event.head_commit.message, 'skip ci') == false
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
         with:
           fetch-depth: 0 # Git history required for comparing snapshots
       - name: Setup Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: '16.14'
-      - name: NPM Cache
-        uses: actions/cache@v3
-        with:
-          path: ~/.npm
-          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
-          restore-keys: |
-            ${{ runner.os }}-node-
+          node-version: '22.12'
+          cache: 'pnpm'
       - name: Install dependencies
-        run: CI=true npm ci
+        run: pnpm install
       - name: Compile PostCSS plugin
-        run: npm run compile:commonjs
+        run: pnpm run compile:commonjs
       - name: Publish to Chromatic
         uses: chromaui/action@v1
         with:
