@@ -1,0 +1,100 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`<Tab /> snapshots > renders correctly 1`] = `
+<div
+  class="C9Y-Tabs-base"
+  data-id="test-guid"
+  data-testid="tabs"
+>
+  <div
+    class="C9Y-TabsContainer"
+    role="tablist"
+  >
+    <button
+      aria-controls="test-guid-one-content"
+      aria-selected="true"
+      class="C9Y-Link-base C9Y-Link-text C9Y-TabsAction"
+      data-active-id="one"
+      id="test-guid-one-tab"
+      role="tab"
+      type="button"
+    >
+      Item 1
+    </button>
+    <button
+      aria-controls="test-guid-two-content"
+      aria-selected="false"
+      class="C9Y-Link-base C9Y-Link-text C9Y-TabsAction"
+      data-active-id="two"
+      id="test-guid-two-tab"
+      role="tab"
+      type="button"
+    >
+      Tab with long name
+    </button>
+    <button
+      aria-controls="test-guid-three-content"
+      aria-selected="false"
+      class="C9Y-Link-base C9Y-Link-text C9Y-TabsAction"
+      data-active-id="three"
+      id="test-guid-three-tab"
+      role="tab"
+      type="button"
+    >
+      Item 3
+    </button>
+    <button
+      aria-controls="test-guid-four-content"
+      aria-selected="false"
+      class="C9Y-Link-base C9Y-Link-text C9Y-TabsAction C9Y-disabled C9Y-disabled"
+      data-active-id="four"
+      disabled=""
+      id="test-guid-four-tab"
+      role="tab"
+      type="button"
+    >
+      Disabled
+    </button>
+  </div>
+  <div
+    class="C9Y-TabsContentContainer"
+  >
+    <div
+      aria-hidden="false"
+      aria-labelledby="test-guid-one-action"
+      class="C9Y-TabsContent C9Y-active"
+      id="test-guid-one-content"
+      role="tabpanel"
+    >
+      Tab 1
+    </div>
+    <div
+      aria-hidden="true"
+      aria-labelledby="test-guid-two-action"
+      class="C9Y-TabsContent C9Y-active"
+      id="test-guid-two-content"
+      role="tabpanel"
+    >
+      Tab 2
+    </div>
+    <div
+      aria-hidden="true"
+      aria-labelledby="test-guid-three-action"
+      class="C9Y-TabsContent C9Y-active"
+      id="test-guid-three-content"
+      role="tabpanel"
+    >
+      Tab 3
+    </div>
+    <div
+      aria-hidden="true"
+      aria-labelledby="test-guid-four-action"
+      class="C9Y-TabsContent C9Y-active"
+      id="test-guid-four-content"
+      role="tabpanel"
+    >
+      This tab has been disabled
+    </div>
+  </div>
+</div>
+`;

@@ -1,0 +1,10 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`<Badge /> snapshots > renders correctly 1`] = `
+<div
+  class="C9Y-Badge-base C9Y-Badge-filled C9Y-Badge-primaryColor"
+  data-testid="badge"
+>
+  Badge
+</div>
+`;

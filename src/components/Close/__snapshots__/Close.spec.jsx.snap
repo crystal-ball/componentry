@@ -1,0 +1,19 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`<Close /> snapshots > renders correctly 1`] = `
+<button
+  class="C9Y-Close-base"
+  data-testid="close"
+  type="button"
+>
+  <svg
+    aria-label="close"
+    class="C9Y-Icon-base C9Y-Icon-font icon-close"
+    role="img"
+  >
+    <use
+      href="#close"
+    />
+  </svg>
+</button>
+`;
