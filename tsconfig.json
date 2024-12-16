@@ -4,7 +4,7 @@
     "declaration": true,
     "emitDeclarationOnly": true,
     "outDir": "./types",
-    "importHelpers": true,
+    "importHelpers": false, // False on the assumption that this doesn't affect the size of the compiled type definitions
     "lib": ["DOM", "ESNext"],
 
     // --- Type checking

@@ -1,8 +1,7 @@
 import { Flex, Text } from 'componentry'
 import { Grid } from './custom-grid'
 import { Paper } from '@/custom/componentry_path'
-import { jsx as _jsx } from 'react/jsx-runtime'
-import { jsxs as _jsxs } from 'react/jsx-runtime'
+import { jsx as _jsx, jsxs as _jsxs } from 'react/jsx-runtime'
 export default function Test() {
   // Test that:
   // 1. Componentry imports (Flex, Text) are compiled

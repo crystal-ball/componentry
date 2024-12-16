@@ -1,6 +1,5 @@
 import { Flex, Text } from 'componentry'
-import { jsx as _jsx } from 'react/jsx-runtime'
-import { jsxs as _jsxs } from 'react/jsx-runtime'
+import { jsx as _jsx, jsxs as _jsxs } from 'react/jsx-runtime'
 export default function Test() {
   // Test that:
   // 1. Props that aren't library props are passed through

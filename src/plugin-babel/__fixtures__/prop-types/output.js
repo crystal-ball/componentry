@@ -1,6 +1,5 @@
 import { Text } from 'componentry'
-import { jsx as _jsx } from 'react/jsx-runtime'
-import { jsxs as _jsxs } from 'react/jsx-runtime'
+import { jsx as _jsx, jsxs as _jsxs } from 'react/jsx-runtime'
 export default function Test({ success, position, ...rest }) {
   return /*#__PURE__*/ _jsxs('div', {
     children: [
