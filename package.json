@@ -47,6 +47,7 @@
     "test": "pnpm run test:lint && pnpm run test:types && pnpm run test:unit",
     "test:lint": "eslint --format=pretty .",
     "test:types": "tsc",
+    "pretest:unit": "pnpm run compile",
     "test:unit": "vitest run",
     "test:update-snapshots": "vitest run --update",
     "test:watch": "vitest",
