@@ -192,9 +192,9 @@ export interface UtilityPropsBase {
   /** Sets a `border-width` style */
   borderWidth?: keyof Theme['borderWidth']
   /** Sets a `border-radius` style */
-  borderRadius?: keyof Theme['borderRadius']
+  borderRadius?: ReplaceDefaultWithTrue<keyof Theme['borderRadius']>
   /** Sets a `border-radius` style */
-  radius?: keyof Theme['borderRadius']
+  radius?: ReplaceDefaultWithTrue<keyof Theme['borderRadius']>
 
   // --- EFFECTS
   /** Sets a `box-shadow` style */

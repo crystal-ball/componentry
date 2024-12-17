@@ -221,6 +221,9 @@ export const themeDefaults = {
     DEFAULT: `1px solid ${gray[500]}`,
   },
   borderRadius: {
+    // nb: although "borderRadius" is an odd standalone prop, it's quite useful in component
+    // style definitions to have a single shared default rounding size.
+    DEFAULT: '0.25rem', // 4px
     none: '0px',
     full: '9999px',
     sm: '0.125rem', // 2px

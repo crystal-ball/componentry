@@ -38,8 +38,16 @@ function ThemedComponent() {
 const assertPropExtraction = (
   <>
     {/* Validate props with "DEFAULT" values accept truthy props */}
-    <Flex flexGrow={0}>test</Flex>
-    <Flex flexGrow>test</Flex>
+    <Flex flexGrow={0} flexShrink={0}>
+      test
+    </Flex>
+    {/* @ts-expect-error -- ❌ No theme value defined for 4 */}
+    <Flex flexGrow={4}>test</Flex>
+    {/* @ts-expect-error -- ❌ No theme value defined for 4 */}
+    <Flex flexShrink={4}>test</Flex>
+    <Flex border borderRadius boxShadow flexGrow flexShrink>
+      test
+    </Flex>
   </>
 )
 
