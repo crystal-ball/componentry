@@ -221,7 +221,6 @@ export const themeDefaults = {
     DEFAULT: `1px solid ${gray[500]}`,
   },
   borderRadius: {
-    DEFAULT: '0.25rem', // 4px
     none: '0px',
     full: '9999px',
     sm: '0.125rem', // 2px

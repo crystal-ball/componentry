@@ -34,6 +34,15 @@ function ThemedComponent() {
   return <div style={{ color: theme.colors.inverse }}>THEME</div>
 }
 
+// Verify that the theme values have been converted to the correct set of allowed props
+const assertPropExtraction = (
+  <>
+    {/* Validate props with "DEFAULT" values accept truthy props */}
+    <Flex flexGrow={0}>test</Flex>
+    <Flex flexGrow>test</Flex>
+  </>
+)
+
 // --------------------------------------------------------
 // POLYMORPHIC TYPES
 

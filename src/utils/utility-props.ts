@@ -16,7 +16,7 @@ import { MergeTypes, Resolve } from './types'
 /** Module augmentation interface for overriding default utility props' types */
 export interface UtilityPropsOverrides {}
 
-export type SpacingBase = keyof UtilityPropsForTheme<Theme['spacing']>
+export type SpacingBase = keyof Theme['spacing']
 // Provide base height exports to simplify adding number or string type for
 // arbitrary sizing values
 export type HeightBase = 'full' | 'screen' | 'min' | 'max' | 'fit' | 'auto'
@@ -49,7 +49,7 @@ export interface UtilityPropsBase {
   /** Sets a `visibility: visible` style */
   visible?: boolean
   /** Sets a `z-index` style */
-  zIndex?: keyof UtilityPropsForTheme<Theme['zIndex']>
+  zIndex?: keyof Theme['zIndex']
 
   // --- FLEXBOX+GRID
   /** Sets an `align-content` style */
@@ -70,9 +70,9 @@ export interface UtilityPropsBase {
   /** Sets a `flex-direction` style */
   flexDirection?: 'column' | 'column-reverse' | 'row-reverse' | 'row'
   /** Sets a `flex-grow` style */
-  flexGrow?: keyof UtilityPropsForTheme<Theme['flexGrow']>
+  flexGrow?: ReplaceDefaultWithTrue<keyof Theme['flexGrow']>
   /** Sets a `flex-shrink` style */
-  flexShrink?: keyof UtilityPropsForTheme<Theme['flexShrink']>
+  flexShrink?: ReplaceDefaultWithTrue<keyof Theme['flexShrink']>
   /** Sets a `flex-wrap` style */
   flexWrap?: 'wrap' | 'nowrap' | 'wrap-reverse'
   /** Sets a `grid-template-columns` style */
@@ -154,17 +154,17 @@ export interface UtilityPropsBase {
   /** Sets a `color` style */
   color?: string
   /** Sets a `font-family` style */
-  fontFamily?: keyof UtilityPropsForTheme<Theme['fontFamily']>
+  fontFamily?: keyof Theme['fontFamily']
   /** Sets a `font-size` style */
-  fontSize?: keyof UtilityPropsForTheme<Theme['fontSize']>
+  fontSize?: keyof Theme['fontSize']
   /** Sets a `font-weight` style */
-  fontWeight?: keyof UtilityPropsForTheme<Theme['fontWeight']>
+  fontWeight?: keyof Theme['fontWeight']
   /** Sets an italic style */
   italic?: boolean
   /** Sets a `letter-spacing` style */
-  letterSpacing?: keyof UtilityPropsForTheme<Theme['letterSpacing']>
+  letterSpacing?: keyof Theme['letterSpacing']
   /** Sets a `line-height` style */
-  lineHeight?: keyof UtilityPropsForTheme<Theme['lineHeight']>
+  lineHeight?: keyof Theme['lineHeight']
   /** Sets a `text-align` style */
   textAlign?: 'left' | 'center' | 'right' | 'justify'
   /** Sets a `text-transform` style */
@@ -176,29 +176,29 @@ export interface UtilityPropsBase {
 
   // --- BORDERS
   /** Sets a `border` style */
-  border?: keyof UtilityPropsForTheme<Theme['border']>
+  border?: ReplaceDefaultWithTrue<keyof Theme['border']>
   /** Sets a `border-bottom` style */
-  borderBottom?: keyof UtilityPropsForTheme<Theme['border']>
+  borderBottom?: ReplaceDefaultWithTrue<keyof Theme['border']>
   /** Sets a `border-left` style */
-  borderLeft?: keyof UtilityPropsForTheme<Theme['border']>
+  borderLeft?: ReplaceDefaultWithTrue<keyof Theme['border']>
   /** Sets `border-right` style */
-  borderRight?: keyof UtilityPropsForTheme<Theme['border']>
+  borderRight?: ReplaceDefaultWithTrue<keyof Theme['border']>
   /** Sets a `border-top` style */
-  borderTop?: keyof UtilityPropsForTheme<Theme['border']>
+  borderTop?: ReplaceDefaultWithTrue<keyof Theme['border']>
   /** Sets a `border-color` style */
-  borderColor?: keyof UtilityPropsForTheme<Theme['borderColor']>
+  borderColor?: keyof Theme['borderColor']
   /** Sets a `border-style` style */
   borderStyle?: 'solid' | 'dashed' | 'dotted' | 'double' | 'hidden' | 'none'
   /** Sets a `border-width` style */
-  borderWidth?: keyof UtilityPropsForTheme<Theme['borderWidth']>
+  borderWidth?: keyof Theme['borderWidth']
   /** Sets a `border-radius` style */
-  borderRadius?: keyof UtilityPropsForTheme<Theme['borderRadius']>
+  borderRadius?: keyof Theme['borderRadius']
   /** Sets a `border-radius` style */
-  radius?: keyof UtilityPropsForTheme<Theme['borderRadius']>
+  radius?: keyof Theme['borderRadius']
 
   // --- EFFECTS
   /** Sets a `box-shadow` style */
-  boxShadow?: keyof UtilityPropsForTheme<Theme['boxShadow']>
+  boxShadow?: ReplaceDefaultWithTrue<keyof Theme['boxShadow']>
 
   // --- STATES
   /** @deprecated Use `pressed` */
@@ -607,29 +607,23 @@ function accessColor(base: any, path: string): string | undefined {
 // UTILITY TYPES
 
 /**
- * Utility type converts a theme definition to version that can be used with
- * `keyof` to extract the appropriate props for that theme value.
+ * Utility type to replace 'DEFAULT' with true.
  * @remarks
- * Tailwind's pattern of declaring a base utility class with `'DEFAULT'`
+ * Tailwind's pattern of declaring a default utility class value with `'DEFAULT'`
  * requires this type manipulation to provide the correct set of prop values in
- * autocomplete, eg for flexGrow:
+ * JSX, eg for flexGrow:
  *
  * ```tsx
  * interface Theme {
  *   flexGrow: { DEFAULT: 1; 0: 0; }
  * }
  * ```
- * The correct utility prop type of `boolean | 0 | undefined` can be extracted
- * as:
+ * The correct utility prop type of `true | 0` can be extracted as:
  * ```tsx
- * type FlexGrowProp = keyof UtilityPropsForTheme<Theme['flexGrow']>
+ * type FlexGrowProp = ReplaceDefaultWithTrue<keyof Theme['flexGrow']>
  * ```
  */
-type UtilityPropsForTheme<ThemeNamespace> = {
-  [Key in keyof ThemeNamespace as Key extends 'DEFAULT'
-    ? boolean
-    : Key]: ThemeNamespace[Key]
-}
+type ReplaceDefaultWithTrue<T> = T extends 'DEFAULT' ? true : T
 
 /**
  * Utility type for component "as" element props.
