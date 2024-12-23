@@ -7,6 +7,7 @@
  * Type display utility
  * @see https://effectivetypescript.com/2022/02/25/gentips-4-display/
  */
+// eslint-disable-next-line @typescript-eslint/no-unsafe-function-type
 export type Resolve<T> = T extends Function ? T : { [K in keyof T]: T[K] }
 
 /**

@@ -23,11 +23,11 @@ export const Primary: Story = {
           <Card.Title>Card title</Card.Title>
           <Card.Subtitle>Card subtitle</Card.Subtitle>
           <Text mt={2}>
-            God help us, we're in the hands of engineers. So you two dig up, dig up
+            God help us, we&apos;re in the hands of engineers. So you two dig up, dig up
             dinosaurs? Checkmate... Do you have any idea how long it takes those cups to
-            decompose. God help us, we're in the hands of engineers. You really think you
-            can fly that thing? They're using our own satellites against us. And the clock
-            is ticking.
+            decompose. God help us, we&apos;re in the hands of engineers. You really think
+            you can fly that thing? They&apos;re using our own satellites against us. And
+            the clock is ticking.
           </Text>
           <Flex gap={2} mt={2}>
             <Link href='#demo'>Card link</Link>

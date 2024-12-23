@@ -1,4 +1,3 @@
-/* eslint-disable no-underscore-dangle */
 import React, { createContext, useContext } from 'react'
 
 import { ComponentName, ComponentProps, Config } from '../../config/config'
@@ -9,15 +8,10 @@ import { initializeUtilityPropsTheme } from '../../utils/utility-props'
 /** Componentry Context */
 const ComponentryCtx = createContext<Config | undefined>(undefined)
 
-interface ComponentryProviderProps {
+export interface ComponentryProviderProps {
   children: React.ReactElement
   /** Component default props */
   config: Config
-}
-
-export interface ComponentryProvider {
-  (props: ComponentryProviderProps): JSX.Element
-  displayName?: string
 }
 
 /**
@@ -32,7 +26,7 @@ export interface ComponentryProvider {
  * ```
  * @see [📝 ComponentryProvider](https://componentry.design/components/provider)
  */
-export const ComponentryProvider: ComponentryProvider = ({ children, config }) => {
+export const ComponentryProvider = ({ children, config }: ComponentryProviderProps) => {
   // Internal convenience helper: if user has provided a theme value initialize
   // the utility classes module with it for them
   if (config.theme) {

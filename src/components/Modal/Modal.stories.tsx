@@ -30,7 +30,7 @@ export const Primary: Story = {
             <Tooltip.Action>Z-Index and Modal stacking</Tooltip.Action>
             <Tooltip.Content>
               You can use tooltips and dropdowns in Modals and they will be placed in the
-              modal's stacking context, overlaying elements as you'd expect.
+              modal&apos;s stacking context, overlaying elements as you&apos;d expect.
             </Tooltip.Content>
           </Tooltip>
         </Modal.Body>

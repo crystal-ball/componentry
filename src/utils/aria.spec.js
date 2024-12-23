@@ -1,3 +1,4 @@
+import { describe, it, expect } from 'vitest'
 import { computeARIA } from './aria'
 
 // Complete set of possible ARIA attributes computed by ariaAttrs

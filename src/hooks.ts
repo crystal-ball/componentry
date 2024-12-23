@@ -23,7 +23,6 @@ export const useActiveScrollReset = (
 ): void => {
   useLayoutEffect(() => {
     if (active && ref.current) {
-      // eslint-disable-next-line no-param-reassign
       ref.current.scrollTop = 0
     }
   }, [active, ref])

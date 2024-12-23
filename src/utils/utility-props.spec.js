@@ -1,3 +1,4 @@
+import { beforeEach, describe, it, expect } from 'vitest'
 import { createTheme } from '../theme/theme'
 import { themeDefaults } from '../theme/theme-defaults'
 import { createUtilityProps, initializeUtilityPropsTheme } from './utility-props'
