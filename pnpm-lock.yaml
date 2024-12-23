@@ -40,7 +40,7 @@ importers:
         specifier: 7.23.2
         version: 7.23.2(@babel/core@7.23.2)
       '@eslint/js':
-        specifier: ^9.17.0
+        specifier: 9.17.0
         version: 9.17.0
       '@storybook/addon-essentials':
         specifier: 7.5.1
