@@ -1,4 +1,4 @@
 /**
  * Componentry PostCSS plugin entry
  */
-module.exports = require('./plugin').plugin
+export { plugin as default } from './plugin'

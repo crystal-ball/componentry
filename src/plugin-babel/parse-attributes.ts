@@ -155,7 +155,9 @@ export function parseAttributes(openingElement: t.JSXOpeningElement): {
 
     if (!t.isJSXIdentifier(attribute.name)) {
       // Safety check for attribute of type JSXNamespacedName (missing example)
-      throw new Error(`Component attribute name is namespaced: ${attribute.name}`)
+      throw new Error(
+        `Component attribute name is namespaced: ${attribute.name.namespace.name}:${attribute.name.name.name}`,
+      )
     }
 
     const propName = attribute.name.name

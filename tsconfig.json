@@ -30,10 +30,5 @@
     "jsx": "react-jsx" /* Specify JSX code generation: 'preserve', 'react-native', or 'react'. */
   },
 
-  "include": ["@types/**/*", "src/**/*"],
-  "exclude": [
-    "src/plugin-postcss/index.ts",
-    "src/plugin-babel/index.ts",
-    "src/**/*.spec.js"
-  ]
+  "include": ["@types/**/*", "src/**/*"]
 }

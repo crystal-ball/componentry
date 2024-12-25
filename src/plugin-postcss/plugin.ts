@@ -67,7 +67,7 @@ export const plugin: PluginCreator<Record<string, never>> = () => {
         // Attach @rule source for proper source map handling
         // https://github.com/postcss/postcss/blob/main/docs/guidelines/plugin.md#24-set-nodesource-for-new-nodes
         processedNodes.forEach((node) => {
-          node.source = atRule.source // eslint-disable-line no-param-reassign
+          node.source = atRule.source
         })
 
         atRule.replaceWith(...processedNodes)

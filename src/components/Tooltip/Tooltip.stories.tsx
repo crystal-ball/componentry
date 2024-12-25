@@ -14,7 +14,7 @@ export const Primary: Story = {
     <Tooltip active>
       <Tooltip.Action>Fun fact</Tooltip.Action>
       <Tooltip.Content>
-        Only 8% of the world's currency is physical money, the rest only exists on
+        Only 8% of the world&apos;s currency is physical money, the rest only exists on
         computers.
       </Tooltip.Content>
     </Tooltip>

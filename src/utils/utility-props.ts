@@ -1,4 +1,3 @@
-/* eslint-disable prefer-template */
 /**
  * @file
  * Resource for cleaning Componentry props and creating utility classes.

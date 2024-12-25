@@ -121,7 +121,7 @@ export function createActiveContainer<
           if (onActivate) onActivate(evt)
           // Compound active elements pass along the active id with a data attr
           // fallback to boolean value if not present
-          // @ts-ignore not sure how to type this yet
+          // @ts-expect-error not sure how to type this yet
           updateActive(evt.target.dataset.activeId || true)
           if (onActivated) onActivated(evt)
         }
