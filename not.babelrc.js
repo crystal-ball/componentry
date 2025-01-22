@@ -42,7 +42,7 @@ module.exports = {
       '@babel/plugin-transform-runtime',
       {
         useESModules: useESM,
-        version: '^7.17.0', // Default is 7.0, include current version for smaller bundle improvements
+        version: '^7.26.0', // Default is 7.0, include current version for smaller bundle improvements
       },
     ],
   ],

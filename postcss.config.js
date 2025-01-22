@@ -5,6 +5,7 @@ module.exports = {
     // internal development entry for Componentry plugin, when published this is:
     // require('componentry/postcss')
     require('./dist/commonjs/plugin-postcss/index').default,
+    require('tailwindcss/nesting'),
     require('tailwindcss'),
     require('autoprefixer'),
   ],
