@@ -112,7 +112,7 @@
     "eslint-plugin-storybook": "0.11.1",
     "eslint-plugin-testing-library": "7.1.1",
     "node-notifier": "10.0.1",
-    "postcss": "8.4.31",
+    "postcss": "8.5.3",
     "postcss-loader": "8.1.1",
     "prettier": "3.0.3",
     "react": "18.2.0",
